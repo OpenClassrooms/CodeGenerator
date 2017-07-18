@@ -3,7 +3,6 @@
 namespace OpenClassrooms\CodeGenerator\Generator\Controller\Impl;
 
 use OpenClassrooms\CodeGenerator\Generator\Generator;
-use OpenClassrooms\CodeGenerator\Utility\NamespaceConverter;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
@@ -17,18 +16,25 @@ class GetControllerGeneratorImpl extends Generator
      */
     public function generate(string $useCaseResponseClassName, $admin = false): string
     {
-        $entityName = NamespaceConverter::getEntityNameFromClassName($useCaseResponseClassName);
-        $exception = NamespaceConverter::getEntityNotFoundExceptionClassObjectsFromClassName($useCaseResponseClassName);
-        $useCase = NamespaceConverter::getGetUseCaseClassObjectFromClassName($useCaseResponseClassName);
-        $useCaseRequestBuilder = NamespaceConverter::getGetUseCaseRequestBuilderClassObjectFromClassName($useCaseResponseClassName);
-        $useCaseResponse = NamespaceConverter::getInterfaceClassObjectFromClassName($useCaseResponseClassName);
-        $controller = NamespaceConverter::getControllerClassObjectFromClassName($useCaseResponseClassName, $admin);
+        $entityName = $this->getEntityNameFromClassName($useCaseResponseClassName);
+        $exception = $this->classObjectService->getEntityNotFoundException(
+            $useCaseResponseClassName
+        );
+        $useCase = $this->classObjectService->getGetUseCase($useCaseResponseClassName);
+        $useCaseRequestBuilder = $this->classObjectService->getGetUseCaseRequestBuilder(
+            $useCaseResponseClassName
+        );
+        $useCaseResponse = $this->getInterfaceClassObjectFromClassName($useCaseResponseClassName);
+        $controller = $this->classObjectService->getController(
+            $useCaseResponseClassName,
+            $admin
+        );
         /** @var \OpenClassrooms\CodeGenerator\ClassObjects\ClassObject $viewModelAssemblerInterface */
-        list($viewModelAssemblerInterface, $viewModelAssemblerImpl) = NamespaceConverter::getViewModelAssemblerClassObjectsFromClassName(
+        list($viewModelAssemblerInterface, $viewModelAssemblerImpl) = $this->classObjectService->getViewModelAssembler(
             $useCaseResponseClassName
         );
         /** @var \OpenClassrooms\CodeGenerator\ClassObjects\ClassObject $viewModel */
-        list($viewModel, $viewModelImpl) = NamespaceConverter::getViewModelClassObjectsFromClassName(
+        list($viewModel, $viewModelImpl) = $this->classObjectService->getViewModels(
             $useCaseResponseClassName
         );
 
@@ -55,4 +61,6 @@ class GetControllerGeneratorImpl extends Generator
 
         return $content;
     }
+
+
 }

@@ -3,19 +3,18 @@
 namespace OpenClassrooms\CodeGenerator\Tests\Generator\Controller\Impl;
 
 use OpenClassrooms\CodeGenerator\Generator\Controller\Impl\GetControllerGeneratorImpl;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\TemplatingMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\UseCases\Domain\SubDomain\DTO\Response\EntityDetailResponseDTO;
-use PHPUnit\Framework\TestCase;
+use OpenClassrooms\CodeGenerator\Tests\Generator\GeneratorTestCase;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
  */
-class GetControllerGeneratorImplTest extends TestCase
+class GetControllerGeneratorImplTest extends GeneratorTestCase
 {
     /**
      * @var GetControllerGeneratorImpl
      */
-    private $generator;
+    protected $generator;
 
     /**
      * @test
@@ -23,13 +22,15 @@ class GetControllerGeneratorImplTest extends TestCase
     public function generate()
     {
         $actual = $this->generator->generate(EntityDetailResponseDTO::class);
-        $expected = file_get_contents(__DIR__.'/../../../Doubles/src/App/Controller/Web/Domain/SubDomain/GetEntityController.php');
+        $expected = file_get_contents(
+            __DIR__.'/../../../Doubles/src/App/Controller/Web/Domain/SubDomain/GetEntityController.php'
+        );
         $this->assertSame($expected, $actual);
     }
 
     protected function setUp()
     {
         $this->generator = new GetControllerGeneratorImpl();
-        $this->generator->setTemplating(new TemplatingMock());
+        parent::setUp();
     }
 }

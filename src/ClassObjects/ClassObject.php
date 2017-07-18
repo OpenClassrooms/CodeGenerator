@@ -20,37 +20,29 @@ class ClassObject
     /**
      * @var string
      */
-    private $serviceName = 'oc';
+    private $shortClassName;
 
     /**
-     * @var string
+     * @var bool
      */
-    private $shortClassName;
+    private $isAbstract = false;
 
     /**
      * @var bool
      */
     private $isInterface = false;
 
-    public function __construct(string $namespace, string $shortClassName, bool $isInterface = false)
-    {
+    public function __construct(
+        string $namespace,
+        string $shortClassName,
+        bool $isInterface = false,
+        bool $isAbstract = false
+    ) {
         $this->className = $namespace.'\\'.$shortClassName;
         $this->namespace = $namespace;
         $this->shortClassName = $shortClassName;
-        $explodedNamespace = explode('\\', $namespace);
-        foreach ($explodedNamespace as $item) {
-            if (!in_array($item, ['', 'BusinessRules'])) {
-                $this->serviceName .= '_'.$this->toSnakeCase($item);
-            }
-        }
-        $formattedShortClassName = str_replace('Impl', '', $shortClassName);
-        $this->serviceName .= '_'.$this->toSnakeCase($formattedShortClassName);
         $this->isInterface = $isInterface;
-    }
-
-    private function toSnakeCase($str)
-    {
-        return strtolower(preg_replace('/(?<!^)[A-Z]/', '_$0', $str));
+        $this->isAbstract = $isAbstract;
     }
 
     /**
@@ -74,7 +66,39 @@ class ClassObject
      */
     public function getServiceName(): string
     {
-        return $this->serviceName;
+        $serviceName = 'oc';
+        $explodedNamespace = explode('\\', $this->namespace);
+        foreach ($explodedNamespace as $item) {
+            if (!in_array($item, ['', 'BusinessRules'])) {
+                $serviceName .= '_'.$this->toSnakeCase($item);
+            }
+        }
+        $formattedShortClassName = str_replace('Impl', '', $this->shortClassName);
+        $serviceName .= '_'.$this->toSnakeCase($formattedShortClassName);
+
+        return $serviceName;
+    }
+
+    private function toSnakeCase($str): string
+    {
+        return strtolower(preg_replace('/(?<!^)[A-Z]/', '_$0', $str));
+    }
+
+    public function getRouteName(): string
+    {
+        $routingName = 'oc';
+
+        $explodedNamespace = explode('\\', $this->namespace);
+        foreach ($explodedNamespace as $item) {
+            if (!in_array($item, ['', 'BusinessRules', 'Controller'])) {
+                $routingName .= '_'.$this->toSnakeCase($item);
+            }
+        }
+        $formattedShortClassName = str_replace('Impl', '', $this->shortClassName);
+        $formattedShortClassName = str_replace('Controller', '', $formattedShortClassName);
+        $routingName .= '_'.$this->toSnakeCase($formattedShortClassName);
+
+        return $routingName;
     }
 
     /**

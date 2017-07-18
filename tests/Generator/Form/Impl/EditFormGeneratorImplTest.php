@@ -3,30 +3,37 @@
 namespace OpenClassrooms\CodeGenerator\Tests\Generator\Form\Impl;
 
 use OpenClassrooms\CodeGenerator\Generator\Form\Impl\EditFormGeneratorImpl;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\BusinessRules\UseCases\Domain\SubDomain\DTO\Request\EditEntityRequestDTO;
-use PHPUnit\Framework\TestCase;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\UseCases\Domain\SubDomain\DTO\Request\EditEntityRequestDTO;
+use OpenClassrooms\CodeGenerator\Tests\Generator\GeneratorTestCase;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
  */
-class EditFormGeneratorImplTest extends TestCase
+class EditFormGeneratorImplTest extends GeneratorTestCase
 {
     /**
      * @var EditFormGeneratorImpl
      */
-    private $generator;
+    protected $generator;
 
     /**
      * @test
      */
-     public function render(){
-         $this->assertTrue(printf($this->generator->generate(EditEntityRequestDTO::class)));
+    public function render()
+    {
+        $actual = $this->generator->generate(EditEntityRequestDTO::class);
+        $expected = file_get_contents(
+            __DIR__.'/../../../Doubles/src/App/Form/Type/Domain/SubDomain/EditEntityType.php'
+        );
+
+        $this->assertSame($expected, $actual);
 
     }
 
     protected function setUp()
     {
         $this->generator = new EditFormGeneratorImpl();
+        parent::setUp();
     }
 
 }

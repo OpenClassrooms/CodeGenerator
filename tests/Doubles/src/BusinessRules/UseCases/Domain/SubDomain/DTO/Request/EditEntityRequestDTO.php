@@ -1,6 +1,6 @@
 <?php
 
-namespace OpenClassrooms\CodeGenerator\Tests\Doubles\BusinessRules\UseCases\Domain\SubDomain\DTO\Request;
+namespace OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\UseCases\Domain\SubDomain\DTO\Request;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
