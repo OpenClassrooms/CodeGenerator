@@ -5,10 +5,21 @@ namespace OpenClassrooms\CodeGenerator\Tests\Doubles\src\App\ViewModels\Web\Doma
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
  */
-abstract class EntityDetail extends Entity
+abstract class Entity
 {
     /**
-     * @var \DateTime
+     * @var int
      */
-    public $field3;
+    public $id;
+
+    /**
+     * @var string
+     */
+    public $field1;
+
+    /**
+     * @var string[]
+     */
+    public $field2;
+
 }

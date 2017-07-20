@@ -12,8 +12,8 @@ trait ClassNameUtility
     public function getInterfaceClassObjectFromClassName(string $className): ClassObject
     {
         $rc = new \ReflectionClass($className);
-        $in = $rc->getInterfaceNames()[0];
-        $rc = new \ReflectionClass($in);
+        $interfaceNames = $rc->getInterfaceNames();
+        $rc = new \ReflectionClass(end($interfaceNames));
 
         return new ClassObject($rc->getNamespaceName(), $rc->getShortName(), true);
     }

@@ -3,6 +3,7 @@
 namespace OpenClassrooms\CodeGenerator\Generator;
 
 use OpenClassrooms\CodeGenerator\Services\ClassObjectService;
+use OpenClassrooms\CodeGenerator\Services\FieldObjectService;
 use OpenClassrooms\CodeGenerator\Utility\ClassNameUtility;
 
 /**
@@ -13,28 +14,30 @@ abstract class Generator
     use ClassNameUtility;
 
     /**
-     * @var string
+     * @var \OpenClassrooms\CodeGenerator\Services\ClassObjectService
      */
-    protected $rootNamespace;
+    protected $classObjectService;
+
+    /**
+     * @var \OpenClassrooms\CodeGenerator\Services\FieldObjectService
+     */
+    protected $fieldObjectService;
 
     /**
      * @var \Twig_Environment
      */
     protected $templating;
 
-    /**
-     * @var \OpenClassrooms\CodeGenerator\Services\ClassObjectService
-     */
-    protected $classObjectService;
+    abstract public function generate(string $className);
 
     public function setClassObjectService(ClassObjectService $classObjectService)
     {
         $this->classObjectService = $classObjectService;
     }
 
-    public function setRootNamespace(string $rootNamespace)
+    public function setFieldObjectService(FieldObjectService $fieldObjectService)
     {
-        $this->rootNamespace = $rootNamespace;
+        $this->fieldObjectService = $fieldObjectService;
     }
 
     public function setTemplating(\Twig_Environment $templating)
@@ -50,21 +53,6 @@ abstract class Generator
     protected function render(string $template, array $parameters): string
     {
         return $this->templating->render($template, $parameters);
-    }
-
-    /**
-     * @return string[]
-     */
-    protected function getPublicFieldsFromClass(string $className): array
-    {
-        $properties = [];
-        $rc = new \ReflectionClass($className);
-        $rps = $rc->getProperties(\ReflectionProperty::IS_PUBLIC);
-        foreach ($rps as $rp) {
-            $properties[] = $rp->getName();
-        }
-
-        return $properties;
     }
 
 }

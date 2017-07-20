@@ -7,7 +7,15 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\Responders\Doma
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
  */
-class EntityDetailResponseDTO implements EntityDetailResponse
+class EntityDetailResponseDTO extends EntityResponseDTO implements EntityDetailResponse
 {
+    /**
+     * @var \DateTime
+     */
+    public $field3;
 
+    public function getField3()
+    {
+        return $this->field3;
+    }
 }

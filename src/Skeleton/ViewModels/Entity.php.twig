@@ -1,0 +1,15 @@
+<?php
+
+namespace {{ vmNamespace }};
+
+/**
+ * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
+ */
+abstract class {{ vmShortClassName }}
+{
+{% for field in vmFields %}
+    {{ field.docComment }}
+    {{ field.scope }} ${{ field.name }};
+
+{% endfor %}
+}

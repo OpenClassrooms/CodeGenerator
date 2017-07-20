@@ -85,7 +85,15 @@ class ClassObjectServiceImpl implements ClassObjectService
         return [
             new ClassObject(
                 $this->appNamespace.'\\ViewModels\\Web\\'.$domain,
-                $entityName.'Detail'
+                $entityName,
+                false,
+                true
+            ),
+            new ClassObject(
+                $this->appNamespace.'\\ViewModels\\Web\\'.$domain,
+                $entityName.'Detail',
+                false,
+                true
             ),
             new ClassObject(
                 $this->appNamespace.'\\ViewModels\\Web\\'.$domain.'\\Impl',

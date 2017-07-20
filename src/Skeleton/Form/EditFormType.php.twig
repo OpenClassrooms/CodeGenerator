@@ -27,7 +27,7 @@ class {{ formTypeShortClassName }} extends AbstractType
     {
         $builder
 {% for field in fields %}
-            ->add("{{field}}", TextType::class, ['required' => true,])
+            ->add("{{field.name}}", TextType::class, ['required' => true,])
 {% endfor %}
             ->setAction($this->router->generate('{{ editRoute }}', ['id' => $options['id']]));
     }

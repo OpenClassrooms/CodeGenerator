@@ -33,8 +33,8 @@ class GetControllerGeneratorImpl extends Generator
         list($viewModelAssemblerInterface, $viewModelAssemblerImpl) = $this->classObjectService->getViewModelAssembler(
             $useCaseResponseClassName
         );
-        /** @var \OpenClassrooms\CodeGenerator\ClassObjects\ClassObject $viewModel */
-        list($viewModel, $viewModelImpl) = $this->classObjectService->getViewModels(
+        /** @var \OpenClassrooms\CodeGenerator\ClassObjects\ClassObject $viewModelDetail */
+        list($viewModel, $viewModelDetail, $viewModelDetailImpl) = $this->classObjectService->getViewModels(
             $useCaseResponseClassName
         );
 
@@ -47,8 +47,8 @@ class GetControllerGeneratorImpl extends Generator
                 'entityNameLC' => lcfirst($entityName),
                 'useCaseResponseClassName' => $useCaseResponse->getClassName(),
                 'useCaseResponseShortClassName' => $useCaseResponse->getShortClassName(),
-                'viewModelClassName' => $viewModel->getClassName(),
-                'viewModelShortClassName' => $viewModel->getShortClassName(),
+                'viewModelClassName' => $viewModelDetail->getClassName(),
+                'viewModelShortClassName' => $viewModelDetail->getShortClassName(),
                 'viewModelAssemblerServiceName' => $viewModelAssemblerInterface->getServiceName(),
                 'exceptionClassName' => $exception->getClassName(),
                 'exceptionShortClassName' => $exception->getShortClassName(),

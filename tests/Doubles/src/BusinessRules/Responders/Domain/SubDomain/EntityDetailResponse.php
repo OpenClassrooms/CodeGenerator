@@ -5,7 +5,7 @@ namespace OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\Responder
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
  */
-interface EntityDetailResponse
+interface EntityDetailResponse extends EntityResponse
 {
-
+    public function getField3();
 }

@@ -15,7 +15,7 @@ class EditFormGeneratorImpl extends Generator
         /** @var \OpenClassrooms\CodeGenerator\ClassObjects\ClassObject $editModel */
         list($abstractModel, $editModel) = $this->classObjectService->getEditModelTypes($useCaseRequestClass);
         $controller = $this->classObjectService->getController($useCaseRequestClass);
-        $fields = $this->getPublicFieldsFromClass($useCaseRequestClass);
+        $fields = $this->getFields($useCaseRequestClass);
         foreach ($fields as $key => $field) {
             if ($field === 'id') {
                 unset($fields[$key]);
@@ -33,5 +33,21 @@ class EditFormGeneratorImpl extends Generator
                 'fields' => $fields
             ]
         );
+    }
+
+    /**
+     * @return array|\OpenClassrooms\CodeGenerator\ClassObjects\FieldObject[]
+     */
+    private function getFields(string $useCaseRequestClass)
+    {
+        $fields = $this->fieldObjectService->getPublicClassFields($useCaseRequestClass);
+        foreach ($fields as $key => $field) {
+            if ($field->getName() === 'id'){
+                unset($fields[$key]);
+                break;
+            }
+        }
+
+        return $fields;
     }
 }
