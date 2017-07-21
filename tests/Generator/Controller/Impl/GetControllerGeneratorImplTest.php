@@ -28,6 +28,18 @@ class GetControllerGeneratorImplTest extends GeneratorTestCase
         $this->assertSame($expected, $actual);
     }
 
+    /**
+     * @test
+     */
+    public function generateAdmin()
+    {
+        $actual = $this->generator->generate(EntityDetailResponseDTO::class, true);
+        $expected = file_get_contents(
+            __DIR__.'/../../../Doubles/src/App/Controller/Web/Domain/SubDomain/Admin/GetEntityController.php'
+        );
+        $this->assertSame($expected, $actual);
+    }
+
     protected function setUp()
     {
         $this->generator = new GetControllerGeneratorImpl();

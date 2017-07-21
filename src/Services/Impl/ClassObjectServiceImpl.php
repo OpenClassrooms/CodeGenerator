@@ -16,12 +16,12 @@ class ClassObjectServiceImpl implements ClassObjectService
     /**
      * @var string
      */
-    private $appNamespace = 'OpenClassrooms\CodeGenerator\Tests\Doubles\src\App';
+    private $appNamespace;
 
     /**
      * @var string
      */
-    private $baseNamespace = 'OpenClassrooms\CodeGenerator\Tests\Doubles\src';
+    private $baseNamespace;
 
     public function getController(string $className, bool $admin = false): ClassObject
     {
@@ -29,7 +29,7 @@ class ClassObjectServiceImpl implements ClassObjectService
 
         $controllerNamespace = $this->appNamespace.'\\Controller\\Web\\'.$domain;
         if ($admin) {
-            $controllerNamespace .= 'Admin';
+            $controllerNamespace .= '\\Admin';
         }
 
         $shortClassName = 'Get'.$entityName.'Controller';

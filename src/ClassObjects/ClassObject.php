@@ -108,12 +108,4 @@ class ClassObject
     {
         return $this->shortClassName;
     }
-
-    /**
-     * @return bool
-     */
-    public function isInterface(): bool
-    {
-        return $this->isInterface;
-    }
 }
