@@ -22,4 +22,9 @@ abstract class Entity
      */
     public $field2;
 
+    /**
+     * @var bool
+     */
+    public $field3;
+
 }

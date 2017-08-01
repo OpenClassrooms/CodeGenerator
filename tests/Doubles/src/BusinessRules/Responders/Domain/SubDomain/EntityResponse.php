@@ -14,4 +14,7 @@ interface EntityResponse //extends UseCaseResponse
     public function getField1(): string;
 
     public function getField2(): array;
+
+    public function isField3();
+
 }

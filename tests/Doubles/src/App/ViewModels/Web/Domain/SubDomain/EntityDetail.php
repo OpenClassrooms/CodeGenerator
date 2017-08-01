@@ -10,5 +10,5 @@ abstract class EntityDetail extends Entity
     /**
      * @var \DateTime
      */
-    public $field3;
+    public $field4;
 }

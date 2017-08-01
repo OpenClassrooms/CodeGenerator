@@ -23,13 +23,6 @@ class ClassObjectServiceImpl implements ClassObjectService
      */
     private $baseNamespace;
 
-    public function getClassObjectFromClassName(string $className): ClassObject
-    {
-        $rc = new \ReflectionClass($className);
-
-        return new ClassObject($rc->getNamespaceName(), $rc->getShortName(), $rc->isInterface(), $rc->isAbstract());
-    }
-
     public function getUseCaseResponseInterfaceFromClassName(string $className): ClassObject
     {
         $rc = new \ReflectionClass($className);

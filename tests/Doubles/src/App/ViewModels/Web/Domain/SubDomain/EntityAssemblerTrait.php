@@ -14,5 +14,6 @@ trait EntityAssemblerTrait
         $vm->id = $entity->getId();
         $vm->field1 = $entity->getField1();
         $vm->field2 = $entity->getField2();
+        $vm->field3 = $entity->isField3();
     }
 }

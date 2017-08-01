@@ -7,5 +7,5 @@ namespace OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\Responder
  */
 interface EntityDetailResponse extends EntityResponse
 {
-    public function getField3();
+    public function getField4();
 }

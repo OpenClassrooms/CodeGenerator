@@ -9,8 +9,6 @@ use OpenClassrooms\CodeGenerator\ClassObjects\ClassObject;
  */
 interface ClassObjectService
 {
-    public function getClassObjectFromClassName(string $className): ClassObject;
-
     public function getUseCaseResponseInterfaceFromClassName(string $className): ClassObject;
 
     public function getUseCaseDetailResponseInterfaceFromClassName(string $className): ClassObject;

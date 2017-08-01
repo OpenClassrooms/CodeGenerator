@@ -12,9 +12,9 @@ class EntityDetailResponseDTO extends EntityResponseDTO implements EntityDetailR
     /**
      * @var \DateTime
      */
-    public $field3;
+    public $field4;
 
-    public function getField3()
+    public function getField4()
     {
         return $this->field3;
     }

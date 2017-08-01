@@ -77,7 +77,6 @@ class FieldObjectServiceImpl implements FieldObjectService
         }
         $accessor = 'is'.ucfirst($fieldName);
         if ($declaringClass->hasMethod($accessor)) {
-
             return $accessor;
         }
 

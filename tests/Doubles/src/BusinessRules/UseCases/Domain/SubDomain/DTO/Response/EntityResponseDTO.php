@@ -24,6 +24,11 @@ abstract class EntityResponseDTO implements EntityDetailResponse
      */
     public $field2;
 
+    /**
+     * @var bool
+     */
+    public $field3 = false;
+
     public function getId(): int
     {
         return $this->id;
@@ -37,5 +42,10 @@ abstract class EntityResponseDTO implements EntityDetailResponse
     public function getField2(): array
     {
         return $this->field2;
+    }
+
+    public function isField3(): bool
+    {
+        return $this->field3;
     }
 }
