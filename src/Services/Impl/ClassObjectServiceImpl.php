@@ -53,7 +53,7 @@ class ClassObjectServiceImpl implements ClassObjectService
             $controllerNamespace .= '\\Admin';
         }
 
-        $shortClassName = 'Get'.$entityName.'Controller';
+        $shortClassName = 'Show'.$entityName.'Controller';
 
         return new ClassObject($controllerNamespace, $shortClassName);
     }
@@ -105,6 +105,28 @@ class ClassObjectServiceImpl implements ClassObjectService
             $this->appNamespace.'\\ViewModels\\Web\\'.$domain.'\\Impl',
             $entityName.'DetailAssemblerImpl'
         );
+    }
+
+    public function getShowViewModels(string $className): array
+    {
+        list($domain, $entityName) = $this->getDomainAndEntityNameFromClassName($className);
+
+        return [
+            new ClassObject($this->appNamespace.'\\ViewModels\\Web\\'.$domain, 'Show'.$entityName),
+            new ClassObject($this->appNamespace.'\\ViewModels\\Web\\'.$domain.'\\Impl', 'Show'.$entityName.'Impl')
+        ];
+    }
+
+    public function getShowViewModelBuilders(string $className): array
+    {
+        list($domain, $entityName) = $this->getDomainAndEntityNameFromClassName($className);
+
+        return [
+            new ClassObject($this->appNamespace.'\\ViewModels\\Web\\'.$domain, 'Show'.$entityName.'Builder'),
+            new ClassObject(
+                $this->appNamespace.'\\ViewModels\\Web\\'.$domain.'\\Impl', 'Show'.$entityName.'BuilderImpl'
+            )
+        ];
     }
 
     /**

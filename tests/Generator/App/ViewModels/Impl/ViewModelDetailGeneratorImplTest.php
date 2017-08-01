@@ -2,7 +2,7 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Generator\App\ViewModels\Impl;
 
-use OpenClassrooms\CodeGenerator\Generator\App\ViewModels\Impl\ViewModelDetailAbstractGeneratorImpl;
+use OpenClassrooms\CodeGenerator\Generator\App\ViewModels\Impl\ViewModelDetailGeneratorImpl;
 use OpenClassrooms\CodeGenerator\Generator\App\ViewModels\Impl\ViewModelGeneratorImpl;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\UseCases\Domain\SubDomain\DTO\Response\EntityDetailResponseDTO;
 use OpenClassrooms\CodeGenerator\Tests\Generator\GeneratorTestCase;
@@ -46,7 +46,7 @@ class ViewModelDetailGeneratorImplTest extends GeneratorTestCase
 
     protected function setUp()
     {
-        $this->generator = new ViewModelDetailAbstractGeneratorImpl();
+        $this->generator = new ViewModelDetailGeneratorImpl();
         /** @var \OpenClassrooms\CodeGenerator\Generator\App\ViewModels\ViewModelGenerator $viewModelGenerator */
         $viewModelGenerator = $this->buildGenerator(new ViewModelGeneratorImpl());
         $this->generator->setViewModelGenerator($viewModelGenerator);

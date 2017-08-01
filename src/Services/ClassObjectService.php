@@ -17,14 +17,30 @@ interface ClassObjectService
 
     public function getEditFormType(string $className): ClassObject;
 
+    /**
+     * @return ClassObject[]
+     */
     public function getEditModelTypes(string $className): array;
+
+    public function getViewModelAssemblerTrait(string $className): ClassObject;
 
     public function getViewModelDetailAssembler(string $className): ClassObject;
 
     public function getViewModelDetailAssemblerImpl(string $className): ClassObject;
 
-    public function getViewModelAssemblerTrait(string $className): ClassObject;
+    /**
+     * @return ClassObject[]
+     */
+    public function getShowViewModels(string $className): array;
 
+    /**
+     * @return ClassObject[]
+     */
+    public function getShowViewModelBuilders(string $className): array;
+
+    /**
+     * @return ClassObject[]
+     */
     public function getViewModels(string $className): array;
 
     public function getGetUseCase(string $className): ClassObject;

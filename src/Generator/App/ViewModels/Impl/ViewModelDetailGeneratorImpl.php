@@ -8,7 +8,7 @@ use OpenClassrooms\CodeGenerator\Generator\App\ViewModels\ViewModelGenerator;
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
  */
-class ViewModelDetailAbstractGeneratorImpl extends AbstractGenerator
+class ViewModelDetailGeneratorImpl extends AbstractGenerator
 {
     /**
      * @var \OpenClassrooms\CodeGenerator\Generator\App\ViewModels\ViewModelGenerator|AbstractGenerator

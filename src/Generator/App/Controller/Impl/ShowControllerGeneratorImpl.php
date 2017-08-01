@@ -7,16 +7,15 @@ use OpenClassrooms\CodeGenerator\Generator\AbstractGenerator;
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
  */
-class GetControllerGeneratorImpl extends AbstractGenerator
+class ShowControllerGeneratorImpl extends AbstractGenerator
 {
     /**
-     * @throws \Twig_Error_Loader
-     * @throws \Twig_Error_Runtime
-     * @throws \Twig_Error_Syntax
+     * @inheritdoc
      */
     public function generate(string $useCaseResponseClassName, $admin = false): array
     {
         $entityName = $this->getEntityNameFromClassName($useCaseResponseClassName);
+
         $exception = $this->classObjectService->getEntityNotFoundException(
             $useCaseResponseClassName
         );
@@ -27,17 +26,16 @@ class GetControllerGeneratorImpl extends AbstractGenerator
         $useCaseResponse = $this->getInterfaceClassObjectFromClassName($useCaseResponseClassName);
 
         $controller = $this->classObjectService->getController($useCaseResponseClassName, $admin);
-
-        /** @var \OpenClassrooms\CodeGenerator\ClassObjects\ClassObject $viewModelAssembler */
-        $viewModelAssembler = $this->classObjectService->getViewModelDetailAssembler($useCaseResponseClassName);
-
-        /** @var \OpenClassrooms\CodeGenerator\ClassObjects\ClassObject $viewModelDetail */
-        list($viewModel, $viewModelDetail, $viewModelDetailImpl) = $this->classObjectService->getViewModels(
+        list($showViewModel, $viewModelImpl) = $this->classObjectService->getShowViewModels(
             $useCaseResponseClassName
         );
+        list($showViewModelBuilder, $viewModelBuilderImpl) = $this->classObjectService->getShowViewModelBuilders(
+            $useCaseResponseClassName
+        );
+        $viewModelDetailAssembler = $this->classObjectService->getViewModelDetailAssembler($useCaseResponseClassName);
 
         $content = $this->render(
-            'Controller/Web/GetController.php.twig',
+            'Controller/Web/ShowController.php.twig',
             [
                 'controllerNamespace' => $controller->getNamespace(),
                 'controllerShortClassName' => $controller->getShortClassName(),
@@ -45,9 +43,10 @@ class GetControllerGeneratorImpl extends AbstractGenerator
                 'entityNameLC' => lcfirst($entityName),
                 'useCaseResponseClassName' => $useCaseResponse->getClassName(),
                 'useCaseResponseShortClassName' => $useCaseResponse->getShortClassName(),
-                'viewModelClassName' => $viewModelDetail->getClassName(),
-                'viewModelShortClassName' => $viewModelDetail->getShortClassName(),
-                'viewModelAssemblerServiceName' => $viewModelAssembler->getServiceName(),
+                'showViewModelClassName' => $showViewModel->getClassName(),
+                'showViewModelShortClassName' => $showViewModel->getShortClassName(),
+                'showViewModelBuilderServiceName' => $showViewModelBuilder->getServiceName(),
+                'viewModelDetailAssemblerServiceName' => $viewModelDetailAssembler->getServiceName(),
                 'exceptionClassName' => $exception->getClassName(),
                 'exceptionShortClassName' => $exception->getShortClassName(),
                 'templateName' => '',

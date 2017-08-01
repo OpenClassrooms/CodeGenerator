@@ -3,7 +3,7 @@
 
 namespace {{ controllerNamespace }};
 
-use {{ viewModelClassName }};
+use {{ showViewModelClassName }};
 use {{ exceptionClassName }};
 use {{ useCaseResponseClassName }};
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -37,8 +37,12 @@ class {{ controllerShortClassName }} extends Controller
             );
     }
 
-    private function buildVm({{ useCaseResponseShortClassName }} ${{ entityNameLC }}): {{ viewModelShortClassName }}
+    private function buildVm({{ useCaseResponseShortClassName }} ${{ entityNameLC }}): {{ showViewModelShortClassName }}
     {
-        return $this->get('{{ viewModelAssemblerServiceName }}')->create(${{ entityNameLC}});
+        return
+            $this->get('{{ showViewModelBuilderServiceName }}')
+                ->create()
+                ->withEntityDetail($this->get('{{ viewModelDetailAssemblerServiceName }}')->createDetail(${{ entityNameLC}}))
+                ->build();
     }
 }

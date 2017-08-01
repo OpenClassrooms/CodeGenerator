@@ -27,7 +27,7 @@ class EditEntityType extends AbstractType
     {
         $builder
             ->add("stringField", TextType::class, ['required' => true,])
-            ->setAction($this->router->generate('oc_open_classrooms_code_generator_tests_doubles_src_app_web_domain_sub_domain_get_entity', ['id' => $options['id']]));
+            ->setAction($this->router->generate('oc_open_classrooms_code_generator_tests_doubles_src_app_web_domain_sub_domain_show_entity', ['id' => $options['id']]));
     }
 
     /**
