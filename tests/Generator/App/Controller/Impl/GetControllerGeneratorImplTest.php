@@ -2,7 +2,7 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Generator\App\Controller\Impl;
 
-use OpenClassrooms\CodeGenerator\Generator\App\Controller\Impl\GetControllerAbstractGeneratorImpl;
+use OpenClassrooms\CodeGenerator\Generator\App\Controller\Impl\GetControllerGeneratorImpl;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\UseCases\Domain\SubDomain\DTO\Response\EntityDetailResponseDTO;
 use OpenClassrooms\CodeGenerator\Tests\Generator\GeneratorTestCase;
 
@@ -12,7 +12,7 @@ use OpenClassrooms\CodeGenerator\Tests\Generator\GeneratorTestCase;
 class GetControllerGeneratorImplTest extends GeneratorTestCase
 {
     /**
-     * @var GetControllerAbstractGeneratorImpl
+     * @var GetControllerGeneratorImpl
      */
     protected $generator;
 
@@ -50,7 +50,7 @@ class GetControllerGeneratorImplTest extends GeneratorTestCase
 
     protected function setUp()
     {
-        $this->generator = new GetControllerAbstractGeneratorImpl();
+        $this->generator = new GetControllerGeneratorImpl();
         parent::setUp();
     }
 }

@@ -7,7 +7,7 @@ use OpenClassrooms\CodeGenerator\Generator\AbstractGenerator;
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
  */
-class GetControllerAbstractGeneratorImpl extends AbstractGenerator
+class GetControllerGeneratorImpl extends AbstractGenerator
 {
     /**
      * @throws \Twig_Error_Loader
