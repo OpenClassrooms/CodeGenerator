@@ -1,6 +1,6 @@
 <?php
 
-namespace OpenClassrooms\CodeGenerator\Generator\Form\Impl;
+namespace OpenClassrooms\CodeGenerator\Generator\App\Form\Impl;
 
 use OpenClassrooms\CodeGenerator\Generator\AbstractGenerator;
 

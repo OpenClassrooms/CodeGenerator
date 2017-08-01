@@ -1,9 +1,9 @@
 <?php
 
-namespace OpenClassrooms\CodeGenerator\Generator\ViewModels\Impl;
+namespace OpenClassrooms\CodeGenerator\Generator\App\ViewModels\Impl;
 
 use OpenClassrooms\CodeGenerator\Generator\AbstractGenerator;
-use OpenClassrooms\CodeGenerator\Generator\ViewModels\ViewModelGenerator;
+use OpenClassrooms\CodeGenerator\Generator\App\ViewModels\ViewModelGenerator;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
@@ -11,7 +11,7 @@ use OpenClassrooms\CodeGenerator\Generator\ViewModels\ViewModelGenerator;
 class ViewModelDetailAbstractGeneratorImpl extends AbstractGenerator
 {
     /**
-     * @var \OpenClassrooms\CodeGenerator\Generator\ViewModels\ViewModelGenerator|AbstractGenerator
+     * @var \OpenClassrooms\CodeGenerator\Generator\App\ViewModels\ViewModelGenerator|AbstractGenerator
      */
     private $viewModelGenerator;
 

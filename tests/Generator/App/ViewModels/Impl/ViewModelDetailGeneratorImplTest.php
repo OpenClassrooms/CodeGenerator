@@ -1,9 +1,9 @@
 <?php
 
-namespace OpenClassrooms\CodeGenerator\Tests\Generator\ViewModels\Impl;
+namespace OpenClassrooms\CodeGenerator\Tests\Generator\App\ViewModels\Impl;
 
-use OpenClassrooms\CodeGenerator\Generator\ViewModels\Impl\ViewModelDetailAbstractGeneratorImpl;
-use OpenClassrooms\CodeGenerator\Generator\ViewModels\Impl\ViewModelGeneratorImpl;
+use OpenClassrooms\CodeGenerator\Generator\App\ViewModels\Impl\ViewModelDetailAbstractGeneratorImpl;
+use OpenClassrooms\CodeGenerator\Generator\App\ViewModels\Impl\ViewModelGeneratorImpl;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\UseCases\Domain\SubDomain\DTO\Response\EntityDetailResponseDTO;
 use OpenClassrooms\CodeGenerator\Tests\Generator\GeneratorTestCase;
 
@@ -28,17 +28,17 @@ class ViewModelDetailGeneratorImplTest extends GeneratorTestCase
         );
         $actual = array_values($actual);
         $expected = file_get_contents(
-            __DIR__.'/../../../Doubles/src/App/ViewModels/Web/Domain/SubDomain/Entity.php'
+            __DIR__.'/../../../../Doubles/src/App/ViewModels/Web/Domain/SubDomain/Entity.php'
         );
         $this->assertSame($expected, $actual[0]);
 
         $expected = file_get_contents(
-            __DIR__.'/../../../Doubles/src/App/ViewModels/Web/Domain/SubDomain/EntityDetail.php'
+            __DIR__.'/../../../../Doubles/src/App/ViewModels/Web/Domain/SubDomain/EntityDetail.php'
         );
         $this->assertSame($expected, $actual[1]);
 
         $expected = file_get_contents(
-            __DIR__.'/../../../Doubles/src/App/ViewModels/Web/Domain/SubDomain/Impl/EntityDetailImpl.php'
+            __DIR__.'/../../../../Doubles/src/App/ViewModels/Web/Domain/SubDomain/Impl/EntityDetailImpl.php'
         );
         $this->assertSame($expected, $actual[2]);
 
@@ -47,7 +47,7 @@ class ViewModelDetailGeneratorImplTest extends GeneratorTestCase
     protected function setUp()
     {
         $this->generator = new ViewModelDetailAbstractGeneratorImpl();
-        /** @var \OpenClassrooms\CodeGenerator\Generator\ViewModels\ViewModelGenerator $viewModelGenerator */
+        /** @var \OpenClassrooms\CodeGenerator\Generator\App\ViewModels\ViewModelGenerator $viewModelGenerator */
         $viewModelGenerator = $this->buildGenerator(new ViewModelGeneratorImpl());
         $this->generator->setViewModelGenerator($viewModelGenerator);
         parent::setUp();

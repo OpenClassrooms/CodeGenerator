@@ -1,9 +1,9 @@
 <?php
 
-namespace OpenClassrooms\CodeGenerator\Generator\ViewModels\Impl;
+namespace OpenClassrooms\CodeGenerator\Generator\App\ViewModels\Impl;
 
 use OpenClassrooms\CodeGenerator\Generator\AbstractGenerator;
-use OpenClassrooms\CodeGenerator\Generator\ViewModels\ViewModelAssemblerTraitGenerator;
+use OpenClassrooms\CodeGenerator\Generator\App\ViewModels\ViewModelAssemblerTraitGenerator;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
