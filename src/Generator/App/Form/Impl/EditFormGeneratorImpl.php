@@ -23,7 +23,7 @@ class EditFormGeneratorImpl extends AbstractGenerator
         }
 
         $content = $this->render(
-            'Form/EditFormType.php.twig',
+            '/App/Form/EditFormType.php.twig',
             [
                 'formTypeNamespace' => $formType->getNamespace(),
                 'formTypeShortClassName' => $formType->getShortClassName(),

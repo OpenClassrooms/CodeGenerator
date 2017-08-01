@@ -12,19 +12,19 @@ class ViewModelGeneratorImpl extends AbstractGenerator implements ViewModelGener
 {
     public function generate(string $className): array
     {
-        /** @var \OpenClassrooms\CodeGenerator\ClassObjects\ClassObject $vm */
-        /** @var \OpenClassrooms\CodeGenerator\ClassObjects\ClassObject $vmDetail */
+        /** @var \OpenClassrooms\CodeGenerator\ClassObjects\ClassObject $viewModel */
+        /** @var \OpenClassrooms\CodeGenerator\ClassObjects\ClassObject $viewModelDetail */
         /** @var \OpenClassrooms\CodeGenerator\ClassObjects\ClassObject $vmDetailImpl */
-        list($vm, $vmDetail, $vmDetailImpl) = $this->classObjectService->getViewModels($className);
+        list($viewModel, $viewModelDetail, $viewModelDetailImpl) = $this->classObjectService->getViewModels($className);
         $entityVM = $this->render(
-            '/ViewModels/Entity.php.twig',
+            '/App/ViewModels/ViewModel.php.twig',
             [
-                'vmNamespace' => $vm->getNamespace(),
-                'vmShortClassName' => $vm->getShortClassName(),
-                'vmFields' => $this->fieldObjectService->getParentPublicClassFields($className)
+                'viewModelNamespace' => $viewModel->getNamespace(),
+                'viewModelShortClassName' => $viewModel->getShortClassName(),
+                'viewModelFields' => $this->fieldObjectService->getParentPublicClassFields($className)
             ]
         );
 
-        return [$vm->getClassName() => $entityVM];
+        return [$viewModel->getClassName() => $entityVM];
     }
 }

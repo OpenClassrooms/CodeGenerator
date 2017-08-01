@@ -23,7 +23,7 @@ class ViewModelDetailGeneratorImpl extends AbstractGenerator
         list($viewModel, $viewModelDetail, $viewModelDetailImpl) = $this->classObjectService->getViewModels($className);
 
         $viewModelDetailContent = $this->render(
-            '/ViewModels/EntityDetail.php.twig',
+            '/App/ViewModels/ViewModelDetail.php.twig',
             [
                 'vmDetailNamespace' => $viewModelDetail->getNamespace(),
                 'vmDetailShortClassName' => $viewModelDetail->getShortClassName(),
@@ -33,7 +33,7 @@ class ViewModelDetailGeneratorImpl extends AbstractGenerator
         );
 
         $viewModelDetailImplContent = $this->render(
-            '/ViewModels/EntityDetailImpl.php.twig',
+            '/App/ViewModels/Impl/ViewModelDetailImpl.php.twig',
             [
                 'vmDetailImplNamespace' => $viewModelDetailImpl->getNamespace(),
                 'vmDetailImplShortClassName' => $viewModelDetailImpl->getShortClassName(),

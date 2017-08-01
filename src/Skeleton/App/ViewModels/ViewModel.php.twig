@@ -1,13 +1,14 @@
 <?php
+{% include "Header.php.twig" %}
 
-namespace {{ vmNamespace }};
+namespace {{ viewModelNamespace }};
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
  */
-abstract class {{ vmShortClassName }}
+abstract class {{ viewModelShortClassName }}
 {
-{% for field in vmFields %}
+{% for field in viewModelFields %}
     {{ field.docComment }}
     {{ field.scope }} ${{ field.name }};
 

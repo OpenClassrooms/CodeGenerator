@@ -22,7 +22,7 @@ class ViewModelAssemblerTraitGeneratorImpl extends AbstractGenerator implements 
         list($vm, $vmDetail, $vmDetailImpl) = $this->classObjectService->getViewModels($className);
 
         $viewModelAssemblerTraitContent = $this->render(
-            '/ViewModels/ViewModelAssemblerTrait.php.twig',
+            '/App/ViewModels/ViewModelAssemblerTrait.php.twig',
             [
                 'entityName' => lcfirst($entityName),
                 'useCaseResponseClassName' => $useCaseResponse->getClassName(),

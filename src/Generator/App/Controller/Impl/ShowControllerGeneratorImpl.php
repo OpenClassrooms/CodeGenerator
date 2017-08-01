@@ -35,7 +35,7 @@ class ShowControllerGeneratorImpl extends AbstractGenerator
         $viewModelDetailAssembler = $this->classObjectService->getViewModelDetailAssembler($useCaseResponseClassName);
 
         $content = $this->render(
-            'Controller/Web/ShowController.php.twig',
+            '/App/Controller/Web/ShowController.php.twig',
             [
                 'controllerNamespace' => $controller->getNamespace(),
                 'controllerShortClassName' => $controller->getShortClassName(),

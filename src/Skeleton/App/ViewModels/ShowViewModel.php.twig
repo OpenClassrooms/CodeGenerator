@@ -1,0 +1,16 @@
+<?php
+{% include "Header.php.twig" %}
+
+namespace {{ showViewModelNamespace }};
+
+/**
+ * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
+*/
+abstract class {{ showViewModelShortClassName }}
+{
+{% for field in fields %}
+    {{ field.docComment }}
+    {{ field.scope }} ${{ field.name }};
+
+{% endfor %}
+}
