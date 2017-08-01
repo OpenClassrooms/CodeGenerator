@@ -9,13 +9,23 @@ use OpenClassrooms\CodeGenerator\ClassObjects\ClassObject;
  */
 interface ClassObjectService
 {
+    public function getClassObjectFromClassName(string $className): ClassObject;
+
+    public function getUseCaseResponseInterfaceFromClassName(string $className): ClassObject;
+
+    public function getUseCaseDetailResponseInterfaceFromClassName(string $className): ClassObject;
+
     public function getController(string $className, bool $admin = false): ClassObject;
 
     public function getEditFormType(string $className): ClassObject;
 
     public function getEditModelTypes(string $className): array;
 
-    public function getViewModelAssembler(string $className): array;
+    public function getViewModelDetailAssembler(string $className): ClassObject;
+
+    public function getViewModelDetailAssemblerImpl(string $className): ClassObject;
+
+    public function getViewModelAssemblerTrait(string $className): ClassObject;
 
     public function getViewModels(string $className): array;
 

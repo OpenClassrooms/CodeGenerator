@@ -2,14 +2,14 @@
 
 namespace OpenClassrooms\CodeGenerator\Generator\Form\Impl;
 
-use OpenClassrooms\CodeGenerator\Generator\Generator;
+use OpenClassrooms\CodeGenerator\Generator\AbstractGenerator;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
  */
-class EditFormGeneratorImpl extends Generator
+class EditFormGeneratorImpl extends AbstractGenerator
 {
-    public function generate(string $useCaseRequestClass): string
+    public function generate(string $useCaseRequestClass): array
     {
         $formType = $this->classObjectService->getEditFormType($useCaseRequestClass);
         /** @var \OpenClassrooms\CodeGenerator\ClassObjects\ClassObject $editModel */
@@ -22,7 +22,7 @@ class EditFormGeneratorImpl extends Generator
             }
         }
 
-        return $this->render(
+        $content = $this->render(
             'Form/EditFormType.php.twig',
             [
                 'formTypeNamespace' => $formType->getNamespace(),
@@ -33,6 +33,8 @@ class EditFormGeneratorImpl extends Generator
                 'fields' => $fields
             ]
         );
+
+        return [$formType->getClassName() => $content];
     }
 
     /**
@@ -42,7 +44,7 @@ class EditFormGeneratorImpl extends Generator
     {
         $fields = $this->fieldObjectService->getPublicClassFields($useCaseRequestClass);
         foreach ($fields as $key => $field) {
-            if ($field->getName() === 'id'){
+            if ($field->getName() === 'id') {
                 unset($fields[$key]);
                 break;
             }

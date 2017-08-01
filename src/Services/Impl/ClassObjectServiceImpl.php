@@ -23,6 +23,34 @@ class ClassObjectServiceImpl implements ClassObjectService
      */
     private $baseNamespace;
 
+    public function getClassObjectFromClassName(string $className): ClassObject
+    {
+        $rc = new \ReflectionClass($className);
+
+        return new ClassObject($rc->getNamespaceName(), $rc->getShortName(), $rc->isInterface(), $rc->isAbstract());
+    }
+
+    public function getUseCaseResponseInterfaceFromClassName(string $className): ClassObject
+    {
+        $rc = new \ReflectionClass($className);
+        /** \ReflectionClass[] $ris */
+        $ris = $rc->getInterfaces();
+        end($ris);
+        $ri = prev($ris);
+
+        return new ClassObject($ri->getNamespaceName(), $ri->getShortName());
+    }
+
+    public function getUseCaseDetailResponseInterfaceFromClassName(string $className): ClassObject
+    {
+        $rc = new \ReflectionClass($className);
+        /** \ReflectionClass[] $ris */
+        $ris = $rc->getInterfaces();
+        $ri = end($ris);
+
+        return new ClassObject($ri->getNamespaceName(), $ri->getShortName());
+    }
+
     public function getController(string $className, bool $admin = false): ClassObject
     {
         list($domain, $entityName) = $this->getDomainAndEntityNameFromClassName($className);
@@ -55,28 +83,39 @@ class ClassObjectServiceImpl implements ClassObjectService
 
     }
 
-    /**
-     * @return [ClassObject, ClassObject]|array
-     */
-    public function getViewModelAssembler(string $className): array
+    public function getViewModelAssemblerTrait(string $className): ClassObject
     {
         list($domain, $entityName) = $this->getDomainAndEntityNameFromClassName($className);
 
-        return [
-            new ClassObject(
-                $this->appNamespace.'\\ViewModels\\Web\\'.$domain,
-                $entityName.'Assembler',
-                true
-            ),
-            new ClassObject(
-                $this->appNamespace.'\\ViewModels\\Web\\'.$domain.'\\Impl',
-                $entityName.'AssemblerImpl'
-            )
-        ];
+        return new ClassObject(
+            $this->appNamespace.'\\ViewModels\\Web\\'.$domain,
+            $entityName.'AssemblerTrait'
+        );
+    }
+
+    public function getViewModelDetailAssembler(string $className): ClassObject
+    {
+        list($domain, $entityName) = $this->getDomainAndEntityNameFromClassName($className);
+
+        return new ClassObject(
+            $this->appNamespace.'\\ViewModels\\Web\\'.$domain,
+            $entityName.'DetailAssembler',
+            true
+        );
+    }
+
+    public function getViewModelDetailAssemblerImpl(string $className): ClassObject
+    {
+        list($domain, $entityName) = $this->getDomainAndEntityNameFromClassName($className);
+
+        return new ClassObject(
+            $this->appNamespace.'\\ViewModels\\Web\\'.$domain.'\\Impl',
+            $entityName.'DetailAssemblerImpl'
+        );
     }
 
     /**
-     * @return [ClassObject, ClassObject]|array
+     * @return ClassObject[]
      */
     public function getViewModels(string $className): array
     {

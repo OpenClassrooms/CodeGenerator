@@ -58,12 +58,29 @@ class FieldObjectServiceImpl implements FieldObjectService
 
     private function buildField(\ReflectionProperty $reflectionProperty): FieldObject
     {
-        $scope = FieldObject::SCOPE_PUBLIC;
+        $field = new FieldObject($reflectionProperty->getName());
+        $field->setAccessor($this->getFieldAccessor($reflectionProperty));
+        $field->setDocComment($reflectionProperty->getDocComment());
+        $field->setScope(FieldObject::SCOPE_PUBLIC);
 
-        return new FieldObject(
-            $reflectionProperty->getName(),
-            $reflectionProperty->getDocComment(),
-            $scope
-        );
+        return $field;
+    }
+
+    private function getFieldAccessor(\ReflectionProperty $reflectionProperty)
+    {
+        $fieldName = $reflectionProperty->getName();
+        $declaringClass = $reflectionProperty->getDeclaringClass();
+
+        $accessor = 'get'.ucfirst($fieldName);
+        if ($declaringClass->hasMethod($accessor)) {
+            return $accessor;
+        }
+        $accessor = 'is'.ucfirst($fieldName);
+        if ($declaringClass->hasMethod($accessor)) {
+
+            return $accessor;
+        }
+
+        return null;
     }
 }

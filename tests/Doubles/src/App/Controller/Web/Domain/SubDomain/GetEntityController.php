@@ -39,6 +39,6 @@ class GetEntityController extends Controller
 
     private function buildVm(EntityDetailResponse $entity): EntityDetail
     {
-        return $this->get('oc_open_classrooms_code_generator_tests_doubles_src_app_view_models_web_domain_sub_domain_entity_assembler')->create($entity);
+        return $this->get('oc_open_classrooms_code_generator_tests_doubles_src_app_view_models_web_domain_sub_domain_entity_detail_assembler')->create($entity);
     }
 }

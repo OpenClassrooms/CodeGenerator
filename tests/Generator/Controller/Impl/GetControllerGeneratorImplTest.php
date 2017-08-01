@@ -2,7 +2,7 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Generator\Controller\Impl;
 
-use OpenClassrooms\CodeGenerator\Generator\Controller\Impl\GetControllerGeneratorImpl;
+use OpenClassrooms\CodeGenerator\Generator\Controller\Impl\GetControllerAbstractGeneratorImpl;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\UseCases\Domain\SubDomain\DTO\Response\EntityDetailResponseDTO;
 use OpenClassrooms\CodeGenerator\Tests\Generator\GeneratorTestCase;
 
@@ -12,7 +12,7 @@ use OpenClassrooms\CodeGenerator\Tests\Generator\GeneratorTestCase;
 class GetControllerGeneratorImplTest extends GeneratorTestCase
 {
     /**
-     * @var GetControllerGeneratorImpl
+     * @var GetControllerAbstractGeneratorImpl
      */
     protected $generator;
 
@@ -21,11 +21,15 @@ class GetControllerGeneratorImplTest extends GeneratorTestCase
      */
     public function generate()
     {
-        $actual = $this->generator->generate(EntityDetailResponseDTO::class);
         $expected = file_get_contents(
             __DIR__.'/../../../Doubles/src/App/Controller/Web/Domain/SubDomain/GetEntityController.php'
         );
-        $this->assertSame($expected, $actual);
+        $expectedClassName = 'OpenClassrooms\CodeGenerator\Tests\Doubles\src\App\Controller\Web\Domain\SubDomain\GetEntityController';
+
+        $actual = $this->generator->generate(EntityDetailResponseDTO::class);
+
+        $this->assertArrayHasKey($expectedClassName, $actual);
+        $this->assertSame($expected, $actual[$expectedClassName]);
     }
 
     /**
@@ -33,16 +37,20 @@ class GetControllerGeneratorImplTest extends GeneratorTestCase
      */
     public function generateAdmin()
     {
-        $actual = $this->generator->generate(EntityDetailResponseDTO::class, true);
         $expected = file_get_contents(
             __DIR__.'/../../../Doubles/src/App/Controller/Web/Domain/SubDomain/Admin/GetEntityController.php'
         );
-        $this->assertSame($expected, $actual);
+        $expectedClassName = 'OpenClassrooms\CodeGenerator\Tests\Doubles\src\App\Controller\Web\Domain\SubDomain\Admin\GetEntityController';
+
+        $actual = $this->generator->generate(EntityDetailResponseDTO::class, true);
+
+        $this->assertArrayHasKey($expectedClassName, $actual);
+        $this->assertSame($expected, $actual[$expectedClassName]);
     }
 
     protected function setUp()
     {
-        $this->generator = new GetControllerGeneratorImpl();
+        $this->generator = new GetControllerAbstractGeneratorImpl();
         parent::setUp();
     }
 }

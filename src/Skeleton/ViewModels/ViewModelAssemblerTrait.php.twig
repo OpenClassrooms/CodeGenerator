@@ -1,0 +1,18 @@
+<?php
+
+namespace {{ viewModelAssemblerTraitNamespace }};
+
+use {{ useCaseResponseClassName }};
+
+/**
+ * @author {{ author }} <{{ authorEmail }}>
+ */
+trait {{ viewModelAssemblerTraitShortClassName }}
+{
+    protected function hydrateCommonFields({{ viewModelShortClassName }} $vm, {{ useCaseResponseShortClassName }} ${{ entityName }})
+    {
+    {% for field in fields %}
+    $vm->{{ field.name }} = ${{ entityName }}->{{ field.accessor }}();
+    {% endfor %}
+}
+}

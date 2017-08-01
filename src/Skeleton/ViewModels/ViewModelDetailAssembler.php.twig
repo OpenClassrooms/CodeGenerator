@@ -1,0 +1,13 @@
+<?php
+
+namespace {{ viewModelDetailAssemblerNamespace }};
+
+use {{ useCaseResponseClassName }};
+
+/**
+ * @author {{ author }} <{{ authorEmail }}>
+ */
+interface {{ viewModelDetailAssemblerShortClassName }}
+{
+    public function createDetail({{ useCaseResponseShortClassName }} ${{ entityName }}): {{ viewModelDetailShortClassName }};
+}

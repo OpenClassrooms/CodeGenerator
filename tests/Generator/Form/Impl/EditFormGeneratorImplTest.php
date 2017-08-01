@@ -21,12 +21,15 @@ class EditFormGeneratorImplTest extends GeneratorTestCase
      */
     public function render()
     {
-        $actual = $this->generator->generate(EditEntityRequestDTO::class);
+        $expectedClassName = 'OpenClassrooms\CodeGenerator\Tests\Doubles\src\App\Form\Type\Domain\SubDomain\EditEntityType';
         $expected = file_get_contents(
             __DIR__.'/../../../Doubles/src/App/Form/Type/Domain/SubDomain/EditEntityType.php'
         );
 
-        $this->assertSame($expected, $actual);
+        $actual = $this->generator->generate(EditEntityRequestDTO::class);
+
+        $this->assertArrayHasKey($expectedClassName, $actual);
+        $this->assertSame($expected, $actual[$expectedClassName]);
 
     }
 
