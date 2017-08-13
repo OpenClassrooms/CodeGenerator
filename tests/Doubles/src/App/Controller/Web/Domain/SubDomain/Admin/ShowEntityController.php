@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class ShowEntityController extends Controller
 {
-    public function getEntityAction(int $id): Response
+    public function showEntityAction(int $id): Response
     {
         try {
             $entity = $this->getEntity($id);
@@ -28,9 +28,9 @@ class ShowEntityController extends Controller
 
     private function getEntity(int $id): EntityDetailResponse
     {
-        return $this->get('oc_open_classrooms_code_generator_tests_doubles_src_use_cases_domain_sub_domain_get_entity')
+        return $this->get('oc.business_rules.use_cases.domain.sub_domain.get_entity')
             ->execute(
-                $this->get('oc_open_classrooms_code_generator_tests_doubles_src_requestors_domain_sub_domain_get_entity_request_builder')
+                $this->get('oc.business_rules.requestors.domain.sub_domain.get_entity_request_builder')
                     ->create()
                     ->withEntityId($id)
                     ->build()
@@ -40,9 +40,9 @@ class ShowEntityController extends Controller
     private function buildVm(EntityDetailResponse $entity): ShowEntity
     {
         return
-            $this->get('oc_open_classrooms_code_generator_tests_doubles_src_app_view_models_web_domain_sub_domain_show_entity_builder')
+            $this->get('oc.app.view_models.web.domain.sub_domain.show_entity_builder')
                 ->create()
-                ->withEntityDetail($this->get('oc_open_classrooms_code_generator_tests_doubles_src_app_view_models_web_domain_sub_domain_entity_detail_assembler')->createDetail($entity))
+                ->withEntityDetail($this->get('oc.app.view_models.web.domain.sub_domain.entity_detail_assembler')->createDetail($entity))
                 ->build();
     }
 }

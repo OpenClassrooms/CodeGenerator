@@ -2,6 +2,7 @@
 
 namespace OpenClassrooms\CodeGenerator\Services\Impl;
 
+use Doctrine\Common\Inflector\Inflector;
 use OpenClassrooms\CodeGenerator\ClassObjects\ClassObject;
 use OpenClassrooms\CodeGenerator\Services\ClassObjectService;
 use OpenClassrooms\CodeGenerator\Utility\ClassNameUtility;
@@ -44,7 +45,7 @@ class ClassObjectServiceImpl implements ClassObjectService
         return new ClassObject($ri->getNamespaceName(), $ri->getShortName());
     }
 
-    public function getController(string $className, bool $admin = false): ClassObject
+    public function getShowController(string $className, bool $admin = false): ClassObject
     {
         list($domain, $entityName) = $this->getDomainAndEntityNameFromClassName($className);
 
@@ -54,6 +55,20 @@ class ClassObjectServiceImpl implements ClassObjectService
         }
 
         $shortClassName = 'Show'.$entityName.'Controller';
+
+        return new ClassObject($controllerNamespace, $shortClassName);
+    }
+
+    public function getListController(string $className, bool $admin = false): ClassObject
+    {
+        list($domain, $entityName) = $this->getDomainAndEntityNameFromClassName($className);
+
+        $controllerNamespace = $this->appNamespace.'\\Controller\\Web\\'.$domain;
+        if ($admin) {
+            $controllerNamespace .= '\\Admin';
+        }
+
+        $shortClassName = 'List'.Inflector::pluralize($entityName).'Controller';
 
         return new ClassObject($controllerNamespace, $shortClassName);
     }
@@ -107,6 +122,34 @@ class ClassObjectServiceImpl implements ClassObjectService
         );
     }
 
+    public function getViewModelDetail(string $className): ClassObject
+    {
+        list($domain, $entityName) = $this->getDomainAndEntityNameFromClassName($className);
+
+        return new ClassObject($this->appNamespace.'\\ViewModels\\Web\\'.$domain, $entityName.'Detail');
+    }
+
+    public function getViewModelListItemAssembler(string $className): ClassObject
+    {
+        list($domain, $entityName) = $this->getDomainAndEntityNameFromClassName($className);
+
+        return new ClassObject(
+            $this->appNamespace.'\\ViewModels\\Web\\'.$domain,
+            $entityName.'ListItemAssembler',
+            true
+        );
+    }
+
+    public function getViewModelListItemAssemblerImpl(string $className): ClassObject
+    {
+        list($domain, $entityName) = $this->getDomainAndEntityNameFromClassName($className);
+
+        return new ClassObject(
+            $this->appNamespace.'\\ViewModels\\Web\\'.$domain.'\\Impl',
+            $entityName.'ListItemAssemblerImpl'
+        );
+    }
+
     public function getShowViewModels(string $className): array
     {
         list($domain, $entityName) = $this->getDomainAndEntityNameFromClassName($className);
@@ -125,6 +168,37 @@ class ClassObjectServiceImpl implements ClassObjectService
             new ClassObject($this->appNamespace.'\\ViewModels\\Web\\'.$domain, 'Show'.$entityName.'Builder'),
             new ClassObject(
                 $this->appNamespace.'\\ViewModels\\Web\\'.$domain.'\\Impl', 'Show'.$entityName.'BuilderImpl'
+            )
+        ];
+    }
+
+    public function getListViewModels(string $className): array
+    {
+        list($domain, $entityName) = $this->getDomainAndEntityNameFromClassName($className);
+
+        return [
+            new ClassObject(
+                $this->appNamespace.'\\ViewModels\\Web\\'.$domain, 'List'.Inflector::pluralize($entityName)
+            ),
+            new ClassObject(
+                $this->appNamespace.'\\ViewModels\\Web\\'.$domain.'\\Impl',
+                'List'.Inflector::pluralize($entityName).'Impl'
+            )
+        ];
+    }
+
+    public function getListViewModelBuilders(string $className): array
+    {
+        list($domain, $entityName) = $this->getDomainAndEntityNameFromClassName($className);
+
+        return [
+            new ClassObject(
+                $this->appNamespace.'\\ViewModels\\Web\\'.$domain,
+                'List'.Inflector::pluralize($entityName).'Builder'
+            ),
+            new ClassObject(
+                $this->appNamespace.'\\ViewModels\\Web\\'.$domain.'\\Impl',
+                'List'.Inflector::pluralize($entityName).'BuilderImpl'
             )
         ];
     }
@@ -179,6 +253,26 @@ class ClassObjectServiceImpl implements ClassObjectService
         return new ClassObject(
             $this->baseNamespace.'\\BusinessRules\\Requestors\\'.$domain,
             'Get'.$entityName.'RequestBuilder'
+        );
+    }
+
+    public function getGetAllUseCase(string $className): ClassObject
+    {
+        list($domain, $entityName) = $this->getDomainAndEntityNameFromClassName($className);
+
+        return new ClassObject(
+            $this->baseNamespace.'\\BusinessRules\\UseCases\\'.$domain,
+            'GetAll'.Inflector::pluralize($entityName)
+        );
+    }
+
+    public function getGetAllUseCaseRequestBuilder(string $className): ClassObject
+    {
+        list($domain, $entityName) = $this->getDomainAndEntityNameFromClassName($className);
+
+        return new ClassObject(
+            $this->baseNamespace.'\\BusinessRules\\Requestors\\'.$domain,
+            'GetAll'.Inflector::pluralize($entityName).'RequestBuilder'
         );
     }
 

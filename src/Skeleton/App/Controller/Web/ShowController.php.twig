@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class {{ controllerShortClassName }} extends Controller
 {
-    public function get{{ entityNameUC }}Action(int $id): Response
+    public function show{{ entityNameUC }}Action(int $id): Response
     {
         try {
             ${{ entityNameLC }} = $this->get{{ entityNameUC }}($id);
@@ -42,7 +42,7 @@ class {{ controllerShortClassName }} extends Controller
         return
             $this->get('{{ showViewModelBuilderServiceName }}')
                 ->create()
-                ->withEntityDetail($this->get('{{ viewModelDetailAssemblerServiceName }}')->createDetail(${{ entityNameLC}}))
+                ->with{{ entityNameUC }}Detail($this->get('{{ viewModelDetailAssemblerServiceName }}')->createDetail(${{ entityNameLC}}))
                 ->build();
     }
 }

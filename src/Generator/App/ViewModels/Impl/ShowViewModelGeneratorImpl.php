@@ -4,7 +4,6 @@ namespace OpenClassrooms\CodeGenerator\Generator\App\ViewModels\Impl;
 
 use OpenClassrooms\CodeGenerator\Generator\AbstractGenerator;
 use OpenClassrooms\CodeGenerator\Generator\App\ViewModels\ShowViewModelGenerator;
-use OpenClassrooms\CodeGenerator\Generator\App\ViewModels\ViewModelGenerator;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
@@ -14,15 +13,17 @@ class ShowViewModelGeneratorImpl extends AbstractGenerator implements ShowViewMo
     public function generate(string $className): array
     {
         list($showViewModel, $showViewModelImpl) = $this->classObjectService->getShowViewModels($className);
+        $viewModelDetail = $this->classObjectService->getViewModelDetail($className);
         $showViewModelContent = $this->render(
-            '/ViewModels/ShowViewModel.php.twig',
+            '/App/ViewModels/ShowViewModel.php.twig',
             [
-                'showViewModelNamespace' => $vm->getNamespace(),
-                'vmShortClassName' => $vm->getShortClassName(),
-                'vmFields' => $this->fieldObjectService->getParentPublicClassFields($className)
+                'showViewModelNamespace' => $showViewModel->getNamespace(),
+                'showViewModelShortClassName' => $showViewModel->getShortClassName(),
+                'viewModelDetailShortClassName' => $viewModelDetail->getShortClassName(),
+                'viewModelDetailFieldName' => $viewModelDetail->getFieldName()
             ]
         );
 
-        return [$vm->getClassName() => $entityVM];
+        return [$showViewModel->getClassName() => $showViewModelContent];
     }
 }

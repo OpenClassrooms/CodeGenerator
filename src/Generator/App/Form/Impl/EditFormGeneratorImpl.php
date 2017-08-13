@@ -14,7 +14,7 @@ class EditFormGeneratorImpl extends AbstractGenerator
         $formType = $this->classObjectService->getEditFormType($useCaseRequestClass);
         /** @var \OpenClassrooms\CodeGenerator\ClassObjects\ClassObject $editModel */
         list($abstractModel, $editModel) = $this->classObjectService->getEditModelTypes($useCaseRequestClass);
-        $controller = $this->classObjectService->getController($useCaseRequestClass);
+        $controller = $this->classObjectService->getShowController($useCaseRequestClass);
         $fields = $this->getFields($useCaseRequestClass);
         foreach ($fields as $key => $field) {
             if ($field === 'id') {

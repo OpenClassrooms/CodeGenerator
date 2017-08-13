@@ -9,11 +9,9 @@ use OpenClassrooms\CodeGenerator\ClassObjects\ClassObject;
  */
 interface ClassObjectService
 {
-    public function getUseCaseResponseInterfaceFromClassName(string $className): ClassObject;
+    public function getShowController(string $className, bool $admin = false): ClassObject;
 
-    public function getUseCaseDetailResponseInterfaceFromClassName(string $className): ClassObject;
-
-    public function getController(string $className, bool $admin = false): ClassObject;
+    public function getListController(string $className, bool $admin = false): ClassObject;
 
     public function getEditFormType(string $className): ClassObject;
 
@@ -28,6 +26,12 @@ interface ClassObjectService
 
     public function getViewModelDetailAssemblerImpl(string $className): ClassObject;
 
+    public function getViewModelListItemAssembler(string $className): ClassObject;
+
+    public function getViewModelListItemAssemblerImpl(string $className): ClassObject;
+
+    public function getViewModelDetail(string $className): ClassObject;
+
     /**
      * @return ClassObject[]
      */
@@ -41,11 +45,29 @@ interface ClassObjectService
     /**
      * @return ClassObject[]
      */
+    public function getListViewModels(string $className): array;
+
+    /**
+     * @return ClassObject[]
+     */
+    public function getListViewModelBuilders(string $className): array;
+
+    /**
+     * @return ClassObject[]
+     */
     public function getViewModels(string $className): array;
 
     public function getGetUseCase(string $className): ClassObject;
 
+    public function getUseCaseResponseInterfaceFromClassName(string $className): ClassObject;
+
+    public function getUseCaseDetailResponseInterfaceFromClassName(string $className): ClassObject;
+
     public function getGetUseCaseRequestBuilder(string $className): ClassObject;
+
+    public function getGetAllUseCase(string $className): ClassObject;
+
+    public function getGetAllUseCaseRequestBuilder(string $className): ClassObject;
 
     public function getEntityNotFoundException(string $className): ClassObject;
 

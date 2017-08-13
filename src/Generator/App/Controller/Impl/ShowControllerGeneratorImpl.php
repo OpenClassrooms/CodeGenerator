@@ -16,19 +16,13 @@ class ShowControllerGeneratorImpl extends AbstractGenerator
     {
         $entityName = $this->getEntityNameFromClassName($useCaseResponseClassName);
 
-        $exception = $this->classObjectService->getEntityNotFoundException(
-            $useCaseResponseClassName
-        );
+        $exception = $this->classObjectService->getEntityNotFoundException($useCaseResponseClassName);
         $useCase = $this->classObjectService->getGetUseCase($useCaseResponseClassName);
-        $useCaseRequestBuilder = $this->classObjectService->getGetUseCaseRequestBuilder(
-            $useCaseResponseClassName
-        );
+        $useCaseRequestBuilder = $this->classObjectService->getGetUseCaseRequestBuilder($useCaseResponseClassName);
         $useCaseResponse = $this->getInterfaceClassObjectFromClassName($useCaseResponseClassName);
 
-        $controller = $this->classObjectService->getController($useCaseResponseClassName, $admin);
-        list($showViewModel, $viewModelImpl) = $this->classObjectService->getShowViewModels(
-            $useCaseResponseClassName
-        );
+        $controller = $this->classObjectService->getShowController($useCaseResponseClassName, $admin);
+        list($showViewModel, $viewModelImpl) = $this->classObjectService->getShowViewModels($useCaseResponseClassName);
         list($showViewModelBuilder, $viewModelBuilderImpl) = $this->classObjectService->getShowViewModelBuilders(
             $useCaseResponseClassName
         );
@@ -58,5 +52,4 @@ class ShowControllerGeneratorImpl extends AbstractGenerator
 
         return [$controller->getClassName() => $content];
     }
-
 }

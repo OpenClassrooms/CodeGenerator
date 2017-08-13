@@ -67,14 +67,18 @@ class ClassObject
     public function getServiceName(): string
     {
         $serviceName = 'oc';
+        $started = false;
         $explodedNamespace = explode('\\', $this->namespace);
         foreach ($explodedNamespace as $item) {
-            if (!in_array($item, ['', 'BusinessRules'])) {
-                $serviceName .= '_'.$this->toSnakeCase($item);
+            if ($item === 'BusinessRules' || $item == 'App') {
+                $started = true;
+            }
+            if ($started) {
+                $serviceName .= '.'.$this->toSnakeCase($item);
             }
         }
         $formattedShortClassName = str_replace('Impl', '', $this->shortClassName);
-        $serviceName .= '_'.$this->toSnakeCase($formattedShortClassName);
+        $serviceName .= '.'.$this->toSnakeCase($formattedShortClassName);
 
         return $serviceName;
     }
@@ -87,10 +91,13 @@ class ClassObject
     public function getRouteName(): string
     {
         $routingName = 'oc';
+        $started = false;
 
         $explodedNamespace = explode('\\', $this->namespace);
         foreach ($explodedNamespace as $item) {
-            if (!in_array($item, ['', 'BusinessRules', 'Controller'])) {
+            if ($item == 'Controller') {
+                $started = true;
+            } elseif ($started) {
                 $routingName .= '_'.$this->toSnakeCase($item);
             }
         }
@@ -107,5 +114,10 @@ class ClassObject
     public function getShortClassName(): string
     {
         return $this->shortClassName;
+    }
+
+    public function getFieldName(): string
+    {
+        return lcfirst($this->shortClassName);
     }
 }

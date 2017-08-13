@@ -2,17 +2,17 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Generator\App\Controller\Impl;
 
-use OpenClassrooms\CodeGenerator\Generator\App\Controller\Impl\ShowControllerGeneratorImpl;
+use OpenClassrooms\CodeGenerator\Generator\App\Controller\Impl\ListControllerGeneratorImpl;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\UseCases\Domain\SubDomain\DTO\Response\EntityDetailResponseDTO;
 use OpenClassrooms\CodeGenerator\Tests\Generator\GeneratorTestCase;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
  */
-class GetControllerGeneratorImplTest extends GeneratorTestCase
+class ListControllerGeneratorImplTest extends GeneratorTestCase
 {
     /**
-     * @var ShowControllerGeneratorImpl
+     * @var \OpenClassrooms\CodeGenerator\Generator\App\Controller\Impl\ListControllerGeneratorImpl
      */
     protected $generator;
 
@@ -22,9 +22,9 @@ class GetControllerGeneratorImplTest extends GeneratorTestCase
     public function generate()
     {
         $expected = file_get_contents(
-            __DIR__.'/../../../../Doubles/src/App/Controller/Web/Domain/SubDomain/ShowEntityController.php'
+            __DIR__.'/../../../../Doubles/src/App/Controller/Web/Domain/SubDomain/ListEntitiesController.php'
         );
-        $expectedClassName = 'OpenClassrooms\CodeGenerator\Tests\Doubles\src\App\Controller\Web\Domain\SubDomain\ShowEntityController';
+        $expectedClassName = 'OpenClassrooms\CodeGenerator\Tests\Doubles\src\App\Controller\Web\Domain\SubDomain\ListEntitiesController';
 
         $actual = $this->generator->generate(EntityDetailResponseDTO::class);
 
@@ -38,9 +38,9 @@ class GetControllerGeneratorImplTest extends GeneratorTestCase
     public function generateAdmin()
     {
         $expected = file_get_contents(
-            __DIR__.'/../../../../Doubles/src/App/Controller/Web/Domain/SubDomain/Admin/ShowEntityController.php'
+            __DIR__.'/../../../../Doubles/src/App/Controller/Web/Domain/SubDomain/Admin/ListEntitiesController.php'
         );
-        $expectedClassName = 'OpenClassrooms\CodeGenerator\Tests\Doubles\src\App\Controller\Web\Domain\SubDomain\Admin\ShowEntityController';
+        $expectedClassName = 'OpenClassrooms\CodeGenerator\Tests\Doubles\src\App\Controller\Web\Domain\SubDomain\Admin\ListEntitiesController';
 
         $actual = $this->generator->generate(EntityDetailResponseDTO::class, true);
 
@@ -50,7 +50,7 @@ class GetControllerGeneratorImplTest extends GeneratorTestCase
 
     protected function setUp()
     {
-        $this->generator = new ShowControllerGeneratorImpl();
+        $this->generator = new ListControllerGeneratorImpl();
         parent::setUp();
     }
 }

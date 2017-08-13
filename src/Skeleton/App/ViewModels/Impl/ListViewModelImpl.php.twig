@@ -1,0 +1,18 @@
+<?php
+{% include "Header.php.twig" %}
+
+namespace {{ listViewModelImplNamespace }};
+
+use {{ listViewModelClassName }};
+
+/**
+ * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
+*/
+abstract class {{ listViewModelImplShortClassName }} extends {{ listViewModelShortClassName }}
+{
+{% for field in fields %}
+    {{ field.docComment }}
+    {{ field.scope }} ${{ field.name }};
+
+{% endfor %}
+}
