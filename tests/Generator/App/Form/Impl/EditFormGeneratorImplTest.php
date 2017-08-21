@@ -3,6 +3,8 @@
 namespace OpenClassrooms\CodeGenerator\Tests\Generator\App\Form\Impl;
 
 use OpenClassrooms\CodeGenerator\Generator\App\Form\Impl\EditFormGeneratorImpl;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\ControllerClassObjectServiceMock;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\FormClassObjectServiceMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\UseCases\Domain\SubDomain\DTO\Request\EditEntityRequestDTO;
 use OpenClassrooms\CodeGenerator\Tests\Generator\GeneratorTestCase;
 
@@ -36,6 +38,8 @@ class EditFormGeneratorImplTest extends GeneratorTestCase
     protected function setUp()
     {
         $this->generator = new EditFormGeneratorImpl();
+        $this->generator->setControllerClassObjectService(new ControllerClassObjectServiceMock());
+        $this->generator->setFormClassObjectService(new FormClassObjectServiceMock());
         parent::setUp();
     }
 

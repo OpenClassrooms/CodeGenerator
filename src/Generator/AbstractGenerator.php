@@ -2,7 +2,6 @@
 
 namespace OpenClassrooms\CodeGenerator\Generator;
 
-use OpenClassrooms\CodeGenerator\Services\ClassObjectService;
 use OpenClassrooms\CodeGenerator\Services\FieldObjectService;
 use OpenClassrooms\CodeGenerator\Utility\ClassNameUtility;
 
@@ -12,11 +11,6 @@ use OpenClassrooms\CodeGenerator\Utility\ClassNameUtility;
 abstract class AbstractGenerator implements Generator
 {
     use ClassNameUtility;
-
-    /**
-     * @var \OpenClassrooms\CodeGenerator\Services\ClassObjectService
-     */
-    protected $classObjectService;
 
     /**
      * @var \OpenClassrooms\CodeGenerator\Services\FieldObjectService
@@ -32,11 +26,6 @@ abstract class AbstractGenerator implements Generator
      * @return string[]
      */
     abstract public function generate(string $className): array;
-
-    public function setClassObjectService(ClassObjectService $classObjectService)
-    {
-        $this->classObjectService = $classObjectService;
-    }
 
     public function setFieldObjectService(FieldObjectService $fieldObjectService)
     {

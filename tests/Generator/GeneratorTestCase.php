@@ -3,7 +3,6 @@
 namespace OpenClassrooms\CodeGenerator\Tests\Generator;
 
 use OpenClassrooms\CodeGenerator\Generator\AbstractGenerator;
-use OpenClassrooms\CodeGenerator\Services\Impl\ClassObjectServiceImpl;
 use OpenClassrooms\CodeGenerator\Services\Impl\FieldObjectServiceImpl;
 use OpenClassrooms\CodeGenerator\Services\Impl\TemplatingFactoryImpl;
 use PHPUnit\Framework\TestCase;
@@ -30,10 +29,6 @@ class GeneratorTestCase extends TestCase
             ['author' => 'Romain Kuzniak', 'authorEmail' => 'romain.kuzniak@openclassrooms.com']
         );
         $generator->setTemplating($templating);
-        $classObjectService = new ClassObjectServiceImpl();
-        $classObjectService->setAppNamespace('OpenClassrooms\CodeGenerator\Tests\Doubles\src\App');
-        $classObjectService->setBaseNamespace('OpenClassrooms\CodeGenerator\Tests\Doubles\src');
-        $generator->setClassObjectService($classObjectService);
         $generator->setFieldObjectService(new FieldObjectServiceImpl());
 
         return $generator;

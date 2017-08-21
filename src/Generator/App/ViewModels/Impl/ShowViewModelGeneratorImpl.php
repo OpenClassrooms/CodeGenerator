@@ -2,18 +2,18 @@
 
 namespace OpenClassrooms\CodeGenerator\Generator\App\ViewModels\Impl;
 
-use OpenClassrooms\CodeGenerator\Generator\AbstractGenerator;
+use OpenClassrooms\CodeGenerator\Generator\App\ViewModels\AbstractViewModelGenerator;
 use OpenClassrooms\CodeGenerator\Generator\App\ViewModels\ShowViewModelGenerator;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
  */
-class ShowViewModelGeneratorImpl extends AbstractGenerator implements ShowViewModelGenerator
+class ShowViewModelGeneratorImpl extends AbstractViewModelGenerator implements ShowViewModelGenerator
 {
     public function generate(string $className): array
     {
-        list($showViewModel, $showViewModelImpl) = $this->classObjectService->getShowViewModels($className);
-        $viewModelDetail = $this->classObjectService->getViewModelDetail($className);
+        list($showViewModel, $showViewModelImpl) = $this->viewModelClassObjectService->getShowViewModels($className);
+        $viewModelDetail = $this->viewModelClassObjectService->getViewModelDetail($className);
         $showViewModelContent = $this->render(
             '/App/ViewModels/ShowViewModel.php.twig',
             [

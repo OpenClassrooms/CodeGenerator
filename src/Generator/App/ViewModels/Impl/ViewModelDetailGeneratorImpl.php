@@ -3,12 +3,13 @@
 namespace OpenClassrooms\CodeGenerator\Generator\App\ViewModels\Impl;
 
 use OpenClassrooms\CodeGenerator\Generator\AbstractGenerator;
+use OpenClassrooms\CodeGenerator\Generator\App\ViewModels\AbstractViewModelGenerator;
 use OpenClassrooms\CodeGenerator\Generator\App\ViewModels\ViewModelGenerator;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
  */
-class ViewModelDetailGeneratorImpl extends AbstractGenerator
+class ViewModelDetailGeneratorImpl extends AbstractViewModelGenerator
 {
     /**
      * @var \OpenClassrooms\CodeGenerator\Generator\App\ViewModels\ViewModelGenerator|AbstractGenerator
@@ -20,7 +21,9 @@ class ViewModelDetailGeneratorImpl extends AbstractGenerator
         /** @var \OpenClassrooms\CodeGenerator\ClassObjects\ClassObject $viewModel */
         /** @var \OpenClassrooms\CodeGenerator\ClassObjects\ClassObject $viewModelDetail */
         /** @var \OpenClassrooms\CodeGenerator\ClassObjects\ClassObject $viewModelDetailImpl */
-        list($viewModel, $viewModelDetail, $viewModelDetailImpl) = $this->classObjectService->getViewModels($className);
+        list($viewModel, $viewModelDetail, $viewModelDetailImpl) = $this->viewModelClassObjectService->getViewModels(
+            $className
+        );
 
         $viewModelDetailContent = $this->render(
             '/App/ViewModels/ViewModelDetail.php.twig',

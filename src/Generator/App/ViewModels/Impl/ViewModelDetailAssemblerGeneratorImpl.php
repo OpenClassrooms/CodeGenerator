@@ -2,14 +2,20 @@
 
 namespace OpenClassrooms\CodeGenerator\Generator\App\ViewModels\Impl;
 
-use OpenClassrooms\CodeGenerator\Generator\AbstractGenerator;
+use OpenClassrooms\CodeGenerator\Generator\App\ViewModels\AbstractViewModelGenerator;
 use OpenClassrooms\CodeGenerator\Generator\App\ViewModels\ViewModelAssemblerTraitGenerator;
+use OpenClassrooms\CodeGenerator\Services\UseCaseClassObjectService;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
  */
-class ViewModelDetailAssemblerGeneratorImpl extends AbstractGenerator
+class ViewModelDetailAssemblerGeneratorImpl extends AbstractViewModelGenerator
 {
+    /**
+     * @var \OpenClassrooms\CodeGenerator\Services\UseCaseClassObjectService
+     */
+    private $useCaseClassObjectService;
+
     /**
      * @var \OpenClassrooms\CodeGenerator\Generator\App\ViewModels\ViewModelAssemblerTraitGenerator
      */
@@ -18,16 +24,18 @@ class ViewModelDetailAssemblerGeneratorImpl extends AbstractGenerator
     public function generate(string $className): array
     {
         $entityName = $this->getEntityNameFromClassName($className);
-        $useCaseResponse = $this->classObjectService->getUseCaseDetailResponseInterfaceFromClassName($className);
+        $useCaseResponse = $this->useCaseClassObjectService->getUseCaseDetailResponseInterfaceFromClassName($className);
 
-        $viewModelAssemblerTrait = $this->classObjectService->getViewModelAssemblerTrait($className);
-        $viewModelDetailAssembler = $this->classObjectService->getViewModelDetailAssembler($className);
-        $viewModelDetailAssemblerImpl = $this->classObjectService->getViewModelDetailAssemblerImpl($className);
+        $viewModelAssemblerTrait = $this->viewModelClassObjectService->getViewModelAssemblerTrait($className);
+        $viewModelDetailAssembler = $this->viewModelClassObjectService->getViewModelDetailAssembler($className);
+        $viewModelDetailAssemblerImpl = $this->viewModelClassObjectService->getViewModelDetailAssemblerImpl($className);
 
         /** @var \OpenClassrooms\CodeGenerator\ClassObjects\ClassObject $vm */
         /** @var \OpenClassrooms\CodeGenerator\ClassObjects\ClassObject $viewModelDetail */
         /** @var \OpenClassrooms\CodeGenerator\ClassObjects\ClassObject $viewModelDetailImpl */
-        list($vm, $viewModelDetail, $viewModelDetailImpl) = $this->classObjectService->getViewModels($className);
+        list($vm, $viewModelDetail, $viewModelDetailImpl) = $this->viewModelClassObjectService->getViewModels(
+            $className
+        );
 
         $viewModelDetailAssemblerContent = $this->render(
             '/App/ViewModels/ViewModelDetailAssembler.php.twig',
@@ -68,6 +76,11 @@ class ViewModelDetailAssemblerGeneratorImpl extends AbstractGenerator
         $generatedClasses[$viewModelDetailAssemblerImpl->getClassName()] = $viewModelDetailAssemblerImplContent;
 
         return $generatedClasses;
+    }
+
+    public function setUseCaseClassObjectService(UseCaseClassObjectService $useCaseClassObjectService)
+    {
+        $this->useCaseClassObjectService = $useCaseClassObjectService;
     }
 
     public function setViewModelAssemblerTraitGenerator(

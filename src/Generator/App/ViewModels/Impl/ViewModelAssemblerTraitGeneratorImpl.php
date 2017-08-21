@@ -2,24 +2,30 @@
 
 namespace OpenClassrooms\CodeGenerator\Generator\App\ViewModels\Impl;
 
-use OpenClassrooms\CodeGenerator\Generator\AbstractGenerator;
+use OpenClassrooms\CodeGenerator\Generator\App\ViewModels\AbstractViewModelGenerator;
 use OpenClassrooms\CodeGenerator\Generator\App\ViewModels\ViewModelAssemblerTraitGenerator;
+use OpenClassrooms\CodeGenerator\Services\UseCaseClassObjectService;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
  */
-class ViewModelAssemblerTraitGeneratorImpl extends AbstractGenerator implements ViewModelAssemblerTraitGenerator
+class ViewModelAssemblerTraitGeneratorImpl extends AbstractViewModelGenerator implements ViewModelAssemblerTraitGenerator
 {
+    /**
+     * @var \OpenClassrooms\CodeGenerator\Services\UseCaseClassObjectService
+     */
+    private $useCaseClassObjectService;
+
     public function generate(string $className): array
     {
         $entityName = $this->getEntityNameFromClassName($className);
-        $useCaseResponse = $this->classObjectService->getUseCaseResponseInterfaceFromClassName($className);
-        $viewModelAssemblerTrait = $this->classObjectService->getViewModelAssemblerTrait($className);
+        $useCaseResponse = $this->useCaseClassObjectService->getUseCaseResponseInterfaceFromClassName($className);
+        $viewModelAssemblerTrait = $this->viewModelClassObjectService->getViewModelAssemblerTrait($className);
 
         /** @var \OpenClassrooms\CodeGenerator\ClassObjects\ClassObject $vm */
         /** @var \OpenClassrooms\CodeGenerator\ClassObjects\ClassObject $vmDetail */
         /** @var \OpenClassrooms\CodeGenerator\ClassObjects\ClassObject $vmDetailImpl */
-        list($vm, $vmDetail, $vmDetailImpl) = $this->classObjectService->getViewModels($className);
+        list($vm, $vmDetail, $vmDetailImpl) = $this->viewModelClassObjectService->getViewModels($className);
 
         $viewModelAssemblerTraitContent = $this->render(
             '/App/ViewModels/ViewModelAssemblerTrait.php.twig',
@@ -35,5 +41,10 @@ class ViewModelAssemblerTraitGeneratorImpl extends AbstractGenerator implements 
         );
 
         return [$viewModelAssemblerTrait->getClassName() => $viewModelAssemblerTraitContent];
+    }
+
+    public function setUseCaseClassObjectService(UseCaseClassObjectService $useCaseClassObjectService)
+    {
+        $this->useCaseClassObjectService = $useCaseClassObjectService;
     }
 }

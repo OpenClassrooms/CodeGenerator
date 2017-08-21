@@ -2,19 +2,19 @@
 
 namespace OpenClassrooms\CodeGenerator\Generator\App\Form\Impl;
 
-use OpenClassrooms\CodeGenerator\Generator\AbstractGenerator;
+use OpenClassrooms\CodeGenerator\Generator\App\Form\AbstractFormGenerator;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
  */
-class EditFormGeneratorImpl extends AbstractGenerator
+class EditFormGeneratorImpl extends AbstractFormGenerator
 {
     public function generate(string $useCaseRequestClass): array
     {
-        $formType = $this->classObjectService->getEditFormType($useCaseRequestClass);
+        $formType = $this->formClassObjectService->getEditFormType($useCaseRequestClass);
         /** @var \OpenClassrooms\CodeGenerator\ClassObjects\ClassObject $editModel */
-        list($abstractModel, $editModel) = $this->classObjectService->getEditModelTypes($useCaseRequestClass);
-        $controller = $this->classObjectService->getShowController($useCaseRequestClass);
+        list($abstractModel, $editModel) = $this->formClassObjectService->getEditModelTypes($useCaseRequestClass);
+        $controller = $this->controllerClassObjectService->getShowController($useCaseRequestClass);
         $fields = $this->getFields($useCaseRequestClass);
         foreach ($fields as $key => $field) {
             if ($field === 'id') {

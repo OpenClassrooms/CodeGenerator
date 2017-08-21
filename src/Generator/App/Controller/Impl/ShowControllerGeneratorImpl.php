@@ -2,13 +2,19 @@
 
 namespace OpenClassrooms\CodeGenerator\Generator\App\Controller\Impl;
 
-use OpenClassrooms\CodeGenerator\Generator\AbstractGenerator;
+use OpenClassrooms\CodeGenerator\Generator\App\Controller\AbstractControllerGenerator;
+use OpenClassrooms\CodeGenerator\Services\ClassObjectService;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
  */
-class ShowControllerGeneratorImpl extends AbstractGenerator
+class ShowControllerGeneratorImpl extends AbstractControllerGenerator
 {
+    /**
+     * @var \OpenClassrooms\CodeGenerator\Services\ClassObjectService
+     */
+    private $classObjectService;
+
     /**
      * @inheritdoc
      */
@@ -17,16 +23,22 @@ class ShowControllerGeneratorImpl extends AbstractGenerator
         $entityName = $this->getEntityNameFromClassName($useCaseResponseClassName);
 
         $exception = $this->classObjectService->getEntityNotFoundException($useCaseResponseClassName);
-        $useCase = $this->classObjectService->getGetUseCase($useCaseResponseClassName);
-        $useCaseRequestBuilder = $this->classObjectService->getGetUseCaseRequestBuilder($useCaseResponseClassName);
-        $useCaseResponse = $this->getInterfaceClassObjectFromClassName($useCaseResponseClassName);
-
-        $controller = $this->classObjectService->getShowController($useCaseResponseClassName, $admin);
-        list($showViewModel, $viewModelImpl) = $this->classObjectService->getShowViewModels($useCaseResponseClassName);
-        list($showViewModelBuilder, $viewModelBuilderImpl) = $this->classObjectService->getShowViewModelBuilders(
+        $useCase = $this->useCaseClassObjectService->getGetUseCase($useCaseResponseClassName);
+        $useCaseRequestBuilder = $this->useCaseClassObjectService->getGetUseCaseRequestBuilder(
             $useCaseResponseClassName
         );
-        $viewModelDetailAssembler = $this->classObjectService->getViewModelDetailAssembler($useCaseResponseClassName);
+        $useCaseResponse = $this->getInterfaceClassObjectFromClassName($useCaseResponseClassName);
+
+        $controller = $this->controllerClassObjectService->getShowController($useCaseResponseClassName, $admin);
+        list($showViewModel, $viewModelImpl) = $this->viewModelClassObjectService->getShowViewModels(
+            $useCaseResponseClassName
+        );
+        list($showViewModelBuilder, $viewModelBuilderImpl) = $this->viewModelClassObjectService->getShowViewModelBuilders(
+            $useCaseResponseClassName
+        );
+        $viewModelDetailAssembler = $this->viewModelClassObjectService->getViewModelDetailAssembler(
+            $useCaseResponseClassName
+        );
 
         $content = $this->render(
             '/App/Controller/Web/ShowController.php.twig',
@@ -51,5 +63,10 @@ class ShowControllerGeneratorImpl extends AbstractGenerator
         );
 
         return [$controller->getClassName() => $content];
+    }
+
+    public function setClassObjectService(ClassObjectService $classObjectService)
+    {
+        $this->classObjectService = $classObjectService;
     }
 }

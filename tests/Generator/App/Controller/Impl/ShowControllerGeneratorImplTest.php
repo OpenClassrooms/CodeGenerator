@@ -3,6 +3,10 @@
 namespace OpenClassrooms\CodeGenerator\Tests\Generator\App\Controller\Impl;
 
 use OpenClassrooms\CodeGenerator\Generator\App\Controller\Impl\ShowControllerGeneratorImpl;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\ClassObjectServiceMock;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\ControllerClassObjectServiceMock;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\UseCaseClassObjectServiceMock;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\ViewModelClassObjectServiceMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\UseCases\Domain\SubDomain\DTO\Response\EntityDetailResponseDTO;
 use OpenClassrooms\CodeGenerator\Tests\Generator\GeneratorTestCase;
 
@@ -51,6 +55,10 @@ class ShowControllerGeneratorImplTest extends GeneratorTestCase
     protected function setUp()
     {
         $this->generator = new ShowControllerGeneratorImpl();
+        $this->generator->setClassObjectService(new ClassObjectServiceMock());
+        $this->generator->setControllerClassObjectService(new ControllerClassObjectServiceMock());
+        $this->generator->setUseCaseClassObjectService(new UseCaseClassObjectServiceMock());
+        $this->generator->setViewModelClassObjectService(new ViewModelClassObjectServiceMock());
         parent::setUp();
     }
 }

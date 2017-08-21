@@ -3,12 +3,12 @@
 namespace OpenClassrooms\CodeGenerator\Generator\App\Controller\Impl;
 
 use Doctrine\Common\Inflector\Inflector;
-use OpenClassrooms\CodeGenerator\Generator\AbstractGenerator;
+use OpenClassrooms\CodeGenerator\Generator\App\Controller\AbstractControllerGenerator;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
  */
-class ListControllerGeneratorImpl extends AbstractGenerator
+class ListControllerGeneratorImpl extends AbstractControllerGenerator
 {
     /**
      * @inheritdoc
@@ -18,18 +18,22 @@ class ListControllerGeneratorImpl extends AbstractGenerator
         $entityName = $this->getEntityNameFromClassName($useCaseResponseClassName);
         $entitiesName = Inflector::pluralize($entityName);
 
-        $useCase = $this->classObjectService->getGetAllUseCase($useCaseResponseClassName);
-        $useCaseRequestBuilder = $this->classObjectService->getGetAllUseCaseRequestBuilder($useCaseResponseClassName);
+        $useCase = $this->useCaseClassObjectService->getGetAllUseCase($useCaseResponseClassName);
+        $useCaseRequestBuilder = $this->useCaseClassObjectService->getGetAllUseCaseRequestBuilder(
+            $useCaseResponseClassName
+        );
         $useCaseResponse = $this->getInterfaceClassObjectFromClassName($useCaseResponseClassName);
 
-        $controller = $this->classObjectService->getListController($useCaseResponseClassName, $admin);
-        list($listViewModel, $listViewModelImpl) = $this->classObjectService->getListViewModels(
+        $controller = $this->controllerClassObjectService->getListController($useCaseResponseClassName, $admin);
+        list($listViewModel, $listViewModelImpl) = $this->viewModelClassObjectService->getListViewModels(
             $useCaseResponseClassName
         );
-        list($listViewModelBuilder, $listViewModelBuilderImpl) = $this->classObjectService->getListViewModelBuilders(
+        list($listViewModelBuilder, $listViewModelBuilderImpl) = $this->viewModelClassObjectService->getListViewModelBuilders(
             $useCaseResponseClassName
         );
-        $viewModelListItemAssembler = $this->classObjectService->getViewModelListItemAssembler($useCaseResponseClassName);
+        $viewModelListItemAssembler = $this->viewModelClassObjectService->getViewModelListItemAssembler(
+            $useCaseResponseClassName
+        );
 
         $content = $this->render(
             '/App/Controller/Web/ListController.php.twig',
@@ -48,7 +52,7 @@ class ListControllerGeneratorImpl extends AbstractGenerator
                 'useCaseRequestBuilderServiceName' => $useCaseRequestBuilder->getServiceName(),
             ]
         );
+
         return [$controller->getClassName() => $content];
     }
-
 }
