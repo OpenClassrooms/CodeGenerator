@@ -10,7 +10,7 @@ use OpenClassrooms\CodeGenerator\Generator\App\ViewModels\ViewModelGenerator;
  */
 class ViewModelGeneratorImpl extends AbstractViewModelGenerator implements ViewModelGenerator
 {
-    public function generate(string $className): array
+    public function generate(string $className, array $parameters = []): array
     {
         /** @var \OpenClassrooms\CodeGenerator\ClassObjects\ClassObject $viewModel */
         /** @var \OpenClassrooms\CodeGenerator\ClassObjects\ClassObject $viewModelDetail */

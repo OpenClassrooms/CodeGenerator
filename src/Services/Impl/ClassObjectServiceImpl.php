@@ -2,7 +2,6 @@
 
 namespace OpenClassrooms\CodeGenerator\Services\Impl;
 
-use OpenClassrooms\CodeGenerator\ClassObjects\ClassObject;
 use OpenClassrooms\CodeGenerator\Services\ClassObjectService;
 use OpenClassrooms\CodeGenerator\Utility\ClassNameUtility;
 
@@ -22,15 +21,6 @@ class ClassObjectServiceImpl implements ClassObjectService
      * @var string
      */
     protected $baseNamespace;
-
-    public function getEntityNotFoundException(string $className): ClassObject
-    {
-        list($domain, $entityName) = $this->getDomainAndEntityNameFromClassName($className);
-
-        return new ClassObject(
-            $this->baseNamespace.'\\BusinessRules\\Gateways\\'.$domain, $entityName.'NotFoundException'
-        );
-    }
 
     public function setAppNamespace(string $appNamespace)
     {

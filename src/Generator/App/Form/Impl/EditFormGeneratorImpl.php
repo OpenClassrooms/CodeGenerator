@@ -9,13 +9,13 @@ use OpenClassrooms\CodeGenerator\Generator\App\Form\AbstractFormGenerator;
  */
 class EditFormGeneratorImpl extends AbstractFormGenerator
 {
-    public function generate(string $useCaseRequestClass): array
+    public function generate(string $className, array $parameters = []): array
     {
-        $formType = $this->formClassObjectService->getEditFormType($useCaseRequestClass);
+        $formType = $this->formClassObjectService->getEditFormType($className);
         /** @var \OpenClassrooms\CodeGenerator\ClassObjects\ClassObject $editModel */
-        list($abstractModel, $editModel) = $this->formClassObjectService->getEditModelTypes($useCaseRequestClass);
-        $controller = $this->controllerClassObjectService->getShowController($useCaseRequestClass);
-        $fields = $this->getFields($useCaseRequestClass);
+        list($abstractModel, $editModel) = $this->formClassObjectService->getEditModelTypes($className);
+        $controller = $this->controllerClassObjectService->getShowController($className);
+        $fields = $this->getFields($className);
         foreach ($fields as $key => $field) {
             if ($field === 'id') {
                 unset($fields[$key]);
@@ -40,9 +40,9 @@ class EditFormGeneratorImpl extends AbstractFormGenerator
     /**
      * @return array|\OpenClassrooms\CodeGenerator\ClassObjects\FieldObject[]
      */
-    private function getFields(string $useCaseRequestClass)
+    private function getFields(string $className)
     {
-        $fields = $this->fieldObjectService->getPublicClassFields($useCaseRequestClass);
+        $fields = $this->fieldObjectService->getPublicClassFields($className);
         foreach ($fields as $key => $field) {
             if ($field->getName() === 'id') {
                 unset($fields[$key]);

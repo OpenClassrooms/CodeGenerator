@@ -10,7 +10,7 @@ use OpenClassrooms\CodeGenerator\Generator\App\ViewModels\ShowViewModelGenerator
  */
 class ShowViewModelGeneratorImpl extends AbstractViewModelGenerator implements ShowViewModelGenerator
 {
-    public function generate(string $className): array
+    public function generate(string $className, array $parameters = []): array
     {
         list($showViewModel, $showViewModelImpl) = $this->viewModelClassObjectService->getShowViewModels($className);
         $viewModelDetail = $this->viewModelClassObjectService->getViewModelDetail($className);

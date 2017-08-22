@@ -1,6 +1,6 @@
 <?php
 
-namespace Generator\App\ViewModels\Impl;
+namespace OpenClassrooms\CodeGenerator\Tests\Generator\App\ViewModels\Impl;
 
 use OpenClassrooms\CodeGenerator\Generator\App\ViewModels\Impl\ShowViewModelGeneratorImpl;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\ViewModelClassObjectServiceMock;

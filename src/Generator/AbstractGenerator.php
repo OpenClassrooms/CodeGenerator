@@ -2,6 +2,7 @@
 
 namespace OpenClassrooms\CodeGenerator\Generator;
 
+use OpenClassrooms\CodeGenerator\ClassObjects\ClassObject;
 use OpenClassrooms\CodeGenerator\Services\FieldObjectService;
 use OpenClassrooms\CodeGenerator\Utility\ClassNameUtility;
 
@@ -23,9 +24,24 @@ abstract class AbstractGenerator implements Generator
     protected $templating;
 
     /**
+     * @var string
+     */
+    private $useCaseInterfaceClassName;
+
+    /**
+     * @var string
+     */
+    private $useCaseRequestInterfaceClassName;
+
+    /**
+     * @var string
+     */
+    private $useCaseResponseInterfaceClassName;
+
+    /**
      * @return string[]
      */
-    abstract public function generate(string $className): array;
+    abstract public function generate(string $className, array $parameters = []): array;
 
     public function setFieldObjectService(FieldObjectService $fieldObjectService)
     {
@@ -34,7 +50,45 @@ abstract class AbstractGenerator implements Generator
 
     public function setTemplating(\Twig_Environment $templating)
     {
+        $templating->addGlobal(
+            'useCaseInterface',
+            new ClassObject(
+                $this->getNamespaceFromClassName($this->useCaseInterfaceClassName),
+                $this->getShortClassNameFromClassName($this->useCaseInterfaceClassName)
+            )
+        );
+
+        $templating->addGlobal(
+            'useCaseRequestInterface',
+            new ClassObject(
+                $this->getNamespaceFromClassName($this->useCaseRequestInterfaceClassName),
+                $this->getShortClassNameFromClassName($this->useCaseRequestInterfaceClassName)
+            )
+        );
+
+        $templating->addGlobal(
+            'useCaseResponseInterface',
+            new ClassObject(
+                $this->getNamespaceFromClassName($this->useCaseResponseInterfaceClassName),
+                $this->getShortClassNameFromClassName($this->useCaseResponseInterfaceClassName)
+            )
+        );
         $this->templating = $templating;
+    }
+
+    public function setUseCaseInterfaceClassName(string $useCaseInterfaceClassName)
+    {
+        $this->useCaseInterfaceClassName = $useCaseInterfaceClassName;
+    }
+
+    public function setUseCaseRequestInterfaceClassName(string $useCaseRequestInterfaceClassName)
+    {
+        $this->useCaseRequestInterfaceClassName = $useCaseRequestInterfaceClassName;
+    }
+
+    public function setUseCaseResponseInterfaceClassName(string $useCaseResponseInterfaceClassName)
+    {
+        $this->useCaseResponseInterfaceClassName = $useCaseResponseInterfaceClassName;
     }
 
     /**
@@ -46,5 +100,4 @@ abstract class AbstractGenerator implements Generator
     {
         return $this->templating->render($template, $parameters);
     }
-
 }

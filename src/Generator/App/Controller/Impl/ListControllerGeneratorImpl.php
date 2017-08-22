@@ -13,27 +13,22 @@ class ListControllerGeneratorImpl extends AbstractControllerGenerator
     /**
      * @inheritdoc
      */
-    public function generate(string $useCaseResponseClassName, $admin = false): array
+    public function generate(string $className, array $parameters = []): array
     {
-        $entityName = $this->getEntityNameFromClassName($useCaseResponseClassName);
+        $admin = array_key_exists(self::ADMIN, $parameters) ? $parameters[self::ADMIN] : false;
+        $entityName = $this->getEntityNameFromClassName($className);
         $entitiesName = Inflector::pluralize($entityName);
 
-        $useCase = $this->useCaseClassObjectService->getGetAllUseCase($useCaseResponseClassName);
-        $useCaseRequestBuilder = $this->useCaseClassObjectService->getGetAllUseCaseRequestBuilder(
-            $useCaseResponseClassName
-        );
-        $useCaseResponse = $this->getInterfaceClassObjectFromClassName($useCaseResponseClassName);
+        $useCase = $this->useCaseClassObjectService->getGetAllUseCase($className);
+        $useCaseRequestBuilder = $this->useCaseClassObjectService->getGetAllUseCaseRequestBuilder($className);
+//        $useCaseResponse = $this->getInterfaceClassObjectFromClassName($className);
 
-        $controller = $this->controllerClassObjectService->getListController($useCaseResponseClassName, $admin);
-        list($listViewModel, $listViewModelImpl) = $this->viewModelClassObjectService->getListViewModels(
-            $useCaseResponseClassName
-        );
+        $controller = $this->controllerClassObjectService->getListController($className, $admin);
+        list($listViewModel, $listViewModelImpl) = $this->viewModelClassObjectService->getListViewModels($className);
         list($listViewModelBuilder, $listViewModelBuilderImpl) = $this->viewModelClassObjectService->getListViewModelBuilders(
-            $useCaseResponseClassName
+            $className
         );
-        $viewModelListItemAssembler = $this->viewModelClassObjectService->getViewModelListItemAssembler(
-            $useCaseResponseClassName
-        );
+        $viewModelListItemAssembler = $this->viewModelClassObjectService->getViewModelListItemAssembler($className);
 
         $content = $this->render(
             '/App/Controller/Web/ListController.php.twig',

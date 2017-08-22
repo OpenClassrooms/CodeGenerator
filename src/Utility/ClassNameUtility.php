@@ -29,7 +29,10 @@ trait ClassNameUtility
         $explodedNamespace = explode('\\', $rc->getNamespaceName());
         $domain = [];
         for ($i = count($explodedNamespace) - 1; $i <= 0 || $explodedNamespace[$i] !== 'BusinessRules'; $i--) {
-            if (array_search($explodedNamespace[$i], ['Request', 'Response', 'DTO', 'UseCases']) === false) {
+            if (array_search(
+                    $explodedNamespace[$i],
+                    ['Entities', 'Request', 'Response', 'DTO', 'UseCases']
+                ) === false) {
                 $domain[] = $explodedNamespace[$i];
             }
         }
@@ -58,5 +61,12 @@ trait ClassNameUtility
         $rc = new \ReflectionClass($className);
 
         return $rc->getShortName();
+    }
+
+    protected function getNamespaceFromClassName(string $className): string
+    {
+        $rc = new \ReflectionClass($className);
+
+        return $rc->getNamespaceName();
     }
 }

@@ -1,0 +1,19 @@
+<?php
+{% include "Header.php.twig" %}
+
+namespace {{ gatewayNamespace }};
+
+use {{ entityClassName }};
+
+/**
+ * @author {{ author }} <{{ authorEmail }}>
+ */
+interface {{ gatewayShortClassName }}
+{
+{% if find %}
+    /**
+     * @throws \{{ entityNotFoundExceptionClassName }}
+     */
+    public function find(int $id): {{ entityShortClassName }};
+{% endif %}
+}

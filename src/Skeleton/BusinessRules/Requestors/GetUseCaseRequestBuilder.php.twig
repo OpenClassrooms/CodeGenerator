@@ -1,0 +1,16 @@
+<?php
+{% include "Header.php.twig" %}
+
+namespace {{ useCaseRequestBuilderNamespace }};
+
+/**
+ * @author {{ author }} <{{ authorEmail }}>
+ */
+interface {{ useCaseRequestBuilderShortClassName }}
+{
+    public function create(): {{ useCaseRequestBuilderShortClassName }};
+
+    public function withId(int $id): {{ useCaseRequestBuilderShortClassName }};
+
+    public function build(): {{ useCaseRequestShortClassName }};
+}

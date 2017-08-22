@@ -1,0 +1,27 @@
+<?php
+{% include "Header.php.twig" %}
+
+namespace {{ repositoryNamespace }};
+
+use {{ entityClassName }};
+
+/**
+ * @author {{ author }} <{{ authorEmail }}>
+ */
+class {{ repositoryShortClassName }} extends implements {{ gatewayShortClassName }}
+{
+{% if find %}
+    /**
+     * @throws \{{ entityNotFoundExceptionClassName }}
+     */
+    public function find(int $id): {{ entityShortClassName }}
+    {
+        ${{ entityFieldName }} = parent::find($id);
+        if(null === ${{ entityFieldName }}){
+            throw new {{ entityNotFoundExceptionShortClassName }}($id);
+        }
+
+        return ${{ entityFieldName }};
+    }
+{% endif %}
+}

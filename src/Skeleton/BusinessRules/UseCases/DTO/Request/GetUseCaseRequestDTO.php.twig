@@ -1,0 +1,25 @@
+<?php
+{% include "Header.php.twig" %}
+
+namespace {{ useCaseRequestDTONamespace }};
+
+use {{ useCaseRequestClassName }};
+
+/**
+ * @author {{ author }} <{{ authorEmail }}>
+ */
+class {{ useCaseRequestDTOShortClassName }} implements {{ useCaseRequestShortClassName }}
+{
+    /**
+     * @var int
+     */
+    public $id;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+}

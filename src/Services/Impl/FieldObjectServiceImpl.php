@@ -82,4 +82,22 @@ class FieldObjectServiceImpl implements FieldObjectService
 
         return null;
     }
+
+    /**
+     * @inheritdoc
+     */
+    public function getProtectedClassFields(string $className): array
+    {
+        $rc = new \ReflectionClass($className);
+        /** @var \ReflectionProperty[] $reflectionProperties */
+        $reflectionProperties = $rc->getProperties(\ReflectionProperty::IS_PROTECTED);
+        $classProperties = [];
+        foreach ($reflectionProperties as $reflectionProperty) {
+            if ($reflectionProperty->getDeclaringClass()->getName() === $className) {
+                $classProperties[] = $reflectionProperty;
+            }
+        }
+
+        return $this->buildFields($classProperties);
+    }
 }

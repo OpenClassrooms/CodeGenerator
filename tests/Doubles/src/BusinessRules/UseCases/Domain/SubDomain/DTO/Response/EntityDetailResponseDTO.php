@@ -16,6 +16,6 @@ class EntityDetailResponseDTO extends EntityResponseDTO implements EntityDetailR
 
     public function getField4()
     {
-        return $this->field3;
+        return $this->field4;
     }
 }

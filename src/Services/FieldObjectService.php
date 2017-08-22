@@ -16,4 +16,9 @@ interface FieldObjectService
      * @return \OpenClassrooms\CodeGenerator\ClassObjects\FieldObject[]
      */
     public function getPublicClassFields(string $className): array;
+
+    /**
+     * @return \OpenClassrooms\CodeGenerator\ClassObjects\FieldObject[]
+     */
+    public function getProtectedClassFields(string $className): array;
 }

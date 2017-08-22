@@ -3,6 +3,7 @@
 namespace OpenClassrooms\CodeGenerator\Tests\Generator\App\Controller\Impl;
 
 use OpenClassrooms\CodeGenerator\Generator\App\Controller\Impl\ListControllerGeneratorImpl;
+use OpenClassrooms\CodeGenerator\Generator\Generator;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\ControllerClassObjectServiceMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\UseCaseClassObjectServiceMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\ViewModelClassObjectServiceMock;
@@ -45,7 +46,7 @@ class ListControllerGeneratorImplTest extends GeneratorTestCase
         );
         $expectedClassName = 'OpenClassrooms\CodeGenerator\Tests\Doubles\src\App\Controller\Web\Domain\SubDomain\Admin\ListEntitiesController';
 
-        $actual = $this->generator->generate(EntityDetailResponseDTO::class, true);
+        $actual = $this->generator->generate(EntityDetailResponseDTO::class, [Generator::ADMIN => true]);
 
         $this->assertArrayHasKey($expectedClassName, $actual);
         $this->assertSame($expected, $actual[$expectedClassName]);

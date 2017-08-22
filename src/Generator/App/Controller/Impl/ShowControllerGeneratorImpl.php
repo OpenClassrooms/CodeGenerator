@@ -3,7 +3,7 @@
 namespace OpenClassrooms\CodeGenerator\Generator\App\Controller\Impl;
 
 use OpenClassrooms\CodeGenerator\Generator\App\Controller\AbstractControllerGenerator;
-use OpenClassrooms\CodeGenerator\Services\ClassObjectService;
+use OpenClassrooms\CodeGenerator\Services\EntityClassObjectService;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
@@ -11,33 +11,34 @@ use OpenClassrooms\CodeGenerator\Services\ClassObjectService;
 class ShowControllerGeneratorImpl extends AbstractControllerGenerator
 {
     /**
-     * @var \OpenClassrooms\CodeGenerator\Services\ClassObjectService
+     * @var \OpenClassrooms\CodeGenerator\Services\EntityClassObjectService
      */
-    private $classObjectService;
+    private $entityClassObjectService;
 
     /**
      * @inheritdoc
      */
-    public function generate(string $useCaseResponseClassName, $admin = false): array
+    public function generate(string $className, array $parameters = []): array
     {
-        $entityName = $this->getEntityNameFromClassName($useCaseResponseClassName);
+        $admin = array_key_exists(self::ADMIN, $parameters) ? $parameters[self::ADMIN] : false;
+        $entityName = $this->getEntityNameFromClassName($className);
 
-        $exception = $this->classObjectService->getEntityNotFoundException($useCaseResponseClassName);
-        $useCase = $this->useCaseClassObjectService->getGetUseCase($useCaseResponseClassName);
+        $exception = $this->entityClassObjectService->getEntityNotFoundException($className);
+        $useCase = $this->useCaseClassObjectService->getGetUseCase($className);
         $useCaseRequestBuilder = $this->useCaseClassObjectService->getGetUseCaseRequestBuilder(
-            $useCaseResponseClassName
+            $className
         );
-        $useCaseResponse = $this->getInterfaceClassObjectFromClassName($useCaseResponseClassName);
+        $useCaseResponse = $this->getInterfaceClassObjectFromClassName($className);
 
-        $controller = $this->controllerClassObjectService->getShowController($useCaseResponseClassName, $admin);
+        $controller = $this->controllerClassObjectService->getShowController($className, $admin);
         list($showViewModel, $viewModelImpl) = $this->viewModelClassObjectService->getShowViewModels(
-            $useCaseResponseClassName
+            $className
         );
         list($showViewModelBuilder, $viewModelBuilderImpl) = $this->viewModelClassObjectService->getShowViewModelBuilders(
-            $useCaseResponseClassName
+            $className
         );
         $viewModelDetailAssembler = $this->viewModelClassObjectService->getViewModelDetailAssembler(
-            $useCaseResponseClassName
+            $className
         );
 
         $content = $this->render(
@@ -65,8 +66,8 @@ class ShowControllerGeneratorImpl extends AbstractControllerGenerator
         return [$controller->getClassName() => $content];
     }
 
-    public function setClassObjectService(ClassObjectService $classObjectService)
+    public function setEntityClassObjectService(EntityClassObjectService $entityClassObjectService)
     {
-        $this->classObjectService = $classObjectService;
+        $this->entityClassObjectService = $entityClassObjectService;
     }
 }

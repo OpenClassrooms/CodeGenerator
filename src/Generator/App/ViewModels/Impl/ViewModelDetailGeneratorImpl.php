@@ -16,7 +16,7 @@ class ViewModelDetailGeneratorImpl extends AbstractViewModelGenerator
      */
     private $viewModelGenerator;
 
-    public function generate(string $className): array
+    public function generate(string $className, array $parameters = []): array
     {
         /** @var \OpenClassrooms\CodeGenerator\ClassObjects\ClassObject $viewModel */
         /** @var \OpenClassrooms\CodeGenerator\ClassObjects\ClassObject $viewModelDetail */

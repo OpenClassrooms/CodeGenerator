@@ -1,0 +1,25 @@
+<?php
+{% include "Header.php.twig" %}
+
+namespace {{ useCaseResponseDTONamespace }};
+
+use {{ useCaseResponseClassName }};
+
+/**
+ * @author {{ author }} <{{ authorEmail }}>
+ */
+abstract class {{ useCaseResponseDTOShortClassName }} implements {{ useCaseResponseShortClassName }}
+{
+{% for field in fields %}
+    {{ field.docComment }}
+    {{ field.scope }} ${{ field.name }};
+
+{% endfor %}
+{% for field in fields %}
+    public function {{ field.accessor }}()
+    {
+        return $this->{{ field.name }};
+    }
+
+{% endfor %}
+}

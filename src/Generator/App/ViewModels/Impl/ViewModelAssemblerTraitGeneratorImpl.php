@@ -16,10 +16,10 @@ class ViewModelAssemblerTraitGeneratorImpl extends AbstractViewModelGenerator im
      */
     private $useCaseClassObjectService;
 
-    public function generate(string $className): array
+    public function generate(string $className, array $parameters = []): array
     {
         $entityName = $this->getEntityNameFromClassName($className);
-        $useCaseResponse = $this->useCaseClassObjectService->getUseCaseResponseInterfaceFromClassName($className);
+        $useCaseResponse = $this->useCaseClassObjectService->getUseCaseResponse($className);
         $viewModelAssemblerTrait = $this->viewModelClassObjectService->getViewModelAssemblerTrait($className);
 
         /** @var \OpenClassrooms\CodeGenerator\ClassObjects\ClassObject $vm */

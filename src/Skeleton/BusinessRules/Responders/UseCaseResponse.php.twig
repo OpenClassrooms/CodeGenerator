@@ -1,0 +1,17 @@
+<?php
+{% include "Header.php.twig" %}
+
+namespace {{ useCaseResponseNamespace }};
+
+use {{ useCaseResponseInterface.className }};
+
+/**
+ * @author {{ author }} <{{ authorEmail }}>
+ */
+interface {{ useCaseResponseShortClassName }} extends {{ useCaseResponseInterface.shortClassName }}
+{
+{% for field in fields %}
+    public function {{ field.accessor}}();
+
+{% endfor %}
+}

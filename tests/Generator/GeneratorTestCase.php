@@ -5,6 +5,9 @@ namespace OpenClassrooms\CodeGenerator\Tests\Generator;
 use OpenClassrooms\CodeGenerator\Generator\AbstractGenerator;
 use OpenClassrooms\CodeGenerator\Services\Impl\FieldObjectServiceImpl;
 use OpenClassrooms\CodeGenerator\Services\Impl\TemplatingFactoryImpl;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\Requestors\UseCaseRequest;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\Responders\UseCaseResponse;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\UseCases\UseCase;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -28,6 +31,9 @@ class GeneratorTestCase extends TestCase
         $templating = $templatingFactory->create(
             ['author' => 'Romain Kuzniak', 'authorEmail' => 'romain.kuzniak@openclassrooms.com']
         );
+        $generator->setUseCaseInterfaceClassName(UseCase::class);
+        $generator->setUseCaseRequestInterfaceClassName(UseCaseRequest::class);
+        $generator->setUseCaseResponseInterfaceClassName(UseCaseResponse::class);
         $generator->setTemplating($templating);
         $generator->setFieldObjectService(new FieldObjectServiceImpl());
 
