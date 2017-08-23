@@ -191,7 +191,6 @@ class GetUseCaseGeneratorImpl extends AbstractUseCaseGenerator implements GetUse
                 'gatewayNamespace' => $gateway->getNamespace(),
                 'gatewayShortClassName'=>$gateway->getShortClassName(),
                 'entityClassName' => $entity->getClassName(),
-                'entityShortClassName' => $entity->getShortClassName(),
                 'entityNotFoundExceptionClassName' => $entityNotFoundException->getClassName()
             ]
         );

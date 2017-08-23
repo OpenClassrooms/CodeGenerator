@@ -6,7 +6,7 @@ use OpenClassrooms\CodeGenerator\Generator\App\ViewModels\Impl\ViewModelAssemble
 use OpenClassrooms\CodeGenerator\Generator\App\ViewModels\Impl\ViewModelDetailAssemblerGeneratorImpl;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\UseCaseClassObjectServiceMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\ViewModelClassObjectServiceMock;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\UseCases\Domain\SubDomain\DTO\Response\EntityDetailResponseDTO;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\UseCases\Domain\SubDomain\DTO\Response\FunctionalEntityDetailResponseDTO;
 use OpenClassrooms\CodeGenerator\Tests\Generator\GeneratorTestCase;
 
 /**
@@ -19,28 +19,28 @@ class ViewModelDetailAssemblerGeneratorImplTest extends GeneratorTestCase
      */
     public function generate()
     {
-        $actual = $this->generator->generate(EntityDetailResponseDTO::class);
+        $actual = $this->generator->generate(FunctionalEntityDetailResponseDTO::class);
         $this->assertSame(
             [
-                'OpenClassrooms\CodeGenerator\Tests\Doubles\src\App\ViewModels\Web\Domain\SubDomain\EntityAssemblerTrait',
-                'OpenClassrooms\CodeGenerator\Tests\Doubles\src\App\ViewModels\Web\Domain\SubDomain\EntityDetailAssembler',
-                'OpenClassrooms\CodeGenerator\Tests\Doubles\src\App\ViewModels\Web\Domain\SubDomain\Impl\EntityDetailAssemblerImpl'
+                'OpenClassrooms\CodeGenerator\Tests\Doubles\src\App\ViewModels\Web\Domain\SubDomain\FunctionalEntityAssemblerTrait',
+                'OpenClassrooms\CodeGenerator\Tests\Doubles\src\App\ViewModels\Web\Domain\SubDomain\FunctionalEntityDetailAssembler',
+                'OpenClassrooms\CodeGenerator\Tests\Doubles\src\App\ViewModels\Web\Domain\SubDomain\Impl\FunctionalEntityDetailAssemblerImpl'
             ],
             array_keys($actual)
         );
         $actual = array_values($actual);
         $expected = file_get_contents(
-            __DIR__.'/../../../../Doubles/src/App/ViewModels/Web/Domain/SubDomain/EntityAssemblerTrait.php'
+            __DIR__.'/../../../../Doubles/src/App/ViewModels/Web/Domain/SubDomain/FunctionalEntityAssemblerTrait.php'
         );
         $this->assertSame($expected, $actual[0]);
 
         $expected = file_get_contents(
-            __DIR__.'/../../../../Doubles/src/App/ViewModels/Web/Domain/SubDomain/EntityDetailAssembler.php'
+            __DIR__.'/../../../../Doubles/src/App/ViewModels/Web/Domain/SubDomain/FunctionalEntityDetailAssembler.php'
         );
         $this->assertSame($expected, $actual[1]);
 
         $expected = file_get_contents(
-            __DIR__.'/../../../../Doubles/src/App/ViewModels/Web/Domain/SubDomain/Impl/EntityDetailAssemblerImpl.php'
+            __DIR__.'/../../../../Doubles/src/App/ViewModels/Web/Domain/SubDomain/Impl/FunctionalEntityDetailAssemblerImpl.php'
         );
         $this->assertSame($expected, $actual[2]);
 

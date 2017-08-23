@@ -35,7 +35,7 @@ class {{ useCaseShortClassName }} implements {{ useCaseInterface.shortClassName 
     {
         ${{ entityFieldName }} = $this->{{ gatewayFieldName }}->find($useCaseRequest->getId());
 
-        return $this->entityDetailResponseAssembler->create(${{ entityFieldName }});
+        return $this->{{ useCaseDetailResponseAssemblerFieldName }}->create(${{ entityFieldName }});
     }
 
     public function set{{ gatewayFieldNameUC }}({{ gatewayShortClassName }} ${{ gatewayFieldName }})

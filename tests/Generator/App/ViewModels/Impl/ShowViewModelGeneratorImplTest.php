@@ -4,7 +4,7 @@ namespace OpenClassrooms\CodeGenerator\Tests\Generator\App\ViewModels\Impl;
 
 use OpenClassrooms\CodeGenerator\Generator\App\ViewModels\Impl\ShowViewModelGeneratorImpl;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\ViewModelClassObjectServiceMock;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\UseCases\Domain\SubDomain\DTO\Response\EntityDetailResponseDTO;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\UseCases\Domain\SubDomain\DTO\Response\FunctionalEntityDetailResponseDTO;
 use OpenClassrooms\CodeGenerator\Tests\Generator\GeneratorTestCase;
 
 /**
@@ -17,14 +17,14 @@ class ShowViewModelGeneratorImplTest extends GeneratorTestCase
      */
     public function generate()
     {
-        $actual = $this->generator->generate(EntityDetailResponseDTO::class);
+        $actual = $this->generator->generate(FunctionalEntityDetailResponseDTO::class);
         $this->assertSame(
-            ['OpenClassrooms\CodeGenerator\Tests\Doubles\src\App\ViewModels\Web\Domain\SubDomain\ShowEntity'],
+            ['OpenClassrooms\CodeGenerator\Tests\Doubles\src\App\ViewModels\Web\Domain\SubDomain\ShowFunctionalEntity'],
             array_keys($actual)
         );
         $actual = array_values($actual);
         $expected = file_get_contents(
-            __DIR__.'/../../../../Doubles/src/App/ViewModels/Web/Domain/SubDomain/ShowEntity.php'
+            __DIR__.'/../../../../Doubles/src/App/ViewModels/Web/Domain/SubDomain/ShowFunctionalEntity.php'
         );
         $this->assertSame($expected, $actual[0]);
     }

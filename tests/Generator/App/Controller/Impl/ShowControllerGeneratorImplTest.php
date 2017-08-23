@@ -8,7 +8,7 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\ControllerClassObjectSer
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\EntityClassObjectServiceMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\UseCaseClassObjectServiceMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\ViewModelClassObjectServiceMock;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\UseCases\Domain\SubDomain\DTO\Response\EntityDetailResponseDTO;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\UseCases\Domain\SubDomain\DTO\Response\FunctionalEntityDetailResponseDTO;
 use OpenClassrooms\CodeGenerator\Tests\Generator\GeneratorTestCase;
 
 /**
@@ -27,11 +27,11 @@ class ShowControllerGeneratorImplTest extends GeneratorTestCase
     public function generate()
     {
         $expected = file_get_contents(
-            __DIR__.'/../../../../Doubles/src/App/Controller/Web/Domain/SubDomain/ShowEntityController.php'
+            __DIR__.'/../../../../Doubles/src/App/Controller/Web/Domain/SubDomain/ShowFunctionalEntityController.php'
         );
-        $expectedClassName = 'OpenClassrooms\CodeGenerator\Tests\Doubles\src\App\Controller\Web\Domain\SubDomain\ShowEntityController';
+        $expectedClassName = 'OpenClassrooms\CodeGenerator\Tests\Doubles\src\App\Controller\Web\Domain\SubDomain\ShowFunctionalEntityController';
 
-        $actual = $this->generator->generate(EntityDetailResponseDTO::class);
+        $actual = $this->generator->generate(FunctionalEntityDetailResponseDTO::class);
 
         $this->assertArrayHasKey($expectedClassName, $actual);
         $this->assertSame($expected, $actual[$expectedClassName]);
@@ -43,11 +43,11 @@ class ShowControllerGeneratorImplTest extends GeneratorTestCase
     public function generateAdmin()
     {
         $expected = file_get_contents(
-            __DIR__.'/../../../../Doubles/src/App/Controller/Web/Domain/SubDomain/Admin/ShowEntityController.php'
+            __DIR__.'/../../../../Doubles/src/App/Controller/Web/Domain/SubDomain/Admin/ShowFunctionalEntityController.php'
         );
-        $expectedClassName = 'OpenClassrooms\CodeGenerator\Tests\Doubles\src\App\Controller\Web\Domain\SubDomain\Admin\ShowEntityController';
+        $expectedClassName = 'OpenClassrooms\CodeGenerator\Tests\Doubles\src\App\Controller\Web\Domain\SubDomain\Admin\ShowFunctionalEntityController';
 
-        $actual = $this->generator->generate(EntityDetailResponseDTO::class, [Generator::ADMIN => true]);
+        $actual = $this->generator->generate(FunctionalEntityDetailResponseDTO::class, [Generator::ADMIN => true]);
 
         $this->assertArrayHasKey($expectedClassName, $actual);
         $this->assertSame($expected, $actual[$expectedClassName]);

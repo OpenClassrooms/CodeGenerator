@@ -5,7 +5,7 @@ namespace OpenClassrooms\CodeGenerator\Tests\Generator\BusinessRules\UseCases;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Impl\GetUseCaseGeneratorImpl;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\EntityClassObjectServiceMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\UseCaseClassObjectServiceMock;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\Entities\Domain\SubDomain\Entity;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\Entities\Domain\SubDomain\FunctionalEntity;
 use OpenClassrooms\CodeGenerator\Tests\Generator\GeneratorTestCase;
 
 /**
@@ -18,77 +18,77 @@ class GetUseCaseGeneratorImplTest extends GeneratorTestCase
      */
     public function generate()
     {
-        $actual = $this->generator->generate(Entity::class);
+        $actual = $this->generator->generate(FunctionalEntity::class);
         $this->assertSame(
             [
-                'OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\UseCases\Domain\SubDomain\GetEntity',
-                'OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\Requestors\Domain\SubDomain\GetEntityRequest',
-                'OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\UseCases\Domain\SubDomain\DTO\Request\GetEntityRequestDTO',
-                'OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\Requestors\Domain\SubDomain\GetEntityRequestBuilder',
-                'OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\UseCases\Domain\SubDomain\DTO\Request\GetEntityRequestBuilderImpl',
-                'OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\Responders\Domain\SubDomain\EntityResponse',
-                'OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\Responders\Domain\SubDomain\EntityDetailResponse',
-                'OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\Responders\Domain\SubDomain\EntityDetailResponseAssembler',
-                'OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\UseCases\Domain\SubDomain\DTO\Response\EntityResponseDTO',
-                'OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\UseCases\Domain\SubDomain\DTO\Response\EntityDetailResponseDTO',
-                'OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\UseCases\Domain\SubDomain\DTO\Response\EntityResponseAssemblerTrait',
-                'OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\UseCases\Domain\SubDomain\DTO\Response\EntityDetailResponseAssemblerImpl',
-                'OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\Gateways\Domain\SubDomain\EntityGateway'
+                'OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\UseCases\Domain\SubDomain\GetFunctionalEntity',
+                'OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\Requestors\Domain\SubDomain\GetFunctionalEntityRequest',
+                'OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\UseCases\Domain\SubDomain\DTO\Request\GetFunctionalEntityRequestDTO',
+                'OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\Requestors\Domain\SubDomain\GetFunctionalEntityRequestBuilder',
+                'OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\UseCases\Domain\SubDomain\DTO\Request\GetFunctionalEntityRequestBuilderImpl',
+                'OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityResponse',
+                'OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityDetailResponse',
+                'OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityDetailResponseAssembler',
+                'OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\UseCases\Domain\SubDomain\DTO\Response\FunctionalEntityResponseDTO',
+                'OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\UseCases\Domain\SubDomain\DTO\Response\FunctionalEntityDetailResponseDTO',
+                'OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\UseCases\Domain\SubDomain\DTO\Response\FunctionalEntityResponseAssemblerTrait',
+                'OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\UseCases\Domain\SubDomain\DTO\Response\FunctionalEntityDetailResponseAssemblerImpl',
+                'OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\Gateways\Domain\SubDomain\FunctionalEntityGateway'
             ],
             array_keys($actual)
         );
         $actual = array_values($actual);
 
         $expected = file_get_contents(
-            __DIR__.'/../../../../Doubles/src/BusinessRules/UseCases/Domain/SubDomain/GetEntity.php'
+            __DIR__.'/../../../../Doubles/src/BusinessRules/UseCases/Domain/SubDomain/GetFunctionalEntity.php'
         );
         $this->assertSame($expected, $actual[0]);
         $expected = file_get_contents(
-            __DIR__.'/../../../../Doubles/src/BusinessRules/Requestors/Domain/SubDomain/GetEntityRequest.php'
+            __DIR__.'/../../../../Doubles/src/BusinessRules/Requestors/Domain/SubDomain/GetFunctionalEntityRequest.php'
         );
         $this->assertSame($expected, $actual[1]);
         $expected = file_get_contents(
-            __DIR__.'/../../../../Doubles/src/BusinessRules/UseCases/Domain/SubDomain/DTO/Request/GetEntityRequestDTO.php'
+            __DIR__.'/../../../../Doubles/src/BusinessRules/UseCases/Domain/SubDomain/DTO/Request/GetFunctionalEntityRequestDTO.php'
         );
         $this->assertSame($expected, $actual[2]);
         $expected = file_get_contents(
-            __DIR__.'/../../../../Doubles/src/BusinessRules/Requestors/Domain/SubDomain/GetEntityRequestBuilder.php'
+            __DIR__.'/../../../../Doubles/src/BusinessRules/Requestors/Domain/SubDomain/GetFunctionalEntityRequestBuilder.php'
         );
         $this->assertSame($expected, $actual[3]);
         $expected = file_get_contents(
-            __DIR__.'/../../../../Doubles/src/BusinessRules/UseCases/Domain/SubDomain/DTO/Request/GetEntityRequestBuilderImpl.php'
+            __DIR__.'/../../../../Doubles/src/BusinessRules/UseCases/Domain/SubDomain/DTO/Request/GetFunctionalEntityRequestBuilderImpl.php'
         );
         $this->assertSame($expected, $actual[4]);
         $expected = file_get_contents(
-            __DIR__.'/../../../../Doubles/src/BusinessRules/Responders/Domain/SubDomain/DoubleEntityResponse.php'
+            __DIR__.'/../../../../Doubles/src/BusinessRules/Responders/Domain/SubDomain/DoubleFunctionalEntityResponse.php'
         );
         $this->assertSame($expected, $actual[5]);
         $expected = file_get_contents(
-            __DIR__.'/../../../../Doubles/src/BusinessRules/Responders/Domain/SubDomain/DoubleEntityDetailResponse.php'
+            __DIR__.'/../../../../Doubles/src/BusinessRules/Responders/Domain/SubDomain/DoubleFunctionalEntityDetailResponse.php'
         );
         $this->assertSame($expected, $actual[6]);
         $expected = file_get_contents(
-            __DIR__.'/../../../../Doubles/src/BusinessRules/Responders/Domain/SubDomain/EntityDetailResponseAssembler.php'
+            __DIR__.'/../../../../Doubles/src/BusinessRules/Responders/Domain/SubDomain/FunctionalEntityDetailResponseAssembler.php'
         );
         $this->assertSame($expected, $actual[7]);
         $expected = file_get_contents(
-            __DIR__.'/../../../../Doubles/src/BusinessRules/UseCases/Domain/SubDomain/DTO/Response/EntityResponseDTODouble.php'
+            __DIR__.'/../../../../Doubles/src/BusinessRules/UseCases/Domain/SubDomain/DTO/Response/DoubleFunctionalEntityResponseDTO.php'
         );
         $this->assertSame($expected, $actual[8]);
         $expected = file_get_contents(
-            __DIR__.'/../../../../Doubles/src/BusinessRules/UseCases/Domain/SubDomain/DTO/Response/EntityDetailResponseDTODouble.php'
+            __DIR__.'/../../../../Doubles/src/BusinessRules/UseCases/Domain/SubDomain/DTO/Response/DoubleFunctionalEntityDetailResponseDTO.php'
         );
         $this->assertSame($expected, $actual[9]);
         $expected = file_get_contents(
-            __DIR__.'/../../../../Doubles/src/BusinessRules/UseCases/Domain/SubDomain/DTO/Response/DoubleEntityResponseAssemblerTrait.php'
+            __DIR__.'/../../../../Doubles/src/BusinessRules/UseCases/Domain/SubDomain/DTO/Response/DoubleFunctionalEntityResponseAssemblerTrait.php'
         );
         $this->assertSame($expected, $actual[10]);
         $expected = file_get_contents(
-            __DIR__.'/../../../../Doubles/src/BusinessRules/UseCases/Domain/SubDomain/DTO/Response/DoubleEntityDetailResponseAssemblerImpl.php'
+            __DIR__.'/../../../../Doubles/src/BusinessRules/UseCases/Domain/SubDomain/DTO/Response/DoubleFunctionalEntityDetailResponseAssemblerImpl.php'
         );
         $this->assertSame($expected, $actual[11]);
         $expected = file_get_contents(
-            __DIR__.'/../../../../Doubles/src/BusinessRules/Gateways/Domain/SubDomain/EntityGateway.php'
+            __DIR__.'/../../../../Doubles/src/BusinessRules/Gateways/Domain/SubDomain/FunctionalEntityGateway.php'
         );
         $this->assertSame($expected, $actual[12]);
     }

@@ -17,7 +17,7 @@ class {{ useCaseDetailResponseAssemblerImplShortClassName }} implements {{ useCa
     public function create({{ entityShortClassName }} ${{ entityFieldName }}): {{ useCaseDetailResponseShortClassName }}
     {
         $response = new {{ useCaseDetailResponseDTOShortClassName }}();
-        $this->hydrateCommonFields($response, $entity);
+        $this->hydrateCommonFields($response, ${{ entityFieldName }});
 
         return $response;
     }

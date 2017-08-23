@@ -3,8 +3,6 @@
 
 namespace {{ gatewayNamespace }};
 
-use {{ entityClassName }};
-
 /**
  * @author {{ author }} <{{ authorEmail }}>
  */
@@ -12,8 +10,9 @@ interface {{ gatewayShortClassName }}
 {
 {% if find %}
     /**
+     * @return \{{ entityClassName }}
      * @throws \{{ entityNotFoundExceptionClassName }}
      */
-    public function find(int $id): {{ entityShortClassName }};
+    public function find($id);
 {% endif %}
 }

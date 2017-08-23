@@ -5,7 +5,7 @@ namespace OpenClassrooms\CodeGenerator\Tests\Generator\App\Form\Impl;
 use OpenClassrooms\CodeGenerator\Generator\App\Form\Impl\EditFormGeneratorImpl;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\ControllerClassObjectServiceMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\FormClassObjectServiceMock;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\UseCases\Domain\SubDomain\DTO\Request\EditEntityRequestDTO;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\UseCases\Domain\SubDomain\DTO\Request\EditFunctionalEntityRequestDTO;
 use OpenClassrooms\CodeGenerator\Tests\Generator\GeneratorTestCase;
 
 /**
@@ -23,12 +23,12 @@ class EditFormGeneratorImplTest extends GeneratorTestCase
      */
     public function render()
     {
-        $expectedClassName = 'OpenClassrooms\CodeGenerator\Tests\Doubles\src\App\Form\Type\Domain\SubDomain\EditEntityType';
+        $expectedClassName = 'OpenClassrooms\CodeGenerator\Tests\Doubles\src\App\Form\Type\Domain\SubDomain\EditFunctionalEntityType';
         $expected = file_get_contents(
-            __DIR__.'/../../../../Doubles/src/App/Form/Type/Domain/SubDomain/EditEntityType.php'
+            __DIR__.'/../../../../Doubles/src/App/Form/Type/Domain/SubDomain/EditFunctionalEntityType.php'
         );
 
-        $actual = $this->generator->generate(EditEntityRequestDTO::class);
+        $actual = $this->generator->generate(EditFunctionalEntityRequestDTO::class);
 
         $this->assertArrayHasKey($expectedClassName, $actual);
         $this->assertSame($expected, $actual[$expectedClassName]);
