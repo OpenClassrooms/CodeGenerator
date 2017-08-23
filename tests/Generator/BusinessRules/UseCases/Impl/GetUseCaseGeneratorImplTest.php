@@ -33,7 +33,8 @@ class GetUseCaseGeneratorImplTest extends GeneratorTestCase
                 'OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\UseCases\Domain\SubDomain\DTO\Response\FunctionalEntityDetailResponseDTO',
                 'OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\UseCases\Domain\SubDomain\DTO\Response\FunctionalEntityResponseAssemblerTrait',
                 'OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\UseCases\Domain\SubDomain\DTO\Response\FunctionalEntityDetailResponseAssemblerImpl',
-                'OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\Gateways\Domain\SubDomain\FunctionalEntityGateway'
+                'OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\Gateways\Domain\SubDomain\FunctionalEntityGateway',
+                'OpenClassrooms\CodeGenerator\Tests\Doubles\src\App\Repository\Domain\SubDomain\FunctionalEntityRepository'
             ],
             array_keys($actual)
         );
@@ -91,6 +92,11 @@ class GetUseCaseGeneratorImplTest extends GeneratorTestCase
             __DIR__.'/../../../../Doubles/src/BusinessRules/Gateways/Domain/SubDomain/FunctionalEntityGateway.php'
         );
         $this->assertSame($expected, $actual[12]);
+        $expected = file_get_contents(
+            __DIR__.'/../../../../Doubles/src/App/Repository/Domain/SubDomain/FunctionalEntityRepository.php'
+        );
+        $this->assertSame($expected, $actual[13]);
+
     }
 
     protected function setUp()

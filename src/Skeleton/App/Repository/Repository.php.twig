@@ -3,21 +3,23 @@
 
 namespace {{ repositoryNamespace }};
 
-use {{ entityClassName }};
+use Doctrine\ORM\EntityRepository;
+use {{ gatewayClassName }};
+use {{ entityNotFoundExceptionClassName }};
 
 /**
  * @author {{ author }} <{{ authorEmail }}>
  */
-class {{ repositoryShortClassName }} extends implements {{ gatewayShortClassName }}
+class {{ repositoryShortClassName }} extends EntityRepository implements {{ gatewayShortClassName }}
 {
 {% if find %}
     /**
-     * @throws \{{ entityNotFoundExceptionClassName }}
+     * {@inheritdoc}
      */
-    public function find(int $id): {{ entityShortClassName }}
+    public function find($id)
     {
         ${{ entityFieldName }} = parent::find($id);
-        if(null === ${{ entityFieldName }}){
+        if (null === ${{ entityFieldName }}) {
             throw new {{ entityNotFoundExceptionShortClassName }}($id);
         }
 

@@ -180,23 +180,35 @@ class GetUseCaseGeneratorImpl extends AbstractUseCaseGenerator implements GetUse
             ]
         );
 
+        $find = true;
+        $findAll = array_key_exists(self::USE_CASE_GET_ALL, $parameters) ? $parameters[self::USE_CASE_GET_ALL] : false;
         $gatewayContent = $this->render(
             '/BusinessRules/Gateways/Gateway.php.twig',
             [
-                'find' => true,
-                'findAll' => array_key_exists(
-                    self::USE_CASE_GET_ALL,
-                    $parameters
-                ) ? $parameters[self::USE_CASE_GET_ALL] : false,
+                'find' => $find,
+                'findAll' => $findAll,
                 'gatewayNamespace' => $gateway->getNamespace(),
-                'gatewayShortClassName'=>$gateway->getShortClassName(),
+                'gatewayShortClassName' => $gateway->getShortClassName(),
                 'entityClassName' => $entity->getClassName(),
                 'entityNotFoundExceptionClassName' => $entityNotFoundException->getClassName()
             ]
         );
 
         $repository = $this->entityClassObjectService->getRepository($className);
-//        $repositoryContent =
+        $repositoryContent = $this->render(
+            '/App/Repository/Repository.php.twig',
+            [
+                'find' => $find,
+                'findAll' => $findAll,
+                'repositoryNamespace' => $repository->getNamespace(),
+                'repositoryShortClassName' => $repository->getShortClassName(),
+                'entityFieldName' => $entity->getFieldName(),
+                'gatewayClassName' => $gateway->getClassName(),
+                'gatewayShortClassName' => $gateway->getShortClassName(),
+                'entityNotFoundExceptionClassName' => $entityNotFoundException->getClassName(),
+                'entityNotFoundExceptionShortClassName' => $entityNotFoundException->getShortClassName()
+            ]
+        );
 
         return [
             $useCase->getClassName() => $useCaseContent,
@@ -211,7 +223,8 @@ class GetUseCaseGeneratorImpl extends AbstractUseCaseGenerator implements GetUse
             $useCaseDetailResponseDTO->getClassName() => $useCaseDetailResponseDTOContent,
             $useCaseResponseAssemblerTrait->getClassName() => $useCaseResponseAssemblerTraitContent,
             $useCaseDetailResponseAssemblerImpl->getClassName() => $useCaseDetailResponseAssemblerImplContent,
-            $gateway->getClassName() => $gatewayContent
+            $gateway->getClassName() => $gatewayContent,
+            $repository->getClassName() => $repositoryContent
         ];
     }
 }
