@@ -21,7 +21,6 @@ class ListControllerGeneratorImpl extends AbstractControllerGenerator
 
         $useCase = $this->useCaseClassObjectService->getGetAllUseCase($className);
         $useCaseRequestBuilder = $this->useCaseClassObjectService->getGetAllUseCaseRequestBuilder($className);
-//        $useCaseResponse = $this->getInterfaceClassObjectFromClassName($className);
 
         $controller = $this->controllerClassObjectService->getListController($className, $admin);
         list($listViewModel, $listViewModelImpl) = $this->viewModelClassObjectService->getListViewModels($className);

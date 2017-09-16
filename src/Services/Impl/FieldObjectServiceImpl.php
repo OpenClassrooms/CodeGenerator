@@ -60,7 +60,8 @@ class FieldObjectServiceImpl implements FieldObjectService
     {
         $field = new FieldObject($reflectionProperty->getName());
         $field->setAccessor($this->getFieldAccessor($reflectionProperty));
-        $field->setDocComment($reflectionProperty->getDocComment());
+        $docComment = $reflectionProperty->getDocComment();
+        $field->setDocComment($docComment);
         $field->setScope(FieldObject::SCOPE_PUBLIC);
 
         return $field;
