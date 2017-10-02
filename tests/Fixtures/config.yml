@@ -1,0 +1,51 @@
+business_rules_path:
+app_path:
+full_package:
+    - ALL
+    - GET_ALL
+    - GET
+    - CREATE
+    - EDIT
+    - DELETE
+business_rules:
+    use_case:
+        - ALL
+        - GET_ALL
+        - GET
+        - CREATE
+        - EDIT
+        - DELETE
+app:
+    - controller:
+        - ALL
+        - GET_ALL
+        - GET
+        - CREATE
+        - EDIT
+        - DELETE
+    - form:
+        - ALL
+        - CREATE
+        - EDIT
+        - DELETE
+    - view_models:
+        - all
+        - listItem
+        - detail
+api:
+    - controller:
+        - ALL
+        - GET_ALL
+        - GET
+        - CREATE
+        - EDIT
+        - DELETE
+    - form:
+        - ALL
+        - CREATE
+        - EDIT
+        - DELETE
+    - view_models:
+        - all
+        - listItem
+        - detail
