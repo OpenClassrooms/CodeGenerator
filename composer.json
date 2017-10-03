@@ -28,7 +28,9 @@
     "doctrine/annotations": "1.2.*",
     "doctrine/orm": "~2.5",
     "doctrine/inflector": "1.*",
-    "symfony/filesystem": ">2.7 <4",
+    "symfony/config": "3.*",
+    "symfony/dependency-injection": "3.*",
+    "symfony/filesystem": "3.*",
     "twig/twig": "~2"
   },
   "require-dev": {
