@@ -22,4 +22,4 @@ if (!defined('CODE_GENERATOR_COMPOSER_INSTALL')) {
 
 require CODE_GENERATOR_COMPOSER_INSTALL;
 
-PHPUnit\TextUI\Command::main();
+\OpenClassrooms\CodeGenerator\Commands\Command::main();

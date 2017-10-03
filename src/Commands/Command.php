@@ -9,7 +9,6 @@ class Command
 {
     public static function main()
     {
-
         print ('yes');
     }
 }
