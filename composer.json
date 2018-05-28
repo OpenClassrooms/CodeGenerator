@@ -29,6 +29,7 @@
     "doctrine/orm": "~2.5",
     "doctrine/inflector": "1.*",
     "symfony/config": "3.*",
+      "symfony/console": "3.*",
     "symfony/dependency-injection": "3.*",
     "symfony/filesystem": "3.*",
     "twig/twig": "~2"

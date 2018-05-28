@@ -38,9 +38,6 @@ abstract class AbstractGenerator implements Generator
      */
     private $useCaseResponseInterfaceClassName;
 
-    /**
-     * @return string[]
-     */
     abstract public function generate(string $className, array $parameters = []): array;
 
     public function setFieldObjectService(FieldObjectService $fieldObjectService)

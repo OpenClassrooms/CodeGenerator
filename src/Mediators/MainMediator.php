@@ -2,34 +2,27 @@
 
 namespace OpenClassrooms\CodeGenerator\Mediators;
 
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\GetUseCaseGenerator;
+use Symfony\Component\Filesystem\Filesystem;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
  */
-class MainMediator
+abstract class Mediator
 {
-    /**
-     * @var \OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\GetUseCaseGenerator
-     */
-    private $getUseCaseGenerator;
-
     /**
      * @var \Symfony\Component\Filesystem\Filesystem
      */
     private $fileSystem;
 
-    public function mediate(array $config = [])
+    public function setFileSystem(Filesystem $fileSystem)
     {
-        $files = $this->getUseCaseGenerator->generate($className);
+        $this->fileSystem = $fileSystem;
+    }
+
+    protected function mediate(array $files)
+    {
         foreach ($files as $filename => $content) {
             $this->fileSystem->dumpFile($filename, $content);
         }
     }
-
-    public function setGetUseCaseGenerator(GetUseCaseGenerator $getUseCaseGenerator)
-    {
-        $this->getUseCaseGenerator = $getUseCaseGenerator;
-    }
-
 }

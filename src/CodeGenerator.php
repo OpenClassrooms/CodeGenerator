@@ -1,3 +1,5 @@
+#!/bin/php
+
 <?php
 foreach (array(__DIR__ . '/../../autoload.php', __DIR__ . '/../vendor/autoload.php', __DIR__ . '/vendor/autoload.php') as $file) {
     if (file_exists($file)) {
@@ -22,4 +24,6 @@ if (!defined('CODE_GENERATOR_COMPOSER_INSTALL')) {
 
 require CODE_GENERATOR_COMPOSER_INSTALL;
 
-\OpenClassrooms\CodeGenerator\Commands\Command::main();
+$application = new \Symfony\Component\Console\Application();
+$application->add(new \OpenClassrooms\CodeGenerator\Commands\UseCaseCommand());
+$application->run();

@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+
+<container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://symfony.com/schema/dic/services" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <service class="Symfony\Component\Filesystem\Filesystem" id="symfony.component.filesystem.filesystem"/>
+
+        <service id="open_classrooms.code_generator.mediators.mediator" class="OpenClassrooms\CodeGenerator\Mediators\Mediator">
+            <call method="setFileSystem">
+                <argument type="service" id="symfony.component.filesystem.filesystem"/>
+            </call>
+        </service>
+        <service id="open_classrooms.code_generator.mediators.use_case_mediator" class="OpenClassrooms\CodeGenerator\Mediators\UseCaseMediator">
+            <call method="setUseCaseGenerator">
+                <argument type="service" id="open_classrooms.code_generator.generator.business_rules.use_cases.use_case_generator"/>
+            </call>
+        </service>
+
+        <service id="open_classrooms.code_generator.generator.business_rules.use_cases.use_case_generator" class="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Impl\UseCaseGeneratorImpl"/>
+    </services>
+</container>

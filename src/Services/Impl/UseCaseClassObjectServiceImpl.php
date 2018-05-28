@@ -11,6 +11,15 @@ use OpenClassrooms\CodeGenerator\Services\UseCaseClassObjectService;
  */
 class UseCaseClassObjectServiceImpl extends ClassObjectServiceImpl implements UseCaseClassObjectService
 {
+    public function getUseCase(string $className): ClassObject
+    {
+        $domain = $this->getDomainFromClassName($className);
+
+        return new ClassObject(
+            $this->baseNamespace.'\\BusinessRules\\UseCases\\'.$domain,
+            $this->getShortClassNameFromClassName($className)
+        );
+    }
 
     public function getUseCaseResponse(string $className): ClassObject
     {

@@ -14,7 +14,7 @@ interface Generator
     const ADMIN = 'admin';
 
     /**
-     * @return string[]
+     * @return string[] ClassName => content
      */
     public function generate(string $className, array $parameters = []): array;
 }
