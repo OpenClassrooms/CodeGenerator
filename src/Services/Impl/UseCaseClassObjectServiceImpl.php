@@ -2,7 +2,6 @@
 
 namespace OpenClassrooms\CodeGenerator\Services\Impl;
 
-use Doctrine\Common\Inflector\Inflector;
 use OpenClassrooms\CodeGenerator\ClassObjects\ClassObject;
 use OpenClassrooms\CodeGenerator\Services\UseCaseClassObjectService;
 
@@ -21,147 +20,147 @@ class UseCaseClassObjectServiceImpl extends ClassObjectServiceImpl implements Us
         );
     }
 
-    public function getUseCaseResponse(string $className): ClassObject
-    {
-        list($domain, $entityName) = $this->getDomainAndEntityNameFromClassName($className);
-
-        return new ClassObject(
-            $this->baseNamespace.'\\BusinessRules\\Responders\\'.$domain,
-            $entityName.'Response',
-            true
-        );
-    }
-
-    public function getUseCaseResponseDTO(string $className): ClassObject
-    {
-        list($domain, $entityName) = $this->getDomainAndEntityNameFromClassName($className);
-
-        return new ClassObject(
-            $this->baseNamespace.'\\BusinessRules\\UseCases\\'.$domain.'\\DTO\\Response',
-            $entityName.'ResponseDTO',
-            false,
-            true
-        );
-    }
-
-    public function getUseCaseDetailResponse(string $className): ClassObject
-    {
-        list($domain, $entityName) = $this->getDomainAndEntityNameFromClassName($className);
-
-        return new ClassObject(
-            $this->baseNamespace.'\\BusinessRules\\Responders\\'.$domain,
-            $entityName.'DetailResponse',
-            true
-        );
-    }
-
-    public function getUseCaseDetailResponseDTO(string $className): ClassObject
-    {
-        list($domain, $entityName) = $this->getDomainAndEntityNameFromClassName($className);
-
-        return new ClassObject(
-            $this->baseNamespace.'\\BusinessRules\\UseCases\\'.$domain.'\\DTO\\Response',
-            $entityName.'DetailResponseDTO'
-        );
-    }
-
-    public function getUseCaseDetailResponseAssembler(string $className): ClassObject
-    {
-        list($domain, $entityName) = $this->getDomainAndEntityNameFromClassName($className);
-
-        return new ClassObject(
-            $this->baseNamespace.'\\BusinessRules\\Responders\\'.$domain,
-            $entityName.'DetailResponseAssembler',
-            true
-        );
-    }
-
-    public function getUseCaseResponseAssemblerTrait(string $className): ClassObject
-    {
-        list($domain, $entityName) = $this->getDomainAndEntityNameFromClassName($className);
-
-        return new ClassObject(
-            $this->baseNamespace.'\\BusinessRules\\UseCases\\'.$domain.'\\DTO\\Response',
-            $entityName.'ResponseAssemblerTrait'
-        );
-    }
-
-    public function getUseCaseDetailResponseAssemblerImpl(string $className): ClassObject
-    {
-        list($domain, $entityName) = $this->getDomainAndEntityNameFromClassName($className);
-
-        return new ClassObject(
-            $this->baseNamespace.'\\BusinessRules\\UseCases\\'.$domain.'\\DTO\\Response',
-            $entityName.'DetailResponseAssemblerImpl'
-        );
-    }
-
-    public function getGetUseCase(string $className): ClassObject
-    {
-        list($domain, $entityName) = $this->getDomainAndEntityNameFromClassName($className);
-
-        return new ClassObject($this->baseNamespace.'\\BusinessRules\\UseCases\\'.$domain, 'Get'.$entityName);
-    }
-
-    public function getGetUseCaseRequest(string $className): ClassObject
-    {
-        list($domain, $entityName) = $this->getDomainAndEntityNameFromClassName($className);
-
-        return new ClassObject(
-            $this->baseNamespace.'\\BusinessRules\\Requestors\\'.$domain,
-            'Get'.$entityName.'Request',
-            true
-        );
-    }
-
-    public function getGetUseCaseRequestDTO(string $className): ClassObject
-    {
-        list($domain, $entityName) = $this->getDomainAndEntityNameFromClassName($className);
-
-        return new ClassObject(
-            $this->baseNamespace.'\\BusinessRules\\UseCases\\'.$domain.'\\DTO\Request',
-            'Get'.$entityName.'RequestDTO'
-        );
-    }
-
-    public function getGetUseCaseRequestBuilder(string $className): ClassObject
-    {
-        list($domain, $entityName) = $this->getDomainAndEntityNameFromClassName($className);
-
-        return new ClassObject(
-            $this->baseNamespace.'\\BusinessRules\\Requestors\\'.$domain,
-            'Get'.$entityName.'RequestBuilder',
-            true
-        );
-    }
-
-    public function getGetUseCaseRequestBuilderImpl(string $className): ClassObject
-    {
-        list($domain, $entityName) = $this->getDomainAndEntityNameFromClassName($className);
-
-        return new ClassObject(
-            $this->baseNamespace.'\\BusinessRules\\UseCases\\'.$domain.'\\DTO\Request',
-            'Get'.$entityName.'RequestBuilderImpl'
-        );
-    }
-
-    public function getGetAllUseCase(string $className): ClassObject
-    {
-        list($domain, $entityName) = $this->getDomainAndEntityNameFromClassName($className);
-
-        return new ClassObject(
-            $this->baseNamespace.'\\BusinessRules\\UseCases\\'.$domain,
-            'GetAll'.Inflector::pluralize($entityName)
-        );
-    }
-
-    public function getGetAllUseCaseRequestBuilder(string $className): ClassObject
-    {
-        list($domain, $entityName) = $this->getDomainAndEntityNameFromClassName($className);
-
-        return new ClassObject(
-            $this->baseNamespace.'\\BusinessRules\\Requestors\\'.$domain,
-            'GetAll'.Inflector::pluralize($entityName).'RequestBuilder'
-        );
-    }
+//    public function getUseCaseResponse(string $className): ClassObject
+//    {
+//        list($domain, $entityName) = $this->getDomainAndEntityNameFromClassName($className);
+//
+//        return new ClassObject(
+//            $this->baseNamespace.'\\BusinessRules\\Responders\\'.$domain,
+//            $entityName.'Response',
+//            true
+//        );
+//    }
+//
+//    public function getUseCaseResponseDTO(string $className): ClassObject
+//    {
+//        list($domain, $entityName) = $this->getDomainAndEntityNameFromClassName($className);
+//
+//        return new ClassObject(
+//            $this->baseNamespace.'\\BusinessRules\\UseCases\\'.$domain.'\\DTO\\Response',
+//            $entityName.'ResponseDTO',
+//            false,
+//            true
+//        );
+//    }
+//
+//    public function getUseCaseDetailResponse(string $className): ClassObject
+//    {
+//        list($domain, $entityName) = $this->getDomainAndEntityNameFromClassName($className);
+//
+//        return new ClassObject(
+//            $this->baseNamespace.'\\BusinessRules\\Responders\\'.$domain,
+//            $entityName.'DetailResponse',
+//            true
+//        );
+//    }
+//
+//    public function getUseCaseDetailResponseDTO(string $className): ClassObject
+//    {
+//        list($domain, $entityName) = $this->getDomainAndEntityNameFromClassName($className);
+//
+//        return new ClassObject(
+//            $this->baseNamespace.'\\BusinessRules\\UseCases\\'.$domain.'\\DTO\\Response',
+//            $entityName.'DetailResponseDTO'
+//        );
+//    }
+//
+//    public function getUseCaseDetailResponseAssembler(string $className): ClassObject
+//    {
+//        list($domain, $entityName) = $this->getDomainAndEntityNameFromClassName($className);
+//
+//        return new ClassObject(
+//            $this->baseNamespace.'\\BusinessRules\\Responders\\'.$domain,
+//            $entityName.'DetailResponseAssembler',
+//            true
+//        );
+//    }
+//
+//    public function getUseCaseResponseAssemblerTrait(string $className): ClassObject
+//    {
+//        list($domain, $entityName) = $this->getDomainAndEntityNameFromClassName($className);
+//
+//        return new ClassObject(
+//            $this->baseNamespace.'\\BusinessRules\\UseCases\\'.$domain.'\\DTO\\Response',
+//            $entityName.'ResponseAssemblerTrait'
+//        );
+//    }
+//
+//    public function getUseCaseDetailResponseAssemblerImpl(string $className): ClassObject
+//    {
+//        list($domain, $entityName) = $this->getDomainAndEntityNameFromClassName($className);
+//
+//        return new ClassObject(
+//            $this->baseNamespace.'\\BusinessRules\\UseCases\\'.$domain.'\\DTO\\Response',
+//            $entityName.'DetailResponseAssemblerImpl'
+//        );
+//    }
+//
+//    public function getGetUseCase(string $className): ClassObject
+//    {
+//        list($domain, $entityName) = $this->getDomainAndEntityNameFromClassName($className);
+//
+//        return new ClassObject($this->baseNamespace.'\\BusinessRules\\UseCases\\'.$domain, 'Get'.$entityName);
+//    }
+//
+//    public function getGetUseCaseRequest(string $className): ClassObject
+//    {
+//        list($domain, $entityName) = $this->getDomainAndEntityNameFromClassName($className);
+//
+//        return new ClassObject(
+//            $this->baseNamespace.'\\BusinessRules\\Requestors\\'.$domain,
+//            'Get'.$entityName.'Request',
+//            true
+//        );
+//    }
+//
+//    public function getGetUseCaseRequestDTO(string $className): ClassObject
+//    {
+//        list($domain, $entityName) = $this->getDomainAndEntityNameFromClassName($className);
+//
+//        return new ClassObject(
+//            $this->baseNamespace.'\\BusinessRules\\UseCases\\'.$domain.'\\DTO\Request',
+//            'Get'.$entityName.'RequestDTO'
+//        );
+//    }
+//
+//    public function getGetUseCaseRequestBuilder(string $className): ClassObject
+//    {
+//        list($domain, $entityName) = $this->getDomainAndEntityNameFromClassName($className);
+//
+//        return new ClassObject(
+//            $this->baseNamespace.'\\BusinessRules\\Requestors\\'.$domain,
+//            'Get'.$entityName.'RequestBuilder',
+//            true
+//        );
+//    }
+//
+//    public function getGetUseCaseRequestBuilderImpl(string $className): ClassObject
+//    {
+//        list($domain, $entityName) = $this->getDomainAndEntityNameFromClassName($className);
+//
+//        return new ClassObject(
+//            $this->baseNamespace.'\\BusinessRules\\UseCases\\'.$domain.'\\DTO\Request',
+//            'Get'.$entityName.'RequestBuilderImpl'
+//        );
+//    }
+//
+//    public function getGetAllUseCase(string $className): ClassObject
+//    {
+//        list($domain, $entityName) = $this->getDomainAndEntityNameFromClassName($className);
+//
+//        return new ClassObject(
+//            $this->baseNamespace.'\\BusinessRules\\UseCases\\'.$domain,
+//            'GetAll'.Inflector::pluralize($entityName)
+//        );
+//    }
+//
+//    public function getGetAllUseCaseRequestBuilder(string $className): ClassObject
+//    {
+//        list($domain, $entityName) = $this->getDomainAndEntityNameFromClassName($className);
+//
+//        return new ClassObject(
+//            $this->baseNamespace.'\\BusinessRules\\Requestors\\'.$domain,
+//            'GetAll'.Inflector::pluralize($entityName).'RequestBuilder'
+//        );
+//    }
 }

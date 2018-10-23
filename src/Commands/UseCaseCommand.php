@@ -42,16 +42,12 @@ class UseCaseCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $this->container
+        $class = $this->container
             ->get('open_classrooms.code_generator.generator.business_rules.use_cases.use_case_generator')
             ->generate(
                 $input->getArgument(self::CLASS_NAME)
             );
+        var_dump($class);
         $output->write('yeah');
-//            case 'UseCase':
-//                break;
-//            default:
-//                throw new \Exception(var_dump($args));
-//        }
     }
 }

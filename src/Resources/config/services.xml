@@ -3,6 +3,7 @@
 <container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://symfony.com/schema/dic/services" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
         <service class="Symfony\Component\Filesystem\Filesystem" id="symfony.component.filesystem.filesystem"/>
+        <service class="Twig_Environment" id="templating"/>
 
         <service id="open_classrooms.code_generator.mediators.mediator" class="OpenClassrooms\CodeGenerator\Mediators\Mediator">
             <call method="setFileSystem">
@@ -15,6 +16,33 @@
             </call>
         </service>
 
-        <service id="open_classrooms.code_generator.generator.business_rules.use_cases.use_case_generator" class="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Impl\UseCaseGeneratorImpl"/>
+        <service id="open_classrooms.code_generator.generator.business_rules.use_cases.use_case_generator" class="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Impl\UseCaseGeneratorImpl">
+            <call method="setEntityClassObjectService">
+                <argument type="service" id="open_classrooms.code_generator.services.entity_class_object_service"/>
+            </call>
+            <call method="setTemplating">
+                <argument type="service" id="templating"/>
+            </call>
+            <call method="setUseCaseClassObjectService">
+                <argument type="service" id="open_classrooms.code_generator.services.use_case_class_object_service"/>
+            </call>
+        </service>
+
+        <service class="OpenClassrooms\CodeGenerator\Services\Impl\EntityClassObjectServiceImpl" id="open_classrooms.code_generator.services.entity_class_object_service">
+            <call method="setBaseNamespace">
+                <argument></argument>
+            </call>
+            <call method="setAppNamespace">
+                <argument></argument>
+            </call>
+        </service>
+        <service class="OpenClassrooms\CodeGenerator\Services\Impl\UseCaseClassObjectServiceImpl" id="open_classrooms.code_generator.services.use_case_class_object_service">
+            <call method="setBaseNamespace">
+                <argument></argument>
+            </call>
+            <call method="setAppNamespace">
+                <argument></argument>
+            </call>
+        </service>
     </services>
 </container>

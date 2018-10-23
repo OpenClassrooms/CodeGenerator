@@ -16,7 +16,7 @@ class UseCaseMediator
 
     public function generate($className)
     {
-        $$this->useCaseGenerator->generate($className);
+        $this->useCaseGenerator->generate($className);
     }
 
     public function setUseCaseGenerator(UseCaseGenerator $useCaseGenerator)

@@ -25,10 +25,11 @@ trait ClassNameUtility
 
     protected function getDomainFromClassName(string $className): string
     {
-        $rc = new \ReflectionClass($className);
-        $explodedNamespace = explode('\\', $rc->getNamespaceName());
+        $explodedNamespace = explode('\\', $this->getNamespace($className));
+
         $domain = [];
-        for ($i = count($explodedNamespace) - 1; $i <= 0 || $explodedNamespace[$i] !== 'BusinessRules'; $i--) {
+
+        for ($i = count($explodedNamespace) - 1; $i > 0 && $explodedNamespace[$i] !== 'BusinessRules'; $i--) {
             if (array_search(
                     $explodedNamespace[$i],
                     ['Entities', 'Request', 'Response', 'DTO', 'UseCases']
@@ -38,6 +39,14 @@ trait ClassNameUtility
         }
 
         return implode('\\', array_reverse($domain));
+    }
+
+    private function getNamespace(string $className)
+    {
+        $classParts = explode('\\', $className);
+        array_pop($classParts);
+
+        return implode('\\', $classParts);
     }
 
     public function getEntityNameFromClassName(string $className): string
@@ -58,9 +67,9 @@ trait ClassNameUtility
 
     protected function getShortClassNameFromClassName(string $className): string
     {
-        $rc = new \ReflectionClass($className);
+        $classParts = explode('\\', $className);
 
-        return $rc->getShortName();
+        return array_pop($classParts);
     }
 
     protected function getNamespaceFromClassName(string $className): string
