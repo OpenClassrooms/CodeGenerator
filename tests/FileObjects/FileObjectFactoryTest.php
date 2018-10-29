@@ -1,8 +1,11 @@
 <?php
 
-namespace FileObjects;
+namespace Tests\FileObjects;
 
-use FileObjects\Impl\FileObjectFactoryImpl;
+use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
+use OpenClassrooms\CodeGenerator\FileObjects\FileObjectType;
+use OpenClassrooms\CodeGenerator\FileObjects\Impl\FileObjectFactoryImpl;
+use OpenClassrooms\CodeGenerator\Tests\TestClassUtil;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\Entities\Domain\SubDomain\FunctionalEntity;
 use PHPUnit\Framework\TestCase;
 
@@ -18,13 +21,20 @@ class FileObjectFactoryTest extends TestCase
 
     public static function fileObjectDataProvider()
     {
-        $fileObject1 = new FileObject();
-        \TestClassUtil::setProperty('className', 'ViewModels\Domain\SubDomain\classAssembler', $fileObject1);
+        $i = 1;
+        $provider = [];
+        $fileObjectTypes = TestClassUtil::getConstants(FileObjectType::class);
 
-        return [
-            [FileObjectType::API_VIEW_MODEL_ASSEMBLER, FunctionalEntity::class, $fileObject1],
-//            [FileObjectType::API_VIEW_MODEL_ASSEMBLER, FunctionalEntity::class, $fileObject2]
-        ];
+        foreach ($fileObjectTypes as $fileObjectType) {
+            $fileObject{$i} = new FileObject();
+            $classShortName = TestClassUtil::getShortName(FunctionalEntity::class);
+            //TODO use baseNamespace instead of ViewModels
+            TestClassUtil::setProperty('className', 'ViewModels\Domain\SubDomain\\'.$classShortName, $fileObject{$i});
+            $provider[] = [$fileObjectType, FunctionalEntity::class, $fileObject{$i}];
+            $i++;
+        }
+
+        return $provider;
     }
 
     /**

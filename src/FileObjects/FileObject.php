@@ -1,6 +1,6 @@
 <?php
 
-namespace FileObjects;
+namespace OpenClassrooms\CodeGenerator\FileObjects;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
@@ -30,6 +30,11 @@ class FileObject
     public function alreadyExists(): bool
     {
         return $this->alreadyExists;
+    }
+
+    public function setClassName($className)
+    {
+        $this->className = $className;
     }
 
     public function getClassName(): string
