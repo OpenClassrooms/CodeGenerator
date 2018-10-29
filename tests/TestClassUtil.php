@@ -1,5 +1,7 @@
 <?php
 
+namespace OpenClassrooms\CodeGenerator\Tests;
+
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
  */
@@ -15,5 +17,17 @@ class TestClassUtil
         $property->setValue($object, $value);
 
         return $property;
+    }
+
+    public static function getShortName($className)
+    {
+        $path = explode('\\', $className);
+        return array_pop($path);
+    }
+
+    public static function getConstants($className)
+    {
+        $reflectionClass = new \ReflectionClass($className);
+        return $reflectionClass->getConstants();
     }
 }

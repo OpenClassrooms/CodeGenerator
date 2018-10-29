@@ -1,6 +1,6 @@
 <?php
 
-namespace FileObjects;
+namespace OpenClassrooms\CodeGenerator\FileObjects;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
