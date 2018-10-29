@@ -2,6 +2,8 @@
 
 namespace OpenClassrooms\CodeGenerator\Generator;
 
+use Generator\GeneratorRequest;
+
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
  */
@@ -13,8 +15,5 @@ interface Generator
 
     const ADMIN = 'admin';
 
-    /**
-     * @return string[] ClassName => content
-     */
-    public function generate(string $className, array $parameters = []): array;
+    public function generate(GeneratorRequest $request);
 }
