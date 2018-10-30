@@ -25,6 +25,8 @@ class FileObject
     public function setAlreadyExists(bool $alreadyExists)
     {
         $this->alreadyExists = $alreadyExists;
+
+        return $this;
     }
 
     public function alreadyExists(): bool
@@ -35,6 +37,8 @@ class FileObject
     public function setClassName($className)
     {
         $this->className = $className;
+
+        return $this;
     }
 
     public function getClassName(): string
@@ -50,6 +54,8 @@ class FileObject
     public function setContent(string $content)
     {
         $this->content = $content;
+
+        return $this;
     }
 
     public function getId(): string

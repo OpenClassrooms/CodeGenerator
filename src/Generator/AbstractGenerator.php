@@ -3,6 +3,7 @@
 namespace OpenClassrooms\CodeGenerator\Generator;
 
 use OpenClassrooms\CodeGenerator\ClassObjects\ClassObject;
+use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
 use OpenClassrooms\CodeGenerator\Services\FieldObjectService;
 use OpenClassrooms\CodeGenerator\Utility\ClassNameUtility;
 
@@ -38,7 +39,7 @@ abstract class AbstractGenerator implements Generator
      */
     private $useCaseResponseInterfaceClassName;
 
-    abstract public function generate(string $className, array $parameters = []): array;
+    abstract public function generate(GeneratorRequest $request): FileObject;
 
     public function setFieldObjectService(FieldObjectService $fieldObjectService)
     {
