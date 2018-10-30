@@ -1,8 +1,8 @@
 <?php
 
-namespace Generator\Tests\Api\ViewModels\DTO\Request;
+namespace OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\DTO\Request;
 
-use Generator\GeneratorRequest;
+use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>

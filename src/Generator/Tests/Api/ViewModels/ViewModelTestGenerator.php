@@ -1,34 +1,42 @@
 <?php
 
-namespace Generator\Tests\Api\ViewModels;
+namespace OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels;
 
-use FileObjects\FileObject;
-use Generator\GeneratorRequest;
-use OpenClassrooms\CodeGenerator\Generator\Generator;
+use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
+use OpenClassrooms\CodeGenerator\FileObjects\FileObjectFactory;
+use OpenClassrooms\CodeGenerator\FileObjects\FileObjectType;
+use OpenClassrooms\CodeGenerator\Gateway\FileObjectGateway;
+use OpenClassrooms\CodeGenerator\Generator\AbstractGenerator;
+use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
  */
-class ViewModelTestGenerator implements Generator
+class ViewModelTestGenerator extends AbstractGenerator
 {
     /**
-     * @var \Gateway\FileObjectGateway
+     * @var FileObjectGateway
      */
     private $fileObjectGateway;
 
     /**
-     * @param \Generator\Tests\Api\ViewModels\DTO\Request\ViewModelTestGeneratorRequestDTO $request
-     *
-     * @return \FileObjects\FileObject
+     * @var FileObjectFactory
+     */
+    private $fileObjectFactory;
+
+    /**
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
      */
     public function generate(GeneratorRequest $request): FileObject
     {
         // domain/class
-        $request->getResponseClassName();
         $fileObject = new FileObject();
+        $fileObject->setClassName($request->getResponseClassName());
 
         $skeletonModel = $this->getSkeletonModel($fileObject);
-        $fileObject->setContent($this->render('skeleteon', $skeletonModel));
+        $fileObject->setContent($this->render('Test\Skeleton\Skeleton.html.twig', [$skeletonModel]));
 
         $this->fileObjectGateway->insert($fileObject);
 
@@ -41,14 +49,21 @@ class ViewModelTestGenerator implements Generator
         // generate TestCase
         // get Assembler Name
 
-        $viewModelAssembler = $this->fileObjectFactory(FileObject::API_VIEW_MODEL_ASSEMBLER, $className);
+        $viewModelAssembler = $this->fileObjectFactory->create(FileObjectType::API_VIEW_MODEL_ASSEMBLER, $fileObject->getClassName());
+
+        $skeletonModel = new ViewModelTestListItem();
         $skeletonModel->assemblerClassName = $viewModelAssembler->getClassName();
 
         return $skeletonModel;
     }
 
-    public function setFileObjectGateway(\Gateway\FileObjectGateway $fileObjectGateway)
+    public function setFileObjectGateway(FileObjectGateway $fileObjectGateway)
     {
         $this->fileObjectGateway = $fileObjectGateway;
+    }
+
+    public function setFileObjectFactory(FileObjectFactory $fileObjectFactory)
+    {
+        $this->fileObjectFactory = $fileObjectFactory;
     }
 }
