@@ -2,7 +2,7 @@
 
 namespace OpenClassrooms\CodeGenerator\Generator;
 
-use Generator\GeneratorRequest;
+use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
@@ -15,5 +15,5 @@ interface Generator
 
     const ADMIN = 'admin';
 
-    public function generate(GeneratorRequest $request);
+    public function generate(GeneratorRequest $request): FileObject;
 }

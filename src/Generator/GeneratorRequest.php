@@ -1,11 +1,11 @@
 <?php
 
-namespace Generator;
+namespace OpenClassrooms\CodeGenerator\Generator;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
  */
 interface GeneratorRequest
 {
-
+    public function getResponseClassName(): string;
 }

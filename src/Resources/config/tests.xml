@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+
+<container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://symfony.com/schema/dic/services" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+
+        <service id="open_classrooms.code_generator.file_objects.file_object_factory" class="OpenClassrooms\CodeGenerator\FileObjects\Impl\FileObjectFactoryImpl">
+        </service>
+        <service id="open_classrooms.code_generator.gateway.file_object_gateway" class="OpenClassrooms\CodeGenerator\Gateway\FileObjectGateway">
+        </service>
+
+
+        <service id="open_classrooms.code_generator.generator.tests.api.view_models.view_model_test_generator" class="OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\ViewModelTestGenerator">
+            <call method="setFileObjectFactory">
+                <argument type="service" id="open_classrooms.code_generator.file_objects.file_object_factory"/>
+            </call>
+            <call method="setFileObjectGateway">
+                <argument type="service" id="open_classrooms.code_generator.gateway.file_object_gateway"/>
+            </call>
+        </service>
+
+    </services>
+</container>

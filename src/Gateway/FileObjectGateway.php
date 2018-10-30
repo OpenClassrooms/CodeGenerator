@@ -1,8 +1,9 @@
 <?php
 
-namespace Gateway;
+namespace OpenClassrooms\CodeGenerator\Gateway;
 
-use FileObjects\FileObject;
+
+use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
