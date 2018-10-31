@@ -38,6 +38,8 @@ class UseCaseCommand extends Command
             'with-response',
             InputArgument::OPTIONAL
         );
+
+
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)

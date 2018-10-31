@@ -26,4 +26,5 @@ require CODE_GENERATOR_COMPOSER_INSTALL;
 
 $application = new \Symfony\Component\Console\Application();
 $application->add(new \OpenClassrooms\CodeGenerator\Commands\UseCaseCommand());
+$application->add(new \OpenClassrooms\CodeGenerator\Commands\Test\GenerateViewModelTestCommand());
 $application->run();
