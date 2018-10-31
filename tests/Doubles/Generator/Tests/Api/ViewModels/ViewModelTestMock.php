@@ -1,9 +1,9 @@
 <?php
 
-namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Viewmodels;
+namespace OpenClassrooms\CodeGenerator\Tests\Doubles\ViewModels;
 
 /**
- * @author Samuel Gomis <samuel.gomis@openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 class ViewModelTestMock
 {

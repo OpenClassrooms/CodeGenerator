@@ -7,7 +7,7 @@ use OpenClassrooms\CodeGenerator\FileObjects\FileObjectFactory;
 use OpenClassrooms\CodeGenerator\Gateway\FileObjectGateway;
 
 /**
- * @author Samuel Gomis <samuel.gomis@openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 class FileObjectGatewayMock implements FileObjectGateway
 {

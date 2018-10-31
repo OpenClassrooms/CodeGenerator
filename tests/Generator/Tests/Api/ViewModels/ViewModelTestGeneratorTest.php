@@ -2,16 +2,15 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Generator\Tests\Api\ViewModels;
 
-use OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\DTO\Request\ViewModelTestGeneratorRequestDTO;
+use OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\DTO\Request\ViewModelTestGeneratorRequest;
+use OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\DTO\Request\ViewModelTestGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\ViewModelTestGenerator;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\FileObjectFactoryMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\FileObjectGatewayMock;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\TemplatingMock;
-use OpenClassrooms\CodeGenerator\Tests\TestClassUtil;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @author Samuel Gomis <samuel.gomis@openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 class ViewModelTestGeneratorTest extends TestCase
 {
@@ -21,31 +20,43 @@ class ViewModelTestGeneratorTest extends TestCase
     private $viewModelTestGenerator;
 
     /**
+     * @var string
+     */
+    private $fileContent;
+
+    /**
+     * @var ViewModelTestGeneratorRequest
+     */
+    private $request;
+
+    /**
      * @test
      */
     public function generate()
     {
-        $generatorRequest = new ViewModelTestGeneratorRequestDTO();
-        $generatorRequest->responseClassName = ViewModelTestGenerator::class;
+        $this->request->responseClassName = ViewModelTestGenerator::class;
 
-        $actual = $this->viewModelTestGenerator->generate($generatorRequest);
+        $actualFileObject = $this->viewModelTestGenerator->generate($this->request);
 
-        $this->assertSame('test', $actual);
+        $this->assertContains($this->fileContent, $actualFileObject->getContent());
     }
 
     public function setUp()
     {
-        $this->viewModelTestGenerator = new ViewModelTestGenerator();
-        $templatingMock = $this->createMock(\Twig_Environment::class);
-        $templatingMock->method('render')->willReturn('');
+        $this->request = (new ViewModelTestGeneratorRequestBuilderImpl())->create()->build();
+        $this->fileContent = file_get_contents('../../../../../src/Skeleton/App/Tests/ViewModelTest.php.twig');
 
+        $templatingMock = $this->createMock(\Twig_Environment::class);
+        $templatingMock->method('render')->willReturn($this->fileContent);
+
+        $this->viewModelTestGenerator = new ViewModelTestGenerator();
         $this->viewModelTestGenerator->setFileObjectFactory(new FileObjectFactoryMock());
         $this->viewModelTestGenerator->setFileObjectGateway(new FileObjectGatewayMock());
 
         $this->viewModelTestGenerator->setUseCaseInterfaceClassName(__CLASS__);
         $this->viewModelTestGenerator->setUseCaseRequestInterfaceClassName(__CLASS__);
         $this->viewModelTestGenerator->setUseCaseResponseInterfaceClassName(__CLASS__);
-
         $this->viewModelTestGenerator->setTemplating($templatingMock);
+
     }
 }

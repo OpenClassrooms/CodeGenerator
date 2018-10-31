@@ -6,7 +6,7 @@ use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
 use OpenClassrooms\CodeGenerator\FileObjects\FileObjectFactory;
 
 /**
- * @author Samuel Gomis <samuel.gomis@openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 class FileObjectFactoryMock implements FileObjectFactory
 {
