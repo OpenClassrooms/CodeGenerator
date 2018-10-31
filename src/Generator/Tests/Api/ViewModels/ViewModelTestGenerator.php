@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels;
 
@@ -36,7 +36,7 @@ class ViewModelTestGenerator extends AbstractGenerator
         $fileObject->setClassName($request->getResponseClassName());
 
         $skeletonModel = $this->getSkeletonModel($fileObject);
-        $fileObject->setContent($this->render('Test\Skeleton\Skeleton.html.twig', [$skeletonModel]));
+        $fileObject->setContent($this->render('Skeleton/App/Tests/ViewModelTest.php.twig', [$skeletonModel]));
 
         $this->fileObjectGateway->insert($fileObject);
 
@@ -51,7 +51,7 @@ class ViewModelTestGenerator extends AbstractGenerator
 
         $viewModelAssembler = $this->fileObjectFactory->create(FileObjectType::API_VIEW_MODEL_ASSEMBLER, $fileObject->getClassName());
 
-        $skeletonModel = new ViewModelTestListItem();
+        $skeletonModel = new ViewModelTestDetail();
         $skeletonModel->assemblerClassName = $viewModelAssembler->getClassName();
 
         return $skeletonModel;

@@ -7,7 +7,7 @@ use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
  */
-class ViewModelTestGeneratorRequestDTO implements GeneratorRequest
+class ViewModelTestGeneratorRequestDTO implements ViewModelTestGeneratorRequest
 {
     /**
      * @var string
