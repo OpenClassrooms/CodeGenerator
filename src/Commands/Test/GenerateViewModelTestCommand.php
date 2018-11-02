@@ -60,8 +60,6 @@ class GenerateViewModelTestCommand extends Command
             ->generate($buildedRequest);
 
         $output->writeln('Short classname: '. $responseShortClassName);
-
-
     }
 
 }

@@ -7,5 +7,5 @@ namespace OpenClassrooms\CodeGenerator\Generator;
  */
 interface GeneratorRequest
 {
-    public function getResponseClassName(): string;
+
 }

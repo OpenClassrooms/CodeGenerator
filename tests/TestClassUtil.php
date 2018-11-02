@@ -19,15 +19,10 @@ class TestClassUtil
         return $property;
     }
 
-    public static function getShortName($className)
-    {
-        $path = explode('\\', $className);
-        return array_pop($path);
-    }
-
     public static function getConstants($className)
     {
         $reflectionClass = new \ReflectionClass($className);
+
         return $reflectionClass->getConstants();
     }
 }
