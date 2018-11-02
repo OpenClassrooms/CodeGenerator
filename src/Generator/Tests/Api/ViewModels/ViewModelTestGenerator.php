@@ -8,6 +8,7 @@ use OpenClassrooms\CodeGenerator\FileObjects\FileObjectType;
 use OpenClassrooms\CodeGenerator\Gateway\FileObjectGateway;
 use OpenClassrooms\CodeGenerator\Generator\AbstractGenerator;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
+use OpenClassrooms\CodeGenerator\Generator\Tests\SkeletonModels\ViewModels\Impl\ViewModelTestDetailAssemblerImpl;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
@@ -51,8 +52,7 @@ class ViewModelTestGenerator extends AbstractGenerator
 
         $viewModelAssembler = $this->fileObjectFactory->create(FileObjectType::API_VIEW_MODEL_ASSEMBLER, $fileObject->getClassName());
 
-        $skeletonModel = new ViewModelTestDetail();
-        $skeletonModel->assemblerClassName = $viewModelAssembler->getClassName();
+        $skeletonModel = (new ViewModelTestDetailAssemblerImpl())->create($viewModelAssembler);
 
         return $skeletonModel;
     }

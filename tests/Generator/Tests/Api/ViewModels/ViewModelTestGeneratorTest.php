@@ -31,6 +31,7 @@ class ViewModelTestGeneratorTest extends TestCase
 
     /**
      * @test
+     * @group viewmodels
      */
     public function generate()
     {

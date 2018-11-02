@@ -2,7 +2,7 @@
 
 namespace OpenClassrooms\CodeGenerator\Generator\Tests\SkeletonModels\ViewModels\Impl;
 
-use OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\DTO\Response\ViewModelTestDetailResponse;
+use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
 use OpenClassrooms\CodeGenerator\Generator\Tests\SkeletonModels\ViewModels\ViewModelTestDetail;
 use OpenClassrooms\CodeGenerator\Generator\Tests\SkeletonModels\ViewModels\ViewModelTestDetailAssembler;
 
@@ -11,9 +11,12 @@ use OpenClassrooms\CodeGenerator\Generator\Tests\SkeletonModels\ViewModels\ViewM
  */
 class ViewModelTestDetailAssemblerImpl implements ViewModelTestDetailAssembler
 {
-    public function create(ViewModelTestDetailResponse $viewModelTest): ViewModelTestDetail
+    public function create(FileObject $viewModelTest): ViewModelTestDetail
     {
-        // TODO: Implement create() method.
+        $skeletonModel = new ViewModelTestDetailImpl();
+        $skeletonModel->assemblerClassName = $viewModelTest->getClassName();
+
+        return $skeletonModel;
     }
 
 }
