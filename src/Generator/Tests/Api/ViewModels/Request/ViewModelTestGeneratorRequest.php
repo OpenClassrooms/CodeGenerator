@@ -1,6 +1,6 @@
 <?php
 
-namespace OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\DTO\Request;
+namespace OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\Request;
 
 
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;

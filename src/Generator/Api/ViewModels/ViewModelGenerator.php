@@ -1,32 +1,32 @@
-<?php declare(strict_types=1);
+<?php
 
-namespace OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels;
+namespace Generator\Api\ViewModels;
 
 use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
-use OpenClassrooms\CodeGenerator\FileObjects\FileObjectFactory;
 use OpenClassrooms\CodeGenerator\FileObjects\FileObjectType;
-use OpenClassrooms\CodeGenerator\Gateway\FileObjectGateway;
-use OpenClassrooms\CodeGenerator\Generator\AbstractGenerator;
+use OpenClassrooms\CodeGenerator\Generator\Generator;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\Tests\SkeletonModels\ViewModels\Impl\ViewModelTestDetailAssemblerImpl;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
  */
-class ViewModelTestGenerator extends AbstractGenerator
+class ViewModelGenerator implements Generator
 {
     /**
-     * @var FileObjectGateway
-     */
-    private $fileObjectGateway;
-
-    /**
-     * @var FileObjectFactory
+     * @var \OpenClassrooms\CodeGenerator\FileObjects\FileObjectFactory
      */
     private $fileObjectFactory;
 
     /**
-     * @param \OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\Request\ViewModelTestGeneratorRequest $request
+     * @var \OpenClassrooms\CodeGenerator\Gateway\FileObjectGateway
+     */
+    private $fileObjectGateway;
+
+    /**
+     * @param \Generator\Api\ViewModels\Request\ViewModelGeneratorRequest $request
+     *
+     * @return \OpenClassrooms\CodeGenerator\FileObjects\FileObject
      */
     public function generate(GeneratorRequest $request): FileObject
     {
@@ -48,7 +48,7 @@ class ViewModelTestGenerator extends AbstractGenerator
         // generate TestCase
         // get Assembler Name
 
-        $viewModelAssembler = $this->fileObjectFactory->create(FileObjectType::API_VIEW_MODEL_ASSEMBLER, $fileObject->getClassName());
+        $viewModel = $this->fileObjectFactory->create(FileObjectType::API_VIEW_MODEL, $fileObject->getClassName());
 
         $skeletonModel = (new ViewModelTestDetailAssemblerImpl())->create($viewModelAssembler);
 
@@ -64,4 +64,5 @@ class ViewModelTestGenerator extends AbstractGenerator
     {
         $this->fileObjectFactory = $fileObjectFactory;
     }
+
 }
