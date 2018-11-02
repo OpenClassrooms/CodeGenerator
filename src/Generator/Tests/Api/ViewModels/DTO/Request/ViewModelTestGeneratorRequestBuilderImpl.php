@@ -13,9 +13,10 @@ class ViewModelTestGeneratorRequestBuilderImpl implements ViewModelTestGenerator
      */
     private $request;
 
-    public function create(): ViewModelTestGeneratorRequestBuilder
+    public function create(string $argument): ViewModelTestGeneratorRequestBuilder
     {
         $this->request = new ViewModelTestGeneratorRequestDTO();
+        $this->request->responseClassName = $argument;
 
         return $this;
     }

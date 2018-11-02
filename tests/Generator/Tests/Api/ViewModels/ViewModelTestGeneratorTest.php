@@ -4,9 +4,9 @@ namespace OpenClassrooms\CodeGenerator\Tests\Generator\Tests\Api\ViewModels;
 
 use OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\DTO\Request\ViewModelTestGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\DTO\Request\ViewModelTestGeneratorRequestBuilderImpl;
-use OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\ViewModelTestGenerator;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\FileObjectFactoryMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\FileObjectGatewayMock;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Generator\Tests\Api\ViewModels\ViewModelTestGeneratorMock;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -15,7 +15,7 @@ use PHPUnit\Framework\TestCase;
 class ViewModelTestGeneratorTest extends TestCase
 {
     /**
-     * @var ViewModelTestGenerator
+     * @var ViewModelTestGeneratorMock
      */
     private $viewModelTestGenerator;
 
@@ -35,7 +35,7 @@ class ViewModelTestGeneratorTest extends TestCase
      */
     public function generate()
     {
-        $this->request->responseClassName = ViewModelTestGenerator::class;
+        $this->request->responseClassName = ViewModelTestGeneratorMock::class;
 
         $actualFileObject = $this->viewModelTestGenerator->generate($this->request);
 
@@ -44,13 +44,13 @@ class ViewModelTestGeneratorTest extends TestCase
 
     public function setUp()
     {
-        $this->request = (new ViewModelTestGeneratorRequestBuilderImpl())->create()->build();
-        $this->fileContent = file_get_contents('../../../../../src/Skeleton/App/Tests/ViewModelTest.php.twig');
+        $this->request = (new ViewModelTestGeneratorRequestBuilderImpl())->create('ShortClassName')->build();
+        $this->fileContent = file_get_contents(__DIR__.'/../../../../../src/Skeleton/App/Tests/ViewModelTest.php.twig');
 
         $templatingMock = $this->createMock(\Twig_Environment::class);
         $templatingMock->method('render')->willReturn($this->fileContent);
 
-        $this->viewModelTestGenerator = new ViewModelTestGenerator();
+        $this->viewModelTestGenerator = new ViewModelTestGeneratorMock();
         $this->viewModelTestGenerator->setFileObjectFactory(new FileObjectFactoryMock());
         $this->viewModelTestGenerator->setFileObjectGateway(new FileObjectGatewayMock());
 

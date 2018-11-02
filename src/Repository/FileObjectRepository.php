@@ -1,9 +1,10 @@
 <?php
 
-namespace Repository;
+namespace OpenClassrooms\CodeGenerator\Repository;
 
-use FileObjects\FileObject;
-use Gateway\FileObjectGateway;
+
+use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
+use OpenClassrooms\CodeGenerator\Gateway\FileObjectGateway;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
@@ -11,7 +12,7 @@ use Gateway\FileObjectGateway;
 class FileObjectRepository implements FileObjectGateway
 {
     /**
-     * @var \FileObjects\FileObject[]
+     * @var FileObject[]
      */
     private static $fileObjects = [];
 

@@ -40,6 +40,7 @@ class FileObjectFactoryTest extends TestCase
 
     /**
      * @test
+     * @group viewmodels
      * @dataProvider fileObjectDataProvider
      */
     public function create_ReturnFileObject($inputType, $inputClassName, FileObject $expected)

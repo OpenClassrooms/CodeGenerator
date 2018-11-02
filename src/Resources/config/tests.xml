@@ -5,7 +5,7 @@
 
         <service id="open_classrooms.code_generator.file_objects.file_object_factory" class="OpenClassrooms\CodeGenerator\FileObjects\Impl\FileObjectFactoryImpl">
         </service>
-        <service id="open_classrooms.code_generator.gateway.file_object_gateway" class="OpenClassrooms\CodeGenerator\Gateway\FileObjectGateway">
+        <service id="open_classrooms.code_generator.gateway.file_object_gateway" class="OpenClassrooms\CodeGenerator\Gateway\Impl\FileObjectGatewayImpl">
         </service>
 
 
