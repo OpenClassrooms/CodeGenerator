@@ -1,6 +1,6 @@
 <?php
 
-namespace OpenClassrooms\CodeGenerator\Tests\Doubles\ViewModels;
+namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Generator\Tests\Api\ViewModels;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>

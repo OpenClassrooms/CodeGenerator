@@ -7,7 +7,7 @@ namespace OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\DTO\Reques
  */
 interface ViewModelTestGeneratorRequestBuilder
 {
-    public function create(): ViewModelTestGeneratorRequestBuilder;
+    public function create(string $argument): ViewModelTestGeneratorRequestBuilder;
 
     public function build(): ViewModelTestGeneratorRequest;
 }

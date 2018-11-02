@@ -3,11 +3,12 @@
 namespace OpenClassrooms\CodeGenerator\Tests\Commands\Test;
 
 use OpenClassrooms\CodeGenerator\Commands\Test\GenerateViewModelTestCommand;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Generator\Tests\Api\ViewModels\ViewModelTestGeneratorMock;
+use OpenClassrooms\CodeGenerator\Tests\TestClassUtil;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Application;
-use Symfony\Component\Console\Input\StringInput;
-use Symfony\Component\Console\Output\BufferedOutput;
 use Symfony\Component\Console\Tester\CommandTester;
+use Symfony\Component\DependencyInjection\Container;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
@@ -28,6 +29,11 @@ class GenerateViewModelTestCommandTest extends TestCase
      * @var CommandTester
      */
     private $commandTester;
+
+    /**
+     * @var Container
+     */
+    private $container;
 
 
     /**
@@ -52,7 +58,6 @@ class GenerateViewModelTestCommandTest extends TestCase
 //        $output = $commandTester->getDisplay();
 //
 //        self::assertContains(GenerateViewModelTestCommand::HELP, $output);
-
     }
 
     /**
@@ -69,17 +74,35 @@ class GenerateViewModelTestCommandTest extends TestCase
         self::assertContains('ok', $output);
     }
 
-
-
+    /**
+     * @test
+     */
     public function generateCommand_ReturnFilePaths()
     {
+
+    }
+
+    /**
+     * @test
+     */
+    public function generateCommand_WorkingParams()
+    {
+        $expected = 'TestIsWorking';
         $this->commandTester->execute([
             'command' => $this->command->getName(),
+            'responseShortClassName' => $expected,
         ]);
 
         $output = $this->commandTester->getDisplay();
 
-        self::assertContains('ok', $output);
+        self::assertContains($expected, $output);
+    }
+
+    /**
+     * @test
+     */
+    public function generateCommand_NotWorkingParams()
+    {
     }
 
     protected function setUp()
@@ -88,5 +111,8 @@ class GenerateViewModelTestCommandTest extends TestCase
         $this->application = new Application();
         $this->application->add($this->command);
         $this->commandTester = new CommandTester($this->command);
+        $this->container = $this->createMock(Container::class);
+        $this->container->method('get')->willReturn(new ViewModelTestGeneratorMock());
+        TestClassUtil::setProperty('container', $this->container, $this->command);
     }
 }
