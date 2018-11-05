@@ -1,6 +1,6 @@
 <?php
 
-namespace Generator\Tests\SkeletonModels\ViewModels;
+namespace OpenClassrooms\CodeGenerator\Generator\Tests\SkeletonModels\ViewModels;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>

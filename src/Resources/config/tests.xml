@@ -7,6 +7,8 @@
         </service>
         <service id="open_classrooms.code_generator.gateway.file_object_gateway" class="OpenClassrooms\CodeGenerator\Gateway\Impl\FileObjectGatewayImpl">
         </service>
+        <service id="open_classrooms.code_generator.generator.tests.skeleton_models.view_models.view_model_test_detail_assembler" class="OpenClassrooms\CodeGenerator\Generator\Tests\SkeletonModels\ViewModels\Impl\ViewModelTestDetailAssemblerImpl">
+        </service>
 
 
         <service id="open_classrooms.code_generator.generator.tests.api.view_models.view_model_test_generator" class="OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\ViewModelTestGenerator">
@@ -15,6 +17,9 @@
             </call>
             <call method="setFileObjectGateway">
                 <argument type="service" id="open_classrooms.code_generator.gateway.file_object_gateway"/>
+            </call>
+            <call method="setViewModelTestDetailAssembler">
+                <argument type="service" id="open_classrooms.code_generator.generator.tests.skeleton_models.view_models.view_model_test_detail_assembler"/>
             </call>
         </service>
 
