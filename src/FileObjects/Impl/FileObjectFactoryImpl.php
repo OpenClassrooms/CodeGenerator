@@ -36,42 +36,48 @@ class FileObjectFactoryImpl implements FileObjectFactory
 
         switch ($type) {
             case FileObjectType::API_VIEW_MODEL_ASSEMBLER:
-                $fileObject->setClassName($this->baseNamespace.'ViewModels\\'.$domain.'\\'.$entity.'Assembler');
+                $fileObject->setClassName(
+                    $this->baseNamespace . 'ViewModels\\' . $domain . '\\' . $entity . 'Assembler'
+                );
                 break;
             case FileObjectType::API_VIEW_MODEL_ASSEMBLER_TEST:
                 $fileObject->setClassName(
-                    $this->testsBaseNamespace.'ViewModels\\'.$domain.'\\'.$entity.'AssemblerTest'
+                    $this->testsBaseNamespace . 'ViewModels\\' . $domain . '\\' . $entity . 'AssemblerTest'
                 );
                 break;
             case FileObjectType::API_VIEW_MODEL_ASSEMBLER_IMPL:
                 $fileObject->setClassName(
-                    $this->baseNamespace.'ViewModels\\'.$domain.'\\Impl\\'.$entity.'AssemblerImpl'
+                    $this->baseNamespace . 'ViewModels\\' . $domain . '\\Impl\\' . $entity . 'AssemblerImpl'
                 );
                 break;
             case FileObjectType::API_VIEW_MODEL:
-                $fileObject->setClassName($this->baseNamespace.'ViewModels\\'.$domain.'\\'.$entity);
+                $fileObject->setClassName($this->baseNamespace . 'ViewModels\\' . $domain . '\\' . $entity);
                 break;
             case FileObjectType::API_VIEW_MODEL_DETAIL:
-                $fileObject->setClassName($this->baseNamespace.'ViewModels\\'.$domain.'\\'.$entity.'Detail');
+                $fileObject->setClassName($this->baseNamespace . 'ViewModels\\' . $domain . '\\' . $entity . 'Detail');
                 break;
             case FileObjectType::API_VIEW_MODEL_DETAIL_IMPL:
                 $fileObject->setClassName(
-                    $this->baseNamespace.'ViewModels\\'.$domain.'\\Impl\\'.$entity.'DetailImpl'
+                    $this->baseNamespace . 'ViewModels\\' . $domain . '\\Impl\\' . $entity . 'DetailImpl'
                 );
                 break;
             case FileObjectType::API_VIEW_MODEL_LIST_ITEM:
-                $fileObject->setClassName($this->baseNamespace.'ViewModels\\'.$domain.'\\'.$entity.'ListItem');
+                $fileObject->setClassName(
+                    $this->baseNamespace . 'ViewModels\\' . $domain . '\\' . $entity . 'ListItem'
+                );
                 break;
             case FileObjectType::API_VIEW_MODEL_LIST_ITEM_IMPL:
                 $fileObject->setClassName(
-                    $this->baseNamespace.'ViewModels\\'.$domain.'\\Impl\\'.$entity.'ListItemImpl'
+                    $this->baseNamespace . 'ViewModels\\' . $domain . '\\Impl\\' . $entity . 'ListItemImpl'
                 );
                 break;
             case FileObjectType::API_VIEW_MODEL_STUB:
-                $fileObject->setClassName($this->stubNamespace.$domain.'\\'.$entity.'Stub');
+                $fileObject->setClassName($this->stubNamespace . $domain . '\\' . $entity . 'Stub');
                 break;
             case FileObjectType::API_VIEW_MODEL_TEST_CASE:
-                $fileObject->setClassName($this->testsBaseNamespace.'ViewModels\\'.$domain.'\\'.$entity.'TestCase');
+                $fileObject->setClassName(
+                    $this->stubNamespace . 'ViewModels\\' . $domain . '\\' . $entity . 'TestCase'
+                );
                 break;
             default:
                 throw new \InvalidArgumentException($type);

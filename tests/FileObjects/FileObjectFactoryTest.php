@@ -19,7 +19,7 @@ class FileObjectFactoryTest extends TestCase
 
     const TEST_BASE_NAMESPACE = 'Test\Base\Namespace\\';
 
-    const STUB_NAMESPACE = 'Test\Doubles\\';
+    const STUB_NAMESPACE = self::TEST_BASE_NAMESPACE . 'Doubles\\';
 
     /**
      * @var FileObjectFactory
@@ -87,7 +87,7 @@ class FileObjectFactoryTest extends TestCase
         $fileObjectViewModelAssembler = new FileObject();
         TestClassUtil::setProperty(
             'className',
-            'ViewModels\Domain\SubDomain\\' . self::getShortClassName(FunctionalEntity::class) . 'Assembler',
+            'ViewModels\Domain\SubDomain\\' . self::getEntityName() . 'Assembler',
             $fileObjectViewModelAssembler
         );
 
@@ -99,9 +99,7 @@ class FileObjectFactoryTest extends TestCase
         $fileObjectViewModelAssemblerTest = new FileObject();
         TestClassUtil::setProperty(
             'className',
-            self::TEST_BASE_NAMESPACE . 'ViewModels\Domain\SubDomain\\' . self::getShortClassName(
-                FunctionalEntity::class
-            ) . 'AssemblerTest',
+            self::TEST_BASE_NAMESPACE . 'ViewModels\Domain\SubDomain\\' . self::getEntityName() . 'AssemblerTest',
             $fileObjectViewModelAssemblerTest
         );
 
@@ -113,7 +111,7 @@ class FileObjectFactoryTest extends TestCase
         $fileObjectViewModelDetail = new FileObject();
         TestClassUtil::setProperty(
             'className',
-            'ViewModels\Domain\SubDomain\\' . self::getShortClassName(FunctionalEntity::class) . 'Detail',
+            'ViewModels\Domain\SubDomain\\' . self::getEntityName() . 'Detail',
             $fileObjectViewModelDetail
         );
 
@@ -125,7 +123,7 @@ class FileObjectFactoryTest extends TestCase
         $fileObjectViewModel = new FileObject();
         TestClassUtil::setProperty(
             'className',
-            'ViewModels\Domain\SubDomain\\' . self::getShortClassName(FunctionalEntity::class),
+            'ViewModels\Domain\SubDomain\\' . self::getEntityName(),
             $fileObjectViewModel
         );
 
@@ -137,7 +135,7 @@ class FileObjectFactoryTest extends TestCase
         $fileObjectViewModelListItem = new FileObject();
         TestClassUtil::setProperty(
             'className',
-            'ViewModels\Domain\SubDomain\\' . self::getShortClassName(FunctionalEntity::class) . 'ListItem',
+            'ViewModels\Domain\SubDomain\\' . self::getEntityName() . 'ListItem',
             $fileObjectViewModelListItem
         );
 
@@ -149,9 +147,7 @@ class FileObjectFactoryTest extends TestCase
         $fileObjectViewModelStub = new FileObject();
         TestClassUtil::setProperty(
             'className',
-            self::STUB_NAMESPACE.'Domain\SubDomain\\' . self::getShortClassName(
-                FunctionalEntity::class
-            ) . 'Stub',
+            self::STUB_NAMESPACE . 'Domain\SubDomain\\' . self::getEntityName() . 'Stub',
             $fileObjectViewModelStub
         );
 
@@ -163,9 +159,7 @@ class FileObjectFactoryTest extends TestCase
         $fileObjectViewModelTestCase = new FileObject();
         TestClassUtil::setProperty(
             'className',
-            self::TEST_BASE_NAMESPACE.'ViewModels\Domain\SubDomain\\' . self::getShortClassName(
-                FunctionalEntity::class
-            ) . 'TestCase',
+            self::STUB_NAMESPACE . 'ViewModels\Domain\SubDomain\\' . self::getEntityName() . 'TestCase',
             $fileObjectViewModelTestCase
         );
 
@@ -177,9 +171,7 @@ class FileObjectFactoryTest extends TestCase
         $fileObjectViewModelAssemblerImpl = new FileObject();
         TestClassUtil::setProperty(
             'className',
-            'ViewModels\Domain\SubDomain\Impl\\' . self::getShortClassName(
-                FunctionalEntity::class
-            ) . 'AssemblerImpl',
+            'ViewModels\Domain\SubDomain\Impl\\' . self::getEntityName() . 'AssemblerImpl',
             $fileObjectViewModelAssemblerImpl
         );
 
@@ -191,9 +183,7 @@ class FileObjectFactoryTest extends TestCase
         $fileObjectViewModelListItemImpl = new FileObject();
         TestClassUtil::setProperty(
             'className',
-            'ViewModels\Domain\SubDomain\Impl\\' . self::getShortClassName(
-                FunctionalEntity::class
-            ) . 'ListItemImpl',
+            'ViewModels\Domain\SubDomain\Impl\\' . self::getEntityName() . 'ListItemImpl',
             $fileObjectViewModelListItemImpl
         );
 
@@ -205,9 +195,7 @@ class FileObjectFactoryTest extends TestCase
         $fileObjectViewModelDetailImpl = new FileObject();
         TestClassUtil::setProperty(
             'className',
-            'ViewModels\Domain\SubDomain\Impl\\' . self::getShortClassName(
-                FunctionalEntity::class
-            ) . 'DetailImpl',
+            'ViewModels\Domain\SubDomain\Impl\\' . self::getEntityName() . 'DetailImpl',
             $fileObjectViewModelDetailImpl
         );
 
@@ -219,6 +207,11 @@ class FileObjectFactoryTest extends TestCase
         $rc = new \ReflectionClass($className);
 
         return $rc->getShortName();
+    }
+
+    private static function getEntityName(): string
+    {
+        return self::getShortClassName(FunctionalEntity::class);
     }
 
     /**

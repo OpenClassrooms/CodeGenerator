@@ -2,6 +2,8 @@
 
 namespace OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\DTO\Request;
 
+use OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\Request\ViewModelTestGeneratorRequest;
+use OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\Request\ViewModelTestGeneratorRequestBuilder;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
@@ -9,18 +11,23 @@ namespace OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\DTO\Reques
 class ViewModelTestGeneratorRequestBuilderImpl implements ViewModelTestGeneratorRequestBuilder
 {
     /**
-     * @var ViewModelTestGeneratorRequest
+     * @var ViewModelTestGeneratorRequestDTO
      */
     private $request;
 
-    public function create(string $argument): ViewModelTestGeneratorRequestBuilder
+    public function create(): ViewModelTestGeneratorRequestBuilder
     {
         $this->request = new ViewModelTestGeneratorRequestDTO();
-        $this->request->responseClassName = $argument;
 
         return $this;
     }
 
+    public function withResponseClassName(string $responseClassName): ViewModelTestGeneratorRequestBuilder
+    {
+        $this->request->responseClassName = $responseClassName;
+
+        return $this;
+    }
 
     public function build(): ViewModelTestGeneratorRequest
     {
