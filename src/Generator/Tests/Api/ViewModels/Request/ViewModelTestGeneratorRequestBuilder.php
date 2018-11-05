@@ -7,7 +7,9 @@ namespace OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\Request;
  */
 interface ViewModelTestGeneratorRequestBuilder
 {
-    public function create(string $argument): ViewModelTestGeneratorRequestBuilder;
+    public function create(): ViewModelTestGeneratorRequestBuilder;
+
+    public function withResponseClassName(string $responseClassName): ViewModelTestGeneratorRequestBuilder;
 
     public function build(): ViewModelTestGeneratorRequest;
 }

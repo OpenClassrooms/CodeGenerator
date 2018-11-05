@@ -21,6 +21,9 @@
             <call method="setViewModelTestDetailAssembler">
                 <argument type="service" id="open_classrooms.code_generator.generator.tests.skeleton_models.view_models.view_model_test_detail_assembler"/>
             </call>
+            <call method="setTemplatingFactory">
+                <argument type="service" id=""/>
+            </call>
         </service>
 
     </services>

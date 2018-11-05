@@ -9,6 +9,7 @@ use OpenClassrooms\CodeGenerator\Gateway\FileObjectGateway;
 use OpenClassrooms\CodeGenerator\Generator\AbstractGenerator;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\Tests\SkeletonModels\ViewModels\ViewModelTestDetailAssembler;
+use OpenClassrooms\CodeGenerator\Services\TemplatingFactory;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
@@ -31,6 +32,11 @@ class ViewModelTestGenerator extends AbstractGenerator
     private $viewModelTestDetailAssembler;
 
     /**
+     * @var TemplatingFactory
+     */
+    private $templatingFactory;
+
+    /**
      * @param \OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\Request\ViewModelTestGeneratorRequest $request
      */
     public function generate(GeneratorRequest $request): FileObject
@@ -40,6 +46,8 @@ class ViewModelTestGenerator extends AbstractGenerator
         $fileObject->setClassName($request->getResponseClassName());
 
         $skeletonModel = $this->getSkeletonModel($fileObject);
+
+        //use templating
         $fileObject->setContent($this->render('Skeleton/App/Tests/ViewModelTest.php.twig', [$skeletonModel]));
 
         $this->fileObjectGateway->insert($fileObject);
