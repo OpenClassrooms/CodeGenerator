@@ -8,7 +8,7 @@ use OpenClassrooms\CodeGenerator\FileObjects\FileObjectType;
 use OpenClassrooms\CodeGenerator\Gateway\FileObjectGateway;
 use OpenClassrooms\CodeGenerator\Generator\AbstractGenerator;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
-use OpenClassrooms\CodeGenerator\Generator\Tests\SkeletonModels\ViewModels\Impl\ViewModelTestDetailAssemblerImpl;
+use OpenClassrooms\CodeGenerator\Generator\Tests\SkeletonModels\ViewModels\ViewModelTestDetailAssembler;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
@@ -24,6 +24,11 @@ class ViewModelTestGenerator extends AbstractGenerator
      * @var FileObjectFactory
      */
     private $fileObjectFactory;
+
+    /**
+     * @var ViewModelTestDetailAssembler
+     */
+    private $viewModelTestDetailAssembler;
 
     /**
      * @param \OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\Request\ViewModelTestGeneratorRequest $request
@@ -50,7 +55,7 @@ class ViewModelTestGenerator extends AbstractGenerator
 
         $viewModelAssembler = $this->fileObjectFactory->create(FileObjectType::API_VIEW_MODEL_ASSEMBLER, $fileObject->getClassName());
 
-        $skeletonModel = (new ViewModelTestDetailAssemblerImpl())->create($viewModelAssembler);
+        $skeletonModel = $this->viewModelTestDetailAssembler->create($viewModelAssembler);
 
         return $skeletonModel;
     }
@@ -63,5 +68,10 @@ class ViewModelTestGenerator extends AbstractGenerator
     public function setFileObjectFactory(FileObjectFactory $fileObjectFactory)
     {
         $this->fileObjectFactory = $fileObjectFactory;
+    }
+
+    public function setViewModelTestDetailAssembler(ViewModelTestDetailAssembler $viewModelTestDetailAssembler)
+    {
+        $this->viewModelTestDetailAssembler = $viewModelTestDetailAssembler;
     }
 }
