@@ -18,8 +18,7 @@ class ViewModelDetailAssemblerImpl implements ViewModelDetailAssembler
         $skeletonModel->className = $viewModel->getClassName();
         $skeletonModel->namespace = $viewModel->getClassName();
         $skeletonModel->shortClassName = $viewModel->getShortClassName();
-
-        //TODO map fields
+        $skeletonModel->fields = $viewModel->getFields();
 
         return $skeletonModel;
     }

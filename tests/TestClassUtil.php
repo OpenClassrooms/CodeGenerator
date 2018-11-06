@@ -25,4 +25,11 @@ class TestClassUtil
 
         return $reflectionClass->getConstants();
     }
+
+    public static function getShortClassName(string $className)
+    {
+        $rc = new \ReflectionClass($className);
+
+        return $rc->getShortName();
+    }
 }

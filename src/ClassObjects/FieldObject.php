@@ -49,16 +49,6 @@ class FieldObject
         $this->accessor = $accessor;
     }
 
-    public function getDocComment(): string
-    {
-        return $this->docComment;
-    }
-
-    public function setDocComment(string $docComment)
-    {
-        $this->docComment = $docComment;
-    }
-
     public function getName(): string
     {
         return $this->name;
@@ -72,5 +62,20 @@ class FieldObject
     public function setScope(string $scope)
     {
         $this->scope = $scope;
+    }
+
+    public function getType(): string
+    {
+        return preg_replace('/(\W)|(var)/', '', $this->getDocComment());
+    }
+
+    public function getDocComment(): string
+    {
+        return $this->docComment;
+    }
+
+    public function setDocComment(string $docComment)
+    {
+        $this->docComment = $docComment;
     }
 }
