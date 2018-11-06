@@ -9,14 +9,11 @@ use OpenClassrooms\CodeGenerator\Generator\Tests\SkeletonModels\ViewModels\ViewM
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
-class ViewModelTestDetailAssemblerImpl implements ViewModelTestDetailAssembler
+class ViewModelTestDetailAssemblerMock extends ViewModelTestDetailAssemblerImpl
 {
     public function create(FileObject $viewModelTest): ViewModelTestDetail
     {
-        $skeletonModel = new ViewModelTestDetailImpl();
-        $skeletonModel->assemblerClassName = $viewModelTest->getClassName();
 
-        return $skeletonModel;
     }
 
 }
