@@ -1,16 +1,16 @@
-<?php
+<?php declare(strict_types=1);
 {% include "Header.php.twig" %}
 
-namespace {{ viewModelNamespace }};
+namespace {{ skeletonModel.namespace }};
 
 /**
  * @author {{ author }} <{{ authorEmail }}>
  */
-abstract class {{ viewModelShortClassName }}
+abstract class {{ skeletonModel.shortClassName }}
 {
-{% for field in viewModelFields %}
-    {{ field.docComment }}
-    {{ field.scope }} ${{ field.name }};
+{#{% for field in vskeletonModel.Fields %}#}
+    {#{{ field.docComment }}#}
+    {#{{ field.scope }} ${{ field.name }};#}
 
-{% endfor %}
+{#{% endfor %}#}
 }

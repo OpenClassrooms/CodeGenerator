@@ -2,6 +2,8 @@
 
 namespace OpenClassrooms\CodeGenerator\FileObjects;
 
+use OpenClassrooms\CodeGenerator\Utility\ClassNameUtility;
+
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
  */
@@ -22,6 +24,13 @@ class FileObject
      */
     private $content;
 
+    /**
+     * @var string
+     */
+    private $path;
+
+    use ClassNameUtility;
+
     public function setAlreadyExists(bool $alreadyExists)
     {
         $this->alreadyExists = $alreadyExists;
@@ -32,18 +41,6 @@ class FileObject
     public function alreadyExists(): bool
     {
         return $this->alreadyExists;
-    }
-
-    public function setClassName($className)
-    {
-        $this->className = $className;
-
-        return $this;
-    }
-
-    public function getClassName(): string
-    {
-        return $this->className;
     }
 
     public function getContent(): string
@@ -61,5 +58,34 @@ class FileObject
     public function getId(): string
     {
         return $this->className;
+    }
+
+    public function getShortClassName(): string
+    {
+        return $this->getShortClassNameFromClassName($this->getClassName());
+    }
+
+    public function getClassName(): string
+    {
+        return $this->className;
+    }
+
+    public function setClassName(string $className)
+    {
+        $this->className = $className;
+
+        return $this;
+    }
+
+    public function getPath(): string
+    {
+        return str_replace('\\','/',$this->path);
+    }
+
+    public function setPath(string $path)
+    {
+        $this->path = $path;
+
+        return $this;
     }
 }

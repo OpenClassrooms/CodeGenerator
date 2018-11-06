@@ -8,8 +8,8 @@ use OpenClassrooms\CodeGenerator\FileObjects\FileObjectType;
 use OpenClassrooms\CodeGenerator\Gateway\FileObjectGateway;
 use OpenClassrooms\CodeGenerator\Generator\AbstractGenerator;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
-use OpenClassrooms\CodeGenerator\Generator\Tests\SkeletonModels\ViewModels\ViewModelTestDetailAssembler;
-use OpenClassrooms\CodeGenerator\Services\TemplatingFactory;
+use OpenClassrooms\CodeGenerator\Generator\SkeletonModels\ViewModels\Tests\ViewModelTestDetailAssembler;
+use OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\Request\ViewModelTestGeneratorRequest;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
@@ -32,12 +32,7 @@ class ViewModelTestGenerator extends AbstractGenerator
     private $viewModelTestDetailAssembler;
 
     /**
-     * @var TemplatingFactory
-     */
-    private $templatingFactory;
-
-    /**
-     * @param \OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\Request\ViewModelTestGeneratorRequest $request
+     * @param ViewModelTestGeneratorRequest $request
      */
     public function generate(GeneratorRequest $request): FileObject
     {
@@ -47,8 +42,11 @@ class ViewModelTestGenerator extends AbstractGenerator
 
         $skeletonModel = $this->getSkeletonModel($fileObject);
 
-        //use templating
-        $fileObject->setContent($this->render('Skeleton/App/Tests/ViewModelTest.php.twig', [$skeletonModel]));
+        $fileObject->setContent(
+            $this->render('App/ViewModels/ViewModelTest.php.twig', ['skeletonModel' => $skeletonModel])
+        );
+
+        $fileObject->getContent();
 
         $this->fileObjectGateway->insert($fileObject);
 
@@ -61,7 +59,10 @@ class ViewModelTestGenerator extends AbstractGenerator
         // generate TestCase
         // get Assembler Name
 
-        $viewModelAssembler = $this->fileObjectFactory->create(FileObjectType::API_VIEW_MODEL_ASSEMBLER, $fileObject->getClassName());
+        $viewModelAssembler = $this->fileObjectFactory->create(
+            FileObjectType::API_VIEW_MODEL_ASSEMBLER_TEST,
+            $fileObject->getClassName()
+        );
 
         $skeletonModel = $this->viewModelTestDetailAssembler->create($viewModelAssembler);
 

@@ -2,15 +2,17 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating;
 
+use OpenClassrooms\CodeGenerator\Services\Templating;
+
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
  */
-class TemplatingMock extends \Twig_Environment
+class TemplatingMock extends \Twig_Environment implements Templating
 {
     public function __construct()
     {
         parent::__construct(
-            new \Twig_Loader_Filesystem(__DIR__ . '/../../Skeleton'),
+            new \Twig_Loader_Filesystem(__DIR__ . '/../../../../src/Skeleton'),
             [
                 'debug'            => true,
                 'cache'            => false,

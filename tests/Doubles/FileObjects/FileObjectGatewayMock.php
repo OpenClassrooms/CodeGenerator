@@ -2,18 +2,15 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects;
 
-use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
-use OpenClassrooms\CodeGenerator\FileObjects\FileObjectFactory;
-use OpenClassrooms\CodeGenerator\Gateway\FileObjectGateway;
+use OpenClassrooms\CodeGenerator\Gateway\Impl\FileObjectGatewayImpl;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
-class FileObjectGatewayMock implements FileObjectGateway
+class FileObjectGatewayMock extends FileObjectGatewayImpl
 {
-    public function insert(FileObject $fileObject)
-    {
+    const GENERATED_FILE_DIR = __DIR__ . '/../../Fixtures/GeneratedFiles/';
 
-    }
+    protected $generatedFileDir = self::GENERATED_FILE_DIR;
 
 }

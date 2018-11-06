@@ -29,7 +29,7 @@ trait ClassNameUtility
 
         $domain = [];
 
-        for ($i = count($explodedNamespace) - 1; $i > 0 && $explodedNamespace[$i] !== 'BusinessRules'; $i--) {
+        for ($i = count($explodedNamespace) - 1; $i >= 0 && $explodedNamespace[$i] !== 'BusinessRules'; $i--) {
             if (array_search(
                     $explodedNamespace[$i],
                     ['Entities', 'Request', 'Response', 'DTO', 'UseCases']
@@ -37,7 +37,6 @@ trait ClassNameUtility
                 $domain[] = $explodedNamespace[$i];
             }
         }
-
         return implode('\\', array_reverse($domain));
     }
 
