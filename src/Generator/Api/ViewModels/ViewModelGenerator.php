@@ -10,6 +10,7 @@ use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\Request\ViewModelGener
 use OpenClassrooms\CodeGenerator\Generator\Generator;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\SkeletonModels\ViewModels\ViewModel\ViewModelDetailAssembler;
+use OpenClassrooms\CodeGenerator\Services\FieldObjectService;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
@@ -37,6 +38,11 @@ class ViewModelGenerator implements Generator
     private $viewModelDetailAssembler;
 
     /**
+     * @var FieldObjectService
+     */
+    private $fieldObjectService;
+
+    /**
      * @param ViewModelGeneratorRequest $request
      */
     public function generate(GeneratorRequest $request): FileObject
@@ -47,7 +53,7 @@ class ViewModelGenerator implements Generator
         $skeletonModel = $this->getSkeletonModel($fileObject);
 
         $fileObject->setContent(
-            $this->render('App/ViewModels/ViewModel.php.twig', ['skeletonModel' => $skeletonModel])
+            $this->render('Api/ViewModels/ViewModel.php.twig', ['skeletonModel' => $skeletonModel])
         );
 
         $this->fileObjectGateway->insert($fileObject)->flush();
@@ -58,15 +64,27 @@ class ViewModelGenerator implements Generator
     private function getSkeletonModel(FileObject $fileObject)
     {
         // get public fields
-        // get ublic accessors
+        // get public accessors
+
         $viewModelAssembler = $this->fileObjectFactory->create(
             FileObjectType::API_VIEW_MODEL,
             $fileObject->getClassName()
         );
 
+        $this->setFieldsToViewModel($fileObject->getClassName(), $viewModelAssembler);
+
         $skeletonModel = $this->viewModelDetailAssembler->create($viewModelAssembler);
 
         return $skeletonModel;
+    }
+
+    private function setFieldsToViewModel(string $className, FileObject $viewModelAssembler)
+    {
+        $viewModelAssembler->setFields(
+            $this->fieldObjectService->getParentPublicClassFields($className)
+        );
+//        $viewModelAssembler->setFields($this->fieldObjectService->getPublicClassFields($className));
+//        $viewModelAssembler->setFields($this->fieldObjectService->getProtectedClassFields($className));
     }
 
     /**
@@ -98,4 +116,10 @@ class ViewModelGenerator implements Generator
     {
         $this->templating = $templating;
     }
+
+    public function setFieldObjectService(FieldObjectService $fieldObjectService): void
+    {
+        $this->fieldObjectService = $fieldObjectService;
+    }
+
 }

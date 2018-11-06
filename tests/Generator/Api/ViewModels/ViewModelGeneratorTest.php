@@ -7,6 +7,7 @@ use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\DTO\Request\ViewModelG
 use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\Request\ViewModelGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\ViewModelGenerator;
 use OpenClassrooms\CodeGenerator\Generator\SkeletonModels\ViewModels\ViewModel\Impl\ViewModelDetailAssemblerImpl;
+use OpenClassrooms\CodeGenerator\Services\Impl\FieldObjectServiceImpl;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\FileObjectGatewayMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingMock;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\DTO\Responses\FunctionalEntityDetailResponseDTO;
@@ -43,7 +44,10 @@ class ViewModelGeneratorTest extends TestCase
         $viewModelGeneratorRequestBuilder = new ViewModelGeneratorRequestBuilderImpl();
         $this->request = $viewModelGeneratorRequestBuilder
             ->create()
-            ->withClassName('BusinessRules\UseCases\Domain\SubDomain\DTO\Responses\\' . FunctionalEntityDetailResponseDTO::class)
+            ->withClassName(
+//                'BusinessRules\UseCases\Domain\SubDomain\DTO\Responses\\' .TestClassUtil::getShortClassName(FunctionalEntityDetailResponseDTO::class)
+                FunctionalEntityDetailResponseDTO::class
+            )
             ->build();
 
         $this->viewModelGenerator = new ViewModelGenerator();
@@ -51,8 +55,8 @@ class ViewModelGeneratorTest extends TestCase
         $this->viewModelGenerator->setFileObjectFactory($fileObjectFactory);
         $this->viewModelGenerator->setFileObjectGateway(new FileObjectGatewayMock());
         $this->viewModelGenerator->setViewModelDetailAssembler(new ViewModelDetailAssemblerImpl());
-
         $this->viewModelGenerator->setTemplating(new TemplatingMock());
+        $this->viewModelGenerator->setFieldObjectService(new FieldObjectServiceImpl());
 
     }
 }

@@ -29,6 +29,11 @@ class FileObject
      */
     private $path;
 
+    /**
+     * @var $array
+     */
+    private $fields = [];
+
     use ClassNameUtility;
 
     public function setAlreadyExists(bool $alreadyExists)
@@ -79,7 +84,7 @@ class FileObject
 
     public function getPath(): string
     {
-        return str_replace('\\','/',$this->path);
+        return str_replace('\\', '/', $this->path);
     }
 
     public function setPath(string $path)
@@ -87,5 +92,15 @@ class FileObject
         $this->path = $path;
 
         return $this;
+    }
+
+    public function getFields(): array
+    {
+        return $this->fields;
+    }
+
+    public function setFields($fields)
+    {
+        $this->fields = array_merge($this->fields, $fields);
     }
 }

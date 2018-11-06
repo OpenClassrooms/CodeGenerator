@@ -1,0 +1,23 @@
+<?php declare(strict_types=1);
+{% include "Header.php.twig" %}
+
+namespace {{ skeletonModel.namespace }};
+
+/**
+ * @author {{ author }} <{{ authorEmail }}>
+ */
+abstract class {{ skeletonModel.shortClassName }}
+{
+{% for field in skeletonModel.fields %}
+    {{ field.docComment }}
+    {{ field.scope }} ${{ field.name }};
+
+{% endfor %}
+{% for field in skeletonModel.fields %}
+    public function {{ field.accessor }}(): {{ field.type }}
+    {
+        return $this->{{ field.name }};
+    }
+
+{% endfor %}
+}

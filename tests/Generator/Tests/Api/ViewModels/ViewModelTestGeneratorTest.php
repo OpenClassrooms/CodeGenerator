@@ -6,7 +6,6 @@ use OpenClassrooms\CodeGenerator\Generator\SkeletonModels\ViewModels\Tests\Impl\
 use OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\DTO\Request\ViewModelTestGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\Request\ViewModelTestGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\ViewModelTestGenerator;
-use OpenClassrooms\CodeGenerator\Mediators\Mediator;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\FileObjectFactoryMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\FileObjectGatewayMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingMock;

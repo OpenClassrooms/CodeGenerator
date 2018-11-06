@@ -202,16 +202,9 @@ class FileObjectFactoryTest extends TestCase
         return $fileObjectViewModelDetailImpl;
     }
 
-    private static function getShortClassName(string $className)
-    {
-        $rc = new \ReflectionClass($className);
-
-        return $rc->getShortName();
-    }
-
     private static function getEntityName(): string
     {
-        return self::getShortClassName(FunctionalEntity::class);
+        return TestClassUtil::getShortClassName(FunctionalEntity::class);
     }
 
     /**
