@@ -18,7 +18,7 @@ Class FileObjectGatewayImpl implements FileObjectGateway
     protected $generatedFileDir;
 
     /**
-     * @var array
+     * @var $fileObjects[]
      */
     private $fileObjects = [];
 
@@ -35,7 +35,7 @@ Class FileObjectGatewayImpl implements FileObjectGateway
         foreach ($this->fileObjects as $fileObject) {
             try {
                 $filesystem->dumpFile(
-                    $this->generatedFileDir .$fileObject->getShortClassName().'.php',
+                    $this->generatedFileDir . $fileObject->getPath() . '.php',
                     $fileObject->getContent()
                 );
             } catch (IOExceptionInterface $exception) {
@@ -44,9 +44,6 @@ Class FileObjectGatewayImpl implements FileObjectGateway
         }
     }
 
-    /**
-     * @param string $generatedFileDir
-     */
     public function setGeneratedFileDir(string $generatedFileDir)
     {
         $this->generatedFileDir = $generatedFileDir;

@@ -97,4 +97,9 @@ class FileObject
     {
         return $this->getNamespaceFromClassNameUtility($this->getClassName());
     }
+
+    public function getPath()
+    {
+        return str_replace('\\', '/', $this->getClassName());
+    }
 }
