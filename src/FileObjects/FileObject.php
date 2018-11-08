@@ -2,6 +2,7 @@
 
 namespace OpenClassrooms\CodeGenerator\FileObjects;
 
+use OpenClassrooms\CodeGenerator\ClassObjects\FieldObject;
 use OpenClassrooms\CodeGenerator\Utility\ClassNameUtility;
 
 /**
@@ -9,6 +10,10 @@ use OpenClassrooms\CodeGenerator\Utility\ClassNameUtility;
  */
 class FileObject
 {
+    use ClassNameUtility {
+        getNamespace as getNamespaceFromClassNameUtility;
+    }
+
     /**
      * @var bool
      */
@@ -25,16 +30,9 @@ class FileObject
     private $content;
 
     /**
-     * @var string
-     */
-    private $path;
-
-    /**
-     * @var $array
+     * @var FieldObject[]
      */
     private $fields = [];
-
-    use ClassNameUtility;
 
     public function setAlreadyExists(bool $alreadyExists)
     {
@@ -82,25 +80,21 @@ class FileObject
         return $this;
     }
 
-    public function getPath(): string
-    {
-        return str_replace('\\', '/', $this->path);
-    }
-
-    public function setPath(string $path)
-    {
-        $this->path = $path;
-
-        return $this;
-    }
-
     public function getFields(): array
     {
         return $this->fields;
     }
 
-    public function setFields($fields)
+    /**
+     * @param FieldObject[] $fields
+     */
+    public function setFields(array $fields)
     {
-        $this->fields = array_merge($this->fields, $fields);
+        $this->fields = $fields;
+    }
+
+    public function getNamespace(): string
+    {
+        return $this->getNamespaceFromClassNameUtility($this->getClassName());
     }
 }

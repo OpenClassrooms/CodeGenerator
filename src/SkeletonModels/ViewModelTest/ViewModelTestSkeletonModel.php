@@ -1,11 +1,11 @@
 <?php
 
-namespace OpenClassrooms\CodeGenerator\Generator\SkeletonModels\ViewModels\Tests;
+namespace OpenClassrooms\CodeGenerator\SkeletonModels\TestsSkeleton;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
-abstract class ViewModelTest
+abstract class ViewModelTestSkeletonModel
 {
     /**
      * @var string

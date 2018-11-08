@@ -18,6 +18,8 @@ abstract class {{ skeletonModel.shortClassName }}
     {
         return $this->{{ field.name }};
     }
+{% if not loop.last %}
 
+{% endif %}
 {% endfor %}
 }

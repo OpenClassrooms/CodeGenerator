@@ -3,9 +3,9 @@
 namespace Tests\FileObjects;
 
 use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
-use OpenClassrooms\CodeGenerator\FileObjects\FileObjectFactory;
-use OpenClassrooms\CodeGenerator\FileObjects\FileObjectType;
-use OpenClassrooms\CodeGenerator\FileObjects\Impl\FileObjectFactoryImpl;
+use OpenClassrooms\CodeGenerator\FileObjects\AbstractFileObjectFactory;
+use OpenClassrooms\CodeGenerator\FileObjects\ViewModelFileObjectType;
+use OpenClassrooms\CodeGenerator\FileObjects\Impl\ViewModelFileObjectFactoryImpl;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\Entities\Domain\SubDomain\FunctionalEntity;
 use OpenClassrooms\CodeGenerator\Tests\TestClassUtil;
 use PHPUnit\Framework\TestCase;
@@ -22,7 +22,7 @@ class FileObjectFactoryTest extends TestCase
     const STUB_NAMESPACE = self::TEST_BASE_NAMESPACE . 'Doubles\\';
 
     /**
-     * @var FileObjectFactory
+     * @var AbstractFileObjectFactory
      */
     private $factory;
 
@@ -30,52 +30,52 @@ class FileObjectFactoryTest extends TestCase
     {
         return [
             [
-                FileObjectType::API_VIEW_MODEL_ASSEMBLER,
+                ViewModelFileObjectType::API_VIEW_MODEL_ASSEMBLER,
                 FunctionalEntity::class,
                 self::getFileObjectViewModelAssembler()
             ],
             [
-                FileObjectType::API_VIEW_MODEL_ASSEMBLER_TEST,
+                ViewModelFileObjectType::API_VIEW_MODEL_ASSEMBLER_TEST,
                 FunctionalEntity::class,
                 self::getFileObjectViewModelAssemblerTest()
             ],
             [
-                FileObjectType::API_VIEW_MODEL,
+                ViewModelFileObjectType::API_VIEW_MODEL,
                 FunctionalEntity::class,
                 self::getFileObjectViewModel()
             ],
             [
-                FileObjectType::API_VIEW_MODEL_DETAIL,
+                ViewModelFileObjectType::API_VIEW_MODEL_DETAIL,
                 FunctionalEntity::class,
                 self::getFileObjectViewModelDetail()
             ],
             [
-                FileObjectType::API_VIEW_MODEL_LIST_ITEM,
+                ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM,
                 FunctionalEntity::class,
                 self::getFileObjectViewModelListItem()
             ],
             [
-                FileObjectType::API_VIEW_MODEL_STUB,
+                ViewModelFileObjectType::API_VIEW_MODEL_STUB,
                 FunctionalEntity::class,
                 self::getFileObjectViewModelStub()
             ],
             [
-                FileObjectType::API_VIEW_MODEL_TEST_CASE,
+                ViewModelFileObjectType::API_VIEW_MODEL_TEST_CASE,
                 FunctionalEntity::class,
                 self::getFileObjectViewModelTestCase()
             ],
             [
-                FileObjectType::API_VIEW_MODEL_LIST_ITEM_IMPL,
+                ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_IMPL,
                 FunctionalEntity::class,
                 self::getFileObjectViewModelListItemImpl()
             ],
             [
-                FileObjectType::API_VIEW_MODEL_DETAIL_IMPL,
+                ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_IMPL,
                 FunctionalEntity::class,
                 self::getFileObjectViewModelDetailImpl()
             ],
             [
-                FileObjectType::API_VIEW_MODEL_ASSEMBLER_IMPL,
+                ViewModelFileObjectType::API_VIEW_MODEL_ASSEMBLER_IMPL,
                 FunctionalEntity::class,
                 self::getFileObjectViewModelAssemblerImpl()
             ]
@@ -228,7 +228,7 @@ class FileObjectFactoryTest extends TestCase
 
     protected function setUp()
     {
-        $this->factory = new FileObjectFactoryImpl();
+        $this->factory = new ViewModelFileObjectFactoryImpl();
         $this->factory->setBaseNamespace(self::BASE_NAMESPACE);
         $this->factory->setTestsBaseNamespace(self::TEST_BASE_NAMESPACE);
         $this->factory->setStubNamespace(self::STUB_NAMESPACE);

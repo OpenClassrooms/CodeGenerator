@@ -3,12 +3,13 @@
 namespace OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels;
 
 use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
-use OpenClassrooms\CodeGenerator\FileObjects\FileObjectFactory;
-use OpenClassrooms\CodeGenerator\FileObjects\FileObjectType;
+use OpenClassrooms\CodeGenerator\FileObjects\UseCaseResponseFileObjectFactory;
+use OpenClassrooms\CodeGenerator\FileObjects\ViewModelFileObjectFactory;
+use OpenClassrooms\CodeGenerator\FileObjects\ViewModelFileObjectType;
 use OpenClassrooms\CodeGenerator\Gateway\FileObjectGateway;
 use OpenClassrooms\CodeGenerator\Generator\AbstractGenerator;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
-use OpenClassrooms\CodeGenerator\Generator\SkeletonModels\ViewModels\Tests\ViewModelTestDetailAssembler;
+use OpenClassrooms\CodeGenerator\Generator\SkeletonModels\ViewModels\TestsSkeleton\ViewModelTestSkeletonModelDetailAssembler;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\Request\ViewModelTestGeneratorRequest;
 
 /**
@@ -22,23 +23,28 @@ class ViewModelTestGenerator extends AbstractGenerator
     private $fileObjectGateway;
 
     /**
-     * @var FileObjectFactory
+     * @var UseCaseResponseFileObjectFactory
      */
-    private $fileObjectFactory;
+    private $useCaseResponseFileObjectFactory;
 
     /**
-     * @var ViewModelTestDetailAssembler
+     * @var ViewModelFileObjectFactory
+     */
+    private $viewModelFileObjectFactory;
+
+    /**
+     * @var ViewModelTestSkeletonModelDetailAssembler
      */
     private $viewModelTestDetailAssembler;
 
     /**
-     * @param ViewModelTestGeneratorRequest $request
+     * @param ViewModelTestGeneratorRequest $generatorRequest
      */
-    public function generate(GeneratorRequest $request): FileObject
+    public function generate(GeneratorRequest $generatorRequest): FileObject
     {
         // domain/class
         $fileObject = new FileObject();
-        $fileObject->setClassName($request->getResponseClassName());
+        $fileObject->setClassName($generatorRequest->getResponseClassName());
 
         $skeletonModel = $this->getSkeletonModel($fileObject);
 
@@ -59,8 +65,8 @@ class ViewModelTestGenerator extends AbstractGenerator
         // generate TestCase
         // get Assembler Name
 
-        $viewModelAssembler = $this->fileObjectFactory->create(
-            FileObjectType::API_VIEW_MODEL_ASSEMBLER_TEST,
+        $viewModelAssembler = $this->viewModelFileObjectFactory->create(
+            ViewModelFileObjectType::API_VIEW_MODEL_ASSEMBLER_TEST,
             $fileObject->getClassName()
         );
 
@@ -74,13 +80,22 @@ class ViewModelTestGenerator extends AbstractGenerator
         $this->fileObjectGateway = $fileObjectGateway;
     }
 
-    public function setFileObjectFactory(FileObjectFactory $fileObjectFactory)
+    public function setViewModelFileObjectFactory(ViewModelFileObjectFactory $viewModelFileObjectFactory)
     {
-        $this->fileObjectFactory = $fileObjectFactory;
+        $this->viewModelFileObjectFactory = $viewModelFileObjectFactory;
     }
 
-    public function setViewModelTestDetailAssembler(ViewModelTestDetailAssembler $viewModelTestDetailAssembler)
+    public function setViewModelTestDetailAssembler(
+        ViewModelTestSkeletonModelDetailAssembler $viewModelTestDetailAssembler
+    )
     {
         $this->viewModelTestDetailAssembler = $viewModelTestDetailAssembler;
+    }
+
+    public function setUseCaseResponseFileObjectFactory(
+        UseCaseResponseFileObjectFactory $useCaseResponseFileObjectFactory
+    )
+    {
+        $this->useCaseResponseFileObjectFactory = $useCaseResponseFileObjectFactory;
     }
 }

@@ -15,5 +15,5 @@ interface Generator
 
     const ADMIN = 'admin';
 
-    public function generate(GeneratorRequest $request): FileObject;
+    public function generate(GeneratorRequest $generatorRequest): FileObject;
 }
