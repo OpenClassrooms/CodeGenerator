@@ -15,7 +15,7 @@ class ViewModelSkeletonModelDetailAssemblerImpl implements ViewModelSkeletonMode
     {
         $skeletonModel = new ViewModelSkeletonModelDetailImpl();
         $skeletonModel->className = $viewModelFileObject->getClassName();
-        $skeletonModel->namespace = $viewModelFileObject->getNamespace($viewModelFileObject->getClassName());
+        $skeletonModel->namespace = $viewModelFileObject->getNamespace();
         $skeletonModel->shortClassName = $viewModelFileObject->getShortClassName();
         $skeletonModel->fields = $viewModelFileObject->getFields();
 
