@@ -3,7 +3,7 @@
 namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Generator\Tests\Api\ViewModels;
 
 use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
-use OpenClassrooms\CodeGenerator\FileObjects\FileObjectFactory;
+use OpenClassrooms\CodeGenerator\FileObjects\AbstractFileObjectFactory;
 use OpenClassrooms\CodeGenerator\Gateway\FileObjectGateway;
 use OpenClassrooms\CodeGenerator\Generator\AbstractGenerator;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
@@ -17,7 +17,7 @@ class ViewModelTestGeneratorMock extends AbstractGenerator
 
     private $fileObjectFactory;
 
-    public function generate(GeneratorRequest $request): FileObject
+    public function generate(GeneratorRequest $generatorRequest): FileObject
     {
         $fileObject = new FileObject();
         $fileObject
@@ -31,7 +31,7 @@ class ViewModelTestGeneratorMock extends AbstractGenerator
         $this->fileObjectGateway = $fileObjectGateway;
     }
 
-    public function setFileObjectFactory(FileObjectFactory $fileObjectFactory)
+    public function setFileObjectFactory(AbstractFileObjectFactory $fileObjectFactory)
     {
         $this->fileObjectFactory = $fileObjectFactory;
     }

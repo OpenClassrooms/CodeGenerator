@@ -3,14 +3,16 @@
 namespace OpenClassrooms\CodeGenerator\Generator\Api\ViewModels;
 
 use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
-use OpenClassrooms\CodeGenerator\FileObjects\FileObjectFactory;
-use OpenClassrooms\CodeGenerator\FileObjects\FileObjectType;
+use OpenClassrooms\CodeGenerator\FileObjects\UseCaseResponseFileObjectFactory;
+use OpenClassrooms\CodeGenerator\FileObjects\UseCaseResponseFileObjectType;
+use OpenClassrooms\CodeGenerator\FileObjects\ViewModelFileObjectFactory;
+use OpenClassrooms\CodeGenerator\FileObjects\ViewModelFileObjectType;
 use OpenClassrooms\CodeGenerator\Gateway\FileObjectGateway;
 use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\Request\ViewModelGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\Generator;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
-use OpenClassrooms\CodeGenerator\Generator\SkeletonModels\ViewModels\ViewModel\ViewModelDetailAssembler;
 use OpenClassrooms\CodeGenerator\Services\FieldObjectService;
+use OpenClassrooms\CodeGenerator\SkeletonModels\ViewModel\ViewModelSkeletonModelAssembler;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
@@ -18,9 +20,9 @@ use OpenClassrooms\CodeGenerator\Services\FieldObjectService;
 class ViewModelGenerator implements Generator
 {
     /**
-     * @var \Twig_Environment
+     * @var FieldObjectService
      */
-    private $templating;
+    private $fieldObjectService;
 
     /**
      * @var FileObjectGateway
@@ -28,93 +30,76 @@ class ViewModelGenerator implements Generator
     private $fileObjectGateway;
 
     /**
-     * @var FileObjectFactory
+     * @var \Twig_Environment
      */
-    private $fileObjectFactory;
+    private $templating;
 
     /**
-     * @var ViewModelDetailAssembler
+     * @var UseCaseResponseFileObjectFactory
      */
-    private $viewModelDetailAssembler;
+    private $useCaseResponseFileObjectFactory;
 
     /**
-     * @var FieldObjectService
+     * @var ViewModelFileObjectFactory
      */
-    private $fieldObjectService;
+    private $viewModelFileObjectFactory;
 
     /**
-     * @param ViewModelGeneratorRequest $request
+     * @var ViewModelSkeletonModelAssembler
      */
-    public function generate(GeneratorRequest $request): FileObject
+    private $viewModelSkeletonModelAssembler;
+
+    /**
+     * @param ViewModelGeneratorRequest $generatorRequest
+     */
+    public function generate(GeneratorRequest $generatorRequest): FileObject
     {
-        $fileObject = new FileObject();
-        $fileObject->setClassName($request->getClassName());
+        $viewModelFileObject = $this->createViewModelFileObject($generatorRequest->getResponseClassName());
+        $viewModelFileObject->setContent($this->generateContent($viewModelFileObject));
+        $this->insertFileObject($viewModelFileObject);
 
-        $skeletonModel = $this->getSkeletonModel($fileObject);
-
-        $fileObject->setContent(
-            $this->render('Api/ViewModels/ViewModel.php.twig', ['skeletonModel' => $skeletonModel])
-        );
-
-        $this->fileObjectGateway->insert($fileObject)->flush();
-
-        return $fileObject;
+        return $viewModelFileObject;
     }
 
-    private function getSkeletonModel(FileObject $fileObject)
+    private function createViewModelFileObject(string $responseClassName): FileObject
     {
-        // get public fields
-        // get public accessors
+        $responseFileObject = $this->createResponseFileObject($responseClassName);
 
-        $viewModelAssembler = $this->fileObjectFactory->create(
-            FileObjectType::API_VIEW_MODEL,
-            $fileObject->getClassName()
-        );
+        $viewModel = $this->viewModelFileObjectFactory
+            ->create(ViewModelFileObjectType::API_VIEW_MODEL, $responseFileObject->getClassName());
+        $viewModel->setFields($this->fieldObjectService->getPublicClassFields($responseFileObject->getClassName()));
 
-        $this->setFieldsToViewModel($fileObject->getClassName(), $viewModelAssembler);
-
-        $skeletonModel = $this->viewModelDetailAssembler->create($viewModelAssembler);
-
-        return $skeletonModel;
+        return $viewModel;
     }
 
-    private function setFieldsToViewModel(string $className, FileObject $viewModelAssembler)
+    private function createResponseFileObject(string $className): FileObject
     {
-        $viewModelAssembler->setFields(
-            $this->fieldObjectService->getParentPublicClassFields($className)
-        );
-//        $viewModelAssembler->setFields($this->fieldObjectService->getPublicClassFields($className));
-//        $viewModelAssembler->setFields($this->fieldObjectService->getProtectedClassFields($className));
+        $responseFileObject = $this->useCaseResponseFileObjectFactory
+            ->create(UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE, $className);
+
+        return $responseFileObject;
     }
 
-    /**
-     * @throws \Twig_Error_Loader
-     * @throws \Twig_Error_Runtime
-     * @throws \Twig_Error_Syntax
-     */
+    private function generateContent(FileObject $viewModelFileObject): string
+    {
+        $skeletonModel = $this->createSkeletonModel($viewModelFileObject);
+
+        return $this->render('Api/ViewModels/ViewModel.php.twig', ['skeletonModel' => $skeletonModel]);
+    }
+
+    private function createSkeletonModel(FileObject $viewModelFileObject)
+    {
+        return $this->viewModelSkeletonModelAssembler->create($viewModelFileObject);
+    }
+
     private function render(string $template, array $parameters): string
     {
         return $this->templating->render($template, $parameters);
     }
 
-    public function setFileObjectGateway(FileObjectGateway $fileObjectGateway)
+    private function insertFileObject(FileObject $viewModelFileObject): void
     {
-        $this->fileObjectGateway = $fileObjectGateway;
-    }
-
-    public function setFileObjectFactory(FileObjectFactory $fileObjectFactory)
-    {
-        $this->fileObjectFactory = $fileObjectFactory;
-    }
-
-    public function setViewModelDetailAssembler(ViewModelDetailAssembler $viewModelDetailAssembler)
-    {
-        $this->viewModelDetailAssembler = $viewModelDetailAssembler;
-    }
-
-    public function setTemplating(\Twig_Environment $templating): void
-    {
-        $this->templating = $templating;
+        $this->fileObjectGateway->insert($viewModelFileObject)->flush();
     }
 
     public function setFieldObjectService(FieldObjectService $fieldObjectService): void
@@ -122,4 +107,31 @@ class ViewModelGenerator implements Generator
         $this->fieldObjectService = $fieldObjectService;
     }
 
+    public function setFileObjectGateway(FileObjectGateway $fileObjectGateway)
+    {
+        $this->fileObjectGateway = $fileObjectGateway;
+    }
+
+    public function setTemplating(\Twig_Environment $templating): void
+    {
+        $this->templating = $templating;
+    }
+
+    public function setUseCaseResponseFileObjectFactory(
+        UseCaseResponseFileObjectFactory $useCaseResponseFileObjectFactory
+    )
+    {
+        $this->useCaseResponseFileObjectFactory = $useCaseResponseFileObjectFactory;
+    }
+
+    public function setViewModelFileObjectFactory(ViewModelFileObjectFactory $viewModelFileObjectFactory)
+    {
+        $this->viewModelFileObjectFactory = $viewModelFileObjectFactory;
+    }
+
+    public function setViewModelSkeletonModelAssembler(ViewModelSkeletonModelAssembler $viewModelSkeletonModelAssembler
+    ): void
+    {
+        $this->viewModelSkeletonModelAssembler = $viewModelSkeletonModelAssembler;
+    }
 }

@@ -35,7 +35,7 @@ Class FileObjectGatewayImpl implements FileObjectGateway
         foreach ($this->fileObjects as $fileObject) {
             try {
                 $filesystem->dumpFile(
-                    $this->generatedFileDir . $fileObject->getPath() .$fileObject->getShortClassName().'.php',
+                    $this->generatedFileDir .$fileObject->getShortClassName().'.php',
                     $fileObject->getContent()
                 );
             } catch (IOExceptionInterface $exception) {

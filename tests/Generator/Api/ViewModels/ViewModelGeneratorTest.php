@@ -2,15 +2,17 @@
 
 namespace OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels;
 
-use OpenClassrooms\CodeGenerator\FileObjects\Impl\FileObjectFactoryImpl;
+use OpenClassrooms\CodeGenerator\FileObjects\Impl\UseCaseResponseFileObjectFactoryImpl;
+use OpenClassrooms\CodeGenerator\FileObjects\Impl\ViewModelFileObjectFactoryImpl;
 use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\DTO\Request\ViewModelGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\Request\ViewModelGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\ViewModelGenerator;
-use OpenClassrooms\CodeGenerator\Generator\SkeletonModels\ViewModels\ViewModel\Impl\ViewModelDetailAssemblerImpl;
+use OpenClassrooms\CodeGenerator\SkeletonModels\ViewModel\Impl\ViewModelSkeletonModelDetailAssemblerImpl;
 use OpenClassrooms\CodeGenerator\Services\Impl\FieldObjectServiceImpl;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\FileObjectGatewayMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingMock;
-use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\DTO\Responses\FunctionalEntityDetailResponseDTO;
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\DTO\Response\FunctionalEntityResponseDTO;
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\FixturesConfig;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -19,14 +21,14 @@ use PHPUnit\Framework\TestCase;
 class ViewModelGeneratorTest extends TestCase
 {
     /**
-     * @var ViewModelGenerator
-     */
-    private $viewModelGenerator;
-
-    /**
      * @var ViewModelGeneratorRequestBuilder
      */
     private $request;
+
+    /**
+     * @var ViewModelGenerator
+     */
+    private $viewModelGenerator;
 
     /**
      * @test
@@ -44,19 +46,19 @@ class ViewModelGeneratorTest extends TestCase
         $viewModelGeneratorRequestBuilder = new ViewModelGeneratorRequestBuilderImpl();
         $this->request = $viewModelGeneratorRequestBuilder
             ->create()
-            ->withClassName(
-//                'BusinessRules\UseCases\Domain\SubDomain\DTO\Responses\\' .TestClassUtil::getShortClassName(FunctionalEntityDetailResponseDTO::class)
-                FunctionalEntityDetailResponseDTO::class
-            )
+            ->withClassName(FunctionalEntityResponseDTO::class)
             ->build();
 
         $this->viewModelGenerator = new ViewModelGenerator();
-        $fileObjectFactory = new FileObjectFactoryImpl();
-        $this->viewModelGenerator->setFileObjectFactory($fileObjectFactory);
+        $viewModelFileObjectFactory = new ViewModelFileObjectFactoryImpl();
+        $viewModelFileObjectFactory->setBaseNamespace(FixturesConfig::BASE_NAMESPACE);
+        $useCaseResponseFileObjectFactory = new UseCaseResponseFileObjectFactoryImpl();
+        $useCaseResponseFileObjectFactory->setBaseNamespace(FixturesConfig::BASE_NAMESPACE);
+        $this->viewModelGenerator->setUseCaseResponseFileObjectFactory($useCaseResponseFileObjectFactory);
+        $this->viewModelGenerator->setViewModelFileObjectFactory($viewModelFileObjectFactory);
         $this->viewModelGenerator->setFileObjectGateway(new FileObjectGatewayMock());
-        $this->viewModelGenerator->setViewModelDetailAssembler(new ViewModelDetailAssemblerImpl());
-        $this->viewModelGenerator->setTemplating(new TemplatingMock());
         $this->viewModelGenerator->setFieldObjectService(new FieldObjectServiceImpl());
-
+        $this->viewModelGenerator->setTemplating(new TemplatingMock());
+        $this->viewModelGenerator->setViewModelSkeletonModelAssembler(new ViewModelSkeletonModelDetailAssemblerImpl());
     }
 }

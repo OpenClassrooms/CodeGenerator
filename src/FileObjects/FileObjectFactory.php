@@ -7,5 +7,9 @@ namespace OpenClassrooms\CodeGenerator\FileObjects;
  */
 interface FileObjectFactory
 {
-    public function create(string $type, string $className): FileObject;
+    public function setBaseNamespace(string $baseNamespace);
+
+    public function setTestsBaseNamespace(string $testsBaseNamespace);
+
+    public function setStubNamespace(string $stubNamespace);
 }

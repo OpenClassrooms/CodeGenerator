@@ -39,7 +39,7 @@ abstract class AbstractGenerator implements Generator
      */
     private $useCaseResponseInterfaceClassName;
 
-    abstract public function generate(GeneratorRequest $request): FileObject;
+    abstract public function generate(GeneratorRequest $generatorRequest): FileObject;
 
     public function setFieldObjectService(FieldObjectService $fieldObjectService)
     {

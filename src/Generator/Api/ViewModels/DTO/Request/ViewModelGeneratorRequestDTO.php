@@ -24,7 +24,7 @@ class ViewModelGeneratorRequestDTO implements ViewModelGeneratorRequest
      */
     public $fields = [];
 
-    public function getClassName(): string
+    public function getResponseClassName(): string
     {
         return $this->className;
     }

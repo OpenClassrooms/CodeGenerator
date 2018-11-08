@@ -5,7 +5,7 @@ namespace OpenClassrooms\CodeGenerator\FileObjects;
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
  */
-final class FileObjectType
+final class ViewModelFileObjectType
 {
     const API_VIEW_MODEL = 'API_VIEW_MODEL';
 

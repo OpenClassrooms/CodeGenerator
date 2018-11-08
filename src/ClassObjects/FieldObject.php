@@ -66,6 +66,10 @@ class FieldObject
 
     public function getType(): string
     {
+        if (strpos($this->getDocComment(),'[]') !== false) {
+            return 'array';
+        }
+
         return preg_replace('/(\W)|(var)/', '', $this->getDocComment());
     }
 

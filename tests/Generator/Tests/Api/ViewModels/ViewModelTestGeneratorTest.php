@@ -2,12 +2,12 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Generator\Tests\Api\ViewModels;
 
-use OpenClassrooms\CodeGenerator\Generator\SkeletonModels\ViewModels\Tests\Impl\ViewModelTestDetailAssemblerImpl;
+use OpenClassrooms\CodeGenerator\Generator\SkeletonModels\ViewModels\Tests\Impl\ViewModelTestSkeletonModelDetailAssemblerImpl;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\DTO\Request\ViewModelTestGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\Request\ViewModelTestGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\ViewModelTestGenerator;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\FileObjectFactoryMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\FileObjectGatewayMock;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\ViewModelFileObjectFactoryMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingMock;
 use PHPUnit\Framework\TestCase;
 
@@ -17,14 +17,14 @@ use PHPUnit\Framework\TestCase;
 class ViewModelTestGeneratorTest extends TestCase
 {
     /**
-     * @var ViewModelTestGenerator
-     */
-    private $viewModelTestGenerator;
-
-    /**
      * @var ViewModelTestGeneratorRequest
      */
     private $request;
+
+    /**
+     * @var ViewModelTestGenerator
+     */
+    private $viewModelTestGenerator;
 
     /**
      * @test
@@ -33,7 +33,7 @@ class ViewModelTestGeneratorTest extends TestCase
     {
         $actualFileObject = $this->viewModelTestGenerator->generate($this->request);
 
-        $this->assertContains(FileObjectFactoryMock::class, $actualFileObject->getContent());
+        $this->assertContains(ViewModelFileObjectFactoryMock::class, $actualFileObject->getContent());
     }
 
     public function setUp()
@@ -45,9 +45,11 @@ class ViewModelTestGeneratorTest extends TestCase
             ->build();
 
         $this->viewModelTestGenerator = new ViewModelTestGenerator();
-        $this->viewModelTestGenerator->setFileObjectFactory(new FileObjectFactoryMock()); //contains return value
+        $this->viewModelTestGenerator->setFileObjectFactory(
+            new ViewModelFileObjectFactoryMock()
+        ); //contains return value
         $this->viewModelTestGenerator->setFileObjectGateway(new FileObjectGatewayMock());
-        $this->viewModelTestGenerator->setViewModelTestDetailAssembler(new ViewModelTestDetailAssemblerImpl());
+        $this->viewModelTestGenerator->setViewModelTestDetailAssembler(new ViewModelTestSkeletonModelDetailAssemblerImpl());
 
         $this->viewModelTestGenerator->setUseCaseInterfaceClassName(__CLASS__);
         $this->viewModelTestGenerator->setUseCaseRequestInterfaceClassName(__CLASS__);
