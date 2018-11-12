@@ -2,13 +2,17 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Generator\Tests\Api\ViewModels;
 
-use OpenClassrooms\CodeGenerator\Generator\SkeletonModels\ViewModels\Tests\Impl\ViewModelTestSkeletonModelDetailAssemblerImpl;
+use OpenClassrooms\CodeGenerator\FileObjects\Impl\UseCaseResponseFileObjectFactoryImpl;
+use OpenClassrooms\CodeGenerator\FileObjects\Impl\ViewModelFileObjectFactoryImpl;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\DTO\Request\ViewModelTestGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\Request\ViewModelTestGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\ViewModelTestGenerator;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\FileObjectGatewayMock;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\ViewModelFileObjectFactoryMock;
+use OpenClassrooms\CodeGenerator\Services\Impl\FieldObjectServiceImpl;
+use OpenClassrooms\CodeGenerator\SkeletonModels\ViewModelTest\Impl\ViewModelTestSkeletonModelDetailAssemblerImpl;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingMock;
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\DTO\Response\FunctionalEntityResponseDTO;
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\FixturesConfig;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -33,7 +37,9 @@ class ViewModelTestGeneratorTest extends TestCase
     {
         $actualFileObject = $this->viewModelTestGenerator->generate($this->request);
 
-        $this->assertContains(ViewModelFileObjectFactoryMock::class, $actualFileObject->getContent());
+        $expectedGeneratedFileContent = __DIR__ . '/../../../Fixtures/Classes/Api/ViewModels/Domain/SubDomain/FunctionalEntity.php';
+
+        $this->assertStringEqualsFile($expectedGeneratedFileContent, $actualFileObject->getContent());
     }
 
     public function setUp()
@@ -41,21 +47,21 @@ class ViewModelTestGeneratorTest extends TestCase
         $viewModelTestGeneratorRequestBuilder = new ViewModelTestGeneratorRequestBuilderImpl();
         $this->request = $viewModelTestGeneratorRequestBuilder
             ->create()
-            ->withResponseClassName('null')
+            ->withResponseClassName(FunctionalEntityResponseDTO::class)
             ->build();
 
         $this->viewModelTestGenerator = new ViewModelTestGenerator();
-        $this->viewModelTestGenerator->setFileObjectFactory(
-            new ViewModelFileObjectFactoryMock()
-        ); //contains return value
-        $this->viewModelTestGenerator->setFileObjectGateway(new FileObjectGatewayMock());
-        $this->viewModelTestGenerator->setViewModelTestDetailAssembler(new ViewModelTestSkeletonModelDetailAssemblerImpl());
-
-        $this->viewModelTestGenerator->setUseCaseInterfaceClassName(__CLASS__);
-        $this->viewModelTestGenerator->setUseCaseRequestInterfaceClassName(__CLASS__);
-        $this->viewModelTestGenerator->setUseCaseResponseInterfaceClassName(__CLASS__);
-        $this->viewModelTestGenerator->setUseCaseResponseInterfaceClassName(__CLASS__);
+        $viewModelFileObjectFactory = new ViewModelFileObjectFactoryImpl();
+        $viewModelFileObjectFactory->setBaseNamespace(FixturesConfig::BASE_NAMESPACE);
+        $useCaseResponseFileObjectFactory = new UseCaseResponseFileObjectFactoryImpl();
+        $useCaseResponseFileObjectFactory->setBaseNamespace(FixturesConfig::BASE_NAMESPACE);
+        $this->viewModelTestGenerator->setUseCaseResponseFileObjectFactory($useCaseResponseFileObjectFactory);
+        $this->viewModelTestGenerator->setViewModelFileObjectFactory($viewModelFileObjectFactory);
+        $this->viewModelTestGenerator->setFileObjectGateway(new InMemoryFileObjectGateway());
+        $this->viewModelTestGenerator->setFieldObjectService(new FieldObjectServiceImpl());
         $this->viewModelTestGenerator->setTemplating(new TemplatingMock());
-
+        $this->viewModelTestGenerator->setViewModelTestSkeletonModelDetailAssembler(
+            new ViewModelTestSkeletonModelDetailAssemblerImpl()
+        );
     }
 }

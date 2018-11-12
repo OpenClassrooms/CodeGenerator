@@ -7,7 +7,7 @@ use OpenClassrooms\CodeGenerator\FileObjects\UseCaseResponseFileObjectFactory;
 use OpenClassrooms\CodeGenerator\FileObjects\UseCaseResponseFileObjectType;
 use OpenClassrooms\CodeGenerator\FileObjects\ViewModelFileObjectFactory;
 use OpenClassrooms\CodeGenerator\FileObjects\ViewModelFileObjectType;
-use OpenClassrooms\CodeGenerator\Gateway\FileObjectGateway;
+use OpenClassrooms\CodeGenerator\Gateways\FileObject\FileObjectGateway;
 use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\Request\ViewModelGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\Generator;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
@@ -99,7 +99,7 @@ class ViewModelGenerator implements Generator
 
     private function insertFileObject(FileObject $viewModelFileObject): void
     {
-        $this->fileObjectGateway->insert($viewModelFileObject)->flush();
+        $this->fileObjectGateway->insert($viewModelFileObject);
     }
 
     public function setFieldObjectService(FieldObjectService $fieldObjectService): void
