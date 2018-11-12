@@ -31,7 +31,7 @@ class GenerateViewModelTestCommand extends Command
         parent::__construct($name);
         $this->container = new ContainerBuilder();
         $loader = new XmlFileLoader($this->container, new FileLocator(__DIR__.'/../../Resources/config'));
-        $loader->load('tests.xml');
+        $loader->load('generators.xml');
 
     }
 

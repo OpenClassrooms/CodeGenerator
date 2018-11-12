@@ -1,6 +1,6 @@
 <?php
 
-namespace OpenClassrooms\CodeGenerator\SkeletonModels\TestsSkeleton;
+namespace OpenClassrooms\CodeGenerator\SkeletonModels\ViewModelTest;
 
 use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
 

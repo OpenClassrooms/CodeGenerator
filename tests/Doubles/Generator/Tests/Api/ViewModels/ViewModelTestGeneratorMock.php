@@ -2,9 +2,9 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Generator\Tests\Api\ViewModels;
 
-use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
 use OpenClassrooms\CodeGenerator\FileObjects\AbstractFileObjectFactory;
-use OpenClassrooms\CodeGenerator\Gateway\FileObjectGateway;
+use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
+use OpenClassrooms\CodeGenerator\Gateways\FileObject\FileObjectGateway;
 use OpenClassrooms\CodeGenerator\Generator\AbstractGenerator;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 

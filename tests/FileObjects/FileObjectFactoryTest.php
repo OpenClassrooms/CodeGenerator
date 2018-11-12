@@ -87,7 +87,7 @@ class FileObjectFactoryTest extends TestCase
         $fileObjectViewModelAssembler = new FileObject();
         TestClassUtil::setProperty(
             'className',
-            'ViewModels\Domain\SubDomain\\' . self::getEntityName() . 'Assembler',
+            'Api\ViewModels\Domain\SubDomain\\' . self::getEntityName() . 'Assembler',
             $fileObjectViewModelAssembler
         );
 
@@ -99,7 +99,7 @@ class FileObjectFactoryTest extends TestCase
         $fileObjectViewModelAssemblerTest = new FileObject();
         TestClassUtil::setProperty(
             'className',
-            self::TEST_BASE_NAMESPACE . 'ViewModels\Domain\SubDomain\\' . self::getEntityName() . 'AssemblerTest',
+            self::TEST_BASE_NAMESPACE . 'Api\ViewModels\Domain\SubDomain\\' . self::getEntityName() . 'AssemblerTest',
             $fileObjectViewModelAssemblerTest
         );
 
@@ -111,7 +111,7 @@ class FileObjectFactoryTest extends TestCase
         $fileObjectViewModelDetail = new FileObject();
         TestClassUtil::setProperty(
             'className',
-            'ViewModels\Domain\SubDomain\\' . self::getEntityName() . 'Detail',
+            'Api\ViewModels\Domain\SubDomain\\' . self::getEntityName() . 'Detail',
             $fileObjectViewModelDetail
         );
 
@@ -123,7 +123,7 @@ class FileObjectFactoryTest extends TestCase
         $fileObjectViewModel = new FileObject();
         TestClassUtil::setProperty(
             'className',
-            'ViewModels\Domain\SubDomain\\' . self::getEntityName(),
+            'Api\ViewModels\Domain\SubDomain\\' . self::getEntityName(),
             $fileObjectViewModel
         );
 
@@ -135,7 +135,7 @@ class FileObjectFactoryTest extends TestCase
         $fileObjectViewModelListItem = new FileObject();
         TestClassUtil::setProperty(
             'className',
-            'ViewModels\Domain\SubDomain\\' . self::getEntityName() . 'ListItem',
+            'Api\ViewModels\Domain\SubDomain\\' . self::getEntityName() . 'ListItem',
             $fileObjectViewModelListItem
         );
 
@@ -159,7 +159,7 @@ class FileObjectFactoryTest extends TestCase
         $fileObjectViewModelTestCase = new FileObject();
         TestClassUtil::setProperty(
             'className',
-            self::STUB_NAMESPACE . 'ViewModels\Domain\SubDomain\\' . self::getEntityName() . 'TestCase',
+            self::STUB_NAMESPACE . 'Api\ViewModels\Domain\SubDomain\\' . self::getEntityName() . 'TestCase',
             $fileObjectViewModelTestCase
         );
 
@@ -171,7 +171,7 @@ class FileObjectFactoryTest extends TestCase
         $fileObjectViewModelAssemblerImpl = new FileObject();
         TestClassUtil::setProperty(
             'className',
-            'ViewModels\Domain\SubDomain\Impl\\' . self::getEntityName() . 'AssemblerImpl',
+            'Api\ViewModels\Domain\SubDomain\Impl\\' . self::getEntityName() . 'AssemblerImpl',
             $fileObjectViewModelAssemblerImpl
         );
 
@@ -183,7 +183,7 @@ class FileObjectFactoryTest extends TestCase
         $fileObjectViewModelListItemImpl = new FileObject();
         TestClassUtil::setProperty(
             'className',
-            'ViewModels\Domain\SubDomain\Impl\\' . self::getEntityName() . 'ListItemImpl',
+            'Api\ViewModels\Domain\SubDomain\Impl\\' . self::getEntityName() . 'ListItemImpl',
             $fileObjectViewModelListItemImpl
         );
 
@@ -195,7 +195,7 @@ class FileObjectFactoryTest extends TestCase
         $fileObjectViewModelDetailImpl = new FileObject();
         TestClassUtil::setProperty(
             'className',
-            'ViewModels\Domain\SubDomain\Impl\\' . self::getEntityName() . 'DetailImpl',
+            'Api\ViewModels\Domain\SubDomain\Impl\\' . self::getEntityName() . 'DetailImpl',
             $fileObjectViewModelDetailImpl
         );
 

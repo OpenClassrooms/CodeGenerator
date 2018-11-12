@@ -1,9 +1,9 @@
 <?php
 
-namespace OpenClassrooms\CodeGenerator\SkeletonModels\TestsSkeleton\Impl;
+namespace OpenClassrooms\CodeGenerator\SkeletonModels\ViewModelTest\Impl;
 
 
-use OpenClassrooms\CodeGenerator\SkeletonModels\TestsSkeleton\ViewModelTestSkeletonModelDetail;
+use OpenClassrooms\CodeGenerator\SkeletonModels\ViewModelTest\ViewModelTestSkeletonModelDetail;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>

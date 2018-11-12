@@ -98,8 +98,8 @@ class FileObject
         return $this->getNamespaceFromClassNameUtility($this->getClassName());
     }
 
-    public function getPath()
+    public function getPath(): string
     {
-        return str_replace('\\', '/', $this->getClassName());
+        return str_replace('\\', '/', $this->getClassName(). '.php');
     }
 }

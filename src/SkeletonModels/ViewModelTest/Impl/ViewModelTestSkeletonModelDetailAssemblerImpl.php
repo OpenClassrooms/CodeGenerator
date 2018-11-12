@@ -1,10 +1,10 @@
 <?php
 
-namespace OpenClassrooms\CodeGenerator\SkeletonModels\TestsSkeleton\Impl;
+namespace OpenClassrooms\CodeGenerator\SkeletonModels\ViewModelTest\Impl;
 
 use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
-use OpenClassrooms\CodeGenerator\SkeletonModels\TestsSkeleton\ViewModelTestSkeletonModelDetail;
-use OpenClassrooms\CodeGenerator\SkeletonModels\TestsSkeleton\ViewModelTestSkeletonModelDetailAssembler;
+use OpenClassrooms\CodeGenerator\SkeletonModels\ViewModelTest\ViewModelTestSkeletonModelDetail;
+use OpenClassrooms\CodeGenerator\SkeletonModels\ViewModelTest\ViewModelTestSkeletonModelDetailAssembler;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>

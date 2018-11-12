@@ -4,23 +4,35 @@ namespace OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels;
 
 use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
 use OpenClassrooms\CodeGenerator\FileObjects\UseCaseResponseFileObjectFactory;
+use OpenClassrooms\CodeGenerator\FileObjects\UseCaseResponseFileObjectType;
 use OpenClassrooms\CodeGenerator\FileObjects\ViewModelFileObjectFactory;
 use OpenClassrooms\CodeGenerator\FileObjects\ViewModelFileObjectType;
-use OpenClassrooms\CodeGenerator\Gateway\FileObjectGateway;
-use OpenClassrooms\CodeGenerator\Generator\AbstractGenerator;
+use OpenClassrooms\CodeGenerator\Gateways\FileObject\FileObjectGateway;
+use OpenClassrooms\CodeGenerator\Generator\Generator;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
-use OpenClassrooms\CodeGenerator\Generator\SkeletonModels\ViewModels\TestsSkeleton\ViewModelTestSkeletonModelDetailAssembler;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\Request\ViewModelTestGeneratorRequest;
+use OpenClassrooms\CodeGenerator\Services\FieldObjectService;
+use OpenClassrooms\CodeGenerator\SkeletonModels\ViewModelTest\ViewModelTestSkeletonModelDetailAssembler;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
  */
-class ViewModelTestGenerator extends AbstractGenerator
+class ViewModelTestGenerator implements Generator
 {
+    /**
+     * @var FieldObjectService
+     */
+    private $fieldObjectService;
+
     /**
      * @var FileObjectGateway
      */
     private $fileObjectGateway;
+
+    /**
+     * @var \Twig_Environment
+     */
+    private $templating;
 
     /**
      * @var UseCaseResponseFileObjectFactory
@@ -35,44 +47,59 @@ class ViewModelTestGenerator extends AbstractGenerator
     /**
      * @var ViewModelTestSkeletonModelDetailAssembler
      */
-    private $viewModelTestDetailAssembler;
+    private $viewModelTestSkeletonModelDetailAssembler;
 
     /**
      * @param ViewModelTestGeneratorRequest $generatorRequest
      */
     public function generate(GeneratorRequest $generatorRequest): FileObject
     {
-        // domain/class
-        $fileObject = new FileObject();
-        $fileObject->setClassName($generatorRequest->getResponseClassName());
+        $viewModelFileObject = $this->createViewModelFileObject($generatorRequest->getResponseClassName());
+        $viewModelFileObject->setContent($this->generateContent($viewModelFileObject));
+        $this->insertFileObject($viewModelFileObject);
 
-        $skeletonModel = $this->getSkeletonModel($fileObject);
-
-        $fileObject->setContent(
-            $this->render('App/ViewModels/ViewModelTest.php.twig', ['skeletonModel' => $skeletonModel])
-        );
-
-        $fileObject->getContent();
-
-        $this->fileObjectGateway->insert($fileObject);
-
-        return $fileObject;
+        return $viewModelFileObject;
     }
 
-    private function getSkeletonModel(FileObject $fileObject)
+    public function createViewModelFileObject(string $responseClassName): FileObject
     {
-        // generate ResponseStub1
-        // generate TestCase
-        // get Assembler Name
+        $responseFileObject = $this->createResponseFileObject($responseClassName);
 
-        $viewModelAssembler = $this->viewModelFileObjectFactory->create(
-            ViewModelFileObjectType::API_VIEW_MODEL_ASSEMBLER_TEST,
-            $fileObject->getClassName()
-        );
+        $viewModel = $this->viewModelFileObjectFactory
+            ->create(ViewModelFileObjectType::API_VIEW_MODEL_ASSEMBLER_TEST, $responseFileObject->getClassName());
+        $viewModel->setFields($this->fieldObjectService->getPublicClassFields($responseFileObject->getClassName()));
 
-        $skeletonModel = $this->viewModelTestDetailAssembler->create($viewModelAssembler);
+        return $viewModel;
+    }
 
-        return $skeletonModel;
+    public function createResponseFileObject(string $className): FileObject
+    {
+        $responseFileObject = $this->useCaseResponseFileObjectFactory
+            ->create(UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE, $className);
+
+        return $responseFileObject;
+    }
+
+    private function generateContent(FileObject $viewModelFileObject): string
+    {
+        $skeletonModel = $this->createSkeletonModel($viewModelFileObject);
+
+        return $this->render('Api/ViewModels/ViewModelTest.php.twig', ['skeletonModel' => $skeletonModel]);
+    }
+
+    private function createSkeletonModel(FileObject $viewModelFileObject)
+    {
+        return $this->viewModelTestSkeletonModelDetailAssembler->create($viewModelFileObject);
+    }
+
+    private function render(string $template, array $parameters): string
+    {
+        return $this->templating->render($template, $parameters);
+    }
+
+    private function insertFileObject(FileObject $viewModelFileObject): void
+    {
+        $this->fileObjectGateway->insert($viewModelFileObject)->flush();
     }
 
     public function setFileObjectGateway(FileObjectGateway $fileObjectGateway)
@@ -80,16 +107,26 @@ class ViewModelTestGenerator extends AbstractGenerator
         $this->fileObjectGateway = $fileObjectGateway;
     }
 
+    public function setFieldObjectService(FieldObjectService $fieldObjectService): void
+    {
+        $this->fieldObjectService = $fieldObjectService;
+    }
+
+    public function setTemplating(\Twig_Environment $templating): void
+    {
+        $this->templating = $templating;
+    }
+
     public function setViewModelFileObjectFactory(ViewModelFileObjectFactory $viewModelFileObjectFactory)
     {
         $this->viewModelFileObjectFactory = $viewModelFileObjectFactory;
     }
 
-    public function setViewModelTestDetailAssembler(
-        ViewModelTestSkeletonModelDetailAssembler $viewModelTestDetailAssembler
+    public function setViewModelTestSkeletonModelDetailAssembler(
+        ViewModelTestSkeletonModelDetailAssembler $viewModelTestSkeletonModelDetailAssembler
     )
     {
-        $this->viewModelTestDetailAssembler = $viewModelTestDetailAssembler;
+        $this->viewModelTestSkeletonModelDetailAssembler = $viewModelTestSkeletonModelDetailAssembler;
     }
 
     public function setUseCaseResponseFileObjectFactory(
@@ -98,4 +135,5 @@ class ViewModelTestGenerator extends AbstractGenerator
     {
         $this->useCaseResponseFileObjectFactory = $useCaseResponseFileObjectFactory;
     }
+
 }
