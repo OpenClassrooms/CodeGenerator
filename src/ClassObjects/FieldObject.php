@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace OpenClassrooms\CodeGenerator\ClassObjects;
 
@@ -14,22 +14,22 @@ class FieldObject
     /**
      * @var string
      */
-    private $accessor;
+    protected $accessor;
 
     /**
      * @var string
      */
-    private $docComment;
+    protected $docComment;
 
     /**
      * @var string
      */
-    private $name;
+    protected $name;
 
     /**
      * @var string
      */
-    private $scope = FieldObject::SCOPE_PRIVATE;
+    protected $scope = FieldObject::SCOPE_PRIVATE;
 
     public function __construct(string $name)
     {
@@ -44,9 +44,9 @@ class FieldObject
         return $this->accessor;
     }
 
-    public function setAccessor(string $accessor = null)
+    public function getDocComment(): string
     {
-        $this->accessor = $accessor;
+        return $this->docComment;
     }
 
     public function getName(): string
@@ -59,27 +59,27 @@ class FieldObject
         return $this->scope;
     }
 
-    public function setScope(string $scope)
-    {
-        $this->scope = $scope;
-    }
-
     public function getType(): string
     {
-        if (strpos($this->getDocComment(),'[]') !== false) {
+        if (strpos($this->getDocComment(), '[]') !== false) {
             return 'array';
         }
 
         return preg_replace('/(\W)|(var)/', '', $this->getDocComment());
     }
 
-    public function getDocComment(): string
+    public function setAccessor(string $accessor = null)
     {
-        return $this->docComment;
+        $this->accessor = $accessor;
     }
 
     public function setDocComment(string $docComment)
     {
         $this->docComment = $docComment;
+    }
+
+    public function setScope(string $scope)
+    {
+        $this->scope = $scope;
     }
 }
