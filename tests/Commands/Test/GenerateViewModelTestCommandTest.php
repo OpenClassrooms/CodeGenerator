@@ -1,9 +1,9 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace OpenClassrooms\CodeGenerator\Tests\Commands\Test;
 
 use OpenClassrooms\CodeGenerator\Commands\Test\GenerateViewModelTestCommand;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\Generator\Tests\Api\ViewModels\ViewModelTestGeneratorMock;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Generator\Tests\Api\ViewModels\ViewModelTestGeneratorMockOld;
 use OpenClassrooms\CodeGenerator\Tests\TestClassUtil;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Application;
@@ -16,14 +16,14 @@ use Symfony\Component\DependencyInjection\Container;
 class GenerateViewModelTestCommandTest extends TestCase
 {
     /**
-     * @var GenerateViewModelTestCommand
-     */
-    private $command;
-
-    /**
      * @var Application
      */
     private $application;
+
+    /**
+     * @var GenerateViewModelTestCommand
+     */
+    private $command;
 
     /**
      * @var CommandTester
@@ -34,7 +34,6 @@ class GenerateViewModelTestCommandTest extends TestCase
      * @var Container
      */
     private $container;
-
 
     /**
      * @test
@@ -63,15 +62,8 @@ class GenerateViewModelTestCommandTest extends TestCase
     /**
      * @test
      */
-    public function withoutArguments_DisplayHelp()
+    public function generateCommand_NotWorkingParams()
     {
-        $this->commandTester->execute([
-            'command' => $this->command->getName(),
-        ]);
-
-        $output = $this->commandTester->getDisplay();
-
-        self::assertContains('ok', $output);
     }
 
     /**
@@ -89,7 +81,7 @@ class GenerateViewModelTestCommandTest extends TestCase
     {
         $expected = 'TestIsWorking';
         $this->commandTester->execute([
-            'command' => $this->command->getName(),
+            'command'                => $this->command->getName(),
             'responseShortClassName' => $expected,
         ]);
 
@@ -101,8 +93,15 @@ class GenerateViewModelTestCommandTest extends TestCase
     /**
      * @test
      */
-    public function generateCommand_NotWorkingParams()
+    public function withoutArguments_DisplayHelp()
     {
+        $this->commandTester->execute([
+            'command' => $this->command->getName(),
+        ]);
+
+        $output = $this->commandTester->getDisplay();
+
+        self::assertContains('ok', $output);
     }
 
     protected function setUp()
@@ -112,7 +111,7 @@ class GenerateViewModelTestCommandTest extends TestCase
         $this->application->add($this->command);
         $this->commandTester = new CommandTester($this->command);
         $this->container = $this->createMock(Container::class);
-        $this->container->method('get')->willReturn(new ViewModelTestGeneratorMock());
+        $this->container->method('get')->willReturn(new ViewModelTestGeneratorMockOld());
         TestClassUtil::setProperty('container', $this->container, $this->command);
     }
 }
