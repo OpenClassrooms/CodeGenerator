@@ -2,7 +2,7 @@
 
 namespace OpenClassrooms\CodeGenerator\Generator\App\Controller;
 
-use OpenClassrooms\CodeGenerator\Generator\AbstractGenerator;
+use OpenClassrooms\CodeGenerator\Generator\OldAbstractGenerator;
 use OpenClassrooms\CodeGenerator\Services\ControllerClassObjectService;
 use OpenClassrooms\CodeGenerator\Services\UseCaseClassObjectService;
 use OpenClassrooms\CodeGenerator\Services\ViewModelClassObjectService;
@@ -10,7 +10,7 @@ use OpenClassrooms\CodeGenerator\Services\ViewModelClassObjectService;
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
  */
-abstract class AbstractControllerGenerator extends AbstractGenerator
+abstract class OldAbstractControllerGenerator extends OldAbstractGenerator
 {
     /**
      * @var \OpenClassrooms\CodeGenerator\Services\ControllerClassObjectService

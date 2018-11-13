@@ -1,15 +1,15 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace OpenClassrooms\CodeGenerator\Generator\App\ViewModels\Impl;
 
-use OpenClassrooms\CodeGenerator\Generator\App\ViewModels\AbstractViewModelGenerator;
+use OpenClassrooms\CodeGenerator\Generator\App\ViewModels\OldAbstractViewModelGenerator;
 use OpenClassrooms\CodeGenerator\Generator\App\ViewModels\ViewModelAssemblerTraitGenerator;
 use OpenClassrooms\CodeGenerator\Services\UseCaseClassObjectService;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
  */
-class ViewModelDetailAssemblerGeneratorImpl extends AbstractViewModelGenerator
+class ViewModelDetailAssemblerGeneratorImpl extends OldAbstractViewModelGenerator
 {
     /**
      * @var \OpenClassrooms\CodeGenerator\Services\UseCaseClassObjectService
@@ -33,38 +33,38 @@ class ViewModelDetailAssemblerGeneratorImpl extends AbstractViewModelGenerator
         /** @var \OpenClassrooms\CodeGenerator\ClassObjects\ClassObject $vm */
         /** @var \OpenClassrooms\CodeGenerator\ClassObjects\ClassObject $viewModelDetail */
         /** @var \OpenClassrooms\CodeGenerator\ClassObjects\ClassObject $viewModelDetailImpl */
-        list($vm, $viewModelDetail, $viewModelDetailImpl) = $this->viewModelClassObjectService->getViewModels(
+        [$vm, $viewModelDetail, $viewModelDetailImpl] = $this->viewModelClassObjectService->getViewModels(
             $className
         );
 
         $viewModelDetailAssemblerContent = $this->render(
             '/App/ViewModels/ViewModelDetailAssembler.php.twig',
             [
-                'viewModelDetailAssemblerNamespace' => $viewModelDetailAssembler->getNamespace(),
+                'viewModelDetailAssemblerNamespace'      => $viewModelDetailAssembler->getNamespace(),
                 'viewModelDetailAssemblerShortClassName' => $viewModelDetailAssembler->getShortClassName(),
-                'viewModelDetailShortClassName' => $viewModelDetail->getShortClassName(),
-                'useCaseResponseClassName' => $useCaseResponse->getClassName(),
-                'useCaseResponseShortClassName' => $useCaseResponse->getShortClassName(),
-                'entityName' => lcfirst($entityName)
+                'viewModelDetailShortClassName'          => $viewModelDetail->getShortClassName(),
+                'useCaseResponseClassName'               => $useCaseResponse->getClassName(),
+                'useCaseResponseShortClassName'          => $useCaseResponse->getShortClassName(),
+                'entityName'                             => lcfirst($entityName),
             ]
         );
 
         $viewModelDetailAssemblerImplContent = $this->render(
             '/App/ViewModels/Impl/ViewModelDetailAssemblerImpl.php.twig',
             [
-                'viewModelDetailAssemblerImplNamespace' => $viewModelDetailAssemblerImpl->getNamespace(),
+                'viewModelDetailAssemblerImplNamespace'      => $viewModelDetailAssemblerImpl->getNamespace(),
                 'viewModelDetailAssemblerImplShortClassName' => $viewModelDetailAssemblerImpl->getShortClassName(),
-                'viewModelDetailAssemblerClassName' => $viewModelDetailAssembler->getClassName(),
-                'viewModelDetailAssemblerShortClassName' => $viewModelDetailAssembler->getShortClassName(),
-                'viewModelDetailClassName' => $viewModelDetail->getClassName(),
-                'viewModelDetailShortClassName' => $viewModelDetail->getShortClassName(),
-                'viewModelDetailImplClassName' => $viewModelDetailImpl->getClassName(),
-                'viewModelDetailImplShortClassName' => $viewModelDetailImpl->getShortClassName(),
-                'viewModelAssemblerTraitClassName' => $viewModelAssemblerTrait->getClassName(),
-                'viewModelAssemblerTraitShortClassName' => $viewModelAssemblerTrait->getShortClassName(),
-                'useCaseResponseClassName' => $useCaseResponse->getClassName(),
-                'useCaseResponseShortClassName' => $useCaseResponse->getShortClassName(),
-                'entityName' => lcfirst($entityName)
+                'viewModelDetailAssemblerClassName'          => $viewModelDetailAssembler->getClassName(),
+                'viewModelDetailAssemblerShortClassName'     => $viewModelDetailAssembler->getShortClassName(),
+                'viewModelDetailClassName'                   => $viewModelDetail->getClassName(),
+                'viewModelDetailShortClassName'              => $viewModelDetail->getShortClassName(),
+                'viewModelDetailImplClassName'               => $viewModelDetailImpl->getClassName(),
+                'viewModelDetailImplShortClassName'          => $viewModelDetailImpl->getShortClassName(),
+                'viewModelAssemblerTraitClassName'           => $viewModelAssemblerTrait->getClassName(),
+                'viewModelAssemblerTraitShortClassName'      => $viewModelAssemblerTrait->getShortClassName(),
+                'useCaseResponseClassName'                   => $useCaseResponse->getClassName(),
+                'useCaseResponseShortClassName'              => $useCaseResponse->getShortClassName(),
+                'entityName'                                 => lcfirst($entityName),
 
             ]
         );

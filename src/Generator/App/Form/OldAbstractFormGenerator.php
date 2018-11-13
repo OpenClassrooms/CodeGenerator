@@ -2,14 +2,14 @@
 
 namespace OpenClassrooms\CodeGenerator\Generator\App\Form;
 
-use OpenClassrooms\CodeGenerator\Generator\AbstractGenerator;
+use OpenClassrooms\CodeGenerator\Generator\OldAbstractGenerator;
 use OpenClassrooms\CodeGenerator\Services\ControllerClassObjectService;
 use OpenClassrooms\CodeGenerator\Services\FormClassObjectService;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
  */
-abstract class AbstractFormGenerator extends AbstractGenerator
+abstract class OldAbstractFormGenerator extends OldAbstractGenerator
 {
     /**
      * @var \OpenClassrooms\CodeGenerator\Services\ControllerClassObjectService

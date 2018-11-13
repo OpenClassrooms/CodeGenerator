@@ -1,8 +1,8 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace OpenClassrooms\CodeGenerator\Tests\Generator;
 
-use OpenClassrooms\CodeGenerator\Generator\AbstractGenerator;
+use OpenClassrooms\CodeGenerator\Generator\OldAbstractGenerator;
 use OpenClassrooms\CodeGenerator\Services\Impl\FieldObjectServiceImpl;
 use OpenClassrooms\CodeGenerator\Services\Impl\TemplatingFactoryImpl;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\Requestors\UseCaseRequest;
@@ -16,16 +16,11 @@ use PHPUnit\Framework\TestCase;
 class GeneratorTestCase extends TestCase
 {
     /**
-     * @var \OpenClassrooms\CodeGenerator\Generator\AbstractGenerator
+     * @var \OpenClassrooms\CodeGenerator\Generator\OldAbstractGenerator
      */
     protected $generator;
 
-    protected function setUp()
-    {
-        $this->buildGenerator($this->generator);
-    }
-
-    protected function buildGenerator(AbstractGenerator $generator): AbstractGenerator
+    protected function buildGenerator(OldAbstractGenerator $generator): OldAbstractGenerator
     {
         $templatingFactory = new TemplatingFactoryImpl();
         $templating = $templatingFactory->create(
@@ -38,5 +33,10 @@ class GeneratorTestCase extends TestCase
         $generator->setFieldObjectService(new FieldObjectServiceImpl());
 
         return $generator;
+    }
+
+    protected function setUp()
+    {
+        $this->buildGenerator($this->generator);
     }
 }

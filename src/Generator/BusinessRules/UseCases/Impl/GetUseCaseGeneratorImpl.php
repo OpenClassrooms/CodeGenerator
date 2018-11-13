@@ -1,14 +1,14 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Impl;
 
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\AbstractUseCaseGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\GetUseCaseGenerator;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\OldAbstractUseCaseGenerator;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
  */
-class GetUseCaseGeneratorImpl extends AbstractUseCaseGenerator implements GetUseCaseGenerator
+class GetUseCaseGeneratorImpl extends OldAbstractUseCaseGenerator implements GetUseCaseGenerator
 {
     public function generate(string $className, array $parameters = []): array
     {
@@ -26,27 +26,27 @@ class GetUseCaseGeneratorImpl extends AbstractUseCaseGenerator implements GetUse
         $useCaseContent = $this->render(
             '/BusinessRules/UseCases/GetUseCase.php.twig',
             [
-                'useCaseNamespace' => $useCase->getNamespace(),
-                'useCaseShortClassName' => $useCase->getShortClassName(),
-                'useCaseDetailResponseClassName' => $useCaseDetailResponse->getClassName(),
-                'useCaseDetailResponseAssemblerClassName' => $useCaseDetailResponseAssembler->getClassName(),
+                'useCaseNamespace'                             => $useCase->getNamespace(),
+                'useCaseShortClassName'                        => $useCase->getShortClassName(),
+                'useCaseDetailResponseClassName'               => $useCaseDetailResponse->getClassName(),
+                'useCaseDetailResponseAssemblerClassName'      => $useCaseDetailResponseAssembler->getClassName(),
                 'useCaseDetailResponseAssemblerShortClassName' => $useCaseDetailResponseAssembler->getShortClassName(),
-                'useCaseDetailResponseAssemblerFieldName' => $useCaseDetailResponseAssembler->getFieldName(),
-                'useCaseDetailResponseAssemblerFieldNameUC' => ucfirst($useCaseDetailResponseAssembler->getFieldName()),
-                'useCaseRequestClassName' => $useCaseRequest->getClassName(),
-                'entityFieldName' => $entity->getFieldName(),
-                'gatewayClassName' => $gateway->getClassName(),
-                'gatewayShortClassName' => $gateway->getShortClassName(),
-                'gatewayFieldName' => $gateway->getFieldName(),
-                'gatewayFieldNameUC' => ucfirst($gateway->getFieldName()),
-                'entityNotFoundExceptionClassName' => $entityNotFoundException->getClassName()
+                'useCaseDetailResponseAssemblerFieldName'      => $useCaseDetailResponseAssembler->getFieldName(),
+                'useCaseDetailResponseAssemblerFieldNameUC'    => ucfirst($useCaseDetailResponseAssembler->getFieldName()),
+                'useCaseRequestClassName'                      => $useCaseRequest->getClassName(),
+                'entityFieldName'                              => $entity->getFieldName(),
+                'gatewayClassName'                             => $gateway->getClassName(),
+                'gatewayShortClassName'                        => $gateway->getShortClassName(),
+                'gatewayFieldName'                             => $gateway->getFieldName(),
+                'gatewayFieldNameUC'                           => ucfirst($gateway->getFieldName()),
+                'entityNotFoundExceptionClassName'             => $entityNotFoundException->getClassName(),
             ]
         );
 
         $useCaseRequestContent = $this->render(
             '/BusinessRules/Requestors/GetUseCaseRequest.php.twig',
             [
-                'useCaseRequestNamespace' => $useCaseRequest->getNamespace(),
+                'useCaseRequestNamespace'      => $useCaseRequest->getNamespace(),
                 'useCaseRequestShortClassName' => $useCaseRequest->getShortClassName(),
             ]
         );
@@ -55,10 +55,10 @@ class GetUseCaseGeneratorImpl extends AbstractUseCaseGenerator implements GetUse
         $useCaseRequestDTOContent = $this->render(
             '/BusinessRules/UseCases/DTO/Request/GetUseCaseRequestDTO.php.twig',
             [
-                'useCaseRequestDTONamespace' => $useCaseRequestDTO->getNamespace(),
+                'useCaseRequestDTONamespace'      => $useCaseRequestDTO->getNamespace(),
                 'useCaseRequestDTOShortClassName' => $useCaseRequestDTO->getShortClassName(),
-                'useCaseRequestClassName' => $useCaseRequest->getClassName(),
-                'useCaseRequestShortClassName' => $useCaseRequest->getShortClassName(),
+                'useCaseRequestClassName'         => $useCaseRequest->getClassName(),
+                'useCaseRequestShortClassName'    => $useCaseRequest->getShortClassName(),
             ]
         );
 
@@ -66,9 +66,9 @@ class GetUseCaseGeneratorImpl extends AbstractUseCaseGenerator implements GetUse
         $useCaseRequestBuilderContent = $this->render(
             '/BusinessRules/Requestors/GetUseCaseRequestBuilder.php.twig',
             [
-                'useCaseRequestBuilderNamespace' => $useCaseRequestBuilder->getNamespace(),
+                'useCaseRequestBuilderNamespace'      => $useCaseRequestBuilder->getNamespace(),
                 'useCaseRequestBuilderShortClassName' => $useCaseRequestBuilder->getShortClassName(),
-                'useCaseRequestShortClassName' => $useCaseRequest->getShortClassName(),
+                'useCaseRequestShortClassName'        => $useCaseRequest->getShortClassName(),
             ]
         );
 
@@ -76,14 +76,14 @@ class GetUseCaseGeneratorImpl extends AbstractUseCaseGenerator implements GetUse
         $useCaseRequestBuilderContentImpl = $this->render(
             '/BusinessRules/UseCases/DTO/Request/GetUseCaseRequestBuilderImpl.php.twig',
             [
-                'useCaseRequestBuilderImplNamespace' => $useCaseRequestBuilderImpl->getNamespace(),
+                'useCaseRequestBuilderImplNamespace'      => $useCaseRequestBuilderImpl->getNamespace(),
                 'useCaseRequestBuilderImplShortClassName' => $useCaseRequestBuilderImpl->getShortClassName(),
-                'useCaseRequestBuilderClassName' => $useCaseRequestBuilder->getClassName(),
-                'useCaseRequestBuilderShortClassName' => $useCaseRequestBuilder->getShortClassName(),
-                'useCaseRequestShortClassName' => $useCaseRequest->getShortClassName(),
-                'useCaseRequestClassName' => $useCaseRequest->getClassName(),
-                'useCaseRequestDTOClassName' => $useCaseRequestDTO->getClassName(),
-                'useCaseRequestDTOShortClassName' => $useCaseRequestDTO->getShortClassName(),
+                'useCaseRequestBuilderClassName'          => $useCaseRequestBuilder->getClassName(),
+                'useCaseRequestBuilderShortClassName'     => $useCaseRequestBuilder->getShortClassName(),
+                'useCaseRequestShortClassName'            => $useCaseRequest->getShortClassName(),
+                'useCaseRequestClassName'                 => $useCaseRequest->getClassName(),
+                'useCaseRequestDTOClassName'              => $useCaseRequestDTO->getClassName(),
+                'useCaseRequestDTOShortClassName'         => $useCaseRequestDTO->getShortClassName(),
             ]
         );
 
@@ -91,31 +91,31 @@ class GetUseCaseGeneratorImpl extends AbstractUseCaseGenerator implements GetUse
         $useCaseResponseContent = $this->render(
             '/BusinessRules/Responders/UseCaseResponse.php.twig',
             [
-                'useCaseResponseNamespace' => $useCaseResponse->getNamespace(),
+                'useCaseResponseNamespace'      => $useCaseResponse->getNamespace(),
                 'useCaseResponseShortClassName' => $useCaseResponse->getShortClassName(),
-                'fields' => $this->fieldObjectService->getProtectedClassFields($className)
+                'fields'                        => $this->fieldObjectService->getProtectedClassFields($className),
             ]
         );
 
         $useCaseDetailResponseContent = $this->render(
             '/BusinessRules/Responders/UseCaseDetailResponse.php.twig',
             [
-                'useCaseDetailResponseNamespace' => $useCaseDetailResponse->getNamespace(),
+                'useCaseDetailResponseNamespace'      => $useCaseDetailResponse->getNamespace(),
                 'useCaseDetailResponseShortClassName' => $useCaseDetailResponse->getShortClassName(),
-                'useCaseResponseClassName' => $useCaseResponse->getClassName(),
-                'useCaseResponseShortClassName' => $useCaseResponse->getShortClassName(),
+                'useCaseResponseClassName'            => $useCaseResponse->getClassName(),
+                'useCaseResponseShortClassName'       => $useCaseResponse->getShortClassName(),
             ]
         );
 
         $useCaseDetailResponseAssemblerContent = $this->render(
             '/BusinessRules/Responders/UseCaseDetailResponseAssembler.php.twig',
             [
-                'useCaseDetailResponseAssemblerNamespace' => $useCaseDetailResponseAssembler->getNamespace(),
+                'useCaseDetailResponseAssemblerNamespace'      => $useCaseDetailResponseAssembler->getNamespace(),
                 'useCaseDetailResponseAssemblerShortClassName' => $useCaseDetailResponseAssembler->getShortClassName(),
-                'entityClassName' => $entity->getClassName(),
-                'entityShortClassName' => $entity->getShortClassName(),
-                'entityFieldName' => $entity->getFieldName(),
-                'useCaseDetailResponseShortClassName' => $useCaseDetailResponse->getShortClassName()
+                'entityClassName'                              => $entity->getClassName(),
+                'entityShortClassName'                         => $entity->getShortClassName(),
+                'entityFieldName'                              => $entity->getFieldName(),
+                'useCaseDetailResponseShortClassName'          => $useCaseDetailResponse->getShortClassName(),
             ]
         );
 
@@ -123,11 +123,11 @@ class GetUseCaseGeneratorImpl extends AbstractUseCaseGenerator implements GetUse
         $useCaseResponseDTOContent = $this->render(
             '/BusinessRules/UseCases/DTO/Response/UseCaseResponseDTO.php.twig',
             [
-                'useCaseResponseDTONamespace' => $useCaseResponseDTO->getNamespace(),
+                'useCaseResponseDTONamespace'      => $useCaseResponseDTO->getNamespace(),
                 'useCaseResponseDTOShortClassName' => $useCaseResponseDTO->getShortClassName(),
-                'useCaseResponseClassName' => $useCaseResponse->getClassName(),
-                'useCaseResponseShortClassName' => $useCaseResponse->getShortClassName(),
-                'fields' => $this->fieldObjectService->getProtectedClassFields($className)
+                'useCaseResponseClassName'         => $useCaseResponse->getClassName(),
+                'useCaseResponseShortClassName'    => $useCaseResponse->getShortClassName(),
+                'fields'                           => $this->fieldObjectService->getProtectedClassFields($className),
             ]
         );
 
@@ -135,11 +135,11 @@ class GetUseCaseGeneratorImpl extends AbstractUseCaseGenerator implements GetUse
         $useCaseDetailResponseDTOContent = $this->render(
             '/BusinessRules/UseCases/DTO/Response/UseCaseDetailResponseDTO.php.twig',
             [
-                'useCaseDetailResponseDTONamespace' => $useCaseDetailResponseDTO->getNamespace(),
+                'useCaseDetailResponseDTONamespace'      => $useCaseDetailResponseDTO->getNamespace(),
                 'useCaseDetailResponseDTOShortClassName' => $useCaseDetailResponseDTO->getShortClassName(),
-                'useCaseResponseDTOShortClassName' => $useCaseResponseDTO->getShortClassName(),
-                'useCaseDetailResponseClassName' => $useCaseDetailResponse->getClassName(),
-                'useCaseDetailResponseShortClassName' => $useCaseDetailResponse->getShortClassName(),
+                'useCaseResponseDTOShortClassName'       => $useCaseResponseDTO->getShortClassName(),
+                'useCaseDetailResponseClassName'         => $useCaseDetailResponse->getClassName(),
+                'useCaseDetailResponseShortClassName'    => $useCaseDetailResponse->getShortClassName(),
             ]
         );
 
@@ -147,15 +147,15 @@ class GetUseCaseGeneratorImpl extends AbstractUseCaseGenerator implements GetUse
         $useCaseResponseAssemblerTraitContent = $this->render(
             '/BusinessRules/UseCases/DTO/Response/UseCaseResponseAssemblerTrait.php.twig',
             [
-                'useCaseResponseAssemblerTraitNamespace' => $useCaseResponseAssemblerTrait->getNamespace(),
+                'useCaseResponseAssemblerTraitNamespace'      => $useCaseResponseAssemblerTrait->getNamespace(),
                 'useCaseResponseAssemblerTraitShortClassName' => $useCaseResponseAssemblerTrait->getShortClassName(),
-                'useCaseResponseClassName' => $useCaseResponse->getClassName(),
-                'useCaseResponseShortClassName' => $useCaseResponse->getShortClassName(),
-                'useCaseResponseDTOClassName' => $useCaseResponseDTO->getClassName(),
-                'entityClassName' => $entity->getClassName(),
-                'entityShortClassName' => $entity->getShortClassName(),
-                'entityFieldName' => $entity->getFieldName(),
-                'fields' => $this->fieldObjectService->getProtectedClassFields($className)
+                'useCaseResponseClassName'                    => $useCaseResponse->getClassName(),
+                'useCaseResponseShortClassName'               => $useCaseResponse->getShortClassName(),
+                'useCaseResponseDTOClassName'                 => $useCaseResponseDTO->getClassName(),
+                'entityClassName'                             => $entity->getClassName(),
+                'entityShortClassName'                        => $entity->getShortClassName(),
+                'entityFieldName'                             => $entity->getFieldName(),
+                'fields'                                      => $this->fieldObjectService->getProtectedClassFields($className),
             ]
         );
 
@@ -165,18 +165,18 @@ class GetUseCaseGeneratorImpl extends AbstractUseCaseGenerator implements GetUse
         $useCaseDetailResponseAssemblerImplContent = $this->render(
             '/BusinessRules/UseCases/DTO/Response/UseCaseDetailResponseAssemblerImpl.php.twig',
             [
-                'useCaseDetailResponseAssemblerImplNamespace' => $useCaseDetailResponseAssemblerImpl->getNamespace(),
+                'useCaseDetailResponseAssemblerImplNamespace'      => $useCaseDetailResponseAssemblerImpl->getNamespace(),
                 'useCaseDetailResponseAssemblerImplShortClassName' => $useCaseDetailResponseAssemblerImpl->getShortClassName(
                 ),
-                'useCaseDetailResponseAssemblerClassName' => $useCaseDetailResponseAssembler->getClassName(),
+                'useCaseDetailResponseAssemblerClassName'      => $useCaseDetailResponseAssembler->getClassName(),
                 'useCaseDetailResponseAssemblerShortClassName' => $useCaseDetailResponseAssembler->getShortClassName(),
-                'useCaseResponseAssemblerTraitShortClassName' => $useCaseResponseAssemblerTrait->getShortClassName(),
-                'useCaseDetailResponseClassName' => $useCaseDetailResponse->getClassName(),
-                'useCaseDetailResponseShortClassName' => $useCaseDetailResponse->getShortClassName(),
-                'useCaseDetailResponseDTOShortClassName' => $useCaseDetailResponseDTO->getShortClassName(),
-                'entityClassName' => $entity->getClassName(),
-                'entityShortClassName' => $entity->getShortClassName(),
-                'entityFieldName' => $entity->getFieldName()
+                'useCaseResponseAssemblerTraitShortClassName'  => $useCaseResponseAssemblerTrait->getShortClassName(),
+                'useCaseDetailResponseClassName'               => $useCaseDetailResponse->getClassName(),
+                'useCaseDetailResponseShortClassName'          => $useCaseDetailResponse->getShortClassName(),
+                'useCaseDetailResponseDTOShortClassName'       => $useCaseDetailResponseDTO->getShortClassName(),
+                'entityClassName'                              => $entity->getClassName(),
+                'entityShortClassName'                         => $entity->getShortClassName(),
+                'entityFieldName'                              => $entity->getFieldName(),
             ]
         );
 
@@ -185,12 +185,12 @@ class GetUseCaseGeneratorImpl extends AbstractUseCaseGenerator implements GetUse
         $gatewayContent = $this->render(
             '/BusinessRules/Gateways/Gateway.php.twig',
             [
-                'find' => $find,
-                'findAll' => $findAll,
-                'gatewayNamespace' => $gateway->getNamespace(),
-                'gatewayShortClassName' => $gateway->getShortClassName(),
-                'entityClassName' => $entity->getClassName(),
-                'entityNotFoundExceptionClassName' => $entityNotFoundException->getClassName()
+                'find'                             => $find,
+                'findAll'                          => $findAll,
+                'gatewayNamespace'                 => $gateway->getNamespace(),
+                'gatewayShortClassName'            => $gateway->getShortClassName(),
+                'entityClassName'                  => $entity->getClassName(),
+                'entityNotFoundExceptionClassName' => $entityNotFoundException->getClassName(),
             ]
         );
 
@@ -198,33 +198,33 @@ class GetUseCaseGeneratorImpl extends AbstractUseCaseGenerator implements GetUse
         $repositoryContent = $this->render(
             '/App/Repository/Repository.php.twig',
             [
-                'find' => $find,
-                'findAll' => $findAll,
-                'repositoryNamespace' => $repository->getNamespace(),
-                'repositoryShortClassName' => $repository->getShortClassName(),
-                'entityFieldName' => $entity->getFieldName(),
-                'gatewayClassName' => $gateway->getClassName(),
-                'gatewayShortClassName' => $gateway->getShortClassName(),
-                'entityNotFoundExceptionClassName' => $entityNotFoundException->getClassName(),
-                'entityNotFoundExceptionShortClassName' => $entityNotFoundException->getShortClassName()
+                'find'                                  => $find,
+                'findAll'                               => $findAll,
+                'repositoryNamespace'                   => $repository->getNamespace(),
+                'repositoryShortClassName'              => $repository->getShortClassName(),
+                'entityFieldName'                       => $entity->getFieldName(),
+                'gatewayClassName'                      => $gateway->getClassName(),
+                'gatewayShortClassName'                 => $gateway->getShortClassName(),
+                'entityNotFoundExceptionClassName'      => $entityNotFoundException->getClassName(),
+                'entityNotFoundExceptionShortClassName' => $entityNotFoundException->getShortClassName(),
             ]
         );
 
         return [
-            $useCase->getClassName() => $useCaseContent,
-            $useCaseRequest->getClassName() => $useCaseRequestContent,
-            $useCaseRequestDTO->getClassName() => $useCaseRequestDTOContent,
-            $useCaseRequestBuilder->getClassName() => $useCaseRequestBuilderContent,
-            $useCaseRequestBuilderImpl->getClassName() => $useCaseRequestBuilderContentImpl,
-            $useCaseResponse->getClassName() => $useCaseResponseContent,
-            $useCaseDetailResponse->getClassName() => $useCaseDetailResponseContent,
-            $useCaseDetailResponseAssembler->getClassName() => $useCaseDetailResponseAssemblerContent,
-            $useCaseResponseDTO->getClassName() => $useCaseResponseDTOContent,
-            $useCaseDetailResponseDTO->getClassName() => $useCaseDetailResponseDTOContent,
-            $useCaseResponseAssemblerTrait->getClassName() => $useCaseResponseAssemblerTraitContent,
+            $useCase->getClassName()                            => $useCaseContent,
+            $useCaseRequest->getClassName()                     => $useCaseRequestContent,
+            $useCaseRequestDTO->getClassName()                  => $useCaseRequestDTOContent,
+            $useCaseRequestBuilder->getClassName()              => $useCaseRequestBuilderContent,
+            $useCaseRequestBuilderImpl->getClassName()          => $useCaseRequestBuilderContentImpl,
+            $useCaseResponse->getClassName()                    => $useCaseResponseContent,
+            $useCaseDetailResponse->getClassName()              => $useCaseDetailResponseContent,
+            $useCaseDetailResponseAssembler->getClassName()     => $useCaseDetailResponseAssemblerContent,
+            $useCaseResponseDTO->getClassName()                 => $useCaseResponseDTOContent,
+            $useCaseDetailResponseDTO->getClassName()           => $useCaseDetailResponseDTOContent,
+            $useCaseResponseAssemblerTrait->getClassName()      => $useCaseResponseAssemblerTraitContent,
             $useCaseDetailResponseAssemblerImpl->getClassName() => $useCaseDetailResponseAssemblerImplContent,
-            $gateway->getClassName() => $gatewayContent,
-            $repository->getClassName() => $repositoryContent
+            $gateway->getClassName()                            => $gatewayContent,
+            $repository->getClassName()                         => $repositoryContent,
         ];
     }
 }
