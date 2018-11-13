@@ -1,21 +1,20 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace OpenClassrooms\CodeGenerator\FileObjects\Impl;
 
 use OpenClassrooms\CodeGenerator\FileObjects\AbstractFileObjectFactory;
 use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
-use OpenClassrooms\CodeGenerator\FileObjects\ViewModelFileObjectType;
 use OpenClassrooms\CodeGenerator\FileObjects\ViewModelFileObjectFactory;
+use OpenClassrooms\CodeGenerator\FileObjects\ViewModelFileObjectType;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
  */
 class ViewModelFileObjectFactoryImpl extends AbstractFileObjectFactory implements ViewModelFileObjectFactory
 {
-    public function create(string $type, string $domainClassName): FileObject
+    public function create(string $type, string $domain, string $entity): FileObject
     {
         $fileObject = new FileObject();
-        list($domain, $entity) = $this->getDomainAndEntityNameFromClassName($domainClassName);
 
         switch ($type) {
             case ViewModelFileObjectType::API_VIEW_MODEL_ASSEMBLER:
@@ -37,7 +36,9 @@ class ViewModelFileObjectFactoryImpl extends AbstractFileObjectFactory implement
                 $fileObject->setClassName($this->baseNamespace . 'Api\ViewModels\\' . $domain . '\\' . $entity);
                 break;
             case ViewModelFileObjectType::API_VIEW_MODEL_DETAIL:
-                $fileObject->setClassName($this->baseNamespace . 'Api\ViewModels\\' . $domain . '\\' . $entity . 'Detail');
+                $fileObject->setClassName(
+                    $this->baseNamespace . 'Api\ViewModels\\' . $domain . '\\' . $entity . 'Detail'
+                );
                 break;
             case ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_IMPL:
                 $fileObject->setClassName(

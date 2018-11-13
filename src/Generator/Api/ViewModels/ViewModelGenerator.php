@@ -12,13 +12,17 @@ use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\Request\ViewModelGener
 use OpenClassrooms\CodeGenerator\Generator\Generator;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\Services\FieldObjectService;
-use OpenClassrooms\CodeGenerator\SkeletonModels\ViewModel\ViewModelSkeletonModelAssembler;
+use OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModel\ViewModelSkeletonModel;
+use OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModel\ViewModelSkeletonModelAssembler;
+use OpenClassrooms\CodeGenerator\Utility\ClassNameUtility;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 class ViewModelGenerator implements Generator
 {
+    use ClassNameUtility;
+
     /**
      * @var FieldObjectService
      */
@@ -49,6 +53,32 @@ class ViewModelGenerator implements Generator
      */
     private $viewModelSkeletonModelAssembler;
 
+    private function createResponseFileObject(string $responseClassName): FileObject
+    {
+        [$domain, $entity] = $this->getDomainAndEntityNameFromClassName($responseClassName);
+        $responseFileObject = $this->useCaseResponseFileObjectFactory
+            ->create(UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE, $domain, $entity);
+
+        return $responseFileObject;
+    }
+
+    private function createSkeletonModel(FileObject $viewModelFileObject): ViewModelSkeletonModel
+    {
+        return $this->viewModelSkeletonModelAssembler->create($viewModelFileObject);
+    }
+
+    private function createViewModelFileObject(string $responseClassName): FileObject
+    {
+        $responseFileObject = $this->createResponseFileObject($responseClassName);
+
+        [$domain, $entity] = $this->getDomainAndEntityNameFromClassName($responseClassName);
+        $viewModel = $this->viewModelFileObjectFactory
+            ->create(ViewModelFileObjectType::API_VIEW_MODEL, $domain, $entity);
+        $viewModel->setFields($this->fieldObjectService->getPublicClassFields($responseFileObject->getClassName()));
+
+        return $viewModel;
+    }
+
     /**
      * @param ViewModelGeneratorRequest $generatorRequest
      */
@@ -61,45 +91,21 @@ class ViewModelGenerator implements Generator
         return $viewModelFileObject;
     }
 
-    private function createViewModelFileObject(string $responseClassName): FileObject
-    {
-        $responseFileObject = $this->createResponseFileObject($responseClassName);
-
-        $viewModel = $this->viewModelFileObjectFactory
-            ->create(ViewModelFileObjectType::API_VIEW_MODEL, $responseFileObject->getClassName());
-        $viewModel->setFields($this->fieldObjectService->getPublicClassFields($responseFileObject->getClassName()));
-
-        return $viewModel;
-    }
-
-    private function createResponseFileObject(string $className): FileObject
-    {
-        $responseFileObject = $this->useCaseResponseFileObjectFactory
-            ->create(UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE, $className);
-
-        return $responseFileObject;
-    }
-
     private function generateContent(FileObject $viewModelFileObject): string
     {
         $skeletonModel = $this->createSkeletonModel($viewModelFileObject);
 
-        return $this->render('Api/ViewModels/ViewModel.php.twig', ['skeletonModel' => $skeletonModel]);
-    }
-
-    private function createSkeletonModel(FileObject $viewModelFileObject)
-    {
-        return $this->viewModelSkeletonModelAssembler->create($viewModelFileObject);
-    }
-
-    private function render(string $template, array $parameters): string
-    {
-        return $this->templating->render($template, $parameters);
+        return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
     }
 
     private function insertFileObject(FileObject $viewModelFileObject): void
     {
         $this->fileObjectGateway->insert($viewModelFileObject);
+    }
+
+    private function render(string $template, array $parameters): string
+    {
+        return $this->templating->render($template, $parameters);
     }
 
     public function setFieldObjectService(FieldObjectService $fieldObjectService): void
@@ -129,7 +135,8 @@ class ViewModelGenerator implements Generator
         $this->viewModelFileObjectFactory = $viewModelFileObjectFactory;
     }
 
-    public function setViewModelSkeletonModelAssembler(ViewModelSkeletonModelAssembler $viewModelSkeletonModelAssembler
+    public function setViewModelSkeletonModelAssembler(
+        ViewModelSkeletonModelAssembler $viewModelSkeletonModelAssembler
     ): void
     {
         $this->viewModelSkeletonModelAssembler = $viewModelSkeletonModelAssembler;
