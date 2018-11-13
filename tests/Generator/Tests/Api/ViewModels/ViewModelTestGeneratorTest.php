@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace OpenClassrooms\CodeGenerator\Tests\Generator\Tests\Api\ViewModels;
 
@@ -8,7 +8,7 @@ use OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\DTO\Request\View
 use OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\Request\ViewModelTestGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\ViewModelTestGenerator;
 use OpenClassrooms\CodeGenerator\Services\Impl\FieldObjectServiceImpl;
-use OpenClassrooms\CodeGenerator\SkeletonModels\ViewModelTest\Impl\ViewModelTestSkeletonModelDetailAssemblerImpl;
+use OpenClassrooms\CodeGenerator\SkeletonModels\ViewModelTest\Impl\ViewModelTestSkeletonModelAssemblerImpl;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingMock;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\DTO\Response\FunctionalEntityResponseDTO;
@@ -42,7 +42,7 @@ class ViewModelTestGeneratorTest extends TestCase
         $this->assertStringEqualsFile($expectedGeneratedFileContent, $actualFileObject->getContent());
     }
 
-    public function setUp()
+    protected function setUp()
     {
         $viewModelTestGeneratorRequestBuilder = new ViewModelTestGeneratorRequestBuilderImpl();
         $this->request = $viewModelTestGeneratorRequestBuilder
@@ -60,8 +60,8 @@ class ViewModelTestGeneratorTest extends TestCase
         $this->viewModelTestGenerator->setFileObjectGateway(new InMemoryFileObjectGateway());
         $this->viewModelTestGenerator->setFieldObjectService(new FieldObjectServiceImpl());
         $this->viewModelTestGenerator->setTemplating(new TemplatingMock());
-        $this->viewModelTestGenerator->setViewModelTestSkeletonModelDetailAssembler(
-            new ViewModelTestSkeletonModelDetailAssemblerImpl()
+        $this->viewModelTestGenerator->setViewModelTestSkeletonModelAssembler(
+            new ViewModelTestSkeletonModelAssemblerImpl()
         );
     }
 }

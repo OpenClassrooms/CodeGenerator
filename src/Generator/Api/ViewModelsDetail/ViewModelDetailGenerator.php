@@ -3,59 +3,23 @@
 namespace OpenClassrooms\CodeGenerator\Generator\Api\ViewModelsDetail;
 
 use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
-use OpenClassrooms\CodeGenerator\FileObjects\UseCaseResponseFileObjectFactory;
 use OpenClassrooms\CodeGenerator\FileObjects\UseCaseResponseFileObjectType;
-use OpenClassrooms\CodeGenerator\FileObjects\ViewModelFileObjectFactory;
 use OpenClassrooms\CodeGenerator\FileObjects\ViewModelFileObjectType;
-use OpenClassrooms\CodeGenerator\Gateways\FileObject\FileObjectGateway;
+use OpenClassrooms\CodeGenerator\Generator\Api\AbstractViewModelGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\Request\ViewModelGeneratorRequest;
-use OpenClassrooms\CodeGenerator\Generator\Generator;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
-use OpenClassrooms\CodeGenerator\Services\FieldObjectService;
+use OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModelDetail\ViewModelDetailSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModelDetail\ViewModelDetailSkeletonModelAssembler;
-use OpenClassrooms\CodeGenerator\Utility\ClassNameUtility;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
-class ViewModelDetailGenerator implements Generator
+class ViewModelDetailGenerator extends AbstractViewModelGenerator
 {
-    use ClassNameUtility;
-
-    /**
-     * @var FieldObjectService
-     */
-    private $fieldObjectService;
-
-    /**
-     * @var FileObjectGateway
-     */
-    private $fileObjectGateway;
-
-    /**
-     * @var \Twig_Environment
-     */
-    private $templating;
-
-    /**
-     * @var UseCaseResponseFileObjectFactory
-     */
-    private $useCaseResponseFileObjectFactory;
-
-    /**
-     * @var ViewModelFileObjectFactory
-     */
-    private $viewModelDetailFileObjectFactory;
-
     /**
      * @var ViewModelDetailSkeletonModelAssembler
      */
     private $viewModelDetailSkeletonModelAssembler;
-
-    /**
-     * @var ViewModelFileObjectFactory
-     */
-    private $viewModelFileObjectFactory;
 
     private function createResponseFileObject(string $responseClassName): FileObject
     {
@@ -66,7 +30,7 @@ class ViewModelDetailGenerator implements Generator
         return $responseFileObject;
     }
 
-    private function createSkeletonModel(FileObject $viewModelDetailFileObject)
+    private function createSkeletonModel(FileObject $viewModelDetailFileObject): ViewModelDetailSkeletonModel
     {
         return $this->viewModelDetailSkeletonModelAssembler->create($viewModelDetailFileObject);
     }
@@ -102,47 +66,10 @@ class ViewModelDetailGenerator implements Generator
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
     }
 
-    private function insertFileObject(FileObject $viewModelDetailFileObject): void
-    {
-        $this->fileObjectGateway->insert($viewModelDetailFileObject);
-    }
-
-    private function render(string $template, array $parameters): string
-    {
-        return $this->templating->render($template, $parameters);
-    }
-
-    public function setFieldObjectService(FieldObjectService $fieldObjectService): void
-    {
-        $this->fieldObjectService = $fieldObjectService;
-    }
-
-    public function setFileObjectGateway(FileObjectGateway $fileObjectGateway)
-    {
-        $this->fileObjectGateway = $fileObjectGateway;
-    }
-
-    public function setTemplating(\Twig_Environment $templating): void
-    {
-        $this->templating = $templating;
-    }
-
-    public function setUseCaseResponseFileObjectFactory(
-        UseCaseResponseFileObjectFactory $useCaseResponseFileObjectFactory
-    )
-    {
-        $this->useCaseResponseFileObjectFactory = $useCaseResponseFileObjectFactory;
-    }
-
     public function setViewModelDetailSkeletonModelAssembler(
         ViewModelDetailSkeletonModelAssembler $viewModelDetailSkeletonModelAssembler
     ): void
     {
         $this->viewModelDetailSkeletonModelAssembler = $viewModelDetailSkeletonModelAssembler;
-    }
-
-    public function setViewModelFileObjectFactory(ViewModelFileObjectFactory $viewModelDetailFileObjectFactory)
-    {
-        $this->viewModelFileObjectFactory = $viewModelDetailFileObjectFactory;
     }
 }
