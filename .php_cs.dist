@@ -1,0 +1,76 @@
+#!/usr/bin/php
+<?php
+$finder = PhpCsFixer\Finder::create()
+                           ->exclude('somedir')
+                           ->notPath('src/Symfony/Component/Translation/Tests/fixtures/resources.php')
+                           ->in(__DIR__);
+
+return PhpCsFixer\Config::create()
+                        ->setRules(
+                            [
+                                'declare_strict_types'                        => true,
+                                'trailing_comma_in_multiline_array'           => true,
+                                'no_multiline_whitespace_around_double_arrow' => false,
+                                'blank_line_after_namespace'                  => true,
+                                'single_blank_line_before_namespace'          => true,
+                                'binary_operator_spaces'                      => [
+                                    'align_double_arrow' => true,
+                                ],
+                                'method_argument_space'                       => [
+                                    'ensure_fully_multiline'           => true,
+                                    'keep_multiple_spaces_after_comma' => false,
+                                ],
+                                'ordered_imports'                             => true,
+                                'no_extra_blank_lines'                        => true,
+                                'return_type_declaration'                     => [
+                                    'space_before' => 'none',
+                                ],
+                                'no_empty_statement'                          => true,
+                                'no_singleline_whitespace_before_semicolons'  => true,
+                                'class_attributes_separation'                 => [
+                                    'elements' => ['const', 'method', 'property'],
+                                ],
+                                'cast_spaces'                                 => ['space' => 'single'],
+                                'object_operator_without_whitespace'          => true,
+                                'no_spaces_after_function_name'               => true,
+                                'class_definition'                            => true,
+                                'lowercase_keywords'                          => true,
+                                'lowercase_constants'                         => false,
+                                'full_opening_tag'                            => true,
+                                'encoding'                                    => true,
+                                'compact_nullable_typehint'                   => true,
+                                'lowercase_cast'                              => true,
+                                'lowercase_static_reference'                  => true,
+                                'logical_operators'                           => true,
+                                'list_syntax'                                 => ['syntax' => 'short'],
+                                'line_ending'                                 => true,
+                                'is_null'                                     => ['use_yoda_style' => true],
+                                'no_whitespace_in_blank_line'                 => true,
+                                'no_useless_else'                             => true,
+                                'no_trailing_whitespace'                      => true,
+                                'no_null_property_initialization'             => true,
+                                'visibility_required'                         => ['elements' => ['property', 'method']],
+                                'no_leading_import_slash'                     => true,
+                                'no_empty_comment'                            => true,
+                                'no_blank_lines_after_class_opening'          => true,
+                                'new_with_braces'                             => true,
+                                'php_unit_set_up_tear_down_visibility'        => true,
+                                'function_declaration'                        => ["closure_function_spacing" => 'none'],
+                                'function_typehint_space'                     => true,
+                                'concat_space'                                => ["spacing" => 'one'],
+                                'ordered_class_elements'                      => [
+                                    'order'         => [
+                                        'use_trait',
+                                        'constant',
+                                        'property',
+                                        'construct',
+                                        'method',
+                                        'destruct',
+                                        'magic',
+                                        'phpunit',
+                                    ],
+                                    'sortAlgorithm' => 'alpha',
+                                ],
+                            ]
+                        )
+                        ->setFinder($finder);
