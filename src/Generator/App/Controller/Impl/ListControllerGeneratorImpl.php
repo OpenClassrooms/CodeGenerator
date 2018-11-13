@@ -1,14 +1,14 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace OpenClassrooms\CodeGenerator\Generator\App\Controller\Impl;
 
 use Doctrine\Common\Inflector\Inflector;
-use OpenClassrooms\CodeGenerator\Generator\App\Controller\AbstractControllerGenerator;
+use OpenClassrooms\CodeGenerator\Generator\App\Controller\OldAbstractControllerGenerator;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
  */
-class ListControllerGeneratorImpl extends AbstractControllerGenerator
+class ListControllerGeneratorImpl extends OldAbstractControllerGenerator
 {
     /**
      * @inheritdoc
@@ -23,8 +23,8 @@ class ListControllerGeneratorImpl extends AbstractControllerGenerator
         $useCaseRequestBuilder = $this->useCaseClassObjectService->getGetAllUseCaseRequestBuilder($className);
 
         $controller = $this->controllerClassObjectService->getListController($className, $admin);
-        list($listViewModel, $listViewModelImpl) = $this->viewModelClassObjectService->getListViewModels($className);
-        list($listViewModelBuilder, $listViewModelBuilderImpl) = $this->viewModelClassObjectService->getListViewModelBuilders(
+        [$listViewModel, $listViewModelImpl] = $this->viewModelClassObjectService->getListViewModels($className);
+        [$listViewModelBuilder, $listViewModelBuilderImpl] = $this->viewModelClassObjectService->getListViewModelBuilders(
             $className
         );
         $viewModelListItemAssembler = $this->viewModelClassObjectService->getViewModelListItemAssembler($className);
@@ -32,18 +32,18 @@ class ListControllerGeneratorImpl extends AbstractControllerGenerator
         $content = $this->render(
             '/App/Controller/Web/ListController.php.twig',
             [
-                'controllerNamespace' => $controller->getNamespace(),
-                'controllerShortClassName' => $controller->getShortClassName(),
-                'entitiesNameUC' => $entitiesName,
-                'entitiesNameLC' => lcfirst($entitiesName),
-                'listViewModelClassName' => $listViewModel->getClassName(),
-                'listViewModelShortClassName' => $listViewModel->getShortClassName(),
-                'listViewModelBuilderServiceName' => $listViewModelBuilder->getServiceName(),
+                'controllerNamespace'                   => $controller->getNamespace(),
+                'controllerShortClassName'              => $controller->getShortClassName(),
+                'entitiesNameUC'                        => $entitiesName,
+                'entitiesNameLC'                        => lcfirst($entitiesName),
+                'listViewModelClassName'                => $listViewModel->getClassName(),
+                'listViewModelShortClassName'           => $listViewModel->getShortClassName(),
+                'listViewModelBuilderServiceName'       => $listViewModelBuilder->getServiceName(),
                 'viewModelListItemAssemblerServiceName' => $viewModelListItemAssembler->getServiceName(),
-                'routeName' => $controller->getRouteName(),
-                'templateName' => '',
-                'useCaseServiceName' => $useCase->getServiceName(),
-                'useCaseRequestBuilderServiceName' => $useCaseRequestBuilder->getServiceName(),
+                'routeName'                             => $controller->getRouteName(),
+                'templateName'                          => '',
+                'useCaseServiceName'                    => $useCase->getServiceName(),
+                'useCaseRequestBuilderServiceName'      => $useCaseRequestBuilder->getServiceName(),
             ]
         );
 

@@ -1,14 +1,14 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace OpenClassrooms\CodeGenerator\Generator\App\Controller\Impl;
 
-use OpenClassrooms\CodeGenerator\Generator\App\Controller\AbstractControllerGenerator;
+use OpenClassrooms\CodeGenerator\Generator\App\Controller\OldAbstractControllerGenerator;
 use OpenClassrooms\CodeGenerator\Services\EntityClassObjectService;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
  */
-class ShowControllerGeneratorImpl extends AbstractControllerGenerator
+class ShowControllerGeneratorImpl extends OldAbstractControllerGenerator
 {
     /**
      * @var \OpenClassrooms\CodeGenerator\Services\EntityClassObjectService
@@ -31,10 +31,10 @@ class ShowControllerGeneratorImpl extends AbstractControllerGenerator
         $useCaseResponse = $this->getInterfaceClassObjectFromClassName($className);
 
         $controller = $this->controllerClassObjectService->getShowController($className, $admin);
-        list($showViewModel, $viewModelImpl) = $this->viewModelClassObjectService->getShowViewModels(
+        [$showViewModel, $viewModelImpl] = $this->viewModelClassObjectService->getShowViewModels(
             $className
         );
-        list($showViewModelBuilder, $viewModelBuilderImpl) = $this->viewModelClassObjectService->getShowViewModelBuilders(
+        [$showViewModelBuilder, $viewModelBuilderImpl] = $this->viewModelClassObjectService->getShowViewModelBuilders(
             $className
         );
         $viewModelDetailAssembler = $this->viewModelClassObjectService->getViewModelDetailAssembler(
@@ -44,21 +44,21 @@ class ShowControllerGeneratorImpl extends AbstractControllerGenerator
         $content = $this->render(
             '/App/Controller/Web/ShowController.php.twig',
             [
-                'controllerNamespace' => $controller->getNamespace(),
-                'controllerShortClassName' => $controller->getShortClassName(),
-                'entityNameUC' => $entityName,
-                'entityNameLC' => lcfirst($entityName),
-                'useCaseResponseClassName' => $useCaseResponse->getClassName(),
-                'useCaseResponseShortClassName' => $useCaseResponse->getShortClassName(),
-                'showViewModelClassName' => $showViewModel->getClassName(),
-                'showViewModelShortClassName' => $showViewModel->getShortClassName(),
-                'showViewModelBuilderServiceName' => $showViewModelBuilder->getServiceName(),
+                'controllerNamespace'                 => $controller->getNamespace(),
+                'controllerShortClassName'            => $controller->getShortClassName(),
+                'entityNameUC'                        => $entityName,
+                'entityNameLC'                        => lcfirst($entityName),
+                'useCaseResponseClassName'            => $useCaseResponse->getClassName(),
+                'useCaseResponseShortClassName'       => $useCaseResponse->getShortClassName(),
+                'showViewModelClassName'              => $showViewModel->getClassName(),
+                'showViewModelShortClassName'         => $showViewModel->getShortClassName(),
+                'showViewModelBuilderServiceName'     => $showViewModelBuilder->getServiceName(),
                 'viewModelDetailAssemblerServiceName' => $viewModelDetailAssembler->getServiceName(),
-                'exceptionClassName' => $exception->getClassName(),
-                'exceptionShortClassName' => $exception->getShortClassName(),
-                'templateName' => '',
-                'useCaseServiceName' => $useCase->getServiceName(),
-                'useCaseRequestBuilderServiceName' => $useCaseRequestBuilder->getServiceName(),
+                'exceptionClassName'                  => $exception->getClassName(),
+                'exceptionShortClassName'             => $exception->getShortClassName(),
+                'templateName'                        => '',
+                'useCaseServiceName'                  => $useCase->getServiceName(),
+                'useCaseRequestBuilderServiceName'    => $useCaseRequestBuilder->getServiceName(),
 
             ]
         );

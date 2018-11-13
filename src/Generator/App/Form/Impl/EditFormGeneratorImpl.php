@@ -1,19 +1,19 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace OpenClassrooms\CodeGenerator\Generator\App\Form\Impl;
 
-use OpenClassrooms\CodeGenerator\Generator\App\Form\AbstractFormGenerator;
+use OpenClassrooms\CodeGenerator\Generator\App\Form\OldAbstractFormGenerator;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
  */
-class EditFormGeneratorImpl extends AbstractFormGenerator
+class EditFormGeneratorImpl extends OldAbstractFormGenerator
 {
     public function generate(string $className, array $parameters = []): array
     {
         $formType = $this->formClassObjectService->getEditFormType($className);
         /** @var \OpenClassrooms\CodeGenerator\ClassObjects\ClassObject $editModel */
-        list($abstractModel, $editModel) = $this->formClassObjectService->getEditModelTypes($className);
+        [$abstractModel, $editModel] = $this->formClassObjectService->getEditModelTypes($className);
         $controller = $this->controllerClassObjectService->getShowController($className);
         $fields = $this->getFields($className);
         foreach ($fields as $key => $field) {
@@ -25,12 +25,12 @@ class EditFormGeneratorImpl extends AbstractFormGenerator
         $content = $this->render(
             '/App/Form/EditFormType.php.twig',
             [
-                'formTypeNamespace' => $formType->getNamespace(),
+                'formTypeNamespace'      => $formType->getNamespace(),
                 'formTypeShortClassName' => $formType->getShortClassName(),
-                'modelClassName' => $editModel->getClassName(),
-                'modelShortClassName' => $editModel->getShortClassName(),
-                'editRoute' => $controller->getRouteName(),
-                'fields' => $fields
+                'modelClassName'         => $editModel->getClassName(),
+                'modelShortClassName'    => $editModel->getShortClassName(),
+                'editRoute'              => $controller->getRouteName(),
+                'fields'                 => $fields,
             ]
         );
 
@@ -38,7 +38,7 @@ class EditFormGeneratorImpl extends AbstractFormGenerator
     }
 
     /**
-     * @return array|\OpenClassrooms\CodeGenerator\ClassObjects\FieldObject[]
+     * @return array|\OpenClassrooms\CodeGenerator\FileObjects\FieldObject[]
      */
     private function getFields(string $className)
     {

@@ -5,66 +5,31 @@ namespace OpenClassrooms\CodeGenerator\Generator\Api;
 use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
 use OpenClassrooms\CodeGenerator\FileObjects\UseCaseResponseFileObjectFactory;
 use OpenClassrooms\CodeGenerator\FileObjects\ViewModelFileObjectFactory;
-use OpenClassrooms\CodeGenerator\Gateways\FileObject\FileObjectGateway;
-use OpenClassrooms\CodeGenerator\Generator\Generator;
-use OpenClassrooms\CodeGenerator\Services\FieldObjectService;
-use OpenClassrooms\CodeGenerator\Utility\ClassNameUtility;
+use OpenClassrooms\CodeGenerator\Generator\AbstractGenerator;
 
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
  */
-abstract class AbstractViewModelGenerator implements Generator
+abstract class AbstractViewModelGenerator extends AbstractGenerator
 {
-    use ClassNameUtility;
-
-    /**
-     * @var FieldObjectService
-     */
-    protected $fieldObjectService;
-
-    /**
-     * @var FileObjectGateway
-     */
-    protected $fileObjectGateway;
-
-    /**
-     * @var \Twig_Environment
-     */
-    protected $templating;
-
     /**
      * @var UseCaseResponseFileObjectFactory
      */
-    protected $useCaseResponseFileObjectFactory;
+    private $useCaseResponseFileObjectFactory;
 
     /**
      * @var ViewModelFileObjectFactory
      */
-    protected $viewModelFileObjectFactory;
+    private $viewModelFileObjectFactory;
 
-    protected function insertFileObject(FileObject $viewModelFileObject): void
+    protected function createUseCaseResponseFileObject(string $type, string $domain, string $entity): FileObject
     {
-        $this->fileObjectGateway->insert($viewModelFileObject);
+        return $this->useCaseResponseFileObjectFactory->create($type, $domain, $entity);
     }
 
-    protected function render(string $template, array $parameters): string
+    protected function createViewModelFileObject(string $type, string $domain, string $entity): FileObject
     {
-        return $this->templating->render($template, $parameters);
-    }
-
-    public function setFieldObjectService(FieldObjectService $fieldObjectService): void
-    {
-        $this->fieldObjectService = $fieldObjectService;
-    }
-
-    public function setFileObjectGateway(FileObjectGateway $fileObjectGateway)
-    {
-        $this->fileObjectGateway = $fileObjectGateway;
-    }
-
-    public function setTemplating(\Twig_Environment $templating): void
-    {
-        $this->templating = $templating;
+        return $this->viewModelFileObjectFactory->create($type, $domain, $entity);
     }
 
     public function setUseCaseResponseFileObjectFactory(

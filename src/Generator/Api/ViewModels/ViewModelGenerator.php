@@ -21,11 +21,21 @@ class ViewModelGenerator extends AbstractViewModelGenerator
      */
     private $viewModelSkeletonModelAssembler;
 
+    private function buildViewModelFileObject(string $responseClassName): FileObject
+    {
+        $responseFileObject = $this->createResponseFileObject($responseClassName);
+
+        [$domain, $entity] = $this->getDomainAndEntityNameFromClassName($responseClassName);
+        $viewModel = $this->createViewModelFileObject(ViewModelFileObjectType::API_VIEW_MODEL, $domain, $entity);
+        $viewModel->setFields($this->getPublicClassFields($responseFileObject->getClassName()));
+
+        return $viewModel;
+    }
+
     private function createResponseFileObject(string $responseClassName): FileObject
     {
         [$domain, $entity] = $this->getDomainAndEntityNameFromClassName($responseClassName);
-        $responseFileObject = $this->useCaseResponseFileObjectFactory
-            ->create(UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE, $domain, $entity);
+        $responseFileObject = $this->createUseCaseResponseFileObject(UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE, $domain, $entity);
 
         return $responseFileObject;
     }
@@ -35,24 +45,12 @@ class ViewModelGenerator extends AbstractViewModelGenerator
         return $this->viewModelSkeletonModelAssembler->create($viewModelFileObject);
     }
 
-    private function createViewModelFileObject(string $responseClassName): FileObject
-    {
-        $responseFileObject = $this->createResponseFileObject($responseClassName);
-
-        [$domain, $entity] = $this->getDomainAndEntityNameFromClassName($responseClassName);
-        $viewModel = $this->viewModelFileObjectFactory
-            ->create(ViewModelFileObjectType::API_VIEW_MODEL, $domain, $entity);
-        $viewModel->setFields($this->fieldObjectService->getPublicClassFields($responseFileObject->getClassName()));
-
-        return $viewModel;
-    }
-
     /**
      * @param ViewModelGeneratorRequest $generatorRequest
      */
     public function generate(GeneratorRequest $generatorRequest): FileObject
     {
-        $viewModelFileObject = $this->createViewModelFileObject($generatorRequest->getResponseClassName());
+        $viewModelFileObject = $this->buildViewModelFileObject($generatorRequest->getResponseClassName());
         $viewModelFileObject->setContent($this->generateContent($viewModelFileObject));
         $this->insertFileObject($viewModelFileObject);
 
