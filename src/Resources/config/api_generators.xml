@@ -4,10 +4,10 @@
     <services>
 
         <service id="open_classrooms.code_generator.services.field_object_service" class="OpenClassrooms\CodeGenerator\Services\Impl\FieldObjectServiceImpl"/>
+        <service id="open_classrooms.code_generator.repository.file_object_repository" class="OpenClassrooms\CodeGenerator\Repository\FileObjectRepository"/>
         <service id="open_classrooms.code_generator.file_objects.view_model_file_object_factory" class="OpenClassrooms\CodeGenerator\FileObjects\Impl\ViewModelFileObjectFactoryImpl"/>
         <service id="open_classrooms.code_generator.file_objects.use_case_response_file_object_factory" class="OpenClassrooms\CodeGenerator\FileObjects\Impl\UseCaseResponseFileObjectFactoryImpl"/>
-        <service id="open_classrooms.code_generator.skeleton_models.view_model.view_model_skeleton_model_detail_assembler" class="OpenClassrooms\CodeGenerator\SkeletonModels\ViewModel\Impl\ViewModelSkeletonModelDetailAssemblerImpl"/>
-        <service id="open_classrooms.code_generator.skeleton_models.view_model_test.view_model_test_skeleton_model_detail_assembler" class="OpenClassrooms\CodeGenerator\SkeletonModels\ViewModelTest\Impl\ViewModelTestSkeletonModelDetailAssemblerImpl"/>
+        <service id="open_classrooms.code_generator.skeleton_models.view_model_test.view_model_test_skeleton_model_assembler" class="OpenClassrooms\CodeGenerator\SkeletonModels\ViewModelTest\Impl\ViewModelTestSkeletonModelDetailAssemblerImpl"/>
 
         <service id="open_classrooms.code_generator.generator.tests.api.view_models.view_model_test_generator" class="OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\ViewModelTestGenerator">
             <call method="setViewModelFileObjectFactory">
@@ -17,7 +17,7 @@
                 <argument type="service" id="open_classrooms.code_generator.file_objects.use_case_response_file_object_factory"/>
             </call>
             <call method="setFileObjectGateway">
-                <argument type="service" id="open_classrooms.code_generator.gateway.file_object_gateway"/>
+                <argument type="service" id="open_classrooms.code_generator.repository.file_object_repository"/>
             </call>
             <call method="setViewModelTestSkeletonModelDetailAssembler">
                 <argument type="service" id="open_classrooms.code_generator.skeleton_models.view_model_test.view_model_test_skeleton_model_detail_assembler"/>
@@ -32,10 +32,10 @@
                 <argument type="service" id="open_classrooms.code_generator.file_objects.use_case_response_file_object_factory"/>
             </call>
             <call method="setFileObjectGateway">
-                <argument type="service" id="open_classrooms.code_generator.gateway.file_object_gateway"/>
+                <argument type="service" id="open_classrooms.code_generator.repository.file_object_repository"/>
             </call>
-            <call method="setViewModelSkeletonModelAssembler">
-                <argument type="service" id="open_classrooms.code_generator.skeleton_models.view_model.view_model_skeleton_model_detail_assembler"/>
+            <call method="setViewModelDetailSkeletonModelAssembler">
+                <argument type="service" id="open_classrooms.code_generator.skeleton_models.view_model_test.view_model_test_skeleton_model_assembler"/>
             </call>
             <call method="setTemplating">
                 <argument type="service" id="templating"/>
