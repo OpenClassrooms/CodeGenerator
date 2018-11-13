@@ -1,16 +1,12 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace OpenClassrooms\CodeGenerator\FileObjects;
-
-use OpenClassrooms\CodeGenerator\Utility\ClassNameUtility;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
  */
 abstract class AbstractFileObjectFactory implements FileObjectFactory
 {
-    use ClassNameUtility;
-
     /**
      * @var string
      */
@@ -31,13 +27,13 @@ abstract class AbstractFileObjectFactory implements FileObjectFactory
         $this->baseNamespace = $baseNamespace;
     }
 
-    public function setTestsBaseNamespace(string $testsBaseNamespace)
-    {
-        $this->testsBaseNamespace = $testsBaseNamespace;
-    }
-
     public function setStubNamespace(string $stubNamespace)
     {
         $this->stubNamespace = $stubNamespace;
+    }
+
+    public function setTestsBaseNamespace(string $testsBaseNamespace)
+    {
+        $this->testsBaseNamespace = $testsBaseNamespace;
     }
 }

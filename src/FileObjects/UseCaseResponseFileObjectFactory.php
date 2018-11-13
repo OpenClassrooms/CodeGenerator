@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace OpenClassrooms\CodeGenerator\FileObjects;
 
@@ -7,5 +7,5 @@ namespace OpenClassrooms\CodeGenerator\FileObjects;
  */
 interface UseCaseResponseFileObjectFactory
 {
-    public function create(string $type, string $domainClassName): FileObject;
+    public function create(string $type, string $domain, string $entity): FileObject;
 }

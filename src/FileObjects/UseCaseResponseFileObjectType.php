@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace OpenClassrooms\CodeGenerator\FileObjects;
 
@@ -7,5 +7,7 @@ namespace OpenClassrooms\CodeGenerator\FileObjects;
  */
 final class UseCaseResponseFileObjectType
 {
+    const BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE = 'BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE';
+
     const BUSINESS_RULES_USE_CASE_RESPONSE = 'BUSINESS_RULES_USE_CASE_RESPONSE';
 }

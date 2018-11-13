@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace OpenClassrooms\CodeGenerator\FileObjects\Impl;
 
@@ -12,15 +12,19 @@ use OpenClassrooms\CodeGenerator\FileObjects\UseCaseResponseFileObjectType;
  */
 class UseCaseResponseFileObjectFactoryImpl extends AbstractFileObjectFactory implements UseCaseResponseFileObjectFactory
 {
-    public function create(string $type, string $domainClassName): FileObject
+    public function create(string $type, string $domain, string $entity): FileObject
     {
         $fileObject = new FileObject();
-        list($domain, $entity) = $this->getDomainAndEntityNameFromClassName($domainClassName);
 
         switch ($type) {
             case UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE:
                 $fileObject->setClassName(
                     $this->baseNamespace . 'BusinessRules\UseCases\\' . $domain . '\DTO\Response\\' . $entity . 'ResponseDTO'
+                );
+                break;
+            case UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE:
+                $fileObject->setClassName(
+                    $this->baseNamespace . 'BusinessRules\UseCases\\' . $domain . '\DTO\Response\\' . $entity . 'DetailResponseDTO'
                 );
                 break;
             default:
