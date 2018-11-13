@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace OpenClassrooms\CodeGenerator\ClassObjects;
+namespace OpenClassrooms\CodeGenerator\FileObjects;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>

@@ -10,20 +10,7 @@ use PHPUnit\Framework\Assert as Assert;
  */
 trait FileObjectTestCase
 {
-    private function assertFields(array $expectedFields, array $actualFields): void
-    {
-        $actualAccessors = $this->extractProperties($expectedFields, 'getAccessor');
-        $expectedAccessors = $this->extractProperties($actualFields, 'getAccessor');
-        Assert::assertEquals($actualAccessors, $expectedAccessors);
-
-        $actualDocComments = $this->extractProperties($expectedFields, 'getDocComment');
-        $expectedDocComments = $this->extractProperties($actualFields, 'getDocComment');
-        Assert::assertEquals($actualDocComments, $expectedDocComments);
-
-        $actualPropertiesName = $this->extractProperties($expectedFields, 'getName');
-        $expectedPropertiesName = $this->extractProperties($actualFields, 'getName');
-        Assert::assertEquals($actualPropertiesName, $expectedPropertiesName);
-    }
+    use FieldObjectTestCase;
 
     protected function assertFileObject(FileObject $expected, FileObject $actual)
     {
@@ -33,17 +20,6 @@ trait FileObjectTestCase
         Assert::assertEquals($expected->getNamespace(), $actual->getNamespace());
         Assert::assertEquals($expected->getPath(), $actual->getPath());
         Assert::assertEquals($expected->getShortClassName(), $actual->getShortClassName());
-
-        $this->assertFields($expected->getFields(), $actual->getFields());
-    }
-
-    private function extractProperties(array $objects, string $property): array
-    {
-        $propertiesList = [];
-        foreach ($objects as $object) {
-            $propertiesList[] = $object->$property();
-        }
-
-        return $propertiesList;
+        $this->assertFieldObjects($expected->getFields(), $actual->getFields());
     }
 }

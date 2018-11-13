@@ -2,7 +2,6 @@
 
 namespace OpenClassrooms\CodeGenerator\FileObjects;
 
-use OpenClassrooms\CodeGenerator\ClassObjects\FieldObject;
 use OpenClassrooms\CodeGenerator\Utility\ClassNameUtility;
 
 /**
