@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace OpenClassrooms\CodeGenerator\FileObjects;
 
@@ -17,55 +17,26 @@ class FileObject
     /**
      * @var bool
      */
-    private $alreadyExists = false;
+    protected $alreadyExists = false;
 
     /**
      * @var string
      */
-    private $className;
+    protected $className;
 
     /**
      * @var string
      */
-    private $content;
+    protected $content;
 
     /**
      * @var FieldObject[]
      */
-    private $fields = [];
-
-    public function setAlreadyExists(bool $alreadyExists)
-    {
-        $this->alreadyExists = $alreadyExists;
-
-        return $this;
-    }
+    protected $fields = [];
 
     public function alreadyExists(): bool
     {
         return $this->alreadyExists;
-    }
-
-    public function getContent(): string
-    {
-        return $this->content;
-    }
-
-    public function setContent(string $content)
-    {
-        $this->content = $content;
-
-        return $this;
-    }
-
-    public function getId(): string
-    {
-        return $this->className;
-    }
-
-    public function getShortClassName(): string
-    {
-        return $this->getShortClassNameFromClassName($this->getClassName());
     }
 
     public function getClassName(): string
@@ -73,11 +44,9 @@ class FileObject
         return $this->className;
     }
 
-    public function setClassName(string $className)
+    public function getContent(): string
     {
-        $this->className = $className;
-
-        return $this;
+        return $this->content;
     }
 
     public function getFields(): array
@@ -85,12 +54,9 @@ class FileObject
         return $this->fields;
     }
 
-    /**
-     * @param FieldObject[] $fields
-     */
-    public function setFields(array $fields)
+    public function getId(): string
     {
-        $this->fields = $fields;
+        return $this->className;
     }
 
     public function getNamespace(): string
@@ -100,6 +66,40 @@ class FileObject
 
     public function getPath(): string
     {
-        return str_replace('\\', '/', $this->getClassName(). '.php');
+        return str_replace('\\', '/', $this->getClassName() . '.php');
+    }
+
+    public function getShortClassName(): string
+    {
+        return $this->getShortClassNameFromClassName($this->getClassName());
+    }
+
+    public function setAlreadyExists(bool $alreadyExists)
+    {
+        $this->alreadyExists = $alreadyExists;
+
+        return $this;
+    }
+
+    public function setClassName(string $className)
+    {
+        $this->className = $className;
+
+        return $this;
+    }
+
+    public function setContent(string $content)
+    {
+        $this->content = $content;
+
+        return $this;
+    }
+
+    /**
+     * @param FieldObject[] $fields
+     */
+    public function setFields(array $fields)
+    {
+        $this->fields = $fields;
     }
 }
