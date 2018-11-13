@@ -1,6 +1,6 @@
 <?php
 
-namespace OpenClassrooms\CodeGenerator\SkeletonModels\ViewModel;
+namespace OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModel;
 
 use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
 
@@ -9,5 +9,5 @@ use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
  */
 interface ViewModelSkeletonModelAssembler
 {
-    public function create(FileObject $viewModelFileObject): ViewModelSkeletonModelDetail;
+    public function create(FileObject $viewModelFileObject): ViewModelSkeletonModel;
 }
