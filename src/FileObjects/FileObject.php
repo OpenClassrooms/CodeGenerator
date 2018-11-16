@@ -48,6 +48,16 @@ class FileObject
         return $this->content;
     }
 
+    public function getDomain()
+    {
+        return $this->getDomainFromClassName($this->className);
+    }
+
+    public function getEntity()
+    {
+        return $this->getEntityNameFromClassName($this->className);
+    }
+
     public function getFields(): array
     {
         return $this->fields;
@@ -68,9 +78,9 @@ class FileObject
         return str_replace('\\', '/', $this->getClassName() . '.php');
     }
 
-    public function getShortClassName(): string
+    public function getShortName(): string
     {
-        return $this->getShortClassNameFromClassName($this->getClassName());
+        return $this->getShortClassNameFromClassName($this->className);
     }
 
     public function setAlreadyExists(bool $alreadyExists)

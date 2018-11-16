@@ -19,7 +19,7 @@ trait FileObjectTestCase
         Assert::assertEquals($expected->getId(), $actual->getId());
         Assert::assertEquals($expected->getNamespace(), $actual->getNamespace());
         Assert::assertEquals($expected->getPath(), $actual->getPath());
-        Assert::assertEquals($expected->getShortClassName(), $actual->getShortClassName());
+        Assert::assertEquals($expected->getShortName(), $actual->getShortName());
         $this->assertFieldObjects($expected->getFields(), $actual->getFields());
     }
 }

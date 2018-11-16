@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Tests\FileObjects;
 
@@ -14,7 +14,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
  */
-class FileObjectFactoryTest extends TestCase
+class ViewModelFileObjectFactoryTest extends TestCase
 {
     use ClassNameUtility;
 
@@ -23,11 +23,6 @@ class FileObjectFactoryTest extends TestCase
     const STUB_NAMESPACE = self::TEST_BASE_NAMESPACE . 'Doubles\\';
 
     const TEST_BASE_NAMESPACE = 'Test\Base\Namespace\\';
-
-    /**
-     * @var AbstractFileObjectFactory
-     */
-    private $factory;
 
     /**
      * @var string
@@ -39,6 +34,21 @@ class FileObjectFactoryTest extends TestCase
      */
     private $entity;
 
+    /**
+     * @var AbstractFileObjectFactory
+     */
+    private $factory;
+
+    /**
+     * @test
+     * @dataProvider fileObjectDataProvider
+     */
+    public function create_ReturnFileObject(string $inputType, string $domain, string $entity, FileObject $expected)
+    {
+        $actual = $this->factory->create($inputType, $domain, $entity);
+        $this->assertSame($expected->getClassName(), $actual->getClassName());
+    }
+
     public function fileObjectDataProvider()
     {
         [$domain, $entity] = $this->getDomainAndEntityNameFromClassName(FunctionalEntity::class);
@@ -48,92 +58,68 @@ class FileObjectFactoryTest extends TestCase
                 ViewModelFileObjectType::API_VIEW_MODEL_ASSEMBLER,
                 $domain,
                 $entity,
-                self::getFileObjectViewModelAssembler()
+                self::getFileObjectViewModelAssembler(),
             ],
             [
                 ViewModelFileObjectType::API_VIEW_MODEL_ASSEMBLER_TEST,
                 $domain,
                 $entity,
-                self::getFileObjectViewModelAssemblerTest()
+                self::getFileObjectViewModelAssemblerTest(),
             ],
             [
                 ViewModelFileObjectType::API_VIEW_MODEL,
                 $domain,
                 $entity,
-                self::getFileObjectViewModel()
+                self::getFileObjectViewModel(),
             ],
             [
                 ViewModelFileObjectType::API_VIEW_MODEL_DETAIL,
                 $domain,
                 $entity,
-                self::getFileObjectViewModelDetail()
+                self::getFileObjectViewModelDetail(),
             ],
             [
                 ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM,
                 $domain,
                 $entity,
-                self::getFileObjectViewModelListItem()
+                self::getFileObjectViewModelListItem(),
             ],
             [
-                ViewModelFileObjectType::API_VIEW_MODEL_STUB,
+                ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_STUB,
                 $domain,
                 $entity,
-                self::getFileObjectViewModelStub()
+                self::getFileObjectViewModelStub(),
             ],
             [
                 ViewModelFileObjectType::API_VIEW_MODEL_TEST_CASE,
                 $domain,
                 $entity,
-                self::getFileObjectViewModelTestCase()
+                self::getFileObjectViewModelTestCase(),
             ],
             [
                 ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_IMPL,
                 $domain,
                 $entity,
-                self::getFileObjectViewModelListItemImpl()
+                self::getFileObjectViewModelListItemImpl(),
             ],
             [
                 ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_IMPL,
                 $domain,
                 $entity,
-                self::getFileObjectViewModelDetailImpl()
+                self::getFileObjectViewModelDetailImpl(),
             ],
             [
                 ViewModelFileObjectType::API_VIEW_MODEL_ASSEMBLER_IMPL,
                 $domain,
                 $entity,
-                self::getFileObjectViewModelAssemblerImpl()
-            ]
+                self::getFileObjectViewModelAssemblerImpl(),
+            ],
         ];
-    }
-
-    private static function getFileObjectViewModelAssembler(): FileObject
-    {
-        $fileObjectViewModelAssembler = new FileObject();
-        TestClassUtil::setProperty(
-            'className',
-            'Api\ViewModels\Domain\SubDomain\\' . self::getEntityName() . 'Assembler',
-            $fileObjectViewModelAssembler
-        );
-
-        return $fileObjectViewModelAssembler;
     }
 
     private static function getEntityName(): string
     {
         return TestClassUtil::getShortClassName(FunctionalEntity::class);
-    }
-
-    private static function getFileObjectViewModelAssemblerTest(): FileObject
-    {
-        $fileObjectViewModelAssemblerTest = new FileObject();
-        TestClassUtil::setProperty(
-            'className',
-            self::TEST_BASE_NAMESPACE . 'Api\ViewModels\Domain\SubDomain\\' . self::getEntityName() . 'AssemblerTest',
-            $fileObjectViewModelAssemblerTest
-        );
-
-        return $fileObjectViewModelAssemblerTest;
     }
 
     private static function getFileObjectViewModel(): FileObject
@@ -148,6 +134,42 @@ class FileObjectFactoryTest extends TestCase
         return $fileObjectViewModel;
     }
 
+    private static function getFileObjectViewModelAssembler(): FileObject
+    {
+        $fileObjectViewModelAssembler = new FileObject();
+        TestClassUtil::setProperty(
+            'className',
+            'Api\ViewModels\Domain\SubDomain\\' . self::getEntityName() . 'Assembler',
+            $fileObjectViewModelAssembler
+        );
+
+        return $fileObjectViewModelAssembler;
+    }
+
+    private static function getFileObjectViewModelAssemblerImpl(): FileObject
+    {
+        $fileObjectViewModelAssemblerImpl = new FileObject();
+        TestClassUtil::setProperty(
+            'className',
+            'Api\ViewModels\Domain\SubDomain\Impl\\' . self::getEntityName() . 'AssemblerImpl',
+            $fileObjectViewModelAssemblerImpl
+        );
+
+        return $fileObjectViewModelAssemblerImpl;
+    }
+
+    private static function getFileObjectViewModelAssemblerTest(): FileObject
+    {
+        $fileObjectViewModelAssemblerTest = new FileObject();
+        TestClassUtil::setProperty(
+            'className',
+            self::TEST_BASE_NAMESPACE . 'Api\ViewModels\Domain\SubDomain\\' . self::getEntityName() . 'AssemblerTest',
+            $fileObjectViewModelAssemblerTest
+        );
+
+        return $fileObjectViewModelAssemblerTest;
+    }
+
     private static function getFileObjectViewModelDetail()
     {
         $fileObjectViewModelDetail = new FileObject();
@@ -158,6 +180,18 @@ class FileObjectFactoryTest extends TestCase
         );
 
         return $fileObjectViewModelDetail;
+    }
+
+    private static function getFileObjectViewModelDetailImpl(): FileObject
+    {
+        $fileObjectViewModelDetailImpl = new FileObject();
+        TestClassUtil::setProperty(
+            'className',
+            'Api\ViewModels\Domain\SubDomain\Impl\\' . self::getEntityName() . 'DetailImpl',
+            $fileObjectViewModelDetailImpl
+        );
+
+        return $fileObjectViewModelDetailImpl;
     }
 
     private static function getFileObjectViewModelListItem(): FileObject
@@ -172,12 +206,24 @@ class FileObjectFactoryTest extends TestCase
         return $fileObjectViewModelListItem;
     }
 
+    private static function getFileObjectViewModelListItemImpl(): FileObject
+    {
+        $fileObjectViewModelListItemImpl = new FileObject();
+        TestClassUtil::setProperty(
+            'className',
+            'Api\ViewModels\Domain\SubDomain\Impl\\' . self::getEntityName() . 'ListItemImpl',
+            $fileObjectViewModelListItemImpl
+        );
+
+        return $fileObjectViewModelListItemImpl;
+    }
+
     private static function getFileObjectViewModelStub(): FileObject
     {
         $fileObjectViewModelStub = new FileObject();
         TestClassUtil::setProperty(
             'className',
-            self::STUB_NAMESPACE . 'Domain\SubDomain\\' . self::getEntityName() . 'Stub',
+            self::STUB_NAMESPACE . 'Api\ViewModels\Domain\SubDomain\\' . self::getEntityName() . 'DetailStub1',
             $fileObjectViewModelStub
         );
 
@@ -196,42 +242,6 @@ class FileObjectFactoryTest extends TestCase
         return $fileObjectViewModelTestCase;
     }
 
-    private static function getFileObjectViewModelListItemImpl(): FileObject
-    {
-        $fileObjectViewModelListItemImpl = new FileObject();
-        TestClassUtil::setProperty(
-            'className',
-            'Api\ViewModels\Domain\SubDomain\Impl\\' . self::getEntityName() . 'ListItemImpl',
-            $fileObjectViewModelListItemImpl
-        );
-
-        return $fileObjectViewModelListItemImpl;
-    }
-
-    private static function getFileObjectViewModelDetailImpl(): FileObject
-    {
-        $fileObjectViewModelDetailImpl = new FileObject();
-        TestClassUtil::setProperty(
-            'className',
-            'Api\ViewModels\Domain\SubDomain\Impl\\' . self::getEntityName() . 'DetailImpl',
-            $fileObjectViewModelDetailImpl
-        );
-
-        return $fileObjectViewModelDetailImpl;
-    }
-
-    private static function getFileObjectViewModelAssemblerImpl(): FileObject
-    {
-        $fileObjectViewModelAssemblerImpl = new FileObject();
-        TestClassUtil::setProperty(
-            'className',
-            'Api\ViewModels\Domain\SubDomain\Impl\\' . self::getEntityName() . 'AssemblerImpl',
-            $fileObjectViewModelAssemblerImpl
-        );
-
-        return $fileObjectViewModelAssemblerImpl;
-    }
-
     /**
      * @test
      * @expectedException \InvalidArgumentException
@@ -239,16 +249,6 @@ class FileObjectFactoryTest extends TestCase
     public function InvalidTye_Create_ThrowException()
     {
         $this->factory->create('INVALID_TYPE', self::class, '');
-    }
-
-    /**
-     * @test
-     * @dataProvider fileObjectDataProvider
-     */
-    public function create_ReturnFileObject(string $inputType, string $domain, string $entity, FileObject $expected)
-    {
-        $actual = $this->factory->create($inputType, $domain, $entity);
-        $this->assertSame($expected->getClassName(), $actual->getClassName());
     }
 
     protected function setUp()

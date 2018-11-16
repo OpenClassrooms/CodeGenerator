@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace OpenClassrooms\CodeGenerator\FileObjects;
 
@@ -19,11 +19,11 @@ final class ViewModelFileObjectType
 
     const API_VIEW_MODEL_DETAIL_IMPL = 'API_VIEW_MODEL_DETAIL_IMPL';
 
+    const API_VIEW_MODEL_DETAIL_STUB = 'API_VIEW_MODEL_STUB';
+
     const API_VIEW_MODEL_LIST_ITEM = 'API_VIEW_MODEL_LIST_ITEM';
 
     const API_VIEW_MODEL_LIST_ITEM_IMPL = 'API_VIEW_MODEL_LIST_ITEM_IMPL';
-
-    const API_VIEW_MODEL_STUB = 'API_VIEW_MODEL_STUB';
 
     const API_VIEW_MODEL_TEST_CASE = 'API_VIEW_MODEL_TEST_CASE';
 
