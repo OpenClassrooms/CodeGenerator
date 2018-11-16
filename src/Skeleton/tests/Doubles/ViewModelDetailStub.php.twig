@@ -8,18 +8,21 @@ use {{ skeletonModel.parentClassName }};
 
 /**
  * @author {{ author }} <{{ authorEmail }}>
-*/
-class {{ skeletonModel.shortClassName }} extends {{ skeletonModel.parentShortClassName }}
+ */
+abstract class {{ skeletonModel.shortName }} extends {{ skeletonModel.parentShortName }}
 {
 {% for field in skeletonModel.fields %}
-    const {{ field.constForStub }} = {{ field.value }};
+    const {{ field.const }} = {{ field.value }};
 {% if not loop.last %}
 
 {% endif %}
 {% endfor %}
 
 {% for field in skeletonModel.fields %}
-    {{ field.scope }} ${{ field.name }} = self::{{ field.constForStub }};
+    /**
+    * {@inheritdoc}
+    */
+    {{ field.scope }} ${{ field.name }} = self::{{ field.const }};
 {% if not loop.last %}
 
 {% endif %}
