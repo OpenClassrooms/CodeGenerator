@@ -1,8 +1,8 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace OpenClassrooms\CodeGenerator\Services\Impl;
 
-use OpenClassrooms\CodeGenerator\ClassObjects\ClassObject;
+use OpenClassrooms\CodeGenerator\OldClassObjects\ClassObject;
 use OpenClassrooms\CodeGenerator\Services\UseCaseClassObjectService;
 
 /**
@@ -15,7 +15,7 @@ class UseCaseClassObjectServiceImpl extends ClassObjectServiceImpl implements Us
         $domain = $this->getDomainFromClassName($className);
 
         return new ClassObject(
-            $this->baseNamespace.'\\BusinessRules\\UseCases\\'.$domain,
+            $this->baseNamespace . '\\BusinessRules\\UseCases\\' . $domain,
             $this->getShortClassNameFromClassName($className)
         );
     }

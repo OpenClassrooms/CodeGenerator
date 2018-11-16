@@ -22,9 +22,9 @@ class ViewModelAssemblerTraitGeneratorImpl extends OldAbstractViewModelGenerator
         $useCaseResponse = $this->useCaseClassObjectService->getUseCaseResponse($className);
         $viewModelAssemblerTrait = $this->viewModelClassObjectService->getViewModelAssemblerTrait($className);
 
-        /** @var \OpenClassrooms\CodeGenerator\ClassObjects\ClassObject $vm */
-        /** @var \OpenClassrooms\CodeGenerator\ClassObjects\ClassObject $vmDetail */
-        /** @var \OpenClassrooms\CodeGenerator\ClassObjects\ClassObject $vmDetailImpl */
+        /** @var \OpenClassrooms\CodeGenerator\OldClassObjects\ClassObject $vm */
+        /** @var \OpenClassrooms\CodeGenerator\OldClassObjects\ClassObject $vmDetail */
+        /** @var \OpenClassrooms\CodeGenerator\OldClassObjects\ClassObject $vmDetailImpl */
         [$vm, $vmDetail, $vmDetailImpl] = $this->viewModelClassObjectService->getViewModels($className);
 
         $viewModelAssemblerTraitContent = $this->render(
