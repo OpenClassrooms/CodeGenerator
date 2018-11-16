@@ -36,7 +36,8 @@
       "symfony/console": "3.*",
     "symfony/dependency-injection": "3.*",
     "symfony/filesystem": "3.*",
-    "twig/twig": "~2"
+    "twig/twig": "~2",
+    "fzaninotto/faker": "^1.8"
   },
   "require-dev": {
     "phpunit/phpcov": "~4.0",
