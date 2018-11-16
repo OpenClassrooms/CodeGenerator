@@ -12,9 +12,9 @@ class ViewModelGeneratorImpl extends OldAbstractViewModelGenerator implements Vi
 {
     public function generate(string $className, array $parameters = []): array
     {
-        /** @var \OpenClassrooms\CodeGenerator\ClassObjects\ClassObject $viewModel */
-        /** @var \OpenClassrooms\CodeGenerator\ClassObjects\ClassObject $viewModelDetail */
-        /** @var \OpenClassrooms\CodeGenerator\ClassObjects\ClassObject $vmDetailImpl */
+        /** @var \OpenClassrooms\CodeGenerator\OldClassObjects\ClassObject $viewModel */
+        /** @var \OpenClassrooms\CodeGenerator\OldClassObjects\ClassObject $viewModelDetail */
+        /** @var \OpenClassrooms\CodeGenerator\OldClassObjects\ClassObject $vmDetailImpl */
         [$viewModel, $viewModelDetail, $viewModelDetailImpl] = $this->viewModelClassObjectService->getViewModels(
             $className
         );

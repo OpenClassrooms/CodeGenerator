@@ -1,8 +1,8 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace OpenClassrooms\CodeGenerator\Services\Impl;
 
-use OpenClassrooms\CodeGenerator\ClassObjects\ClassObject;
+use OpenClassrooms\CodeGenerator\OldClassObjects\ClassObject;
 use OpenClassrooms\CodeGenerator\Services\FormClassObjectService;
 
 /**
@@ -12,18 +12,18 @@ class FormClassObjectServiceImpl extends ClassObjectServiceImpl implements FormC
 {
     public function getEditFormType(string $className): ClassObject
     {
-        list($domain, $entityName) = $this->getDomainAndEntityNameFromClassName($className);
+        [$domain, $entityName] = $this->getDomainAndEntityNameFromClassName($className);
 
-        return new ClassObject($this->appNamespace.'\\Form\\Type\\'.$domain, 'Edit'.$entityName.'Type');
+        return new ClassObject($this->appNamespace . '\\Form\\Type\\' . $domain, 'Edit' . $entityName . 'Type');
     }
 
     public function getEditModelTypes(string $className): array
     {
-        list($domain, $entityName) = $this->getDomainAndEntityNameFromClassName($className);
+        [$domain, $entityName] = $this->getDomainAndEntityNameFromClassName($className);
 
         return [
-            new ClassObject($this->appNamespace.'\\Form\\Model\\'.$domain, $entityName.'Model', false, true),
-            new ClassObject($this->appNamespace.'\\Form\\Model\\'.$domain, 'Edit'.$entityName.'Model')
+            new ClassObject($this->appNamespace . '\\Form\\Model\\' . $domain, $entityName . 'Model', false, true),
+            new ClassObject($this->appNamespace . '\\Form\\Model\\' . $domain, 'Edit' . $entityName . 'Model'),
         ];
 
     }

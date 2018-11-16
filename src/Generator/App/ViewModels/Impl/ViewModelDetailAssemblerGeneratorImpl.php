@@ -30,9 +30,9 @@ class ViewModelDetailAssemblerGeneratorImpl extends OldAbstractViewModelGenerato
         $viewModelDetailAssembler = $this->viewModelClassObjectService->getViewModelDetailAssembler($className);
         $viewModelDetailAssemblerImpl = $this->viewModelClassObjectService->getViewModelDetailAssemblerImpl($className);
 
-        /** @var \OpenClassrooms\CodeGenerator\ClassObjects\ClassObject $vm */
-        /** @var \OpenClassrooms\CodeGenerator\ClassObjects\ClassObject $viewModelDetail */
-        /** @var \OpenClassrooms\CodeGenerator\ClassObjects\ClassObject $viewModelDetailImpl */
+        /** @var \OpenClassrooms\CodeGenerator\OldClassObjects\ClassObject $vm */
+        /** @var \OpenClassrooms\CodeGenerator\OldClassObjects\ClassObject $viewModelDetail */
+        /** @var \OpenClassrooms\CodeGenerator\OldClassObjects\ClassObject $viewModelDetailImpl */
         [$vm, $viewModelDetail, $viewModelDetailImpl] = $this->viewModelClassObjectService->getViewModels(
             $className
         );

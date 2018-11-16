@@ -1,6 +1,6 @@
-<?php
+<?php declare(strict_types=1);
 
-namespace OpenClassrooms\CodeGenerator\ClassObjects;
+namespace OpenClassrooms\CodeGenerator\OldClassObjects;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
@@ -13,16 +13,6 @@ class ClassObject
     private $className;
 
     /**
-     * @var string
-     */
-    private $namespace;
-
-    /**
-     * @var string
-     */
-    private $shortClassName;
-
-    /**
      * @var bool
      */
     private $isAbstract = false;
@@ -32,13 +22,23 @@ class ClassObject
      */
     private $isInterface = false;
 
+    /**
+     * @var string
+     */
+    private $namespace;
+
+    /**
+     * @var string
+     */
+    private $shortClassName;
+
     public function __construct(
         string $namespace,
         string $shortClassName,
         bool $isInterface = false,
         bool $isAbstract = false
     ) {
-        $this->className = $namespace.'\\'.$shortClassName;
+        $this->className = $namespace . '\\' . $shortClassName;
         $this->namespace = $namespace;
         $this->shortClassName = $shortClassName;
         $this->isInterface = $isInterface;
@@ -53,12 +53,37 @@ class ClassObject
         return $this->className;
     }
 
+    public function getFieldName(): string
+    {
+        return lcfirst($this->shortClassName);
+    }
+
     /**
      * @return string
      */
     public function getNamespace(): string
     {
         return $this->namespace;
+    }
+
+    public function getRouteName(): string
+    {
+        $routingName = 'oc';
+        $started = false;
+
+        $explodedNamespace = explode('\\', $this->namespace);
+        foreach ($explodedNamespace as $item) {
+            if ($item == 'Controller') {
+                $started = true;
+            } elseif ($started) {
+                $routingName .= '_' . $this->toSnakeCase($item);
+            }
+        }
+        $formattedShortClassName = str_replace('Impl', '', $this->shortClassName);
+        $formattedShortClassName = str_replace('Controller', '', $formattedShortClassName);
+        $routingName .= '_' . $this->toSnakeCase($formattedShortClassName);
+
+        return $routingName;
     }
 
     /**
@@ -74,38 +99,13 @@ class ClassObject
                 $started = true;
             }
             if ($started) {
-                $serviceName .= '.'.$this->toSnakeCase($item);
+                $serviceName .= '.' . $this->toSnakeCase($item);
             }
         }
         $formattedShortClassName = str_replace('Impl', '', $this->shortClassName);
-        $serviceName .= '.'.$this->toSnakeCase($formattedShortClassName);
+        $serviceName .= '.' . $this->toSnakeCase($formattedShortClassName);
 
         return $serviceName;
-    }
-
-    private function toSnakeCase($str): string
-    {
-        return strtolower(preg_replace('/(?<!^)[A-Z]/', '_$0', $str));
-    }
-
-    public function getRouteName(): string
-    {
-        $routingName = 'oc';
-        $started = false;
-
-        $explodedNamespace = explode('\\', $this->namespace);
-        foreach ($explodedNamespace as $item) {
-            if ($item == 'Controller') {
-                $started = true;
-            } elseif ($started) {
-                $routingName .= '_'.$this->toSnakeCase($item);
-            }
-        }
-        $formattedShortClassName = str_replace('Impl', '', $this->shortClassName);
-        $formattedShortClassName = str_replace('Controller', '', $formattedShortClassName);
-        $routingName .= '_'.$this->toSnakeCase($formattedShortClassName);
-
-        return $routingName;
     }
 
     /**
@@ -116,8 +116,8 @@ class ClassObject
         return $this->shortClassName;
     }
 
-    public function getFieldName(): string
+    private function toSnakeCase($str): string
     {
-        return lcfirst($this->shortClassName);
+        return strtolower(preg_replace('/(?<!^)[A-Z]/', '_$0', $str));
     }
 }

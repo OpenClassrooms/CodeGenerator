@@ -12,7 +12,7 @@ class EditFormGeneratorImpl extends OldAbstractFormGenerator
     public function generate(string $className, array $parameters = []): array
     {
         $formType = $this->formClassObjectService->getEditFormType($className);
-        /** @var \OpenClassrooms\CodeGenerator\ClassObjects\ClassObject $editModel */
+        /** @var \OpenClassrooms\CodeGenerator\OldClassObjects\ClassObject $editModel */
         [$abstractModel, $editModel] = $this->formClassObjectService->getEditModelTypes($className);
         $controller = $this->controllerClassObjectService->getShowController($className);
         $fields = $this->getFields($className);

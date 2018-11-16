@@ -1,9 +1,9 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace OpenClassrooms\CodeGenerator\Services\Impl;
 
 use Doctrine\Common\Inflector\Inflector;
-use OpenClassrooms\CodeGenerator\ClassObjects\ClassObject;
+use OpenClassrooms\CodeGenerator\OldClassObjects\ClassObject;
 use OpenClassrooms\CodeGenerator\Services\ControllerClassObjectService;
 
 /**
@@ -11,30 +11,30 @@ use OpenClassrooms\CodeGenerator\Services\ControllerClassObjectService;
  */
 class ControllerClassObjectServiceImpl extends ClassObjectServiceImpl implements ControllerClassObjectService
 {
-    public function getShowController(string $className, bool $admin = false): ClassObject
+    public function getListController(string $className, bool $admin = false): ClassObject
     {
-        list($domain, $entityName) = $this->getDomainAndEntityNameFromClassName($className);
+        [$domain, $entityName] = $this->getDomainAndEntityNameFromClassName($className);
 
-        $controllerNamespace = $this->appNamespace.'\\Controller\\Web\\'.$domain;
+        $controllerNamespace = $this->appNamespace . '\\Controller\\Web\\' . $domain;
         if ($admin) {
             $controllerNamespace .= '\\Admin';
         }
 
-        $shortClassName = 'Show'.$entityName.'Controller';
+        $shortClassName = 'List' . Inflector::pluralize($entityName) . 'Controller';
 
         return new ClassObject($controllerNamespace, $shortClassName);
     }
 
-    public function getListController(string $className, bool $admin = false): ClassObject
+    public function getShowController(string $className, bool $admin = false): ClassObject
     {
-        list($domain, $entityName) = $this->getDomainAndEntityNameFromClassName($className);
+        [$domain, $entityName] = $this->getDomainAndEntityNameFromClassName($className);
 
-        $controllerNamespace = $this->appNamespace.'\\Controller\\Web\\'.$domain;
+        $controllerNamespace = $this->appNamespace . '\\Controller\\Web\\' . $domain;
         if ($admin) {
             $controllerNamespace .= '\\Admin';
         }
 
-        $shortClassName = 'List'.Inflector::pluralize($entityName).'Controller';
+        $shortClassName = 'Show' . $entityName . 'Controller';
 
         return new ClassObject($controllerNamespace, $shortClassName);
     }

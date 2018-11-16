@@ -2,8 +2,8 @@
 
 namespace OpenClassrooms\CodeGenerator\Generator;
 
-use OpenClassrooms\CodeGenerator\ClassObjects\ClassObject;
 use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
+use OpenClassrooms\CodeGenerator\OldClassObjects\ClassObject;
 use OpenClassrooms\CodeGenerator\Services\FieldObjectService;
 use OpenClassrooms\CodeGenerator\Utility\ClassNameUtility;
 

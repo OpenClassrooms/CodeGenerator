@@ -18,9 +18,9 @@ class ViewModelDetailGeneratorImpl extends OldAbstractViewModelGenerator
 
     public function generate(string $className, array $parameters = []): array
     {
-        /** @var \OpenClassrooms\CodeGenerator\ClassObjects\ClassObject $viewModel */
-        /** @var \OpenClassrooms\CodeGenerator\ClassObjects\ClassObject $viewModelDetail */
-        /** @var \OpenClassrooms\CodeGenerator\ClassObjects\ClassObject $viewModelDetailImpl */
+        /** @var \OpenClassrooms\CodeGenerator\OldClassObjects\ClassObject $viewModel */
+        /** @var \OpenClassrooms\CodeGenerator\OldClassObjects\ClassObject $viewModelDetail */
+        /** @var \OpenClassrooms\CodeGenerator\OldClassObjects\ClassObject $viewModelDetailImpl */
         [$viewModel, $viewModelDetail, $viewModelDetailImpl] = $this->viewModelClassObjectService->getViewModels(
             $className
         );
