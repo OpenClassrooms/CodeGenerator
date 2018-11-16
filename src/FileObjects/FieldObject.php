@@ -31,15 +31,17 @@ class FieldObject
      */
     protected $scope = FieldObject::SCOPE_PRIVATE;
 
+    /**
+     * @var mixed
+     */
+    protected $value;
+
     public function __construct(string $name)
     {
         $this->name = $name;
     }
 
-    /**
-     * @return string
-     */
-    public function getAccessor()
+    public function getAccessor(): string
     {
         return $this->accessor;
     }
@@ -68,6 +70,14 @@ class FieldObject
         return preg_replace('/(\W)|(var)/', '', $this->getDocComment());
     }
 
+    /**
+     * @return mixed
+     */
+    public function getValue()
+    {
+        return $this->value;
+    }
+
     public function setAccessor(string $accessor = null)
     {
         $this->accessor = $accessor;
@@ -81,5 +91,10 @@ class FieldObject
     public function setScope(string $scope)
     {
         $this->scope = $scope;
+    }
+
+    public function setValue($value): void
+    {
+        $this->value = $value;
     }
 }

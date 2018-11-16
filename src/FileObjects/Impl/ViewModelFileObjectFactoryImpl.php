@@ -55,8 +55,10 @@ class ViewModelFileObjectFactoryImpl extends AbstractFileObjectFactory implement
                     $this->baseNamespace . 'Api\ViewModels\\' . $domain . '\\Impl\\' . $entity . 'ListItemImpl'
                 );
                 break;
-            case ViewModelFileObjectType::API_VIEW_MODEL_STUB:
-                $fileObject->setClassName($this->stubNamespace . $domain . '\\' . $entity . 'Stub');
+            case ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_STUB:
+                $fileObject->setClassName(
+                    $this->stubNamespace . 'Api\ViewModels\\' . $domain . '\\' . $entity . 'DetailStub1'
+                );
                 break;
             case ViewModelFileObjectType::API_VIEW_MODEL_TEST_CASE:
                 $fileObject->setClassName(
@@ -70,3 +72,4 @@ class ViewModelFileObjectFactoryImpl extends AbstractFileObjectFactory implement
         return $fileObject;
     }
 }
+
