@@ -2,12 +2,13 @@
 
 namespace Tests\FileObjects;
 
-use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
 use OpenClassrooms\CodeGenerator\FileObjects\AbstractFileObjectFactory;
-use OpenClassrooms\CodeGenerator\FileObjects\ViewModelFileObjectType;
+use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
 use OpenClassrooms\CodeGenerator\FileObjects\Impl\ViewModelFileObjectFactoryImpl;
+use OpenClassrooms\CodeGenerator\FileObjects\ViewModelFileObjectType;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\Entities\Domain\SubDomain\FunctionalEntity;
 use OpenClassrooms\CodeGenerator\Tests\TestClassUtil;
+use OpenClassrooms\CodeGenerator\Utility\ClassNameUtility;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -15,68 +16,92 @@ use PHPUnit\Framework\TestCase;
  */
 class FileObjectFactoryTest extends TestCase
 {
+    use ClassNameUtility;
+
     const BASE_NAMESPACE = '';
 
-    const TEST_BASE_NAMESPACE = 'Test\Base\Namespace\\';
-
     const STUB_NAMESPACE = self::TEST_BASE_NAMESPACE . 'Doubles\\';
+
+    const TEST_BASE_NAMESPACE = 'Test\Base\Namespace\\';
 
     /**
      * @var AbstractFileObjectFactory
      */
     private $factory;
 
-    public static function fileObjectDataProvider()
+    /**
+     * @var string
+     */
+    private $domain;
+
+    /**
+     * @var string
+     */
+    private $entity;
+
+    public function fileObjectDataProvider()
     {
+        [$domain, $entity] = $this->getDomainAndEntityNameFromClassName(FunctionalEntity::class);
+
         return [
             [
                 ViewModelFileObjectType::API_VIEW_MODEL_ASSEMBLER,
-                FunctionalEntity::class,
+                $domain,
+                $entity,
                 self::getFileObjectViewModelAssembler()
             ],
             [
                 ViewModelFileObjectType::API_VIEW_MODEL_ASSEMBLER_TEST,
-                FunctionalEntity::class,
+                $domain,
+                $entity,
                 self::getFileObjectViewModelAssemblerTest()
             ],
             [
                 ViewModelFileObjectType::API_VIEW_MODEL,
-                FunctionalEntity::class,
+                $domain,
+                $entity,
                 self::getFileObjectViewModel()
             ],
             [
                 ViewModelFileObjectType::API_VIEW_MODEL_DETAIL,
-                FunctionalEntity::class,
+                $domain,
+                $entity,
                 self::getFileObjectViewModelDetail()
             ],
             [
                 ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM,
-                FunctionalEntity::class,
+                $domain,
+                $entity,
                 self::getFileObjectViewModelListItem()
             ],
             [
                 ViewModelFileObjectType::API_VIEW_MODEL_STUB,
-                FunctionalEntity::class,
+                $domain,
+                $entity,
                 self::getFileObjectViewModelStub()
             ],
             [
                 ViewModelFileObjectType::API_VIEW_MODEL_TEST_CASE,
-                FunctionalEntity::class,
+                $domain,
+                $entity,
                 self::getFileObjectViewModelTestCase()
             ],
             [
                 ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_IMPL,
-                FunctionalEntity::class,
+                $domain,
+                $entity,
                 self::getFileObjectViewModelListItemImpl()
             ],
             [
                 ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_IMPL,
-                FunctionalEntity::class,
+                $domain,
+                $entity,
                 self::getFileObjectViewModelDetailImpl()
             ],
             [
                 ViewModelFileObjectType::API_VIEW_MODEL_ASSEMBLER_IMPL,
-                FunctionalEntity::class,
+                $domain,
+                $entity,
                 self::getFileObjectViewModelAssemblerImpl()
             ]
         ];
@@ -94,6 +119,11 @@ class FileObjectFactoryTest extends TestCase
         return $fileObjectViewModelAssembler;
     }
 
+    private static function getEntityName(): string
+    {
+        return TestClassUtil::getShortClassName(FunctionalEntity::class);
+    }
+
     private static function getFileObjectViewModelAssemblerTest(): FileObject
     {
         $fileObjectViewModelAssemblerTest = new FileObject();
@@ -106,18 +136,6 @@ class FileObjectFactoryTest extends TestCase
         return $fileObjectViewModelAssemblerTest;
     }
 
-    private static function getFileObjectViewModelDetail()
-    {
-        $fileObjectViewModelDetail = new FileObject();
-        TestClassUtil::setProperty(
-            'className',
-            'Api\ViewModels\Domain\SubDomain\\' . self::getEntityName() . 'Detail',
-            $fileObjectViewModelDetail
-        );
-
-        return $fileObjectViewModelDetail;
-    }
-
     private static function getFileObjectViewModel(): FileObject
     {
         $fileObjectViewModel = new FileObject();
@@ -128,6 +146,18 @@ class FileObjectFactoryTest extends TestCase
         );
 
         return $fileObjectViewModel;
+    }
+
+    private static function getFileObjectViewModelDetail()
+    {
+        $fileObjectViewModelDetail = new FileObject();
+        TestClassUtil::setProperty(
+            'className',
+            'Api\ViewModels\Domain\SubDomain\\' . self::getEntityName() . 'Detail',
+            $fileObjectViewModelDetail
+        );
+
+        return $fileObjectViewModelDetail;
     }
 
     private static function getFileObjectViewModelListItem(): FileObject
@@ -166,18 +196,6 @@ class FileObjectFactoryTest extends TestCase
         return $fileObjectViewModelTestCase;
     }
 
-    private static function getFileObjectViewModelAssemblerImpl(): FileObject
-    {
-        $fileObjectViewModelAssemblerImpl = new FileObject();
-        TestClassUtil::setProperty(
-            'className',
-            'Api\ViewModels\Domain\SubDomain\Impl\\' . self::getEntityName() . 'AssemblerImpl',
-            $fileObjectViewModelAssemblerImpl
-        );
-
-        return $fileObjectViewModelAssemblerImpl;
-    }
-
     private static function getFileObjectViewModelListItemImpl(): FileObject
     {
         $fileObjectViewModelListItemImpl = new FileObject();
@@ -202,9 +220,16 @@ class FileObjectFactoryTest extends TestCase
         return $fileObjectViewModelDetailImpl;
     }
 
-    private static function getEntityName(): string
+    private static function getFileObjectViewModelAssemblerImpl(): FileObject
     {
-        return TestClassUtil::getShortClassName(FunctionalEntity::class);
+        $fileObjectViewModelAssemblerImpl = new FileObject();
+        TestClassUtil::setProperty(
+            'className',
+            'Api\ViewModels\Domain\SubDomain\Impl\\' . self::getEntityName() . 'AssemblerImpl',
+            $fileObjectViewModelAssemblerImpl
+        );
+
+        return $fileObjectViewModelAssemblerImpl;
     }
 
     /**
@@ -213,16 +238,16 @@ class FileObjectFactoryTest extends TestCase
      */
     public function InvalidTye_Create_ThrowException()
     {
-        $this->factory->create('INVALID_TYPE', self::class);
+        $this->factory->create('INVALID_TYPE', self::class, '');
     }
 
     /**
      * @test
      * @dataProvider fileObjectDataProvider
      */
-    public function create_ReturnFileObject(string $inputType, string $inputClassName, FileObject $expected)
+    public function create_ReturnFileObject(string $inputType, string $domain, string $entity, FileObject $expected)
     {
-        $actual = $this->factory->create($inputType, $inputClassName);
+        $actual = $this->factory->create($inputType, $domain, $entity);
         $this->assertSame($expected->getClassName(), $actual->getClassName());
     }
 
