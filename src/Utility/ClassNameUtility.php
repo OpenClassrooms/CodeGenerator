@@ -1,23 +1,14 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace OpenClassrooms\CodeGenerator\Utility;
 
-use OpenClassrooms\CodeGenerator\ClassObjects\ClassObject;
+use OpenClassrooms\CodeGenerator\OldClassObjects\ClassObject;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
  */
 trait ClassNameUtility
 {
-    public function getInterfaceClassObjectFromClassName(string $className): ClassObject
-    {
-        $rc = new \ReflectionClass($className);
-        $interfaceNames = $rc->getInterfaceNames();
-        $rc = new \ReflectionClass(end($interfaceNames));
-
-        return new ClassObject($rc->getNamespaceName(), $rc->getShortName(), true);
-    }
-
     protected function getDomainAndEntityNameFromClassName(string $className): array
     {
         return [$this->getDomainFromClassName($className), $this->getEntityNameFromClassName($className)];
@@ -29,7 +20,7 @@ trait ClassNameUtility
 
         $domain = [];
 
-        for ($i = count($explodedNamespace) - 1; $i > 0 && $explodedNamespace[$i] !== 'BusinessRules'; $i--) {
+        for ($i = count($explodedNamespace) - 1; $i > 0 && $this->namespaceLimit($explodedNamespace, $i); $i--) {
             if (array_search(
                     $explodedNamespace[$i],
                     ['Entities', 'Request', 'Response', 'DTO', 'UseCases']
@@ -37,15 +28,8 @@ trait ClassNameUtility
                 $domain[] = $explodedNamespace[$i];
             }
         }
+
         return implode('\\', array_reverse($domain));
-    }
-
-    private function getNamespace(string $className)
-    {
-        $classParts = explode('\\', $className);
-        array_pop($classParts);
-
-        return implode('\\', $classParts);
     }
 
     public function getEntityNameFromClassName(string $className): string
@@ -53,6 +37,7 @@ trait ClassNameUtility
         $shortClassName = $this->getShortClassNameFromClassName($className);
         $shortClassName = str_replace('DetailResponseDTO', '', $shortClassName);
         $shortClassName = str_replace('DetailResponse', '', $shortClassName);
+        $shortClassName = str_replace('Detail', '', $shortClassName);
         $shortClassName = str_replace('ListItemResponseDTO', '', $shortClassName);
         $shortClassName = str_replace('ListItemResponse', '', $shortClassName);
         $shortClassName = str_replace('ResponseDTO', '', $shortClassName);
@@ -64,11 +49,21 @@ trait ClassNameUtility
         return $shortClassName;
     }
 
-    protected function getShortClassNameFromClassName(string $className): string
+    public function getInterfaceClassObjectFromClassName(string $className): ClassObject
+    {
+        $rc = new \ReflectionClass($className);
+        $interfaceNames = $rc->getInterfaceNames();
+        $rc = new \ReflectionClass(end($interfaceNames));
+
+        return new ClassObject($rc->getNamespaceName(), $rc->getShortName(), true);
+    }
+
+    private function getNamespace(string $className)
     {
         $classParts = explode('\\', $className);
+        array_pop($classParts);
 
-        return array_pop($classParts);
+        return implode('\\', $classParts);
     }
 
     protected function getNamespaceFromClassName(string $className): string
@@ -76,5 +71,23 @@ trait ClassNameUtility
         $rc = new \ReflectionClass($className);
 
         return $rc->getNamespaceName();
+    }
+
+    protected function getShortClassNameFromClassName(string $className): string
+    {
+        $classParts = explode('\\', $className);
+
+        return array_pop($classParts);
+    }
+
+    /**
+     * @param $explodedNamespace
+     * @param $i
+     *
+     * @return bool
+     */
+    protected function namespaceLimit($explodedNamespace, $i): bool
+    {
+        return $explodedNamespace[$i] !== 'BusinessRules' && $explodedNamespace[$i] !== 'ViewModels';
     }
 }

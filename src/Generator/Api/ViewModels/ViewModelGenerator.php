@@ -21,23 +21,27 @@ class ViewModelGenerator extends AbstractViewModelGenerator
      */
     private $viewModelSkeletonModelAssembler;
 
-    private function buildViewModelFileObject(string $responseClassName): FileObject
+    private function buildUseCaseResponseFileObject(string $useCaseResponseClassName): FileObject
     {
-        $responseFileObject = $this->createResponseFileObject($responseClassName);
-
-        [$domain, $entity] = $this->getDomainAndEntityNameFromClassName($responseClassName);
-        $viewModel = $this->createViewModelFileObject(ViewModelFileObjectType::API_VIEW_MODEL, $domain, $entity);
-        $viewModel->setFields($this->getPublicClassFields($responseFileObject->getClassName()));
-
-        return $viewModel;
-    }
-
-    private function createResponseFileObject(string $responseClassName): FileObject
-    {
-        [$domain, $entity] = $this->getDomainAndEntityNameFromClassName($responseClassName);
-        $responseFileObject = $this->createUseCaseResponseFileObject(UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE, $domain, $entity);
+        [$domain, $entity] = $this->getDomainAndEntityNameFromClassName($useCaseResponseClassName);
+        $responseFileObject = $this->createUseCaseResponseFileObject(
+            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE,
+            $domain,
+            $entity
+        );
 
         return $responseFileObject;
+    }
+
+    private function buildViewModelFileObject(string $useCaseResponseClassName): FileObject
+    {
+        $useCaseResponseFileObject = $this->buildUseCaseResponseFileObject($useCaseResponseClassName);
+
+        [$domain, $entity] = $this->getDomainAndEntityNameFromClassName($useCaseResponseClassName);
+        $viewModel = $this->createViewModelFileObject(ViewModelFileObjectType::API_VIEW_MODEL, $domain, $entity);
+        $viewModel->setFields($this->getPublicClassFields($useCaseResponseFileObject->getClassName()));
+
+        return $viewModel;
     }
 
     private function createSkeletonModel(FileObject $viewModelFileObject): ViewModelSkeletonModel

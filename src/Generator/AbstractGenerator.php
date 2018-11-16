@@ -33,6 +33,19 @@ abstract class AbstractGenerator implements Generator
     /**
      * @return array|FieldObject[]
      */
+    protected function getParentAndChildPublicClassFields(string $className): array
+    {
+        $classFields = array_merge(
+            $this->fieldObjectService->getParentPublicClassFields($className),
+            $this->fieldObjectService->getPublicClassFields($className)
+        );
+
+        return $classFields;
+    }
+
+    /**
+     * @return array|FieldObject[]
+     */
     protected function getPublicClassFields(string $className): array
     {
         return $this->fieldObjectService->getPublicClassFields($className);

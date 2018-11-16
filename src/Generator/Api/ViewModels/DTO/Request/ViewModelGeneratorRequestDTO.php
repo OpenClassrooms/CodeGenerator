@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\DTO\Request;
 
@@ -15,19 +15,14 @@ class ViewModelGeneratorRequestDTO implements ViewModelGeneratorRequest
     public $className;
 
     /**
-     * @var string
-     */
-    public $namespace;
-
-    /**
      * @var array
      */
     public $fields = [];
 
-    public function getResponseClassName(): string
-    {
-        return $this->className;
-    }
+    /**
+     * @var string
+     */
+    public $namespace;
 
     /**
      * @return array
@@ -42,4 +37,8 @@ class ViewModelGeneratorRequestDTO implements ViewModelGeneratorRequest
         return $this->namespace;
     }
 
+    public function getResponseClassName(): string
+    {
+        return $this->className;
+    }
 }
