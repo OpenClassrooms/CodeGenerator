@@ -8,4 +8,6 @@ namespace OpenClassrooms\CodeGenerator\Tests\Fixtures;
 final class FixturesConfig
 {
     const BASE_NAMESPACE = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\\';
+
+    const STUB_NAMESPACE = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\tests\Doubles\\';
 }
