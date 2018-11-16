@@ -1,0 +1,27 @@
+<?php declare(strict_types=1);
+{% include "Header.php.twig" %}
+{% import _self as macro %}
+
+namespace {{ skeletonModel.namespace }};
+
+use {{ skeletonModel.parentClassName }};
+
+/**
+ * @author {{ author }} <{{ authorEmail }}>
+*/
+class {{ skeletonModel.shortClassName }} extends {{ skeletonModel.parentShortClassName }}
+{
+{% for field in skeletonModel.fields %}
+    const {{ field.constForStub }} = {{ field.value }};
+{% if not loop.last %}
+
+{% endif %}
+{% endfor %}
+
+{% for field in skeletonModel.fields %}
+    {{ field.scope }} ${{ field.name }} = self::{{ field.constForStub }};
+{% if not loop.last %}
+
+{% endif %}
+{% endfor %}
+}
