@@ -7,8 +7,8 @@ use OpenClassrooms\CodeGenerator\FileObjects\UseCaseResponseFileObjectType;
 use OpenClassrooms\CodeGenerator\FileObjects\ViewModelFileObjectType;
 use OpenClassrooms\CodeGenerator\Generator\Api\AbstractViewModelGenerator;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
-use OpenClassrooms\CodeGenerator\SkeletonModels\ViewModelTest\ViewModelTestSkeletonModel;
-use OpenClassrooms\CodeGenerator\SkeletonModels\ViewModelTest\ViewModelTestSkeletonModelAssembler;
+use OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModelTest\ViewModelTestSkeletonModel;
+use OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModelTest\ViewModelTestSkeletonModelAssembler;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>

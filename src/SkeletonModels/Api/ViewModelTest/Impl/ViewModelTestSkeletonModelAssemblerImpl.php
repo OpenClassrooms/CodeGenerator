@@ -1,10 +1,10 @@
-<?php
+<?php declare(strict_types=1);
 
-namespace OpenClassrooms\CodeGenerator\SkeletonModels\ViewModelTest\Impl;
+namespace OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModelTest\Impl;
 
 use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
-use OpenClassrooms\CodeGenerator\SkeletonModels\ViewModelTest\ViewModelTestSkeletonModel;
-use OpenClassrooms\CodeGenerator\SkeletonModels\ViewModelTest\ViewModelTestSkeletonModelAssembler;
+use OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModelTest\ViewModelTestSkeletonModel;
+use OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModelTest\ViewModelTestSkeletonModelAssembler;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
@@ -18,5 +18,4 @@ class ViewModelTestSkeletonModelAssemblerImpl implements ViewModelTestSkeletonMo
 
         return $skeletonModel;
     }
-
 }
