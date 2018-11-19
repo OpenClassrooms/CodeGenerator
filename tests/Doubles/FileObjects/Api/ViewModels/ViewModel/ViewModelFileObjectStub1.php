@@ -18,10 +18,10 @@ class ViewModelFileObjectStub1 extends FileObject
             FunctionalEntityStub1::SHORT_CLASS_NAME . '.php';
         $this->className = self::CLASS_NAME;
         $this->fields = [
-            new ViewModelFieldObjectStub1(),
             new ViewModelFieldObjectStub2(),
             new ViewModelFieldObjectStub3(),
             new ViewModelFieldObjectStub4(),
+            new ViewModelFieldObjectStub1(),
         ];
     }
 }
