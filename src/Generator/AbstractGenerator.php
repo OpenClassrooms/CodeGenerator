@@ -40,6 +40,8 @@ abstract class AbstractGenerator implements Generator
             $this->fieldObjectService->getPublicClassFields($className)
         );
 
+        usort($classFields, array($this, "orderClassField"));
+
         return $classFields;
     }
 
@@ -48,13 +50,30 @@ abstract class AbstractGenerator implements Generator
      */
     protected function getPublicClassFields(string $className): array
     {
-        return $this->fieldObjectService->getPublicClassFields($className);
+        $classFields = $this->fieldObjectService->getPublicClassFields($className);
+
+        usort($classFields, array($this, "orderClassField"));
+
+        return $classFields;
     }
 
     protected function insertFileObject(FileObject $viewModelFileObject): void
     {
         $this->fileObjectGateway->insert($viewModelFileObject);
     }
+
+    private function orderClassField(FieldObject $a, FieldObject $b): int
+    {
+        $al = strtolower($a->getAccessor() ?? $a->getName());
+        $bl = strtolower($b->getAccessor() ?? $b->getName());
+        if ($al == $bl) {
+            return 0;
+        }
+
+        return ($al > $bl) ? +1 : -1;
+    }
+
+    /* Ceci est une fonction de comparaison statique */
 
     protected function render(string $template, array $parameters): string
     {

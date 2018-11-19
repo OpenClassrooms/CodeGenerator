@@ -9,7 +9,7 @@ use {{ skeletonModel.parentClassName }};
 /**
  * @author {{ author }} <{{ authorEmail }}>
  */
-abstract class {{ skeletonModel.shortName }} extends {{ skeletonModel.parentShortName }}
+class {{ skeletonModel.shortName }} extends {{ skeletonModel.parentShortName }}
 {
 {% for field in skeletonModel.fields %}
     const {{ field.const }} = {{ field.value }};
@@ -20,8 +20,8 @@ abstract class {{ skeletonModel.shortName }} extends {{ skeletonModel.parentShor
 
 {% for field in skeletonModel.fields %}
     /**
-    * {@inheritdoc}
-    */
+     * {@inheritdoc}
+     */
     {{ field.scope }} ${{ field.name }} = self::{{ field.const }};
 {% if not loop.last %}
 

@@ -3,6 +3,7 @@
 namespace OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects;
 
 use OpenClassrooms\CodeGenerator\FileObjects\FieldObject;
+use OpenClassrooms\CodeGenerator\FileObjects\StubFieldObject;
 use PHPUnit\Framework\Assert as Assert;
 
 /**
@@ -12,16 +13,22 @@ trait FieldObjectTestCase
 {
     private function assertFieldObject(FieldObject $expected, FieldObject $actual)
     {
-        Assert::assertEquals($expected->getAccessor(), $actual->getAccessor());
-        Assert::assertEquals($expected->getDocComment(), $actual->getDocComment());
+        if (!$actual instanceof StubFieldObject) {
+            Assert::assertEquals($expected->getAccessor(), $actual->getAccessor());
+            Assert::assertEquals($expected->getDocComment(), $actual->getDocComment());
+            Assert::assertEquals($expected->getType(), $actual->getType());
+        } else {
+            Assert::assertEquals($expected->getConst(), $actual->getConst());
+            Assert::assertEquals($expected->getValue(), $actual->getValue());
+        }
+
         Assert::assertEquals($expected->getName(), $actual->getName());
         Assert::assertEquals($expected->getScope(), $actual->getScope());
-        Assert::assertEquals($expected->getType(), $actual->getType());
     }
 
     /**
      * @param FieldObject[] $expectedFieldObjects
-     * @param FieldObject[]  $actualFieldObjects
+     * @param FieldObject[] $actualFieldObjects
      */
     protected function assertFieldObjects(array $expectedFieldObjects, array $actualFieldObjects): void
     {
