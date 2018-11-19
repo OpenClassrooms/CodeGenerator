@@ -9,11 +9,6 @@ namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Dom
 abstract class FunctionalEntity
 {
     /**
-     * @var int
-     */
-    public $id;
-
-    /**
      * @var string
      */
     public $field1;
@@ -28,10 +23,10 @@ abstract class FunctionalEntity
      */
     public $field3;
 
-    public function getId(): int
-    {
-        return $this->id;
-    }
+    /**
+     * @var int
+     */
+    public $id;
 
     public function getField1(): string
     {
@@ -41,6 +36,11 @@ abstract class FunctionalEntity
     public function getField2(): array
     {
         return $this->field2;
+    }
+
+    public function getId(): int
+    {
+        return $this->id;
     }
 
     public function isField3(): bool
