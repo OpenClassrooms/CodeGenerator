@@ -6,7 +6,7 @@ namespace {{ skeletonModel.namespace }};
 /**
  * @author {{ author }} <{{ authorEmail }}>
  */
-abstract class {{ skeletonModel.shortClassName }} extends {{ skeletonModel.ParentShortClassName }}
+abstract class {{ skeletonModel.shortName }} extends {{ skeletonModel.ParentShortName }}
 {
 {% for field in skeletonModel.fields %}
     {{ field.docComment }}

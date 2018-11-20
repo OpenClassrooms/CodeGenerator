@@ -7,7 +7,7 @@ use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\Su
 use PHPUnit\Framework\Assert;
 
 /**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ * @author authorStub <author.stub@example.com>
  */
 trait FunctionalEntityTestCase
 {

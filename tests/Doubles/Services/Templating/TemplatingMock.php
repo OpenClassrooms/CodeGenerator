@@ -14,6 +14,10 @@ class TemplatingMock extends \Twig_Environment implements Templating
 
     const CONST_FILTER = 'Const';
 
+    const FILTER_PREFIX = 'sortBy';
+
+    const ID_FILTER = self::FILTER_PREFIX . 'IdFirst';
+
     const NAME_FILTER = 'Name';
 
     public function __construct()
@@ -33,30 +37,49 @@ class TemplatingMock extends \Twig_Environment implements Templating
         $this->addFilter($this->getFieldFilter(self::NAME_FILTER));
         $this->addFilter($this->getFieldFilter(self::ACCESSOR_FILTER));
         $this->addFilter($this->getFieldFilter(self::CONST_FILTER));
+        $this->addFilter($this->getFilterSortIdFirst());
     }
 
     private function getFieldFilter($name)
     {
         return new \Twig_Filter(
-            'sortBy' . $name,
+            self::FILTER_PREFIX . $name,
             function($classFields) use ($name) {
-            $classFieldArray = $classFields;
-            usort(
-                $classFieldArray,
-                function(FieldObject $a, FieldObject $b) use ($name) {
-                    $name = 'get' . $name;
-                    $al = strtolower($a->$name());
-                    $bl = strtolower($b->$name());
-                    if ($al == $bl) {
-                        return 0;
+                $arrayFields = $classFields;
+                usort(
+                    $arrayFields,
+                    function(FieldObject $a, FieldObject $b) use ($name) {
+                        $name = 'get' . $name;
+                        $al = strtolower($a->$name());
+                        $bl = strtolower($b->$name());
+                        if ($al == $bl) {
+                            return 0;
+                        }
+
+                        return ($al > $bl) ? +1 : -1;
                     }
+                );
 
-                    return ($al > $bl) ? +1 : -1;
+                return $arrayFields;
+            }
+        );
+    }
+
+    private function getFilterSortIdFirst()
+    {
+        return new \Twig_Filter(
+            self::ID_FILTER,
+            function($classFields) {
+                $arrayFields = $classFields;
+                foreach ($arrayFields as $key => $field) {
+                    if ('id' === $field->getName()) {
+                        unset($arrayFields[$key]);
+                        array_unshift($arrayFields, $field);
+                    }
                 }
-            );
 
-            return $classFieldArray;
-        }
+                return $arrayFields;
+            }
         );
     }
 }

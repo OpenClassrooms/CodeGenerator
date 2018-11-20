@@ -32,14 +32,14 @@ class ViewModelDetailStubGeneratorTest extends TestCase
     /**
      * @var ViewModelDetailStubGenerator
      */
-    private $stub1Generator;
+    private $viewModelStub1Generator;
 
     /**
      * @test
      */
     public function generate_ReturnFileObject()
     {
-        $actualFileObject = $this->stub1Generator->generate($this->request);
+        $actualFileObject = $this->viewModelStub1Generator->generate($this->request);
 
         $this->assertSame(
             InMemoryFileObjectGateway::$fileObjects[$actualFileObject->getId()],
@@ -56,19 +56,19 @@ class ViewModelDetailStubGeneratorTest extends TestCase
             ->withClassName(FunctionalEntity::class)
             ->build();
 
-        $this->stub1Generator = new ViewModelDetailStubGenerator();
+        $this->viewModelStub1Generator = new ViewModelDetailStubGenerator();
 
-        $this->stub1Generator->setFileObjectGateway(new InMemoryFileObjectGateway());
-        $this->stub1Generator->setFieldObjectService(new FieldObjectServiceImpl());
-        $this->stub1Generator->setTemplating(new TemplatingMock());
+        $this->viewModelStub1Generator->setFileObjectGateway(new InMemoryFileObjectGateway());
+        $this->viewModelStub1Generator->setFieldObjectService(new FieldObjectServiceImpl());
+        $this->viewModelStub1Generator->setTemplating(new TemplatingMock());
 
         $viewModelFileObjectFactory = new ViewModelFileObjectFactoryImpl();
         $viewModelFileObjectFactory->setStubNamespace(FixturesConfig::STUB_NAMESPACE);
         $viewModelFileObjectFactory->setBaseNamespace(FixturesConfig::BASE_NAMESPACE);
-        $this->stub1Generator->setViewModelFileObjectFactory($viewModelFileObjectFactory);
-        $this->stub1Generator->setViewModelStubDetailSkeletonModelAssembler(
+        $this->viewModelStub1Generator->setViewModelFileObjectFactory($viewModelFileObjectFactory);
+        $this->viewModelStub1Generator->setViewModelStubDetailSkeletonModelAssembler(
             new ViewModelDetailStubSkeletonModelAssemblerImpl()
         );
-        $this->stub1Generator->setStubService(new StubServiceImpl());
+        $this->viewModelStub1Generator->setStubService(new StubServiceImpl());
     }
 }

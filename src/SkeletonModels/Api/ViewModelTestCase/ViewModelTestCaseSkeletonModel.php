@@ -1,0 +1,17 @@
+<?php declare(strict_types=1);
+
+namespace OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModelTestCase;
+
+use OpenClassrooms\CodeGenerator\SkeletonModels\Api\AbstractViewModelsSkeletonModel;
+
+/**
+ * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ */
+class ViewModelTestCaseSkeletonModel extends AbstractViewModelsSkeletonModel
+{
+    public $sourceClassName;
+
+    public $sourceShortName;
+
+    public $templatePath = 'tests/Doubles/ViewModelTestCase.php.twig';
+}
