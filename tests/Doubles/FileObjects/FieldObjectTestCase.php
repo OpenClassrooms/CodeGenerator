@@ -32,9 +32,32 @@ trait FieldObjectTestCase
      */
     protected function assertFieldObjects(array $expectedFieldObjects, array $actualFieldObjects): void
     {
+        [$expectedFieldObjects, $actualFieldObjects] = $this->orderArraysBeforeCompare(
+            $expectedFieldObjects,
+            $actualFieldObjects
+        );
         Assert::assertCount(count($expectedFieldObjects), $actualFieldObjects);
         foreach ($expectedFieldObjects as $key => $expectedFieldObject) {
             $this->assertFieldObject($expectedFieldObject, $actualFieldObjects[$key]);
         }
+    }
+
+    private function orderArraysBeforeCompare(array $expectedFieldObjects, array $actualFieldObjects): array
+    {
+        usort($actualFieldObjects, array($this, "orderFieldObjectsByName"));
+        usort($expectedFieldObjects, array($this, "orderFieldObjectsByName"));
+
+        return [$expectedFieldObjects, $actualFieldObjects];
+    }
+
+    private function orderFieldObjectsByName(FieldObject $a, FieldObject $b): int
+    {
+        $al = strtolower($a->getName());
+        $bl = strtolower($b->getName());
+        if ($al == $bl) {
+            return 0;
+        }
+
+        return ($al > $bl) ? +1 : -1;
     }
 }
