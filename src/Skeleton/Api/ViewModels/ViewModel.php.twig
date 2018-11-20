@@ -6,7 +6,7 @@ namespace {{ skeletonModel.namespace }};
 /**
  * @author {{ author }} <{{ authorEmail }}>
  */
-abstract class {{ skeletonModel.shortClassName }}
+abstract class {{ skeletonModel.shortName }}
 {
 {% for field in skeletonModel.fields | sortByName %}
     {{ field.docComment }}

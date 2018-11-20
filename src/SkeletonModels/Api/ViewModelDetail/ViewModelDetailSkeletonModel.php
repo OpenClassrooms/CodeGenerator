@@ -2,42 +2,17 @@
 
 namespace OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModelDetail;
 
-use OpenClassrooms\CodeGenerator\FileObjects\FieldObject;
+use OpenClassrooms\CodeGenerator\SkeletonModels\Api\AbstractViewModelsSkeletonModel;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
  */
-abstract class ViewModelDetailSkeletonModel
+abstract class ViewModelDetailSkeletonModel extends AbstractViewModelsSkeletonModel
 {
-    /**
-     * @var string
-     */
-    public $className;
-
-    /**
-     * @var FieldObject[]
-     */
-    public $fields = [];
-
-    /**
-     * @var string
-     */
-    public $namespace;
-
-    /**
-     * @var string
-     */
-    public $shortClassName;
-
     public $templatePath = 'Api/ViewModels/ViewModelDetail.php.twig';
 
-    public function getParentShortClassName(): string
+    public function getParentShortName(): string
     {
-        return str_replace('Detail', '', $this->shortClassName);
-    }
-
-    public function getTemplatePath(): string
-    {
-        return $this->templatePath;
+        return str_replace('Detail', '', $this->shortName);
     }
 }

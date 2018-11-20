@@ -1,36 +1,13 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModel;
+
+use OpenClassrooms\CodeGenerator\SkeletonModels\Api\AbstractViewModelsSkeletonModel;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
  */
-abstract class ViewModelSkeletonModel
+abstract class ViewModelSkeletonModel extends AbstractViewModelsSkeletonModel
 {
-    /**
-     * @var string
-     */
-    public $className;
-
-    /**
-     * @var array
-     */
-    public $fields = [];
-
-    /**
-     * @var string
-     */
-    public $shortClassName;
-
-    /**
-     * @var string
-     */
-    public $namespace;
-
     public $templatePath = 'Api/ViewModels/ViewModel.php.twig';
-
-    public function getTemplatePath(): string
-    {
-        return $this->templatePath;
-    }
 }

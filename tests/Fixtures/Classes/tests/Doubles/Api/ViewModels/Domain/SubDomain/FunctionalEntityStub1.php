@@ -6,7 +6,7 @@ namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\tests\Doubles\Api\
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\Impl\FunctionalEntityImpl;
 
 /**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ * @author authorStub <author.stub@example.com>
  */
 class FunctionalEntityStub1 extends FunctionalEntityImpl
 {

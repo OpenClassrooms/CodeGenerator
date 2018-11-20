@@ -2,26 +2,13 @@
 
 namespace OpenClassrooms\CodeGenerator\SkeletonModels\tests\Doubles\Api\ViewModels;
 
+use OpenClassrooms\CodeGenerator\SkeletonModels\Api\AbstractViewModelsSkeletonModel;
+
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
  */
-abstract class ViewModelDetailStubSkeletonModel
+abstract class ViewModelDetailStubSkeletonModel extends AbstractViewModelsSkeletonModel
 {
-    /**
-     * @var string
-     */
-    public $className;
-
-    /**
-     * @var array
-     */
-    public $fields = [];
-
-    /**
-     * @var string
-     */
-    public $namespace;
-
     /**
      * @var string
      */
@@ -32,15 +19,5 @@ abstract class ViewModelDetailStubSkeletonModel
      */
     public $parentShortName;
 
-    /**
-     * @var string
-     */
-    public $shortName;
-
     public $templatePath = 'tests/Doubles/ViewModelDetailStub.php.twig';
-
-    public function getTemplatePath(): string
-    {
-        return $this->templatePath;
-    }
 }
