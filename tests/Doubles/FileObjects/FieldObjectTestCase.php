@@ -14,7 +14,6 @@ trait FieldObjectTestCase
     private function assertFieldObject(FieldObject $expected, FieldObject $actual)
     {
         if (!$actual instanceof StubFieldObject) {
-            Assert::assertEquals($expected->getAccessor(), $actual->getAccessor());
             Assert::assertEquals($expected->getDocComment(), $actual->getDocComment());
             Assert::assertEquals($expected->getType(), $actual->getType());
         } else {

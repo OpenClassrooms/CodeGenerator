@@ -1,0 +1,19 @@
+<?php declare(strict_types=1);
+{% include "Header.php.twig" %}
+
+namespace {{ skeletonModel.namespace }};
+
+use {{ skeletonModel.parentClassName }};
+
+/**
+ * @author {{ author }} <{{ authorEmail }}>
+ */
+class {{ skeletonModel.shortName }} extends {{ skeletonModel.parentShortName }}
+{
+{% for field in skeletonModel.fields | sortByConst %}
+    const {{ field.const }} = {{ field.value }};
+{% if not loop.last %}
+
+{% endif %}
+{% endfor %}
+}

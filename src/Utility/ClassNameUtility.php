@@ -45,6 +45,7 @@ trait ClassNameUtility
         $shortClassName = str_replace('RequestDTO', '', $shortClassName);
         $shortClassName = str_replace('Request', '', $shortClassName);
         $shortClassName = str_replace('Edit', '', $shortClassName);
+        $shortClassName = str_replace('TestCase', '', $shortClassName);
 
         return $shortClassName;
     }

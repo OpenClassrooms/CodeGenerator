@@ -35,9 +35,6 @@ class ViewModelTestCaseGenerator extends AbstractViewModelGenerator
 
     }
 
-    /**
-     * @param string $viewModelClassName
-     */
     protected function buildViewModelFileObject(string $viewModelClassName): FileObject
     {
         [$domain, $entity] = $this->getDomainAndEntityNameFromClassName($viewModelClassName);
@@ -50,7 +47,10 @@ class ViewModelTestCaseGenerator extends AbstractViewModelGenerator
         FileObject $viewModelFileObject
     ): ViewModelTestCaseSkeletonModel
     {
-        return $this->viewModelTestCaseSkeletonModelAssembler->create($viewModelTestCaseFileObject, $viewModelFileObject);
+        return $this->viewModelTestCaseSkeletonModelAssembler->create(
+            $viewModelTestCaseFileObject,
+            $viewModelFileObject
+        );
     }
 
     /**

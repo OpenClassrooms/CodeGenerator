@@ -13,7 +13,7 @@ trait FunctionalEntityDetailTestCase
 {
     use FunctionalEntityTestCase;
 
-    public function FunctionalEntityDetailTestCase(
+    public function assertFunctionalEntityDetailTestCase(
         FunctionalEntityDetail $expected,
         FunctionalEntityDetail $actual
     ): void

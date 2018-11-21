@@ -11,13 +11,6 @@ abstract class {{ skeletonModel.shortName }}
 {% for field in skeletonModel.fields | sortByName %}
     {{ field.docComment }}
     {{ field.scope }} ${{ field.name }};
-
-{% endfor %}
-{% for field in skeletonModel.fields | sortByAccessor %}
-    public function {{ field.accessor }}(): {{ field.type }}
-    {
-        return $this->{{ field.name }};
-    }
 {% if not loop.last %}
 
 {% endif %}
