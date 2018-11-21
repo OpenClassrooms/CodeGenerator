@@ -35,6 +35,16 @@ class ViewModelFileObjectFactoryImpl extends AbstractFileObjectFactory implement
             case ViewModelFileObjectType::API_VIEW_MODEL:
                 $fileObject->setClassName($this->baseNamespace . 'Api\ViewModels\\' . $domain . '\\' . $entity);
                 break;
+            case ViewModelFileObjectType::API_VIEW_MODEL_IMPL:
+                $fileObject->setClassName(
+                    $this->baseNamespace . 'Api\ViewModels\\' . $domain . '\\Impl\\' . $entity . 'Impl'
+                );
+                break;
+            case ViewModelFileObjectType::API_VIEW_MODEL_STUB:
+                $fileObject->setClassName(
+                    $this->stubNamespace . 'Api\ViewModels\\' . $domain . '\\' . $entity . 'Stub1'
+                );
+                break;
             case ViewModelFileObjectType::API_VIEW_MODEL_DETAIL:
                 $fileObject->setClassName(
                     $this->baseNamespace . 'Api\ViewModels\\' . $domain . '\\' . $entity . 'Detail'
@@ -63,6 +73,11 @@ class ViewModelFileObjectFactoryImpl extends AbstractFileObjectFactory implement
             case ViewModelFileObjectType::API_VIEW_MODEL_TEST_CASE:
                 $fileObject->setClassName(
                     $this->stubNamespace . 'Api\ViewModels\\' . $domain . '\\' . $entity . 'TestCase'
+                );
+                break;
+            case ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_TEST_CASE:
+                $fileObject->setClassName(
+                    $this->stubNamespace . 'Api\ViewModels\\' . $domain . '\\' . $entity . 'DetailTestCase'
                 );
                 break;
             default:

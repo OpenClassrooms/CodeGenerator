@@ -88,7 +88,7 @@ class ViewModelFileObjectFactoryTest extends TestCase
                 ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_STUB,
                 $domain,
                 $entity,
-                self::getFileObjectViewModelStub(),
+                self::getFileObjectViewModelDetailStub(),
             ],
             [
                 ViewModelFileObjectType::API_VIEW_MODEL_TEST_CASE,
@@ -113,6 +113,24 @@ class ViewModelFileObjectFactoryTest extends TestCase
                 $domain,
                 $entity,
                 self::getFileObjectViewModelAssemblerImpl(),
+            ],
+            [
+                ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_TEST_CASE,
+                $domain,
+                $entity,
+                self::getFileObjectViewModelDetailTestCase(),
+            ],
+            [
+                ViewModelFileObjectType::API_VIEW_MODEL_IMPL,
+                $domain,
+                $entity,
+                self::getFileObjectViewModelImpl(),
+            ],
+            [
+                ViewModelFileObjectType::API_VIEW_MODEL_STUB,
+                $domain,
+                $entity,
+                self::getFileObjectViewModelStub(),
             ],
         ];
     }
@@ -194,6 +212,42 @@ class ViewModelFileObjectFactoryTest extends TestCase
         return $fileObjectViewModelDetailImpl;
     }
 
+    private static function getFileObjectViewModelDetailStub(): FileObject
+    {
+        $fileObjectViewModelDetailStub = new FileObject();
+        TestClassUtil::setProperty(
+            'className',
+            self::STUB_NAMESPACE . 'Api\ViewModels\Domain\SubDomain\\' . self::getEntityName() . 'DetailStub1',
+            $fileObjectViewModelDetailStub
+        );
+
+        return $fileObjectViewModelDetailStub;
+    }
+
+    private static function getFileObjectViewModelDetailTestCase(): FileObject
+    {
+        $fileObjectViewModelDetailTestCase = new FileObject();
+        TestClassUtil::setProperty(
+            'className',
+            self::STUB_NAMESPACE . 'Api\ViewModels\Domain\SubDomain\\' . self::getEntityName() . 'DetailTestCase',
+            $fileObjectViewModelDetailTestCase
+        );
+
+        return $fileObjectViewModelDetailTestCase;
+    }
+
+    private static function getFileObjectViewModelImpl(): FileObject
+    {
+        $fileObjectViewModelImpl = new FileObject();
+        TestClassUtil::setProperty(
+            'className',
+            'Api\ViewModels\Domain\SubDomain\Impl\\' . self::getEntityName() . 'Impl',
+            $fileObjectViewModelImpl
+        );
+
+        return $fileObjectViewModelImpl;
+    }
+
     private static function getFileObjectViewModelListItem(): FileObject
     {
         $fileObjectViewModelListItem = new FileObject();
@@ -223,7 +277,7 @@ class ViewModelFileObjectFactoryTest extends TestCase
         $fileObjectViewModelStub = new FileObject();
         TestClassUtil::setProperty(
             'className',
-            self::STUB_NAMESPACE . 'Api\ViewModels\Domain\SubDomain\\' . self::getEntityName() . 'DetailStub1',
+            self::STUB_NAMESPACE . 'Api\ViewModels\Domain\SubDomain\\' . self::getEntityName() . 'Stub1',
             $fileObjectViewModelStub
         );
 

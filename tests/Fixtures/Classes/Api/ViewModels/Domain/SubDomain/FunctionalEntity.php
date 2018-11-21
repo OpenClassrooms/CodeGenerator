@@ -27,24 +27,4 @@ abstract class FunctionalEntity
      * @var int
      */
     public $id;
-
-    public function getField1(): string
-    {
-        return $this->field1;
-    }
-
-    public function getField2(): array
-    {
-        return $this->field2;
-    }
-
-    public function getId(): int
-    {
-        return $this->id;
-    }
-
-    public function isField3(): bool
-    {
-        return $this->field3;
-    }
 }

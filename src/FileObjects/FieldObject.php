@@ -46,7 +46,7 @@ class FieldObject
         return $this->accessor;
     }
 
-    public function getDocComment(): string
+    public function getDocComment(): ?string
     {
         return $this->docComment;
     }
@@ -63,7 +63,7 @@ class FieldObject
 
     public function getType(): string
     {
-        if (strpos($this->getDocComment(), '[]') !== false) {
+        if (null !== $this->getDocComment() && strpos($this->getDocComment(), '[]') !== false) {
             return 'array';
         }
 

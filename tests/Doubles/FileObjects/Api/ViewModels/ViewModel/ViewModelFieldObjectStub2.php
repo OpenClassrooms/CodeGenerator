@@ -6,15 +6,11 @@ use OpenClassrooms\CodeGenerator\FileObjects\FieldObject;
 
 class ViewModelFieldObjectStub2 extends FieldObject
 {
-    const ACCESSOR = 'getField1';
-
     const DOC_COMMENT = '/**
      * @var string
      */';
 
     const NAME = 'field1';
-
-    protected $accessor = self::ACCESSOR;
 
     protected $docComment = self::DOC_COMMENT;
 

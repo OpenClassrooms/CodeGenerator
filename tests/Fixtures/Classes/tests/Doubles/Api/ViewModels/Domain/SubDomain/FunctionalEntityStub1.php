@@ -16,5 +16,5 @@ class FunctionalEntityStub1 extends FunctionalEntityImpl
 
     const FIELD_3 = FunctionalEntityResponseStub1::FIELD_3;
 
-    const FIELD_4 = FunctionalEntityResponseStub1::FIELD_4;
+    const ID = FunctionalEntityResponseStub1::ID;
 }
