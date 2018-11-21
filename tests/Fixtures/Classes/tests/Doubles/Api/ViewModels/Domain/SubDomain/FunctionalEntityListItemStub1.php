@@ -8,7 +8,7 @@ use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\Su
 /**
  * @author authorStub <author.stub@example.com>
  */
-abstract class FunctionalEntityListItemStub1 extends FunctionalEntityListItemImpl
+class FunctionalEntityListItemStub1 extends FunctionalEntityListItemImpl
 {
     const FIELD_1 = FunctionalEntityListItemResponseStub1::FIELD_1;
 

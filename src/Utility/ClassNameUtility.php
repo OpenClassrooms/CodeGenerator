@@ -40,6 +40,7 @@ trait ClassNameUtility
         $shortClassName = str_replace('Detail', '', $shortClassName);
         $shortClassName = str_replace('ListItemResponseDTO', '', $shortClassName);
         $shortClassName = str_replace('ListItemResponse', '', $shortClassName);
+        $shortClassName = str_replace('ListItem', '', $shortClassName);
         $shortClassName = str_replace('ResponseDTO', '', $shortClassName);
         $shortClassName = str_replace('Response', '', $shortClassName);
         $shortClassName = str_replace('RequestDTO', '', $shortClassName);
