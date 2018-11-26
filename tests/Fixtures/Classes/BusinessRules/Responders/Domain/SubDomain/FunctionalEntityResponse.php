@@ -7,23 +7,14 @@ namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Resp
  */
 interface FunctionalEntityResponse
 {
-    /**
-     * @return int
-     */
     public function getId(): int;
 
-    /**
-     * @return string
-     */
     public function getField1(): string;
 
     /**
-     * @return array
+     * @return string[]
      */
     public function getField2(): array;
 
-    /**
-     * @return bool
-     */
     public function isField3(): bool;
 }

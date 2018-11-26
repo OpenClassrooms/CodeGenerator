@@ -1,7 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace OpenClassrooms\CodeGenerator\Tests\Generator\Tests\Doubles\Api\ViewModels;
+namespace OpenClassrooms\CodeGenerator\Tests\Generator\Tests\Doubles\BusinessRules\Entities;
 
+use OpenClassrooms\CodeGenerator\FileObjects\Impl\EntityFileObjectFactoryImpl;
 use OpenClassrooms\CodeGenerator\FileObjects\Impl\ViewModelFileObjectFactoryImpl;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Entities\DTO\Request\EntityStubGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Entities\EntityStubGenerator;
@@ -9,7 +10,7 @@ use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Entities\Request\
 use OpenClassrooms\CodeGenerator\Services\Impl\FieldObjectServiceImpl;
 use OpenClassrooms\CodeGenerator\Services\Impl\StubServiceImpl;
 use OpenClassrooms\CodeGenerator\SkeletonModels\tests\BusinessRules\Entities\Impl\EntityStubSkeletonModelAssemblerImpl;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Api\ViewModels\ViewModelStub\EntityStubFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\BusinessRules\Entities\EntityStub\EntityStubFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\FileObjectTestCase;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingMock;
@@ -20,7 +21,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
  */
-class ViewModelStubGeneratorTest extends TestCase
+class EntityStubGeneratorTest extends TestCase
 {
     use FileObjectTestCase;
 
@@ -32,14 +33,14 @@ class ViewModelStubGeneratorTest extends TestCase
     /**
      * @var EntityStubGenerator
      */
-    private $viewModelStub1Generator;
+    private $entityStubGenerator;
 
     /**
      * @test
      */
     public function generate_ReturnFileObject()
     {
-        $actualFileObject = $this->viewModelStub1Generator->generate($this->request);
+        $actualFileObject = $this->entityStubGenerator->generate($this->request);
 
         $this->assertSame(
             InMemoryFileObjectGateway::$fileObjects[$actualFileObject->getId()],
@@ -56,19 +57,24 @@ class ViewModelStubGeneratorTest extends TestCase
             ->withClassName(FunctionalEntity::class)
             ->build();
 
-        $this->viewModelStub1Generator = new EntityStubGenerator();
+        $this->entityStubGenerator = new EntityStubGenerator();
 
-        $this->viewModelStub1Generator->setFileObjectGateway(new InMemoryFileObjectGateway());
-        $this->viewModelStub1Generator->setFieldObjectService(new FieldObjectServiceImpl());
-        $this->viewModelStub1Generator->setTemplating(new TemplatingMock());
+        $this->entityStubGenerator->setFileObjectGateway(new InMemoryFileObjectGateway());
+        $this->entityStubGenerator->setFieldObjectService(new FieldObjectServiceImpl());
+        $this->entityStubGenerator->setTemplating(new TemplatingMock());
 
         $viewModelFileObjectFactory = new ViewModelFileObjectFactoryImpl();
         $viewModelFileObjectFactory->setStubNamespace(FixturesConfig::STUB_NAMESPACE);
         $viewModelFileObjectFactory->setBaseNamespace(FixturesConfig::BASE_NAMESPACE);
-        $this->viewModelStub1Generator->setViewModelFileObjectFactory($viewModelFileObjectFactory);
-        $this->viewModelStub1Generator->setViewModelStubSkeletonModelAssembler(
+
+        $entityFileObjectFactory = new EntityFileObjectFactoryImpl();
+        $entityFileObjectFactory->setStubNamespace(FixturesConfig::STUB_NAMESPACE);
+
+        $this->entityStubGenerator->setViewModelFileObjectFactory($viewModelFileObjectFactory);
+        $this->entityStubGenerator->setEntityFileObjectFactory($entityFileObjectFactory);
+        $this->entityStubGenerator->setEntityStubSkeletonModelAssembler(
             new EntityStubSkeletonModelAssemblerImpl()
         );
-        $this->viewModelStub1Generator->setStubService(new StubServiceImpl());
+        $this->entityStubGenerator->setStubService(new StubServiceImpl());
     }
 }

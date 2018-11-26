@@ -12,13 +12,21 @@ class ViewModelDetailStubFieldObjectStub5 extends StubFieldObject
 {
     const CONST = 'FIELD_4';
 
+    const INITIALISATION = 'new \DateTimeImmutable(Carbon::now()->toDateTimeString())';
+
     const NAME = 'field4';
 
-    const VALUE = 'FunctionalEntityDetailResponseStub1::FIELD_4';
+    const OBJECT_NAMESPACE = "Carbon\Carbon";
+
+    const VALUE = "'" . '2018-01-01' . "'";
 
     protected $const = self::CONST;
 
+    protected $initialisation = self::INITIALISATION;
+
     protected $name = self::NAME;
+
+    protected $objectNamespace = self::OBJECT_NAMESPACE;
 
     protected $scope = FieldObject::SCOPE_PUBLIC;
 

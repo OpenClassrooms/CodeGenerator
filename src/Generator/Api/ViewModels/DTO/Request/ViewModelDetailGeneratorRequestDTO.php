@@ -2,7 +2,7 @@
 
 namespace OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\DTO\Request;
 
-use OpenClassrooms\CodeGenerator\Generator\Api\ViewModelsDetail\Request\ViewModelDetailGeneratorRequest;
+use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\Request\ViewModelDetailGeneratorRequest;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
@@ -37,7 +37,7 @@ class ViewModelDetailGeneratorRequestDTO implements ViewModelDetailGeneratorRequ
         return $this->namespace;
     }
 
-    public function getResponseClassName(): string
+    public function getDetailResponseClassName(): string
     {
         return $this->className;
     }

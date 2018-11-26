@@ -3,7 +3,9 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\tests\Doubles\Api\ViewModels\Domain\SubDomain;
 
+use Carbon\Carbon;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\Impl\FunctionalEntityDetailImpl;
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\tests\Doubles\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityDetailResponseStub1;
 
 /**
  * @author authorStub <author.stub@example.com>
@@ -16,7 +18,7 @@ class FunctionalEntityDetailStub1 extends FunctionalEntityDetailImpl
 
     const FIELD_3 = FunctionalEntityDetailResponseStub1::FIELD_3;
 
-    const FIELD_4 = FunctionalEntityDetailResponseStub1::FIELD_4;
+    const FIELD_4 = '2018-01-01';
 
     const ID = FunctionalEntityDetailResponseStub1::ID;
 
@@ -44,4 +46,9 @@ class FunctionalEntityDetailStub1 extends FunctionalEntityDetailImpl
      * {@inheritdoc}
      */
     public $id = self::ID;
+
+    public function __construct()
+    {
+        $this->field4 = new \DateTimeImmutable(Carbon::now()->toDateTimeString());
+    }
 }

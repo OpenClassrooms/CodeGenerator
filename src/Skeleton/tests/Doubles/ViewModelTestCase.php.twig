@@ -17,7 +17,7 @@ trait {{ skeletonModel.shortName }}
     ): void
     {
 {% for field in skeletonModel.fields | sortByIdFirst %}
-        Assert::assertEquals($expected->{{ field.name }}, $actual->{{ field.name }});
+        Assert::assertSame($expected->{{ field.name }}, $actual->{{ field.name }});
 {% endfor %}
     }
 }

@@ -19,6 +19,8 @@ trait FieldObjectTestCase
         } else {
             Assert::assertEquals($expected->getConst(), $actual->getConst());
             Assert::assertEquals($expected->getValue(), $actual->getValue());
+            Assert::assertEquals($expected->getObjectNamespace(), $actual->getObjectNamespace());
+            Assert::assertEquals($expected->getInitialisation(), $actual->getInitialisation());
         }
 
         Assert::assertEquals($expected->getName(), $actual->getName());

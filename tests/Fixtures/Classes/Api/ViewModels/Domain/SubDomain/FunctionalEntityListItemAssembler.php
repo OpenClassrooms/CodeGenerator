@@ -14,5 +14,5 @@ interface FunctionalEntityListItemAssembler
      *
      * @return FunctionalEntityListItem[]
      */
-    public function createListItems(array $functionalEntities);
+    public function createListItems(array $functionalEntities): array;
 }

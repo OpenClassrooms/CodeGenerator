@@ -7,6 +7,7 @@
         <service id="open_classrooms.code_generator.repository.file_object_repository" class="OpenClassrooms\CodeGenerator\Repository\FileObjectRepository"/>
         <service id="open_classrooms.code_generator.file_objects.view_model_file_object_factory" class="OpenClassrooms\CodeGenerator\FileObjects\Impl\ViewModelFileObjectFactoryImpl"/>
         <service id="open_classrooms.code_generator.file_objects.use_case_response_file_object_factory" class="OpenClassrooms\CodeGenerator\FileObjects\Impl\UseCaseResponseFileObjectFactoryImpl"/>
+        <service id="open_classrooms.code_generator.file_objects.entity_file_object_factory" class="OpenClassrooms\CodeGenerator\FileObjects\Impl\EntityFileObjectFactoryImpl"/>
         <service id="open_classrooms.code_generator.skeleton_models.api.view_model_test.view_model_test_skeleton_model_assembler" class="OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModelTest\Impl\ViewModelTestSkeletonModelAssemblerImpl"/>
         <service id="open_classrooms.code_generator.skeleton_models.api.view_model.view_model_skeleton_model_assembler" class="OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModel\Impl\ViewModelSkeletonModelAssemblerImpl"/>
         <service id="open_classrooms.code_generator.skeleton_models.api.view_model_detail.view_model_detail_skeleton_model_assembler" class="OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModelDetail\Impl\ViewModelDetailSkeletonModelAssemblerImpl"/>

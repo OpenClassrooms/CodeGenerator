@@ -3,7 +3,11 @@
 
 namespace {{ skeletonModel.namespace }};
 
+{% for field in skeletonModel.fields if field.objectNamespace is not null %}
+use {{ field.objectNamespace }};
+{% endfor %}
 use {{ skeletonModel.parentClassName }};
+use {{ skeletonModel.useCaseDetailResponseStubClassName }};
 
 /**
  * @author {{ author }} <{{ authorEmail }}>
@@ -26,4 +30,13 @@ class {{ skeletonModel.shortName }} extends {{ skeletonModel.parentShortName }}
 
 {% endif %}
 {% endfor %}
+{% if skeletonModel.constructorNeeded %}
+
+    public function __construct()
+    {
+{% for field in skeletonModel.fields if field.initialisation is not null %}
+        $this->{{ field.name }} = {{ field.initialisation }};
+{% endfor %}
+    }
+{% endif %}
 }

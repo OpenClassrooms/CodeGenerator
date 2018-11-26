@@ -3,7 +3,6 @@
 namespace OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Api\ViewModels\ViewModel;
 
 use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Entities\Domain\SubDomain\FunctionalEntityStub1;
 
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
@@ -14,8 +13,7 @@ class ViewModelFileObjectStub1 extends FileObject
 
     public function __construct()
     {
-        $this->content = __DIR__ . '/../../../../../Fixtures/Classes/Api/ViewModels/Domain/SubDomain/' .
-            FunctionalEntityStub1::SHORT_CLASS_NAME . '.php';
+        $this->content = __DIR__ . '/../../../../../Fixtures/Classes/Api/ViewModels/Domain/SubDomain/FunctionalEntity.php';
         $this->className = self::CLASS_NAME;
         $this->fields = [
             new ViewModelFieldObjectStub2(),

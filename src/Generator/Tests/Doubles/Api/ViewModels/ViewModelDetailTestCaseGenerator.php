@@ -20,65 +20,62 @@ class ViewModelDetailTestCaseGenerator extends AbstractViewModelGenerator
      */
     private $viewModelDetailTestCaseSkeletonModelAssembler;
 
-    public function buildDetailTestCaseFileObject(string $viewModelClassName): array
-    {
-        $viewModelFileObject = $this->buildViewModelFileObject($viewModelClassName);
-
-        $viewModelDetailTestCaseFileObject = $this->createViewModelFileObject(
-            ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_TEST_CASE,
-            $viewModelFileObject->getDomain(),
-            $viewModelFileObject->getEntity()
-        );
-        $viewModelDetailTestCaseFileObject->setFields(
-            $this->getPublicClassFields($viewModelFileObject->getClassName())
-        );
-
-        return [$viewModelDetailTestCaseFileObject, $viewModelFileObject];
-
-    }
-
-    protected function buildViewModelFileObject(string $viewModelClassName): FileObject
-    {
-        [$domain, $entity] = $this->getDomainAndEntityNameFromClassName($viewModelClassName);
-
-        return $this->createViewModelFileObject(ViewModelFileObjectType::API_VIEW_MODEL_DETAIL, $domain, $entity);
-    }
-
-    private function createSkeletonModel(
-        FileObject $viewModelDetailTestCaseFileObject,
-        FileObject $viewModelFileObject
-    ): ViewModelDetailTestCaseSkeletonModel
-    {
-        return $this->viewModelDetailTestCaseSkeletonModelAssembler->create(
-            $viewModelDetailTestCaseFileObject,
-            $viewModelFileObject
-        );
-    }
-
     /**
      * @param ViewModelDetailTestCaseGeneratorRequest $generatorRequest
      */
     public function generate(GeneratorRequest $generatorRequest): FileObject
     {
-        [$viewModelDetailTestCaseFileObject, $viewModelFileObject] = $this->buildDetailTestCaseFileObject(
-            $generatorRequest->getClassName()
-        );
+        $viewModelDetailFileObject = $this->buildViewModelDetailFileObject($generatorRequest->getClassName());
+        $viewModelDetailTestCaseFileObject = $this->buildDetailTestCaseFileObject($viewModelDetailFileObject);
         $viewModelDetailTestCaseFileObject->setContent(
-            $this->generateContent($viewModelDetailTestCaseFileObject, $viewModelFileObject)
+            $this->generateContent($viewModelDetailTestCaseFileObject, $viewModelDetailFileObject)
         );
         $this->insertFileObject($viewModelDetailTestCaseFileObject);
 
         return $viewModelDetailTestCaseFileObject;
     }
 
+    protected function buildViewModelDetailFileObject(string $viewModelClassName): FileObject
+    {
+        [$domain, $entity] = $this->getDomainAndEntityNameFromClassName($viewModelClassName);
+
+        return $this->createViewModelFileObject(ViewModelFileObjectType::API_VIEW_MODEL_DETAIL, $domain, $entity);
+    }
+
+    public function buildDetailTestCaseFileObject(FileObject $viewModelDetailFileObject): FileObject
+    {
+        $viewModelDetailTestCaseFileObject = $this->createViewModelFileObject(
+            ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_TEST_CASE,
+            $viewModelDetailFileObject->getDomain(),
+            $viewModelDetailFileObject->getEntity()
+        );
+        $viewModelDetailTestCaseFileObject->setFields(
+            $this->getPublicClassFields($viewModelDetailFileObject->getClassName())
+        );
+
+        return $viewModelDetailTestCaseFileObject;
+
+    }
+
     public function generateContent(
         FileObject $viewModelDetailTestCaseFileObject,
-        FileObject $viewModelFileObject
+        FileObject $viewModelDetailFileObject
     ): string
     {
-        $skeletonModel = $this->createSkeletonModel($viewModelDetailTestCaseFileObject, $viewModelFileObject);
+        $skeletonModel = $this->createSkeletonModel($viewModelDetailTestCaseFileObject, $viewModelDetailFileObject);
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
+    }
+
+    private function createSkeletonModel(
+        FileObject $viewModelDetailTestCaseFileObject,
+        FileObject $viewModelDetailFileObject
+    ): ViewModelDetailTestCaseSkeletonModel
+    {
+        return $this->viewModelDetailTestCaseSkeletonModelAssembler->create(
+            $viewModelDetailTestCaseFileObject,
+            $viewModelDetailFileObject
+        );
     }
 
     public function setViewModelDetailTestCaseSkeletonModelAssembler(

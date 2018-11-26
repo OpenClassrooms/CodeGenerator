@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace OpenClassrooms\CodeGenerator\Generator\Api\ViewModelsDetail\Request;
+namespace OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\Request;
 
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 

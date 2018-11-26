@@ -2,6 +2,7 @@
 
 namespace OpenClassrooms\CodeGenerator\Generator\Api;
 
+use OpenClassrooms\CodeGenerator\FileObjects\EnityFileObjectFactory;
 use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
 use OpenClassrooms\CodeGenerator\FileObjects\UseCaseResponseFileObjectFactory;
 use OpenClassrooms\CodeGenerator\FileObjects\ViewModelFileObjectFactory;
@@ -22,16 +23,6 @@ abstract class AbstractViewModelGenerator extends AbstractGenerator
      */
     private $viewModelFileObjectFactory;
 
-    protected function createUseCaseResponseFileObject(string $type, string $domain, string $entity): FileObject
-    {
-        return $this->useCaseResponseFileObjectFactory->create($type, $domain, $entity);
-    }
-
-    protected function createViewModelFileObject(string $type, string $domain, string $entity): FileObject
-    {
-        return $this->viewModelFileObjectFactory->create($type, $domain, $entity);
-    }
-
     public function setUseCaseResponseFileObjectFactory(
         UseCaseResponseFileObjectFactory $useCaseResponseFileObjectFactory
     )
@@ -42,5 +33,15 @@ abstract class AbstractViewModelGenerator extends AbstractGenerator
     public function setViewModelFileObjectFactory(ViewModelFileObjectFactory $viewModelFileObjectFactory)
     {
         $this->viewModelFileObjectFactory = $viewModelFileObjectFactory;
+    }
+
+    protected function createUseCaseResponseFileObject(string $type, string $domain, string $entity): FileObject
+    {
+        return $this->useCaseResponseFileObjectFactory->create($type, $domain, $entity);
+    }
+
+    protected function createViewModelFileObject(string $type, string $domain, string $entity): FileObject
+    {
+        return $this->viewModelFileObjectFactory->create($type, $domain, $entity);
     }
 }

@@ -27,6 +27,11 @@ class FieldObject
     protected $name;
 
     /**
+     * @var bool;
+     */
+    protected $inherited = false;
+
+    /**
      * @var string
      */
     protected $scope = FieldObject::SCOPE_PRIVATE;
@@ -41,14 +46,27 @@ class FieldObject
         $this->name = $name;
     }
 
+    public function isInherited(): bool
+    {
+        return $this->inherited;
+    }
+
+    /**
+     * @param bool $parentField
+     */
+    public function setInherited(bool $inherited): void
+    {
+        $this->inherited = $inherited;
+    }
+
     public function getAccessor(): string
     {
         return $this->accessor;
     }
 
-    public function getDocComment(): ?string
+    public function setAccessor(string $accessor = null)
     {
-        return $this->docComment;
+        $this->accessor = $accessor;
     }
 
     public function getName(): string
@@ -61,6 +79,11 @@ class FieldObject
         return $this->scope;
     }
 
+    public function setScope(string $scope)
+    {
+        $this->scope = $scope;
+    }
+
     public function getType(): string
     {
         if (null !== $this->getDocComment() && strpos($this->getDocComment(), '[]') !== false) {
@@ -70,17 +93,9 @@ class FieldObject
         return preg_replace('/(\W)|(var)/', '', $this->getDocComment());
     }
 
-    /**
-     * @return mixed
-     */
-    public function getValue()
+    public function getDocComment(): ?string
     {
-        return $this->value;
-    }
-
-    public function setAccessor(string $accessor = null)
-    {
-        $this->accessor = $accessor;
+        return $this->docComment;
     }
 
     public function setDocComment(string $docComment)
@@ -88,9 +103,12 @@ class FieldObject
         $this->docComment = $docComment;
     }
 
-    public function setScope(string $scope)
+    /**
+     * @return mixed
+     */
+    public function getValue()
     {
-        $this->scope = $scope;
+        return $this->value;
     }
 
     public function setValue($value): void

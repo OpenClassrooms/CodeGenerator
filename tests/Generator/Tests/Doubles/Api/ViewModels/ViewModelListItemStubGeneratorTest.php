@@ -2,6 +2,7 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Generator\Tests\Doubles\Api\ViewModels;
 
+use OpenClassrooms\CodeGenerator\FileObjects\Impl\UseCaseResponseFileObjectFactoryImpl;
 use OpenClassrooms\CodeGenerator\FileObjects\Impl\ViewModelFileObjectFactoryImpl;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\DTO\Request\ViewModelListItemStubGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\Request\ViewModelListItemStubGeneratorRequestBuilder;
@@ -65,7 +66,10 @@ class ViewModelListItemStubGeneratorTest extends TestCase
         $viewModelFileObjectFactory = new ViewModelFileObjectFactoryImpl();
         $viewModelFileObjectFactory->setStubNamespace(FixturesConfig::STUB_NAMESPACE);
         $viewModelFileObjectFactory->setBaseNamespace(FixturesConfig::BASE_NAMESPACE);
+        $useCaseResponseFileObjectFactory = new UseCaseResponseFileObjectFactoryImpl();
+        $useCaseResponseFileObjectFactory->setStubNamespace(FixturesConfig::STUB_NAMESPACE);
         $this->viewModelStub1Generator->setViewModelFileObjectFactory($viewModelFileObjectFactory);
+        $this->viewModelStub1Generator->setUseCaseResponseFileObjectFactory($useCaseResponseFileObjectFactory);
         $this->viewModelStub1Generator->setViewModelStubListItemSkeletonModelAssembler(
             new ViewModelListItemStubSkeletonModelAssemblerImpl()
         );

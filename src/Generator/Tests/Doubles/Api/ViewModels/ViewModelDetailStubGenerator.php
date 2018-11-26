@@ -3,6 +3,7 @@
 namespace OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels;
 
 use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
+use OpenClassrooms\CodeGenerator\FileObjects\UseCaseResponseFileObjectType;
 use OpenClassrooms\CodeGenerator\FileObjects\ViewModelFileObjectType;
 use OpenClassrooms\CodeGenerator\Generator\Api\AbstractViewModelGenerator;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
@@ -24,20 +25,42 @@ class ViewModelDetailStubGenerator extends AbstractViewModelGenerator
     /**
      * @var ViewModelDetailStubSkeletonModelAssembler
      */
-    private $viewModelStubDetailSkeletonModelAssembler;
+    private $viewModelDetailStubSkeletonModelAssembler;
 
-    private function buildStubFileObject(string $viewModelClassName): FileObject
+    /**
+     * @param ViewModelDetailStubGeneratorRequest $generatorRequest
+     */
+    public function generate(GeneratorRequest $generatorRequest): FileObject
+    {
+        $viewModelDetailStubFileObject = $this->buildViewModelDetailStubFileObject($generatorRequest->getClassName());
+        $viewModelDetailImplFileObject = $this->buildViewModelDetailImplFileObject($generatorRequest->getClassName());
+        $useCaseDetailResponseStubFileObject = $this->buildUseCaseDetailResponseStubFileObject(
+            $generatorRequest->getClassName()
+        );
+        $viewModelDetailStubFileObject->setContent(
+            $this->generateContent(
+                $viewModelDetailStubFileObject,
+                $viewModelDetailImplFileObject,
+                $useCaseDetailResponseStubFileObject
+            )
+        );
+        $this->insertFileObject($viewModelDetailStubFileObject);
+
+        return $viewModelDetailStubFileObject;
+    }
+
+    private function buildViewModelDetailStubFileObject(string $viewModelClassName): FileObject
     {
         $viewModelDetailFileObject = $this->buildViewModelDetailFileObject($viewModelClassName);
 
-        $viewModelDetailStub = $this->createViewModelFileObject(
+        $viewModelDetailStubFileObject = $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_STUB,
             $viewModelDetailFileObject->getDomain(),
             $viewModelDetailFileObject->getEntity()
         );
-        $viewModelDetailStub->setFields($this->generateStubFields($viewModelDetailFileObject));
+        $viewModelDetailStubFileObject->setFields($this->generateStubFields($viewModelDetailFileObject));
 
-        return $viewModelDetailStub;
+        return $viewModelDetailStubFileObject;
     }
 
     private function buildViewModelDetailFileObject(string $viewModelClassName): FileObject
@@ -47,6 +70,13 @@ class ViewModelDetailStubGenerator extends AbstractViewModelGenerator
         return $this->createViewModelFileObject(ViewModelFileObjectType::API_VIEW_MODEL_DETAIL, $domain, $entity);
     }
 
+    private function generateStubFields(FileObject $viewModelDetailFileObject): array
+    {
+        $viewModelFields = $this->getParentAndChildPublicClassFields($viewModelDetailFileObject->getClassName());
+
+        return $this->stubService->setNameAndStubValues($viewModelFields, $viewModelDetailFileObject);
+    }
+
     private function buildViewModelDetailImplFileObject(string $viewModelClassName): FileObject
     {
         [$domain, $entity] = $this->getDomainAndEntityNameFromClassName($viewModelClassName);
@@ -54,44 +84,43 @@ class ViewModelDetailStubGenerator extends AbstractViewModelGenerator
         return $this->createViewModelFileObject(ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_IMPL, $domain, $entity);
     }
 
-    private function createSkeletonModel(
-        FileObject $stubFileObject,
-        FileObject $viewModelDetailImplFileObject
-    ): ViewModelDetailStubSkeletonModel
+    private function buildUseCaseDetailResponseStubFileObject(string $viewModelClassName): FileObject
     {
-        return $this->viewModelStubDetailSkeletonModelAssembler->create(
-            $stubFileObject,
-            $viewModelDetailImplFileObject
+        [$domain, $entity] = $this->getDomainAndEntityNameFromClassName($viewModelClassName);
+
+        return $this->createUseCaseResponseFileObject(
+            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE_STUB,
+            $domain,
+            $entity
         );
     }
 
-    /**
-     * @param ViewModelDetailStubGeneratorRequest $generatorRequest
-     */
-    public function generate(GeneratorRequest $generatorRequest): FileObject
+    private function generateContent(
+        FileObject $viewModelDetailStubFileObject,
+        FileObject $viewModelDetailImplFileObject,
+        FileObject $useCaseDetailResponseStubFileObject
+    ): string
     {
-        $viewModelStubFileObject = $this->buildStubFileObject($generatorRequest->getClassName());
-        $viewModelDetailImplFileObject = $this->buildViewModelDetailImplFileObject($generatorRequest->getClassName());
-        $viewModelStubFileObject->setContent(
-            $this->generateContent($viewModelStubFileObject, $viewModelDetailImplFileObject)
+        $skeletonModel = $this->createSkeletonModel(
+            $viewModelDetailStubFileObject,
+            $viewModelDetailImplFileObject,
+            $useCaseDetailResponseStubFileObject
         );
-        $this->insertFileObject($viewModelStubFileObject);
-
-        return $viewModelStubFileObject;
-    }
-
-    private function generateContent(FileObject $stubFileObject, FileObject $viewModelDetailImplFileObject): string
-    {
-        $skeletonModel = $this->createSkeletonModel($stubFileObject, $viewModelDetailImplFileObject);
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
     }
 
-    private function generateStubFields(FileObject $viewModelDetailImplFileObject): array
+    private function createSkeletonModel(
+        FileObject $stubFileObject,
+        FileObject $viewModelDetailImplFileObject,
+        FileObject $useCaseDetailResponseStubFileObject
+    ): ViewModelDetailStubSkeletonModel
     {
-        $viewModelFields = $this->getParentAndChildPublicClassFields($viewModelDetailImplFileObject->getClassName());
-
-        return $this->stubService->setNameAndStubValues($viewModelFields, $viewModelDetailImplFileObject);
+        return $this->viewModelDetailStubSkeletonModelAssembler->create(
+            $stubFileObject,
+            $viewModelDetailImplFileObject,
+            $useCaseDetailResponseStubFileObject
+        );
     }
 
     public function setStubService(StubService $stubService): void
@@ -99,10 +128,10 @@ class ViewModelDetailStubGenerator extends AbstractViewModelGenerator
         $this->stubService = $stubService;
     }
 
-    public function setViewModelStubDetailSkeletonModelAssembler(
-        ViewModelDetailStubSkeletonModelAssembler $viewModelStubDetailSkeletonModelAssembler
+    public function setViewModelDetailStubSkeletonModelAssembler(
+        ViewModelDetailStubSkeletonModelAssembler $viewModelDetailStubSkeletonModelAssembler
     ): void
     {
-        $this->viewModelStubDetailSkeletonModelAssembler = $viewModelStubDetailSkeletonModelAssembler;
+        $this->viewModelDetailStubSkeletonModelAssembler = $viewModelDetailStubSkeletonModelAssembler;
     }
 }
