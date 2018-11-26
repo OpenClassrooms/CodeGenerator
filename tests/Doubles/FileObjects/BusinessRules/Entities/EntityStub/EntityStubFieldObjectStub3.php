@@ -1,16 +1,16 @@
 <?php declare(strict_types=1);
 
-namespace OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Api\ViewModels\ViewModelStub;
+namespace OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\BusinessRules\Entities\EntityStub;
 
 use OpenClassrooms\CodeGenerator\FileObjects\StubFieldObject;
 
-class ViewModelStubFieldObjectStub3 extends StubFieldObject
+class EntityStubFieldObjectStub3 extends StubFieldObject
 {
     const CONST = 'FIELD_2';
 
     const NAME = 'field2';
 
-    const VALUE = 'FunctionalEntityResponseStub1::FIELD_2';
+    const VALUE = '[\'Functional Entity Stub 1 field 2 1\', \'Functional Entity Stub 1 field 2 2\']';
 
     protected $const = self::CONST;
 

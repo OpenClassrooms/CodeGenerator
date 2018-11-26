@@ -7,11 +7,11 @@ use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
  */
-interface ViewModelStubGeneratorRequestBuilder extends GeneratorRequest
+interface EntityStubGeneratorRequestBuilder extends GeneratorRequest
 {
-    public function build(): ViewModelStubGeneratorRequest;
+    public function build(): EntityStubGeneratorRequest;
 
-    public function create(): ViewModelStubGeneratorRequestBuilder;
+    public function create(): EntityStubGeneratorRequestBuilder;
 
-    public function withClassName(string $className): ViewModelStubGeneratorRequestBuilder;
+    public function withClassName(string $className): EntityStubGeneratorRequestBuilder;
 }
