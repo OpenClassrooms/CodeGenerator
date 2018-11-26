@@ -16,9 +16,9 @@ trait FunctionalEntityTestCase
         FunctionalEntity $actual
     ): void
     {
-        Assert::assertEquals($expected->id, $actual->id);
-        Assert::assertEquals($expected->field1, $actual->field1);
-        Assert::assertEquals($expected->field2, $actual->field2);
-        Assert::assertEquals($expected->field3, $actual->field3);
+        Assert::assertSame($expected->id, $actual->id);
+        Assert::assertSame($expected->field1, $actual->field1);
+        Assert::assertSame($expected->field2, $actual->field2);
+        Assert::assertSame($expected->field3, $actual->field3);
     }
 }

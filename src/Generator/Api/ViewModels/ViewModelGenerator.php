@@ -21,16 +21,16 @@ class ViewModelGenerator extends AbstractViewModelGenerator
      */
     private $viewModelSkeletonModelAssembler;
 
-    private function buildUseCaseResponseFileObject(string $useCaseResponseClassName): FileObject
+    /**
+     * @param ViewModelGeneratorRequest $generatorRequest
+     */
+    public function generate(GeneratorRequest $generatorRequest): FileObject
     {
-        [$domain, $entity] = $this->getDomainAndEntityNameFromClassName($useCaseResponseClassName);
-        $responseFileObject = $this->createUseCaseResponseFileObject(
-            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE,
-            $domain,
-            $entity
-        );
+        $viewModelFileObject = $this->buildViewModelFileObject($generatorRequest->getResponseClassName());
+        $viewModelFileObject->setContent($this->generateContent($viewModelFileObject));
+        $this->insertFileObject($viewModelFileObject);
 
-        return $responseFileObject;
+        return $viewModelFileObject;
     }
 
     private function buildViewModelFileObject(string $useCaseResponseClassName): FileObject
@@ -44,21 +44,16 @@ class ViewModelGenerator extends AbstractViewModelGenerator
         return $viewModel;
     }
 
-    private function createSkeletonModel(FileObject $viewModelFileObject): ViewModelSkeletonModel
+    private function buildUseCaseResponseFileObject(string $useCaseResponseClassName): FileObject
     {
-        return $this->viewModelSkeletonModelAssembler->create($viewModelFileObject);
-    }
+        [$domain, $entity] = $this->getDomainAndEntityNameFromClassName($useCaseResponseClassName);
+        $responseFileObject = $this->createUseCaseResponseFileObject(
+            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE,
+            $domain,
+            $entity
+        );
 
-    /**
-     * @param ViewModelGeneratorRequest $generatorRequest
-     */
-    public function generate(GeneratorRequest $generatorRequest): FileObject
-    {
-        $viewModelFileObject = $this->buildViewModelFileObject($generatorRequest->getResponseClassName());
-        $viewModelFileObject->setContent($this->generateContent($viewModelFileObject));
-        $this->insertFileObject($viewModelFileObject);
-
-        return $viewModelFileObject;
+        return $responseFileObject;
     }
 
     private function generateContent(FileObject $viewModelFileObject): string
@@ -66,6 +61,11 @@ class ViewModelGenerator extends AbstractViewModelGenerator
         $skeletonModel = $this->createSkeletonModel($viewModelFileObject);
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
+    }
+
+    private function createSkeletonModel(FileObject $viewModelFileObject): ViewModelSkeletonModel
+    {
+        return $this->viewModelSkeletonModelAssembler->create($viewModelFileObject);
     }
 
     public function setViewModelSkeletonModelAssembler(

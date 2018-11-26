@@ -2,7 +2,7 @@
 
 namespace OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels;
 
-use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\DTO\Request\ViewModelGeneratorRequestBuilderImpl;
+use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\DTO\Request\ViewModelDetailGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\Request\ViewModelGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\ViewModelDetailGenerator;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModelDetail\Impl\ViewModelDetailSkeletonModelAssemblerImpl;
@@ -45,7 +45,7 @@ class ViewModelDetailGeneratorTest extends AbstractViewModelGeneratorTestCase
 
     protected function setUp()
     {
-        $viewModelDetailGeneratorRequestBuilder = new ViewModelGeneratorRequestBuilderImpl();
+        $viewModelDetailGeneratorRequestBuilder = new ViewModelDetailGeneratorRequestBuilderImpl();
         $this->request = $viewModelDetailGeneratorRequestBuilder
             ->create()
             ->withClassName(FunctionalEntityDetailResponseDTO::class)

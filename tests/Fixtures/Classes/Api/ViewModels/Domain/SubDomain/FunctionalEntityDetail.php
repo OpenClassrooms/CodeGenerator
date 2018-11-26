@@ -9,7 +9,7 @@ namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Dom
 abstract class FunctionalEntityDetail extends FunctionalEntity
 {
     /**
-     * @var \DateTime
+     * @var \DateTimeImmutable
      */
     public $field4;
 }

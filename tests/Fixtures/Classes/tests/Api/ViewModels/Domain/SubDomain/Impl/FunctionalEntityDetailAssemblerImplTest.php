@@ -6,6 +6,7 @@ use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\Su
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\Impl\FunctionalEntityDetailAssemblerImpl;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\tests\Doubles\Api\ViewModels\Domain\SubDomain\FunctionalEntityDetailStub1;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\tests\Doubles\Api\ViewModels\Domain\SubDomain\FunctionalEntityDetailTestCase;
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\tests\Doubles\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityListItemResponseStub1;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -25,8 +26,10 @@ class FunctionalEntityDetailAssemblerImplTest extends TestCase
      */
     public function onCreateShouldReturnViewModel()
     {
-        $actual = $this->assembler->create(new FunctionalEntityDetailResponseStub1());
-        $this->assertFunctionalEntityTestCase(new FunctionalEntityDetailStub1(), $actual);
+        $actual = $this->assembler->create(new FunctionalEntityListItemResponseStub1());
+        $expected = new FunctionalEntityDetailStub1();
+        $this->assertFunctionalEntityTestCase($expected, $actual);
+        $this->assertEquals($expected->getField4(), $actual->getField4());
     }
 
     protected function setUp()

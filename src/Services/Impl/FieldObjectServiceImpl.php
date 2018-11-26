@@ -13,15 +13,34 @@ class FieldObjectServiceImpl implements FieldObjectService
 {
     use ClassNameUtility;
 
-    private function buildField(\ReflectionProperty $reflectionProperty): FieldObject
+    /**
+     * @inheritdoc
+     */
+    public function getParentPublicClassFields(string $className): array
     {
-        $field = new FieldObject($reflectionProperty->getName());
-        $field->setAccessor($this->getFieldAccessor($reflectionProperty));
-        $docComment = $reflectionProperty->getDocComment();
-        $field->setDocComment($docComment);
-        $field->setScope(FieldObject::SCOPE_PUBLIC);
+        $rc = new \ReflectionClass($className);
 
-        return $field;
+        $parentPublicClassFields = $this->getPublicClassFields($rc->getParentClass()->getName());
+
+        return $this->tagParentPublicClassFields($parentPublicClassFields);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getPublicClassFields(string $className): array
+    {
+        $rc = new \ReflectionClass($className);
+        /** @var \ReflectionProperty[] $reflectionProperties */
+        $reflectionProperties = $rc->getProperties(\ReflectionProperty::IS_PUBLIC);
+        $classProperties = [];
+        foreach ($reflectionProperties as $reflectionProperty) {
+            if ($reflectionProperty->getDeclaringClass()->getName() === $className) {
+                $classProperties[] = $reflectionProperty;
+            }
+        }
+
+        return $this->buildFields($classProperties);
     }
 
     /**
@@ -37,6 +56,17 @@ class FieldObjectServiceImpl implements FieldObjectService
         }
 
         return $fields;
+    }
+
+    private function buildField(\ReflectionProperty $reflectionProperty): FieldObject
+    {
+        $field = new FieldObject($reflectionProperty->getName());
+        $field->setAccessor($this->getFieldAccessor($reflectionProperty));
+        $docComment = $reflectionProperty->getDocComment();
+        $field->setDocComment($docComment);
+        $field->setScope(FieldObject::SCOPE_PUBLIC);
+
+        return $field;
     }
 
     private function getFieldAccessor(\ReflectionProperty $reflectionProperty)
@@ -59,16 +89,6 @@ class FieldObjectServiceImpl implements FieldObjectService
     /**
      * @inheritdoc
      */
-    public function getParentPublicClassFields(string $className): array
-    {
-        $rc = new \ReflectionClass($className);
-
-        return $this->getPublicClassFields($rc->getParentClass()->getName());
-    }
-
-    /**
-     * @inheritdoc
-     */
     public function getProtectedClassFields(string $className): array
     {
         $rc = new \ReflectionClass($className);
@@ -85,20 +105,13 @@ class FieldObjectServiceImpl implements FieldObjectService
     }
 
     /**
-     * @inheritdoc
+     * @param FieldObject[]
      */
-    public function getPublicClassFields(string $className): array
+    private function tagParentPublicClassFields(array $parentPublicClassFields): array
     {
-        $rc = new \ReflectionClass($className);
-        /** @var \ReflectionProperty[] $reflectionProperties */
-        $reflectionProperties = $rc->getProperties(\ReflectionProperty::IS_PUBLIC);
-        $classProperties = [];
-        foreach ($reflectionProperties as $reflectionProperty) {
-            if ($reflectionProperty->getDeclaringClass()->getName() === $className) {
-                $classProperties[] = $reflectionProperty;
-            }
+        foreach ($parentPublicClassFields as $parentPublicClassField) {
+            $parentPublicClassField->setInherited(true);
         }
-
-        return $this->buildFields($classProperties);
+        return $parentPublicClassFields;
     }
 }

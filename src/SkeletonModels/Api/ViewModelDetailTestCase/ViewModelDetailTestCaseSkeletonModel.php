@@ -2,12 +2,12 @@
 
 namespace OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModelDetailTestCase;
 
-use OpenClassrooms\CodeGenerator\SkeletonModels\Api\AbstractViewModelsSkeletonModel;
+use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
  */
-abstract class ViewModelDetailTestCaseSkeletonModel extends AbstractViewModelsSkeletonModel
+abstract class ViewModelDetailTestCaseSkeletonModel extends AbstractSkeletonModel
 {
     public $sourceClassName;
 

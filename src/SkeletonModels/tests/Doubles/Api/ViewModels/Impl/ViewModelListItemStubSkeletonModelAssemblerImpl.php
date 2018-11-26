@@ -11,15 +11,23 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\tests\Doubles\Api\ViewModels\Vie
  */
 class ViewModelListItemStubSkeletonModelAssemblerImpl implements ViewModelListItemStubSkeletonModelAssembler
 {
-    public function create(FileObject $stubFileObject, FileObject $viewModelListItemImplFileObject): ViewModelListItemStubSkeletonModel
+    use StubSkeletonAssemblerUtility;
+
+    public function create(
+        FileObject $viewModelListItemStubFileObject,
+        FileObject $viewModelListItemImplFileObject,
+        FileObject $useCaseDetailResponseStubFileObject
+    ): ViewModelListItemStubSkeletonModel
     {
         $skeletonModel = new ViewModelListItemStubSkeletonModelImpl();
-        $skeletonModel->className = $stubFileObject->getClassName();
-        $skeletonModel->namespace = $stubFileObject->getNamespace();
-        $skeletonModel->shortName = $stubFileObject->getShortName();
-        $skeletonModel->fields = $stubFileObject->getFields();
+        $skeletonModel->className = $viewModelListItemStubFileObject->getClassName();
+        $skeletonModel->namespace = $viewModelListItemStubFileObject->getNamespace();
+        $skeletonModel->shortName = $viewModelListItemStubFileObject->getShortName();
+        $skeletonModel->fields = $viewModelListItemStubFileObject->getFields();
         $skeletonModel->parentClassName = $viewModelListItemImplFileObject->getClassName();
         $skeletonModel->parentShortName = $viewModelListItemImplFileObject->getShortName();
+        $skeletonModel->useCaseDetailResponseStubClassName = $useCaseDetailResponseStubFileObject->getClassName();
+        $skeletonModel->constructorNeeded = $this->constructorIsNeeded($viewModelListItemStubFileObject->getFields());
 
         return $skeletonModel;
     }

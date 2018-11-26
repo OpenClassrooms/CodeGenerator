@@ -2,12 +2,12 @@
 
 namespace OpenClassrooms\CodeGenerator\SkeletonModels\tests\Doubles\Api\ViewModels;
 
-use OpenClassrooms\CodeGenerator\SkeletonModels\Api\AbstractViewModelsSkeletonModel;
+use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
  */
-abstract class ViewModelListItemStubSkeletonModel extends AbstractViewModelsSkeletonModel
+abstract class ViewModelListItemStubSkeletonModel extends AbstractSkeletonModel
 {
     /**
      * @var string
@@ -18,6 +18,16 @@ abstract class ViewModelListItemStubSkeletonModel extends AbstractViewModelsSkel
      * @var string
      */
     public $parentShortName;
+
+    /**
+     * @var string
+     */
+    public $useCaseDetailResponseStubClassName;
+
+    /**
+     * @var string
+     */
+    public $constructorNeeded = false;
 
     public $templatePath = 'tests/Doubles/ViewModelListItemStub.php.twig';
 }

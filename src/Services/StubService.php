@@ -9,7 +9,8 @@ use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
  */
 interface StubService
 {
-    public function setFakeValues(array $responseFields, FileObject $fileObject): array;
+    public function setFakeValuesToFields(array $responseFields, FileObject $fileObject): array;
 
     public function setNameAndStubValues(array $responseFields, FileObject $fileObject): array;
 }
+

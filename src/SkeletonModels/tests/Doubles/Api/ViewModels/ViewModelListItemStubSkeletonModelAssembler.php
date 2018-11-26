@@ -9,5 +9,9 @@ use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
  */
 interface ViewModelListItemStubSkeletonModelAssembler
 {
-    public function create(FileObject $stubFileObject, FileObject $viewModelListItemImplFileObject): ViewModelListItemStubSkeletonModel;
+    public function create(
+        FileObject $viewModelListItemStubFileObject,
+        FileObject $viewModelListItemImplFileObject,
+        FileObject $useCaseDetailResponseStubFileObject
+    ): ViewModelListItemStubSkeletonModel;
 }

@@ -1,11 +1,11 @@
 <?php declare(strict_types=1);
 
-namespace OpenClassrooms\CodeGenerator\SkeletonModels\Api;
+namespace OpenClassrooms\CodeGenerator\SkeletonModels;
 
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
  */
-class AbstractViewModelsSkeletonModel
+class AbstractSkeletonModel
 {
     /**
      * @var string

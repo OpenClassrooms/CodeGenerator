@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\Entities\Domain\SubDomain;
 
@@ -28,7 +28,7 @@ abstract class FunctionalEntity
     protected $field3;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeImmutable
      */
     protected $field4;
 

@@ -9,6 +9,11 @@ namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Dom
 abstract class FunctionalEntity
 {
     /**
+     * @var int
+     */
+    public $id;
+
+    /**
      * @var string
      */
     public $field1;
@@ -22,9 +27,4 @@ abstract class FunctionalEntity
      * @var bool
      */
     public $field3;
-
-    /**
-     * @var int
-     */
-    public $id;
 }

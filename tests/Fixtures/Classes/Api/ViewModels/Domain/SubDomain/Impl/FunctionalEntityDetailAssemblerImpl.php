@@ -15,11 +15,11 @@ class FunctionalEntityDetailAssemblerImpl implements FunctionalEntityDetailAssem
 {
     use FunctionalEntityAssemblerTrait;
 
-    public function create(FunctionalEntityDetailResponse $entity): FunctionalEntityDetail
+    public function create(FunctionalEntityDetailResponse $functionalEntityDetailResponse): FunctionalEntityDetail
     {
         $vm = new FunctionalEntityDetailImpl();
-        $this->hydrateCommonFields($entity, $vm);
-        $vm->field4 = '';
+        $this->hydrateCommonFields($vm, $functionalEntityDetailResponse);
+        $vm->field4 = $functionalEntityDetailResponse->getField4();
 
         return $vm;
     }

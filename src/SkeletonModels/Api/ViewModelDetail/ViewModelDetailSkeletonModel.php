@@ -2,12 +2,12 @@
 
 namespace OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModelDetail;
 
-use OpenClassrooms\CodeGenerator\SkeletonModels\Api\AbstractViewModelsSkeletonModel;
+use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
  */
-abstract class ViewModelDetailSkeletonModel extends AbstractViewModelsSkeletonModel
+abstract class ViewModelDetailSkeletonModel extends AbstractSkeletonModel
 {
     public $templatePath = 'Api/ViewModels/ViewModelDetail.php.twig';
 
