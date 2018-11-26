@@ -1,19 +1,19 @@
 <?php declare(strict_types=1);
 
-namespace OpenClassrooms\CodeGenerator\SkeletonModels\tests\Doubles\Api\ViewModels\Impl;
+namespace OpenClassrooms\CodeGenerator\SkeletonModels\tests\BusinessRules\Entities\Impl;
 
 use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
-use OpenClassrooms\CodeGenerator\SkeletonModels\tests\Doubles\Api\ViewModels\ViewModelStubSkeletonModel;
-use OpenClassrooms\CodeGenerator\SkeletonModels\tests\Doubles\Api\ViewModels\ViewModelStubSkeletonModelAssembler;
+use OpenClassrooms\CodeGenerator\SkeletonModels\tests\BusinessRules\Entities\EntityStubSkeletonModel;
+use OpenClassrooms\CodeGenerator\SkeletonModels\tests\BusinessRules\Entities\EntityStubSkeletonModelAssembler;
 
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
  */
-class ViewModelStubSkeletonModelAssemblerImpl implements ViewModelStubSkeletonModelAssembler
+class EntityStubSkeletonModelAssemblerImpl implements EntityStubSkeletonModelAssembler
 {
-    public function create(FileObject $viewModelStubFileObject, FileObject $viewModelImplFileObject): ViewModelStubSkeletonModel
+    public function create(FileObject $viewModelStubFileObject, FileObject $viewModelImplFileObject): EntityStubSkeletonModel
     {
-        $skeletonModel = new ViewModelStubSkeletonModelImpl();
+        $skeletonModel = new EntityStubSkeletonModelImpl();
         $skeletonModel->className = $viewModelStubFileObject->getClassName();
         $skeletonModel->namespace = $viewModelStubFileObject->getNamespace();
         $skeletonModel->shortName = $viewModelStubFileObject->getShortName();

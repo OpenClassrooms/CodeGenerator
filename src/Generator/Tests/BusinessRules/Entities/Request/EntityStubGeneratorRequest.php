@@ -7,7 +7,7 @@ use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
  */
-interface ViewModelStubGeneratorRequest extends GeneratorRequest
+interface EntityStubGeneratorRequest extends GeneratorRequest
 {
     public function getClassName(): string;
 }

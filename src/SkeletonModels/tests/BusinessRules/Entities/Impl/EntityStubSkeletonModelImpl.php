@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace OpenClassrooms\CodeGenerator\SkeletonModels\tests\Doubles\Api\ViewModels\Impl;
+namespace OpenClassrooms\CodeGenerator\SkeletonModels\tests\BusinessRules\Entities\Impl;
 
-use OpenClassrooms\CodeGenerator\SkeletonModels\tests\Doubles\Api\ViewModels\ViewModelStubSkeletonModel;
+use OpenClassrooms\CodeGenerator\SkeletonModels\tests\BusinessRules\Entities\EntityStubSkeletonModel;
 
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
  */
-class ViewModelStubSkeletonModelImpl extends ViewModelStubSkeletonModel
+class EntityStubSkeletonModelImpl extends EntityStubSkeletonModel
 {
 }
