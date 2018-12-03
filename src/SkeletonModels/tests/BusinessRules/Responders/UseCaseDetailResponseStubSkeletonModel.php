@@ -7,7 +7,7 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
  */
-abstract class UseCaseResponseStubSkeletonModel extends AbstractSkeletonModel
+abstract class UseCaseDetailResponseStubSkeletonModel extends AbstractSkeletonModel
 {
-    public $templatePath = 'tests/BusinessRules/ViewModelStub.php.twig';
+    public $templatePath = 'tests/Doubles/BusinessRules/Responders/UseCaseDetailResponseStub.php.twig';
 }

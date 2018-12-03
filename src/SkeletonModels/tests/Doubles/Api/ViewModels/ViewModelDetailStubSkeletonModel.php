@@ -29,5 +29,5 @@ abstract class ViewModelDetailStubSkeletonModel extends AbstractSkeletonModel
      */
     public $constructorNeeded = false;
 
-    public $templatePath = 'tests/Doubles/ViewModelDetailStub.php.twig';
+    public $templatePath = 'tests/Doubles/Api/ViewModels/ViewModelDetailStub.php.twig';
 }

@@ -2,10 +2,12 @@
 
 namespace OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Responders\Request;
 
+use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
+
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
  */
-interface UseCaseResponseStubGeneratorRequest
+interface UseCaseDetailResponseStubGeneratorRequest extends GeneratorRequest
 {
     public function getResponseClassName(): string;
 }
