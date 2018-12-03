@@ -13,7 +13,7 @@ abstract class ViewModelDetailTestCaseSkeletonModel extends AbstractSkeletonMode
 
     public $sourceShortName;
 
-    public $templatePath = 'tests/Doubles/ViewModelDetailTestCase.php.twig';
+    public $templatePath = 'tests/Doubles/Api/ViewModels/ViewModelDetailTestCase.php.twig';
 
     public function getParentShortName(): string
     {

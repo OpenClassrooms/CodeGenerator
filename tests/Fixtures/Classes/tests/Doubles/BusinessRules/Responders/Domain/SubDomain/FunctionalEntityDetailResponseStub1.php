@@ -18,7 +18,7 @@ class FunctionalEntityDetailResponseStub1 extends FunctionalEntityDetailResponse
 
     const FIELD_3 = FunctionalEntityStub1::FIELD_3;
 
-    const FIELD_4 = FunctionalEntityStub1::FIELD_4;
+    const FIELD_4 = FunctionalEntityDetailStub1::FIELD_4;
 
     const ID = FunctionalEntityStub1::ID;
 

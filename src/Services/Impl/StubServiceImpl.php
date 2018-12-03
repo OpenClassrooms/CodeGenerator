@@ -34,16 +34,19 @@ class StubServiceImpl implements StubService
     {
         $fieldObjects = [];
         foreach ($responseFields as $responseField) {
-            $fieldObjects[] = $this->generateFakeFieldValue($responseField, $fileObject);
+            $fieldObjects[] = $this->createStubFieldObjectWithFakeValue($responseField, $fileObject);
         }
 
         return $fieldObjects;
     }
 
-    private function generateFakeFieldValue(FieldObject $responseField, FileObject $fileObject): StubFieldObject
+    private function createStubFieldObjectWithFakeValue(
+        FieldObject $responseField,
+        FileObject $fileObject
+    ): StubFieldObject
     {
         $stubFieldObject = new StubFieldObject($responseField->getName());
-        $this->setConstToStub($stubFieldObject, $responseField);
+        $stubFieldObject->setConst($this->convertToUpperSnakeCase($responseField->getName()));
 
         switch ($responseField->getType()) {
             case 'int' :
@@ -57,15 +60,15 @@ class StubServiceImpl implements StubService
                 break;
             case 'string' :
                 $stubFieldObject->setValue(
-                    $this->buildConstValue($responseField, $fileObject)
+                    $this->buildFakeConstValue($responseField, $fileObject)
                 );
                 break;
             case 'array' :
                 $value1 = 1;
                 $value2 = 2;
                 $stubFieldObject->setValue(
-                    self::OPEN_BRACKET . $this->buildConstValue($responseField, $fileObject, $value1) . ', ' .
-                    $this->buildConstValue($responseField, $fileObject, $value2) . self::CLOSE_BRACKET
+                    self::OPEN_BRACKET . $this->buildFakeConstValue($responseField, $fileObject, $value1) . ', ' .
+                    $this->buildFakeConstValue($responseField, $fileObject, $value2) . self::CLOSE_BRACKET
                 );
                 break;
             case 'DateTimeImmutable' :
@@ -84,12 +87,7 @@ class StubServiceImpl implements StubService
         return $stubFieldObject;
     }
 
-    private function setConstToStub(StubFieldObject $stubFieldObject, FieldObject $responseField): void
-    {
-        $stubFieldObject->setConst($this->convertToUpperSnakeCase($responseField->getName()));
-    }
-
-    private function buildConstValue(FieldObject $responseField, FileObject $fileObject, int $number = null): string
+    private function buildFakeConstValue(FieldObject $responseField, FileObject $fileObject, int $number = null): string
     {
         $constValue = $this->convertToSpacedString(
                 $fileObject->getShortName()
@@ -109,22 +107,59 @@ class StubServiceImpl implements StubService
     {
         $stubFieldObjects = [];
         foreach ($responseFields as $responseField) {
-            $stubFieldObject = new StubFieldObject($responseField->getName());
-            $stubFieldObject->setDocComment($responseField->getDocComment());
-            if ($responseField->isInherited()) {
-                $this->setConstToStub($stubFieldObject, $responseField);
-                $stubFieldObject->setValue($this->getConstValue($stubFieldObject, $fileObject));
-            } else {
-                $stubFieldObject = $this->generateFakeFieldValue($stubFieldObject, $fileObject);
-            }
-            $stubFieldObjects[] = $stubFieldObject;
+            $stubFieldObjects[] = $this->buildStubFieldObject($fileObject, $responseField);
         }
 
         return $stubFieldObjects;
     }
 
-    private function getConstValue(StubFieldObject $stubFieldObject, FileObject $fileObject): string
+    private function buildStubFieldObject(FileObject $fileObject, FieldObject $responseField): StubFieldObject
     {
+        if ($responseField->isInherited()) {
+            return $this->createStubFieldObject($fileObject, $responseField);
+        }
+
+        if (!$responseField->isInherited() && $this->isEntityResponseDTO($fileObject)) {
+            return $this->createStubFieldObject($fileObject, $responseField, true);
+        }
+
+        return $this->createStubFieldObjectWithFakeValue($responseField, $fileObject);
+    }
+
+    private function createStubFieldObject(
+        FileObject $fileObject,
+        FieldObject $responseField,
+        bool $isFieldDetailResponseInherited = false
+    ): StubFieldObject
+    {
+        $stubFieldObject = new StubFieldObject($responseField->getName());
+        $stubFieldObject->setDocComment($responseField->getDocComment());
+        $stubFieldObject->setConst($this->convertToUpperSnakeCase($responseField->getName()));
+        $stubFieldObject->setValue(
+            $this->getConstValueFromClass($stubFieldObject, $fileObject, $isFieldDetailResponseInherited)
+        );
+
+        return $stubFieldObject;
+    }
+
+    private function getConstValueFromClass(
+        StubFieldObject $stubFieldObject,
+        FileObject $fileObject,
+        bool $isFieldDetailResponseInherited
+    ): string
+    {
+        if ($isFieldDetailResponseInherited) {
+            return $fileObject->getEntity() . 'DetailStub1::' . $stubFieldObject->getConst();
+        }
+
+        if ($this->isEntityResponseDTO($fileObject)) {
+            return $fileObject->getEntity() . 'Stub1::' . $stubFieldObject->getConst();
+        }
         return $fileObject->getShortName() . 'ResponseStub1::' . $stubFieldObject->getConst();
+    }
+
+    private function isEntityResponseDTO(FileObject $fileObject): bool
+    {
+        return strpos($fileObject->getShortName(), 'ResponseDTO') !== false;
     }
 }
