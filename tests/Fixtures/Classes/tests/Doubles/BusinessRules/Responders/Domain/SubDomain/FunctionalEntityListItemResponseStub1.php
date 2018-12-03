@@ -3,14 +3,14 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\tests\Doubles\BusinessRules\Responders\Domain\SubDomain;
 
-use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\DTO\Response\FunctionalEntityDetailResponseDTO;
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\DTO\Response\FunctionalEntityListItemResponseDTO;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\tests\Doubles\Api\ViewModels\Domain\SubDomain\FunctionalEntityListItemStub1;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\tests\Doubles\BusinessRules\Entities\Domain\SubDomain\FunctionalEntityStub1;
 
 /**
  * @author authorStub <author.stub@example.com>
  */
-class FunctionalEntityListItemResponseStub1 extends FunctionalEntityDetailResponseDTO
+class FunctionalEntityListItemResponseStub1 extends FunctionalEntityListItemResponseDTO
 {
     const FIELD_1 = FunctionalEntityStub1::FIELD_1;
 

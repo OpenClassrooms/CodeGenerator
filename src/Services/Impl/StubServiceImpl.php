@@ -129,32 +129,34 @@ class StubServiceImpl implements StubService
     private function createStubFieldObject(
         FileObject $fileObject,
         FieldObject $responseField,
-        bool $isFieldDetailResponseInherited = false
+        bool $isFieldResponseInherited = false
     ): StubFieldObject
     {
         $stubFieldObject = new StubFieldObject($responseField->getName());
         $stubFieldObject->setDocComment($responseField->getDocComment());
         $stubFieldObject->setConst($this->convertToUpperSnakeCase($responseField->getName()));
         $stubFieldObject->setValue(
-            $this->getConstValueFromClass($stubFieldObject, $fileObject, $isFieldDetailResponseInherited)
+            $this->buildConstValueFromFileObject($stubFieldObject, $fileObject, $isFieldResponseInherited)
         );
 
         return $stubFieldObject;
     }
 
-    private function getConstValueFromClass(
+    private function buildConstValueFromFileObject(
         StubFieldObject $stubFieldObject,
         FileObject $fileObject,
-        bool $isFieldDetailResponseInherited
+        bool $isFieldResponseInherited
     ): string
     {
-        if ($isFieldDetailResponseInherited) {
-            return $fileObject->getEntity() . 'DetailStub1::' . $stubFieldObject->getConst();
+        if ($isFieldResponseInherited) {
+            return str_replace('ResponseDTO', '', $fileObject->getShortName())
+                . 'Stub1::' . $stubFieldObject->getConst();
         }
 
         if ($this->isEntityResponseDTO($fileObject)) {
             return $fileObject->getEntity() . 'Stub1::' . $stubFieldObject->getConst();
         }
+
         return $fileObject->getShortName() . 'ResponseStub1::' . $stubFieldObject->getConst();
     }
 

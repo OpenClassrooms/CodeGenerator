@@ -47,7 +47,7 @@ class UseCaseDetailResponseStubGeneratorTest extends TestCase
             InMemoryFileObjectGateway::$fileObjects[$actualFileObject->getId()],
             $actualFileObject->getPath()
         );
-        $this->assertFileObject(new UseCaseDetailResponseStubFileObjectStub1(), $actualFileObject);
+        $this->assertFileObject(new UseCaseDetailResponseStubFiwleObjectStub1(), $actualFileObject);
     }
 
     protected function setUp()
