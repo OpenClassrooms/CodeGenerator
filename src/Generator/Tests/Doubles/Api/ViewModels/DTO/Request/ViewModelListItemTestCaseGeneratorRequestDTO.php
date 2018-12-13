@@ -14,7 +14,7 @@ class ViewModelListItemTestCaseGeneratorRequestDTO implements ViewModelListItemT
      */
     public $className;
 
-    public function getClassName(): string
+    public function getViewModelListItemClassName(): string
     {
         return $this->className;
     }

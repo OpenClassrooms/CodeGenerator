@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModelDetailTestCase;
+namespace OpenClassrooms\CodeGenerator\SkeletonModels\tests\Doubles\Api\ViewModels;
 
 use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 
@@ -9,14 +9,11 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
  */
 abstract class ViewModelDetailTestCaseSkeletonModel extends AbstractSkeletonModel
 {
-    public $sourceClassName;
+    public $viewModelDetailClassName;
 
-    public $sourceShortName;
+    public $viewModelDetailShortName;
 
     public $templatePath = 'tests/Doubles/Api/ViewModels/ViewModelDetailTestCase.php.twig';
 
-    public function getParentShortName(): string
-    {
-        return str_replace('Detail', '', $this->shortName);
-    }
+    public $viewModelTestCaseShortName;
 }

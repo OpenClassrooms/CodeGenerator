@@ -4,13 +4,12 @@ namespace OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Api\ViewModels\
 
 use OpenClassrooms\CodeGenerator\FileObjects\ConstObject;
 use OpenClassrooms\CodeGenerator\FileObjects\FieldObject;
-use OpenClassrooms\CodeGenerator\FileObjects\StubFieldObject;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\BusinessRules\Entities\EntityStub\EntityStubFieldObjectStub3;
 
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
  */
-class ViewModelListItemStubFieldObjectStub3 extends StubFieldObject
+class ViewModelListItemStubFieldObjectStub3 extends FieldObject
 {
     const DOC_COMMENT = EntityStubFieldObjectStub3::DOC_COMMENT;
 

@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModelDetailTestCase;
+namespace OpenClassrooms\CodeGenerator\SkeletonModels\tests\Doubles\Api\ViewModels;
 
 use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
 
@@ -11,6 +11,7 @@ interface ViewModelDetailTestCaseSkeletonModelAssembler
 {
     public function create(
         FileObject $viewModelDetailTestCaseFileObject,
+        FileObject $viewModelDetailFileObject,
         FileObject $viewModelTestCaseFileObject
     ): ViewModelDetailTestCaseSkeletonModel;
 }
