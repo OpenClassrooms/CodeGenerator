@@ -14,7 +14,7 @@ class UseCaseListItemResponseStubGeneratorRequestDTO implements UseCaseListItemR
      */
     public $responseClassName;
 
-    public function getResponseClassName(): string
+    public function getUseCaseListItemResponseClassName(): string
     {
         return $this->responseClassName;
     }

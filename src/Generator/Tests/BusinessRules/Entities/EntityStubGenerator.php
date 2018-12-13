@@ -2,16 +2,16 @@
 
 namespace OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Entities;
 
+use OpenClassrooms\CodeGenerator\FileObjects\ConstObject;
 use OpenClassrooms\CodeGenerator\FileObjects\EntityFileObjectFactory;
 use OpenClassrooms\CodeGenerator\FileObjects\EntityFileObjectType;
 use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
-use OpenClassrooms\CodeGenerator\FileObjects\ViewModelFileObjectType;
 use OpenClassrooms\CodeGenerator\Generator\Api\AbstractViewModelGenerator;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Entities\Request\EntityStubGeneratorRequest;
-use OpenClassrooms\CodeGenerator\Services\StubService;
 use OpenClassrooms\CodeGenerator\SkeletonModels\tests\BusinessRules\Entities\EntityStubSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\tests\BusinessRules\Entities\EntityStubSkeletonModelAssembler;
+use OpenClassrooms\CodeGenerator\Utility\FieldUtility;
 
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
@@ -29,81 +29,85 @@ class EntityStubGenerator extends AbstractViewModelGenerator
     private $entityStubSkeletonModelAssembler;
 
     /**
-     * @var StubService
-     */
-    private $stubService;
-
-    /**
      * @param EntityStubGeneratorRequest $generatorRequest
      */
     public function generate(GeneratorRequest $generatorRequest): FileObject
     {
-        $entityStubFileObject = $this->buildEntityStubFileObject($generatorRequest->getClassName());
-        $viewModelImplFileObject = $this->buildViewModelImplFileObject($generatorRequest->getClassName());
-        $entityStubFileObject->setContent(
-            $this->generateContent($entityStubFileObject, $viewModelImplFileObject)
-        );
+        $entityImplFileObject = $this->createEntityImplFileObject($generatorRequest->getEntityClassName());
+        $entityStubFileObject = $this->buildEntityStubFileObject($entityImplFileObject);
+
         $this->insertFileObject($entityStubFileObject);
 
         return $entityStubFileObject;
     }
 
-    private function buildEntityStubFileObject(string $viewModelClassName): FileObject
+    private function createEntityImplFileObject(string $entityClassName): FileObject
     {
-        $viewModelFileObject = $this->buildViewModelFileObject($viewModelClassName);
+        [$domain, $entity] = $this->getDomainAndEntityNameFromClassName($entityClassName);
 
-        $entityStub = $this->entityFileObjectFactory->create(
-            EntityFileObjectType::BUSINESS_RULES_ENTITY_STUB,
-            $viewModelFileObject->getDomain(),
-            $viewModelFileObject->getEntity()
+        return $this->entityFileObjectFactory->create(
+            EntityFileObjectType::BUSINESS_RULES_ENTITY_IMPL,
+            $domain,
+            $entity
         );
-        $entityStub->setFields($this->generateStubFields($viewModelFileObject));
-
-        return $entityStub;
     }
 
-    private function buildViewModelFileObject(string $viewModelClassName): FileObject
+    private function buildEntityStubFileObject(FileObject $entityImplFileObject): FileObject
     {
-        [$domain, $entity] = $this->getDomainAndEntityNameFromClassName($viewModelClassName);
+        $entityStubFileObject = $this->createEntityFileObject($entityImplFileObject);
+        $entityStubFileObject->setFields($this->generateFields($entityImplFileObject, $entityStubFileObject));
+        $entityStubFileObject->setConsts($this->generateConsts($entityStubFileObject));
+        $entityStubFileObject->setContent($this->generateContent($entityStubFileObject, $entityImplFileObject));
 
-        return $this->createViewModelFileObject(ViewModelFileObjectType::API_VIEW_MODEL, $domain, $entity);
+        return $entityStubFileObject;
     }
 
-    private function generateStubFields(FileObject $viewModelFileObject): array
+    private function createEntityFileObject(FileObject $entityImplFileObject): FileObject
     {
-        $viewModelFields = $this->getPublicClassFields($viewModelFileObject->getClassName());
-
-        return $this->stubService->setFakeValuesToFields($viewModelFields, $viewModelFileObject);
+        return $this->entityFileObjectFactory->create(
+            EntityFileObjectType::BUSINESS_RULES_ENTITY_STUB,
+            $entityImplFileObject->getDomain(),
+            $entityImplFileObject->getEntity()
+        );
     }
 
-    private function buildViewModelImplFileObject(string $viewModelClassName): FileObject
+    private function generateFields(FileObject $fileObject, FileObject $stubFieldObject): array
     {
-        [$domain, $entity] = $this->getDomainAndEntityNameFromClassName($viewModelClassName);
+        $entityFields = $this->getParentProtectedClassFields($fileObject->getClassName());
 
-        return $this->createViewModelFileObject(ViewModelFileObjectType::API_VIEW_MODEL_IMPL, $domain, $entity);
+        return FieldUtility::generateStubFieldObjects($entityFields, $stubFieldObject);
     }
 
-    private function generateContent(FileObject $entityStubFileObject, FileObject $viewModelImplFileObject): string
+    /**
+     * @return ConstObject[]
+     */
+    private function generateConsts(FileObject $entityStubFileObject): array
     {
-        $skeletonModel = $this->createSkeletonModel($entityStubFileObject, $viewModelImplFileObject);
+        /** @var ConstObject[] $consts */
+        $consts = [];
+        foreach ($entityStubFileObject->getFields() as $field) {
+            $value = $field->getValue();
+            if ($value instanceof ConstObject) {
+                $consts[] = $value;
+            }
+        }
+
+        return $consts;
+    }
+
+    private function generateContent(FileObject $entityStubFileObject, FileObject $entityImplFileObject): string
+    {
+        $skeletonModel = $this->createSkeletonModel($entityStubFileObject, $entityImplFileObject);
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
     }
 
     private function createSkeletonModel(
         FileObject $entityStubFileObject,
-        FileObject $viewModelImplFileObject
+        FileObject $entityImplFileObject
     ): EntityStubSkeletonModel
     {
-        return $this->entityStubSkeletonModelAssembler->create(
-            $entityStubFileObject,
-            $viewModelImplFileObject
-        );
-    }
-
-    public function setStubService(StubService $stubService): void
-    {
-        $this->stubService = $stubService;
+        return $this->entityStubSkeletonModelAssembler->create($entityStubFileObject, $entityImplFileObject);
     }
 
     public function setEntityStubSkeletonModelAssembler(

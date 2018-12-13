@@ -73,6 +73,5 @@ class ViewModelListItemStubGeneratorTest extends TestCase
         $this->viewModelStub1Generator->setViewModelStubListItemSkeletonModelAssembler(
             new ViewModelListItemStubSkeletonModelAssemblerImpl()
         );
-        $this->viewModelStub1Generator->setStubService(new StubServiceImpl());
     }
 }

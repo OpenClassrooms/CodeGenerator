@@ -12,7 +12,6 @@ interface UseCaseDetailResponseStubSkeletonModelAssembler
     public function create(
         FileObject $useCaseDetailResponseStubFileObject,
         FileObject $useCaseDetailResponseFileObject,
-        FileObject $viewModelDetailStub,
         FileObject $entityStubFileObject
     ): UseCaseDetailResponseStubSkeletonModel;
 }

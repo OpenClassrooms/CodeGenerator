@@ -2,6 +2,7 @@
 
 namespace OpenClassrooms\CodeGenerator\Services\Impl;
 
+use OpenClassrooms\CodeGenerator\FileObjects\ConstObject;
 use OpenClassrooms\CodeGenerator\FileObjects\FieldObject;
 use OpenClassrooms\CodeGenerator\Services\FieldObjectService;
 use OpenClassrooms\CodeGenerator\Utility\ClassNameUtility;
@@ -14,7 +15,7 @@ class FieldObjectServiceImpl implements FieldObjectService
     use ClassNameUtility;
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getParentPublicClassFields(string $className): array
     {
@@ -22,11 +23,11 @@ class FieldObjectServiceImpl implements FieldObjectService
 
         $parentPublicClassFields = $this->getPublicClassFields($rc->getParentClass()->getName());
 
-        return $this->tagParentPublicClassFields($parentPublicClassFields);
+        return $this->tagParentClassFields($parentPublicClassFields);
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getPublicClassFields(string $className): array
     {
@@ -48,23 +49,23 @@ class FieldObjectServiceImpl implements FieldObjectService
      *
      * @return FieldObject[]
      */
-    private function buildFields(array $reflectionProperties): array
+    private function buildFields(array $reflectionProperties, string $scope = FieldObject::SCOPE_PUBLIC): array
     {
         $fields = [];
         foreach ($reflectionProperties as $reflectionProperty) {
-            $fields[] = $this->buildField($reflectionProperty);
+            $fields[] = $this->buildField($reflectionProperty, $scope);
         }
 
         return $fields;
     }
 
-    private function buildField(\ReflectionProperty $reflectionProperty): FieldObject
+    private function buildField(\ReflectionProperty $reflectionProperty, string $scope): FieldObject
     {
         $field = new FieldObject($reflectionProperty->getName());
         $field->setAccessor($this->getFieldAccessor($reflectionProperty));
         $docComment = $reflectionProperty->getDocComment();
         $field->setDocComment($docComment);
-        $field->setScope(FieldObject::SCOPE_PUBLIC);
+        $field->setScope($scope);
 
         return $field;
     }
@@ -87,7 +88,33 @@ class FieldObjectServiceImpl implements FieldObjectService
     }
 
     /**
-     * @inheritdoc
+     * @param FieldObject[]
+     *
+     * @return FieldObject[]
+     */
+    private function tagParentClassFields(array $parentClassFields): array
+    {
+        foreach ($parentClassFields as $parentClassField) {
+            $parentClassField->setInherited(true);
+        }
+
+        return $parentClassFields;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getParentProtectedClassFields(string $className): array
+    {
+        $rc = new \ReflectionClass($className);
+
+        $parentPublicClassFields = $this->getProtectedClassFields($rc->getParentClass()->getName());
+
+        return $this->tagParentClassFields($parentPublicClassFields);
+    }
+
+    /**
+     * {@inheritdoc}
      */
     public function getProtectedClassFields(string $className): array
     {
@@ -101,17 +128,28 @@ class FieldObjectServiceImpl implements FieldObjectService
             }
         }
 
-        return $this->buildFields($classProperties);
+        return $this->buildFields($classProperties, FieldObject::SCOPE_PROTECTED);
     }
 
     /**
-     * @param FieldObject[]
+     * {@inheritdoc}
      */
-    private function tagParentPublicClassFields(array $parentPublicClassFields): array
+    public function getClassConstants(string $className): array
     {
-        foreach ($parentPublicClassFields as $parentPublicClassField) {
-            $parentPublicClassField->setInherited(true);
+        $rc = new \ReflectionClass($className);
+
+        return $this->buildConstants($rc->getConstants());
+    }
+
+    private function buildConstants(array $constants)
+    {
+        $constObjects = [];
+        foreach ($constants as $constName => $constValue) {
+            $constObject = new ConstObject($constName);
+            $constObject->setValue($constValue);
+            $constObjects[] = $constObject;
         }
-        return $parentPublicClassFields;
+
+        return $constObjects;
     }
 }

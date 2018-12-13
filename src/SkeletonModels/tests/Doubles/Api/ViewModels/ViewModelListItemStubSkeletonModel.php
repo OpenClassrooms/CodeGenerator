@@ -2,6 +2,7 @@
 
 namespace OpenClassrooms\CodeGenerator\SkeletonModels\tests\Doubles\Api\ViewModels;
 
+use OpenClassrooms\CodeGenerator\FileObjects\ConstObject;
 use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 
 /**
@@ -9,6 +10,16 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
  */
 abstract class ViewModelListItemStubSkeletonModel extends AbstractSkeletonModel
 {
+    /**
+     * @var ConstObject[]
+     */
+    public $constants;
+
+    /**
+     * @var string
+     */
+    public $hasConstructor = false;
+
     /**
      * @var string
      */
@@ -19,15 +30,10 @@ abstract class ViewModelListItemStubSkeletonModel extends AbstractSkeletonModel
      */
     public $parentShortName;
 
-    /**
-     * @var string
-     */
-    public $useCaseDetailResponseStubClassName;
-
-    /**
-     * @var string
-     */
-    public $constructorNeeded = false;
-
     public $templatePath = 'tests/Doubles/Api/ViewModels/ViewModelListItemStub.php.twig';
+
+    /**
+     * @var string
+     */
+    public $useCaseListItemResponseStubClassName;
 }

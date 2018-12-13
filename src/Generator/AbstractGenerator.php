@@ -51,6 +51,30 @@ abstract class AbstractGenerator implements Generator
         return $this->fieldObjectService->getPublicClassFields($className);
     }
 
+    /**
+     * @return array|FieldObject[]
+     */
+    protected function getProtectedClassFields(string $className): array
+    {
+        return $this->fieldObjectService->getProtectedClassFields($className);
+    }
+
+    /**
+     * @return array|FieldObject[]
+     */
+    protected function getParentProtectedClassFields(string $className): array
+    {
+        return $this->fieldObjectService->getParentProtectedClassFields($className);
+    }
+
+    /**
+     * @return array|FieldObject[]
+     */
+    protected function getClassConstants(string $className): array
+    {
+        return $this->fieldObjectService->getClassConstants($className);
+    }
+
     protected function insertFileObject(FileObject $viewModelFileObject): void
     {
         $this->fileObjectGateway->insert($viewModelFileObject);

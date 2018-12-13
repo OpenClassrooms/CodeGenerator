@@ -8,20 +8,16 @@ use OpenClassrooms\CodeGenerator\FileObjects\ViewModelFileObjectType;
 use OpenClassrooms\CodeGenerator\Generator\Api\AbstractViewModelGenerator;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\Request\ViewModelListItemStubGeneratorRequest;
-use OpenClassrooms\CodeGenerator\Services\StubService;
 use OpenClassrooms\CodeGenerator\SkeletonModels\tests\Doubles\Api\ViewModels\ViewModelListItemStubSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\tests\Doubles\Api\ViewModels\ViewModelListItemStubSkeletonModelAssembler;
+use OpenClassrooms\CodeGenerator\Utility\ConstUtility;
+use OpenClassrooms\CodeGenerator\Utility\FieldUtility;
 
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
  */
 class ViewModelListItemStubGenerator extends AbstractViewModelGenerator
 {
-    /**
-     * @var StubService
-     */
-    private $stubService;
-
     /**
      * @var ViewModelListItemStubSkeletonModelAssembler
      */
@@ -35,12 +31,27 @@ class ViewModelListItemStubGenerator extends AbstractViewModelGenerator
         $viewModelListItemStubFileObject = $this->buildViewModelListItemStubFileObject(
             $generatorRequest->getClassName()
         );
-        $viewModelListItemImplFileObject = $this->buildViewModelListItemImplFileObject(
-            $generatorRequest->getClassName()
+
+        $this->insertFileObject($viewModelListItemStubFileObject);
+
+        return $viewModelListItemStubFileObject;
+    }
+
+    private function buildViewModelListItemStubFileObject(
+        string $viewModelClassName
+    ): FileObject
+    {
+        $viewModelListItemFileObject = $this->createViewModelListItemFileObject($viewModelClassName);
+        $useCaseListItemResponseStubFileObject = $this->createUseCaseListItemResponseStubFileObject(
+            $viewModelListItemFileObject
         );
-        $useCaseListItemResponseStubFileObject = $this->buildUseCaseListItemResponseStubFileObject(
-            $generatorRequest->getClassName()
+        $viewModelListItemImplFileObject = $this->createViewModelListItemImplFileObject(
+            $viewModelListItemFileObject
         );
+        $viewModelListItemStubFileObject = $this->createViewModelListItemStubFileObject($viewModelListItemFileObject);
+
+        $viewModelListItemStubFileObject->setConsts($this->generateConsts($useCaseListItemResponseStubFileObject));
+        $viewModelListItemStubFileObject->setFields($this->generateFields($viewModelListItemFileObject));
         $viewModelListItemStubFileObject->setContent(
             $this->generateContent(
                 $viewModelListItemStubFileObject,
@@ -48,59 +59,73 @@ class ViewModelListItemStubGenerator extends AbstractViewModelGenerator
                 $useCaseListItemResponseStubFileObject
             )
         );
-        $this->insertFileObject($viewModelListItemStubFileObject);
 
         return $viewModelListItemStubFileObject;
     }
 
-    private function buildViewModelListItemStubFileObject(string $viewModelClassName): FileObject
+    private function createViewModelListItemFileObject(string $viewModelClassName): FileObject
     {
-        $viewModelListItemFileObject = $this->buildViewModelListItemFileObject($viewModelClassName);
+        [$domain, $entity] = $this->getDomainAndEntityNameFromClassName($viewModelClassName);
 
+        return $this->createViewModelFileObject(
+            ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM,
+            $domain,
+            $entity
+        );
+    }
+
+    private function createUseCaseListItemResponseStubFileObject(FileObject $viewModelListItemFileObject): FileObject
+    {
+        return $this->createUseCaseResponseFileObject(
+            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE_STUB,
+            $viewModelListItemFileObject->getDomain(),
+            $viewModelListItemFileObject->getEntity()
+        );
+    }
+
+    private function createViewModelListItemImplFileObject(
+        FileObject $viewModelListItemFileObject
+    ): FileObject
+    {
+        return $this->createViewModelFileObject(
+            ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_IMPL,
+            $viewModelListItemFileObject->getDomain(),
+            $viewModelListItemFileObject->getEntity()
+        );
+    }
+
+    /**
+     * @param $viewModelListItemFileObject
+     *
+     * @return FileObject
+     */
+    private function createViewModelListItemStubFileObject(FileObject $viewModelListItemFileObject): FileObject
+    {
         $viewModelListItemStubFileObject = $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_STUB,
             $viewModelListItemFileObject->getDomain(),
             $viewModelListItemFileObject->getEntity()
         );
-        $viewModelListItemStubFileObject->setFields($this->generateStubFields($viewModelListItemFileObject));
 
         return $viewModelListItemStubFileObject;
     }
 
-    private function buildViewModelListItemFileObject(string $viewModelClassName): FileObject
+    private function generateConsts(FileObject $useCaseDetailResponseStubFileObject): array
     {
-        [$domain, $entity] = $this->getDomainAndEntityNameFromClassName($viewModelClassName);
-
-        return $this->createViewModelFileObject(ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM, $domain, $entity);
-    }
-
-    private function generateStubFields(FileObject $viewModelListItemImplFileObject): array
-    {
-        $viewModelFields = $this->getParentAndChildPublicClassFields($viewModelListItemImplFileObject->getClassName());
-
-        return $this->stubService->setNameAndStubValues($viewModelFields, $viewModelListItemImplFileObject);
-    }
-
-    private function buildViewModelListItemImplFileObject(string $viewModelClassName): FileObject
-    {
-        [$domain, $entity] = $this->getDomainAndEntityNameFromClassName($viewModelClassName);
-
-        return $this->createViewModelFileObject(
-            ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_IMPL,
-            $domain,
-            $entity
+        $useCaseDetailResponseStubFileObject->setConsts(
+            $this->getClassConstants($useCaseDetailResponseStubFileObject->getClassName())
         );
+
+        return ConstUtility::generateConstsFromStubReference($useCaseDetailResponseStubFileObject);
     }
 
-    private function buildUseCaseListItemResponseStubFileObject(string $viewModelClassName): FileObject
+    private function generateFields(FileObject $viewModelListItemImplFileObject): array
     {
-        [$domain, $entity] = $this->getDomainAndEntityNameFromClassName($viewModelClassName);
-
-        return $this->createUseCaseResponseFileObject(
-            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE_STUB,
-            $domain,
-            $entity
+        $viewModelListItemFields = $this->getParentAndChildPublicClassFields(
+            $viewModelListItemImplFileObject->getClassName()
         );
+
+        return FieldUtility::generateStubFieldObjects($viewModelListItemFields, $viewModelListItemImplFileObject);
     }
 
     private function generateContent(
@@ -129,11 +154,6 @@ class ViewModelListItemStubGenerator extends AbstractViewModelGenerator
             $viewModelListItemImplFileObject,
             $useCaseListItemResponseStubFileObject
         );
-    }
-
-    public function setStubService(StubService $stubService): void
-    {
-        $this->stubService = $stubService;
     }
 
     public function setViewModelStubListItemSkeletonModelAssembler(

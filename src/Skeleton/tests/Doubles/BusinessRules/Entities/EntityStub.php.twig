@@ -10,10 +10,23 @@ use {{ skeletonModel.parentClassName }};
  */
 class {{ skeletonModel.shortName }} extends {{ skeletonModel.parentShortName }}
 {
-{% for field in skeletonModel.fields | sortByConst %}
-    const {{ field.const }} = {{ field.value }};
+{% for constant in skeletonModel.constants %}
+    const {{ constant.name }} = {{ printValue(constant.value) }};
 {% if not loop.last %}
 
 {% endif %}
 {% endfor %}
+
+{% for field in skeletonModel.fields if field.type != '\\DateTimeImmutable'  %}
+    {{ field.scope }} ${{ field.name }} = self::{{ field.value.name }};
+
+{% endfor %}
+{% if skeletonModel.hasConstructor %}
+    public function __construct()
+    {
+{% for field in skeletonModel.fields if field.type == '\\DateTimeImmutable'  %}
+        $this->{{ field.name }} = new \DateTimeImmutable(self::{{ field.value.name }});
+{% endfor %}
+    }
+{% endif %}
 }

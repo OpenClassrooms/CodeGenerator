@@ -19,11 +19,6 @@ abstract class AbstractUseCaseResponseStubGenerator extends AbstractGenerator
     protected $entityFileObjectFactory;
 
     /**
-     * @var StubService
-     */
-    protected $stubService;
-
-    /**
      * @var UseCaseResponseFileObjectFactory
      */
     protected $useCaseResponseFileObjectFactory;
@@ -36,11 +31,6 @@ abstract class AbstractUseCaseResponseStubGenerator extends AbstractGenerator
     public function setEntityFileObjectFactory(EntityFileObjectFactory $entityFileObjectFactory): void
     {
         $this->entityFileObjectFactory = $entityFileObjectFactory;
-    }
-
-    public function setStubService(StubService $stubService): void
-    {
-        $this->stubService = $stubService;
     }
 
     public function setUseCaseResponseFileObjectFactory(

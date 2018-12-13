@@ -2,6 +2,8 @@
 
 namespace OpenClassrooms\CodeGenerator\SkeletonModels;
 
+use OpenClassrooms\CodeGenerator\FileObjects\FieldObject;
+
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
  */
@@ -13,7 +15,7 @@ class AbstractSkeletonModel
     public $className;
 
     /**
-     * @var array
+     * @var FieldObject[]
      */
     public $fields = [];
 

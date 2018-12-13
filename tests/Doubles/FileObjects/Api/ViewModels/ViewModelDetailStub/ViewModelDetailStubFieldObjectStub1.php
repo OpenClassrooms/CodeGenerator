@@ -2,30 +2,28 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Api\ViewModels\ViewModelDetailStub;
 
+use OpenClassrooms\CodeGenerator\FileObjects\ConstObject;
 use OpenClassrooms\CodeGenerator\FileObjects\FieldObject;
-use OpenClassrooms\CodeGenerator\FileObjects\StubFieldObject;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\BusinessRules\Entities\EntityStub\EntityStubFieldObjectStub1;
 
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
  */
-class ViewModelDetailStubFieldObjectStub1 extends StubFieldObject
+class ViewModelDetailStubFieldObjectStub1 extends FieldObject
 {
-    const CONST = 'ID';
+    const DOC_COMMENT = EntityStubFieldObjectStub1::DOC_COMMENT;
 
-    const NAME = 'id';
+    const NAME = EntityStubFieldObjectStub1::NAME;
 
-    const VALUE = 'FunctionalEntityDetailResponseStub1::ID';
-
-    protected $const = self::CONST;
+    protected $docComment = self::DOC_COMMENT;
 
     protected $name = self::NAME;
 
     protected $scope = FieldObject::SCOPE_PUBLIC;
 
-    protected $value = self::VALUE;
-
     public function __construct()
     {
         parent::__construct($this->name);
+        $this->value = new ConstObject(self::NAME);
     }
 }

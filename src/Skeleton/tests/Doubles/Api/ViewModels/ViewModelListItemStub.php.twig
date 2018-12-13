@@ -1,1 +1,38 @@
-{% include "tests/Doubles/Api/ViewModels/ViewModelDetailStub.php.twig" %}
+<?php declare(strict_types=1);
+{% include "Header.php.twig" %}
+
+namespace {{ skeletonModel.namespace }};
+
+use {{ skeletonModel.parentClassName }};
+use {{ skeletonModel.useCaseListItemResponseStubClassName }};
+
+/**
+ * @author {{ author }} <{{ authorEmail }}>
+ */
+class {{ skeletonModel.shortName }} extends {{ skeletonModel.parentShortName }}
+{
+{% for constant in skeletonModel.constants %}
+    const {{ constant.name }} = {{ printValue(constant.value) }};
+{% if not loop.last %}
+
+{% endif %}
+{% endfor %}
+
+{% for key, field in skeletonModel.fields if not field.isObject %}
+    /**
+     * {@inheritdoc}
+     */
+    {{ field.scope }} ${{ field.name }} = self::{{ field.value.name }};
+{% if skeletonModel.fields|length - 1 != key %}
+
+{% endif %}
+{% endfor %}
+{% if skeletonModel.hasConstructor %}
+    public function __construct()
+    {
+{% for field in skeletonModel.fields if field.type == '\\DateTimeImmutable'  %}
+        $this->{{ field.name }} = new \DateTimeImmutable(self::{{ field.value.name }});
+{% endfor %}
+    }
+{% endif %}
+}

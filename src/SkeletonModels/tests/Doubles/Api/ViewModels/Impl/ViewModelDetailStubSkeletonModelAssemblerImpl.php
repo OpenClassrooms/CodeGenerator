@@ -24,10 +24,11 @@ class ViewModelDetailStubSkeletonModelAssemblerImpl implements ViewModelDetailSt
         $skeletonModel->namespace = $viewModelDetailStubFileObject->getNamespace();
         $skeletonModel->shortName = $viewModelDetailStubFileObject->getShortName();
         $skeletonModel->fields = $viewModelDetailStubFileObject->getFields();
+        $skeletonModel->constants = $viewModelDetailStubFileObject->getConsts();
         $skeletonModel->parentClassName = $viewModelDetailImplFileObject->getClassName();
         $skeletonModel->parentShortName = $viewModelDetailImplFileObject->getShortName();
         $skeletonModel->useCaseDetailResponseStubClassName = $useCaseDetailResponseStubFileObject->getClassName();
-        $skeletonModel->constructorNeeded = $this->constructorIsNeeded($viewModelDetailStubFileObject->getFields());
+        $skeletonModel->hasConstructor = $this->hasConstructor($viewModelDetailStubFileObject->getFields());
 
         return $skeletonModel;
     }

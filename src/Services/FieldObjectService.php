@@ -15,10 +15,20 @@ interface FieldObjectService
     /**
      * @return \OpenClassrooms\CodeGenerator\FileObjects\FieldObject[]
      */
+    public function getParentProtectedClassFields(string $className): array;
+
+    /**
+     * @return \OpenClassrooms\CodeGenerator\FileObjects\FieldObject[]
+     */
     public function getProtectedClassFields(string $className): array;
 
     /**
      * @return \OpenClassrooms\CodeGenerator\FileObjects\FieldObject[]
      */
     public function getPublicClassFields(string $className): array;
+
+    /**
+     * @return \OpenClassrooms\CodeGenerator\FileObjects\FieldObject[]
+     */
+    public function getClassConstants(string $className): array;
 }

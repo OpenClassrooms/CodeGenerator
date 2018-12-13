@@ -9,5 +9,5 @@ use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
  */
 interface EntityStubSkeletonModelAssembler
 {
-    public function create(FileObject $viewModelStubFileObject, FileObject $viewModelFileObject): EntityStubSkeletonModel;
+    public function create(FileObject $entityStubFileObject, FileObject $entityImplFileObject): EntityStubSkeletonModel;
 }

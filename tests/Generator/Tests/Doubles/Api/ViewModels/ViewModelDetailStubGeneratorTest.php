@@ -33,14 +33,14 @@ class ViewModelDetailStubGeneratorTest extends TestCase
     /**
      * @var ViewModelDetailStubGenerator
      */
-    private $viewModelStub1Generator;
+    private $viewModelDetailStubGenerator;
 
     /**
      * @test
      */
     public function generate_ReturnFileObject()
     {
-        $actualFileObject = $this->viewModelStub1Generator->generate($this->request);
+        $actualFileObject = $this->viewModelDetailStubGenerator->generate($this->request);
 
         $this->assertSame(
             InMemoryFileObjectGateway::$fileObjects[$actualFileObject->getId()],
@@ -57,22 +57,21 @@ class ViewModelDetailStubGeneratorTest extends TestCase
             ->withClassName(FunctionalEntity::class)
             ->build();
 
-        $this->viewModelStub1Generator = new ViewModelDetailStubGenerator();
+        $this->viewModelDetailStubGenerator = new ViewModelDetailStubGenerator();
 
-        $this->viewModelStub1Generator->setFileObjectGateway(new InMemoryFileObjectGateway());
-        $this->viewModelStub1Generator->setFieldObjectService(new FieldObjectServiceImpl());
-        $this->viewModelStub1Generator->setTemplating(new TemplatingMock());
+        $this->viewModelDetailStubGenerator->setFileObjectGateway(new InMemoryFileObjectGateway());
+        $this->viewModelDetailStubGenerator->setFieldObjectService(new FieldObjectServiceImpl());
+        $this->viewModelDetailStubGenerator->setTemplating(new TemplatingMock());
 
         $viewModelFileObjectFactory = new ViewModelFileObjectFactoryImpl();
         $viewModelFileObjectFactory->setStubNamespace(FixturesConfig::STUB_NAMESPACE);
         $viewModelFileObjectFactory->setBaseNamespace(FixturesConfig::BASE_NAMESPACE);
         $useCaseResponseFileObjectFactory = new UseCaseResponseFileObjectFactoryImpl();
         $useCaseResponseFileObjectFactory->setStubNamespace(FixturesConfig::STUB_NAMESPACE);
-        $this->viewModelStub1Generator->setViewModelFileObjectFactory($viewModelFileObjectFactory);
-        $this->viewModelStub1Generator->setUseCaseResponseFileObjectFactory($useCaseResponseFileObjectFactory);
-        $this->viewModelStub1Generator->setViewModelDetailStubSkeletonModelAssembler(
+        $this->viewModelDetailStubGenerator->setViewModelFileObjectFactory($viewModelFileObjectFactory);
+        $this->viewModelDetailStubGenerator->setUseCaseResponseFileObjectFactory($useCaseResponseFileObjectFactory);
+        $this->viewModelDetailStubGenerator->setViewModelDetailStubSkeletonModelAssembler(
             new ViewModelDetailStubSkeletonModelAssemblerImpl()
         );
-        $this->viewModelStub1Generator->setStubService(new StubServiceImpl());
     }
 }

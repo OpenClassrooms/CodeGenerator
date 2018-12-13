@@ -14,7 +14,6 @@ class UseCaseDetailResponseStubSkeletonModelAssemblerImpl implements UseCaseDeta
     public function create(
         FileObject $useCaseDetailResponseStubFileObject,
         FileObject $useCaseDetailResponseFileObject,
-        FileObject $viewModelDetailStub,
         FileObject $entityStubFileObject
     ): UseCaseDetailResponseStubSkeletonModel
     {
@@ -22,13 +21,12 @@ class UseCaseDetailResponseStubSkeletonModelAssemblerImpl implements UseCaseDeta
         $skeletonModel->namespace = $useCaseDetailResponseStubFileObject->getNamespace();
         $skeletonModel->className = $useCaseDetailResponseStubFileObject->getClassName();
         $skeletonModel->parentClassName = $useCaseDetailResponseFileObject->getClassName();
-        $skeletonModel->viewModelDetailStubClassName = $viewModelDetailStub->getClassName();
         $skeletonModel->entityStubClassName = $entityStubFileObject->getClassName();
         $skeletonModel->shortName = $useCaseDetailResponseStubFileObject->getShortName();
         $skeletonModel->parentShortName = $useCaseDetailResponseFileObject->getShortName();
-        $skeletonModel->viewModelDetailStubShortName = $viewModelDetailStub->getShortName();
         $skeletonModel->entityStubShortName = $entityStubFileObject->getShortName();
         $skeletonModel->fields = $useCaseDetailResponseStubFileObject->getFields();
+        $skeletonModel->constants = $useCaseDetailResponseStubFileObject->getConsts();
 
         return $skeletonModel;
     }

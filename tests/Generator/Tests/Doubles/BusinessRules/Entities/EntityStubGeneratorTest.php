@@ -8,13 +8,12 @@ use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Entities\DTO\Requ
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Entities\EntityStubGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Entities\Request\EntityStubGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Services\Impl\FieldObjectServiceImpl;
-use OpenClassrooms\CodeGenerator\Services\Impl\StubServiceImpl;
 use OpenClassrooms\CodeGenerator\SkeletonModels\tests\BusinessRules\Entities\Impl\EntityStubSkeletonModelAssemblerImpl;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\BusinessRules\Entities\EntityStub\EntityStubFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\FileObjectTestCase;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingMock;
-use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\FunctionalEntity;
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\App\Entity\Domain\SubDomain\FunctionalEntityImpl;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\FixturesConfig;
 use PHPUnit\Framework\TestCase;
 
@@ -26,14 +25,14 @@ class EntityStubGeneratorTest extends TestCase
     use FileObjectTestCase;
 
     /**
-     * @var EntityStubGeneratorRequestBuilder
-     */
-    private $request;
-
-    /**
      * @var EntityStubGenerator
      */
     private $entityStubGenerator;
+
+    /**
+     * @var EntityStubGeneratorRequestBuilder
+     */
+    private $request;
 
     /**
      * @test
@@ -54,7 +53,7 @@ class EntityStubGeneratorTest extends TestCase
         $stub1GeneratorRequestBuilder = new EntityStubGeneratorRequestBuilderImpl();
         $this->request = $stub1GeneratorRequestBuilder
             ->create()
-            ->withClassName(FunctionalEntity::class)
+            ->withClassName(FunctionalEntityImpl::class)
             ->build();
 
         $this->entityStubGenerator = new EntityStubGenerator();
@@ -69,12 +68,12 @@ class EntityStubGeneratorTest extends TestCase
 
         $entityFileObjectFactory = new EntityFileObjectFactoryImpl();
         $entityFileObjectFactory->setStubNamespace(FixturesConfig::STUB_NAMESPACE);
+        $entityFileObjectFactory->setBaseNamespace(FixturesConfig::BASE_NAMESPACE);
 
         $this->entityStubGenerator->setViewModelFileObjectFactory($viewModelFileObjectFactory);
         $this->entityStubGenerator->setEntityFileObjectFactory($entityFileObjectFactory);
         $this->entityStubGenerator->setEntityStubSkeletonModelAssembler(
             new EntityStubSkeletonModelAssemblerImpl()
         );
-        $this->entityStubGenerator->setStubService(new StubServiceImpl());
     }
 }
