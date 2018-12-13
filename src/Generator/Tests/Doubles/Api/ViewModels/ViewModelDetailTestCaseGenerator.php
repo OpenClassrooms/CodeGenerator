@@ -25,7 +25,9 @@ class ViewModelDetailTestCaseGenerator extends AbstractViewModelGenerator
      */
     public function generate(GeneratorRequest $generatorRequest): FileObject
     {
-        $viewModelDetailFileObject = $this->buildViewModelDetailFileObject($generatorRequest->getClassName());
+        $viewModelDetailFileObject = $this->createViewModelDetailFileObject(
+            $generatorRequest->getViewModelDetailClassName()
+        );
         $viewModelDetailTestCaseFileObject = $this->buildDetailTestCaseFileObject($viewModelDetailFileObject);
         $viewModelDetailTestCaseFileObject->setContent(
             $this->generateContent($viewModelDetailTestCaseFileObject, $viewModelDetailFileObject)
@@ -35,7 +37,7 @@ class ViewModelDetailTestCaseGenerator extends AbstractViewModelGenerator
         return $viewModelDetailTestCaseFileObject;
     }
 
-    protected function buildViewModelDetailFileObject(string $viewModelClassName): FileObject
+    protected function createViewModelDetailFileObject(string $viewModelClassName): FileObject
     {
         [$domain, $entity] = $this->getDomainAndEntityNameFromClassName($viewModelClassName);
 

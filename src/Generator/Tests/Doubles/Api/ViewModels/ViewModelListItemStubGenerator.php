@@ -29,7 +29,7 @@ class ViewModelListItemStubGenerator extends AbstractViewModelGenerator
     public function generate(GeneratorRequest $generatorRequest): FileObject
     {
         $viewModelListItemStubFileObject = $this->buildViewModelListItemStubFileObject(
-            $generatorRequest->getClassName()
+            $generatorRequest->getViewModelListItemClassName()
         );
 
         $this->insertFileObject($viewModelListItemStubFileObject);

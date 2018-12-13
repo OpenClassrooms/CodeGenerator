@@ -106,6 +106,7 @@ class UseCaseDetailResponseStubGenerator extends AbstractUseCaseResponseStubGene
         $entityStubFileObject->setConsts(
             $this->getClassConstants($entityStubFileObject->getClassName())
         );
+
         return ConstUtility::generateConstsFromStubReference($entityStubFileObject);
     }
 

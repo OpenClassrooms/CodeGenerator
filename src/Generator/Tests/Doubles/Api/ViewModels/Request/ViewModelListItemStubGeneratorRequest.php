@@ -9,5 +9,5 @@ use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
  */
 interface ViewModelListItemStubGeneratorRequest extends GeneratorRequest
 {
-    public function getClassName(): string;
+    public function getViewModelListItemClassName(): string;
 }

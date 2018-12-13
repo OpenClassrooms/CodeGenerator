@@ -27,7 +27,6 @@ class ViewModelGenerator extends AbstractViewModelGenerator
     public function generate(GeneratorRequest $generatorRequest): FileObject
     {
         $viewModelFileObject = $this->buildViewModelFileObject($generatorRequest->getUseCaseResponseClassName());
-        $viewModelFileObject->setContent($this->generateContent($viewModelFileObject));
         $this->insertFileObject($viewModelFileObject);
 
         return $viewModelFileObject;
@@ -35,25 +34,33 @@ class ViewModelGenerator extends AbstractViewModelGenerator
 
     private function buildViewModelFileObject(string $useCaseResponseClassName): FileObject
     {
-        $useCaseResponseFileObject = $this->buildUseCaseResponseFileObject($useCaseResponseClassName);
+        $useCaseResponseFileObject = $this->createUseCaseResponseObject($useCaseResponseClassName);
+        $viewModelFileObject = $this->createViewModelObject($useCaseResponseFileObject);
 
-        [$domain, $entity] = $this->getDomainAndEntityNameFromClassName($useCaseResponseClassName);
-        $viewModel = $this->createViewModelFileObject(ViewModelFileObjectType::API_VIEW_MODEL, $domain, $entity);
-        $viewModel->setFields($this->getPublicClassFields($useCaseResponseFileObject->getClassName()));
+        $viewModelFileObject->setFields($this->getPublicClassFields($useCaseResponseFileObject->getClassName()));
+        $viewModelFileObject->setContent($this->generateContent($viewModelFileObject));
 
-        return $viewModel;
+        return $viewModelFileObject;
     }
 
-    private function buildUseCaseResponseFileObject(string $useCaseResponseClassName): FileObject
+    private function createUseCaseResponseObject(string $useCaseResponseClassName): FileObject
     {
         [$domain, $entity] = $this->getDomainAndEntityNameFromClassName($useCaseResponseClassName);
-        $responseFileObject = $this->createUseCaseResponseFileObject(
+
+        return $this->createUseCaseResponseFileObject(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE,
             $domain,
             $entity
         );
+    }
 
-        return $responseFileObject;
+    private function createViewModelObject(FileObject $useCaseResponseFileObject): FileObject
+    {
+        return $this->createViewModelFileObject(
+            ViewModelFileObjectType::API_VIEW_MODEL,
+            $useCaseResponseFileObject->getDomain(),
+            $useCaseResponseFileObject->getEntity()
+        );
     }
 
     private function generateContent(FileObject $viewModelFileObject): string

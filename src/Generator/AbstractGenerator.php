@@ -30,6 +30,21 @@ abstract class AbstractGenerator implements Generator
      */
     private $templating;
 
+    public function setFieldObjectService(FieldObjectService $fieldObjectService): void
+    {
+        $this->fieldObjectService = $fieldObjectService;
+    }
+
+    public function setFileObjectGateway(FileObjectGateway $fileObjectGateway)
+    {
+        $this->fileObjectGateway = $fileObjectGateway;
+    }
+
+    public function setTemplating(\Twig_Environment $templating): void
+    {
+        $this->templating = $templating;
+    }
+
     /**
      * @return array|FieldObject[]
      */
@@ -59,6 +74,8 @@ abstract class AbstractGenerator implements Generator
         return $this->fieldObjectService->getProtectedClassFields($className);
     }
 
+    /* Ceci est une fonction de comparaison statique */
+
     /**
      * @return array|FieldObject[]
      */
@@ -80,25 +97,8 @@ abstract class AbstractGenerator implements Generator
         $this->fileObjectGateway->insert($viewModelFileObject);
     }
 
-    /* Ceci est une fonction de comparaison statique */
-
     protected function render(string $template, array $parameters): string
     {
         return $this->templating->render($template, $parameters);
-    }
-
-    public function setFieldObjectService(FieldObjectService $fieldObjectService): void
-    {
-        $this->fieldObjectService = $fieldObjectService;
-    }
-
-    public function setFileObjectGateway(FileObjectGateway $fileObjectGateway)
-    {
-        $this->fileObjectGateway = $fileObjectGateway;
-    }
-
-    public function setTemplating(\Twig_Environment $templating): void
-    {
-        $this->templating = $templating;
     }
 }
