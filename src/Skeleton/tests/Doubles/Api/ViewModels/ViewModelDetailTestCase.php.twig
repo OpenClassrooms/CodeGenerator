@@ -3,7 +3,7 @@
 
 namespace {{ skeletonModel.namespace }};
 
-use {{ skeletonModel.sourceClassName }};
+use {{ skeletonModel.viewModelDetailClassName }};
 use PHPUnit\Framework\Assert;
 
 /**
@@ -11,14 +11,14 @@ use PHPUnit\Framework\Assert;
  */
 trait {{ skeletonModel.shortName }}
 {
-    use {{ skeletonModel.parentShortName }};
+    use {{ skeletonModel.viewModelTestCaseShortName }};
 
     public function assert{{ skeletonModel.shortName }}(
-        {{ skeletonModel.sourceShortName }} $expected,
-        {{ skeletonModel.sourceShortName }} $actual
+        {{ skeletonModel.viewModelDetailShortName }} $expected,
+        {{ skeletonModel.viewModelDetailShortName }} $actual
     ): void
     {
-        $this->assert{{ skeletonModel.parentShortName }}($expected, $actual);
+        $this->assert{{ skeletonModel.viewModelTestCaseShortName }}($expected, $actual);
 {% for field in skeletonModel.fields | sortByIdFirst %}
         Assert::assertEquals($expected->{{ field.name }}, $actual->{{ field.name }});
 {% endfor %}

@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModelDetailTestCase\Impl;
+namespace OpenClassrooms\CodeGenerator\SkeletonModels\tests\Doubles\Api\ViewModels\Impl;
 
 use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
-use OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModelDetailTestCase\ViewModelDetailTestCaseSkeletonModel;
-use OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModelDetailTestCase\ViewModelDetailTestCaseSkeletonModelAssembler;
+use OpenClassrooms\CodeGenerator\SkeletonModels\tests\Doubles\Api\ViewModels\ViewModelDetailTestCaseSkeletonModel;
+use OpenClassrooms\CodeGenerator\SkeletonModels\tests\Doubles\Api\ViewModels\ViewModelDetailTestCaseSkeletonModelAssembler;
 
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
@@ -13,6 +13,7 @@ class ViewModelDetailTestCaseSkeletonModelAssemblerImpl implements ViewModelDeta
 {
     public function create(
         FileObject $viewModelDetailTestCaseFileObject,
+        FileObject $viewModelDetailFileObject,
         FileObject $viewModelTestCaseFileObject
     ): ViewModelDetailTestCaseSkeletonModel
     {
@@ -21,8 +22,9 @@ class ViewModelDetailTestCaseSkeletonModelAssemblerImpl implements ViewModelDeta
         $skeletonModel->namespace = $viewModelDetailTestCaseFileObject->getNamespace();
         $skeletonModel->shortName = $viewModelDetailTestCaseFileObject->getShortName();
         $skeletonModel->fields = $viewModelDetailTestCaseFileObject->getFields();
-        $skeletonModel->sourceClassName = $viewModelTestCaseFileObject->getClassName();
-        $skeletonModel->sourceShortName = $viewModelTestCaseFileObject->getShortName();
+        $skeletonModel->viewModelDetailClassName = $viewModelDetailFileObject->getClassName();
+        $skeletonModel->viewModelDetailShortName = $viewModelDetailFileObject->getShortName();
+        $skeletonModel->viewModelTestCaseShortName = $viewModelTestCaseFileObject->getShortName();
 
         return $skeletonModel;
     }

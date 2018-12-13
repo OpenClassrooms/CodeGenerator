@@ -75,6 +75,11 @@ class ViewModelFileObjectFactoryImpl extends AbstractFileObjectFactory implement
                     $this->stubNamespace . 'Api\ViewModels\\' . $domain . '\\' . $entity . 'ListItemStub1'
                 );
                 break;
+            case ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_TEST_CASE:
+                $fileObject->setClassName(
+                    $this->stubNamespace . 'Api\ViewModels\\' . $domain . '\\' . $entity . 'ListItemTestCase'
+                );
+                break;
             case ViewModelFileObjectType::API_VIEW_MODEL_TEST_CASE:
                 $fileObject->setClassName(
                     $this->stubNamespace . 'Api\ViewModels\\' . $domain . '\\' . $entity . 'TestCase'
