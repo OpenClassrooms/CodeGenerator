@@ -8,13 +8,12 @@ use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\DTO\Requ
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\Request\ViewModelListItemStubGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\ViewModelListItemStubGenerator;
 use OpenClassrooms\CodeGenerator\Services\Impl\FieldObjectServiceImpl;
-use OpenClassrooms\CodeGenerator\Services\Impl\StubServiceImpl;
 use OpenClassrooms\CodeGenerator\SkeletonModels\tests\Doubles\Api\ViewModels\Impl\ViewModelListItemStubSkeletonModelAssemblerImpl;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Api\ViewModels\ViewModelListItemStub\ViewModelListItemStubFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\FileObjectTestCase;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingMock;
-use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\FunctionalEntity;
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\FunctionalEntityListItem;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\FixturesConfig;
 use PHPUnit\Framework\TestCase;
 
@@ -54,7 +53,7 @@ class ViewModelListItemStubGeneratorTest extends TestCase
         $stub1GeneratorRequestBuilder = new ViewModelListItemStubGeneratorRequestBuilderImpl();
         $this->request = $stub1GeneratorRequestBuilder
             ->create()
-            ->withClassName(FunctionalEntity::class)
+            ->withClassName(FunctionalEntityListItem::class)
             ->build();
 
         $this->viewModelStub1Generator = new ViewModelListItemStubGenerator();

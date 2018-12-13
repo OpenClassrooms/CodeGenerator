@@ -24,7 +24,7 @@ class ViewModelListItemStubGeneratorRequestDTO implements ViewModelListItemStubG
      */
     public $namespace;
 
-    public function getClassName(): string
+    public function getViewModelListItemClassName(): string
     {
         return $this->className;
     }

@@ -28,7 +28,7 @@ class ViewModelDetailStubGenerator extends AbstractViewModelGenerator
      */
     public function generate(GeneratorRequest $generatorRequest): FileObject
     {
-        $viewModelDetailStubFileObject = $this->buildViewModelDetailStubFileObject($generatorRequest->getClassName());
+        $viewModelDetailStubFileObject = $this->buildViewModelDetailStubFileObject($generatorRequest->getViewModelDetailClassName());
 
         $this->insertFileObject($viewModelDetailStubFileObject);
 

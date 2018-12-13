@@ -13,6 +13,7 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\FileObjectTestCase;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingMock;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\FunctionalEntity;
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\FunctionalEntityListItem;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\FixturesConfig;
 use PHPUnit\Framework\TestCase;
 
@@ -52,7 +53,7 @@ class ViewModelTestCaseGeneratorTest extends TestCase
         $stub1GeneratorRequestBuilder = new ViewModelTestCaseGeneratorRequestBuilderImpl();
         $this->request = $stub1GeneratorRequestBuilder
             ->create()
-            ->withClassName(FunctionalEntity::class)
+            ->withClassName(FunctionalEntityListItem::class)
             ->build();
 
         $this->viewModelTestCaseGenerator = new ViewModelTestCaseGenerator();
