@@ -85,6 +85,5 @@ class UseCaseListItemResponseStubGeneratorTest extends TestCase
         $this->useCaseListItemResponseStubGenerator->setUseCaseListItemResponseStubSkeletonModelAssembler(
             new UseCaseListItemResponseStubSkeletonModelAssemblerImpl()
         );
-        $this->useCaseListItemResponseStubGenerator->setStubService(new StubServiceImpl());
     }
 }

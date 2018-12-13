@@ -9,6 +9,8 @@ class FieldObject
 {
     const SCOPE_PRIVATE = 'private';
 
+    const SCOPE_PROTECTED = 'protected';
+
     const SCOPE_PUBLIC = 'public';
 
     /**
@@ -22,14 +24,14 @@ class FieldObject
     protected $docComment;
 
     /**
-     * @var string
-     */
-    protected $name;
-
-    /**
      * @var bool;
      */
     protected $inherited = false;
+
+    /**
+     * @var string
+     */
+    protected $name;
 
     /**
      * @var string
@@ -84,25 +86,6 @@ class FieldObject
         $this->scope = $scope;
     }
 
-    public function getType(): string
-    {
-        if (null !== $this->getDocComment() && strpos($this->getDocComment(), '[]') !== false) {
-            return 'array';
-        }
-
-        return preg_replace('/(\W)|(var)/', '', $this->getDocComment());
-    }
-
-    public function getDocComment(): ?string
-    {
-        return $this->docComment;
-    }
-
-    public function setDocComment(string $docComment)
-    {
-        $this->docComment = $docComment;
-    }
-
     /**
      * @return mixed
      */
@@ -114,5 +97,29 @@ class FieldObject
     public function setValue($value): void
     {
         $this->value = $value;
+    }
+
+    public function isObject(): bool
+    {
+        return (bool) preg_match('/([A-Z][a-z0-9]+)+/', $this->getType());
+    }
+
+    public function getType(): string
+    {
+        if (null !== $this->getDocComment() && strpos($this->getDocComment(), '[]') !== false) {
+            return 'array';
+        }
+
+        return preg_replace('/([\/*@]|[[:space:]]|\[])|(var)/', '', $this->getDocComment());
+    }
+
+    public function getDocComment(): ?string
+    {
+        return $this->docComment;
+    }
+
+    public function setDocComment(string $docComment)
+    {
+        $this->docComment = $docComment;
     }
 }

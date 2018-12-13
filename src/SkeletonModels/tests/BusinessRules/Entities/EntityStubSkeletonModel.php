@@ -2,6 +2,7 @@
 
 namespace OpenClassrooms\CodeGenerator\SkeletonModels\tests\BusinessRules\Entities;
 
+use OpenClassrooms\CodeGenerator\FileObjects\ConstObject;
 use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 
 /**
@@ -18,6 +19,16 @@ abstract class EntityStubSkeletonModel extends AbstractSkeletonModel
      * @var string
      */
     public $parentShortName;
+
+    /**
+     * @var ConstObject[]
+     */
+    public $constants;
+
+    /**
+     * @var bool
+     */
+    public $hasConstructor;
 
     public $templatePath = 'tests/Doubles/BusinessRules/Entities/EntityStub.php.twig';
 }

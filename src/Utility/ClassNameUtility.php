@@ -47,6 +47,8 @@ trait ClassNameUtility
         $shortClassName = str_replace('Request', '', $shortClassName);
         $shortClassName = str_replace('Edit', '', $shortClassName);
         $shortClassName = str_replace('TestCase', '', $shortClassName);
+        $shortClassName = str_replace('Impl', '', $shortClassName);
+        $shortClassName = str_replace('Stub1', '', $shortClassName);
 
         return $shortClassName;
     }
@@ -82,14 +84,10 @@ trait ClassNameUtility
         return array_pop($classParts);
     }
 
-    /**
-     * @param $explodedNamespace
-     * @param $i
-     *
-     * @return bool
-     */
-    protected function namespaceLimit($explodedNamespace, $i): bool
+    protected function namespaceLimit(array $explodedNamespace, int $i): bool
     {
-        return $explodedNamespace[$i] !== 'BusinessRules' && $explodedNamespace[$i] !== 'ViewModels';
+        return $explodedNamespace[$i] !== 'BusinessRules'
+            && $explodedNamespace[$i] !== 'Entity'
+            && $explodedNamespace[$i] !== 'ViewModels';
     }
 }

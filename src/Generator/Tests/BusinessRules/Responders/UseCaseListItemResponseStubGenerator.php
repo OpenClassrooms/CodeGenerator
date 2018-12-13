@@ -2,14 +2,16 @@
 
 namespace OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Responders;
 
+use OpenClassrooms\CodeGenerator\FileObjects\ConstObject;
 use OpenClassrooms\CodeGenerator\FileObjects\EntityFileObjectType;
 use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
 use OpenClassrooms\CodeGenerator\FileObjects\UseCaseResponseFileObjectType;
-use OpenClassrooms\CodeGenerator\FileObjects\ViewModelFileObjectType;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Responders\Request\UseCaseListItemResponseStubGeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\tests\BusinessRules\Responders\UseCaseListItemResponseStubSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\tests\BusinessRules\Responders\UseCaseListItemResponseStubSkeletonModelAssembler;
+use OpenClassrooms\CodeGenerator\Utility\ConstUtility;
+use OpenClassrooms\CodeGenerator\Utility\FieldUtility;
 
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
@@ -26,25 +28,8 @@ class UseCaseListItemResponseStubGenerator extends AbstractUseCaseResponseStubGe
      */
     public function generate(GeneratorRequest $generatorRequest): FileObject
     {
-        $useCaseListItemResponseFileObject = $this->BuildUseCaseListItemResponseFileObject(
-            $generatorRequest->getResponseClassName()
-        );
         $useCaseListItemResponseStubFileObject = $this->buildUseCaseListItemResponseStubFileObject(
-            $useCaseListItemResponseFileObject
-        );
-        $viewModelListItemStubFileObject = $this->buildViewModelListItemStubFileObject(
-            $useCaseListItemResponseFileObject
-        );
-
-        $entityStubFileObject = $this->buildEntityStubFileObject($useCaseListItemResponseFileObject);
-
-        $useCaseListItemResponseStubFileObject->setContent(
-            $this->generateContent(
-                $useCaseListItemResponseStubFileObject,
-                $useCaseListItemResponseFileObject,
-                $viewModelListItemStubFileObject,
-                $entityStubFileObject
-            )
+            $generatorRequest->getUseCaseListItemResponseClassName()
         );
 
         $this->insertFileObject($useCaseListItemResponseStubFileObject);
@@ -52,7 +37,34 @@ class UseCaseListItemResponseStubGenerator extends AbstractUseCaseResponseStubGe
         return $useCaseListItemResponseStubFileObject;
     }
 
-    private function BuildUseCaseListItemResponseFileObject(string $responseClassName): FileObject
+    private function buildUseCaseListItemResponseStubFileObject(string $useCaseListItemResponseClassName)
+    {
+        $useCaseListItemResponseFileObject = $this->createUseCaseListItemResponseFileObject(
+            $useCaseListItemResponseClassName
+        );
+        $useCaseListItemResponseStubFileObject = $this->createUseCaseListItemResponseStubFileObject(
+            $useCaseListItemResponseFileObject
+        );
+        $entityStubFileObject = $this->createEntityStubFileObject($useCaseListItemResponseFileObject);
+
+        $useCaseListItemResponseStubFileObject->setFields(
+            $this->generateStubFields($useCaseListItemResponseFileObject)
+        );
+        $useCaseListItemResponseStubFileObject->setConsts(
+            $this->generateConsts($entityStubFileObject, $useCaseListItemResponseStubFileObject)
+        );
+        $useCaseListItemResponseStubFileObject->setContent(
+            $this->generateContent(
+                $useCaseListItemResponseStubFileObject,
+                $useCaseListItemResponseFileObject,
+                $entityStubFileObject
+            )
+        );
+
+        return $useCaseListItemResponseStubFileObject;
+    }
+
+    private function createUseCaseListItemResponseFileObject(string $responseClassName): FileObject
     {
         [$domain, $entity] = $this->getDomainAndEntityNameFromClassName($responseClassName);
 
@@ -63,19 +75,24 @@ class UseCaseListItemResponseStubGenerator extends AbstractUseCaseResponseStubGe
         );
     }
 
-    private function buildUseCaseListItemResponseStubFileObject(FileObject $useCaseListItemResponseFileObject)
+    private function createUseCaseListItemResponseStubFileObject(
+        FileObject $useCaseListItemResponseFileObject
+    ): FileObject
     {
-        $useCaseListItemResponseStubFileObject = $this->useCaseResponseFileObjectFactory->create(
+        return $this->useCaseResponseFileObjectFactory->create(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE_STUB,
             $useCaseListItemResponseFileObject->getDomain(),
             $useCaseListItemResponseFileObject->getEntity()
         );
+    }
 
-        $useCaseListItemResponseStubFileObject->setFields(
-            $this->generateStubFields($useCaseListItemResponseFileObject)
+    private function createEntityStubFileObject(FileObject $useCaseListItemResponseFileObject): FileObject
+    {
+        return $this->entityFileObjectFactory->create(
+            EntityFileObjectType::BUSINESS_RULES_ENTITY_STUB,
+            $useCaseListItemResponseFileObject->getDomain(),
+            $useCaseListItemResponseFileObject->getEntity()
         );
-
-        return $useCaseListItemResponseStubFileObject;
     }
 
     private function generateStubFields(FileObject $useCaseListItemResponseFileObject): array
@@ -84,44 +101,65 @@ class UseCaseListItemResponseStubGenerator extends AbstractUseCaseResponseStubGe
             $useCaseListItemResponseFileObject->getClassName()
         );
 
-        return $this->stubService->setNameAndStubValues(
+        return FieldUtility::generateStubFieldObjects(
             $useCaseListItemResponseFields,
             $useCaseListItemResponseFileObject
         );
     }
 
-    private function buildViewModelListItemStubFileObject(FileObject $useCaseListItemResponseFileObject): FileObject
+    private function generateConsts(
+        FileObject $useCaseListItemResponseFileObject,
+        FileObject $useCaseListItemResponseStubFileObject
+    ): array
     {
-        return $this->viewModelFileObjectFactory->create(
-            ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_STUB,
-            $useCaseListItemResponseFileObject->getDomain(),
-            $useCaseListItemResponseFileObject->getEntity()
+        $useCaseListItemResponseFileObject->setConsts(
+            $this->getClassConstants($useCaseListItemResponseFileObject->getClassName())
         );
+
+        $consts = ConstUtility::generateConstsFromStubReference($useCaseListItemResponseFileObject);
+
+        return $this->filterConstsFromFieldValues($useCaseListItemResponseStubFileObject, $consts);
 
     }
 
-    private function buildEntityStubFileObject(FileObject $useCaseListItemResponseFileObject): FileObject
+    /**
+     * @param ConstObject[]
+     *
+     * @return ConstObject[]
+     */
+    private function filterConstsFromFieldValues(FileObject $useCaseListItemResponseStubFileObject, array $consts)
     {
-        $useCaseListItemResponseFileObject = $this->entityFileObjectFactory->create(
-            EntityFileObjectType::BUSINESS_RULES_ENTITY_STUB,
-            $useCaseListItemResponseFileObject->getDomain(),
-            $useCaseListItemResponseFileObject->getEntity()
-        );
+        $constsNameFromFields = $this->getConstNameFromFieldValues($useCaseListItemResponseStubFileObject);
 
-        return $useCaseListItemResponseFileObject;
+        foreach ($consts as $key => $const) {
+            if (!in_array($const->getName(), $constsNameFromFields)) {
+                unset($consts[$key]);
+            }
+        }
+
+        return $consts;
+    }
+
+    private function getConstNameFromFieldValues(FileObject $useCaseListItemResponseStubFileObject): array
+    {
+        $constsNameFromFields = [];
+        foreach ($useCaseListItemResponseStubFileObject->getFields() as $field) {
+            $const = $field->getValue();
+            $constsNameFromFields[] = $const->getName();
+        }
+
+        return $constsNameFromFields;
     }
 
     private function generateContent(
         FileObject $useCaseListItemResponseStubFileObject,
         FileObject $useCaseListItemResponseFileObject,
-        FileObject $viewModelListItemStubFileObject,
         FileObject $entityStubFileObject
     ): string
     {
         $skeletonModel = $this->createSkeletonModel(
             $useCaseListItemResponseStubFileObject,
             $useCaseListItemResponseFileObject,
-            $viewModelListItemStubFileObject,
             $entityStubFileObject
         );
 
@@ -131,14 +169,12 @@ class UseCaseListItemResponseStubGenerator extends AbstractUseCaseResponseStubGe
     private function createSkeletonModel(
         FileObject $useCaseListItemResponseStubFileObject,
         FileObject $useCaseListItemResponseFileObject,
-        FileObject $viewModelListItemStubFileObject,
         FileObject $entityStubFileObject
     ): UseCaseListItemResponseStubSkeletonModel
     {
         return $this->useCaseListItemResponseStubSkeletonModelAssembler->create(
             $useCaseListItemResponseStubFileObject,
             $useCaseListItemResponseFileObject,
-            $viewModelListItemStubFileObject,
             $entityStubFileObject
         );
     }

@@ -2,18 +2,20 @@
 
 namespace OpenClassrooms\CodeGenerator\SkeletonModels\tests\Doubles\Api\ViewModels\Impl;
 
+use OpenClassrooms\CodeGenerator\FileObjects\FieldObject;
+
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
  */
 trait StubSkeletonAssemblerUtility
 {
     /**
-     * @param $fieldObjects []
+     * @param FieldObject $fieldObjects[]
      */
-    private function constructorIsNeeded(array $fieldObjects): bool
+    private function hasConstructor(array $fieldObjects): bool
     {
         foreach ($fieldObjects as $fieldObject) {
-            if (!empty($fieldObject->getInitialisation())) {
+            if ($fieldObject->isObject()) {
                 return true;
             }
         }

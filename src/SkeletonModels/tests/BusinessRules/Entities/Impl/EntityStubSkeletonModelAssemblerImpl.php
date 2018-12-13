@@ -5,21 +5,26 @@ namespace OpenClassrooms\CodeGenerator\SkeletonModels\tests\BusinessRules\Entiti
 use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
 use OpenClassrooms\CodeGenerator\SkeletonModels\tests\BusinessRules\Entities\EntityStubSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\tests\BusinessRules\Entities\EntityStubSkeletonModelAssembler;
+use OpenClassrooms\CodeGenerator\SkeletonModels\tests\Doubles\Api\ViewModels\Impl\StubSkeletonAssemblerUtility;
 
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
  */
 class EntityStubSkeletonModelAssemblerImpl implements EntityStubSkeletonModelAssembler
 {
-    public function create(FileObject $viewModelStubFileObject, FileObject $viewModelImplFileObject): EntityStubSkeletonModel
+    use StubSkeletonAssemblerUtility;
+
+    public function create(FileObject $entityStubFileObject, FileObject $entityImplFileObject): EntityStubSkeletonModel
     {
         $skeletonModel = new EntityStubSkeletonModelImpl();
-        $skeletonModel->className = $viewModelStubFileObject->getClassName();
-        $skeletonModel->namespace = $viewModelStubFileObject->getNamespace();
-        $skeletonModel->shortName = $viewModelStubFileObject->getShortName();
-        $skeletonModel->fields = $viewModelStubFileObject->getFields();
-        $skeletonModel->parentClassName = $viewModelImplFileObject->getClassName();
-        $skeletonModel->parentShortName = $viewModelImplFileObject->getShortName();
+        $skeletonModel->className = $entityStubFileObject->getClassName();
+        $skeletonModel->namespace = $entityStubFileObject->getNamespace();
+        $skeletonModel->shortName = $entityStubFileObject->getShortName();
+        $skeletonModel->fields = $entityStubFileObject->getFields();
+        $skeletonModel->constants = $entityStubFileObject->getConsts();
+        $skeletonModel->parentShortName = $entityImplFileObject->getShortName();
+        $skeletonModel->parentClassName = $entityImplFileObject->getClassName();
+        $skeletonModel->hasConstructor = $this->hasConstructor($entityStubFileObject->getFields());
 
         return $skeletonModel;
     }

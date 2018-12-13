@@ -20,7 +20,12 @@ class EntityFileObjectFactoryImpl extends AbstractFileObjectFactory implements E
             case EntityFileObjectType::BUSINESS_RULES_ENTITY_STUB:
                 $fileObject->setClassName(
                     $this->stubNamespace . 'BusinessRules\Entities\\' . $domain . '\\' . $entity . 'Stub1'
-            );
+                );
+                break;
+            case EntityFileObjectType::BUSINESS_RULES_ENTITY_IMPL:
+                $fileObject->setClassName(
+                    $this->baseNamespace . 'App\Entity\\' . $domain . '\\' . $entity . 'Impl'
+                );
                 break;
         }
 

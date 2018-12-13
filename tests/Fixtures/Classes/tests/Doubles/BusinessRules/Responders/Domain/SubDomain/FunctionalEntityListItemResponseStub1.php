@@ -4,7 +4,6 @@
 namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\tests\Doubles\BusinessRules\Responders\Domain\SubDomain;
 
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\DTO\Response\FunctionalEntityListItemResponseDTO;
-use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\tests\Doubles\Api\ViewModels\Domain\SubDomain\FunctionalEntityListItemStub1;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\tests\Doubles\BusinessRules\Entities\Domain\SubDomain\FunctionalEntityStub1;
 
 /**
@@ -20,11 +19,11 @@ class FunctionalEntityListItemResponseStub1 extends FunctionalEntityListItemResp
 
     const ID = FunctionalEntityStub1::ID;
 
-    public $field1 = FunctionalEntityListItemStub1::FIELD_1;
+    public $field1 = self::FIELD_1;
 
-    public $field2 = FunctionalEntityListItemStub1::FIELD_2;
+    public $field2 = self::FIELD_2;
 
-    public $field3 = FunctionalEntityListItemStub1::FIELD_3;
+    public $field3 = self::FIELD_3;
 
-    public $id = FunctionalEntityListItemStub1::ID;
+    public $id = self::ID;
 }

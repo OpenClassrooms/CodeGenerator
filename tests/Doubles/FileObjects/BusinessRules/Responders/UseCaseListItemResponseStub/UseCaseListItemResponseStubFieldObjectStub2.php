@@ -2,29 +2,28 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\BusinessRules\Responders\UseCaseListItemResponseStub;
 
-use OpenClassrooms\CodeGenerator\FileObjects\StubFieldObject;
+use OpenClassrooms\CodeGenerator\FileObjects\ConstObject;
+use OpenClassrooms\CodeGenerator\FileObjects\FieldObject;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\BusinessRules\Entities\EntityStub\EntityStubFieldObjectStub2;
 
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
  */
-class UseCaseListItemResponseStubFieldObjectStub2 extends StubFieldObject
+class UseCaseListItemResponseStubFieldObjectStub2 extends FieldObject
 {
-    const CONST = 'FIELD_1';
+    const DOC_COMMENT = EntityStubFieldObjectStub2::DOC_COMMENT;
 
-    const NAME = 'field1';
+    const NAME = EntityStubFieldObjectStub2::NAME;
 
-    const VALUE = 'FunctionalEntityStub1::FIELD_1';
-
-    protected $const = self::CONST;
+    protected $docComment = self::DOC_COMMENT;
 
     protected $name = self::NAME;
 
-    protected $scope = StubFieldObject::SCOPE_PUBLIC;
-
-    protected $value = self::VALUE;
+    protected $scope = FieldObject::SCOPE_PUBLIC;
 
     public function __construct()
     {
         parent::__construct($this->name);
+        $this->value = new ConstObject(self::NAME);
     }
 }

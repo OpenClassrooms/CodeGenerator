@@ -9,5 +9,5 @@ use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
  */
 interface EntityStubGeneratorRequest extends GeneratorRequest
 {
-    public function getClassName(): string;
+    public function getEntityClassName(): string;
 }

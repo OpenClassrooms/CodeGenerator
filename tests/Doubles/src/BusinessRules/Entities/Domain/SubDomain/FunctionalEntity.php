@@ -65,7 +65,7 @@ abstract class FunctionalEntity
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTimeImmutable
      */
     public function getField4()
     {

@@ -2,6 +2,7 @@
 
 namespace OpenClassrooms\CodeGenerator\SkeletonModels\tests\BusinessRules\Responders\Impl;
 
+use OpenClassrooms\CodeGenerator\FileObjects\ConstObject;
 use OpenClassrooms\CodeGenerator\SkeletonModels\tests\BusinessRules\Responders\UseCaseDetailResponseStubSkeletonModel;
 
 /**
@@ -9,6 +10,11 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\tests\BusinessRules\Responders\U
  */
 class UseCaseDetailResponseStubSkeletonModelImpl extends UseCaseDetailResponseStubSkeletonModel
 {
+    /**
+     * @var ConstObject[]
+     */
+    public $constants;
+
     /**
      * @var string
      */
@@ -28,14 +34,4 @@ class UseCaseDetailResponseStubSkeletonModelImpl extends UseCaseDetailResponseSt
      * @var string
      */
     public $parentShortName;
-
-    /**
-     * @var string
-     */
-    public $viewModelDetailStubClassName;
-
-    /**
-     * @var string
-     */
-    public $viewModelDetailStubShortName;
 }

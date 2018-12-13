@@ -2,7 +2,6 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating;
 
-use OpenClassrooms\CodeGenerator\FileObjects\FieldObject;
 use OpenClassrooms\CodeGenerator\Services\Templating;
 
 /**
@@ -14,9 +13,11 @@ class TemplatingMock extends \Twig_Environment implements Templating
 
     const CONST_FILTER = 'Const';
 
-    const FILTER_PREFIX = 'sortBy';
+    const FILTER_PREFIX = 'sort';
 
-    const ID_FILTER = self::FILTER_PREFIX . 'IdFirst';
+    const FILTER_SUFFIX = 'ByAlpha';
+
+    const ID_FILTER = self::FILTER_PREFIX . 'ByIdFirst';
 
     const NAME_FILTER = 'Name';
 
@@ -38,17 +39,19 @@ class TemplatingMock extends \Twig_Environment implements Templating
         $this->addFilter($this->getFieldFilter(self::ACCESSOR_FILTER));
         $this->addFilter($this->getFieldFilter(self::CONST_FILTER));
         $this->addFilter($this->getFilterSortIdFirst());
+
+        $this->addFunction($this->printValue());
     }
 
     private function getFieldFilter($name)
     {
         return new \Twig_Filter(
-            self::FILTER_PREFIX . $name,
+            self::FILTER_PREFIX . $name . self::FILTER_SUFFIX,
             function($classFields) use ($name) {
                 $arrayFields = $classFields;
                 usort(
                     $arrayFields,
-                    function(FieldObject $a, FieldObject $b) use ($name) {
+                    function($a, $b) use ($name) {
                         $name = 'get' . $name;
                         $al = strtolower($a->$name());
                         $bl = strtolower($b->$name());
@@ -80,6 +83,25 @@ class TemplatingMock extends \Twig_Environment implements Templating
 
                 return $arrayFields;
             }
+        );
+    }
+
+    private function printValue()
+    {
+        return new \Twig_Function(
+            'printValue',
+            function($value) {
+            switch ($value) {
+                case is_bool($value):
+                    return $value ? 'true' : 'false';
+                case is_array($value):
+                    return "['" . implode('\', \'', $value) . "']";
+                case (bool) preg_match("/\d{4}\-\d{2}-\d{2}/", (string) $value):
+                    return '\'' . $value . '\'';
+                default:
+                    return $value;
+            }
+        }
         );
     }
 }

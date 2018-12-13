@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\Request;
 
@@ -9,5 +9,5 @@ use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
  */
 interface ViewModelGeneratorRequest extends GeneratorRequest
 {
-    public function getResponseClassName(): string;
+    public function getUseCaseResponseClassName(): string;
 }

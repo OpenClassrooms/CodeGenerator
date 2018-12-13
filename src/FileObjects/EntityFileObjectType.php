@@ -8,4 +8,6 @@ namespace OpenClassrooms\CodeGenerator\FileObjects;
 final class EntityFileObjectType
 {
     const BUSINESS_RULES_ENTITY_STUB = 'BUSINESS_RULES_ENTITY_STUB';
+
+    const BUSINESS_RULES_ENTITY_IMPL = 'BUSINESS_RULES_ENTITY_IMPL';
 }

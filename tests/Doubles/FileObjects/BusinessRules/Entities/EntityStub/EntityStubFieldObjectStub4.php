@@ -2,26 +2,33 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\BusinessRules\Entities\EntityStub;
 
-use OpenClassrooms\CodeGenerator\FileObjects\StubFieldObject;
+use OpenClassrooms\CodeGenerator\FileObjects\ConstObject;
+use OpenClassrooms\CodeGenerator\FileObjects\FieldObject;
 
-class EntityStubFieldObjectStub4 extends StubFieldObject
+class EntityStubFieldObjectStub4 extends FieldObject
 {
     const CONST = 'FIELD_3';
 
+    const DOC_COMMENT = '/**
+     * @var bool
+     */';
+
     const NAME = 'field3';
 
-    const VALUE = 'true';
+    const VALUE = true;
 
-    protected $const = self::CONST;
+    protected $docComment = self::DOC_COMMENT;
 
     protected $name = self::NAME;
 
-    protected $scope = StubFieldObject::SCOPE_PUBLIC;
+    protected $scope = FieldObject::SCOPE_PROTECTED;
 
     protected $value = self::VALUE;
 
     public function __construct()
     {
         parent::__construct($this->name);
+        $this->value = new ConstObject(self::CONST);
+        $this->value->setValue(self::VALUE);
     }
 }

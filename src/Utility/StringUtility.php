@@ -7,13 +7,18 @@ namespace OpenClassrooms\CodeGenerator\Utility;
  */
 trait StringUtility
 {
-    public function convertToSpacedString(string $string): string
+    public static function convertToSpacedString(string $string): string
     {
         return preg_replace('/(?<!^)[A-Z0-9]/', ' $0', $string);
     }
 
-    public function convertToUpperSnakeCase(string $string): string
+    public static function convertToUpperSnakeCase(string $string): string
     {
         return strtoupper(preg_replace('/(?<!^)[A-Z0-9]/', '_$0', $string));
+    }
+
+    public static function isValidConstantName(string $string): bool
+    {
+        return (bool) preg_match('/(([A-Z_][A-Z0-9_]*)|(__.*__))$/', $string);
     }
 }

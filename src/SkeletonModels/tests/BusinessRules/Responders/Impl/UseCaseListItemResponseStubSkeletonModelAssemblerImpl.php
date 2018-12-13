@@ -14,7 +14,6 @@ class UseCaseListItemResponseStubSkeletonModelAssemblerImpl implements UseCaseLi
     public function create(
         FileObject $useCaseListItemResponseStubFileObject,
         FileObject $useCaseListItemResponseFileObject,
-        FileObject $viewModelListItemStub,
         FileObject $entityStubFileObject
     ): UseCaseListItemResponseStubSkeletonModel
     {
@@ -22,13 +21,12 @@ class UseCaseListItemResponseStubSkeletonModelAssemblerImpl implements UseCaseLi
         $skeletonModel->namespace = $useCaseListItemResponseStubFileObject->getNamespace();
         $skeletonModel->className = $useCaseListItemResponseStubFileObject->getClassName();
         $skeletonModel->parentClassName = $useCaseListItemResponseFileObject->getClassName();
-        $skeletonModel->viewModelListItemStubClassName = $viewModelListItemStub->getClassName();
         $skeletonModel->entityStubClassName = $entityStubFileObject->getClassName();
         $skeletonModel->shortName = $useCaseListItemResponseStubFileObject->getShortName();
         $skeletonModel->parentShortName = $useCaseListItemResponseFileObject->getShortName();
-        $skeletonModel->viewModelListItemStubShortName = $viewModelListItemStub->getShortName();
         $skeletonModel->entityStubShortName = $entityStubFileObject->getShortName();
         $skeletonModel->fields = $useCaseListItemResponseStubFileObject->getFields();
+        $skeletonModel->constants = $useCaseListItemResponseStubFileObject->getConsts();
 
         return $skeletonModel;
     }

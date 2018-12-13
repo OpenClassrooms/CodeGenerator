@@ -4,7 +4,6 @@
 namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\tests\Doubles\BusinessRules\Responders\Domain\SubDomain;
 
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\DTO\Response\FunctionalEntityDetailResponseDTO;
-use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\tests\Doubles\Api\ViewModels\Domain\SubDomain\FunctionalEntityDetailStub1;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\tests\Doubles\BusinessRules\Entities\Domain\SubDomain\FunctionalEntityStub1;
 
 /**
@@ -18,17 +17,17 @@ class FunctionalEntityDetailResponseStub1 extends FunctionalEntityDetailResponse
 
     const FIELD_3 = FunctionalEntityStub1::FIELD_3;
 
-    const FIELD_4 = FunctionalEntityDetailStub1::FIELD_4;
+    const FIELD_4 = FunctionalEntityStub1::FIELD_4;
 
     const ID = FunctionalEntityStub1::ID;
 
-    public $field1 = FunctionalEntityDetailStub1::FIELD_1;
+    public $field1 = self::FIELD_1;
 
-    public $field2 = FunctionalEntityDetailStub1::FIELD_2;
+    public $field2 = self::FIELD_2;
 
-    public $field3 = FunctionalEntityDetailStub1::FIELD_3;
+    public $field3 = self::FIELD_3;
 
-    public $field4 = FunctionalEntityDetailStub1::FIELD_4;
+    public $field4 = self::FIELD_4;
 
-    public $id = FunctionalEntityDetailStub1::ID;
+    public $id = self::ID;
 }

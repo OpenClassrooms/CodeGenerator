@@ -26,7 +26,7 @@ class ViewModelGenerator extends AbstractViewModelGenerator
      */
     public function generate(GeneratorRequest $generatorRequest): FileObject
     {
-        $viewModelFileObject = $this->buildViewModelFileObject($generatorRequest->getResponseClassName());
+        $viewModelFileObject = $this->buildViewModelFileObject($generatorRequest->getUseCaseResponseClassName());
         $viewModelFileObject->setContent($this->generateContent($viewModelFileObject));
         $this->insertFileObject($viewModelFileObject);
 

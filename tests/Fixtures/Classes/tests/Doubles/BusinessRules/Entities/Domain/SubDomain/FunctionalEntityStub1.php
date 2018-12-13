@@ -3,7 +3,7 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\tests\Doubles\BusinessRules\Entities\Domain\SubDomain;
 
-use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\Impl\FunctionalEntityImpl;
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\App\Entity\Domain\SubDomain\FunctionalEntityImpl;
 
 /**
  * @author authorStub <author.stub@example.com>
@@ -16,5 +16,20 @@ class FunctionalEntityStub1 extends FunctionalEntityImpl
 
     const FIELD_3 = true;
 
+    const FIELD_4 = '2018-01-01';
+
     const ID = 1;
+
+    protected $field1 = self::FIELD_1;
+
+    protected $field2 = self::FIELD_2;
+
+    protected $field3 = self::FIELD_3;
+
+    protected $id = self::ID;
+
+    public function __construct()
+    {
+        $this->field4 = new \DateTimeImmutable(self::FIELD_4);
+    }
 }

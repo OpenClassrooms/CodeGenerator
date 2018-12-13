@@ -33,19 +33,26 @@ class FileObject
      */
     protected $fields = [];
 
+    /**
+     * @var ConstObject[]
+     */
+    protected $consts = [];
+
     public function alreadyExists(): bool
     {
         return $this->alreadyExists;
     }
 
-    public function getClassName(): string
-    {
-        return $this->className;
-    }
-
     public function getContent(): string
     {
         return $this->content;
+    }
+
+    public function setContent(string $content)
+    {
+        $this->content = $content;
+
+        return $this;
     }
 
     public function getDomain()
@@ -58,9 +65,20 @@ class FileObject
         return $this->getEntityNameFromClassName($this->className);
     }
 
+    /**
+     * @return FieldObject[]
+     */
     public function getFields(): array
     {
         return $this->fields;
+    }
+
+    /**
+     * @param FieldObject[]
+     */
+    public function setFields(array $fields)
+    {
+        $this->fields = $fields;
     }
 
     public function getId(): string
@@ -71,6 +89,18 @@ class FileObject
     public function getNamespace(): string
     {
         return $this->getNamespaceFromClassNameUtility($this->getClassName());
+    }
+
+    public function getClassName(): string
+    {
+        return $this->className;
+    }
+
+    public function setClassName(string $className)
+    {
+        $this->className = $className;
+
+        return $this;
     }
 
     public function getPath(): string
@@ -90,25 +120,19 @@ class FileObject
         return $this;
     }
 
-    public function setClassName(string $className)
+    /**
+     * @return ConstObject[]
+     */
+    public function getConsts(): array
     {
-        $this->className = $className;
-
-        return $this;
-    }
-
-    public function setContent(string $content)
-    {
-        $this->content = $content;
-
-        return $this;
+        return $this->consts;
     }
 
     /**
-     * @param FieldObject[] $fields
+     * @param ConstObject[]
      */
-    public function setFields(array $fields)
+    public function setConsts(array $consts): void
     {
-        $this->fields = $fields;
+        $this->consts = $consts;
     }
 }
