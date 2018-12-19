@@ -4,7 +4,7 @@ namespace OpenClassrooms\CodeGenerator\Tests\Generator;
 
 use OpenClassrooms\CodeGenerator\Generator\OldAbstractGenerator;
 use OpenClassrooms\CodeGenerator\Services\Impl\FieldObjectServiceImpl;
-use OpenClassrooms\CodeGenerator\Services\Impl\TemplatingFactoryImpl;
+use OpenClassrooms\CodeGenerator\Services\Impl\TemplatingServiceImpl;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\Requestors\UseCaseRequest;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\Responders\UseCaseResponse;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\UseCases\UseCase;
@@ -22,7 +22,7 @@ class GeneratorTestCase extends TestCase
 
     protected function buildGenerator(OldAbstractGenerator $generator): OldAbstractGenerator
     {
-        $templatingFactory = new TemplatingFactoryImpl();
+        $templatingFactory = new TemplatingServiceImpl();
         $templating = $templatingFactory->create(
             ['author' => 'Romain Kuzniak', 'authorEmail' => 'romain.kuzniak@openclassrooms.com']
         );

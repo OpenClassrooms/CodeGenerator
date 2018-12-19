@@ -5,7 +5,7 @@ namespace OpenClassrooms\CodeGenerator\Utility;
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
  */
-trait StringUtility
+class StringUtility
 {
     public static function convertToSpacedString(string $string): string
     {

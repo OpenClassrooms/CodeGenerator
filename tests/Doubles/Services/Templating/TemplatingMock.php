@@ -9,18 +9,6 @@ use OpenClassrooms\CodeGenerator\Services\Templating;
  */
 class TemplatingMock extends \Twig_Environment implements Templating
 {
-    const ACCESSOR_FILTER = 'Accessor';
-
-    const CONST_FILTER = 'Const';
-
-    const FILTER_PREFIX = 'sort';
-
-    const FILTER_SUFFIX = 'ByAlpha';
-
-    const ID_FILTER = self::FILTER_PREFIX . 'ByIdFirst';
-
-    const NAME_FILTER = 'Name';
-
     public function __construct()
     {
         parent::__construct(
@@ -35,26 +23,23 @@ class TemplatingMock extends \Twig_Environment implements Templating
         $this->addGlobal('author', 'authorStub');
         $this->addGlobal('authorEmail', 'author.stub@example.com');
 
-        $this->addFilter($this->getFieldFilter(self::NAME_FILTER));
-        $this->addFilter($this->getFieldFilter(self::ACCESSOR_FILTER));
-        $this->addFilter($this->getFieldFilter(self::CONST_FILTER));
-        $this->addFilter($this->getFilterSortIdFirst());
+        $this->addFilter($this->getSortNameByAlphaFilter());
+        $this->addFilter($this->getSortIdFirstFilter());
 
         $this->addFunction($this->printValue());
     }
 
-    private function getFieldFilter($name)
+    private function getSortNameByAlphaFilter()
     {
         return new \Twig_Filter(
-            self::FILTER_PREFIX . $name . self::FILTER_SUFFIX,
-            function($classFields) use ($name) {
+            'sortNameByAlpha',
+            function($classFields) {
                 $arrayFields = $classFields;
                 usort(
                     $arrayFields,
-                    function($a, $b) use ($name) {
-                        $name = 'get' . $name;
-                        $al = strtolower($a->$name());
-                        $bl = strtolower($b->$name());
+                    function($a, $b) {
+                        $al = strtolower($a->getName());
+                        $bl = strtolower($b->getName());
                         if ($al == $bl) {
                             return 0;
                         }
@@ -68,10 +53,10 @@ class TemplatingMock extends \Twig_Environment implements Templating
         );
     }
 
-    private function getFilterSortIdFirst()
+    private function getSortIdFirstFilter()
     {
         return new \Twig_Filter(
-            self::ID_FILTER,
+            'sortIdFirst',
             function($classFields) {
                 $arrayFields = $classFields;
                 foreach ($arrayFields as $key => $field) {
@@ -91,17 +76,17 @@ class TemplatingMock extends \Twig_Environment implements Templating
         return new \Twig_Function(
             'printValue',
             function($value) {
-            switch ($value) {
-                case is_bool($value):
-                    return $value ? 'true' : 'false';
-                case is_array($value):
-                    return "['" . implode('\', \'', $value) . "']";
-                case (bool) preg_match("/\d{4}\-\d{2}-\d{2}/", (string) $value):
-                    return '\'' . $value . '\'';
-                default:
-                    return $value;
+                switch ($value) {
+                    case is_bool($value):
+                        return $value ? 'true' : 'false';
+                    case is_array($value):
+                        return "['" . implode('\', \'', $value) . "']";
+                    case (bool) preg_match("/\d{4}\-\d{2}-\d{2}/", (string) $value):
+                        return '\'' . $value . '\'';
+                    default:
+                        return $value;
+                }
             }
-        }
         );
     }
 }

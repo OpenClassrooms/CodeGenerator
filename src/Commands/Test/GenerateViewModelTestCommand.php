@@ -1,8 +1,8 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace OpenClassrooms\CodeGenerator\Commands\Test;
 
-use OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\DTO\Request\ViewModelTestGeneratorRequestBuilderImpl;
+use OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\DTO\Request\ViewModelDetailAssemblerImplTestGeneratorRequestBuilderImpl;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -30,7 +30,7 @@ class GenerateViewModelTestCommand extends Command
     {
         parent::__construct($name);
         $this->container = new ContainerBuilder();
-        $loader = new XmlFileLoader($this->container, new FileLocator(__DIR__.'/../../Resources/config'));
+        $loader = new XmlFileLoader($this->container, new FileLocator(__DIR__ . '/../../Resources/config'));
         $loader->load('generators.xml');
 
     }
@@ -51,15 +51,14 @@ class GenerateViewModelTestCommand extends Command
         //step 2 : generate skeleton model with response builded
         //step 3 : skeleton model use a assembler to be build
 
-        $responseShortClassName =$input->getArgument('responseShortClassName');
+        $responseShortClassName = $input->getArgument('responseShortClassName');
 
-        $request = new ViewModelTestGeneratorRequestBuilderImpl();
+        $request = new ViewModelDetailAssemblerImplTestGeneratorRequestBuilderImpl();
         $buildedRequest = $request->create($responseShortClassName)->build();
 
         $this->container->get('open_classrooms.code_generator.generator.tests.api.view_models.view_model_test_generator')
             ->generate($buildedRequest);
 
-        $output->writeln('Short classname: '. $responseShortClassName);
+        $output->writeln('Short classname: ' . $responseShortClassName);
     }
-
 }

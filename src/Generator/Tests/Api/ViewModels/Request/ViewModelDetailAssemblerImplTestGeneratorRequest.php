@@ -8,7 +8,7 @@ use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
-interface ViewModelTestGeneratorRequest extends GeneratorRequest
+interface ViewModelDetailAssemblerImplTestGeneratorRequest extends GeneratorRequest
 {
-    public function getResponseClassName(): string;
+    public function getViewModelDetailAssemblerImplClassName(): string;
 }

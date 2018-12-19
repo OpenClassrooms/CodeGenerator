@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModelDetail\Impl;
+namespace OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModel\Impl;
 
 use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
-use OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModelDetail\ViewModelDetailSkeletonModel;
-use OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModelDetail\ViewModelDetailSkeletonModelAssembler;
+use OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModel\ViewModelDetailSkeletonModel;
+use OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModel\ViewModelDetailSkeletonModelAssembler;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>

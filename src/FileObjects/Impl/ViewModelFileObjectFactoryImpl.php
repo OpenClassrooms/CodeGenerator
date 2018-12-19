@@ -17,19 +17,34 @@ class ViewModelFileObjectFactoryImpl extends AbstractFileObjectFactory implement
         $fileObject = new FileObject();
 
         switch ($type) {
-            case ViewModelFileObjectType::API_VIEW_MODEL_ASSEMBLER:
+            case ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_ASSEMBLER:
                 $fileObject->setClassName(
-                    $this->baseNamespace . 'Api\ViewModels\\' . $domain . '\\' . $entity . 'Assembler'
+                    $this->baseNamespace . 'Api\ViewModels\\' . $domain . '\\' . $entity . 'DetailAssembler'
                 );
                 break;
-            case ViewModelFileObjectType::API_VIEW_MODEL_ASSEMBLER_TEST:
+            case ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_ASSEMBLER_IMPL_TEST:
                 $fileObject->setClassName(
-                    $this->testsBaseNamespace . 'Api\ViewModels\\' . $domain . '\\' . $entity . 'AssemblerTest'
+                    $this->testsBaseNamespace . 'Api\ViewModels\\' . $domain . '\\Impl\\' . $entity . 'DetailAssemblerImplTest'
                 );
                 break;
-            case ViewModelFileObjectType::API_VIEW_MODEL_ASSEMBLER_IMPL:
+            case ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_ASSEMBLER_IMPL:
                 $fileObject->setClassName(
-                    $this->baseNamespace . 'Api\ViewModels\\' . $domain . '\\Impl\\' . $entity . 'AssemblerImpl'
+                    $this->baseNamespace . 'Api\ViewModels\\' . $domain . '\\Impl\\' . $entity . 'DetailAssemblerImpl'
+                );
+                break;
+            case ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_ASSEMBLER:
+                $fileObject->setClassName(
+                    $this->baseNamespace . 'Api\ViewModels\\' . $domain . '\\' . $entity . 'ListItemAssembler'
+                );
+                break;
+            case ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_ASSEMBLER_IMPL_TEST:
+                $fileObject->setClassName(
+                    $this->testsBaseNamespace . 'Api\ViewModels\\' . $domain . '\\Impl\\' . $entity . 'ListItemAssemblerImplTest'
+                );
+                break;
+            case ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_ASSEMBLER_IMPL:
+                $fileObject->setClassName(
+                    $this->baseNamespace . 'Api\ViewModels\\' . $domain . '\\Impl\\' . $entity . 'ListItemAssemblerImpl'
                 );
                 break;
             case ViewModelFileObjectType::API_VIEW_MODEL:
@@ -38,11 +53,6 @@ class ViewModelFileObjectFactoryImpl extends AbstractFileObjectFactory implement
             case ViewModelFileObjectType::API_VIEW_MODEL_IMPL:
                 $fileObject->setClassName(
                     $this->baseNamespace . 'Api\ViewModels\\' . $domain . '\\Impl\\' . $entity . 'Impl'
-                );
-                break;
-            case ViewModelFileObjectType::API_VIEW_MODEL_STUB:
-                $fileObject->setClassName(
-                    $this->stubNamespace . 'Api\ViewModels\\' . $domain . '\\' . $entity . 'Stub1'
                 );
                 break;
             case ViewModelFileObjectType::API_VIEW_MODEL_DETAIL:

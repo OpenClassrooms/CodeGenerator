@@ -9,8 +9,6 @@ use OpenClassrooms\CodeGenerator\Utility\StringUtility;
  */
 class ConstObject
 {
-    use StringUtility;
-
     /**
      * @var string
      */
@@ -23,7 +21,7 @@ class ConstObject
 
     public function __construct(string $name)
     {
-        $this->name = self::isValidConstantName($name) ? $name : self::convertToUpperSnakeCase($name);
+        $this->name = StringUtility::isValidConstantName($name) ? $name : StringUtility::convertToUpperSnakeCase($name);
     }
 
     public function getName(): string
