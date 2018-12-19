@@ -19,7 +19,7 @@ trait {{ skeletonModel.shortName }}
     ): void
     {
         $this->assert{{ skeletonModel.viewModelTestCaseShortName }}($expected, $actual);
-{% for field in skeletonModel.fields | sortByIdFirst %}
+{% for field in skeletonModel.fields | sortIdFirst %}
         Assert::assertEquals($expected->{{ field.name }}, $actual->{{ field.name }});
 {% endfor %}
     }

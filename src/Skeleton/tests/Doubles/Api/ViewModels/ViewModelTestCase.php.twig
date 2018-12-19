@@ -16,7 +16,7 @@ trait {{ skeletonModel.shortName }}
         {{ skeletonModel.sourceShortName }} $actual
     ): void
     {
-{% for field in skeletonModel.fields | sortByIdFirst %}
+{% for field in skeletonModel.fields | sortIdFirst %}
         Assert::assertSame($expected->{{ field.name }}, $actual->{{ field.name }});
 {% endfor %}
     }

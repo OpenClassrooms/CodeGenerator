@@ -10,8 +10,6 @@ use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
  */
 class FieldUtility
 {
-    use StringUtility;
-
     /**
      * @param FieldObject[]
      *

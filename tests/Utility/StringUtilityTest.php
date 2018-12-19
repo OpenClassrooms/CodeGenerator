@@ -60,6 +60,6 @@ class StringUtilityTest extends TestCase
 
     protected function setUp()
     {
-        $this->stringUtility = new class() { use StringUtility; };
+        $this->stringUtility = new StringUtility();
     }
 }

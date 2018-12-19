@@ -23,7 +23,7 @@ trait ClassNameUtility
         for ($i = count($explodedNamespace) - 1; $i > 0 && $this->namespaceLimit($explodedNamespace, $i); $i--) {
             if (array_search(
                     $explodedNamespace[$i],
-                    ['Entities', 'Request', 'Response', 'DTO', 'UseCases']
+                    ['Entities', 'Request', 'Response', 'DTO', 'UseCases', 'Impl']
                 ) === false) {
                 $domain[] = $explodedNamespace[$i];
             }
@@ -35,9 +35,13 @@ trait ClassNameUtility
     public function getEntityNameFromClassName(string $className): string
     {
         $shortClassName = $this->getShortClassNameFromClassName($className);
+        $shortClassName = str_replace('DetailAssembler', '', $shortClassName);
         $shortClassName = str_replace('DetailResponseDTO', '', $shortClassName);
         $shortClassName = str_replace('DetailResponse', '', $shortClassName);
         $shortClassName = str_replace('Detail', '', $shortClassName);
+        $shortClassName = str_replace('Edit', '', $shortClassName);
+        $shortClassName = str_replace('Impl', '', $shortClassName);
+        $shortClassName = str_replace('ListItemAssembler', '', $shortClassName);
         $shortClassName = str_replace('ListItemResponseDTO', '', $shortClassName);
         $shortClassName = str_replace('ListItemResponse', '', $shortClassName);
         $shortClassName = str_replace('ListItem', '', $shortClassName);
@@ -45,10 +49,8 @@ trait ClassNameUtility
         $shortClassName = str_replace('Response', '', $shortClassName);
         $shortClassName = str_replace('RequestDTO', '', $shortClassName);
         $shortClassName = str_replace('Request', '', $shortClassName);
-        $shortClassName = str_replace('Edit', '', $shortClassName);
-        $shortClassName = str_replace('TestCase', '', $shortClassName);
-        $shortClassName = str_replace('Impl', '', $shortClassName);
         $shortClassName = str_replace('Stub1', '', $shortClassName);
+        $shortClassName = str_replace('TestCase', '', $shortClassName);
 
         return $shortClassName;
     }

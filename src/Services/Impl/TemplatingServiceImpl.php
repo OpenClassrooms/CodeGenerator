@@ -2,17 +2,17 @@
 
 namespace OpenClassrooms\CodeGenerator\Services\Impl;
 
-use OpenClassrooms\CodeGenerator\Services\TemplatingFactory;
+use OpenClassrooms\CodeGenerator\Services\TemplatingService;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
  */
-class TemplatingFactoryImpl implements TemplatingFactory
+class TemplatingServiceImpl extends \Twig_Environment
 {
-    public function create(array $config): \Twig_Environment
+    public function __construct()
     {
-        $templating = new \Twig_Environment(
-            new \Twig_Loader_Filesystem(__DIR__ . '/../../Skeleton'),
+        parent::__construct(
+            new \Twig_Loader_Filesystem(__DIR__ . '/../../../../src/Skeleton'),
             [
                 'debug'            => true,
                 'cache'            => false,
@@ -20,13 +20,13 @@ class TemplatingFactoryImpl implements TemplatingFactory
                 'autoescape'       => false,
             ]
         );
-        $templating->addGlobal('author', $config['author']);
-        $templating->addGlobal('authorEmail', $config['authorEmail']);
+        $this->addGlobal('author', $config['author']);
+        $this->addGlobal('authorEmail', $config['authorEmail']);
 
-        $templating->addFilter($this->getSortNameByAlphaFilter());
-        $templating->addFilter($this->getSortIdFirstFilter());
+        $this->addFilter($this->getSortNameByAlphaFilter());
+        $this->addFilter($this->getSortIdFirstFilter());
 
-        $templating->addFunction($this->printValue());
+        $this->addFunction($this->printValue());
 
         return $templating;
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModelDetail;
+namespace OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModel;
 
 use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
 

@@ -13,13 +13,7 @@ use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
  */
 class ConstUtility
 {
-    use StringUtility;
-
     private const BOOL = true;
-
-    private const CLOSE_BRACKET = ']';
-
-    private const OPEN_BRACKET = '[';
 
     private const QUOTE = "'";
 
@@ -46,9 +40,9 @@ class ConstUtility
             case 'bool' :
                 return self::BOOL;
             case 'string' :
-                return self::QUOTE . self::convertToSpacedString($entityName . ' ' . $fieldName) . self::QUOTE;
+                return self::QUOTE . StringUtility::convertToSpacedString($entityName . ' ' . $fieldName) . self::QUOTE;
             case 'array' :
-                $value = self::convertToSpacedString($entityName . ' ' . $fieldName);
+                $value = StringUtility::convertToSpacedString($entityName . ' ' . $fieldName);
 
                 return [$value . " 1", $value . " 2"];
             case '\DateTimeImmutable' :

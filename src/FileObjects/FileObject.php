@@ -24,6 +24,11 @@ class FileObject
     protected $className;
 
     /**
+     * @var ConstObject[]
+     */
+    protected $consts = [];
+
+    /**
      * @var string
      */
     protected $content;
@@ -34,9 +39,9 @@ class FileObject
     protected $fields = [];
 
     /**
-     * @var ConstObject[]
+     * @var array
      */
-    protected $consts = [];
+    protected $methods = [];
 
     public function alreadyExists(): bool
     {
@@ -134,5 +139,15 @@ class FileObject
     public function setConsts(array $consts): void
     {
         $this->consts = $consts;
+    }
+
+    public function getMethods(): array
+    {
+        return $this->methods;
+    }
+
+    public function setMethods(array $methods): void
+    {
+        $this->methods = $methods;
     }
 }

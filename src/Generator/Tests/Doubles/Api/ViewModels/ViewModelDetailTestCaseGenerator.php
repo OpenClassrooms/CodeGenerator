@@ -25,13 +25,29 @@ class ViewModelDetailTestCaseGenerator extends AbstractViewModelGenerator
      */
     public function generate(GeneratorRequest $generatorRequest): FileObject
     {
-        $viewModelDetailFileObject = $this->createViewModelDetailFileObject(
+        $viewModelDetailTestCaseFileObject = $this->buildDetailTestCaseFileObject(
             $generatorRequest->getViewModelDetailClassName()
         );
+        $this->insertFileObject($viewModelDetailTestCaseFileObject);
+
+        return $viewModelDetailTestCaseFileObject;
+    }
+
+    public function buildDetailTestCaseFileObject(string $viewModelDetailClassName): FileObject
+    {
+        $viewModelDetailFileObject = $this->createViewModelDetailFileObject($viewModelDetailClassName);
         $viewModelTestCaseFileObject = $this->createViewModelTestCaseFileObject(
             $viewModelDetailFileObject
         );
-        $viewModelDetailTestCaseFileObject = $this->buildDetailTestCaseFileObject($viewModelDetailFileObject);
+
+        $viewModelDetailTestCaseFileObject = $this->createViewModelFileObject(
+            ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_TEST_CASE,
+            $viewModelDetailFileObject->getDomain(),
+            $viewModelDetailFileObject->getEntity()
+        );
+        $viewModelDetailTestCaseFileObject->setFields(
+            $this->getPublicClassFields($viewModelDetailFileObject->getClassName())
+        );
         $viewModelDetailTestCaseFileObject->setContent(
             $this->generateContent(
                 $viewModelDetailTestCaseFileObject,
@@ -39,9 +55,9 @@ class ViewModelDetailTestCaseGenerator extends AbstractViewModelGenerator
                 $viewModelTestCaseFileObject
             )
         );
-        $this->insertFileObject($viewModelDetailTestCaseFileObject);
 
         return $viewModelDetailTestCaseFileObject;
+
     }
 
     protected function createViewModelDetailFileObject(string $viewModelClassName): FileObject
@@ -58,21 +74,6 @@ class ViewModelDetailTestCaseGenerator extends AbstractViewModelGenerator
             $viewModelListItemFileObject->getDomain(),
             $viewModelListItemFileObject->getEntity()
         );
-    }
-
-    public function buildDetailTestCaseFileObject(FileObject $viewModelDetailFileObject): FileObject
-    {
-        $viewModelDetailTestCaseFileObject = $this->createViewModelFileObject(
-            ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_TEST_CASE,
-            $viewModelDetailFileObject->getDomain(),
-            $viewModelDetailFileObject->getEntity()
-        );
-        $viewModelDetailTestCaseFileObject->setFields(
-            $this->getPublicClassFields($viewModelDetailFileObject->getClassName())
-        );
-
-        return $viewModelDetailTestCaseFileObject;
-
     }
 
     public function generateContent(
