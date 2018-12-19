@@ -7,12 +7,12 @@ use OpenClassrooms\CodeGenerator\Services\TemplatingService;
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
  */
-class TemplatingServiceImpl extends \Twig_Environment
+class TemplatingServiceImpl extends \Twig_Environment implements TemplatingService
 {
-    public function __construct()
+    public function __construct(string $skeletonDir)
     {
         parent::__construct(
-            new \Twig_Loader_Filesystem(__DIR__ . '/../../../../src/Skeleton'),
+            new \Twig_Loader_Filesystem(__DIR__ . $skeletonDir),
             [
                 'debug'            => true,
                 'cache'            => false,
@@ -20,15 +20,13 @@ class TemplatingServiceImpl extends \Twig_Environment
                 'autoescape'       => false,
             ]
         );
-        $this->addGlobal('author', $config['author']);
-        $this->addGlobal('authorEmail', $config['authorEmail']);
+        $this->addGlobal('author', 'authorStub');
+        $this->addGlobal('authorEmail', 'author.stub@example.com');
 
         $this->addFilter($this->getSortNameByAlphaFilter());
         $this->addFilter($this->getSortIdFirstFilter());
 
         $this->addFunction($this->printValue());
-
-        return $templating;
     }
 
     private function getSortNameByAlphaFilter()
@@ -58,7 +56,7 @@ class TemplatingServiceImpl extends \Twig_Environment
     private function getSortIdFirstFilter()
     {
         return new \Twig_Filter(
-            'sortNameByAlpha',
+            'sortIdFirst',
             function($classFields) {
                 $arrayFields = $classFields;
                 foreach ($arrayFields as $key => $field) {

@@ -14,7 +14,7 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\tests\BusinessRules\Responders\I
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\BusinessRules\Responders\UseCaseListItemResponseStub\UseCaseListItemResponseStubFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\FileObjectTestCase;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingMock;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingServiceMock;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\DTO\Response\FunctionalEntityListItemResponseDTO;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\FixturesConfig;
 use PHPUnit\Framework\TestCase;
@@ -63,7 +63,7 @@ class UseCaseListItemResponseStubGeneratorTest extends TestCase
 
         $this->useCaseListItemResponseStubGenerator->setFileObjectGateway(new InMemoryFileObjectGateway());
         $this->useCaseListItemResponseStubGenerator->setFieldObjectService(new FieldObjectServiceImpl());
-        $this->useCaseListItemResponseStubGenerator->setTemplating(new TemplatingMock());
+        $this->useCaseListItemResponseStubGenerator->setTemplating(new TemplatingServiceMock());
 
         $viewModelFileObjectFactory = new ViewModelFileObjectFactoryImpl();
         $viewModelFileObjectFactory->setStubNamespace(FixturesConfig::STUB_NAMESPACE);
