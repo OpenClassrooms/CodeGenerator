@@ -12,7 +12,7 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\tests\Doubles\Api\ViewModels\Imp
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Api\ViewModels\ViewModelListItemStub\ViewModelListItemStubFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\FileObjectTestCase;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingMock;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingServiceMock;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\FunctionalEntityListItem;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\FixturesConfig;
 use PHPUnit\Framework\TestCase;
@@ -60,7 +60,7 @@ class ViewModelListItemStubGeneratorTest extends TestCase
 
         $this->viewModelStub1Generator->setFileObjectGateway(new InMemoryFileObjectGateway());
         $this->viewModelStub1Generator->setFieldObjectService(new FieldObjectServiceImpl());
-        $this->viewModelStub1Generator->setTemplating(new TemplatingMock());
+        $this->viewModelStub1Generator->setTemplating(new TemplatingServiceMock());
 
         $viewModelFileObjectFactory = new ViewModelFileObjectFactoryImpl();
         $viewModelFileObjectFactory->setStubNamespace(FixturesConfig::STUB_NAMESPACE);

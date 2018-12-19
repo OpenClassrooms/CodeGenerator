@@ -7,7 +7,7 @@ use OpenClassrooms\CodeGenerator\FileObjects\Impl\ViewModelFileObjectFactoryImpl
 use OpenClassrooms\CodeGenerator\Generator\Api\AbstractViewModelGenerator;
 use OpenClassrooms\CodeGenerator\Services\Impl\FieldObjectServiceImpl;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingMock;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingServiceMock;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\FixturesConfig;
 use PHPUnit\Framework\TestCase;
 
@@ -26,6 +26,6 @@ abstract class AbstractViewModelGeneratorTestCase extends TestCase
         $viewModelGenerator->setViewModelFileObjectFactory($viewModelFileObjectFactory);
         $viewModelGenerator->setFileObjectGateway(new InMemoryFileObjectGateway());
         $viewModelGenerator->setFieldObjectService(new FieldObjectServiceImpl());
-        $viewModelGenerator->setTemplating(new TemplatingMock());
+        $viewModelGenerator->setTemplating(new TemplatingServiceMock());
     }
 }

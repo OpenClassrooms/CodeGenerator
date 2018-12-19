@@ -12,7 +12,7 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\tests\Api\ViewModel\Impl\ViewMod
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\FileObjectTestCase;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\tests\Api\ViewModels\ViewModelListItemAssemblerImplTest\ViewModelListItemAssemblerImplTestFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingMock;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingServiceMock;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\Impl\FunctionalEntityListItemAssemblerImpl;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\FixturesConfig;
 use PHPUnit\Framework\TestCase;
@@ -70,7 +70,7 @@ class ViewModelListItemAssemblerImplTestGeneratorTest extends TestCase
         );
         $this->viewModelListItemAssemblerImplTestGenerator->setFileObjectGateway(new InMemoryFileObjectGateway());
         $this->viewModelListItemAssemblerImplTestGenerator->setFieldObjectService(new FieldObjectServiceImpl());
-        $this->viewModelListItemAssemblerImplTestGenerator->setTemplating(new TemplatingMock());
+        $this->viewModelListItemAssemblerImplTestGenerator->setTemplating(new TemplatingServiceMock());
         $this->viewModelListItemAssemblerImplTestGenerator->setViewModelListItemAssemblerImplTestSkeletonModelBuilder(
             new ViewModelListItemAssemblerImplTestSkeletonModelBuilderImpl()
         );

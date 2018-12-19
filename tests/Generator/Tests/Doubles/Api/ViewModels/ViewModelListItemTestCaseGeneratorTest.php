@@ -11,7 +11,7 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\tests\Doubles\Api\ViewModels\Imp
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Api\ViewModels\ViewModelListItemTestCase\ViewModelListItemTestCaseFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\FileObjectTestCase;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingMock;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingServiceMock;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\FunctionalEntityListItem;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\FixturesConfig;
 use PHPUnit\Framework\TestCase;
@@ -59,7 +59,7 @@ class ViewModelListItemTestCaseGeneratorTest extends TestCase
 
         $this->viewModelListItemTestCaseGenerator->setFileObjectGateway(new InMemoryFileObjectGateway());
         $this->viewModelListItemTestCaseGenerator->setFieldObjectService(new FieldObjectServiceImpl());
-        $this->viewModelListItemTestCaseGenerator->setTemplating(new TemplatingMock());
+        $this->viewModelListItemTestCaseGenerator->setTemplating(new TemplatingServiceMock());
 
         $viewModelFileObjectFactory = new ViewModelFileObjectFactoryImpl();
         $viewModelFileObjectFactory->setBaseNamespace(FixturesConfig::BASE_NAMESPACE);

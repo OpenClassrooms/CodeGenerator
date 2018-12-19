@@ -2,7 +2,7 @@
 
 namespace OpenClassrooms\CodeGenerator\Services;
 
-interface Templating
+interface TemplatingService
 {
 
 }
