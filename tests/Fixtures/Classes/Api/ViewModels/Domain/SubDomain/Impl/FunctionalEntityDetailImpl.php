@@ -11,4 +11,3 @@ use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\Su
 class FunctionalEntityDetailImpl extends FunctionalEntityDetail
 {
 }
-
