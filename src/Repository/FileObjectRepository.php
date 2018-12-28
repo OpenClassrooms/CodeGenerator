@@ -1,7 +1,6 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace OpenClassrooms\CodeGenerator\Repository;
-
 
 use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
 use OpenClassrooms\CodeGenerator\Gateways\FileObject\FileObjectGateway;
@@ -28,12 +27,12 @@ class FileObjectRepository implements FileObjectGateway
         self::$fileObjects[$fileObject->getId()] = $fileObject->getPath();
     }
 
-
     public function flush(): void
     {
-        foreach (self::$fileObjects as $fileObject) {
+        foreach (self::$fileObjects as $key => $fileObject) {
             if (!$fileObject->alreadyExists()) {
-                $this->fileSystem->dumpFile($fileObject->getPath().'php', $fileObject->getContent());
+                $this->fileSystem->dumpFile($fileObject->getPath() . 'php', $fileObject->getContent());
+                unset(self::$fileObjects[$key]);
             }
         }
     }

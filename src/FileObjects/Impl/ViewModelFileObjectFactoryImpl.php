@@ -17,6 +17,11 @@ class ViewModelFileObjectFactoryImpl extends AbstractFileObjectFactory implement
         $fileObject = new FileObject();
 
         switch ($type) {
+            case ViewModelFileObjectType::API_VIEW_MODEL_ASSEMBLER_TRAIT:
+                $fileObject->setClassName(
+                    $this->baseNamespace . 'Api\ViewModels\\' . $domain . '\\' . $entity . 'AssemblerTrait'
+                );
+                break;
             case ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_ASSEMBLER:
                 $fileObject->setClassName(
                     $this->baseNamespace . 'Api\ViewModels\\' . $domain . '\\' . $entity . 'DetailAssembler'

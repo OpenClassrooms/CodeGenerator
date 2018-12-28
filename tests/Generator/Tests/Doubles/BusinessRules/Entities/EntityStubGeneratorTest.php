@@ -70,7 +70,6 @@ class EntityStubGeneratorTest extends TestCase
         $entityFileObjectFactory->setStubNamespace(FixturesConfig::STUB_NAMESPACE);
         $entityFileObjectFactory->setBaseNamespace(FixturesConfig::BASE_NAMESPACE);
 
-        $this->entityStubGenerator->setViewModelFileObjectFactory($viewModelFileObjectFactory);
         $this->entityStubGenerator->setEntityFileObjectFactory($entityFileObjectFactory);
         $this->entityStubGenerator->setEntityStubSkeletonModelAssembler(
             new EntityStubSkeletonModelAssemblerImpl()

@@ -1,0 +1,244 @@
+<?php declare(strict_types=1);
+
+namespace OpenClassrooms\CodeGenerator\Tests\Mediators\Api\Impl;
+
+use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\DTO\Request\ViewModelDetailGeneratorRequestBuilderImpl;
+use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\DTO\Request\ViewModelDetailImplGeneratorRequestBuilderImpl;
+use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\DTO\Request\ViewModelGeneratorRequestBuilderImpl;
+use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\DTO\Request\ViewModelListItemGeneratorRequestBuilderImpl;
+use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\DTO\Request\ViewModelListItemImplGeneratorRequestBuilderImpl;
+use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\ViewModelDetailGenerator;
+use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\ViewModelDetailImplGenerator;
+use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\ViewModelGenerator;
+use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\ViewModelListItemGenerator;
+use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\ViewModelListItemImplGenerator;
+use OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\DTO\Request\ViewModelDetailAssemblerImplTestGeneratorRequestBuilderImpl;
+use OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\DTO\Request\ViewModelListItemAssemblerImplTestGeneratorRequestBuilderImpl;
+use OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\ViewModelDetailAssemblerImplTestGenerator;
+use OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\ViewModelListItemAssemblerImplTestGenerator;
+use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Entities\DTO\Request\EntityStubGeneratorRequestBuilderImpl;
+use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Entities\EntityStubGenerator;
+use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Responders\DTO\Request\UseCaseDetailResponseStubGeneratorRequestBuilderImpl;
+use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Responders\DTO\Request\UseCaseListItemResponseStubGeneratorRequestBuilderImpl;
+use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Responders\UseCaseDetailResponseStubGenerator;
+use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Responders\UseCaseListItemResponseStubGenerator;
+use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\DTO\Request\ViewModelDetailStubGeneratorRequestBuilderImpl;
+use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\DTO\Request\ViewModelDetailTestCaseGeneratorRequestBuilderImpl;
+use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\DTO\Request\ViewModelListItemStubGeneratorRequestBuilderImpl;
+use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\DTO\Request\ViewModelListItemTestCaseGeneratorRequestBuilderImpl;
+use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\ViewModelDetailStubGenerator;
+use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\ViewModelDetailTestCaseGenerator;
+use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\ViewModelListItemStubGenerator;
+use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\ViewModelListItemTestCaseGenerator;
+use OpenClassrooms\CodeGenerator\Mediators\Api\Impl\ViewModelMediatorImpl;
+use OpenClassrooms\CodeGenerator\Mediators\Api\ViewModelMediator;
+use OpenClassrooms\CodeGenerator\Mediators\Args;
+use OpenClassrooms\CodeGenerator\Mediators\Options;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Api\ViewModels\ViewModel\ViewModelFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Api\ViewModels\ViewModelDetail\ViewModelDetailFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Api\ViewModels\ViewModelDetailImpl\ViewModelDetailImplFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Api\ViewModels\ViewModelDetailStub\ViewModelDetailStubFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Api\ViewModels\ViewModelDetailTestCase\ViewModelDetailTestCaseFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Api\ViewModels\ViewModelListItem\ViewModelListItemFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Api\ViewModels\ViewModelListItemImpl\ViewModelListItemImplFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Api\ViewModels\ViewModelListItemStub\ViewModelListItemStubFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Api\ViewModels\ViewModelListItemTestCase\ViewModelListItemTestCaseFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\BusinessRules\Entities\EntityStub\EntityStubFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\BusinessRules\Responders\UseCaseDetailResponseStub\UseCaseDetailResponseStubFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\BusinessRules\Responders\UseCaseListItemResponseStub\UseCaseListItemResponseStubFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\tests\Api\ViewModels\ViewModelDetailAssemblerImplTest\ViewModelDetailAssemblerImplTestFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\tests\Api\ViewModels\ViewModelListItemAssemblerImplTest\ViewModelListItemAssemblerImplTestFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Generator\GeneratorMock;
+use OpenClassrooms\CodeGenerator\Utility\ClassNameUtility;
+use PHPUnit\Framework\TestCase;
+
+/**
+ * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ */
+class ViewModelMediatorImplTest extends TestCase
+{
+    use ClassNameUtility;
+
+    /**
+     * @var ViewModelMediator
+     */
+    private $mediator;
+
+    /**
+     * @test
+     */
+    public function generateViewModel_withoutTest()
+    {
+        $fileObjects = $this->mediator->mediate(
+            [Args::CLASS_NAME => UseCaseDetailResponseStubFileObjectStub1::CLASS_NAME],
+            [Options::NO_TEST]
+        );
+
+        $this->assertNotEmpty(InMemoryFileObjectGateway::$flushedFileObjects);
+        $this->assertCount(count(InMemoryFileObjectGateway::$flushedFileObjects), $fileObjects);
+        foreach ($fileObjects as $fileObject) {
+            $this->assertArrayHasKey($fileObject->getClassName(), InMemoryFileObjectGateway::$flushedFileObjects);
+        }
+    }
+
+    /**
+     * @test
+     */
+    public function generateViewModel_withTestOnly()
+    {
+        $fileObjects = $this->mediator->mediate(
+            [Args::CLASS_NAME => UseCaseDetailResponseStubFileObjectStub1::CLASS_NAME],
+            [Options::TESTS_ONLY]
+        );
+
+        $this->assertNotEmpty(InMemoryFileObjectGateway::$flushedFileObjects);
+        $this->assertCount(count(InMemoryFileObjectGateway::$flushedFileObjects), $fileObjects);
+        foreach ($fileObjects as $fileObject) {
+            $this->assertArrayHasKey($fileObject->getClassName(), InMemoryFileObjectGateway::$flushedFileObjects);
+        }
+
+    }
+
+    /**
+     * @test
+     */
+    public function generateViewModel_withDump()
+    {
+        $fileObjects = $this->mediator->mediate(
+            [Args::CLASS_NAME => UseCaseDetailResponseStubFileObjectStub1::CLASS_NAME],
+            [Options::DUMP]
+        );
+
+        $this->assertEmpty(InMemoryFileObjectGateway::$flushedFileObjects);
+        $this->assertNotEmpty(InMemoryFileObjectGateway::$fileObjects);
+        foreach ($fileObjects as $fileObject) {
+            $this->assertArrayHasKey($fileObject->getClassName(), InMemoryFileObjectGateway::$fileObjects);
+        }
+    }
+
+    /**
+     * @test
+     */
+    public function generateViewModel_withoutOptions()
+    {
+        $fileObjects = $this->mediator->mediate(
+            [Args::CLASS_NAME => UseCaseDetailResponseStubFileObjectStub1::CLASS_NAME]
+        );
+
+        $this->assertNotEmpty(InMemoryFileObjectGateway::$flushedFileObjects);
+        $this->assertCount(count(InMemoryFileObjectGateway::$flushedFileObjects), $fileObjects);
+        foreach ($fileObjects as $fileObject) {
+            $this->assertArrayHasKey($fileObject->getClassName(), InMemoryFileObjectGateway::$flushedFileObjects);
+        }
+
+    }
+
+    protected function setUp()
+    {
+        InMemoryFileObjectGateway::$fileObjects = [];
+        $this->mediator = new ViewModelMediatorImpl();
+        $inMemoryFileObjectGateway = new InMemoryFileObjectGateway();
+        $this->mediator->setFileObjectGateway($inMemoryFileObjectGateway);
+        $this->mockGenerators();
+        $this->mockRequestBuilder();
+    }
+
+    private function mockGenerators(): void
+    {
+        $this->mediator->setViewModelDetailGenerator(
+            new GeneratorMock(ViewModelDetailGenerator::class, new ViewModelDetailStubFileObjectStub1())
+        );
+        $this->mediator->setEntityStubGenerator(
+            new GeneratorMock(EntityStubGenerator::class, new EntityStubFileObjectStub1())
+        );
+        $this->mediator->setUseCaseDetailResponseStubGenerator(
+            new GeneratorMock(UseCaseDetailResponseStubGenerator::class, new UseCaseDetailResponseStubFileObjectStub1())
+        );
+        $this->mediator->setUseCaseListItemResponseStubGenerator(
+            new GeneratorMock(
+                UseCaseListItemResponseStubGenerator::class,
+                new UseCaseListItemResponseStubFileObjectStub1()
+            )
+        );
+        $this->mediator->setViewModelDetailAssemblerImplTestGenerator(
+            new GeneratorMock(
+                ViewModelDetailAssemblerImplTestGenerator::class,
+                new ViewModelDetailAssemblerImplTestFileObjectStub1()
+            )
+        );
+        $this->mediator->setViewModelDetailGenerator(
+            new GeneratorMock(ViewModelDetailGenerator::class, new ViewModelDetailFileObjectStub1())
+        );
+        $this->mediator->setViewModelDetailImplGenerator(
+            new GeneratorMock(ViewModelDetailImplGenerator::class, new ViewModelDetailImplFileObjectStub1())
+        );
+        $this->mediator->setViewModelDetailStubGenerator(
+            new GeneratorMock(ViewModelDetailStubGenerator::class, new ViewModelDetailStubFileObjectStub1())
+        );
+        $this->mediator->setViewModelDetailTestCaseGenerator(
+            new GeneratorMock(ViewModelDetailTestCaseGenerator::class, new ViewModelDetailTestCaseFileObjectStub1())
+        );
+        $this->mediator->setViewModelGenerator(
+            new GeneratorMock(ViewModelGenerator::class, new ViewModelFileObjectStub1())
+        );
+        $this->mediator->setViewModelListItemAssemblerImplTestGenerator(
+            new GeneratorMock(
+                ViewModelListItemAssemblerImplTestGenerator::class,
+                new ViewModelListItemAssemblerImplTestFileObjectStub1()
+            )
+        );
+        $this->mediator->setViewModelListItemGenerator(
+            new GeneratorMock(ViewModelListItemGenerator::class, new ViewModelListItemFileObjectStub1())
+        );
+        $this->mediator->setViewModelListItemImplGenerator(
+            new GeneratorMock(ViewModelListItemImplGenerator::class, new ViewModelListItemImplFileObjectStub1())
+        );
+        $this->mediator->setViewModelListItemStubGenerator(
+            new GeneratorMock(ViewModelListItemStubGenerator::class, new ViewModelListItemStubFileObjectStub1())
+        );
+        $this->mediator->setViewModelListItemTestCaseGenerator(
+            new GeneratorMock(ViewModelListItemTestCaseGenerator::class, new ViewModelListItemTestCaseFileObjectStub1())
+        );
+    }
+
+    private function mockRequestBuilder(): void
+    {
+        $this->mediator->setEntityStubGeneratorRequestBuilder(new EntityStubGeneratorRequestBuilderImpl());
+        $this->mediator->setUseCaseDetailResponseStubGeneratorRequestBuilder(
+            new UseCaseDetailResponseStubGeneratorRequestBuilderImpl()
+        );
+        $this->mediator->setUseCaseListItemResponseStubGeneratorRequestBuilder(
+            new UseCaseListItemResponseStubGeneratorRequestBuilderImpl()
+        );
+        $this->mediator->setViewModelDetailAssemblerImplTestGeneratorRequestBuilder(
+            new ViewModelDetailAssemblerImplTestGeneratorRequestBuilderImpl()
+        );
+        $this->mediator->setViewModelDetailGeneratorRequestBuilder(new ViewModelDetailGeneratorRequestBuilderImpl());
+        $this->mediator->setViewModelDetailImplGeneratorRequestBuilder(
+            new ViewModelDetailImplGeneratorRequestBuilderImpl()
+        );
+        $this->mediator->setViewModelDetailStubGeneratorRequestBuilder(
+            new ViewModelDetailStubGeneratorRequestBuilderImpl()
+        );
+        $this->mediator->setViewModelDetailTestCaseGeneratorRequestBuilder(
+            new ViewModelDetailTestCaseGeneratorRequestBuilderImpl()
+        );
+        $this->mediator->setViewModelGeneratorRequestBuilder(new ViewModelGeneratorRequestBuilderImpl());
+        $this->mediator->setViewModelListItemAssemblerImplTestGeneratorRequestBuilder(
+            new ViewModelListItemAssemblerImplTestGeneratorRequestBuilderImpl()
+        );
+        $this->mediator->setViewModelListItemGeneratorRequestBuilder(
+            new ViewModelListItemGeneratorRequestBuilderImpl()
+        );
+        $this->mediator->setViewModelListItemImplGeneratorRequestBuilder(
+            new ViewModelListItemImplGeneratorRequestBuilderImpl()
+        );
+        $this->mediator->setViewModelListItemStubGeneratorRequestBuilder(
+            new ViewModelListItemStubGeneratorRequestBuilderImpl()
+        );
+        $this->mediator->setViewModelListItemTestCaseGeneratorRequestBuilder(
+            new ViewModelListItemTestCaseGeneratorRequestBuilderImpl()
+        );
+    }
+}
