@@ -156,6 +156,12 @@ class ViewModelFileObjectFactoryImplTest extends TestCase
                 $entity,
                 self::getFileObjectViewModelImpl(),
             ],
+            [
+                ViewModelFileObjectType::API_VIEW_MODEL_ASSEMBLER_TRAIT,
+                $domain,
+                $entity,
+                self::getFileObjectViewModelAssemblerTrait(),
+            ],
         ];
     }
 
@@ -175,7 +181,6 @@ class ViewModelFileObjectFactoryImplTest extends TestCase
 
         return $fileObjectViewModelAssembler;
     }
-
 
     private static function getFileObjectViewModelDetailAssemblerImpl(): FileObject
     {
@@ -212,7 +217,6 @@ class ViewModelFileObjectFactoryImplTest extends TestCase
 
         return $fileObjectViewModelAssembler;
     }
-
 
     private static function getFileObjectViewModelListItemAssemblerImpl(): FileObject
     {
@@ -364,6 +368,18 @@ class ViewModelFileObjectFactoryImplTest extends TestCase
         TestClassUtil::setProperty(
             'className',
             'Api\ViewModels\Domain\SubDomain\Impl\\' . self::getEntityName() . 'Impl',
+            $fileObjectViewModelImpl
+        );
+
+        return $fileObjectViewModelImpl;
+    }
+
+    private static function getFileObjectViewModelAssemblerTrait(): FileObject
+    {
+        $fileObjectViewModelImpl = new FileObject();
+        TestClassUtil::setProperty(
+            'className',
+            'Api\ViewModels\Domain\SubDomain\\' . self::getEntityName() . 'AssemblerTrait',
             $fileObjectViewModelImpl
         );
 

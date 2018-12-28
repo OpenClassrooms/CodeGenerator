@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+
+<container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://symfony.com/schema/dic/services" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+
+        <service id="" class=""/>
+
+        <service id="open_classrooms.code_generator.generator.abstract_generator" class="OpenClassrooms\CodeGenerator\Generator\AbstractGenerator" abstract="true">
+            <call method="setFieldObjectService">
+                <argument type="service" id="open_classrooms.code_generator.services.field_object_service"/>
+            </call>
+            <call method="setFileObjectGateway">
+                <argument type="service" id="open_classrooms.code_generator.repository.file_object_repository"/>
+            </call>
+            <call method="setTemplating">
+                <argument type="service" id="templating"/>
+            </call>
+        </service>
+
+    </services>
+</container>

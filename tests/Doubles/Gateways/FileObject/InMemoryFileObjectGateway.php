@@ -15,8 +15,24 @@ class InMemoryFileObjectGateway implements FileObjectGateway
      */
     public static $fileObjects = [];
 
+    /**
+     * @var FileObject[]
+     */
+    public static $flushedFileObjects = [];
+
+    public function __construct()
+    {
+        self::$flushedFileObjects = [];
+    }
+
     public function insert(FileObject $fileObject)
     {
         self::$fileObjects[$fileObject->getId()] = $fileObject->getPath();
+    }
+
+    public function flush()
+    {
+        self::$flushedFileObjects = self::$fileObjects;
+        self::$fileObjects = [];
     }
 }

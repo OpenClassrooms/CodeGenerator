@@ -6,6 +6,7 @@ use OpenClassrooms\CodeGenerator\FileObjects\ConstObject;
 use OpenClassrooms\CodeGenerator\FileObjects\EntityFileObjectFactory;
 use OpenClassrooms\CodeGenerator\FileObjects\EntityFileObjectType;
 use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
+use OpenClassrooms\CodeGenerator\Generator\AbstractGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Api\AbstractViewModelGenerator;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Entities\Request\EntityStubGeneratorRequest;
@@ -16,7 +17,7 @@ use OpenClassrooms\CodeGenerator\Utility\FieldUtility;
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
  */
-class EntityStubGenerator extends AbstractViewModelGenerator
+class EntityStubGenerator extends AbstractGenerator
 {
     /**
      * @var EntityFileObjectFactory
