@@ -9,10 +9,17 @@ use OpenClassrooms\CodeGenerator\Services\TemplatingService;
  */
 class TemplatingServiceImpl extends \Twig_Environment implements TemplatingService
 {
+    /**
+     * @var string
+     */
+    protected $skeletonDir;
+
     public function __construct(string $skeletonDir)
     {
+        $this->skeletonDir = $skeletonDir;
+
         parent::__construct(
-            new \Twig_Loader_Filesystem(__DIR__ . $skeletonDir),
+            new \Twig_Loader_Filesystem(__DIR__ . $this->skeletonDir),
             [
                 'debug'            => true,
                 'cache'            => false,

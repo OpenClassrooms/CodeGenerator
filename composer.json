@@ -38,7 +38,8 @@
     "symfony/filesystem": "3.*",
     "twig/twig": "~2",
     "fzaninotto/faker": "^1.8",
-    "nesbot/carbon": "^2.6"
+    "nesbot/carbon": "^2.6",
+    "symfony/finder": "^4.2"
   },
   "require-dev": {
     "phpunit/phpcov": "~4.0",
