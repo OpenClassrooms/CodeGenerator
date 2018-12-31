@@ -6,6 +6,8 @@ use OpenClassrooms\CodeGenerator\FileObjects\FieldObject;
 use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
 use OpenClassrooms\CodeGenerator\Gateways\FileObject\FileObjectGateway;
 use OpenClassrooms\CodeGenerator\Services\FieldObjectService;
+use OpenClassrooms\CodeGenerator\Services\Impl\TemplatingServiceImpl;
+use OpenClassrooms\CodeGenerator\Services\TemplatingService;
 use OpenClassrooms\CodeGenerator\Utility\ClassNameUtility;
 
 /**
@@ -26,7 +28,7 @@ abstract class AbstractGenerator implements Generator
     private $fileObjectGateway;
 
     /**
-     * @var \Twig_Environment
+     * @var TemplatingServiceImpl
      */
     private $templating;
 
@@ -40,7 +42,7 @@ abstract class AbstractGenerator implements Generator
         $this->fileObjectGateway = $fileObjectGateway;
     }
 
-    public function setTemplating(\Twig_Environment $templating): void
+    public function setTemplating(TemplatingService $templating): void
     {
         $this->templating = $templating;
     }
