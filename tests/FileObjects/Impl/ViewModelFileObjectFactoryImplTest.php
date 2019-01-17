@@ -6,7 +6,7 @@ use OpenClassrooms\CodeGenerator\FileObjects\AbstractFileObjectFactory;
 use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
 use OpenClassrooms\CodeGenerator\FileObjects\Impl\ViewModelFileObjectFactoryImpl;
 use OpenClassrooms\CodeGenerator\FileObjects\ViewModelFileObjectType;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\src\BusinessRules\Entities\Domain\SubDomain\FunctionalEntity;
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\FunctionalEntity;
 use OpenClassrooms\CodeGenerator\Tests\TestClassUtil;
 use OpenClassrooms\CodeGenerator\Utility\ClassNameUtility;
 use PHPUnit\Framework\TestCase;
@@ -165,11 +165,6 @@ class ViewModelFileObjectFactoryImplTest extends TestCase
         ];
     }
 
-    private static function getEntityName(): string
-    {
-        return TestClassUtil::getShortClassName(FunctionalEntity::class);
-    }
-
     private static function getFileObjectViewModelDetailAssembler(): FileObject
     {
         $fileObjectViewModelAssembler = new FileObject();
@@ -180,6 +175,11 @@ class ViewModelFileObjectFactoryImplTest extends TestCase
         );
 
         return $fileObjectViewModelAssembler;
+    }
+
+    private static function getEntityName(): string
+    {
+        return TestClassUtil::getShortClassName(FunctionalEntity::class);
     }
 
     private static function getFileObjectViewModelDetailAssemblerImpl(): FileObject
@@ -199,7 +199,8 @@ class ViewModelFileObjectFactoryImplTest extends TestCase
         $fileObjectViewModelAssemblerTest = new FileObject();
         TestClassUtil::setProperty(
             'className',
-            self::TEST_BASE_NAMESPACE . 'Api\ViewModels\Domain\SubDomain\Impl\\' . self::getEntityName() . 'DetailAssemblerImplTest',
+            self::TEST_BASE_NAMESPACE . 'Api\ViewModels\Domain\SubDomain\Impl\\' . self::getEntityName(
+            ) . 'DetailAssemblerImplTest',
             $fileObjectViewModelAssemblerTest
         );
 
@@ -235,7 +236,8 @@ class ViewModelFileObjectFactoryImplTest extends TestCase
         $fileObjectViewModelAssemblerTest = new FileObject();
         TestClassUtil::setProperty(
             'className',
-            self::TEST_BASE_NAMESPACE . 'Api\ViewModels\Domain\SubDomain\Impl\\' . self::getEntityName() . 'ListItemAssemblerImplTest',
+            self::TEST_BASE_NAMESPACE . 'Api\ViewModels\Domain\SubDomain\Impl\\' . self::getEntityName(
+            ) . 'ListItemAssemblerImplTest',
             $fileObjectViewModelAssemblerTest
         );
 
