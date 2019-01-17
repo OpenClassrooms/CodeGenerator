@@ -1,0 +1,112 @@
+<?xml version="1.0" ?>
+
+<container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://symfony.com/schema/dic/services" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <service id="open_classrooms.code_generator.generator.tests.business_rules.entities.dto.request.entity_stub_generator_request_builder_impl" class="OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Entities\DTO\Request\EntityStubGeneratorRequestBuilderImpl"/>
+        <service id="open_classrooms.code_generator.generator.tests.business_rules.responders.dto.request.use_case_detail_response_stub_generator_request_builder_impl" class="OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Responders\DTO\Request\UseCaseDetailResponseStubGeneratorRequestBuilderImpl"/>
+        <service id="open_classrooms.code_generator.generator.tests.business_rules.responders.dto.request.use_case_list_item_response_stub_generator_request_builder_impl" class="OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Responders\DTO\Request\UseCaseListItemResponseStubGeneratorRequestBuilderImpl"/>
+        <service id="open_classrooms.code_generator.generator.tests.api.view_models.dto.request.view_model_detail_assembler_impl_test_generator_request_builder_impl" class="OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\DTO\Request\ViewModelDetailAssemblerImplTestGeneratorRequestBuilderImpl"/>
+        <service id="open_classrooms.code_generator.generator.api.view_models.dto.request.view_model_detail_generator_request_builder_impl" class="OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\DTO\Request\ViewModelDetailGeneratorRequestBuilderImpl"/>
+        <service id="open_classrooms.code_generator.generator.api.view_models.dto.request.view_model_detail_impl_generator_request_builder_impl" class="OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\DTO\Request\ViewModelDetailImplGeneratorRequestBuilderImpl"/>
+        <service id="open_classrooms.code_generator.generator.tests.doubles.api.view_models.dto.request.view_model_detail_stub_generator_request_builder_impl" class="OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\DTO\Request\ViewModelDetailStubGeneratorRequestBuilderImpl"/>
+        <service id="open_classrooms.code_generator.generator.tests.doubles.api.view_models.dto.request.view_model_detail_test_case_generator_request_builder_impl" class="OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\DTO\Request\ViewModelDetailTestCaseGeneratorRequestBuilderImpl"/>
+        <service id="open_classrooms.code_generator.generator.api.view_models.dto.request.view_model_generator_request_builder_impl" class="OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\DTO\Request\ViewModelGeneratorRequestBuilderImpl"/>
+        <service id="open_classrooms.code_generator.generator.tests.api.view_models.dto.request.view_model_list_item_assembler_impl_test_generator_request_builder_impl" class="OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\DTO\Request\ViewModelListItemAssemblerImplTestGeneratorRequestBuilderImpl"/>
+        <service id="open_classrooms.code_generator.generator.api.view_models.dto.request.view_model_list_item_generator_request_builder_impl" class="OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\DTO\Request\ViewModelListItemGeneratorRequestBuilderImpl"/>
+        <service id="open_classrooms.code_generator.generator.api.view_models.dto.request.view_model_list_item_impl_generator_request_builder_impl" class="OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\DTO\Request\ViewModelListItemImplGeneratorRequestBuilderImpl"/>
+        <service id="open_classrooms.code_generator.generator.tests.doubles.api.view_models.dto.request.view_model_list_item_stub_generator_request_builder_impl" class="OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\DTO\Request\ViewModelListItemStubGeneratorRequestBuilderImpl"/>
+        <service id="open_classrooms.code_generator.generator.tests.doubles.api.view_models.dto.request.view_model_list_item_test_case_generator_request_builder_impl" class="OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\DTO\Request\ViewModelListItemTestCaseGeneratorRequestBuilderImpl"/>
+        <service id="open_classrooms.code_generator.generator.tests.doubles.api.view_models.dto.request.view_model_list_item_test_case_generator_request_builder_impl" class="OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\DTO\Request\ViewModelListItemTestCaseGeneratorRequestBuilderImpl"/>
+
+        <service id="open_classrooms.code_generator.mediators.api.impl.view_model_mediator_impl" class="OpenClassrooms\CodeGenerator\Mediators\Api\Impl\ViewModelMediatorImpl">
+            <call method="setEntityStubGeneratorRequestBuilder">
+                <argument type="service" id="open_classrooms.code_generator.generator.tests.business_rules.entities.dto.request.entity_stub_generator_request_builder_impl"/>
+            </call>
+            <call method="setUseCaseDetailResponseStubGeneratorRequestBuilder">
+                <argument type="service" id="open_classrooms.code_generator.generator.tests.business_rules.responders.dto.request.use_case_detail_response_stub_generator_request_builder_impl"/>
+            </call>
+            <call method="setUseCaseListItemResponseStubGeneratorRequestBuilder">
+                <argument type="service" id="open_classrooms.code_generator.generator.tests.business_rules.responders.dto.request.use_case_list_item_response_stub_generator_request_builder_impl"/>
+            </call>
+            <call method="setViewModelDetailAssemblerImplTestGeneratorRequestBuilder">
+                <argument type="service" id="open_classrooms.code_generator.generator.tests.api.view_models.dto.request.view_model_detail_assembler_impl_test_generator_request_builder_impl"/>
+            </call>
+            <call method="setViewModelDetailGeneratorRequestBuilder">
+                <argument type="service" id="open_classrooms.code_generator.generator.api.view_models.dto.request.view_model_detail_generator_request_builder_impl"/>
+            </call>
+            <call method="setViewModelDetailImplGeneratorRequestBuilder">
+                <argument type="service" id="open_classrooms.code_generator.generator.api.view_models.dto.request.view_model_detail_impl_generator_request_builder_impl"/>
+            </call>
+            <call method="setViewModelDetailStubGeneratorRequestBuilder">
+                <argument type="service" id="open_classrooms.code_generator.generator.tests.doubles.api.view_models.dto.request.view_model_detail_stub_generator_request_builder_impl"/>
+            </call>
+            <call method="setViewModelDetailTestCaseGeneratorRequestBuilder">
+                <argument type="service" id="open_classrooms.code_generator.generator.tests.doubles.api.view_models.dto.request.view_model_detail_test_case_generator_request_builder_impl"/>
+            </call>
+            <call method="setViewModelGeneratorRequestBuilder">
+                <argument type="service" id="open_classrooms.code_generator.generator.api.view_models.dto.request.view_model_generator_request_builder_impl"/>
+            </call>
+            <call method="setViewModelListItemAssemblerImplTestGeneratorRequestBuilder">
+                <argument type="service" id="open_classrooms.code_generator.generator.tests.api.view_models.dto.request.view_model_list_item_assembler_impl_test_generator_request_builder_impl"/>
+            </call>
+            <call method="setViewModelListItemGeneratorRequestBuilder">
+                <argument type="service" id="open_classrooms.code_generator.generator.api.view_models.dto.request.view_model_list_item_generator_request_builder_impl"/>
+            </call>
+            <call method="setViewModelListItemImplGeneratorRequestBuilder">
+                <argument type="service" id="open_classrooms.code_generator.generator.api.view_models.dto.request.view_model_list_item_impl_generator_request_builder_impl"/>
+            </call>
+            <call method="setViewModelListItemStubGeneratorRequestBuilder">
+                <argument type="service" id="open_classrooms.code_generator.generator.tests.doubles.api.view_models.dto.request.view_model_list_item_stub_generator_request_builder_impl"/>
+            </call>
+            <call method="setViewModelListItemTestCaseGeneratorRequestBuilder">
+                <argument type="service" id="open_classrooms.code_generator.generator.tests.doubles.api.view_models.dto.request.view_model_list_item_test_case_generator_request_builder_impl"/>
+            </call>
+            <call method="setEntityStubGenerator">
+                <argument type="service" id="open_classrooms.code_generator.generator.tests.business_rules.entities.entity_stub_generator"/>
+            </call>
+            <call method="setUseCaseDetailResponseStubGenerator">
+                <argument type="service" id="open_classrooms.code_generator.generator.tests.business_rules.responders.use_case_detail_response_stub_generator"/>
+            </call>
+            <call method="setUseCaseListItemResponseStubGenerator">
+                <argument type="service" id="open_classrooms.code_generator.generator.tests.business_rules.responders.use_case_list_item_response_stub_generator"/>
+            </call>
+            <call method="setViewModelDetailAssemblerImplTestGenerator">
+                <argument type="service" id="open_classrooms.code_generator.generator.tests.api.view_models.view_model_detail_assembler_impl_test_generator"/>
+            </call>
+            <call method="setViewModelDetailGenerator">
+                <argument type="service" id="open_classrooms.code_generator.generator.api.view_models.view_model_detail_generator"/>
+            </call>
+            <call method="setViewModelDetailImplGenerator">
+                <argument type="service" id="open_classrooms.code_generator.generator.api.view_models.view_model_detail_impl_generator"/>
+            </call>
+            <call method="setViewModelDetailStubGenerator">
+                <argument type="service" id="open_classrooms.code_generator.generator.tests.doubles.api.view_models.view_model_detail_stub_generator"/>
+            </call>
+            <call method="setViewModelDetailTestCaseGenerator">
+                <argument type="service" id="open_classrooms.code_generator.generator.tests.doubles.api.view_models.view_model_detail_test_case_generator"/>
+            </call>
+            <call method="setViewModelGenerator">
+                <argument type="service" id="open_classrooms.code_generator.generator.api.view_models.view_model_generator"/>
+            </call>
+            <call method="setViewModelListItemAssemblerImplTestGenerator">
+                <argument type="service" id="open_classrooms.code_generator.generator.tests.api.view_models.view_model_list_item_assembler_impl_test_generator"/>
+            </call>
+            <call method="setViewModelListItemGenerator">
+                <argument type="service" id="open_classrooms.code_generator.generator.api.view_models.view_model_list_item_generator"/>
+            </call>
+            <call method="setViewModelListItemImplGenerator">
+                <argument type="service" id="open_classrooms.code_generator.generator.api.view_models.view_model_list_item_impl_generator"/>
+            </call>
+            <call method="setViewModelListItemStubGenerator">
+                <argument type="service" id="open_classrooms.code_generator.generator.tests.doubles.api.view_models.view_model_list_item_stub_generator"/>
+            </call>
+            <call method="setViewModelListItemTestCaseGenerator">
+                <argument type="service" id="open_classrooms.code_generator.generator.tests.doubles.api.view_models.view_model_list_item_test_case_generator"/>
+            </call>
+            <call method="setFileObjectGateway">
+                <argument type="service" id="open_classrooms.code_generator.repository.file_object_repository"/>
+            </call>
+        </service>
+
+    </services>
+</container>

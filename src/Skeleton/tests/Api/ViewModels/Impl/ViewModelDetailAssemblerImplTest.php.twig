@@ -1,0 +1,39 @@
+<?php declare(strict_types=1);
+{% include "Header.php.twig" %}
+
+namespace {{ skeletonModel.namespace }};
+
+use {{ skeletonModel.viewModelDetailAssemblerClassName }};
+use {{ skeletonModel.viewModelDetailAssemblerImplClassName }};
+use {{ skeletonModel.viewModelDetailStubClassName }};
+use {{ skeletonModel.viewModelDetailTestCaseClassName }};
+use {{ skeletonModel.useCaseDetailResponseStubClassName }};
+use PHPUnit\Framework\TestCase;
+
+/**
+ * @author {{ author }} <{{ authorEmail }}>
+ */
+class {{ skeletonModel.shortName }} extends TestCase
+{
+    use {{ skeletonModel.viewModelDetailTestCaseShortName }};
+
+    /**
+     * @var {{ skeletonModel.viewModelDetailAssemblerShortName }}
+     */
+    private $assembler;
+
+    /**
+     * @test
+     */
+    public function onCreateShouldReturnViewModel()
+    {
+        $actual = $this->assembler->create(new {{ skeletonModel.useCaseDetailResponseStubShortName }}());
+        $expected = new {{ skeletonModel.viewModelDetailStubShortName }}();
+        $this->{{ skeletonModel.viewModelDetailTestCaseMethod }}($expected, $actual);
+    }
+
+    protected function setUp()
+    {
+        $this->assembler = new {{ skeletonModel.viewModelDetailAssemblerImplShortName }}();
+    }
+}

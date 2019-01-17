@@ -1,0 +1,35 @@
+<?php declare(strict_types=1);
+{% include "Header.php.twig" %}
+
+namespace {{ skeletonModel.namespace }};
+
+use {{ skeletonModel.viewModelListItemClassName }};
+use PHPUnit\Framework\Assert as Assert;
+
+/**
+ * @author {{ author }} <{{ authorEmail }}>
+ */
+trait {{ skeletonModel.shortName }}
+{
+    use {{ skeletonModel.viewModelTestCaseShortName }};
+
+    /**
+     * @param {{ skeletonModel.viewModelListItemShortName }}[] $expected
+     * @param {{ skeletonModel.viewModelListItemShortName }}[] $actual
+     */
+    protected function assert{{ skeletonModel.viewModelListItemShortName }}s(array $expected, array $actual)
+    {
+        Assert::assertCount(count($expected), $actual);
+        foreach ($expected as $key => $item) {
+            $this->assert{{ skeletonModel.viewModelListItemShortName }}($item, $actual[$key]);
+        }
+    }
+
+    private function assert{{ skeletonModel.viewModelListItemShortName }}(
+        {{ skeletonModel.viewModelListItemShortName }} $expected,
+        {{ skeletonModel.viewModelListItemShortName }} $actual
+    )
+    {
+        $this->assert{{ skeletonModel.viewModelTestCaseShortName }}($expected, $actual);
+    }
+}

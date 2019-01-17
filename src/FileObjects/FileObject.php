@@ -1,40 +1,56 @@
-<?php
+<?php declare(strict_types=1);
 
-namespace FileObjects;
+namespace OpenClassrooms\CodeGenerator\FileObjects;
+
+use OpenClassrooms\CodeGenerator\Utility\ClassNameUtility;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
  */
 class FileObject
 {
+    use ClassNameUtility {
+        getNamespace as getNamespaceFromClassNameUtility;
+    }
+
     /**
      * @var bool
      */
-    private $alreadyExists = false;
+    protected $alreadyExists = false;
 
     /**
      * @var string
      */
-    private $className;
+    protected $className;
+
+    /**
+     * @var ConstObject[]
+     */
+    protected $consts = [];
 
     /**
      * @var string
      */
-    private $content;
+    protected $content;
 
-    public function setAlreadyExists(bool $alreadyExists)
-    {
-        $this->alreadyExists = $alreadyExists;
-    }
+    /**
+     * @var FieldObject[]
+     */
+    protected $fields = [];
+
+    /**
+     * @var bool
+     */
+    protected $hasBeenWritten = false;
+
+    /**
+     * @var array
+     */
+    protected $methods = [];
 
     public function alreadyExists(): bool
     {
         return $this->alreadyExists;
-    }
-
-    public function getClassName(): string
-    {
-        return $this->className;
     }
 
     public function getContent(): string
@@ -45,10 +61,108 @@ class FileObject
     public function setContent(string $content)
     {
         $this->content = $content;
+
+        return $this;
+    }
+
+    public function getDomain()
+    {
+        return $this->getDomainFromClassName($this->className);
+    }
+
+    public function getEntity()
+    {
+        return $this->getEntityNameFromClassName($this->className);
+    }
+
+    /**
+     * @return FieldObject[]
+     */
+    public function getFields(): array
+    {
+        return $this->fields;
+    }
+
+    /**
+     * @param FieldObject[]
+     */
+    public function setFields(array $fields)
+    {
+        $this->fields = $fields;
+    }
+
+    public function hasBeenWritten(): bool
+    {
+        return $this->hasBeenWritten;
+    }
+
+    public function write()
+    {
+        $this->hasBeenWritten = true;
     }
 
     public function getId(): string
     {
         return $this->className;
+    }
+
+    public function getNamespace(): string
+    {
+        return $this->getNamespaceFromClassNameUtility($this->getClassName());
+    }
+
+    public function getClassName(): string
+    {
+        return $this->className;
+    }
+
+    public function setClassName(string $className)
+    {
+        $this->className = $className;
+
+        return $this;
+    }
+
+    public function getPath(): string
+    {
+        return str_replace('\\', '/', $this->getClassName() . '.php');
+    }
+
+    public function getShortName(): string
+    {
+        return $this->getShortClassNameFromClassName($this->className);
+    }
+
+    public function setAlreadyExists(bool $alreadyExists)
+    {
+        $this->alreadyExists = $alreadyExists;
+
+        return $this;
+    }
+
+    /**
+     * @return ConstObject[]
+     */
+    public function getConsts(): array
+    {
+        return $this->consts;
+    }
+
+    /**
+     * @param ConstObject[]
+     */
+    public function setConsts(array $consts): void
+    {
+        $this->consts = $consts;
+    }
+
+    public function getMethods(): array
+    {
+        return $this->methods;
+    }
+
+    public function setMethods(array $methods): void
+    {
+        $this->methods = $methods;
     }
 }

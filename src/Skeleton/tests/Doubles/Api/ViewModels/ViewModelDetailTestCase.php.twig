@@ -1,0 +1,26 @@
+<?php declare(strict_types=1);
+{% include "Header.php.twig" %}
+
+namespace {{ skeletonModel.namespace }};
+
+use {{ skeletonModel.viewModelDetailClassName }};
+use PHPUnit\Framework\Assert;
+
+/**
+ * @author {{ author }} <{{ authorEmail }}>
+ */
+trait {{ skeletonModel.shortName }}
+{
+    use {{ skeletonModel.viewModelTestCaseShortName }};
+
+    public function assert{{ skeletonModel.shortName }}(
+        {{ skeletonModel.viewModelDetailShortName }} $expected,
+        {{ skeletonModel.viewModelDetailShortName }} $actual
+    ): void
+    {
+        $this->assert{{ skeletonModel.viewModelTestCaseShortName }}($expected, $actual);
+{% for field in skeletonModel.fields | sortIdFirst %}
+        Assert::assertEquals($expected->{{ field.name }}, $actual->{{ field.name }});
+{% endfor %}
+    }
+}

@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+
+<container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://symfony.com/schema/dic/services" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+
+        <service id="open_classrooms.code_generator.skeleton_models.tests.business_rules.entities.impl.entity_stub_skeleton_model_assembler_impl" class="OpenClassrooms\CodeGenerator\SkeletonModels\tests\BusinessRules\Entities\Impl\EntityStubSkeletonModelAssemblerImpl"/>
+
+        <service id="open_classrooms.code_generator.generator.tests.business_rules.entities.entity_stub_generator" class="OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Entities\EntityStubGenerator" parent="open_classrooms.code_generator.generator.abstract_generator">
+            <call method="setEntityStubSkeletonModelAssembler">
+                <argument type="service" id="open_classrooms.code_generator.skeleton_models.tests.business_rules.entities.impl.entity_stub_skeleton_model_assembler_impl"/>
+            </call>
+            <call method="setEntityFileObjectFactory">
+                 <argument type="service" id="open_classrooms.code_generator.file_objects.impl.entity_file_object_factory_impl"/>
+            </call>
+        </service>
+
+    </services>
+</container>
