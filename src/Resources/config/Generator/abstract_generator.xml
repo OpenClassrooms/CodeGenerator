@@ -2,6 +2,7 @@
 
 <container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://symfony.com/schema/dic/services" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
+        <service id="symfony.component.filesystem.filesystem" class="Symfony\Component\Filesystem\Filesystem"/>
         <service id="open_classrooms.code_generator.services.field_object_service" class="OpenClassrooms\CodeGenerator\Services\Impl\FieldObjectServiceImpl"/>
         <service id="open_classrooms.code_generator.repository.file_object_repository" class="OpenClassrooms\CodeGenerator\Repository\FileObjectRepository">
             <call method="setFileSystem">

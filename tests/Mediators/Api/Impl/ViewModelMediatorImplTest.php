@@ -66,13 +66,19 @@ class ViewModelMediatorImplTest extends TestCase
     private $mediator;
 
     /**
+     * @var array
+     */
+    private $options;
+
+    /**
      * @test
      */
     public function generateViewModel_withoutTest()
     {
+        $this->options[Options::NO_TEST] = null;
         $fileObjects = $this->mediator->mediate(
             [Args::CLASS_NAME => UseCaseDetailResponseStubFileObjectStub1::CLASS_NAME],
-            [Options::NO_TEST]
+            $this->options
         );
 
         $this->assertNotEmpty(InMemoryFileObjectGateway::$flushedFileObjects);
@@ -87,9 +93,10 @@ class ViewModelMediatorImplTest extends TestCase
      */
     public function generateViewModel_withTestOnly()
     {
+        $this->options[Options::TESTS_ONLY] = null;
         $fileObjects = $this->mediator->mediate(
             [Args::CLASS_NAME => UseCaseDetailResponseStubFileObjectStub1::CLASS_NAME],
-            [Options::TESTS_ONLY]
+            $this->options
         );
 
         $this->assertNotEmpty(InMemoryFileObjectGateway::$flushedFileObjects);
@@ -105,9 +112,10 @@ class ViewModelMediatorImplTest extends TestCase
      */
     public function generateViewModel_withDump()
     {
+        $this->options[Options::DUMP] = null;
         $fileObjects = $this->mediator->mediate(
             [Args::CLASS_NAME => UseCaseDetailResponseStubFileObjectStub1::CLASS_NAME],
-            [Options::DUMP]
+            $this->options
         );
 
         $this->assertEmpty(InMemoryFileObjectGateway::$flushedFileObjects);
@@ -123,7 +131,9 @@ class ViewModelMediatorImplTest extends TestCase
     public function generateViewModel_withoutOptions()
     {
         $fileObjects = $this->mediator->mediate(
-            [Args::CLASS_NAME => UseCaseDetailResponseStubFileObjectStub1::CLASS_NAME]
+            [Args::CLASS_NAME => UseCaseDetailResponseStubFileObjectStub1::CLASS_NAME],
+            $this->options
+
         );
 
         $this->assertNotEmpty(InMemoryFileObjectGateway::$flushedFileObjects);
@@ -140,6 +150,13 @@ class ViewModelMediatorImplTest extends TestCase
         $this->mediator = new ViewModelMediatorImpl();
         $inMemoryFileObjectGateway = new InMemoryFileObjectGateway();
         $this->mediator->setFileObjectGateway($inMemoryFileObjectGateway);
+
+        $this->options = [
+            Options::DUMP       => false,
+            Options::NO_TEST    => false,
+            Options::TESTS_ONLY => false,
+        ];
+
         $this->mockGenerators();
         $this->mockRequestBuilder();
     }

@@ -30,9 +30,9 @@ class ViewModelMediatorImpl implements ViewModelMediator
     {
         $className = $args[Args::CLASS_NAME];
 
-        if (in_array(Options::NO_TEST, $options)) {
+        if (false !== $options[Options::NO_TEST]) {
             $fileObjects = $this->generateSources($className);
-        } elseif (in_array(Options::TESTS_ONLY, $options)) {
+        } elseif (false !== $options[Options::TESTS_ONLY]) {
             $entityAndUseCaseResponseFileObjects = $this->generateEntityAndUseCaseResponseTests($className);
             $viewModelTestFileObjects = $this->generateViewModelTests($className);
             $fileObjects = array_merge($entityAndUseCaseResponseFileObjects, $viewModelTestFileObjects);
@@ -42,7 +42,7 @@ class ViewModelMediatorImpl implements ViewModelMediator
             $viewModelTestFileObjects = $this->generateViewModelTests($className);
             $fileObjects = array_merge($sourcesFileObjects, $testsFileObjects, $viewModelTestFileObjects);
         }
-        if (!in_array(Options::DUMP, $options)) {
+        if (false === $options[Options::DUMP]) {
             $this->fileObjectGateway->flush();
         }
 

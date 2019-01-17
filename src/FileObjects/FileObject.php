@@ -39,6 +39,11 @@ class FileObject
     protected $fields = [];
 
     /**
+     * @var bool
+     */
+    protected $hasBeenWritten = false;
+
+    /**
      * @var array
      */
     protected $methods = [];
@@ -84,6 +89,16 @@ class FileObject
     public function setFields(array $fields)
     {
         $this->fields = $fields;
+    }
+
+    public function hasBeenWritten(): bool
+    {
+        return $this->hasBeenWritten;
+    }
+
+    public function write()
+    {
+        $this->hasBeenWritten = true;
     }
 
     public function getId(): string
