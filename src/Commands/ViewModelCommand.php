@@ -29,6 +29,9 @@ class ViewModelCommand extends Command
      */
     private $container;
 
+    /**
+     * @var string
+     */
     protected static $defaultName = 'code-generator:viewmodels';
 
     public function __construct($name = null)
@@ -39,10 +42,9 @@ class ViewModelCommand extends Command
         $loader->load('services.xml');
         $this->loadConfigParameters();
         $this->container->compile();
-
     }
 
-    public function loadConfigParameters()
+    private function loadConfigParameters()
     {
         $loader = new YamlFileLoader($this->container, new FileLocator(self::ROOT_DIR));
         $loader->load('oc_code_generator.yml');
@@ -85,7 +87,6 @@ class ViewModelCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-
         $fileObjects = $this->container
             ->get('open_classrooms.code_generator.mediators.api.impl.view_model_mediator_impl')
             ->mediate($input->getArguments(), $input->getOptions());

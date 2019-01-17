@@ -5,6 +5,8 @@
     <testsuites>
         <testsuite name="Test Suite">
             <directory>./tests/</directory>
+            <exclude>./tests/Fixtures/</exclude>
+            <exclude>./tests/Doubles/tests/</exclude>
         </testsuite>
     </testsuites>
     <filter>
