@@ -5,6 +5,10 @@
   "license": "proprietary",
   "authors": [
     {
+      "name": "Samuel Gomis",
+      "email": "samuel.gomis@external.openclassrooms.com"
+    },
+    {
       "name": "Romain Kuzniak",
       "email": "romain.kuzniak@openclassrooms.com"
     },
@@ -24,24 +28,36 @@
     }
   },
   "require": {
-    "php": ">=5.6",
+    "php": ">=7.1",
     "doctrine/annotations": "1.2.*",
     "doctrine/orm": "~2.5",
     "doctrine/inflector": "1.*",
     "symfony/config": "3.*",
-      "symfony/console": "3.*",
+    "symfony/console": "3.*",
     "symfony/dependency-injection": "3.*",
     "symfony/filesystem": "3.*",
-    "twig/twig": "~2"
+    "twig/twig": "^1.34 || ^2.0",
+    "fzaninotto/faker": "^1.8",
+    "nesbot/carbon": "1.22.1 || ^2.6",
+    "symfony/finder": "3.*",
+    "symfony/yaml": "3.*"
   },
   "require-dev": {
     "phpunit/phpcov": "~4.0",
     "friendsofphp/php-cs-fixer": "2.*",
-    "phpunit/phpunit": "~6.0"
+    "phpunit/phpunit": "~6.5"
   },
   "extra": {
     "branch-alias": {
       "dev-master": "1.0.x-dev"
     }
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "bash hooks/install.sh"
+    ]
+  },
+  "config": {
+    "bin-dir": "bin"
   }
 }
