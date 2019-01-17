@@ -51,6 +51,7 @@ class ViewModelCommand extends Command
     protected function configure()
     {
         $this
+            ->setName(self::$defaultName)
             ->setDescription('Create view model architecture')
             ->setHelp('This command allows you to create view model architecture')
             ->addArgument(
