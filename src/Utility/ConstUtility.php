@@ -46,7 +46,7 @@ class ConstUtility
 
                 return [$value . " 1", $value . " 2"];
             case '\DateTimeImmutable' :
-                return Carbon::now()->startOfYear()->toDateString();
+                return Carbon::parse('first day of January 2018')->toDateString();
             default:
                 throw new \InvalidArgumentException($type);
         }

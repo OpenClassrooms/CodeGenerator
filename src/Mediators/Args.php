@@ -7,5 +7,5 @@ namespace OpenClassrooms\CodeGenerator\Mediators;
  */
 final class Args
 {
-    const CLASS_NAME = 'Class Name';
+    const CLASS_NAME = 'class-name';
 }

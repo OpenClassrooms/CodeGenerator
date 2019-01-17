@@ -2,6 +2,7 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\BusinessRules\Entities\EntityStub;
 
+use Carbon\Carbon;
 use OpenClassrooms\CodeGenerator\FileObjects\ConstObject;
 use OpenClassrooms\CodeGenerator\FileObjects\FieldObject;
 
@@ -15,8 +16,6 @@ class EntityStubFieldObjectStub5 extends FieldObject
 
     const NAME = 'field4';
 
-    const VALUE = '2018-01-01';
-
     protected $docComment = self::DOC_COMMENT;
 
     protected $name = self::NAME;
@@ -27,6 +26,6 @@ class EntityStubFieldObjectStub5 extends FieldObject
     {
         parent::__construct($this->name);
         $this->value = new ConstObject(self::CONST);
-        $this->value->setValue(self::VALUE);
+        $this->value->setValue(Carbon::parse('first day of January 2018')->toDateString());
     }
 }
