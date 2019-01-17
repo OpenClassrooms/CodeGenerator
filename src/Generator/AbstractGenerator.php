@@ -1,98 +1,104 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace OpenClassrooms\CodeGenerator\Generator;
 
-use OpenClassrooms\CodeGenerator\ClassObjects\ClassObject;
+use OpenClassrooms\CodeGenerator\FileObjects\FieldObject;
+use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
+use OpenClassrooms\CodeGenerator\Gateways\FileObject\FileObjectGateway;
 use OpenClassrooms\CodeGenerator\Services\FieldObjectService;
+use OpenClassrooms\CodeGenerator\Services\Impl\TemplatingServiceImpl;
+use OpenClassrooms\CodeGenerator\Services\TemplatingService;
 use OpenClassrooms\CodeGenerator\Utility\ClassNameUtility;
 
 /**
- * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
+ * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
  */
 abstract class AbstractGenerator implements Generator
 {
     use ClassNameUtility;
 
     /**
-     * @var \OpenClassrooms\CodeGenerator\Services\FieldObjectService
+     * @var FieldObjectService
      */
-    protected $fieldObjectService;
+    private $fieldObjectService;
 
     /**
-     * @var \Twig_Environment
+     * @var FileObjectGateway
      */
-    protected $templating;
+    private $fileObjectGateway;
 
     /**
-     * @var string
+     * @var TemplatingServiceImpl
      */
-    private $useCaseInterfaceClassName;
+    private $templating;
 
-    /**
-     * @var string
-     */
-    private $useCaseRequestInterfaceClassName;
-
-    /**
-     * @var string
-     */
-    private $useCaseResponseInterfaceClassName;
-
-    abstract public function generate(string $className, array $parameters = []): array;
-
-    public function setFieldObjectService(FieldObjectService $fieldObjectService)
+    public function setFieldObjectService(FieldObjectService $fieldObjectService): void
     {
         $this->fieldObjectService = $fieldObjectService;
     }
 
-    public function setTemplating(\Twig_Environment $templating)
+    public function setFileObjectGateway(FileObjectGateway $fileObjectGateway)
     {
-        $templating->addGlobal(
-            'useCaseInterface',
-            new ClassObject(
-                $this->getNamespaceFromClassName($this->useCaseInterfaceClassName),
-                $this->getShortClassNameFromClassName($this->useCaseInterfaceClassName)
-            )
-        );
+        $this->fileObjectGateway = $fileObjectGateway;
+    }
 
-        $templating->addGlobal(
-            'useCaseRequestInterface',
-            new ClassObject(
-                $this->getNamespaceFromClassName($this->useCaseRequestInterfaceClassName),
-                $this->getShortClassNameFromClassName($this->useCaseRequestInterfaceClassName)
-            )
-        );
-
-        $templating->addGlobal(
-            'useCaseResponseInterface',
-            new ClassObject(
-                $this->getNamespaceFromClassName($this->useCaseResponseInterfaceClassName),
-                $this->getShortClassNameFromClassName($this->useCaseResponseInterfaceClassName)
-            )
-        );
+    public function setTemplating(TemplatingService $templating): void
+    {
         $this->templating = $templating;
     }
 
-    public function setUseCaseInterfaceClassName(string $useCaseInterfaceClassName)
+    /**
+     * @return array|FieldObject[]
+     */
+    protected function getParentAndChildPublicClassFields(string $className): array
     {
-        $this->useCaseInterfaceClassName = $useCaseInterfaceClassName;
-    }
+        $classFields = array_merge(
+            $this->fieldObjectService->getParentPublicClassFields($className),
+            $this->fieldObjectService->getPublicClassFields($className)
+        );
 
-    public function setUseCaseRequestInterfaceClassName(string $useCaseRequestInterfaceClassName)
-    {
-        $this->useCaseRequestInterfaceClassName = $useCaseRequestInterfaceClassName;
-    }
-
-    public function setUseCaseResponseInterfaceClassName(string $useCaseResponseInterfaceClassName)
-    {
-        $this->useCaseResponseInterfaceClassName = $useCaseResponseInterfaceClassName;
+        return $classFields;
     }
 
     /**
-     * @throws \Twig_Error_Loader
-     * @throws \Twig_Error_Runtime
-     * @throws \Twig_Error_Syntax
+     * @return array|FieldObject[]
      */
+    protected function getPublicClassFields(string $className): array
+    {
+        return $this->fieldObjectService->getPublicClassFields($className);
+    }
+
+    /**
+     * @return array|FieldObject[]
+     */
+    protected function getProtectedClassFields(string $className): array
+    {
+        return $this->fieldObjectService->getProtectedClassFields($className);
+    }
+
+    /* Ceci est une fonction de comparaison statique */
+
+    /**
+     * @return array|FieldObject[]
+     */
+    protected function getParentProtectedClassFields(string $className): array
+    {
+        return $this->fieldObjectService->getParentProtectedClassFields($className);
+    }
+
+    /**
+     * @return array|FieldObject[]
+     */
+    protected function getClassConstants(string $className): array
+    {
+        return $this->fieldObjectService->getClassConstants($className);
+    }
+
+    protected function insertFileObject(FileObject $viewModelFileObject): void
+    {
+        $this->fileObjectGateway->insert($viewModelFileObject);
+    }
+
     protected function render(string $template, array $parameters): string
     {
         return $this->templating->render($template, $parameters);

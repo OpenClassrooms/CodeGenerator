@@ -1,9 +1,10 @@
-<?php
+<?php declare(strict_types=1);
 
-namespace Repository;
+namespace OpenClassrooms\CodeGenerator\Repository;
 
-use FileObjects\FileObject;
-use Gateway\FileObjectGateway;
+use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
+use OpenClassrooms\CodeGenerator\Gateways\FileObject\FileObjectGateway;
+use Symfony\Component\Filesystem\Filesystem;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
@@ -11,32 +12,35 @@ use Gateway\FileObjectGateway;
 class FileObjectRepository implements FileObjectGateway
 {
     /**
-     * @var \FileObjects\FileObject[]
+     * @var FileObject[]
      */
     private static $fileObjects = [];
 
     /**
-     * @var \Symfony\Component\Filesystem\Filesystem
+     * @var Filesystem
      */
     private $fileSystem;
 
-    public function insert(FileObject $fileObject)
+    public function insert(FileObject $fileObject): void
     {
-        $fileObject->setAlreadyExists($this->fileSystem->exists($this->getFilePath($fileObject)));
-        self::$fileObjects[$fileObject->getId()] = $this->getFilePath($fileObject);
+        $fileObject->setAlreadyExists($this->fileSystem->exists($fileObject->getPath()));
+        self::$fileObjects[$fileObject->getId()] = $fileObject;
     }
 
-    private function getFilePath(FileObject $fileObject)
+    public function flush(): void
     {
-        return $fileObject->getClassName().'.php';
-    }
-
-    public function flush()
-    {
-        foreach (self::$fileObjects as $fileObject) {
+        foreach (self::$fileObjects as $key => $fileObject) {
+            $fileObject->setAlreadyExists(file_exists($fileObject->getPath()));
             if (!$fileObject->alreadyExists()) {
-                $this->fileSystem->dumpFile($fileObject->getClassName().'php', $fileObject->getContent());
+                $this->fileSystem->dumpFile($fileObject->getPath(), $fileObject->getContent());
+                $fileObject->write();
+                unset(self::$fileObjects[$key]);
             }
         }
+    }
+
+    public function setFileSystem(Filesystem $fileSystem): void
+    {
+        $this->fileSystem = $fileSystem;
     }
 }
