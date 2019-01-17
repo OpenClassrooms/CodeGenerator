@@ -12,10 +12,11 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Api\ViewModels\ViewMo
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Api\ViewModels\ViewModelListItemImpl\ViewModelListItemImplFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\DTO\Response\FunctionalEntityResponseDTO;
 use OpenClassrooms\CodeGenerator\Tests\TestClassUtil;
+use OpenClassrooms\CodeGenerator\Utility\ClassNameUtility;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;
-use Symfony\Component\DependencyInjection\Container;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
@@ -33,19 +34,19 @@ class ViewModelCommandTest extends TestCase
     private $commandTester;
 
     /**
-     * @var Container
+     * @var ContainerBuilder
      */
     private $container;
-
-    /**
-     * @var ViewModelMediatorImpl
-     */
-    private $viewModelMediatorImplMock;
 
     /**
      * @var ViewModelCommand
      */
     private $viewModelCommand;
+
+    /**
+     * @var ViewModelMediatorImpl
+     */
+    private $viewModelMediatorImplMock;
 
     /**
      * @test
@@ -205,7 +206,7 @@ class ViewModelCommandTest extends TestCase
         $this->application = new Application();
         $this->application->add($this->viewModelCommand);
         $this->commandTester = new CommandTester($this->viewModelCommand);
-        $this->container = $this->createMock(Container::class);
+        $this->container = $this->createMock(ContainerBuilder::class);
         $this->viewModelMediatorImplMock = $this->createMock(ViewModelMediatorImpl::class);
         TestClassUtil::setProperty('container', $this->container, $this->viewModelCommand);
     }
