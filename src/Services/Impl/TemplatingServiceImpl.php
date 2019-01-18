@@ -38,7 +38,7 @@ class TemplatingServiceImpl extends \Twig_Environment implements TemplatingServi
 
     private function getSortNameByAlphaFilter()
     {
-        return new \Twig_Filter(
+        return new \Twig_SimpleFilter(
             'sortNameByAlpha',
             function($classFields) {
                 $arrayFields = $classFields;
@@ -62,7 +62,7 @@ class TemplatingServiceImpl extends \Twig_Environment implements TemplatingServi
 
     private function getSortIdFirstFilter()
     {
-        return new \Twig_Filter(
+        return new \Twig_SimpleFilter(
             'sortIdFirst',
             function($classFields) {
                 $arrayFields = $classFields;
@@ -80,7 +80,7 @@ class TemplatingServiceImpl extends \Twig_Environment implements TemplatingServi
 
     private function printValue()
     {
-        return new \Twig_Function(
+        return new \Twig_SimpleFunction(
             'printValue',
             function($value) {
                 switch ($value) {
