@@ -22,12 +22,12 @@ class ViewModelCommand extends Command
 {
     const CONFIG_DIR = __DIR__ . '/../Resources/config';
 
-    const ROOT_DIR = __DIR__ . '/../..';
+    const ROOT_DIR = __DIR__ . '/../../../../..';
 
     /**
      * @var ContainerBuilder
      */
-    private $container;
+    protected $container;
 
     /**
      * @var string
@@ -46,7 +46,7 @@ class ViewModelCommand extends Command
 
     private function loadConfigParameters()
     {
-        $loader = new YamlFileLoader($this->container, new FileLocator(self::ROOT_DIR));
+        $loader = new YamlFileLoader($this->container, new FileLocator(static::ROOT_DIR));
         $loader->load('oc_code_generator.yml');
     }
 

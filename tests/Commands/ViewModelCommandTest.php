@@ -3,8 +3,8 @@
 namespace OpenClassrooms\CodeGenerator\tests\Commands;
 
 use OpenClassrooms\CodeGenerator\Commands\CommandLabelType;
-use OpenClassrooms\CodeGenerator\Commands\ViewModelCommand;
 use OpenClassrooms\CodeGenerator\Mediators\Api\Impl\ViewModelMediatorImpl;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Commands\ViewModelCommandMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Api\ViewModels\ViewModel\ViewModelFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Api\ViewModels\ViewModelDetail\ViewModelDetailFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Api\ViewModels\ViewModelDetailImpl\ViewModelDetailImplFileObjectStub1;
@@ -12,7 +12,6 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Api\ViewModels\ViewMo
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Api\ViewModels\ViewModelListItemImpl\ViewModelListItemImplFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\DTO\Response\FunctionalEntityResponseDTO;
 use OpenClassrooms\CodeGenerator\Tests\TestClassUtil;
-use OpenClassrooms\CodeGenerator\Utility\ClassNameUtility;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;
@@ -39,9 +38,9 @@ class ViewModelCommandTest extends TestCase
     private $container;
 
     /**
-     * @var ViewModelCommand
+     * @var ViewModelCommandMock
      */
-    private $viewModelCommand;
+    private $viewModelCommandMock;
 
     /**
      * @var ViewModelMediatorImpl
@@ -58,7 +57,7 @@ class ViewModelCommandTest extends TestCase
 
         $this->commandTester->execute(
             [
-                'command'    => $this->viewModelCommand->getName(),
+                'command'    => $this->viewModelCommandMock->getName(),
                 'class-name' => FunctionalEntityResponseDTO::class,
             ]
         );
@@ -105,7 +104,7 @@ class ViewModelCommandTest extends TestCase
 
         $this->commandTester->execute(
             [
-                'command'    => $this->viewModelCommand->getName(),
+                'command'    => $this->viewModelCommandMock->getName(),
                 'class-name' => FunctionalEntityResponseDTO::class,
                 '--no-test'  => null,
             ]
@@ -132,7 +131,7 @@ class ViewModelCommandTest extends TestCase
 
         $this->commandTester->execute(
             [
-                'command'      => $this->viewModelCommand->getName(),
+                'command'      => $this->viewModelCommandMock->getName(),
                 'class-name'   => FunctionalEntityResponseDTO::class,
                 '--tests-only' => null,
             ]
@@ -158,7 +157,7 @@ class ViewModelCommandTest extends TestCase
 
         $this->commandTester->execute(
             [
-                'command'    => $this->viewModelCommand->getName(),
+                'command'    => $this->viewModelCommandMock->getName(),
                 'class-name' => FunctionalEntityResponseDTO::class,
             ]
         );
@@ -183,7 +182,7 @@ class ViewModelCommandTest extends TestCase
 
         $this->commandTester->execute(
             [
-                'command'    => $this->viewModelCommand->getName(),
+                'command'    => $this->viewModelCommandMock->getName(),
                 'class-name' => FunctionalEntityResponseDTO::class,
                 '--dump'     => null,
             ]
@@ -202,13 +201,13 @@ class ViewModelCommandTest extends TestCase
 
     protected function setUp()
     {
-        $this->viewModelCommand = new ViewModelCommand();
+        $this->viewModelCommandMock = new ViewModelCommandMock();
         $this->application = new Application();
-        $this->application->add($this->viewModelCommand);
-        $this->commandTester = new CommandTester($this->viewModelCommand);
+        $this->application->add($this->viewModelCommandMock);
+        $this->commandTester = new CommandTester($this->viewModelCommandMock);
         $this->container = $this->createMock(ContainerBuilder::class);
         $this->viewModelMediatorImplMock = $this->createMock(ViewModelMediatorImpl::class);
-        TestClassUtil::setProperty('container', $this->container, $this->viewModelCommand);
+        TestClassUtil::setProperty('container', $this->container, $this->viewModelCommandMock);
     }
 }
 
