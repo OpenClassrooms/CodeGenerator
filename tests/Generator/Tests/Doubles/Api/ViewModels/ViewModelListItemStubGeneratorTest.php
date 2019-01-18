@@ -63,6 +63,7 @@ class ViewModelListItemStubGeneratorTest extends TestCase
         $this->viewModelStub1Generator->setTemplating(new TemplatingServiceMock());
 
         $viewModelFileObjectFactory = new ViewModelFileObjectFactoryImpl();
+        $viewModelFileObjectFactory->setApiDirName(FixturesConfig::API_DIRNAME);
         $viewModelFileObjectFactory->setStubNamespace(FixturesConfig::STUB_NAMESPACE);
         $viewModelFileObjectFactory->setBaseNamespace(FixturesConfig::BASE_NAMESPACE);
         $useCaseResponseFileObjectFactory = new UseCaseResponseFileObjectFactoryImpl();

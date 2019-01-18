@@ -1,13 +1,20 @@
 parameters:
-    base_namespace_v4: OC
-    stub_namespace_v4: OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes
-    tests_base_namespace_v4: OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\tests
+    base_namespace_v4: OC\
+    stub_namespace_v4: OC\tests\Doubles\
+    tests_base_namespace_v4: OC\tests\
+    apiDirName_v4: Api\
+    appDirName_v4: App\
 
-    base_namespace_claire: OC\CLAIRE
-    stub_namespace_claire: OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes
-    tests_base_namespace_claire: OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\tests
+
+    base_namespace_claire: OC\CLAIRE\
+    stub_namespace_claire: OC\CLAIRE\tests\Doubles\
+    tests_base_namespace_claire: OC\CLAIRE\tests\Doubles\
+    apiDirName_claire: Api\
+    appDirName_claire: App\
 
     base_namespace: OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\
     stub_namespace: OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\tests\Doubles\
     tests_base_namespace: OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\tests\
+    apiDirName: Api\
+    appDirName: App\
 

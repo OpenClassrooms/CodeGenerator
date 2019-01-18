@@ -62,6 +62,7 @@ class ViewModelDetailTestCaseGeneratorTest extends TestCase
         $this->viewModelDetailTestCaseGenerator->setTemplating(new TemplatingServiceMock());
 
         $viewModelFileObjectFactory = new ViewModelFileObjectFactoryImpl();
+        $viewModelFileObjectFactory->setApiDirName(FixturesConfig::API_DIRNAME);
         $viewModelFileObjectFactory->setBaseNamespace(FixturesConfig::BASE_NAMESPACE);
         $viewModelFileObjectFactory->setStubNamespace(FixturesConfig::STUB_NAMESPACE);
         $this->viewModelDetailTestCaseGenerator->setViewModelFileObjectFactory($viewModelFileObjectFactory);

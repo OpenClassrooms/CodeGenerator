@@ -125,7 +125,7 @@ class FileObject
 
     public function getPath(): string
     {
-        return str_replace('\\', '/', $this->getClassName() . '.php');
+        return str_replace('\\', '/', 'src/' . $this->getClassName() . '.php');
     }
 
     public function getShortName(): string

@@ -10,6 +10,16 @@ abstract class AbstractFileObjectFactory implements FileObjectFactory
     /**
      * @var string
      */
+    protected $apiDirName;
+
+    /**
+     * @var string
+     */
+    protected $appDirName;
+
+    /**
+     * @var string
+     */
     protected $baseNamespace;
 
     /**
@@ -25,6 +35,16 @@ abstract class AbstractFileObjectFactory implements FileObjectFactory
     public function setBaseNamespace(string $baseNamespace)
     {
         $this->baseNamespace = $baseNamespace;
+    }
+
+    public function setApiDirName(string $apiDirName)
+    {
+        $this->apiDirName = $apiDirName;
+    }
+
+    public function setAppDirName(string $appDirName)
+    {
+        $this->appDirName = $appDirName;
     }
 
     public function setStubNamespace(string $stubNamespace)

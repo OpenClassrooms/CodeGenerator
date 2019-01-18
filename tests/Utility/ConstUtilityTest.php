@@ -31,7 +31,7 @@ class ConstUtilityTest extends TestCase
 
     private function assertType($expectedValue, $actual): void
     {
-        if ('\DateTimeImmutable' === $expectedValue) {
+        if (('\DateTimeImmutable' || '\DateTimeInterface') === $expectedValue) {
             $this->assertInstanceOf($expectedValue, $actual->getValue());
         } else {
             $this->assertInternalType($expectedValue, $actual->getValue());
@@ -51,6 +51,7 @@ class ConstUtilityTest extends TestCase
             [$this->buildFieldObject('field4', 'float'), $fileObject, 'float'],
             [$this->buildFieldObject('field5', 'array'), $fileObject, 'array'],
             [$this->buildFieldObject('field6', '\DateTimeImmutable'), $fileObject, 'string'],
+            [$this->buildFieldObject('field6', '\DateTimeInterface'), $fileObject, 'string'],
         ];
     }
 
