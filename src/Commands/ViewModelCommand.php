@@ -22,7 +22,7 @@ class ViewModelCommand extends Command
 {
     const CONFIG_DIR = __DIR__ . '/../Resources/config';
 
-    const ROOT_DIR = __DIR__ . '/../..';
+    const ROOT_DIR = __DIR__ . '/../../../../..';
 
     /**
      * @var ContainerBuilder

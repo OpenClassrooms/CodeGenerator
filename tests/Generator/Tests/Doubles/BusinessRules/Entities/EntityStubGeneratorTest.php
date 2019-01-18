@@ -63,10 +63,12 @@ class EntityStubGeneratorTest extends TestCase
         $this->entityStubGenerator->setTemplating(new TemplatingServiceMock());
 
         $viewModelFileObjectFactory = new ViewModelFileObjectFactoryImpl();
+        $viewModelFileObjectFactory->setApiDirName(FixturesConfig::API_DIRNAME);
         $viewModelFileObjectFactory->setStubNamespace(FixturesConfig::STUB_NAMESPACE);
         $viewModelFileObjectFactory->setBaseNamespace(FixturesConfig::BASE_NAMESPACE);
 
         $entityFileObjectFactory = new EntityFileObjectFactoryImpl();
+        $entityFileObjectFactory->setAppDirName(FixturesConfig::APP_DIRNAME);
         $entityFileObjectFactory->setStubNamespace(FixturesConfig::STUB_NAMESPACE);
         $entityFileObjectFactory->setBaseNamespace(FixturesConfig::BASE_NAMESPACE);
 

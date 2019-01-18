@@ -6,6 +6,12 @@
             <call method="setBaseNamespace">
                 <argument type="string">%base_namespace%</argument>
             </call>
+            <call method="setApiDirName">
+                <argument type="string">%apiDirName%</argument>
+            </call>
+            <call method="setAppDirName">
+                <argument type="string">%appDirName%</argument>
+            </call>
             <call method="setStubNamespace">
                 <argument type="string">%stub_namespace%</argument>
             </call>
