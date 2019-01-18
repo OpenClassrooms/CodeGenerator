@@ -34,7 +34,7 @@ class EntityStubGenerator extends AbstractGenerator
      */
     public function generate(GeneratorRequest $generatorRequest): FileObject
     {
-        $entityImplFileObject = $this->createEntityImplFileObject($generatorRequest->getEntityClassName());
+        $entityImplFileObject = $this->createEntityImplFileObject($generatorRequest->getUseCaseResponseClassName());
         $entityStubFileObject = $this->buildEntityStubFileObject($entityImplFileObject);
 
         $this->insertFileObject($entityStubFileObject);
@@ -42,9 +42,9 @@ class EntityStubGenerator extends AbstractGenerator
         return $entityStubFileObject;
     }
 
-    private function createEntityImplFileObject(string $entityClassName): FileObject
+    private function createEntityImplFileObject(string $useCaseResponseClassName): FileObject
     {
-        [$domain, $entity] = $this->getDomainAndEntityNameFromClassName($entityClassName);
+        [$domain, $entity] = $this->getDomainAndEntityNameFromClassName($useCaseResponseClassName);
 
         return $this->entityFileObjectFactory->create(
             EntityFileObjectType::BUSINESS_RULES_ENTITY_IMPL,

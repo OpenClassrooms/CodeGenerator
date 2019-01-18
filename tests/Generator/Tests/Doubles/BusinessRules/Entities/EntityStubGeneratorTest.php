@@ -13,7 +13,7 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\BusinessRules\Entitie
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\FileObjectTestCase;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingServiceMock;
-use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\App\Entity\Domain\SubDomain\FunctionalEntityImpl;
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\DTO\Response\FunctionalEntityResponseDTO;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\FixturesConfig;
 use PHPUnit\Framework\TestCase;
 
@@ -53,7 +53,7 @@ class EntityStubGeneratorTest extends TestCase
         $stub1GeneratorRequestBuilder = new EntityStubGeneratorRequestBuilderImpl();
         $this->request = $stub1GeneratorRequestBuilder
             ->create()
-            ->withClassName(FunctionalEntityImpl::class)
+            ->withClassName(FunctionalEntityResponseDTO::class)
             ->build();
 
         $this->entityStubGenerator = new EntityStubGenerator();

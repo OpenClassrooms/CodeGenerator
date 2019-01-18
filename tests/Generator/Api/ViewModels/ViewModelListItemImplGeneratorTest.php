@@ -9,7 +9,7 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModel\Impl\ViewModelList
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Api\ViewModels\ViewModelListItemImpl\ViewModelListItemImplFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\FileObjectTestCase;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
-use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\FunctionalEntityListItem;
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\DTO\Response\FunctionalEntityResponseDTO;
 use OpenClassrooms\CodeGenerator\Tests\Generator\Api\ViewModels\AbstractViewModelGeneratorTestCase;
 
 /**
@@ -48,7 +48,7 @@ class ViewModelListItemImplGeneratorTest extends AbstractViewModelGeneratorTestC
         $viewModelListItemImplGeneratorRequestBuilder = new ViewModelListItemImplGeneratorRequestBuilderImpl();
         $this->request = $viewModelListItemImplGeneratorRequestBuilder
             ->create()
-            ->withClassName(FunctionalEntityListItem::class)
+            ->withClassName(FunctionalEntityResponseDTO::class)
             ->build();
 
         $this->viewModelListItemImplGenerator = new ViewModelListItemImplGenerator();

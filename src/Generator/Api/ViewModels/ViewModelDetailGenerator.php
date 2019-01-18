@@ -27,16 +27,16 @@ class ViewModelDetailGenerator extends AbstractViewModelGenerator
     public function generate(GeneratorRequest $generatorRequest): FileObject
     {
         $viewModelDetailFileObject =
-            $this->buildViewModelDetailFileObject($generatorRequest->getUseCaseDetailResponseClassName());
+            $this->buildViewModelDetailFileObject($generatorRequest->getUseCaseResponseClassName());
         $this->insertFileObject($viewModelDetailFileObject);
 
         return $viewModelDetailFileObject;
     }
 
-    private function buildViewModelDetailFileObject(string $useCaseDetailResponseClassName): FileObject
+    private function buildViewModelDetailFileObject(string $useCaseResponseClassName): FileObject
     {
         $useCaseDetailResponseFileObject =
-            $this->createUseCaseDetailResponseFileObject($useCaseDetailResponseClassName);
+            $this->createUseCaseDetailResponseFileObject($useCaseResponseClassName);
 
         $viewModelDetailFileObject = $this->createViewModeObject($useCaseDetailResponseFileObject);
         $viewModelDetailFileObject->setFields(

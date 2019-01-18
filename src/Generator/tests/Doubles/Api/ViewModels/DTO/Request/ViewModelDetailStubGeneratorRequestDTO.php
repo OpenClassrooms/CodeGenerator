@@ -24,7 +24,7 @@ class ViewModelDetailStubGeneratorRequestDTO implements ViewModelDetailStubGener
      */
     public $namespace;
 
-    public function getViewModelDetailClassName(): string
+    public function getUseCaseResponseClassName(): string
     {
         return $this->className;
     }

@@ -37,7 +37,7 @@ class ViewModelDetailImplGeneratorRequestDTO implements ViewModelDetailImplGener
         return $this->namespace;
     }
 
-    public function getViewModelDetailClassName(): string
+    public function getUseCaseResponseClassName(): string
     {
         return $this->className;
     }

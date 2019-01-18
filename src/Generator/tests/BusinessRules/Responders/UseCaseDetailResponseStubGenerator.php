@@ -28,7 +28,7 @@ class UseCaseDetailResponseStubGenerator extends AbstractUseCaseResponseStubGene
     public function generate(GeneratorRequest $generatorRequest): FileObject
     {
         $useCaseDetailResponseStubFileObject = $this->buildUseCaseDetailResponseStubFileObject(
-            $generatorRequest->getUseCaseDetailResponseClassName()
+            $generatorRequest->getUseCaseResponseClassName()
         );
 
         $this->insertFileObject($useCaseDetailResponseStubFileObject);
@@ -36,10 +36,10 @@ class UseCaseDetailResponseStubGenerator extends AbstractUseCaseResponseStubGene
         return $useCaseDetailResponseStubFileObject;
     }
 
-    private function buildUseCaseDetailResponseStubFileObject(string $useCaseDetailResponseClassName)
+    private function buildUseCaseDetailResponseStubFileObject(string $useCaseResponseClassName)
     {
         $useCaseDetailResponseFileObject = $this->createUseCaseDetailResponseFileObject(
-            $useCaseDetailResponseClassName
+            $useCaseResponseClassName
         );
         $entityStubFileObject = $this->createEntityStubFileObject($useCaseDetailResponseFileObject);
         $useCaseDetailResponseStubFileObject = $this->createUseCaseDetailResponseStubFileObject(

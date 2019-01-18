@@ -15,7 +15,7 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\BusinessRules\Respond
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\FileObjectTestCase;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingServiceMock;
-use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\DTO\Response\FunctionalEntityListItemResponseDTO;
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\DTO\Response\FunctionalEntityResponseDTO;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\FixturesConfig;
 use PHPUnit\Framework\TestCase;
 
@@ -56,7 +56,7 @@ class UseCaseListItemResponseStubGeneratorTest extends TestCase
         );
         $this->request = $useCaseListItemResponseStubGeneratorRequestBuilder
             ->create()
-            ->withResponseClassName(FunctionalEntityListItemResponseDTO::class)
+            ->withResponseClassName(FunctionalEntityResponseDTO::class)
             ->build();
 
         $this->useCaseListItemResponseStubGenerator = new UseCaseListItemResponseStubGenerator();

@@ -9,5 +9,5 @@ use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
  */
 interface ViewModelTestCaseGeneratorRequest extends GeneratorRequest
 {
-    public function getViewModelListItemClassName(): string;
+    public function getUseCaseResponseClassName(): string;
 }
