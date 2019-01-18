@@ -14,7 +14,7 @@ class ViewModelListItemAssemblerImplTestGeneratorRequestDTO implements ViewModel
      */
     public $responseClassName;
 
-    public function getViewModelListItemAssemblerImplClassName(): string
+    public function getUseCaseResponseClassName(): string
     {
         return $this->responseClassName;
     }

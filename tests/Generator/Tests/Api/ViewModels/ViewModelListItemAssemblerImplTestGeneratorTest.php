@@ -13,7 +13,7 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\FileObjectTestCase;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\tests\Api\ViewModels\ViewModelListItemAssemblerImplTest\ViewModelListItemAssemblerImplTestFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingServiceMock;
-use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\Impl\FunctionalEntityListItemAssemblerImpl;
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\DTO\Response\FunctionalEntityResponseDTO;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\FixturesConfig;
 use PHPUnit\Framework\TestCase;
 
@@ -50,11 +50,10 @@ class ViewModelListItemAssemblerImplTestGeneratorTest extends TestCase
 
     protected function setUp()
     {
-        $viewModelTestGeneratorRequestBuilder = new ViewModelListItemAssemblerImplTestGeneratorRequestBuilderImpl(
-        );
+        $viewModelTestGeneratorRequestBuilder = new ViewModelListItemAssemblerImplTestGeneratorRequestBuilderImpl();
         $this->request = $viewModelTestGeneratorRequestBuilder
             ->create()
-            ->withResponseClassName(FunctionalEntityListItemAssemblerImpl::class)
+            ->withResponseClassName(FunctionalEntityResponseDTO::class)
             ->build();
 
         $this->viewModelListItemAssemblerImplTestGenerator = new ViewModelListItemAssemblerImplTestGenerator();

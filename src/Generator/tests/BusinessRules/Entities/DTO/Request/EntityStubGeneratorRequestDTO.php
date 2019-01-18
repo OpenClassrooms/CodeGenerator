@@ -24,7 +24,7 @@ class EntityStubGeneratorRequestDTO implements EntityStubGeneratorRequest
      */
     public $namespace;
 
-    public function getEntityClassName(): string
+    public function getUseCaseResponseClassName(): string
     {
         return $this->className;
     }

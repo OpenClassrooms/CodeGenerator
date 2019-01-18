@@ -26,16 +26,16 @@ class ViewModelDetailTestCaseGenerator extends AbstractViewModelGenerator
     public function generate(GeneratorRequest $generatorRequest): FileObject
     {
         $viewModelDetailTestCaseFileObject = $this->buildDetailTestCaseFileObject(
-            $generatorRequest->getViewModelDetailClassName()
+            $generatorRequest->getUseCaseResponseClassName()
         );
         $this->insertFileObject($viewModelDetailTestCaseFileObject);
 
         return $viewModelDetailTestCaseFileObject;
     }
 
-    public function buildDetailTestCaseFileObject(string $viewModelDetailClassName): FileObject
+    public function buildDetailTestCaseFileObject(string $useCaseResponseClassName): FileObject
     {
-        $viewModelDetailFileObject = $this->createViewModelDetailFileObject($viewModelDetailClassName);
+        $viewModelDetailFileObject = $this->createViewModelDetailFileObject($useCaseResponseClassName);
         $viewModelTestCaseFileObject = $this->createViewModelTestCaseFileObject(
             $viewModelDetailFileObject
         );

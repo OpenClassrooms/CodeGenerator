@@ -37,7 +37,7 @@ class ViewModelListItemGeneratorRequestDTO implements ViewModelListItemGenerator
         return $this->namespace;
     }
 
-    public function getUseCaseListItemResponseClassName(): string
+    public function getUseCaseResponseClassName(): string
     {
         return $this->className;
     }

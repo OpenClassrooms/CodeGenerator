@@ -14,7 +14,7 @@ class UseCaseDetailResponseStubGeneratorRequestDTO implements UseCaseDetailRespo
      */
     public $responseClassName;
 
-    public function getUseCaseDetailResponseClassName(): string
+    public function getUseCaseResponseClassName(): string
     {
         return $this->responseClassName;
     }

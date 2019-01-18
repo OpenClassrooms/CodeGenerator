@@ -29,7 +29,7 @@ class ViewModelListItemStubGenerator extends AbstractViewModelGenerator
     public function generate(GeneratorRequest $generatorRequest): FileObject
     {
         $viewModelListItemStubFileObject = $this->buildViewModelListItemStubFileObject(
-            $generatorRequest->getViewModelListItemClassName()
+            $generatorRequest->getUseCaseResponseClassName()
         );
 
         $this->insertFileObject($viewModelListItemStubFileObject);
@@ -38,10 +38,10 @@ class ViewModelListItemStubGenerator extends AbstractViewModelGenerator
     }
 
     private function buildViewModelListItemStubFileObject(
-        string $viewModelClassName
+        string $useCaseResponseClassName
     ): FileObject
     {
-        $viewModelListItemFileObject = $this->createViewModelListItemFileObject($viewModelClassName);
+        $viewModelListItemFileObject = $this->createViewModelListItemFileObject($useCaseResponseClassName);
         $useCaseListItemResponseStubFileObject = $this->createUseCaseListItemResponseStubFileObject(
             $viewModelListItemFileObject
         );

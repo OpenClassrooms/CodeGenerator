@@ -26,7 +26,7 @@ class ViewModelListItemTestCaseGenerator extends AbstractViewModelGenerator
     public function generate(GeneratorRequest $generatorRequest): FileObject
     {
         $viewModelListItemFileObject = $this->createViewListItemFileObject(
-            $generatorRequest->getViewModelListItemClassName()
+            $generatorRequest->getUseCaseResponseClassName()
         );
         $viewModelTestCaseFileObject = $this->createViewModelTestCaseFileObject(
             $viewModelListItemFileObject
@@ -44,9 +44,9 @@ class ViewModelListItemTestCaseGenerator extends AbstractViewModelGenerator
         return $viewModelListItemTestCaseFileObject;
     }
 
-    private function createViewListItemFileObject($viewModelListItemClassName)
+    private function createViewListItemFileObject($useCaseResponseClassName)
     {
-        [$domain, $entity] = $this->getDomainAndEntityNameFromClassName($viewModelListItemClassName);
+        [$domain, $entity] = $this->getDomainAndEntityNameFromClassName($useCaseResponseClassName);
 
         return $this->createViewModelFileObject(ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM, $domain, $entity);
     }

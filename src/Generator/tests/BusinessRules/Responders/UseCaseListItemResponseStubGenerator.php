@@ -29,7 +29,7 @@ class UseCaseListItemResponseStubGenerator extends AbstractUseCaseResponseStubGe
     public function generate(GeneratorRequest $generatorRequest): FileObject
     {
         $useCaseListItemResponseStubFileObject = $this->buildUseCaseListItemResponseStubFileObject(
-            $generatorRequest->getUseCaseListItemResponseClassName()
+            $generatorRequest->getUseCaseResponseClassName()
         );
 
         $this->insertFileObject($useCaseListItemResponseStubFileObject);
@@ -37,10 +37,10 @@ class UseCaseListItemResponseStubGenerator extends AbstractUseCaseResponseStubGe
         return $useCaseListItemResponseStubFileObject;
     }
 
-    private function buildUseCaseListItemResponseStubFileObject(string $useCaseListItemResponseClassName)
+    private function buildUseCaseListItemResponseStubFileObject(string $useCaseResponseClassName)
     {
         $useCaseListItemResponseFileObject = $this->createUseCaseListItemResponseFileObject(
-            $useCaseListItemResponseClassName
+            $useCaseResponseClassName
         );
         $useCaseListItemResponseStubFileObject = $this->createUseCaseListItemResponseStubFileObject(
             $useCaseListItemResponseFileObject

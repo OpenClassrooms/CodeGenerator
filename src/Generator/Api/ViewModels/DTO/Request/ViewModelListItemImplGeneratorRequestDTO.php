@@ -37,7 +37,7 @@ class ViewModelListItemImplGeneratorRequestDTO implements ViewModelListItemImplG
         return $this->namespace;
     }
 
-    public function getViewModelListItemClassName(): string
+    public function getUseCaseResponseClassName(): string
     {
         return $this->className;
     }

@@ -26,17 +26,17 @@ class ViewModelListItemImplGenerator extends AbstractViewModelGenerator
     public function generate(GeneratorRequest $generatorRequest): FileObject
     {
         $viewModelListItemImplFileObject = $this->buildViewModelListItemImplFileObject(
-            $generatorRequest->getViewModelListItemClassName()
+            $generatorRequest->getUseCaseResponseClassName()
         );
         $this->insertFileObject($viewModelListItemImplFileObject);
 
         return $viewModelListItemImplFileObject;
     }
 
-    private function buildViewModelListItemImplFileObject(string $viewModelListItemClassName): FileObject
+    private function buildViewModelListItemImplFileObject(string $useCaseResponseClassName): FileObject
     {
         $viewModelListItemFileObject = $this->createViewModelListItemFileObject(
-            $viewModelListItemClassName
+            $useCaseResponseClassName
         );
         $viewModelListItemImplFileObject = $this->createViewModelListItemImplObject($viewModelListItemFileObject);
 

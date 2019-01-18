@@ -40,7 +40,7 @@ class ViewModelListItemAssemblerImplTestGenerator extends AbstractViewModelGener
     public function generate(GeneratorRequest $generatorRequest): FileObject
     {
         $viewModelListItemAssemblerImplTest = $this->buildViewModelListItemAssemblerImplTestFileObject(
-            $generatorRequest->getViewModelListItemAssemblerImplClassName()
+            $generatorRequest->getUseCaseResponseClassName()
         );
         $this->insertFileObject($viewModelListItemAssemblerImplTest);
 
@@ -48,18 +48,18 @@ class ViewModelListItemAssemblerImplTestGenerator extends AbstractViewModelGener
     }
 
     private function buildViewModelListItemAssemblerImplTestFileObject(
-        string $viewModelListItemAssemblerImplClassName
+        string $useCaseResponseClassName
     ): FileObject
     {
         $viewModelListItemAssemblerImpl = $this->createViewModelListItemAssemblerImplFileObject(
-            $viewModelListItemAssemblerImplClassName
+            $useCaseResponseClassName
         );
         $viewModelListItemTestCase = $this->createViewModelListItemTestCase($viewModelListItemAssemblerImpl);
         $useCaseListItemResponseStub = $this->createUseCaseListItemResponseStub($viewModelListItemAssemblerImpl);
         $viewModelListItemStub = $this->createViewModelListItemStub($viewModelListItemAssemblerImpl);
         $viewModelListItemAssembler = $this->createViewModelListItemAssembler($viewModelListItemAssemblerImpl);
         $viewModelListItemAssemblerImplTest = $this->createViewModelListItemAssemblerImplTestFileObject(
-            $viewModelListItemAssemblerImplClassName
+            $useCaseResponseClassName
         );
 
         $viewModelListItemAssemblerImplTest->setContent(
