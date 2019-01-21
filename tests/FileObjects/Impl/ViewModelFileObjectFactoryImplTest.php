@@ -410,6 +410,6 @@ class ViewModelFileObjectFactoryImplTest extends TestCase
         $this->factory->setBaseNamespace(self::BASE_NAMESPACE);
         $this->factory->setTestsBaseNamespace(self::TEST_BASE_NAMESPACE);
         $this->factory->setStubNamespace(self::STUB_NAMESPACE);
-        $this->factory->setApiDirName(self::DIR_NAME);
+        $this->factory->setApiDir(self::DIR_NAME);
     }
 }

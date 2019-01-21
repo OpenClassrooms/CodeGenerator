@@ -20,7 +20,7 @@ abstract class AbstractViewModelGeneratorTestCase extends TestCase
     {
         $viewModelFileObjectFactory = new ViewModelFileObjectFactoryImpl();
         $viewModelFileObjectFactory->setBaseNamespace(FixturesConfig::BASE_NAMESPACE);
-        $viewModelFileObjectFactory->setApiDirName(FixturesConfig::API_DIRNAME);
+        $viewModelFileObjectFactory->setApiDir(FixturesConfig::API_DIR);
         $useCaseResponseFileObjectFactory = new UseCaseResponseFileObjectFactoryImpl();
         $useCaseResponseFileObjectFactory->setBaseNamespace(FixturesConfig::BASE_NAMESPACE);
         $viewModelGenerator->setUseCaseResponseFileObjectFactory($useCaseResponseFileObjectFactory);

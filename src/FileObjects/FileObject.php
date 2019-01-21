@@ -125,7 +125,20 @@ class FileObject
 
     public function getPath(): string
     {
+        if ($this->isTest()) {
+            return str_replace('\\', '/', 'tests/' . $this->getClassName() . '.php');
+        }
+
         return str_replace('\\', '/', 'src/' . $this->getClassName() . '.php');
+    }
+
+    public function isTest(): bool
+    {
+        if (false !== strpos('Test', $this->getShortName())) {
+            return true;
+        }
+            return false;
+
     }
 
     public function getShortName(): string

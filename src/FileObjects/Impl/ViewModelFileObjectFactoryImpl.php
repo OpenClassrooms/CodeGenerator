@@ -19,92 +19,92 @@ class ViewModelFileObjectFactoryImpl extends AbstractFileObjectFactory implement
         switch ($type) {
             case ViewModelFileObjectType::API_VIEW_MODEL_ASSEMBLER_TRAIT:
                 $fileObject->setClassName(
-                    $this->baseNamespace . $this->apiDirName . 'ViewModels\\' . $domain . '\\' . $entity . 'AssemblerTrait'
+                    $this->baseNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\' . $entity . 'AssemblerTrait'
                 );
                 break;
             case ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_ASSEMBLER:
                 $fileObject->setClassName(
-                    $this->baseNamespace . $this->apiDirName . 'ViewModels\\' . $domain . '\\' . $entity . 'DetailAssembler'
+                    $this->baseNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\' . $entity . 'DetailAssembler'
                 );
                 break;
             case ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_ASSEMBLER_IMPL_TEST:
                 $fileObject->setClassName(
-                    $this->testsBaseNamespace . $this->apiDirName . 'ViewModels\\' . $domain . '\\Impl\\' . $entity . 'DetailAssemblerImplTest'
+                    $this->testsBaseNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\Impl\\' . $entity . 'DetailAssemblerImplTest'
                 );
                 break;
             case ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_ASSEMBLER_IMPL:
                 $fileObject->setClassName(
-                    $this->baseNamespace . $this->apiDirName . 'ViewModels\\' . $domain . '\\Impl\\' . $entity . 'DetailAssemblerImpl'
+                    $this->baseNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\Impl\\' . $entity . 'DetailAssemblerImpl'
                 );
                 break;
             case ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_ASSEMBLER:
                 $fileObject->setClassName(
-                    $this->baseNamespace . $this->apiDirName . 'ViewModels\\' . $domain . '\\' . $entity . 'ListItemAssembler'
+                    $this->baseNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\' . $entity . 'ListItemAssembler'
                 );
                 break;
             case ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_ASSEMBLER_IMPL_TEST:
                 $fileObject->setClassName(
-                    $this->testsBaseNamespace . $this->apiDirName . 'ViewModels\\' . $domain . '\\Impl\\' . $entity . 'ListItemAssemblerImplTest'
+                    $this->testsBaseNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\Impl\\' . $entity . 'ListItemAssemblerImplTest'
                 );
                 break;
             case ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_ASSEMBLER_IMPL:
                 $fileObject->setClassName(
-                    $this->baseNamespace . $this->apiDirName . 'ViewModels\\' . $domain . '\\Impl\\' . $entity . 'ListItemAssemblerImpl'
+                    $this->baseNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\Impl\\' . $entity . 'ListItemAssemblerImpl'
                 );
                 break;
             case ViewModelFileObjectType::API_VIEW_MODEL:
                 $fileObject->setClassName(
-                    $this->baseNamespace . $this->apiDirName . 'ViewModels\\' . $domain . '\\' . $entity
+                    $this->baseNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\' . $entity
                 );
                 break;
             case ViewModelFileObjectType::API_VIEW_MODEL_IMPL:
                 $fileObject->setClassName(
-                    $this->baseNamespace . $this->apiDirName . 'ViewModels\\' . $domain . '\\Impl\\' . $entity . 'Impl'
+                    $this->baseNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\Impl\\' . $entity . 'Impl'
                 );
                 break;
             case ViewModelFileObjectType::API_VIEW_MODEL_DETAIL:
                 $fileObject->setClassName(
-                    $this->baseNamespace . $this->apiDirName . 'ViewModels\\' . $domain . '\\' . $entity . 'Detail'
+                    $this->baseNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\' . $entity . 'Detail'
                 );
                 break;
             case ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_IMPL:
                 $fileObject->setClassName(
-                    $this->baseNamespace . $this->apiDirName . 'ViewModels\\' . $domain . '\\Impl\\' . $entity . 'DetailImpl'
+                    $this->baseNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\Impl\\' . $entity . 'DetailImpl'
                 );
                 break;
             case ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM:
                 $fileObject->setClassName(
-                    $this->baseNamespace . $this->apiDirName . 'ViewModels\\' . $domain . '\\' . $entity . 'ListItem'
+                    $this->baseNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\' . $entity . 'ListItem'
                 );
                 break;
             case ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_IMPL:
                 $fileObject->setClassName(
-                    $this->baseNamespace . $this->apiDirName . 'ViewModels\\' . $domain . '\\Impl\\' . $entity . 'ListItemImpl'
+                    $this->baseNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\Impl\\' . $entity . 'ListItemImpl'
                 );
                 break;
             case ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_STUB:
                 $fileObject->setClassName(
-                    $this->stubNamespace . $this->apiDirName . 'ViewModels\\' . $domain . '\\' . $entity . 'DetailStub1'
+                    $this->stubNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\' . $entity . 'DetailStub1'
                 );
                 break;
             case ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_STUB:
                 $fileObject->setClassName(
-                    $this->stubNamespace . $this->apiDirName . 'ViewModels\\' . $domain . '\\' . $entity . 'ListItemStub1'
+                    $this->stubNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\' . $entity . 'ListItemStub1'
                 );
                 break;
             case ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_TEST_CASE:
                 $fileObject->setClassName(
-                    $this->stubNamespace . $this->apiDirName . 'ViewModels\\' . $domain . '\\' . $entity . 'ListItemTestCase'
+                    $this->stubNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\' . $entity . 'ListItemTestCase'
                 );
                 break;
             case ViewModelFileObjectType::API_VIEW_MODEL_TEST_CASE:
                 $fileObject->setClassName(
-                    $this->stubNamespace . $this->apiDirName . 'ViewModels\\' . $domain . '\\' . $entity . 'TestCase'
+                    $this->stubNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\' . $entity . 'TestCase'
                 );
                 break;
             case ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_TEST_CASE:
                 $fileObject->setClassName(
-                    $this->stubNamespace . $this->apiDirName . 'ViewModels\\' . $domain . '\\' . $entity . 'DetailTestCase'
+                    $this->stubNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\' . $entity . 'DetailTestCase'
                 );
                 break;
             default:

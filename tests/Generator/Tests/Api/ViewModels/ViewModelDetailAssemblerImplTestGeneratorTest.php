@@ -58,7 +58,7 @@ class ViewModelDetailAssemblerImplTestGeneratorTest extends TestCase
 
         $this->viewModelDetailAssemblerImplTestGenerator = new ViewModelDetailAssemblerImplTestGenerator();
         $viewModelFileObjectFactory = new ViewModelFileObjectFactoryImpl();
-        $viewModelFileObjectFactory->setApiDirName(FixturesConfig::API_DIRNAME);
+        $viewModelFileObjectFactory->setApiDir(FixturesConfig::API_DIR);
         $viewModelFileObjectFactory->setBaseNamespace(FixturesConfig::BASE_NAMESPACE);
         $viewModelFileObjectFactory->setTestsBaseNamespace(FixturesConfig::TEST_BASE_NAMESPACE);
         $viewModelFileObjectFactory->setStubNamespace(FixturesConfig::STUB_NAMESPACE);
