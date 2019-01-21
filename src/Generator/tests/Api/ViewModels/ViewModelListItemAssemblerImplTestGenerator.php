@@ -105,9 +105,6 @@ class ViewModelListItemAssemblerImplTestGenerator extends AbstractViewModelGener
             $viewModelListItemAssemblerImpl->getDomain(),
             $viewModelListItemAssemblerImpl->getEntity()
         );
-        $viewModelListItemTestCaseFileObject->setMethods(
-            MethodUtility::getAssertMethods($viewModelListItemTestCaseFileObject->getClassName())
-        );
 
         return $viewModelListItemTestCaseFileObject;
     }

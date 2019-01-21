@@ -134,7 +134,7 @@ class FileObject
 
     public function isTest(): bool
     {
-        if (false !== strpos('Test', $this->getShortName())) {
+        if (false !== strpos($this->getShortName(), 'Test')) {
             return true;
         }
             return false;
@@ -167,15 +167,5 @@ class FileObject
     public function setConsts(array $consts): void
     {
         $this->consts = $consts;
-    }
-
-    public function getMethods(): array
-    {
-        return $this->methods;
-    }
-
-    public function setMethods(array $methods): void
-    {
-        $this->methods = $methods;
     }
 }

@@ -7,33 +7,13 @@ namespace OpenClassrooms\CodeGenerator\Utility;
  */
 class MethodUtility
 {
-    public static function getListItemTestCaseAssertMethod(array $methods)
+    public static function getTestCaseAssertMethod(string $shortName)
     {
-        foreach ($methods as $method) {
-            if (strpos($method->getName(), 'ListItem') !== false) {
-                return $method->getName();
-            }
+        if (false !== strpos($shortName, 'ListItem')) {
+
+            return 'assert' . str_replace('TestCase', 's', $shortName);
         }
 
-        throw new \Exception('Method not found');
-    }
-
-    public static function getDetailTestCaseAssertMethod(array $methods)
-    {
-        foreach ($methods as $method) {
-            if (strpos($method->getName(), 'Detail') !== false) {
-                return $method->getName();
-            }
-        }
-
-        throw new \Exception('Method not found');
-    }
-
-    public static function getAssertMethods($className): array
-    {
-        $class = new \ReflectionClass($className);
-        $methods = $class->getMethods(\ReflectionMethod::IS_PROTECTED | \ReflectionMethod::IS_PUBLIC);
-
-        return $methods;
+        return 'assert' . $shortName;
     }
 }

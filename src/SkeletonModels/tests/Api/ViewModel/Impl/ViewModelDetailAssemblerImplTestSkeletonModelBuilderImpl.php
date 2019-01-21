@@ -42,8 +42,8 @@ class ViewModelDetailAssemblerImplTestSkeletonModelBuilderImpl implements ViewMo
 
         $this->skeletonModel->viewModelDetailTestCaseShortName = $viewModelDetailTestCase->getShortName();
         $this->skeletonModel->viewModelDetailTestCaseClassName = $viewModelDetailTestCase->getClassName();
-        $this->skeletonModel->viewModelDetailTestCaseMethod = MethodUtility::getDetailTestCaseAssertMethod(
-            $viewModelDetailTestCase->getMethods()
+        $this->skeletonModel->viewModelDetailTestCaseMethod = MethodUtility::getTestCaseAssertMethod(
+            $viewModelDetailTestCase->getShortName()
         );
 
         return $this;
