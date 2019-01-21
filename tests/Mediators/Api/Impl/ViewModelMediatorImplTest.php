@@ -26,10 +26,12 @@ use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\DTO\Requ
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\DTO\Request\ViewModelDetailTestCaseGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\DTO\Request\ViewModelListItemStubGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\DTO\Request\ViewModelListItemTestCaseGeneratorRequestBuilderImpl;
+use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\DTO\Request\ViewModelTestCaseGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\ViewModelDetailStubGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\ViewModelDetailTestCaseGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\ViewModelListItemStubGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\ViewModelListItemTestCaseGenerator;
+use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\ViewModelTestCaseGenerator;
 use OpenClassrooms\CodeGenerator\Mediators\Api\Impl\ViewModelMediatorImpl;
 use OpenClassrooms\CodeGenerator\Mediators\Api\ViewModelMediator;
 use OpenClassrooms\CodeGenerator\Mediators\Args;
@@ -43,6 +45,7 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Api\ViewModels\ViewMo
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Api\ViewModels\ViewModelListItemImpl\ViewModelListItemImplFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Api\ViewModels\ViewModelListItemStub\ViewModelListItemStubFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Api\ViewModels\ViewModelListItemTestCase\ViewModelListItemTestCaseFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Api\ViewModels\ViewModelTestCase\ViewModelTestCaseFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\BusinessRules\Entities\EntityStub\EntityStubFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\BusinessRules\Responders\UseCaseDetailResponseStub\UseCaseDetailResponseStubFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\BusinessRules\Responders\UseCaseListItemResponseStub\UseCaseListItemResponseStubFileObjectStub1;
@@ -199,6 +202,9 @@ class ViewModelMediatorImplTest extends TestCase
         $this->mediator->setViewModelGenerator(
             new GeneratorMock(ViewModelGenerator::class, new ViewModelFileObjectStub1())
         );
+        $this->mediator->setViewModelTestCaseGenerator(
+            new GeneratorMock(ViewModelTestCaseGenerator::class, new ViewModelTestCaseFileObjectStub1())
+        );
         $this->mediator->setViewModelListItemAssemblerImplTestGenerator(
             new GeneratorMock(
                 ViewModelListItemAssemblerImplTestGenerator::class,
@@ -242,6 +248,7 @@ class ViewModelMediatorImplTest extends TestCase
             new ViewModelDetailTestCaseGeneratorRequestBuilderImpl()
         );
         $this->mediator->setViewModelGeneratorRequestBuilder(new ViewModelGeneratorRequestBuilderImpl());
+        $this->mediator->setViewModelTestCaseGeneratorRequestBuilder(new ViewModelTestCaseGeneratorRequestBuilderImpl());
         $this->mediator->setViewModelListItemAssemblerImplTestGeneratorRequestBuilder(
             new ViewModelListItemAssemblerImplTestGeneratorRequestBuilderImpl()
         );
