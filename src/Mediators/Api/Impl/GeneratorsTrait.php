@@ -28,10 +28,12 @@ use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\Request\
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\Request\ViewModelDetailTestCaseGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\Request\ViewModelListItemStubGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\Request\ViewModelListItemTestCaseGeneratorRequestBuilder;
+use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\Request\ViewModelTestCaseGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\ViewModelDetailStubGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\ViewModelDetailTestCaseGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\ViewModelListItemStubGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\ViewModelListItemTestCaseGenerator;
+use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\ViewModelTestCaseGenerator;
 
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
@@ -92,6 +94,9 @@ trait GeneratorsTrait
     /** @var ViewModelGeneratorRequestBuilder */
     private $viewModelGeneratorRequestBuilder;
 
+    /** @var ViewModelTestCaseGenerator */
+    private $viewModelTestCaseGenerator;
+
     /** @var ViewModelListItemAssemblerImplTestGenerator */
     private $viewModelListItemAssemblerImplTestGenerator;
 
@@ -121,6 +126,9 @@ trait GeneratorsTrait
 
     /** @var ViewModelListItemTestCaseGeneratorRequestBuilder */
     private $viewModelListItemTestCaseGeneratorRequestBuilder;
+
+    /** @var ViewModelTestCaseGeneratorRequestBuilder */
+    private $viewModelTestCaseGeneratorRequestBuilder;
 
     public function setEntityStubGeneratorRequestBuilder(
         EntityStubGeneratorRequestBuilder $entityStubGeneratorRequestBuilder
@@ -183,6 +191,13 @@ trait GeneratorsTrait
     ): void
     {
         $this->viewModelGeneratorRequestBuilder = $viewModelGeneratorRequestBuilder;
+    }
+
+    public function setViewModelTestCaseGeneratorRequestBuilder(
+        ViewModelTestCaseGeneratorRequestBuilder $viewModelTestCaseGeneratorRequestBuilder
+    ): void
+    {
+        $this->viewModelTestCaseGeneratorRequestBuilder = $viewModelTestCaseGeneratorRequestBuilder;
     }
 
     public function setViewModelListItemAssemblerImplTestGeneratorRequestBuilder(
@@ -271,6 +286,11 @@ trait GeneratorsTrait
     public function setViewModelGenerator(Generator $viewModelGenerator): void
     {
         $this->viewModelGenerator = $viewModelGenerator;
+    }
+
+    public function setViewModelTestCaseGenerator(Generator $viewModelTestCaseGenerator): void
+    {
+        $this->viewModelTestCaseGenerator = $viewModelTestCaseGenerator;
     }
 
     public function setViewModelListItemAssemblerImplTestGenerator(
@@ -375,6 +395,13 @@ trait GeneratorsTrait
     {
         return $this->viewModelGenerator->generate(
             $this->viewModelGeneratorRequestBuilder->create()->withClassName($className)->build()
+        );
+    }
+
+    protected function generateViewModelTestCase(string $className): FileObject
+    {
+        return $this->viewModelTestCaseGenerator->generate(
+            $this->viewModelTestCaseGeneratorRequestBuilder->create()->withClassName($className)->build()
         );
     }
 

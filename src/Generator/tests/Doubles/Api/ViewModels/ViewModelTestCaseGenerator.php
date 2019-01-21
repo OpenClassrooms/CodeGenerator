@@ -3,6 +3,7 @@
 namespace OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels;
 
 use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
+use OpenClassrooms\CodeGenerator\FileObjects\UseCaseResponseFileObjectType;
 use OpenClassrooms\CodeGenerator\FileObjects\ViewModelFileObjectType;
 use OpenClassrooms\CodeGenerator\Generator\Api\AbstractViewModelGenerator;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
@@ -25,8 +26,33 @@ class ViewModelTestCaseGenerator extends AbstractViewModelGenerator
      */
     public function generate(GeneratorRequest $generatorRequest): FileObject
     {
-        $viewModelFileObject = $this->createViewModelObject($generatorRequest->getUseCaseResponseClassName());
-        $viewModelTestCaseFileObject = $this->buildTestCaseFileObject($viewModelFileObject);
+        $useCaseResponseFileObject = $this->createUseCaseResponseObject(
+            $generatorRequest->getUseCaseResponseClassName()
+        );
+        $viewModelTestCaseFileObject = $this->buildTestCaseFileObject($useCaseResponseFileObject);
+
+        return $viewModelTestCaseFileObject;
+
+    }
+
+    protected function createUseCaseResponseObject(string $useCaseResponseClassName): FileObject
+    {
+        [$domain, $entity] = $this->getDomainAndEntityNameFromClassName($useCaseResponseClassName);
+
+        return $this->createUseCaseResponseFileObject(
+            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE,
+            $domain,
+            $entity
+        );
+    }
+
+    public function buildTestCaseFileObject(FileObject $useCaseResponseFileObject): FileObject
+    {
+        $viewModelTestCaseFileObject = $this->createViewModelTestCaseFileObject($useCaseResponseFileObject);
+        $viewModelFileObject = $this->createViewModelObject($useCaseResponseFileObject);
+        $viewModelTestCaseFileObject->setFields(
+            $this->getPublicClassFields($useCaseResponseFileObject->getClassName())
+        );
         $viewModelTestCaseFileObject->setContent(
             $this->generateContent($viewModelTestCaseFileObject, $viewModelFileObject)
         );
@@ -36,27 +62,32 @@ class ViewModelTestCaseGenerator extends AbstractViewModelGenerator
 
     }
 
-    protected function createViewModelObject(string $useCaseResponseClassName): FileObject
-    {
-        [$domain, $entity] = $this->getDomainAndEntityNameFromClassName($useCaseResponseClassName);
-
-        return $this->createViewModelFileObject(ViewModelFileObjectType::API_VIEW_MODEL, $domain, $entity);
-    }
-
-    public function buildTestCaseFileObject(FileObject $viewModelFileObject): FileObject
+    private function createViewModelTestCaseFileObject(FileObject $useCaseResponseFileObject): FileObject
     {
         $viewModelTestCaseFileObject = $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL_TEST_CASE,
-            $viewModelFileObject->getDomain(),
-            $viewModelFileObject->getEntity()
+            $useCaseResponseFileObject->getDomain(),
+            $useCaseResponseFileObject->getEntity()
         );
-        $viewModelTestCaseFileObject->setFields($this->getPublicClassFields($viewModelFileObject->getClassName()));
 
         return $viewModelTestCaseFileObject;
-
     }
 
-    public function generateContent(FileObject $viewModelTestCaseFileObject, FileObject $viewModelFileObject): string
+    private function createViewModelObject(FileObject $useCaseResponseFileObject): FileObject
+    {
+        $viewModelTestCaseFileObject = $this->createViewModelFileObject(
+            ViewModelFileObjectType::API_VIEW_MODEL,
+            $useCaseResponseFileObject->getDomain(),
+            $useCaseResponseFileObject->getEntity()
+        );
+
+        return $viewModelTestCaseFileObject;
+    }
+
+    public function generateContent(
+        FileObject $viewModelTestCaseFileObject,
+        FileObject $viewModelFileObject
+    ): string
     {
         $skeletonModel = $this->createSkeletonModel($viewModelTestCaseFileObject, $viewModelFileObject);
 

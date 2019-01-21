@@ -2,6 +2,7 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Generator\Tests\Doubles\Api\ViewModels;
 
+use OpenClassrooms\CodeGenerator\FileObjects\Impl\UseCaseResponseFileObjectFactoryImpl;
 use OpenClassrooms\CodeGenerator\FileObjects\Impl\ViewModelFileObjectFactoryImpl;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\DTO\Request\ViewModelListItemTestCaseGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\Request\ViewModelListItemTestCaseGeneratorRequestBuilder;
@@ -65,7 +66,14 @@ class ViewModelListItemTestCaseGeneratorTest extends TestCase
         $viewModelFileObjectFactory->setApiDir(FixturesConfig::API_DIR);
         $viewModelFileObjectFactory->setBaseNamespace(FixturesConfig::BASE_NAMESPACE);
         $viewModelFileObjectFactory->setStubNamespace(FixturesConfig::STUB_NAMESPACE);
+
+        $useCaseResponseFileObjectFactory = new UseCaseResponseFileObjectFactoryImpl();
+        $useCaseResponseFileObjectFactory->setApiDir(FixturesConfig::API_DIR);
+        $useCaseResponseFileObjectFactory->setBaseNamespace(FixturesConfig::BASE_NAMESPACE);
+        $useCaseResponseFileObjectFactory->setStubNamespace(FixturesConfig::STUB_NAMESPACE);
+
         $this->viewModelListItemTestCaseGenerator->setViewModelFileObjectFactory($viewModelFileObjectFactory);
+        $this->viewModelListItemTestCaseGenerator->setUseCaseResponseFileObjectFactory($useCaseResponseFileObjectFactory);
         $this->viewModelListItemTestCaseGenerator->setViewModelListItemTestCaseSkeletonModelAssembler(
             new ViewModelListItemTestCaseSkeletonModelAssemblerImpl()
         );
