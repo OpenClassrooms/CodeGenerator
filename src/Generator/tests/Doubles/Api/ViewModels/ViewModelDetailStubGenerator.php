@@ -28,7 +28,9 @@ class ViewModelDetailStubGenerator extends AbstractViewModelGenerator
      */
     public function generate(GeneratorRequest $generatorRequest): FileObject
     {
-        $viewModelDetailStubFileObject = $this->buildViewModelDetailStubFileObject($generatorRequest->getUseCaseResponseClassName());
+        $viewModelDetailStubFileObject = $this->buildViewModelDetailStubFileObject(
+            $generatorRequest->getUseCaseResponseClassName()
+        );
 
         $this->insertFileObject($viewModelDetailStubFileObject);
 
@@ -39,15 +41,15 @@ class ViewModelDetailStubGenerator extends AbstractViewModelGenerator
         string $useCaseResponseClassName
     ): FileObject
     {
-        $viewModelDetailFileObject = $this->createViewModelDetailFileObject($useCaseResponseClassName);
+        $useCaseDetailResponseFileObject = $this->createUseCaseDetailResponseFileObject($useCaseResponseClassName);
         $useCaseDetailResponseStubFileObject = $this->createUseCaseDetailResponseStubFileObject(
-            $viewModelDetailFileObject
+            $useCaseDetailResponseFileObject
         );
-        $viewModelDetailImplFileObject = $this->createViewModelDetailImplFileObject($viewModelDetailFileObject);
-        $viewModelDetailStubFileObject = $this->createViewModelDetailStubFileObject($viewModelDetailFileObject);
+        $viewModelDetailImplFileObject = $this->createViewModelDetailImplFileObject($useCaseDetailResponseFileObject);
+        $viewModelDetailStubFileObject = $this->createViewModelDetailStubFileObject($useCaseDetailResponseFileObject);
 
         $viewModelDetailStubFileObject->setConsts($this->generateConsts($useCaseDetailResponseStubFileObject));
-        $viewModelDetailStubFileObject->setFields($this->generateFields($viewModelDetailFileObject));
+        $viewModelDetailStubFileObject->setFields($this->generateFields($useCaseDetailResponseFileObject));
 
         $viewModelDetailStubFileObject->setContent(
             $this->generateContent(
@@ -60,38 +62,42 @@ class ViewModelDetailStubGenerator extends AbstractViewModelGenerator
         return $viewModelDetailStubFileObject;
     }
 
-    private function createViewModelDetailFileObject(string $viewModelClassName): FileObject
+    private function createUseCaseDetailResponseFileObject(string $viewModelClassName): FileObject
     {
         [$domain, $entity] = $this->getDomainAndEntityNameFromClassName($viewModelClassName);
 
-        return $this->createViewModelFileObject(ViewModelFileObjectType::API_VIEW_MODEL_DETAIL, $domain, $entity);
-    }
-
-    private function createUseCaseDetailResponseStubFileObject(FileObject $viewModelDetailFileObject): FileObject
-    {
         return $this->createUseCaseResponseFileObject(
-            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE_STUB,
-            $viewModelDetailFileObject->getDomain(),
-            $viewModelDetailFileObject->getEntity()
+            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE,
+            $domain,
+            $entity
         );
     }
 
-    private function createViewModelDetailImplFileObject(FileObject $viewModelDetailFileObject): FileObject
+    private function createUseCaseDetailResponseStubFileObject(FileObject $useCaseDetailResponseFileObject): FileObject
+    {
+        return $this->createUseCaseResponseFileObject(
+            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE_STUB,
+            $useCaseDetailResponseFileObject->getDomain(),
+            $useCaseDetailResponseFileObject->getEntity()
+        );
+    }
+
+    private function createViewModelDetailImplFileObject(FileObject $useCaseDetailResponseFileObject): FileObject
     {
 
         return $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_IMPL,
-            $viewModelDetailFileObject->getDomain(),
-            $viewModelDetailFileObject->getEntity()
+            $useCaseDetailResponseFileObject->getDomain(),
+            $useCaseDetailResponseFileObject->getEntity()
         );
     }
 
-    private function createViewModelDetailStubFileObject(FileObject $viewModelDetailFileObject): FileObject
+    private function createViewModelDetailStubFileObject(FileObject $useCaseDetailResponseFileObject): FileObject
     {
         return $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_STUB,
-            $viewModelDetailFileObject->getDomain(),
-            $viewModelDetailFileObject->getEntity()
+            $useCaseDetailResponseFileObject->getDomain(),
+            $useCaseDetailResponseFileObject->getEntity()
         );
     }
 
@@ -104,11 +110,13 @@ class ViewModelDetailStubGenerator extends AbstractViewModelGenerator
         return ConstUtility::generateConstsFromStubReference($useCaseDetailResponseStubFileObject);
     }
 
-    private function generateFields(FileObject $viewModelDetailFileObject): array
+    private function generateFields(FileObject $useCaseDetailResponseFileObject): array
     {
-        $viewModelDetailFields = $this->getParentAndChildPublicClassFields($viewModelDetailFileObject->getClassName());
+        $viewModelDetailFields = $this->getParentAndChildPublicClassFields(
+            $useCaseDetailResponseFileObject->getClassName()
+        );
 
-        return FieldUtility::generateStubFieldObjects($viewModelDetailFields, $viewModelDetailFileObject);
+        return FieldUtility::generateStubFieldObjects($viewModelDetailFields, $useCaseDetailResponseFileObject);
     }
 
     private function generateContent(

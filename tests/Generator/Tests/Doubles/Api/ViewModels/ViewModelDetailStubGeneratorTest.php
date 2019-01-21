@@ -64,9 +64,10 @@ class ViewModelDetailStubGeneratorTest extends TestCase
 
         $viewModelFileObjectFactory = new ViewModelFileObjectFactoryImpl();
         $viewModelFileObjectFactory->setApiDir(FixturesConfig::API_DIR);
-        $viewModelFileObjectFactory->setStubNamespace(FixturesConfig::STUB_NAMESPACE);
         $viewModelFileObjectFactory->setBaseNamespace(FixturesConfig::BASE_NAMESPACE);
+        $viewModelFileObjectFactory->setStubNamespace(FixturesConfig::STUB_NAMESPACE);
         $useCaseResponseFileObjectFactory = new UseCaseResponseFileObjectFactoryImpl();
+        $useCaseResponseFileObjectFactory->setBaseNamespace(FixturesConfig::BASE_NAMESPACE);
         $useCaseResponseFileObjectFactory->setStubNamespace(FixturesConfig::STUB_NAMESPACE);
         $this->viewModelDetailStubGenerator->setViewModelFileObjectFactory($viewModelFileObjectFactory);
         $this->viewModelDetailStubGenerator->setUseCaseResponseFileObjectFactory($useCaseResponseFileObjectFactory);
