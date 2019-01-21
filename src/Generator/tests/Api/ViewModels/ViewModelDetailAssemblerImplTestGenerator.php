@@ -106,8 +106,6 @@ class ViewModelDetailAssemblerImplTestGenerator extends AbstractViewModelGenerat
             $viewModelDetailAssemblerImpl->getEntity()
         );
 
-        $viewModelDetailTestCase->setMethods(MethodUtility::getAssertMethods($viewModelDetailTestCase->getClassName()));
-
         return $viewModelDetailTestCase;
     }
 

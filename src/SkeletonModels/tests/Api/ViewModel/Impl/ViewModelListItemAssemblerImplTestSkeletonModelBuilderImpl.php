@@ -42,8 +42,8 @@ class ViewModelListItemAssemblerImplTestSkeletonModelBuilderImpl implements View
 
         $this->skeletonModel->viewModelListItemTestCaseShortName = $viewModelListItemTestCase->getShortName();
         $this->skeletonModel->viewModelListItemTestCaseClassName = $viewModelListItemTestCase->getClassName();
-        $this->skeletonModel->viewModelListItemTestCaseMethod = MethodUtility::getListItemTestCaseAssertMethod(
-            $viewModelListItemTestCase->getMethods()
+        $this->skeletonModel->viewModelListItemTestCaseMethod = MethodUtility::getTestCaseAssertMethod(
+            $viewModelListItemTestCase->getShortName()
         );
 
         return $this;
