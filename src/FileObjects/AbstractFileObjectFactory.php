@@ -10,12 +10,12 @@ abstract class AbstractFileObjectFactory implements FileObjectFactory
     /**
      * @var string
      */
-    protected $apiDirName;
+    protected $apiDir;
 
     /**
      * @var string
      */
-    protected $appDirName;
+    protected $appDir;
 
     /**
      * @var string
@@ -37,14 +37,14 @@ abstract class AbstractFileObjectFactory implements FileObjectFactory
         $this->baseNamespace = $baseNamespace;
     }
 
-    public function setApiDirName(string $apiDirName)
+    public function setApiDir(string $apiDir)
     {
-        $this->apiDirName = $apiDirName;
+        $this->apiDir = $apiDir;
     }
 
-    public function setAppDirName(string $appDirName)
+    public function setAppDir(string $appDir)
     {
-        $this->appDirName = $appDirName;
+        $this->appDir = $appDir;
     }
 
     public function setStubNamespace(string $stubNamespace)

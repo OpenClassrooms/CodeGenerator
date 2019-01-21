@@ -48,6 +48,8 @@ class ConstUtility
             case '\DateTimeImmutable'  :
             case '\DateTimeInterface' :
                 return Carbon::parse('first day of January 2018')->toDateString();
+            case 'anchor':
+                return 'anchor';
             default:
                 throw new \InvalidArgumentException($type);
         }

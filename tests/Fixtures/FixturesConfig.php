@@ -7,9 +7,9 @@ namespace OpenClassrooms\CodeGenerator\Tests\Fixtures;
  */
 final class FixturesConfig
 {
-    const API_DIRNAME = 'Api\\';
+    const API_DIR = 'Api\\';
 
-    const APP_DIRNAME = 'App\\';
+    const APP_DIR = 'App\\';
 
     const BASE_NAMESPACE = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\\';
 
