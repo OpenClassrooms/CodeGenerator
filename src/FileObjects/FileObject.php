@@ -134,10 +134,12 @@ class FileObject
 
     public function isTest(): bool
     {
-        if (false !== strpos($this->getShortName(), 'Test')) {
+        if (false !== strpos($this->getShortName(), 'Test') || false !== strpos($this->getShortName(), 'Stub')
+        ) {
             return true;
         }
-            return false;
+
+        return false;
 
     }
 
