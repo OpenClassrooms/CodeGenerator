@@ -2,8 +2,8 @@
 
 namespace OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Responders\DTO\Request;
 
-use OpenClassrooms\CodeGenerator\Generator\tests\BusinessRules\Responders\Request\UseCaseListItemResponseStubGeneratorRequest;
-use OpenClassrooms\CodeGenerator\Generator\tests\BusinessRules\Responders\Request\UseCaseListItemResponseStubGeneratorRequestBuilder;
+use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Responders\Request\UseCaseListItemResponseStubGeneratorRequest;
+use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Responders\Request\UseCaseListItemResponseStubGeneratorRequestBuilder;
 
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
