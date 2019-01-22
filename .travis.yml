@@ -1,0 +1,18 @@
+language: php
+
+sudo: false
+
+php:
+  - "7.1"
+  - "7.2"
+
+before_script:
+  - composer install --no-scripts --no-interaction --dev
+  - composer dump-autoload -o
+  - phpenv config-add ./Tests/travis.ini
+
+script:
+  - ./vendor/bin/phpunit --coverage-clover build/logs/clover.xml
+
+before_cache:
+  - bash <(curl -s https://codecov.io/bash)
