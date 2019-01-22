@@ -14,31 +14,8 @@ class EntityStubGeneratorRequestDTO implements EntityStubGeneratorRequest
      */
     public $className;
 
-    /**
-     * @var array
-     */
-    public $fields = [];
-
-    /**
-     * @var string
-     */
-    public $namespace;
-
     public function getUseCaseResponseClassName(): string
     {
         return $this->className;
-    }
-
-    /**
-     * @return array
-     */
-    public function getFields(): array
-    {
-        return $this->fields;
-    }
-
-    public function getNamespace(): string
-    {
-        return $this->namespace;
     }
 }
