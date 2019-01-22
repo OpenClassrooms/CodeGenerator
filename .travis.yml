@@ -7,9 +7,7 @@ php:
   - "7.2"
 
 before_script:
-  - composer install --no-scripts --no-interaction --dev
-  - composer dump-autoload -o
-  - phpenv config-add ./Tests/travis.ini
+  - composer install --no-scripts --no-interaction
 
 script:
   - ./vendor/bin/phpunit --coverage-clover build/logs/clover.xml
