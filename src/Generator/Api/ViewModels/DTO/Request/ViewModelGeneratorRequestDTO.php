@@ -14,29 +14,6 @@ class ViewModelGeneratorRequestDTO implements ViewModelGeneratorRequest
      */
     public $className;
 
-    /**
-     * @var array
-     */
-    public $fields = [];
-
-    /**
-     * @var string
-     */
-    public $namespace;
-
-    /**
-     * @return array
-     */
-    public function getFields(): array
-    {
-        return $this->fields;
-    }
-
-    public function getNamespace(): string
-    {
-        return $this->namespace;
-    }
-
     public function getUseCaseResponseClassName(): string
     {
         return $this->className;

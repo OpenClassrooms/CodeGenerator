@@ -30,7 +30,6 @@ class FileObjectRepository implements FileObjectGateway
     public function flush(): void
     {
         foreach (self::$fileObjects as $key => $fileObject) {
-            $fileObject->setAlreadyExists(file_exists($fileObject->getPath()));
             if (!$fileObject->alreadyExists()) {
                 $this->fileSystem->dumpFile($fileObject->getPath(), $fileObject->getContent());
                 $fileObject->write();

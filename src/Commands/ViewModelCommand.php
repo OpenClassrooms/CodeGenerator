@@ -20,6 +20,8 @@ use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
  */
 class ViewModelCommand extends Command
 {
+    use CommandDisplayTrait;
+
     const CONFIG_DIR = __DIR__ . '/../Resources/config';
 
     const ROOT_DIR = __DIR__ . '/../../../../..';
@@ -93,60 +95,11 @@ class ViewModelCommand extends Command
 
         $io = new SymfonyStyle($input, $output);
 
-        $this->displayCreatedFilePath($fileObjects, $io);
-        $this->displayFilePathAndContentDump($input, $io, $fileObjects);
-        $this->displayNotWrittenFilePathAndContent($input, $fileObjects, $io);
+        [$fileWritten, $fileNotWritten] = $this->getFilesWrittingStatus($fileObjects);
 
-    }
+        $this->displayCreatedFilePath($fileWritten, $io);
+        $this->displayNotWrittenFilePathAndContent($input, $fileNotWritten, $io);
+        $this->displayFilePathAndContentDump($input, $io, array_merge($fileWritten, $fileNotWritten));
 
-    private function displayCreatedFilePath(array $fileObjects, SymfonyStyle $io)
-    {
-        if ($this->writtenFilesExist($fileObjects)) {
-            $io->success(CommandLabelType::GENERATED_OUTPUT);
-            $pathList = [];
-            foreach ($fileObjects as $fileObject) {
-                $pathList[] = $fileObject->getPath();
-            }
-            $io->listing($pathList);
-        }
-    }
-
-    private function writtenFilesExist(array $fileObjects): bool
-    {
-        foreach ($fileObjects as $fileObject) {
-            if ($fileObject->hasBeenWritten()) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    private function displayFilePathAndContentDump(InputInterface $input, SymfonyStyle $io, array $fileObjects)
-    {
-        if (false !== $input->getOption(Options::DUMP)) {
-            $io->success(CommandLabelType::DUMP_OUTPUT);
-            foreach ($fileObjects as $fileObject) {
-                $io->section($fileObject->getPath());
-                $io->text($fileObject->getContent());
-            }
-        }
-    }
-
-    private function displayNotWrittenFilePathAndContent(
-        InputInterface $input,
-        array $fileObjects,
-        SymfonyStyle $io
-    ): void
-    {
-        if (!$this->writtenFilesExist($fileObjects) && false === $input->getOption(Options::DUMP)) {
-            $io->caution(CommandLabelType::ALREADY_EXIST_OUTPUT);
-            foreach ($fileObjects as $fileObject) {
-                if (!$fileObject->hasBeenWritten()) {
-                    $io->section($fileObject->getPath());
-                    $io->text($fileObject->getContent());
-                }
-            }
-        }
     }
 }
