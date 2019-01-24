@@ -69,7 +69,7 @@ class UseCaseListItemResponseStubGenerator extends AbstractUseCaseResponseStubGe
         [$domain, $entity] = $this->getDomainAndEntityNameFromClassName($responseClassName);
 
         return $this->useCaseResponseFileObjectFactory->create(
-            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE,
+            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE_DTO,
             $domain,
             $entity
         );
