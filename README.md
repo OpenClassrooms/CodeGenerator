@@ -255,8 +255,3 @@ class ViewModelMediatorImpl implements ViewModelMediator
         return $fileObjects;
     }
 ```
-
-
-
-
-
