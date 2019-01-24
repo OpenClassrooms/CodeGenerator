@@ -90,6 +90,7 @@ trait ClassNameUtility
     {
         return $explodedNamespace[$i] !== 'BusinessRules'
             && $explodedNamespace[$i] !== 'Entity'
-            && $explodedNamespace[$i] !== 'ViewModels';
+            && $explodedNamespace[$i] !== 'ViewModels'
+            && $explodedNamespace[$i] !== 'Responders';
     }
 }
