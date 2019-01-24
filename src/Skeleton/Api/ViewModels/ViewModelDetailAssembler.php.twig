@@ -1,0 +1,14 @@
+<?php declare(strict_types=1);
+{% include "Header.php.twig" %}
+
+namespace {{ skeletonModel.namespace }};
+
+use {{ skeletonModel.useCaseDetailResponseClassName }};
+
+/**
+ * @author {{ author }} <{{ authorEmail }}>
+ */
+interface {{ skeletonModel.shortName }}
+{
+    public function create({{ skeletonModel.useCaseDetailResponseShortName }} $entity): {{ skeletonModel.viewModelDetailShortName }};
+}

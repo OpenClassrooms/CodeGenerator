@@ -17,17 +17,17 @@ class UseCaseResponseFileObjectFactoryImpl extends AbstractFileObjectFactory imp
         $fileObject = new FileObject();
 
         switch ($type) {
-            case UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE:
+            case UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE_DTO:
                 $fileObject->setClassName(
                     $this->baseNamespace . 'BusinessRules\UseCases\\' . $domain . '\DTO\Response\\' . $entity . 'ResponseDTO'
                 );
                 break;
-            case UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE:
+            case UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE_DTO:
                 $fileObject->setClassName(
                     $this->baseNamespace . 'BusinessRules\UseCases\\' . $domain . '\DTO\Response\\' . $entity . 'DetailResponseDTO'
                 );
                 break;
-            case UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE:
+            case UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE_DTO:
                 $fileObject->setClassName(
                     $this->baseNamespace . 'BusinessRules\UseCases\\' . $domain . '\DTO\Response\\' . $entity . 'ListItemResponseDTO'
                 );
@@ -45,6 +45,21 @@ class UseCaseResponseFileObjectFactoryImpl extends AbstractFileObjectFactory imp
             case UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE_STUB:
                 $fileObject->setClassName(
                     $this->stubNamespace . 'BusinessRules\Responders\\' . $domain . '\\' . $entity . 'ListItemResponseStub1'
+                );
+                break;
+            case UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE:
+                $fileObject->setClassName(
+                    $this->baseNamespace . 'BusinessRules\Responders\\' . $domain . '\\' . $entity . 'Response'
+                );
+                break;
+            case UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE:
+                $fileObject->setClassName(
+                    $this->baseNamespace . 'BusinessRules\Responders\\' . $domain . '\\' . $entity . 'DetailResponse'
+                );
+                break;
+            case UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE:
+                $fileObject->setClassName(
+                    $this->baseNamespace . 'BusinessRules\Responders\\' . $domain . '\\' . $entity . 'ListItemResponse'
                 );
                 break;
             default:

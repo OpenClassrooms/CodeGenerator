@@ -52,7 +52,7 @@ class ViewModelDetailGenerator extends AbstractViewModelGenerator
         [$domain, $entity] = $this->getDomainAndEntityNameFromClassName($useCaseDetailResponseClassName);
 
         return $this->createUseCaseResponseFileObject(
-            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE,
+            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE_DTO,
             $domain,
             $entity
         );
