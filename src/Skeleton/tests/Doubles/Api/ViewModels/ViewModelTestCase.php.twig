@@ -1,4 +1,3 @@
-<?php declare(strict_types=1);
 {% include "Header.php.twig" %}
 
 namespace {{ skeletonModel.namespace }};
@@ -11,10 +10,7 @@ use PHPUnit\Framework\Assert;
  */
 trait {{ skeletonModel.shortName }}
 {
-    public function assert{{ skeletonModel.shortName }}(
-        {{ skeletonModel.sourceShortName }} $expected,
-        {{ skeletonModel.sourceShortName }} $actual
-    ): void
+    public function assert{{ skeletonModel.shortName }}({{ skeletonModel.sourceShortName }} $expected, {{ skeletonModel.sourceShortName }} $actual): void
     {
 {% for field in skeletonModel.fields | sortIdFirst %}
         Assert::assertSame($expected->{{ field.name }}, $actual->{{ field.name }});

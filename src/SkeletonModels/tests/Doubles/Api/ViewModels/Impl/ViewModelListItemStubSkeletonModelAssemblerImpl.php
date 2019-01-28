@@ -29,6 +29,7 @@ class ViewModelListItemStubSkeletonModelAssemblerImpl implements ViewModelListIt
         $skeletonModel->parentShortName = $viewModelListItemImplFileObject->getShortName();
         $skeletonModel->useCaseListItemResponseStubClassName = $useCaseListItemResponseStubFileObject->getClassName();
         $skeletonModel->hasConstructor = $this->hasConstructor($viewModelListItemStubFileObject->getFields());
+        $skeletonModel->dateTimeType = $this->getDateTimeType();
 
         return $skeletonModel;
     }

@@ -16,6 +16,11 @@ abstract class ViewModelListItemStubSkeletonModel extends AbstractSkeletonModel
     public $constants;
 
     /**
+     * @var array
+     */
+    public $dateTimeType;
+
+    /**
      * @var string
      */
     public $hasConstructor = false;

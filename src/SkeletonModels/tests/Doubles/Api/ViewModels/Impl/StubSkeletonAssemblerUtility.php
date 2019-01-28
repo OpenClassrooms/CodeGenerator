@@ -22,4 +22,9 @@ trait StubSkeletonAssemblerUtility
 
         return false;
     }
+
+    private function getDateTimeType()
+    {
+        return [ '\\DateTime', '\\DateTimeImmutable', '\\DateTimeInterface'];
+    }
 }

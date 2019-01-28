@@ -13,10 +13,7 @@ trait FunctionalEntityDetailTestCase
 {
     use FunctionalEntityTestCase;
 
-    public function assertFunctionalEntityDetailTestCase(
-        FunctionalEntityDetail $expected,
-        FunctionalEntityDetail $actual
-    ): void
+    public function assertFunctionalEntityDetailTestCase(FunctionalEntityDetail $expected, FunctionalEntityDetail $actual): void
     {
         $this->assertFunctionalEntityTestCase($expected, $actual);
         Assert::assertEquals($expected->field4, $actual->field4);

@@ -10,7 +10,6 @@ use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\Request\ViewModelDetailAssemblerImplTestGeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\tests\Api\ViewModel\ViewModelDetailAssemblerImplTestSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\tests\Api\ViewModel\ViewModelDetailAssemblerImplTestSkeletonModelBuilder;
-use OpenClassrooms\CodeGenerator\Utility\MethodUtility;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
@@ -65,12 +64,12 @@ class ViewModelDetailAssemblerImplTestGenerator extends AbstractViewModelGenerat
         $viewModelDetailAssemblerImplTest->setContent(
             $this->generateContent(
                 [
-                    self::VIEW_MODEL_DETAIL_ASSEMBLER_IMPL      => $viewModelDetailAssemblerImpl,
-                    self::VIEW_MODEL_DETAIL_TEST_CASE           => $viewModelDetailTestCase,
-                    self::USE_CASE_DETAIL_RESPONSE_STUB         => $useCaseDetailResponseStub,
-                    self::VIEW_MODEL_DETAIL_STUB                => $viewModelDetailStub,
-                    self::VIEW_MODEL_DETAIL_ASSEMBLER           => $viewModelDetailAssembler,
-                    self::VIEW_MODEL_DETAIL_ASSEMBLER_IMPL_TEST => $viewModelDetailAssemblerImplTest,
+                    ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_ASSEMBLER_IMPL               => $viewModelDetailAssemblerImpl,
+                    ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_TEST_CASE                    => $viewModelDetailTestCase,
+                    UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE_STUB => $useCaseDetailResponseStub,
+                    ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_STUB                         => $viewModelDetailStub,
+                    ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_ASSEMBLER                    => $viewModelDetailAssembler,
+                    ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_ASSEMBLER_IMPL_TEST          => $viewModelDetailAssemblerImplTest,
                 ]
             )
         );
@@ -167,12 +166,18 @@ class ViewModelDetailAssemblerImplTestGenerator extends AbstractViewModelGenerat
     private function createSkeletonModel(array $fileObjects): ViewModelDetailAssemblerImplTestSkeletonModel
     {
         return $this->viewModelTestSkeletonModelBuilder->create()
-            ->withViewModelDetailAssemblerImpl($fileObjects[self::VIEW_MODEL_DETAIL_ASSEMBLER_IMPL])
-            ->withViewModelDetailTestCase($fileObjects[self::VIEW_MODEL_DETAIL_TEST_CASE])
-            ->withUseCaseDetailResponseStub($fileObjects[self::USE_CASE_DETAIL_RESPONSE_STUB])
-            ->withViewModelDetailStub($fileObjects[self::VIEW_MODEL_DETAIL_STUB])
-            ->withViewModelDetailAssembler($fileObjects[self::VIEW_MODEL_DETAIL_ASSEMBLER])
-            ->withViewModelDetailAssemblerImplTest($fileObjects[self::VIEW_MODEL_DETAIL_ASSEMBLER_IMPL_TEST])
+            ->withViewModelDetailAssemblerImpl(
+                $fileObjects[ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_ASSEMBLER_IMPL]
+            )
+            ->withViewModelDetailTestCase($fileObjects[ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_TEST_CASE])
+            ->withUseCaseDetailResponseStub(
+                $fileObjects[UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE_STUB]
+            )
+            ->withViewModelDetailStub($fileObjects[ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_STUB])
+            ->withViewModelDetailAssembler($fileObjects[ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_ASSEMBLER])
+            ->withViewModelDetailAssemblerImplTest(
+                $fileObjects[ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_ASSEMBLER_IMPL_TEST]
+            )
             ->build();
     }
 

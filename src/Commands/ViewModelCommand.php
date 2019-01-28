@@ -34,7 +34,7 @@ class ViewModelCommand extends Command
     /**
      * @var string
      */
-    protected static $defaultName = 'code-generator:viewmodels';
+    protected static $defaultName = 'code-generator:view-models';
 
     public function __construct($name = null)
     {
