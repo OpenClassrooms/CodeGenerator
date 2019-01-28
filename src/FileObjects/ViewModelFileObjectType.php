@@ -42,8 +42,4 @@ final class ViewModelFileObjectType
     const API_VIEW_MODEL_LIST_ITEM_TEST_CASE = 'API_VIEW_MODEL_LIST_ITEM_TEST_CASE';
 
     const API_VIEW_MODEL_TEST_CASE = 'API_VIEW_MODEL_TEST_CASE';
-
-    private function __construct()
-    {
-    }
 }

@@ -25,10 +25,7 @@ trait FunctionalEntityListItemTestCase
         }
     }
 
-    private function assertFunctionalEntityListItem(
-        FunctionalEntityListItem $expected,
-        FunctionalEntityListItem $actual
-    )
+    private function assertFunctionalEntityListItem(FunctionalEntityListItem $expected, FunctionalEntityListItem $actual)
     {
         $this->assertFunctionalEntityTestCase($expected, $actual);
     }

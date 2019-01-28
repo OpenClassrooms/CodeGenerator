@@ -14,12 +14,12 @@ class {{ skeletonModel.shortName }} implements FunctionalEntityDetailAssembler
 {
     use {{ skeletonModel.viewModelAssemblerTraitShortName }};
 
-    public function create({{ skeletonModel.useCaseDetailResponseShortName }} ${{ skeletonModel.useCaseDetailResponseArgument}}): {{ skeletonModel.viewModelDetailShortName }};
+    public function create({{ skeletonModel.useCaseDetailResponseShortName }} ${{ skeletonModel.useCaseDetailResponseArgument}}): {{ skeletonModel.viewModelDetailShortName }}
     {
         $vm = new {{ skeletonModel.viewModelDetailImplShortName }}();
         $this->hydrateCommonFields($vm, ${{ skeletonModel.useCaseDetailResponseArgument}});
 {% for field in skeletonModel.fields | sortNameByAlpha %}
-        $vm->${{ field.name }} = ${{ skeletonModel.useCaseDetailResponseArgument}}->get{{ field.name | capitalize}}();
+        $vm->{{ field.name }} = ${{ skeletonModel.useCaseDetailResponseArgument}}->get{{ field.name | capitalize}}();
 {% endfor %}
 
         return $vm;

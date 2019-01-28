@@ -25,6 +25,7 @@ class EntityStubSkeletonModelAssemblerImpl implements EntityStubSkeletonModelAss
         $skeletonModel->parentShortName = $entityImplFileObject->getShortName();
         $skeletonModel->parentClassName = $entityImplFileObject->getClassName();
         $skeletonModel->hasConstructor = $this->hasConstructor($entityStubFileObject->getFields());
+        $skeletonModel->dateTimeType = $this->getDateTimeType();
 
         return $skeletonModel;
     }

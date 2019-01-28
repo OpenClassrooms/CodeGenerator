@@ -11,10 +11,7 @@ use PHPUnit\Framework\Assert;
  */
 trait FunctionalEntityTestCase
 {
-    public function assertFunctionalEntityTestCase(
-        FunctionalEntity $expected,
-        FunctionalEntity $actual
-    ): void
+    public function assertFunctionalEntityTestCase(FunctionalEntity $expected, FunctionalEntity $actual): void
     {
         Assert::assertSame($expected->id, $actual->id);
         Assert::assertSame($expected->field1, $actual->field1);
