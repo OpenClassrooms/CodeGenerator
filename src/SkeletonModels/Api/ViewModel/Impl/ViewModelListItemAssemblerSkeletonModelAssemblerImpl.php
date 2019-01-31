@@ -11,6 +11,8 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModel\ViewModelListItemA
  */
 class ViewModelListItemAssemblerSkeletonModelAssemblerImpl implements ViewModelListItemAssemblerSkeletonModelAssembler
 {
+    use SkeletonAssemblerUtility;
+
     public function create(
         FileObject $useCaseListItemResponseFileObject,
         FileObject $viewModelListItemFileObject,
@@ -29,16 +31,5 @@ class ViewModelListItemAssemblerSkeletonModelAssemblerImpl implements ViewModelL
         $skeletonModel->viewModelListItemShortName = $viewModelListItemFileObject->getShortName();
 
         return $skeletonModel;
-    }
-
-    private function getUseCaseListItemResponseArgument(string $entity): string
-    {
-        $vowels = ['a', 'e', 'i', 'o', 'u'];
-
-        if ('y' === substr($entity, -1) && !in_array(substr($entity, -2), $vowels)) {
-            return lcfirst(substr($entity, 0, -1) . 'ies');
-        }
-
-        return lcfirst($entity . 's');
     }
 }
