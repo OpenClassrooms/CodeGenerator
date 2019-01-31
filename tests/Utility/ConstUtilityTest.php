@@ -29,6 +29,10 @@ class ConstUtilityTest extends TestCase
         $this->assertType($expectedValue, $actualConstObjects);
     }
 
+    /**
+     * @param mixed $expectedValue
+     * @param mixed $actual
+     */
     private function assertType($expectedValue, $actual): void
     {
         if (('\DateTime' || '\DateTimeImmutable' || '\DateTimeInterface') === $expectedValue) {

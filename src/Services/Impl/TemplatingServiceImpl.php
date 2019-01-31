@@ -2,10 +2,12 @@
 
 namespace OpenClassrooms\CodeGenerator\Services\Impl;
 
+use OpenClassrooms\CodeGenerator\FileObjects\ConstObject;
+use OpenClassrooms\CodeGenerator\FileObjects\FieldObject;
 use OpenClassrooms\CodeGenerator\Services\TemplatingService;
 
 /**
- * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
+ * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
  */
 class TemplatingServiceImpl extends \Twig_Environment implements TemplatingService
 {
@@ -14,7 +16,7 @@ class TemplatingServiceImpl extends \Twig_Environment implements TemplatingServi
      */
     protected $skeletonDir;
 
-    public function __construct(string $skeletonDir)
+    public function __construct(string $skeletonDir, string $author, string $authorMail)
     {
         $this->skeletonDir = $skeletonDir;
 
@@ -27,8 +29,8 @@ class TemplatingServiceImpl extends \Twig_Environment implements TemplatingServi
                 'autoescape'       => false,
             ]
         );
-        $this->addGlobal('author', 'authorStub');
-        $this->addGlobal('authorEmail', 'author.stub@example.com');
+        $this->addGlobal('author', $author);
+        $this->addGlobal('authorEmail', $authorMail);
 
         $this->addFilter($this->getSortNameByAlphaFilter());
         $this->addFilter($this->getSortIdFirstFilter());
@@ -45,11 +47,10 @@ class TemplatingServiceImpl extends \Twig_Environment implements TemplatingServi
                 usort(
                     $arrayFields,
                     function($a, $b) {
+                        /** @var FieldObject|ConstObject $a */
                         $al = strtolower($a->getName());
+                        /** @var FieldObject|ConstObject $b */
                         $bl = strtolower($b->getName());
-                        if ($al == $bl) {
-                            return 0;
-                        }
 
                         return ($al > $bl) ? +1 : -1;
                     }
@@ -67,6 +68,7 @@ class TemplatingServiceImpl extends \Twig_Environment implements TemplatingServi
             function($classFields) {
                 $arrayFields = $classFields;
                 foreach ($arrayFields as $key => $field) {
+                    /** @var FieldObject $field */
                     if ('id' === $field->getName()) {
                         unset($arrayFields[$key]);
                         array_unshift($arrayFields, $field);

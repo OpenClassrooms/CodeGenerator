@@ -46,7 +46,7 @@ class ViewModelCommand extends Command
         $this->container->compile();
     }
 
-    private function loadConfigParameters()
+    protected function loadConfigParameters()
     {
         $loader = new YamlFileLoader($this->container, new FileLocator(static::ROOT_DIR));
         $loader->load('oc_code_generator.yml');
@@ -95,11 +95,11 @@ class ViewModelCommand extends Command
 
         $io = new SymfonyStyle($input, $output);
 
-        [$fileWritten, $fileNotWritten] = $this->getFilesWrittingStatus($fileObjects);
+        [$writtenFiles, $notWrittenFiles] = $this->getFilesWritingStatus($fileObjects);
 
-        $this->displayCreatedFilePath($fileWritten, $io);
-        $this->displayNotWrittenFilePathAndContent($input, $fileNotWritten, $io);
-        $this->displayFilePathAndContentDump($input, $io, array_merge($fileWritten, $fileNotWritten));
+        $this->displayCreatedFilePath($io, $writtenFiles);
+        $this->displayNotWrittenFilePathAndContent($io, $notWrittenFiles, $input);
+        $this->displayFilePathAndContentDump($io, array_merge($writtenFiles, $notWrittenFiles), $input);
 
     }
 }

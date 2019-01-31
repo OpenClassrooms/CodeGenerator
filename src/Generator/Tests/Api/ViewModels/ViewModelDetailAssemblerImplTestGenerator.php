@@ -16,18 +16,6 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\tests\Api\ViewModel\ViewModelDet
  */
 class ViewModelDetailAssemblerImplTestGenerator extends AbstractViewModelGenerator
 {
-    const USE_CASE_DETAIL_RESPONSE_STUB = 'useCaseDetailResponseStub';
-
-    const VIEW_MODEL_DETAIL_ASSEMBLER = 'viewModelDetailAssembler';
-
-    const VIEW_MODEL_DETAIL_ASSEMBLER_IMPL = 'viewModelDetailAssemblerImpl';
-
-    const VIEW_MODEL_DETAIL_ASSEMBLER_IMPL_TEST = 'viewModelDetailAssemblerImplTest';
-
-    const VIEW_MODEL_DETAIL_STUB = 'viewModelDetailStub';
-
-    const VIEW_MODEL_DETAIL_TEST_CASE = 'viewModelDetailTestCase';
-
     /**
      * @var ViewModelDetailAssemblerImplTestSkeletonModelBuilder
      */

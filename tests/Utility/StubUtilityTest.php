@@ -41,14 +41,14 @@ class StubUtilityTest extends TestCase
     public function internalTypeAndInstanceDataProvider()
     {
         return [
-            ['int', 'field1', 'FunctionalEniity', 1],
-            ['float', 'field1', 'FunctionalEniity', 1.0],
-            ['bool', 'field1', 'FunctionalEniity', true],
-            ['string', 'field1', 'FunctionalEniity', 'value'],
-            ['array', 'field1', 'FunctionalEniity', []],
-            ['\DateTime', 'field1', 'FunctionalEniity', new \DateTime()],
-            ['\DateTimeImmutable', 'field1', 'FunctionalEniity',  new \DateTime()],
-            ['\DateTimeInterface', 'field1', 'FunctionalEniity',  new \DateTime()],
+            ['int', 'field1', 'FunctionalEntity', 1],
+            ['float', 'field1', 'FunctionalEntity', 1.0],
+            ['bool', 'field1', 'FunctionalEntity', true],
+            ['string', 'field1', 'FunctionalEntity', 'value'],
+            ['array', 'field1', 'FunctionalEntity', []],
+            ['\DateTime', 'field1', 'FunctionalEntity', new \DateTime()],
+            ['\DateTimeImmutable', 'field1', 'FunctionalEntity',  new \DateTime()],
+            ['\DateTimeInterface', 'field1', 'FunctionalEntity',  new \DateTime()],
         ];
     }
 }

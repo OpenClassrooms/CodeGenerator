@@ -14,6 +14,19 @@ class FunctionalEntityListItemAssemblerImpl implements FunctionalEntityListItemA
     use FunctionalEntityAssemblerTrait;
 
     /**
+     * @inheritdoc
+     */
+    public function createListItems(array $functionalEntities): array
+    {
+        $vms = [];
+        foreach ($functionalEntities as $functionalEntity) {
+            $vms[] = $this->createListItem($functionalEntity);
+        }
+
+        return $vms;
+    }
+
+    /**
      * @return FunctionalEntityListItemImpl
      */
     private function createListItem(FunctionalEntityResponse $functionalEntity)
@@ -22,18 +35,5 @@ class FunctionalEntityListItemAssemblerImpl implements FunctionalEntityListItemA
         $this->hydrateCommonFields($vm, $functionalEntity);
 
         return $vm;
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function createListItems(array $functionalEntities)
-    {
-        $vms = [];
-        foreach ($functionalEntities as $functionalEntity) {
-            $vms[] = $this->createListItem($functionalEntity);
-        }
-
-        return $vms;
     }
 }

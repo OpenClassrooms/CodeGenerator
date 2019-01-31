@@ -12,6 +12,7 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Api\ViewModels\ViewMo
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Api\ViewModels\ViewModelListItemImpl\ViewModelListItemImplFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\DTO\Response\FunctionalEntityResponseDTO;
 use OpenClassrooms\CodeGenerator\Tests\TestClassUtil;
+use PHPUnit\Framework\MockObject\Builder\InvocationMocker;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;
@@ -33,7 +34,7 @@ class ViewModelCommandTest extends TestCase
     private $commandTester;
 
     /**
-     * @var ContainerBuilder
+     * @var InvocationMocker
      */
     private $container;
 
@@ -43,7 +44,7 @@ class ViewModelCommandTest extends TestCase
     private $viewModelCommandMock;
 
     /**
-     * @var ViewModelMediatorImpl
+     * @var InvocationMocker
      */
     private $viewModelMediatorImplMock;
 

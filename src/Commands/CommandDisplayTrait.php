@@ -2,6 +2,7 @@
 
 namespace OpenClassrooms\CodeGenerator\Commands;
 
+use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
 use OpenClassrooms\CodeGenerator\Mediators\Options;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
@@ -11,7 +12,10 @@ use Symfony\Component\Console\Style\SymfonyStyle;
  */
 trait CommandDisplayTrait
 {
-    private function displayCreatedFilePath(array $fileObjects, SymfonyStyle $io)
+    /**
+     * @param FileObject[]
+     */
+    private function displayCreatedFilePath(SymfonyStyle $io, array $fileObjects)
     {
         if (!empty($fileObjects)) {
             $io->success(CommandLabelType::GENERATED_OUTPUT);
@@ -23,7 +27,10 @@ trait CommandDisplayTrait
         }
     }
 
-    private function displayFilePathAndContentDump(InputInterface $input, SymfonyStyle $io, array $fileObjects)
+    /**
+     * @param FileObject[]
+     */
+    private function displayFilePathAndContentDump(SymfonyStyle $io, array $fileObjects, InputInterface $input)
     {
         if (false !== $input->getOption(Options::DUMP)) {
             $io->success(CommandLabelType::DUMP_OUTPUT);
@@ -34,11 +41,10 @@ trait CommandDisplayTrait
         }
     }
 
-    private function displayNotWrittenFilePathAndContent(
-        InputInterface $input,
-        array $fileObjects,
-        SymfonyStyle $io
-    ): void
+    /**
+     * @param FileObject[]
+     */
+    private function displayNotWrittenFilePathAndContent(SymfonyStyle $io, array $fileObjects, InputInterface $input)
     {
         if (!empty($fileObjects) && false === $input->getOption(Options::DUMP)) {
             $io->caution(CommandLabelType::ALREADY_EXIST_OUTPUT);
@@ -51,18 +57,23 @@ trait CommandDisplayTrait
         }
     }
 
-    private function getFilesWrittingStatus(array $fileObjects): array
+    /**
+     * @param FileObject[]
+     *
+     * @return array
+     */
+    private function getFilesWritingStatus(array $fileObjects): array
     {
-        $fileWritten = [];
-        $fileNotWritten = [];
+        $writtenFiles = [];
+        $notWrittenFiles = [];
         foreach ($fileObjects as $fileObject) {
             if ($fileObject->hasBeenWritten()) {
-                $fileWritten[] = $fileObject;
+                $writtenFiles[] = $fileObject;
             } else {
-                $fileNotWritten[] = $fileObject;
+                $notWrittenFiles[] = $fileObject;
             }
         }
 
-        return [$fileWritten, $fileNotWritten];
+        return [$writtenFiles, $notWrittenFiles];
     }
 }

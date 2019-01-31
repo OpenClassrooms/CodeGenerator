@@ -2,8 +2,6 @@
 
 namespace OpenClassrooms\CodeGenerator\Utility;
 
-use Carbon\Carbon;
-use Faker\Provider\Base;
 use OpenClassrooms\CodeGenerator\FileObjects\ConstObject;
 use OpenClassrooms\CodeGenerator\FileObjects\FieldObject;
 use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
@@ -20,7 +18,11 @@ class ConstUtility
     {
         $constObject = new ConstObject($fieldObject->getName());
         $constObject->setValue(
-            StubUtility::createFakeValue($fieldObject->getType(), $fieldObject->getName(), $stubFileObject->getShortName())
+            StubUtility::createFakeValue(
+                $fieldObject->getType(),
+                $fieldObject->getName(),
+                $stubFileObject->getShortName()
+            )
         );
 
         return $constObject;
