@@ -43,6 +43,11 @@ class FieldObject
         $this->name = $name;
     }
 
+    public function getAccessor()
+    {
+        return $this->accessor;
+    }
+
     public function setAccessor(string $accessor = null)
     {
         $this->accessor = $accessor;
