@@ -71,16 +71,6 @@ abstract class AbstractGenerator implements Generator
     /**
      * @return array|FieldObject[]
      */
-    protected function getProtectedClassFields(string $className): array
-    {
-        return $this->fieldObjectService->getProtectedClassFields($className);
-    }
-
-    /* Ceci est une fonction de comparaison statique */
-
-    /**
-     * @return array|FieldObject[]
-     */
     protected function getParentProtectedClassFields(string $className): array
     {
         return $this->fieldObjectService->getParentProtectedClassFields($className);

@@ -11,10 +11,10 @@
     </testsuites>
     <filter>
         <whitelist>
-            <directory suffix=".php">./src</directory>
+            <directory suffix=".php">src</directory>
             <exclude>
-                <directory>./tests</directory>
                 <directory>./vendor</directory>
+                <file>./src/CodeGenerator.php</file>
             </exclude>
         </whitelist>
     </filter>

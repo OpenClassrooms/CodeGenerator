@@ -10,25 +10,12 @@ use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\Request\ViewModelListItemAssemblerImplTestGeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\tests\Api\ViewModel\ViewModelListItemAssemblerImplTestSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\tests\Api\ViewModel\ViewModelListItemAssemblerImplTestSkeletonModelBuilder;
-use OpenClassrooms\CodeGenerator\Utility\MethodUtility;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
  */
 class ViewModelListItemAssemblerImplTestGenerator extends AbstractViewModelGenerator
 {
-    const USE_CASE_LIST_ITEM_RESPONSE_STUB = 'useCaseListItemResponseStub';
-
-    const VIEW_MODEL_LIST_ITEM_ASSEMBLER = 'viewModelListItemAssembler';
-
-    const VIEW_MODEL_LIST_ITEM_ASSEMBLER_IMPL = 'viewModelListItemAssemblerImpl';
-
-    const VIEW_MODEL_LIST_ITEM_ASSEMBLER_IMPL_TEST = 'viewModelListItemAssemblerImplTest';
-
-    const VIEW_MODEL_LIST_ITEM_STUB = 'viewModelListItemStub';
-
-    const VIEW_MODEL_LIST_ITEM_TEST_CASE = 'viewModelListItemTestCase';
-
     /**
      * @var ViewModelListItemAssemblerImplTestSkeletonModelBuilder
      */
@@ -65,12 +52,12 @@ class ViewModelListItemAssemblerImplTestGenerator extends AbstractViewModelGener
         $viewModelListItemAssemblerImplTest->setContent(
             $this->generateContent(
                 [
-                    self::VIEW_MODEL_LIST_ITEM_ASSEMBLER_IMPL      => $viewModelListItemAssemblerImpl,
-                    self::VIEW_MODEL_LIST_ITEM_TEST_CASE           => $viewModelListItemTestCase,
-                    self::USE_CASE_LIST_ITEM_RESPONSE_STUB         => $useCaseListItemResponseStub,
-                    self::VIEW_MODEL_LIST_ITEM_STUB                => $viewModelListItemStub,
-                    self::VIEW_MODEL_LIST_ITEM_ASSEMBLER           => $viewModelListItemAssembler,
-                    self::VIEW_MODEL_LIST_ITEM_ASSEMBLER_IMPL_TEST => $viewModelListItemAssemblerImplTest,
+                    ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_ASSEMBLER_IMPL                       => $viewModelListItemAssemblerImpl,
+                    ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_TEST_CASE                            => $viewModelListItemTestCase,
+                    UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE_STUB         => $useCaseListItemResponseStub,
+                    ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_STUB                                 => $viewModelListItemStub,
+                    ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_ASSEMBLER                            => $viewModelListItemAssembler,
+                    ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_ASSEMBLER_IMPL_TEST                  => $viewModelListItemAssemblerImplTest,
                 ]
             )
         );
@@ -167,12 +154,12 @@ class ViewModelListItemAssemblerImplTestGenerator extends AbstractViewModelGener
     private function createSkeletonModel(array $fileObjects): ViewModelListItemAssemblerImplTestSkeletonModel
     {
         return $this->viewModelTestSkeletonModelBuilder->create()
-            ->withViewModelListItemAssemblerImpl($fileObjects[self::VIEW_MODEL_LIST_ITEM_ASSEMBLER_IMPL])
-            ->withViewModelListItemTestCase($fileObjects[self::VIEW_MODEL_LIST_ITEM_TEST_CASE])
-            ->withUseCaseListItemResponseStub($fileObjects[self::USE_CASE_LIST_ITEM_RESPONSE_STUB])
-            ->withViewModelListItemStub($fileObjects[self::VIEW_MODEL_LIST_ITEM_STUB])
-            ->withViewModelListItemAssembler($fileObjects[self::VIEW_MODEL_LIST_ITEM_ASSEMBLER])
-            ->withViewModelListItemAssemblerImplTest($fileObjects[self::VIEW_MODEL_LIST_ITEM_ASSEMBLER_IMPL_TEST])
+            ->withViewModelListItemAssemblerImpl($fileObjects[ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_ASSEMBLER_IMPL])
+            ->withViewModelListItemTestCase($fileObjects[ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_TEST_CASE])
+            ->withUseCaseListItemResponseStub($fileObjects[UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE_STUB])
+            ->withViewModelListItemStub($fileObjects[ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_STUB])
+            ->withViewModelListItemAssembler($fileObjects[ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_ASSEMBLER])
+            ->withViewModelListItemAssemblerImplTest($fileObjects[ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_ASSEMBLER_IMPL_TEST])
             ->build();
     }
 

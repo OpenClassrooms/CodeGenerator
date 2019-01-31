@@ -22,7 +22,7 @@ class StringUtilityTest extends TestCase
             [new FieldObject('test1'), 'test 1'],
             [new FieldObject('testAlpha'), 'test Alpha'],
             [new FieldObject('testAlphaBeta'), 'test Alpha Beta'],
-            [new FieldObject('testAlphaBetaCeta'), 'test Alpha Beta Ceta'],
+            [new FieldObject('testAlphaBetaGama'), 'test Alpha Beta Gama'],
         ];
     }
 
@@ -32,7 +32,7 @@ class StringUtilityTest extends TestCase
             [new FieldObject('test1'), 'TEST_1'],
             [new FieldObject('testAlpha'), 'TEST_ALPHA'],
             [new FieldObject('testAlphaBeta'), 'TEST_ALPHA_BETA'],
-            [new FieldObject('testAlphaBetaCeta'), 'TEST_ALPHA_BETA_CETA'],
+            [new FieldObject('testAlphaBetaGama'), 'TEST_ALPHA_BETA_GAMA'],
         ];
     }
 

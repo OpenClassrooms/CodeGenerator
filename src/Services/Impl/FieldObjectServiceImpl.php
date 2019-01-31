@@ -21,9 +21,7 @@ class FieldObjectServiceImpl implements FieldObjectService
     {
         $rc = new \ReflectionClass($className);
 
-        $parentPublicClassFields = $this->getPublicClassFields($rc->getParentClass()->getName());
-
-        return $this->tagParentClassFields($parentPublicClassFields);
+        return $this->getPublicClassFields($rc->getParentClass()->getName());
     }
 
     /**
@@ -88,29 +86,13 @@ class FieldObjectServiceImpl implements FieldObjectService
     }
 
     /**
-     * @param FieldObject[]
-     *
-     * @return FieldObject[]
-     */
-    private function tagParentClassFields(array $parentClassFields): array
-    {
-        foreach ($parentClassFields as $parentClassField) {
-            $parentClassField->setInherited(true);
-        }
-
-        return $parentClassFields;
-    }
-
-    /**
      * {@inheritdoc}
      */
     public function getParentProtectedClassFields(string $className): array
     {
         $rc = new \ReflectionClass($className);
 
-        $parentPublicClassFields = $this->getProtectedClassFields($rc->getParentClass()->getName());
-
-        return $this->tagParentClassFields($parentPublicClassFields);
+        return $this->getProtectedClassFields($rc->getParentClass()->getName());
     }
 
     /**
@@ -141,6 +123,9 @@ class FieldObjectServiceImpl implements FieldObjectService
         return $this->buildConstants($rc->getConstants());
     }
 
+    /**
+     * @return ConstObject[]
+     */
     private function buildConstants(array $constants)
     {
         $constObjects = [];

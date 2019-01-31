@@ -2,8 +2,6 @@
 
 namespace OpenClassrooms\CodeGenerator\Utility;
 
-use OpenClassrooms\CodeGenerator\OldClassObjects\ClassObject;
-
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
  */
@@ -32,9 +30,24 @@ trait ClassNameUtility
         return implode('\\', array_reverse($domain));
     }
 
+    private function getNamespace(string $className)
+    {
+        $rc = new \ReflectionClass($className);
+
+        return $rc->getNamespaceName();
+    }
+
+    private function namespaceLimit(array $explodedNamespace, int $i): bool
+    {
+        return $explodedNamespace[$i] !== 'BusinessRules'
+            && $explodedNamespace[$i] !== 'Entity'
+            && $explodedNamespace[$i] !== 'ViewModels'
+            && $explodedNamespace[$i] !== 'Responders';
+    }
+
     public function getEntityNameFromClassName(string $className): string
     {
-        $shortClassName = $this->getShortClassNameFromClassName($className);
+        $shortClassName = $this->getShortClassName($className);
         $shortClassName = str_replace('DetailAssembler', '', $shortClassName);
         $shortClassName = str_replace('DetailResponseDTO', '', $shortClassName);
         $shortClassName = str_replace('DetailResponse', '', $shortClassName);
@@ -55,42 +68,10 @@ trait ClassNameUtility
         return $shortClassName;
     }
 
-    public function getInterfaceClassObjectFromClassName(string $className): ClassObject
-    {
-        $rc = new \ReflectionClass($className);
-        $interfaceNames = $rc->getInterfaceNames();
-        $rc = new \ReflectionClass(end($interfaceNames));
-
-        return new ClassObject($rc->getNamespaceName(), $rc->getShortName(), true);
-    }
-
-    private function getNamespace(string $className)
-    {
-        $classParts = explode('\\', $className);
-        array_pop($classParts);
-
-        return implode('\\', $classParts);
-    }
-
-    protected function getNamespaceFromClassName(string $className): string
+    protected function getShortClassName(string $className): string
     {
         $rc = new \ReflectionClass($className);
 
-        return $rc->getNamespaceName();
-    }
-
-    protected function getShortClassNameFromClassName(string $className): string
-    {
-        $classParts = explode('\\', $className);
-
-        return array_pop($classParts);
-    }
-
-    protected function namespaceLimit(array $explodedNamespace, int $i): bool
-    {
-        return $explodedNamespace[$i] !== 'BusinessRules'
-            && $explodedNamespace[$i] !== 'Entity'
-            && $explodedNamespace[$i] !== 'ViewModels'
-            && $explodedNamespace[$i] !== 'Responders';
+        return $rc->getShortName();
     }
 }

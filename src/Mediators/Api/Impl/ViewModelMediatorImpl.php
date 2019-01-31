@@ -76,11 +76,9 @@ class ViewModelMediatorImpl implements ViewModelMediator
     }
 
     /**
-     * @param FileObject[] $fileObjects
-     *
      * @return FileObject[]
      */
-    private function generateViewModelTests($className): array
+    private function generateViewModelTests(string $className): array
     {
         $fileObjects[] = $this->generateViewModelTestCase($className);
         $fileObjects[] = $this->generateViewModelDetailStub($className);
