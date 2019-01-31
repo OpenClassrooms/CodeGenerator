@@ -5,7 +5,7 @@ namespace OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels;
 use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\DTO\Request\ViewModelDetailImplGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\Request\ViewModelGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\ViewModelDetailImplGenerator;
-use OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModel\Impl\ViewModelDetailImplSkeletonModelAssemblerImpl;
+use OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModels\Impl\ViewModelDetailImplSkeletonModelAssemblerImpl;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Api\ViewModels\ViewModelDetailImpl\ViewModelDetailImplFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\FileObjectTestCase;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;

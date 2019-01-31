@@ -27,6 +27,11 @@ class EntityFileObjectFactoryImpl extends AbstractFileObjectFactory implements E
                     $this->baseNamespace . $this->appDir . 'Entity\\' . $domain . '\\' . $entity . 'Impl'
                 );
                 break;
+            case EntityFileObjectType::BUSINESS_RULES_ENTITY:
+                $fileObject->setClassName(
+                    $this->baseNamespace . 'BusinessRules\Entities\\' . $domain . '\\' . $entity
+                );
+                break;
         }
 
         return $fileObject;
