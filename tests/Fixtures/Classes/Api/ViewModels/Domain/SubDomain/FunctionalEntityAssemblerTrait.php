@@ -6,15 +6,15 @@ namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Dom
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityResponse;
 
 /**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ * @author authorStub <author.stub@example.com>
  */
 trait FunctionalEntityAssemblerTrait
 {
-    public function hydrateCommonFields(FunctionalEntity $vm, FunctionalEntityResponse $entity)
+    public function hydrateCommonFields(FunctionalEntity $vm, FunctionalEntityResponse $functionalEntity)
     {
-        $vm->id = $entity->getId();
-        $vm->field1 = $entity->getField1();
-        $vm->field2 = $entity->getField2();
-        $vm->field3 = $entity->isField3();
+        $vm->id = $functionalEntity->getId();
+        $vm->field1 = $functionalEntity->getField1();
+        $vm->field2 = $functionalEntity->getField2();
+        $vm->field3 = $functionalEntity->isField3();
     }
 }

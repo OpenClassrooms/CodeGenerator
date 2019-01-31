@@ -7,7 +7,10 @@ use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
-interface ViewModelSkeletonModelAssembler
+interface ViewModelAssemblerTraitSkeletonModelAssembler
 {
-    public function create(FileObject $viewModelFileObject): ViewModelSkeletonModel;
+    public function create(
+        FileObject $viewModelAssemblerTraitFileObject,
+        FileObject $useCaseResponseFileObject
+    ): ViewModelAssemblerTraitSkeletonModel;
 }
