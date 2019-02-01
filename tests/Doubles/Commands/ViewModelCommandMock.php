@@ -3,19 +3,13 @@
 namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Commands;
 
 use OpenClassrooms\CodeGenerator\Commands\ViewModelCommand;
-use Symfony\Component\Config\FileLocator;
-use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
  */
 class ViewModelCommandMock extends ViewModelCommand
 {
-    const ROOT_DIR = __DIR__ . '/../../..';
+    const CONFIG_FILE = 'oc_code_generator.yml.dist';
 
-    protected function loadConfigParameters()
-    {
-        $loader = new YamlFileLoader($this->container, new FileLocator(static::ROOT_DIR));
-        $loader->load('oc_code_generator.yml.dist');
-    }
+    const ROOT_DIR = __DIR__ . '/../../..';
 }
