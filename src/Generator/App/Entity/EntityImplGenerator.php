@@ -83,15 +83,15 @@ class EntityImplGenerator extends AbstractGenerator
         return $this->entityImplSkeletonModelAssembler->create($entityImplFileObject, $entityFileObject);
     }
 
+    public function setEntityFileObjectFactory(EntityFileObjectFactory $entityFileObjectFactory): void
+    {
+        $this->entityFileObjectFactory = $entityFileObjectFactory;
+    }
+
     public function setEntityImplSkeletonModelAssembler(
         EntityImplSkeletonModelAssembler $entityImplSkeletonModelAssembler
     ): void
     {
         $this->entityImplSkeletonModelAssembler = $entityImplSkeletonModelAssembler;
-    }
-
-    public function setEntityFileObjectFactory(EntityFileObjectFactory $entityFileObjectFactory): void
-    {
-        $this->entityFileObjectFactory = $entityFileObjectFactory;
     }
 }

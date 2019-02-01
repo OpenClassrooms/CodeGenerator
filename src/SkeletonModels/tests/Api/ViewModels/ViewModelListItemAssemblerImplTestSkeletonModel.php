@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace OpenClassrooms\CodeGenerator\SkeletonModels\tests\Api\ViewModel;
+namespace OpenClassrooms\CodeGenerator\SkeletonModels\tests\Api\ViewModels;
 
 use OpenClassrooms\CodeGenerator\FileObjects\FieldObject;
 use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;

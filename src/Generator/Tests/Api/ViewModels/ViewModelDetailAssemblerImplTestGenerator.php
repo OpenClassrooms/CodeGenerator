@@ -8,8 +8,8 @@ use OpenClassrooms\CodeGenerator\FileObjects\ViewModelFileObjectType;
 use OpenClassrooms\CodeGenerator\Generator\Api\AbstractViewModelGenerator;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\Request\ViewModelDetailAssemblerImplTestGeneratorRequest;
-use OpenClassrooms\CodeGenerator\SkeletonModels\tests\Api\ViewModel\ViewModelDetailAssemblerImplTestSkeletonModel;
-use OpenClassrooms\CodeGenerator\SkeletonModels\tests\Api\ViewModel\ViewModelDetailAssemblerImplTestSkeletonModelBuilder;
+use OpenClassrooms\CodeGenerator\SkeletonModels\tests\Api\ViewModels\ViewModelDetailAssemblerImplTestSkeletonModel;
+use OpenClassrooms\CodeGenerator\SkeletonModels\tests\Api\ViewModels\ViewModelDetailAssemblerImplTestSkeletonModelBuilder;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>

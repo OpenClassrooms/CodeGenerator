@@ -3,16 +3,28 @@
 namespace OpenClassrooms\CodeGenerator\Tests\Mediators\Api\Impl;
 
 use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
+use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\DTO\Request\ViewModelAssemblerTraitGeneratorRequestBuilderImpl;
+use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\DTO\Request\ViewModelDetailAssemblerGeneratorRequestBuilderImpl;
+use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\DTO\Request\ViewModelDetailAssemblerImplGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\DTO\Request\ViewModelDetailGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\DTO\Request\ViewModelDetailImplGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\DTO\Request\ViewModelGeneratorRequestBuilderImpl;
+use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\DTO\Request\ViewModelListItemAssemblerGeneratorRequestBuilderImpl;
+use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\DTO\Request\ViewModelListItemAssemblerImplGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\DTO\Request\ViewModelListItemGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\DTO\Request\ViewModelListItemImplGeneratorRequestBuilderImpl;
+use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\ViewModelAssemblerTraitGenerator;
+use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\ViewModelDetailAssemblerGenerator;
+use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\ViewModelDetailAssemblerImplGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\ViewModelDetailGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\ViewModelDetailImplGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\ViewModelGenerator;
+use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\ViewModelListItemAssemblerGenerator;
+use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\ViewModelListItemAssemblerImplGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\ViewModelListItemGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\ViewModelListItemImplGenerator;
+use OpenClassrooms\CodeGenerator\Generator\App\Entity\DTO\Request\EntityImplGeneratorRequestBuilderImpl;
+use OpenClassrooms\CodeGenerator\Generator\App\Entity\EntityImplGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\DTO\Request\ViewModelDetailAssemblerImplTestGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\DTO\Request\ViewModelListItemAssemblerImplTestGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\ViewModelDetailAssemblerImplTestGenerator;
@@ -37,15 +49,21 @@ use OpenClassrooms\CodeGenerator\Mediators\Api\Impl\ViewModelMediatorImpl;
 use OpenClassrooms\CodeGenerator\Mediators\Args;
 use OpenClassrooms\CodeGenerator\Mediators\Options;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Api\ViewModels\ViewModel\ViewModelFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Api\ViewModels\ViewModelAssemblerTrait\ViewModelAssemblerTraitFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Api\ViewModels\ViewModelDetail\ViewModelDetailFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Api\ViewModels\ViewModelDetailAssembler\ViewModelDetailAssemblerFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Api\ViewModels\ViewModelDetailAssemblerImpl\ViewModelDetailAssemblerImplFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Api\ViewModels\ViewModelDetailImpl\ViewModelDetailImplFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Api\ViewModels\ViewModelDetailStub\ViewModelDetailStubFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Api\ViewModels\ViewModelDetailTestCase\ViewModelDetailTestCaseFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Api\ViewModels\ViewModelListItem\ViewModelListItemFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Api\ViewModels\ViewModelListItemAssembler\ViewModelListItemAssemblerFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Api\ViewModels\ViewModelListItemAssemblerImpl\ViewModelListItemAssemblerImplFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Api\ViewModels\ViewModelListItemImpl\ViewModelListItemImplFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Api\ViewModels\ViewModelListItemStub\ViewModelListItemStubFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Api\ViewModels\ViewModelListItemTestCase\ViewModelListItemTestCaseFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Api\ViewModels\ViewModelTestCase\ViewModelTestCaseFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\App\Entity\EntityImpl\EntityImplFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\BusinessRules\Entities\EntityStub\EntityStubFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\BusinessRules\Responders\UseCaseDetailResponseStub\UseCaseDetailResponseStubFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\BusinessRules\Responders\UseCaseListItemResponseStub\UseCaseListItemResponseStubFileObjectStub1;
@@ -227,6 +245,34 @@ class ViewModelMediatorImplTest extends TestCase
         $this->mediator->setViewModelListItemTestCaseGenerator(
             new GeneratorMock(ViewModelListItemTestCaseGenerator::class, new ViewModelListItemTestCaseFileObjectStub1())
         );
+
+        $this->mediator->setViewModelAssemblerTraitGenerator(
+            new GeneratorMock(ViewModelAssemblerTraitGenerator::class, new ViewModelAssemblerTraitFileObjectStub1())
+        );
+        $this->mediator->setViewModelDetailAssemblerGenerator(
+            new GeneratorMock(ViewModelDetailAssemblerGenerator::class, new  ViewModelDetailAssemblerFileObjectStub1())
+        );
+        $this->mediator->setViewModelDetailAssemblerImplGenerator(
+            new GeneratorMock(
+                ViewModelDetailAssemblerImplGenerator::class,
+                new ViewModelDetailAssemblerImplFileObjectStub1()
+            )
+        );
+        $this->mediator->setViewModelListItemAssemblerGenerator(
+            new GeneratorMock(
+                ViewModelListItemAssemblerGenerator::class,
+                new  ViewModelListItemAssemblerFileObjectStub1()
+            )
+        );
+        $this->mediator->setViewModelListItemAssemblerImplGenerator(
+            new GeneratorMock(
+                ViewModelListItemAssemblerImplGenerator::class,
+                new ViewModelListItemAssemblerImplFileObjectStub1()
+            )
+        );
+        $this->mediator->setEntityImplGenerator(
+            new GeneratorMock(EntityImplGenerator::class, new  EntityImplFileObjectStub1())
+        );
     }
 
     private function mockRequestBuilder(): void
@@ -270,5 +316,25 @@ class ViewModelMediatorImplTest extends TestCase
         $this->mediator->setViewModelListItemTestCaseGeneratorRequestBuilder(
             new ViewModelListItemTestCaseGeneratorRequestBuilderImpl()
         );
+
+        $this->mediator->setViewModelAssemblerTraitGeneratorRequestBuilder(
+            new ViewModelAssemblerTraitGeneratorRequestBuilderImpl()
+        );
+        $this->mediator->setViewModelDetailAssemblerGeneratorRequestBuilder(
+            new ViewModelDetailAssemblerGeneratorRequestBuilderImpl()
+        );
+        $this->mediator->setViewModelDetailAssemblerImplGeneratorRequestBuilder(
+            new ViewModelDetailAssemblerImplGeneratorRequestBuilderImpl()
+        );
+        $this->mediator->setViewModelListItemAssemblerGeneratorRequestBuilder(
+            new ViewModelListItemAssemblerGeneratorRequestBuilderImpl()
+        );
+        $this->mediator->setViewModelListItemAssemblerImplGeneratorRequestBuilder(
+            new ViewModelListItemAssemblerImplGeneratorRequestBuilderImpl()
+        );
+        $this->mediator->setEntityImplGeneratorRequestBuilder(
+            new EntityImplGeneratorRequestBuilderImpl()
+        );
+
     }
 }

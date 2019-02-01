@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace OpenClassrooms\CodeGenerator\SkeletonModels\tests\Api\ViewModel\Impl;
+namespace OpenClassrooms\CodeGenerator\SkeletonModels\tests\Api\ViewModels\Impl;
 
 use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
-use OpenClassrooms\CodeGenerator\SkeletonModels\tests\Api\ViewModel\ViewModelDetailAssemblerImplTestSkeletonModel;
-use OpenClassrooms\CodeGenerator\SkeletonModels\tests\Api\ViewModel\ViewModelDetailAssemblerImplTestSkeletonModelBuilder;
+use OpenClassrooms\CodeGenerator\SkeletonModels\tests\Api\ViewModels\ViewModelDetailAssemblerImplTestSkeletonModel;
+use OpenClassrooms\CodeGenerator\SkeletonModels\tests\Api\ViewModels\ViewModelDetailAssemblerImplTestSkeletonModelBuilder;
 use OpenClassrooms\CodeGenerator\Utility\MethodUtility;
 
 /**
