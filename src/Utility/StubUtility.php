@@ -34,7 +34,7 @@ class StubUtility
             case '\DateTime' :
             case '\DateTimeImmutable' :
             case '\DateTimeInterface' :
-                return Carbon::create(self::DEFAULT_DATE)->toDateString();
+                return Carbon::createFromFormat('Y-m-d', self::DEFAULT_DATE)->toDateString();
             default:
                 throw new \InvalidArgumentException($type);
         }
