@@ -3,6 +3,7 @@
 namespace OpenClassrooms\CodeGenerator\tests\Commands;
 
 use OpenClassrooms\CodeGenerator\Commands\CommandLabelType;
+use OpenClassrooms\CodeGenerator\Commands\ViewModelCommand;
 use OpenClassrooms\CodeGenerator\Mediators\Api\Impl\ViewModelMediatorImpl;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Commands\ViewModelCommandMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Api\ViewModels\ViewModel\ViewModelFileObjectStub1;
@@ -47,6 +48,15 @@ class ViewModelCommandTest extends TestCase
      * @var InvocationMocker
      */
     private $viewModelMediatorImplMock;
+
+    /**
+     * @test
+     * @expectedException \Exception
+     */
+    public function fileConfigNotExist_ThrowException()
+    {
+        TestClassUtil::invokeMethod('loadConfigParameters', new ViewModelCommand());
+    }
 
     /**
      * @test
