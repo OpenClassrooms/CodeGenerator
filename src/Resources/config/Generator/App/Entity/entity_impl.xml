@@ -5,7 +5,7 @@
 
         <service id="open_classrooms.code_generator.skeleton_models.app.entity.impl.entity_impl_skeleton_model_assembler_impl" class="OpenClassrooms\CodeGenerator\SkeletonModels\App\Entity\Impl\EntityImplSkeletonModelAssemblerImpl"/>
 
-        <service id="open_classrooms.code_generator.generator.app.entity.entity_impl_generator" class="OpenClassrooms\CodeGenerator\Generator\App\Entity\EntityImplGenerator" parent="open_classrooms.code_generator.generator.api.abstract_view_model_generator">
+        <service id="open_classrooms.code_generator.generator.app.entity.entity_impl_generator" class="OpenClassrooms\CodeGenerator\Generator\App\Entity\EntityImplGenerator" parent="open_classrooms.code_generator.generator.abstract_generator">
             <call method="setEntityImplSkeletonModelAssembler">
                 <argument type="service" id="open_classrooms.code_generator.skeleton_models.app.entity.impl.entity_impl_skeleton_model_assembler_impl"/>
             </call>
