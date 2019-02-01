@@ -24,6 +24,8 @@ class ViewModelCommand extends Command
 
     const CONFIG_DIR = __DIR__ . '/../Resources/config';
 
+    const CONFIG_FILE = 'oc_code_generator.yml';
+
     const ROOT_DIR = __DIR__ . '/../../../../..';
 
     /**
@@ -34,7 +36,7 @@ class ViewModelCommand extends Command
     /**
      * @var string
      */
-    protected static $defaultName = 'code-generator:viewmodels';
+    protected static $defaultName = 'code-generator:view-models';
 
     public function __construct($name = null)
     {
@@ -46,10 +48,10 @@ class ViewModelCommand extends Command
         $this->container->compile();
     }
 
-    private function loadConfigParameters()
+    protected function loadConfigParameters()
     {
         $loader = new YamlFileLoader($this->container, new FileLocator(static::ROOT_DIR));
-        $loader->load('oc_code_generator.yml');
+        $loader->load(static::CONFIG_FILE);
     }
 
     protected function configure()
@@ -95,11 +97,11 @@ class ViewModelCommand extends Command
 
         $io = new SymfonyStyle($input, $output);
 
-        [$fileWritten, $fileNotWritten] = $this->getFilesWrittingStatus($fileObjects);
+        [$writtenFiles, $notWrittenFiles] = $this->getFilesWritingStatus($fileObjects);
 
-        $this->displayCreatedFilePath($fileWritten, $io);
-        $this->displayNotWrittenFilePathAndContent($input, $fileNotWritten, $io);
-        $this->displayFilePathAndContentDump($input, $io, array_merge($fileWritten, $fileNotWritten));
+        $this->displayCreatedFilePath($io, $writtenFiles);
+        $this->displayNotWrittenFilePathAndContent($io, $notWrittenFiles, $input);
+        $this->displayFilePathAndContentDump($io, array_merge($writtenFiles, $notWrittenFiles), $input);
 
     }
 }

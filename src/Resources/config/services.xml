@@ -11,10 +11,10 @@
         <import resource="Generator/tests/Doubles/Api/ViewModels/view_model_detail_test_case.xml"/>
         <import resource="Generator/tests/Doubles/Api/ViewModels/view_model_list_item_test_case.xml"/>
         <import resource="Generator/tests/Doubles/Api/ViewModels/view_model_list_item_stub.xml"/>
-        <import resource="Generator/tests/BussinessRules/Responders/use_case_list_item_response_stub.xml"/>
-        <import resource="Generator/tests/BussinessRules/Responders/use_case_detail_response_stub.xml"/>
-        <import resource="Generator/tests/BussinessRules/Responders/abstract_use_case_response_stub.xml"/>
-        <import resource="Generator/tests/BussinessRules/Entities/entity_stub.xml"/>
+        <import resource="Generator/tests/BusinessRules/Responders/use_case_list_item_response_stub.xml"/>
+        <import resource="Generator/tests/BusinessRules/Responders/use_case_detail_response_stub.xml"/>
+        <import resource="Generator/tests/BusinessRules/Responders/abstract_use_case_response_stub.xml"/>
+        <import resource="Generator/tests/BusinessRules/Entities/entity_stub.xml"/>
         <import resource="Generator/tests/Api/ViewModels/view_model_detail_assembler_impl_test.xml"/>
         <import resource="Generator/tests/Api/ViewModels/view_model_list_item_assembler_impl_test.xml"/>
         <import resource="Generator/Api/ViewModels/view_model_detail_impl.xml"/>

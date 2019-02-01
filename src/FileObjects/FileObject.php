@@ -145,7 +145,7 @@ class FileObject
 
     public function getShortName(): string
     {
-        return $this->getShortClassNameFromClassName($this->className);
+        return $this->getShortClassName($this->className);
     }
 
     public function setAlreadyExists(bool $alreadyExists)

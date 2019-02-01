@@ -10,5 +10,5 @@ use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders
  */
 interface FunctionalEntityDetailAssembler
 {
-    public function create(FunctionalEntityDetailResponse $entity): FunctionalEntityDetail;
+    public function create(FunctionalEntityDetailResponse $functionalEntityDetailResponse): FunctionalEntityDetail;
 }

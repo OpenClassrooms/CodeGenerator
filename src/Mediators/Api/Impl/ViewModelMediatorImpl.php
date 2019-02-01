@@ -59,6 +59,12 @@ class ViewModelMediatorImpl implements ViewModelMediator
         $fileObjects[] = $this->generateViewModelDetailImpl($className);
         $fileObjects[] = $this->generateViewModelListItem($className);
         $fileObjects[] = $this->generateViewModelListItemImpl($className);
+        $fileObjects[] = $this->generateViewModelAssemblerTraitGenerator($className);
+        $fileObjects[] = $this->generateViewModelDetailAssemblerGenerator($className);
+        $fileObjects[] = $this->generateViewModelDetailAssemblerImplGenerator($className);
+        $fileObjects[] = $this->generateViewModelListItemAssemblerGenerator($className);
+        $fileObjects[] = $this->generateViewModelListItemAssemblerImplGenerator($className);
+        $fileObjects[] = $this->generateEntityImplGenerator($className);
 
         return $fileObjects;
     }
@@ -76,11 +82,9 @@ class ViewModelMediatorImpl implements ViewModelMediator
     }
 
     /**
-     * @param FileObject[] $fileObjects
-     *
      * @return FileObject[]
      */
-    private function generateViewModelTests($className): array
+    private function generateViewModelTests(string $className): array
     {
         $fileObjects[] = $this->generateViewModelTestCase($className);
         $fileObjects[] = $this->generateViewModelDetailStub($className);

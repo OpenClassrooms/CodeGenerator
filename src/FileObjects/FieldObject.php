@@ -24,11 +24,6 @@ class FieldObject
     protected $docComment;
 
     /**
-     * @var bool;
-     */
-    protected $inherited = false;
-
-    /**
      * @var string
      */
     protected $name;
@@ -48,20 +43,7 @@ class FieldObject
         $this->name = $name;
     }
 
-    public function isInherited(): bool
-    {
-        return $this->inherited;
-    }
-
-    /**
-     * @param bool $parentField
-     */
-    public function setInherited(bool $inherited): void
-    {
-        $this->inherited = $inherited;
-    }
-
-    public function getAccessor(): string
+    public function getAccessor()
     {
         return $this->accessor;
     }
