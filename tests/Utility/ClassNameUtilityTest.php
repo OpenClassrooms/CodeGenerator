@@ -37,7 +37,7 @@ class ClassNameUtilityTest extends TestCase
         [$actualDomain, $actualEntity] = TestClassUtil::invokeMethod(
             'getDomainAndEntityNameFromClassName',
             $this->classNameUtilityMock,
-            FunctionalEntityDetail::class
+            $className
         );
 
         $this->assertEquals($expectedDomain, $actualDomain);

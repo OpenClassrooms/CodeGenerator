@@ -21,7 +21,7 @@ class FileObjectRepositoryTest extends TestCase
     private $fileObjectRepository;
 
     /**
-     * @var Filesystem
+     * @var Filesystem|\PHPUnit_Framework_MockObject_MockObject
      */
     private $fileSystem;
 
@@ -30,7 +30,7 @@ class FileObjectRepositoryTest extends TestCase
      */
     public function insert_PushFileObject()
     {
-        $fileObject = $this->generateFileObject(FunctionalEntity::class, true);
+        $fileObject = $this->generateFileObject(FunctionalEntity::class);
 
         $this->fileSystem
             ->expects($this->once())
