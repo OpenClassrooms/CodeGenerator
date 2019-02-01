@@ -25,6 +25,24 @@
         <service id="open_classrooms.code_generator.generator.app.entity.dto.request.entity_impl_generator_request_builder_impl" class="OpenClassrooms\CodeGenerator\Generator\App\Entity\DTO\Request\EntityImplGeneratorRequestBuilderImpl"/>
 
         <service id="open_classrooms.code_generator.mediators.api.impl.view_model_mediator_impl" class="OpenClassrooms\CodeGenerator\Mediators\Api\Impl\ViewModelMediatorImpl">
+            <call method="setViewModelAssemblerTraitGeneratorRequestBuilder">
+                <argument type="service" id="open_classrooms.code_generator.generator.api.view_models.dto.request.view_model_assembler_trait_generator_request_builder_impl"/>
+            </call>
+            <call method="setViewModelDetailAssemblerGeneratorRequestBuilder">
+                <argument type="service" id="open_classrooms.code_generator.generator.api.view_models.dto.request.view_model_detail_assembler_generator_request_builder_impl"/>
+            </call>
+            <call method="setViewModelDetailAssemblerImplGeneratorRequestBuilder">
+                <argument type="service" id="open_classrooms.code_generator.generator.api.view_models.dto.request.view_model_detail_assembler_impl_generator_request_builder_impl"/>
+            </call>
+            <call method="setViewModelListItemAssemblerGeneratorRequestBuilder">
+                <argument type="service" id="open_classrooms.code_generator.generator.api.view_models.dto.request.view_model_list_item_assembler_generator_request_builder_impl"/>
+            </call>
+            <call method="setViewModelListItemAssemblerImplGeneratorRequestBuilder">
+                <argument type="service" id="open_classrooms.code_generator.generator.api.view_models.dto.request.view_model_list_item_assembler_impl_generator_request_builder_impl"/>
+            </call>
+            <call method="setEntityImplGeneratorRequestBuilder">
+                <argument type="service" id="open_classrooms.code_generator.generator.app.entity.dto.request.entity_impl_generator_request_builder_impl"/>
+            </call>
             <call method="setEntityStubGeneratorRequestBuilder">
                 <argument type="service" id="open_classrooms.code_generator.generator.tests.business_rules.entities.dto.request.entity_stub_generator_request_builder_impl"/>
             </call>
