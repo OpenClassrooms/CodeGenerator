@@ -1,0 +1,18 @@
+{% include "Header.php.twig" %}
+
+namespace {{ skeletonModel.namespace }};
+
+use {{ skeletonModel.useCaseListItemResponseClassName }};
+
+/**
+ * @author {{ author }} <{{ authorEmail }}>
+ */
+interface {{ skeletonModel.shortName }}
+{
+    /**
+     * @param {{ skeletonModel.useCaseListItemResponseShortName }}[] ${{ skeletonModel.useCaseListItemResponseArgument}}
+     *
+     * @return {{ skeletonModel.viewModelListItemShortName }}[]
+     */
+    public function createListItems(array ${{ skeletonModel.useCaseListItemResponseArgument}}): array;
+}

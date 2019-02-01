@@ -1,0 +1,40 @@
+{% include "Header.php.twig" %}
+
+namespace {{ skeletonModel.namespace }};
+
+use {{ skeletonModel.viewModelAssemblerTraitClassName }};
+use {{ skeletonModel.viewModelListItemClassName }};
+use {{ skeletonModel.viewModelListItemAssemblerClassName }};
+use {{ skeletonModel.useCaseResponseClassName }};
+
+/**
+ * @author {{ author }} <{{ authorEmail }}>
+ */
+class {{ skeletonModel.shortName }} implements {{ skeletonModel.viewModelListItemAssemblerShortName }}
+{
+    use {{ skeletonModel.viewModelAssemblerTraitShortName }};
+
+    /**
+     * @inheritdoc
+     */
+    public function createListItems(array ${{ skeletonModel.useCaseListItemResponseArgument }}): array
+    {
+        $vms = [];
+        foreach (${{ skeletonModel.useCaseListItemResponseArgument }} as ${{ skeletonModel.useCaseResponseArgument}}) {
+            $vms[] = $this->createListItem(${{ skeletonModel.useCaseResponseArgument}});
+        }
+
+        return $vms;
+    }
+
+    /**
+     * @return {{ skeletonModel.viewModelListItemImplShortName }}
+     */
+    private function createListItem({{ skeletonModel.useCaseResponseShortName }} ${{ skeletonModel.useCaseResponseArgument}}): {{ skeletonModel.viewModelListItemShortName }}
+    {
+        $vm = new {{ skeletonModel.viewModelListItemImplShortName }}();
+        $this->hydrateCommonFields($vm, ${{ skeletonModel.useCaseResponseArgument}});
+
+        return $vm;
+    }
+}

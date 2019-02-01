@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace OpenClassrooms\CodeGenerator\Tests;
 
@@ -19,6 +19,14 @@ class TestClassUtil
         return $property;
     }
 
+    public static function getProperty($propertyName, $object)
+    {
+        $property = new \ReflectionProperty(get_class($object), $propertyName);
+        $property->setAccessible(true);
+
+        return $property->getValue($propertyName);
+    }
+
     public static function getConstants($className)
     {
         $reflectionClass = new \ReflectionClass($className);
@@ -31,5 +39,13 @@ class TestClassUtil
         $rc = new \ReflectionClass($className);
 
         return $rc->getShortName();
+    }
+
+    public static function invokeMethod($propertyName, $object, $args = null)
+    {
+        $method = new \ReflectionMethod(get_class($object), $propertyName);
+        $method->setAccessible(true);
+
+        return null === $args ? $method->invoke($object) :  $method->invoke($object, $args);
     }
 }

@@ -11,6 +11,21 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 abstract class EntityStubSkeletonModel extends AbstractSkeletonModel
 {
     /**
+     * @var ConstObject[]
+     */
+    public $constants;
+
+    /**
+     * @var array
+     */
+    public $dateTimeType;
+
+    /**
+     * @var bool
+     */
+    public $hasConstructor;
+
+    /**
      * @var string
      */
     public $parentClassName;
@@ -19,16 +34,6 @@ abstract class EntityStubSkeletonModel extends AbstractSkeletonModel
      * @var string
      */
     public $parentShortName;
-
-    /**
-     * @var ConstObject[]
-     */
-    public $constants;
-
-    /**
-     * @var bool
-     */
-    public $hasConstructor;
 
     public $templatePath = 'tests/Doubles/BusinessRules/Entities/EntityStub.php.twig';
 }

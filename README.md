@@ -3,7 +3,9 @@
 [![SensioLabsInsight](https://insight.symfony.com/projects/e91d65d8-55e2-4b66-8649-1bfaf79b67d8/mini.svg)](https://insight.symfony.com/account/widget?project=e91d65d8-55e2-4b66-8649-1bfaf79b67d8)
 [![codecov](https://codecov.io/gh/OpenClassrooms/CodeGenerator/branch/master/graph/badge.svg)](https://codecov.io/gh/OpenClassrooms/CodeGenerator)
 
-CodeGenerator is a library whose purpose to generate classes in clean architecture context. 
+
+CodeGenerator is a library who generates classes in clean architecture context. 
+
 From any use-case response, developers have the possibility to generate : 
 - UseCase architecture (not implemented yet)
 - ViewModel architecture
@@ -37,9 +39,6 @@ parameters:
 <a name="install-nocomposer"/>
 
 ## Usage
-### To know
-- Each generator generate only one file
-- Each class must have a interface and his implementation
 ### Basic execution
 To list all possibilities : 
 ``` 
@@ -47,11 +46,15 @@ php bin/CodeGenerator.php
 ```
 To generate view model architecture : 
 ``` 
-php bin/CodeGenerator.php code-generator:viewmodels useCaseResponseClassName
+php bin/CodeGenerator.php code-generator:view-models useCaseResponseClassName
 ```
-### Specific usage
-To generate view model architecture without tests : 
+### Extensions
+To generate without tests
 ``` 
+command --no-test
+```
+Example:
+```
 php bin/CodeGenerator.php code-generator:viewmodels useCaseResponseClassName --no-test
 ```
 To generate view model architecture tests only if view model classes already exist : 
@@ -63,6 +66,15 @@ To dump preview for view model classes:
 php bin/CodeGenerator.php code-generator:viewmodels useCaseResponseClassName --dump
 ```
 ## Create new generator
+
+### To know
+- A generated file is described by a skeleton, on the skeleton directory
+- A generator grab data and send it to the skeleton (just like a web page)
+- A generator MUST generate only one file
+- A mediator is responsible to call different generators
+- A mediator can call many other mediators
+- The command MUST call a mediator
+- Each class MUST have a interface and his implementation
 
 ### step 1 : start Generator Implementation
 The main goal of the generator class is to generate a FileObject, it is an object representation of class.

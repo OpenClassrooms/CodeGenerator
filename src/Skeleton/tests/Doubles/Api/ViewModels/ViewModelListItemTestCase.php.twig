@@ -1,4 +1,3 @@
-<?php declare(strict_types=1);
 {% include "Header.php.twig" %}
 
 namespace {{ skeletonModel.namespace }};
@@ -25,10 +24,7 @@ trait {{ skeletonModel.shortName }}
         }
     }
 
-    private function assert{{ skeletonModel.viewModelListItemShortName }}(
-        {{ skeletonModel.viewModelListItemShortName }} $expected,
-        {{ skeletonModel.viewModelListItemShortName }} $actual
-    )
+    private function assert{{ skeletonModel.viewModelListItemShortName }}({{ skeletonModel.viewModelListItemShortName }} $expected, {{ skeletonModel.viewModelListItemShortName }} $actual)
     {
         $this->assert{{ skeletonModel.viewModelTestCaseShortName }}($expected, $actual);
     }

@@ -1,4 +1,3 @@
-<?php declare(strict_types=1);
 {% include "Header.php.twig" %}
 
 namespace {{ skeletonModel.namespace }};
@@ -10,5 +9,5 @@ use {{ skeletonModel.useCaseDetailResponseClassName }};
  */
 interface {{ skeletonModel.shortName }}
 {
-    public function create({{ skeletonModel.useCaseDetailResponseShortName }} $entity): {{ skeletonModel.viewModelDetailShortName }};
+    public function create({{ skeletonModel.useCaseDetailResponseShortName }} ${{ skeletonModel.useCaseDetailResponseArgument}}): {{ skeletonModel.viewModelDetailShortName }};
 }
