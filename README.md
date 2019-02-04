@@ -27,7 +27,7 @@ composer require --dev openclassrooms/code-generator *
     }
 }
 ```
-create file called `oc_code_generator.yml` at the root of your project and configure if, for example : 
+Modify the file `oc_code_generator.yml` created at the root of the project, for example : 
 ``` yaml
 parameters:
     base_namespace: OC\ 
@@ -67,44 +67,46 @@ To dump preview for view model classes:
 ``` 
 php bin/CodeGenerator.php code-generator:view-models useCaseResponseClassName --dump
 ```
-## Create new generator
+## Create a new generator
 
 ### To know
-- A generated file is described by a skeleton, on the skeleton directory
-- A generator grab data and send it to the skeleton (just like a web page)
-- A generator MUST generate only one file
-- A mediator is responsible to call different generators
-- A mediator can call many other mediators
-- The command MUST call a mediator
-- Each class MUST have a interface and his implementation
-- FileObject contains all needed class information to generate a file
-- Factories are used to create FileObject from Domain and Entity name
-- Entity name and Domain are getting from ClassNameUtility trait 
-- If you need another class information in your generator, use factories to create the needed FileObject
-- Somes utilities classes are used for generate stub, Consts and others things
+- A generated file is described by a skeleton, on the skeleton directory.
+- A generator grabs data and sends it to the skeleton (just like a web page)
+- A generator MUST generates only one file.
+- A mediator is responsible to call different generators.
+- A mediator can call many other mediators.
+- The command MUST calls a mediator.
+- Each class MUST have an interface and his implementation.
+- FileObject contains all needed class information to generate a file.
+- Factories are used to create FileObject from Domain and Entity name.
+- Entity name and Domain are getting from ClassNameUtility trait.
+- If you need another class information in your generator, use factories to create the needed FileObject.
+- Some utilities classes are used for generate stub, constant and others things.
 
 ### Methodology
 
 #### 1) Write the file template you want to generate 
 First, you have to create twig template the expected files after generation.
 #### 2) create generator RequestDTO and generator RequestBuilder
-Create class with the entity name suffixed by `RequestBuilder` , this is used as parameter in generator main method 
+Create class with the entity name suffixed by `RequestBuilder` , this is used as parameter in generator main method. 
 #### 3) start Generator Implementation
 The main goal of the generator class is to generate the expected FileObject, but to succeed, it necessary to build other FileObject from factories and use available Utilities. 
 #### 4) create GeneratorTest
-Create class with the entity name suffixed by `GeneratorTest` class. Each tests, need to stub you have to create (entity name suffixed by `FileObjectStub1`). The stub MUST contains excepted values to compare with the actual object
+Create class with the entity name suffixed by `GeneratorTest` class. Each tests, need to stub you have to create (entity name suffixed by `FileObjectStub1`). The stub MUST contains expected values to compare with the actual object.
 #### 5) create skeletonModel and SkeletonModelAssembler
 Create two classes both prefixed by the entity name.
-firstly, a abstract class `SkeletonModel`. 
+Firstly, an abstract class `SkeletonModel`. 
 Secondly `SkeletonModelAssembler`. 
 Both are used to create the object which will use in the template.
 #### 6) create mediator or add generator in existing mediator
-The command use a mediator pattern to generate classes by functional group. 
+The command uses a mediator pattern to generate classes by functional group. 
 The mediator load generators as services and arrange it by group. 
 Add the new generator in the concerned group.
 #### 7) create config files and update services.xml
-Create a new `.xml` file for the generator and add it in `src/Ressources/config/service.xml`
+Create a new `.xml` file for the generator and add it in `src/Ressources/config/service.xml`.
+#### 8) create the command if not exist
+If command doesn't exist, create it and call mediator mediate function in the execute method. 
 
-### See example
+### See an example
 
-For practical example, check how `src/Generator/ViewModelGenerator.php` is builded.
+For a practical example, check how `src/Generator/ViewModelGenerator.php` is built.
