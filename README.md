@@ -35,6 +35,8 @@ parameters:
     tests_base_namespace: OC\
     api_dir: ApiBundle\
     app_dir: AppBundle\
+    author:
+    author_mail:
 ```
 <a name="install-nocomposer"/>
 
@@ -55,15 +57,15 @@ command --no-test
 ```
 Example:
 ```
-php bin/CodeGenerator.php code-generator:viewmodels useCaseResponseClassName --no-test
+php bin/CodeGenerator.php code-generator:view-models useCaseResponseClassName --no-test
 ```
 To generate view model architecture tests only if view model classes already exist : 
 ``` 
-php bin/CodeGenerator.php code-generator:viewmodels useCaseResponseClassName --tests-only
+php bin/CodeGenerator.php code-generator:view-models useCaseResponseClassName --tests-only
 ```
 To dump preview for view model classes: 
 ``` 
-php bin/CodeGenerator.php code-generator:viewmodels useCaseResponseClassName --dump
+php bin/CodeGenerator.php code-generator:view-models useCaseResponseClassName --dump
 ```
 ## Create new generator
 
@@ -75,196 +77,34 @@ php bin/CodeGenerator.php code-generator:viewmodels useCaseResponseClassName --d
 - A mediator can call many other mediators
 - The command MUST call a mediator
 - Each class MUST have a interface and his implementation
+- FileObject contains all needed class information to generate a file
+- Factories are used to create FileObject from Domain and Entity name
+- Entity name and Domain are getting from ClassNameUtility trait 
+- If you need another class information in your generator, use factories to create the needed FileObject
+- Somes utilities classes are used for generate stub, Consts and others things
 
-### step 1 : start Generator Implementation
-The main goal of the generator class is to generate a FileObject, it is an object representation of class.
-If necessary, the method generate have to  build FileObject (generate const, generate fields, generate content with Assembler object) and include it in a queue. 
-``` php
-# src/Generator/Domain/SubDomain
+### Methodology
 
-class ViewModelGenerator extends AbstractViewModelGenerator
-{
-    private $viewModelSkeletonModelAssembler;
-
-    public function generate(GeneratorRequest $generatorRequest): FileObject
-    {
-        $viewModelFileObject = $this->buildViewModelFileObject($generatorRequest->getUseCaseResponseClassName());
-        $this->insertFileObject($viewModelFileObject);
-
-        return $viewModelFileObject;
-    }
-    
-    private function buildViewModelFileObject(string $useCaseResponseClassName): FileObject
-    {
-        //create createUseCaseResponseObject from factory
-        $useCaseResponseFileObject = $this->createUseCaseResponseObject($useCaseResponseClassName);
-        
-        //create $viewModelFileObject from factory, the parameter $useCaseResponseFileObject are used to get required factory values 
-        $viewModelFileObject = $this->createViewModelObject($useCaseResponseFileObject);
-
-        //getPublicClassFields comes from FieldObjectService used to extract class fields  
-        $viewModelFileObject->setFields($this->getPublicClassFields($useCaseResponseFileObject->getClassName()));
-        
-        //method generateContent uses ViewModelSkeletonModelAssembler to create the file content from twig template
-        $viewModelFileObject->setContent($this->generateContent($viewModelFileObject));
-
-        return $viewModelFileObject;
-    }
-    
-    // implement other needed methods
-```
-### step 2 : create GeneratorTest
-Create class `ViewModelGeneratorTest` : 
-``` php
-# test/Generator/Domain/SubDomain
-
-class ViewModelGeneratorTest extends AbstractViewModelGeneratorTestCase
-{
-    use FileObjectTestCase;
-
-    private $request;
-
-    private $viewModelGenerator;
-
-    /**
-     * @test
-     */
-    public function generate_ReturnFileObject()
-    {
-        $actualFileObject = $this->viewModelGenerator->generate($this->request);
-
-        $this->assertSame(
-            InMemoryFileObjectGateway::$fileObjects[$actualFileObject->getId()],
-            $actualFileObject->getPath()
-        );
-        $this->assertFileObject(new ViewModelFileObjectStub1(), $actualFileObject);
-    }
-    
-    // implement setUp 
-```
-In this part, create stub (here `ViewModelFileObjectStub1`) with excepted values to compare with the actual object  
-### step 3 : create RequestDTO and RequestBuilder
-The request are used as parameter in generator main method
-Create class `ViewModelGeneratorRequestDTO`and his implementation (missing here): 
-
-``` php
-# src/Generator/Domain/SubDomain/DTO/Request
-
-class ViewModelGeneratorRequestDTO implements ViewModelGeneratorRequest
-{
-    public $className;
-
-    public function getUseCaseResponseClassName(): string
-    {
-        return $this->className;
-    }
-```
-Create class `ViewModelGeneratorRequestBuilder` (missing here) and his implementation: 
-``` php
-# src/Generator/Domain/SubDomain/DTO/Request
-
-class ViewModelGeneratorRequestBuilderImpl implements ViewModelGeneratorRequestBuilder
-{
-    private $request;
-
-    public function create(): ViewModelGeneratorRequestBuilder
-    {
-        $this->request = new ViewModelGeneratorRequestDTO();
-
-        return $this;
-    }
-
-    public function withClassName(string $className): ViewModelGeneratorRequestBuilder
-    {
-        $this->request->className = $className;
-
-        return $this;
-    }
-
-    public function build(): ViewModelGeneratorRequest
-    {
-        return $this->request;
-    }
-```
-### step 4 : create skeleton twig template
-use an existing source file to create the model 
-``` php
-# src/Skeleton/Domain/SubDomain
-
-<?php declare(strict_types=1);
-{% include "Header.php.twig" %}
-
-namespace {{ skeletonModel.namespace }};
-
-use {{ skeletonModel.parentClassName }};
-//list all needed namespace
-
-/**
- * @author {{ author }} <{{ authorEmail }}>
- */
-class {{ skeletonModel.shortName }} extends {{ skeletonModel.parentShortName }}
-{
-    // set content
-}
-```
-
-### step 5 : create skeletonModel and SkeletonModelAssembler
-Create abstract class `ViewModelSkeletonModel` and his implementation (missing here): 
-``` php
-# src/SkeletonModels/Domain/SubDomain
-
-abstract class ViewModelSkeletonModel extends AbstractSkeletonModel
-{
-    public $parentClassName;
-
-    public $parentShortName;
-
-    public $templatePath = 'Api/ViewModels/ViewModel.php.twig';
-    
-    // set other parameters needed in template
-}
-```
-Create class `ViewModeSkeletonModelAssembler` (missing here) and his implementation : 
-``` php
-# src/SkeletonModels/Domain/SubDomain/Impl
-
-class ViewModeSkeletonModelAssemblerImpl implements ViewModelSkeletonModelAssembler
-{
-    public function create($neededFileObject): ViewModelImplSkeletonModel
-    {
-        $skeletonModel = new ViewModelSkeletonModelImpl();
-        // set $skeletonModel values from $neededFileObject
-
-        return $skeletonModel;
-    }
-}
-```
-
-### step 6 : create mediator or add generator in existing mediator
+#### 1) Write the file template you want to generate 
+First, you have to create twig template the expected files after generation.
+#### 2) create generator RequestDTO and generator RequestBuilder
+Create class with the entity name suffixed by `RequestBuilder` , this is used as parameter in generator main method 
+#### 3) start Generator Implementation
+The main goal of the generator class is to generate the expected FileObject, but to succeed, it necessary to build other FileObject from factories and use available Utilities. 
+#### 4) create GeneratorTest
+Create class with the entity name suffixed by `GeneratorTest` class. Each tests, need to stub you have to create (entity name suffixed by `FileObjectStub1`). The stub MUST contains excepted values to compare with the actual object
+#### 5) create skeletonModel and SkeletonModelAssembler
+Create two classes both prefixed by the entity name.
+firstly, a abstract class `SkeletonModel`. 
+Secondly `SkeletonModelAssembler`. 
+Both are used to create the object which will use in the template.
+#### 6) create mediator or add generator in existing mediator
 The command use a mediator pattern to generate classes by functional group. 
 The mediator load generators as services and arrange it by group. 
-Add the new generator in the concerned group : 
-``` php
-# src/Mediators/Domain
+Add the new generator in the concerned group.
+#### 7) create config files and update services.xml
+Create a new `.xml` file for the generator and add it in `src/Ressources/config/service.xml`
 
-class ViewModelMediatorImpl implements ViewModelMediator
-{
-    private $fileObjectGateway;
+### See example
 
-    private $generatorRequestBuilder;
-
-    public function mediate(array $args = [], array $options = [])
-    { 
-        // set groups in terms of options list
-        
-        return $fileObjects
-    }
-    
-    private function generateGroup()
-    {
-        //add generator FileObject response in the array
-        $fileObjects[] = $this->generateViewModel($className);
-    
-        return $fileObjects;
-    }
-```
+For practical example, check how `src/Generator/ViewModelGenerator.php` is builded.
