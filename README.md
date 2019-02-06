@@ -4,22 +4,22 @@
 [![codecov](https://codecov.io/gh/OpenClassrooms/CodeGenerator/branch/master/graph/badge.svg)](https://codecov.io/gh/OpenClassrooms/CodeGenerator)
 
 
-CodeGenerator is a library who generates classes in clean architecture context. 
+CodeGenerator is a library who generates classes in Clean Architecture context. 
 
-From any use-case response, developers have the possibility to generate : 
+From any use-case response, developers have the possibility to generate: 
 - UseCase architecture (not implemented yet)
 - ViewModel architecture
-- Unit test for each classed generated
+- Unit tests for each classed generated
 
 ## Installation
 The easiest way to install CodeGenerator is via [composer](http://getcomposer.org/).
 
-Create the following `composer.json` file and run the `php composer.phar install` command to install it.
+Create the following `composer.json` file or run the `php composer.phar install` command to install it.
 
 ```commandLine
 composer require --dev openclassrooms/code-generator *
 ```
-
+or
 ```json
 {
     "require": {
@@ -50,15 +50,11 @@ To generate view model architecture :
 php bin/CodeGenerator.php code-generator:view-models useCaseResponseClassName
 ```
 ### Extensions
-To generate without tests
-``` 
-command --no-test
-```
-Example:
+To generate without tests:
 ```
 php bin/CodeGenerator.php code-generator:view-models useCaseResponseClassName --no-test
 ```
-To generate view model architecture tests only if view model classes already exist : 
+To generate view model architecture tests only if view model classes already exist: 
 ``` 
 php bin/CodeGenerator.php code-generator:view-models useCaseResponseClassName --tests-only
 ```
@@ -66,7 +62,7 @@ To dump preview for view model classes:
 ``` 
 php bin/CodeGenerator.php code-generator:view-models useCaseResponseClassName --dump
 ```
-## Create a new generator
+## How to create a new generator
 
 ### To know
 - A generated file is described by a skeleton, on the skeleton directory.
@@ -86,25 +82,24 @@ php bin/CodeGenerator.php code-generator:view-models useCaseResponseClassName --
 
 #### 1) Write the file template you want to generate 
 First, you have to create twig template the expected files after generation.
-#### 2) create generator RequestDTO and generator RequestBuilder
+#### 2) Create generator RequestDTO and generator RequestBuilder
 Create class with the entity name suffixed by `RequestBuilder` , this is used as parameter in generator main method. 
-#### 3) start Generator Implementation
+#### 3) Start Generator Implementation
 The main goal of the generator class is to generate the expected FileObject, but to succeed, it necessary to build other FileObject from factories and use available Utilities. 
-#### 4) create GeneratorTest
-Create class with the entity name suffixed by `GeneratorTest` class. Each tests, need to stub you have to create (entity name suffixed by `FileObjectStub1`). The stub MUST contains expected values to compare with the actual object.
-#### 5) create skeletonModel and SkeletonModelAssembler
-Create two classes both prefixed by the entity name.
-Firstly, an abstract class `SkeletonModel`. 
-Secondly `SkeletonModelAssembler`. 
-Both are used to create the object which will use in the template.
-#### 6) create mediator or add generator in existing mediator
+#### 4) Create GeneratorTest
+Create class with the entity name suffixed by `GeneratorTest` and the related stub class (entity name suffixed by `FileObjectStub1`). The stub MUST contains expected values to compare with the actual object.
+#### 5) Create skeletonModel and SkeletonModelAssembler
+Create two classes both prefixed by the entity name:
+- Firstly, an abstract class `SkeletonModel`,
+- Secondly `SkeletonModelAssembler`,
+Both are used to create the object which will be used in the template.
+#### 6) Create mediator or add generator in existing mediator
 The command uses a mediator pattern to generate classes by functional group. 
-The mediator load generators as services and arrange it by group. 
-Add the new generator in the concerned group.
-#### 7) create config files and update services.xml
+Add the new generator in the concerned group and update the mediator config.
+#### 7) Create config files and update services.xml
 Create a new `.xml` file for the generator and add it in `src/Ressources/config/service.xml`.
-#### 8) create the command if not exist
-If command doesn't exist, create it and call mediator mediate function in the execute method. 
+#### 8) Create the command if it does not exist
+Create your command in `src/Commands` and call mediator `mediate` function in the `execute` method. 
 
 ### See an example
 
