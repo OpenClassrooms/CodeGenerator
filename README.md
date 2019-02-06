@@ -38,7 +38,6 @@ parameters:
     author:
     author_mail:
 ```
-<a name="install-nocomposer"/>
 
 ## Usage
 ### Basic execution
