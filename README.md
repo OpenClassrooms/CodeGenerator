@@ -27,7 +27,7 @@ or
     }
 }
 ```
-Modify the file `oc_code_generator.yml` created at the root of the project, for example : 
+Modify the file `oc_code_generator.yml` created at the root of the project, for example: 
 ``` yaml
 parameters:
     base_namespace: OC\ 
@@ -41,11 +41,11 @@ parameters:
 
 ## Usage
 ### Basic execution
-To list all possibilities : 
+To list all possibilities: 
 ``` 
 php bin/CodeGenerator.php
 ```
-To generate view model architecture : 
+To generate view model architecture: 
 ``` 
 php bin/CodeGenerator.php code-generator:view-models useCaseResponseClassName
 ```
