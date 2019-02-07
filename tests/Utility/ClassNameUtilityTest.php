@@ -60,6 +60,7 @@ class ClassNameUtilityTest extends TestCase
             [FunctionalEntityResponse::class, 'Domain\SubDomain', 'FunctionalEntity'],
             [FunctionalEntityStub1::class, 'Domain\SubDomain', 'FunctionalEntity'],
             [FunctionalEntityTestCase::class, 'Domain\SubDomain', 'FunctionalEntity'],
+            [ClassNameUtilityTest::class, 'CodeGenerator\Utility', 'ClassNameUtilityTest'],
         ];
     }
 

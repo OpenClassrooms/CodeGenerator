@@ -11,15 +11,16 @@ trait SkeletonAssemblerUtility
     {
         $vowels = ['a', 'e', 'i', 'o', 'u'];
 
-        if ($this->IsVowelWordEnds($entity, $vowels)) {
+        if ($this->isVowelWordEnds($entity, $vowels)) {
             return lcfirst(substr($entity, 0, -1) . 'ies');
         }
 
         return lcfirst($entity . 's');
     }
 
-    private function IsVowelWordEnds(string $entity, array $vowels): bool
+    private function isVowelWordEnds(string $entity, array $vowels): bool
     {
         return ('y' === substr($entity, -1) && !in_array(substr($entity, -2), $vowels));
     }
 }
+

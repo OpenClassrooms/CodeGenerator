@@ -21,11 +21,6 @@ class ViewModelMediatorImpl implements ViewModelMediator
      */
     private $fileObjectGateway;
 
-    /**
-     * @var GeneratorRequest
-     */
-    private $generatorRequestBuilder;
-
     public function mediate(array $args = [], array $options = [])
     {
         $className = $args[Args::CLASS_NAME];

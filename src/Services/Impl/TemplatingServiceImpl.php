@@ -42,14 +42,16 @@ class TemplatingServiceImpl extends \Twig_Environment implements TemplatingServi
     {
         return new \Twig_SimpleFilter(
             'sortNameByAlpha',
-            function($classFields) {
+            function(array $classFields) {
                 $arrayFields = $classFields;
                 usort(
                     $arrayFields,
+                    /**
+                     * @var FieldObject|ConstObject $a
+                     * @var FieldObject|ConstObject $b
+                     */
                     function($a, $b) {
-                        /** @var FieldObject|ConstObject $a */
                         $al = strtolower($a->getName());
-                        /** @var FieldObject|ConstObject $b */
                         $bl = strtolower($b->getName());
 
                         return ($al > $bl) ? +1 : -1;
@@ -65,7 +67,7 @@ class TemplatingServiceImpl extends \Twig_Environment implements TemplatingServi
     {
         return new \Twig_SimpleFilter(
             'sortIdFirst',
-            function($classFields) {
+            function(array $classFields) {
                 $arrayFields = $classFields;
                 foreach ($arrayFields as $key => $field) {
                     /** @var FieldObject $field */

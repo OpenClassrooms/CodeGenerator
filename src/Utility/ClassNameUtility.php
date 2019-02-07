@@ -18,7 +18,9 @@ trait ClassNameUtility
 
         $domain = [];
 
-        for ($i = count($explodedNamespace) - 1; $i > 0 && $this->namespaceLimit($explodedNamespace, $i); $i--) {
+        $limit = $this->getNamespaceLimit($explodedNamespace);
+
+        for ($i = count($explodedNamespace) - 1; $i > 0 && $i != $limit; $i--) {
             if (array_search(
                     $explodedNamespace[$i],
                     ['Entities', 'Request', 'Response', 'DTO', 'UseCases', 'Impl']
@@ -38,12 +40,15 @@ trait ClassNameUtility
         return implode('\\', $classParts);
     }
 
-    private function namespaceLimit(array $explodedNamespace, int $i): bool
+    private function getNamespaceLimit(array $explodedNamespace): int
     {
-        return $explodedNamespace[$i] !== 'BusinessRules'
-            && $explodedNamespace[$i] !== 'Entity'
-            && $explodedNamespace[$i] !== 'ViewModels'
-            && $explodedNamespace[$i] !== 'Responders';
+        foreach (array_reverse($explodedNamespace) as $key => $dir) {
+            if ($dir == 'BusinessRules' || $dir == 'Entity' || $dir == 'ViewModels' || $dir == 'Responders') {
+                return count($explodedNamespace) - 1 - $key;
+            }
+        }
+
+        return 0;
     }
 
     public function getEntityNameFromClassName(string $className): string
