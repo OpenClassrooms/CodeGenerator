@@ -25,10 +25,9 @@ class ParameterHandler
     public static function createGeneratorParameters(Event $event)
     {
         static::initFilesystem();
-        if (self::CODE_GENERATOR !== $event->getComposer()->getPackage()->getName()) {
-            $codeGeneratorConfig = Yaml::parseFile(
-                static::OC_CODE_GENERATOR_YML_DIST
-            );
+        if (!file_exists(self::OC_CODE_GENERATOR_YML)
+            && self::CODE_GENERATOR !== $event->getComposer()->getPackage()->getName()) {
+            $codeGeneratorConfig = Yaml::parseFile(static::OC_CODE_GENERATOR_YML_DIST);
             $codeGeneratorConfig['parameters']['base_namespace'] = 'OC\\';
             $codeGeneratorConfig['parameters']['stub_namespace'] = 'Doubles\OC\\';
             $codeGeneratorConfig['parameters']['tests_base_namespace'] = 'OC\\';
