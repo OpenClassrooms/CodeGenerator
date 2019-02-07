@@ -10,14 +10,14 @@ use {{ skeletonModel.entityStubClassName }};
  */
 class {{ skeletonModel.shortName }} extends {{ skeletonModel.parentShortName }}
 {
-{% for constant in skeletonModel.constants | sortNameByAlpha %}
+{% for constant in skeletonModel.constants %}
     const {{ constant.name }} = {{ printValue(constant.value) }};
 {% if not loop.last %}
 
 {% endif %}
 {% endfor %}
 
-{% for field in skeletonModel.fields | sortNameByAlpha %}
+{% for field in skeletonModel.fields %}
     {{ field.scope }} ${{ field.name }} = self::{{ field.value.name }};
 {% if not loop.last %}
 

@@ -18,7 +18,7 @@ class {{ skeletonModel.shortName }} implements {{ skeletonModel.viewModelDetailA
     {
         $vm = new {{ skeletonModel.viewModelDetailImplShortName }}();
         $this->hydrateCommonFields($vm, ${{ skeletonModel.useCaseDetailResponseArgument}});
-{% for field in skeletonModel.fields | sortNameByAlpha %}
+{% for field in skeletonModel.fields %}
         $vm->{{ field.name }} = ${{ skeletonModel.useCaseDetailResponseArgument}}->{{ field.accessor }}();
 {% endfor %}
 

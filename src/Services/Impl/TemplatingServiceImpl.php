@@ -46,11 +46,7 @@ class TemplatingServiceImpl extends \Twig_Environment implements TemplatingServi
                 $arrayFields = $classFields;
                 usort(
                     $arrayFields,
-                    /**
-                     * @var FieldObject|ConstObject $a
-                     * @var FieldObject|ConstObject $b
-                     */
-                    function($a, $b) {
+                    function(FieldObject $a, FieldObject $b) {
                         $al = strtolower($a->getName());
                         $bl = strtolower($b->getName());
 
