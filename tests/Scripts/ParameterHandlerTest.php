@@ -15,6 +15,11 @@ use Symfony\Component\Filesystem\Filesystem;
 class ParameterHandlerTest extends TestCase
 {
     /**
+     * @var Composer|\PHPUnit_Framework_MockObject_MockObject
+     */
+    private $composer;
+
+    /**
      * @var Event|\PHPUnit_Framework_MockObject_MockObject
      */
     private $event;
@@ -25,23 +30,40 @@ class ParameterHandlerTest extends TestCase
     private $filesystem;
 
     /**
+     * @var Package|\PHPUnit_Framework_MockObject_MockObject
+     */
+    private $package;
+
+    /**
      * @test
      */
-    public function createGeneratorParameters()
+    public function createGeneratorParameters_FileDumped()
     {
+        $this->filesystem->expects($this->once())->method('dumpFile');
+
+        ParameterHandlerMock::createGeneratorParameters($this->event);
+    }
+
+    /**
+     * @test
+     */
+    public function createGeneratorParameters_NotVendorInstallation()
+    {
+        $this->package->method('getName')->willReturn(ParameterHandlerMock::CODE_GENERATOR);
+        $this->filesystem->expects($this->never())->method('dumpFile');
+
         ParameterHandlerMock::createGeneratorParameters($this->event);
     }
 
     protected function setUp()
     {
+        $this->composer = $this->createMock(Composer::class);
         $this->event = $this->createMock(Event::class);
         $this->filesystem = $this->createMock(Filesystem::class);
-        $composer = $this->createMock(Composer::class);
-        $package = $this->createMock(Package::class);
-        $package->method('getName')->willReturn('');
-        $composer->method('getPackage')->willReturn($package);
-        $this->event->method('getComposer')->willReturn($composer);
-        $this->filesystem->expects($this->once())->method('dumpFile');
+        $this->package = $this->createMock(Package::class);
+
+        $this->composer->method('getPackage')->willReturn($this->package);
+        $this->event->method('getComposer')->willReturn($this->composer);
 
         ParameterHandlerMock::$filesystem = $this->filesystem;
     }
