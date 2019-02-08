@@ -24,7 +24,7 @@ if (!defined('CODE_GENERATOR_COMPOSER_INSTALL')) {
         'You can learn all about Composer on https://getcomposer.org/.' . PHP_EOL
     );
 
-    die(1);
+    return -1;
 }
 
 require CODE_GENERATOR_COMPOSER_INSTALL;
