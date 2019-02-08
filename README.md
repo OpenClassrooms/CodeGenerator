@@ -27,6 +27,17 @@ or
     }
 }
 ```
+Add script in `composer.json` to create `oc_code_generator.yml` configuration used by the generator.
+```json
+  "scripts": {
+    "post-install-cmd": [
+      "OpenClassrooms\\CodeGenerator\\Scripts\\ParameterHandler::createGeneratorParameters"
+    ],
+    "post-update-cmd": [
+      "OpenClassrooms\\CodeGenerator\\Scripts\\ParameterHandler::createGeneratorParameters"
+    ]
+  },
+```
 Modify the file `oc_code_generator.yml` created at the root of the project, for example: 
 ``` yaml
 parameters:
