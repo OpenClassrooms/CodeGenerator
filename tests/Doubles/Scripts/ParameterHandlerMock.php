@@ -2,11 +2,8 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Scripts;
 
-use Composer\Script\Event;
 use OpenClassrooms\CodeGenerator\Scripts\ParameterHandler;
-use org\bovigo\vfs\vfsStream;
 use Symfony\Component\Filesystem\Filesystem;
-use Symfony\Component\Yaml\Yaml;
 
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
@@ -18,5 +15,5 @@ class ParameterHandlerMock extends ParameterHandler
     /**
      * @var Filesystem
      */
-    public static $filesystem;
+    public static $processor;
 }

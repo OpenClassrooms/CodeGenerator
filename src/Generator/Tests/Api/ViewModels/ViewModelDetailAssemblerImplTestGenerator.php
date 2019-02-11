@@ -10,6 +10,7 @@ use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\Request\ViewModelDetailAssemblerImplTestGeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\tests\Api\ViewModels\ViewModelDetailAssemblerImplTestSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\tests\Api\ViewModels\ViewModelDetailAssemblerImplTestSkeletonModelBuilder;
+use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
@@ -74,7 +75,7 @@ class ViewModelDetailAssemblerImplTestGenerator extends AbstractViewModelGenerat
         string $viewModelDetailAssemblerImplClassName
     ): FileObject
     {
-        [$domain, $entity] = $this->getDomainAndEntityNameFromClassName($viewModelDetailAssemblerImplClassName);
+        [$domain, $entity] = FileObjectUtility::getDomainAndEntityNameFromClassName($viewModelDetailAssemblerImplClassName);
 
         $viewModelDetailAssemblerImpl = $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_ASSEMBLER_IMPL,
@@ -127,7 +128,7 @@ class ViewModelDetailAssemblerImplTestGenerator extends AbstractViewModelGenerat
 
     private function createViewModelDetailAssemblerImplTestFileObject(string $responseClassName): FileObject
     {
-        [$domain, $entity] = $this->getDomainAndEntityNameFromClassName($responseClassName);
+        [$domain, $entity] = FileObjectUtility::getDomainAndEntityNameFromClassName($responseClassName);
         $responseFileObject = $this
             ->createViewModelFileObject(
                 ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_ASSEMBLER_IMPL_TEST,

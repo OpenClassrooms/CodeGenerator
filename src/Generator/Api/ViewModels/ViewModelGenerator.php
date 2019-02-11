@@ -10,6 +10,7 @@ use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\Request\ViewModelGener
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModels\ViewModelSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModels\ViewModelSkeletonModelAssembler;
+use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
@@ -45,7 +46,7 @@ class ViewModelGenerator extends AbstractViewModelGenerator
 
     private function createUseCaseResponseObject(string $useCaseResponseClassName): FileObject
     {
-        [$domain, $entity] = $this->getDomainAndEntityNameFromClassName($useCaseResponseClassName);
+        [$domain, $entity] = FileObjectUtility::getDomainAndEntityNameFromClassName($useCaseResponseClassName);
 
         return $this->createUseCaseResponseFileObject(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE_DTO,

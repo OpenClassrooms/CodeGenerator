@@ -5,14 +5,13 @@ namespace OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModels\Impl;
 use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModels\ViewModelListItemAssemblerSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModels\ViewModelListItemAssemblerSkeletonModelAssembler;
+use OpenClassrooms\CodeGenerator\Utility\StringUtility;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 class ViewModelListItemAssemblerSkeletonModelAssemblerImpl implements ViewModelListItemAssemblerSkeletonModelAssembler
 {
-    use SkeletonAssemblerUtility;
-
     public function create(
         FileObject $useCaseListItemResponseFileObject,
         FileObject $viewModelListItemFileObject,
@@ -25,9 +24,9 @@ class ViewModelListItemAssemblerSkeletonModelAssemblerImpl implements ViewModelL
         $skeletonModel->shortName = $viewModelListItemAssemblerFileObject->getShortName();
         $skeletonModel->useCaseListItemResponseClassName = $useCaseListItemResponseFileObject->getClassName();
         $skeletonModel->useCaseListItemResponseShortName = $useCaseListItemResponseFileObject->getShortName();
-        $skeletonModel->useCaseListItemResponseArgument = $this->getUseCaseListItemResponseArgument(
+        $skeletonModel->useCaseListItemResponseArgument = lcfirst(StringUtility::pluralize(
             $useCaseListItemResponseFileObject->getEntity()
-        );
+        ));
         $skeletonModel->viewModelListItemShortName = $viewModelListItemFileObject->getShortName();
 
         return $skeletonModel;

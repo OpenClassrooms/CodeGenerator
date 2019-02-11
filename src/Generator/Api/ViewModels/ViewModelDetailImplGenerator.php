@@ -9,6 +9,7 @@ use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\Request\ViewModelDetai
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModels\ViewModelDetailImplSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModels\ViewModelDetailImplSkeletonModelAssembler;
+use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
@@ -49,7 +50,7 @@ class ViewModelDetailImplGenerator extends AbstractViewModelGenerator
 
     private function createViewModelDetailFileObject(string $viewModelDetailClassName): FileObject
     {
-        [$domain, $entity] = $this->getDomainAndEntityNameFromClassName($viewModelDetailClassName);
+        [$domain, $entity] = FileObjectUtility::getDomainAndEntityNameFromClassName($viewModelDetailClassName);
 
         return $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL_DETAIL,

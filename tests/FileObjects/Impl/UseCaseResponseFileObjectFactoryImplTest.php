@@ -8,7 +8,7 @@ use OpenClassrooms\CodeGenerator\FileObjects\UseCaseResponseFileObjectFactory;
 use OpenClassrooms\CodeGenerator\FileObjects\UseCaseResponseFileObjectType;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\FunctionalEntity;
 use OpenClassrooms\CodeGenerator\Tests\TestClassUtil;
-use OpenClassrooms\CodeGenerator\Utility\ClassNameUtility;
+use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -16,8 +16,6 @@ use PHPUnit\Framework\TestCase;
  */
 class UseCaseResponseFileObjectFactoryImplTest extends TestCase
 {
-    use ClassNameUtility;
-
     const BASE_NAMESPACE = '';
 
     const DIR_NAME = 'Api\\';
@@ -25,16 +23,6 @@ class UseCaseResponseFileObjectFactoryImplTest extends TestCase
     const STUB_NAMESPACE = self::TEST_BASE_NAMESPACE . 'Doubles\\';
 
     const TEST_BASE_NAMESPACE = 'Test\Base\Namespace\\';
-
-    /**
-     * @var string
-     */
-    private $domain;
-
-    /**
-     * @var string
-     */
-    private $entity;
 
     /**
      * @var UseCaseResponseFileObjectFactory
@@ -53,7 +41,7 @@ class UseCaseResponseFileObjectFactoryImplTest extends TestCase
 
     public function fileObjectDataProvider()
     {
-        [$domain, $entity] = $this->getDomainAndEntityNameFromClassName(FunctionalEntity::class);
+        [$domain, $entity] = FileObjectUtility::getDomainAndEntityNameFromClassName(FunctionalEntity::class);
 
         return [
             [

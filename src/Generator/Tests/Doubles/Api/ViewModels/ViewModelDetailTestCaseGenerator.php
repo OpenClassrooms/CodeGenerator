@@ -10,6 +10,7 @@ use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\Request\ViewModelDetailTestCaseGeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\tests\Doubles\Api\ViewModels\ViewModelDetailTestCaseSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\tests\Doubles\Api\ViewModels\ViewModelDetailTestCaseSkeletonModelAssembler;
+use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
@@ -63,7 +64,7 @@ class ViewModelDetailTestCaseGenerator extends AbstractViewModelGenerator
 
     protected function createUseCaseDetailResponseFileObject(string $viewModelClassName): FileObject
     {
-        [$domain, $entity] = $this->getDomainAndEntityNameFromClassName($viewModelClassName);
+        [$domain, $entity] = FileObjectUtility::getDomainAndEntityNameFromClassName($viewModelClassName);
 
         return $this->createUseCaseResponseFileObject(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE_DTO,

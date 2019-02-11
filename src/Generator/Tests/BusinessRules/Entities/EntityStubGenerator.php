@@ -12,6 +12,7 @@ use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Entities\Request\
 use OpenClassrooms\CodeGenerator\SkeletonModels\tests\BusinessRules\Entities\EntityStubSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\tests\BusinessRules\Entities\EntityStubSkeletonModelAssembler;
 use OpenClassrooms\CodeGenerator\Utility\FieldUtility;
+use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
@@ -43,7 +44,7 @@ class EntityStubGenerator extends AbstractGenerator
 
     private function createEntityImplFileObject(string $useCaseResponseClassName): FileObject
     {
-        [$domain, $entity] = $this->getDomainAndEntityNameFromClassName($useCaseResponseClassName);
+        [$domain, $entity] = FileObjectUtility::getDomainAndEntityNameFromClassName($useCaseResponseClassName);
 
         return $this->entityFileObjectFactory->create(
             EntityFileObjectType::BUSINESS_RULES_ENTITY_IMPL,

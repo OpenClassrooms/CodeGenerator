@@ -10,6 +10,7 @@ use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\Request\ViewModelListItemTestCaseGeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\tests\Doubles\Api\ViewModels\ViewModelListItemTestCaseSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\tests\Doubles\Api\ViewModels\ViewModelListItemTestCaseSkeletonModelAssembler;
+use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
@@ -41,7 +42,7 @@ class ViewModelListItemTestCaseGenerator extends AbstractViewModelGenerator
 
     private function createUseCaseListItemResponseFileObject($useCaseResponseClassName)
     {
-        [$domain, $entity] = $this->getDomainAndEntityNameFromClassName($useCaseResponseClassName);
+        [$domain, $entity] = FileObjectUtility::getDomainAndEntityNameFromClassName($useCaseResponseClassName);
 
         return $this->createUseCaseResponseFileObject(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE_DTO,

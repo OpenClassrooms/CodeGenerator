@@ -10,6 +10,7 @@ use OpenClassrooms\CodeGenerator\Generator\App\Entity\Request\EntityImplGenerato
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\App\Entity\EntityImplSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\App\Entity\EntityImplSkeletonModelAssembler;
+use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
@@ -49,7 +50,7 @@ class EntityImplGenerator extends AbstractGenerator
 
     private function createEntityImplFileObject(string $useCaseResponseClassName): FileObject
     {
-        [$domain, $entity] = $this->getDomainAndEntityNameFromClassName($useCaseResponseClassName);
+        [$domain, $entity] = FileObjectUtility::getDomainAndEntityNameFromClassName($useCaseResponseClassName);
 
         return $this->entityFileObjectFactory->create(
             EntityFileObjectType::BUSINESS_RULES_ENTITY_IMPL,

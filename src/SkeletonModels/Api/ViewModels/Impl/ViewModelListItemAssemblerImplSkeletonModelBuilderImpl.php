@@ -5,14 +5,13 @@ namespace OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModels\Impl;
 use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModels\ViewModelListItemAssemblerImplSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModels\ViewModelListItemAssemblerImplSkeletonModelBuilder;
+use OpenClassrooms\CodeGenerator\Utility\StringUtility;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 class ViewModelListItemAssemblerImplSkeletonModelBuilderImpl implements ViewModelListItemAssemblerImplSkeletonModelBuilder
 {
-    use SkeletonAssemblerUtility;
-
     /**
      * @var ViewModelListItemAssemblerImplSkeletonModel
      */
@@ -32,9 +31,9 @@ class ViewModelListItemAssemblerImplSkeletonModelBuilderImpl implements ViewMode
         $this->skeletonModel->useCaseResponseClassName = $useCaseResponse->getClassName();
         $this->skeletonModel->useCaseResponseShortName = $useCaseResponse->getShortName();
         $this->skeletonModel->useCaseResponseArgument = lcfirst($useCaseResponse->getEntity());
-        $this->skeletonModel->useCaseListItemResponseArgument = $this->getUseCaseListItemResponseArgument(
+        $this->skeletonModel->useCaseListItemResponseArgument = lcfirst(StringUtility::pluralize(
             $useCaseResponse->getEntity()
-        );
+        ));
 
         return $this;
     }

@@ -63,7 +63,7 @@ class ViewModelCommand extends Command
             ->addArgument(
                 Args::CLASS_NAME,
                 InputArgument::REQUIRED,
-                'reference class name'
+                'Use Case Response Classname'
             )
             ->addOption(
                 Options::NO_TEST,

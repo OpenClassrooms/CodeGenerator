@@ -12,6 +12,7 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\tests\Doubles\Api\ViewModels\Vie
 use OpenClassrooms\CodeGenerator\SkeletonModels\tests\Doubles\Api\ViewModels\ViewModelDetailStubSkeletonModelAssembler;
 use OpenClassrooms\CodeGenerator\Utility\ConstUtility;
 use OpenClassrooms\CodeGenerator\Utility\FieldUtility;
+use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
@@ -64,7 +65,7 @@ class ViewModelDetailStubGenerator extends AbstractViewModelGenerator
 
     private function createUseCaseDetailResponseFileObject(string $viewModelClassName): FileObject
     {
-        [$domain, $entity] = $this->getDomainAndEntityNameFromClassName($viewModelClassName);
+        [$domain, $entity] = FileObjectUtility::getDomainAndEntityNameFromClassName($viewModelClassName);
 
         return $this->createUseCaseResponseFileObject(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE_DTO,

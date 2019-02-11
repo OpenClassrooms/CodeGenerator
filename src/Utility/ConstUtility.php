@@ -11,10 +11,7 @@ use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
  */
 class ConstUtility
 {
-    public static function generateStubConstObject(
-        FieldObject $fieldObject,
-        FileObject $stubFileObject
-    ): ConstObject
+    public static function generateStubConstObject(FieldObject $fieldObject, FileObject $stubFileObject): ConstObject
     {
         $constObject = new ConstObject($fieldObject->getName());
         $constObject->setValue(

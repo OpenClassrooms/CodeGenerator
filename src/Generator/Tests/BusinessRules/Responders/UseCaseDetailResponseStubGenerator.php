@@ -11,6 +11,7 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\tests\BusinessRules\Responders\U
 use OpenClassrooms\CodeGenerator\SkeletonModels\tests\BusinessRules\Responders\UseCaseDetailResponseStubSkeletonModelAssembler;
 use OpenClassrooms\CodeGenerator\Utility\ConstUtility;
 use OpenClassrooms\CodeGenerator\Utility\FieldUtility;
+use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
@@ -61,7 +62,7 @@ class UseCaseDetailResponseStubGenerator extends AbstractUseCaseResponseStubGene
 
     private function createUseCaseDetailResponseFileObject(string $responseClassName): FileObject
     {
-        [$domain, $entity] = $this->getDomainAndEntityNameFromClassName($responseClassName);
+        [$domain, $entity] = FileObjectUtility::getDomainAndEntityNameFromClassName($responseClassName);
 
         return $this->useCaseResponseFileObjectFactory->create(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE_DTO,

@@ -5,20 +5,20 @@ namespace OpenClassrooms\CodeGenerator\Utility;
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
  */
-trait ClassNameUtility
+class FileObjectUtility
 {
-    protected function getDomainAndEntityNameFromClassName(string $className): array
+    public static function getDomainAndEntityNameFromClassName(string $className): array
     {
-        return [$this->getDomainFromClassName($className), $this->getEntityNameFromClassName($className)];
+        return [self::getDomainFromClassName($className), self::getEntityNameFromClassName($className)];
     }
 
-    protected function getDomainFromClassName(string $className): string
+    public static function getDomainFromClassName(string $className): string
     {
-        $explodedNamespace = explode('\\', $this->getNamespace($className));
+        $explodedNamespace = explode('\\', self::getNamespace($className));
 
         $domain = [];
 
-        $limit = $this->getNamespaceLimit($explodedNamespace);
+        $limit = self::getNamespaceLimit($explodedNamespace);
 
         for ($i = count($explodedNamespace) - 1; $i > 0 && $i != $limit; $i--) {
             if (array_search(
@@ -32,7 +32,7 @@ trait ClassNameUtility
         return implode('\\', array_reverse($domain));
     }
 
-    private function getNamespace(string $className)
+    public static function getNamespace(string $className)
     {
         $classParts = explode('\\', $className);
         array_pop($classParts);
@@ -40,7 +40,7 @@ trait ClassNameUtility
         return implode('\\', $classParts);
     }
 
-    private function getNamespaceLimit(array $explodedNamespace): int
+    private static function getNamespaceLimit(array $explodedNamespace): int
     {
         foreach (array_reverse($explodedNamespace) as $key => $dir) {
             if ($dir == 'BusinessRules' || $dir == 'Entity' || $dir == 'ViewModels' || $dir == 'Responders') {
@@ -51,9 +51,9 @@ trait ClassNameUtility
         return 0;
     }
 
-    public function getEntityNameFromClassName(string $className): string
+    public static function getEntityNameFromClassName(string $className): string
     {
-        $shortClassName = $this->getShortClassName($className);
+        $shortClassName = self::getShortClassName($className);
         $shortClassName = str_replace('DetailAssembler', '', $shortClassName);
         $shortClassName = str_replace('DetailResponseDTO', '', $shortClassName);
         $shortClassName = str_replace('DetailResponse', '', $shortClassName);
@@ -74,7 +74,7 @@ trait ClassNameUtility
         return $shortClassName;
     }
 
-    protected function getShortClassName(string $className): string
+    public static function getShortClassName(string $className): string
     {
         $classParts = explode('\\', $className);
 

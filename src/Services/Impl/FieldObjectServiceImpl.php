@@ -5,15 +5,12 @@ namespace OpenClassrooms\CodeGenerator\Services\Impl;
 use OpenClassrooms\CodeGenerator\FileObjects\ConstObject;
 use OpenClassrooms\CodeGenerator\FileObjects\FieldObject;
 use OpenClassrooms\CodeGenerator\Services\FieldObjectService;
-use OpenClassrooms\CodeGenerator\Utility\ClassNameUtility;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
  */
 class FieldObjectServiceImpl implements FieldObjectService
 {
-    use ClassNameUtility;
-
     /**
      * {@inheritdoc}
      */

@@ -2,17 +2,13 @@
 
 namespace OpenClassrooms\CodeGenerator\FileObjects;
 
-use OpenClassrooms\CodeGenerator\Utility\ClassNameUtility;
+use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
  */
 class FileObject
 {
-    use ClassNameUtility {
-        getNamespace as getNamespaceFromClassNameUtility;
-    }
-
     /**
      * @var bool
      */
@@ -67,12 +63,12 @@ class FileObject
 
     public function getDomain()
     {
-        return $this->getDomainFromClassName($this->className);
+        return FileObjectUtility::getDomainFromClassName($this->className);
     }
 
     public function getEntity()
     {
-        return $this->getEntityNameFromClassName($this->className);
+        return FileObjectUtility::getEntityNameFromClassName($this->className);
     }
 
     /**
@@ -108,7 +104,7 @@ class FileObject
 
     public function getNamespace(): string
     {
-        return $this->getNamespaceFromClassNameUtility($this->getClassName());
+        return FileObjectUtility::getNamespace($this->getClassName());
     }
 
     public function getClassName(): string
@@ -145,7 +141,7 @@ class FileObject
 
     public function getShortName(): string
     {
-        return $this->getShortClassName($this->className);
+        return FileObjectUtility::getShortClassName($this->className);
     }
 
     public function setAlreadyExists(bool $alreadyExists)

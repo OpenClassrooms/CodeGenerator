@@ -5,7 +5,7 @@ namespace OpenClassrooms\CodeGenerator\SkeletonModels\tests\Api\ViewModels\Impl;
 use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
 use OpenClassrooms\CodeGenerator\SkeletonModels\tests\Api\ViewModels\ViewModelDetailAssemblerImplTestSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\tests\Api\ViewModels\ViewModelDetailAssemblerImplTestSkeletonModelBuilder;
-use OpenClassrooms\CodeGenerator\Utility\MethodUtility;
+use OpenClassrooms\CodeGenerator\Utility\TestUtility;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
@@ -42,7 +42,7 @@ class ViewModelDetailAssemblerImplTestSkeletonModelBuilderImpl implements ViewMo
 
         $this->skeletonModel->viewModelDetailTestCaseShortName = $viewModelDetailTestCase->getShortName();
         $this->skeletonModel->viewModelDetailTestCaseClassName = $viewModelDetailTestCase->getClassName();
-        $this->skeletonModel->viewModelDetailTestCaseMethod = MethodUtility::getTestCaseAssertMethod(
+        $this->skeletonModel->viewModelDetailTestCaseMethod = TestUtility::buildTestCaseAssertMethodName(
             $viewModelDetailTestCase->getShortName()
         );
 

@@ -71,7 +71,6 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\tests\Api\ViewModels\
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\tests\Api\ViewModels\ViewModelListItemAssemblerImplTest\ViewModelListItemAssemblerImplTestFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Generator\GeneratorMock;
-use OpenClassrooms\CodeGenerator\Utility\ClassNameUtility;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -79,8 +78,6 @@ use PHPUnit\Framework\TestCase;
  */
 class ViewModelMediatorImplTest extends TestCase
 {
-    use ClassNameUtility;
-
     /**
      * @var ViewModelMediatorImpl
      */

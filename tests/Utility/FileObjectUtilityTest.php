@@ -14,38 +14,27 @@ use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\D
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\DTO\Response\FunctionalEntityResponseDTO;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\tests\Doubles\Api\ViewModels\Domain\SubDomain\FunctionalEntityTestCase;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\tests\Doubles\BusinessRules\Entities\Domain\SubDomain\FunctionalEntityStub1;
-use OpenClassrooms\CodeGenerator\Tests\TestClassUtil;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
  */
-class ClassNameUtilityTest extends TestCase
+class FileObjectUtilityTest extends TestCase
 {
     /**
-     * @var ClassNameUtility|MockObject
-     */
-    private $classNameUtilityMock;
-
-    /**
      * @test
-     * @dataProvider classNameDataProvider
+     * @dataProvider fileObjectDataProvider
      */
     public function getDomainAndEntityNameFromClassName_ReturnArray($className, $expectedDomain, $expectedEntity)
     {
-        [$actualDomain, $actualEntity] = TestClassUtil::invokeMethod(
-            'getDomainAndEntityNameFromClassName',
-            $this->classNameUtilityMock,
-            $className
-        );
+        [$actualDomain, $actualEntity] = FileObjectUtility::getDomainAndEntityNameFromClassName($className);
 
         $this->assertEquals($expectedDomain, $actualDomain);
         $this->assertEquals($expectedEntity, $actualEntity);
 
     }
 
-    public function classNameDataProvider()
+    public function fileObjectDataProvider()
     {
         return [
             [FunctionalEntityDetailAssembler::class, 'Domain\SubDomain', 'FunctionalEntity'],
@@ -60,12 +49,8 @@ class ClassNameUtilityTest extends TestCase
             [FunctionalEntityResponse::class, 'Domain\SubDomain', 'FunctionalEntity'],
             [FunctionalEntityStub1::class, 'Domain\SubDomain', 'FunctionalEntity'],
             [FunctionalEntityTestCase::class, 'Domain\SubDomain', 'FunctionalEntity'],
-            [ClassNameUtilityTest::class, 'CodeGenerator\Utility', 'ClassNameUtilityTest'],
+            [FileObjectUtilityTest::class, 'CodeGenerator\Utility', 'FileObjectUtilityTest'],
         ];
     }
 
-    protected function setUp()
-    {
-        $this->classNameUtilityMock = $this->getMockForTrait(ClassNameUtility::class);
-    }
 }

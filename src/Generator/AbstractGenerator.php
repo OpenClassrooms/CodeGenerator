@@ -8,15 +8,12 @@ use OpenClassrooms\CodeGenerator\Gateways\FileObject\FileObjectGateway;
 use OpenClassrooms\CodeGenerator\Services\FieldObjectService;
 use OpenClassrooms\CodeGenerator\Services\Impl\TemplatingServiceImpl;
 use OpenClassrooms\CodeGenerator\Services\TemplatingService;
-use OpenClassrooms\CodeGenerator\Utility\ClassNameUtility;
 
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
  */
 abstract class AbstractGenerator implements Generator
 {
-    use ClassNameUtility;
-
     /**
      * @var FieldObjectService
      */

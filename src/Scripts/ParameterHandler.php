@@ -3,8 +3,7 @@
 namespace OpenClassrooms\CodeGenerator\Scripts;
 
 use Composer\Script\Event;
-use Symfony\Component\Filesystem\Filesystem;
-use Symfony\Component\Yaml\Yaml;
+use Incenteev\ParameterHandler\Processor;
 
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
@@ -18,32 +17,30 @@ class ParameterHandler
     const OC_CODE_GENERATOR_YML_DIST = 'vendor/openclassrooms/code-generator/oc_code_generator.yml.dist';
 
     /**
-     * @var Filesystem
+     * @var Processor
      */
-    protected static $filesystem;
+    protected static $processor;
 
-    public static function createGeneratorParameters(Event $event)
+    public static function createGeneratorFileParameters(Event $event)
     {
-        static::initFilesystem();
+        static::initProcessor($event);
         if (!file_exists(self::OC_CODE_GENERATOR_YML)
             && self::CODE_GENERATOR !== $event->getComposer()->getPackage()->getName()) {
-            $codeGeneratorConfig = Yaml::parseFile(static::OC_CODE_GENERATOR_YML_DIST);
-            $codeGeneratorConfig['parameters']['base_namespace'] = 'OC\\';
-            $codeGeneratorConfig['parameters']['stub_namespace'] = 'Doubles\OC\\';
-            $codeGeneratorConfig['parameters']['tests_base_namespace'] = 'OC\\';
-            $codeGeneratorConfig['parameters']['api_dir'] = 'ApiBundle\\';
-            $codeGeneratorConfig['parameters']['app_dir'] = 'AppBundle\\';
-            $codeGeneratorConfig['parameters']['author'] = '';
-            $codeGeneratorConfig['parameters']['author_mail'] = '';
 
-            $codeGeneratorYaml = Yaml::dump($codeGeneratorConfig);
-
-            static::$filesystem->dumpFile(self::OC_CODE_GENERATOR_YML, $codeGeneratorYaml);
+            static::buildParameters();
         }
     }
 
-    private static function initFilesystem()
+    private static function initProcessor(Event $event)
     {
-        static::$filesystem = static::$filesystem ?? new Filesystem();
+        static::$processor = static::$processor ?? new Processor($event->getIO());
+    }
+
+    private static function buildParameters(): void
+    {
+        static::$processor->processFile([
+            'file'      => self::OC_CODE_GENERATOR_YML,
+            'dist-file' => self::OC_CODE_GENERATOR_YML_DIST,
+        ]);
     }
 }

@@ -12,6 +12,7 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\tests\Doubles\Api\ViewModels\Vie
 use OpenClassrooms\CodeGenerator\SkeletonModels\tests\Doubles\Api\ViewModels\ViewModelListItemStubSkeletonModelAssembler;
 use OpenClassrooms\CodeGenerator\Utility\ConstUtility;
 use OpenClassrooms\CodeGenerator\Utility\FieldUtility;
+use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
@@ -65,7 +66,7 @@ class ViewModelListItemStubGenerator extends AbstractViewModelGenerator
 
     private function createUseCaseListItemResponseFileObject(string $viewModelClassName): FileObject
     {
-        [$domain, $entity] = $this->getDomainAndEntityNameFromClassName($viewModelClassName);
+        [$domain, $entity] = FileObjectUtility::getDomainAndEntityNameFromClassName($viewModelClassName);
 
         return $this->createUseCaseResponseFileObject(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE_DTO,
