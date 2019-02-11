@@ -210,6 +210,37 @@ class ViewModelCommandTest extends TestCase
 
     }
 
+    /**
+     * @test
+     * @expectedException \ErrorException
+     */
+    public function checkConfiguration_OneParameterEmpty()
+    {
+        $codeGeneratorConfig = [
+            'parameters' => [
+                'author' => null,
+            ],
+        ];
+
+        TestClassUtil::invokeMethod('checkConfiguration', $this->viewModelCommandMock, $codeGeneratorConfig);
+    }
+
+    /**
+     * @test
+     * @expectedException \ErrorException
+     */
+    public function checkConfiguration_ManyParametersEmpty()
+    {
+        $codeGeneratorConfig = [
+            'parameters' => [
+                'author'      => null,
+                'author_mail' => null,
+            ],
+        ];
+
+        TestClassUtil::invokeMethod('checkConfiguration', $this->viewModelCommandMock, $codeGeneratorConfig);
+    }
+
     protected function setUp()
     {
         $this->viewModelCommandMock = new ViewModelCommandMock();

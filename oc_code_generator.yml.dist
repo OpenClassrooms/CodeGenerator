@@ -4,7 +4,5 @@ parameters:
     tests_base_namespace: OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\tests\
     api_dir: Api\
     app_dir: App\
-    author:
-    author_mail:
-
-
+    author: authorStub
+    author_mail: author.stub@example.com

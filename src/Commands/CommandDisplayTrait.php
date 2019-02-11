@@ -27,6 +27,25 @@ trait CommandDisplayTrait
         }
     }
 
+    private function checkConfiguration($codeGeneratorConfig): void
+    {
+        $emptyParameters = [];
+        foreach ($codeGeneratorConfig['parameters'] as $parameter => $value) {
+            if (null === $value) {
+                $emptyParameters[] = $parameter;
+            }
+        }
+        if (!empty($emptyParameters) && count($emptyParameters) === 1) {
+            throw new \ErrorException(
+                'The parameter ' . array_shift($emptyParameters) . ' are empty in oc_code_generator.yml'
+            );
+        } elseif (!empty($emptyParameters)) {
+            throw new \ErrorException(
+                'The parameters ' . implode(', ', $emptyParameters) . ' are empty in oc_code_generator.yml'
+            );
+        }
+    }
+
     /**
      * @param FileObject[]
      */

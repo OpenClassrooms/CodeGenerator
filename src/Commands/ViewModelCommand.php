@@ -14,6 +14,7 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
+use Symfony\Component\Yaml\Yaml;
 
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
@@ -91,6 +92,10 @@ class ViewModelCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $codeGeneratorConfig = Yaml::parseFile(static::CONFIG_FILE);
+
+        $this->checkConfiguration($codeGeneratorConfig);
+
         $fileObjects = $this->container
             ->get('open_classrooms.code_generator.mediators.api.impl.view_model_mediator_impl')
             ->mediate($input->getArguments(), $input->getOptions());

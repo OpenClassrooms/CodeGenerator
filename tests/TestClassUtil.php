@@ -41,9 +41,9 @@ class TestClassUtil
         return $rc->getShortName();
     }
 
-    public static function invokeMethod($propertyName, $object, $args = null)
+    public static function invokeMethod($methodName, $object, $args = null)
     {
-        $method = new \ReflectionMethod(get_class($object), $propertyName);
+        $method = new \ReflectionMethod(get_class($object), $methodName);
         $method->setAccessible(true);
 
         return null === $args ? $method->invoke($object) :  $method->invoke($object, $args);
