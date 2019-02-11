@@ -31,14 +31,14 @@ Add script in `composer.json` to create `oc_code_generator.yml` configuration us
 ```json
   "scripts": {
     "post-install-cmd": [
-      "OpenClassrooms\\CodeGenerator\\Scripts\\ParameterHandler::createGeneratorParameters"
+      "OpenClassrooms\\CodeGenerator\\Scripts\\ParameterHandler::createGeneratorFileParameters"
     ],
     "post-update-cmd": [
-      "OpenClassrooms\\CodeGenerator\\Scripts\\ParameterHandler::createGeneratorParameters"
+      "OpenClassrooms\\CodeGenerator\\Scripts\\ParameterHandler::createGeneratorFileParameters"
     ]
   },
 ```
-Modify the file `oc_code_generator.yml` created at the root of the project, for example: 
+The script create file `oc_code_generator.yml` at the root of the project. The script will ask you interactively for parameters which are missing in the parameters file, using the value of the dist file as default value.
 ``` yaml
 parameters:
     base_namespace: OC\ 

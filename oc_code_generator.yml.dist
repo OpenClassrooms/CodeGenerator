@@ -1,8 +1,8 @@
 parameters:
-    base_namespace: OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\
-    stub_namespace: OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\tests\Doubles\
-    tests_base_namespace: OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\tests\
-    api_dir: Api\
-    app_dir: App\
-    author: authorStub
-    author_mail: author.stub@example.com
+    base_namespace: OC\
+    stub_namespace: Doubles\OC\
+    tests_base_namespace: OC\
+    api_dir: ApiBundle\
+    app_dir: AppBundle\
+    author:
+    author_mail:

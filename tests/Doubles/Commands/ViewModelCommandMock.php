@@ -9,7 +9,7 @@ use OpenClassrooms\CodeGenerator\Commands\ViewModelCommand;
  */
 class ViewModelCommandMock extends ViewModelCommand
 {
-    const CONFIG_FILE = 'oc_code_generator.yml.dist';
+    const CONFIG_FILE = 'oc_code_generator_test.yml.dist';
 
-    const ROOT_DIR = __DIR__ . '/../../..';
+    const ROOT_DIR = __DIR__ . '/../../';
 }

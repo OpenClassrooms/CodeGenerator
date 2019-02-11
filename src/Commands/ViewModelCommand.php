@@ -92,7 +92,7 @@ class ViewModelCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $codeGeneratorConfig = Yaml::parseFile(static::CONFIG_FILE);
+        $codeGeneratorConfig = Yaml::parseFile(static::ROOT_DIR . '/' . static::CONFIG_FILE);
 
         $this->checkConfiguration($codeGeneratorConfig);
 
