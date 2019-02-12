@@ -4,4 +4,3 @@ vendor/
 .php_cs.cache
 .php_cs.php
 phpunit.xml
-oc_code_generator.yml

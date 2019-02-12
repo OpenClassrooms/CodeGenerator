@@ -35,16 +35,16 @@ class ViewModelGenerator extends AbstractViewModelGenerator
 
     private function buildViewModelFileObject(string $useCaseResponseClassName): FileObject
     {
-        $useCaseResponseFileObject = $this->createUseCaseResponseObject($useCaseResponseClassName);
-        $viewModelFileObject = $this->createViewModelObject($useCaseResponseFileObject);
+        $useCaseResponseDTOFileObject = $this->createUseCaseResponseDTOFileObject($useCaseResponseClassName);
+        $viewModelFileObject = $this->createViewModelObject($useCaseResponseDTOFileObject);
 
-        $viewModelFileObject->setFields($this->getPublicClassFields($useCaseResponseFileObject->getClassName()));
+        $viewModelFileObject->setFields($this->getPublicClassFields($useCaseResponseDTOFileObject->getClassName()));
         $viewModelFileObject->setContent($this->generateContent($viewModelFileObject));
 
         return $viewModelFileObject;
     }
 
-    private function createUseCaseResponseObject(string $useCaseResponseClassName): FileObject
+    private function createUseCaseResponseDTOFileObject(string $useCaseResponseClassName): FileObject
     {
         [$domain, $entity] = FileObjectUtility::getDomainAndEntityNameFromClassName($useCaseResponseClassName);
 
@@ -55,12 +55,12 @@ class ViewModelGenerator extends AbstractViewModelGenerator
         );
     }
 
-    private function createViewModelObject(FileObject $useCaseResponseFileObject): FileObject
+    private function createViewModelObject(FileObject $useCaseResponseDTOFileObject): FileObject
     {
         return $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL,
-            $useCaseResponseFileObject->getDomain(),
-            $useCaseResponseFileObject->getEntity()
+            $useCaseResponseDTOFileObject->getDomain(),
+            $useCaseResponseDTOFileObject->getEntity()
         );
     }
 

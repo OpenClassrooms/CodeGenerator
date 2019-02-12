@@ -13,7 +13,7 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Api\ViewModels\ViewMo
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\FileObjectTestCase;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingServiceMock;
-use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\DTO\Response\FunctionalEntityResponseDTO;
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityResponse;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\FixturesConfig;
 use PHPUnit\Framework\TestCase;
 
@@ -53,7 +53,7 @@ class ViewModelListItemTestCaseGeneratorTest extends TestCase
         $stub1GeneratorRequestBuilder = new ViewModelListItemTestCaseGeneratorRequestBuilderImpl();
         $this->request = $stub1GeneratorRequestBuilder
             ->create()
-            ->withClassName(FunctionalEntityResponseDTO::class)
+            ->withClassName(FunctionalEntityResponse::class)
             ->build();
 
         $this->viewModelListItemTestCaseGenerator = new ViewModelListItemTestCaseGenerator();
@@ -73,7 +73,9 @@ class ViewModelListItemTestCaseGeneratorTest extends TestCase
         $useCaseResponseFileObjectFactory->setStubNamespace(FixturesConfig::STUB_NAMESPACE);
 
         $this->viewModelListItemTestCaseGenerator->setViewModelFileObjectFactory($viewModelFileObjectFactory);
-        $this->viewModelListItemTestCaseGenerator->setUseCaseResponseFileObjectFactory($useCaseResponseFileObjectFactory);
+        $this->viewModelListItemTestCaseGenerator->setUseCaseResponseFileObjectFactory(
+            $useCaseResponseFileObjectFactory
+        );
         $this->viewModelListItemTestCaseGenerator->setViewModelListItemTestCaseSkeletonModelAssembler(
             new ViewModelListItemTestCaseSkeletonModelAssemblerImpl()
         );

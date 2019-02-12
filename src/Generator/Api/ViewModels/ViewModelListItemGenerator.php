@@ -56,7 +56,7 @@ class ViewModelListItemGenerator extends AbstractViewModelGenerator
         [$domain, $entity] = FileObjectUtility::getDomainAndEntityNameFromClassName($useCaseDetailResponseClassName);
 
         return $this->createUseCaseResponseFileObject(
-            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE_DTO,
+            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE,
             $domain,
             $entity
         );

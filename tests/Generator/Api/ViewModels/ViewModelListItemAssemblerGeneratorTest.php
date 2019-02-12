@@ -9,7 +9,7 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModels\Impl\ViewModelLis
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Api\ViewModels\ViewModelListItemAssembler\ViewModelListItemAssemblerFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\FileObjectTestCase;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
-use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\DTO\Response\FunctionalEntityResponseDTO;
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityResponse;
 
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
@@ -48,7 +48,7 @@ class ViewModelListItemAssemblerGeneratorTest extends AbstractViewModelGenerator
         $viewModelListItemAssemblerRequestBuilder = new ViewModelListItemAssemblerGeneratorRequestBuilderImpl();
         $this->request = $viewModelListItemAssemblerRequestBuilder
             ->create()
-            ->withClassName(FunctionalEntityResponseDTO::class)
+            ->withClassName(FunctionalEntityResponse::class)
             ->build();
 
         $this->buildViewModelGenerator($this->viewModelListItemAssemblerGenerator);

@@ -37,18 +37,18 @@ class ViewModelDetailTestCaseGenerator extends AbstractViewModelGenerator
 
     public function buildDetailTestCaseFileObject(string $useCaseResponseClassName): FileObject
     {
-        $useCaseDetailResponseFileObject = $this->createUseCaseDetailResponseFileObject($useCaseResponseClassName);
+        $useCaseDetailResponseDTOFileObject = $this->createUseCaseDetailResponseDTOFileObject($useCaseResponseClassName);
         $viewModelTestCaseFileObject = $this->createViewModelTestCaseFileObject(
-            $useCaseDetailResponseFileObject
+            $useCaseDetailResponseDTOFileObject
         );
         $viewModelDetailTestCaseFileObject = $this->createViewModelDetailTestCaseFileObject(
-            $useCaseDetailResponseFileObject
+            $useCaseDetailResponseDTOFileObject
         );
         $viewModelDetailFileObject = $this->createViewModelDetailFileObject(
-            $useCaseDetailResponseFileObject
+            $useCaseDetailResponseDTOFileObject
         );
         $viewModelDetailTestCaseFileObject->setFields(
-            $this->getPublicClassFields($useCaseDetailResponseFileObject->getClassName())
+            $this->getPublicClassFields($useCaseDetailResponseDTOFileObject->getClassName())
         );
         $viewModelDetailTestCaseFileObject->setContent(
             $this->generateContent(
@@ -62,7 +62,7 @@ class ViewModelDetailTestCaseGenerator extends AbstractViewModelGenerator
 
     }
 
-    protected function createUseCaseDetailResponseFileObject(string $viewModelClassName): FileObject
+    protected function createUseCaseDetailResponseDTOFileObject(string $viewModelClassName): FileObject
     {
         [$domain, $entity] = FileObjectUtility::getDomainAndEntityNameFromClassName($viewModelClassName);
 
@@ -93,13 +93,13 @@ class ViewModelDetailTestCaseGenerator extends AbstractViewModelGenerator
 
     public function generateContent(
         FileObject $viewModelDetailTestCaseFileObject,
-        FileObject $useCaseDetailResponseFileObject,
+        FileObject $useCaseDetailResponseDTOFileObject,
         FileObject $viewModelTestCaseFileObject
     ): string
     {
         $skeletonModel = $this->createSkeletonModel(
             $viewModelDetailTestCaseFileObject,
-            $useCaseDetailResponseFileObject,
+            $useCaseDetailResponseDTOFileObject,
             $viewModelTestCaseFileObject
         );
 
@@ -108,13 +108,13 @@ class ViewModelDetailTestCaseGenerator extends AbstractViewModelGenerator
 
     private function createSkeletonModel(
         FileObject $viewModelDetailTestCaseFileObject,
-        FileObject $useCaseDetailResponseFileObject,
+        FileObject $useCaseDetailResponseDTOFileObject,
         FileObject $viewModelTestCaseFileObject
     ): ViewModelDetailTestCaseSkeletonModel
     {
         return $this->viewModelDetailTestCaseSkeletonModelAssembler->create(
             $viewModelDetailTestCaseFileObject,
-            $useCaseDetailResponseFileObject,
+            $useCaseDetailResponseDTOFileObject,
             $viewModelTestCaseFileObject
         );
     }
@@ -127,16 +127,16 @@ class ViewModelDetailTestCaseGenerator extends AbstractViewModelGenerator
     }
 
     /**
-     * @param FileObject $useCaseDetailResponseFileObject
+     * @param FileObject $useCaseDetailResponseDTOFileObject
      *
      * @return FileObject
      */
-    private function createViewModelDetailTestCaseFileObject(FileObject $useCaseDetailResponseFileObject): FileObject
+    private function createViewModelDetailTestCaseFileObject(FileObject $useCaseDetailResponseDTOFileObject): FileObject
     {
         $viewModelDetailTestCaseFileObject = $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_TEST_CASE,
-            $useCaseDetailResponseFileObject->getDomain(),
-            $useCaseDetailResponseFileObject->getEntity()
+            $useCaseDetailResponseDTOFileObject->getDomain(),
+            $useCaseDetailResponseDTOFileObject->getEntity()
         );
 
         return $viewModelDetailTestCaseFileObject;

@@ -9,7 +9,7 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModels\Impl\ViewModelAss
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Api\ViewModels\ViewModelAssemblerTrait\ViewModelAssemblerTraitFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\FileObjectTestCase;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
-use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\DTO\Response\FunctionalEntityResponseDTO;
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityResponse;
 use OpenClassrooms\CodeGenerator\Tests\Generator\Api\ViewModels\AbstractViewModelGeneratorTestCase;
 
 /**
@@ -48,7 +48,7 @@ class ViewModelAssemblerTraitGeneratorTest extends AbstractViewModelGeneratorTes
         $viewModelAssemblerTraitGeneratorRequestBuilder = new ViewModelAssemblerTraitGeneratorRequestBuilderImpl();
         $this->request = $viewModelAssemblerTraitGeneratorRequestBuilder
             ->create()
-            ->withClassName(FunctionalEntityResponseDTO::class)
+            ->withClassName(FunctionalEntityResponse::class)
             ->build();
 
         $this->viewModelAssemblerTraitGenerator = new ViewModelAssemblerTraitGenerator();

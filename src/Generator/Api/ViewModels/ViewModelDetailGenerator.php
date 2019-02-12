@@ -36,19 +36,19 @@ class ViewModelDetailGenerator extends AbstractViewModelGenerator
 
     private function buildViewModelDetailFileObject(string $useCaseResponseClassName): FileObject
     {
-        $useCaseDetailResponseFileObject =
-            $this->createUseCaseDetailResponseFileObject($useCaseResponseClassName);
+        $useCaseDetailResponseDTOFileObject =
+            $this->createUseCaseDetailResponseDTOFileObject($useCaseResponseClassName);
 
-        $viewModelDetailFileObject = $this->createViewModeObject($useCaseDetailResponseFileObject);
+        $viewModelDetailFileObject = $this->createViewModeObject($useCaseDetailResponseDTOFileObject);
         $viewModelDetailFileObject->setFields(
-            $this->getPublicClassFields($useCaseDetailResponseFileObject->getClassName())
+            $this->getPublicClassFields($useCaseDetailResponseDTOFileObject->getClassName())
         );
         $viewModelDetailFileObject->setContent($this->generateContent($viewModelDetailFileObject));
 
         return $viewModelDetailFileObject;
     }
 
-    private function createUseCaseDetailResponseFileObject(string $useCaseDetailResponseClassName): FileObject
+    private function createUseCaseDetailResponseDTOFileObject(string $useCaseDetailResponseClassName): FileObject
     {
         [$domain, $entity] = FileObjectUtility::getDomainAndEntityNameFromClassName($useCaseDetailResponseClassName);
 
@@ -59,12 +59,12 @@ class ViewModelDetailGenerator extends AbstractViewModelGenerator
         );
     }
 
-    private function createViewModeObject(FileObject $useCaseDetailResponseFileObject): FileObject
+    private function createViewModeObject(FileObject $useCaseDetailResponseDTOFileObject): FileObject
     {
         return $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL_DETAIL,
-            $useCaseDetailResponseFileObject->getDomain(),
-            $useCaseDetailResponseFileObject->getEntity()
+            $useCaseDetailResponseDTOFileObject->getDomain(),
+            $useCaseDetailResponseDTOFileObject->getEntity()
         );
     }
 

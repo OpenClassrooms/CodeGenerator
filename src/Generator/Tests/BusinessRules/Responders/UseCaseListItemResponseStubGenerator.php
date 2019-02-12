@@ -40,16 +40,16 @@ class UseCaseListItemResponseStubGenerator extends AbstractUseCaseResponseStubGe
 
     private function buildUseCaseListItemResponseStubFileObject(string $useCaseResponseClassName)
     {
-        $useCaseListItemResponseFileObject = $this->createUseCaseListItemResponseFileObject(
+        $useCaseListItemResponseDTOFileObject = $this->createUseCaseListItemResponseDTOFileObject(
             $useCaseResponseClassName
         );
         $useCaseListItemResponseStubFileObject = $this->createUseCaseListItemResponseStubFileObject(
-            $useCaseListItemResponseFileObject
+            $useCaseListItemResponseDTOFileObject
         );
-        $entityStubFileObject = $this->createEntityStubFileObject($useCaseListItemResponseFileObject);
+        $entityStubFileObject = $this->createEntityStubFileObject($useCaseListItemResponseDTOFileObject);
 
         $useCaseListItemResponseStubFileObject->setFields(
-            $this->generateStubFields($useCaseListItemResponseFileObject)
+            $this->generateStubFields($useCaseListItemResponseDTOFileObject)
         );
         $useCaseListItemResponseStubFileObject->setConsts(
             $this->generateConsts($entityStubFileObject, $useCaseListItemResponseStubFileObject)
@@ -57,7 +57,7 @@ class UseCaseListItemResponseStubGenerator extends AbstractUseCaseResponseStubGe
         $useCaseListItemResponseStubFileObject->setContent(
             $this->generateContent(
                 $useCaseListItemResponseStubFileObject,
-                $useCaseListItemResponseFileObject,
+                $useCaseListItemResponseDTOFileObject,
                 $entityStubFileObject
             )
         );
@@ -65,7 +65,7 @@ class UseCaseListItemResponseStubGenerator extends AbstractUseCaseResponseStubGe
         return $useCaseListItemResponseStubFileObject;
     }
 
-    private function createUseCaseListItemResponseFileObject(string $responseClassName): FileObject
+    private function createUseCaseListItemResponseDTOFileObject(string $responseClassName): FileObject
     {
         [$domain, $entity] = FileObjectUtility::getDomainAndEntityNameFromClassName($responseClassName);
 
@@ -87,12 +87,12 @@ class UseCaseListItemResponseStubGenerator extends AbstractUseCaseResponseStubGe
         );
     }
 
-    private function createEntityStubFileObject(FileObject $useCaseListItemResponseFileObject): FileObject
+    private function createEntityStubFileObject(FileObject $useCaseListItemResponseDTOFileObject): FileObject
     {
         return $this->entityFileObjectFactory->create(
             EntityFileObjectType::BUSINESS_RULES_ENTITY_STUB,
-            $useCaseListItemResponseFileObject->getDomain(),
-            $useCaseListItemResponseFileObject->getEntity()
+            $useCaseListItemResponseDTOFileObject->getDomain(),
+            $useCaseListItemResponseDTOFileObject->getEntity()
         );
     }
 
@@ -154,13 +154,13 @@ class UseCaseListItemResponseStubGenerator extends AbstractUseCaseResponseStubGe
 
     private function generateContent(
         FileObject $useCaseListItemResponseStubFileObject,
-        FileObject $useCaseListItemResponseFileObject,
+        FileObject $useCaseListItemResponseDTOFileObject,
         FileObject $entityStubFileObject
     ): string
     {
         $skeletonModel = $this->createSkeletonModel(
             $useCaseListItemResponseStubFileObject,
-            $useCaseListItemResponseFileObject,
+            $useCaseListItemResponseDTOFileObject,
             $entityStubFileObject
         );
 
@@ -169,13 +169,13 @@ class UseCaseListItemResponseStubGenerator extends AbstractUseCaseResponseStubGe
 
     private function createSkeletonModel(
         FileObject $useCaseListItemResponseStubFileObject,
-        FileObject $useCaseListItemResponseFileObject,
+        FileObject $useCaseListItemResponseDTOFileObject,
         FileObject $entityStubFileObject
     ): UseCaseListItemResponseStubSkeletonModel
     {
         return $this->useCaseListItemResponseStubSkeletonModelAssembler->create(
             $useCaseListItemResponseStubFileObject,
-            $useCaseListItemResponseFileObject,
+            $useCaseListItemResponseDTOFileObject,
             $entityStubFileObject
         );
     }
