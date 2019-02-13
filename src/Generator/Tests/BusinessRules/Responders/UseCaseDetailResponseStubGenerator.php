@@ -48,7 +48,7 @@ class UseCaseDetailResponseStubGenerator extends AbstractUseCaseResponseStubGene
         );
 
         $useCaseDetailResponseStubFileObject->setFields($this->generateStubFields($useCaseDetailResponseDTOFileObject));
-        $useCaseDetailResponseStubFileObject->setConsts($this->generateConsts($entityStubFileObject));
+        $useCaseDetailResponseStubFileObject->setConsts($this->generateConsts($entityStubFileObject, $useCaseDetailResponseStubFileObject));
         $useCaseDetailResponseStubFileObject->setContent(
             $this->generateContent(
                 $useCaseDetailResponseStubFileObject,
@@ -82,7 +82,9 @@ class UseCaseDetailResponseStubGenerator extends AbstractUseCaseResponseStubGene
         return $useCaseDetailResponseDTOFileObject;
     }
 
-    private function createUseCaseDetailResponseStubFileObject(FileObject $useCaseDetailResponseDTOFileObject): FileObject
+    private function createUseCaseDetailResponseStubFileObject(
+        FileObject $useCaseDetailResponseDTOFileObject
+    ): FileObject
     {
         $useCaseDetailResponseStubFileObject = $this->useCaseResponseFileObjectFactory->create(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE_STUB,
@@ -99,16 +101,23 @@ class UseCaseDetailResponseStubGenerator extends AbstractUseCaseResponseStubGene
             $useCaseDetailResponseDTOFileObject->getClassName()
         );
 
-        return FieldUtility::generateStubFieldObjects($useCaseDetailResponseFields, $useCaseDetailResponseDTOFileObject);
+        return FieldUtility::generateStubFieldObjects(
+            $useCaseDetailResponseFields,
+            $useCaseDetailResponseDTOFileObject
+        );
     }
 
-    private function generateConsts(FileObject $entityStubFileObject): array
+    private function generateConsts(FileObject $entityStubFileObject, FileObject $useCaseDetailResponseStubFileObject): array
     {
-        $entityStubFileObject->setConsts(
-            $this->getClassConstants($entityStubFileObject->getClassName())
-        );
+        if (class_exists($entityStubFileObject->getClassName())) {
+            $entityStubFileObject->setConsts(
+                $this->getClassConstants($entityStubFileObject->getClassName())
+            );
 
-        return ConstUtility::generateConstsFromStubReference($entityStubFileObject);
+            return ConstUtility::generateConstsFromStubReference($entityStubFileObject);
+        }
+
+        return ConstUtility::generateConstsFromStubFileObject($useCaseDetailResponseStubFileObject);
     }
 
     private function generateContent(

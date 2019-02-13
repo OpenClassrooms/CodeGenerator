@@ -39,4 +39,19 @@ class ConstUtility
 
         return $constObjects;
     }
+
+    /**
+     * @return ConstObject[]
+     */
+    public static function generateConstsFromStubFileObject(FileObject $entityStub): array
+    {
+        $constObjects = [];
+        foreach ($entityStub->getFields() as $field) {
+            $constObject = new ConstObject($field->getName());
+            $constObject->setValue($entityStub->getEntity() . 'Stub1::' . $constObject->getName());
+            $constObjects[] = $constObject;
+        }
+
+        return $constObjects;
+    }
 }

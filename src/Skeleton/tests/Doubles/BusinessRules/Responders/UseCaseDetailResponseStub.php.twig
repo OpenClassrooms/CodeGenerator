@@ -10,7 +10,7 @@ use {{ skeletonModel.entityStubClassName }};
  */
 class {{ skeletonModel.shortName }} extends {{ skeletonModel.parentShortName }}
 {
-{% for constant in skeletonModel.constants %}
+{% for constant in skeletonModel.constants | sortIdFirst %}
     const {{ constant.name }} = {{ printValue(constant.value) }};
 {% if not loop.last %}
 

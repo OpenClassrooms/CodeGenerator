@@ -113,11 +113,16 @@ class UseCaseListItemResponseStubGenerator extends AbstractUseCaseResponseStubGe
         FileObject $useCaseListItemResponseStubFileObject
     ): array
     {
-        $useCaseListItemResponseFileObject->setConsts(
-            $this->getClassConstants($useCaseListItemResponseFileObject->getClassName())
-        );
+        if (class_exists($useCaseListItemResponseFileObject->getClassName())) {
+            $useCaseListItemResponseFileObject->setConsts(
+                $this->getClassConstants($useCaseListItemResponseFileObject->getClassName())
+            );
+            $consts = ConstUtility::generateConstsFromStubReference($useCaseListItemResponseFileObject);
 
-        $consts = ConstUtility::generateConstsFromStubReference($useCaseListItemResponseFileObject);
+            return $this->filterConstsFromFieldValues($useCaseListItemResponseStubFileObject, $consts);
+        }
+
+        $consts = ConstUtility::generateConstsFromStubFileObject($useCaseListItemResponseStubFileObject);
 
         return $this->filterConstsFromFieldValues($useCaseListItemResponseStubFileObject, $consts);
 
