@@ -35,6 +35,7 @@ class TemplatingServiceImpl extends \Twig_Environment implements TemplatingServi
         $this->addFilter($this->getSortNameByAlphaFilter());
         $this->addFilter($this->getSortIdFirstFilter());
 
+        $this->addFunction($this->lineBreak());
         $this->addFunction($this->printValue());
     }
 
@@ -88,6 +89,23 @@ class TemplatingServiceImpl extends \Twig_Environment implements TemplatingServi
                 }
 
                 return $arrayFields;
+            }
+        );
+    }
+
+    private function lineBreak()
+    {
+        return new \Twig_SimpleFunction(
+            'lineBreak',
+            function(array $fields, int $key) {
+                $objects = 0;
+                foreach ($fields as $field) {
+                    if ($field->isObject()) {
+                        $objects++;
+                    }
+                }
+
+                return $key < (count($fields) - 1) - $objects;
             }
         );
     }

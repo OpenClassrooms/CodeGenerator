@@ -17,9 +17,9 @@ class {{ skeletonModel.shortName }} extends {{ skeletonModel.parentShortName }}
 {% endif %}
 {% endfor %}
 
-{% for key, field in skeletonModel.fields %}
+{% for  field in skeletonModel.fields %}
     {{ field.scope }} ${{ field.name }} = self::{{ field.value.name }};
-{% if skeletonModel.fields|length - 1 != key %}
+{% if not loop.last%}
 
 {% endif %}
 {% endfor %}

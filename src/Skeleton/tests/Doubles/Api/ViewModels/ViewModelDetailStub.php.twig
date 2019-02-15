@@ -17,16 +17,19 @@ class {{ skeletonModel.shortName }} extends {{ skeletonModel.parentShortName }}
 {% endif %}
 {% endfor %}
 
-{% for key, field in skeletonModel.fields if not field.isObject %}
+{% for key, field in skeletonModel.fields %}
+{% if not field.isObject %}
     /**
      * {@inheritdoc}
      */
     {{ field.scope }} ${{ field.name }} = self::{{ field.value.name }};
-{% if skeletonModel.fields|length - 1 != key %}
+{% endif %}
+{% if lineBreak(skeletonModel.fields, key) %}
 
 {% endif %}
 {% endfor %}
 {% if skeletonModel.hasConstructor %}
+
     public function __construct()
     {
 {% for field in skeletonModel.fields if field.type in skeletonModel.dateTimeType %}

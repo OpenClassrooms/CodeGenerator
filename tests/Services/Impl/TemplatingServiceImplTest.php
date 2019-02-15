@@ -108,11 +108,11 @@ class TemplatingServiceImplTest extends TestCase
      */
     public function printValue_ReturnValue($value, $expected)
     {
-        $twigFilter = TestClassUtil::invokeMethod('printValue', $this->templateServiceImpl);
+        $twigFunction = TestClassUtil::invokeMethod('printValue', $this->templateServiceImpl);
 
-        $this->assertTrue(is_callable($twigFilter->getCallable()));
+        $this->assertTrue(is_callable($twigFunction->getCallable()));
 
-        $actualValue = $twigFilter->getCallable()->__invoke($value);
+        $actualValue = $twigFunction->getCallable()->__invoke($value);
 
         $this->assertEquals($actualValue, $expected);
     }
@@ -125,6 +125,26 @@ class TemplatingServiceImplTest extends TestCase
             ['2018-01-01', '\'2018-01-01\''],
             ['test', 'test'],
         ];
+    }
+
+    /**
+     * @test
+     */
+    public function lineBreak_ReturnTrue()
+    {
+        $fieldObjects = [
+            $this->generateFieldObject('id', 'int'),
+            $this->generateFieldObject('omega', 'bool'),
+            $this->generateFieldObject('beta', 'int'),
+            $this->generateFieldObject('alpha', 'Object'),
+        ];
+        $twigFunction = TestClassUtil::invokeMethod('lineBreak', $this->templateServiceImpl);
+
+        $this->assertTrue(is_callable($twigFunction->getCallable()));
+
+        $actualValue = $twigFunction->getCallable()->__invoke($fieldObjects, 1);
+
+        $this->assertTrue($actualValue);
     }
 
     protected function setUp()
