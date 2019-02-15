@@ -27,7 +27,6 @@ class {{ skeletonModel.shortName }} extends {{ skeletonModel.parentShortName }}
 {% endif %}
 {% endfor %}
 {% if skeletonModel.hasConstructor %}
-
     public function __construct()
     {
 {% for field in skeletonModel.fields if field.type in skeletonModel.dateTimeType  %}

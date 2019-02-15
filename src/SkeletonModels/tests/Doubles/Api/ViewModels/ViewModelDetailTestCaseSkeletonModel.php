@@ -9,11 +9,28 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
  */
 abstract class ViewModelDetailTestCaseSkeletonModel extends AbstractSkeletonModel
 {
-    public $viewModelDetailClassName;
+    /**
+     * @var array
+     */
+    public $dateTimeType;
 
-    public $viewModelDetailShortName;
-
+    /**
+     * @var string
+     */
     public $templatePath = 'tests/Doubles/Api/ViewModels/ViewModelDetailTestCase.php.twig';
 
+    /**
+     * @var string
+     */
+    public $viewModelDetailClassName;
+
+    /**
+     * @var string
+     */
+    public $viewModelDetailShortName;
+
+    /**
+     * @var string
+     */
     public $viewModelTestCaseShortName;
 }

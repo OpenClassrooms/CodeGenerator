@@ -11,7 +11,12 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\tests\Doubles\Api\ViewModels\Vie
  */
 class ViewModelTestCaseSkeletonModelAssemblerImpl implements ViewModelTestCaseSkeletonModelAssembler
 {
-    public function create(FileObject $viewModelTestCaseFileObject, FileObject $viewModelFileObject): ViewModelTestCaseSkeletonModel
+    use StubSkeletonAssemblerUtility;
+
+    public function create(
+        FileObject $viewModelTestCaseFileObject,
+        FileObject $viewModelFileObject
+    ): ViewModelTestCaseSkeletonModel
     {
         $skeletonModel = new ViewModelTestCaseSkeletonModelImpl();
         $skeletonModel->className = $viewModelTestCaseFileObject->getClassName();
@@ -20,6 +25,7 @@ class ViewModelTestCaseSkeletonModelAssemblerImpl implements ViewModelTestCaseSk
         $skeletonModel->fields = $viewModelTestCaseFileObject->getFields();
         $skeletonModel->sourceClassName = $viewModelFileObject->getClassName();
         $skeletonModel->sourceShortName = $viewModelFileObject->getShortName();
+        $skeletonModel->dateTimeType = $this->getDateTimeType();
 
         return $skeletonModel;
     }

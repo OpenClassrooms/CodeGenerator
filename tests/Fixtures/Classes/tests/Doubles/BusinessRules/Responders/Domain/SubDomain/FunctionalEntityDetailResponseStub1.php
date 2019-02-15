@@ -30,4 +30,9 @@ class FunctionalEntityDetailResponseStub1 extends FunctionalEntityDetailResponse
     public $field4 = self::FIELD_4;
 
     public $id = self::ID;
+
+    public function __construct()
+    {
+        $this->field4 = new \DateTimeImmutable(self::FIELD_4);
+    }
 }

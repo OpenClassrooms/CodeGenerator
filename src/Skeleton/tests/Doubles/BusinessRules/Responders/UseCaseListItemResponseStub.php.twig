@@ -17,10 +17,19 @@ class {{ skeletonModel.shortName }} extends {{ skeletonModel.parentShortName }}
 {% endif %}
 {% endfor %}
 
-{% for field in skeletonModel.fields %}
+{% for key, field in skeletonModel.fields %}
     {{ field.scope }} ${{ field.name }} = self::{{ field.value.name }};
-{% if not loop.last %}
+{% if skeletonModel.fields|length - 1 != key %}
 
 {% endif %}
 {% endfor %}
+{% if skeletonModel.hasConstructor %}
+
+    public function __construct()
+    {
+{% for field in skeletonModel.fields if field.type in skeletonModel.dateTimeType  %}
+        $this->{{ field.name }} = new \DateTimeImmutable(self::{{ field.value.name }});
+{% endfor %}
+    }
+{% endif %}
 }

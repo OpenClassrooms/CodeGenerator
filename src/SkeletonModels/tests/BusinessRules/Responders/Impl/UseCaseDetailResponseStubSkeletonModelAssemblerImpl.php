@@ -5,12 +5,15 @@ namespace OpenClassrooms\CodeGenerator\SkeletonModels\tests\BusinessRules\Respon
 use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
 use OpenClassrooms\CodeGenerator\SkeletonModels\tests\BusinessRules\Responders\UseCaseDetailResponseStubSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\tests\BusinessRules\Responders\UseCaseDetailResponseStubSkeletonModelAssembler;
+use OpenClassrooms\CodeGenerator\SkeletonModels\tests\Doubles\Api\ViewModels\Impl\StubSkeletonAssemblerUtility;
 
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
  */
 class UseCaseDetailResponseStubSkeletonModelAssemblerImpl implements UseCaseDetailResponseStubSkeletonModelAssembler
 {
+    use StubSkeletonAssemblerUtility;
+
     public function create(
         FileObject $useCaseDetailResponseStubFileObject,
         FileObject $useCaseDetailResponseFileObject,
@@ -27,6 +30,8 @@ class UseCaseDetailResponseStubSkeletonModelAssemblerImpl implements UseCaseDeta
         $skeletonModel->entityStubShortName = $entityStubFileObject->getShortName();
         $skeletonModel->fields = $useCaseDetailResponseStubFileObject->getFields();
         $skeletonModel->constants = $useCaseDetailResponseStubFileObject->getConsts();
+        $skeletonModel->hasConstructor = $this->hasConstructor($useCaseDetailResponseStubFileObject->getFields());
+        $skeletonModel->dateTimeType = $this->getDateTimeType();
 
         return $skeletonModel;
     }

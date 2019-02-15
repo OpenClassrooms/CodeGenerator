@@ -2,7 +2,6 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Utility;
 
-use OpenClassrooms\CodeGenerator\FileObjects\ConstObject;
 use OpenClassrooms\CodeGenerator\FileObjects\FieldObject;
 use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
 use OpenClassrooms\CodeGenerator\Utility\ConstUtility;
@@ -14,7 +13,7 @@ use PHPUnit\Framework\TestCase;
 class ConstUtilityTest extends TestCase
 {
     /**
-       * @test
+     * @test
      *
      * @dataProvider generateStubConstObjectDataProvider
      */
@@ -93,7 +92,7 @@ class ConstUtilityTest extends TestCase
         $actualConstsObject = ConstUtility::generateConstsFromStubFileObject($stubReference);
 
         $this->assertCount(count($stubReference->getFields()), $actualConstsObject);
-        foreach ($stubReference->getConsts() as $key => $expectedConsts){
+        foreach ($stubReference->getConsts() as $key => $expectedConsts) {
             $this->assertEquals($expectedConsts->getName(), $actualConstsObject[$key]->getName());
         }
     }

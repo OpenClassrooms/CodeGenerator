@@ -12,7 +12,10 @@ trait {{ skeletonModel.shortName }}
 {
     public function assert{{ skeletonModel.shortName }}({{ skeletonModel.sourceShortName }} $expected, {{ skeletonModel.sourceShortName }} $actual): void
     {
-{% for field in skeletonModel.fields | sortIdFirst %}
+{% for field in skeletonModel.fields | sortNameByAlpha if field.type in skeletonModel.dateTimeType %}
+        Assert::assertEquals($expected->{{ field.name }}, $actual->{{ field.name }});
+{% endfor %}
+{% for field in skeletonModel.fields | sortIdFirst if field.type not in skeletonModel.dateTimeType %}
         Assert::assertSame($expected->{{ field.name }}, $actual->{{ field.name }});
 {% endfor %}
     }

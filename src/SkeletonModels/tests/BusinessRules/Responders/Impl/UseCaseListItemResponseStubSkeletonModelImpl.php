@@ -16,6 +16,11 @@ class UseCaseListItemResponseStubSkeletonModelImpl extends UseCaseListItemRespon
     public $constants;
 
     /**
+     * @var array
+     */
+    public $dateTimeType;
+
+    /**
      * @var string
      */
     public $entityStubClassName;
@@ -24,6 +29,11 @@ class UseCaseListItemResponseStubSkeletonModelImpl extends UseCaseListItemRespon
      * @var string
      */
     public $entityStubShortName;
+
+    /**
+     * @var string
+     */
+    public $hasConstructor = false;
 
     /**
      * @var string
