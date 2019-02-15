@@ -2,6 +2,7 @@
 
 namespace OpenClassrooms\CodeGenerator\Services\Impl;
 
+use OpenClassrooms\CodeGenerator\FileObjects\ConstObject;
 use OpenClassrooms\CodeGenerator\FileObjects\FieldObject;
 use OpenClassrooms\CodeGenerator\Services\TemplatingService;
 
@@ -45,17 +46,31 @@ class TemplatingServiceImpl extends \Twig_Environment implements TemplatingServi
                 $arrayFields = $classFields;
                 usort(
                     $arrayFields,
-                    function(FieldObject $a, FieldObject $b) {
-                        $al = strtolower($a->getName());
-                        $bl = strtolower($b->getName());
-
-                        return ($al > $bl) ? +1 : -1;
-                    }
+                    $this->getSortNameClosure($arrayFields)
                 );
 
                 return $arrayFields;
             }
         );
+    }
+
+    private function getSortNameClosure(array $arrayFields)
+    {
+        if (array_shift($arrayFields) instanceof FieldObject) {
+            return function(FieldObject $a, FieldObject $b) {
+                $al = strtolower($a->getName());
+                $bl = strtolower($b->getName());
+
+                return ($al > $bl) ? +1 : -1;
+            };
+        }
+
+        return function(ConstObject $a, ConstObject $b) {
+            $al = strtolower($a->getName());
+            $bl = strtolower($b->getName());
+
+            return ($al > $bl) ? +1 : -1;
+        };
     }
 
     private function getSortIdFirstFilter()

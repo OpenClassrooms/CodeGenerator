@@ -19,6 +19,8 @@ use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
  */
 class ViewModelDetailStubGenerator extends AbstractViewModelGenerator
 {
+    const DETAIL_RESPONSE = 'DetailResponse';
+
     /**
      * @var ViewModelDetailStubSkeletonModelAssembler
      */
@@ -57,7 +59,7 @@ class ViewModelDetailStubGenerator extends AbstractViewModelGenerator
 
         $viewModelDetailStubFileObject->setFields($this->generateFields($useCaseDetailResponseDTOFileObject));
         $viewModelDetailStubFileObject->setConsts(
-            $this->generateConsts($useCaseDetailResponseStubFileObject, $viewModelDetailStubFileObject)
+            $this->generateConsts($viewModelDetailStubFileObject)
         );
 
         $viewModelDetailStubFileObject->setContent(
@@ -122,19 +124,10 @@ class ViewModelDetailStubGenerator extends AbstractViewModelGenerator
     }
 
     private function generateConsts(
-        FileObject $useCaseDetailResponseStubFileObject,
         FileObject $viewModelDetailStubFileObject
     ): array
     {
-        if (class_exists($useCaseDetailResponseStubFileObject->getClassName())) {
-            $useCaseDetailResponseStubFileObject->setConsts(
-                $this->getClassConstants($useCaseDetailResponseStubFileObject->getClassName())
-            );
-
-            return ConstUtility::generateConstsFromStubReference($useCaseDetailResponseStubFileObject);
-        }
-
-        return ConstUtility::generateConstsFromStubFileObject($viewModelDetailStubFileObject);
+        return ConstUtility::generateConstsFromStubFileObject($viewModelDetailStubFileObject, self::DETAIL_RESPONSE);
     }
 
     private function generateContent(

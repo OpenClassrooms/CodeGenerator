@@ -26,9 +26,4 @@ interface FieldObjectService
      * @return \OpenClassrooms\CodeGenerator\FileObjects\FieldObject[]
      */
     public function getPublicClassFields(string $className): array;
-
-    /**
-     * @return \OpenClassrooms\CodeGenerator\FileObjects\FieldObject[]
-     */
-    public function getClassConstants(string $className): array;
 }

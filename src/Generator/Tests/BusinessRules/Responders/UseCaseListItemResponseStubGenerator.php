@@ -52,7 +52,7 @@ class UseCaseListItemResponseStubGenerator extends AbstractUseCaseResponseStubGe
             $this->generateStubFields($useCaseListItemResponseDTOFileObject)
         );
         $useCaseListItemResponseStubFileObject->setConsts(
-            $this->generateConsts($entityStubFileObject, $useCaseListItemResponseStubFileObject)
+            $this->generateConsts($useCaseListItemResponseStubFileObject)
         );
         $useCaseListItemResponseStubFileObject->setContent(
             $this->generateContent(
@@ -109,19 +109,9 @@ class UseCaseListItemResponseStubGenerator extends AbstractUseCaseResponseStubGe
     }
 
     private function generateConsts(
-        FileObject $useCaseListItemResponseFileObject,
         FileObject $useCaseListItemResponseStubFileObject
     ): array
     {
-        if (class_exists($useCaseListItemResponseFileObject->getClassName())) {
-            $useCaseListItemResponseFileObject->setConsts(
-                $this->getClassConstants($useCaseListItemResponseFileObject->getClassName())
-            );
-            $consts = ConstUtility::generateConstsFromStubReference($useCaseListItemResponseFileObject);
-
-            return $this->filterConstsFromFieldValues($useCaseListItemResponseStubFileObject, $consts);
-        }
-
         $consts = ConstUtility::generateConstsFromStubFileObject($useCaseListItemResponseStubFileObject);
 
         return $this->filterConstsFromFieldValues($useCaseListItemResponseStubFileObject, $consts);

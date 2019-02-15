@@ -77,22 +77,22 @@ class ConstUtilityTest extends TestCase
     /**
      * @test
      */
-    public function generateConstsFromStubReference_ReturnConstObjects()
+    public function generateConstsFromStubFileObject_ReturnConstObjects()
     {
         $stubReference = new FileObject();
         $stubReference->setClassName(self::class);
 
         $constsReference = [
-            new ConstObject('field1'),
-            new ConstObject('field2'),
-            new ConstObject('field3'),
-            new ConstObject('field4'),
+            new FieldObject('field1'),
+            new FieldObject('field2'),
+            new FieldObject('field3'),
+            new FieldObject('field4'),
         ];
-        $stubReference->setConsts($constsReference);
+        $stubReference->setFields($constsReference);
 
-        $actualConstsObject = ConstUtility::generateConstsFromStubReference($stubReference);
+        $actualConstsObject = ConstUtility::generateConstsFromStubFileObject($stubReference);
 
-        $this->assertCount(count($stubReference->getConsts()), $actualConstsObject);
+        $this->assertCount(count($stubReference->getFields()), $actualConstsObject);
         foreach ($stubReference->getConsts() as $key => $expectedConsts){
             $this->assertEquals($expectedConsts->getName(), $actualConstsObject[$key]->getName());
         }

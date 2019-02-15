@@ -10,7 +10,7 @@ use {{ skeletonModel.useCaseDetailResponseStubClassName }};
  */
 class {{ skeletonModel.shortName }} extends {{ skeletonModel.parentShortName }}
 {
-{% for constant in skeletonModel.constants %}
+{% for constant in skeletonModel.constants | sortNameByAlpha %}
     const {{ constant.name }} = {{ printValue(constant.value) }};
 {% if not loop.last %}
 

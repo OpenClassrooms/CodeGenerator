@@ -48,7 +48,7 @@ class UseCaseDetailResponseStubGenerator extends AbstractUseCaseResponseStubGene
         );
 
         $useCaseDetailResponseStubFileObject->setFields($this->generateStubFields($useCaseDetailResponseDTOFileObject));
-        $useCaseDetailResponseStubFileObject->setConsts($this->generateConsts($entityStubFileObject, $useCaseDetailResponseStubFileObject));
+        $useCaseDetailResponseStubFileObject->setConsts($this->generateConsts($useCaseDetailResponseStubFileObject));
         $useCaseDetailResponseStubFileObject->setContent(
             $this->generateContent(
                 $useCaseDetailResponseStubFileObject,
@@ -107,16 +107,8 @@ class UseCaseDetailResponseStubGenerator extends AbstractUseCaseResponseStubGene
         );
     }
 
-    private function generateConsts(FileObject $entityStubFileObject, FileObject $useCaseDetailResponseStubFileObject): array
+    private function generateConsts(FileObject $useCaseDetailResponseStubFileObject): array
     {
-        if (class_exists($entityStubFileObject->getClassName())) {
-            $entityStubFileObject->setConsts(
-                $this->getClassConstants($entityStubFileObject->getClassName())
-            );
-
-            return ConstUtility::generateConstsFromStubReference($entityStubFileObject);
-        }
-
         return ConstUtility::generateConstsFromStubFileObject($useCaseDetailResponseStubFileObject);
     }
 

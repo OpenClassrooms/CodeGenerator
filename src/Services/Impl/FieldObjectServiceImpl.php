@@ -109,29 +109,4 @@ class FieldObjectServiceImpl implements FieldObjectService
 
         return $this->buildFields($classProperties, FieldObject::SCOPE_PROTECTED);
     }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getClassConstants(string $className): array
-    {
-        $rc = new \ReflectionClass($className);
-
-        return $this->buildConstants($rc->getConstants());
-    }
-
-    /**
-     * @return ConstObject[]
-     */
-    private function buildConstants(array $constants)
-    {
-        $constObjects = [];
-        foreach ($constants as $constName => $constValue) {
-            $constObject = new ConstObject($constName);
-            $constObject->setValue($constValue);
-            $constObjects[] = $constObject;
-        }
-
-        return $constObjects;
-    }
 }

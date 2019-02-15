@@ -19,6 +19,8 @@ use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
  */
 class ViewModelListItemStubGenerator extends AbstractViewModelGenerator
 {
+    const LIST_ITEM_RESPONSE = 'ListItemResponse';
+
     /**
      * @var ViewModelListItemStubSkeletonModelAssembler
      */
@@ -57,7 +59,7 @@ class ViewModelListItemStubGenerator extends AbstractViewModelGenerator
 
         $viewModelListItemStubFileObject->setFields($this->generateFields($useCaseListItemResponseDTOFileObject));
         $viewModelListItemStubFileObject->setConsts(
-            $this->generateConsts($useCaseListItemResponseStubFileObject, $viewModelListItemStubFileObject)
+            $this->generateConsts($viewModelListItemStubFileObject)
         );
         $viewModelListItemStubFileObject->setContent(
             $this->generateContent(
@@ -128,20 +130,12 @@ class ViewModelListItemStubGenerator extends AbstractViewModelGenerator
         return FieldUtility::generateStubFieldObjects($viewModelListItemFields, $viewModelListItemImplFileObject);
     }
 
-    private function generateConsts(
-        FileObject $useCaseListItemResponseStubFileObject,
-        $viewModelListItemStubFileObject
-    ): array
+    private function generateConsts(FileObject $viewModelListItemStubFileObject): array
     {
-        if (class_exists($useCaseListItemResponseStubFileObject->getClassName())) {
-            $useCaseListItemResponseStubFileObject->setConsts(
-                $this->getClassConstants($useCaseListItemResponseStubFileObject->getClassName())
-            );
-
-            return ConstUtility::generateConstsFromStubReference($useCaseListItemResponseStubFileObject);
-        }
-
-        return ConstUtility::generateConstsFromStubFileObject($viewModelListItemStubFileObject);
+        return ConstUtility::generateConstsFromStubFileObject(
+            $viewModelListItemStubFileObject,
+            self::LIST_ITEM_RESPONSE
+        );
     }
 
     private function generateContent(

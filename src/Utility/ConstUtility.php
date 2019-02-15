@@ -28,27 +28,12 @@ class ConstUtility
     /**
      * @return ConstObject[]
      */
-    public static function generateConstsFromStubReference(FileObject $stubReference): array
-    {
-        $constObjects = [];
-        foreach ($stubReference->getConsts() as $const) {
-            $constObject = new ConstObject($const->getName());
-            $constObject->setValue($stubReference->getShortName() . '::' . $const->getName());
-            $constObjects[] = $constObject;
-        }
-
-        return $constObjects;
-    }
-
-    /**
-     * @return ConstObject[]
-     */
-    public static function generateConstsFromStubFileObject(FileObject $entityStub): array
+    public static function generateConstsFromStubFileObject(FileObject $entityStub, string $type = null): array
     {
         $constObjects = [];
         foreach ($entityStub->getFields() as $field) {
             $constObject = new ConstObject($field->getName());
-            $constObject->setValue($entityStub->getEntity() . 'Stub1::' . $constObject->getName());
+            $constObject->setValue($entityStub->getEntity() . $type . 'Stub1::' . $constObject->getName());
             $constObjects[] = $constObject;
         }
 
