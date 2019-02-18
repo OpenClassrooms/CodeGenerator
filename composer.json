@@ -41,7 +41,9 @@
     "symfony/filesystem": "~3.3",
     "symfony/finder": "~3.3",
     "symfony/yaml": "~3.3",
-    "twig/twig": "^1.34 || ^2.0"
+    "twig/twig": "^1.34 || ^2.0",
+    "openclassrooms/cache": "1.0.x@dev",
+    "openclassrooms/use-case": "1.0.x@dev"
   },
   "require-dev": {
     "friendsofphp/php-cs-fixer": "2.*",
