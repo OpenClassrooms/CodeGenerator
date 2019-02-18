@@ -7,6 +7,9 @@ use OpenClassrooms\UseCase\BusinessRules\Requestors\UseCaseRequest;
 /**
  * @author authorStub <author.stub@example.com>
  */
-interface GetFunctionalEntityRequest extends UseCaseRequest
+interface GenericUseCaseRequestBuilder extends UseCaseRequest
 {
+    public function create(): GenericUseCaseRequestBuilder;
+
+    public function build(): GenericUseCaseRequest;
 }

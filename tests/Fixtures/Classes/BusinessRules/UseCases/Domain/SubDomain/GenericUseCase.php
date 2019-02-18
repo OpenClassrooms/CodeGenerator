@@ -8,7 +8,7 @@ use OpenClassrooms\UseCase\BusinessRules\Requestors\UseCaseRequest;
 /**
  * @author authorStub <author.stub@example.com>
  */
-class GetFunctionalEntity implements UseCase
+class GenericUseCase implements UseCase
 {
     public function execute(UseCaseRequest $useCaseRequest)
     {

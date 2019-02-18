@@ -2,8 +2,8 @@
 
 namespace {{ skeletonModel.namespace }};
 
-use {{ skeletonModel.getUseCaseRequestBuilderImplClassName }};
-use {{ skeletonModel.getUseCaseRequesDTOClassName }};
+use {{ skeletonModel.genericUseCaseRequestBuilderImplClassName }};
+use {{ skeletonModel.genericUseCaseRequesDTOClassName }};
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -12,14 +12,14 @@ use PHPUnit\Framework\TestCase;
 class {{ skeletonModel.shortName }} extends TestCase
 {
     /**
-     * @var {{ skeletonModel.getUseCaseRequesDTOshortName }}
+     * @var {{ skeletonModel.genericUseCaseRequesDTOshortName }}
      */
     private $request;
 
     /**
      * @test
      */
-    public function {{ skeletonModel.getUseCaseShortName }}_ReturnResponse()
+    public function {{ skeletonModel.genericUseCaseShortName }}_ReturnResponse()
     {
         $this->fail("TODO: Implement this test");
     }
@@ -29,7 +29,7 @@ class {{ skeletonModel.shortName }} extends TestCase
      */
     protected function setUp()
     {
-        $builder = new {{ skeletonModel.getUseCaseRequestBuilderImplShortName }}();
+        $builder = new {{ skeletonModel.genericUseCaseRequestBuilderImplShortName }}();
         $this->request = $builder
             ->create()
             ->build();

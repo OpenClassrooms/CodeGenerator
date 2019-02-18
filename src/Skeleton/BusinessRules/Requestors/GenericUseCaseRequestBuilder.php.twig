@@ -9,7 +9,7 @@ use {{ skeletonModel.useCaseRequestClassName }};
  */
 interface { skeletonModel.shortName }} extends {{ skeletonModel.useCaseRequestShortName }}
 {
-    public function create(): {{ skeletonModel.getUseCaseRequestBuilderShortName }};
+    public function create(): {{ skeletonModel.genericUseCaseBuilderShortName }};
 
-    public function build(): {{ skeletonModel.getUseCaseRequestShortName }};
+    public function build(): {{ skeletonModel.genericUseCaseRequestShortName }};
 }
