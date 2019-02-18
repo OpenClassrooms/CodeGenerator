@@ -1,0 +1,37 @@
+{% include "Header.php.twig" %}
+
+namespace {{ skeletonModel.namespace }};
+
+use {{ skeletonModel.getUseCaseRequestBuilderImplClassName }};
+use {{ skeletonModel.getUseCaseRequesDTOClassName }};
+use PHPUnit\Framework\TestCase;
+
+/**
+ * @author {{ author }} <{{ authorEmail }}>
+ */
+class {{ skeletonModel.shortName }} extends TestCase
+{
+    /**
+     * @var {{ skeletonModel.getUseCaseRequesDTOshortName }}
+     */
+    private $request;
+
+    /**
+     * @test
+     */
+    public function {{ skeletonModel.getUseCaseShortName }}_ReturnResponse()
+    {
+        $this->fail("TODO: Implement this test");
+    }
+
+    /**
+     * @inheritdoc
+     */
+    protected function setUp()
+    {
+        $builder = new {{ skeletonModel.getUseCaseRequestBuilderImplShortName }}();
+        $this->request = $builder
+            ->create()
+            ->build();
+    }
+}

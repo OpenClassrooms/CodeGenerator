@@ -1,0 +1,29 @@
+{% include "Header.php.twig" %}
+
+namespace {{ skeletonModel.namespace }};
+
+use {{ skeletonModel.getUseCaseRequestClassName }};
+use {{ skeletonModel.getUseCaseRequestBuilderClassName }};
+
+/**
+ * @author {{ author }} <{{ authorEmail }}>
+ */
+class {{ skeletonModel.shortName }} implements {{ skeletonModel.getUseCaseRequestBuilderShortName }}
+{
+    /**
+     * @var {{ skeletonModel.getUseCaseRequestDTOShortName }}
+     */
+    private $request;
+
+    public function create(): {{ skeletonModel.getUseCaseRequestBuilderShortName }}
+    {
+        $this->request = new {{ skeletonModel.getUseCaseRequestDTOShortName }}();
+
+        return $this;
+    }
+
+    public function build(): {{ skeletonModel.getUseCaseRequestShortName }}
+    {
+        return $this->request;
+    }
+}

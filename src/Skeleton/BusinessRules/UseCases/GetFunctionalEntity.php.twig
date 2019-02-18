@@ -1,0 +1,17 @@
+{% include "Header.php.twig" %}
+
+namespace {{ skeletonModel.namespace }};
+
+use {{ skeletonModel.useCaseClassName }};
+use {{ skeletonModel.useCaseRequestClassName }};
+
+/**
+ * @author {{ author }} <{{ authorEmail }}>
+ */
+class {{ skeletonModel.shortName }} implements UseCase
+{
+    public function execute(UseCaseRequest $useCaseRequest)
+    {
+        // TODO: Implement execute() method.
+    }
+}
