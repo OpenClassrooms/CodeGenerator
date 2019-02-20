@@ -24,12 +24,12 @@ class UseCaseFileObjectFactoryImpl extends AbstractFileObjectFactory implements 
                 break;
             case UseCaseFileObjectType::BUSINESS_RULES_USE_CASE_REQUEST:
                 $fileObject->setClassName(
-                    $this->baseNamespace . 'BusinessRules\Responders\\' . $domain . '\\' . $entity . 'Request'
+                    $this->baseNamespace . 'BusinessRules\Requestors\\' . $domain . '\\' . $entity . 'Request'
                 );
                 break;
             case UseCaseFileObjectType::BUSINESS_RULES_USE_CASE_REQUEST_BUILDER:
                 $fileObject->setClassName(
-                    $this->baseNamespace . 'BusinessRules\Responders\\' . $domain . '\\' . $entity . 'RequestBuilder'
+                    $this->baseNamespace . 'BusinessRules\Requestors\\' . $domain . '\\' . $entity . 'RequestBuilder'
                 );
                 break;
             case UseCaseFileObjectType::BUSINESS_RULES_USE_CASE_REQUEST_BUILDER_IMPL:
