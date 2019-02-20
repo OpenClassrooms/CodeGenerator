@@ -4,7 +4,7 @@ namespace OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Api\ViewModels\
 
 use OpenClassrooms\CodeGenerator\FileObjects\ConstObject;
 use OpenClassrooms\CodeGenerator\FileObjects\FieldObject;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\BusinessRules\Entities\EntityStub\EntityStubFieldObjectStub5;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Tests\BusinessRules\Entities\EntityStub\EntityStubFieldObjectStub5;
 
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>

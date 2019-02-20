@@ -10,7 +10,7 @@ use {{ skeletonModel.useCaseRequestClassName }};
  */
 class {{ skeletonModel.shortName }} implements UseCase
 {
-    public function execute(UseCaseRequest $useCaseRequest)
+    public function execute({{ skeletonModel.useCaseRequestShortName }} ${{ skeletonModel.useCaseRequestArgument }})
     {
         // TODO: Implement execute() method.
     }

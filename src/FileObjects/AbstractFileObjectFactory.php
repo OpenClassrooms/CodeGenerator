@@ -5,7 +5,7 @@ namespace OpenClassrooms\CodeGenerator\FileObjects;
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
  */
-abstract class AbstractFileObjectFactory implements FileObjectFactory
+abstract class AbstractFileObjectFactory
 {
     /**
      * @var string

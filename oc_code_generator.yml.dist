@@ -4,5 +4,8 @@ parameters:
     tests_base_namespace: OC\
     api_dir: ApiBundle\
     app_dir: AppBundle\
+    use_case_namespace:
+    use_case_request_namespace:
+    use_case_response_namespace:
     author:
     author_mail:

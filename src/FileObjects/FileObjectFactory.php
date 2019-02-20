@@ -1,15 +1,11 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace OpenClassrooms\CodeGenerator\FileObjects;
 
 /**
- * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
+ * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
  */
 interface FileObjectFactory
 {
-    public function setBaseNamespace(string $baseNamespace);
-
-    public function setTestsBaseNamespace(string $testsBaseNamespace);
-
-    public function setStubNamespace(string $stubNamespace);
+    public function create(string $type, string $domain, string $entity): FileObject;
 }

@@ -2,6 +2,7 @@
 
 namespace Tests\FileObjects;
 
+use OpenClassrooms\CodeGenerator\FileObjects\AbstractFileObjectFactory;
 use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
 use OpenClassrooms\CodeGenerator\FileObjects\Impl\UseCaseResponseFileObjectFactoryImpl;
 use OpenClassrooms\CodeGenerator\FileObjects\UseCaseResponseFileObjectFactory;
@@ -25,7 +26,7 @@ class UseCaseResponseFileObjectFactoryImplTest extends TestCase
     const TEST_BASE_NAMESPACE = 'Test\Base\Namespace\\';
 
     /**
-     * @var UseCaseResponseFileObjectFactory
+     * @var AbstractFileObjectFactory
      */
     private $factory;
 
