@@ -3,9 +3,8 @@
 namespace OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases;
 
 use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
-use OpenClassrooms\CodeGenerator\FileObjects\UseCaseFileObjectFactory;
 use OpenClassrooms\CodeGenerator\FileObjects\UseCaseFileObjectType;
-use OpenClassrooms\CodeGenerator\Generator\AbstractGenerator;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\AbstractGenericUseCaseGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\GenericUseCaseGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\GenericUseCaseSkeletonModel;
@@ -15,17 +14,12 @@ use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
  */
-class GenericUseCaseGenerator extends AbstractGenerator
+class GenericUseCaseGenerator extends AbstractGenericUseCaseGenerator
 {
     /**
      * @var GenericUseCaseSkeletonModelAssembler
      */
     private $genericUseCaseSkeletonModelAssembler;
-
-    /**
-     * @var UseCaseFileObjectFactory
-     */
-    private $useCaseFileObjectFactory;
 
     /**
      * @param GenericUseCaseGeneratorRequest $generatorRequest
@@ -78,10 +72,5 @@ class GenericUseCaseGenerator extends AbstractGenerator
     ): void
     {
         $this->genericUseCaseSkeletonModelAssembler = $genericUseCaseSkeletonModelAssembler;
-    }
-
-    public function setUseCaseFileObjectFactory(UseCaseFileObjectFactory $useCaseFileObjectFactory): void
-    {
-        $this->useCaseFileObjectFactory = $useCaseFileObjectFactory;
     }
 }

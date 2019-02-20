@@ -20,7 +20,7 @@ class GenericUseCaseRequestGenerator extends AbstractGenerator
     /**
      * @var GenericUseCaseRequestSkeletonModelAssembler
      */
-    private $genericUseCaseSkeletonModelAssembler;
+    private $genericUseCaseRequestSkeletonModelAssembler;
 
     /**
      * @var UseCaseFileObjectFactory
@@ -70,14 +70,14 @@ class GenericUseCaseRequestGenerator extends AbstractGenerator
 
     private function createSkeletonModel(FileObject $genericUseCaseFileObject): GenericUseCaseRequestSkeletonModel
     {
-        return $this->genericUseCaseSkeletonModelAssembler->create($genericUseCaseFileObject);
+        return $this->genericUseCaseRequestSkeletonModelAssembler->create($genericUseCaseFileObject);
     }
 
     public function setGenericUseCaseRequestSkeletonModelAssembler(
-        GenericUseCaseRequestSkeletonModelAssembler $genericUseCaseSkeletonModelAssembler
+        GenericUseCaseRequestSkeletonModelAssembler $genericUseCaseRequestSkeletonModelAssembler
     ): void
     {
-        $this->genericUseCaseSkeletonModelAssembler = $genericUseCaseSkeletonModelAssembler;
+        $this->genericUseCaseRequestSkeletonModelAssembler = $genericUseCaseRequestSkeletonModelAssembler;
     }
 
     public function setUseCaseFileObjectFactory(UseCaseFileObjectFactory $useCaseFileObjectFactory): void

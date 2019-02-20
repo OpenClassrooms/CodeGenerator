@@ -5,6 +5,7 @@ namespace OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Requestors\I
 use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Requestors\GenericUseCaseRequestSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Requestors\GenericUseCaseRequestSkeletonModelAssembler;
+use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCaseClassNameTrait;
 use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 
 /**
@@ -12,15 +13,7 @@ use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
  */
 class GenericUseCaseRequestSkeletonModelAssemblerImpl implements GenericUseCaseRequestSkeletonModelAssembler
 {
-    /**
-     * @var string
-     */
-    private $useCaseClassName;
-
-    /**
-     * @var string
-     */
-    private $useCaseRequestClassName;
+    use UseCaseClassNameTrait;
 
     public function create(FileObject $genericUseCaseFileObject): GenericUseCaseRequestSkeletonModel
     {
@@ -31,15 +24,5 @@ class GenericUseCaseRequestSkeletonModelAssemblerImpl implements GenericUseCaseR
         $skeletonModel->useCaseRequestShortName = FileObjectUtility::getShortClassName($this->useCaseRequestClassName);
 
         return $skeletonModel;
-    }
-
-    public function setUseCaseClassName(string $useCaseClassName): void
-    {
-        $this->useCaseClassName = $useCaseClassName;
-    }
-
-    public function setUseCaseRequestClassName(string $useCaseRequestClassName): void
-    {
-        $this->useCaseRequestClassName = $useCaseRequestClassName;
     }
 }

@@ -3,6 +3,7 @@
 namespace OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\Impl;
 
 use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
+use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCaseClassNameTrait;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\GenericUseCaseSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\GenericUseCaseSkeletonModelAssembler;
 use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
@@ -12,15 +13,7 @@ use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
  */
 class GenericUseCaseSkeletonModelAssemblerImpl implements GenericUseCaseSkeletonModelAssembler
 {
-    /**
-     * @var string
-     */
-    private $useCaseClassName;
-
-    /**
-     * @var string
-     */
-    private $useCaseRequestClassName;
+    use UseCaseClassNameTrait;
 
     public function create(FileObject $genericUseCaseFileObject): GenericUseCaseSkeletonModel
     {
@@ -28,20 +21,12 @@ class GenericUseCaseSkeletonModelAssemblerImpl implements GenericUseCaseSkeleton
         $skeletonModel->namespace = $genericUseCaseFileObject->getNamespace();
         $skeletonModel->shortName = $genericUseCaseFileObject->getShortName();
         $skeletonModel->useCaseClassName = $this->useCaseClassName;
-        $skeletonModel->useCaseRequestArgument = lcfirst(FileObjectUtility::getShortClassName($this->useCaseRequestClassName));
+        $skeletonModel->useCaseRequestArgument = lcfirst(
+            FileObjectUtility::getShortClassName($this->useCaseRequestClassName)
+        );
         $skeletonModel->useCaseRequestClassName = $this->useCaseRequestClassName;
         $skeletonModel->useCaseRequestShortName = FileObjectUtility::getShortClassName($this->useCaseRequestClassName);
 
         return $skeletonModel;
-    }
-
-    public function setUseCaseClassName(string $useCaseClassName): void
-    {
-        $this->useCaseClassName = $useCaseClassName;
-    }
-
-    public function setUseCaseRequestClassName(string $useCaseRequestClassName): void
-    {
-        $this->useCaseRequestClassName = $useCaseRequestClassName;
     }
 }
