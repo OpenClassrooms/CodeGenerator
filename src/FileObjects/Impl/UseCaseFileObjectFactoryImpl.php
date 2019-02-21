@@ -39,7 +39,7 @@ class UseCaseFileObjectFactoryImpl extends AbstractFileObjectFactory implements 
                 break;
             case UseCaseFileObjectType::BUSINESS_RULES_USE_CASE_REQUEST_DTO:
                 $fileObject->setClassName(
-                    $this->baseNamespace . 'BusinessRules\UseCases\\' . $domain . '\DTO\Request\\' . $entity . 'RequestBuilderDTO'
+                    $this->baseNamespace . 'BusinessRules\UseCases\\' . $domain . '\DTO\Request\\' . $entity . 'RequestDTO'
                 );
                 break;
             case UseCaseFileObjectType::BUSINESS_RULES_USE_CASE_TEST:
