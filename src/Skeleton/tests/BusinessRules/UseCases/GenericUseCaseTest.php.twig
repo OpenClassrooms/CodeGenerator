@@ -3,7 +3,7 @@
 namespace {{ skeletonModel.namespace }};
 
 use {{ skeletonModel.genericUseCaseRequestBuilderImplClassName }};
-use {{ skeletonModel.genericUseCaseRequesDTOClassName }};
+use {{ skeletonModel.genericUseCaseRequestDTOClassName }};
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -12,7 +12,7 @@ use PHPUnit\Framework\TestCase;
 class {{ skeletonModel.shortName }} extends TestCase
 {
     /**
-     * @var {{ skeletonModel.genericUseCaseRequesDTOshortName }}
+     * @var {{ skeletonModel.genericUseCaseRequestDTOShortName }}
      */
     private $request;
 

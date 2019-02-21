@@ -11,7 +11,6 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\BusinessRules\UseCase
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\FileObjectTestCase;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingServiceMock;
-use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityResponse;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\GenericUseCase;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\FixturesConfig;
 use PHPUnit\Framework\TestCase;
@@ -63,7 +62,9 @@ class GenericUseCaseGeneratorTest extends TestCase
 
         $genericUseCaseSkeletonModelAssemblerImpl = new GenericUseCaseSkeletonModelAssemblerImpl();
         $genericUseCaseSkeletonModelAssemblerImpl->setUseCaseClassName(FixturesConfig::USE_CASE_NAMESPACE);
-        $genericUseCaseSkeletonModelAssemblerImpl->setUseCaseRequestClassName(FixturesConfig::USE_CASE_REQUEST_NAMESPACE);
+        $genericUseCaseSkeletonModelAssemblerImpl->setUseCaseRequestClassName(
+            FixturesConfig::USE_CASE_REQUEST_NAMESPACE
+        );
         $this->genericUseCaseGenerator->setGenericUseCaseSkeletonModelAssembler(
             $genericUseCaseSkeletonModelAssemblerImpl
         );

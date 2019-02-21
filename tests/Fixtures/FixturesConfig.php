@@ -15,7 +15,7 @@ final class FixturesConfig
 
     const STUB_NAMESPACE = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\tests\Doubles\\';
 
-    const TEST_BASE_NAMESPACE = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\tests\\';
+    const TEST_BASE_NAMESPACE = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\\';
 
     const USE_CASE_NAMESPACE = 'OpenClassrooms\UseCase\BusinessRules\Requestors\UseCase';
 

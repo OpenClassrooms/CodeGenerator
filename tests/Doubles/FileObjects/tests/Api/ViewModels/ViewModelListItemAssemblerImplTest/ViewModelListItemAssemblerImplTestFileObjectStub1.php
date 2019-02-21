@@ -9,7 +9,7 @@ use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
  */
 class ViewModelListItemAssemblerImplTestFileObjectStub1 extends FileObject
 {
-    const CLASS_NAME = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\tests\Api\ViewModels\Domain\SubDomain\Impl\FunctionalEntityListItemAssemblerImplTest';
+    const CLASS_NAME = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Api\ViewModels\Domain\SubDomain\Impl\FunctionalEntityListItemAssemblerImplTest';
 
     public function __construct()
     {
