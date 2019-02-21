@@ -20,6 +20,4 @@ final class FixturesConfig
     const USE_CASE_NAMESPACE = 'OpenClassrooms\UseCase\BusinessRules\Requestors\UseCase';
 
     const USE_CASE_REQUEST_NAMESPACE = 'OpenClassrooms\UseCase\BusinessRules\Requestors\UseCaseRequest';
-
-    const USE_CASE_RESPONSE_NAMESPACE = '';
 }

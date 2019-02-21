@@ -13,14 +13,17 @@ use OpenClassrooms\CodeGenerator\Mediators\Options;
  */
 class ViewModelMediatorImpl implements ViewModelMediator
 {
-    use GeneratorsTrait;
+    use ViewModelGeneratorsTrait;
 
     /**
      * @var FileObjectGateway
      */
     private $fileObjectGateway;
 
-    public function mediate(array $args = [], array $options = [])
+    /**
+     * @return FileObject[]
+     */
+    public function mediate(array $args = [], array $options = []): array
     {
         $className = $args[Args::CLASS_NAME];
 

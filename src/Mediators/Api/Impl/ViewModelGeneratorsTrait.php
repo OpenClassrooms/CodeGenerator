@@ -50,7 +50,7 @@ use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\ViewMode
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
  */
-trait GeneratorsTrait
+trait ViewModelGeneratorsTrait
 {
     /** @var EntityImplGenerator */
     private $entityImplGenerator;
