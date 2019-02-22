@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\tests\Api\ViewModels\ViewModelListItemAssemblerImplTest;
+namespace OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Tests\Api\ViewModels\ViewModelListItemAssemblerImplTest;
 
 use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
 

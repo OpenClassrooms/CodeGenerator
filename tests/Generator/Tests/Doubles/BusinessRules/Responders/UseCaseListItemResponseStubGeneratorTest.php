@@ -9,7 +9,7 @@ use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Responders\DTO\Re
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Responders\Request\UseCaseListItemResponseStubGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Responders\UseCaseListItemResponseStubGenerator;
 use OpenClassrooms\CodeGenerator\Services\Impl\FieldObjectServiceImpl;
-use OpenClassrooms\CodeGenerator\SkeletonModels\tests\BusinessRules\Responders\Impl\UseCaseListItemResponseStubSkeletonModelAssemblerImpl;
+use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\Responders\Impl\UseCaseListItemResponseStubSkeletonModelAssemblerImpl;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\FileObjectTestCase;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Tests\BusinessRules\Responders\UseCaseListItemResponseStub\UseCaseListItemResponseStubFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;

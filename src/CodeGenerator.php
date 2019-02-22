@@ -31,4 +31,5 @@ require CODE_GENERATOR_COMPOSER_INSTALL;
 
 $application = new \Symfony\Component\Console\Application();
 $application->add(new \OpenClassrooms\CodeGenerator\Commands\ViewModelCommand());
+$application->add(new \OpenClassrooms\CodeGenerator\Commands\GenericUseCaseCommand());
 $application->run();
