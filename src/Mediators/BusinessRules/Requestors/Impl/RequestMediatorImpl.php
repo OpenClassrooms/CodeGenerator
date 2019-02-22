@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace OpenClassrooms\CodeGenerator\Mediators\BusinessRules\Impl;
+namespace OpenClassrooms\CodeGenerator\Mediators\BusinessRules\Requestors\Impl;
 
 use OpenClassrooms\CodeGenerator\Gateways\FileObject\FileObjectGateway;
 use OpenClassrooms\CodeGenerator\Mediators\Args;
-use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\RequestMediator;
+use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\Requestors\RequestMediator;
 use OpenClassrooms\CodeGenerator\Mediators\Options;
 
 /**
@@ -24,7 +24,7 @@ class RequestMediatorImpl implements RequestMediator
         $className = $args[Args::CLASS_NAME];
 
         $fileObjects = [];
-        if (false !== $options[Options::NO_TEST]) {
+        if (false !== $options[Options::NO_TEST] || !$options[Options::DUMP] && !$options[Options::NO_TEST]) {
             $fileObjects[] = $this->generateGenericUseCaseRequest($className);
             $fileObjects[] = $this->generateGenericUseCaseRequestBuilder($className);
         }

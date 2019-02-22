@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace OpenClassrooms\CodeGenerator\Mediators\BusinessRules\Impl;
+namespace OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\Impl;
 
-use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\GenericUseCaseMediator;
-use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\RequestMediator;
-use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCaseMediator;
+use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\GenericUseCaseMediator;
+use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\Requestors\RequestMediator;
+use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\UseCaseMediator;
 
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>

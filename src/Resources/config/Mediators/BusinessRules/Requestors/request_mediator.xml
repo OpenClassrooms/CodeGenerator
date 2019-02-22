@@ -5,7 +5,7 @@
         <service id="open_classrooms.code_generator.generator.business_rules.requestors.dto.request.generic_use_case_request_builder_generator_request_builder_impl" class="OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\DTO\Request\GenericUseCaseRequestBuilderGeneratorRequestBuilderImpl"/>
         <service id="open_classrooms.code_generator.generator.business_rules.requestors.dto.request.generic_use_case_request_generator_request_builder_impl" class="OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\DTO\Request\GenericUseCaseRequestGeneratorRequestBuilderImpl"/>
 
-        <service id="open_classrooms.code_generator.mediators.business_rules.impl.request_mediator_impl" class="OpenClassrooms\CodeGenerator\Mediators\BusinessRules\Impl\RequestMediatorImpl">
+        <service id="open_classrooms.code_generator.mediators.business_rules.requestors.impl.request_mediator_impl" class="OpenClassrooms\CodeGenerator\Mediators\BusinessRules\Requestors\Impl\RequestMediatorImpl">
             <call method="setGenericUseCaseRequestBuilderGenerator">
                 <argument type="service" id="open_classrooms.code_generator.generator.business_rules.requestors.generic_use_case_request_builder_generator"/>
             </call>

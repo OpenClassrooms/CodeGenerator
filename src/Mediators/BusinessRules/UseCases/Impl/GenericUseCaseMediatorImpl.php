@@ -1,11 +1,11 @@
 <?php declare(strict_types=1);
 
-namespace OpenClassrooms\CodeGenerator\Mediators\BusinessRules\Impl;
+namespace OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\Impl;
 
 use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
 use OpenClassrooms\CodeGenerator\Gateways\FileObject\FileObjectGateway;
 use OpenClassrooms\CodeGenerator\Mediators\Args;
-use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\GenericUseCaseMediator;
+use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\GenericUseCaseMediator;
 use OpenClassrooms\CodeGenerator\Mediators\Options;
 
 /**

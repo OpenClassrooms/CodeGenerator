@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace OpenClassrooms\CodeGenerator\SkeletonModels\tests\BusinessRules\Responders;
+namespace OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\Responders;
 
 use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
 

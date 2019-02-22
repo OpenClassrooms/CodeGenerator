@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace OpenClassrooms\CodeGenerator\SkeletonModels\tests\BusinessRules\Entities;
+namespace OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\Entities;
 
 use OpenClassrooms\CodeGenerator\FileObjects\ConstObject;
 use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;

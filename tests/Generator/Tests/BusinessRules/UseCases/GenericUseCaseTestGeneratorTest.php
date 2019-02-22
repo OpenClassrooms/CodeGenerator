@@ -62,10 +62,6 @@ class GenericUseCaseTestGeneratorTest extends TestCase
         $this->genericUseCaseTestGenerator->setUseCaseFileObjectFactory($useCaseFileObjectFactory);
 
         $genericUseCaseTestSkeletonModelAssemblerImpl = new GenericUseCaseTestSkeletonModelAssemblerImpl();
-        $genericUseCaseTestSkeletonModelAssemblerImpl->setUseCaseClassName(FixturesConfig::USE_CASE_NAMESPACE);
-        $genericUseCaseTestSkeletonModelAssemblerImpl->setUseCaseRequestClassName(
-            FixturesConfig::USE_CASE_REQUEST_NAMESPACE
-        );
         $this->genericUseCaseTestGenerator->setGenericUseCaseTestSkeletonModelAssembler(
             $genericUseCaseTestSkeletonModelAssemblerImpl
         );

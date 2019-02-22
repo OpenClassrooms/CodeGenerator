@@ -46,6 +46,7 @@ use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\ViewMode
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\ViewModelListItemTestCaseGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\ViewModelTestCaseGenerator;
 use OpenClassrooms\CodeGenerator\Mediators\Api\Impl\ViewModelMediatorImpl;
+use OpenClassrooms\CodeGenerator\Mediators\Api\ViewModelMediator;
 use OpenClassrooms\CodeGenerator\Mediators\Args;
 use OpenClassrooms\CodeGenerator\Mediators\Options;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Api\ViewModels\ViewModel\ViewModelFileObjectStub1;
@@ -71,6 +72,7 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Tests\BusinessRules\R
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Tests\BusinessRules\Responders\UseCaseListItemResponseStub\UseCaseListItemResponseStubFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Generator\GeneratorMock;
+use OpenClassrooms\CodeGenerator\Tests\Mediators\FlushedFileObjectTestCase;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -78,8 +80,10 @@ use PHPUnit\Framework\TestCase;
  */
 class ViewModelMediatorImplTest extends TestCase
 {
+    use FlushedFileObjectTestCase;
+
     /**
-     * @var ViewModelMediatorImpl
+     * @var ViewModelMediator
      */
     private $mediator;
 
@@ -99,12 +103,7 @@ class ViewModelMediatorImplTest extends TestCase
             $this->options
         );
 
-        $this->assertNotEmpty(InMemoryFileObjectGateway::$flushedFileObjects);
-        $this->assertCount(count(InMemoryFileObjectGateway::$flushedFileObjects), $fileObjects);
-        foreach ($fileObjects as $fileObject) {
-            /** @var FileObject $fileObject */
-            $this->assertArrayHasKey($fileObject->getClassName(), InMemoryFileObjectGateway::$flushedFileObjects);
-        }
+        $this->assertFlushedFileObject($fileObjects);
     }
 
     /**
@@ -118,13 +117,7 @@ class ViewModelMediatorImplTest extends TestCase
             $this->options
         );
 
-        $this->assertNotEmpty(InMemoryFileObjectGateway::$flushedFileObjects);
-        $this->assertCount(count(InMemoryFileObjectGateway::$flushedFileObjects), $fileObjects);
-        foreach ($fileObjects as $fileObject) {
-            /** @var FileObject $fileObject */
-            $this->assertArrayHasKey($fileObject->getClassName(), InMemoryFileObjectGateway::$flushedFileObjects);
-        }
-
+        $this->assertFlushedFileObject($fileObjects);
     }
 
     /**
@@ -157,21 +150,14 @@ class ViewModelMediatorImplTest extends TestCase
 
         );
 
-        $this->assertNotEmpty(InMemoryFileObjectGateway::$flushedFileObjects);
-        $this->assertCount(count(InMemoryFileObjectGateway::$flushedFileObjects), $fileObjects);
-        foreach ($fileObjects as $fileObject) {
-            /** @var FileObject $fileObject */
-            $this->assertArrayHasKey($fileObject->getClassName(), InMemoryFileObjectGateway::$flushedFileObjects);
-        }
-
+        $this->assertFlushedFileObject($fileObjects);
     }
 
     protected function setUp()
     {
         InMemoryFileObjectGateway::$fileObjects = [];
         $this->mediator = new ViewModelMediatorImpl();
-        $inMemoryFileObjectGateway = new InMemoryFileObjectGateway();
-        $this->mediator->setFileObjectGateway($inMemoryFileObjectGateway);
+        $this->mediator->setFileObjectGateway(new InMemoryFileObjectGateway());
 
         $this->options = [
             Options::DUMP       => false,

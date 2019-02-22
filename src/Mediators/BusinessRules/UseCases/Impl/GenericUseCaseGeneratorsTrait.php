@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace OpenClassrooms\CodeGenerator\Mediators\BusinessRules\Impl;
+namespace OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\Impl;
 
 use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\GenericUseCaseGenerator;
@@ -9,6 +9,7 @@ use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\GenericUseCase
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\GenericUseCaseGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\GenericUseCaseRequestBuilderImplGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\GenericUseCaseRequestDTOGeneratorRequestBuilder;
+use OpenClassrooms\CodeGenerator\Generator\Generator;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\GenericUseCaseTestGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\Request\GenericUseCaseTestGeneratorRequestBuilder;
 
@@ -41,7 +42,7 @@ trait GenericUseCaseGeneratorsTrait
     /** @var GenericUseCaseTestGeneratorRequestBuilder */
     private $genericUseCaseTestGeneratorRequestBuilder;
 
-    public function setGenericUseCaseGenerator(GenericUseCaseGenerator $genericUseCaseGenerator): void
+    public function setGenericUseCaseGenerator(Generator $genericUseCaseGenerator): void
     {
         $this->genericUseCaseGenerator = $genericUseCaseGenerator;
     }
@@ -54,7 +55,7 @@ trait GenericUseCaseGeneratorsTrait
     }
 
     public function setGenericUseCaseRequestBuilderImplGenerator(
-        GenericUseCaseRequestBuilderImplGenerator $genericUseCaseRequestBuilderImplGenerator
+        Generator $genericUseCaseRequestBuilderImplGenerator
     ): void
     {
         $this->genericUseCaseRequestBuilderImplGenerator = $genericUseCaseRequestBuilderImplGenerator;
@@ -68,13 +69,13 @@ trait GenericUseCaseGeneratorsTrait
     }
 
     public function setGenericUseCaseRequestDTOGenerator(
-        GenericUseCaseRequestDTOGenerator $genericUseCaseRequestDTOGenerator
+        Generator $genericUseCaseRequestDTOGenerator
     ): void
     {
         $this->genericUseCaseRequestDTOGenerator = $genericUseCaseRequestDTOGenerator;
     }
 
-    public function setGenericUseCaseTestGenerator(GenericUseCaseTestGenerator $genericUseCaseTestGenerator): void
+    public function setGenericUseCaseTestGenerator(Generator $genericUseCaseTestGenerator): void
     {
         $this->genericUseCaseTestGenerator = $genericUseCaseTestGenerator;
     }
