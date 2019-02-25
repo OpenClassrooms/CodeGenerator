@@ -19,21 +19,8 @@ use Symfony\Component\Yaml\Yaml;
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
  */
-class ViewModelCommand extends Command
+class ViewModelCommand extends AbstractCommand
 {
-    use CommandDisplayTrait;
-
-    const CONFIG_DIR = __DIR__ . '/../Resources/config';
-
-    const CONFIG_FILE = 'oc_code_generator.yml';
-
-    const ROOT_DIR = __DIR__ . '/../../../../..';
-
-    /**
-     * @var ContainerBuilder
-     */
-    protected $container;
-
     /**
      * @var string
      */
@@ -44,15 +31,9 @@ class ViewModelCommand extends Command
         parent::__construct($name);
         $this->container = new ContainerBuilder();
         $loader = new XmlFileLoader($this->container, new FileLocator(self::CONFIG_DIR));
-        $loader->load('services.xml');
+        $loader->load('view_model_services.xml');
         $this->loadConfigParameters();
         $this->container->compile();
-    }
-
-    protected function loadConfigParameters()
-    {
-        $loader = new YamlFileLoader($this->container, new FileLocator(static::ROOT_DIR));
-        $loader->load(static::CONFIG_FILE);
     }
 
     protected function configure()
@@ -65,29 +46,8 @@ class ViewModelCommand extends Command
                 Args::CLASS_NAME,
                 InputArgument::REQUIRED,
                 'Use Case Response Classname'
-            )
-            ->addOption(
-                Options::NO_TEST,
-                null,
-                InputOption::VALUE_OPTIONAL,
-                'Without test',
-                false
-            )
-            ->addOption(
-                Options::TESTS_ONLY,
-                null,
-                InputOption::VALUE_OPTIONAL,
-                'Only test',
-                false
-            )
-            ->addOption(
-                Options::DUMP,
-                null,
-                InputOption::VALUE_OPTIONAL,
-                'Dump',
-                false
             );
-
+        $this->configureOptions();
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)

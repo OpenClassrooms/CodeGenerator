@@ -15,7 +15,7 @@ trait CommandDisplayTrait
     /**
      * @param FileObject[]
      */
-    private function displayCreatedFilePath(SymfonyStyle $io, array $fileObjects)
+    protected function displayCreatedFilePath(SymfonyStyle $io, array $fileObjects)
     {
         if (!empty($fileObjects)) {
             $io->success(CommandLabelType::GENERATED_OUTPUT);
@@ -27,7 +27,7 @@ trait CommandDisplayTrait
         }
     }
 
-    private function checkConfiguration($codeGeneratorConfig): void
+    protected function checkConfiguration($codeGeneratorConfig): void
     {
         $emptyParameters = [];
         foreach ($codeGeneratorConfig['parameters'] as $parameter => $value) {
@@ -49,7 +49,7 @@ trait CommandDisplayTrait
     /**
      * @param FileObject[]
      */
-    private function displayFilePathAndContentDump(SymfonyStyle $io, array $fileObjects, InputInterface $input)
+    protected function displayFilePathAndContentDump(SymfonyStyle $io, array $fileObjects, InputInterface $input)
     {
         if (false !== $input->getOption(Options::DUMP)) {
             $io->success(CommandLabelType::DUMP_OUTPUT);
@@ -63,7 +63,7 @@ trait CommandDisplayTrait
     /**
      * @param FileObject[]
      */
-    private function displayNotWrittenFilePathAndContent(SymfonyStyle $io, array $fileObjects, InputInterface $input)
+    protected function displayNotWrittenFilePathAndContent(SymfonyStyle $io, array $fileObjects, InputInterface $input)
     {
         if (!empty($fileObjects) && false === $input->getOption(Options::DUMP)) {
             $io->caution(CommandLabelType::ALREADY_EXIST_OUTPUT);
@@ -81,7 +81,7 @@ trait CommandDisplayTrait
      *
      * @return array
      */
-    private function getFilesWritingStatus(array $fileObjects): array
+    protected function getFilesWritingStatus(array $fileObjects): array
     {
         $writtenFiles = [];
         $notWrittenFiles = [];

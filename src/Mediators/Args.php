@@ -8,4 +8,8 @@ namespace OpenClassrooms\CodeGenerator\Mediators;
 final class Args
 {
     const CLASS_NAME = 'class-name';
+
+    const DOMAIN = 'domain';
+
+    const USE_CASE = 'use-case';
 }

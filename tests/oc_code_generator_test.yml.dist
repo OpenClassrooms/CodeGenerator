@@ -6,3 +6,5 @@ parameters:
     app_dir: App\
     author: authorStub
     author_mail: author.stub@example.com
+    use_case_namespace: OpenClassrooms\UseCase\BusinessRules\Requestors\UseCase\
+    use_case_request_namespace: OpenClassrooms\UseCase\BusinessRules\Requestors\UseCaseRequest\

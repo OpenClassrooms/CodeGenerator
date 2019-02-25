@@ -1,0 +1,21 @@
+<?php declare(strict_types=1);
+
+namespace OpenClassrooms\CodeGenerator\FileObjects;
+
+/**
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
+ */
+final class UseCaseFileObjectType
+{
+    const BUSINESS_RULES_USE_CASE = 'BUSINESS_RULES_USE_CASE';
+
+    const BUSINESS_RULES_USE_CASE_REQUEST = 'BUSINESS_RULES_USE_CASE_REQUEST';
+
+    const BUSINESS_RULES_USE_CASE_REQUEST_BUILDER = 'BUSINESS_RULES_USE_CASE_REQUEST_BUILDER';
+
+    const BUSINESS_RULES_USE_CASE_REQUEST_BUILDER_IMPL = 'BUSINESS_RULES_USE_CASE_REQUEST_BUILDER_IMPL';
+
+    const BUSINESS_RULES_USE_CASE_REQUEST_DTO = 'BUSINESS_RULES_USE_CASE_REQUEST_DTO';
+
+    const BUSINESS_RULES_USE_CASE_TEST = 'BUSINESS_RULES_USE_CASE_TEST';
+}

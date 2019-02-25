@@ -11,23 +11,23 @@ use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\Request\ViewModelDetai
 class ViewModelDetailAssemblerGeneratorRequestBuilderImpl implements ViewModelDetailAssemblerGeneratorRequestBuilder
 {
     /**
- * @var ViewModelDetailAssemblerGeneratorRequestDTO
+     * @var ViewModelDetailAssemblerGeneratorRequestDTO
      */
     private $request;
 
-public function build(): ViewModelDetailAssemblerGeneratorRequest
+    public function build(): ViewModelDetailAssemblerGeneratorRequest
     {
         return $this->request;
     }
 
-public function create(): ViewModelDetailAssemblerGeneratorRequestBuilder
+    public function create(): ViewModelDetailAssemblerGeneratorRequestBuilder
     {
-    $this->request = new ViewModelDetailAssemblerGeneratorRequestDTO();
+        $this->request = new ViewModelDetailAssemblerGeneratorRequestDTO();
 
         return $this;
     }
 
-public function withClassName(string $className): ViewModelDetailAssemblerGeneratorRequestBuilder
+    public function withClassName(string $className): ViewModelDetailAssemblerGeneratorRequestBuilder
     {
         $this->request->className = $className;
 

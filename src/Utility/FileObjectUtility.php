@@ -22,8 +22,8 @@ class FileObjectUtility
 
         for ($i = count($explodedNamespace) - 1; $i > 0 && $i != $limit; $i--) {
             if (array_search(
-                    $explodedNamespace[$i],
-                    ['Entities', 'Request', 'Response', 'DTO', 'UseCases', 'Impl']
+                $explodedNamespace[$i],
+                ['Entities', 'Request', 'Response', 'DTO', 'UseCases', 'Impl']
                 ) === false) {
                 $domain[] = $explodedNamespace[$i];
             }
@@ -42,8 +42,9 @@ class FileObjectUtility
 
     private static function getNamespaceLimit(array $explodedNamespace): int
     {
+        $excludeDir = ['BusinessRules','Entity','ViewModels','Responders','Requestors'];
         foreach (array_reverse($explodedNamespace) as $key => $dir) {
-            if ($dir == 'BusinessRules' || $dir == 'Entity' || $dir == 'ViewModels' || $dir == 'Responders') {
+            if (in_array($dir, $excludeDir)) {
                 return count($explodedNamespace) - 1 - $key;
             }
         }
@@ -54,6 +55,7 @@ class FileObjectUtility
     public static function getEntityNameFromClassName(string $className): string
     {
         $shortClassName = self::getShortClassName($className);
+        $shortClassName = str_replace('Builder', '', $shortClassName);
         $shortClassName = str_replace('DetailAssembler', '', $shortClassName);
         $shortClassName = str_replace('DetailResponseDTO', '', $shortClassName);
         $shortClassName = str_replace('DetailResponse', '', $shortClassName);
