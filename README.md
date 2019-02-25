@@ -7,7 +7,7 @@
 CodeGenerator is a library who generates classes in Clean Architecture context. 
 
 From any use-case response, developers have the possibility to generate: 
-- UseCase architecture (not implemented yet)
+- UseCase architecture
 - ViewModel architecture
 - Unit tests for each classed generated
 
@@ -41,13 +41,15 @@ Add script in `composer.json` to create `oc_code_generator.yml` configuration us
 The script create file `oc_code_generator.yml` at the root of the project. The script will ask you interactively for parameters which are missing in the parameters file, using the value of the dist file as default value.
 ``` yaml
 parameters:
-    base_namespace: OC\ 
-    stub_namespace: Doubles\OC\
-    tests_base_namespace: OC\
-    api_dir: ApiBundle\
-    app_dir: AppBundle\
     author:
     author_mail:
+    api_dir: ApiBundle\
+    app_dir: AppBundle\
+    base_namespace: OC\
+    stub_namespace: Doubles\OC\
+    tests_base_namespace: OC\
+    use_case_namespace: OpenClassrooms\UseCase\BusinessRules\Requestors\UseCase
+    use_case_request_namespace: OpenClassrooms\UseCase\BusinessRules\Requestors\UseCaseRequest
 ```
 
 ## Usage
@@ -59,6 +61,12 @@ php bin/CodeGenerator.php
 To generate view model architecture: 
 ``` 
 php bin/CodeGenerator.php code-generator:view-models useCaseResponseClassName
+```
+To generate generic Use case architecture: 
+``` 
+php bin/CodeGenerator.php code-generator:generic-use-case
+or  
+php bin/CodeGenerator.php code-generator:generic-use-case Domain\\SubDomain UseCaseName
 ```
 ### Extensions
 To generate without tests:
