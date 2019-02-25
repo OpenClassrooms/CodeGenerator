@@ -22,9 +22,13 @@ class GenericUseCaseTestGeneratorRequestBuilderImpl implements GenericUseCaseTes
         return $this;
     }
 
-    public function withClassName(string $className): GenericUseCaseTestGeneratorRequestBuilder
+    public function withDomainAndUseCaseName(
+        string $domain,
+        string $useCaseName
+    ): GenericUseCaseTestGeneratorRequestBuilder
     {
-        $this->request->className = $className;
+        $this->request->domain = $domain;
+        $this->request->useCaseName = $useCaseName;
 
         return $this;
     }

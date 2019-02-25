@@ -1,10 +1,10 @@
 parameters:
+    author:
+    author_mail:
+    api_dir: ApiBundle\
+    app_dir: AppBundle\
     base_namespace: OC\
     stub_namespace: Doubles\OC\
     tests_base_namespace: OC\
-    api_dir: ApiBundle\
-    app_dir: AppBundle\
-    use_case_namespace:
-    use_case_request_namespace:
-    author:
-    author_mail:
+    use_case_namespace: OpenClassrooms\UseCase\BusinessRules\Requestors\UseCase
+    use_case_request_namespace: OpenClassrooms\UseCase\BusinessRules\Requestors\UseCaseRequest

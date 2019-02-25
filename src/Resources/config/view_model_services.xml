@@ -2,7 +2,6 @@
 
 <container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://symfony.com/schema/dic/services" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <imports>
-        <import resource="Mediators/Api/view_model_mediator.xml"/>
         <import resource="FileObject/abstract_file_object_factory.xml"/>
         <import resource="FileObject/factories.xml"/>
         <import resource="Generator/abstract_generator.xml"/>
@@ -29,6 +28,7 @@
         <import resource="Generator/tests/Doubles/Api/ViewModels/view_model_list_item_test_case.xml"/>
         <import resource="Generator/tests/Doubles/Api/ViewModels/view_model_list_item_stub.xml"/>
         <import resource="Generator/tests/Doubles/Api/ViewModels/view_model_test_case.xml"/>
+        <import resource="Mediators/Api/view_model_mediator.xml"/>
         <import resource="Services/templating_service.xml"/>
     </imports>
 </container>

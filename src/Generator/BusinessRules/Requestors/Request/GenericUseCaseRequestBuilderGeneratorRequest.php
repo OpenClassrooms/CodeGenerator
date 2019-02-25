@@ -9,5 +9,7 @@ use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
  */
 interface GenericUseCaseRequestBuilderGeneratorRequest extends GeneratorRequest
 {
-    public function getUseCaseResponseClassName(): string;
+    public function getDomain(): string;
+
+    public function getUseCaseName(): string;
 }

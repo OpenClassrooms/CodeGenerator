@@ -3,17 +3,13 @@
 namespace OpenClassrooms\CodeGenerator\Commands;
 
 use OpenClassrooms\CodeGenerator\Mediators\Args;
-use OpenClassrooms\CodeGenerator\Mediators\Options;
 use Symfony\Component\Config\FileLocator;
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
-use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\Yaml\Yaml;
 
 /**

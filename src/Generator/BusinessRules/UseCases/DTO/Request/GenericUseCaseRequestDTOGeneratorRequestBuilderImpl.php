@@ -22,9 +22,13 @@ class GenericUseCaseRequestDTOGeneratorRequestBuilderImpl implements GenericUseC
         return $this;
     }
 
-    public function withClassName(string $className): GenericUseCaseRequestDTOGeneratorRequestBuilder
+    public function withDomainAndUseCaseName(
+        string $domain,
+        string $useCaseName
+    ): GenericUseCaseRequestDTOGeneratorRequestBuilder
     {
-        $this->request->className = $className;
+        $this->request->domain = $domain;
+        $this->request->useCaseName = $useCaseName;
 
         return $this;
     }

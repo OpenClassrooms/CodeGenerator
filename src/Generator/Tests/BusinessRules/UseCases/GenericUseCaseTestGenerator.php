@@ -9,7 +9,6 @@ use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\Request\GenericUseCaseTestGeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\UseCases\GenericUseCaseTestSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\UseCases\GenericUseCaseTestSkeletonModelAssembler;
-use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
@@ -27,7 +26,8 @@ class GenericUseCaseTestGenerator extends AbstractGenericUseCaseGenerator
     public function generate(GeneratorRequest $generatorRequest): FileObject
     {
         $genericUseCaseTestFileObject = $this->buildGenericUseCaseTestFileObject(
-            $generatorRequest->getUseCaseResponseClassName()
+            $generatorRequest->getDomain(),
+            $generatorRequest->getUseCaseName()
         );
 
         $this->insertFileObject($genericUseCaseTestFileObject);
@@ -35,10 +35,11 @@ class GenericUseCaseTestGenerator extends AbstractGenericUseCaseGenerator
         return $genericUseCaseTestFileObject;
     }
 
-    private function buildGenericUseCaseTestFileObject(string $useCaseResponseClassName): FileObject
+    private function buildGenericUseCaseTestFileObject(string $domain, string $useCaseName): FileObject
     {
         $genericUseCaseFileObject = $this->createGenericUseCaseFileObject(
-            $useCaseResponseClassName
+            $domain,
+            $useCaseName
         );
         $genericUseCaseTestFileObject = $this->createGenericUseCaseTestFileObject($genericUseCaseFileObject);
 
@@ -62,15 +63,14 @@ class GenericUseCaseTestGenerator extends AbstractGenericUseCaseGenerator
     }
 
     private function createGenericUseCaseFileObject(
-        string $useCaseResponseClassName
+        string $domain,
+        string $useCaseName
     ): FileObject
     {
-        [$domain, $entity] = FileObjectUtility::getDomainAndEntityNameFromClassName($useCaseResponseClassName);
-
         return $this->useCaseFileObjectFactory->create(
             UseCaseFileObjectType::BUSINESS_RULES_USE_CASE,
             $domain,
-            $entity
+            $useCaseName
         );
     }
 

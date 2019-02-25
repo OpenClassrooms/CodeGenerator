@@ -12,10 +12,20 @@ class GenericUseCaseRequestBuilderGeneratorRequestDTO implements GenericUseCaseR
     /**
      * @var string
      */
-    public $className;
+    public $domain;
 
-    public function getUseCaseResponseClassName(): string
+    /**
+     * @var string
+     */
+    public $useCaseName;
+
+    public function getDomain(): string
     {
-        return $this->className;
+        return $this->domain;
+    }
+
+    public function getUseCaseName(): string
+    {
+        return $this->useCaseName;
     }
 }

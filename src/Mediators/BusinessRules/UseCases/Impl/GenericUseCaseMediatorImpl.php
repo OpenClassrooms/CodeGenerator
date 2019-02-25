@@ -25,15 +25,16 @@ class GenericUseCaseMediatorImpl implements GenericUseCaseMediator
      */
     public function mediate(array $args = [], array $options = []): array
     {
-        $className = $args[Args::CLASS_NAME];
+        $domain = $args[Args::DOMAIN];
+        $useCase = $args[Args::USE_CASE];
 
         if (false !== $options[Options::NO_TEST]) {
-            $fileObjects = $this->generateSources($className);
+            $fileObjects = $this->generateSources($domain, $useCase);
         } elseif (false !== $options[Options::TESTS_ONLY]) {
-            $fileObjects[] = $this->generateGenericUseCaseTest($className);
+            $fileObjects[] = $this->generateGenericUseCaseTest($domain, $useCase);
         } else {
-            $sourcesFileObjects = $this->generateSources($className);
-            $testsFileObjects[] = $this->generateGenericUseCaseTest($className);
+            $sourcesFileObjects = $this->generateSources($domain, $useCase);
+            $testsFileObjects[] = $this->generateGenericUseCaseTest($domain, $useCase);
             $fileObjects = array_merge($sourcesFileObjects, $testsFileObjects);
         }
         if (false === $options[Options::DUMP]) {
@@ -46,11 +47,11 @@ class GenericUseCaseMediatorImpl implements GenericUseCaseMediator
     /**
      * @return FileObject[]
      */
-    private function generateSources(string $className): array
+    private function generateSources(string $domain, string $useCase): array
     {
-        $fileObjects[] = $this->generateGenericUseCase($className);
-        $fileObjects[] = $this->generateGenericUseCaseRequestDTO($className);
-        $fileObjects[] = $this->generateGenericUseCaseRequestBuilderImpl($className);
+        $fileObjects[] = $this->generateGenericUseCase($domain, $useCase);
+        $fileObjects[] = $this->generateGenericUseCaseRequestDTO($domain, $useCase);
+        $fileObjects[] = $this->generateGenericUseCaseRequestBuilderImpl($domain, $useCase);
 
         return $fileObjects;
     }

@@ -13,5 +13,8 @@ interface GenericUseCaseRequestDTOGeneratorRequestBuilder extends GeneratorReque
 
     public function create(): GenericUseCaseRequestDTOGeneratorRequestBuilder;
 
-    public function withClassName(string $className): GenericUseCaseRequestDTOGeneratorRequestBuilder;
+    public function withDomainAndUseCaseName(
+        string $domain,
+        string $useCaseName
+    ): GenericUseCaseRequestDTOGeneratorRequestBuilder;
 }

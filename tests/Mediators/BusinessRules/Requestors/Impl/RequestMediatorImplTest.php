@@ -25,6 +25,10 @@ class RequestMediatorImplTest extends TestCase
 {
     use FlushedFileObjectTestCase;
 
+    const DOMAIN = 'Domain\SubDomain';
+
+    const GENERIC_USE_CASE = 'GenericUseCase';
+
     /**
      * @var RequestMediator
      */
@@ -42,7 +46,10 @@ class RequestMediatorImplTest extends TestCase
     {
         $this->options[Options::NO_TEST] = null;
         $fileObjects = $this->mediator->mediate(
-            [Args::CLASS_NAME => GenericUseCaseRequestFileObjectStub1::CLASS_NAME],
+            [
+                Args::DOMAIN   => self::DOMAIN,
+                Args::USE_CASE => self::GENERIC_USE_CASE,
+            ],
             $this->options
         );
 
@@ -56,7 +63,10 @@ class RequestMediatorImplTest extends TestCase
     {
         $this->options[Options::DUMP] = null;
         $fileObjects = $this->mediator->mediate(
-            [Args::CLASS_NAME => GenericUseCaseRequestFileObjectStub1::CLASS_NAME],
+            [
+                Args::DOMAIN   => self::DOMAIN,
+                Args::USE_CASE => self::GENERIC_USE_CASE,
+            ],
             $this->options
         );
 
@@ -74,7 +84,10 @@ class RequestMediatorImplTest extends TestCase
     public function generateGenericUseCaseRequest_withoutOptions()
     {
         $fileObjects = $this->mediator->mediate(
-            [Args::CLASS_NAME => GenericUseCaseRequestFileObjectStub1::CLASS_NAME],
+            [
+                Args::DOMAIN   => self::DOMAIN,
+                Args::USE_CASE => self::GENERIC_USE_CASE,
+            ],
             $this->options
 
         );

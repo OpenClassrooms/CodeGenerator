@@ -37,10 +37,10 @@ class GenericUseCaseCommand extends AbstractCommand
     {
         $this
             ->setName(self::$defaultName)
-            ->setDescription('Create view model architecture')
-            ->setHelp('This command allows you to create view model architecture')
-            ->addArgument(Args::DOMAIN, InputArgument::REQUIRED, 'set Domain/SubDomain')
-            ->addArgument(Args::USE_CASE, InputArgument::REQUIRED, 'set UseCase name');
+            ->setDescription('Create generic use case architecture')
+            ->setHelp('This command allows you to create generic use case architecture')
+            ->addArgument(Args::DOMAIN, InputArgument::OPTIONAL, 'set Domain/SubDomain')
+            ->addArgument(Args::USE_CASE, InputArgument::OPTIONAL, 'set UseCase name');
         $this->configureOptions();
     }
 
@@ -50,15 +50,7 @@ class GenericUseCaseCommand extends AbstractCommand
 
         $this->checkConfiguration($codeGeneratorConfig);
 
-        if (empty($args[Args::DOMAIN]) || empty($args[Args::USE_CASE])) {
-            $helper = $this->getHelper('question');
-            $useCaseQuestion = new Question('Please enter the name of the useCase', 'UseCase');
-            $domainQuestion = new Question('Please enter domain folders', 'Domain\Subdomain');
-
-            $args[Args::USE_CASE] = $helper->ask($input, $output, $useCaseQuestion);
-            $args[Args::DOMAIN] = $helper->ask($input, $output, $domainQuestion);
-
-        }
+        $this->checkInputArgument($input, $output);
 
         $fileObjects = $this->container
             ->get('open_classrooms.code_generator.mediators.business_rules.impl.use_case_mediator_impl')
@@ -72,5 +64,17 @@ class GenericUseCaseCommand extends AbstractCommand
         $this->displayNotWrittenFilePathAndContent($io, $notWrittenFiles, $input);
         $this->displayFilePathAndContentDump($io, array_merge($writtenFiles, $notWrittenFiles), $input);
 
+    }
+
+    protected function checkInputArgument(InputInterface $input, OutputInterface $output): void
+    {
+        if (null === $input->getArgument(Args::DOMAIN) || null === $input->getArgument(Args::USE_CASE)) {
+            $helper = $this->getHelper('question');
+            $domainQuestion = new Question('Please enter domain folders (ex: Domain\Subdomain): ', 'Domain\Subdomain');
+            $useCaseQuestion = new Question('Please enter the class short name of the useCase: ', 'UseCase');
+
+            $input->setArgument(Args::DOMAIN, $helper->ask($input, $output, $domainQuestion));
+            $input->setArgument(Args::USE_CASE, $helper->ask($input, $output, $useCaseQuestion));
+        }
     }
 }

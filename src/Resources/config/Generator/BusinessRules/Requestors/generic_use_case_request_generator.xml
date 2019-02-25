@@ -3,7 +3,14 @@
 <container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://symfony.com/schema/dic/services" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
 
-        <service id="open_classrooms.code_generator.skeleton_models.business_rules.requestors.impl.generic_use_case_request_skeleton_model_assembler_impl" class="OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Requestors\Impl\GenericUseCaseRequestSkeletonModelAssemblerImpl"/>
+        <service id="open_classrooms.code_generator.skeleton_models.business_rules.requestors.impl.generic_use_case_request_skeleton_model_assembler_impl" class="OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Requestors\Impl\GenericUseCaseRequestSkeletonModelAssemblerImpl">
+            <call method="setUseCaseClassName">
+                <argument type="string">%use_case_namespace%</argument>
+            </call>
+            <call method="setUseCaseRequestClassName">
+                <argument type="string">%use_case_request_namespace%</argument>
+            </call>
+        </service>
 
         <service id="open_classrooms.code_generator.generator.business_rules.requestors.generic_use_case_request_generator" class="OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\GenericUseCaseRequestGenerator" parent="open_classrooms.code_generator.generator.business_rules.abstract_generic_use_case_generator">
             <call method="setGenericUseCaseRequestSkeletonModelAssembler">

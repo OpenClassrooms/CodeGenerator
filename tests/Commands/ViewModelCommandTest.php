@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace OpenClassrooms\CodeGenerator\tests\Commands;
+namespace OpenClassrooms\CodeGenerator\Tests\Commands;
 
 use OpenClassrooms\CodeGenerator\Commands\CommandLabelType;
 use OpenClassrooms\CodeGenerator\Commands\ViewModelCommand;
@@ -14,7 +14,6 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Api\ViewModels\ViewMo
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\DTO\Response\FunctionalEntityResponseDTO;
 use OpenClassrooms\CodeGenerator\Tests\TestClassUtil;
 use PHPUnit\Framework\MockObject\Builder\InvocationMocker;
-use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -22,27 +21,12 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
  */
-class ViewModelCommandTest extends TestCase
+class ViewModelCommandTest extends AbstractCommandTest
 {
-    /**
-     * @var Application
-     */
-    private $application;
-
-    /**
-     * @var CommandTester
-     */
-    private $commandTester;
-
-    /**
-     * @var InvocationMocker
-     */
-    private $container;
-
     /**
      * @var ViewModelCommandMock
      */
-    private $viewModelCommandMock;
+    protected $commandMock;
 
     /**
      * @var InvocationMocker
@@ -63,35 +47,18 @@ class ViewModelCommandTest extends TestCase
      */
     public function executeCommand_withoutArguments()
     {
-        $this->viewModelMediatorImplMock->method('mediate')->willReturn($this->stubWrittenFileObjectProvider());
+        $writtenFileObjects = $this->writeFileObjects($this->stubNotWrittenFileObjectProvider());
+        $this->viewModelMediatorImplMock->method('mediate')->willReturn($writtenFileObjects);
         $this->container->method('get')->willReturn($this->viewModelMediatorImplMock);
 
         $this->commandTester->execute(
             [
-                'command'    => $this->viewModelCommandMock->getName(),
+                'command'    => $this->commandMock->getName(),
                 'class-name' => FunctionalEntityResponseDTO::class,
             ]
         );
 
-        $output = $this->commandTester->getDisplay();
-
-        foreach ($this->stubWrittenFileObjectProvider() as $fileObject) {
-            $this->assertContains(CommandLabelType::GENERATED_OUTPUT, $output);
-            $this->assertContains($fileObject->getPath(), $output);
-            $this->assertNotContains($fileObject->getContent(), $output);
-        }
-
-    }
-
-    private function stubWrittenFileObjectProvider()
-    {
-        $fileObjects = [];
-        foreach ($this->stubNotWrittenFileObjectProvider() as $fileObject) {
-            $fileObject->write();
-            $fileObjects[] = $fileObject;
-        }
-
-        return $fileObjects;
+        $this->assertCommandFileGeneratedOutput($writtenFileObjects);
     }
 
     private function stubNotWrittenFileObjectProvider()
@@ -110,26 +77,19 @@ class ViewModelCommandTest extends TestCase
      */
     public function executeCommand_withNoTestsArguments()
     {
-        $this->viewModelMediatorImplMock->method('mediate')->willReturn($this->stubWrittenFileObjectProvider());
+        $writtenFileObjects = $this->writeFileObjects($this->stubNotWrittenFileObjectProvider());
+        $this->viewModelMediatorImplMock->method('mediate')->willReturn($writtenFileObjects);
         $this->container->method('get')->willReturn($this->viewModelMediatorImplMock);
 
         $this->commandTester->execute(
             [
-                'command'    => $this->viewModelCommandMock->getName(),
+                'command'    => $this->commandMock->getName(),
                 'class-name' => FunctionalEntityResponseDTO::class,
                 '--no-test'  => null,
             ]
         );
 
-        $output = $this->commandTester->getDisplay();
-
-        foreach ($this->stubWrittenFileObjectProvider() as $fileObject) {
-            $this->assertContains(CommandLabelType::GENERATED_OUTPUT, $output);
-            $this->assertContains($fileObject->getPath(), $output);
-            $this->assertNotContains($fileObject->getContent(), $output);
-
-        }
-
+        $this->assertCommandFileGeneratedOutput($writtenFileObjects);
     }
 
     /**
@@ -137,25 +97,19 @@ class ViewModelCommandTest extends TestCase
      */
     public function executeCommand_withTestOnlyArguments()
     {
-        $this->viewModelMediatorImplMock->method('mediate')->willReturn($this->stubWrittenFileObjectProvider());
+        $writtenFileObjects = $this->writeFileObjects($this->stubNotWrittenFileObjectProvider());
+        $this->viewModelMediatorImplMock->method('mediate')->willReturn($writtenFileObjects);
         $this->container->method('get')->willReturn($this->viewModelMediatorImplMock);
 
         $this->commandTester->execute(
             [
-                'command'      => $this->viewModelCommandMock->getName(),
+                'command'      => $this->commandMock->getName(),
                 'class-name'   => FunctionalEntityResponseDTO::class,
                 '--tests-only' => null,
             ]
         );
 
-        $output = $this->commandTester->getDisplay();
-
-        foreach ($this->stubWrittenFileObjectProvider() as $fileObject) {
-            $this->assertContains(CommandLabelType::GENERATED_OUTPUT, $output);
-            $this->assertContains($fileObject->getPath(), $output);
-            $this->assertNotContains($fileObject->getContent(), $output);
-        }
-
+        $this->assertCommandFileGeneratedOutput($writtenFileObjects);
     }
 
     /**
@@ -168,7 +122,7 @@ class ViewModelCommandTest extends TestCase
 
         $this->commandTester->execute(
             [
-                'command'    => $this->viewModelCommandMock->getName(),
+                'command'    => $this->commandMock->getName(),
                 'class-name' => FunctionalEntityResponseDTO::class,
             ]
         );
@@ -193,7 +147,7 @@ class ViewModelCommandTest extends TestCase
 
         $this->commandTester->execute(
             [
-                'command'    => $this->viewModelCommandMock->getName(),
+                'command'    => $this->commandMock->getName(),
                 'class-name' => FunctionalEntityResponseDTO::class,
                 '--dump'     => null,
             ]
@@ -222,7 +176,7 @@ class ViewModelCommandTest extends TestCase
             ],
         ];
 
-        TestClassUtil::invokeMethod('checkConfiguration', $this->viewModelCommandMock, $codeGeneratorConfig);
+        TestClassUtil::invokeMethod('checkConfiguration', $this->commandMock, $codeGeneratorConfig);
     }
 
     /**
@@ -238,18 +192,18 @@ class ViewModelCommandTest extends TestCase
             ],
         ];
 
-        TestClassUtil::invokeMethod('checkConfiguration', $this->viewModelCommandMock, $codeGeneratorConfig);
+        TestClassUtil::invokeMethod('checkConfiguration', $this->commandMock, $codeGeneratorConfig);
     }
 
     protected function setUp()
     {
-        $this->viewModelCommandMock = new ViewModelCommandMock();
+        $this->commandMock = new ViewModelCommandMock();
         $this->application = new Application();
-        $this->application->add($this->viewModelCommandMock);
-        $this->commandTester = new CommandTester($this->viewModelCommandMock);
+        $this->application->add($this->commandMock);
+        $this->commandTester = new CommandTester($this->commandMock);
         $this->container = $this->createMock(ContainerBuilder::class);
         $this->viewModelMediatorImplMock = $this->createMock(ViewModelMediatorImpl::class);
-        TestClassUtil::setProperty('container', $this->container, $this->viewModelCommandMock);
+        TestClassUtil::setProperty('container', $this->container, $this->commandMock);
     }
 }
 
