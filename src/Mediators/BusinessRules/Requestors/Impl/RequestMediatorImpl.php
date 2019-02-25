@@ -21,12 +21,13 @@ class RequestMediatorImpl implements RequestMediator
 
     public function mediate(array $args = [], array $options = [])
     {
-        $className = $args[Args::CLASS_NAME];
+        $useCase = $args[Args::USE_CASE];
+        $domain = $args[Args::DOMAIN];
 
         $fileObjects = [];
         if (false !== $options[Options::NO_TEST] || !$options[Options::DUMP] && !$options[Options::NO_TEST]) {
-            $fileObjects[] = $this->generateGenericUseCaseRequest($className);
-            $fileObjects[] = $this->generateGenericUseCaseRequestBuilder($className);
+            $fileObjects[] = $this->generateGenericUseCaseRequest($domain, $useCase);
+            $fileObjects[] = $this->generateGenericUseCaseRequestBuilder($domain, $useCase);
         }
         if (false === $options[Options::DUMP]) {
             $this->fileObjectGateway->flush();

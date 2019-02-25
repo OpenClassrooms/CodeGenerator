@@ -2,7 +2,6 @@
 
 namespace Tests\FileObjects;
 
-use OpenClassrooms\CodeGenerator\FileObjects\AbstractFileObjectFactory;
 use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
 use OpenClassrooms\CodeGenerator\FileObjects\Impl\ViewModelFileObjectFactoryImpl;
 use OpenClassrooms\CodeGenerator\FileObjects\ViewModelFileObjectFactory;
@@ -26,7 +25,7 @@ class ViewModelFileObjectFactoryImplTest extends TestCase
     const TEST_BASE_NAMESPACE = 'Test\Base\Namespace\\';
 
     /**
-     * @var AbstractFileObjectFactory
+     * @var ViewModelFileObjectFactory
      */
     private $factory;
 

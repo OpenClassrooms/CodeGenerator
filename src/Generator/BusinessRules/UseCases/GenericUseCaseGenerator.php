@@ -9,7 +9,6 @@ use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\Generi
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\GenericUseCaseSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\GenericUseCaseSkeletonModelAssembler;
-use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
@@ -27,7 +26,8 @@ class GenericUseCaseGenerator extends AbstractGenericUseCaseGenerator
     public function generate(GeneratorRequest $generatorRequest): FileObject
     {
         $genericUseCaseFileObject = $this->buildGenericUseCaseFileObject(
-            $generatorRequest->getUseCaseResponseClassName()
+            $generatorRequest->getDomain(),
+            $generatorRequest->getUseCaseName()
         );
 
         $this->insertFileObject($genericUseCaseFileObject);
@@ -35,23 +35,21 @@ class GenericUseCaseGenerator extends AbstractGenericUseCaseGenerator
         return $genericUseCaseFileObject;
     }
 
-    private function buildGenericUseCaseFileObject(string $useCaseResponseClassName): FileObject
+    private function buildGenericUseCaseFileObject(string $domain, string $useCaseName): FileObject
     {
-        $genericUseCaseFileObject = $this->createGenericUseCaseFileObject($useCaseResponseClassName);
+        $genericUseCaseFileObject = $this->createGenericUseCaseFileObject($domain, $useCaseName);
 
         $genericUseCaseFileObject->setContent($this->generateContent($genericUseCaseFileObject));
 
         return $genericUseCaseFileObject;
     }
 
-    private function createGenericUseCaseFileObject($useCaseResponseClassName): FileObject
+    private function createGenericUseCaseFileObject(string $domain, string $useCaseName): FileObject
     {
-        [$domain, $entity] = FileObjectUtility::getDomainAndEntityNameFromClassName($useCaseResponseClassName);
-
         return $this->useCaseFileObjectFactory->create(
             UseCaseFileObjectType::BUSINESS_RULES_USE_CASE,
             $domain,
-            $entity
+            $useCaseName
         );
     }
 

@@ -31,6 +31,10 @@ class GenericUseCaseMediatorImplTest extends TestCase
 {
     use FlushedFileObjectTestCase;
 
+    const DOMAIN = 'Domain\SubDomain';
+
+    const GENERIC_USE_CASE = 'GenericUseCase';
+
     /**
      * @var GenericUseCaseMediator
      */
@@ -48,7 +52,10 @@ class GenericUseCaseMediatorImplTest extends TestCase
     {
         $this->options[Options::NO_TEST] = null;
         $fileObjects = $this->mediator->mediate(
-            [Args::CLASS_NAME => GenericUseCaseFileObjectStub1::CLASS_NAME],
+            [
+                Args::DOMAIN   => self::DOMAIN,
+                Args::USE_CASE => self::GENERIC_USE_CASE,
+            ],
             $this->options
         );
 
@@ -62,7 +69,10 @@ class GenericUseCaseMediatorImplTest extends TestCase
     {
         $this->options[Options::TESTS_ONLY] = null;
         $fileObjects = $this->mediator->mediate(
-            [Args::CLASS_NAME => GenericUseCaseFileObjectStub1::CLASS_NAME],
+            [
+                Args::DOMAIN   => self::DOMAIN,
+                Args::USE_CASE => self::GENERIC_USE_CASE,
+            ],
             $this->options
         );
 
@@ -77,7 +87,10 @@ class GenericUseCaseMediatorImplTest extends TestCase
     {
         $this->options[Options::DUMP] = null;
         $fileObjects = $this->mediator->mediate(
-            [Args::CLASS_NAME => GenericUseCaseFileObjectStub1::CLASS_NAME],
+            [
+                Args::DOMAIN   => self::DOMAIN,
+                Args::USE_CASE => self::GENERIC_USE_CASE,
+            ],
             $this->options
         );
 
@@ -95,7 +108,10 @@ class GenericUseCaseMediatorImplTest extends TestCase
     public function generateGenericUseCase_withoutOptions()
     {
         $fileObjects = $this->mediator->mediate(
-            [Args::CLASS_NAME => GenericUseCaseFileObjectStub1::CLASS_NAME],
+            [
+                Args::DOMAIN   => self::DOMAIN,
+                Args::USE_CASE => self::GENERIC_USE_CASE,
+            ],
             $this->options
 
         );

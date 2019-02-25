@@ -13,5 +13,8 @@ interface GenericUseCaseRequestBuilderImplGeneratorRequestBuilder extends Genera
 
     public function create(): GenericUseCaseRequestBuilderImplGeneratorRequestBuilder;
 
-    public function withClassName(string $className): GenericUseCaseRequestBuilderImplGeneratorRequestBuilder;
+    public function withDomainAndUseCaseName(
+        string $domain,
+        string $useCaseName
+    ): GenericUseCaseRequestBuilderImplGeneratorRequestBuilder;
 }

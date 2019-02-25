@@ -10,7 +10,6 @@ use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\Request\Gene
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Requestors\GenericUseCaseRequestBuilderSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Requestors\GenericUseCaseRequestBuilderSkeletonModelAssembler;
-use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
@@ -33,7 +32,8 @@ class GenericUseCaseRequestBuilderGenerator extends AbstractGenerator
     public function generate(GeneratorRequest $generatorRequest): FileObject
     {
         $genericUseCaseRequestBuilderFileObject = $this->buildGenericUseCaseRequestBuilderFileObject(
-            $generatorRequest->getUseCaseResponseClassName()
+            $generatorRequest->getDomain(),
+            $generatorRequest->getUseCaseName()
         );
 
         $this->insertFileObject($genericUseCaseRequestBuilderFileObject);
@@ -41,10 +41,11 @@ class GenericUseCaseRequestBuilderGenerator extends AbstractGenerator
         return $genericUseCaseRequestBuilderFileObject;
     }
 
-    private function buildGenericUseCaseRequestBuilderFileObject(string $useCaseResponseClassName): FileObject
+    private function buildGenericUseCaseRequestBuilderFileObject(string $domain, string $useCaseName): FileObject
     {
         $genericUseCaseRequestBuilderFileObject = $this->createGenericUseCaseRequestBuilderFileObject(
-            $useCaseResponseClassName
+            $domain,
+            $useCaseName
         );
 
         $genericUseCaseRequestFileObject = $this->createGenericUseCaseRequestFileObject(
@@ -58,14 +59,12 @@ class GenericUseCaseRequestBuilderGenerator extends AbstractGenerator
         return $genericUseCaseRequestBuilderFileObject;
     }
 
-    private function createGenericUseCaseRequestBuilderFileObject($useCaseResponseClassName): FileObject
+    private function createGenericUseCaseRequestBuilderFileObject(string $domain, string $useCaseName): FileObject
     {
-        [$domain, $entity] = FileObjectUtility::getDomainAndEntityNameFromClassName($useCaseResponseClassName);
-
         return $this->useCaseFileObjectFactory->create(
             UseCaseFileObjectType::BUSINESS_RULES_USE_CASE_REQUEST_BUILDER,
             $domain,
-            $entity
+            $useCaseName
         );
     }
 

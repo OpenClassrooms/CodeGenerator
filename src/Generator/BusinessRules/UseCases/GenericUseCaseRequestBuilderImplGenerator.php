@@ -9,7 +9,6 @@ use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\Generi
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\GenericUseCaseRequestBuilderImplSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\GenericUseCaseRequestBuilderImplSkeletonModelAssembler;
-use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
@@ -27,7 +26,8 @@ class GenericUseCaseRequestBuilderImplGenerator extends AbstractGenericUseCaseGe
     public function generate(GeneratorRequest $generatorRequest): FileObject
     {
         $genericUseCaseRequestBuilderImplFileObject = $this->buildGenericUseCaseRequestBuilderImplFileObject(
-            $generatorRequest->getUseCaseResponseClassName()
+            $generatorRequest->getDomain(),
+            $generatorRequest->getUseCaseName()
         );
 
         $this->insertFileObject($genericUseCaseRequestBuilderImplFileObject);
@@ -35,10 +35,11 @@ class GenericUseCaseRequestBuilderImplGenerator extends AbstractGenericUseCaseGe
         return $genericUseCaseRequestBuilderImplFileObject;
     }
 
-    private function buildGenericUseCaseRequestBuilderImplFileObject(string $useCaseResponseClassName): FileObject
+    private function buildGenericUseCaseRequestBuilderImplFileObject(string $domain, string $useCaseName): FileObject
     {
         $genericUseCaseRequestBuilderImplFileObject = $this->createGenericUseCaseRequestBuilderImplFileObject(
-            $useCaseResponseClassName
+            $domain,
+            $useCaseName
         );
 
         $genericUseCaseRequestBuilderFileObject = $this->createGenericUseCaseRequestBuilderFileObject(
@@ -65,14 +66,12 @@ class GenericUseCaseRequestBuilderImplGenerator extends AbstractGenericUseCaseGe
         return $genericUseCaseRequestBuilderImplFileObject;
     }
 
-    private function createGenericUseCaseRequestBuilderImplFileObject($useCaseResponseClassName): FileObject
+    private function createGenericUseCaseRequestBuilderImplFileObject(string $domain, string $useCaseName): FileObject
     {
-        [$domain, $entity] = FileObjectUtility::getDomainAndEntityNameFromClassName($useCaseResponseClassName);
-
         return $this->useCaseFileObjectFactory->create(
             UseCaseFileObjectType::BUSINESS_RULES_USE_CASE_REQUEST_BUILDER_IMPL,
             $domain,
-            $entity
+            $useCaseName
         );
     }
 

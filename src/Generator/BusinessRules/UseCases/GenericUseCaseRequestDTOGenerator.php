@@ -9,7 +9,6 @@ use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\Generi
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\GenericUseCaseRequestDTOSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\GenericUseCaseRequestDTOSkeletonModelAssembler;
-use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
@@ -27,7 +26,8 @@ class GenericUseCaseRequestDTOGenerator extends AbstractGenericUseCaseGenerator
     public function generate(GeneratorRequest $generatorRequest): FileObject
     {
         $genericUseCaseRequestDTOFileObject = $this->buildGenericUseCaseRequestDTOFileObject(
-            $generatorRequest->getUseCaseResponseClassName()
+            $generatorRequest->getDomain(),
+            $generatorRequest->getUseCaseName()
         );
 
         $this->insertFileObject($genericUseCaseRequestDTOFileObject);
@@ -35,10 +35,11 @@ class GenericUseCaseRequestDTOGenerator extends AbstractGenericUseCaseGenerator
         return $genericUseCaseRequestDTOFileObject;
     }
 
-    private function buildGenericUseCaseRequestDTOFileObject(string $useCaseResponseClassName): FileObject
+    private function buildGenericUseCaseRequestDTOFileObject(string $domain, string $useCaseName): FileObject
     {
         $genericUseCaseRequestDTOFileObject = $this->createGenericUseCaseRequestDTOFileObject(
-            $useCaseResponseClassName
+            $domain,
+            $useCaseName
         );
 
         $genericUseCaseRequestFileObject = $this->createGenericUseCaseRequestFileObject(
@@ -52,14 +53,12 @@ class GenericUseCaseRequestDTOGenerator extends AbstractGenericUseCaseGenerator
         return $genericUseCaseRequestDTOFileObject;
     }
 
-    private function createGenericUseCaseRequestDTOFileObject($useCaseResponseClassName): FileObject
+    private function createGenericUseCaseRequestDTOFileObject(string $domain, string $useCaseName): FileObject
     {
-        [$domain, $entity] = FileObjectUtility::getDomainAndEntityNameFromClassName($useCaseResponseClassName);
-
         return $this->useCaseFileObjectFactory->create(
             UseCaseFileObjectType::BUSINESS_RULES_USE_CASE_REQUEST_DTO,
             $domain,
-            $entity
+            $useCaseName
         );
     }
 

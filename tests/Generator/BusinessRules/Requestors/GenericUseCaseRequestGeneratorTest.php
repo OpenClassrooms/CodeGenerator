@@ -11,7 +11,6 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\BusinessRules\Request
 use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\FileObjectTestCase;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingServiceMock;
-use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Requestors\Domain\SubDomain\GenericUseCaseRequest;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\FixturesConfig;
 use PHPUnit\Framework\TestCase;
 
@@ -51,7 +50,7 @@ class GenericUseCaseRequestGeneratorTest extends TestCase
         $genericUseCaseRequestGeneratorRequestBuilderImpl = new GenericUseCaseRequestGeneratorRequestBuilderImpl();
         $this->request = $genericUseCaseRequestGeneratorRequestBuilderImpl
             ->create()
-            ->withClassName(GenericUseCaseRequest::class)
+            ->withDomainAndUseCaseName('Domain\SubDomain', 'GenericUseCase')
             ->build();
 
         $this->genericUseCaseRequestGenerator = new GenericUseCaseRequestGenerator();
