@@ -24,8 +24,7 @@ class ParameterHandler
     public static function createGeneratorFileParameters(Event $event)
     {
         static::initProcessor($event);
-        if (!file_exists(self::OC_CODE_GENERATOR_YML)
-            && self::CODE_GENERATOR !== $event->getComposer()->getPackage()->getName()) {
+        if (self::CODE_GENERATOR !== $event->getComposer()->getPackage()->getName()) {
 
             static::buildParameters();
         }
