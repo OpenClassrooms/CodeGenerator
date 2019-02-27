@@ -9,13 +9,17 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
  */
 abstract class GenericUseCaseSkeletonModel extends AbstractSkeletonModel
 {
+    public $genericUseCaseRequestClassName;
+
+    public $genericUseCaseRequestShortName;
+
     public $templatePath = 'BusinessRules/UseCases/GenericUseCase.php.twig';
 
     public $useCaseClassName;
 
+    public $useCaseRequestArgument;
+
     public $useCaseRequestClassName;
 
     public $useCaseRequestShortName;
-
-    public $useCaseRequestArgument;
 }

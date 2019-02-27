@@ -15,12 +15,17 @@ class GenericUseCaseSkeletonModelAssemblerImpl implements GenericUseCaseSkeleton
 {
     use UseCaseClassNameTrait;
 
-    public function create(FileObject $genericUseCaseFileObject): GenericUseCaseSkeletonModel
+    public function create(
+        FileObject $genericUseCaseFileObject,
+        FileObject $genericUseCaseRequestFileObject
+    ): GenericUseCaseSkeletonModel
     {
         $skeletonModel = new GenericUseCaseSkeletonModelImpl();
         $skeletonModel->namespace = $genericUseCaseFileObject->getNamespace();
         $skeletonModel->shortName = $genericUseCaseFileObject->getShortName();
         $skeletonModel->useCaseClassName = $this->useCaseClassName;
+        $skeletonModel->genericUseCaseRequestClassName = $genericUseCaseRequestFileObject->getClassName();
+        $skeletonModel->genericUseCaseRequestShortName = $genericUseCaseRequestFileObject->getShortName();
         $skeletonModel->useCaseRequestArgument = lcfirst(
             FileObjectUtility::getShortClassName($this->useCaseRequestClassName)
         );

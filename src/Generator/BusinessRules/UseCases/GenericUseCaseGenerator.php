@@ -38,8 +38,11 @@ class GenericUseCaseGenerator extends AbstractGenericUseCaseGenerator
     private function buildGenericUseCaseFileObject(string $domain, string $useCaseName): FileObject
     {
         $genericUseCaseFileObject = $this->createGenericUseCaseFileObject($domain, $useCaseName);
+        $genericUseCaseRequestFileObject = $this->createGenericUseCaseRequestFileObject($domain, $useCaseName);
 
-        $genericUseCaseFileObject->setContent($this->generateContent($genericUseCaseFileObject));
+        $genericUseCaseFileObject->setContent(
+            $this->generateContent($genericUseCaseFileObject, $genericUseCaseRequestFileObject)
+        );
 
         return $genericUseCaseFileObject;
     }
@@ -53,16 +56,34 @@ class GenericUseCaseGenerator extends AbstractGenericUseCaseGenerator
         );
     }
 
-    private function generateContent(FileObject $genericUseCaseFileObject): string
+    private function createGenericUseCaseRequestFileObject(string $domain, string $useCaseName): FileObject
     {
-        $skeletonModel = $this->createSkeletonModel($genericUseCaseFileObject);
+        return $this->useCaseFileObjectFactory->create(
+            UseCaseFileObjectType::BUSINESS_RULES_USE_CASE_REQUEST,
+            $domain,
+            $useCaseName
+        );
+    }
+
+    private function generateContent(
+        FileObject $genericUseCaseFileObject,
+        FileObject $genericUseCaseRequestFileObject
+    ): string
+    {
+        $skeletonModel = $this->createSkeletonModel($genericUseCaseFileObject, $genericUseCaseRequestFileObject);
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
     }
 
-    private function createSkeletonModel(FileObject $genericUseCaseFileObject): GenericUseCaseSkeletonModel
+    private function createSkeletonModel(
+        FileObject $genericUseCaseFileObject,
+        FileObject $genericUseCaseRequestFileObject
+    ): GenericUseCaseSkeletonModel
     {
-        return $this->genericUseCaseSkeletonModelAssembler->create($genericUseCaseFileObject);
+        return $this->genericUseCaseSkeletonModelAssembler->create(
+            $genericUseCaseFileObject,
+            $genericUseCaseRequestFileObject
+        );
     }
 
     public function setGenericUseCaseSkeletonModelAssembler(

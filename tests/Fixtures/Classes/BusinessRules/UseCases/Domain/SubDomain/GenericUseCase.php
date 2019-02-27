@@ -3,6 +3,7 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain;
 
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Requestors\Domain\SubDomain\GenericUseCaseRequest;
 use OpenClassrooms\UseCase\BusinessRules\Requestors\UseCase;
 use OpenClassrooms\UseCase\BusinessRules\Requestors\UseCaseRequest;
 
@@ -11,6 +12,9 @@ use OpenClassrooms\UseCase\BusinessRules\Requestors\UseCaseRequest;
  */
 class GenericUseCase implements UseCase
 {
+    /**
+     * @param GenericUseCaseRequest $useCaseRequest
+     */
     public function execute(UseCaseRequest $useCaseRequest)
     {
         // TODO: Implement execute() method.

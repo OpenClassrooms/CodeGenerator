@@ -9,5 +9,8 @@ use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
  */
 interface GenericUseCaseSkeletonModelAssembler
 {
-    public function create(FileObject $genericUseCaseFileObject): GenericUseCaseSkeletonModel;
+    public function create(
+        FileObject $genericUseCaseFileObject,
+        FileObject $genericUseCaseRequestFileObject
+    ): GenericUseCaseSkeletonModel;
 }
