@@ -32,23 +32,20 @@ class AbstractCommand extends Command
         $this->addOption(
             Options::NO_TEST,
             null,
-            InputOption::VALUE_OPTIONAL,
-            'Without test',
-            false
+            InputOption::VALUE_NONE,
+            'Without test'
         )
             ->addOption(
                 Options::TESTS_ONLY,
                 null,
-                InputOption::VALUE_OPTIONAL,
-                'Only test',
-                false
+                InputOption::VALUE_NONE,
+                'Only test'
             )
             ->addOption(
                 Options::DUMP,
                 null,
-                InputOption::VALUE_OPTIONAL,
-                'Dump',
-                false
+                InputOption::VALUE_NONE,
+                'Dump'
             );
     }
 
