@@ -51,7 +51,8 @@ class GenericUseCaseRequestDTOGeneratorTest extends TestCase
         );
         $this->request = $genericUseCaseRequestDTOGeneratorRequestBuilderImpl
             ->create()
-            ->withDomainAndUseCaseName('Domain\SubDomain', 'GenericUseCase')
+            ->withDomain('Domain\SubDomain')
+            ->withUseCaseName('GenericUseCase')
             ->build();
 
         $this->genericUseCaseRequestDTOGenerator = new GenericUseCaseRequestDTOGenerator();

@@ -57,20 +57,18 @@ trait RequestGeneratorsTrait
     protected function generateGenericUseCaseRequestBuilder(string $domain, string $useCaseName): FileObject
     {
         return $this->genericUseCaseRequestBuilderGenerator->generate(
-            $this->genericUseCaseRequestBuilderGeneratorRequestBuilder->create()->withDomainAndUseCaseName(
-                $domain,
-                $useCaseName
-            )->build()
+            $this->genericUseCaseRequestBuilderGeneratorRequestBuilder->create()->withDomain($domain)
+                ->withUseCaseName($useCaseName)
+                ->build()
         );
     }
 
     protected function generateGenericUseCaseRequest(string $domain, string $useCaseName): FileObject
     {
         return $this->genericUseCaseRequestGenerator->generate(
-            $this->genericUseCaseRequestGeneratorRequestBuilder->create()->withDomainAndUseCaseName(
-                $domain,
-                $useCaseName
-            )->build()
+            $this->genericUseCaseRequestGeneratorRequestBuilder->create()->withDomain($domain)
+                ->withUseCaseName($useCaseName)
+                ->build()
         );
     }
 }

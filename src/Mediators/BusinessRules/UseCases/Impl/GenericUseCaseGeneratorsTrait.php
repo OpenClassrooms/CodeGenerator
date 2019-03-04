@@ -97,37 +97,36 @@ trait GenericUseCaseGeneratorsTrait
     protected function generateGenericUseCaseRequestDTO(string $domain, string $useCase): FileObject
     {
         return $this->genericUseCaseRequestDTOGenerator->generate(
-            $this->genericUseCaseRequestDTOGeneratorRequestBuilder->create()->withDomainAndUseCaseName(
-                $domain,
-                $useCase
-            )->build()
+            $this->genericUseCaseRequestDTOGeneratorRequestBuilder->create()->withDomain($domain)
+                ->withUseCaseName($useCase)
+                ->build()
         );
     }
 
     protected function generateGenericUseCaseRequestBuilderImpl(string $domain, string $useCase): FileObject
     {
         return $this->genericUseCaseRequestBuilderImplGenerator->generate(
-            $this->genericUseCaseRequestBuilderImplGeneratorRequestBuilder->create()->withDomainAndUseCaseName(
-                $domain,
-                $useCase
-            )->build()
+            $this->genericUseCaseRequestBuilderImplGeneratorRequestBuilder->create()->withDomain($domain)
+                ->withUseCaseName($useCase)
+                ->build()
         );
     }
 
     protected function generateGenericUseCase(string $domain, string $useCase): FileObject
     {
         return $this->genericUseCaseGenerator->generate(
-            $this->genericUseCaseGeneratorRequestBuilder->create()->withDomainAndUseCaseName($domain, $useCase)->build()
+            $this->genericUseCaseGeneratorRequestBuilder->create()->withDomain($domain)
+                ->withUseCaseName($useCase)
+                ->build()
         );
     }
 
     protected function generateGenericUseCaseTest(string $domain, string $useCase): FileObject
     {
         return $this->genericUseCaseTestGenerator->generate(
-            $this->genericUseCaseTestGeneratorRequestBuilder->create()->withDomainAndUseCaseName(
-                $domain,
-                $useCase
-            )->build()
+            $this->genericUseCaseTestGeneratorRequestBuilder->create()->withDomain($domain)
+                ->withUseCaseName($useCase)
+                ->build()
         );
     }
 }

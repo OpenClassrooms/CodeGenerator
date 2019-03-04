@@ -13,5 +13,11 @@ interface GenericUseCaseTestGeneratorRequestBuilder extends GeneratorRequest
 
     public function create(): GenericUseCaseTestGeneratorRequestBuilder;
 
-    public function withDomainAndUseCaseName(string $domain, string $useCaseName): GenericUseCaseTestGeneratorRequestBuilder;
+    public function withDomain(
+        string $domain
+    ): GenericUseCaseTestGeneratorRequestBuilder;
+
+    public function withUseCaseName(
+        string $useCaseName
+    ): GenericUseCaseTestGeneratorRequestBuilder;
 }

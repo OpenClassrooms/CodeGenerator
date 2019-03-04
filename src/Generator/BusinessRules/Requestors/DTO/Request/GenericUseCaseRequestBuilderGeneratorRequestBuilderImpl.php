@@ -22,12 +22,15 @@ class GenericUseCaseRequestBuilderGeneratorRequestBuilderImpl implements Generic
         return $this;
     }
 
-    public function withDomainAndUseCaseName(
-        string $domain,
-        string $useCaseName
-    ): GenericUseCaseRequestBuilderGeneratorRequestBuilder
+    public function withDomain(string $domain): GenericUseCaseRequestBuilderGeneratorRequestBuilder
     {
         $this->request->domain = $domain;
+
+        return $this;
+    }
+
+    public function withUseCaseName(string $useCaseName): GenericUseCaseRequestBuilderGeneratorRequestBuilder
+    {
         $this->request->useCaseName = $useCaseName;
 
         return $this;

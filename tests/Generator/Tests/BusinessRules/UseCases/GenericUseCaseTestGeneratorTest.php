@@ -50,7 +50,8 @@ class GenericUseCaseTestGeneratorTest extends TestCase
         $genericUseCaseTestGeneratorRequestBuilderImpl = new GenericUseCaseTestGeneratorRequestBuilderImpl();
         $this->request = $genericUseCaseTestGeneratorRequestBuilderImpl
             ->create()
-            ->withDomainAndUseCaseName('Domain\SubDomain', 'GenericUseCase')
+            ->withDomain('Domain\SubDomain')
+            ->withUseCaseName('GenericUseCase')
             ->build();
 
         $this->genericUseCaseTestGenerator = new GenericUseCaseTestGenerator();
