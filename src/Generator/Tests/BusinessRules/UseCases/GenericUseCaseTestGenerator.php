@@ -41,13 +41,12 @@ class GenericUseCaseTestGenerator extends AbstractGenericUseCaseGenerator
             $domain,
             $useCaseName
         );
-        $genericUseCaseTestFileObject = $this->createGenericUseCaseTestFileObject($genericUseCaseFileObject);
+        $genericUseCaseTestFileObject = $this->createGenericUseCaseTestFileObject($domain, $useCaseName);
 
-        $genericUseCaseRequestDTOFileObject = $this->createGenericUseCaseRequestDTOFileObject(
-            $genericUseCaseFileObject
-        );
+        $genericUseCaseRequestDTOFileObject = $this->createGenericUseCaseRequestDTOFileObject($domain, $useCaseName);
         $genericUseCaseRequestBuilderImplFileObject = $this->createGenericUseCaseRequestBuilderImplFileObject(
-            $genericUseCaseFileObject
+            $domain,
+            $useCaseName
         );
 
         $genericUseCaseTestFileObject->setContent(
@@ -62,10 +61,7 @@ class GenericUseCaseTestGenerator extends AbstractGenericUseCaseGenerator
         return $genericUseCaseTestFileObject;
     }
 
-    private function createGenericUseCaseFileObject(
-        string $domain,
-        string $useCaseName
-    ): FileObject
+    private function createGenericUseCaseFileObject(string $domain, string $useCaseName): FileObject
     {
         return $this->useCaseFileObjectFactory->create(
             UseCaseFileObjectType::BUSINESS_RULES_USE_CASE,
@@ -74,33 +70,31 @@ class GenericUseCaseTestGenerator extends AbstractGenericUseCaseGenerator
         );
     }
 
-    private function createGenericUseCaseTestFileObject(FileObject $genericUseCaseFileObject): FileObject
+    private function createGenericUseCaseTestFileObject(string $domain, string $useCaseName): FileObject
     {
 
         return $this->useCaseFileObjectFactory->create(
             UseCaseFileObjectType::BUSINESS_RULES_USE_CASE_TEST,
-            $genericUseCaseFileObject->getDomain(),
-            $genericUseCaseFileObject->getEntity()
+            $domain,
+            $useCaseName
         );
     }
 
-    private function createGenericUseCaseRequestDTOFileObject(FileObject $genericUseCaseFileObject): FileObject
+    private function createGenericUseCaseRequestDTOFileObject(string $domain, string $useCaseName): FileObject
     {
         return $this->useCaseFileObjectFactory->create(
             UseCaseFileObjectType::BUSINESS_RULES_USE_CASE_REQUEST_DTO,
-            $genericUseCaseFileObject->getDomain(),
-            $genericUseCaseFileObject->getEntity()
+            $domain,
+            $useCaseName
         );
     }
 
-    private function createGenericUseCaseRequestBuilderImplFileObject(
-        FileObject $genericUseCaseFileObject
-    ): FileObject
+    private function createGenericUseCaseRequestBuilderImplFileObject(string $domain, string $useCaseName): FileObject
     {
         return $this->useCaseFileObjectFactory->create(
             UseCaseFileObjectType::BUSINESS_RULES_USE_CASE_REQUEST_BUILDER_IMPL,
-            $genericUseCaseFileObject->getDomain(),
-            $genericUseCaseFileObject->getEntity()
+            $domain,
+            $useCaseName
         );
     }
 

@@ -49,7 +49,8 @@ class GenericUseCaseRequestBuilderGenerator extends AbstractGenerator
         );
 
         $genericUseCaseRequestFileObject = $this->createGenericUseCaseRequestFileObject(
-            $genericUseCaseRequestBuilderFileObject
+            $domain,
+            $useCaseName
         );
 
         $genericUseCaseRequestBuilderFileObject->setContent(
@@ -68,14 +69,12 @@ class GenericUseCaseRequestBuilderGenerator extends AbstractGenerator
         );
     }
 
-    private function createGenericUseCaseRequestFileObject(
-        FileObject $genericUseCaseRequestBuilderFileObject
-    ): FileObject
+    private function createGenericUseCaseRequestFileObject(string $domain, string $useCaseName): FileObject
     {
         return $this->useCaseFileObjectFactory->create(
             UseCaseFileObjectType::BUSINESS_RULES_USE_CASE_REQUEST,
-            $genericUseCaseRequestBuilderFileObject->getDomain(),
-            $genericUseCaseRequestBuilderFileObject->getEntity()
+            $domain,
+            $useCaseName
         );
     }
 
@@ -95,7 +94,6 @@ class GenericUseCaseRequestBuilderGenerator extends AbstractGenerator
     private function createSkeletonModel(
         FileObject $genericUseCaseRequestBuilderFileObject,
         FileObject $genericUseCaseRequestFileObject
-
     ): GenericUseCaseRequestBuilderSkeletonModel
     {
         return $this->genericUseCaseRequestBuilderSkeletonModelAssembler->create(
