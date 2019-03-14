@@ -2,6 +2,8 @@
 
 namespace OpenClassrooms\CodeGenerator\FileObjects;
 
+use OpenClassrooms\CodeGenerator\Utility\StringUtility;
+
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
  */
@@ -83,7 +85,7 @@ class FieldObject
 
     public function isObject(): bool
     {
-        return (bool) preg_match('/([A-Z][a-z0-9]+)+/', $this->getType());
+        return StringUtility::isObject($this->getType());
     }
 
     public function getType(): string

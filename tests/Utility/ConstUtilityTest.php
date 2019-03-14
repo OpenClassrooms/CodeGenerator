@@ -106,7 +106,7 @@ class ConstUtilityTest extends TestCase
         $fileObject = new FileObject();
         $fileObject->setClassName(self::class);
 
-        $fieldObject = $this->buildFieldObject('test', 'Object');
+        $fieldObject = $this->buildFieldObject('test', 'not exist');
         ConstUtility::generateStubConstObject($fieldObject, $fileObject);
     }
 }

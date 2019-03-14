@@ -19,6 +19,11 @@ class StringUtility
         return strtoupper(preg_replace('/(?<!^)[A-Z0-9]/', '_$0', $string));
     }
 
+    public static function isObject(string $string)
+    {
+        return (bool) preg_match('/([A-Z][a-z0-9]+)+/', $string);
+    }
+
     public static function isValidConstantName(string $string): bool
     {
         return (bool) preg_match('/(([A-Z_][A-Z0-9_]*)|(__.*__))$/', $string);

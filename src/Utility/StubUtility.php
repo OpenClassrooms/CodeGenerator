@@ -35,6 +35,10 @@ class StubUtility
             case '\DateTimeImmutable' :
             case '\DateTimeInterface' :
                 return Carbon::createFromFormat('Y-m-d', self::DEFAULT_DATE)->toDateString();
+            case StringUtility::isObject($type):
+                return self::QUOTE . StringUtility::convertToSpacedString(
+                    $entityName . ' ' . $fieldName
+                    ) . 'object' . self::QUOTE;
             default:
                 throw new \InvalidArgumentException($type);
         }
