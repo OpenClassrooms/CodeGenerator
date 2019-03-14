@@ -84,16 +84,6 @@ class FieldObjectServiceImpl implements FieldObjectService
     /**
      * {@inheritdoc}
      */
-    public function getParentProtectedClassFields(string $className): array
-    {
-        $rc = new \ReflectionClass($className);
-
-        return $this->getProtectedClassFields($rc->getParentClass()->getName());
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function getProtectedClassFields(string $className): array
     {
         $rc = new \ReflectionClass($className);

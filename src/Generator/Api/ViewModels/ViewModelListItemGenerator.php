@@ -53,12 +53,13 @@ class ViewModelListItemGenerator extends AbstractViewModelGenerator
 
     private function createUseCaseDetailResponseFileObject(string $useCaseDetailResponseClassName): FileObject
     {
-        [$domain, $entity] = FileObjectUtility::getDomainAndEntityNameFromClassName($useCaseDetailResponseClassName);
+        [$baseNamespace, $domain, $entity] = FileObjectUtility::getBaseNamespaceDomainAndEntityNameFromClassName($useCaseDetailResponseClassName);
 
         return $this->createUseCaseResponseFileObject(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE,
             $domain,
-            $entity
+            $entity,
+            $baseNamespace
         );
     }
 
@@ -67,7 +68,8 @@ class ViewModelListItemGenerator extends AbstractViewModelGenerator
         return $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM,
             $useCaseDetailResponseFileObject->getDomain(),
-            $useCaseDetailResponseFileObject->getEntity()
+            $useCaseDetailResponseFileObject->getEntity(),
+            $useCaseDetailResponseFileObject->getBaseNamespace()
         );
     }
 
@@ -76,7 +78,8 @@ class ViewModelListItemGenerator extends AbstractViewModelGenerator
         return $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL,
             $useCaseDetailResponseFileObject->getDomain(),
-            $useCaseDetailResponseFileObject->getEntity()
+            $useCaseDetailResponseFileObject->getEntity(),
+            $useCaseDetailResponseFileObject->getBaseNamespace()
         );
     }
 

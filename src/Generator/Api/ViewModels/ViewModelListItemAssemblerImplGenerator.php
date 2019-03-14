@@ -75,12 +75,13 @@ class ViewModelListItemAssemblerImplGenerator extends AbstractViewModelGenerator
 
     private function createUseCaseListItemResponseDTOFileObject(string $useCaseResponseClassName): FileObject
     {
-        [$domain, $entity] = FileObjectUtility::getDomainAndEntityNameFromClassName($useCaseResponseClassName);
+        [$baseNamespace, $domain, $entity] = FileObjectUtility::getBaseNamespaceDomainAndEntityNameFromClassName($useCaseResponseClassName);
 
         return $this->createUseCaseResponseFileObject(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE_DTO,
             $domain,
-            $entity
+            $entity,
+            $baseNamespace
         );
     }
 
@@ -90,7 +91,8 @@ class ViewModelListItemAssemblerImplGenerator extends AbstractViewModelGenerator
         return $this->createUseCaseResponseFileObject(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE,
             $useCaseListItemResponseFileObject->getDomain(),
-            $useCaseListItemResponseFileObject->getEntity()
+            $useCaseListItemResponseFileObject->getEntity(),
+            $useCaseListItemResponseFileObject->getBaseNamespace()
         );
     }
 
@@ -99,7 +101,8 @@ class ViewModelListItemAssemblerImplGenerator extends AbstractViewModelGenerator
         return $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM,
             $useCaseListItemResponseFileObject->getDomain(),
-            $useCaseListItemResponseFileObject->getEntity()
+            $useCaseListItemResponseFileObject->getEntity(),
+            $useCaseListItemResponseFileObject->getBaseNamespace()
         );
     }
 
@@ -110,7 +113,8 @@ class ViewModelListItemAssemblerImplGenerator extends AbstractViewModelGenerator
         return $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_ASSEMBLER,
             $useCaseListItemResponseFileObject->getDomain(),
-            $useCaseListItemResponseFileObject->getEntity()
+            $useCaseListItemResponseFileObject->getEntity(),
+            $useCaseListItemResponseFileObject->getBaseNamespace()
         );
     }
 
@@ -121,7 +125,8 @@ class ViewModelListItemAssemblerImplGenerator extends AbstractViewModelGenerator
         return $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_ASSEMBLER_IMPL,
             $useCaseListItemResponseFileObject->getDomain(),
-            $useCaseListItemResponseFileObject->getEntity()
+            $useCaseListItemResponseFileObject->getEntity(),
+            $useCaseListItemResponseFileObject->getBaseNamespace()
         );
     }
 
@@ -132,7 +137,8 @@ class ViewModelListItemAssemblerImplGenerator extends AbstractViewModelGenerator
         return $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_IMPL,
             $useCaseListItemResponseFileObject->getDomain(),
-            $useCaseListItemResponseFileObject->getEntity()
+            $useCaseListItemResponseFileObject->getEntity(),
+            $useCaseListItemResponseFileObject->getBaseNamespace()
         );
     }
 
@@ -141,7 +147,8 @@ class ViewModelListItemAssemblerImplGenerator extends AbstractViewModelGenerator
         return $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL_ASSEMBLER_TRAIT,
             $useCaseListItemResponseFileObject->getDomain(),
-            $useCaseListItemResponseFileObject->getEntity()
+            $useCaseListItemResponseFileObject->getEntity(),
+            $useCaseListItemResponseFileObject->getBaseNamespace()
         );
     }
 

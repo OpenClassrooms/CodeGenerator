@@ -34,13 +34,23 @@ abstract class AbstractViewModelGenerator extends AbstractGenerator
         $this->viewModelFileObjectFactory = $viewModelFileObjectFactory;
     }
 
-    protected function createUseCaseResponseFileObject(string $type, string $domain, string $entity): FileObject
+    protected function createUseCaseResponseFileObject(
+        string $type,
+        string $domain,
+        string $entity,
+        string $baseNamespace
+    ): FileObject
     {
-        return $this->useCaseResponseFileObjectFactory->create($type, $domain, $entity);
+        return $this->useCaseResponseFileObjectFactory->create($type, $domain, $entity, $baseNamespace);
     }
 
-    protected function createViewModelFileObject(string $type, string $domain, string $entity): FileObject
+    protected function createViewModelFileObject(
+        string $type,
+        string $domain,
+        string $entity,
+        string $baseNamespace
+    ): FileObject
     {
-        return $this->viewModelFileObjectFactory->create($type, $domain, $entity);
+        return $this->viewModelFileObjectFactory->create($type, $domain, $entity, $baseNamespace);
     }
 }

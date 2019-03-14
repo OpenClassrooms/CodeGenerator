@@ -29,8 +29,8 @@ trait FieldObjectTestCase
 
     private function orderArraysBeforeCompare(array $expectedFieldObjects, array $actualFieldObjects): array
     {
-        usort($actualFieldObjects, array($this, "orderFieldObjectsByName"));
-        usort($expectedFieldObjects, array($this, "orderFieldObjectsByName"));
+        usort($actualFieldObjects, [$this, "orderFieldObjectsByName"]);
+        usort($expectedFieldObjects, [$this, "orderFieldObjectsByName"]);
 
         return [$expectedFieldObjects, $actualFieldObjects];
     }

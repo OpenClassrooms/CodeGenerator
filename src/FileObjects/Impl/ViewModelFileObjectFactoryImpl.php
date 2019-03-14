@@ -12,7 +12,7 @@ use OpenClassrooms\CodeGenerator\FileObjects\ViewModelFileObjectType;
  */
 class ViewModelFileObjectFactoryImpl extends AbstractFileObjectFactory implements ViewModelFileObjectFactory
 {
-    public function create(string $type, string $domain, string $entity): FileObject
+    public function create(string $type, string $domain, string $entity, string $baseNamespace = null): FileObject
     {
         $fileObject = new FileObject();
 

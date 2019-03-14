@@ -12,9 +12,11 @@ use OpenClassrooms\CodeGenerator\FileObjects\UseCaseFileObjectType;
  */
 class UseCaseFileObjectFactoryImpl extends AbstractFileObjectFactory implements UseCaseFileObjectFactory
 {
-    public function create(string $type, string $domain, string $entity): FileObject
+    public function create(string $type, string $domain, string $entity, string $baseNamespace = null): FileObject
     {
         $fileObject = new FileObject();
+
+        $this->baseNamespace = $baseNamespace ?? $this->baseNamespace;
 
         switch ($type) {
             case UseCaseFileObjectType::BUSINESS_RULES_USE_CASE:

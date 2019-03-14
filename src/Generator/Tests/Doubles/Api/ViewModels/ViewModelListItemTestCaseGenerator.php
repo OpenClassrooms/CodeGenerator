@@ -42,12 +42,13 @@ class ViewModelListItemTestCaseGenerator extends AbstractViewModelGenerator
 
     private function createUseCaseListItemResponseDTOFileObject($useCaseResponseClassName)
     {
-        [$domain, $entity] = FileObjectUtility::getDomainAndEntityNameFromClassName($useCaseResponseClassName);
+        [$baseNamespace, $domain, $entity] = FileObjectUtility::getBaseNamespaceDomainAndEntityNameFromClassName($useCaseResponseClassName);
 
         return $this->createUseCaseResponseFileObject(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE_DTO,
             $domain,
-            $entity
+            $entity,
+            $baseNamespace
         );
     }
 
@@ -86,7 +87,9 @@ class ViewModelListItemTestCaseGenerator extends AbstractViewModelGenerator
         $viewModelListItemTestCaseFileObject = $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_TEST_CASE,
             $useCaseListItemResponseDTOFileObject->getDomain(),
-            $useCaseListItemResponseDTOFileObject->getEntity()
+            $useCaseListItemResponseDTOFileObject->getEntity(),
+            $useCaseListItemResponseDTOFileObject->getBaseNamespace(),
+            $useCaseListItemResponseDTOFileObject->getBaseNamespace()
         );
 
         return $viewModelListItemTestCaseFileObject;
@@ -97,7 +100,9 @@ class ViewModelListItemTestCaseGenerator extends AbstractViewModelGenerator
         return $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL_TEST_CASE,
             $useCaseListItemResponseDTOFileObject->getDomain(),
-            $useCaseListItemResponseDTOFileObject->getEntity()
+            $useCaseListItemResponseDTOFileObject->getEntity(),
+            $useCaseListItemResponseDTOFileObject->getBaseNamespace(),
+            $useCaseListItemResponseDTOFileObject->getBaseNamespace()
         );
     }
 
@@ -106,7 +111,9 @@ class ViewModelListItemTestCaseGenerator extends AbstractViewModelGenerator
         return $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM,
             $useCaseListItemResponseDTOFileObject->getDomain(),
-            $useCaseListItemResponseDTOFileObject->getEntity()
+            $useCaseListItemResponseDTOFileObject->getEntity(),
+            $useCaseListItemResponseDTOFileObject->getBaseNamespace(),
+            $useCaseListItemResponseDTOFileObject->getBaseNamespace()
         );
     }
 

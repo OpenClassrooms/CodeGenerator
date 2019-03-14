@@ -14,7 +14,10 @@ class EntityStubSkeletonModelAssemblerImpl implements EntityStubSkeletonModelAss
 {
     use StubSkeletonAssemblerUtility;
 
-    public function create(FileObject $entityStubFileObject, FileObject $entityImplFileObject): EntityStubSkeletonModel
+    public function create(
+        FileObject $entityImplFileObject,
+        FileObject $entityStubFileObject
+    ): EntityStubSkeletonModel
     {
         $skeletonModel = new EntityStubSkeletonModelImpl();
         $skeletonModel->className = $entityStubFileObject->getClassName();

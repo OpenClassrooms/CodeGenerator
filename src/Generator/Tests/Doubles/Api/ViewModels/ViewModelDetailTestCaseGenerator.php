@@ -64,12 +64,13 @@ class ViewModelDetailTestCaseGenerator extends AbstractViewModelGenerator
 
     protected function createUseCaseDetailResponseDTOFileObject(string $viewModelClassName): FileObject
     {
-        [$domain, $entity] = FileObjectUtility::getDomainAndEntityNameFromClassName($viewModelClassName);
+        [$baseNamespace, $domain, $entity] = FileObjectUtility::getBaseNamespaceDomainAndEntityNameFromClassName($viewModelClassName);
 
         return $this->createUseCaseResponseFileObject(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE_DTO,
             $domain,
-            $entity
+            $entity,
+            $baseNamespace
         );
     }
 
@@ -78,7 +79,9 @@ class ViewModelDetailTestCaseGenerator extends AbstractViewModelGenerator
         return $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL_TEST_CASE,
             $viewModelListItemFileObject->getDomain(),
-            $viewModelListItemFileObject->getEntity()
+            $viewModelListItemFileObject->getEntity(),
+            $viewModelListItemFileObject->getBaseNamespace(),
+            $viewModelListItemFileObject->getBaseNamespace()
         );
     }
 
@@ -87,7 +90,9 @@ class ViewModelDetailTestCaseGenerator extends AbstractViewModelGenerator
         return $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL_DETAIL,
             $viewModelListItemFileObject->getDomain(),
-            $viewModelListItemFileObject->getEntity()
+            $viewModelListItemFileObject->getEntity(),
+            $viewModelListItemFileObject->getBaseNamespace(),
+            $viewModelListItemFileObject->getBaseNamespace()
         );
     }
 
@@ -136,7 +141,9 @@ class ViewModelDetailTestCaseGenerator extends AbstractViewModelGenerator
         $viewModelDetailTestCaseFileObject = $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_TEST_CASE,
             $useCaseDetailResponseDTOFileObject->getDomain(),
-            $useCaseDetailResponseDTOFileObject->getEntity()
+            $useCaseDetailResponseDTOFileObject->getEntity(),
+            $useCaseDetailResponseDTOFileObject->getBaseNamespace(),
+            $useCaseDetailResponseDTOFileObject->getBaseNamespace()
         );
 
         return $viewModelDetailTestCaseFileObject;

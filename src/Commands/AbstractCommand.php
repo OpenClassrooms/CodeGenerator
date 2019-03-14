@@ -49,9 +49,12 @@ class AbstractCommand extends Command
             );
     }
 
-    protected function loadConfigParameters()
+    protected function loadConfigParameters(array $config = null)
     {
-        $loader = new YamlFileLoader($this->container, new FileLocator(static::ROOT_DIR));
-        $loader->load(static::CONFIG_FILE);
+        if (empty($config)) {
+            $loader = new YamlFileLoader($this->container, new FileLocator(static::ROOT_DIR));
+            $loader->load(static::CONFIG_FILE);
+        }
+
     }
 }

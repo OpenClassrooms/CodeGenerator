@@ -34,47 +34,64 @@ class EntityStubGenerator extends AbstractGenerator
      */
     public function generate(GeneratorRequest $generatorRequest): FileObject
     {
-        $entityImplFileObject = $this->createEntityImplFileObject($generatorRequest->getUseCaseResponseClassName());
-        $entityStubFileObject = $this->buildEntityStubFileObject($entityImplFileObject);
+        $entityFileObject = $this->createEntityFileObject($generatorRequest->getUseCaseResponseClassName());
+        $entityStubFileObject = $this->buildEntityStubFileObject($entityFileObject);
 
         $this->insertFileObject($entityStubFileObject);
 
         return $entityStubFileObject;
     }
 
-    private function createEntityImplFileObject(string $useCaseResponseClassName): FileObject
+    private function createEntityFileObject(string $useCaseResponseClassName): FileObject
     {
-        [$domain, $entity] = FileObjectUtility::getDomainAndEntityNameFromClassName($useCaseResponseClassName);
+        [$baseNamespace, $domain, $entity] = FileObjectUtility::getBaseNamespaceDomainAndEntityNameFromClassName(
+            $useCaseResponseClassName
+        );
 
         return $this->entityFileObjectFactory->create(
-            EntityFileObjectType::BUSINESS_RULES_ENTITY_IMPL,
+            EntityFileObjectType::BUSINESS_RULES_ENTITY,
             $domain,
-            $entity
+            $entity,
+            $baseNamespace
         );
     }
 
-    private function buildEntityStubFileObject(FileObject $entityImplFileObject): FileObject
+    private function buildEntityStubFileObject(FileObject $entityFileObject): FileObject
     {
-        $entityStubFileObject = $this->createEntityFileObject($entityImplFileObject);
-        $entityStubFileObject->setFields($this->generateFields($entityImplFileObject, $entityStubFileObject));
+        $entityStubFileObject = $this->createEntityStubFileObject($entityFileObject);
+        $entityImplFileObject = $this->createEntityImplFileObject($entityFileObject);
+        $entityStubFileObject->setFields($this->generateFields($entityFileObject, $entityStubFileObject));
         $entityStubFileObject->setConsts($this->generateConsts($entityStubFileObject));
-        $entityStubFileObject->setContent($this->generateContent($entityStubFileObject, $entityImplFileObject));
+        $entityStubFileObject->setContent(
+            $this->generateContent($entityImplFileObject, $entityStubFileObject)
+        );
 
         return $entityStubFileObject;
     }
 
-    private function createEntityFileObject(FileObject $entityImplFileObject): FileObject
+    private function createEntityStubFileObject(FileObject $entityFileObject): FileObject
     {
         return $this->entityFileObjectFactory->create(
             EntityFileObjectType::BUSINESS_RULES_ENTITY_STUB,
-            $entityImplFileObject->getDomain(),
-            $entityImplFileObject->getEntity()
+            $entityFileObject->getDomain(),
+            $entityFileObject->getEntity(),
+            $entityFileObject->getBaseNamespace()
+        );
+    }
+
+    private function createEntityImplFileObject(FileObject $entityFileObject): FileObject
+    {
+        return $this->entityFileObjectFactory->create(
+            EntityFileObjectType::BUSINESS_RULES_ENTITY_IMPL,
+            $entityFileObject->getDomain(),
+            $entityFileObject->getEntity(),
+            $entityFileObject->getBaseNamespace()
         );
     }
 
     private function generateFields(FileObject $fileObject, FileObject $stubFieldObject): array
     {
-        $entityFields = $this->getParentProtectedClassFields($fileObject->getClassName());
+        $entityFields = $this->getProtectedClassFields($fileObject->getClassName());
 
         return FieldUtility::generateStubFieldObjects($entityFields, $stubFieldObject);
     }
@@ -96,19 +113,19 @@ class EntityStubGenerator extends AbstractGenerator
         return $consts;
     }
 
-    private function generateContent(FileObject $entityStubFileObject, FileObject $entityImplFileObject): string
+    private function generateContent(FileObject $entityImplFileObject, FileObject $entityStubFileObject): string
     {
-        $skeletonModel = $this->createSkeletonModel($entityStubFileObject, $entityImplFileObject);
+        $skeletonModel = $this->createSkeletonModel($entityImplFileObject, $entityStubFileObject);
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
     }
 
     private function createSkeletonModel(
-        FileObject $entityStubFileObject,
-        FileObject $entityImplFileObject
+        FileObject $entityImplFileObject,
+        FileObject $entityStubFileObject
     ): EntityStubSkeletonModel
     {
-        return $this->entityStubSkeletonModelAssembler->create($entityStubFileObject, $entityImplFileObject);
+        return $this->entityStubSkeletonModelAssembler->create($entityImplFileObject, $entityStubFileObject);
     }
 
     public function setEntityStubSkeletonModelAssembler(

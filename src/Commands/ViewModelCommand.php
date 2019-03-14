@@ -63,6 +63,5 @@ class ViewModelCommand extends AbstractCommand
         $this->displayCreatedFilePath($io, $writtenFiles);
         $this->displayNotWrittenFilePathAndContent($io, $notWrittenFiles, $input);
         $this->displayFilePathAndContentDump($io, array_merge($writtenFiles, $notWrittenFiles), $input);
-
     }
 }

@@ -67,12 +67,13 @@ class UseCaseListItemResponseStubGenerator extends AbstractUseCaseResponseStubGe
 
     private function createUseCaseListItemResponseDTOFileObject(string $responseClassName): FileObject
     {
-        [$domain, $entity] = FileObjectUtility::getDomainAndEntityNameFromClassName($responseClassName);
+        [$baseNamespace, $domain, $entity] = FileObjectUtility::getBaseNamespaceDomainAndEntityNameFromClassName($responseClassName);
 
         return $this->useCaseResponseFileObjectFactory->create(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE_DTO,
             $domain,
-            $entity
+            $entity,
+            $baseNamespace
         );
     }
 
@@ -83,7 +84,8 @@ class UseCaseListItemResponseStubGenerator extends AbstractUseCaseResponseStubGe
         return $this->useCaseResponseFileObjectFactory->create(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE_STUB,
             $useCaseListItemResponseFileObject->getDomain(),
-            $useCaseListItemResponseFileObject->getEntity()
+            $useCaseListItemResponseFileObject->getEntity(),
+            $useCaseListItemResponseFileObject->getBaseNamespace()
         );
     }
 
@@ -92,7 +94,8 @@ class UseCaseListItemResponseStubGenerator extends AbstractUseCaseResponseStubGe
         return $this->entityFileObjectFactory->create(
             EntityFileObjectType::BUSINESS_RULES_ENTITY_STUB,
             $useCaseListItemResponseDTOFileObject->getDomain(),
-            $useCaseListItemResponseDTOFileObject->getEntity()
+            $useCaseListItemResponseDTOFileObject->getEntity(),
+            $useCaseListItemResponseDTOFileObject->getBaseNamespace()
         );
     }
 

@@ -50,12 +50,13 @@ class ViewModelDetailGenerator extends AbstractViewModelGenerator
 
     private function createUseCaseDetailResponseDTOFileObject(string $useCaseDetailResponseClassName): FileObject
     {
-        [$domain, $entity] = FileObjectUtility::getDomainAndEntityNameFromClassName($useCaseDetailResponseClassName);
+        [$baseNamespace, $domain, $entity] = FileObjectUtility::getBaseNamespaceDomainAndEntityNameFromClassName($useCaseDetailResponseClassName);
 
         return $this->createUseCaseResponseFileObject(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE_DTO,
             $domain,
-            $entity
+            $entity,
+            $baseNamespace
         );
     }
 
@@ -64,7 +65,8 @@ class ViewModelDetailGenerator extends AbstractViewModelGenerator
         return $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL_DETAIL,
             $useCaseDetailResponseDTOFileObject->getDomain(),
-            $useCaseDetailResponseDTOFileObject->getEntity()
+            $useCaseDetailResponseDTOFileObject->getEntity(),
+            $useCaseDetailResponseDTOFileObject->getBaseNamespace()
         );
     }
 

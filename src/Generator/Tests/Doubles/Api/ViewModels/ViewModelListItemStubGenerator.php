@@ -74,12 +74,13 @@ class ViewModelListItemStubGenerator extends AbstractViewModelGenerator
 
     private function createUseCaseListItemResponseDTOFileObject(string $viewModelClassName): FileObject
     {
-        [$domain, $entity] = FileObjectUtility::getDomainAndEntityNameFromClassName($viewModelClassName);
+        [$baseNamespace, $domain, $entity] = FileObjectUtility::getBaseNamespaceDomainAndEntityNameFromClassName($viewModelClassName);
 
         return $this->createUseCaseResponseFileObject(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE_DTO,
             $domain,
-            $entity
+            $entity,
+            $baseNamespace
         );
     }
 
@@ -90,7 +91,9 @@ class ViewModelListItemStubGenerator extends AbstractViewModelGenerator
         return $this->createUseCaseResponseFileObject(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE_STUB,
             $useCaseListItemResponseDTOFileObject->getDomain(),
-            $useCaseListItemResponseDTOFileObject->getEntity()
+            $useCaseListItemResponseDTOFileObject->getEntity(),
+            $useCaseListItemResponseDTOFileObject->getBaseNamespace(),
+            $useCaseListItemResponseDTOFileObject->getBaseNamespace()
         );
     }
 
@@ -101,7 +104,9 @@ class ViewModelListItemStubGenerator extends AbstractViewModelGenerator
         return $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_IMPL,
             $useCaseListItemResponseDTOFileObject->getDomain(),
-            $useCaseListItemResponseDTOFileObject->getEntity()
+            $useCaseListItemResponseDTOFileObject->getEntity(),
+            $useCaseListItemResponseDTOFileObject->getBaseNamespace(),
+            $useCaseListItemResponseDTOFileObject->getBaseNamespace()
         );
     }
 
@@ -115,7 +120,9 @@ class ViewModelListItemStubGenerator extends AbstractViewModelGenerator
         $viewModelListItemStubFileObject = $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_STUB,
             $useCaseListItemResponseDTOFileObject->getDomain(),
-            $useCaseListItemResponseDTOFileObject->getEntity()
+            $useCaseListItemResponseDTOFileObject->getEntity(),
+            $useCaseListItemResponseDTOFileObject->getBaseNamespace(),
+            $useCaseListItemResponseDTOFileObject->getBaseNamespace()
         );
 
         return $viewModelListItemStubFileObject;

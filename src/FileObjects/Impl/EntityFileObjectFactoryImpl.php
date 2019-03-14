@@ -12,9 +12,11 @@ use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
  */
 class EntityFileObjectFactoryImpl extends AbstractFileObjectFactory implements EntityFileObjectFactory
 {
-    public function create(string $type, string $domain, string $entity): FileObject
+    public function create(string $type, string $domain, string $entity, string $baseNamespace = null): FileObject
     {
         $fileObject = new FileObject();
+
+        $this->baseNamespace = $baseNamespace ?? $this->baseNamespace;
 
         switch ($type) {
             case EntityFileObjectType::BUSINESS_RULES_ENTITY_STUB:

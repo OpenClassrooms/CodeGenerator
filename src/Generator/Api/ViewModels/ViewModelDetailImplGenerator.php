@@ -50,12 +50,13 @@ class ViewModelDetailImplGenerator extends AbstractViewModelGenerator
 
     private function createViewModelDetailFileObject(string $viewModelDetailClassName): FileObject
     {
-        [$domain, $entity] = FileObjectUtility::getDomainAndEntityNameFromClassName($viewModelDetailClassName);
+        [$baseNamespace, $domain, $entity] = FileObjectUtility::getBaseNamespaceDomainAndEntityNameFromClassName($viewModelDetailClassName);
 
         return $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL_DETAIL,
             $domain,
-            $entity
+            $entity,
+            $baseNamespace
         );
     }
 
@@ -64,7 +65,8 @@ class ViewModelDetailImplGenerator extends AbstractViewModelGenerator
         return $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_IMPL,
             $viewModelDetailFileObject->getDomain(),
-            $viewModelDetailFileObject->getEntity()
+            $viewModelDetailFileObject->getEntity(),
+            $viewModelDetailFileObject->getBaseNamespace()
         );
     }
 

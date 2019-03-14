@@ -7,9 +7,36 @@ namespace OpenClassrooms\CodeGenerator\Utility;
  */
 class FileObjectUtility
 {
-    public static function getDomainAndEntityNameFromClassName(string $className): array
+    public static function getBaseNamespaceDomainAndEntityNameFromClassName(string $className): array
     {
-        return [self::getDomainFromClassName($className), self::getEntityNameFromClassName($className)];
+        return [
+            self::getBaseNamespaceFromClassName($className),
+            self::getDomainFromClassName($className),
+            self::getEntityNameFromClassName($className),
+        ];
+    }
+
+    public static function getBaseNamespaceFromClassName(string $className): string
+    {
+        $explodedNamespace = explode('\\', self::getNamespace($className));
+        $dirs = [];
+        foreach ($explodedNamespace as $dirName) {
+            if (in_array($dirName, ['BusinessRules', 'Entity', 'Api', 'App'])) {
+                break;
+            }
+            $dirs[] = $dirName;
+        }
+        $baseNamespace = implode('\\', $dirs);
+
+        return $baseNamespace . '\\';
+    }
+
+    public static function getNamespace(string $className)
+    {
+        $classParts = explode('\\', $className);
+        array_pop($classParts);
+
+        return implode('\\', $classParts);
     }
 
     public static function getDomainFromClassName(string $className): string
@@ -32,17 +59,9 @@ class FileObjectUtility
         return implode('\\', array_reverse($domain));
     }
 
-    public static function getNamespace(string $className)
-    {
-        $classParts = explode('\\', $className);
-        array_pop($classParts);
-
-        return implode('\\', $classParts);
-    }
-
     private static function getNamespaceLimit(array $explodedNamespace): int
     {
-        $excludeDir = ['BusinessRules','Entity','ViewModels','Responders','Requestors'];
+        $excludeDir = ['BusinessRules', 'Entity', 'ViewModels', 'Responders', 'Requestors'];
         foreach (array_reverse($explodedNamespace) as $key => $dir) {
             if (in_array($dir, $excludeDir)) {
                 return count($explodedNamespace) - 1 - $key;
@@ -72,6 +91,7 @@ class FileObjectUtility
         $shortClassName = str_replace('Request', '', $shortClassName);
         $shortClassName = str_replace('Stub1', '', $shortClassName);
         $shortClassName = str_replace('TestCase', '', $shortClassName);
+        $shortClassName = str_replace('Create', '', $shortClassName);
 
         return $shortClassName;
     }

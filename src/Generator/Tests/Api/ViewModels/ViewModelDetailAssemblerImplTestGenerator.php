@@ -75,12 +75,15 @@ class ViewModelDetailAssemblerImplTestGenerator extends AbstractViewModelGenerat
         string $viewModelDetailAssemblerImplClassName
     ): FileObject
     {
-        [$domain, $entity] = FileObjectUtility::getDomainAndEntityNameFromClassName($viewModelDetailAssemblerImplClassName);
+        [$baseNamespace, $domain, $entity] = FileObjectUtility::getBaseNamespaceDomainAndEntityNameFromClassName(
+            $viewModelDetailAssemblerImplClassName
+        );
 
         $viewModelDetailAssemblerImpl = $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_ASSEMBLER_IMPL,
             $domain,
-            $entity
+            $entity,
+            $baseNamespace
         );
 
         return $viewModelDetailAssemblerImpl;
@@ -91,7 +94,8 @@ class ViewModelDetailAssemblerImplTestGenerator extends AbstractViewModelGenerat
         $viewModelDetailTestCase = $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_TEST_CASE,
             $viewModelDetailAssemblerImpl->getDomain(),
-            $viewModelDetailAssemblerImpl->getEntity()
+            $viewModelDetailAssemblerImpl->getEntity(),
+            $viewModelDetailAssemblerImpl->getBaseNamespace()
         );
 
         return $viewModelDetailTestCase;
@@ -102,7 +106,8 @@ class ViewModelDetailAssemblerImplTestGenerator extends AbstractViewModelGenerat
         return $this->createUseCaseResponseFileObject(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE_STUB,
             $viewModelDetailAssemblerImpl->getDomain(),
-            $viewModelDetailAssemblerImpl->getEntity()
+            $viewModelDetailAssemblerImpl->getEntity(),
+            $viewModelDetailAssemblerImpl->getBaseNamespace()
         );
     }
 
@@ -111,7 +116,8 @@ class ViewModelDetailAssemblerImplTestGenerator extends AbstractViewModelGenerat
         return $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_STUB,
             $viewModelDetailAssemblerImpl->getDomain(),
-            $viewModelDetailAssemblerImpl->getEntity()
+            $viewModelDetailAssemblerImpl->getEntity(),
+            $viewModelDetailAssemblerImpl->getBaseNamespace()
         );
     }
 
@@ -120,7 +126,8 @@ class ViewModelDetailAssemblerImplTestGenerator extends AbstractViewModelGenerat
         $viewModelDetailAssembler = $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_ASSEMBLER,
             $viewModelDetailAssemblerImpl->getDomain(),
-            $viewModelDetailAssemblerImpl->getEntity()
+            $viewModelDetailAssemblerImpl->getEntity(),
+            $viewModelDetailAssemblerImpl->getBaseNamespace()
         );
 
         return $viewModelDetailAssembler;
@@ -128,13 +135,14 @@ class ViewModelDetailAssemblerImplTestGenerator extends AbstractViewModelGenerat
 
     private function createViewModelDetailAssemblerImplTestFileObject(string $responseClassName): FileObject
     {
-        [$domain, $entity] = FileObjectUtility::getDomainAndEntityNameFromClassName($responseClassName);
+        [$baseNamespace, $domain, $entity] = FileObjectUtility::getBaseNamespaceDomainAndEntityNameFromClassName($responseClassName);
         $responseFileObject = $this
             ->createViewModelFileObject(
                 ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_ASSEMBLER_IMPL_TEST,
                 $domain,
-                $entity
-            );
+                $entity,
+                $baseNamespace
+        );
 
         return $responseFileObject;
     }

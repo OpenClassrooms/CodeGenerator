@@ -25,32 +25,105 @@ class FileObjectUtilityTest extends TestCase
      * @test
      * @dataProvider fileObjectDataProvider
      */
-    public function getDomainAndEntityNameFromClassName_ReturnArray($className, $expectedDomain, $expectedEntity)
+    public function getDomainAndEntityNameFromClassName_ReturnArray(
+        $className,
+        $expectedBaseNamespace,
+        $expectedDomain,
+        $expectedEntity
+    )
     {
-        [$actualDomain, $actualEntity] = FileObjectUtility::getDomainAndEntityNameFromClassName($className);
+        [
+            $actualBaseNamespace,
+            $actualDomain,
+            $actualEntity,
+        ] = FileObjectUtility::getBaseNamespaceDomainAndEntityNameFromClassName($className);
 
+        $this->assertEquals($expectedBaseNamespace, $actualBaseNamespace);
         $this->assertEquals($expectedDomain, $actualDomain);
         $this->assertEquals($expectedEntity, $actualEntity);
-
     }
 
     public function fileObjectDataProvider()
     {
         return [
-            [FunctionalEntityDetailAssembler::class, 'Domain\SubDomain', 'FunctionalEntity'],
-            [FunctionalEntityDetailResponse::class, 'Domain\SubDomain', 'FunctionalEntity'],
-            [FunctionalEntityDetail::class, 'Domain\SubDomain', 'FunctionalEntity'],
-            [FunctionalEntityImpl::class, 'Domain\SubDomain', 'FunctionalEntity'],
-            [FunctionalEntityListItemAssembler::class, 'Domain\SubDomain', 'FunctionalEntity'],
-            [FunctionalEntityListItemResponseDTO::class, 'Domain\SubDomain', 'FunctionalEntity'],
-            [FunctionalEntityListItemResponse::class, 'Domain\SubDomain', 'FunctionalEntity'],
-            [FunctionalEntityListItem::class, 'Domain\SubDomain', 'FunctionalEntity'],
-            [FunctionalEntityResponseDTO::class, 'Domain\SubDomain', 'FunctionalEntity'],
-            [FunctionalEntityResponse::class, 'Domain\SubDomain', 'FunctionalEntity'],
-            [FunctionalEntityStub1::class, 'Domain\SubDomain', 'FunctionalEntity'],
-            [FunctionalEntityTestCase::class, 'Domain\SubDomain', 'FunctionalEntity'],
-            [FileObjectUtilityTest::class, 'CodeGenerator\Utility', 'FileObjectUtilityTest'],
+            [
+                FunctionalEntityDetailAssembler::class,
+                'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\\',
+                'Domain\SubDomain',
+                'FunctionalEntity',
+            ],
+            [
+                FunctionalEntityDetailResponse::class,
+                'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\\',
+                'Domain\SubDomain',
+                'FunctionalEntity',
+            ],
+            [
+                FunctionalEntityDetail::class,
+                'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\\',
+                'Domain\SubDomain',
+                'FunctionalEntity',
+            ],
+            [
+                FunctionalEntityImpl::class,
+                'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\\',
+                'Domain\SubDomain',
+                'FunctionalEntity',
+            ],
+            [
+                FunctionalEntityListItemAssembler::class,
+                'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\\',
+                'Domain\SubDomain',
+                'FunctionalEntity',
+            ],
+            [
+                FunctionalEntityListItemResponseDTO::class,
+                'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\\',
+                'Domain\SubDomain',
+                'FunctionalEntity',
+            ],
+            [
+                FunctionalEntityListItemResponse::class,
+                'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\\',
+                'Domain\SubDomain',
+                'FunctionalEntity',
+            ],
+            [
+                FunctionalEntityListItem::class,
+                'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\\',
+                'Domain\SubDomain',
+                'FunctionalEntity',
+            ],
+            [
+                FunctionalEntityResponseDTO::class,
+                'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\\',
+                'Domain\SubDomain',
+                'FunctionalEntity',
+            ],
+            [
+                FunctionalEntityResponse::class,
+                'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\\',
+                'Domain\SubDomain',
+                'FunctionalEntity',
+            ],
+            [
+                FunctionalEntityStub1::class,
+                'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\tests\Doubles\\',
+                'Domain\SubDomain',
+                'FunctionalEntity',
+            ],
+            [
+                FunctionalEntityTestCase::class,
+                'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\tests\Doubles\\',
+                'Domain\SubDomain',
+                'FunctionalEntity',
+            ],
+            [
+                FileObjectUtilityTest::class,
+                'OpenClassrooms\CodeGenerator\Utility\\',
+                'CodeGenerator\Utility',
+                'FileObjectUtilityTest',
+            ],
         ];
     }
-
 }

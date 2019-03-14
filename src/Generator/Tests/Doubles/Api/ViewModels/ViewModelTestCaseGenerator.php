@@ -38,12 +38,13 @@ class ViewModelTestCaseGenerator extends AbstractViewModelGenerator
 
     protected function createUseCaseResponseDTOFileObject(string $useCaseResponseClassName): FileObject
     {
-        [$domain, $entity] = FileObjectUtility::getDomainAndEntityNameFromClassName($useCaseResponseClassName);
+        [$baseNamespace, $domain, $entity] = FileObjectUtility::getBaseNamespaceDomainAndEntityNameFromClassName($useCaseResponseClassName);
 
         return $this->createUseCaseResponseFileObject(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE_DTO,
             $domain,
-            $entity
+            $entity,
+            $baseNamespace
         );
     }
 
@@ -68,7 +69,9 @@ class ViewModelTestCaseGenerator extends AbstractViewModelGenerator
         $viewModelTestCaseFileObject = $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL_TEST_CASE,
             $useCaseResponseDTOFileObject->getDomain(),
-            $useCaseResponseDTOFileObject->getEntity()
+            $useCaseResponseDTOFileObject->getEntity(),
+            $useCaseResponseDTOFileObject->getBaseNamespace(),
+            $useCaseResponseDTOFileObject->getBaseNamespace()
         );
 
         return $viewModelTestCaseFileObject;
@@ -79,7 +82,9 @@ class ViewModelTestCaseGenerator extends AbstractViewModelGenerator
         $viewModelTestCaseFileObject = $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL,
             $useCaseResponseDTOFileObject->getDomain(),
-            $useCaseResponseDTOFileObject->getEntity()
+            $useCaseResponseDTOFileObject->getEntity(),
+            $useCaseResponseDTOFileObject->getBaseNamespace(),
+            $useCaseResponseDTOFileObject->getBaseNamespace()
         );
 
         return $viewModelTestCaseFileObject;

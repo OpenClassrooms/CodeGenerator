@@ -75,12 +75,15 @@ class ViewModelDetailStubGenerator extends AbstractViewModelGenerator
 
     private function createUseCaseDetailResponseDTOFileObject(string $viewModelClassName): FileObject
     {
-        [$domain, $entity] = FileObjectUtility::getDomainAndEntityNameFromClassName($viewModelClassName);
+        [$baseNamespace, $domain, $entity] = FileObjectUtility::getBaseNamespaceDomainAndEntityNameFromClassName(
+            $viewModelClassName
+        );
 
         return $this->createUseCaseResponseFileObject(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE_DTO,
             $domain,
-            $entity
+            $entity,
+            $baseNamespace
         );
     }
 
@@ -91,7 +94,9 @@ class ViewModelDetailStubGenerator extends AbstractViewModelGenerator
         return $this->createUseCaseResponseFileObject(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE_STUB,
             $useCaseDetailResponseDTOFileObject->getDomain(),
-            $useCaseDetailResponseDTOFileObject->getEntity()
+            $useCaseDetailResponseDTOFileObject->getEntity(),
+            $useCaseDetailResponseDTOFileObject->getBaseNamespace(),
+            $useCaseDetailResponseDTOFileObject->getBaseNamespace()
         );
     }
 
@@ -101,7 +106,9 @@ class ViewModelDetailStubGenerator extends AbstractViewModelGenerator
         return $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_IMPL,
             $useCaseDetailResponseDTOFileObject->getDomain(),
-            $useCaseDetailResponseDTOFileObject->getEntity()
+            $useCaseDetailResponseDTOFileObject->getEntity(),
+            $useCaseDetailResponseDTOFileObject->getBaseNamespace(),
+            $useCaseDetailResponseDTOFileObject->getBaseNamespace()
         );
     }
 
@@ -110,7 +117,9 @@ class ViewModelDetailStubGenerator extends AbstractViewModelGenerator
         return $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_STUB,
             $useCaseDetailResponseDTOFileObject->getDomain(),
-            $useCaseDetailResponseDTOFileObject->getEntity()
+            $useCaseDetailResponseDTOFileObject->getEntity(),
+            $useCaseDetailResponseDTOFileObject->getBaseNamespace(),
+            $useCaseDetailResponseDTOFileObject->getBaseNamespace()
         );
     }
 

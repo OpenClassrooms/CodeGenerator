@@ -41,7 +41,7 @@ class ViewModelFileObjectFactoryImplTest extends TestCase
 
     public function fileObjectDataProvider()
     {
-        [$domain, $entity] = FileObjectUtility::getDomainAndEntityNameFromClassName(FunctionalEntity::class);
+        [$baseNamespace, $domain, $entity] = FileObjectUtility::getBaseNamespaceDomainAndEntityNameFromClassName(FunctionalEntity::class);
 
         return [
             [

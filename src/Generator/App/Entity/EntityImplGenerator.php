@@ -50,22 +50,26 @@ class EntityImplGenerator extends AbstractGenerator
 
     private function createEntityImplFileObject(string $useCaseResponseClassName): FileObject
     {
-        [$domain, $entity] = FileObjectUtility::getDomainAndEntityNameFromClassName($useCaseResponseClassName);
+        [$baseNamespace, $domain, $entity] = FileObjectUtility::getBaseNamespaceDomainAndEntityNameFromClassName(
+            $useCaseResponseClassName
+        );
 
         return $this->entityFileObjectFactory->create(
             EntityFileObjectType::BUSINESS_RULES_ENTITY_IMPL,
             $domain,
-            $entity
+            $entity,
+            $baseNamespace
         );
     }
 
     private function createEntityFileObject(FileObject $entityImplFileObject): FileObject
     {
-
         return $this->entityFileObjectFactory->create(
             EntityFileObjectType::BUSINESS_RULES_ENTITY,
             $entityImplFileObject->getDomain(),
-            $entityImplFileObject->getEntity()
+            $entityImplFileObject->getEntity(),
+            $entityImplFileObject->getBaseNamespace(),
+            $entityImplFileObject->getBaseNamespace()
         );
     }
 

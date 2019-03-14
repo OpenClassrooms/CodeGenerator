@@ -50,12 +50,13 @@ class ViewModelListItemImplGenerator extends AbstractViewModelGenerator
 
     private function createViewModelListItemFileObject(string $viewModelListItemClassName): FileObject
     {
-        [$domain, $entity] = FileObjectUtility::getDomainAndEntityNameFromClassName($viewModelListItemClassName);
+        [$baseNamespace, $domain, $entity] = FileObjectUtility::getBaseNamespaceDomainAndEntityNameFromClassName($viewModelListItemClassName);
 
         return $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM,
             $domain,
-            $entity
+            $entity,
+            $baseNamespace
         );
     }
 
@@ -64,7 +65,8 @@ class ViewModelListItemImplGenerator extends AbstractViewModelGenerator
         return $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_IMPL,
             $viewModelListItemFileObject->getDomain(),
-            $viewModelListItemFileObject->getEntity()
+            $viewModelListItemFileObject->getEntity(),
+            $viewModelListItemFileObject->getBaseNamespace()
         );
     }
 

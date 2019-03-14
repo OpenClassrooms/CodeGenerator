@@ -53,12 +53,12 @@ class ViewModelListItemAssemblerImplTestGenerator extends AbstractViewModelGener
         $viewModelListItemAssemblerImplTest->setContent(
             $this->generateContent(
                 [
-                    ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_ASSEMBLER_IMPL                       => $viewModelListItemAssemblerImpl,
-                    ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_TEST_CASE                            => $viewModelListItemTestCase,
-                    UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE_STUB         => $useCaseListItemResponseStub,
-                    ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_STUB                                 => $viewModelListItemStub,
-                    ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_ASSEMBLER                            => $viewModelListItemAssembler,
-                    ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_ASSEMBLER_IMPL_TEST                  => $viewModelListItemAssemblerImplTest,
+                    ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_ASSEMBLER_IMPL               => $viewModelListItemAssemblerImpl,
+                    ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_TEST_CASE                    => $viewModelListItemTestCase,
+                    UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE_STUB => $useCaseListItemResponseStub,
+                    ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_STUB                         => $viewModelListItemStub,
+                    ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_ASSEMBLER                    => $viewModelListItemAssembler,
+                    ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_ASSEMBLER_IMPL_TEST          => $viewModelListItemAssemblerImplTest,
                 ]
             )
         );
@@ -75,12 +75,15 @@ class ViewModelListItemAssemblerImplTestGenerator extends AbstractViewModelGener
         string $viewModelListItemAssemblerImplClassName
     ): FileObject
     {
-        [$domain, $entity] = FileObjectUtility::getDomainAndEntityNameFromClassName($viewModelListItemAssemblerImplClassName);
+        [$baseNamespace, $domain, $entity] = FileObjectUtility::getBaseNamespaceDomainAndEntityNameFromClassName(
+            $viewModelListItemAssemblerImplClassName
+        );
 
         $viewModelListItemAssemblerImpl = $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_ASSEMBLER_IMPL,
             $domain,
-            $entity
+            $entity,
+            $baseNamespace
         );
 
         return $viewModelListItemAssemblerImpl;
@@ -91,7 +94,8 @@ class ViewModelListItemAssemblerImplTestGenerator extends AbstractViewModelGener
         $viewModelListItemTestCaseFileObject = $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_TEST_CASE,
             $viewModelListItemAssemblerImpl->getDomain(),
-            $viewModelListItemAssemblerImpl->getEntity()
+            $viewModelListItemAssemblerImpl->getEntity(),
+            $viewModelListItemAssemblerImpl->getBaseNamespace()
         );
 
         return $viewModelListItemTestCaseFileObject;
@@ -102,7 +106,8 @@ class ViewModelListItemAssemblerImplTestGenerator extends AbstractViewModelGener
         return $this->createUseCaseResponseFileObject(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE_STUB,
             $viewModelListItemAssemblerImpl->getDomain(),
-            $viewModelListItemAssemblerImpl->getEntity()
+            $viewModelListItemAssemblerImpl->getEntity(),
+            $viewModelListItemAssemblerImpl->getBaseNamespace()
         );
     }
 
@@ -111,7 +116,8 @@ class ViewModelListItemAssemblerImplTestGenerator extends AbstractViewModelGener
         return $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_STUB,
             $viewModelListItemAssemblerImpl->getDomain(),
-            $viewModelListItemAssemblerImpl->getEntity()
+            $viewModelListItemAssemblerImpl->getEntity(),
+            $viewModelListItemAssemblerImpl->getBaseNamespace()
         );
     }
 
@@ -120,7 +126,8 @@ class ViewModelListItemAssemblerImplTestGenerator extends AbstractViewModelGener
         $viewModelListItemAssembler = $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_ASSEMBLER,
             $viewModelListItemAssemblerImpl->getDomain(),
-            $viewModelListItemAssemblerImpl->getEntity()
+            $viewModelListItemAssemblerImpl->getEntity(),
+            $viewModelListItemAssemblerImpl->getBaseNamespace()
         );
 
         return $viewModelListItemAssembler;
@@ -128,13 +135,14 @@ class ViewModelListItemAssemblerImplTestGenerator extends AbstractViewModelGener
 
     private function createViewModelListItemAssemblerImplTestFileObject(string $responseClassName): FileObject
     {
-        [$domain, $entity] = FileObjectUtility::getDomainAndEntityNameFromClassName($responseClassName);
+        [$baseNamespace, $domain, $entity] = FileObjectUtility::getBaseNamespaceDomainAndEntityNameFromClassName($responseClassName);
         $responseFileObject = $this
             ->createViewModelFileObject(
                 ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_ASSEMBLER_IMPL_TEST,
                 $domain,
-                $entity
-            );
+                $entity,
+                $baseNamespace
+        );
 
         return $responseFileObject;
     }
@@ -155,12 +163,18 @@ class ViewModelListItemAssemblerImplTestGenerator extends AbstractViewModelGener
     private function createSkeletonModel(array $fileObjects): ViewModelListItemAssemblerImplTestSkeletonModel
     {
         return $this->viewModelTestSkeletonModelBuilder->create()
-            ->withViewModelListItemAssemblerImpl($fileObjects[ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_ASSEMBLER_IMPL])
+            ->withViewModelListItemAssemblerImpl(
+                $fileObjects[ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_ASSEMBLER_IMPL]
+            )
             ->withViewModelListItemTestCase($fileObjects[ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_TEST_CASE])
-            ->withUseCaseListItemResponseStub($fileObjects[UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE_STUB])
+            ->withUseCaseListItemResponseStub(
+                $fileObjects[UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE_STUB]
+            )
             ->withViewModelListItemStub($fileObjects[ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_STUB])
             ->withViewModelListItemAssembler($fileObjects[ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_ASSEMBLER])
-            ->withViewModelListItemAssemblerImplTest($fileObjects[ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_ASSEMBLER_IMPL_TEST])
+            ->withViewModelListItemAssemblerImplTest(
+                $fileObjects[ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_ASSEMBLER_IMPL_TEST]
+            )
             ->build();
     }
 

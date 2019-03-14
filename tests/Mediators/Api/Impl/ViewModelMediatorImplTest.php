@@ -83,7 +83,7 @@ class ViewModelMediatorImplTest extends TestCase
     use FlushedFileObjectTestCase;
 
     /**
-     * @var ViewModelMediator
+     * @var ViewModelMediatorImpl
      */
     private $mediator;
 

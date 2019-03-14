@@ -53,12 +53,15 @@ class ViewModelAssemblerTraitGenerator extends AbstractViewModelGenerator
 
     private function createUseCaseResponseDTOFileObject(string $useCaseResponseClassName): FileObject
     {
-        [$domain, $entity] = FileObjectUtility::getDomainAndEntityNameFromClassName($useCaseResponseClassName);
+        [$baseNamespace, $domain, $entity] = FileObjectUtility::getBaseNamespaceDomainAndEntityNameFromClassName(
+            $useCaseResponseClassName
+        );
 
         return $this->createUseCaseResponseFileObject(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE_DTO,
             $domain,
-            $entity
+            $entity,
+            $baseNamespace
         );
     }
 
@@ -67,7 +70,8 @@ class ViewModelAssemblerTraitGenerator extends AbstractViewModelGenerator
         return $this->createUseCaseResponseFileObject(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE,
             $useCaseResponseFileObject->getDomain(),
-            $useCaseResponseFileObject->getEntity()
+            $useCaseResponseFileObject->getEntity(),
+            $useCaseResponseFileObject->getBaseNamespace()
         );
     }
 
@@ -76,7 +80,8 @@ class ViewModelAssemblerTraitGenerator extends AbstractViewModelGenerator
         return $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL_ASSEMBLER_TRAIT,
             $useCaseResponseFileObject->getDomain(),
-            $useCaseResponseFileObject->getEntity()
+            $useCaseResponseFileObject->getEntity(),
+            $useCaseResponseFileObject->getBaseNamespace()
         );
     }
 
