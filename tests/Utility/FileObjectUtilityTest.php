@@ -25,7 +25,7 @@ class FileObjectUtilityTest extends TestCase
      * @test
      * @dataProvider fileObjectDataProvider
      */
-    public function getDomainAndEntityNameFromClassName_ReturnArray(
+    public function getBaseNamespaceDomainAndEntityNameFromClassName_ReturnArray(
         $className,
         $expectedBaseNamespace,
         $expectedDomain,
@@ -123,6 +123,12 @@ class FileObjectUtilityTest extends TestCase
                 'OpenClassrooms\CodeGenerator\Utility\\',
                 'CodeGenerator\Utility',
                 'FileObjectUtilityTest',
+            ],
+            [
+                'BusinessRules\UseCases\Domain\SubDomain\GenericUseCase',
+                '',
+                'Domain\SubDomain',
+                'GenericUseCase',
             ],
         ];
     }

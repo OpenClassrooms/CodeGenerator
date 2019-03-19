@@ -41,7 +41,7 @@
     "symfony/filesystem": "~3.3",
     "symfony/finder": "~3.3",
     "symfony/yaml": "~3.3",
-    "twig/twig": "^1.34 || ^2.0",
+    "twig/twig": "^1.38 || ^2.7",
     "openclassrooms/cache": "1.0.x@dev",
     "openclassrooms/use-case": "1.0.x@dev"
   },

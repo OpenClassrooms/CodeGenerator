@@ -16,19 +16,22 @@ class FileObjectUtility
         ];
     }
 
-    public static function getBaseNamespaceFromClassName(string $className): string
+    public static function getBaseNamespaceFromClassName(string $className): ?string
     {
         $explodedNamespace = explode('\\', self::getNamespace($className));
         $dirs = [];
         foreach ($explodedNamespace as $dirName) {
-            if (in_array($dirName, ['BusinessRules', 'Entity', 'Api', 'App'])) {
+            if (in_array($dirName, ['BusinessRules', 'Entity', 'Api', 'ApiBundle', 'App', 'AppBundle'])) {
                 break;
             }
             $dirs[] = $dirName;
         }
-        $baseNamespace = implode('\\', $dirs);
 
-        return $baseNamespace . '\\';
+        if (!empty($dirs)) {
+            return implode('\\', $dirs) . '\\';
+        }
+
+        return null;
     }
 
     public static function getNamespace(string $className)

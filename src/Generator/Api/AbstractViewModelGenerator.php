@@ -38,7 +38,7 @@ abstract class AbstractViewModelGenerator extends AbstractGenerator
         string $type,
         string $domain,
         string $entity,
-        string $baseNamespace
+        string $baseNamespace = null
     ): FileObject
     {
         return $this->useCaseResponseFileObjectFactory->create($type, $domain, $entity, $baseNamespace);
@@ -48,7 +48,7 @@ abstract class AbstractViewModelGenerator extends AbstractGenerator
         string $type,
         string $domain,
         string $entity,
-        string $baseNamespace
+        string $baseNamespace = null
     ): FileObject
     {
         return $this->viewModelFileObjectFactory->create($type, $domain, $entity, $baseNamespace);
