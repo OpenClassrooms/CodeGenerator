@@ -28,6 +28,7 @@ class GenericUseCaseTestSkeletonModelAssemblerImpl implements GenericUseCaseTest
         $skeletonModel->genericUseCaseRequestBuilderImplShortName = $genericUseCaseRequestBuilderImplFileObject->getShortName(
         );
         $skeletonModel->genericUseCaseShortName = $genericUseCaseFileObject->getShortName();
+        $skeletonModel->genericUseCaseClassName = $genericUseCaseFileObject->getClassName();
 
         return $skeletonModel;
     }

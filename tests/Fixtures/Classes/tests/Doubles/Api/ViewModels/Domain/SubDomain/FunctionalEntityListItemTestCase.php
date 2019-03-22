@@ -17,7 +17,7 @@ trait FunctionalEntityListItemTestCase
      * @param FunctionalEntityListItem[] $expected
      * @param FunctionalEntityListItem[] $actual
      */
-    protected function assertFunctionalEntityListItems(array $expected, array $actual)
+    protected function assertFunctionalEntityListItems(array $expected, array $actual): void
     {
         Assert::assertCount(count($expected), $actual);
         foreach ($expected as $key => $item) {
@@ -25,7 +25,7 @@ trait FunctionalEntityListItemTestCase
         }
     }
 
-    private function assertFunctionalEntityListItem(FunctionalEntityListItem $expected, FunctionalEntityListItem $actual)
+    private function assertFunctionalEntityListItem(FunctionalEntityListItem $expected, FunctionalEntityListItem $actual): void
     {
         $this->assertFunctionalEntityTestCase($expected, $actual);
     }

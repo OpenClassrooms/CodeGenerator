@@ -96,6 +96,7 @@ php bin/CodeGenerator.php code-generator:view-models useCaseResponseClassName --
 - Entity name and Domain are getting from ClassNameUtility trait.
 - If you need another class information in your generator, use factories to create the needed FileObject.
 - Some utilities classes are used for generate stub, constant and others things.
+- In view model command, if the use-case response class name contains base namespace, the generator use it if needed
 
 ### Methodology
 

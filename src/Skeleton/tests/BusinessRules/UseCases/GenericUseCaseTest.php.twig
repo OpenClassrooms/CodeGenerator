@@ -4,6 +4,7 @@ namespace {{ skeletonModel.namespace }};
 
 use {{ skeletonModel.genericUseCaseRequestBuilderImplClassName }};
 use {{ skeletonModel.genericUseCaseRequestDTOClassName }};
+use {{ skeletonModel.genericUseCaseClassName }};
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -15,6 +16,11 @@ class {{ skeletonModel.shortName }} extends TestCase
      * @var {{ skeletonModel.genericUseCaseRequestDTOShortName }}
      */
     private $request;
+
+    /**
+     * @var {{ skeletonModel.genericUseCaseShortName }}
+     */
+    private $useCase;
 
     /**
      * @test
@@ -29,6 +35,7 @@ class {{ skeletonModel.shortName }} extends TestCase
      */
     protected function setUp()
     {
+        $this->useCase = new {{ skeletonModel.genericUseCaseShortName }}();
         $builder = new {{ skeletonModel.genericUseCaseRequestBuilderImplShortName }}();
         $this->request = $builder
             ->create()
