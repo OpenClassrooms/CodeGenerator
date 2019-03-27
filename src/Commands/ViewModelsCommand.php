@@ -15,7 +15,7 @@ use Symfony\Component\Yaml\Yaml;
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
  */
-class ViewModelCommand extends AbstractCommand
+class ViewModelsCommand extends AbstractCommand
 {
     /**
      * @var string

@@ -2,12 +2,12 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Commands;
 
-use OpenClassrooms\CodeGenerator\Commands\ViewModelCommand;
+use OpenClassrooms\CodeGenerator\Commands\ViewModelsCommand;
 
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
  */
-class ViewModelCommandMock extends ViewModelCommand
+class ViewModelsCommandMock extends ViewModelsCommand
 {
     const CONFIG_FILE = 'oc_code_generator_test.yml.dist';
 
