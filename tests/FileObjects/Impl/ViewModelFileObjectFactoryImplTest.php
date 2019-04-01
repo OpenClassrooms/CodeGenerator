@@ -2,10 +2,10 @@
 
 namespace Tests\FileObjects;
 
-use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
-use OpenClassrooms\CodeGenerator\FileObjects\Impl\ViewModelFileObjectFactoryImpl;
-use OpenClassrooms\CodeGenerator\FileObjects\ViewModelFileObjectFactory;
-use OpenClassrooms\CodeGenerator\FileObjects\ViewModelFileObjectType;
+use OpenClassrooms\CodeGenerator\Entities\FileObject;
+use OpenClassrooms\CodeGenerator\Entities\Impl\ViewModelFileObjectFactoryImpl;
+use OpenClassrooms\CodeGenerator\Entities\ViewModelFileObjectFactory;
+use OpenClassrooms\CodeGenerator\Entities\ViewModelFileObjectType;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\FunctionalEntity;
 use OpenClassrooms\CodeGenerator\Tests\TestClassUtil;
 use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;

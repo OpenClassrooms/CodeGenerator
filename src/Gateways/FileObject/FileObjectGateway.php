@@ -2,7 +2,7 @@
 
 namespace OpenClassrooms\CodeGenerator\Gateways\FileObject;
 
-use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
+use OpenClassrooms\CodeGenerator\Entities\FileObject;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>

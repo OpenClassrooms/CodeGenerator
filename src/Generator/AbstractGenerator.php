@@ -2,8 +2,8 @@
 
 namespace OpenClassrooms\CodeGenerator\Generator;
 
-use OpenClassrooms\CodeGenerator\FileObjects\FieldObject;
-use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
+use OpenClassrooms\CodeGenerator\Entities\FieldObject;
+use OpenClassrooms\CodeGenerator\Entities\FileObject;
 use OpenClassrooms\CodeGenerator\Gateways\FileObject\FileObjectGateway;
 use OpenClassrooms\CodeGenerator\Services\FieldObjectService;
 use OpenClassrooms\CodeGenerator\Services\Impl\TemplatingServiceImpl;

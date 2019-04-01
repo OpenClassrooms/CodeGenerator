@@ -2,7 +2,7 @@
 
 namespace OpenClassrooms\CodeGenerator\Generator\Tests\App\Entity;
 
-use OpenClassrooms\CodeGenerator\FileObjects\Impl\EntityFileObjectFactoryImpl;
+use OpenClassrooms\CodeGenerator\Entities\Impl\EntityFileObjectFactoryImpl;
 use OpenClassrooms\CodeGenerator\Generator\App\Entity\DTO\Request\EntityImplGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\App\Entity\EntityImplGenerator;
 use OpenClassrooms\CodeGenerator\Generator\App\Entity\Request\EntityImplGeneratorRequestBuilder;

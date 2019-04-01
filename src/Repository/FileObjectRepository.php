@@ -2,7 +2,7 @@
 
 namespace OpenClassrooms\CodeGenerator\Repository;
 
-use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
+use OpenClassrooms\CodeGenerator\Entities\FileObject;
 use OpenClassrooms\CodeGenerator\Gateways\FileObject\FileObjectGateway;
 use Symfony\Component\Filesystem\Filesystem;
 

@@ -3,8 +3,8 @@
 namespace OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Tests\BusinessRules\Entities\EntityStub;
 
 use Carbon\Carbon;
-use OpenClassrooms\CodeGenerator\FileObjects\ConstObject;
-use OpenClassrooms\CodeGenerator\FileObjects\FieldObject;
+use OpenClassrooms\CodeGenerator\Entities\ConstObject;
+use OpenClassrooms\CodeGenerator\Entities\FieldObject;
 
 class EntityStubFieldObjectStub5 extends FieldObject
 {

@@ -2,7 +2,7 @@
 
 namespace OpenClassrooms\CodeGenerator\Generator\BusinessRules;
 
-use OpenClassrooms\CodeGenerator\FileObjects\UseCaseFileObjectFactory;
+use OpenClassrooms\CodeGenerator\Entities\UseCaseFileObjectFactory;
 use OpenClassrooms\CodeGenerator\Generator\AbstractGenerator;
 
 /**

@@ -2,7 +2,7 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Tests\Api\ViewModels\ViewModelDetailAssemblerImplTest;
 
-use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
+use OpenClassrooms\CodeGenerator\Entities\FileObject;
 
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>

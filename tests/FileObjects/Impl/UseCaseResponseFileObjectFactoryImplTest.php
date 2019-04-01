@@ -2,10 +2,10 @@
 
 namespace Tests\FileObjects;
 
-use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
-use OpenClassrooms\CodeGenerator\FileObjects\Impl\UseCaseResponseFileObjectFactoryImpl;
-use OpenClassrooms\CodeGenerator\FileObjects\UseCaseResponseFileObjectFactory;
-use OpenClassrooms\CodeGenerator\FileObjects\UseCaseResponseFileObjectType;
+use OpenClassrooms\CodeGenerator\Entities\FileObject;
+use OpenClassrooms\CodeGenerator\Entities\Impl\UseCaseResponseFileObjectFactoryImpl;
+use OpenClassrooms\CodeGenerator\Entities\UseCaseResponseFileObjectFactory;
+use OpenClassrooms\CodeGenerator\Entities\UseCaseResponseFileObjectType;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\FunctionalEntity;
 use OpenClassrooms\CodeGenerator\Tests\TestClassUtil;
 use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;

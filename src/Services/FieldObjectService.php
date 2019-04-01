@@ -8,17 +8,17 @@ namespace OpenClassrooms\CodeGenerator\Services;
 interface FieldObjectService
 {
     /**
-     * @return \OpenClassrooms\CodeGenerator\FileObjects\FieldObject[]
+     * @return \OpenClassrooms\CodeGenerator\Entities\FieldObject[]
      */
     public function getParentPublicClassFields(string $className): array;
 
     /**
-     * @return \OpenClassrooms\CodeGenerator\FileObjects\FieldObject[]
+     * @return \OpenClassrooms\CodeGenerator\Entities\FieldObject[]
      */
     public function getProtectedClassFields(string $className): array;
 
     /**
-     * @return \OpenClassrooms\CodeGenerator\FileObjects\FieldObject[]
+     * @return \OpenClassrooms\CodeGenerator\Entities\FieldObject[]
      */
     public function getPublicClassFields(string $className): array;
 

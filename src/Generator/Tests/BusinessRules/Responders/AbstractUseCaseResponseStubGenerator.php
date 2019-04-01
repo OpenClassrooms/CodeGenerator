@@ -2,9 +2,9 @@
 
 namespace OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Responders;
 
-use OpenClassrooms\CodeGenerator\FileObjects\EntityFileObjectFactory;
-use OpenClassrooms\CodeGenerator\FileObjects\UseCaseResponseFileObjectFactory;
-use OpenClassrooms\CodeGenerator\FileObjects\ViewModelFileObjectFactory;
+use OpenClassrooms\CodeGenerator\Entities\EntityFileObjectFactory;
+use OpenClassrooms\CodeGenerator\Entities\UseCaseResponseFileObjectFactory;
+use OpenClassrooms\CodeGenerator\Entities\ViewModelFileObjectFactory;
 use OpenClassrooms\CodeGenerator\Generator\AbstractGenerator;
 
 /**
