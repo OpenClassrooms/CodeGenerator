@@ -2,13 +2,13 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Generator\BusinessRules\UseCases;
 
-use OpenClassrooms\CodeGenerator\Entities\Impl\UseCaseFileObjectFactoryImpl;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\GenericUseCaseRequestBuilderImplGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\GenericUseCaseRequestBuilderImplGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\GenericUseCaseRequestBuilderImplGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\Impl\GenericUseCaseRequestBuilderImplSkeletonModelAssemblerImpl;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\BusinessRules\UseCases\GenericUseCaseRequestBuilderImplFileObjectStub1;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\FileObjectTestCase;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\GenericUseCaseRequestBuilderImplFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\FileObjectTestCase;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\UseCaseRequestFileObjectFactoryMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingServiceMock;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\FixturesConfig;
@@ -57,9 +57,9 @@ class GenericUseCaseRequestBuilderImplGeneratorTest extends TestCase
 
         $this->genericUseCaseRequestBuilderImplGenerator = new GenericUseCaseRequestBuilderImplGenerator();
 
-        $useCaseFileObjectFactory = new UseCaseFileObjectFactoryImpl();
-        $useCaseFileObjectFactory->setBaseNamespace(FixturesConfig::BASE_NAMESPACE);
-        $this->genericUseCaseRequestBuilderImplGenerator->setUseCaseFileObjectFactory($useCaseFileObjectFactory);
+        $this->genericUseCaseRequestBuilderImplGenerator->setUseCaseRequestFileObjectFactory(
+            new UseCaseRequestFileObjectFactoryMock()
+        );
 
         $genericUseCaseRequestBuilderImplSkeletonModelAssemblerImpl = new GenericUseCaseRequestBuilderImplSkeletonModelAssemblerImpl(
         );

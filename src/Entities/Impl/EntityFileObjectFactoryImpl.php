@@ -19,9 +19,19 @@ class EntityFileObjectFactoryImpl extends AbstractFileObjectFactory implements E
         $this->baseNamespace = $baseNamespace ?? $this->baseNamespace;
 
         switch ($type) {
-            case EntityFileObjectType::BUSINESS_RULES_ENTITY_STUB:
+            case EntityFileObjectType::BUSINESS_RULES_ENTITY:
                 $fileObject->setClassName(
-                    $this->stubNamespace . 'BusinessRules\Entities\\' . $domain . '\\' . $entity . 'Stub1'
+                    $this->baseNamespace . 'BusinessRules\Entities\\' . $domain . '\\' . $entity
+                );
+                break;
+            case EntityFileObjectType::BUSINESS_RULES_ENTITY_NOT_FOUND_EXCEPTION:
+                $fileObject->setClassName(
+                    $this->baseNamespace . 'BusinessRules\Gateways\\' . $domain . '\Exceptions\\' . $entity . 'NotFoundException'
+                );
+                break;
+            case EntityFileObjectType::BUSINESS_RULES_ENTITY_GATEWAY:
+                $fileObject->setClassName(
+                    $this->baseNamespace . 'BusinessRules\Gateways\\' . $domain . '\\' . $entity . 'Gateway'
                 );
                 break;
             case EntityFileObjectType::BUSINESS_RULES_ENTITY_IMPL:
@@ -29,9 +39,9 @@ class EntityFileObjectFactoryImpl extends AbstractFileObjectFactory implements E
                     $this->baseNamespace . $this->appDir . 'Entity\\' . $domain . '\\' . $entity . 'Impl'
                 );
                 break;
-            case EntityFileObjectType::BUSINESS_RULES_ENTITY:
+            case EntityFileObjectType::BUSINESS_RULES_ENTITY_STUB:
                 $fileObject->setClassName(
-                    $this->baseNamespace . 'BusinessRules\Entities\\' . $domain . '\\' . $entity
+                    $this->stubNamespace . 'BusinessRules\Entities\\' . $domain . '\\' . $entity . 'Stub1'
                 );
                 break;
         }

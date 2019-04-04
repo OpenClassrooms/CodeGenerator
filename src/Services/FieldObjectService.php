@@ -21,9 +21,4 @@ interface FieldObjectService
      * @return \OpenClassrooms\CodeGenerator\Entities\FieldObject[]
      */
     public function getPublicClassFields(string $className): array;
-
-    /**
-     * @return \OpenClassrooms\CodeGenerator\Entities\MethodObject\MethodObject[]
-     */
-    public function getAccessors(string $className): array;
 }

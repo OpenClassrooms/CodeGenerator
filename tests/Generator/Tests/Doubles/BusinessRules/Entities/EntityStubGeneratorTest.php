@@ -2,19 +2,17 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Generator\Tests\Doubles\BusinessRules\Entities;
 
-use OpenClassrooms\CodeGenerator\Entities\Impl\EntityFileObjectFactoryImpl;
-use OpenClassrooms\CodeGenerator\Entities\Impl\ViewModelFileObjectFactoryImpl;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Entities\DTO\Request\EntityStubGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Entities\EntityStubGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Entities\Request\EntityStubGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Services\Impl\FieldObjectServiceImpl;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\Entities\Impl\EntityStubSkeletonModelAssemblerImpl;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\FileObjectTestCase;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Tests\BusinessRules\Entities\EntityStub\EntityStubFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\EntityFileObjectFactoryMock;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\FileObjectTestCase;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\BusinessRules\Entities\EntityStub\EntityStubFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingServiceMock;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityResponse;
-use OpenClassrooms\CodeGenerator\Tests\Fixtures\FixturesConfig;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -61,18 +59,7 @@ class EntityStubGeneratorTest extends TestCase
         $this->entityStubGenerator->setFileObjectGateway(new InMemoryFileObjectGateway());
         $this->entityStubGenerator->setFieldObjectService(new FieldObjectServiceImpl());
         $this->entityStubGenerator->setTemplating(new TemplatingServiceMock());
-
-        $viewModelFileObjectFactory = new ViewModelFileObjectFactoryImpl();
-        $viewModelFileObjectFactory->setApiDir(FixturesConfig::API_DIR);
-        $viewModelFileObjectFactory->setStubNamespace(FixturesConfig::STUB_NAMESPACE);
-        $viewModelFileObjectFactory->setBaseNamespace(FixturesConfig::BASE_NAMESPACE);
-
-        $entityFileObjectFactory = new EntityFileObjectFactoryImpl();
-        $entityFileObjectFactory->setAppDir(FixturesConfig::APP_DIR);
-        $entityFileObjectFactory->setStubNamespace(FixturesConfig::STUB_NAMESPACE);
-        $entityFileObjectFactory->setBaseNamespace(FixturesConfig::BASE_NAMESPACE);
-
-        $this->entityStubGenerator->setEntityFileObjectFactory($entityFileObjectFactory);
+        $this->entityStubGenerator->setEntityFileObjectFactory(new EntityFileObjectFactoryMock());
         $this->entityStubGenerator->setEntityStubSkeletonModelAssembler(
             new EntityStubSkeletonModelAssemblerImpl()
         );

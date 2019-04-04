@@ -95,7 +95,6 @@ class ViewModelDetailStubGenerator extends AbstractViewModelGenerator
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE_STUB,
             $useCaseDetailResponseDTOFileObject->getDomain(),
             $useCaseDetailResponseDTOFileObject->getEntity(),
-            $useCaseDetailResponseDTOFileObject->getBaseNamespace(),
             $useCaseDetailResponseDTOFileObject->getBaseNamespace()
         );
     }
@@ -107,7 +106,6 @@ class ViewModelDetailStubGenerator extends AbstractViewModelGenerator
             ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_IMPL,
             $useCaseDetailResponseDTOFileObject->getDomain(),
             $useCaseDetailResponseDTOFileObject->getEntity(),
-            $useCaseDetailResponseDTOFileObject->getBaseNamespace(),
             $useCaseDetailResponseDTOFileObject->getBaseNamespace()
         );
     }
@@ -118,7 +116,6 @@ class ViewModelDetailStubGenerator extends AbstractViewModelGenerator
             ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_STUB,
             $useCaseDetailResponseDTOFileObject->getDomain(),
             $useCaseDetailResponseDTOFileObject->getEntity(),
-            $useCaseDetailResponseDTOFileObject->getBaseNamespace(),
             $useCaseDetailResponseDTOFileObject->getBaseNamespace()
         );
     }

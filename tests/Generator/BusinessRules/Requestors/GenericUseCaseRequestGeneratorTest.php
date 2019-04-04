@@ -2,13 +2,13 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Generator\BusinessRules\Requestors;
 
-use OpenClassrooms\CodeGenerator\Entities\Impl\UseCaseFileObjectFactoryImpl;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\DTO\Request\GenericUseCaseRequestGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\GenericUseCaseRequestGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\Request\GenericUseCaseRequestGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Requestors\Impl\GenericUseCaseRequestSkeletonModelAssemblerImpl;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\BusinessRules\Requestors\GenericUseCaseRequestFileObjectStub1;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\FileObjectTestCase;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Requestors\GenericUseCaseRequestFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\FileObjectTestCase;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\UseCaseRequestFileObjectFactoryMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingServiceMock;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\FixturesConfig;
@@ -56,9 +56,9 @@ class GenericUseCaseRequestGeneratorTest extends TestCase
 
         $this->genericUseCaseRequestGenerator = new GenericUseCaseRequestGenerator();
 
-        $useCaseFileObjectFactory = new UseCaseFileObjectFactoryImpl();
-        $useCaseFileObjectFactory->setBaseNamespace(FixturesConfig::BASE_NAMESPACE);
-        $this->genericUseCaseRequestGenerator->setUseCaseFileObjectFactory($useCaseFileObjectFactory);
+        $this->genericUseCaseRequestGenerator->setUseCaseRequestFileObjectFactory(
+            new UseCaseRequestFileObjectFactoryMock()
+        );
 
         $genericUseCaseRequestSkeletonModelAssemblerImpl = new GenericUseCaseRequestSkeletonModelAssemblerImpl();
         $genericUseCaseRequestSkeletonModelAssemblerImpl->setUseCaseClassName(FixturesConfig::USE_CASE_NAMESPACE);

@@ -2,17 +2,16 @@
 
 namespace OpenClassrooms\CodeGenerator\Generator\Tests\App\Entity;
 
-use OpenClassrooms\CodeGenerator\Entities\Impl\EntityFileObjectFactoryImpl;
 use OpenClassrooms\CodeGenerator\Generator\App\Entity\DTO\Request\EntityImplGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\App\Entity\EntityImplGenerator;
 use OpenClassrooms\CodeGenerator\Generator\App\Entity\Request\EntityImplGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\SkeletonModels\App\Entity\Impl\EntityImplSkeletonModelAssemblerImpl;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\App\Entity\EntityImpl\EntityImplFileObjectStub1;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\FileObjectTestCase;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\App\Entity\EntityImpl\EntityImplFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\EntityFileObjectFactoryMock;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\FileObjectTestCase;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingServiceMock;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityResponse;
-use OpenClassrooms\CodeGenerator\Tests\Fixtures\FixturesConfig;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -55,14 +54,9 @@ class EntityImplGeneratorTest extends TestCase
             ->build();
 
         $this->entityImplGenerator = new EntityImplGenerator();
-        $entityFileObjectFactory = new EntityFileObjectFactoryImpl();
-        $entityFileObjectFactory->setAppDir(FixturesConfig::APP_DIR);
-        $entityFileObjectFactory->setBaseNamespace(FixturesConfig::BASE_NAMESPACE);
-        $entityFileObjectFactory->setStubNamespace(FixturesConfig::STUB_NAMESPACE);
-        $this->entityImplGenerator->setEntityFileObjectFactory($entityFileObjectFactory);
+        $this->entityImplGenerator->setEntityFileObjectFactory(new EntityFileObjectFactoryMock());
         $this->entityImplGenerator->setEntityImplSkeletonModelAssembler(new EntityImplSkeletonModelAssemblerImpl());
         $this->entityImplGenerator->setTemplating(new TemplatingServiceMock());
         $this->entityImplGenerator->setFileObjectGateway(new InMemoryFileObjectGateway());
-
     }
 }

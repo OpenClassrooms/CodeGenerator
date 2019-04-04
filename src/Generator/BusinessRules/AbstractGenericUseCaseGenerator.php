@@ -3,6 +3,8 @@
 namespace OpenClassrooms\CodeGenerator\Generator\BusinessRules;
 
 use OpenClassrooms\CodeGenerator\Entities\UseCaseFileObjectFactory;
+use OpenClassrooms\CodeGenerator\Entities\UseCaseRequestFileObjectFactory;
+use OpenClassrooms\CodeGenerator\Entities\UseCaseResponseFileObjectFactory;
 use OpenClassrooms\CodeGenerator\Generator\AbstractGenerator;
 
 /**
@@ -15,8 +17,28 @@ abstract class AbstractGenericUseCaseGenerator extends AbstractGenerator
      */
     protected $useCaseFileObjectFactory;
 
-    public function setUseCaseFileObjectFactory(UseCaseFileObjectFactory $useCaseFileObjectFactory): void
+    /**
+     * @var UseCaseRequestFileObjectFactory
+     */
+    protected $useCaseRequestFileObjectFactory;
+
+    /**
+     * @var UseCaseResponseFileObjectFactory
+     */
+    protected $useCaseResponseFileObjectFactory;
+
+    public function setUseCaseFileObjectFactory(UseCaseFileObjectFactory $factory): void
     {
-        $this->useCaseFileObjectFactory = $useCaseFileObjectFactory;
+        $this->useCaseFileObjectFactory = $factory;
+    }
+
+    public function setUseCaseRequestFileObjectFactory(UseCaseRequestFileObjectFactory $factory): void
+    {
+        $this->useCaseRequestFileObjectFactory = $factory;
+    }
+
+    public function setUseCaseResponseFileObjectFactory(UseCaseResponseFileObjectFactory $factory): void
+    {
+        $this->useCaseResponseFileObjectFactory = $factory;
     }
 }

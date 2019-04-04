@@ -40,7 +40,7 @@ class FileObject
     protected $hasBeenWritten = false;
 
     /**
-     * @var array
+     * @var MethodObject[]
      */
     protected $methods = [];
 
@@ -141,7 +141,6 @@ class FileObject
         }
 
         return false;
-
     }
 
     public function getShortName(): string
@@ -170,5 +169,21 @@ class FileObject
     public function setConsts(array $consts): void
     {
         $this->consts = $consts;
+    }
+
+    /**
+     * @return MethodObject[]
+     */
+    public function getMethods(): array
+    {
+        return $this->methods;
+    }
+
+    /**
+     * @return MethodObject[]
+     */
+    public function setMethods(array $methods): void
+    {
+        $this->methods = $methods;
     }
 }

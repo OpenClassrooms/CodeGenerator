@@ -4,7 +4,7 @@
 namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain;
 
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Entities\Domain\SubDomain\FunctionalEntity;
-use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\FunctionalEntityGateway;
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gateways\Domain\SubDomain\FunctionalEntityGateway;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Requestors\Domain\SubDomain\GetFunctionalEntityRequest;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityDetailResponseAssembler;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityResponse;
@@ -19,19 +19,19 @@ class GetFunctionalEntity implements UseCase
     /**
      * @var FunctionalEntityGateway
      */
-    private $entityGateway;
+    private $gateway;
 
     /**
      * @var FunctionalEntityDetailResponseAssembler
      */
-    private $entityResponseAssembler;
+    private $responseAssembler;
 
     /**
      * @param GetFunctionalEntityRequest $useCaseRequest
      *
      * @return FunctionalEntityResponse
      *
-     * @throws \OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\Exceptions\FunctionalEntityNotFoundException
+     * @throws \OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gateways\Domain\SubDomain\Exceptions\FunctionalEntityNotFoundException
      */
     public function execute(UseCaseRequest $useCaseRequest)
     {
@@ -41,25 +41,25 @@ class GetFunctionalEntity implements UseCase
     }
 
     /**
-     * @throws Exceptions\FunctionalEntityNotFoundException
+     * @throws \OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gateways\Domain\SubDomain\Exceptions\FunctionalEntityNotFoundException
      */
     private function getFunctionalEntity(int $functionalEntityId): FunctionalEntity
     {
-        return $this->entityGateway->find($functionalEntityId);
+        return $this->gateway->find($functionalEntityId);
     }
 
     private function buildResponse(FunctionalEntity $functionalEntity): FunctionalEntityResponse
     {
-        return $this->entityResponseAssembler->create($functionalEntity);
+        return $this->responseAssembler->create($functionalEntity);
     }
 
     public function setFunctionalEntityGateway(FunctionalEntityGateway $gateway): void
     {
-        $this->entityGateway = $gateway;
+        $this->gateway = $gateway;
     }
 
     public function setFunctionalEntityResponseAssembler(FunctionalEntityDetailResponseAssembler $assembler): void
     {
-        $this->entityResponseAssembler = $assembler;
+        $this->responseAssembler = $assembler;
     }
 }

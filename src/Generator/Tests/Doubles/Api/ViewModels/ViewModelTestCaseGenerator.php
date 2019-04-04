@@ -70,7 +70,6 @@ class ViewModelTestCaseGenerator extends AbstractViewModelGenerator
             ViewModelFileObjectType::API_VIEW_MODEL_TEST_CASE,
             $useCaseResponseDTOFileObject->getDomain(),
             $useCaseResponseDTOFileObject->getEntity(),
-            $useCaseResponseDTOFileObject->getBaseNamespace(),
             $useCaseResponseDTOFileObject->getBaseNamespace()
         );
 
@@ -83,7 +82,6 @@ class ViewModelTestCaseGenerator extends AbstractViewModelGenerator
             ViewModelFileObjectType::API_VIEW_MODEL,
             $useCaseResponseDTOFileObject->getDomain(),
             $useCaseResponseDTOFileObject->getEntity(),
-            $useCaseResponseDTOFileObject->getBaseNamespace(),
             $useCaseResponseDTOFileObject->getBaseNamespace()
         );
 

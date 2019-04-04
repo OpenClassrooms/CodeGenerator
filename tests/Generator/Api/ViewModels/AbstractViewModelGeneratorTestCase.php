@@ -2,13 +2,12 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Generator\Api\ViewModels;
 
-use OpenClassrooms\CodeGenerator\Entities\Impl\UseCaseResponseFileObjectFactoryImpl;
-use OpenClassrooms\CodeGenerator\Entities\Impl\ViewModelFileObjectFactoryImpl;
 use OpenClassrooms\CodeGenerator\Generator\Api\AbstractViewModelGenerator;
 use OpenClassrooms\CodeGenerator\Services\Impl\FieldObjectServiceImpl;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\UseCaseResponseFileObjectFactoryMock;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\ViewModelFileObjectFactoryMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingServiceMock;
-use OpenClassrooms\CodeGenerator\Tests\Fixtures\FixturesConfig;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -18,13 +17,8 @@ abstract class AbstractViewModelGeneratorTestCase extends TestCase
 {
     protected function buildViewModelGenerator(AbstractViewModelGenerator $viewModelGenerator): void
     {
-        $viewModelFileObjectFactory = new ViewModelFileObjectFactoryImpl();
-        $viewModelFileObjectFactory->setBaseNamespace(FixturesConfig::BASE_NAMESPACE);
-        $viewModelFileObjectFactory->setApiDir(FixturesConfig::API_DIR);
-        $useCaseResponseFileObjectFactory = new UseCaseResponseFileObjectFactoryImpl();
-        $useCaseResponseFileObjectFactory->setBaseNamespace(FixturesConfig::BASE_NAMESPACE);
-        $viewModelGenerator->setUseCaseResponseFileObjectFactory($useCaseResponseFileObjectFactory);
-        $viewModelGenerator->setViewModelFileObjectFactory($viewModelFileObjectFactory);
+        $viewModelGenerator->setUseCaseResponseFileObjectFactory(new UseCaseResponseFileObjectFactoryMock());
+        $viewModelGenerator->setViewModelFileObjectFactory(new ViewModelFileObjectFactoryMock());
         $viewModelGenerator->setFileObjectGateway(new InMemoryFileObjectGateway());
         $viewModelGenerator->setFieldObjectService(new FieldObjectServiceImpl());
         $viewModelGenerator->setTemplating(new TemplatingServiceMock());

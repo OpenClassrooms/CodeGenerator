@@ -80,7 +80,6 @@ class ViewModelDetailTestCaseGenerator extends AbstractViewModelGenerator
             ViewModelFileObjectType::API_VIEW_MODEL_TEST_CASE,
             $viewModelListItemFileObject->getDomain(),
             $viewModelListItemFileObject->getEntity(),
-            $viewModelListItemFileObject->getBaseNamespace(),
             $viewModelListItemFileObject->getBaseNamespace()
         );
     }
@@ -91,7 +90,6 @@ class ViewModelDetailTestCaseGenerator extends AbstractViewModelGenerator
             ViewModelFileObjectType::API_VIEW_MODEL_DETAIL,
             $viewModelListItemFileObject->getDomain(),
             $viewModelListItemFileObject->getEntity(),
-            $viewModelListItemFileObject->getBaseNamespace(),
             $viewModelListItemFileObject->getBaseNamespace()
         );
     }
@@ -142,7 +140,6 @@ class ViewModelDetailTestCaseGenerator extends AbstractViewModelGenerator
             ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_TEST_CASE,
             $useCaseDetailResponseDTOFileObject->getDomain(),
             $useCaseDetailResponseDTOFileObject->getEntity(),
-            $useCaseDetailResponseDTOFileObject->getBaseNamespace(),
             $useCaseDetailResponseDTOFileObject->getBaseNamespace()
         );
 

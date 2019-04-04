@@ -68,7 +68,6 @@ class EntityImplGenerator extends AbstractGenerator
             EntityFileObjectType::BUSINESS_RULES_ENTITY,
             $entityImplFileObject->getDomain(),
             $entityImplFileObject->getEntity(),
-            $entityImplFileObject->getBaseNamespace(),
             $entityImplFileObject->getBaseNamespace()
         );
     }

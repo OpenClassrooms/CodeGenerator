@@ -141,6 +141,7 @@ class ViewModelDetailAssemblerImplTestGenerator extends AbstractViewModelGenerat
                 ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_ASSEMBLER_IMPL_TEST,
                 $domain,
                 $entity,
+                $baseNamespace,
                 $baseNamespace
         );
 

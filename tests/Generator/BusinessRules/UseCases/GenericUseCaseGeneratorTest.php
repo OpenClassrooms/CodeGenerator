@@ -2,13 +2,14 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Generator\BusinessRules\UseCases;
 
-use OpenClassrooms\CodeGenerator\Entities\Impl\UseCaseFileObjectFactoryImpl;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\GenericUseCaseGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\GenericUseCaseGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\GenericUseCaseGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\Impl\GenericUseCaseSkeletonModelAssemblerImpl;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\BusinessRules\UseCases\GenericUseCaseFileObjectStub1;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\FileObjectTestCase;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\GenericUseCaseFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\FileObjectTestCase;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\UseCaseFileObjectFactoryMock;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\UseCaseRequestFileObjectFactoryMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingServiceMock;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\FixturesConfig;
@@ -56,10 +57,6 @@ class GenericUseCaseGeneratorTest extends TestCase
 
         $this->genericUseCaseGenerator = new GenericUseCaseGenerator();
 
-        $useCaseFileObjectFactory = new UseCaseFileObjectFactoryImpl();
-        $useCaseFileObjectFactory->setBaseNamespace(FixturesConfig::BASE_NAMESPACE);
-        $this->genericUseCaseGenerator->setUseCaseFileObjectFactory($useCaseFileObjectFactory);
-
         $genericUseCaseSkeletonModelAssemblerImpl = new GenericUseCaseSkeletonModelAssemblerImpl();
         $genericUseCaseSkeletonModelAssemblerImpl->setUseCaseClassName(FixturesConfig::USE_CASE_NAMESPACE);
         $genericUseCaseSkeletonModelAssemblerImpl->setUseCaseRequestClassName(
@@ -68,7 +65,8 @@ class GenericUseCaseGeneratorTest extends TestCase
         $this->genericUseCaseGenerator->setGenericUseCaseSkeletonModelAssembler(
             $genericUseCaseSkeletonModelAssemblerImpl
         );
-
+        $this->genericUseCaseGenerator->setUseCaseRequestFileObjectFactory(new UseCaseRequestFileObjectFactoryMock());
+        $this->genericUseCaseGenerator->setUseCaseFileObjectFactory(new UseCaseFileObjectFactoryMock());
         $this->genericUseCaseGenerator->setTemplating(new TemplatingServiceMock());
         $this->genericUseCaseGenerator->setFileObjectGateway(new InMemoryFileObjectGateway());
     }

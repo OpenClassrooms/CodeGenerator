@@ -19,29 +19,14 @@ class UseCaseFileObjectFactoryImpl extends AbstractFileObjectFactory implements 
         $this->baseNamespace = $baseNamespace ?? $this->baseNamespace;
 
         switch ($type) {
+            case UseCaseFileObjectType::BUSINESS_RULES_GET_ENTITY:
+                $fileObject->setClassName(
+                    $this->baseNamespace . 'BusinessRules\UseCases\\' . $domain . '\\Get' . $entity
+                );
+                break;
             case UseCaseFileObjectType::BUSINESS_RULES_USE_CASE:
                 $fileObject->setClassName(
                     $this->baseNamespace . 'BusinessRules\UseCases\\' . $domain . '\\' . $entity
-                );
-                break;
-            case UseCaseFileObjectType::BUSINESS_RULES_USE_CASE_REQUEST:
-                $fileObject->setClassName(
-                    $this->baseNamespace . 'BusinessRules\Requestors\\' . $domain . '\\' . $entity . 'Request'
-                );
-                break;
-            case UseCaseFileObjectType::BUSINESS_RULES_USE_CASE_REQUEST_BUILDER:
-                $fileObject->setClassName(
-                    $this->baseNamespace . 'BusinessRules\Requestors\\' . $domain . '\\' . $entity . 'RequestBuilder'
-                );
-                break;
-            case UseCaseFileObjectType::BUSINESS_RULES_USE_CASE_REQUEST_BUILDER_IMPL:
-                $fileObject->setClassName(
-                    $this->baseNamespace . 'BusinessRules\UseCases\\' . $domain . '\DTO\Request\\' . $entity . 'RequestBuilderImpl'
-                );
-                break;
-            case UseCaseFileObjectType::BUSINESS_RULES_USE_CASE_REQUEST_DTO:
-                $fileObject->setClassName(
-                    $this->baseNamespace . 'BusinessRules\UseCases\\' . $domain . '\DTO\Request\\' . $entity . 'RequestDTO'
                 );
                 break;
             case UseCaseFileObjectType::BUSINESS_RULES_USE_CASE_TEST:

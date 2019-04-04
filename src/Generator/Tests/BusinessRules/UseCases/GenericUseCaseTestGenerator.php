@@ -4,6 +4,7 @@ namespace OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases;
 
 use OpenClassrooms\CodeGenerator\Entities\FileObject;
 use OpenClassrooms\CodeGenerator\Entities\UseCaseFileObjectType;
+use OpenClassrooms\CodeGenerator\Entities\UseCaseRequestFileObjectType;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\AbstractGenericUseCaseGenerator;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\Request\GenericUseCaseTestGeneratorRequest;
@@ -82,8 +83,8 @@ class GenericUseCaseTestGenerator extends AbstractGenericUseCaseGenerator
 
     private function createGenericUseCaseRequestDTOFileObject(string $domain, string $useCaseName): FileObject
     {
-        return $this->useCaseFileObjectFactory->create(
-            UseCaseFileObjectType::BUSINESS_RULES_USE_CASE_REQUEST_DTO,
+        return $this->useCaseRequestFileObjectFactory->create(
+            UseCaseRequestFileObjectType::BUSINESS_RULES_USE_CASE_REQUEST_DTO,
             $domain,
             $useCaseName
         );
@@ -91,8 +92,8 @@ class GenericUseCaseTestGenerator extends AbstractGenericUseCaseGenerator
 
     private function createGenericUseCaseRequestBuilderImplFileObject(string $domain, string $useCaseName): FileObject
     {
-        return $this->useCaseFileObjectFactory->create(
-            UseCaseFileObjectType::BUSINESS_RULES_USE_CASE_REQUEST_BUILDER_IMPL,
+        return $this->useCaseRequestFileObjectFactory->create(
+            UseCaseRequestFileObjectType::BUSINESS_RULES_USE_CASE_REQUEST_BUILDER_IMPL,
             $domain,
             $useCaseName
         );

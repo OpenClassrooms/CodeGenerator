@@ -3,7 +3,7 @@
 namespace OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases;
 
 use OpenClassrooms\CodeGenerator\Entities\FileObject;
-use OpenClassrooms\CodeGenerator\Entities\UseCaseFileObjectType;
+use OpenClassrooms\CodeGenerator\Entities\UseCaseRequestFileObjectType;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\AbstractGenericUseCaseGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\GenericUseCaseRequestDTOGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
@@ -50,8 +50,8 @@ class GenericUseCaseRequestDTOGenerator extends AbstractGenericUseCaseGenerator
 
     private function createGenericUseCaseRequestDTOFileObject(string $domain, string $useCaseName): FileObject
     {
-        return $this->useCaseFileObjectFactory->create(
-            UseCaseFileObjectType::BUSINESS_RULES_USE_CASE_REQUEST_DTO,
+        return $this->useCaseRequestFileObjectFactory->create(
+            UseCaseRequestFileObjectType::BUSINESS_RULES_USE_CASE_REQUEST_DTO,
             $domain,
             $useCaseName
         );
@@ -59,8 +59,8 @@ class GenericUseCaseRequestDTOGenerator extends AbstractGenericUseCaseGenerator
 
     private function createGenericUseCaseRequestFileObject(string $domain, string $useCaseName): FileObject
     {
-        return $this->useCaseFileObjectFactory->create(
-            UseCaseFileObjectType::BUSINESS_RULES_USE_CASE_REQUEST,
+        return $this->useCaseRequestFileObjectFactory->create(
+            UseCaseRequestFileObjectType::BUSINESS_RULES_USE_CASE_REQUEST,
             $domain,
             $useCaseName
         );

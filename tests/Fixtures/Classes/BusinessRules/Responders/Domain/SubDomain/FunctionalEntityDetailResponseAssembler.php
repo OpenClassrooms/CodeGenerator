@@ -4,8 +4,6 @@
 namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain;
 
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Entities\Domain\SubDomain\FunctionalEntity;
-use OpenClassrooms\UseCase\BusinessRules\Entities\PaginatedCollection;
-use OpenClassrooms\UseCase\BusinessRules\Responders\PaginatedUseCaseResponse;
 
 interface FunctionalEntityDetailResponseAssembler
 {

@@ -88,7 +88,6 @@ class ViewModelListItemTestCaseGenerator extends AbstractViewModelGenerator
             ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_TEST_CASE,
             $useCaseListItemResponseDTOFileObject->getDomain(),
             $useCaseListItemResponseDTOFileObject->getEntity(),
-            $useCaseListItemResponseDTOFileObject->getBaseNamespace(),
             $useCaseListItemResponseDTOFileObject->getBaseNamespace()
         );
 
@@ -101,7 +100,6 @@ class ViewModelListItemTestCaseGenerator extends AbstractViewModelGenerator
             ViewModelFileObjectType::API_VIEW_MODEL_TEST_CASE,
             $useCaseListItemResponseDTOFileObject->getDomain(),
             $useCaseListItemResponseDTOFileObject->getEntity(),
-            $useCaseListItemResponseDTOFileObject->getBaseNamespace(),
             $useCaseListItemResponseDTOFileObject->getBaseNamespace()
         );
     }
@@ -112,7 +110,6 @@ class ViewModelListItemTestCaseGenerator extends AbstractViewModelGenerator
             ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM,
             $useCaseListItemResponseDTOFileObject->getDomain(),
             $useCaseListItemResponseDTOFileObject->getEntity(),
-            $useCaseListItemResponseDTOFileObject->getBaseNamespace(),
             $useCaseListItemResponseDTOFileObject->getBaseNamespace()
         );
     }

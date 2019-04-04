@@ -3,7 +3,7 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain;
 
-use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\FunctionalEntityGateway;
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gateways\Domain\SubDomain\FunctionalEntityGateway;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Requestors\Domain\SubDomain\GetFunctionalEntitiesRequest;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityListItemResponseAssembler;
 use OpenClassrooms\UseCase\BusinessRules\Entities\PaginatedCollection;
@@ -19,12 +19,12 @@ class GetFunctionalEntities implements UseCase
     /**
      * @var FunctionalEntityGateway
      */
-    private $functionalEntityGateway;
+    private $gateway;
 
     /**
      * @var FunctionalEntityListItemResponseAssembler
      */
-    private $functionalEntityListItemResponseAssembler;
+    private $responseAssembler;
 
     /**
      * @param GetFunctionalEntitiesRequest $useCaseRequest
@@ -44,7 +44,7 @@ class GetFunctionalEntities implements UseCase
 
     private function getFunctionalEntities(array $filters, array $sorts, array $pagination): PaginatedCollection
     {
-        return $this->functionalEntityGateway->findAll($filters, $sorts, $pagination);
+        return $this->gateway->findAll($filters, $sorts, $pagination);
     }
 
     private function buildPagination(int $page, int $itemPerPage): array
@@ -57,16 +57,16 @@ class GetFunctionalEntities implements UseCase
 
     private function buildResponse(PaginatedCollection $functionalEntities): PaginatedUseCaseResponse
     {
-        return $this->functionalEntityListItemResponseAssembler->createPaginatedCollection($functionalEntities);
+        return $this->responseAssembler->createPaginatedCollection($functionalEntities);
     }
 
-    public function setFunctionalEntityGateway(FunctionalEntityGateway $gateway): void
+    public function setGateway(FunctionalEntityGateway $gateway): void
     {
-        $this->functionalEntityGateway = $gateway;
+        $this->gateway = $gateway;
     }
 
     public function setFunctionalEntityResponseAssembler(FunctionalEntityListItemResponseAssembler $assembler): void
     {
-        $this->functionalEntityListItemResponseAssembler = $assembler;
+        $this->responseAssembler = $assembler;
     }
 }

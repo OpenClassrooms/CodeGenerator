@@ -98,9 +98,4 @@ class FieldObjectServiceImpl implements FieldObjectService
 
         return $this->buildFields($classProperties, FieldObject::SCOPE_PROTECTED);
     }
-
-    public function getAccessors(string $className): array
-    {
-        // TODO: Implement getAccessors() method.
-    }
 }
