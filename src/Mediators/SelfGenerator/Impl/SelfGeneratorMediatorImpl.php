@@ -2,6 +2,7 @@
 
 namespace OpenClassrooms\CodeGenerator\Mediators\SelfGenerator\Impl;
 
+use OpenClassrooms\CodeGenerator\Entities\FileObject;
 use OpenClassrooms\CodeGenerator\Gateways\FileObject\FileObjectGateway;
 use OpenClassrooms\CodeGenerator\Generator\SelfGenerator\Request\SelfGeneratorGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Generator\SelfGenerator\SelfGeneratorGenerator;
@@ -43,7 +44,10 @@ class SelfGeneratorMediatorImpl implements SelfGeneratorMediator
         return $fileObjects;
     }
 
-    private function generateSelfGeneratorFileObjects(string $domain, string $entity)
+    /**
+     * @return FileObject[]
+     */
+    private function generateSelfGeneratorFileObjects(string $domain, string $entity): array
     {
         return $this->selfGeneratorGenerator->generate(
             $this->selfGeneratorGeneratorRequestBuilder->create()->withDomain($domain)->withEntity($entity)->build()

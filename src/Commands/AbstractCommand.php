@@ -20,7 +20,9 @@ class AbstractCommand extends Command
 
     const CONFIG_FILE = self::ROOT_DIR . 'oc_code_generator.yml';
 
-    const CONFIG_FILE_DIST = self::ROOT_DIR_GENERATOR . 'oc_code_generator.yml.dist';
+    const CONFIG_FILE_DIST = self::ROOT_DIR_GENERATOR . 'tests/oc_code_generator_test.yml.dist';
+
+//    const CONFIG_FILE_DIST = self::ROOT_DIR_GENERATOR . 'oc_code_generator.yml.dist';
 
     const ROOT_DIR = __DIR__ . '/../../../../../';
 

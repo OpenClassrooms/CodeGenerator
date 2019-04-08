@@ -129,11 +129,14 @@ class FileObject
         if ($this->isTest()) {
             return str_replace('\\', '/', 'tests/' . $this->getClassName() . '.php');
         }
+        if ($this->isTemplate()) {
+            return str_replace('\\', '/', 'src/' . $this->getClassName());
+        }
 
         return str_replace('\\', '/', 'src/' . $this->getClassName() . '.php');
     }
 
-    public function isTest(): bool
+    private function isTest(): bool
     {
         if (false !== strpos($this->getShortName(), 'Test') || false !== strpos($this->getShortName(), 'Stub')
         ) {
@@ -146,6 +149,15 @@ class FileObject
     public function getShortName(): string
     {
         return FileObjectUtility::getShortClassName($this->className);
+    }
+
+    private function isTemplate(): bool
+    {
+        if (false !== strpos($this->getShortName(), 'twig')) {
+            return true;
+        }
+
+        return false;
     }
 
     public function setAlreadyExists(bool $alreadyExists)

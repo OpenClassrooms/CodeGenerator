@@ -1,0 +1,19 @@
+<?php declare(strict_types=1);
+
+namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\SelfGenerator;
+
+use OpenClassrooms\CodeGenerator\Entities\FileObject;
+
+/**
+ * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ */
+class CustomSkeletonModelBuilderImplFileObjectStub1 extends FileObject
+{
+    const CLASS_NAME = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\SkeletonModels\Impl\SelfGenerator\CustomSkeletonModelBuilderImpl';
+
+    public function __construct()
+    {
+        $this->content = __DIR__ . '/../../../Fixtures/Classes/SkeletonModels/SelfGenerator/Impl/CustomSkeletonModelBuilderImpl.php';
+        $this->className = self::CLASS_NAME;
+    }
+}

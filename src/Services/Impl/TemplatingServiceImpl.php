@@ -128,4 +128,9 @@ class TemplatingServiceImpl extends \Twig_Environment implements TemplatingServi
             }
         );
     }
+
+    public function render($name, array $context = []): string
+    {
+        return parent::render($name, $context);
+    }
 }

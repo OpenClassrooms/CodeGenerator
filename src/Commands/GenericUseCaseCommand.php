@@ -7,7 +7,6 @@ use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Question\Question;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
@@ -50,7 +49,7 @@ class GenericUseCaseCommand extends AbstractCommand
 
         $this->checkConfiguration($codeGeneratorConfig);
 
-        $this->checkInputArgument($input, $output);
+        $this->checkInputArgument($input, $output, Args::USE_CASE);
 
         $fileObjects = $this->container
             ->get('open_classrooms.code_generator.mediators.business_rules.impl.use_case_mediator_impl')
@@ -63,18 +62,5 @@ class GenericUseCaseCommand extends AbstractCommand
         $this->displayCreatedFilePath($io, $writtenFiles);
         $this->displayNotWrittenFilePathAndContent($io, $notWrittenFiles, $input);
         $this->displayFilePathAndContentDump($io, array_merge($writtenFiles, $notWrittenFiles), $input);
-
-    }
-
-    protected function checkInputArgument(InputInterface $input, OutputInterface $output): void
-    {
-        if (null === $input->getArgument(Args::DOMAIN) || null === $input->getArgument(Args::USE_CASE)) {
-            $helper = $this->getHelper('question');
-            $domainQuestion = new Question('Please enter domain folders (ex: Domain\Subdomain): ', 'Domain\Subdomain');
-            $useCaseQuestion = new Question('Please enter the class short name of the useCase: ', 'UseCase');
-
-            $input->setArgument(Args::DOMAIN, $helper->ask($input, $output, $domainQuestion));
-            $input->setArgument(Args::USE_CASE, $helper->ask($input, $output, $useCaseQuestion));
-        }
     }
 }

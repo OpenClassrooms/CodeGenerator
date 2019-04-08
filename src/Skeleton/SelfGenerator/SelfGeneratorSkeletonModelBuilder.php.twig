@@ -2,14 +2,16 @@
 
 namespace OpenClassrooms\CodeGenerator\SkeletonModels\{{ skeletonModel.domain }};
 
+use OpenClassrooms\CodeGenerator\Entities\FileObject;
+
 /**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
+ * @author {{ author }} <{{ authorEmail }}>
  */
 interface {{ skeletonModel.entity }}SkeletonModelBuilder
 {
     public function create(): {{ skeletonModel.entity }}SkeletonModelBuilder;
 
-    public function withDefaultObject(): {{ skeletonModel.entity }}SkeletonModelBuilder;
+    public function withDefaultObject(FileObject ${{ skeletonModel.argument }}FileObject): {{ skeletonModel.entity }}SkeletonModelBuilder;
 
     public function build(): {{ skeletonModel.entity }}SkeletonModel;
 }

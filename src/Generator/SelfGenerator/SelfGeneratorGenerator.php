@@ -8,7 +8,6 @@ use OpenClassrooms\CodeGenerator\Entities\SelfGeneratorFileObjectType;
 use OpenClassrooms\CodeGenerator\Gateways\FileObject\FileObjectGateway;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\SelfGenerator\Request\SelfGeneratorGeneratorRequest;
-use OpenClassrooms\CodeGenerator\Services\Impl\TemplatingServiceImpl;
 use OpenClassrooms\CodeGenerator\Services\TemplatingService;
 use OpenClassrooms\CodeGenerator\SkeletonModels\SelfGenerator\SelfGeneratorGeneratorSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\SelfGenerator\SelfGeneratorGeneratorSkeletonModelAssembler;
@@ -39,7 +38,7 @@ class SelfGeneratorGenerator
     private $skeletonModel;
 
     /**
-     * @var TemplatingServiceImpl
+     * @var TemplatingService
      */
     private $templating;
 
@@ -103,7 +102,7 @@ class SelfGeneratorGenerator
 
     private function buildGeneratorFileObjectStubFileObject(string $domain, string $entity): FileObject
     {
-        $fileObject = $this->factory->create(SelfGeneratorFileObjectType::GENERATOR, $domain, $entity);
+        $fileObject = $this->factory->create(SelfGeneratorFileObjectType::FILE_OBJECT_STUB, $domain, $entity);
 
         $fileObject->setContent(
             $this->templating->render(

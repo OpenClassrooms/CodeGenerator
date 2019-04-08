@@ -29,32 +29,32 @@ class SelfGeneratorFileObjectFactoryImpl extends AbstractFileObjectFactory imple
                 break;
             case SelfGeneratorFileObjectType::GENERATOR_REQUEST:
                 $fileObject->setClassName(
-                    $this->baseNamespace . 'Generator\\' . $domain . '\Request\\' . $entity . 'Request'
+                    $this->baseNamespace . 'Generator\\' . $domain . '\Request\\' . $entity . 'GeneratorRequest'
                 );
                 break;
             case SelfGeneratorFileObjectType::GENERATOR_REQUEST_BUILDER:
                 $fileObject->setClassName(
-                    $this->baseNamespace . 'Generator\\' . $domain . '\Request\\' . $entity . 'RequestBuilder'
+                    $this->baseNamespace . 'Generator\\' . $domain . '\Request\\' . $entity . 'GeneratorRequestBuilder'
                 );
                 break;
             case SelfGeneratorFileObjectType::GENERATOR_REQUEST_BUILDER_IMPL:
                 $fileObject->setClassName(
-                    $this->baseNamespace . 'Generator\\' . $domain . '\DTO\Request\\' . $entity . 'RequestBuilderImpl'
+                    $this->baseNamespace . 'Generator\\' . $domain . '\DTO\Request\\' . $entity . 'GeneratorRequestBuilderImpl'
                 );
                 break;
             case SelfGeneratorFileObjectType::GENERATOR_REQUEST_DTO:
                 $fileObject->setClassName(
-                    $this->baseNamespace . 'Generator\\' . $domain . '\DTO\Request\\' . $entity . 'RequestDTO'
+                    $this->baseNamespace . 'Generator\\' . $domain . '\DTO\Request\\' . $entity . 'GeneratorRequestDTO'
                 );
                 break;
             case SelfGeneratorFileObjectType::GENERATOR_TEST:
                 $fileObject->setClassName(
-                    $this->baseNamespace . 'Tests\Generator\\' . $domain . '\\' . $entity . 'Test'
+                    $this->baseNamespace . 'Tests\Generator\\' . $domain . '\\' . $entity . 'GeneratorTest'
                 );
                 break;
             case SelfGeneratorFileObjectType::SKELETON:
                 $fileObject->setClassName(
-                    $this->baseNamespace . 'Skeleton\\' . $domain . '\\' . $entity
+                    $this->baseNamespace . 'Skeleton\\' . $domain . '\\' . $entity . '.php.twig'
                 );
                 break;
             case SelfGeneratorFileObjectType::SKELETON_MODEL:
@@ -84,7 +84,7 @@ class SelfGeneratorFileObjectFactoryImpl extends AbstractFileObjectFactory imple
                 break;
             case SelfGeneratorFileObjectType::SKELETON_MODEL_IMPL:
                 $fileObject->setClassName(
-                    $this->baseNamespace . 'SkeletonModels\\' . $domain . 'Impl\\' . $entity . 'SkeletonModelImpl'
+                    $this->baseNamespace . 'SkeletonModels\\' . $domain . '\Impl\\' . $entity . 'SkeletonModelImpl'
                 );
                 break;
         }

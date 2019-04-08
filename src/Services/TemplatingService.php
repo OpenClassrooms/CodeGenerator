@@ -7,4 +7,5 @@ namespace OpenClassrooms\CodeGenerator\Services;
  */
 interface TemplatingService
 {
+    public function render($name, array $context = []): string;
 }

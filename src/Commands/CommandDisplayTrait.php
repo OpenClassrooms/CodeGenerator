@@ -3,8 +3,11 @@
 namespace OpenClassrooms\CodeGenerator\Commands;
 
 use OpenClassrooms\CodeGenerator\Entities\FileObject;
+use OpenClassrooms\CodeGenerator\Mediators\Args;
 use OpenClassrooms\CodeGenerator\Mediators\Options;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Question\Question;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
 /**
@@ -12,21 +15,6 @@ use Symfony\Component\Console\Style\SymfonyStyle;
  */
 trait CommandDisplayTrait
 {
-    /**
-     * @param FileObject[]
-     */
-    protected function displayCreatedFilePath(SymfonyStyle $io, array $fileObjects)
-    {
-        if (!empty($fileObjects)) {
-            $io->success(CommandLabelType::GENERATED_OUTPUT);
-            $pathList = [];
-            foreach ($fileObjects as $fileObject) {
-                $pathList[] = $fileObject->getPath();
-            }
-            $io->listing($pathList);
-        }
-    }
-
     protected function checkConfiguration($codeGeneratorConfig): void
     {
         $emptyParameters = [];
@@ -46,10 +34,37 @@ trait CommandDisplayTrait
         }
     }
 
+    protected function checkInputArgument(InputInterface $input, OutputInterface $output, string $name): void
+    {
+        if (null === $input->getArgument(Args::DOMAIN) || null === $input->getArgument($name)) {
+            $helper = $this->getHelper('question');
+            $domainQuestion = new Question('Please enter domain folders (ex: Domain\Subdomain): ', 'Domain\Subdomain');
+            $useCaseQuestion = new Question('Please enter the class short name of the ' . $name . ': ', 'DefaultName');
+
+            $input->setArgument(Args::DOMAIN, $helper->ask($input, $output, $domainQuestion));
+            $input->setArgument($name, $helper->ask($input, $output, $useCaseQuestion));
+        }
+    }
+
     /**
      * @param FileObject[]
      */
-    protected function displayFilePathAndContentDump(SymfonyStyle $io, array $fileObjects, InputInterface $input)
+    protected function displayCreatedFilePath(SymfonyStyle $io, array $fileObjects): void
+    {
+        if (!empty($fileObjects)) {
+            $io->success(CommandLabelType::GENERATED_OUTPUT);
+            $pathList = [];
+            foreach ($fileObjects as $fileObject) {
+                $pathList[] = $fileObject->getPath();
+            }
+            $io->listing($pathList);
+        }
+    }
+
+    /**
+     * @param FileObject[]
+     */
+    protected function displayFilePathAndContentDump(SymfonyStyle $io, array $fileObjects, InputInterface $input): void
     {
         if (false !== $input->getOption(Options::DUMP)) {
             $io->success(CommandLabelType::DUMP_OUTPUT);
@@ -63,7 +78,11 @@ trait CommandDisplayTrait
     /**
      * @param FileObject[]
      */
-    protected function displayNotWrittenFilePathAndContent(SymfonyStyle $io, array $fileObjects, InputInterface $input)
+    protected function displayNotWrittenFilePathAndContent(
+        SymfonyStyle $io,
+        array $fileObjects,
+        InputInterface $input
+    ): void
     {
         if (!empty($fileObjects) && false === $input->getOption(Options::DUMP)) {
             $io->caution(CommandLabelType::ALREADY_EXIST_OUTPUT);
