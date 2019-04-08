@@ -1,0 +1,44 @@
+<?php declare(strict_types=1);
+
+namespace OpenClassrooms\CodeGenerator\SkeletonModels\{{ skeletonModel.domain }}\Impl;
+
+use OpenClassrooms\CodeGenerator\Entities\FileObject;
+use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCaseClassNameTrait;
+use OpenClassrooms\CodeGenerator\SkeletonModels\{{ skeletonModel.domain }}\{{ skeletonModel.entity }}SkeletonModel;
+use OpenClassrooms\CodeGenerator\SkeletonModels\{{ skeletonModel.domain }}\{{ skeletonModel.entity }}SkeletonModelBuilder;
+use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
+use OpenClassrooms\CodeGenerator\Utility\MethodUtility;
+
+/**
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
+ */
+class {{ skeletonModel.entity }}SkeletonModelBuilderImpl implements {{ skeletonModel.entity }}SkeletonModelBuilder
+{
+    use UseCaseClassNameTrait;
+
+    /**
+     * @var {{ skeletonModel.entity }}SkeletonModel
+     */
+    private $skeletonModel;
+
+    public function create(): {{ skeletonModel.entity }}SkeletonModelBuilder
+    {
+        $this->skeletonModel = new {{ skeletonModel.entity }}SkeletonModelImpl();
+
+        return $this;
+    }
+
+    public function withDefaultObject(FileObject $entityFileObject): {{ skeletonModel.entity }}SkeletonModelBuilder
+    {
+        //TODO implement
+
+        return $this;
+    }
+
+    public function build(): {{ skeletonModel.entity }}SkeletonModel
+    {
+        //TODO implement
+
+        return $this->skeletonModel;
+    }
+}

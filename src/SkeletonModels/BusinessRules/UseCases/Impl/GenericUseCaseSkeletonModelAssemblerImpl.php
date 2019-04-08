@@ -2,14 +2,14 @@
 
 namespace OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\Impl;
 
-use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
+use OpenClassrooms\CodeGenerator\Entities\FileObject;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCaseClassNameTrait;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\GenericUseCaseSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\GenericUseCaseSkeletonModelAssembler;
 use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 
 /**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 class GenericUseCaseSkeletonModelAssemblerImpl implements GenericUseCaseSkeletonModelAssembler
 {

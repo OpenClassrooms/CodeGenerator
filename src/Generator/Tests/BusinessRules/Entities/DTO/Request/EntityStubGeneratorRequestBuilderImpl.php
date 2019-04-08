@@ -6,7 +6,7 @@ use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Entities\Request\
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Entities\Request\EntityStubGeneratorRequestBuilder;
 
 /**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 class EntityStubGeneratorRequestBuilderImpl implements EntityStubGeneratorRequestBuilder
 {

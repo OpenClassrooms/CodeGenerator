@@ -6,7 +6,7 @@ use Carbon\Carbon;
 use Faker\Provider\Base;
 
 /**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 class StubUtility
 {

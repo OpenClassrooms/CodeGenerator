@@ -2,12 +2,12 @@
 
 namespace OpenClassrooms\CodeGenerator\Services\Impl;
 
-use OpenClassrooms\CodeGenerator\FileObjects\ConstObject;
-use OpenClassrooms\CodeGenerator\FileObjects\FieldObject;
+use OpenClassrooms\CodeGenerator\Entities\ConstObject;
+use OpenClassrooms\CodeGenerator\Entities\FieldObject;
 use OpenClassrooms\CodeGenerator\Services\TemplatingService;
 
 /**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 class TemplatingServiceImpl extends \Twig_Environment implements TemplatingService
 {

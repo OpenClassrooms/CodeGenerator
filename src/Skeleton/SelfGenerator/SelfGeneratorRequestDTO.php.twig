@@ -1,0 +1,21 @@
+<?php declare(strict_types=1);
+
+namespace OpenClassrooms\CodeGenerator\Generator\{{ skeletonModel.domain }}\DTO\Request;
+
+use OpenClassrooms\CodeGenerator\Generator\{{ skeletonModel.domain }}\Request\{{ skeletonModel.entity }}GeneratorRequest;
+
+/**
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
+ */
+class {{ skeletonModel.entity }}GeneratorRequestDTO implements {{ skeletonModel.entity }}GeneratorRequest
+{
+    /**
+     * @var string
+     */
+    public $defaultValue;
+
+    public function getDefaultValue(): string
+    {
+        return $this->defaultValue;
+    }
+}

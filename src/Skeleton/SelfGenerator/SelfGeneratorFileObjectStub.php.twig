@@ -1,0 +1,20 @@
+<?php declare(strict_types=1);
+
+namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\{{ skeletonModel.domain }};
+
+use OpenClassrooms\CodeGenerator\Entities\FileObject;
+
+/**
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
+ */
+class {{ skeletonModel.entity }}FileObjectStub1 extends FileObject
+{
+    const CLASS_NAME = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\{{ skeletonModel.domain }}\Domain\SubDomain\{{ skeletonModel.entity }}';
+
+    public function __construct()
+    {
+        $this->content = __DIR__ . '/../../../../Fixtures/Classes/BusinessRules/UseCases/Domain/SubDomain/{{ skeletonModel.entity }}.php';
+        $this->className = self::CLASS_NAME;
+        $this->fields = [];
+    }
+}

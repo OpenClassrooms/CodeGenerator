@@ -2,7 +2,7 @@
 
 namespace OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Api\ViewModels;
 
-use OpenClassrooms\CodeGenerator\FileObjects\FieldObject;
+use OpenClassrooms\CodeGenerator\Entities\FieldObject;
 use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 
 /**

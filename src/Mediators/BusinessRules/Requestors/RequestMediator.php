@@ -3,9 +3,9 @@
 namespace OpenClassrooms\CodeGenerator\Mediators\BusinessRules\Requestors;
 
 /**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 interface RequestMediator
 {
-    public function mediate(array $args = [], array $options = []);
+    public function mediate(array $args = [], array $options = []): array;
 }

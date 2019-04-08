@@ -11,7 +11,7 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Scripts\ParameterHandlerMock;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 class ParameterHandlerTest extends TestCase
 {

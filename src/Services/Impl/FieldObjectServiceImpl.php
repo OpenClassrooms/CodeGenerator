@@ -2,7 +2,7 @@
 
 namespace OpenClassrooms\CodeGenerator\Services\Impl;
 
-use OpenClassrooms\CodeGenerator\FileObjects\FieldObject;
+use OpenClassrooms\CodeGenerator\Entities\FieldObject;
 use OpenClassrooms\CodeGenerator\Services\FieldObjectService;
 
 /**

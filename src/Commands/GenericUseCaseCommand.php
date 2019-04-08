@@ -14,7 +14,7 @@ use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 use Symfony\Component\Yaml\Yaml;
 
 /**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 class GenericUseCaseCommand extends AbstractCommand
 {
@@ -46,7 +46,7 @@ class GenericUseCaseCommand extends AbstractCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $codeGeneratorConfig = Yaml::parseFile(static::ROOT_DIR . '/' . static::CONFIG_FILE);
+        $codeGeneratorConfig = Yaml::parseFile($this->getConfigFile());
 
         $this->checkConfiguration($codeGeneratorConfig);
 

@@ -2,9 +2,9 @@
 
 namespace OpenClassrooms\CodeGenerator\Generator\App\Entity;
 
-use OpenClassrooms\CodeGenerator\FileObjects\EntityFileObjectFactory;
-use OpenClassrooms\CodeGenerator\FileObjects\EntityFileObjectType;
-use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
+use OpenClassrooms\CodeGenerator\Entities\EntityFileObjectFactory;
+use OpenClassrooms\CodeGenerator\Entities\EntityFileObjectType;
+use OpenClassrooms\CodeGenerator\Entities\FileObject;
 use OpenClassrooms\CodeGenerator\Generator\AbstractGenerator;
 use OpenClassrooms\CodeGenerator\Generator\App\Entity\Request\EntityImplGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
@@ -68,7 +68,6 @@ class EntityImplGenerator extends AbstractGenerator
             EntityFileObjectType::BUSINESS_RULES_ENTITY,
             $entityImplFileObject->getDomain(),
             $entityImplFileObject->getEntity(),
-            $entityImplFileObject->getBaseNamespace(),
             $entityImplFileObject->getBaseNamespace()
         );
     }

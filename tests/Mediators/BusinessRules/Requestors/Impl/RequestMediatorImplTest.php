@@ -2,7 +2,7 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Mediators\BusinessRules\Requestors\Impl;
 
-use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
+use OpenClassrooms\CodeGenerator\Entities\FileObject;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\DTO\Request\GenericUseCaseRequestBuilderGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\DTO\Request\GenericUseCaseRequestGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\GenericUseCaseRequestBuilderGenerator;
@@ -11,15 +11,15 @@ use OpenClassrooms\CodeGenerator\Mediators\Args;
 use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\Requestors\Impl\RequestMediatorImpl;
 use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\Requestors\RequestMediator;
 use OpenClassrooms\CodeGenerator\Mediators\Options;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\BusinessRules\Requestors\GenericUseCaseRequestBuilderFileObjectStub1;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\BusinessRules\Requestors\GenericUseCaseRequestFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Requestors\GenericUseCaseRequestBuilderFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Requestors\GenericUseCaseRequestFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Generator\GeneratorMock;
 use OpenClassrooms\CodeGenerator\Tests\Mediators\FlushedFileObjectTestCase;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 class RequestMediatorImplTest extends TestCase
 {

@@ -2,9 +2,9 @@
 
 namespace OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Responders;
 
-use OpenClassrooms\CodeGenerator\FileObjects\EntityFileObjectType;
-use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
-use OpenClassrooms\CodeGenerator\FileObjects\UseCaseResponseFileObjectType;
+use OpenClassrooms\CodeGenerator\Entities\EntityFileObjectType;
+use OpenClassrooms\CodeGenerator\Entities\FileObject;
+use OpenClassrooms\CodeGenerator\Entities\UseCaseResponseFileObjectType;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Responders\Request\UseCaseDetailResponseStubGeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\Responders\UseCaseDetailResponseStubSkeletonModel;
@@ -14,7 +14,7 @@ use OpenClassrooms\CodeGenerator\Utility\FieldUtility;
 use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 
 /**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 class UseCaseDetailResponseStubGenerator extends AbstractUseCaseResponseStubGenerator
 {

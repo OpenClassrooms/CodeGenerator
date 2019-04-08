@@ -2,12 +2,12 @@
 
 namespace OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\Impl;
 
-use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\GenericUseCaseMediator;
 use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\Requestors\RequestMediator;
+use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\GenericUseCaseMediator;
 use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\UseCaseMediator;
 
 /**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 class UseCaseMediatorImpl implements UseCaseMediator
 {
@@ -21,7 +21,7 @@ class UseCaseMediatorImpl implements UseCaseMediator
      */
     private $requestMediator;
 
-    public function mediate(array $args = [], array $options = [])
+    public function mediate(array $args = [], array $options = []): array
     {
         return array_merge(
             $this->requestMediator->mediate($args, $options),

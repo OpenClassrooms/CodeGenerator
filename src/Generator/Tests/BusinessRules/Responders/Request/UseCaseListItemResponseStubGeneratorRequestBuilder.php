@@ -3,7 +3,7 @@
 namespace OpenClassrooms\CodeGenerator\Generator\tests\BusinessRules\Responders\Request;
 
 /**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 interface UseCaseListItemResponseStubGeneratorRequestBuilder
 {

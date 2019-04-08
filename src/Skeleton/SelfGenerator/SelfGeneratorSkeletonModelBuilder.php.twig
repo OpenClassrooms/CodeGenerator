@@ -1,0 +1,15 @@
+<?php declare(strict_types=1);
+
+namespace OpenClassrooms\CodeGenerator\SkeletonModels\{{ skeletonModel.domain }};
+
+/**
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
+ */
+interface {{ skeletonModel.entity }}SkeletonModelBuilder
+{
+    public function create(): {{ skeletonModel.entity }}SkeletonModelBuilder;
+
+    public function withDefaultObject(): {{ skeletonModel.entity }}SkeletonModelBuilder;
+
+    public function build(): {{ skeletonModel.entity }}SkeletonModel;
+}

@@ -1,6 +1,6 @@
 parameters:
-    author:
-    author_mail:
+    author: Samuel Gomis
+    author_mail: samuel.gomis@external.openclassrooms.com
     api_dir: ApiBundle\
     app_dir: AppBundle\
     base_namespace: OC\

@@ -2,13 +2,13 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Utility;
 
-use OpenClassrooms\CodeGenerator\FileObjects\FieldObject;
-use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
+use OpenClassrooms\CodeGenerator\Entities\FieldObject;
+use OpenClassrooms\CodeGenerator\Entities\FileObject;
 use OpenClassrooms\CodeGenerator\Utility\ConstUtility;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 class ConstUtilityTest extends TestCase
 {

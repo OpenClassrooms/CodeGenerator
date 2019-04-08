@@ -5,7 +5,7 @@ namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Commands;
 use OpenClassrooms\CodeGenerator\Commands\GenericUseCaseCommand;
 
 /**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 class GenericUseCaseCommandMock extends GenericUseCaseCommand
 {

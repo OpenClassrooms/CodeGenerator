@@ -3,14 +3,14 @@
 namespace OpenClassrooms\CodeGenerator\Tests\Commands;
 
 use OpenClassrooms\CodeGenerator\Commands\CommandLabelType;
-use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
+use OpenClassrooms\CodeGenerator\Entities\FileObject;
 use PHPUnit\Framework\MockObject\Builder\InvocationMocker;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;
 
 /**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 abstract class AbstractCommandTest extends TestCase
 {

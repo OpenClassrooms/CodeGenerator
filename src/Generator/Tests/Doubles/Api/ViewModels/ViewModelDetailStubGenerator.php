@@ -2,9 +2,9 @@
 
 namespace OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels;
 
-use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
-use OpenClassrooms\CodeGenerator\FileObjects\UseCaseResponseFileObjectType;
-use OpenClassrooms\CodeGenerator\FileObjects\ViewModelFileObjectType;
+use OpenClassrooms\CodeGenerator\Entities\FileObject;
+use OpenClassrooms\CodeGenerator\Entities\UseCaseResponseFileObjectType;
+use OpenClassrooms\CodeGenerator\Entities\ViewModelFileObjectType;
 use OpenClassrooms\CodeGenerator\Generator\Api\AbstractViewModelGenerator;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\Request\ViewModelDetailStubGeneratorRequest;
@@ -15,7 +15,7 @@ use OpenClassrooms\CodeGenerator\Utility\FieldUtility;
 use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 
 /**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 class ViewModelDetailStubGenerator extends AbstractViewModelGenerator
 {
@@ -95,7 +95,6 @@ class ViewModelDetailStubGenerator extends AbstractViewModelGenerator
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE_STUB,
             $useCaseDetailResponseDTOFileObject->getDomain(),
             $useCaseDetailResponseDTOFileObject->getEntity(),
-            $useCaseDetailResponseDTOFileObject->getBaseNamespace(),
             $useCaseDetailResponseDTOFileObject->getBaseNamespace()
         );
     }
@@ -107,7 +106,6 @@ class ViewModelDetailStubGenerator extends AbstractViewModelGenerator
             ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_IMPL,
             $useCaseDetailResponseDTOFileObject->getDomain(),
             $useCaseDetailResponseDTOFileObject->getEntity(),
-            $useCaseDetailResponseDTOFileObject->getBaseNamespace(),
             $useCaseDetailResponseDTOFileObject->getBaseNamespace()
         );
     }
@@ -118,7 +116,6 @@ class ViewModelDetailStubGenerator extends AbstractViewModelGenerator
             ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_STUB,
             $useCaseDetailResponseDTOFileObject->getDomain(),
             $useCaseDetailResponseDTOFileObject->getEntity(),
-            $useCaseDetailResponseDTOFileObject->getBaseNamespace(),
             $useCaseDetailResponseDTOFileObject->getBaseNamespace()
         );
     }

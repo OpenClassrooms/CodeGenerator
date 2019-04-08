@@ -3,7 +3,7 @@
 namespace OpenClassrooms\CodeGenerator\Tests\Fixtures;
 
 /**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 final class FixturesConfig
 {

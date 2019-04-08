@@ -1,0 +1,21 @@
+<?php declare(strict_types=1);
+
+namespace OpenClassrooms\CodeGenerator\SkeletonModels\{{ skeletonModel.domain }}\Impl;
+
+use OpenClassrooms\CodeGenerator\SkeletonModels\{{ skeletonModel.domain }}\{{ skeletonModel.entity }}SkeletonModel;
+use OpenClassrooms\CodeGenerator\SkeletonModels\{{ skeletonModel.domain }}\{{ skeletonModel.entity }}SkeletonModelAssembler;
+
+/**
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
+ */
+class {{ skeletonModel.entity }}SkeletonModelAssemblerImpl implements {{ skeletonModel.entity }}SkeletonModelAssembler
+{
+    public function create(): {{ skeletonModel.entity }}SkeletonModel
+    {
+        $skeletonModel = new {{ skeletonModel.entity }}SkeletonModelImpl();
+
+        // TODO assemble skeleton model
+
+        return $skeletonModel;
+    }
+}

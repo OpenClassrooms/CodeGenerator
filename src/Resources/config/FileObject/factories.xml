@@ -2,9 +2,9 @@
 
 <container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://symfony.com/schema/dic/services" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
-        <service id="open_classrooms.code_generator.file_objects.impl.view_model_file_object_factory_impl" class="OpenClassrooms\CodeGenerator\FileObjects\Impl\ViewModelFileObjectFactoryImpl" parent="open_classrooms.code_generator.file_objects.abstract_file_object_factory"/>
-        <service id="open_classrooms.code_generator.file_objects.impl.use_case_response_file_object_factory_impl" class="OpenClassrooms\CodeGenerator\FileObjects\Impl\UseCaseResponseFileObjectFactoryImpl" parent="open_classrooms.code_generator.file_objects.abstract_file_object_factory"/>
-        <service id="open_classrooms.code_generator.file_objects.impl.entity_file_object_factory_impl" class="OpenClassrooms\CodeGenerator\FileObjects\Impl\EntityFileObjectFactoryImpl" parent="open_classrooms.code_generator.file_objects.abstract_file_object_factory"/>
-        <service id="open_classrooms.code_generator.file_objects.impl.use_case_file_object_factory_impl" class="OpenClassrooms\CodeGenerator\FileObjects\Impl\UseCaseFileObjectFactoryImpl" parent="open_classrooms.code_generator.file_objects.abstract_file_object_factory"/>
+        <service id="open_classrooms.code_generator.file_objects.impl.view_model_file_object_factory_impl" class="OpenClassrooms\CodeGenerator\Entities\Impl\ViewModelFileObjectFactoryImpl" parent="open_classrooms.code_generator.file_objects.abstract_file_object_factory"/>
+        <service id="open_classrooms.code_generator.file_objects.impl.use_case_response_file_object_factory_impl" class="OpenClassrooms\CodeGenerator\Entities\Impl\UseCaseResponseFileObjectFactoryImpl" parent="open_classrooms.code_generator.file_objects.abstract_file_object_factory"/>
+        <service id="open_classrooms.code_generator.file_objects.impl.entity_file_object_factory_impl" class="OpenClassrooms\CodeGenerator\Entities\Impl\EntityFileObjectFactoryImpl" parent="open_classrooms.code_generator.file_objects.abstract_file_object_factory"/>
+        <service id="open_classrooms.code_generator.file_objects.impl.use_case_file_object_factory_impl" class="OpenClassrooms\CodeGenerator\Entities\Impl\UseCaseFileObjectFactoryImpl" parent="open_classrooms.code_generator.file_objects.abstract_file_object_factory"/>
     </services>
 </container>

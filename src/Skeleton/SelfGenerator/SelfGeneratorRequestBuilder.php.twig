@@ -1,0 +1,19 @@
+<?php declare(strict_types=1);
+
+namespace OpenClassrooms\CodeGenerator\Generator\{{ skeletonModel.domain }}\Request;
+
+use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
+
+/**
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
+ */
+interface {{ skeletonModel.entity }}GeneratorRequestBuilder extends GeneratorRequest
+{
+    public function build(): {{ skeletonModel.entity }}GeneratorRequest;
+
+    public function create(): {{ skeletonModel.entity }}GeneratorRequestBuilder;
+
+    public function withDefaultValue(
+        string $defaultValue
+    ): {{ skeletonModel.entity }}GeneratorRequestBuilder;
+}

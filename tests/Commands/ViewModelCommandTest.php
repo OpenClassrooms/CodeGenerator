@@ -3,14 +3,14 @@
 namespace OpenClassrooms\CodeGenerator\Tests\Commands;
 
 use OpenClassrooms\CodeGenerator\Commands\CommandLabelType;
-use OpenClassrooms\CodeGenerator\Commands\ViewModelCommand;
+use OpenClassrooms\CodeGenerator\Commands\ViewModelsCommand;
 use OpenClassrooms\CodeGenerator\Mediators\Api\Impl\ViewModelMediatorImpl;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\Commands\ViewModelCommandMock;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Api\ViewModels\ViewModel\ViewModelFileObjectStub1;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Api\ViewModels\ViewModelDetail\ViewModelDetailFileObjectStub1;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Api\ViewModels\ViewModelDetailImpl\ViewModelDetailImplFileObjectStub1;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Api\ViewModels\ViewModelListItem\ViewModelListItemFileObjectStub1;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Api\ViewModels\ViewModelListItemImpl\ViewModelListItemImplFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Commands\ViewModelsCommandMock;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\ViewModels\ViewModel\ViewModelFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\ViewModels\ViewModelDetail\ViewModelDetailFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\ViewModels\ViewModelDetailImpl\ViewModelDetailImplFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\ViewModels\ViewModelListItem\ViewModelListItemFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\ViewModels\ViewModelListItemImpl\ViewModelListItemImplFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\DTO\Response\FunctionalEntityResponseDTO;
 use OpenClassrooms\CodeGenerator\Tests\TestClassUtil;
 use PHPUnit\Framework\MockObject\Builder\InvocationMocker;
@@ -19,12 +19,12 @@ use Symfony\Component\Console\Tester\CommandTester;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 class ViewModelCommandTest extends AbstractCommandTest
 {
     /**
-     * @var ViewModelCommandMock
+     * @var ViewModelsCommandMock
      */
     protected $commandMock;
 
@@ -39,7 +39,7 @@ class ViewModelCommandTest extends AbstractCommandTest
      */
     public function fileConfigNotExist_ThrowException()
     {
-        TestClassUtil::invokeMethod('loadConfigParameters', new ViewModelCommand());
+        TestClassUtil::invokeMethod('loadConfigParameters', new ViewModelsCommand());
     }
 
     /**
@@ -197,7 +197,7 @@ class ViewModelCommandTest extends AbstractCommandTest
 
     protected function setUp()
     {
-        $this->commandMock = new ViewModelCommandMock();
+        $this->commandMock = new ViewModelsCommandMock();
         $this->application = new Application();
         $this->application->add($this->commandMock);
         $this->commandTester = new CommandTester($this->commandMock);

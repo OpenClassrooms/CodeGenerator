@@ -2,7 +2,7 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Mediators\BusinessRules\UseCases\Impl;
 
-use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
+use OpenClassrooms\CodeGenerator\Entities\FileObject;
 use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\Requestors\Impl\RequestMediatorImpl;
 use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\Impl\GenericUseCaseMediatorImpl;
 use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\Impl\UseCaseMediatorImpl;
@@ -10,7 +10,7 @@ use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\UseCaseMediato
 use PHPUnit\Framework\TestCase;
 
 /**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 class UseCaseMediatorImplTest extends TestCase
 {

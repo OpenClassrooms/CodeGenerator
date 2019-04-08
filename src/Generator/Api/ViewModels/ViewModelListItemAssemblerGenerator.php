@@ -2,9 +2,9 @@
 
 namespace OpenClassrooms\CodeGenerator\Generator\Api\ViewModels;
 
-use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
-use OpenClassrooms\CodeGenerator\FileObjects\UseCaseResponseFileObjectType;
-use OpenClassrooms\CodeGenerator\FileObjects\ViewModelFileObjectType;
+use OpenClassrooms\CodeGenerator\Entities\FileObject;
+use OpenClassrooms\CodeGenerator\Entities\UseCaseResponseFileObjectType;
+use OpenClassrooms\CodeGenerator\Entities\ViewModelFileObjectType;
 use OpenClassrooms\CodeGenerator\Generator\Api\AbstractViewModelGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\Request\ViewModelListItemAssemblerGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
@@ -13,7 +13,7 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModels\ViewModelListItem
 use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 
 /**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 class ViewModelListItemAssemblerGenerator extends AbstractViewModelGenerator
 {

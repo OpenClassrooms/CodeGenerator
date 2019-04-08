@@ -6,7 +6,7 @@ use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\Request\
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\Request\ViewModelListItemTestCaseGeneratorRequestBuilder;
 
 /**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 class ViewModelListItemTestCaseGeneratorRequestBuilderImpl implements ViewModelListItemTestCaseGeneratorRequestBuilder
 {

@@ -5,7 +5,7 @@ namespace OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\Imp
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\GenericUseCaseRequestBuilderImplSkeletonModel;
 
 /**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 class GenericUseCaseRequestBuilderImplSkeletonModelImpl extends GenericUseCaseRequestBuilderImplSkeletonModel
 {

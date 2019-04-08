@@ -1,0 +1,36 @@
+<?php declare(strict_types=1);
+
+namespace OpenClassrooms\CodeGenerator\Generator\{{ skeletonModel.domain }}\DTO\Request;
+
+use OpenClassrooms\CodeGenerator\Generator\{{ skeletonModel.domain }}\Request\{{ skeletonModel.entity }}GeneratorRequest;
+use OpenClassrooms\CodeGenerator\Generator\{{ skeletonModel.domain }}\Request\{{ skeletonModel.entity }}GeneratorRequestBuilder;
+
+/**
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
+ */
+class {{ skeletonModel.entity }}GeneratorRequestBuilderImpl implements {{ skeletonModel.entity }}GeneratorRequestBuilder
+{
+    /**
+     * @var {{ skeletonModel.entity }}GeneratorRequestDTO
+     */
+    private $request;
+
+    public function create(): {{ skeletonModel.entity }}GeneratorRequestBuilder
+    {
+        $this->request = new {{ skeletonModel.entity }}GeneratorRequestDTO();
+
+        return $this;
+    }
+
+    public function withDefaultValue(string $defaultValue): {{ skeletonModel.entity }}GeneratorRequestBuilder
+    {
+        $this->request->defaultValue = $defaultValue;
+
+        return $this;
+    }
+
+    public function build(): {{ skeletonModel.entity }}GeneratorRequest
+    {
+        return $this->request;
+    }
+}

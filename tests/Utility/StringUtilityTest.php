@@ -2,12 +2,12 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Utility;
 
-use OpenClassrooms\CodeGenerator\FileObjects\FieldObject;
+use OpenClassrooms\CodeGenerator\Entities\FieldObject;
 use OpenClassrooms\CodeGenerator\Utility\StringUtility;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 class StringUtilityTest extends TestCase
 {

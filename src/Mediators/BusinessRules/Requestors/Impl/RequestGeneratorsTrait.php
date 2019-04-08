@@ -2,7 +2,7 @@
 
 namespace OpenClassrooms\CodeGenerator\Mediators\BusinessRules\Requestors\Impl;
 
-use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
+use OpenClassrooms\CodeGenerator\Entities\FileObject;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\GenericUseCaseRequestBuilderGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\GenericUseCaseRequestGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\Request\GenericUseCaseRequestBuilderGeneratorRequestBuilder;
@@ -10,7 +10,7 @@ use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\Request\Gene
 use OpenClassrooms\CodeGenerator\Generator\Generator;
 
 /**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 trait RequestGeneratorsTrait
 {
