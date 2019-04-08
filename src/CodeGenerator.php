@@ -30,6 +30,6 @@ if (!defined('CODE_GENERATOR_COMPOSER_INSTALL')) {
 require CODE_GENERATOR_COMPOSER_INSTALL;
 
 $application = new \Symfony\Component\Console\Application();
-$application->add(new \OpenClassrooms\CodeGenerator\Commands\ViewModelCommand());
+$application->add(new \OpenClassrooms\CodeGenerator\Commands\ViewModelsCommand());
 $application->add(new \OpenClassrooms\CodeGenerator\Commands\GenericUseCaseCommand());
 $application->run();

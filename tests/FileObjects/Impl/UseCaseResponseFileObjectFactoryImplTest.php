@@ -2,10 +2,10 @@
 
 namespace Tests\FileObjects;
 
-use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
-use OpenClassrooms\CodeGenerator\FileObjects\Impl\UseCaseResponseFileObjectFactoryImpl;
-use OpenClassrooms\CodeGenerator\FileObjects\UseCaseResponseFileObjectFactory;
-use OpenClassrooms\CodeGenerator\FileObjects\UseCaseResponseFileObjectType;
+use OpenClassrooms\CodeGenerator\Entities\FileObject;
+use OpenClassrooms\CodeGenerator\Entities\UseCaseResponseFileObjectFactory;
+use OpenClassrooms\CodeGenerator\Entities\UseCaseResponseFileObjectType;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\UseCaseResponseFileObjectFactoryMock;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\FunctionalEntity;
 use OpenClassrooms\CodeGenerator\Tests\TestClassUtil;
 use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
@@ -16,13 +16,13 @@ use PHPUnit\Framework\TestCase;
  */
 class UseCaseResponseFileObjectFactoryImplTest extends TestCase
 {
-    const BASE_NAMESPACE = '';
+    const BASE_NAMESPACE = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\\';
 
     const DIR_NAME = 'Api\\';
 
-    const STUB_NAMESPACE = self::TEST_BASE_NAMESPACE . 'Doubles\\';
+    const STUB_NAMESPACE = self::BASE_NAMESPACE . 'tests\Doubles\\';
 
-    const TEST_BASE_NAMESPACE = 'Test\Base\Namespace\\';
+    const TEST_BASE_NAMESPACE = self::BASE_NAMESPACE . 'Tests\\';
 
     /**
      * @var UseCaseResponseFileObjectFactory
@@ -33,69 +33,86 @@ class UseCaseResponseFileObjectFactoryImplTest extends TestCase
      * @test
      * @dataProvider fileObjectDataProvider
      */
-    public function create_ReturnFileObject(string $inputType, string $domain, string $entity, FileObject $expected)
+    public function create_ReturnFileObject(
+        string $inputType,
+        string $domain,
+        string $entity,
+        string $baseNamespace,
+        FileObject $expected
+    )
     {
-        $actual = $this->factory->create($inputType, $domain, $entity);
+        $actual = $this->factory->create($inputType, $domain, $entity, $baseNamespace);
         $this->assertSame($expected->getClassName(), $actual->getClassName());
     }
 
     public function fileObjectDataProvider()
     {
-        [$baseNamespace, $domain, $entity] = FileObjectUtility::getBaseNamespaceDomainAndEntityNameFromClassName(FunctionalEntity::class);
+        [$baseNamespace, $domain, $entity] = FileObjectUtility::getBaseNamespaceDomainAndEntityNameFromClassName(
+            FunctionalEntity::class
+        );
 
         return [
             [
                 UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE_DTO,
                 $domain,
                 $entity,
+                $baseNamespace,
                 self::GetFileObjectBusinessRulesUseCaseResponseDto(),
             ],
             [
                 UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE_DTO,
                 $domain,
                 $entity,
+                $baseNamespace,
                 self::GetFileObjectBusinessRulesUseCaseDetailResponseDto(),
             ],
             [
                 UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE_DTO,
                 $domain,
                 $entity,
+                $baseNamespace,
                 self::GetFileObjectBusinessRulesUseCaseListItemResponseDto(),
             ],
             [
                 UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE_STUB,
                 $domain,
                 $entity,
+                $baseNamespace,
                 self::GetFileObjectBusinessRulesUseCaseResponseStub(),
             ],
             [
                 UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE_STUB,
                 $domain,
                 $entity,
+                $baseNamespace,
                 self::GetFileObjectBusinessRulesUseCaseDetailResponseStub(),
             ],
             [
                 UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE_STUB,
                 $domain,
                 $entity,
+                $baseNamespace,
                 self::GetFileObjectBusinessRulesUseCaseListItemResponseStub(),
             ],
             [
                 UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE,
                 $domain,
                 $entity,
+                $baseNamespace,
                 self::GetFileObjectBusinessRulesUseCaseResponse(),
             ],
             [
                 UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE,
                 $domain,
                 $entity,
+                $baseNamespace,
                 self::GetFileObjectBusinessRulesUseCaseDetailResponse(),
             ],
             [
                 UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE,
                 $domain,
                 $entity,
+                $baseNamespace,
                 self::GetFileObjectBusinessRulesUseCaseListItemResponse(),
             ],
         ];
@@ -233,10 +250,6 @@ class UseCaseResponseFileObjectFactoryImplTest extends TestCase
 
     protected function setUp()
     {
-        $this->factory = new UseCaseResponseFileObjectFactoryImpl();
-        $this->factory->setBaseNamespace(self::BASE_NAMESPACE);
-        $this->factory->setTestsBaseNamespace(self::TEST_BASE_NAMESPACE);
-        $this->factory->setStubNamespace(self::STUB_NAMESPACE);
-        $this->factory->setApiDir(self::DIR_NAME);
+        $this->factory = new UseCaseResponseFileObjectFactoryMock();
     }
 }

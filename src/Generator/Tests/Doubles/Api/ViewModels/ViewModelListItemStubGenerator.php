@@ -2,9 +2,9 @@
 
 namespace OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels;
 
-use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
-use OpenClassrooms\CodeGenerator\FileObjects\UseCaseResponseFileObjectType;
-use OpenClassrooms\CodeGenerator\FileObjects\ViewModelFileObjectType;
+use OpenClassrooms\CodeGenerator\Entities\FileObject;
+use OpenClassrooms\CodeGenerator\Entities\UseCaseResponseFileObjectType;
+use OpenClassrooms\CodeGenerator\Entities\ViewModelFileObjectType;
 use OpenClassrooms\CodeGenerator\Generator\Api\AbstractViewModelGenerator;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\Request\ViewModelListItemStubGeneratorRequest;
@@ -92,7 +92,6 @@ class ViewModelListItemStubGenerator extends AbstractViewModelGenerator
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE_STUB,
             $useCaseListItemResponseDTOFileObject->getDomain(),
             $useCaseListItemResponseDTOFileObject->getEntity(),
-            $useCaseListItemResponseDTOFileObject->getBaseNamespace(),
             $useCaseListItemResponseDTOFileObject->getBaseNamespace()
         );
     }
@@ -105,7 +104,6 @@ class ViewModelListItemStubGenerator extends AbstractViewModelGenerator
             ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_IMPL,
             $useCaseListItemResponseDTOFileObject->getDomain(),
             $useCaseListItemResponseDTOFileObject->getEntity(),
-            $useCaseListItemResponseDTOFileObject->getBaseNamespace(),
             $useCaseListItemResponseDTOFileObject->getBaseNamespace()
         );
     }
@@ -121,7 +119,6 @@ class ViewModelListItemStubGenerator extends AbstractViewModelGenerator
             ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_STUB,
             $useCaseListItemResponseDTOFileObject->getDomain(),
             $useCaseListItemResponseDTOFileObject->getEntity(),
-            $useCaseListItemResponseDTOFileObject->getBaseNamespace(),
             $useCaseListItemResponseDTOFileObject->getBaseNamespace()
         );
 

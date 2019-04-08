@@ -2,10 +2,12 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain;
 
+use OpenClassrooms\UseCase\BusinessRules\Responders\UseCaseResponse;
+
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
  */
-interface FunctionalEntityResponse
+interface FunctionalEntityResponse extends UseCaseResponse
 {
     public function getId(): int;
 

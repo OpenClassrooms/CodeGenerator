@@ -2,19 +2,18 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Generator\Tests\Doubles\Api\ViewModels;
 
-use OpenClassrooms\CodeGenerator\FileObjects\Impl\UseCaseResponseFileObjectFactoryImpl;
-use OpenClassrooms\CodeGenerator\FileObjects\Impl\ViewModelFileObjectFactoryImpl;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\DTO\Request\ViewModelTestCaseGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\Request\ViewModelTestCaseGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\ViewModelTestCaseGenerator;
 use OpenClassrooms\CodeGenerator\Services\Impl\FieldObjectServiceImpl;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\Api\ViewModels\Impl\ViewModelTestCaseSkeletonModelAssemblerImpl;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Api\ViewModels\ViewModelTestCase\ViewModelTestCaseFileObjectStub1;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\FileObjectTestCase;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\ViewModels\ViewModelTestCase\ViewModelTestCaseFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\FileObjectTestCase;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\UseCaseResponseFileObjectFactoryMock;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\ViewModelFileObjectFactoryMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingServiceMock;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityResponse;
-use OpenClassrooms\CodeGenerator\Tests\Fixtures\FixturesConfig;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -61,19 +60,10 @@ class ViewModelTestCaseGeneratorTest extends TestCase
         $this->viewModelTestCaseGenerator->setFileObjectGateway(new InMemoryFileObjectGateway());
         $this->viewModelTestCaseGenerator->setFieldObjectService(new FieldObjectServiceImpl());
         $this->viewModelTestCaseGenerator->setTemplating(new TemplatingServiceMock());
-
-        $viewModelFileObjectFactory = new ViewModelFileObjectFactoryImpl();
-        $viewModelFileObjectFactory->setApiDir(FixturesConfig::API_DIR);
-        $viewModelFileObjectFactory->setBaseNamespace(FixturesConfig::BASE_NAMESPACE);
-        $viewModelFileObjectFactory->setStubNamespace(FixturesConfig::STUB_NAMESPACE);
-
-        $useCaseResponseFileObjectFactory = new UseCaseResponseFileObjectFactoryImpl();
-        $useCaseResponseFileObjectFactory->setApiDir(FixturesConfig::API_DIR);
-        $useCaseResponseFileObjectFactory->setBaseNamespace(FixturesConfig::BASE_NAMESPACE);
-        $useCaseResponseFileObjectFactory->setStubNamespace(FixturesConfig::STUB_NAMESPACE);
-
-        $this->viewModelTestCaseGenerator->setViewModelFileObjectFactory($viewModelFileObjectFactory);
-        $this->viewModelTestCaseGenerator->setUseCaseResponseFileObjectFactory($useCaseResponseFileObjectFactory);
+        $this->viewModelTestCaseGenerator->setViewModelFileObjectFactory(new ViewModelFileObjectFactoryMock());
+        $this->viewModelTestCaseGenerator->setUseCaseResponseFileObjectFactory(
+            new UseCaseResponseFileObjectFactoryMock()
+        );
         $this->viewModelTestCaseGenerator->setViewModelTestCaseSkeletonModelAssembler(
             new ViewModelTestCaseSkeletonModelAssemblerImpl()
         );

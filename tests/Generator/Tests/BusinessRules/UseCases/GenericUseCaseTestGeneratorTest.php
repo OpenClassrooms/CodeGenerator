@@ -2,16 +2,16 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Generator\Tests\BusinessRules\UseCases;
 
-use OpenClassrooms\CodeGenerator\FileObjects\Impl\UseCaseFileObjectFactoryImpl;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\DTO\Request\GenericUseCaseTestGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\GenericUseCaseTestGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\Request\GenericUseCaseTestGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\UseCases\Impl\GenericUseCaseTestSkeletonModelAssemblerImpl;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\FileObjectTestCase;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\FileObjects\Tests\BusinessRules\UseCases\GenericUseCaseTestFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\FileObjectTestCase;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\BusinessRules\UseCases\GenericUseCaseTestFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\UseCaseFileObjectFactoryMock;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\UseCaseRequestFileObjectFactoryMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingServiceMock;
-use OpenClassrooms\CodeGenerator\Tests\Fixtures\FixturesConfig;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -56,10 +56,12 @@ class GenericUseCaseTestGeneratorTest extends TestCase
 
         $this->genericUseCaseTestGenerator = new GenericUseCaseTestGenerator();
 
-        $useCaseFileObjectFactory = new UseCaseFileObjectFactoryImpl();
-        $useCaseFileObjectFactory->setBaseNamespace(FixturesConfig::BASE_NAMESPACE);
-        $useCaseFileObjectFactory->setTestsBaseNamespace(FixturesConfig::TEST_BASE_NAMESPACE);
-        $this->genericUseCaseTestGenerator->setUseCaseFileObjectFactory($useCaseFileObjectFactory);
+        $this->genericUseCaseTestGenerator->setUseCaseFileObjectFactory(
+            new UseCaseFileObjectFactoryMock()
+        );
+        $this->genericUseCaseTestGenerator->setUseCaseRequestFileObjectFactory(
+            new UseCaseRequestFileObjectFactoryMock()
+        );
 
         $genericUseCaseTestSkeletonModelAssemblerImpl = new GenericUseCaseTestSkeletonModelAssemblerImpl();
         $this->genericUseCaseTestGenerator->setGenericUseCaseTestSkeletonModelAssembler(

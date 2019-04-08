@@ -2,10 +2,10 @@
 
 namespace OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Entities;
 
-use OpenClassrooms\CodeGenerator\FileObjects\ConstObject;
-use OpenClassrooms\CodeGenerator\FileObjects\EntityFileObjectFactory;
-use OpenClassrooms\CodeGenerator\FileObjects\EntityFileObjectType;
-use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
+use OpenClassrooms\CodeGenerator\Entities\ConstObject;
+use OpenClassrooms\CodeGenerator\Entities\EntityFileObjectFactory;
+use OpenClassrooms\CodeGenerator\Entities\EntityFileObjectType;
+use OpenClassrooms\CodeGenerator\Entities\FileObject;
 use OpenClassrooms\CodeGenerator\Generator\AbstractGenerator;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Entities\Request\EntityStubGeneratorRequest;

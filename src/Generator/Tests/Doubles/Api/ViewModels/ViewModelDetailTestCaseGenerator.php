@@ -2,9 +2,9 @@
 
 namespace OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels;
 
-use OpenClassrooms\CodeGenerator\FileObjects\FileObject;
-use OpenClassrooms\CodeGenerator\FileObjects\UseCaseResponseFileObjectType;
-use OpenClassrooms\CodeGenerator\FileObjects\ViewModelFileObjectType;
+use OpenClassrooms\CodeGenerator\Entities\FileObject;
+use OpenClassrooms\CodeGenerator\Entities\UseCaseResponseFileObjectType;
+use OpenClassrooms\CodeGenerator\Entities\ViewModelFileObjectType;
 use OpenClassrooms\CodeGenerator\Generator\Api\AbstractViewModelGenerator;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\Request\ViewModelDetailTestCaseGeneratorRequest;
@@ -80,7 +80,6 @@ class ViewModelDetailTestCaseGenerator extends AbstractViewModelGenerator
             ViewModelFileObjectType::API_VIEW_MODEL_TEST_CASE,
             $viewModelListItemFileObject->getDomain(),
             $viewModelListItemFileObject->getEntity(),
-            $viewModelListItemFileObject->getBaseNamespace(),
             $viewModelListItemFileObject->getBaseNamespace()
         );
     }
@@ -91,7 +90,6 @@ class ViewModelDetailTestCaseGenerator extends AbstractViewModelGenerator
             ViewModelFileObjectType::API_VIEW_MODEL_DETAIL,
             $viewModelListItemFileObject->getDomain(),
             $viewModelListItemFileObject->getEntity(),
-            $viewModelListItemFileObject->getBaseNamespace(),
             $viewModelListItemFileObject->getBaseNamespace()
         );
     }
@@ -142,7 +140,6 @@ class ViewModelDetailTestCaseGenerator extends AbstractViewModelGenerator
             ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_TEST_CASE,
             $useCaseDetailResponseDTOFileObject->getDomain(),
             $useCaseDetailResponseDTOFileObject->getEntity(),
-            $useCaseDetailResponseDTOFileObject->getBaseNamespace(),
             $useCaseDetailResponseDTOFileObject->getBaseNamespace()
         );
 
