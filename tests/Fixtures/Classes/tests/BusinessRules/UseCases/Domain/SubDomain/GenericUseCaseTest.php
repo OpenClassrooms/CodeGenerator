@@ -3,6 +3,7 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\BusinessRules\UseCases\Domain\SubDomain;
 
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Requestors\Domain\SubDomain\GenericUseCaseRequest;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\DTO\Request\GenericUseCaseRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\DTO\Request\GenericUseCaseRequestDTO;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\GenericUseCase;
@@ -36,9 +37,13 @@ class GenericUseCaseTest extends TestCase
      */
     protected function setUp()
     {
+        $this->request = $this->buildRequest();
         $this->useCase = new GenericUseCase();
-        $builder = new GenericUseCaseRequestBuilderImpl();
-        $this->request = $builder
+    }
+
+    private function buildRequest(): GenericUseCaseRequest
+    {
+        return (new GenericUseCaseRequestBuilderImpl())
             ->create()
             ->build();
     }
