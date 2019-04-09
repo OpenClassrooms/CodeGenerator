@@ -11,7 +11,7 @@ use OpenClassrooms\CodeGenerator\Mediators\Options;
 use OpenClassrooms\CodeGenerator\Mediators\SelfGenerator\SelfGeneratorMediator;
 
 /**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 class SelfGeneratorMediatorImpl implements SelfGeneratorMediator
 {

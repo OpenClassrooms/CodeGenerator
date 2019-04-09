@@ -14,7 +14,7 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Generator\SelfGeneratorGeneratorM
 use PHPUnit\Framework\TestCase;
 
 /**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 class SelfGeneratorMediatorImplTest extends TestCase
 {
