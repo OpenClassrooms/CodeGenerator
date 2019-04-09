@@ -21,5 +21,7 @@ abstract class GenericUseCaseTestSkeletonModel extends AbstractSkeletonModel
 
     public $genericUseCaseShortName;
 
+    public $genericUseCaseTestMethod;
+
     public $templatePath = 'tests/BusinessRules/UseCases/GenericUseCaseTest.php.twig';
 }

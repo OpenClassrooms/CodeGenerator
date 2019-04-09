@@ -16,8 +16,7 @@ class GenericUseCaseTestSkeletonModelAssemblerImpl implements GenericUseCaseTest
         FileObject $genericUseCaseRequestDTOFileObject,
         FileObject $genericUseCaseRequestBuilderImplFileObject,
         FileObject $genericUseCaseFileObject
-    ): GenericUseCaseTestSkeletonModel
-    {
+    ): GenericUseCaseTestSkeletonModel {
         $skeletonModel = new GenericUseCaseTestSkeletonModelImpl();
         $skeletonModel->namespace = $genericUseCaseTestFileObject->getNamespace();
         $skeletonModel->shortName = $genericUseCaseTestFileObject->getShortName();
@@ -28,6 +27,7 @@ class GenericUseCaseTestSkeletonModelAssemblerImpl implements GenericUseCaseTest
         $skeletonModel->genericUseCaseRequestBuilderImplShortName = $genericUseCaseRequestBuilderImplFileObject->getShortName(
         );
         $skeletonModel->genericUseCaseShortName = $genericUseCaseFileObject->getShortName();
+        $skeletonModel->genericUseCaseTestMethod =  lcfirst($genericUseCaseFileObject->getShortName());
         $skeletonModel->genericUseCaseClassName = $genericUseCaseFileObject->getClassName();
 
         return $skeletonModel;

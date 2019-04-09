@@ -26,7 +26,7 @@ class GenericUseCaseTest extends TestCase
     /**
      * @test
      */
-    public function GenericUseCaseReturnResponse()
+    public function genericUseCaseReturnResponse()
     {
         $this->fail("TODO: Implement this test");
     }
