@@ -9,7 +9,7 @@ use OpenClassrooms\CodeGenerator\Commands\GenericUseCaseCommand;
  */
 class GenericUseCaseCommandMock extends GenericUseCaseCommand
 {
-    const CONFIG_FILE = 'oc_code_generator_test.yml.dist';
+    const CONFIG_FILE = self::ROOT_DIR . 'oc_code_generator_test.yml.dist';
 
     const ROOT_DIR = __DIR__ . '/../../';
 }

@@ -5,7 +5,7 @@
 
         <service id="open_classrooms.code_generator.generator.business_rules.abstract_generic_use_case_generator" class="OpenClassrooms\CodeGenerator\Generator\BusinessRules\AbstractGenericUseCaseGenerator" abstract="true" parent="open_classrooms.code_generator.generator.abstract_generator">
             <call method="setUseCaseFileObjectFactory">
-                <argument type="service" id="open_classrooms.code_generator.file_objects.impl.use_case_file_object_factory_impl"/>
+                <argument type="service" id="open_classrooms.code_generator.file_objects.use_case_file_object_factory"/>
             </call>
         </service>
 

@@ -5,14 +5,13 @@ namespace OpenClassrooms\CodeGenerator\Tests\Commands;
 use OpenClassrooms\CodeGenerator\Commands\CommandLabelType;
 use OpenClassrooms\CodeGenerator\Entities\FileObject;
 use PHPUnit\Framework\MockObject\Builder\InvocationMocker;
-use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
-abstract class AbstractCommandTest extends TestCase
+trait CommandTestCase
 {
     /**
      * @var Application
@@ -31,16 +30,18 @@ abstract class AbstractCommandTest extends TestCase
 
     /**
      * @param FileObject[]
-     *
      */
-    protected function writeFileObjects(array $fileObjects)
+    public function alreadyExistFileObject(array $fileObjects): array
     {
-        foreach ($fileObjects as $fileObject) {
-            $fileObject->write();
-            $fileObjects[] = $fileObject;
-        }
+        return array_map(
+            function (FileObject $fileObject) {
+                $otherFileObject = clone $fileObject;
+                $otherFileObject->setAlreadyExists(true);
 
-        return $fileObjects;
+                return $otherFileObject;
+            },
+            $fileObjects
+        );
     }
 
     /**
@@ -55,5 +56,21 @@ abstract class AbstractCommandTest extends TestCase
             $this->assertContains($fileObject->getPath(), $output);
             $this->assertNotContains($fileObject->getContent(), $output);
         }
+    }
+
+    /**
+     * @param FileObject[]
+     */
+    protected function writeFileObjects(array $fileObjects): array
+    {
+        return array_map(
+            function (FileObject $fileObject) {
+                $otherFileObject = clone $fileObject;
+                $otherFileObject->write();
+
+                return $otherFileObject;
+            },
+            $fileObjects
+        );
     }
 }

@@ -2,7 +2,6 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Generator\SelfGenerator;
 
-use OpenClassrooms\CodeGenerator\Entities\FileObject;
 use OpenClassrooms\CodeGenerator\Generator\SelfGenerator\DTO\Request\SelfGeneratorGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\SelfGenerator\Request\SelfGeneratorGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Generator\SelfGenerator\SelfGeneratorGenerator;
@@ -41,29 +40,20 @@ class SelfGeneratorGeneratorTest extends TestCase
 
         $this->assertCount(count($expectedFileObjects::$fileObjects), $actualFileObjects);
         foreach ($expectedFileObjects::$fileObjects as $key => $fileObject) {
-            $this->assertArrayContains($fileObject->getClassName(), $actualFileObjects);
-            $actualFileObjects = $this->removeArrayValue($actualFileObjects, $key);
+            [$actual, $valueKey] = $this->extractFileObject($fileObject->getClassName(), $actualFileObjects);
+            $this->assertEquals($fileObject->getClassName(), $actual->getClassName());
+            unset($actualFileObjects[$valueKey]);
         }
         $this->assertEmpty($actualFileObjects);
     }
 
-    private function assertArrayContains(string $className, array $actualFileObjects)
+    private function extractFileObject(string $className, array $actualFileObjects): array
     {
         foreach ($actualFileObjects as $key => $actualFileObject) {
-            if ($actualFileObject->getClassName() === $className) {
-                $this->assertEquals($className, $actualFileObject->getClassName());
+            if ($className === $actualFileObject->getClassName()) {
+                return [$actualFileObject, $key];
             }
         }
-    }
-
-    /**
-     * @param FileObject[]
-     */
-    private function removeArrayValue($actualFileObjects, int $key): array
-    {
-        unset($actualFileObjects[$key]);
-
-        return $actualFileObjects;
     }
 
     protected function setUp()

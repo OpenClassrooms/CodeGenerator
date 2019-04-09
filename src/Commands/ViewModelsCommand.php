@@ -53,7 +53,7 @@ class ViewModelsCommand extends AbstractCommand
         $this->checkConfiguration($codeGeneratorConfig);
 
         $fileObjects = $this->container
-            ->get('open_classrooms.code_generator.mediators.api.impl.view_model_mediator_impl')
+            ->get('open_classrooms.code_generator.mediators.api.view_model_mediator')
             ->mediate($input->getArguments(), $input->getOptions());
 
         $io = new SymfonyStyle($input, $output);

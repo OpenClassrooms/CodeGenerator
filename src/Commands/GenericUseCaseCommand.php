@@ -52,7 +52,7 @@ class GenericUseCaseCommand extends AbstractCommand
         $this->checkInputArgument($input, $output, Args::USE_CASE);
 
         $fileObjects = $this->container
-            ->get('open_classrooms.code_generator.mediators.business_rules.impl.use_case_mediator_impl')
+            ->get('open_classrooms.code_generator.mediators.business_rules.use_case_mediator')
             ->mediate($input->getArguments(), $input->getOptions());
 
         $io = new SymfonyStyle($input, $output);

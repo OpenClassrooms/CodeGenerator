@@ -18,7 +18,7 @@
                 <argument type="service" id="open_classrooms.code_generator.repository.file_object_repository"/>
             </call>
             <call method="setTemplating">
-                <argument type="service" id="open_classrooms.code_generator.services.impl.templating_service_impl"/>
+                <argument type="service" id="open_classrooms.code_generator.services.templating_service"/>
             </call>
         </service>
 

@@ -2,23 +2,23 @@
 
 <container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://symfony.com/schema/dic/services" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
-        <service id="open_classrooms.code_generator.generator.business_rules.use_cases.dto.request.generic_use_case_generator_request_builder_impl" class="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\GenericUseCaseGeneratorRequestBuilderImpl"/>
-        <service id="open_classrooms.code_generator.generator.business_rules.use_cases.dto.request.generic_use_case_request_builder_impl_generator_request_builder_impl" class="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\GenericUseCaseRequestBuilderImplGeneratorRequestBuilderImpl"/>
-        <service id="open_classrooms.code_generator.generator.tests.business_rules.use_cases.dto.request.generic_use_case_test_generator_request_builder_impl" class="OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\DTO\Request\GenericUseCaseTestGeneratorRequestBuilderImpl"/>
-        <service id="open_classrooms.code_generator.generator.business_rules.use_cases.dto.request.generic_use_case_request_dto_generator_request_builder_impl" class="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\GenericUseCaseRequestDTOGeneratorRequestBuilderImpl"/>
+        <service id="open_classrooms.code_generator.generator.business_rules.use_cases.dto.request.generic_use_case_generator_request_builder" class="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\GenericUseCaseGeneratorRequestBuilderImpl"/>
+        <service id="open_classrooms.code_generator.generator.business_rules.use_cases.dto.request.generic_use_case_request_builder_impl_generator_request_builder" class="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\GenericUseCaseRequestBuilderImplGeneratorRequestBuilderImpl"/>
+        <service id="open_classrooms.code_generator.generator.tests.business_rules.use_cases.dto.request.generic_use_case_test_generator_request_builder" class="OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\DTO\Request\GenericUseCaseTestGeneratorRequestBuilderImpl"/>
+        <service id="open_classrooms.code_generator.generator.business_rules.use_cases.dto.request.generic_use_case_request_dto_generator_request_builder" class="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\GenericUseCaseRequestDTOGeneratorRequestBuilderImpl"/>
 
-        <service id="open_classrooms.code_generator.mediators.business_rules.use_cases.impl.generic_use_case_mediator_impl" class="OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\Impl\GenericUseCaseMediatorImpl">
+        <service id="open_classrooms.code_generator.mediators.business_rules.use_cases.generic_use_case_mediator" class="OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\Impl\GenericUseCaseMediatorImpl">
             <call method="setGenericUseCaseGenerator">
                 <argument type="service" id="open_classrooms.code_generator.generator.business_rules.use_cases.generic_use_case_generator"/>
             </call>
             <call method="setGenericUseCaseGeneratorRequestBuilder">
-                <argument type="service" id="open_classrooms.code_generator.generator.business_rules.use_cases.dto.request.generic_use_case_generator_request_builder_impl"/>
+                <argument type="service" id="open_classrooms.code_generator.generator.business_rules.use_cases.dto.request.generic_use_case_generator_request_builder"/>
             </call>
             <call method="setGenericUseCaseRequestBuilderImplGenerator">
                 <argument type="service" id="open_classrooms.code_generator.generator.business_rules.use_cases.generic_use_case_request_builder_impl_generator"/>
             </call>
             <call method="setGenericUseCaseRequestBuilderImplGeneratorRequestBuilder">
-                <argument type="service" id="open_classrooms.code_generator.generator.business_rules.use_cases.dto.request.generic_use_case_request_builder_impl_generator_request_builder_impl"/>
+                <argument type="service" id="open_classrooms.code_generator.generator.business_rules.use_cases.dto.request.generic_use_case_request_builder_impl_generator_request_builder"/>
             </call>
             <call method="setGenericUseCaseRequestDTOGenerator">
                 <argument type="service" id="open_classrooms.code_generator.generator.business_rules.use_cases.generic_use_case_request_dto_generator"/>
@@ -27,10 +27,10 @@
                 <argument type="service" id="open_classrooms.code_generator.generator.tests.business_rules.use_cases.generic_use_case_test_generator"/>
             </call>
             <call method="setGenericUseCaseTestGeneratorRequestBuilder">
-                <argument type="service" id="open_classrooms.code_generator.generator.tests.business_rules.use_cases.dto.request.generic_use_case_test_generator_request_builder_impl"/>
+                <argument type="service" id="open_classrooms.code_generator.generator.tests.business_rules.use_cases.dto.request.generic_use_case_test_generator_request_builder"/>
             </call>
             <call method="setGenericUseCaseRequestDTOGeneratorRequestBuilder">
-                <argument type="service" id="open_classrooms.code_generator.generator.business_rules.use_cases.dto.request.generic_use_case_request_dto_generator_request_builder_impl"/>
+                <argument type="service" id="open_classrooms.code_generator.generator.business_rules.use_cases.dto.request.generic_use_case_request_dto_generator_request_builder"/>
             </call>
             <call method="setFileObjectGateway">
                 <argument type="service" id="open_classrooms.code_generator.repository.file_object_repository"/>

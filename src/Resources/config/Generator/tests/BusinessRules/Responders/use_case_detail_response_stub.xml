@@ -3,11 +3,11 @@
 <container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://symfony.com/schema/dic/services" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
 
-        <service id="open_classrooms.code_generator.skeleton_models.tests.business_rules.responders.impl.use_case_detail_response_stub_skeleton_model_assembler_impl" class="OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\Responders\Impl\UseCaseDetailResponseStubSkeletonModelAssemblerImpl"/>
+        <service id="open_classrooms.code_generator.skeleton_models.tests.business_rules.responders.use_case_detail_response_stub_skeleton_model_assembler" class="OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\Responders\Impl\UseCaseDetailResponseStubSkeletonModelAssemblerImpl"/>
 
         <service id="open_classrooms.code_generator.generator.tests.business_rules.responders.use_case_detail_response_stub_generator" class="OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Responders\UseCaseDetailResponseStubGenerator" parent="open_classrooms.code_generator.generator.tests.business_rules.responders.abstract_use_case_response_stub_generator">
             <call method="setUseCaseDetailResponseStubSkeletonModelAssembler">
-                <argument type="service" id="open_classrooms.code_generator.skeleton_models.tests.business_rules.responders.impl.use_case_detail_response_stub_skeleton_model_assembler_impl"/>
+                <argument type="service" id="open_classrooms.code_generator.skeleton_models.tests.business_rules.responders.use_case_detail_response_stub_skeleton_model_assembler"/>
             </call>
         </service>
 

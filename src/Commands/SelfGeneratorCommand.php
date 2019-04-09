@@ -20,7 +20,7 @@ class SelfGeneratorCommand extends AbstractCommand
     /**
      * @var string
      */
-    protected static $defaultName = 'code-generator:self-generator';
+    protected static $defaultName = 'code-generator:generate-generator';
 
     public function __construct($name = null)
     {
@@ -52,7 +52,7 @@ class SelfGeneratorCommand extends AbstractCommand
         $this->checkInputArgument($input, $output, Args::ENTITY);
 
         $fileObjects = $this->container
-            ->get('open_classrooms.code_generator.mediators.self_generator.impl.self_generator_mediator_impl')
+            ->get('open_classrooms.code_generator.mediators.self_generator.self_generator_mediator')
             ->mediate($input->getArguments(), $input->getOptions());
 
         $io = new SymfonyStyle($input, $output);

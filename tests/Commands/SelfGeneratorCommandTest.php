@@ -4,7 +4,8 @@ namespace OpenClassrooms\CodeGenerator\Tests\Commands;
 
 use OpenClassrooms\CodeGenerator\Mediators\Args;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Commands\GenericUseCaseCommandMock;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\Mediators\UseCaseMediatorMock;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Commands\SelfGeneratorCommandMock;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Mediators\SelfGeneratorMediatorMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Symfony\Component\DependencyInjection\ContainerMock;
 use OpenClassrooms\CodeGenerator\Tests\TestClassUtil;
 use PHPUnit\Framework\TestCase;
@@ -14,13 +15,13 @@ use Symfony\Component\Console\Tester\CommandTester;
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
-class GenericUseCaseCommandTest extends TestCase
+class SelfGeneratorCommandTest extends TestCase
 {
     use CommandTestCase;
 
-    const DOMAIN = 'Domain\SubDomain';
+    const DOMAIN = 'SelfGenerator';
 
-    const GENERIC_USE_CASE = 'GenericUseCase';
+    const ENTITY = 'Custom';
 
     /**
      * @var GenericUseCaseCommandMock
@@ -28,26 +29,26 @@ class GenericUseCaseCommandTest extends TestCase
     protected $commandMock;
 
     /**
-     * @var UseCaseMediatorMock
+     * @var SelfGeneratorMediatorMock
      */
-    private $useCaseMediatorMock;
+    private $selfGeneratorMediatorMock;
 
     /**
      * @test
      */
     public function executeCommand_withArguments()
     {
-        UseCaseMediatorMock::$fileObjects = $this->writeFileObjects(UseCaseMediatorMock::$fileObjects);
+        SelfGeneratorMediatorMock::$fileObjects = $this->writeFileObjects(SelfGeneratorMediatorMock::$fileObjects);
 
         $this->commandTester->execute(
             [
-                'command'      => $this->commandMock->getName(),
-                Args::DOMAIN   => self::DOMAIN,
-                Args::USE_CASE => self::GENERIC_USE_CASE,
+                'command'    => $this->commandMock->getName(),
+                Args::DOMAIN => self::DOMAIN,
+                Args::ENTITY => self::ENTITY,
             ]
         );
 
-        $this->assertCommandFileGeneratedOutput(UseCaseMediatorMock::$fileObjects);
+        $this->assertCommandFileGeneratedOutput(SelfGeneratorMediatorMock::$fileObjects);
     }
 
     /**
@@ -55,12 +56,12 @@ class GenericUseCaseCommandTest extends TestCase
      */
     public function executeCommand_withoutArguments()
     {
-        UseCaseMediatorMock::$fileObjects = $this->writeFileObjects(UseCaseMediatorMock::$fileObjects);
+        SelfGeneratorMediatorMock::$fileObjects = $this->writeFileObjects(SelfGeneratorMediatorMock::$fileObjects);
 
         $this->commandTester->setInputs(
             [
-                Args::DOMAIN   => self::DOMAIN,
-                Args::USE_CASE => self::GENERIC_USE_CASE,
+                Args::DOMAIN => self::DOMAIN,
+                Args::ENTITY => self::ENTITY,
             ]
         );
         $this->commandTester->execute(
@@ -69,18 +70,18 @@ class GenericUseCaseCommandTest extends TestCase
             ]
         );
 
-        $this->assertCommandFileGeneratedOutput(UseCaseMediatorMock::$fileObjects);
+        $this->assertCommandFileGeneratedOutput(SelfGeneratorMediatorMock::$fileObjects);
     }
 
     protected function setUp()
     {
-        $this->commandMock = new GenericUseCaseCommandMock();
+        $this->commandMock = new SelfGeneratorCommandMock();
         $this->application = new Application();
         $this->application->add($this->commandMock);
         $this->commandTester = new CommandTester($this->commandMock);
-        $this->useCaseMediatorMock = new UseCaseMediatorMock();
+        $this->selfGeneratorMediatorMock = new SelfGeneratorMediatorMock();
         $this->container = new ContainerMock(
-            ['open_classrooms.code_generator.mediators.business_rules.use_case_mediator' => $this->useCaseMediatorMock]
+            ['open_classrooms.code_generator.mediators.self_generator.self_generator_mediator' => $this->selfGeneratorMediatorMock]
 
         );
         TestClassUtil::setProperty('container', $this->container, $this->commandMock);
