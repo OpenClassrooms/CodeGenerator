@@ -44,6 +44,7 @@ class GenericUseCaseTestGenerator extends AbstractGenericUseCaseGenerator
         );
         $genericUseCaseTestFileObject = $this->createGenericUseCaseTestFileObject($domain, $useCaseName);
 
+        $genericUseCaseRequestFileObject = $this->createGenericUseCaseRequestFileObject($domain, $useCaseName);
         $genericUseCaseRequestDTOFileObject = $this->createGenericUseCaseRequestDTOFileObject($domain, $useCaseName);
         $genericUseCaseRequestBuilderImplFileObject = $this->createGenericUseCaseRequestBuilderImplFileObject(
             $domain,
@@ -53,6 +54,7 @@ class GenericUseCaseTestGenerator extends AbstractGenericUseCaseGenerator
         $genericUseCaseTestFileObject->setContent(
             $this->generateContent(
                 $genericUseCaseTestFileObject,
+                $genericUseCaseRequestFileObject,
                 $genericUseCaseRequestDTOFileObject,
                 $genericUseCaseRequestBuilderImplFileObject,
                 $genericUseCaseFileObject
@@ -81,6 +83,15 @@ class GenericUseCaseTestGenerator extends AbstractGenericUseCaseGenerator
         );
     }
 
+    private function createGenericUseCaseRequestFileObject(string $domain, string $useCaseName): FileObject
+    {
+        return $this->useCaseRequestFileObjectFactory->create(
+            UseCaseRequestFileObjectType::BUSINESS_RULES_USE_CASE_REQUEST,
+            $domain,
+            $useCaseName
+        );
+    }
+
     private function createGenericUseCaseRequestDTOFileObject(string $domain, string $useCaseName): FileObject
     {
         return $this->useCaseRequestFileObjectFactory->create(
@@ -101,6 +112,7 @@ class GenericUseCaseTestGenerator extends AbstractGenericUseCaseGenerator
 
     private function generateContent(
         FileObject $genericUseCaseTestFileObject,
+        FileObject $genericUseCaseRequestFileObject,
         FileObject $genericUseCaseRequestDTOFileObject,
         FileObject $genericUseCaseRequestBuilderImplFileObject,
         FileObject $genericUseCaseFileObject
@@ -108,6 +120,7 @@ class GenericUseCaseTestGenerator extends AbstractGenericUseCaseGenerator
     {
         $skeletonModel = $this->createSkeletonModel(
             $genericUseCaseTestFileObject,
+            $genericUseCaseRequestFileObject,
             $genericUseCaseRequestDTOFileObject,
             $genericUseCaseRequestBuilderImplFileObject,
             $genericUseCaseFileObject
@@ -118,6 +131,7 @@ class GenericUseCaseTestGenerator extends AbstractGenericUseCaseGenerator
 
     private function createSkeletonModel(
         FileObject $genericUseCaseTestFileObject,
+        FileObject $genericUseCaseRequestFileObject,
         FileObject $genericUseCaseRequestDTOFileObject,
         FileObject $genericUseCaseRequestBuilderImplFileObject,
         FileObject $genericUseCaseFileObject
@@ -125,6 +139,7 @@ class GenericUseCaseTestGenerator extends AbstractGenericUseCaseGenerator
     {
         return $this->genericUseCaseTestSkeletonModelAssembler->create(
             $genericUseCaseTestFileObject,
+            $genericUseCaseRequestFileObject,
             $genericUseCaseRequestDTOFileObject,
             $genericUseCaseRequestBuilderImplFileObject,
             $genericUseCaseFileObject

@@ -11,6 +11,7 @@ interface GenericUseCaseTestSkeletonModelAssembler
 {
     public function create(
         FileObject $genericUseCaseTestFileObject,
+        FileObject $genericUseCaseRequestFileObject,
         FileObject $genericUseCaseRequestDTOFileObject,
         FileObject $genericUseCaseRequestBuilderImplFileObject,
         FileObject $genericUseCaseFileObject

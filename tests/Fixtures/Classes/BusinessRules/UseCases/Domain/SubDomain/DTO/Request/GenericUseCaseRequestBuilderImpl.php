@@ -16,15 +16,15 @@ class GenericUseCaseRequestBuilderImpl implements GenericUseCaseRequestBuilder
      */
     private $request;
 
+    public function build(): GenericUseCaseRequest
+    {
+        return $this->request;
+    }
+
     public function create(): GenericUseCaseRequestBuilder
     {
         $this->request = new GenericUseCaseRequestDTO();
 
         return $this;
-    }
-
-    public function build(): GenericUseCaseRequest
-    {
-        return $this->request;
     }
 }
