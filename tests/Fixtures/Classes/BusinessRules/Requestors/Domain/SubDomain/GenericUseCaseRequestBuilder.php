@@ -10,7 +10,7 @@ use OpenClassrooms\UseCase\BusinessRules\Requestors\UseCaseRequest;
  */
 interface GenericUseCaseRequestBuilder extends UseCaseRequest
 {
-    public function create(): GenericUseCaseRequestBuilder;
-
     public function build(): GenericUseCaseRequest;
+
+    public function create(): GenericUseCaseRequestBuilder;
 }

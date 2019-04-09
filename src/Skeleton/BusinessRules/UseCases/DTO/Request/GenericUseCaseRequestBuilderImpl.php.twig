@@ -15,15 +15,15 @@ class {{ skeletonModel.shortName }} implements {{ skeletonModel.genericUseCaseRe
      */
     private $request;
 
+    public function build(): {{ skeletonModel.genericUseCaseRequestShortName }}
+    {
+        return $this->request;
+    }
+
     public function create(): {{ skeletonModel.genericUseCaseRequestBuilderShortName }}
     {
         $this->request = new {{ skeletonModel.genericUseCaseRequestDTOShortName }}();
 
         return $this;
-    }
-
-    public function build(): {{ skeletonModel.genericUseCaseRequestShortName }}
-    {
-        return $this->request;
     }
 }
