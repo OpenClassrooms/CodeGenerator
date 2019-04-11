@@ -20,7 +20,7 @@ class AbstractCommand extends Command
 
     const CONFIG_FILE = self::ROOT_DIR . 'oc_code_generator.yml';
 
-    const CONFIG_FILE_DIST = self::ROOT_DIR_GENERATOR . 'oc_code_generator.yml';
+    const CONFIG_FILE_GENERATOR = self::ROOT_DIR_GENERATOR . 'oc_code_generator.yml';
 
     const ROOT_DIR = __DIR__ . '/../../../../../';
 
@@ -53,13 +53,14 @@ class AbstractCommand extends Command
             );
     }
 
-    protected function loadConfigParameters(array $config = null)
+    protected function loadConfigParameters()
     {
         if (empty($config)) {
             if (\is_file(static::CONFIG_FILE)) {
                 $this->loadConfigFile(static::ROOT_DIR, static::CONFIG_FILE);
+            } else {
+                $this->loadConfigFile(static::ROOT_DIR_GENERATOR, static::CONFIG_FILE_GENERATOR);
             }
-            $this->loadConfigFile(static::ROOT_DIR_GENERATOR, static::CONFIG_FILE_DIST);
         }
     }
 
@@ -75,6 +76,6 @@ class AbstractCommand extends Command
             return static::CONFIG_FILE;
         }
 
-        return static::CONFIG_FILE_DIST;
+        return static::CONFIG_FILE_GENERATOR;
     }
 }

@@ -19,7 +19,7 @@ class SelfGeneratorFileObjectFactoryImpl extends AbstractFileObjectFactory imple
         switch ($type) {
             case SelfGeneratorFileObjectType::FILE_OBJECT_STUB:
                 $fileObject->setClassName(
-                    $this->baseNamespace . 'Tests\Doubles\Entities\\' . $domain . '\\' . $entity . 'FileObjectStub1'
+                    $this->stubNamespace . 'Entities\\' . $domain . '\\' . $entity . 'FileObjectStub1'
                 );
                 break;
             case SelfGeneratorFileObjectType::GENERATOR:
@@ -49,7 +49,7 @@ class SelfGeneratorFileObjectFactoryImpl extends AbstractFileObjectFactory imple
                 break;
             case SelfGeneratorFileObjectType::GENERATOR_TEST:
                 $fileObject->setClassName(
-                    $this->baseNamespace . 'Tests\Generator\\' . $domain . '\\' . $entity . 'GeneratorTest'
+                    $this->testsBaseNamespace . 'Generator\\' . $domain . '\\' . $entity . 'GeneratorTest'
                 );
                 break;
             case SelfGeneratorFileObjectType::SKELETON:

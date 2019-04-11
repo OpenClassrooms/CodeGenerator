@@ -126,14 +126,15 @@ class FileObject
 
     public function getPath(): string
     {
+        $classname = str_replace('OpenClassrooms\CodeGenerator\\', '', $this->getClassName());
         if ($this->isTest()) {
-            return str_replace('\\', '/', 'tests/' . $this->getClassName() . '.php');
+            return str_replace('\\', '/', 'tests/' . $classname . '.php');
         }
         if ($this->isTemplate()) {
-            return str_replace('\\', '/', 'src/' . $this->getClassName());
+            return str_replace('\\', '/', 'src/' . $classname);
         }
 
-        return str_replace('\\', '/', 'src/' . $this->getClassName() . '.php');
+        return str_replace('\\', '/', 'src/' . $classname . '.php');
     }
 
     private function isTest(): bool

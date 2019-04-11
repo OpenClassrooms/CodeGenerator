@@ -5,7 +5,6 @@ namespace OpenClassrooms\CodeGenerator\Tests\Generator\SelfGenerator;
 use OpenClassrooms\CodeGenerator\Generator\SelfGenerator\DTO\Request\SelfGeneratorGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\SelfGenerator\Request\SelfGeneratorGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Generator\SelfGenerator\SelfGeneratorGenerator;
-use OpenClassrooms\CodeGenerator\SkeletonModels\SelfGenerator\Impl\SelfGeneratorGeneratorSkeletonModelAssemblerImpl;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\FileObjectTestCase;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\SelfGenerator\SelfGeneratorFileObjectsStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\SelfGeneratorObjectFactoryMock;

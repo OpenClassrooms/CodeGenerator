@@ -1,0 +1,10 @@
+parameters:
+    author: authorStub
+    author_mail: author.stub@example.com
+    api_dir: Api\
+    app_dir: App\
+    base_namespace: OpenClassrooms\CodeGenerator\
+    stub_namespace: Doubles\
+    tests_base_namespace: ''
+    use_case_namespace: OpenClassrooms\UseCase\BusinessRules\Requestors\UseCase
+    use_case_request_namespace: OpenClassrooms\UseCase\BusinessRules\Requestors\UseCaseRequest

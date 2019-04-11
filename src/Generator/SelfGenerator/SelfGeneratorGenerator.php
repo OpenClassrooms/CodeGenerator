@@ -73,7 +73,7 @@ class SelfGeneratorGenerator
         $fileObjects[] = $this->buildGeneratorRequestFileObject($domain, $entity);
         $fileObjects[] = $this->buildGeneratorRequestBuilderFileObject($domain, $entity);
         $fileObjects[] = $this->buildGeneratorRequestBuilderImplFileObject($domain, $entity);
-        $fileObjects[] = $this->buildGeneratorRequestDtoFileObject($domain, $entity);
+        $fileObjects[] = $this->buildGeneratorRequestDTOFileObject($domain, $entity);
         $fileObjects[] = $this->buildGeneratorTestFileObject($domain, $entity);
         $fileObjects[] = $this->buildSkeletonFileObject($domain, $entity);
         $fileObjects[] = $this->buildSkeletonModelFileObject($domain, $entity);
@@ -160,13 +160,13 @@ class SelfGeneratorGenerator
         return $fileObject;
     }
 
-    private function buildGeneratorRequestDtoFileObject(string $domain, string $entity): FileObject
+    private function buildGeneratorRequestDTOFileObject(string $domain, string $entity): FileObject
     {
         $fileObject = $this->factory->create(SelfGeneratorFileObjectType::GENERATOR_REQUEST_DTO, $domain, $entity);
 
         $fileObject->setContent(
             $this->templating->render(
-                'SelfGenerator/SelfGeneratorRequestDto.php.twig',
+                'SelfGenerator/SelfGeneratorRequestDTO.php.twig',
                 ['skeletonModel' => $this->skeletonModel]
             )
         );
