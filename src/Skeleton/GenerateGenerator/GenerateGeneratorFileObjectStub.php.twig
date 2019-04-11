@@ -1,0 +1,20 @@
+<?php declare(strict_types=1);
+
+namespace {{ skeletonModel.baseNamespace }}Tests\Doubles\Entities\{{ skeletonModel.domain }};
+
+use {{ skeletonModel.baseNamespace }}Entities\FileObject;
+
+/**
+ * @author {{ author }} <{{ authorEmail }}>
+ */
+class {{ skeletonModel.entity }}FileObjectStub1 extends FileObject
+{
+    const CLASS_NAME = '{{ skeletonModel.baseNamespace }}Tests\Fixtures\Classes\{{ skeletonModel.domain }}\{{ skeletonModel.entity }}';
+
+    public function __construct()
+    {
+        $this->content = __DIR__ . '/../../../../Fixtures/Classes/{{ skeletonModel.domain }}/{{ skeletonModel.entity }}.php';
+        $this->className = self::CLASS_NAME;
+        $this->fields = [];
+    }
+}
