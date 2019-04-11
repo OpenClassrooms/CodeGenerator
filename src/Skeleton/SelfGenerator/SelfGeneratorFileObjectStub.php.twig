@@ -1,15 +1,15 @@
 <?php declare(strict_types=1);
 
-namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\{{ skeletonModel.domain }};
+namespace {{ skeletonModel.baseNamespace }}Tests\Doubles\Entities\{{ skeletonModel.domain }};
 
-use OpenClassrooms\CodeGenerator\Entities\FileObject;
+use {{ skeletonModel.baseNamespace }}Entities\FileObject;
 
 /**
  * @author {{ author }} <{{ authorEmail }}>
  */
 class {{ skeletonModel.entity }}FileObjectStub1 extends FileObject
 {
-    const CLASS_NAME = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\{{ skeletonModel.domain }}\Domain\SubDomain\{{ skeletonModel.entity }}';
+    const CLASS_NAME = '{{ skeletonModel.baseNamespace }}Tests\Fixtures\Classes\{{ skeletonModel.domain }}\Domain\SubDomain\{{ skeletonModel.entity }}';
 
     public function __construct()
     {

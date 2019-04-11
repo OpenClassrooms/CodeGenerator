@@ -1,13 +1,13 @@
 <?php declare(strict_types=1);
 
-namespace OpenClassrooms\CodeGenerator\Generator\{{ skeletonModel.domain }};
+namespace {{ skeletonModel.baseNamespace }}Generator\{{ skeletonModel.domain }};
 
-use OpenClassrooms\CodeGenerator\Entities\FileObject;
-use OpenClassrooms\CodeGenerator\Generator\AbstractGenerator;
-use OpenClassrooms\CodeGenerator\Generator\{{ skeletonModel.domain }}\Request\{{ skeletonModel.entity }}GeneratorRequest;
-use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
-use OpenClassrooms\CodeGenerator\SkeletonModels\{{ skeletonModel.domain }}\{{ skeletonModel.entity }}SkeletonModel;
-use OpenClassrooms\CodeGenerator\SkeletonModels\{{ skeletonModel.domain }}\{{ skeletonModel.entity }}SkeletonModelAssembler;
+use {{ skeletonModel.baseNamespace }}Entities\FileObject;
+use {{ skeletonModel.baseNamespace }}Generator\AbstractGenerator;
+use {{ skeletonModel.baseNamespace }}Generator\GeneratorRequest;
+use {{ skeletonModel.baseNamespace }}Generator\{{ skeletonModel.domain }}\Request\{{ skeletonModel.entity }}GeneratorRequest;
+use {{ skeletonModel.baseNamespace }}SkeletonModels\{{ skeletonModel.domain }}\{{ skeletonModel.entity }}SkeletonModel;
+use {{ skeletonModel.baseNamespace }}SkeletonModels\{{ skeletonModel.domain }}\{{ skeletonModel.entity }}SkeletonModelAssembler;
 
 /**
  * @author {{ author }} <{{ authorEmail }}>

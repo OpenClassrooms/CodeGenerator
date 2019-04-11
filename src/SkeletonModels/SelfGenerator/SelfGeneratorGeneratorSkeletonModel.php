@@ -9,9 +9,11 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
  */
 abstract class SelfGeneratorGeneratorSkeletonModel extends AbstractSkeletonModel
 {
+    public $argument;
+
+    public $baseNamespace;
+
     public $domain;
 
     public $entity;
-
-    public $argument;
 }

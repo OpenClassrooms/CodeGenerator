@@ -3,7 +3,6 @@
 namespace OpenClassrooms\CodeGenerator\SkeletonModels\SelfGenerator\Impl;
 
 use OpenClassrooms\CodeGenerator\Entities\FileObject;
-use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCaseClassNameTrait;
 use OpenClassrooms\CodeGenerator\SkeletonModels\SelfGenerator\CustomSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\SelfGenerator\CustomSkeletonModelBuilder;
 
@@ -12,8 +11,6 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\SelfGenerator\CustomSkeletonMode
  */
 class CustomSkeletonModelBuilderImpl implements CustomSkeletonModelBuilder
 {
-    use UseCaseClassNameTrait;
-
     /**
      * @var CustomSkeletonModel
      */

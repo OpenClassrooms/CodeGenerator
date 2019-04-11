@@ -9,7 +9,7 @@ use OpenClassrooms\CodeGenerator\Entities\FileObject;
  */
 class CustomSkeletonModelBuilderFileObjectStub1 extends FileObject
 {
-    const CLASS_NAME = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\SkeletonModels\SelfGenerator\CustomSkeletonModelBuilder';
+    const CLASS_NAME = 'OpenClassrooms\CodeGenerator\SkeletonModels\SelfGenerator\CustomSkeletonModelBuilder';
 
     public function __construct()
     {

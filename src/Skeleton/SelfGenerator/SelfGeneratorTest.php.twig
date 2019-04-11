@@ -1,15 +1,15 @@
 <?php declare(strict_types=1);
 
-namespace OpenClassrooms\CodeGenerator\Tests\Generator\{{ skeletonModel.domain }};
+namespace {{ skeletonModel.baseNamespace }}Tests\Generator\{{ skeletonModel.domain }};
 
-use OpenClassrooms\CodeGenerator\Generator\{{ skeletonModel.domain }}\DTO\Request\{{ skeletonModel.entity }}GeneratorRequestBuilderImpl;
-use OpenClassrooms\CodeGenerator\Generator\{{ skeletonModel.domain }}\{{ skeletonModel.entity }}Generator;
-use OpenClassrooms\CodeGenerator\Generator\{{ skeletonModel.domain }}\Request\{{ skeletonModel.entity }}GeneratorRequestBuilder;
-use OpenClassrooms\CodeGenerator\SkeletonModels\{{ skeletonModel.domain }}\Impl\{{ skeletonModel.entity }}SkeletonModelAssemblerImpl;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\{{ skeletonModel.domain }}\{{ skeletonModel.entity }}FileObjectStub1;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\FileObjectTestCase;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingServiceMock;
+use {{ skeletonModel.baseNamespace }}Generator\{{ skeletonModel.domain }}\{{ skeletonModel.entity }}Generator;
+use {{ skeletonModel.baseNamespace }}Generator\{{ skeletonModel.domain }}\DTO\Request\{{ skeletonModel.entity }}GeneratorRequestBuilderImpl;
+use {{ skeletonModel.baseNamespace }}Generator\{{ skeletonModel.domain }}\Request\{{ skeletonModel.entity }}GeneratorRequestBuilder;
+use {{ skeletonModel.baseNamespace }}SkeletonModels\{{ skeletonModel.domain }}\Impl\{{ skeletonModel.entity }}SkeletonModelAssemblerImpl;
+use {{ skeletonModel.baseNamespace }}Tests\Doubles\Entities\FileObjectTestCase;
+use {{ skeletonModel.baseNamespace }}Tests\Doubles\Entities\{{ skeletonModel.domain }}\{{ skeletonModel.entity }}FileObjectStub1;
+use {{ skeletonModel.baseNamespace }}Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
+use {{ skeletonModel.baseNamespace }}Tests\Doubles\Services\Templating\TemplatingServiceMock;
 use PHPUnit\Framework\TestCase;
 
 /**

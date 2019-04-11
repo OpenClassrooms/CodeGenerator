@@ -13,6 +13,8 @@ final class FixturesConfig
 
     const BASE_NAMESPACE = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\\';
 
+    const BASE_NAMESPACE_SELF_GENERATOR = 'OpenClassrooms\CodeGenerator\\';
+
     const STUB_NAMESPACE = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\tests\Doubles\\';
 
     const TEST_BASE_NAMESPACE = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\\';

@@ -1,19 +1,16 @@
 <?php declare(strict_types=1);
 
-namespace OpenClassrooms\CodeGenerator\SkeletonModels\{{ skeletonModel.domain }}\Impl;
+namespace {{ skeletonModel.baseNamespace }}SkeletonModels\{{ skeletonModel.domain }}\Impl;
 
-use OpenClassrooms\CodeGenerator\Entities\FileObject;
-use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCaseClassNameTrait;
-use OpenClassrooms\CodeGenerator\SkeletonModels\{{ skeletonModel.domain }}\{{ skeletonModel.entity }}SkeletonModel;
-use OpenClassrooms\CodeGenerator\SkeletonModels\{{ skeletonModel.domain }}\{{ skeletonModel.entity }}SkeletonModelBuilder;
+use {{ skeletonModel.baseNamespace }}Entities\FileObject;
+use {{ skeletonModel.baseNamespace }}SkeletonModels\{{ skeletonModel.domain }}\{{ skeletonModel.entity }}SkeletonModel;
+use {{ skeletonModel.baseNamespace }}SkeletonModels\{{ skeletonModel.domain }}\{{ skeletonModel.entity }}SkeletonModelBuilder;
 
 /**
  * @author {{ author }} <{{ authorEmail }}>
  */
 class {{ skeletonModel.entity }}SkeletonModelBuilderImpl implements {{ skeletonModel.entity }}SkeletonModelBuilder
 {
-    use UseCaseClassNameTrait;
-
     /**
      * @var {{ skeletonModel.entity }}SkeletonModel
      */

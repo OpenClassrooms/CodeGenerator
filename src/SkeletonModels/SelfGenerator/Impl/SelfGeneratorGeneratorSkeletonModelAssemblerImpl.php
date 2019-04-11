@@ -13,13 +13,24 @@ use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
  */
 class SelfGeneratorGeneratorSkeletonModelAssemblerImpl implements SelfGeneratorGeneratorSkeletonModelAssembler
 {
+    /**
+     * @var string
+     */
+    protected $baseNamespace;
+
     public function create(string $domain, string $entity): SelfGeneratorGeneratorSkeletonModel
     {
         $skeletonModel = new SelfGeneratorGeneratorSkeletonModelImpl();
+        $skeletonModel->baseNamespace = $this->baseNamespace;
         $skeletonModel->domain = $domain;
         $skeletonModel->entity = $entity;
         $skeletonModel->argument = lcfirst($entity);
 
         return $skeletonModel;
+    }
+
+    public function setBaseNamespace(string $baseNamespace): void
+    {
+        $this->baseNamespace = $baseNamespace;
     }
 }

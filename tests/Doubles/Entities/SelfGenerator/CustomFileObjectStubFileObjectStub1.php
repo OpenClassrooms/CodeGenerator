@@ -9,7 +9,7 @@ use OpenClassrooms\CodeGenerator\Entities\FileObject;
  */
 class CustomFileObjectStubFileObjectStub1 extends FileObject
 {
-    const CLASS_NAME = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\Entities\SelfGenerator\CustomFileObjectStub1';
+    const CLASS_NAME = 'OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\SelfGenerator\CustomFileObjectStub1';
 
     public function __construct()
     {

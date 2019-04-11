@@ -9,7 +9,7 @@ use OpenClassrooms\CodeGenerator\Entities\FileObject;
  */
 class CustomGeneratorRequestDTOFileObjectStub1 extends FileObject
 {
-    const CLASS_NAME = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Generator\SelfGenerator\DTO\Request\CustomGeneratorRequestDTO';
+    const CLASS_NAME = 'OpenClassrooms\CodeGenerator\Generator\SelfGenerator\DTO\Request\CustomGeneratorRequestDTO';
 
     public function __construct()
     {

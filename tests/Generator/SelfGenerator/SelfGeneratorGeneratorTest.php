@@ -11,6 +11,7 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\SelfGenerator\SelfGenera
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\SelfGeneratorObjectFactoryMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingServiceMock;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\SkeletonModels\SelfGenerator\SelfGeneratorGeneratorSkeletonModelAssemblerMock;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -42,6 +43,7 @@ class SelfGeneratorGeneratorTest extends TestCase
         foreach ($expectedFileObjects::$fileObjects as $key => $fileObject) {
             [$actual, $valueKey] = $this->extractFileObject($fileObject->getClassName(), $actualFileObjects);
             $this->assertEquals($fileObject->getClassName(), $actual->getClassName());
+            $this->assertStringEqualsFile($fileObject->getContent(), $actual->getContent());
             unset($actualFileObjects[$valueKey]);
         }
         $this->assertEmpty($actualFileObjects);
@@ -54,6 +56,9 @@ class SelfGeneratorGeneratorTest extends TestCase
                 return [$actualFileObject, $key];
             }
         }
+        var_dump($className);
+        var_dump($actualFileObjects);
+        die;
     }
 
     protected function setUp()
@@ -68,7 +73,7 @@ class SelfGeneratorGeneratorTest extends TestCase
         $this->selfGeneratorGenerator = new SelfGeneratorGenerator();
 
         $this->selfGeneratorGenerator->setAssembler(
-            new SelfGeneratorGeneratorSkeletonModelAssemblerImpl()
+            new SelfGeneratorGeneratorSkeletonModelAssemblerMock()
         );
         $this->selfGeneratorGenerator->setFactory(
             new SelfGeneratorObjectFactoryMock()

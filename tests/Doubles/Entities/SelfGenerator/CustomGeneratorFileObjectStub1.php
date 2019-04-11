@@ -9,7 +9,7 @@ use OpenClassrooms\CodeGenerator\Entities\FileObject;
  */
 class CustomGeneratorFileObjectStub1 extends FileObject
 {
-    const CLASS_NAME = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Generator\SelfGenerator\CustomGenerator';
+    const CLASS_NAME = 'OpenClassrooms\CodeGenerator\Generator\SelfGenerator\CustomGenerator';
 
     public function __construct()
     {
