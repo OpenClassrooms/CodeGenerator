@@ -2,12 +2,13 @@
 
 namespace OpenClassrooms\CodeGenerator\Generator\GenerateGenerator;
 
+use OpenClassrooms\CodeGenerator\Commands\ConstructionPatternType;
 use OpenClassrooms\CodeGenerator\Entities\FileObject;
 use OpenClassrooms\CodeGenerator\Entities\GenerateGeneratorFileObjectFactory;
 use OpenClassrooms\CodeGenerator\Entities\GenerateGeneratorFileObjectType;
 use OpenClassrooms\CodeGenerator\Gateways\FileObject\FileObjectGateway;
-use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\GenerateGenerator\Request\GenerateGeneratorGeneratorRequest;
+use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\Services\TemplatingService;
 use OpenClassrooms\CodeGenerator\SkeletonModels\GenerateGenerator\GenerateGeneratorGeneratorSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\GenerateGenerator\GenerateGeneratorGeneratorSkeletonModelAssembler;
@@ -50,7 +51,11 @@ class GenerateGeneratorGenerator
     public function generate(GeneratorRequest $generatorRequest): array
     {
         $this->buildSkeletonModel($generatorRequest->getDomain(), $generatorRequest->getEntity());
-        $fileObjects = $this->buildFileObjects($generatorRequest->getDomain(), $generatorRequest->getEntity());
+        $fileObjects = $this->buildFileObjects(
+            $generatorRequest->getDomain(),
+            $generatorRequest->getEntity(),
+            $generatorRequest->getConstructionPattern()
+        );
 
         $this->insertFileObjects($fileObjects);
 
@@ -65,7 +70,7 @@ class GenerateGeneratorGenerator
     /**
      * @return FileObject[]
      */
-    private function buildFileObjects(string $domain, string $entity): array
+    private function buildFileObjects(string $domain, string $entity, string $constructionPattern): array
     {
         $fileObjects = [];
         $fileObjects[] = $this->buildGeneratorFileObject($domain, $entity);
@@ -77,10 +82,14 @@ class GenerateGeneratorGenerator
         $fileObjects[] = $this->buildGeneratorTestFileObject($domain, $entity);
         $fileObjects[] = $this->buildSkeletonFileObject($domain, $entity);
         $fileObjects[] = $this->buildSkeletonModelFileObject($domain, $entity);
-        $fileObjects[] = $this->buildSkeletonModelAssemblerFileObject($domain, $entity);
-        $fileObjects[] = $this->buildSkeletonModelAssemblerImplFileObject($domain, $entity);
-        $fileObjects[] = $this->buildSkeletonModelBuilderFileObject($domain, $entity);
-        $fileObjects[] = $this->buildSkeletonModelBuilderImplFileObject($domain, $entity);
+
+        if (ConstructionPatternType::ASSEMBLER_PATTERN === $constructionPattern) {
+            $fileObjects[] = $this->buildSkeletonModelAssemblerFileObject($domain, $entity);
+            $fileObjects[] = $this->buildSkeletonModelAssemblerImplFileObject($domain, $entity);
+        } else {
+            $fileObjects[] = $this->buildSkeletonModelBuilderFileObject($domain, $entity);
+            $fileObjects[] = $this->buildSkeletonModelBuilderImplFileObject($domain, $entity);
+        }
         $fileObjects[] = $this->buildSkeletonModelImplFileObject($domain, $entity);
 
         return $fileObjects;
@@ -130,7 +139,11 @@ class GenerateGeneratorGenerator
 
     private function buildGeneratorRequestBuilderFileObject(string $domain, string $entity): FileObject
     {
-        $fileObject = $this->factory->create(GenerateGeneratorFileObjectType::GENERATOR_REQUEST_BUILDER, $domain, $entity);
+        $fileObject = $this->factory->create(
+            GenerateGeneratorFileObjectType::GENERATOR_REQUEST_BUILDER,
+            $domain,
+            $entity
+        );
 
         $fileObject->setContent(
             $this->templating->render(
@@ -215,7 +228,11 @@ class GenerateGeneratorGenerator
 
     private function buildSkeletonModelAssemblerFileObject(string $domain, string $entity): FileObject
     {
-        $fileObject = $this->factory->create(GenerateGeneratorFileObjectType::SKELETON_MODEL_ASSEMBLER, $domain, $entity);
+        $fileObject = $this->factory->create(
+            GenerateGeneratorFileObjectType::SKELETON_MODEL_ASSEMBLER,
+            $domain,
+            $entity
+        );
 
         $fileObject->setContent(
             $this->templating->render(

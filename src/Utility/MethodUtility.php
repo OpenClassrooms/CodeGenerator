@@ -47,11 +47,18 @@ class MethodUtility
         return array_shift($methods)->getName();
     }
 
-    public static function createArgumentNameFromMethod(string $method): string
+    /**
+     * @return string|null
+     */
+    public static function createArgumentNameFromMethod(string $method)
     {
         if ('get' === substr($method, 0, 3)) {
             return lcfirst(substr($method, 3));
         }
-        return lcfirst(substr($method, 2));
+        if ('is' == substr($method, 0, 3)) {
+            return lcfirst(substr($method, 2));
+        }
+
+        return null;
     }
 }

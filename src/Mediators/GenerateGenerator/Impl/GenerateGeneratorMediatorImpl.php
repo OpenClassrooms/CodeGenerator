@@ -4,11 +4,11 @@ namespace OpenClassrooms\CodeGenerator\Mediators\GenerateGenerator\Impl;
 
 use OpenClassrooms\CodeGenerator\Entities\FileObject;
 use OpenClassrooms\CodeGenerator\Gateways\FileObject\FileObjectGateway;
-use OpenClassrooms\CodeGenerator\Generator\GenerateGenerator\Request\GenerateGeneratorGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Generator\GenerateGenerator\GenerateGeneratorGenerator;
+use OpenClassrooms\CodeGenerator\Generator\GenerateGenerator\Request\GenerateGeneratorGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Mediators\Args;
-use OpenClassrooms\CodeGenerator\Mediators\Options;
 use OpenClassrooms\CodeGenerator\Mediators\GenerateGenerator\GenerateGeneratorMediator;
+use OpenClassrooms\CodeGenerator\Mediators\Options;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
@@ -34,8 +34,9 @@ class GenerateGeneratorMediatorImpl implements GenerateGeneratorMediator
     {
         $domain = $args[Args::DOMAIN];
         $entity = $args[Args::ENTITY];
+        $constructionPattern = $options[Options::CONSTRUCTION_PATTERN];
 
-        $fileObjects = $this->generateGenerateGeneratorFileObjects($domain, $entity);
+        $fileObjects = $this->generateGenerateGeneratorFileObjects($domain, $entity, $constructionPattern);
 
         if (false === $options[Options::DUMP]) {
             $this->fileObjectGateway->flush();
@@ -47,10 +48,19 @@ class GenerateGeneratorMediatorImpl implements GenerateGeneratorMediator
     /**
      * @return FileObject[]
      */
-    private function generateGenerateGeneratorFileObjects(string $domain, string $entity): array
+    private function generateGenerateGeneratorFileObjects(
+        string $domain,
+        string $entity,
+        string $constructionPattern
+    ): array
     {
         return $this->selfGeneratorGenerator->generate(
-            $this->selfGeneratorGeneratorRequestBuilder->create()->withDomain($domain)->withEntity($entity)->build()
+            $this->selfGeneratorGeneratorRequestBuilder
+                ->create()
+                ->withConstructionPattern($constructionPattern)
+                ->withDomain($domain)
+                ->withEntity($entity)
+                ->build()
         );
     }
 

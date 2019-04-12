@@ -12,4 +12,6 @@ final class Options
     const NO_TEST = 'no-test';
 
     const TESTS_ONLY = 'tests-only';
+
+    const CONSTRUCTION_PATTERN = 'construction-pattern';
 }

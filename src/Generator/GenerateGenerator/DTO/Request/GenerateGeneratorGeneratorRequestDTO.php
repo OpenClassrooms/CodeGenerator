@@ -19,6 +19,11 @@ class GenerateGeneratorGeneratorRequestDTO implements GenerateGeneratorGenerator
      */
     public $entity;
 
+    /**
+     * @var string
+     */
+    public $constructionPattern;
+
     public function getDomain(): string
     {
         return $this->domain;
@@ -27,5 +32,10 @@ class GenerateGeneratorGeneratorRequestDTO implements GenerateGeneratorGenerator
     public function getEntity(): string
     {
         return $this->entity;
+    }
+
+    public function getConstructionPattern(): string
+    {
+        return $this->constructionPattern;
     }
 }

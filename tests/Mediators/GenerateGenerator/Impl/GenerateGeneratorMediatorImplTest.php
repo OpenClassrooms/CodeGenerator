@@ -2,12 +2,13 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Mediators\GenerateGenerator\Impl;
 
+use OpenClassrooms\CodeGenerator\Commands\ConstructionPatternType;
 use OpenClassrooms\CodeGenerator\Entities\FileObject;
 use OpenClassrooms\CodeGenerator\Generator\GenerateGenerator\DTO\Request\GenerateGeneratorGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Mediators\Args;
-use OpenClassrooms\CodeGenerator\Mediators\Options;
-use OpenClassrooms\CodeGenerator\Mediators\GenerateGenerator\Impl\GenerateGeneratorMediatorImpl;
 use OpenClassrooms\CodeGenerator\Mediators\GenerateGenerator\GenerateGeneratorMediator;
+use OpenClassrooms\CodeGenerator\Mediators\GenerateGenerator\Impl\GenerateGeneratorMediatorImpl;
+use OpenClassrooms\CodeGenerator\Mediators\Options;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\GenerateGenerator\GenerateGeneratorFileObjectsStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Generator\GenerateGeneratorGeneratorMock;
@@ -33,7 +34,10 @@ class GenerateGeneratorMediatorImplTest extends TestCase
                 Args::DOMAIN => 'Api\ViewModels',
                 Args::ENTITY => 'FunctionalEntity',
             ],
-            [Options::DUMP => false,]
+            [
+                Options::DUMP                 => false,
+                Options::CONSTRUCTION_PATTERN => ConstructionPatternType::BUILDER_PATTERN,
+            ]
         );
 
         $this->assertInternalType('array', $expectedFileObjects);

@@ -2,11 +2,14 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Generator\GenerateGenerator;
 
+use OpenClassrooms\CodeGenerator\Commands\ConstructionPatternType;
+use OpenClassrooms\CodeGenerator\Entities\FileObject;
 use OpenClassrooms\CodeGenerator\Generator\GenerateGenerator\DTO\Request\GenerateGeneratorGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\GenerateGenerator\GenerateGeneratorGenerator;
 use OpenClassrooms\CodeGenerator\Generator\GenerateGenerator\Request\GenerateGeneratorGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\FileObjectTestCase;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\GenerateGenerator\GenerateGeneratorFileObjectsStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\GenerateGenerator\GenerateGeneratorFileObjectsStub2;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\GenerateGeneratorObjectFactoryMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingServiceMock;
@@ -33,11 +36,21 @@ class GenerateGeneratorGeneratorTest extends TestCase
     /**
      * @test
      */
-    public function generate_ReturnFileObject()
+    public function generateWithAssemblerConstructionType_ReturnFileObjects()
     {
         $actualFileObjects = $this->selfGeneratorGenerator->generate($this->request);
-        $expectedFileObjects = new GenerateGeneratorFileObjectsStub1();
 
+        $this->assertGeneratorFiles(new GenerateGeneratorFileObjectsStub1(), $actualFileObjects);
+    }
+
+    /**
+     * @param FileObject[]
+     */
+    protected function assertGeneratorFiles(
+        $expectedFileObjects,
+        array $actualFileObjects
+    ): void
+    {
         $this->assertCount(count($expectedFileObjects::$fileObjects), $actualFileObjects);
         foreach ($expectedFileObjects::$fileObjects as $key => $fileObject) {
             [$actual, $valueKey] = $this->extractFileObject($fileObject->getClassName(), $actualFileObjects);
@@ -57,6 +70,23 @@ class GenerateGeneratorGeneratorTest extends TestCase
         }
     }
 
+    /**
+     * @test
+     */
+    public function generateWithBuilderConstructionType_ReturnFileObjects()
+    {
+        $selfGeneratorGeneratorRequestBuilderImpl = new GenerateGeneratorGeneratorRequestBuilderImpl();
+        $this->request = $selfGeneratorGeneratorRequestBuilderImpl
+            ->create()
+            ->withDomain('GenerateGenerator')
+            ->withEntity('Custom')
+            ->withConstructionPattern(ConstructionPatternType::BUILDER_PATTERN)
+            ->build();
+        $actualFileObjects = $this->selfGeneratorGenerator->generate($this->request);
+
+        $this->assertGeneratorFiles(new GenerateGeneratorFileObjectsStub2(), $actualFileObjects);
+    }
+
     protected function setUp()
     {
         $selfGeneratorGeneratorRequestBuilderImpl = new GenerateGeneratorGeneratorRequestBuilderImpl();
@@ -64,6 +94,7 @@ class GenerateGeneratorGeneratorTest extends TestCase
             ->create()
             ->withDomain('GenerateGenerator')
             ->withEntity('Custom')
+            ->withConstructionPattern(ConstructionPatternType::ASSEMBLER_PATTERN)
             ->build();
 
         $this->selfGeneratorGenerator = new GenerateGeneratorGenerator();

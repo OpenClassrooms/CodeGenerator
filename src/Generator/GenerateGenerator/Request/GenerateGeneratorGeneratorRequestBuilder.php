@@ -20,4 +20,8 @@ interface GenerateGeneratorGeneratorRequestBuilder extends GeneratorRequest
     public function withEntity(
         string $entity
     ): GenerateGeneratorGeneratorRequestBuilder;
+
+    public function withConstructionPattern(
+        string $constructionPattern
+    ): GenerateGeneratorGeneratorRequestBuilder;
 }

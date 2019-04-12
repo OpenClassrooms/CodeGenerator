@@ -12,4 +12,6 @@ interface GenerateGeneratorGeneratorRequest extends GeneratorRequest
     public function getDomain(): string;
 
     public function getEntity(): string;
+
+    public function getConstructionPattern(): string;
 }

@@ -3,9 +3,11 @@
 namespace OpenClassrooms\CodeGenerator\Commands;
 
 use OpenClassrooms\CodeGenerator\Mediators\Args;
+use OpenClassrooms\CodeGenerator\Mediators\Options;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -39,7 +41,14 @@ class GenerateGeneratorCommand extends AbstractCommand
             ->setDescription('Create needed classes to add new generator')
             ->setHelp('This command allows you to create new generator')
             ->addArgument(Args::DOMAIN, InputArgument::OPTIONAL, 'set Domain/SubDomain')
-            ->addArgument(Args::ENTITY, InputArgument::OPTIONAL, 'set Entity name');
+            ->addArgument(Args::ENTITY, InputArgument::OPTIONAL, 'set Entity name')
+            ->addOption(
+                Options::CONSTRUCTION_PATTERN,
+                null,
+                InputOption::VALUE_REQUIRED,
+                'choose construction pattern Skeleton model',
+                ConstructionPatternType::ASSEMBLER_PATTERN
+            );
         $this->configureOptions();
     }
 

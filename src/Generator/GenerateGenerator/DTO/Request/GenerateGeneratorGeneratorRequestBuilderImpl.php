@@ -22,6 +22,13 @@ class GenerateGeneratorGeneratorRequestBuilderImpl implements GenerateGeneratorG
         return $this;
     }
 
+    public function withConstructionPattern(string $constructionPattern): GenerateGeneratorGeneratorRequestBuilder
+    {
+        $this->request->constructionPattern = $constructionPattern;
+
+        return $this;
+    }
+
     public function withDomain(string $domain): GenerateGeneratorGeneratorRequestBuilder
     {
         $this->request->domain = $domain;
