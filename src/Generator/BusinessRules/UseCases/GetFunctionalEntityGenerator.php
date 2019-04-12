@@ -22,11 +22,6 @@ use OpenClassrooms\CodeGenerator\Utility\MethodUtility;
 class GetFunctionalEntityGenerator extends AbstractGenericUseCaseGenerator
 {
     /**
-     * @var EntityFileObjectFactory
-     */
-    private $entityFileObjectFactory;
-
-    /**
      * @var GetFunctionalEntitySkeletonModelBuilder
      */
     private $skeletonModelBuilder;
@@ -198,10 +193,5 @@ class GetFunctionalEntityGenerator extends AbstractGenericUseCaseGenerator
     ): void
     {
         $this->skeletonModelBuilder = $skeletonModelBuilder;
-    }
-
-    public function setEntityFileObjectFactory(EntityFileObjectFactory $entityFileObjectFactory): void
-    {
-        $this->entityFileObjectFactory = $entityFileObjectFactory;
     }
 }

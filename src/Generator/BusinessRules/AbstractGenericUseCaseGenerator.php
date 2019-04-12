@@ -2,6 +2,7 @@
 
 namespace OpenClassrooms\CodeGenerator\Generator\BusinessRules;
 
+use OpenClassrooms\CodeGenerator\Entities\EntityFileObjectFactory;
 use OpenClassrooms\CodeGenerator\Entities\UseCaseFileObjectFactory;
 use OpenClassrooms\CodeGenerator\Entities\UseCaseRequestFileObjectFactory;
 use OpenClassrooms\CodeGenerator\Entities\UseCaseResponseFileObjectFactory;
@@ -12,6 +13,11 @@ use OpenClassrooms\CodeGenerator\Generator\AbstractGenerator;
  */
 abstract class AbstractGenericUseCaseGenerator extends AbstractGenerator
 {
+    /**
+     * @var EntityFileObjectFactory
+     */
+    protected $entityFileObjectFactory;
+
     /**
      * @var UseCaseFileObjectFactory
      */
@@ -26,6 +32,11 @@ abstract class AbstractGenericUseCaseGenerator extends AbstractGenerator
      * @var UseCaseResponseFileObjectFactory
      */
     protected $useCaseResponseFileObjectFactory;
+
+    public function setEntityFileObjectFactory(EntityFileObjectFactory $entityFileObjectFactory): void
+    {
+        $this->entityFileObjectFactory = $entityFileObjectFactory;
+    }
 
     public function setUseCaseFileObjectFactory(UseCaseFileObjectFactory $factory): void
     {
