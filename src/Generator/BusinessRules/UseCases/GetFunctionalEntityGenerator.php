@@ -2,7 +2,6 @@
 
 namespace OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases;
 
-use OpenClassrooms\CodeGenerator\Entities\EntityFileObjectFactory;
 use OpenClassrooms\CodeGenerator\Entities\EntityFileObjectType;
 use OpenClassrooms\CodeGenerator\Entities\FileObject;
 use OpenClassrooms\CodeGenerator\Entities\UseCaseFileObjectType;
@@ -71,8 +70,8 @@ class GetFunctionalEntityGenerator extends AbstractGenericUseCaseGenerator
                     EntityFileObjectType::BUSINESS_RULES_ENTITY                                      => $entityFileObject,
                     EntityFileObjectType::BUSINESS_RULES_ENTITY_GATEWAY                              => $entityGatewayFileObject,
                     EntityFileObjectType::BUSINESS_RULES_ENTITY_NOT_FOUND_EXCEPTION                  => $entityNotFoundExceptionFileObject,
-                    UseCaseFileObjectType::BUSINESS_RULES_GET_ENTITY                                 => $getEntityFileObject,
-                    UseCaseRequestFileObjectType::BUSINESS_RULES_GET_ENTITY_REQUEST                  => $getEntityRequestFileObject,
+                    UseCaseFileObjectType::BUSINESS_RULES_USE_CASE                                   => $getEntityFileObject,
+                    UseCaseRequestFileObjectType::BUSINESS_RULES_USE_CASE_REQUEST                    => $getEntityRequestFileObject,
                     UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE_ASSEMBLER => $entityDetailResponseAssemblerFileObject,
                     UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE                  => $entityResponseFileObject,
                 ]
@@ -109,7 +108,7 @@ class GetFunctionalEntityGenerator extends AbstractGenericUseCaseGenerator
     private function createEntityRequestFileObject(FileObject $entityFileObject): FileObject
     {
         return $this->useCaseRequestFileObjectFactory->create(
-            UseCaseRequestFileObjectType::BUSINESS_RULES_GET_ENTITY_REQUEST,
+            UseCaseRequestFileObjectType::BUSINESS_RULES_USE_CASE_REQUEST,
             $entityFileObject->getDomain(),
             $entityFileObject->getEntity(),
             $entityFileObject->getBaseNamespace()
@@ -149,7 +148,7 @@ class GetFunctionalEntityGenerator extends AbstractGenericUseCaseGenerator
     private function createGetEntityFileObject(FileObject $entityFileObject): FileObject
     {
         return $this->useCaseFileObjectFactory->create(
-            UseCaseFileObjectType::BUSINESS_RULES_GET_ENTITY,
+            UseCaseFileObjectType::BUSINESS_RULES_USE_CASE,
             $entityFileObject->getDomain(),
             $entityFileObject->getEntity(),
             $entityFileObject->getBaseNamespace()
@@ -176,8 +175,8 @@ class GetFunctionalEntityGenerator extends AbstractGenericUseCaseGenerator
                 $fileObjects[EntityFileObjectType::BUSINESS_RULES_ENTITY]
             )
             ->withEntityGateway($fileObjects[EntityFileObjectType::BUSINESS_RULES_ENTITY_GATEWAY])
-            ->withGetEntity($fileObjects[UseCaseFileObjectType::BUSINESS_RULES_GET_ENTITY])
-            ->withGetEntityRequest($fileObjects[UseCaseRequestFileObjectType::BUSINESS_RULES_GET_ENTITY_REQUEST])
+            ->withGetEntity($fileObjects[UseCaseFileObjectType::BUSINESS_RULES_USE_CASE])
+            ->withGetEntityRequest($fileObjects[UseCaseRequestFileObjectType::BUSINESS_RULES_USE_CASE_REQUEST])
             ->withEntityDetailResponseAssembler(
                 $fileObjects[UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE_ASSEMBLER]
             )

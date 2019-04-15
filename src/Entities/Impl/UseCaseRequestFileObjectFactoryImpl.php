@@ -19,29 +19,24 @@ class UseCaseRequestFileObjectFactoryImpl extends AbstractFileObjectFactory impl
         $this->baseNamespace = $baseNamespace ?? $this->baseNamespace;
 
         switch ($type) {
-            case UseCaseRequestFileObjectType::BUSINESS_RULES_GET_ENTITY_REQUEST:
-                $fileObject->setClassName(
-                    $this->baseNamespace . 'BusinessRules\Requestors\\' . $domain . '\\Get' . $entity . 'Request'
-                );
-                break;
             case UseCaseRequestFileObjectType::BUSINESS_RULES_USE_CASE_REQUEST:
                 $fileObject->setClassName(
-                    $this->baseNamespace . 'BusinessRules\Requestors\\' . $domain . '\\' . $entity . 'Request'
+                    $this->baseNamespace . 'BusinessRules\Requestors\\' . $domain . '\\' . $this->prefix . $entity . 'Request'
                 );
                 break;
             case UseCaseRequestFileObjectType::BUSINESS_RULES_USE_CASE_REQUEST_BUILDER:
                 $fileObject->setClassName(
-                    $this->baseNamespace . 'BusinessRules\Requestors\\' . $domain . '\\' . $entity . 'RequestBuilder'
+                    $this->baseNamespace . 'BusinessRules\Requestors\\' . $domain . '\\' . $this->prefix . $entity . 'RequestBuilder'
                 );
                 break;
             case UseCaseRequestFileObjectType::BUSINESS_RULES_USE_CASE_REQUEST_BUILDER_IMPL:
                 $fileObject->setClassName(
-                    $this->baseNamespace . 'BusinessRules\UseCases\\' . $domain . '\DTO\Request\\' . $entity . 'RequestBuilderImpl'
+                    $this->baseNamespace . 'BusinessRules\UseCases\\' . $domain . '\DTO\Request\\' . $this->prefix . $entity . 'RequestBuilderImpl'
                 );
                 break;
             case UseCaseRequestFileObjectType::BUSINESS_RULES_USE_CASE_REQUEST_DTO:
                 $fileObject->setClassName(
-                    $this->baseNamespace . 'BusinessRules\UseCases\\' . $domain . '\DTO\Request\\' . $entity . 'RequestDTO'
+                    $this->baseNamespace . 'BusinessRules\UseCases\\' . $domain . '\DTO\Request\\' . $this->prefix . $entity . 'RequestDTO'
                 );
                 break;
         }

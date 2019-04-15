@@ -19,19 +19,14 @@ class UseCaseFileObjectFactoryImpl extends AbstractFileObjectFactory implements 
         $this->baseNamespace = $baseNamespace ?? $this->baseNamespace;
 
         switch ($type) {
-            case UseCaseFileObjectType::BUSINESS_RULES_GET_ENTITY:
-                $fileObject->setClassName(
-                    $this->baseNamespace . 'BusinessRules\UseCases\\' . $domain . '\\Get' . $entity
-                );
-                break;
             case UseCaseFileObjectType::BUSINESS_RULES_USE_CASE:
                 $fileObject->setClassName(
-                    $this->baseNamespace . 'BusinessRules\UseCases\\' . $domain . '\\' . $entity
+                    $this->baseNamespace . 'BusinessRules\UseCases\\' . $domain . '\\' . $this->prefix . $entity
                 );
                 break;
             case UseCaseFileObjectType::BUSINESS_RULES_USE_CASE_TEST:
                 $fileObject->setClassName(
-                    $this->testsBaseNamespace . 'BusinessRules\UseCases\\' . $domain . '\\' . $entity . 'Test'
+                    $this->testsBaseNamespace . 'BusinessRules\UseCases\\' . $domain . '\\' . $this->prefix . $entity . 'Test'
                 );
                 break;
         }

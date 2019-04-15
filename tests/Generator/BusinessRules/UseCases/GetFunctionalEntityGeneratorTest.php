@@ -9,6 +9,7 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\Impl\GetF
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\GetFunctionalEntityFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\EntityFileObjectFactoryMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\FileObjectTestCase;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\FileObjectFactoryPrefixType;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\UseCaseFileObjectFactoryMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\UseCaseRequestFileObjectFactoryMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\UseCaseResponseFileObjectFactoryMock;
@@ -61,13 +62,13 @@ class GetFunctionalEntityGeneratorTest extends TestCase
 
         $this->getFunctionalEntityGenerator->setEntityFileObjectFactory(new EntityFileObjectFactoryMock());
         $this->getFunctionalEntityGenerator->setUseCaseRequestFileObjectFactory(
-            new UseCaseRequestFileObjectFactoryMock()
+            new UseCaseRequestFileObjectFactoryMock(FileObjectFactoryPrefixType::GET)
         );
         $this->getFunctionalEntityGenerator->setUseCaseResponseFileObjectFactory(
-            new UseCaseResponseFileObjectFactoryMock()
+            new UseCaseResponseFileObjectFactoryMock(FileObjectFactoryPrefixType::GET)
         );
         $this->getFunctionalEntityGenerator->setUseCaseFileObjectFactory(
-            new UseCaseFileObjectFactoryMock()
+            new UseCaseFileObjectFactoryMock(FileObjectFactoryPrefixType::GET)
         );
         $getFunctionalEntitySkeletonModelBuilderImpl = new GetFunctionalEntitySkeletonModelBuilderImpl();
         $getFunctionalEntitySkeletonModelBuilderImpl->setUseCaseClassName(FixturesConfig::USE_CASE_NAMESPACE);
