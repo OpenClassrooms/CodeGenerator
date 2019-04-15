@@ -7,7 +7,7 @@ use OpenClassrooms\CodeGenerator\Entities\FileObject;
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
-class GetFunctionalEntityFileObjectStub1 extends FileObject
+class GetEntityFileObjectStub1 extends FileObject
 {
     const CLASS_NAME = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\GetFunctionalEntity';
 

@@ -2,11 +2,11 @@
 
 namespace OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\Impl;
 
-use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\GetFunctionalEntitySkeletonModel;
+use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\GetEntitySkeletonModel;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
-class GetFunctionalEntitySkeletonModelImpl extends GetFunctionalEntitySkeletonModel
+class GetEntitySkeletonModelImpl extends GetEntitySkeletonModel
 {
 }

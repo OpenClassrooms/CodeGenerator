@@ -7,37 +7,37 @@ use OpenClassrooms\CodeGenerator\Entities\FileObject;
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
-interface GetFunctionalEntitySkeletonModelBuilder
+interface GetEntitySkeletonModelBuilder
 {
-    public function create(): GetFunctionalEntitySkeletonModelBuilder;
+    public function create(): GetEntitySkeletonModelBuilder;
 
     public function withEntity(
         FileObject $entityFileObject
-    ): GetFunctionalEntitySkeletonModelBuilder;
+    ): GetEntitySkeletonModelBuilder;
 
     public function withEntityGateway(
         FileObject $entityGatewayFileObject
-    ): GetFunctionalEntitySkeletonModelBuilder;
+    ): GetEntitySkeletonModelBuilder;
 
     public function withGetEntity(
         FileObject $getEntityFileObject
-    ): GetFunctionalEntitySkeletonModelBuilder;
+    ): GetEntitySkeletonModelBuilder;
 
     public function withGetEntityRequest(
         FileObject $getEntityRequestFileObject
-    ): GetFunctionalEntitySkeletonModelBuilder;
+    ): GetEntitySkeletonModelBuilder;
 
     public function withEntityDetailResponseAssembler(
         FileObject $entityDetailResponseAssemblerFileObject
-    ): GetFunctionalEntitySkeletonModelBuilder;
+    ): GetEntitySkeletonModelBuilder;
 
     public function withEntityResponse(
         FileObject $entityResponseFileObject
-    ): GetFunctionalEntitySkeletonModelBuilder;
+    ): GetEntitySkeletonModelBuilder;
 
     public function withEntityNotFoundException(
         FileObject $entityNotFoundExceptionFileObject
-    ): GetFunctionalEntitySkeletonModelBuilder;
+    ): GetEntitySkeletonModelBuilder;
 
-    public function build(): GetFunctionalEntitySkeletonModel;
+    public function build(): GetEntitySkeletonModel;
 }

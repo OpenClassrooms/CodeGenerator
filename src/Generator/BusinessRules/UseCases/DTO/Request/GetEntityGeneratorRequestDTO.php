@@ -2,12 +2,12 @@
 
 namespace OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request;
 
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\GetFunctionalEntityGeneratorRequest;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\GetEntityGeneratorRequest;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
-class GetFunctionalEntityGeneratorRequestDTO implements GetFunctionalEntityGeneratorRequest
+class GetEntityGeneratorRequestDTO implements GetEntityGeneratorRequest
 {
     /**
      * @var string

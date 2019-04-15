@@ -7,13 +7,13 @@ use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
-interface GetFunctionalEntityGeneratorRequestBuilder extends GeneratorRequest
+interface GetEntityGeneratorRequestBuilder extends GeneratorRequest
 {
-    public function build(): GetFunctionalEntityGeneratorRequest;
+    public function build(): GetEntityGeneratorRequest;
 
-    public function create(): GetFunctionalEntityGeneratorRequestBuilder;
+    public function create(): GetEntityGeneratorRequestBuilder;
 
     public function withEntity(
         string $entity
-    ): GetFunctionalEntityGeneratorRequestBuilder;
+    ): GetEntityGeneratorRequestBuilder;
 }

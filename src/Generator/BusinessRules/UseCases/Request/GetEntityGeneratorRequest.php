@@ -7,7 +7,7 @@ use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
-interface GetFunctionalEntityGeneratorRequest extends GeneratorRequest
+interface GetEntityGeneratorRequest extends GeneratorRequest
 {
     public function getEntity(): string;
 }

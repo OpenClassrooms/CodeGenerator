@@ -7,7 +7,7 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
-abstract class GetFunctionalEntitySkeletonModel extends AbstractSkeletonModel
+abstract class GetEntitySkeletonModel extends AbstractSkeletonModel
 {
     public $functionalEntityArgument;
 

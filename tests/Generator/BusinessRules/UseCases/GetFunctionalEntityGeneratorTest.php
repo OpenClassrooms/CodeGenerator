@@ -2,11 +2,11 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Generator\BusinessRules\UseCases;
 
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\GetFunctionalEntityGeneratorRequestBuilderImpl;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\GetFunctionalEntityGenerator;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\GetFunctionalEntityGeneratorRequestBuilder;
-use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\Impl\GetFunctionalEntitySkeletonModelBuilderImpl;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\GetFunctionalEntityFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\GetEntityGeneratorRequestBuilderImpl;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\GetEntityGenerator;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\GetEntityGeneratorRequestBuilder;
+use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\Impl\GetEntitySkeletonModelBuilderImpl;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\GetEntityFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\EntityFileObjectFactoryMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\FileObjectTestCase;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\FileObjectFactoryPrefixType;
@@ -22,17 +22,17 @@ use PHPUnit\Framework\TestCase;
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
-class GetFunctionalEntityGeneratorTest extends TestCase
+class GetEntityGeneratorTest extends TestCase
 {
     use FileObjectTestCase;
 
     /**
-     * @var GetFunctionalEntityGenerator
+     * @var GetEntityGenerator
      */
     private $getFunctionalEntityGenerator;
 
     /**
-     * @var GetFunctionalEntityGeneratorRequestBuilder
+     * @var GetEntityGeneratorRequestBuilder
      */
     private $request;
 
@@ -47,18 +47,18 @@ class GetFunctionalEntityGeneratorTest extends TestCase
             InMemoryFileObjectGateway::$fileObjects[$actualFileObject->getId()],
             $actualFileObject->getPath()
         );
-        $this->assertFileObject(new GetFunctionalEntityFileObjectStub1(), $actualFileObject);
+        $this->assertFileObject(new GetEntityFileObjectStub1(), $actualFileObject);
     }
 
     protected function setUp()
     {
-        $getFunctionalEntityGeneratorRequestBuilderImpl = new GetFunctionalEntityGeneratorRequestBuilderImpl();
+        $getFunctionalEntityGeneratorRequestBuilderImpl = new GetEntityGeneratorRequestBuilderImpl();
         $this->request = $getFunctionalEntityGeneratorRequestBuilderImpl
             ->create()
             ->withEntity(FunctionalEntity::class)
             ->build();
 
-        $this->getFunctionalEntityGenerator = new GetFunctionalEntityGenerator();
+        $this->getFunctionalEntityGenerator = new GetEntityGenerator();
 
         $this->getFunctionalEntityGenerator->setEntityFileObjectFactory(new EntityFileObjectFactoryMock());
         $this->getFunctionalEntityGenerator->setUseCaseRequestFileObjectFactory(
@@ -70,12 +70,12 @@ class GetFunctionalEntityGeneratorTest extends TestCase
         $this->getFunctionalEntityGenerator->setUseCaseFileObjectFactory(
             new UseCaseFileObjectFactoryMock(FileObjectFactoryPrefixType::GET)
         );
-        $getFunctionalEntitySkeletonModelBuilderImpl = new GetFunctionalEntitySkeletonModelBuilderImpl();
+        $getFunctionalEntitySkeletonModelBuilderImpl = new GetEntitySkeletonModelBuilderImpl();
         $getFunctionalEntitySkeletonModelBuilderImpl->setUseCaseClassName(FixturesConfig::USE_CASE_NAMESPACE);
         $getFunctionalEntitySkeletonModelBuilderImpl->setUseCaseRequestClassName(
             FixturesConfig::USE_CASE_REQUEST_NAMESPACE
         );
-        $this->getFunctionalEntityGenerator->setGetFunctionalEntitySkeletonModelBuilder(
+        $this->getFunctionalEntityGenerator->setGetEntitySkeletonModelBuilder(
             $getFunctionalEntitySkeletonModelBuilderImpl
         );
         $this->getFunctionalEntityGenerator->setTemplating(new TemplatingServiceMock());

@@ -8,25 +8,25 @@ use OpenClassrooms\CodeGenerator\Entities\UseCaseFileObjectType;
 use OpenClassrooms\CodeGenerator\Entities\UseCaseRequestFileObjectType;
 use OpenClassrooms\CodeGenerator\Entities\UseCaseResponseFileObjectType;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\AbstractGenericUseCaseGenerator;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\GetFunctionalEntityGeneratorRequest;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\GetEntityGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
-use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\GetFunctionalEntitySkeletonModel;
-use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\GetFunctionalEntitySkeletonModelBuilder;
+use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\GetEntitySkeletonModel;
+use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\GetEntitySkeletonModelBuilder;
 use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 use OpenClassrooms\CodeGenerator\Utility\MethodUtility;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
-class GetFunctionalEntityGenerator extends AbstractGenericUseCaseGenerator
+class GetEntityGenerator extends AbstractGenericUseCaseGenerator
 {
     /**
-     * @var GetFunctionalEntitySkeletonModelBuilder
+     * @var GetEntitySkeletonModelBuilder
      */
     private $skeletonModelBuilder;
 
     /**
-     * @param GetFunctionalEntityGeneratorRequest $generatorRequest
+     * @param GetEntityGeneratorRequest $generatorRequest
      */
     public function generate(GeneratorRequest $generatorRequest): FileObject
     {
@@ -168,7 +168,7 @@ class GetFunctionalEntityGenerator extends AbstractGenericUseCaseGenerator
     /**
      * @param FileObject[]
      */
-    private function createSkeletonModel(array $fileObjects): GetFunctionalEntitySkeletonModel
+    private function createSkeletonModel(array $fileObjects): GetEntitySkeletonModel
     {
         return $this->skeletonModelBuilder->create()
             ->withEntity(
@@ -187,8 +187,8 @@ class GetFunctionalEntityGenerator extends AbstractGenericUseCaseGenerator
             ->build();
     }
 
-    public function setGetFunctionalEntitySkeletonModelBuilder(
-        GetFunctionalEntitySkeletonModelBuilder $skeletonModelBuilder
+    public function setGetEntitySkeletonModelBuilder(
+        GetEntitySkeletonModelBuilder $skeletonModelBuilder
     ): void
     {
         $this->skeletonModelBuilder = $skeletonModelBuilder;
