@@ -11,7 +11,7 @@ use OpenClassrooms\CodeGenerator\Generator\AbstractGenerator;
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
-abstract class AbstractGenericUseCaseGenerator extends AbstractGenerator
+abstract class AbstractUseCaseGenerator extends AbstractGenerator
 {
     /**
      * @var EntityFileObjectFactory

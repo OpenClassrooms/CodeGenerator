@@ -5,7 +5,6 @@ namespace OpenClassrooms\CodeGenerator\Tests\Generator\BusinessRules\UseCases;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\GetEntityRequestBuilderGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\GetEntityRequestBuilderGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\GetEntityRequestBuilderGeneratorRequestBuilder;
-use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\Impl\GetEntityRequestBuilderSkeletonModelAssemblerImpl;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\GetEntityRequestBuilderFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\EntityFileObjectFactoryMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\FileObjectTestCase;
@@ -63,8 +62,12 @@ class GetEntityRequestBuilderGeneratorTest extends TestCase
             new GetEntityRequestBuilderSkeletonModelAssemblerMock()
         );
         $this->getEntityRequestBuilderGenerator->setEntityFileObjectFactory(new EntityFileObjectFactoryMock());
-        $this->getEntityRequestBuilderGenerator->setUseCaseFileObjectFactory(new UseCaseFileObjectFactoryMock(FileObjectFactoryPrefixType::GET));
-        $this->getEntityRequestBuilderGenerator->setUseCaseRequestFileObjectFactory(new UseCaseRequestFileObjectFactoryMock(FileObjectFactoryPrefixType::GET));
+        $this->getEntityRequestBuilderGenerator->setUseCaseFileObjectFactory(
+            new UseCaseFileObjectFactoryMock(FileObjectFactoryPrefixType::GET)
+        );
+        $this->getEntityRequestBuilderGenerator->setUseCaseRequestFileObjectFactory(
+            new UseCaseRequestFileObjectFactoryMock(FileObjectFactoryPrefixType::GET)
+        );
         $this->getEntityRequestBuilderGenerator->setTemplating(new TemplatingServiceMock());
         $this->getEntityRequestBuilderGenerator->setFileObjectGateway(new InMemoryFileObjectGateway());
     }

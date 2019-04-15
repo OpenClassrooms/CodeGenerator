@@ -7,7 +7,7 @@ use OpenClassrooms\CodeGenerator\Entities\FileObject;
 use OpenClassrooms\CodeGenerator\Entities\UseCaseFileObjectType;
 use OpenClassrooms\CodeGenerator\Entities\UseCaseRequestFileObjectType;
 use OpenClassrooms\CodeGenerator\Entities\UseCaseResponseFileObjectType;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\AbstractGenericUseCaseGenerator;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\AbstractUseCaseGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\GetEntityGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\GetEntitySkeletonModel;
@@ -18,7 +18,7 @@ use OpenClassrooms\CodeGenerator\Utility\MethodUtility;
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
-class GetEntityGenerator extends AbstractGenericUseCaseGenerator
+class GetEntityGenerator extends AbstractUseCaseGenerator
 {
     /**
      * @var GetEntitySkeletonModelBuilder

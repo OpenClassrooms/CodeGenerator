@@ -4,7 +4,7 @@ namespace OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases;
 
 use OpenClassrooms\CodeGenerator\Entities\FileObject;
 use OpenClassrooms\CodeGenerator\Entities\UseCaseRequestFileObjectType;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\AbstractGenericUseCaseGenerator;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\AbstractUseCaseGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\GenericUseCaseRequestBuilderImplGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\GenericUseCaseRequestBuilderImplSkeletonModel;
@@ -13,7 +13,7 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\GenericUs
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
-class GenericUseCaseRequestBuilderImplGenerator extends AbstractGenericUseCaseGenerator
+class GenericUseCaseRequestBuilderImplGenerator extends AbstractUseCaseGenerator
 {
     /**
      * @var GenericUseCaseRequestBuilderImplSkeletonModelAssembler

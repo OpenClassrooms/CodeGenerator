@@ -5,7 +5,7 @@ namespace OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases;
 use OpenClassrooms\CodeGenerator\Entities\EntityFileObjectType;
 use OpenClassrooms\CodeGenerator\Entities\FileObject;
 use OpenClassrooms\CodeGenerator\Entities\UseCaseRequestFileObjectType;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\AbstractGenericUseCaseGenerator;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\AbstractUseCaseGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\GetEntityRequestBuilderGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\GetEntityRequestBuilderSkeletonModel;
@@ -15,7 +15,7 @@ use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
-class GetEntityRequestBuilderGenerator extends AbstractGenericUseCaseGenerator
+class GetEntityRequestBuilderGenerator extends AbstractUseCaseGenerator
 {
     /**
      * @var GetEntityRequestBuilderSkeletonModelAssembler
@@ -63,19 +63,19 @@ class GetEntityRequestBuilderGenerator extends AbstractGenericUseCaseGenerator
         );
     }
 
-    private function createGetEntityRequestFileObject(FileObject $entityFileObject): FileObject
+    private function createGetEntityRequestBuilderFileObject(FileObject $entityFileObject): FileObject
     {
         return $this->useCaseRequestFileObjectFactory->create(
-            UseCaseRequestFileObjectType::BUSINESS_RULES_USE_CASE_REQUEST,
+            UseCaseRequestFileObjectType::BUSINESS_RULES_USE_CASE_REQUEST_BUILDER,
             $entityFileObject->getDomain(),
             $entityFileObject->getEntity()
         );
     }
 
-    private function createGetEntityRequestBuilderFileObject(FileObject $entityFileObject): FileObject
+    private function createGetEntityRequestFileObject(FileObject $entityFileObject): FileObject
     {
         return $this->useCaseRequestFileObjectFactory->create(
-            UseCaseRequestFileObjectType::BUSINESS_RULES_USE_CASE_REQUEST_BUILDER,
+            UseCaseRequestFileObjectType::BUSINESS_RULES_USE_CASE_REQUEST,
             $entityFileObject->getDomain(),
             $entityFileObject->getEntity()
         );
