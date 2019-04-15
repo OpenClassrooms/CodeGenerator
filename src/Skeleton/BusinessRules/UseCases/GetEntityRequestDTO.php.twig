@@ -1,0 +1,21 @@
+{% include "Header.php.twig" %}
+
+namespace {{ skeletonModel.namespace }};
+
+use {{ skeletonModel.getEntityRequestClassName }};
+
+/**
+ * @author {{ author }} <{{ authorEmail }}>
+ */
+class {{ skeletonModel.shortName }} implements {{ skeletonModel.getEntityRequestShortName }}
+{
+    /**
+     * @var int
+     */
+    public $id;
+
+    public function get{{ skeletonModel.entityShortName }}Id(): int
+    {
+        return $this->id;
+    }
+}
