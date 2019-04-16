@@ -10,11 +10,37 @@ class MethodObject
     /**
      * @var string
      */
+    private $docComment;
+
+    /**
+     * @var string
+     */
     private $name;
+
+    /**
+     * @var string
+     */
+    private $returnType;
 
     public function __construct(string $name)
     {
         $this->name = $name;
+    }
+
+    /**
+     * @return string|bool
+     */
+    public function getDocComment()
+    {
+        return $this->docComment;
+    }
+
+    /**
+     * @param string|bool
+     */
+    public function setDocComment($docComment): void
+    {
+        $this->docComment = $docComment;
     }
 
     public function getName(): string
@@ -25,5 +51,15 @@ class MethodObject
     public function setName(string $name): void
     {
         $this->name = $name;
+    }
+
+    public function getReturnType(): string
+    {
+        return $this->returnType;
+    }
+
+    public function setReturnType(string $returnType): void
+    {
+        $this->returnType = $returnType;
     }
 }

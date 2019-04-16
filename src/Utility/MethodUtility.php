@@ -9,15 +9,23 @@ use OpenClassrooms\CodeGenerator\Entities\MethodObject;
  */
 class MethodUtility
 {
+    const DOC_COMMENT = 'doc_comment';
+
+    const NAME = 'name';
+
+    const RETURN_TYPE = 'return_type';
+
     public static function getAccessors(string $className): array
     {
         $rc = new \ReflectionClass($className);
         $methods = $rc->getMethods();
 
         $accessors = [];
-        foreach ($methods as $method) {
+        foreach ($methods as $key => $method) {
             if (self::isAccessor($method)) {
-                $accessors[] = $method->getName();
+                $accessors[$key][self::DOC_COMMENT] = $method->getDocComment();
+                $accessors[$key][self::NAME] = $method->getName();
+                $accessors[$key][self::RETURN_TYPE] = $method->getReturnType()->getName();
             }
         }
 
@@ -29,11 +37,17 @@ class MethodUtility
         return ('get' === substr($method->getName(), 0, 3) || 'is' === substr($method->getName(), 0, 2));
     }
 
+    /**
+     * @return MethodObject[]
+     */
     private static function buildAccessors(array $accessors): array
     {
         $methods = [];
         foreach ($accessors as $accessor) {
-            $methods[] = new MethodObject($accessor);
+            $method = new MethodObject($accessor[self::NAME]);
+            $method->setDocComment($accessor[self::DOC_COMMENT]);
+            $method->setReturnType($accessor[self::RETURN_TYPE]);
+            $methods[] = $method;
         }
 
         return $methods;

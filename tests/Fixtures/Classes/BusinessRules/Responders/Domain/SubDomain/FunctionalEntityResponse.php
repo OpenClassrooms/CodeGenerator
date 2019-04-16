@@ -5,7 +5,7 @@ namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Resp
 use OpenClassrooms\UseCase\BusinessRules\Responders\UseCaseResponse;
 
 /**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
+ * @author authorStub <author.stub@example.com>
  */
 interface FunctionalEntityResponse extends UseCaseResponse
 {

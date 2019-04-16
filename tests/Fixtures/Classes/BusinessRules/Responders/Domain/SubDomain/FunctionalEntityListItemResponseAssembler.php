@@ -6,6 +6,9 @@ namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Resp
 use OpenClassrooms\UseCase\BusinessRules\Entities\PaginatedCollection;
 use OpenClassrooms\UseCase\BusinessRules\Responders\PaginatedUseCaseResponse;
 
+/**
+ * @author authorStub <author.stub@example.com>
+ */
 interface FunctionalEntityListItemResponseAssembler
 {
     public function createPaginatedCollection(PaginatedCollection $collection): PaginatedUseCaseResponse;

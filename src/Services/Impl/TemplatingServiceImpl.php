@@ -4,6 +4,7 @@ namespace OpenClassrooms\CodeGenerator\Services\Impl;
 
 use OpenClassrooms\CodeGenerator\Entities\ConstObject;
 use OpenClassrooms\CodeGenerator\Entities\FieldObject;
+use OpenClassrooms\CodeGenerator\Entities\MethodObject;
 use OpenClassrooms\CodeGenerator\Services\TemplatingService;
 
 /**
@@ -65,8 +66,16 @@ class TemplatingServiceImpl extends \Twig_Environment implements TemplatingServi
                 return ($al > $bl) ? +1 : -1;
             };
         }
+        if (array_shift($arrayFields) instanceof ConstObject) {
+            return function(ConstObject $a, ConstObject $b) {
+                $al = strtolower($a->getName());
+                $bl = strtolower($b->getName());
 
-        return function(ConstObject $a, ConstObject $b) {
+                return ($al > $bl) ? +1 : -1;
+            };
+        }
+
+        return function(MethodObject $a, MethodObject $b) {
             $al = strtolower($a->getName());
             $bl = strtolower($b->getName());
 
