@@ -12,10 +12,10 @@ class GetEntityRequestGeneratorRequestDTO implements GetEntityRequestGeneratorRe
     /**
      * @var string
      */
-    public $defaultValue;
+    public $entity;
 
     public function getEntity(): string
     {
-        return $this->defaultValue;
+        return $this->entity;
     }
 }

@@ -13,7 +13,7 @@ interface GetEntityRequestBuilderGeneratorRequestBuilder extends GeneratorReques
 
     public function create(): GetEntityRequestBuilderGeneratorRequestBuilder;
 
-    public function withDefaultValue(
-        string $defaultValue
+    public function withEntity(
+        string $entity
     ): GetEntityRequestBuilderGeneratorRequestBuilder;
 }

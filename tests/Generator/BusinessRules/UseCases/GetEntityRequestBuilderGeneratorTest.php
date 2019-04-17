@@ -53,7 +53,7 @@ class GetEntityRequestBuilderGeneratorTest extends TestCase
         $getEntityRequestBuilderGeneratorRequestBuilderImpl = new GetEntityRequestBuilderGeneratorRequestBuilderImpl();
         $this->request = $getEntityRequestBuilderGeneratorRequestBuilderImpl
             ->create()
-            ->withDefaultValue(FunctionalEntity::class)
+            ->withEntity(FunctionalEntity::class)
             ->build();
 
         $this->getEntityRequestBuilderGenerator = new GetEntityRequestBuilderGenerator();

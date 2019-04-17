@@ -22,9 +22,9 @@ class GetEntityRequestBuilderGeneratorRequestBuilderImpl implements GetEntityReq
         return $this;
     }
 
-    public function withDefaultValue(string $defaultValue): GetEntityRequestBuilderGeneratorRequestBuilder
+    public function withEntity(string $entity): GetEntityRequestBuilderGeneratorRequestBuilder
     {
-        $this->request->defaultValue = $defaultValue;
+        $this->request->entity = $entity;
 
         return $this;
     }

@@ -14,6 +14,6 @@ interface GenericUseCaseListItemResponseGeneratorRequestBuilder extends Generato
     public function create(): GenericUseCaseListItemResponseGeneratorRequestBuilder;
 
     public function withEntity(
-        string $defaultValue
+        string $entity
     ): GenericUseCaseListItemResponseGeneratorRequestBuilder;
 }

@@ -2,12 +2,12 @@
 
 namespace OpenClassrooms\CodeGenerator\Generator\BusinessRules\Responders\DTO\Request;
 
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Responders\Request\GenericUseCaseListItemResponseGeneratorRequest;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Responders\Request\GenericUseCaseListItemResponseAssemblerGeneratorRequest;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
-class GenericUseCaseListItemResponseGeneratorRequestDTO implements GenericUseCaseListItemResponseGeneratorRequest
+class GenericUseCaseListItemResponseAssemblerGeneratorRequestDTO implements GenericUseCaseListItemResponseAssemblerGeneratorRequest
 {
     /**
      * @var string

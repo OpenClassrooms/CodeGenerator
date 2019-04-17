@@ -1,0 +1,13 @@
+{% include "Header.php.twig" %}
+
+namespace {{ skeletonModel.namespace }};
+
+use {{ skeletonModel.paginatedUseCaseResponseClassName }};
+
+/**
+ * @author {{ author }} <{{ authorEmail }}>
+ */
+interface {{ skeletonModel.shortName }}
+{
+    public function createPaginatedCollection({{ skeletonModel.paginatedUseCaseResponseShortName }} $collection): {{ skeletonModel.paginatedUseCaseResponseShortName }};
+}

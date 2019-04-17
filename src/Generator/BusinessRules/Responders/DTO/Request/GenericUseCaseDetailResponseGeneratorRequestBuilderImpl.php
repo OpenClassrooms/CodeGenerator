@@ -22,9 +22,9 @@ class GenericUseCaseDetailResponseGeneratorRequestBuilderImpl implements Generic
         return $this;
     }
 
-    public function withEntity(string $defaultValue): GenericUseCaseDetailResponseGeneratorRequestBuilder
+    public function withEntity(string $entity): GenericUseCaseDetailResponseGeneratorRequestBuilder
     {
-        $this->request->defaultValue = $defaultValue;
+        $this->request->entity = $entity;
 
         return $this;
     }

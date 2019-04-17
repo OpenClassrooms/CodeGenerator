@@ -24,7 +24,7 @@ class GetEntityRequestGeneratorRequestBuilderImpl implements GetEntityRequestGen
 
     public function withEntity(string $entity): GetEntityRequestGeneratorRequestBuilder
     {
-        $this->request->defaultValue = $entity;
+        $this->request->entity = $entity;
 
         return $this;
     }

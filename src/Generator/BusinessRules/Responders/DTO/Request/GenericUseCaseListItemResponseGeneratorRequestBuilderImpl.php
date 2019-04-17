@@ -22,9 +22,9 @@ class GenericUseCaseListItemResponseGeneratorRequestBuilderImpl implements Gener
         return $this;
     }
 
-    public function withEntity(string $defaultValue): GenericUseCaseListItemResponseGeneratorRequestBuilder
+    public function withEntity(string $entity): GenericUseCaseListItemResponseGeneratorRequestBuilder
     {
-        $this->request->defaultValue = $defaultValue;
+        $this->request->entity = $entity;
 
         return $this;
     }
