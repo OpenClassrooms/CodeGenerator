@@ -206,7 +206,10 @@ class GenerateGeneratorGenerator
         $fileObject = $this->factory->create(GenerateGeneratorFileObjectType::SKELETON, $domain, $entity);
 
         $fileObject->setContent(
-            $this->templating->render('GenerateGenerator/GenerateGeneratorSkeleton.php.twig', [])
+            $this->templating->render(
+                'GenerateGenerator/GenerateGeneratorSkeleton.php.twig',
+                ['skeletonModel' => $this->skeletonModel]
+            )
         );
 
         return $fileObject;
