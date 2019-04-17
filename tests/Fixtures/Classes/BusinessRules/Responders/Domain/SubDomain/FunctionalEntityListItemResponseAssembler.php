@@ -3,7 +3,6 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain;
 
-use OpenClassrooms\UseCase\BusinessRules\Entities\PaginatedCollection;
 use OpenClassrooms\UseCase\BusinessRules\Responders\PaginatedUseCaseResponse;
 
 /**
@@ -11,5 +10,5 @@ use OpenClassrooms\UseCase\BusinessRules\Responders\PaginatedUseCaseResponse;
  */
 interface FunctionalEntityListItemResponseAssembler
 {
-    public function createPaginatedCollection(PaginatedCollection $collection): PaginatedUseCaseResponse;
+    public function createPaginatedCollection(PaginatedUseCaseResponse $collection): PaginatedUseCaseResponse;
 }

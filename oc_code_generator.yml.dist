@@ -6,5 +6,13 @@ parameters:
     base_namespace: OC\
     stub_namespace: Doubles\OC\
     tests_base_namespace: OC\
+
     use_case_namespace: OpenClassrooms\UseCase\BusinessRules\Requestors\UseCase
     use_case_request_namespace: OpenClassrooms\UseCase\BusinessRules\Requestors\UseCaseRequest
+
+    abstract_paginated_use_case_response: %base_namespace%\BusinessRules\Responders\AbstractPaginatedUseCaseResponse
+    abstract_paginated_use_case_response_builder: %base_namespace%\BusinessRules\Responders\AbstractPaginatedUseCaseResponseBuilder
+    paginated_use_case_response: %base_namespace%\BusinessRules\Responders\PaginatedUseCaseResponse
+    paginated_use_case_response_builder: %base_namespace%\BusinessRules\Responders\PaginatedUseCaseResponseBuilder
+    use_case_response:  %base_namespace%\BusinessRules\Responders\UseCaseResponse
+    pagination:  %base_namespace%\BusinessRules\Gateways\Pagination

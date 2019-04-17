@@ -55,7 +55,7 @@ class GetFunctionalEntities implements UseCase
         ];
     }
 
-    private function buildResponse(PaginatedCollection $functionalEntities): PaginatedUseCaseResponse
+    private function buildResponse(PaginatedUseCaseResponse $functionalEntities): PaginatedUseCaseResponse
     {
         return $this->responseAssembler->createPaginatedCollection($functionalEntities);
     }
