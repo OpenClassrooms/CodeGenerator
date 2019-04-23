@@ -38,6 +38,7 @@ class TemplatingServiceImpl extends \Twig_Environment implements TemplatingServi
 
         $this->addFunction($this->lineBreak());
         $this->addFunction($this->printValue());
+        $this->addFunction($this->printReturnType());
     }
 
     private function getSortNameByAlphaFilter()
@@ -141,5 +142,20 @@ class TemplatingServiceImpl extends \Twig_Environment implements TemplatingServi
     public function render($name, array $context = []): string
     {
         return parent::render($name, $context);
+    }
+
+    private function printReturnType()
+    {
+        return new \Twig_SimpleFunction(
+            'printReturnType',
+            function($value, $isNullable) {
+                $returnType = $value;
+                if (in_array($value, ['DateTime', 'DateTimeImmutable', 'DateTimeInterface'])) {
+                    $returnType = '\\' . $value;
+                }
+
+                return $isNullable ? '?' . $returnType : $returnType;
+            }
+        );
     }
 }

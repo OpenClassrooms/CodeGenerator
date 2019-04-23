@@ -6,6 +6,7 @@ use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Responders\DTO\Request\
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Responders\GenericUseCaseDetailResponseGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Responders\Request\GenericUseCaseDetailResponseGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Responders\Impl\GenericUseCaseDetailResponseSkeletonModelAssemblerImpl;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Responders\GenericUseCaseDetailResponseFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\EntityFileObjectFactoryMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\FileObjectTestCase;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\UseCaseResponseFileObjectFactoryMock;
@@ -42,7 +43,7 @@ class GenericUseCaseDetailResponseGeneratorTest extends TestCase
             InMemoryFileObjectGateway::$fileObjects[$actualFileObject->getId()],
             $actualFileObject->getPath()
         );
-//        $this->assertFileObject(new GenericUseCaseDetailResponseFileObjectStub1(), $actualFileObject);
+        $this->assertFileObject(new GenericUseCaseDetailResponseFileObjectStub1(), $actualFileObject);
     }
 
     protected function setUp()
@@ -52,6 +53,7 @@ class GenericUseCaseDetailResponseGeneratorTest extends TestCase
         $this->request = $genericUseCaseDetailResponseGeneratorRequestBuilderImpl
             ->create()
             ->withEntity(FunctionalEntity::class)
+            ->withFields(['getField4'])
             ->build();
 
         $this->genericUseCaseDetailResponseGenerator = new GenericUseCaseDetailResponseGenerator();

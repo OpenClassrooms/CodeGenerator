@@ -16,4 +16,11 @@ interface GenericUseCaseDetailResponseGeneratorRequestBuilder extends GeneratorR
     public function withEntity(
         string $entity
     ): GenericUseCaseDetailResponseGeneratorRequestBuilder;
+
+    /**
+     * @param string[] $fields
+     */
+    public function withFields(
+        array $fields
+    ): GenericUseCaseDetailResponseGeneratorRequestBuilder;
 }

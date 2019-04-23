@@ -8,8 +8,5 @@ namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Resp
  */
 interface FunctionalEntityDetailResponse extends FunctionalEntityResponse
 {
-    /**
-     * @return \DateTimeImmutable
-     */
     public function getField4(): ?\DateTimeImmutable;
 }

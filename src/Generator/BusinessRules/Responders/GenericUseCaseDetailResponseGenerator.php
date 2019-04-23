@@ -29,7 +29,8 @@ class GenericUseCaseDetailResponseGenerator extends AbstractUseCaseGenerator
     public function generate(GeneratorRequest $generatorRequest): FileObject
     {
         $genericUseCaseDetailResponseFileObject = $this->buildGenericUseCaseDetailResponseFileObject(
-            $generatorRequest->getEntity()
+            $generatorRequest->getEntity(),
+            $generatorRequest->getFields()
         );
 
         $this->insertFileObject($genericUseCaseDetailResponseFileObject);
@@ -37,7 +38,10 @@ class GenericUseCaseDetailResponseGenerator extends AbstractUseCaseGenerator
         return $genericUseCaseDetailResponseFileObject;
     }
 
-    private function buildGenericUseCaseDetailResponseFileObject(string $entityClassName): FileObject
+    /**
+     * @param string[] $fields
+     */
+    private function buildGenericUseCaseDetailResponseFileObject(string $entityClassName, array $fields): FileObject
     {
         $entityFileObject = $this->createEntityFileObject($entityClassName);
         $genericUseCaseResponseFileObject = $this->createGenericUseCaseResponseFileObject($entityFileObject);
@@ -46,7 +50,7 @@ class GenericUseCaseDetailResponseGenerator extends AbstractUseCaseGenerator
         );
 
         $genericUseCaseDetailResponseFileObject->setMethods(
-            MethodUtility::getAccessors($entityClassName)
+            MethodUtility::getSelectedMethods($entityClassName, $fields)
         );
         $genericUseCaseDetailResponseFileObject->setContent(
             $this->generateContent($genericUseCaseResponseFileObject, $genericUseCaseDetailResponseFileObject)

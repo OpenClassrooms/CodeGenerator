@@ -43,7 +43,7 @@ class GenericUseCaseResponseGeneratorTest extends TestCase
             InMemoryFileObjectGateway::$fileObjects[$actualFileObject->getId()],
             $actualFileObject->getPath()
         );
- //       $this->assertFileObject(new GenericUseCaseResponseFileObjectStub1(), $actualFileObject);
+        $this->assertFileObject(new GenericUseCaseResponseFileObjectStub1(), $actualFileObject);
     }
 
     protected function setUp()
@@ -52,6 +52,7 @@ class GenericUseCaseResponseGeneratorTest extends TestCase
         $this->request = $genericUseCaseResponseGeneratorRequestBuilderImpl
             ->create()
             ->withEntity(FunctionalEntity::class)
+            ->withFields(['getField1','getField2','getId','isField3'])
             ->build();
 
         $this->genericUseCaseResponseGenerator = new GenericUseCaseResponseGenerator();

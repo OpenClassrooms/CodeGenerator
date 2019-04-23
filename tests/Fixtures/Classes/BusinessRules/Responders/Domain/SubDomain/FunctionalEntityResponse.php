@@ -10,14 +10,14 @@ use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders
  */
 interface FunctionalEntityResponse extends UseCaseResponse
 {
-    public function getId(): int;
-
     public function getField1(): string;
 
     /**
      * @return string[]
      */
     public function getField2(): array;
+
+    public function getId(): int;
 
     public function isField3(): bool;
 }

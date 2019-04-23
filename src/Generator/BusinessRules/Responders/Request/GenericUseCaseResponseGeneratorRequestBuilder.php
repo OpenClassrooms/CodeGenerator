@@ -14,6 +14,13 @@ interface GenericUseCaseResponseGeneratorRequestBuilder extends GeneratorRequest
     public function create(): GenericUseCaseResponseGeneratorRequestBuilder;
 
     public function withEntity(
-        string $defaultValue
+        string $entity
+    ): GenericUseCaseResponseGeneratorRequestBuilder;
+
+    /**
+     * @param string[] $fields
+     */
+    public function withFields(
+        array $fields
     ): GenericUseCaseResponseGeneratorRequestBuilder;
 }

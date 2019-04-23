@@ -5,13 +5,13 @@ namespace {{ skeletonModel.namespace }};
 use {{ skeletonModel.useCaseResponseClassName }};
 
 /**
-* @author {{ author }} <{{ authorEmail }}>
-*/
+ * @author {{ author }} <{{ authorEmail }}>
+ */
 interface {{ skeletonModel.shortName }} extends {{ skeletonModel.useCaseResponseShortName }}
 {
 {% for method in skeletonModel.genericUseCaseResponseMethods | sortNameByAlpha %}
 {% if method.docComment %}
-        {{ method.docComment }}
+    {{ method.docComment }}
 {% endif %}
     public function {{ method.name }}(): {{ method.returnType }};
 {% if not loop.last %}

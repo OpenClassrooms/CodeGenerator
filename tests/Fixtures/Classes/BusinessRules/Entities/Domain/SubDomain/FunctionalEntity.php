@@ -37,6 +37,9 @@ abstract class FunctionalEntity
         return $this->field1;
     }
 
+    /**
+     * @return string[]
+     */
     public function getField2(): array
     {
         return $this->field2;
@@ -47,7 +50,7 @@ abstract class FunctionalEntity
         return $this->field3;
     }
 
-    public function getField4(): \DateTimeImmutable
+    public function getField4(): ?\DateTimeImmutable
     {
         return $this->field4;
     }

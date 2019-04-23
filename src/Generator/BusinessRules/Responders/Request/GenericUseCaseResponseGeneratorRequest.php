@@ -10,4 +10,9 @@ use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 interface GenericUseCaseResponseGeneratorRequest extends GeneratorRequest
 {
     public function getEntity(): string;
+
+    /**
+     * @return string[]
+     */
+    public function getFields(): array;
 }

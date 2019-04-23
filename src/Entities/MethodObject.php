@@ -2,6 +2,8 @@
 
 namespace OpenClassrooms\CodeGenerator\Entities;
 
+use OpenClassrooms\CodeGenerator\Utility\MethodUtility;
+
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
@@ -16,6 +18,11 @@ class MethodObject
      * @var string
      */
     private $name;
+
+    /**
+     * @var bool
+     */
+    private $nullable;
 
     /**
      * @var string
@@ -43,6 +50,21 @@ class MethodObject
         $this->docComment = $docComment;
     }
 
+    public function getReturnType(): string
+    {
+        return $this->returnType;
+    }
+
+    public function setReturnType(string $returnType): void
+    {
+        $this->returnType = $returnType;
+    }
+
+    public function getFieldName(): string
+    {
+        return MethodUtility::createArgumentNameFromMethod($this->getName());
+    }
+
     public function getName(): string
     {
         return $this->name;
@@ -53,13 +75,13 @@ class MethodObject
         $this->name = $name;
     }
 
-    public function getReturnType(): string
+    public function isNullable(): bool
     {
-        return $this->returnType;
+        return $this->nullable;
     }
 
-    public function setReturnType(string $returnType): void
+    public function setNullable(bool $nullable): void
     {
-        $this->returnType = $returnType;
+        $this->nullable = $nullable;
     }
 }

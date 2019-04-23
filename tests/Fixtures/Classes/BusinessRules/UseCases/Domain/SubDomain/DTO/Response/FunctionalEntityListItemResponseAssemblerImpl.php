@@ -4,11 +4,11 @@
 namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\DTO\Response;
 
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Entities\Domain\SubDomain\FunctionalEntity;
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\AbstractPaginatedUseCaseResponse;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityListItemResponse;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityListItemResponseAssembler;
-use OpenClassrooms\UseCase\BusinessRules\Entities\PaginatedCollection;
-use OpenClassrooms\UseCase\BusinessRules\Responders\PaginatedUseCaseResponse;
-use OpenClassrooms\UseCase\BusinessRules\Responders\PaginatedUseCaseResponseBuilder;
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\PaginatedUseCaseResponse;
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\PaginatedUseCaseResponseBuilder;
 
 /**
  * @author authorStub <author.stub@example.com>
@@ -25,7 +25,7 @@ class FunctionalEntityListItemResponseAssemblerImpl implements FunctionalEntityL
     /**
      * {@inheritdoc}
      */
-    public function createPaginatedCollection(PaginatedCollection $collection): PaginatedUseCaseResponse
+    public function createPaginatedCollection(PaginatedUseCaseResponse $collection): PaginatedUseCaseResponse
     {
         return $this->paginatedUseCaseResponseBuilder
             ->create()

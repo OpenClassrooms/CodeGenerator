@@ -84,6 +84,11 @@ class UseCaseResponseFileObjectFactoryImpl extends AbstractFileObjectFactory imp
                     $this->baseNamespace . 'BusinessRules\UseCases\\' . $domain . '\DTO\Response\\' . $entity . 'ListItemResponseAssemblerImpl'
                 );
                 break;
+            case UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE_TRAIT:
+                $fileObject->setClassName(
+                    $this->baseNamespace . 'BusinessRules\UseCases\\' . $domain . '\DTO\Response\\' . $entity . 'ResponseTrait'
+                );
+                break;
             default:
                 throw new \InvalidArgumentException($type);
         }

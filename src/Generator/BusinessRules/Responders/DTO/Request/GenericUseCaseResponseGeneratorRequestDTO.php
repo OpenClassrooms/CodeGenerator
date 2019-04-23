@@ -14,8 +14,18 @@ class GenericUseCaseResponseGeneratorRequestDTO implements GenericUseCaseRespons
      */
     public $entity;
 
+    /**
+     * @var array
+     */
+    public $fields;
+
     public function getEntity(): string
     {
         return $this->entity;
+    }
+
+    public function getFields(): array
+    {
+        return $this->fields;
     }
 }

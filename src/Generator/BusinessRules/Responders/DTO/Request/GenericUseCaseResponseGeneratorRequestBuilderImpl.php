@@ -29,6 +29,16 @@ class GenericUseCaseResponseGeneratorRequestBuilderImpl implements GenericUseCas
         return $this;
     }
 
+    /**
+     * {@inheritdoc}
+     */
+    public function withFields(array $fields): GenericUseCaseResponseGeneratorRequestBuilder
+    {
+        $this->request->fields = $fields;
+
+        return $this;
+    }
+
     public function build(): GenericUseCaseResponseGeneratorRequest
     {
         return $this->request;
