@@ -18,7 +18,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
-class GenericUseCaseDetailResponseAssemblerImplGeneratorTest extends TestCase
+class GenericUseCWaseDetailResponseAssemblerImplGeneratorTest extends TestCase
 {
     use FileObjectTestCase;
 
@@ -53,7 +53,7 @@ class GenericUseCaseDetailResponseAssemblerImplGeneratorTest extends TestCase
         $this->request = $genericUseCaseDetailResponseAssemblerImplGeneratorRequestBuilderImpl
             ->create()
             ->withEntity(FunctionalEntity::class)
-            ->withFields(['getField4'])
+            ->withFields(['field4'])
             ->build();
 
         $this->genericUseCaseDetailResponseAssemblerImplGenerator = new GenericUseCaseDetailResponseAssemblerImplGenerator(

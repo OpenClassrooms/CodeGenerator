@@ -25,7 +25,7 @@ class MethodUtility
         $methods = self::getAccessors($className);
 
         foreach ($methods as $key => $method) {
-            if (!in_array($method->getName(), $fields)) {
+            if (!in_array($method->getFieldName(), $fields)) {
                 unset($methods[$key]);
             }
         }

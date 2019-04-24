@@ -53,7 +53,7 @@ class GenericUseCaseDetailResponseGeneratorTest extends TestCase
         $this->request = $genericUseCaseDetailResponseGeneratorRequestBuilderImpl
             ->create()
             ->withEntity(FunctionalEntity::class)
-            ->withFields(['getField4'])
+            ->withFields(['field4'])
             ->build();
 
         $this->genericUseCaseDetailResponseGenerator = new GenericUseCaseDetailResponseGenerator();
