@@ -2,7 +2,6 @@
 
 namespace OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases;
 
-use OpenClassrooms\CodeGenerator\Entities\FieldObject;
 use OpenClassrooms\CodeGenerator\Entities\FileObject;
 use OpenClassrooms\CodeGenerator\Entities\UseCaseResponseFileObjectType;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\AbstractUseCaseGenerator;
@@ -101,23 +100,6 @@ class GenericUseCaseDetailResponseDTOGenerator extends AbstractUseCaseGenerator
             $genericUseCaseDetailResponseDTOFileObject->getDomain(),
             $genericUseCaseDetailResponseDTOFileObject->getEntity()
         );
-    }
-
-    /**
-     * @param string[] $fields
-     *
-     * @return FieldObject[]
-     */
-    private function getSelectedFields(string $entityClassName, array $fields): array
-    {
-        $fieldObjects = $this->getProtectedClassFields($entityClassName);
-        foreach ($fieldObjects as $key => $fieldObject) {
-            if (!in_array($fieldObject->getName(), $fields)) {
-                unset($fieldObjects[$key]);
-            }
-        }
-
-        return $fieldObjects;
     }
 
     private function generateContent(

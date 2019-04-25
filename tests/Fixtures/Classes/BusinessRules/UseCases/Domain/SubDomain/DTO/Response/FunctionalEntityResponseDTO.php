@@ -35,6 +35,9 @@ abstract class FunctionalEntityResponseDTO implements FunctionalEntityResponse
         return $this->field1;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function getField2(): array
     {
         return $this->field2;
