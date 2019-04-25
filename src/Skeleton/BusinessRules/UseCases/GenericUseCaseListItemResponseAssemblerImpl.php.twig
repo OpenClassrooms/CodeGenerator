@@ -1,0 +1,69 @@
+{% include "Header.php.twig" %}
+
+namespace {{ skeletonModel.namespace }};
+
+use {{ skeletonModel.entityClassName }};
+use {{ skeletonModel.genericUseCaseListItemResponseClassName }};
+use {{ skeletonModel.genericUseCaseListItemResponseAssemblerClassName }};
+use {{ skeletonModel.paginatedUseCaseResponseClassName }};
+use {{ skeletonModel.paginatedUseCaseResponseBuilderClassName }};
+
+/**
+ * @author {{ author }} <{{ authorEmail }}>
+ */
+class {{ skeletonModel.shortName }} implements {{ skeletonModel.genericUseCaseListItemResponseAssemblerShortName }}
+{
+    use {{ skeletonModel.genericUseCaseResponseTraitShortName }};
+
+    /**
+     * @var {{ skeletonModel.paginatedUseCaseResponseBuilderShortName }}
+     */
+    private $paginatedUseCaseResponseBuilder;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function createPaginatedCollection({{ skeletonModel.paginatedUseCaseResponseShortName}} $collection): {{ skeletonModel.paginatedUseCaseResponseShortName }}
+    {
+        return $this->paginatedUseCaseResponseBuilder
+            ->create()
+            ->withItems($this->createFromCollection($collection->getItems()))
+            ->withItemsPerPage($collection->getItemsPerPage())
+            ->withPage($collection->getPage())
+            ->withTotalItems($collection->getTotalItems())
+            ->build();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    private function createFromCollection(array $collection = []): array
+    {
+        $items = [];
+
+        foreach ($collection as $entity) {
+            $items[] = $this->create($entity);
+        }
+
+        return $items;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function create({{ skeletonModel.entityShortName }} $entity): {{ skeletonModel.genericUseCaseListItemResponseShortName }}
+    {
+        $response = new {{ skeletonModel.genericUseCaseListItemResponseDTOShortName }}();
+        $this->hydrateCommonFields($entity, $response);
+{% for method in skeletonModel.entityMethods | sortNameByAlpha %}
+        $response->{{ method.fieldName }} = $entity->{{ method.name }}();
+{% endfor %}
+
+        return $response;
+    }
+
+    public function set{{ skeletonModel.paginatedUseCaseResponseBuilderShortName }}({{ skeletonModel.paginatedUseCaseResponseBuilderShortName }} $builder)
+    {
+        $this->{{ skeletonModel.paginatedUseCaseResponseBuilderArgument }} = $builder;
+    }
+}
