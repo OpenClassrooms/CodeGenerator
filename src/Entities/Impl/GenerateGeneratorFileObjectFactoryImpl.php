@@ -72,6 +72,11 @@ class GenerateGeneratorFileObjectFactoryImpl extends AbstractFileObjectFactory i
                     $this->baseNamespace . 'SkeletonModels\\' . $domain . '\Impl\\' . $entity . 'SkeletonModelAssemblerImpl'
                 );
                 break;
+            case GenerateGeneratorFileObjectType::SKELETON_MODEL_ASSEMBLER_MOCK:
+                $fileObject->setClassName(
+                    $this->stubNamespace . 'SkeletonModels\\' . $domain . '\\' . $entity . 'SkeletonModelAssemblerMock'
+                );
+                break;
             case GenerateGeneratorFileObjectType::SKELETON_MODEL_BUILDER:
                 $fileObject->setClassName(
                     $this->baseNamespace . 'SkeletonModels\\' . $domain . '\\' . $entity . 'SkeletonModelBuilder'
@@ -80,6 +85,11 @@ class GenerateGeneratorFileObjectFactoryImpl extends AbstractFileObjectFactory i
             case GenerateGeneratorFileObjectType::SKELETON_MODEL_BUILDER_IMPL:
                 $fileObject->setClassName(
                     $this->baseNamespace . 'SkeletonModels\\' . $domain . '\Impl\\' . $entity . 'SkeletonModelBuilderImpl'
+                );
+                break;
+            case GenerateGeneratorFileObjectType::SKELETON_MODEL_BUILDER_MOCK:
+                $fileObject->setClassName(
+                    $this->stubNamespace . 'SkeletonModels\\' . $domain . '\\' . $entity . 'SkeletonModelBuilderMock'
                 );
                 break;
             case GenerateGeneratorFileObjectType::SKELETON_MODEL_IMPL:

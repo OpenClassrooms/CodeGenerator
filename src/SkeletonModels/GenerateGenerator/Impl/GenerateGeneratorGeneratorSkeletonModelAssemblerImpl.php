@@ -15,13 +15,18 @@ class GenerateGeneratorGeneratorSkeletonModelAssemblerImpl implements GenerateGe
      */
     protected $baseNamespace;
 
-    public function create(string $domain, string $entity): GenerateGeneratorGeneratorSkeletonModel
+    public function create(
+        string $domain,
+        string $entity,
+        string $constructionPattern
+    ): GenerateGeneratorGeneratorSkeletonModel
     {
         $skeletonModel = new GenerateGeneratorGeneratorSkeletonModelImpl();
         $skeletonModel->baseNamespace = $this->baseNamespace;
         $skeletonModel->domain = $domain;
         $skeletonModel->entity = $entity;
         $skeletonModel->argument = lcfirst($entity);
+        $skeletonModel->constructionPattern = ucfirst($constructionPattern);
 
         return $skeletonModel;
     }

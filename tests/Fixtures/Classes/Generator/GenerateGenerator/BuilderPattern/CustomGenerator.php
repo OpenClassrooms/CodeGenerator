@@ -4,10 +4,10 @@ namespace OpenClassrooms\CodeGenerator\Generator\GenerateGenerator;
 
 use OpenClassrooms\CodeGenerator\Entities\FileObject;
 use OpenClassrooms\CodeGenerator\Generator\AbstractGenerator;
-use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\GenerateGenerator\Request\CustomGeneratorRequest;
+use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\GenerateGenerator\CustomSkeletonModel;
-use OpenClassrooms\CodeGenerator\SkeletonModels\GenerateGenerator\CustomSkeletonModelAssembler;
+use OpenClassrooms\CodeGenerator\SkeletonModels\GenerateGenerator\CustomSkeletonModelBuilder;
 
 /**
  * @author authorStub <author.stub@example.com>
@@ -15,9 +15,9 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\GenerateGenerator\CustomSkeleton
 class CustomGenerator extends AbstractGenerator
 {
     /**
-     * @var CustomSkeletonModelAssembler
+     * @var CustomSkeletonModelBuilder
      */
-    private $customSkeletonModelAssembler;
+    private $customSkeletonModelBuilder;
 
     /**
      * @param CustomGeneratorRequest $generatorRequest
@@ -63,15 +63,15 @@ class CustomGenerator extends AbstractGenerator
 
     private function createSkeletonModel(): CustomSkeletonModel
     {
-        return $this->customSkeletonModelAssembler->create(
+        return $this->customSkeletonModelBuilder->create(
             //TODO put FileObject(s)
         );
     }
 
-    public function setCustomSkeletonModelAssembler(
-        CustomSkeletonModelAssembler $customSkeletonModelAssembler
+    public function setCustomSkeletonModelBuilder(
+        CustomSkeletonModelBuilder $customSkeletonModelBuilder
     ): void
     {
-        $this->customSkeletonModelAssembler = $customSkeletonModelAssembler;
+        $this->customSkeletonModelBuilder = $customSkeletonModelBuilder;
     }
 }

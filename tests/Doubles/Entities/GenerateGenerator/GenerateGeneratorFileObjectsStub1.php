@@ -21,6 +21,7 @@ class GenerateGeneratorFileObjectsStub1
             new CustomGeneratorTestFileObjectStub1(),
             new CustomSkeletonModelAssemblerFileObjectStub1(),
             new CustomSkeletonModelAssemblerImplFileObjectStub1(),
+            new CustomSkeletonModelAssemblerMockFileObjectStub1(),
             new CustomSkeletonModelFileObjectStub1(),
             new CustomSkeletonModelImplFileObjectStub1(),
             new CustomTemplateFileObjectStub1(),

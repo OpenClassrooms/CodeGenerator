@@ -13,14 +13,15 @@ class GenerateGeneratorFileObjectsStub2
     {
         self::$fileObjects = [
             new CustomFileObjectStubFileObjectStub1(),
-            new CustomGeneratorFileObjectStub1(),
+            new CustomGeneratorFileObjectStub2(),
             new CustomGeneratorRequestBuilderFileObjectStub1(),
             new CustomGeneratorRequestBuilderImplFileObjectStub1(),
             new CustomGeneratorRequestDTOFileObjectStub1(),
             new CustomGeneratorRequestFileObjectStub1(),
-            new CustomGeneratorTestFileObjectStub1(),
+            new CustomGeneratorTestFileObjectStub2(),
             new CustomSkeletonModelBuilderFileObjectStub1(),
             new CustomSkeletonModelBuilderImplFileObjectStub1(),
+            new CustomSkeletonModelBuilderMockFileObjectStub1(),
             new CustomSkeletonModelFileObjectStub1(),
             new CustomSkeletonModelImplFileObjectStub1(),
             new CustomTemplateFileObjectStub1(),

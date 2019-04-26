@@ -4,10 +4,10 @@ namespace {{ skeletonModel.baseNamespace }}Generator\{{ skeletonModel.domain }};
 
 use {{ skeletonModel.baseNamespace }}Entities\FileObject;
 use {{ skeletonModel.baseNamespace }}Generator\AbstractGenerator;
-use {{ skeletonModel.baseNamespace }}Generator\GeneratorRequest;
 use {{ skeletonModel.baseNamespace }}Generator\{{ skeletonModel.domain }}\Request\{{ skeletonModel.entity }}GeneratorRequest;
+use {{ skeletonModel.baseNamespace }}Generator\GeneratorRequest;
 use {{ skeletonModel.baseNamespace }}SkeletonModels\{{ skeletonModel.domain }}\{{ skeletonModel.entity }}SkeletonModel;
-use {{ skeletonModel.baseNamespace }}SkeletonModels\{{ skeletonModel.domain }}\{{ skeletonModel.entity }}SkeletonModelAssembler;
+use {{ skeletonModel.baseNamespace }}SkeletonModels\{{ skeletonModel.domain }}\{{ skeletonModel.entity }}SkeletonModel{{ skeletonModel.constructionPattern }};
 
 /**
  * @author {{ author }} <{{ authorEmail }}>
@@ -15,9 +15,9 @@ use {{ skeletonModel.baseNamespace }}SkeletonModels\{{ skeletonModel.domain }}\{
 class {{ skeletonModel.entity }}Generator extends AbstractGenerator
 {
     /**
-     * @var {{ skeletonModel.entity }}SkeletonModelAssembler
+     * @var {{ skeletonModel.entity }}SkeletonModel{{ skeletonModel.constructionPattern }}
      */
-    private ${{ skeletonModel.argument }}SkeletonModelAssembler;
+    private ${{ skeletonModel.argument }}SkeletonModel{{ skeletonModel.constructionPattern }};
 
     /**
      * @param {{ skeletonModel.entity }}GeneratorRequest $generatorRequest
@@ -63,15 +63,15 @@ class {{ skeletonModel.entity }}Generator extends AbstractGenerator
 
     private function createSkeletonModel(): {{ skeletonModel.entity }}SkeletonModel
     {
-        return $this->{{ skeletonModel.argument }}SkeletonModelAssembler->create(
+        return $this->{{ skeletonModel.argument }}SkeletonModel{{ skeletonModel.constructionPattern }}->create(
             //TODO put FileObject(s)
         );
     }
 
-    public function set{{ skeletonModel.entity }}SkeletonModelAssembler(
-        {{ skeletonModel.entity }}SkeletonModelAssembler ${{ skeletonModel.argument }}SkeletonModelAssembler
+    public function set{{ skeletonModel.entity }}SkeletonModel{{ skeletonModel.constructionPattern }}(
+        {{ skeletonModel.entity }}SkeletonModel{{ skeletonModel.constructionPattern }} ${{ skeletonModel.argument }}SkeletonModel{{ skeletonModel.constructionPattern }}
     ): void
     {
-        $this->{{ skeletonModel.argument }}SkeletonModelAssembler = ${{ skeletonModel.argument }}SkeletonModelAssembler;
+        $this->{{ skeletonModel.argument }}SkeletonModel{{ skeletonModel.constructionPattern }} = ${{ skeletonModel.argument }}SkeletonModel{{ skeletonModel.constructionPattern }};
     }
 }

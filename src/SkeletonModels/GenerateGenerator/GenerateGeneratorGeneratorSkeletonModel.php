@@ -13,6 +13,8 @@ abstract class GenerateGeneratorGeneratorSkeletonModel extends AbstractSkeletonM
 
     public $baseNamespace;
 
+    public $constructionPattern;
+
     public $domain;
 
     public $entity;

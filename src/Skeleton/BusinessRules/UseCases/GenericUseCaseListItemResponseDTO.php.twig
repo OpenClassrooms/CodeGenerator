@@ -12,11 +12,8 @@ class {{ skeletonModel.shortName }} extends {{ skeletonModel.genericUseCaseRespo
 {% for field in skeletonModel.fields | sortNameByAlpha %}
     {{ field.docComment }}
     public ${{ field.name }};
-{% if not loop.last %}
 
-{% endif %}
 {% endfor %}
-
 {% for method in skeletonModel.methods | sortNameByAlpha %}
 {% if method.docComment %}
         {{ method.docComment }}

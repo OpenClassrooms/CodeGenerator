@@ -5,11 +5,11 @@ namespace OpenClassrooms\CodeGenerator\Tests\Generator\GenerateGenerator;
 use OpenClassrooms\CodeGenerator\Generator\GenerateGenerator\CustomGenerator;
 use OpenClassrooms\CodeGenerator\Generator\GenerateGenerator\DTO\Request\CustomGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\GenerateGenerator\Request\CustomGeneratorRequestBuilder;
-use OpenClassrooms\CodeGenerator\SkeletonModels\GenerateGenerator\Impl\CustomSkeletonModelAssemblerImpl;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\FileObjectTestCase;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\GenerateGenerator\CustomFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingServiceMock;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\SkeletonModels\GenerateGenerator\CustomSkeletonModelBuilderMock;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -53,8 +53,8 @@ class CustomGeneratorTest extends TestCase
 
         $this->customGenerator = new CustomGenerator();
 
-        $this->customGenerator->setCustomSkeletonModelAssembler(
-            new CustomSkeletonModelAssemblerImpl()
+        $this->customGenerator->setCustomSkeletonModelBuilder(
+            new CustomSkeletonModelBuilderMock()
         );
         $this->customGenerator->setTemplating(new TemplatingServiceMock());
         $this->customGenerator->setFileObjectGateway(new InMemoryFileObjectGateway());

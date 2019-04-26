@@ -50,7 +50,11 @@ class GenerateGeneratorGenerator
      */
     public function generate(GeneratorRequest $generatorRequest): array
     {
-        $this->buildSkeletonModel($generatorRequest->getDomain(), $generatorRequest->getEntity());
+        $this->buildSkeletonModel(
+            $generatorRequest->getDomain(),
+            $generatorRequest->getEntity(),
+            $generatorRequest->getConstructionPattern()
+        );
         $fileObjects = $this->buildFileObjects(
             $generatorRequest->getDomain(),
             $generatorRequest->getEntity(),
@@ -62,9 +66,9 @@ class GenerateGeneratorGenerator
         return $fileObjects;
     }
 
-    private function buildSkeletonModel(string $domain, string $entity): GenerateGeneratorGeneratorSkeletonModel
+    private function buildSkeletonModel(string $domain, string $entity, string $constructionPattern): GenerateGeneratorGeneratorSkeletonModel
     {
-        return $this->skeletonModel = $this->assembler->create($domain, $entity);
+        return $this->skeletonModel = $this->assembler->create($domain, $entity, $constructionPattern);
     }
 
     /**
@@ -86,9 +90,11 @@ class GenerateGeneratorGenerator
         if (ConstructionPatternType::ASSEMBLER_PATTERN === $constructionPattern) {
             $fileObjects[] = $this->buildSkeletonModelAssemblerFileObject($domain, $entity);
             $fileObjects[] = $this->buildSkeletonModelAssemblerImplFileObject($domain, $entity);
+            $fileObjects[] = $this->buildSkeletonModelAssemblerMockFileObject($domain, $entity);
         } else {
             $fileObjects[] = $this->buildSkeletonModelBuilderFileObject($domain, $entity);
             $fileObjects[] = $this->buildSkeletonModelBuilderImplFileObject($domain, $entity);
+            $fileObjects[] = $this->buildSkeletonModelBuilderMockFileObject($domain, $entity);
         }
         $fileObjects[] = $this->buildSkeletonModelImplFileObject($domain, $entity);
 
@@ -265,6 +271,24 @@ class GenerateGeneratorGenerator
         return $fileObject;
     }
 
+    private function buildSkeletonModelAssemblerMockFileObject(string $domain, string $entity): FileObject
+    {
+        $fileObject = $this->factory->create(
+            GenerateGeneratorFileObjectType::SKELETON_MODEL_ASSEMBLER_MOCK,
+            $domain,
+            $entity
+        );
+
+        $fileObject->setContent(
+            $this->templating->render(
+                'GenerateGenerator/GenerateGeneratorSkeletonModelAssemblerMock.php.twig',
+                ['skeletonModel' => $this->skeletonModel]
+            )
+        );
+
+        return $fileObject;
+    }
+
     private function buildSkeletonModelBuilderFileObject(string $domain, string $entity): FileObject
     {
         $fileObject = $this->factory->create(GenerateGeneratorFileObjectType::SKELETON_MODEL_BUILDER, $domain, $entity);
@@ -290,6 +314,24 @@ class GenerateGeneratorGenerator
         $fileObject->setContent(
             $this->templating->render(
                 'GenerateGenerator/GenerateGeneratorSkeletonModelBuilderImpl.php.twig',
+                ['skeletonModel' => $this->skeletonModel]
+            )
+        );
+
+        return $fileObject;
+    }
+
+    private function buildSkeletonModelBuilderMockFileObject(string $domain, string $entity): FileObject
+    {
+        $fileObject = $this->factory->create(
+            GenerateGeneratorFileObjectType::SKELETON_MODEL_BUILDER_MOCK,
+            $domain,
+            $entity
+        );
+
+        $fileObject->setContent(
+            $this->templating->render(
+                'GenerateGenerator/GenerateGeneratorSkeletonModelBuilderMock.php.twig',
                 ['skeletonModel' => $this->skeletonModel]
             )
         );
