@@ -46,7 +46,7 @@ class GenericUseCaseResponseGenerator extends AbstractUseCaseGenerator
         $entityFileObject = $this->createEntityFileObject($entityClassName);
         $genericUseCaseResponseFileObject = $this->createGenericUseCaseResponseFileObject($entityFileObject);
 
-        $genericUseCaseResponseFileObject->setMethods(MethodUtility::getSelectedMethods($entityClassName, $fields));
+        $genericUseCaseResponseFileObject->setMethods(MethodUtility::getSelectedAccessors($entityClassName, $fields));
         $genericUseCaseResponseFileObject->setContent($this->generateContent($genericUseCaseResponseFileObject));
 
         return $genericUseCaseResponseFileObject;

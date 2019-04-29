@@ -64,7 +64,7 @@ class GenericUseCaseListItemResponseAssemblerImplGenerator extends AbstractUseCa
             $entityFileObject
         );
 
-        $entityFileObject->setMethods(MethodUtility::getSelectedMethods($entityClassName, $fields));
+        $entityFileObject->setMethods(MethodUtility::getSelectedAccessors($entityClassName, $fields));
 
         $genericUseCaseListItemResponseAssemblerImplFileObject->setContent(
             $this->generateContent(

@@ -20,7 +20,7 @@ class MethodUtility
     /**
      * @param string[] $fields
      */
-    public static function getSelectedMethods(string $className, array $fields): array
+    public static function getSelectedAccessors(string $className, array $fields): array
     {
         $methods = self::getAccessors($className);
 

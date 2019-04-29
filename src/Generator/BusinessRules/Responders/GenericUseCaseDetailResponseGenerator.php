@@ -50,7 +50,7 @@ class GenericUseCaseDetailResponseGenerator extends AbstractUseCaseGenerator
         );
 
         $genericUseCaseDetailResponseFileObject->setMethods(
-            MethodUtility::getSelectedMethods($entityClassName, $fields)
+            MethodUtility::getSelectedAccessors($entityClassName, $fields)
         );
         $genericUseCaseDetailResponseFileObject->setContent(
             $this->generateContent($genericUseCaseResponseFileObject, $genericUseCaseDetailResponseFileObject)

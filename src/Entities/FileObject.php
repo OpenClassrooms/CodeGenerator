@@ -139,12 +139,7 @@ class FileObject
 
     private function isTest(): bool
     {
-        if (false !== strpos($this->getShortName(), 'Test') || false !== strpos($this->getShortName(), 'Stub')
-        ) {
-            return true;
-        }
-
-        return false;
+        return (bool) preg_match('/Test|Stub|Mock$/', $this->getShortName());
     }
 
     public function getShortName(): string

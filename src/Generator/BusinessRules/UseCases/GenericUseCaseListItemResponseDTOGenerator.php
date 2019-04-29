@@ -57,7 +57,7 @@ class GenericUseCaseListItemResponseDTOGenerator extends AbstractUseCaseGenerato
 
         $genericUseCaseListItemResponseDTOFileObject->setFields($this->getSelectedFields($entityClassName, $fields));
         $genericUseCaseListItemResponseDTOFileObject->setMethods(
-            MethodUtility::getSelectedMethods($entityClassName, $fields)
+            MethodUtility::getSelectedAccessors($entityClassName, $fields)
         );
 
         $genericUseCaseListItemResponseDTOFileObject->setContent(

@@ -57,7 +57,7 @@ class GenericUseCaseDetailResponseAssemblerImplGenerator extends AbstractUseCase
         );
         $genericUseCaseTraitFileObject = $this->createGenericUseCaseTrait($entityFileObject);
 
-        $entityFileObject->setMethods(MethodUtility::getSelectedMethods($entityClassName, $fields));
+        $entityFileObject->setMethods(MethodUtility::getSelectedAccessors($entityClassName, $fields));
 
         $genericUseCaseDetailResponseAssemblerImplFileObject->setContent(
             $this->generateContent(
