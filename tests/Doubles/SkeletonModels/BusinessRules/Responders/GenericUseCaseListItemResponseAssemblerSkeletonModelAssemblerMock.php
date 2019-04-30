@@ -12,6 +12,7 @@ class GenericUseCaseListItemResponseAssemblerSkeletonModelAssemblerMock extends 
 {
     public function __construct()
     {
+        $this->paginatedCollection = FixturesConfig::PAGINATED_COLLECTION;
         $this->paginatedUseCaseResponse = FixturesConfig::PAGINATED_USE_CASE_RESPONSE;
     }
 }

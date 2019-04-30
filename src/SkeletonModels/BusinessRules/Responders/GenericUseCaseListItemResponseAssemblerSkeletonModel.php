@@ -9,6 +9,10 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
  */
 abstract class GenericUseCaseListItemResponseAssemblerSkeletonModel extends AbstractSkeletonModel
 {
+    public $paginatedCollectionClassName;
+
+    public $paginatedCollectionShortName;
+
     public $paginatedUseCaseResponseClassName;
 
     public $paginatedUseCaseResponseShortName;

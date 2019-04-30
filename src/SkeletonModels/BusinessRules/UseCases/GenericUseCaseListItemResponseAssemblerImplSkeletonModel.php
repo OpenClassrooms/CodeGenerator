@@ -27,13 +27,17 @@ abstract class GenericUseCaseListItemResponseAssemblerImplSkeletonModel extends 
 
     public $genericUseCaseResponseTraitShortName;
 
+    public $paginatedCollectionClassName;
+
+    public $paginatedCollectionShortName;
+
+    public $paginatedUseCaseResponseBuilderArgument;
+
     public $paginatedUseCaseResponseBuilderClassName;
 
     public $paginatedUseCaseResponseBuilderShortName;
 
     public $paginatedUseCaseResponseClassName;
-
-    public $paginatedUseCaseResponseBuilderArgument;
 
     public $paginatedUseCaseResponseShortName;
 

@@ -39,7 +39,7 @@ abstract class GetEntitySkeletonModel extends AbstractSkeletonModel
 
     public $shortName;
 
-    public $templatePath = 'BusinessRules/UseCases/GetFunctionalEntity.php.twig';
+    public $templatePath = 'BusinessRules/UseCases/GetEntity.php.twig';
 
     public $useCaseClassName;
 

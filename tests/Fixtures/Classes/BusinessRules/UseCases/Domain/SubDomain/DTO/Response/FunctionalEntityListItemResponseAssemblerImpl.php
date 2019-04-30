@@ -8,6 +8,7 @@ use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityListItemResponseAssembler;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\PaginatedUseCaseResponse;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\PaginatedUseCaseResponseBuilder;
+use OpenClassrooms\UseCase\BusinessRules\Entities\PaginatedCollection;
 
 /**
  * @author authorStub <author.stub@example.com>
@@ -24,7 +25,7 @@ class FunctionalEntityListItemResponseAssemblerImpl implements FunctionalEntityL
     /**
      * {@inheritdoc}
      */
-    public function createPaginatedCollection(PaginatedUseCaseResponse $collection): PaginatedUseCaseResponse
+    public function createPaginatedCollection(PaginatedCollection $collection): PaginatedUseCaseResponse
     {
         return $this->paginatedUseCaseResponseBuilder
             ->create()

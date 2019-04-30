@@ -50,6 +50,11 @@ class GenericUseCaseListItemResponseAssemblerImplSkeletonModelAssemblerImpl impl
         $skeletonModel->paginatedUseCaseResponseBuilderShortName = FileObjectUtility::getShortClassName(
             $this->paginatedUseCaseResponseBuilder
         );
+
+        $skeletonModel->paginatedCollectionClassName = $this->paginatedCollection;
+        $skeletonModel->paginatedCollectionShortName = FileObjectUtility::getShortClassName(
+            $this->paginatedCollection
+        );
         $skeletonModel->paginatedUseCaseResponseClassName = $this->paginatedUseCaseResponse;
         $skeletonModel->paginatedUseCaseResponseShortName = FileObjectUtility::getShortClassName(
             $this->paginatedUseCaseResponse

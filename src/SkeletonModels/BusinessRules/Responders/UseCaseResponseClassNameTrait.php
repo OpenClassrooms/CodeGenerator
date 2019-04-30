@@ -20,6 +20,11 @@ trait UseCaseResponseClassNameTrait
     /**
      * @var string
      */
+    public $paginatedCollection;
+
+    /**
+     * @var string
+     */
     public $paginatedUseCaseResponse;
 
     /**
@@ -40,6 +45,11 @@ trait UseCaseResponseClassNameTrait
     public function setAbstractPaginatedUseCaseResponseBuilder(string $abstractPaginatedUseCaseResponseBuilder): void
     {
         $this->abstractPaginatedUseCaseResponseBuilder = $abstractPaginatedUseCaseResponseBuilder;
+    }
+
+    public function setPaginatedCollection(string $paginatedCollection): void
+    {
+        $this->paginatedCollection = $paginatedCollection;
     }
 
     public function setPaginatedUseCaseResponse(string $paginatedUseCaseResponse): void

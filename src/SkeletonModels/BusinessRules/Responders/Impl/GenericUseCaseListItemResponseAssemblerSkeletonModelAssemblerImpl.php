@@ -22,6 +22,10 @@ class GenericUseCaseListItemResponseAssemblerSkeletonModelAssemblerImpl implemen
         $skeletonModel = new GenericUseCaseListItemResponseAssemblerSkeletonModelImpl();
         $skeletonModel->namespace = $genericUseCaseListItemResponseAssemblerFileObject->getNamespace();
         $skeletonModel->shortName = $genericUseCaseListItemResponseAssemblerFileObject->getShortName();
+        $skeletonModel->paginatedCollectionClassName = $this->paginatedCollection;
+        $skeletonModel->paginatedCollectionShortName = FileObjectUtility::getShortClassName(
+            $this->paginatedCollection
+        );
         $skeletonModel->paginatedUseCaseResponseClassName = $this->paginatedUseCaseResponse;
         $skeletonModel->paginatedUseCaseResponseShortName = FileObjectUtility::getShortClassName(
             $this->paginatedUseCaseResponse
