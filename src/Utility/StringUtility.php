@@ -24,11 +24,6 @@ class StringUtility
         return (bool) preg_match('/([A-Z][a-z0-9]+)+/', $string);
     }
 
-    public static function isValidConstantName(string $string): bool
-    {
-        return (bool) preg_match('/(([A-Z_][A-Z0-9_]*)|(__.*__))$/', $string);
-    }
-
     public static function pluralize(string $string): string
     {
         return Inflector::pluralize($string);

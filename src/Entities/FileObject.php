@@ -44,6 +44,11 @@ class FileObject
      */
     protected $methods = [];
 
+    public function __construct(string $className)
+    {
+        $this->className = $className;
+    }
+
     public function alreadyExists(): bool
     {
         return $this->alreadyExists;
@@ -115,13 +120,6 @@ class FileObject
     public function getClassName(): string
     {
         return $this->className;
-    }
-
-    public function setClassName(string $className)
-    {
-        $this->className = $className;
-
-        return $this;
     }
 
     public function getPath(): string

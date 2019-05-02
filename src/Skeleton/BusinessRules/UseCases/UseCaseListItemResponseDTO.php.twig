@@ -1,0 +1,29 @@
+{% include "Header.php.twig" %}
+
+namespace {{ skeletonModel.namespace }};
+
+use {{ skeletonModel.useCaseListItemResponseClassName }};
+
+/**
+ * @author {{ author }} <{{ authorEmail }}>
+ */
+class {{ skeletonModel.shortName }} extends {{ skeletonModel.useCaseResponseDTOShortName }} implements {{ skeletonModel.useCaseListItemResponseShortName }}
+{
+{% for field in skeletonModel.fields | sortNameByAlpha %}
+    {{ field.docComment }}
+    public ${{ field.name }};
+
+{% endfor %}
+{% for method in skeletonModel.methods | sortNameByAlpha %}
+{% if method.docComment %}
+        {{ method.docComment }}
+{% endif %}
+    public function {{ method.name }}(): {{ printReturnType(method.returnType, method.Nullable) }}
+    {
+        return $this->{{ method.fieldName }};
+    }
+{% if not loop.last %}
+
+{% endif %}
+{% endfor %}
+}

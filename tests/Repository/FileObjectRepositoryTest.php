@@ -47,8 +47,7 @@ class FileObjectRepositoryTest extends TestCase
 
     private function generateFileObject(string $className)
     {
-        $fileObject = new FileObject();
-        $fileObject->setClassName($className);
+        $fileObject = new FileObject($className);
         $fileObject->setContent(__DIR__ . '/../Fixtures/Classes/Api/ViewModels/Domain/SubDomain/FunctionalEntity.php');
 
         return $fileObject;

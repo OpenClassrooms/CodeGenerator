@@ -183,15 +183,11 @@ class ViewModelFileObjectFactoryImplTest extends TestCase
 
     private static function getFileObjectViewModelDetailAssembler(): FileObject
     {
-        $fileObjectViewModelAssembler = new FileObject();
-        TestClassUtil::setProperty(
-            'className',
+        return new FileObject(
             self::BASE_NAMESPACE . self::DIR_NAME . 'ViewModels\Domain\SubDomain\\' . self::getEntityName(
-            ) . 'DetailAssembler',
-            $fileObjectViewModelAssembler
+            ) . 'DetailAssembler'
         );
 
-        return $fileObjectViewModelAssembler;
     }
 
     private static function getEntityName(): string
@@ -201,221 +197,151 @@ class ViewModelFileObjectFactoryImplTest extends TestCase
 
     private static function getFileObjectViewModelDetailAssemblerImpl(): FileObject
     {
-        $fileObjectViewModelAssemblerImpl = new FileObject();
-        TestClassUtil::setProperty(
-            'className',
+        return new FileObject(
             self::BASE_NAMESPACE . self::DIR_NAME . 'ViewModels\Domain\SubDomain\Impl\\' . self::getEntityName(
-            ) . 'DetailAssemblerImpl',
-            $fileObjectViewModelAssemblerImpl
+            ) . 'DetailAssemblerImpl'
         );
 
-        return $fileObjectViewModelAssemblerImpl;
     }
 
     private static function getFileObjectViewModelDetailAssemblerImplTest(): FileObject
     {
-        $fileObjectViewModelAssemblerTest = new FileObject();
-        TestClassUtil::setProperty(
-            'className',
+        return new FileObject(
             self::TEST_BASE_NAMESPACE . self::DIR_NAME . 'ViewModels\Domain\SubDomain\Impl\\' . self::getEntityName(
-            ) . 'DetailAssemblerImplTest',
-            $fileObjectViewModelAssemblerTest
+            ) . 'DetailAssemblerImplTest'
         );
 
-        return $fileObjectViewModelAssemblerTest;
     }
 
     private static function getFileObjectViewModelListItemAssembler(): FileObject
     {
-        $fileObjectViewModelAssembler = new FileObject();
-        TestClassUtil::setProperty(
-            'className',
+        return new FileObject(
             self::BASE_NAMESPACE . self::DIR_NAME . 'ViewModels\Domain\SubDomain\\' . self::getEntityName(
-            ) . 'ListItemAssembler',
-            $fileObjectViewModelAssembler
+            ) . 'ListItemAssembler'
         );
 
-        return $fileObjectViewModelAssembler;
     }
 
     private static function getFileObjectViewModelListItemAssemblerImpl(): FileObject
     {
-        $fileObjectViewModelAssemblerImpl = new FileObject();
-        TestClassUtil::setProperty(
-            'className',
+        return new FileObject(
             self::BASE_NAMESPACE . self::DIR_NAME . 'ViewModels\Domain\SubDomain\Impl\\' . self::getEntityName(
-            ) . 'ListItemAssemblerImpl',
-            $fileObjectViewModelAssemblerImpl
+            ) . 'ListItemAssemblerImpl'
         );
 
-        return $fileObjectViewModelAssemblerImpl;
     }
 
     private static function getFileObjectViewModelListItemAssemblerImplTest(): FileObject
     {
-        $fileObjectViewModelAssemblerTest = new FileObject();
-        TestClassUtil::setProperty(
-            'className',
+        return new FileObject(
             self::TEST_BASE_NAMESPACE . self::DIR_NAME . 'ViewModels\Domain\SubDomain\Impl\\' . self::getEntityName(
-            ) . 'ListItemAssemblerImplTest',
-            $fileObjectViewModelAssemblerTest
+            ) . 'ListItemAssemblerImplTest'
         );
 
-        return $fileObjectViewModelAssemblerTest;
     }
 
     private static function getFileObjectViewModel(): FileObject
     {
-        $fileObjectViewModel = new FileObject();
-        TestClassUtil::setProperty(
-            'className',
-            self::BASE_NAMESPACE . self::DIR_NAME . 'ViewModels\Domain\SubDomain\\' . self::getEntityName(),
-            $fileObjectViewModel
+        return new FileObject(
+            self::BASE_NAMESPACE . self::DIR_NAME . 'ViewModels\Domain\SubDomain\\' . self::getEntityName()
         );
 
-        return $fileObjectViewModel;
     }
 
     private static function getFileObjectViewModelDetail()
     {
-        $fileObjectViewModelDetail = new FileObject();
-        TestClassUtil::setProperty(
-            'className',
-            self::BASE_NAMESPACE . self::DIR_NAME . 'ViewModels\Domain\SubDomain\\' . self::getEntityName() . 'Detail',
-            $fileObjectViewModelDetail
+        return new FileObject(
+            self::BASE_NAMESPACE . self::DIR_NAME . 'ViewModels\Domain\SubDomain\\' . self::getEntityName() . 'Detail'
         );
 
-        return $fileObjectViewModelDetail;
     }
 
     private static function getFileObjectViewModelListItem(): FileObject
     {
-        $fileObjectViewModelListItem = new FileObject();
-        TestClassUtil::setProperty(
-            'className',
-            self::BASE_NAMESPACE . self::DIR_NAME . 'ViewModels\Domain\SubDomain\\' . self::getEntityName(
-            ) . 'ListItem',
-            $fileObjectViewModelListItem
+        return new FileObject(
+            self::BASE_NAMESPACE . self::DIR_NAME . 'ViewModels\Domain\SubDomain\\' . self::getEntityName() . 'ListItem'
         );
 
-        return $fileObjectViewModelListItem;
     }
 
     private static function getFileObjectViewModelDetailStub(): FileObject
     {
-        $fileObjectViewModelDetailStub = new FileObject();
-        TestClassUtil::setProperty(
-            'className',
+        return new FileObject(
             self::STUB_NAMESPACE . self::DIR_NAME . 'ViewModels\Domain\SubDomain\\' . self::getEntityName(
-            ) . 'DetailStub1',
-            $fileObjectViewModelDetailStub
+            ) . 'DetailStub1'
         );
 
-        return $fileObjectViewModelDetailStub;
     }
 
     private static function getFileObjectViewModelListItemStub(): FileObject
     {
-        $fileObjectViewModelListItemStub = new FileObject();
-        TestClassUtil::setProperty(
-            'className',
+        return new FileObject(
             self::STUB_NAMESPACE . self::DIR_NAME . 'ViewModels\Domain\SubDomain\\' . self::getEntityName(
-            ) . 'ListItemStub1',
-            $fileObjectViewModelListItemStub
+            ) . 'ListItemStub1'
         );
 
-        return $fileObjectViewModelListItemStub;
     }
 
     private static function getFileObjectViewModelTestCase(): FileObject
     {
-        $fileObjectViewModelTestCase = new FileObject();
-        TestClassUtil::setProperty(
-            'className',
-            self::STUB_NAMESPACE . self::DIR_NAME . 'ViewModels\Domain\SubDomain\\' . self::getEntityName(
-            ) . 'TestCase',
-            $fileObjectViewModelTestCase
+        return new FileObject(
+            self::STUB_NAMESPACE . self::DIR_NAME . 'ViewModels\Domain\SubDomain\\' . self::getEntityName() . 'TestCase'
         );
 
-        return $fileObjectViewModelTestCase;
     }
 
     private static function getFileObjectViewModelListItemTestCase(): FileObject
     {
-        $fileObjectViewModelListItemTestCase = new FileObject();
-        TestClassUtil::setProperty(
-            'className',
+        return new FileObject(
             self::STUB_NAMESPACE . self::DIR_NAME . 'ViewModels\Domain\SubDomain\\' . self::getEntityName(
-            ) . 'ListItemTestCase',
-            $fileObjectViewModelListItemTestCase
+            ) . 'ListItemTestCase'
         );
 
-        return $fileObjectViewModelListItemTestCase;
     }
 
     private static function getFileObjectViewModelListItemImpl(): FileObject
     {
-        $fileObjectViewModelListItemImpl = new FileObject();
-        TestClassUtil::setProperty(
-            'className',
+        return new FileObject(
             self::BASE_NAMESPACE . self::DIR_NAME . 'ViewModels\Domain\SubDomain\Impl\\' . self::getEntityName(
-            ) . 'ListItemImpl',
-            $fileObjectViewModelListItemImpl
+            ) . 'ListItemImpl'
         );
 
-        return $fileObjectViewModelListItemImpl;
     }
 
     private static function getFileObjectViewModelDetailImpl(): FileObject
     {
-        $fileObjectViewModelDetailImpl = new FileObject();
-        TestClassUtil::setProperty(
-            'className',
+        return new FileObject(
             self::BASE_NAMESPACE . self::DIR_NAME . 'ViewModels\Domain\SubDomain\Impl\\' . self::getEntityName(
-            ) . 'DetailImpl',
-            $fileObjectViewModelDetailImpl
+            ) . 'DetailImpl'
         );
 
-        return $fileObjectViewModelDetailImpl;
     }
 
     private static function getFileObjectViewModelDetailTestCase(): FileObject
     {
-        $fileObjectViewModelDetailTestCase = new FileObject();
-        TestClassUtil::setProperty(
-            'className',
+        return new FileObject(
             self::STUB_NAMESPACE . self::DIR_NAME . 'ViewModels\Domain\SubDomain\\' . self::getEntityName(
-            ) . 'DetailTestCase',
-            $fileObjectViewModelDetailTestCase
+            ) . 'DetailTestCase'
         );
 
-        return $fileObjectViewModelDetailTestCase;
     }
 
     private static function getFileObjectViewModelImpl(): FileObject
     {
-        $fileObjectViewModelImpl = new FileObject();
-        TestClassUtil::setProperty(
-            'className',
+        return new FileObject(
             self::BASE_NAMESPACE . self::DIR_NAME . 'ViewModels\Domain\SubDomain\Impl\\' . self::getEntityName(
-            ) . 'Impl',
-            $fileObjectViewModelImpl
+            ) . 'Impl'
         );
 
-        return $fileObjectViewModelImpl;
     }
 
     private static function getFileObjectViewModelAssemblerTrait(): FileObject
     {
-        $fileObjectViewModelImpl = new FileObject();
-        TestClassUtil::setProperty(
-            'className',
+        return new FileObject(
             self::BASE_NAMESPACE . self::DIR_NAME . 'ViewModels\Domain\SubDomain\\' . self::getEntityName(
-            ) . 'AssemblerTrait',
-            $fileObjectViewModelImpl
+            ) . 'AssemblerTrait'
         );
 
-        return $fileObjectViewModelImpl;
     }
 
     /**

@@ -21,7 +21,7 @@ class ConstObject
 
     public function __construct(string $name)
     {
-        $this->name = StringUtility::isValidConstantName($name) ? $name : StringUtility::convertToUpperSnakeCase($name);
+        $this->name = $this->isValidConstantName($name) ? $name : StringUtility::convertToUpperSnakeCase($name);
     }
 
     public function getName(): string
@@ -37,5 +37,10 @@ class ConstObject
     public function setValue($value): void
     {
         $this->value = $value;
+    }
+
+    private function isValidConstantName(string $string): bool
+    {
+        return (bool) preg_match('/(([A-Z_][A-Z0-9_]*)|(__.*__))$/', $string);
     }
 }

@@ -1,0 +1,26 @@
+{% include "Header.php.twig" %}
+
+namespace {{ skeletonModel.namespace }};
+
+use {{ skeletonModel.entityClassName }};
+use {{ skeletonModel.useCaseResponseClassName }};
+
+/**
+ * @author {{ author }} <{{ authorEmail }}>
+ */
+trait {{ skeletonModel.shortName }}
+{
+    /**
+     * @param {{ skeletonModel.useCaseResponseDTOShortName }} $response
+     *
+     * @return {{ skeletonModel.useCaseResponseShortName }}
+     */
+    private function hydrateCommonFields({{ skeletonModel.entityShortName }} $entity, {{ skeletonModel.useCaseResponseShortName }} $response): {{ skeletonModel.useCaseResponseShortName }}
+    {
+{% for method in skeletonModel.entityMethods %}
+        $response->{{ method.fieldName }} = $entity->{{ method.name }}();
+{% endfor %}
+
+        return $response;
+    }
+}

@@ -43,12 +43,12 @@ class UseCaseMediatorImplTest extends TestCase
         $requestMediator
             ->expects($this->once())
             ->method('mediate')
-            ->willReturn([new FileObject()]);
+            ->willReturn([new FileObject(self::class)]);
 
         $requestMediator
             ->expects($this->once())
             ->method('mediate')
-            ->willReturn([new FileObject()]);
+            ->willReturn([new FileObject(self::class)]);
 
         $this->useCaseMediator->setGenericUseCaseMediator($genericUseCaseMediator);
         $this->useCaseMediator->setRequestMediator($requestMediator);

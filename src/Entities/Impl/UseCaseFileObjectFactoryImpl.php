@@ -14,23 +14,20 @@ class UseCaseFileObjectFactoryImpl extends AbstractFileObjectFactory implements 
 {
     public function create(string $type, string $domain, string $entity, string $baseNamespace = null): FileObject
     {
-        $fileObject = new FileObject();
-
         $this->baseNamespace = $baseNamespace ?? $this->baseNamespace;
 
         switch ($type) {
             case UseCaseFileObjectType::BUSINESS_RULES_USE_CASE:
-                $fileObject->setClassName(
+                return new FileObject(
                     $this->baseNamespace . 'BusinessRules\UseCases\\' . $domain . '\\' . $this->prefix . $entity
                 );
-                break;
             case UseCaseFileObjectType::BUSINESS_RULES_USE_CASE_TEST:
-                $fileObject->setClassName(
+                return new FileObject(
                     $this->testsBaseNamespace . 'BusinessRules\UseCases\\' . $domain . '\\' . $this->prefix . $entity . 'Test'
                 );
-                break;
-        }
 
-        return $fileObject;
+            default:
+                throw new \InvalidArgumentException($type);
+        }
     }
 }

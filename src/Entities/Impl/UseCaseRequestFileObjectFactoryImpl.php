@@ -14,33 +14,28 @@ class UseCaseRequestFileObjectFactoryImpl extends AbstractFileObjectFactory impl
 {
     public function create(string $type, string $domain, string $entity, string $baseNamespace = null): FileObject
     {
-        $fileObject = new FileObject();
-
         $this->baseNamespace = $baseNamespace ?? $this->baseNamespace;
 
         switch ($type) {
             case UseCaseRequestFileObjectType::BUSINESS_RULES_USE_CASE_REQUEST:
-                $fileObject->setClassName(
+                return new FileObject(
                     $this->baseNamespace . 'BusinessRules\Requestors\\' . $domain . '\\' . $this->prefix . $entity . 'Request'
                 );
-                break;
             case UseCaseRequestFileObjectType::BUSINESS_RULES_USE_CASE_REQUEST_BUILDER:
-                $fileObject->setClassName(
+                return new FileObject(
                     $this->baseNamespace . 'BusinessRules\Requestors\\' . $domain . '\\' . $this->prefix . $entity . 'RequestBuilder'
                 );
-                break;
             case UseCaseRequestFileObjectType::BUSINESS_RULES_USE_CASE_REQUEST_BUILDER_IMPL:
-                $fileObject->setClassName(
+                return new FileObject(
                     $this->baseNamespace . 'BusinessRules\UseCases\\' . $domain . '\DTO\Request\\' . $this->prefix . $entity . 'RequestBuilderImpl'
                 );
-                break;
             case UseCaseRequestFileObjectType::BUSINESS_RULES_USE_CASE_REQUEST_DTO:
-                $fileObject->setClassName(
+                return new FileObject(
                     $this->baseNamespace . 'BusinessRules\UseCases\\' . $domain . '\DTO\Request\\' . $this->prefix . $entity . 'RequestDTO'
                 );
-                break;
-        }
 
-        return $fileObject;
+            default:
+                throw new \InvalidArgumentException($type);
+        }
     }
 }

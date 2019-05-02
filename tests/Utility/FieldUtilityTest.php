@@ -61,7 +61,6 @@ class FieldUtilityTest extends TestCase
 
     protected function setUp()
     {
-        $this->fileObject = new FileObject();
-        $this->fileObject->setClassName(self::class);
+        $this->fileObject = new FileObject(self::class);
     }
 }
