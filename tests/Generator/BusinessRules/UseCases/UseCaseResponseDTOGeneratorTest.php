@@ -3,14 +3,13 @@
 namespace OpenClassrooms\CodeGenerator\Tests\Generator\BusinessRules\UseCases;
 
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\UseCaseResponseDTOGeneratorRequestBuilderImpl;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\UseCaseResponseDTOGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\UseCaseResponseDTOGeneratorRequestBuilder;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\UseCaseResponseDTOGenerator;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\UseCaseResponseDTOFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\EntityFileObjectFactoryMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\FileObjectTestCase;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\UseCaseResponseFileObjectFactoryMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\FieldObjectServiceMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingServiceMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\SkeletonModels\BusinessRules\UseCases\UseCaseResponseDTOSkeletonModelAssemblerMock;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Entities\Domain\SubDomain\FunctionalEntity;
@@ -24,14 +23,14 @@ class UseCaseResponseDTOGeneratorTest extends TestCase
     use FileObjectTestCase;
 
     /**
-     * @var UseCaseResponseDTOGenerator
-     */
-    private $useCaseResponseDTOGenerator;
-
-    /**
      * @var UseCaseResponseDTOGeneratorRequestBuilder
      */
     private $request;
+
+    /**
+     * @var UseCaseResponseDTOGenerator
+     */
+    private $useCaseResponseDTOGenerator;
 
     /**
      * @test
@@ -49,8 +48,7 @@ class UseCaseResponseDTOGeneratorTest extends TestCase
 
     protected function setUp()
     {
-        $useCaseResponseDTOGeneratorRequestBuilderImpl = new UseCaseResponseDTOGeneratorRequestBuilderImpl(
-        );
+        $useCaseResponseDTOGeneratorRequestBuilderImpl = new UseCaseResponseDTOGeneratorRequestBuilderImpl();
         $this->request = $useCaseResponseDTOGeneratorRequestBuilderImpl
             ->create()
             ->withEntity(FunctionalEntity::class)
@@ -67,7 +65,6 @@ class UseCaseResponseDTOGeneratorTest extends TestCase
             new UseCaseResponseFileObjectFactoryMock()
         );
         $this->useCaseResponseDTOGenerator->setTemplating(new TemplatingServiceMock());
-        $this->useCaseResponseDTOGenerator->setFieldObjectService(new FieldObjectServiceMock());
         $this->useCaseResponseDTOGenerator->setFileObjectGateway(new InMemoryFileObjectGateway());
     }
 }

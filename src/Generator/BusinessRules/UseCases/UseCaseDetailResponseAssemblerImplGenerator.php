@@ -11,7 +11,6 @@ use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\UseCaseDetailResponseAssemblerImplSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\UseCaseDetailResponseAssemblerImplSkeletonModelAssembler;
 use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
-use OpenClassrooms\CodeGenerator\Utility\MethodUtility;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
@@ -41,7 +40,10 @@ class UseCaseDetailResponseAssemblerImplGenerator extends AbstractUseCaseGenerat
     /**
      * @param String[] $fields
      */
-    private function buildUseCaseDetailResponseAssemblerImplFileObject(string $entityClassName, array $fields): FileObject
+    private function buildUseCaseDetailResponseAssemblerImplFileObject(
+        string $entityClassName,
+        array $fields
+    ): FileObject
     {
         $entityFileObject = $this->createEntityFileObject($entityClassName);
         $useCaseDetailResponseAssemblerFileObject = $this->createUseCaseDetailResponseAssemblerFileObject(
@@ -57,7 +59,7 @@ class UseCaseDetailResponseAssemblerImplGenerator extends AbstractUseCaseGenerat
         );
         $genericUseCaseTraitFileObject = $this->createGenericUseCaseTrait($entityFileObject);
 
-        $entityFileObject->setMethods(MethodUtility::getSelectedAccessors($entityClassName, $fields));
+        $entityFileObject->setMethods($this->getSelectedAccessors($entityClassName, $fields));
 
         $useCaseDetailResponseAssemblerImplFileObject->setContent(
             $this->generateContent(

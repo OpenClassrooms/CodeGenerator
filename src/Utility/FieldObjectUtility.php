@@ -1,29 +1,28 @@
 <?php declare(strict_types=1);
 
-namespace OpenClassrooms\CodeGenerator\Services\Impl;
+namespace OpenClassrooms\CodeGenerator\Utility;
 
 use OpenClassrooms\CodeGenerator\Entities\FieldObject;
-use OpenClassrooms\CodeGenerator\Services\FieldObjectService;
 
 /**
- * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
+ * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
  */
-class FieldObjectServiceImpl implements FieldObjectService
+class FieldObjectUtility
 {
     /**
-     * {@inheritdoc}
+     * @return FieldObject[]
      */
-    public function getParentPublicClassFields(string $className): array
+    public static function getParentPublicClassFields(string $className): array
     {
         $rc = new \ReflectionClass($className);
 
-        return $this->getPublicClassFields($rc->getParentClass()->getName());
+        return self::getPublicClassFields($rc->getParentClass()->getName());
     }
 
     /**
-     * {@inheritdoc}
+     * @return FieldObject[]
      */
-    public function getPublicClassFields(string $className): array
+    public static function getPublicClassFields(string $className): array
     {
         $rc = new \ReflectionClass($className);
         /** @var \ReflectionProperty[] $reflectionProperties */
@@ -35,7 +34,7 @@ class FieldObjectServiceImpl implements FieldObjectService
             }
         }
 
-        return $this->buildFields($classProperties);
+        return self::buildFields($classProperties);
     }
 
     /**
@@ -43,20 +42,20 @@ class FieldObjectServiceImpl implements FieldObjectService
      *
      * @return FieldObject[]
      */
-    private function buildFields(array $reflectionProperties, string $scope = FieldObject::SCOPE_PUBLIC): array
+    private static function buildFields(array $reflectionProperties, string $scope = FieldObject::SCOPE_PUBLIC): array
     {
         $fields = [];
         foreach ($reflectionProperties as $reflectionProperty) {
-            $fields[] = $this->buildField($reflectionProperty, $scope);
+            $fields[] = self::buildField($reflectionProperty, $scope);
         }
 
         return $fields;
     }
 
-    private function buildField(\ReflectionProperty $reflectionProperty, string $scope): FieldObject
+    private static function buildField(\ReflectionProperty $reflectionProperty, string $scope): FieldObject
     {
         $field = new FieldObject($reflectionProperty->getName());
-        $field->setAccessor($this->getFieldAccessor($reflectionProperty));
+        $field->setAccessor(self::getFieldAccessor($reflectionProperty));
         $docComment = $reflectionProperty->getDocComment();
         $field->setDocComment($docComment);
         $field->setScope($scope);
@@ -64,7 +63,7 @@ class FieldObjectServiceImpl implements FieldObjectService
         return $field;
     }
 
-    private function getFieldAccessor(\ReflectionProperty $reflectionProperty)
+    private static function getFieldAccessor(\ReflectionProperty $reflectionProperty)
     {
         $fieldName = $reflectionProperty->getName();
         $declaringClass = $reflectionProperty->getDeclaringClass();
@@ -82,9 +81,9 @@ class FieldObjectServiceImpl implements FieldObjectService
     }
 
     /**
-     * {@inheritdoc}
+     * @return FieldObject[]
      */
-    public function getProtectedClassFields(string $className): array
+    public static function getProtectedClassFields(string $className): array
     {
         $rc = new \ReflectionClass($className);
         /** @var \ReflectionProperty[] $reflectionProperties */
@@ -96,6 +95,6 @@ class FieldObjectServiceImpl implements FieldObjectService
             }
         }
 
-        return $this->buildFields($classProperties, FieldObject::SCOPE_PROTECTED);
+        return self::buildFields($classProperties, FieldObject::SCOPE_PROTECTED);
     }
 }

@@ -11,7 +11,6 @@ use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\UseCaseResponseTraitSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\UseCaseResponseTraitSkeletonModelAssembler;
 use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
-use OpenClassrooms\CodeGenerator\Utility\MethodUtility;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
@@ -45,7 +44,7 @@ class UseCaseResponseTraitGenerator extends AbstractUseCaseGenerator
         $useCaseResponseFileObject = $this->createUseCaseResponseFileObject($entityFileObject);
         $useCaseResponseTraitFileObject = $this->createUseCaseResponseTraitFileObject($entityFileObject);
 
-        $entityFileObject->setMethods(MethodUtility::getSelectedAccessors($entityClassName, $fields));
+        $entityFileObject->setMethods($this->getSelectedAccessors($entityClassName, $fields));
 
         $useCaseResponseTraitFileObject->setContent(
             $this->generateContent(

@@ -11,7 +11,6 @@ use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\UseCaseListItemResponseAssemblerImplSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\UseCaseListItemResponseAssemblerImplSkeletonModelAssembler;
 use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
-use OpenClassrooms\CodeGenerator\Utility\MethodUtility;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
@@ -64,7 +63,7 @@ class UseCaseListItemResponseAssemblerImplGenerator extends AbstractUseCaseGener
             $entityFileObject
         );
 
-        $entityFileObject->setMethods(MethodUtility::getSelectedAccessors($entityClassName, $fields));
+        $entityFileObject->setMethods($this->getSelectedAccessors($entityClassName, $fields));
 
         $useCaseListItemResponseAssemblerImplFileObject->setContent(
             $this->generateContent(

@@ -10,7 +10,6 @@ use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\UseCaseDetailResponseDTOSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\UseCaseDetailResponseDTOSkeletonModelAssembler;
 use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
-use OpenClassrooms\CodeGenerator\Utility\MethodUtility;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
@@ -54,7 +53,7 @@ class UseCaseDetailResponseDTOGenerator extends AbstractUseCaseGenerator
 
         $useCaseDetailResponseDTOFileObject->setFields($this->getSelectedFields($entityClassName, $fields));
         $useCaseDetailResponseDTOFileObject->setMethods(
-            MethodUtility::getSelectedAccessors($entityClassName, $fields)
+            $this->getSelectedAccessors($entityClassName, $fields)
         );
 
         $useCaseDetailResponseDTOFileObject->setContent(

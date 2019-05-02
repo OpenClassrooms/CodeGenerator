@@ -5,7 +5,6 @@ namespace OpenClassrooms\CodeGenerator\Tests\Generator\Tests\Doubles\BusinessRul
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Responders\DTO\Request\UseCaseDetailResponseStubGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Responders\Request\UseCaseDetailResponseStubGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Responders\UseCaseDetailResponseStubGenerator;
-use OpenClassrooms\CodeGenerator\Services\Impl\FieldObjectServiceImpl;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\Responders\Impl\UseCaseDetailResponseStubSkeletonModelAssemblerImpl;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\EntityFileObjectFactoryMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\FileObjectTestCase;
@@ -59,7 +58,6 @@ class UseCaseDetailResponseStubGeneratorTest extends TestCase
         $this->useCaseDetailResponseStubGenerator = new UseCaseDetailResponseStubGenerator();
 
         $this->useCaseDetailResponseStubGenerator->setFileObjectGateway(new InMemoryFileObjectGateway());
-        $this->useCaseDetailResponseStubGenerator->setFieldObjectService(new FieldObjectServiceImpl());
         $this->useCaseDetailResponseStubGenerator->setTemplating(new TemplatingServiceMock());
         $this->useCaseDetailResponseStubGenerator->setViewModelFileObjectFactory(new ViewModelFileObjectFactoryMock());
         $this->useCaseDetailResponseStubGenerator->setUseCaseResponseFileObjectFactory(

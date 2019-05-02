@@ -10,7 +10,6 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\U
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\FileObjectTestCase;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\UseCaseResponseFileObjectFactoryMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\FieldObjectServiceMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingServiceMock;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Entities\Domain\SubDomain\FunctionalEntity;
 use PHPUnit\Framework\TestCase;
@@ -23,14 +22,14 @@ class UseCaseListItemResponseDTOGeneratorTest extends TestCase
     use FileObjectTestCase;
 
     /**
-     * @var UseCaseListItemResponseDTOGenerator
-     */
-    private $useCaseListItemResponseDTOGenerator;
-
-    /**
      * @var UseCaseListItemResponseDTOGeneratorRequestBuilder
      */
     private $request;
+
+    /**
+     * @var UseCaseListItemResponseDTOGenerator
+     */
+    private $useCaseListItemResponseDTOGenerator;
 
     /**
      * @test
@@ -65,7 +64,6 @@ class UseCaseListItemResponseDTOGeneratorTest extends TestCase
             new UseCaseResponseFileObjectFactoryMock()
         );
         $this->useCaseListItemResponseDTOGenerator->setTemplating(new TemplatingServiceMock());
-        $this->useCaseListItemResponseDTOGenerator->setFieldObjectService(new FieldObjectServiceMock());
         $this->useCaseListItemResponseDTOGenerator->setFileObjectGateway(new InMemoryFileObjectGateway());
     }
 }

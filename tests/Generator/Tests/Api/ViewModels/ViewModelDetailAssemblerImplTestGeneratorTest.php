@@ -5,7 +5,6 @@ namespace OpenClassrooms\CodeGenerator\Tests\Generator\Tests\Api\ViewModels;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\DTO\Request\ViewModelDetailAssemblerImplTestGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\Request\ViewModelDetailAssemblerImplTestGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\ViewModelDetailAssemblerImplTestGenerator;
-use OpenClassrooms\CodeGenerator\Services\Impl\FieldObjectServiceImpl;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Api\ViewModels\Impl\ViewModelDetailAssemblerImplTestSkeletonModelBuilderImpl;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\FileObjectTestCase;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\Api\ViewModels\ViewModelDetailAssemblerImplTest\ViewModelDetailAssemblerImplTestFileObjectStub1;
@@ -63,7 +62,6 @@ class ViewModelDetailAssemblerImplTestGeneratorTest extends TestCase
             new UseCaseResponseFileObjectFactoryMock()
         );
         $this->viewModelDetailAssemblerImplTestGenerator->setFileObjectGateway(new InMemoryFileObjectGateway());
-        $this->viewModelDetailAssemblerImplTestGenerator->setFieldObjectService(new FieldObjectServiceImpl());
         $this->viewModelDetailAssemblerImplTestGenerator->setTemplating(new TemplatingServiceMock());
         $this->viewModelDetailAssemblerImplTestGenerator->setViewModelDetailAssemblerImplTestSkeletonModelBuilder(
             new ViewModelDetailAssemblerImplTestSkeletonModelBuilderImpl()

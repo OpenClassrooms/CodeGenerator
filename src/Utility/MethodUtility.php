@@ -19,6 +19,8 @@ class MethodUtility
 
     /**
      * @param string[] $fields
+     *
+     * @return MethodObject[]
      */
     public static function getSelectedAccessors(string $className, array $fields): array
     {

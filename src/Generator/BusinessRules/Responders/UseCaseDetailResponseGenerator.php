@@ -11,7 +11,6 @@ use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Responders\UseCaseDetailResponseSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Responders\UseCaseDetailResponseSkeletonModelAssembler;
 use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
-use OpenClassrooms\CodeGenerator\Utility\MethodUtility;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
@@ -50,7 +49,7 @@ class UseCaseDetailResponseGenerator extends AbstractUseCaseGenerator
         );
 
         $useCaseDetailResponseFileObject->setMethods(
-            MethodUtility::getSelectedAccessors($entityClassName, $fields)
+            $this->getSelectedAccessors($entityClassName, $fields)
         );
         $useCaseDetailResponseFileObject->setContent(
             $this->generateContent($useCaseResponseFileObject, $useCaseDetailResponseFileObject)

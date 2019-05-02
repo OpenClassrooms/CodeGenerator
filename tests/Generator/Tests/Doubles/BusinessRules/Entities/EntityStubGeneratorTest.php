@@ -5,7 +5,6 @@ namespace OpenClassrooms\CodeGenerator\Tests\Generator\Tests\Doubles\BusinessRul
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Entities\DTO\Request\EntityStubGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Entities\EntityStubGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Entities\Request\EntityStubGeneratorRequestBuilder;
-use OpenClassrooms\CodeGenerator\Services\Impl\FieldObjectServiceImpl;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\Entities\Impl\EntityStubSkeletonModelAssemblerImpl;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\EntityFileObjectFactoryMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\FileObjectTestCase;
@@ -57,7 +56,6 @@ class EntityStubGeneratorTest extends TestCase
         $this->entityStubGenerator = new EntityStubGenerator();
 
         $this->entityStubGenerator->setFileObjectGateway(new InMemoryFileObjectGateway());
-        $this->entityStubGenerator->setFieldObjectService(new FieldObjectServiceImpl());
         $this->entityStubGenerator->setTemplating(new TemplatingServiceMock());
         $this->entityStubGenerator->setEntityFileObjectFactory(new EntityFileObjectFactoryMock());
         $this->entityStubGenerator->setEntityStubSkeletonModelAssembler(

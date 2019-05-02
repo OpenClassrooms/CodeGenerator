@@ -11,7 +11,6 @@ use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Responders\UseCaseResponseSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Responders\UseCaseResponseSkeletonModelAssembler;
 use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
-use OpenClassrooms\CodeGenerator\Utility\MethodUtility;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
@@ -46,7 +45,7 @@ class UseCaseResponseGenerator extends AbstractUseCaseGenerator
         $entityFileObject = $this->createEntityFileObject($entityClassName);
         $useCaseResponseFileObject = $this->createUseCaseResponseFileObject($entityFileObject);
 
-        $useCaseResponseFileObject->setMethods(MethodUtility::getSelectedAccessors($entityClassName, $fields));
+        $useCaseResponseFileObject->setMethods($this->getSelectedAccessors($entityClassName, $fields));
         $useCaseResponseFileObject->setContent($this->generateContent($useCaseResponseFileObject));
 
         return $useCaseResponseFileObject;

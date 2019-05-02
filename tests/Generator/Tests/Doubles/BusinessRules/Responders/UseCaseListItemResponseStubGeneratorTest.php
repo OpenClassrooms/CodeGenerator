@@ -5,7 +5,6 @@ namespace OpenClassrooms\CodeGenerator\Tests\Generator\Tests\Doubles\BusinessRul
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Responders\DTO\Request\UseCaseListItemResponseStubGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Responders\Request\UseCaseListItemResponseStubGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Responders\UseCaseListItemResponseStubGenerator;
-use OpenClassrooms\CodeGenerator\Services\Impl\FieldObjectServiceImpl;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\Responders\Impl\UseCaseListItemResponseStubSkeletonModelAssemblerImpl;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\EntityFileObjectFactoryMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\FileObjectTestCase;
@@ -60,7 +59,6 @@ class UseCaseListItemResponseStubGeneratorTest extends TestCase
         $this->useCaseListItemResponseStubGenerator = new UseCaseListItemResponseStubGenerator();
 
         $this->useCaseListItemResponseStubGenerator->setFileObjectGateway(new InMemoryFileObjectGateway());
-        $this->useCaseListItemResponseStubGenerator->setFieldObjectService(new FieldObjectServiceImpl());
         $this->useCaseListItemResponseStubGenerator->setTemplating(new TemplatingServiceMock());
         $this->useCaseListItemResponseStubGenerator->setViewModelFileObjectFactory(
             new ViewModelFileObjectFactoryMock()

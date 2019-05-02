@@ -5,7 +5,6 @@ namespace OpenClassrooms\CodeGenerator\Tests\Generator\Tests\Doubles\Api\ViewMod
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\DTO\Request\ViewModelTestCaseGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\Request\ViewModelTestCaseGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\ViewModelTestCaseGenerator;
-use OpenClassrooms\CodeGenerator\Services\Impl\FieldObjectServiceImpl;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\Api\ViewModels\Impl\ViewModelTestCaseSkeletonModelAssemblerImpl;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\ViewModels\ViewModelTestCase\ViewModelTestCaseFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\FileObjectTestCase;
@@ -58,7 +57,6 @@ class ViewModelTestCaseGeneratorTest extends TestCase
         $this->viewModelTestCaseGenerator = new ViewModelTestCaseGenerator();
 
         $this->viewModelTestCaseGenerator->setFileObjectGateway(new InMemoryFileObjectGateway());
-        $this->viewModelTestCaseGenerator->setFieldObjectService(new FieldObjectServiceImpl());
         $this->viewModelTestCaseGenerator->setTemplating(new TemplatingServiceMock());
         $this->viewModelTestCaseGenerator->setViewModelFileObjectFactory(new ViewModelFileObjectFactoryMock());
         $this->viewModelTestCaseGenerator->setUseCaseResponseFileObjectFactory(
