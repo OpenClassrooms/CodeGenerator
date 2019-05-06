@@ -12,7 +12,7 @@ class UseCaseListItemResponseAssemblerImplSkeletonModelAssemblerMock extends Use
 {
     public function __construct()
     {
-        $this->pagination = FixturesConfig::PAGINATED_COLLECTION;
+        $this->paginatedCollection = FixturesConfig::PAGINATED_COLLECTION;
         $this->paginatedUseCaseResponse = FixturesConfig::PAGINATED_USE_CASE_RESPONSE;
         $this->paginatedUseCaseResponseBuilder = FixturesConfig::PAGINATED_USE_CASE_RESPONSE_BUILDER;
     }

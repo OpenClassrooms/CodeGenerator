@@ -1,0 +1,24 @@
+{% include "Header.php.twig" %}
+
+namespace {{ skeletonModel.namespace }};
+
+use {{ skeletonModel.entityClassName }};
+use {{ skeletonModel.entityNotFoundExceptionClassName }};
+use {{ skeletonModel.paginatedCollectionClassName }};
+
+/**
+ * @author {{ author }} <{{ authorEmail }}>
+ */
+interface {{ skeletonModel.shortName }}
+{
+    /**
+     * @return {{ skeletonModel.entityShortName }}
+     * @throws {{ skeletonModel.entityNotFoundExceptionShortName }}
+     */
+    public function find($id);
+
+    /**
+     * @return {{ skeletonModel.paginatedCollectionShortName }}|{{ skeletonModel.entityShortName }}[]
+     */
+    public function findAll(array $filters = [], array $sorts = [], array $pagination = []);
+}
