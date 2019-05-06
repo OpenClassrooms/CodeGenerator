@@ -6,6 +6,7 @@ use OpenClassrooms\CodeGenerator\Entities\AbstractFileObjectFactory;
 use OpenClassrooms\CodeGenerator\Entities\FileObject;
 use OpenClassrooms\CodeGenerator\Entities\UseCaseFileObjectFactory;
 use OpenClassrooms\CodeGenerator\Entities\UseCaseFileObjectType;
+use OpenClassrooms\CodeGenerator\Utility\StringUtility;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
@@ -19,11 +20,27 @@ class UseCaseFileObjectFactoryImpl extends AbstractFileObjectFactory implements 
         switch ($type) {
             case UseCaseFileObjectType::BUSINESS_RULES_USE_CASE:
                 return new FileObject(
-                    $this->baseNamespace . 'BusinessRules\UseCases\\' . $domain . '\\' . $this->prefix . $entity
+                    $this->baseNamespace . 'BusinessRules\UseCases\\' . $domain . '\\' . $entity
                 );
             case UseCaseFileObjectType::BUSINESS_RULES_USE_CASE_TEST:
                 return new FileObject(
-                    $this->testsBaseNamespace . 'BusinessRules\UseCases\\' . $domain . '\\' . $this->prefix . $entity . 'Test'
+                    $this->testsBaseNamespace . 'BusinessRules\UseCases\\' . $domain . '\\' . $entity . 'Test'
+                );
+            case UseCaseFileObjectType::BUSINESS_RULES_GET_ENTITY_USE_CASE:
+                return new FileObject(
+                    $this->baseNamespace . 'BusinessRules\UseCases\\' . $domain . '\\Get' . $entity
+                );
+            case UseCaseFileObjectType::BUSINESS_RULES_GET_ENTITY_USE_CASE_TEST:
+                return new FileObject(
+                    $this->testsBaseNamespace . 'BusinessRules\UseCases\\' . $domain . '\\Get' . $entity . 'Test'
+                );
+            case UseCaseFileObjectType::BUSINESS_RULES_GET_ENTITIES_USE_CASE:
+                return new FileObject(
+                    $this->baseNamespace . 'BusinessRules\UseCases\\' . $domain . '\\Get' . StringUtility::pluralize($entity)
+                );
+            case UseCaseFileObjectType::BUSINESS_RULES_GET_ENTITIES_USE_CASE_TEST:
+                return new FileObject(
+                    $this->testsBaseNamespace . 'BusinessRules\UseCases\\' . $domain . '\\Get' . StringUtility::pluralize($entity) . 'Test'
                 );
 
             default:

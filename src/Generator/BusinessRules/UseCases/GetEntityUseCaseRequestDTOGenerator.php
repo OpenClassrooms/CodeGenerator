@@ -65,7 +65,7 @@ class GetEntityUseCaseRequestDTOGenerator extends AbstractUseCaseGenerator
     private function createGetEntityUseCaseRequesFileObject(FileObject $entityFileObject): FileObject
     {
         return $this->useCaseRequestFileObjectFactory->create(
-            UseCaseRequestFileObjectType::BUSINESS_RULES_USE_CASE_REQUEST,
+            UseCaseRequestFileObjectType::BUSINESS_RULES_GET_ENTITY_USE_CASE_REQUEST,
             $entityFileObject->getDomain(),
             $entityFileObject->getEntity()
         );
@@ -74,7 +74,7 @@ class GetEntityUseCaseRequestDTOGenerator extends AbstractUseCaseGenerator
     private function createGetEntityUseCaseRequestDTOFileObject(FileObject $entityFileObject): FileObject
     {
         return $this->useCaseRequestFileObjectFactory->create(
-            UseCaseRequestFileObjectType::BUSINESS_RULES_USE_CASE_REQUEST_DTO,
+            UseCaseRequestFileObjectType::BUSINESS_RULES_GET_ENTITY_USE_CASE_REQUEST_DTO,
             $entityFileObject->getDomain(),
             $entityFileObject->getEntity()
         );

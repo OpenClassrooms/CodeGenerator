@@ -7,7 +7,7 @@ use {{ skeletonModel.useCaseRequestClassName }};
 /**
  * @author {{ author }} <{{ authorEmail }}>
  */
-interface Get{{ skeletonModel.shortName }} extends UseCaseRequest
+interface {{ skeletonModel.shortName }} extends UseCaseRequest
 {
     public function get{{ skeletonModel.entityShortName }}Id(): int;
 }

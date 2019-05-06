@@ -51,9 +51,9 @@ class UseCaseListItemResponseAssemblerImplSkeletonModelAssemblerImpl implements 
             $this->paginatedUseCaseResponseBuilder
         );
 
-        $skeletonModel->paginatedCollectionClassName = $this->paginatedCollection;
+        $skeletonModel->paginatedCollectionClassName = $this->pagination;
         $skeletonModel->paginatedCollectionShortName = FileObjectUtility::getShortClassName(
-            $this->paginatedCollection
+            $this->pagination
         );
         $skeletonModel->paginatedUseCaseResponseClassName = $this->paginatedUseCaseResponse;
         $skeletonModel->paginatedUseCaseResponseShortName = FileObjectUtility::getShortClassName(

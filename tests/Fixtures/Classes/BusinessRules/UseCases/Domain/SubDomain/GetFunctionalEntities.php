@@ -64,7 +64,7 @@ class GetFunctionalEntities implements UseCase
         $this->gateway = $gateway;
     }
 
-    public function setFunctionalEntityResponseAssembler(FunctionalEntityListItemResponseAssembler $assembler): void
+    public function setFunctionalEntityListItemResponseAssembler(FunctionalEntityListItemResponseAssembler $assembler): void
     {
         $this->responseAssembler = $assembler;
     }

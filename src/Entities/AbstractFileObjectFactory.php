@@ -23,11 +23,6 @@ abstract class AbstractFileObjectFactory
     protected $baseNamespace;
 
     /**
-     * @param string
-     */
-    protected $prefix;
-
-    /**
      * @var string
      */
     protected $stubNamespace;
@@ -60,10 +55,5 @@ abstract class AbstractFileObjectFactory
     public function setTestsBaseNamespace(string $testsBaseNamespace)
     {
         $this->testsBaseNamespace = $testsBaseNamespace;
-    }
-
-    public function setPrefix(?string $prefix)
-    {
-        $this->prefix = $prefix;
     }
 }

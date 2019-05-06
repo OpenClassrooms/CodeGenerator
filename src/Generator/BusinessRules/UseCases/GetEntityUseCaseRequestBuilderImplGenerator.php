@@ -74,7 +74,7 @@ class GetEntityUseCaseRequestBuilderImplGenerator extends AbstractUseCaseGenerat
     private function createGetEntityUseCaseRequestBuilderFileObject(FileObject $fileObject): FileObject
     {
         return $this->useCaseRequestFileObjectFactory->create(
-            UseCaseRequestFileObjectType::BUSINESS_RULES_USE_CASE_REQUEST_BUILDER,
+            UseCaseRequestFileObjectType::BUSINESS_RULES_GET_ENTITY_USE_CASE_REQUEST_BUILDER,
             $fileObject->getDomain(),
             $fileObject->getEntity()
         );
@@ -83,7 +83,7 @@ class GetEntityUseCaseRequestBuilderImplGenerator extends AbstractUseCaseGenerat
     private function createGetEntityUseCaseRequestBuilderImplFileObject(FileObject $fileObject): FileObject
     {
         return $this->useCaseRequestFileObjectFactory->create(
-            UseCaseRequestFileObjectType::BUSINESS_RULES_USE_CASE_REQUEST_BUILDER_IMPL,
+            UseCaseRequestFileObjectType::BUSINESS_RULES_GET_ENTITY_USE_CASE_REQUEST_BUILDER_IMPL,
             $fileObject->getDomain(),
             $fileObject->getEntity()
         );
@@ -92,7 +92,7 @@ class GetEntityUseCaseRequestBuilderImplGenerator extends AbstractUseCaseGenerat
     private function createGetEntityUseCaseRequestDTOFileObject(FileObject $fileObject): FileObject
     {
         return $this->useCaseRequestFileObjectFactory->create(
-            UseCaseRequestFileObjectType::BUSINESS_RULES_USE_CASE_REQUEST_DTO,
+            UseCaseRequestFileObjectType::BUSINESS_RULES_GET_ENTITY_USE_CASE_REQUEST_DTO,
             $fileObject->getDomain(),
             $fileObject->getEntity()
         );
@@ -101,7 +101,7 @@ class GetEntityUseCaseRequestBuilderImplGenerator extends AbstractUseCaseGenerat
     private function createGetEntityUseCaseRequestFileObject(FileObject $fileObject): FileObject
     {
         return $this->useCaseRequestFileObjectFactory->create(
-            UseCaseRequestFileObjectType::BUSINESS_RULES_USE_CASE_REQUEST,
+            UseCaseRequestFileObjectType::BUSINESS_RULES_GET_ENTITY_USE_CASE_REQUEST,
             $fileObject->getDomain(),
             $fileObject->getEntity()
         );

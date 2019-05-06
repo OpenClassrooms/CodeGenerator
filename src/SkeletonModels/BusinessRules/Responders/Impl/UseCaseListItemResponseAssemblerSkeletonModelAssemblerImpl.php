@@ -22,9 +22,9 @@ class UseCaseListItemResponseAssemblerSkeletonModelAssemblerImpl implements UseC
         $skeletonModel = new UseCaseListItemResponseAssemblerSkeletonModelImpl();
         $skeletonModel->namespace = $useCaseListItemResponseAssemblerFileObject->getNamespace();
         $skeletonModel->shortName = $useCaseListItemResponseAssemblerFileObject->getShortName();
-        $skeletonModel->paginatedCollectionClassName = $this->paginatedCollection;
+        $skeletonModel->paginatedCollectionClassName = $this->pagination;
         $skeletonModel->paginatedCollectionShortName = FileObjectUtility::getShortClassName(
-            $this->paginatedCollection
+            $this->pagination
         );
         $skeletonModel->paginatedUseCaseResponseClassName = $this->paginatedUseCaseResponse;
         $skeletonModel->paginatedUseCaseResponseShortName = FileObjectUtility::getShortClassName(

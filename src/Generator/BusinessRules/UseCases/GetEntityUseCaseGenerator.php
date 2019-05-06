@@ -108,7 +108,7 @@ class GetEntityUseCaseGenerator extends AbstractUseCaseGenerator
     private function createGetEntityUseCaseRequestFileObject(FileObject $entityFileObject): FileObject
     {
         return $this->useCaseRequestFileObjectFactory->create(
-            UseCaseRequestFileObjectType::BUSINESS_RULES_USE_CASE_REQUEST,
+            UseCaseRequestFileObjectType::BUSINESS_RULES_GET_ENTITY_USE_CASE_REQUEST,
             $entityFileObject->getDomain(),
             $entityFileObject->getEntity(),
             $entityFileObject->getBaseNamespace()
@@ -148,7 +148,7 @@ class GetEntityUseCaseGenerator extends AbstractUseCaseGenerator
     private function createGetEntityUseCaseFileObject(FileObject $entityFileObject): FileObject
     {
         return $this->useCaseFileObjectFactory->create(
-            UseCaseFileObjectType::BUSINESS_RULES_USE_CASE,
+            UseCaseFileObjectType::BUSINESS_RULES_GET_ENTITY_USE_CASE,
             $entityFileObject->getDomain(),
             $entityFileObject->getEntity(),
             $entityFileObject->getBaseNamespace()

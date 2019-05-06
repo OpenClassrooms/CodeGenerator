@@ -63,7 +63,7 @@ class GetEntityUseCaseRequestGenerator extends AbstractUseCaseGenerator
     private function createGetEntityUseCaseRequestFileObject(FileObject $entityFileObject): FileObject
     {
         return $this->useCaseRequestFileObjectFactory->create(
-            UseCaseRequestFileObjectType::BUSINESS_RULES_USE_CASE_REQUEST,
+            UseCaseRequestFileObjectType::BUSINESS_RULES_GET_ENTITY_USE_CASE_REQUEST,
             $entityFileObject->getDomain(),
             $entityFileObject->getEntity()
         );
