@@ -69,6 +69,16 @@ class GetEntityUseCaseSkeletonModelBuilderImpl implements GetEntityUseCaseSkelet
         return $this;
     }
 
+    public function withEntityDetailResponse(
+        FileObject $entityDetailResponseFileObject
+    ): GetEntityUseCaseSkeletonModelBuilder
+    {
+        $this->skeletonModel->functionalEntityDetailResponseClassName = $entityDetailResponseFileObject->getClassName();
+        $this->skeletonModel->functionalEntityDetailResponseShortName = $entityDetailResponseFileObject->getShortName();
+
+        return $this;
+    }
+
     public function withEntityDetailResponseAssembler(
         FileObject $entityDetailResponseAssemblerFileObject
     ): GetEntityUseCaseSkeletonModelBuilder

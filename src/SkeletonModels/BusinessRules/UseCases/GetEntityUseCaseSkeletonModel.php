@@ -17,6 +17,10 @@ abstract class GetEntityUseCaseSkeletonModel extends AbstractSkeletonModel
 
     public $functionalEntityDetailResponseAssemblerShortName;
 
+    public $functionalEntityDetailResponseClassName;
+
+    public $functionalEntityDetailResponseShortName;
+
     public $functionalEntityGatewayClassName;
 
     public $functionalEntityGatewayShortName;

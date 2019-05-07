@@ -34,7 +34,7 @@ class {{ skeletonModel.shortName }} implements {{ skeletonModel.useCaseShortName
         $functionalEntities = $this->get{{ skeletonModel.entitiesShortName }}(
             $useCaseRequest->getFilters(),
             $useCaseRequest->getSorts(),
-            $this->buildPagination($useCaseRequest->getPage(), $useCaseRequest->getItemsPerPage())
+            $this->getPagination($useCaseRequest->getPage(), $useCaseRequest->getItemsPerPage())
         );
 
         return $this->buildResponse(${{ skeletonModel.entitiesArgument }});
@@ -45,7 +45,7 @@ class {{ skeletonModel.shortName }} implements {{ skeletonModel.useCaseShortName
         return $this->gateway->findAll($filters, $sorts, $pagination);
     }
 
-    private function buildPagination(int $page, int $itemPerPage): array
+    private function getPagination(int $page, int $itemPerPage): array
     {
         return [
             Pagination::PAGE           => $page,
@@ -58,7 +58,7 @@ class {{ skeletonModel.shortName }} implements {{ skeletonModel.useCaseShortName
         return $this->responseAssembler->createPaginatedCollection(${{ skeletonModel.entitiesArgument }});
     }
 
-    public function setGateway({{ skeletonModel.entityGatewayShortName }} $gateway): void
+    public function set{{ skeletonModel.entityGatewayShortName }}({{ skeletonModel.entityGatewayShortName }} $gateway): void
     {
         $this->gateway = $gateway;
     }

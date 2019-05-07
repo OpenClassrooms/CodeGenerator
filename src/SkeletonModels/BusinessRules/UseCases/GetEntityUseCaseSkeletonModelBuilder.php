@@ -27,6 +27,10 @@ interface GetEntityUseCaseSkeletonModelBuilder
         FileObject $getEntityUseCaseRequestFileObject
     ): GetEntityUseCaseSkeletonModelBuilder;
 
+    public function withEntityDetailResponse(
+        FileObject $entityDetailResponseFileObject
+    ): GetEntityUseCaseSkeletonModelBuilder;
+
     public function withEntityDetailResponseAssembler(
         FileObject $entityDetailResponseAssemblerFileObject
     ): GetEntityUseCaseSkeletonModelBuilder;

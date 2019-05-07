@@ -9,5 +9,5 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
  */
 abstract class EntityNotFoundExceptionSkeletonModel extends AbstractSkeletonModel
 {
-    public $templatePath = 'BusinessRules\GateWays\EntityNotFoundException.php.twig';
+    public $templatePath = 'BusinessRules\Gateways\EntityNotFoundException.php.twig';
 }
