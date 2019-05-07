@@ -1,14 +1,14 @@
 <?php declare(strict_types=1);
 
-namespace OpenClassrooms\CodeGenerator\Tests\Doubles\SkeletonModels\BusinessRules\UseCases;
+namespace OpenClassrooms\CodeGenerator\Tests\Doubles\SkeletonModels\BusinessRules\Requestors;
 
-use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\Impl\GetEntityUseCaseRequestSkeletonModelAssemblerImpl;
+use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Requestors\Impl\GetEntityUseCaseRequestBuilderSkeletonModelAssemblerImpl;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\FixturesConfig;
 
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
  */
-class GetEntityUseCaseRequestSkeletonModelAssemblerMock extends GetEntityUseCaseRequestSkeletonModelAssemblerImpl
+class GetEntityUseCaseRequestBuilderSkeletonModelAssemblerMock extends GetEntityUseCaseRequestBuilderSkeletonModelAssemblerImpl
 {
     public function __construct()
     {

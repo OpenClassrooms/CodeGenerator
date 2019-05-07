@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases;
+namespace OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Requestors;
 
 use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 
@@ -13,7 +13,7 @@ abstract class GetEntityUseCaseRequestBuilderSkeletonModel extends AbstractSkele
 
     public $getEntityUseCaseRequest;
 
-    public $templatePath = 'BusinessRules/UseCases/GetEntityUseCaseRequestBuilder.php.twig';
+    public $templatePath = 'BusinessRules/Requestors/GetEntityUseCaseRequestBuilder.php.twig';
 
     public $useCaseRequestClassName;
 }

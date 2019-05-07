@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases;
+namespace OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Requestors;
 
 use OpenClassrooms\CodeGenerator\Entities\FileObject;
 

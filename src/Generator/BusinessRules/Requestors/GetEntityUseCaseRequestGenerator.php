@@ -1,15 +1,15 @@
 <?php declare(strict_types=1);
 
-namespace OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases;
+namespace OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors;
 
 use OpenClassrooms\CodeGenerator\Entities\EntityFileObjectType;
 use OpenClassrooms\CodeGenerator\Entities\FileObject;
 use OpenClassrooms\CodeGenerator\Entities\UseCaseRequestFileObjectType;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\AbstractUseCaseGenerator;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\GetEntityUseCaseRequestGeneratorRequest;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\Request\GetEntityUseCaseRequestGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
-use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\GetEntityUseCaseRequestSkeletonModel;
-use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\GetEntityUseCaseRequestSkeletonModelAssembler;
+use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Requestors\GetEntityUseCaseRequestSkeletonModel;
+use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Requestors\GetEntityUseCaseRequestSkeletonModelAssembler;
 use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 
 /**

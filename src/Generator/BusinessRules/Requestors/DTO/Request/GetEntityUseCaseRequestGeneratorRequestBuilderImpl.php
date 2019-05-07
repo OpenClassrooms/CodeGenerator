@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request;
+namespace OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\DTO\Request;
 
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\GetEntityUseCaseRequestGeneratorRequest;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\GetEntityUseCaseRequestGeneratorRequestBuilder;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\Request\GetEntityUseCaseRequestGeneratorRequest;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\Request\GetEntityUseCaseRequestGeneratorRequestBuilder;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
