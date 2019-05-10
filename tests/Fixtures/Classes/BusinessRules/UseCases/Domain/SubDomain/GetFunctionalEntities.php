@@ -35,7 +35,7 @@ class GetFunctionalEntities implements UseCase
         $functionalEntities = $this->getFunctionalEntities(
             $useCaseRequest->getFilters(),
             $useCaseRequest->getSorts(),
-            $this->buildPagination($useCaseRequest->getPage(), $useCaseRequest->getItemsPerPage())
+            $this->getPagination($useCaseRequest->getPage(), $useCaseRequest->getItemsPerPage())
         );
 
         return $this->buildResponse($functionalEntities);
@@ -46,7 +46,7 @@ class GetFunctionalEntities implements UseCase
         return $this->gateway->findAll($filters, $sorts, $pagination);
     }
 
-    private function buildPagination(int $page, int $itemPerPage): array
+    private function getPagination(int $page, int $itemPerPage): array
     {
         return [
             Pagination::PAGE           => $page,
@@ -59,7 +59,7 @@ class GetFunctionalEntities implements UseCase
         return $this->responseAssembler->createPaginatedCollection($functionalEntities);
     }
 
-    public function setGateway(FunctionalEntityGateway $gateway): void
+    public function setFunctionalEntityGateway(FunctionalEntityGateway $gateway): void
     {
         $this->gateway = $gateway;
     }
