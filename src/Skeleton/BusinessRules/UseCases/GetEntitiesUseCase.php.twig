@@ -31,7 +31,7 @@ class {{ skeletonModel.shortName }} implements {{ skeletonModel.useCaseShortName
      */
     public function execute({{ skeletonModel.useCaseRequestShortName }} $useCaseRequest): {{ skeletonModel.paginatedUseCaseResponseShortName }}
     {
-        $functionalEntities = $this->get{{ skeletonModel.entitiesShortName }}(
+        ${{ skeletonModel.entitiesArgument }} = $this->get{{ skeletonModel.entitiesShortName }}(
             $useCaseRequest->getFilters(),
             $useCaseRequest->getSorts(),
             $this->getPagination($useCaseRequest->getPage(), $useCaseRequest->getItemsPerPage())

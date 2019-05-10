@@ -188,19 +188,19 @@ class GetEntityUseCaseGenerator extends AbstractUseCaseGenerator
             ->withEntity(
                 $fileObjects[EntityFileObjectType::BUSINESS_RULES_ENTITY]
             )
-            ->withEntityGateway($fileObjects[EntityFileObjectType::BUSINESS_RULES_ENTITY_GATEWAY])
-            ->withGetEntityUseCase($fileObjects[UseCaseFileObjectType::BUSINESS_RULES_USE_CASE])
-            ->withGetEntityUseCaseRequest($fileObjects[UseCaseRequestFileObjectType::BUSINESS_RULES_USE_CASE_REQUEST])
             ->withEntityDetailResponse(
                 $fileObjects[UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE]
             )
             ->withEntityDetailResponseAssembler(
                 $fileObjects[UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE_ASSEMBLER]
             )
-            ->withEntityResponse($fileObjects[UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE])
+            ->withEntityGateway($fileObjects[EntityFileObjectType::BUSINESS_RULES_ENTITY_GATEWAY])
             ->withEntityNotFoundException(
                 $fileObjects[EntityFileObjectType::BUSINESS_RULES_ENTITY_NOT_FOUND_EXCEPTION]
             )
+            ->withEntityResponse($fileObjects[UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE])
+            ->withGetEntityUseCase($fileObjects[UseCaseFileObjectType::BUSINESS_RULES_USE_CASE])
+            ->withGetEntityUseCaseRequest($fileObjects[UseCaseRequestFileObjectType::BUSINESS_RULES_USE_CASE_REQUEST])
             ->build();
     }
 

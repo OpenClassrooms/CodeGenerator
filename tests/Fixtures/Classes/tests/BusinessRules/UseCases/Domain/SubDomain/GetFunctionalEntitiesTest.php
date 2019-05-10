@@ -37,7 +37,7 @@ class GetFunctionalEntitiesTest extends TestCase
     {
         InMemoryFunctionalEntityGateway::$functionalEntities = [];
         $response = $this->useCase->execute($this->request);
-        $this->assertEquals(0, $response->getTotalItems());
+        $this->assertSame(0, $response->getTotalItems());
         $this->assertEmpty($response->getItems());
     }
 
@@ -51,7 +51,7 @@ class GetFunctionalEntitiesTest extends TestCase
             FunctionalEntityStub2::ID => new FunctionalEntityStub2(),
         ];
         $response = $this->useCase->execute($this->request);
-        $this->assertEquals(2, $response->getTotalItems());
+        $this->assertSame(2, $response->getTotalItems());
         $this->assertCount(2, $response->getItems());
 
         $this->assertFunctionalEntityListItemResponses(

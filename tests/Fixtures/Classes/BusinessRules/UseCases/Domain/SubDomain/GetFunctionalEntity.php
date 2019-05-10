@@ -30,8 +30,6 @@ class GetFunctionalEntity implements UseCase
     /**
      * @param GetFunctionalEntityRequest $useCaseRequest
      *
-     * @return FunctionalEntityResponse
-     *
      * @throws \OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gateways\Domain\SubDomain\Exceptions\FunctionalEntityNotFoundException
      */
     public function execute(UseCaseRequest $useCaseRequest): FunctionalEntityDetailResponse
@@ -49,7 +47,7 @@ class GetFunctionalEntity implements UseCase
         return $this->gateway->find($functionalEntityId);
     }
 
-    private function buildResponse(FunctionalEntity $functionalEntity): FunctionalEntityResponse
+    private function buildResponse(FunctionalEntity $functionalEntity): FunctionalEntityDetailResponse
     {
         return $this->responseAssembler->create($functionalEntity);
     }

@@ -29,8 +29,6 @@ class {{ skeletonModel.shortName }} implements UseCase
     /**
      * @param {{ skeletonModel.getEntityUseCaseRequestShortName }} $useCaseRequest
      *
-     * @return {{ skeletonModel.functionalEntityResponseShortName }}
-     *
      * @throws \{{ skeletonModel.functionalEntityNotFoundExceptionClassName }}
      */
     public function execute(UseCaseRequest $useCaseRequest): {{ skeletonModel.functionalEntityDetailResponseShortName }}
@@ -48,7 +46,7 @@ class {{ skeletonModel.shortName }} implements UseCase
         return $this->gateway->find(${{ skeletonModel.getEntityUseCaseRequestArgument }});
     }
 
-    private function buildResponse({{ skeletonModel.functionalEntityShortName }} ${{ skeletonModel.functionalEntityArgument }}): FunctionalEntityResponse
+    private function buildResponse({{ skeletonModel.functionalEntityShortName }} ${{ skeletonModel.functionalEntityArgument }}): {{ skeletonModel.functionalEntityDetailResponseShortName }}
     {
         return $this->responseAssembler->create(${{ skeletonModel.functionalEntityArgument }});
     }
