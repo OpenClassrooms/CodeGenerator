@@ -27,8 +27,7 @@ trait FunctionalEntityListItemResponseTestCase
     private function assertFunctionalEntityListItemResponse(
         FunctionalEntityListItemResponse $expected,
         FunctionalEntityListItemResponse $actual
-    ): void
-    {
+    ): void {
         $this->assertFunctionalEntityResponse($expected, $actual);
     }
 }
