@@ -48,6 +48,9 @@ class GetEntityUseCaseGenerator extends AbstractUseCaseGenerator
         $getEntityUseCaseRequestFileObject = $this->createGetEntityUseCaseRequestFileObject(
             $entityFileObject
         );
+        $getEntityUseCaseDetailResponseFileObject = $this->createGetEntityUseCaseDetailResponseFileObject(
+            $entityFileObject
+        );
         $getEntityUseCaseDetailResponseAssemblerFileObject = $this->createGetEntityUseCaseDetailResponseAssemblerFileObject(
             $entityFileObject
         );
@@ -72,6 +75,7 @@ class GetEntityUseCaseGenerator extends AbstractUseCaseGenerator
                     EntityFileObjectType::BUSINESS_RULES_ENTITY_NOT_FOUND_EXCEPTION                  => $entityNotFoundExceptionFileObject,
                     UseCaseFileObjectType::BUSINESS_RULES_USE_CASE                                   => $getEntityUseCaseFileObject,
                     UseCaseRequestFileObjectType::BUSINESS_RULES_USE_CASE_REQUEST                    => $getEntityUseCaseRequestFileObject,
+                    UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE           => $getEntityUseCaseDetailResponseFileObject,
                     UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE_ASSEMBLER => $getEntityUseCaseDetailResponseAssemblerFileObject,
                     UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE                  => $getEntityUseCaseResponseFileObject,
                 ]
@@ -109,6 +113,16 @@ class GetEntityUseCaseGenerator extends AbstractUseCaseGenerator
     {
         return $this->useCaseRequestFileObjectFactory->create(
             UseCaseRequestFileObjectType::BUSINESS_RULES_GET_ENTITY_USE_CASE_REQUEST,
+            $entityFileObject->getDomain(),
+            $entityFileObject->getEntity(),
+            $entityFileObject->getBaseNamespace()
+        );
+    }
+
+    private function createGetEntityUseCaseDetailResponseFileObject(FileObject $entityFileObject): FileObject
+    {
+        return $this->useCaseResponseFileObjectFactory->create(
+            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE,
             $entityFileObject->getDomain(),
             $entityFileObject->getEntity(),
             $entityFileObject->getBaseNamespace()
@@ -174,16 +188,19 @@ class GetEntityUseCaseGenerator extends AbstractUseCaseGenerator
             ->withEntity(
                 $fileObjects[EntityFileObjectType::BUSINESS_RULES_ENTITY]
             )
-            ->withEntityGateway($fileObjects[EntityFileObjectType::BUSINESS_RULES_ENTITY_GATEWAY])
-            ->withGetEntityUseCase($fileObjects[UseCaseFileObjectType::BUSINESS_RULES_USE_CASE])
-            ->withGetEntityUseCaseRequest($fileObjects[UseCaseRequestFileObjectType::BUSINESS_RULES_USE_CASE_REQUEST])
+            ->withEntityDetailResponse(
+                $fileObjects[UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE]
+            )
             ->withEntityDetailResponseAssembler(
                 $fileObjects[UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE_ASSEMBLER]
             )
-            ->withEntityResponse($fileObjects[UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE])
+            ->withEntityGateway($fileObjects[EntityFileObjectType::BUSINESS_RULES_ENTITY_GATEWAY])
             ->withEntityNotFoundException(
                 $fileObjects[EntityFileObjectType::BUSINESS_RULES_ENTITY_NOT_FOUND_EXCEPTION]
             )
+            ->withEntityResponse($fileObjects[UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE])
+            ->withGetEntityUseCase($fileObjects[UseCaseFileObjectType::BUSINESS_RULES_USE_CASE])
+            ->withGetEntityUseCaseRequest($fileObjects[UseCaseRequestFileObjectType::BUSINESS_RULES_USE_CASE_REQUEST])
             ->build();
     }
 

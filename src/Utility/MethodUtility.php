@@ -79,14 +79,6 @@ class MethodUtility
     }
 
     /**
-     * @param MethodObject[]
-     */
-    public static function getMethodName(array $methods): string
-    {
-        return array_shift($methods)->getName();
-    }
-
-    /**
      * @return string|null
      */
     public static function createArgumentNameFromMethod(string $method)

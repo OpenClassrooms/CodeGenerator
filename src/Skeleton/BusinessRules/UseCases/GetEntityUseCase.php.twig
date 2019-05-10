@@ -5,6 +5,7 @@ namespace {{ skeletonModel.namespace }};
 use {{ skeletonModel.functionalEntityClassName }};
 use {{ skeletonModel.functionalEntityGatewayClassName }};
 use {{ skeletonModel.getEntityUseCaseRequestClassName }};
+use {{ skeletonModel.functionalEntityDetailResponseClassName }};
 use {{ skeletonModel.functionalEntityDetailResponseAssemblerClassName }};
 use {{ skeletonModel.functionalEntityResponseClassName }};
 use {{ skeletonModel.useCaseClassName }};
@@ -28,13 +29,11 @@ class {{ skeletonModel.shortName }} implements UseCase
     /**
      * @param {{ skeletonModel.getEntityUseCaseRequestShortName }} $useCaseRequest
      *
-     * @return {{ skeletonModel.functionalEntityResponseShortName }}
-     *
      * @throws \{{ skeletonModel.functionalEntityNotFoundExceptionClassName }}
      */
-    public function execute(UseCaseRequest $useCaseRequest)
+    public function execute(UseCaseRequest $useCaseRequest): {{ skeletonModel.functionalEntityDetailResponseShortName }}
     {
-        ${{ skeletonModel.functionalEntityArgument }} = $this->get{{ skeletonModel.functionalEntityShortName }}($useCaseRequest->{{ skeletonModel.getEntityUseCaseRequestMethod }}());
+        ${{ skeletonModel.functionalEntityArgument }} = $this->get{{ skeletonModel.functionalEntityShortName }}($useCaseRequest->{{ skeletonModel.getEntityUseCaseRequestAccessor }}());
 
         return $this->buildResponse(${{ skeletonModel.functionalEntityArgument }});
     }
@@ -47,7 +46,7 @@ class {{ skeletonModel.shortName }} implements UseCase
         return $this->gateway->find(${{ skeletonModel.getEntityUseCaseRequestArgument }});
     }
 
-    private function buildResponse({{ skeletonModel.functionalEntityShortName }} ${{ skeletonModel.functionalEntityArgument }}): FunctionalEntityResponse
+    private function buildResponse({{ skeletonModel.functionalEntityShortName }} ${{ skeletonModel.functionalEntityArgument }}): {{ skeletonModel.functionalEntityDetailResponseShortName }}
     {
         return $this->responseAssembler->create(${{ skeletonModel.functionalEntityArgument }});
     }

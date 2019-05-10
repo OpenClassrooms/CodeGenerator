@@ -6,6 +6,6 @@ namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gate
 /**
  * @author authorStub <author.stub@example.com>
  */
-class FunctionalEntityNotFoundException
+class FunctionalEntityNotFoundException extends \Exception
 {
 }
