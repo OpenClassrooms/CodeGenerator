@@ -35,7 +35,7 @@ abstract class ViewModelDetailStubSkeletonModel extends AbstractSkeletonModel
      */
     public $parentShortName;
 
-    public $templatePath = 'tests/Doubles/Api/ViewModels/ViewModelDetailStub.php.twig';
+    public $templatePath = 'Tests/Doubles/Api/ViewModels/ViewModelDetailStub.php.twig';
 
     /**
      * @var string

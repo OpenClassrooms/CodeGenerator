@@ -13,7 +13,7 @@ class CustomGeneratorTestFileObjectStub2 extends FileObject
 
     public function __construct()
     {
-        $this->content = __DIR__ . '/../../../Fixtures/Classes/tests/Generator/GenerateGenerator/BuilderPattern/CustomGeneratorTest.php';
+        $this->content = __DIR__ . '/../../../Fixtures/Classes/Tests/Generator/GenerateGenerator/BuilderPattern/CustomGeneratorTest.php';
         $this->className = self::CLASS_NAME;
     }
 }

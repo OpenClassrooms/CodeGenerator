@@ -17,7 +17,7 @@ abstract class ViewModelDetailTestCaseSkeletonModel extends AbstractSkeletonMode
     /**
      * @var string
      */
-    public $templatePath = 'tests/Doubles/Api/ViewModels/ViewModelDetailTestCase.php.twig';
+    public $templatePath = 'Tests/Doubles/Api/ViewModels/ViewModelDetailTestCase.php.twig';
 
     /**
      * @var string

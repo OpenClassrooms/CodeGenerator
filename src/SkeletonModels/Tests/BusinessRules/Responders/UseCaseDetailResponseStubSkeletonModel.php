@@ -9,5 +9,5 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
  */
 abstract class UseCaseDetailResponseStubSkeletonModel extends AbstractSkeletonModel
 {
-    public $templatePath = 'tests/Doubles/BusinessRules/Responders/UseCaseDetailResponseStub.php.twig';
+    public $templatePath = 'Tests/Doubles/BusinessRules/Responders/UseCaseDetailResponseStub.php.twig';
 }

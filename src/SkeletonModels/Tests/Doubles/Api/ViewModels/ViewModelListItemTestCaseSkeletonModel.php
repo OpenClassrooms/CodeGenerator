@@ -12,7 +12,7 @@ abstract class ViewModelListItemTestCaseSkeletonModel extends AbstractSkeletonMo
     /**
      * @var string
      */
-    public $templatePath = 'tests/Doubles/Api/ViewModels/ViewModelListItemTestCase.php.twig';
+    public $templatePath = 'Tests/Doubles/Api/ViewModels/ViewModelListItemTestCase.php.twig';
 
     /**
      * @var string

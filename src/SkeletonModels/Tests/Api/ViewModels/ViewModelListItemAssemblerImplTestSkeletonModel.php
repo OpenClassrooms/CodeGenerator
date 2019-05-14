@@ -10,7 +10,7 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
  */
 abstract class ViewModelListItemAssemblerImplTestSkeletonModel extends AbstractSkeletonModel
 {
-    public $templatePath = 'tests/Api/ViewModels/Impl/ViewModelListItemAssemblerImplTest.php.twig';
+    public $templatePath = 'Tests/Api/ViewModels/Impl/ViewModelListItemAssemblerImplTest.php.twig';
 
     /**
      * @var string

@@ -12,8 +12,8 @@ use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityResponse;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\DTO\Response\FunctionalEntityListItemResponseDTO;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\DTO\Response\FunctionalEntityResponseDTO;
-use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\tests\Doubles\Api\ViewModels\Domain\SubDomain\FunctionalEntityTestCase;
-use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\tests\Doubles\BusinessRules\Entities\Domain\SubDomain\FunctionalEntityStub1;
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\Api\ViewModels\Domain\SubDomain\FunctionalEntityTestCase;
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\BusinessRules\Entities\Domain\SubDomain\FunctionalEntityStub1;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -108,13 +108,13 @@ class FileObjectUtilityTest extends TestCase
             ],
             [
                 FunctionalEntityStub1::class,
-                'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\tests\Doubles\\',
+                'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\\',
                 'Domain\SubDomain',
                 'FunctionalEntity',
             ],
             [
                 FunctionalEntityTestCase::class,
-                'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\tests\Doubles\\',
+                'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\\',
                 'Domain\SubDomain',
                 'FunctionalEntity',
             ],

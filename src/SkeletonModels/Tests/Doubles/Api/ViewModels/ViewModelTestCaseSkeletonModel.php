@@ -27,5 +27,5 @@ class ViewModelTestCaseSkeletonModel extends AbstractSkeletonModel
     /**
      * @var string
      */
-    public $templatePath = 'tests/Doubles/Api/ViewModels/ViewModelTestCase.php.twig';
+    public $templatePath = 'Tests/Doubles/Api/ViewModels/ViewModelTestCase.php.twig';
 }

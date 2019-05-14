@@ -9,11 +9,11 @@ use OpenClassrooms\CodeGenerator\Entities\FileObject;
  */
 class UseCaseListItemResponseStubFileObjectStub1 extends FileObject
 {
-    const CLASS_NAME = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\tests\Doubles\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityListItemResponseStub1';
+    const CLASS_NAME = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityListItemResponseStub1';
 
     public function __construct()
     {
-        $this->content = __DIR__ . '/../../../../../../Fixtures/Classes/tests/Doubles/BusinessRules/Responders/Domain/SubDomain/FunctionalEntityListItemResponseStub1.php';
+        $this->content = __DIR__ . '/../../../../../../Fixtures/Classes/Tests/Doubles/BusinessRules/Responders/Domain/SubDomain/FunctionalEntityListItemResponseStub1.php';
         $this->className = self::CLASS_NAME;
         $this->fields = [
             new UseCaseListItemResponseStubFieldObjectStub1(),

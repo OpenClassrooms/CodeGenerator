@@ -27,7 +27,7 @@ final class FixturesConfig
 
     const PAGINATION = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gateways\Pagination';
 
-    const STUB_NAMESPACE = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\tests\Doubles\\';
+    const STUB_NAMESPACE = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\\';
 
     const STUB_NAMESPACE_SELF_GENERATOR = 'OpenClassrooms\CodeGenerator\Tests\Doubles\\';
 

@@ -15,7 +15,7 @@ abstract class GetEntityUseCaseTestSkeletonModel extends AbstractSkeletonModel
 
     public $entityShortName;
 
-    public $entityShortNameLcFirst;
+    public $entityShortNameArgument;
 
     public $entityStubClassName;
 

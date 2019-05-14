@@ -13,7 +13,7 @@ class CustomSkeletonModelBuilderMockFileObjectStub1 extends FileObject
 
     public function __construct()
     {
-        $this->content = __DIR__ . '/../../../Fixtures/Classes/tests/Doubles/SkeletonModels/GenerateGenerator/CustomSkeletonModelBuilderMock.php';
+        $this->content = __DIR__ . '/../../../Fixtures/Classes/Tests/Doubles/SkeletonModels/GenerateGenerator/CustomSkeletonModelBuilderMock.php';
         $this->className = self::CLASS_NAME;
     }
 }

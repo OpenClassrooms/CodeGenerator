@@ -9,11 +9,11 @@ use OpenClassrooms\CodeGenerator\Entities\FileObject;
  */
 class EntityStubFileObjectStub1 extends FileObject
 {
-    const CLASS_NAME = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\tests\Doubles\BusinessRules\Entities\Domain\SubDomain\FunctionalEntityStub1';
+    const CLASS_NAME = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\BusinessRules\Entities\Domain\SubDomain\FunctionalEntityStub1';
 
     public function __construct()
     {
-        $this->content = __DIR__ . '/../../../../../../Fixtures/Classes/tests/Doubles/BusinessRules/Entities/Domain/SubDomain/FunctionalEntityStub1.php';
+        $this->content = __DIR__ . '/../../../../../../Fixtures/Classes/Tests/Doubles/BusinessRules/Entities/Domain/SubDomain/FunctionalEntityStub1.php';
         $this->className = self::CLASS_NAME;
         $this->fields = [
             new EntityStubFieldObjectStub2(),

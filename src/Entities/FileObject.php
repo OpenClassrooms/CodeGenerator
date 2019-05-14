@@ -126,7 +126,7 @@ class FileObject
     {
         $classname = str_replace('OpenClassrooms\CodeGenerator\\', '', $this->getClassName());
         if ($this->isTest()) {
-            return str_replace('\\', '/', 'tests/' . $classname . '.php');
+            return str_replace('\\', '/', 'Tests/' . $classname . '.php');
         }
         if ($this->isTemplate()) {
             return str_replace('\\', '/', 'src/' . $classname);

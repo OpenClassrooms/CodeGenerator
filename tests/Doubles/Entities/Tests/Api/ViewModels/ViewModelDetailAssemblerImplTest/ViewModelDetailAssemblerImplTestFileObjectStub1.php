@@ -13,7 +13,7 @@ class ViewModelDetailAssemblerImplTestFileObjectStub1 extends FileObject
 
     public function __construct()
     {
-        $this->content = __DIR__ . '/../../../../../../Fixtures/Classes/tests/Api/ViewModels/Domain/SubDomain/Impl/FunctionalEntityDetailAssemblerImplTest.php';
+        $this->content = __DIR__ . '/../../../../../../Fixtures/Classes/Tests/Api/ViewModels/Domain/SubDomain/Impl/FunctionalEntityDetailAssemblerImplTest.php';
         $this->className = self::CLASS_NAME;
     }
 }

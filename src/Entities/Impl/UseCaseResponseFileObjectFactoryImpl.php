@@ -45,6 +45,10 @@ class UseCaseResponseFileObjectFactoryImpl extends AbstractFileObjectFactory imp
                 return new FileObject(
                     $this->stubNamespace . 'BusinessRules\Responders\\' . $domain . '\\' . $entity . 'ListItemResponseStub1'
                 );
+            case UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE_STUB2:
+                return new FileObject(
+                    $this->stubNamespace . 'BusinessRules\Responders\\' . $domain . '\\' . $entity . 'ListItemResponseStub2'
+                );
             case UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE_TEST_CASE:
                 return new FileObject(
                     $this->stubNamespace . 'BusinessRules\Responders\\' . $domain . '\\' . $entity . 'ListItemResponseTestCase'

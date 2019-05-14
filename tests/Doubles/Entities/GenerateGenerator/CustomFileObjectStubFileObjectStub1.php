@@ -13,7 +13,7 @@ class CustomFileObjectStubFileObjectStub1 extends FileObject
 
     public function __construct()
     {
-        $this->content = __DIR__ . '/../../../Fixtures/Classes/tests/Doubles/Entities/GenerateGenerator/CustomFileObjectStub1.php';
+        $this->content = __DIR__ . '/../../../Fixtures/Classes/Tests/Doubles/Entities/GenerateGenerator/CustomFileObjectStub1.php';
         $this->className = self::CLASS_NAME;
     }
 }

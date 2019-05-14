@@ -35,5 +35,5 @@ abstract class EntityStubSkeletonModel extends AbstractSkeletonModel
      */
     public $parentShortName;
 
-    public $templatePath = 'tests/Doubles/BusinessRules/Entities/EntityStub.php.twig';
+    public $templatePath = 'Tests/Doubles/BusinessRules/Entities/EntityStub.php.twig';
 }

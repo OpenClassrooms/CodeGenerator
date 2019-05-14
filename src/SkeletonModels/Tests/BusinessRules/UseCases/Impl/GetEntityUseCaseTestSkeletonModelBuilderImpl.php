@@ -134,7 +134,7 @@ class GetEntityUseCaseTestSkeletonModelBuilderImpl implements GetEntityUseCaseTe
     public function build(FileObject $fileObject): GetEntityUseCaseTestSkeletonModel
     {
         $this->skeletonModel->entityShortName = $fileObject->getEntity();
-        $this->skeletonModel->entityShortNameLcFirst = lcfirst($fileObject->getEntity());
+        $this->skeletonModel->entityShortNameArgument = lcfirst($fileObject->getEntity());
 
         return $this->skeletonModel;
     }

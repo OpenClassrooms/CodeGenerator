@@ -20,7 +20,7 @@ class ViewModelFileObjectFactoryImplTest extends TestCase
 
     const DIR_NAME = 'Api\\';
 
-    const STUB_NAMESPACE = self::BASE_NAMESPACE . 'tests\Doubles\\';
+    const STUB_NAMESPACE = self::BASE_NAMESPACE . 'Tests\Doubles\\';
 
     const TEST_BASE_NAMESPACE = self::BASE_NAMESPACE . 'Tests\\';
 
