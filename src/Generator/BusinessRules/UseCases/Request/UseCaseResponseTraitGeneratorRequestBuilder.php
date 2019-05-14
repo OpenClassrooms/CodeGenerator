@@ -18,7 +18,7 @@ interface UseCaseResponseTraitGeneratorRequestBuilder extends GeneratorRequest
     ): UseCaseResponseTraitGeneratorRequestBuilder;
 
     /**
-     * @param string[]
+     * @param string[] $fields
      */
     public function withFields(
         array $fields

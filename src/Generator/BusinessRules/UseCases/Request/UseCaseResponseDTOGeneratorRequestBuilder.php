@@ -18,7 +18,7 @@ interface UseCaseResponseDTOGeneratorRequestBuilder extends GeneratorRequest
     ): UseCaseResponseDTOGeneratorRequestBuilder;
 
     /**
-     * @param string[]
+     * @param string[] $fields
      */
     public function withFields(
         array $fields

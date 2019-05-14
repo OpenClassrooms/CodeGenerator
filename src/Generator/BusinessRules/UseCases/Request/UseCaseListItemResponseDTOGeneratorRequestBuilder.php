@@ -18,9 +18,9 @@ interface UseCaseListItemResponseDTOGeneratorRequestBuilder extends GeneratorReq
     ): UseCaseListItemResponseDTOGeneratorRequestBuilder;
 
     /**
-     * @param string[] $entity
+     * @param string[] $fields
      */
     public function withFields(
-        array $entity
+        array $fields
     ): UseCaseListItemResponseDTOGeneratorRequestBuilder;
 }
