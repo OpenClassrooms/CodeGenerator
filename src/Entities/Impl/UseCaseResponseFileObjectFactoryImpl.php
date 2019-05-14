@@ -83,7 +83,7 @@ class UseCaseResponseFileObjectFactoryImpl extends AbstractFileObjectFactory imp
                 );
             case UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE_BUILDER_IMPL:
                 return new FileObject(
-                    $this->baseNamespace . 'BusinessRules\UseCases\\' . $domain . '\DTO\Response\\' . $entity . 'DetailResponseBuilderrImpl'
+                    $this->baseNamespace . 'BusinessRules\UseCases\\' . $domain . '\DTO\Response\\' . $entity . 'DetailResponseBuilderImpl'
                 );
             case UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE_BUILDER_MOCK:
                 return new FileObject(
