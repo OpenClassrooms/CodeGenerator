@@ -1,0 +1,91 @@
+{% include "Header.php.twig" %}
+
+namespace {{ skeletonModel.namespace }};
+
+use {{ skeletonModel.getEntitiesUseCaseRequestClassName }};
+use {{ skeletonModel.getEntitiesUseCaseRequestBuilderImplClassName }};
+use {{ skeletonModel.getEntitiesUseCaseRequestDTOClassName }};
+use {{ skeletonModel.getEntitiesUseCaseClassName }};
+use {{ skeletonModel.entityStub1ClassName }};
+use {{ skeletonModel.entityStub2ClassName }};
+use {{ skeletonModel.inMemoryEntityGatewayClassName }};
+use {{ skeletonModel.useCaseListItemResponseAssemblerMockClassName }};
+use {{ skeletonModel.useCaseListItemResponseStub1ClassName }};
+use {{ skeletonModel.useCaseListItemResponseStub2ClassName }};
+use {{ skeletonModel.useCaseListItemResponseTestCaseClassName }};
+use PHPUnit\Framework\TestCase;
+
+/**
+ * @author {{ author }} <{{ authorEmail }}>
+ */
+class {{skeletonModel.shortName }} extends TestCase
+{
+    use {{ skeletonModel.useCaseListItemResponseTestCaseShortName }};
+
+    /**
+     * @var {{skeletonModel.getEntitiesUseCaseRequestDTOShortName }}
+     */
+    private $request;
+
+    /**
+     * @var {{skeletonModel.getEntitiesUseCaseShortName }}
+     */
+    private $useCase;
+
+    /**
+     * @test
+     */
+    public function without{{ skeletonModel.entitiesShortName }}ReturnNothing()
+    {
+        {{ skeletonModel.inMemoryEntityGatewayShortName }}::${{ skeletonModel.entitiesArgument }} = [];
+        $response = $this->useCase->execute($this->request);
+        $this->assertSame(0, $response->getTotalItems());
+        $this->assertEmpty($response->getItems());
+    }
+
+    /**
+     * @test
+     */
+    public function get{{ skeletonModel.entitiesShortName }}ShouldReturnResponse()
+    {
+        {{ skeletonModel.inMemoryEntityGatewayShortName }}::${{ skeletonModel.entitiesArgument }} = [
+            {{ skeletonModel.entityStub1ShortName }}::ID => new {{ skeletonModel.entityStub1ShortName }}(),
+            {{ skeletonModel.entityStub2ShortName }}::ID => new {{ skeletonModel.entityStub2ShortName }}(),
+        ];
+        $response = $this->useCase->execute($this->request);
+        $this->assertSame(2, $response->getTotalItems());
+        $this->assertCount(2, $response->getItems());
+
+        $this->assert{{ skeletonModel.useCaseListItemResponsesShortName }}(
+            [new {{ skeletonModel.useCaseListItemResponseStub1ShortName }}(), new {{ skeletonModel.useCaseListItemResponseStub2ShortName }}()],
+            $response->getItems()
+        );
+
+        $this->fail("TODO: configure stub");
+    }
+
+    protected function setup()
+    {
+        $this->useCase = new {{skeletonModel.getEntitiesUseCaseShortName }}();
+        $this->useCase->set{{ skeletonModel.entityGatewayShortName }}(
+            new {{ skeletonModel.inMemoryEntityGatewayShortName }}([{{ skeletonModel.entityStub1ShortName }}::ID => new {{ skeletonModel.entityStub1ShortName }}()])
+        );
+        $this->useCase->set{{ skeletonModel.useCaseListItemResponseAssemblerShortName }}(
+            new {{ skeletonModel.useCaseListItemResponseAssemblerMockShortName }}()
+        );
+        $this->request = $this->buildRequest();
+    }
+
+    private function buildRequest(): {{skeletonModel.getEntitiesUseCaseRequestShortName }}
+    {
+        $builder = new {{skeletonModel.getEntitiesUseCaseRequestBuilderImplShortName }}();
+
+        return $builder
+            ->create()
+            ->withFilters([])
+            ->withItemsPerPage()
+            ->withPage()
+            ->withSort([])
+            ->build();
+    }
+}
