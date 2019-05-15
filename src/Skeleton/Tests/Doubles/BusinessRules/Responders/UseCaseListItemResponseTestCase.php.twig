@@ -1,0 +1,36 @@
+{% include "Header.php.twig" %}
+
+namespace {{ skeletonModel.namespace }};
+
+use {{ skeletonModel.useCaseListItemResponseClassName }};
+use PHPUnit\Framework\Assert;
+
+/**
+ * @author {{ author }} <{{ authorEmail }}>
+ */
+trait {{ skeletonModel.shortName }}
+{
+    use {{ skeletonModel.useCaseResponseTestCaseShortName }};
+
+    /**
+     * @param {{ skeletonModel.useCaseListItemResponseShortName }}[] $expected
+     * @param {{ skeletonModel.useCaseListItemResponseShortName }}[] $actual
+     */
+    protected function assert{{ skeletonModel.useCaseListItemResponses }}(array $expected, array $actual): void
+    {
+        Assert::assertCount(count($expected), $actual);
+        foreach ($expected as $key => $item) {
+            $this->assert{{ skeletonModel.useCaseListItemResponseShortName }}($item, $actual[$key]);
+        }
+    }
+
+    private function assert{{ skeletonModel.useCaseListItemResponseShortName }}(
+        {{ skeletonModel.useCaseListItemResponseShortName }} $expected,
+        {{ skeletonModel.useCaseListItemResponseShortName }} $actual
+    ): void {
+        $this->assert{{ skeletonModel.useCaseResponseShortName }}($expected, $actual);
+{% for method in skeletonModel.useCaseListItemResponseMethods %}
+        Assert::assertSame($expected->{{ method.name }}(), $actual->{{ method.name }}());
+{% endfor %}
+    }
+}
