@@ -29,7 +29,7 @@ trait {{ skeletonModel.shortName }}
         {{ skeletonModel.useCaseListItemResponseShortName }} $actual
     ): void {
         $this->assert{{ skeletonModel.useCaseResponseShortName }}($expected, $actual);
-{% for method in skeletonModel.useCaseListItemResponseMethods %}
+{% for method in skeletonModel.useCaseListItemResponseMethods | sortNameByAlpha %}
         Assert::assertSame($expected->{{ method.name }}(), $actual->{{ method.name }}());
 {% endfor %}
     }

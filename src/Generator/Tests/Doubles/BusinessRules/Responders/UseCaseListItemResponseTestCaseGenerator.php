@@ -50,6 +50,8 @@ class UseCaseListItemResponseTestCaseGenerator extends AbstractUseCaseGenerator
             $useCaseListItemResponseFileObject
         );
 
+        $useCaseListItemResponseFileObject->setMethods($this->getSelectedAccessors($entityClassName, $fields));
+
         $useCaseListItemResponseTestCaseFileObject->setContent(
             $this->generateContent(
                 $useCaseListItemResponseFileObject,

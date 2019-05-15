@@ -15,9 +15,9 @@ trait FunctionalEntityResponseTestCase
         FunctionalEntityResponse $expected,
         FunctionalEntityResponse $actual
     ): void {
-        Assert::assertSame($expected->getId(), $actual->getId());
         Assert::assertSame($expected->getField1(), $actual->getField1());
         Assert::assertSame($expected->getField2(), $actual->getField2());
+        Assert::assertSame($expected->getId(), $actual->getId());
         Assert::assertSame($expected->isField3(), $actual->isField3());
     }
 }

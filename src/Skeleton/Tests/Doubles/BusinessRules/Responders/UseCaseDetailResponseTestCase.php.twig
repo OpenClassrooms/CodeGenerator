@@ -18,7 +18,7 @@ trait {{ skeletonModel.shortName }}
     ): void
     {
         $this->assert{{ skeletonModel.useCaseResponseShortName }}($expected, $actual);
-{% for method in skeletonModel.useCaseDetailResponseMethods %}
+{% for method in skeletonModel.useCaseDetailResponseMethods | sortNameByAlpha %}
         Assert::assertSame($expected->{{ method.name }}(), $actual->{{ method.name }}());
 {% endfor %}
     }
