@@ -15,15 +15,9 @@ abstract class GetEntitiesUseCaseTestSkeletonModel extends AbstractSkeletonModel
 
     public $entityGatewayShortName;
 
-    public $useCaseListItemResponseTestCaseClassName;
+    public $entityStubClassNames = [];
 
-    public $entityStub1ClassName;
-
-    public $entityStub1ShortName;
-
-    public $entityStub2ClassName;
-
-    public $entityStub2ShortName;
+    public $entityStubShortNames = [];
 
     public $getEntitiesUseCaseClassName;
 
@@ -53,13 +47,11 @@ abstract class GetEntitiesUseCaseTestSkeletonModel extends AbstractSkeletonModel
 
     public $useCaseListItemResponseAssemblerShortName;
 
-    public $useCaseListItemResponseStub1ClassName;
+    public $useCaseListItemResponseStubClassNames = [];
 
-    public $useCaseListItemResponseStub1ShortName;
+    public $useCaseListItemResponseStubShortNames = [];
 
-    public $useCaseListItemResponseStub2ClassName;
-
-    public $useCaseListItemResponseStub2ShortName;
+    public $useCaseListItemResponseTestCaseClassName;
 
     public $useCaseListItemResponseTestCaseShortName;
 

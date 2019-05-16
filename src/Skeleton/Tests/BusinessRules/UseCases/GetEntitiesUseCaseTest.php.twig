@@ -6,12 +6,14 @@ use {{ skeletonModel.getEntitiesUseCaseRequestClassName }};
 use {{ skeletonModel.getEntitiesUseCaseRequestBuilderImplClassName }};
 use {{ skeletonModel.getEntitiesUseCaseRequestDTOClassName }};
 use {{ skeletonModel.getEntitiesUseCaseClassName }};
-use {{ skeletonModel.entityStub1ClassName }};
-use {{ skeletonModel.entityStub2ClassName }};
+{% for entityStubClassName in skeletonModel.entityStubClassNames %}
+use {{ entityStubClassName }};
+{% endfor %}
 use {{ skeletonModel.inMemoryEntityGatewayClassName }};
 use {{ skeletonModel.useCaseListItemResponseAssemblerMockClassName }};
-use {{ skeletonModel.useCaseListItemResponseStub1ClassName }};
-use {{ skeletonModel.useCaseListItemResponseStub2ClassName }};
+{% for useCaseListItemResponseStubClassName in skeletonModel.useCaseListItemResponseStubClassNames %}
+use {{ useCaseListItemResponseStubClassName }};
+{% endfor %}
 use {{ skeletonModel.useCaseListItemResponseTestCaseClassName }};
 use PHPUnit\Framework\TestCase;
 
@@ -49,15 +51,20 @@ class {{skeletonModel.shortName }} extends TestCase
     public function get{{ skeletonModel.entitiesShortName }}ShouldReturnResponse()
     {
         {{ skeletonModel.inMemoryEntityGatewayShortName }}::${{ skeletonModel.entitiesArgument }} = [
-            {{ skeletonModel.entityStub1ShortName }}::ID => new {{ skeletonModel.entityStub1ShortName }}(),
-            {{ skeletonModel.entityStub2ShortName }}::ID => new {{ skeletonModel.entityStub2ShortName }}(),
+{% for entityStubShortName in skeletonModel.entityStubShortNames %}
+            {{ entityStubShortName }}::ID => new {{ entityStubShortName }}(),
+{% endfor %}
         ];
         $response = $this->useCase->execute($this->request);
         $this->assertSame(2, $response->getTotalItems());
         $this->assertCount(2, $response->getItems());
 
         $this->assert{{ skeletonModel.useCaseListItemResponsesShortName }}(
-            [new {{ skeletonModel.useCaseListItemResponseStub1ShortName }}(), new {{ skeletonModel.useCaseListItemResponseStub2ShortName }}()],
+            [
+{% for useCaseListItemResponseStubShortName in skeletonModel.useCaseListItemResponseStubShortNames %}
+                new {{ useCaseListItemResponseStubShortName }}(),
+{% endfor %}
+            ],
             $response->getItems()
         );
 
@@ -68,7 +75,7 @@ class {{skeletonModel.shortName }} extends TestCase
     {
         $this->useCase = new {{skeletonModel.getEntitiesUseCaseShortName }}();
         $this->useCase->set{{ skeletonModel.entityGatewayShortName }}(
-            new {{ skeletonModel.inMemoryEntityGatewayShortName }}([{{ skeletonModel.entityStub1ShortName }}::ID => new {{ skeletonModel.entityStub1ShortName }}()])
+            new {{ skeletonModel.inMemoryEntityGatewayShortName }}([{{ skeletonModel.entityStubShortNames | first }}::ID => new {{ skeletonModel.entityStubShortNames | first }}()])
         );
         $this->useCase->set{{ skeletonModel.useCaseListItemResponseAssemblerShortName }}(
             new {{ skeletonModel.useCaseListItemResponseAssemblerMockShortName }}()

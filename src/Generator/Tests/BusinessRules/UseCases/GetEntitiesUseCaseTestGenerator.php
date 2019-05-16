@@ -7,6 +7,7 @@ use OpenClassrooms\CodeGenerator\Entities\FileObject;
 use OpenClassrooms\CodeGenerator\Entities\UseCaseFileObjectType;
 use OpenClassrooms\CodeGenerator\Entities\UseCaseRequestFileObjectType;
 use OpenClassrooms\CodeGenerator\Entities\UseCaseResponseFileObjectType;
+use OpenClassrooms\CodeGenerator\Gateways\FileObject\StubGateway;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\AbstractUseCaseGenerator;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\Request\GetEntitiesUseCaseTestGeneratorRequest;
@@ -19,10 +20,17 @@ use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
  */
 class GetEntitiesUseCaseTestGenerator extends AbstractUseCaseGenerator
 {
+    const SUFFIX = '2';
+
     /**
      * @var GetEntitiesUseCaseTestSkeletonModelBuilder
      */
     private $getEntitiesUseCaseTestSkeletonModelBuilder;
+
+    /**
+     * @var StubGateway
+     */
+    private $stubGateway;
 
     /**
      * @param GetEntitiesUseCaseTestGeneratorRequest $generatorRequest
@@ -34,6 +42,7 @@ class GetEntitiesUseCaseTestGenerator extends AbstractUseCaseGenerator
         );
 
         $this->insertFileObject($getEntitiesUseCaseTestFileObject);
+        $this->stubGateway->clear();
 
         return $getEntitiesUseCaseTestFileObject;
     }
@@ -42,8 +51,8 @@ class GetEntitiesUseCaseTestGenerator extends AbstractUseCaseGenerator
     {
         $entityFileObject = $this->createEntityFileObject($entityClassName);
         $entityGatewayFileObject = $this->createEntityGatewayFileObject($entityFileObject);
-        $entityStub1FileObject = $this->createEntityStub1FileObject($entityFileObject);
-        $entityStub2FileObject = $this->createEntityStub2FileObject($entityFileObject);
+        $entityStubFileObjects[] = $this->createEntityStubFileObject($entityFileObject);
+        $entityStubFileObjects[] = $this->createEntityStubFileObject($entityFileObject);
         $getEntitiesUseCaseFileObject = $this->createGetEntitiesUseCaseFileObject($entityFileObject);
         $getEntitiesUseCaseRequestFileObject = $this->createGetEntitiesUseCaseRequestFileObject($entityFileObject);
         $getEntitiesUseCaseRequestBuilderImplFileObject = $this->createGetEntitiesUseCaseRequestBuilderImplFileObject(
@@ -61,10 +70,10 @@ class GetEntitiesUseCaseTestGenerator extends AbstractUseCaseGenerator
         $useCaseListItemResponseAssemblerMockFileObject = $this->createUseCaseListItemResponseAssemblerMockFileObject(
             $entityFileObject
         );
-        $useCaseListItemResponseStub1FileObject = $this->createUseCaseListItemResponseStub1FileObject(
+        $useCaseListItemResponseStubFileObjects[] = $this->createUseCaseListItemResponseStubFileObject(
             $entityFileObject
         );
-        $useCaseListItemResponseStub2FileObject = $this->createUseCaseListItemResponseStub2FileObject(
+        $useCaseListItemResponseStubFileObjects[] = $this->createUseCaseListItemResponseStubFileObject(
             $entityFileObject
         );
         $useCaseListItemResponseTestCaseFileObject = $this->createUseCaseListItemResponseTestCaseFileObject(
@@ -76,8 +85,7 @@ class GetEntitiesUseCaseTestGenerator extends AbstractUseCaseGenerator
                 [
                     EntityFileObjectType::BUSINESS_RULES_ENTITY                                              => $entityFileObject,
                     EntityFileObjectType::BUSINESS_RULES_ENTITY_GATEWAY                                      => $entityGatewayFileObject,
-                    EntityFileObjectType::BUSINESS_RULES_ENTITY_STUB                                         => $entityStub1FileObject,
-                    EntityFileObjectType::BUSINESS_RULES_ENTITY_STUB2                                        => $entityStub2FileObject,
+                    EntityFileObjectType::BUSINESS_RULES_ENTITY_STUB                                         => $entityStubFileObjects,
                     UseCaseFileObjectType::BUSINESS_RULES_GET_ENTITIES_USE_CASE                              => $getEntitiesUseCaseFileObject,
                     UseCaseRequestFileObjectType::BUSINESS_RULES_GET_ENTITIES_USE_CASE_REQUEST               => $getEntitiesUseCaseRequestFileObject,
                     UseCaseRequestFileObjectType::BUSINESS_RULES_GET_ENTITIES_USE_CASE_REQUEST_BUILDER_IMPL  => $getEntitiesUseCaseRequestBuilderImplFileObject,
@@ -87,8 +95,7 @@ class GetEntitiesUseCaseTestGenerator extends AbstractUseCaseGenerator
                     UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE                => $useCaseListItemResponseFileObject,
                     UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE_ASSEMBLER      => $useCaseListItemResponseAssemblerFileObject,
                     UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE_ASSEMBLER_MOCK => $useCaseListItemResponseAssemblerMockFileObject,
-                    UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE_STUB           => $useCaseListItemResponseStub1FileObject,
-                    UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE_STUB2          => $useCaseListItemResponseStub2FileObject,
+                    UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE_STUB           => $useCaseListItemResponseStubFileObjects,
                     UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE_TEST_CASE      => $useCaseListItemResponseTestCaseFileObject,
                 ]
             )
@@ -120,22 +127,17 @@ class GetEntitiesUseCaseTestGenerator extends AbstractUseCaseGenerator
         );
     }
 
-    private function createEntityStub1FileObject(FileObject $entityFileObject): FileObject
+    private function createEntityStubFileObject(FileObject $entityFileObject): FileObject
     {
-        return $this->entityFileObjectFactory->create(
+        $fileObject = $this->entityFileObjectFactory->create(
             EntityFileObjectType::BUSINESS_RULES_ENTITY_STUB,
             $entityFileObject->getDomain(),
             $entityFileObject->getEntity()
         );
-    }
 
-    private function createEntityStub2FileObject(FileObject $entityFileObject): FileObject
-    {
-        return $this->entityFileObjectFactory->create(
-            EntityFileObjectType::BUSINESS_RULES_ENTITY_STUB2,
-            $entityFileObject->getDomain(),
-            $entityFileObject->getEntity()
-        );
+        $this->stubGateway->insert($fileObject);
+
+        return $fileObject;
     }
 
     private function createGetEntitiesUseCaseFileObject(FileObject $entityFileObject): FileObject
@@ -219,22 +221,17 @@ class GetEntitiesUseCaseTestGenerator extends AbstractUseCaseGenerator
         );
     }
 
-    private function createUseCaseListItemResponseStub1FileObject(FileObject $entityFileObject): FileObject
+    private function createUseCaseListItemResponseStubFileObject(FileObject $entityFileObject): FileObject
     {
-        return $this->useCaseResponseFileObjectFactory->create(
+        $fileObject = $this->useCaseResponseFileObjectFactory->create(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE_STUB,
             $entityFileObject->getDomain(),
             $entityFileObject->getEntity()
         );
-    }
 
-    private function createUseCaseListItemResponseStub2FileObject(FileObject $entityFileObject): FileObject
-    {
-        return $this->useCaseResponseFileObjectFactory->create(
-            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE_STUB2,
-            $entityFileObject->getDomain(),
-            $entityFileObject->getEntity()
-        );
+        $this->stubGateway->insert($fileObject);
+
+        return $fileObject;
     }
 
     private function createUseCaseListItemResponseTestCaseFileObject(FileObject $entityFileObject): FileObject
@@ -265,8 +262,7 @@ class GetEntitiesUseCaseTestGenerator extends AbstractUseCaseGenerator
             ->create()
             ->withEntityFileObject($fileObjects[EntityFileObjectType::BUSINESS_RULES_ENTITY])
             ->withEntityGatewayFileObject($fileObjects[EntityFileObjectType::BUSINESS_RULES_ENTITY_GATEWAY])
-            ->withEntityStub1FileObject($fileObjects[EntityFileObjectType::BUSINESS_RULES_ENTITY_STUB])
-            ->withEntityStub2FileObject($fileObjects[EntityFileObjectType::BUSINESS_RULES_ENTITY_STUB2])
+            ->withEntityStubFileObjects($fileObjects[EntityFileObjectType::BUSINESS_RULES_ENTITY_STUB])
             ->withGetEntitiesUseCaseFileObject(
                 $fileObjects[UseCaseFileObjectType::BUSINESS_RULES_GET_ENTITIES_USE_CASE]
             )
@@ -294,11 +290,8 @@ class GetEntitiesUseCaseTestGenerator extends AbstractUseCaseGenerator
             ->withUseCaseListItemResponseAssemblerMockFileObject(
                 $fileObjects[UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE_ASSEMBLER_MOCK]
             )
-            ->withUseCaseListItemResponseStub1FileObject(
+            ->withUseCaseListItemResponseStubFileObjects(
                 $fileObjects[UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE_STUB]
-            )
-            ->withUseCaseListItemResponseStub2FileObject(
-                $fileObjects[UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE_STUB2]
             )
             ->withUseCaseListItemResponseTestCaseFileObject(
                 $fileObjects[UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE_TEST_CASE]
@@ -310,5 +303,10 @@ class GetEntitiesUseCaseTestGenerator extends AbstractUseCaseGenerator
         GetEntitiesUseCaseTestSkeletonModelBuilder $getEntitiesUseCaseTestSkeletonModelBuilder
     ): void {
         $this->getEntitiesUseCaseTestSkeletonModelBuilder = $getEntitiesUseCaseTestSkeletonModelBuilder;
+    }
+
+    public function setStubGateway(StubGateway $stubGateway): void
+    {
+        $this->stubGateway = $stubGateway;
     }
 }

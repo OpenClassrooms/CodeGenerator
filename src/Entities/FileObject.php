@@ -59,24 +59,22 @@ class FileObject
         return $this->content;
     }
 
-    public function setContent(string $content)
+    public function setContent(string $content): void
     {
         $this->content = $content;
-
-        return $this;
     }
 
-    public function getBaseNamespace()
+    public function getBaseNamespace(): string
     {
         return FileObjectUtility::getBaseNamespaceFromClassName($this->className);
     }
 
-    public function getDomain()
+    public function getDomain(): string
     {
         return FileObjectUtility::getDomainFromClassName($this->className);
     }
 
-    public function getEntity()
+    public function getEntity(): string
     {
         return FileObjectUtility::getEntityNameFromClassName($this->className);
     }
@@ -92,7 +90,7 @@ class FileObject
     /**
      * @param FieldObject[]
      */
-    public function setFields(array $fields)
+    public function setFields(array $fields): void
     {
         $this->fields = $fields;
     }
@@ -102,7 +100,7 @@ class FileObject
         return $this->hasBeenWritten;
     }
 
-    public function write()
+    public function write(): void
     {
         $this->hasBeenWritten = true;
     }
@@ -120,6 +118,11 @@ class FileObject
     public function getClassName(): string
     {
         return $this->className;
+    }
+
+    public function setClassName(string $className): void
+    {
+        $this->className = $className;
     }
 
     public function getPath(): string

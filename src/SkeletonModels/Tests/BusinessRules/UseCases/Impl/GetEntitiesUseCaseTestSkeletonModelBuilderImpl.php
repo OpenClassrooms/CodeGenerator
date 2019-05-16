@@ -40,20 +40,16 @@ class GetEntitiesUseCaseTestSkeletonModelBuilderImpl implements GetEntitiesUseCa
         return $this;
     }
 
-    public function withEntityStub1FileObject(
-        FileObject $entityStub1FileObject
+    /**
+     * {@inheritdoc}
+     */
+    public function withEntityStubFileObjects(
+        array $entityStubFileObjects
     ): GetEntitiesUseCaseTestSkeletonModelBuilder {
-        $this->skeletonModel->entityStub1ClassName = $entityStub1FileObject->getClassName();
-        $this->skeletonModel->entityStub1ShortName = $entityStub1FileObject->getShortName();
-
-        return $this;
-    }
-
-    public function withEntityStub2FileObject(
-        FileObject $entityStub2FileObject
-    ): GetEntitiesUseCaseTestSkeletonModelBuilder {
-        $this->skeletonModel->entityStub2ClassName = $entityStub2FileObject->getClassName();
-        $this->skeletonModel->entityStub2ShortName = $entityStub2FileObject->getShortName();
+        foreach ($entityStubFileObjects as $entityStubFileObject) {
+            $this->skeletonModel->entityStubClassNames[] = $entityStubFileObject->getClassName();
+            $this->skeletonModel->entityStubShortNames[] = $entityStubFileObject->getShortName();
+        }
 
         return $this;
     }
@@ -137,24 +133,18 @@ class GetEntitiesUseCaseTestSkeletonModelBuilderImpl implements GetEntitiesUseCa
         return $this;
     }
 
-    public function withUseCaseListItemResponseStub1FileObject(
-        FileObject $useCaseListItemResponseStub1FileObject
+    /**
+     * {@inheritdoc}
+     */
+    public function withUseCaseListItemResponseStubFileObjects(
+        array $useCaseListItemResponseStubFileObjects
     ): GetEntitiesUseCaseTestSkeletonModelBuilder {
-        $this->skeletonModel->useCaseListItemResponseStub1ClassName = $useCaseListItemResponseStub1FileObject->getClassName(
-        );
-        $this->skeletonModel->useCaseListItemResponseStub1ShortName = $useCaseListItemResponseStub1FileObject->getShortName(
-        );
-
-        return $this;
-    }
-
-    public function withUseCaseListItemResponseStub2FileObject(
-        FileObject $useCaseListItemResponseStub2FileObject
-    ): GetEntitiesUseCaseTestSkeletonModelBuilder {
-        $this->skeletonModel->useCaseListItemResponseStub2ClassName = $useCaseListItemResponseStub2FileObject->getClassName(
-        );
-        $this->skeletonModel->useCaseListItemResponseStub2ShortName = $useCaseListItemResponseStub2FileObject->getShortName(
-        );
+        foreach ($useCaseListItemResponseStubFileObjects as $useCaseListItemResponseStubFileObject) {
+            $this->skeletonModel->useCaseListItemResponseStubClassNames[] = $useCaseListItemResponseStubFileObject->getClassName(
+            );
+            $this->skeletonModel->useCaseListItemResponseStubShortNames[] = $useCaseListItemResponseStubFileObject->getShortName(
+            );
+        }
 
         return $this;
     }

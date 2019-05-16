@@ -58,7 +58,10 @@ class GetFunctionalEntitiesTest extends TestCase
         $this->assertCount(2, $response->getItems());
 
         $this->assertFunctionalEntityListItemResponses(
-            [new FunctionalEntityListItemResponseStub1(), new FunctionalEntityListItemResponseStub2()],
+            [
+                new FunctionalEntityListItemResponseStub1(),
+                new FunctionalEntityListItemResponseStub2(),
+            ],
             $response->getItems()
         );
 

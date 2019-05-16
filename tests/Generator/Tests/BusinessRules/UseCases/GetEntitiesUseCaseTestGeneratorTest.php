@@ -12,6 +12,7 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\UseCaseFileObjectFactory
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\UseCaseRequestFileObjectFactoryMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\UseCaseResponseFileObjectFactoryMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryStubGateway;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingServiceMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\SkeletonModels\Tests\BusinessRules\UseCases\GetEntitiesUseCaseTestSkeletonModelAssemblerMock;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Entities\Domain\SubDomain\FunctionalEntity;
@@ -64,6 +65,7 @@ class GetEntitiesUseCaseTestGeneratorTest extends TestCase
         );
         $this->getEntitiesUseCaseTestGenerator->setTemplating(new TemplatingServiceMock());
         $this->getEntitiesUseCaseTestGenerator->setFileObjectGateway(new InMemoryFileObjectGateway());
+        $this->getEntitiesUseCaseTestGenerator->setStubGateway(new InMemoryStubGateway());
         $this->getEntitiesUseCaseTestGenerator->setUseCaseFileObjectFactory(new UseCaseFileObjectFactoryMock());
         $this->getEntitiesUseCaseTestGenerator->setUseCaseRequestFileObjectFactory(
             new UseCaseRequestFileObjectFactoryMock()

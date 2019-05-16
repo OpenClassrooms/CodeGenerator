@@ -42,10 +42,6 @@ class EntityFileObjectFactoryImpl extends AbstractFileObjectFactory implements E
                 return new FileObject(
                     $this->stubNamespace . 'BusinessRules\Entities\\' . $domain . '\\' . $entity . 'Stub1'
                 );
-            case EntityFileObjectType::BUSINESS_RULES_ENTITY_STUB2:
-                return new FileObject(
-                    $this->stubNamespace . 'BusinessRules\Entities\\' . $domain . '\\' . $entity . 'Stub2'
-                );
 
             default:
                 throw new \InvalidArgumentException($type);

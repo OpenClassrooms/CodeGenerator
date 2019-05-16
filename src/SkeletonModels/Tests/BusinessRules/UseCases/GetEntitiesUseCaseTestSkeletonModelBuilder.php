@@ -13,13 +13,18 @@ interface GetEntitiesUseCaseTestSkeletonModelBuilder
 
     public function withEntityFileObject(FileObject $entityFileObject): GetEntitiesUseCaseTestSkeletonModelBuilder;
 
-    public function withEntityGatewayFileObject(FileObject $entityGatewayFileObject): GetEntitiesUseCaseTestSkeletonModelBuilder;
+    public function withEntityGatewayFileObject(
+        FileObject $entityGatewayFileObject
+    ): GetEntitiesUseCaseTestSkeletonModelBuilder;
 
-    public function withEntityStub1FileObject(FileObject $entityStub1FileObject): GetEntitiesUseCaseTestSkeletonModelBuilder;
+    /**
+     * @param array FileObject[]
+     */
+    public function withEntityStubFileObjects(array $entityStubFileObjects): GetEntitiesUseCaseTestSkeletonModelBuilder;
 
-    public function withEntityStub2FileObject(FileObject $entityStub2FileObject): GetEntitiesUseCaseTestSkeletonModelBuilder;
-
-    public function withGetEntitiesUseCaseFileObject(FileObject $getEntitiesUseCaseFileObject): GetEntitiesUseCaseTestSkeletonModelBuilder;
+    public function withGetEntitiesUseCaseFileObject(
+        FileObject $getEntitiesUseCaseFileObject
+    ): GetEntitiesUseCaseTestSkeletonModelBuilder;
 
     public function withGetEntitiesUseCaseRequestFileObject(
         FileObject $getEntitiesUseCaseRequestFileObject
@@ -49,12 +54,11 @@ interface GetEntitiesUseCaseTestSkeletonModelBuilder
         FileObject $useCaseListItemResponseAssemblerMockFileObject
     ): GetEntitiesUseCaseTestSkeletonModelBuilder;
 
-    public function withUseCaseListItemResponseStub1FileObject(
-        FileObject $useCaseListItemResponseStub1FileObject
-    ): GetEntitiesUseCaseTestSkeletonModelBuilder;
-
-    public function withUseCaseListItemResponseStub2FileObject(
-        FileObject $useCaseListItemResponseStub2FileObject
+    /**
+     * @param array FileObject[]
+     */
+    public function withUseCaseListItemResponseStubFileObjects(
+        array $useCaseListItemResponseStubFileObjects
     ): GetEntitiesUseCaseTestSkeletonModelBuilder;
 
     public function withUseCaseListItemResponseTestCaseFileObject(
