@@ -5,13 +5,13 @@
     <services>
 
         <service
-                id="open_classrooms.code_generator.skeleton_models.business_rules.use_cases.generic_use_case_request_dtoskeleton_model_assembler"
+                id="open_classrooms.code_generator.skeleton_models.business_rules.use_cases.generic_use_case_request_dto_skeleton_model_assembler"
                 class="OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\Impl\GenericUseCaseRequestDTOSkeletonModelAssemblerImpl">
             <call method="setUseCaseClassName">
                 <argument type="string">%use_case_namespace%</argument>
             </call>
             <call method="setUseCaseRequestClassName">
-                <argument type="string">%use_case_request_namespace%</argument>
+                <argument type="string">%use_case_request_classname%</argument>
             </call>
         </service>
 
@@ -21,7 +21,7 @@
                 parent="open_classrooms.code_generator.generator.business_rules.abstract_use_case_generator">
             <call method="setGenericUseCaseRequestDTOSkeletonModelAssembler">
                 <argument type="service"
-                          id="open_classrooms.code_generator.skeleton_models.business_rules.use_cases.generic_use_case_request_dtoskeleton_model_assembler"/>
+                          id="open_classrooms.code_generator.skeleton_models.business_rules.use_cases.generic_use_case_request_dto_skeleton_model_assembler"/>
             </call>
         </service>
 

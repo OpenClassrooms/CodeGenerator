@@ -1,22 +1,32 @@
 <?xml version="1.0" ?>
 
-<container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://symfony.com/schema/dic/services" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+<container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://symfony.com/schema/dic/services"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
-        <service id="open_classrooms.code_generator.generator.business_rules.requestors.dto.request.generic_use_case_request_builder_generator_request_builder" class="OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\DTO\Request\GenericUseCaseRequestBuilderGeneratorRequestBuilderImpl"/>
-        <service id="open_classrooms.code_generator.generator.business_rules.requestors.dto.request.generic_use_case_request_generator_request_builder" class="OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\DTO\Request\GenericUseCaseRequestGeneratorRequestBuilderImpl"/>
+        <service
+                id="open_classrooms.code_generator.generator.business_rules.requestors.dto.request.generic_use_case_request_builder_generator_request_builder"
+                class="OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\DTO\Request\GenericUseCaseRequestBuilderGeneratorRequestBuilderImpl"/>
+        <service
+                id="open_classrooms.code_generator.generator.business_rules.requestors.dto.request.generic_use_case_request_generator_request_builder"
+                class="OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\DTO\Request\GenericUseCaseRequestGeneratorRequestBuilderImpl"/>
 
-        <service id="open_classrooms.code_generator.mediators.business_rules.requestors.request_mediator" class="OpenClassrooms\CodeGenerator\Mediators\BusinessRules\Requestors\Impl\RequestMediatorImpl">
+        <service id="open_classrooms.code_generator.mediators.business_rules.requestors.request_mediator"
+                 class="OpenClassrooms\CodeGenerator\Mediators\BusinessRules\Requestors\Impl\RequestMediatorImpl">
             <call method="setGenericUseCaseRequestBuilderGenerator">
-                <argument type="service" id="open_classrooms.code_generator.generator.business_rules.requestors.generic_use_case_request_builder_generator"/>
+                <argument type="service"
+                          id="open_classrooms.code_generator.generator.business_rules.requestors.generic_use_case_request_builder_generator"/>
             </call>
             <call method="setGenericUseCaseRequestBuilderGeneratorRequestBuilder">
-                <argument type="service" id="open_classrooms.code_generator.generator.business_rules.requestors.dto.request.generic_use_case_request_builder_generator_request_builder"/>
+                <argument type="service"
+                          id="open_classrooms.code_generator.generator.business_rules.requestors.dto.request.generic_use_case_request_builder_generator_request_builder"/>
             </call>
             <call method="setGenericUseCaseRequestGenerator">
-                <argument type="service" id="open_classrooms.code_generator.generator.business_rules.requestors.generic_use_case_request_generator"/>
+                <argument type="service"
+                          id="open_classrooms.code_generator.generator.business_rules.requestors.generic_use_case_request_generator"/>
             </call>
             <call method="setGenericUseCaseRequestGeneratorRequestBuilder">
-                <argument type="service" id="open_classrooms.code_generator.generator.business_rules.requestors.dto.request.generic_use_case_request_generator_request_builder"/>
+                <argument type="service"
+                          id="open_classrooms.code_generator.generator.business_rules.requestors.dto.request.generic_use_case_request_generator_request_builder"/>
             </call>
             <call method="setFileObjectGateway">
                 <argument type="service" id="open_classrooms.code_generator.repository.file_object_repository"/>

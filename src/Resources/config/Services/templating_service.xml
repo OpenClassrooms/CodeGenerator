@@ -1,13 +1,15 @@
 <?xml version="1.0" ?>
 
-<container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://symfony.com/schema/dic/services" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+<container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://symfony.com/schema/dic/services"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <parameters>
         <parameter key="skeleton_dir">/../../../src/Skeleton</parameter>
     </parameters>
 
     <services>
-        <service id="templating" class="Twig_Environment" />
-        <service id="open_classrooms.code_generator.services.templating_service" class="OpenClassrooms\CodeGenerator\Services\Impl\TemplatingServiceImpl" parent="templating">
+        <service id="templating" class="Twig_Environment"/>
+        <service id="open_classrooms.code_generator.services.templating_service"
+                 class="OpenClassrooms\CodeGenerator\Services\Impl\TemplatingServiceImpl" parent="templating">
             <argument key="$skeletonDir">%skeleton_dir%</argument>
             <argument key="$author">%author%</argument>
             <argument key="$authorMail">%author_mail%</argument>

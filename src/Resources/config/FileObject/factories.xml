@@ -15,5 +15,8 @@
         <service id="open_classrooms.code_generator.file_objects.use_case_file_object_factory"
                  class="OpenClassrooms\CodeGenerator\Entities\Impl\UseCaseFileObjectFactoryImpl"
                  parent="open_classrooms.code_generator.file_objects.abstract_file_object_factory"/>
+        <service id="OpenClassrooms\CodeGenerator\Entities\Impl\UseCaseRequestFileObjectFactoryImpl"
+                 class="OpenClassrooms\CodeGenerator\Entities\Impl\UseCaseRequestFileObjectFactoryImpl"
+                 parent="open_classrooms.code_generator.file_objects.abstract_file_object_factory"/>
     </services>
 </container>

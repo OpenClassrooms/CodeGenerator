@@ -11,7 +11,7 @@
                 <argument type="string">%use_case_namespace%</argument>
             </call>
             <call method="setUseCaseRequestClassName">
-                <argument type="string">%use_case_request_namespace%</argument>
+                <argument type="string">%use_case_request_classname%</argument>
             </call>
         </service>
 

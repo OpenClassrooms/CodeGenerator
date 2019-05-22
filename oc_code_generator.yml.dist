@@ -8,7 +8,7 @@ parameters:
     tests_base_namespace: OC\
 
     use_case_namespace: OpenClassrooms\UseCase\BusinessRules\Requestors\UseCase
-    use_case_request_namespace: OpenClassrooms\UseCase\BusinessRules\Requestors\UseCaseRequest
+    use_case_request_classname: OpenClassrooms\UseCase\BusinessRules\Requestors\UseCaseRequest
 
     abstract_paginated_use_case_response: %base_namespace%\BusinessRules\Responders\AbstractPaginatedUseCaseResponse
     abstract_paginated_use_case_response_builder: %base_namespace%\BusinessRules\Responders\AbstractPaginatedUseCaseResponseBuilder
