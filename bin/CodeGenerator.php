@@ -33,4 +33,6 @@ $application = new \Symfony\Component\Console\Application();
 $application->add(new \OpenClassrooms\CodeGenerator\Commands\ViewModelsCommand());
 $application->add(new \OpenClassrooms\CodeGenerator\Commands\GenericUseCaseCommand());
 $application->add(new \OpenClassrooms\CodeGenerator\Commands\GenerateGeneratorCommand());
+$application->add(new \OpenClassrooms\CodeGenerator\Commands\GetEntityUseCaseCommand());
+$application->add(new \OpenClassrooms\CodeGenerator\Commands\GetEntitiesUseCaseCommand());
 $application->run();

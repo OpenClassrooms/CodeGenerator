@@ -48,7 +48,7 @@ class GetEntityUseCaseCommand extends AbstractCommand
 
         $this->checkConfiguration($codeGeneratorConfig);
 
-        $this->checkInputArgument($input, $output, Args::CLASS_NAME);
+        $this->checkInputClassNameArgument($input, $output, Args::CLASS_NAME);
 
         $fileObjects = $this->container
             ->get('open_classrooms.code_generator.mediators.business_rules.use_cases.get_entity_use_case_mediator')

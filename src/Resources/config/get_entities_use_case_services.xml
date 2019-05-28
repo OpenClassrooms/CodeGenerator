@@ -16,18 +16,18 @@
         <import resource="Generator/BusinessRules/UseCases/use_case_response_trait_generator.xml"/>
         <import resource="Generator/BusinessRules/Requestors/get_entity_use_case_request_builder_generator.xml"/>
         <import resource="Generator/BusinessRules/Requestors/get_entity_use_case_request_generator.xml"/>
-        <import resource="Generator/BusinessRules/Responders/use_case_detail_response_assembler_generator.xml"/>
-        <import resource="Generator/BusinessRules/Responders/use_case_detail_response_generator.xml"/>
+        <import resource="Generator/BusinessRules/Responders/use_case_list_item_response_assembler_generator.xml"/>
+        <import resource="Generator/BusinessRules/Responders/use_case_list_item_response_generator.xml"/>
         <import resource="Generator/BusinessRules/Responders/use_case_response_generator.xml"/>
-        <import resource="Generator/BusinessRules/UseCases/use_case_detail_response_assembler_impl_generator.xml"/>
-        <import resource="Generator/BusinessRules/UseCases/use_case_detail_response_dto_generator.xml"/>
+        <import resource="Generator/BusinessRules/UseCases/use_case_list_item_response_assembler_impl_generator.xml"/>
+        <import resource="Generator/BusinessRules/UseCases/use_case_list_item_response_dto_generator.xml"/>
         <import resource="Generator/Tests/BusinessRules/Responders/abstract_use_case_response_stub.xml"/>
-        <import resource="Generator/Tests/BusinessRules/Responders/use_case_detail_response_stub.xml"/>
-        <import resource="Generator/Tests/BusinessRules/UseCases/get_entity_use_case_test_generator.xml"/>
-        <import resource="Generator/Tests/Doubles/BusinessRules/Responders/use_case_detail_response_test_case_generator.xml"/>
-        <import resource="Generator/Tests/Doubles/BusinessRules/Responders/use_case_detail_response_assembler_mock_generator.xml"/>
+        <import resource="Generator/Tests/BusinessRules/Responders/use_case_list_item_response_stub.xml"/>
+        <import resource="Generator/Tests/BusinessRules/UseCases/get_entities_use_case_test_generator.xml"/>
+        <import resource="Generator/Tests/Doubles/BusinessRules/Responders/use_case_list_item_response_test_case_generator.xml"/>
+        <import resource="Generator/Tests/Doubles/BusinessRules/Responders/use_case_list_item_response_assembler_mock_generator.xml"/>
         <import resource="Generator/Tests/Doubles/BusinessRules/Responders/use_case_response_test_case_generator.xml"/>
-        <import resource="Mediators/BusinessRules/UseCases/get_entity_use_case_mediator.xml"/>
+        <import resource="Mediators/BusinessRules/UseCases/get_entities_use_case_mediator.xml"/>
         <import resource="Services/templating_service.xml"/>
     </imports>
 </container>

@@ -15,19 +15,19 @@ use Symfony\Component\Yaml\Yaml;
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
-class GenericUseCaseCommand extends AbstractCommand
+class GetEntitiesUseCaseCommand extends AbstractCommand
 {
     /**
      * @var string
      */
-    protected static $defaultName = 'code-generator:generic-use-case';
+    protected static $defaultName = 'code-generator:get-entities-use-case';
 
     public function __construct($name = null)
     {
         parent::__construct($name);
         $this->container = new ContainerBuilder();
         $loader = new XmlFileLoader($this->container, new FileLocator(self::CONFIG_DIR));
-        $loader->load('generic_use_case_services.xml');
+        $loader->load('get_entities_use_case_services.xml');
         $this->loadConfigParameters();
         $this->container->compile();
     }
@@ -36,10 +36,9 @@ class GenericUseCaseCommand extends AbstractCommand
     {
         $this
             ->setName(self::$defaultName)
-            ->setDescription('Create generic use case architecture')
-            ->setHelp('This command allows you to create generic use case architecture')
-            ->addArgument(Args::DOMAIN, InputArgument::OPTIONAL, 'set Domain/SubDomain')
-            ->addArgument(Args::USE_CASE, InputArgument::OPTIONAL, 'set UseCase name');
+            ->setDescription('Create get entities use case architecture')
+            ->setHelp('This command allows you to create get entities use case architecture')
+            ->addArgument(Args::CLASS_NAME, InputArgument::OPTIONAL, 'set entities class name');
         $this->configureOptions();
     }
 
@@ -49,10 +48,10 @@ class GenericUseCaseCommand extends AbstractCommand
 
         $this->checkConfiguration($codeGeneratorConfig);
 
-        $this->checkInputDomainAndNameArgument($input, $output, Args::USE_CASE);
+        $this->checkInputClassNameArgument($input, $output, Args::CLASS_NAME);
 
         $fileObjects = $this->container
-            ->get('open_classrooms.code_generator.mediators.business_rules.use_case_mediator')
+            ->get('open_classrooms.code_generator.mediators.business_rules.use_cases.get_entities_use_case_mediator')
             ->mediate($input->getArguments(), $input->getOptions());
 
         $io = new SymfonyStyle($input, $output);

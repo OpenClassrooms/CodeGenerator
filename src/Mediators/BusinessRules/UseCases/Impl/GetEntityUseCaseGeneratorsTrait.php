@@ -206,6 +206,7 @@ trait GetEntityUseCaseGeneratorsTrait
             $this->useCaseDetailResponseGeneratorRequestBuilder
                 ->create()
                 ->withEntity($className)
+                ->withFields([])
                 ->build()
         );
     }
@@ -226,6 +227,7 @@ trait GetEntityUseCaseGeneratorsTrait
             $this->useCaseDetailResponseAssemblerImplGeneratorRequestBuilder
                 ->create()
                 ->withEntity($className)
+                ->withFields([])
                 ->build()
         );
     }
@@ -236,6 +238,7 @@ trait GetEntityUseCaseGeneratorsTrait
             $this->useCaseDetailResponseDTOGeneratorRequestBuilder
                 ->create()
                 ->withEntity($className)
+                ->withFields([])
                 ->build()
         );
     }
@@ -276,6 +279,7 @@ trait GetEntityUseCaseGeneratorsTrait
             $this->useCaseDetailResponseTestCaseGeneratorRequestBuilder
                 ->create()
                 ->withEntity($className)
+                ->withFields([])
                 ->build()
         );
     }

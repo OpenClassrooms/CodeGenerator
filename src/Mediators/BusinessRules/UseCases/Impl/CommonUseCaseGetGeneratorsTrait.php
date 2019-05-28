@@ -156,7 +156,7 @@ trait CommonUseCaseGetGeneratorsTrait
             $this->getEntityUseCaseRequestGeneratorRequestBuilder
                 ->create()
                 ->withEntity($className)
-                ->create()
+                ->build()
         );
     }
 
@@ -166,7 +166,7 @@ trait CommonUseCaseGetGeneratorsTrait
             $this->getEntityUseCaseRequestBuilderGeneratorRequestBuilder
                 ->create()
                 ->withEntity($className)
-                ->create()
+                ->build()
         );
     }
 
@@ -176,7 +176,7 @@ trait CommonUseCaseGetGeneratorsTrait
             $this->getEntityUseCaseRequestBuilderImplGeneratorRequestBuilder
                 ->create()
                 ->withEntity($className)
-                ->create()
+                ->build()
         );
     }
 
@@ -186,7 +186,7 @@ trait CommonUseCaseGetGeneratorsTrait
             $this->getEntityUseCaseRequestDTOGeneratorRequestBuilder
                 ->create()
                 ->withEntity($className)
-                ->create()
+                ->build()
         );
     }
 
@@ -194,9 +194,10 @@ trait CommonUseCaseGetGeneratorsTrait
     {
         return $this->useCaseResponseDTOGenerator->generate(
             $this->useCaseResponseDTOGeneratorRequestBuilder
-            ->create()
-            ->withEntity($className)
-            ->create()
+                ->create()
+                ->withEntity($className)
+                ->withFields([])
+                ->build()
         );
     }
 
@@ -204,9 +205,10 @@ trait CommonUseCaseGetGeneratorsTrait
     {
         return $this->useCaseResponseTraitGenerator->generate(
             $this->useCaseResponseTraitGeneratorRequestBuilder
-            ->create()
-            ->withEntity($className)
-            ->create()
+                ->create()
+                ->withEntity($className)
+                ->withFields([])
+                ->build()
         );
     }
 
@@ -216,7 +218,8 @@ trait CommonUseCaseGetGeneratorsTrait
             $this->useCaseResponseTestCaseGeneratorRequestBuilder
                 ->create()
                 ->withEntity($className)
-                ->create()
+                ->withFields([])
+                ->build()
         );
     }
 }

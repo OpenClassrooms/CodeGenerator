@@ -34,8 +34,11 @@ trait CommandDisplayTrait
         }
     }
 
-    protected function checkInputArgument(InputInterface $input, OutputInterface $output, string $name): void
-    {
+    protected function checkInputDomainAndNameArgument(
+        InputInterface $input,
+        OutputInterface $output,
+        string $name
+    ): void {
         if (null === $input->getArgument(Args::DOMAIN) || null === $input->getArgument($name)) {
             $helper = $this->getHelper('question');
             $domainQuestion = new Question('Please enter domain folders (ex: Domain\Subdomain): ', 'Domain\Subdomain');
@@ -82,8 +85,7 @@ trait CommandDisplayTrait
         SymfonyStyle $io,
         array $fileObjects,
         InputInterface $input
-    ): void
-    {
+    ): void {
         if (!empty($fileObjects) && false === $input->getOption(Options::DUMP)) {
             $io->caution(CommandLabelType::ALREADY_EXIST_OUTPUT);
             foreach ($fileObjects as $fileObject) {
@@ -113,5 +115,20 @@ trait CommandDisplayTrait
         }
 
         return [$writtenFiles, $notWrittenFiles];
+    }
+
+    /**
+     * @param InputInterface  $input
+     * @param OutputInterface $output
+     * @param                 $helper
+     */
+    protected function checkInputClassNameArgument(InputInterface $input, OutputInterface $output, string $name): void
+    {
+        if (null === $input->getArgument(Args::CLASS_NAME)) {
+            $helper = $this->getHelper('question');
+            $classNameQuestion = new Question('Please enter className : ', 'DefaultClassName');
+
+            $input->setArgument(Args::CLASS_NAME, $helper->ask($input, $output, $classNameQuestion));
+        }
     }
 }

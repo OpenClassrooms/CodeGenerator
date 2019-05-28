@@ -58,7 +58,7 @@ class GenerateGeneratorCommand extends AbstractCommand
 
         $this->checkConfiguration($codeGeneratorConfig);
 
-        $this->checkInputArgument($input, $output, Args::ENTITY);
+        $this->checkInputDomainAndNameArgument($input, $output, Args::ENTITY);
 
         $fileObjects = $this->container
             ->get('open_classrooms.code_generator.mediators.generate_generator.generate_generator_mediator')
