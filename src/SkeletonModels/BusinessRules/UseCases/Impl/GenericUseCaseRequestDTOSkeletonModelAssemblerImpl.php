@@ -8,7 +8,7 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\GenericUs
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\GenericUseCaseRequestDTOSkeletonModelAssembler;
 
 /**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 class GenericUseCaseRequestDTOSkeletonModelAssemblerImpl implements GenericUseCaseRequestDTOSkeletonModelAssembler
 {

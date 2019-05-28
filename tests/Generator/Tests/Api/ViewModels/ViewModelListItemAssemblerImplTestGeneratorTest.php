@@ -7,7 +7,6 @@ use OpenClassrooms\CodeGenerator\Entities\Impl\ViewModelFileObjectFactoryImpl;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\DTO\Request\ViewModelListItemAssemblerImplTestGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\Request\ViewModelListItemAssemblerImplTestGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\ViewModelListItemAssemblerImplTestGenerator;
-use OpenClassrooms\CodeGenerator\Services\Impl\FieldObjectServiceImpl;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Api\ViewModels\Impl\ViewModelListItemAssemblerImplTestSkeletonModelBuilderImpl;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\FileObjectTestCase;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\Api\ViewModels\ViewModelListItemAssemblerImplTest\ViewModelListItemAssemblerImplTestFileObjectStub1;
@@ -69,7 +68,6 @@ class ViewModelListItemAssemblerImplTestGeneratorTest extends TestCase
             $useCaseResponseFileObjectFactory
         );
         $this->viewModelListItemAssemblerImplTestGenerator->setFileObjectGateway(new InMemoryFileObjectGateway());
-        $this->viewModelListItemAssemblerImplTestGenerator->setFieldObjectService(new FieldObjectServiceImpl());
         $this->viewModelListItemAssemblerImplTestGenerator->setTemplating(new TemplatingServiceMock());
         $this->viewModelListItemAssemblerImplTestGenerator->setViewModelListItemAssemblerImplTestSkeletonModelBuilder(
             new ViewModelListItemAssemblerImplTestSkeletonModelBuilderImpl()

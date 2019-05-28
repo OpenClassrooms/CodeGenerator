@@ -1,0 +1,13 @@
+<?php declare(strict_types=1);
+
+namespace {{ skeletonModel.baseNamespace }}Generator\{{ skeletonModel.domain }}\Request;
+
+use {{ skeletonModel.baseNamespace }}Generator\GeneratorRequest;
+
+/**
+ * @author {{ author }} <{{ authorEmail }}>
+ */
+interface {{ skeletonModel.entity }}GeneratorRequest extends GeneratorRequest
+{
+    public function getDefaultValue(): string;
+}

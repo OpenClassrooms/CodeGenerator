@@ -8,7 +8,7 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\Entities\Ent
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\Api\ViewModels\Impl\StubSkeletonAssemblerUtility;
 
 /**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 class EntityStubSkeletonModelAssemblerImpl implements EntityStubSkeletonModelAssembler
 {

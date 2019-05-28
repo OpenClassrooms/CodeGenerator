@@ -10,7 +10,7 @@ use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\Request\Gene
 use OpenClassrooms\CodeGenerator\Generator\Generator;
 
 /**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 trait RequestGeneratorsTrait
 {

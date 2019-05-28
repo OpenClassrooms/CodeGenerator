@@ -5,7 +5,7 @@ namespace OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\Api\ViewMode
 use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 
 /**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 abstract class ViewModelDetailTestCaseSkeletonModel extends AbstractSkeletonModel
 {
@@ -17,7 +17,7 @@ abstract class ViewModelDetailTestCaseSkeletonModel extends AbstractSkeletonMode
     /**
      * @var string
      */
-    public $templatePath = 'tests/Doubles/Api/ViewModels/ViewModelDetailTestCase.php.twig';
+    public $templatePath = 'Tests/Doubles/Api/ViewModels/ViewModelDetailTestCase.php.twig';
 
     /**
      * @var string

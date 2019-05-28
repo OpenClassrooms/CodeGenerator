@@ -1,0 +1,21 @@
+{% include "Header.php.twig" %}
+
+namespace {{ skeletonModel.namespace }};
+
+use {{ skeletonModel.useCaseResponseClassName }};
+use PHPUnit\Framework\Assert;
+
+/**
+ * @author {{ author }} <{{ authorEmail }}>
+ */
+trait {{ skeletonModel.shortName }}
+{
+    public function assert{{ skeletonModel.useCaseResponseShortName }}(
+        {{ skeletonModel.useCaseResponseShortName }} $expected,
+        {{ skeletonModel.useCaseResponseShortName }} $actual
+    ): void {
+{% for method in skeletonModel.useCaseResponseMethods | sortNameByAlpha %}
+        Assert::assertSame($expected->{{ method.name }}(), $actual->{{ method.name }}());
+{% endfor %}
+    }
+}

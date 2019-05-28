@@ -5,7 +5,6 @@ namespace OpenClassrooms\CodeGenerator\Tests\Generator\Tests\Doubles\Api\ViewMod
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\DTO\Request\ViewModelDetailTestCaseGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\Request\ViewModelDetailTestCaseGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\ViewModelDetailTestCaseGenerator;
-use OpenClassrooms\CodeGenerator\Services\Impl\FieldObjectServiceImpl;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\Api\ViewModels\Impl\ViewModelDetailTestCaseSkeletonModelAssemblerImpl;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\ViewModels\ViewModelDetailTestCase\ViewModelDetailTestCaseFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\FileObjectTestCase;
@@ -17,7 +16,7 @@ use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders
 use PHPUnit\Framework\TestCase;
 
 /**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 class ViewModelDetailTestCaseGeneratorTest extends TestCase
 {
@@ -58,7 +57,6 @@ class ViewModelDetailTestCaseGeneratorTest extends TestCase
         $this->viewModelDetailTestCaseGenerator = new ViewModelDetailTestCaseGenerator();
 
         $this->viewModelDetailTestCaseGenerator->setFileObjectGateway(new InMemoryFileObjectGateway());
-        $this->viewModelDetailTestCaseGenerator->setFieldObjectService(new FieldObjectServiceImpl());
         $this->viewModelDetailTestCaseGenerator->setTemplating(new TemplatingServiceMock());
         $this->viewModelDetailTestCaseGenerator->setViewModelFileObjectFactory(new ViewModelFileObjectFactoryMock());
         $this->viewModelDetailTestCaseGenerator->setUseCaseResponseFileObjectFactory(

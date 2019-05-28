@@ -53,16 +53,23 @@
   "scripts": {
     "post-install-cmd": [
       "bash hooks/install.sh",
+      "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
       "OpenClassrooms\\CodeGenerator\\Scripts\\ParameterHandler::createGeneratorFileParameters"
     ],
     "post-update-cmd": [
+      "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
       "OpenClassrooms\\CodeGenerator\\Scripts\\ParameterHandler::createGeneratorFileParameters"
     ]
   },
   "extra": {
     "branch-alias": {
       "dev-master": "1.0.x-dev"
-    }
+    },
+    "incenteev-parameters": [
+      {
+        "file": "oc_code_generator.yml"
+      }
+    ]
   },
   "bin": [
     "src/CodeGenerator.php"

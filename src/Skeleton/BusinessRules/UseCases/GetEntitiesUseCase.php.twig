@@ -1,0 +1,70 @@
+{% include "Header.php.twig" %}
+
+namespace {{ skeletonModel.namespace }};
+
+use {{ skeletonModel.entityGatewayClassname }};
+use {{ skeletonModel.paginationClassName }};
+use {{ skeletonModel.getEntitiesUseCaseRequestClassName }};
+use {{ skeletonModel.entityUseCaseListItemResponseAssemblerClassName }};
+use {{ skeletonModel.paginatedUseCaseResponseClassName }};
+use {{ skeletonModel.paginatedCollectionClassName }};
+use {{ skeletonModel.useCaseClassName }};
+use {{ skeletonModel.useCaseRequestClassName }};
+
+/**
+ * @author {{ author }} <{{ authorEmail }}>
+ */
+class {{ skeletonModel.shortName }} implements {{ skeletonModel.useCaseShortName }}
+{
+    /**
+     * @var {{ skeletonModel.entityGatewayShortName }}
+     */
+    private $gateway;
+
+    /**
+     * @var {{ skeletonModel.entityUseCaseListItemResponseAssemblerShortName }}
+     */
+    private $responseAssembler;
+
+    /**
+     * @param {{ skeletonModel.getEntitiesUseCaseRequestShortName }} $useCaseRequest
+     */
+    public function execute({{ skeletonModel.useCaseRequestShortName }} $useCaseRequest): {{ skeletonModel.paginatedUseCaseResponseShortName }}
+    {
+        ${{ skeletonModel.entitiesArgument }} = $this->get{{ skeletonModel.entitiesShortName }}(
+            $useCaseRequest->getFilters(),
+            $useCaseRequest->getSorts(),
+            $this->getPagination($useCaseRequest->getPage(), $useCaseRequest->getItemsPerPage())
+        );
+
+        return $this->buildResponse(${{ skeletonModel.entitiesArgument }});
+    }
+
+    private function get{{ skeletonModel.entitiesShortName }}(array $filters, array $sorts, array $pagination): {{ skeletonModel.paginatedCollectionShortName }}
+    {
+        return $this->gateway->findAll($filters, $sorts, $pagination);
+    }
+
+    private function getPagination(int $page, int $itemPerPage): array
+    {
+        return [
+            Pagination::PAGE           => $page,
+            Pagination::ITEMS_PER_PAGE => $itemPerPage,
+        ];
+    }
+
+    private function buildResponse({{ skeletonModel.paginatedCollectionShortName }} ${{ skeletonModel.entitiesArgument }}): {{ skeletonModel.paginatedUseCaseResponseShortName }}
+    {
+        return $this->responseAssembler->createPaginatedCollection(${{ skeletonModel.entitiesArgument }});
+    }
+
+    public function set{{ skeletonModel.entityGatewayShortName }}({{ skeletonModel.entityGatewayShortName }} $gateway): void
+    {
+        $this->gateway = $gateway;
+    }
+
+    public function set{{ skeletonModel.entityUseCaseListItemResponseAssemblerShortName }}({{ skeletonModel.entityUseCaseListItemResponseAssemblerShortName }} $assembler): void
+    {
+        $this->responseAssembler = $assembler;
+    }
+}

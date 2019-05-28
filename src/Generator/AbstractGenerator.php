@@ -5,20 +5,15 @@ namespace OpenClassrooms\CodeGenerator\Generator;
 use OpenClassrooms\CodeGenerator\Entities\FieldObject;
 use OpenClassrooms\CodeGenerator\Entities\FileObject;
 use OpenClassrooms\CodeGenerator\Gateways\FileObject\FileObjectGateway;
-use OpenClassrooms\CodeGenerator\Services\FieldObjectService;
 use OpenClassrooms\CodeGenerator\Services\Impl\TemplatingServiceImpl;
 use OpenClassrooms\CodeGenerator\Services\TemplatingService;
+use OpenClassrooms\CodeGenerator\Utility\FieldObjectUtility;
 
 /**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 abstract class AbstractGenerator implements Generator
 {
-    /**
-     * @var FieldObjectService
-     */
-    private $fieldObjectService;
-
     /**
      * @var FileObjectGateway
      */
@@ -28,11 +23,6 @@ abstract class AbstractGenerator implements Generator
      * @var TemplatingServiceImpl
      */
     private $templating;
-
-    public function setFieldObjectService(FieldObjectService $fieldObjectService): void
-    {
-        $this->fieldObjectService = $fieldObjectService;
-    }
 
     public function setFileObjectGateway(FileObjectGateway $fileObjectGateway)
     {
@@ -50,8 +40,8 @@ abstract class AbstractGenerator implements Generator
     protected function getParentAndChildPublicClassFields(string $className): array
     {
         $classFields = array_merge(
-            $this->fieldObjectService->getParentPublicClassFields($className),
-            $this->fieldObjectService->getPublicClassFields($className)
+            FieldObjectUtility::getParentPublicClassFields($className),
+            FieldObjectUtility::getPublicClassFields($className)
         );
 
         return $classFields;
@@ -62,7 +52,7 @@ abstract class AbstractGenerator implements Generator
      */
     protected function getPublicClassFields(string $className): array
     {
-        return $this->fieldObjectService->getPublicClassFields($className);
+        return FieldObjectUtility::getPublicClassFields($className);
     }
 
     /**
@@ -70,7 +60,7 @@ abstract class AbstractGenerator implements Generator
      */
     protected function getProtectedClassFields(string $className): array
     {
-        return $this->fieldObjectService->getProtectedClassFields($className);
+        return FieldObjectUtility::getProtectedClassFields($className);
     }
 
     protected function insertFileObject(FileObject $viewModelFileObject): void

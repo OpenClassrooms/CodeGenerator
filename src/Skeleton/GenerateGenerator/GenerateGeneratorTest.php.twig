@@ -1,0 +1,62 @@
+<?php declare(strict_types=1);
+
+namespace {{ skeletonModel.baseNamespace }}Tests\Generator\{{ skeletonModel.domain }};
+
+use {{ skeletonModel.baseNamespace }}Generator\{{ skeletonModel.domain }}\{{ skeletonModel.entity }}Generator;
+use {{ skeletonModel.baseNamespace }}Generator\{{ skeletonModel.domain }}\DTO\Request\{{ skeletonModel.entity }}GeneratorRequestBuilderImpl;
+use {{ skeletonModel.baseNamespace }}Generator\{{ skeletonModel.domain }}\Request\{{ skeletonModel.entity }}GeneratorRequestBuilder;
+use {{ skeletonModel.baseNamespace }}Tests\Doubles\Entities\FileObjectTestCase;
+use {{ skeletonModel.baseNamespace }}Tests\Doubles\Entities\{{ skeletonModel.domain }}\{{ skeletonModel.entity }}FileObjectStub1;
+use {{ skeletonModel.baseNamespace }}Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
+use {{ skeletonModel.baseNamespace }}Tests\Doubles\Services\Templating\TemplatingServiceMock;
+use {{ skeletonModel.baseNamespace }}Tests\Doubles\SkeletonModels\{{ skeletonModel.domain }}\{{ skeletonModel.entity }}SkeletonModel{{ skeletonModel.constructionPattern }}Mock;
+use PHPUnit\Framework\TestCase;
+
+/**
+ * @author {{ author }} <{{ authorEmail }}>
+ */
+class {{ skeletonModel.entity }}GeneratorTest extends TestCase
+{
+    use FileObjectTestCase;
+
+    /**
+     * @var {{ skeletonModel.entity }}Generator
+     */
+    private ${{ skeletonModel.argument }}Generator;
+
+    /**
+     * @var {{ skeletonModel.entity }}GeneratorRequestBuilder
+     */
+    private $request;
+
+    /**
+     * @test
+     */
+    public function generate_ReturnFileObject()
+    {
+        $actualFileObject = $this->{{ skeletonModel.argument }}Generator->generate($this->request);
+
+        $this->assertSame(
+            InMemoryFileObjectGateway::$fileObjects[$actualFileObject->getId()],
+            $actualFileObject->getPath()
+        );
+        $this->assertFileObject(new {{ skeletonModel.entity }}FileObjectStub1(), $actualFileObject);
+    }
+
+    protected function setUp()
+    {
+        ${{ skeletonModel.argument }}GeneratorRequestBuilderImpl = new {{ skeletonModel.entity }}GeneratorRequestBuilderImpl();
+        $this->request = ${{ skeletonModel.argument }}GeneratorRequestBuilderImpl
+            ->create()
+            ->withDefaultValue('')
+            ->build();
+
+        $this->{{ skeletonModel.argument }}Generator = new {{ skeletonModel.entity }}Generator();
+
+        $this->{{ skeletonModel.argument }}Generator->set{{ skeletonModel.entity }}SkeletonModel{{ skeletonModel.constructionPattern }}(
+            new {{ skeletonModel.entity }}SkeletonModel{{ skeletonModel.constructionPattern }}Mock()
+        );
+        $this->{{ skeletonModel.argument }}Generator->setTemplating(new TemplatingServiceMock());
+        $this->{{ skeletonModel.argument }}Generator->setFileObjectGateway(new InMemoryFileObjectGateway());
+    }
+}

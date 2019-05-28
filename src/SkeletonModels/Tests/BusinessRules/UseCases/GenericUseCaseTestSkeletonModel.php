@@ -5,7 +5,7 @@ namespace OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\UseCas
 use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 
 /**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 abstract class GenericUseCaseTestSkeletonModel extends AbstractSkeletonModel
 {
@@ -27,5 +27,5 @@ abstract class GenericUseCaseTestSkeletonModel extends AbstractSkeletonModel
 
     public $genericUseCaseTestMethod;
 
-    public $templatePath = 'tests/BusinessRules/UseCases/GenericUseCaseTest.php.twig';
+    public $templatePath = 'Tests/BusinessRules/UseCases/GenericUseCaseTest.php.twig';
 }

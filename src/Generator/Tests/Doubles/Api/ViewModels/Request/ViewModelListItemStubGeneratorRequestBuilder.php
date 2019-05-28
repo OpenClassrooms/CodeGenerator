@@ -5,7 +5,7 @@ namespace OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\Re
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 
 /**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 interface ViewModelListItemStubGeneratorRequestBuilder extends GeneratorRequest
 {

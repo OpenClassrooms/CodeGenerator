@@ -1,0 +1,77 @@
+<?php declare(strict_types=1);
+
+namespace {{ skeletonModel.baseNamespace }}Generator\{{ skeletonModel.domain }};
+
+use {{ skeletonModel.baseNamespace }}Entities\FileObject;
+use {{ skeletonModel.baseNamespace }}Generator\AbstractGenerator;
+use {{ skeletonModel.baseNamespace }}Generator\{{ skeletonModel.domain }}\Request\{{ skeletonModel.entity }}GeneratorRequest;
+use {{ skeletonModel.baseNamespace }}Generator\GeneratorRequest;
+use {{ skeletonModel.baseNamespace }}SkeletonModels\{{ skeletonModel.domain }}\{{ skeletonModel.entity }}SkeletonModel;
+use {{ skeletonModel.baseNamespace }}SkeletonModels\{{ skeletonModel.domain }}\{{ skeletonModel.entity }}SkeletonModel{{ skeletonModel.constructionPattern }};
+
+/**
+ * @author {{ author }} <{{ authorEmail }}>
+ */
+class {{ skeletonModel.entity }}Generator extends AbstractGenerator
+{
+    /**
+     * @var {{ skeletonModel.entity }}SkeletonModel{{ skeletonModel.constructionPattern }}
+     */
+    private ${{ skeletonModel.argument }}SkeletonModel{{ skeletonModel.constructionPattern }};
+
+    /**
+     * @param {{ skeletonModel.entity }}GeneratorRequest $generatorRequest
+     */
+    public function generate(GeneratorRequest $generatorRequest): FileObject
+    {
+        ${{ skeletonModel.argument }}FileObject = $this->build{{ skeletonModel.entity }}FileObject(
+            $generatorRequest->getDefaultValue()
+        //TODO get UseCaseRequest param(s)
+        );
+
+        $this->insertFileObject(${{ skeletonModel.argument }}FileObject);
+
+        return ${{ skeletonModel.argument }}FileObject;
+    }
+
+    private function build{{ skeletonModel.entity }}FileObject(): FileObject
+    {
+        ${{ skeletonModel.argument }}FileObject = $this->create{{ skeletonModel.entity }}FileObject();
+
+        ${{ skeletonModel.argument }}FileObject->setContent(
+            $this->generateContent(
+            //TODO put FileObject(s)
+            )
+        );
+
+        return ${{ skeletonModel.argument }}FileObject;
+    }
+
+    private function create{{ skeletonModel.entity }}FileObject(string $domain, string $useCaseName): FileObject
+    {
+        // TODO use factory to create FileObject
+    }
+
+    private function generateContent(): string
+    {
+        $skeletonModel = $this->createSkeletonModel(
+        //TODO put FileObject(s)
+        );
+
+        return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
+    }
+
+    private function createSkeletonModel(): {{ skeletonModel.entity }}SkeletonModel
+    {
+        return $this->{{ skeletonModel.argument }}SkeletonModel{{ skeletonModel.constructionPattern }}->create(
+            //TODO put FileObject(s)
+        );
+    }
+
+    public function set{{ skeletonModel.entity }}SkeletonModel{{ skeletonModel.constructionPattern }}(
+        {{ skeletonModel.entity }}SkeletonModel{{ skeletonModel.constructionPattern }} ${{ skeletonModel.argument }}SkeletonModel{{ skeletonModel.constructionPattern }}
+    ): void
+    {
+        $this->{{ skeletonModel.argument }}SkeletonModel{{ skeletonModel.constructionPattern }} = ${{ skeletonModel.argument }}SkeletonModel{{ skeletonModel.constructionPattern }};
+    }
+}

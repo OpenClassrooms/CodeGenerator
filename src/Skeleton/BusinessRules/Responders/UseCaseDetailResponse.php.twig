@@ -1,0 +1,19 @@
+{% include "Header.php.twig" %}
+
+namespace {{ skeletonModel.namespace }};
+
+/**
+ * @author {{ author }} <{{ authorEmail }}>
+ */
+interface {{ skeletonModel.shortName }} extends {{ skeletonModel.useCaseResponseShortName }}
+{
+{% for method in skeletonModel.genericUseCaseDetailMethods | sortNameByAlpha %}
+{% if method.docComment %}
+    {{ method.docComment }}
+{% endif %}
+    public function {{ method.name }}(): {{ printReturnType(method.returnType, method.Nullable) }};
+{% if not loop.last %}
+
+{% endif %}
+{% endfor %}
+}

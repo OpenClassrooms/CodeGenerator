@@ -7,12 +7,12 @@ trait UseCaseClassNameTrait
     /**
      * @var string
      */
-    private $useCaseClassName;
+    protected $useCaseClassName;
 
     /**
      * @var string
      */
-    private $useCaseRequestClassName;
+    protected $useCaseRequestClassName;
 
     public function setUseCaseClassName(string $useCaseClassName): void
     {

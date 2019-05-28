@@ -1,0 +1,30 @@
+{% include "Header.php.twig" %}
+
+namespace {{ skeletonModel.namespace }};
+
+use {{ skeletonModel.entityClassName }};
+use {{ skeletonModel.useCaseDetailResponseClassName }};
+use {{ skeletonModel.useCaseDetailResponseAssemblerClassName }};
+
+/**
+ * @author {{ author }} <{{ authorEmail }}>
+ */
+class {{ skeletonModel.shortName }} implements {{ skeletonModel.useCaseDetailResponseAssemblerShortName }}
+{
+    use {{ skeletonModel.useCaseResponseTrait }};
+
+    /**
+     * {@inheritdoc}
+     */
+    public function create({{ skeletonModel.entityShortName }} $entity): {{ skeletonModel.useCaseDetailResponseShortName }}
+    {
+        $response = new {{ skeletonModel.useCaseDetailResponseDTOShortName }}();
+
+        $this->hydrateCommonFields($entity, $response);
+{% for method in skeletonModel.entityMethods | sortNameByAlpha %}
+        $response->{{ method.fieldName }} = $entity->{{ method.name }}();
+{% endfor %}
+
+        return $response;
+    }
+}

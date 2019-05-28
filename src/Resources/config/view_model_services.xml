@@ -1,6 +1,7 @@
 <?xml version="1.0" ?>
 
-<container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://symfony.com/schema/dic/services" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+<container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://symfony.com/schema/dic/services"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <imports>
         <import resource="FileObject/abstract_file_object_factory.xml"/>
         <import resource="FileObject/factories.xml"/>
@@ -17,17 +18,17 @@
         <import resource="Generator/Api/ViewModels/view_model_list_item_assembler.xml"/>
         <import resource="Generator/Api/ViewModels/view_model_list_item_assembler_impl.xml"/>
         <import resource="Generator/App/Entity/entity_impl.xml"/>
-        <import resource="Generator/tests/Api/ViewModels/view_model_detail_assembler_impl_test.xml"/>
-        <import resource="Generator/tests/Api/ViewModels/view_model_list_item_assembler_impl_test.xml"/>
-        <import resource="Generator/tests/BusinessRules/Entities/entity_stub.xml"/>
-        <import resource="Generator/tests/BusinessRules/Responders/abstract_use_case_response_stub.xml"/>
-        <import resource="Generator/tests/BusinessRules/Responders/use_case_list_item_response_stub.xml"/>
-        <import resource="Generator/tests/BusinessRules/Responders/use_case_detail_response_stub.xml"/>
-        <import resource="Generator/tests/Doubles/Api/ViewModels/view_model_detail_stub.xml"/>
-        <import resource="Generator/tests/Doubles/Api/ViewModels/view_model_detail_test_case.xml"/>
-        <import resource="Generator/tests/Doubles/Api/ViewModels/view_model_list_item_test_case.xml"/>
-        <import resource="Generator/tests/Doubles/Api/ViewModels/view_model_list_item_stub.xml"/>
-        <import resource="Generator/tests/Doubles/Api/ViewModels/view_model_test_case.xml"/>
+        <import resource="Generator/Tests/Api/ViewModels/view_model_detail_assembler_impl_test.xml"/>
+        <import resource="Generator/Tests/Api/ViewModels/view_model_list_item_assembler_impl_test.xml"/>
+        <import resource="Generator/Tests/BusinessRules/Entities/entity_stub.xml"/>
+        <import resource="Generator/Tests/BusinessRules/Responders/abstract_use_case_response_stub.xml"/>
+        <import resource="Generator/Tests/BusinessRules/Responders/use_case_list_item_response_stub.xml"/>
+        <import resource="Generator/Tests/BusinessRules/Responders/use_case_detail_response_stub.xml"/>
+        <import resource="Generator/Tests/Doubles/Api/ViewModels/view_model_detail_stub.xml"/>
+        <import resource="Generator/Tests/Doubles/Api/ViewModels/view_model_detail_test_case.xml"/>
+        <import resource="Generator/Tests/Doubles/Api/ViewModels/view_model_list_item_test_case.xml"/>
+        <import resource="Generator/Tests/Doubles/Api/ViewModels/view_model_list_item_stub.xml"/>
+        <import resource="Generator/Tests/Doubles/Api/ViewModels/view_model_test_case.xml"/>
         <import resource="Mediators/Api/view_model_mediator.xml"/>
         <import resource="Services/templating_service.xml"/>
     </imports>

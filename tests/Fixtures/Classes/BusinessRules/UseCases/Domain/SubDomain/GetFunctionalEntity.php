@@ -6,6 +6,7 @@ namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseC
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Entities\Domain\SubDomain\FunctionalEntity;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gateways\Domain\SubDomain\FunctionalEntityGateway;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Requestors\Domain\SubDomain\GetFunctionalEntityRequest;
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityDetailResponse;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityDetailResponseAssembler;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityResponse;
 use OpenClassrooms\UseCase\BusinessRules\Requestors\UseCase;
@@ -29,11 +30,9 @@ class GetFunctionalEntity implements UseCase
     /**
      * @param GetFunctionalEntityRequest $useCaseRequest
      *
-     * @return FunctionalEntityResponse
-     *
      * @throws \OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gateways\Domain\SubDomain\Exceptions\FunctionalEntityNotFoundException
      */
-    public function execute(UseCaseRequest $useCaseRequest)
+    public function execute(UseCaseRequest $useCaseRequest): FunctionalEntityDetailResponse
     {
         $functionalEntity = $this->getFunctionalEntity($useCaseRequest->getFunctionalEntityId());
 
@@ -48,7 +47,7 @@ class GetFunctionalEntity implements UseCase
         return $this->gateway->find($functionalEntityId);
     }
 
-    private function buildResponse(FunctionalEntity $functionalEntity): FunctionalEntityResponse
+    private function buildResponse(FunctionalEntity $functionalEntity): FunctionalEntityDetailResponse
     {
         return $this->responseAssembler->create($functionalEntity);
     }

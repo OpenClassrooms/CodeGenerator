@@ -6,7 +6,7 @@ use OpenClassrooms\CodeGenerator\Entities\ConstObject;
 use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 
 /**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 abstract class ViewModelDetailStubSkeletonModel extends AbstractSkeletonModel
 {
@@ -35,7 +35,7 @@ abstract class ViewModelDetailStubSkeletonModel extends AbstractSkeletonModel
      */
     public $parentShortName;
 
-    public $templatePath = 'tests/Doubles/Api/ViewModels/ViewModelDetailStub.php.twig';
+    public $templatePath = 'Tests/Doubles/Api/ViewModels/ViewModelDetailStub.php.twig';
 
     /**
      * @var string

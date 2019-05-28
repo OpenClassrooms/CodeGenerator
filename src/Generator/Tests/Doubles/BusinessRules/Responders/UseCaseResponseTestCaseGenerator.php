@@ -1,0 +1,110 @@
+<?php declare(strict_types=1);
+
+namespace OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\BusinessRules\Responders;
+
+use OpenClassrooms\CodeGenerator\Entities\FileObject;
+use OpenClassrooms\CodeGenerator\Entities\UseCaseResponseFileObjectType;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\AbstractUseCaseGenerator;
+use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
+use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\BusinessRules\Responders\Request\UseCaseResponseTestCaseGeneratorRequest;
+use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\BusinessRules\Responders\UseCaseResponseTestCaseSkeletonModel;
+use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\BusinessRules\Responders\UseCaseResponseTestCaseSkeletonModelAssembler;
+use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
+
+/**
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
+ */
+class UseCaseResponseTestCaseGenerator extends AbstractUseCaseGenerator
+{
+    /**
+     * @var UseCaseResponseTestCaseSkeletonModelAssembler
+     */
+    private $useCaseResponseTestCaseSkeletonModelAssembler;
+
+    /**
+     * @param UseCaseResponseTestCaseGeneratorRequest $generatorRequest
+     */
+    public function generate(GeneratorRequest $generatorRequest): FileObject
+    {
+        $useCaseResponseTestCaseFileObject = $this->buildUseCaseResponseTestCaseFileObject(
+            $generatorRequest->getEntity(),
+            $generatorRequest->getFields()
+        );
+
+        $this->insertFileObject($useCaseResponseTestCaseFileObject);
+
+        return $useCaseResponseTestCaseFileObject;
+    }
+
+    /**
+     * @param string[] $fields
+     */
+    private function buildUseCaseResponseTestCaseFileObject(string $entityClassName, array $fields): FileObject
+    {
+        $useCaseResponseTestCaseFileObject = $this->createUseCaseResponseTestCaseFileObject($entityClassName);
+        $useCaseResponseFileObject = $this->createUseCaseResponseFileObject($useCaseResponseTestCaseFileObject);
+
+        $useCaseResponseFileObject->setMethods($this->getSelectedAccessors($entityClassName, $fields));
+
+        $useCaseResponseTestCaseFileObject->setContent(
+            $this->generateContent(
+                $useCaseResponseTestCaseFileObject,
+                $useCaseResponseFileObject
+            )
+        );
+
+        return $useCaseResponseTestCaseFileObject;
+    }
+
+    private function createUseCaseResponseTestCaseFileObject(string $entityClassName): FileObject
+    {
+        [$baseNamespace, $domain, $entity] = FileObjectUtility::getBaseNamespaceDomainAndEntityNameFromClassName(
+            $entityClassName
+        );
+
+        return $this->useCaseResponseFileObjectFactory->create(
+            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE_TEST_CASE,
+            $domain,
+            $entity,
+            $baseNamespace
+        );
+    }
+
+    private function createUseCaseResponseFileObject(FileObject $fileObject): FileObject
+    {
+        return $this->useCaseResponseFileObjectFactory->create(
+            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE,
+            $fileObject->getDomain(),
+            $fileObject->getEntity()
+        );
+    }
+
+    private function generateContent(
+        FileObject $useCaseResponseTestCaseFileObject,
+        FileObject $useCaseResponseFileObject
+    ): string {
+        $skeletonModel = $this->createSkeletonModel(
+            $useCaseResponseTestCaseFileObject,
+            $useCaseResponseFileObject
+        );
+
+        return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
+    }
+
+    private function createSkeletonModel(
+        FileObject $useCaseResponseTestCaseFileObject,
+        FileObject $useCaseResponseFileObject
+    ): UseCaseResponseTestCaseSkeletonModel
+    {
+        return $this->useCaseResponseTestCaseSkeletonModelAssembler->create(
+            $useCaseResponseTestCaseFileObject,
+            $useCaseResponseFileObject
+        );
+    }
+
+    public function setUseCaseResponseTestCaseSkeletonModelAssembler(
+        UseCaseResponseTestCaseSkeletonModelAssembler $useCaseResponseTestCaseSkeletonModelAssembler
+    ): void {
+        $this->useCaseResponseTestCaseSkeletonModelAssembler = $useCaseResponseTestCaseSkeletonModelAssembler;
+    }
+}

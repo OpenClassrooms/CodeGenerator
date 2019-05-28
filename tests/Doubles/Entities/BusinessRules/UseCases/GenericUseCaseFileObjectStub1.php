@@ -5,7 +5,7 @@ namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseC
 use OpenClassrooms\CodeGenerator\Entities\FileObject;
 
 /**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 class GenericUseCaseFileObjectStub1 extends FileObject
 {

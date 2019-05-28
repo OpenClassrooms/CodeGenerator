@@ -1,0 +1,63 @@
+{% include "Header.php.twig" %}
+
+namespace {{ skeletonModel.namespace }};
+
+use {{ skeletonModel.functionalEntityClassName }};
+use {{ skeletonModel.functionalEntityGatewayClassName }};
+use {{ skeletonModel.getEntityUseCaseRequestClassName }};
+use {{ skeletonModel.functionalEntityDetailResponseClassName }};
+use {{ skeletonModel.functionalEntityDetailResponseAssemblerClassName }};
+use {{ skeletonModel.functionalEntityResponseClassName }};
+use {{ skeletonModel.useCaseClassName }};
+use {{ skeletonModel.useCaseRequestClassName }};
+
+/**
+ * @author {{ author }} <{{ authorEmail }}>
+ */
+class {{ skeletonModel.shortName }} implements UseCase
+{
+    /**
+     * @var {{ skeletonModel.functionalEntityGatewayShortName }}
+     */
+    private $gateway;
+
+    /**
+     * @var {{ skeletonModel.functionalEntityDetailResponseAssemblerShortName }}
+     */
+    private $responseAssembler;
+
+    /**
+     * @param {{ skeletonModel.getEntityUseCaseRequestShortName }} $useCaseRequest
+     *
+     * @throws \{{ skeletonModel.functionalEntityNotFoundExceptionClassName }}
+     */
+    public function execute(UseCaseRequest $useCaseRequest): {{ skeletonModel.functionalEntityDetailResponseShortName }}
+    {
+        ${{ skeletonModel.functionalEntityArgument }} = $this->get{{ skeletonModel.functionalEntityShortName }}($useCaseRequest->{{ skeletonModel.getEntityUseCaseRequestAccessor }}());
+
+        return $this->buildResponse(${{ skeletonModel.functionalEntityArgument }});
+    }
+
+    /**
+     * @throws \{{ skeletonModel.functionalEntityNotFoundExceptionClassName }}
+     */
+    private function get{{ skeletonModel.functionalEntityShortName }}(int ${{ skeletonModel.getEntityUseCaseRequestArgument }}): {{ skeletonModel.functionalEntityShortName }}
+    {
+        return $this->gateway->find(${{ skeletonModel.getEntityUseCaseRequestArgument }});
+    }
+
+    private function buildResponse({{ skeletonModel.functionalEntityShortName }} ${{ skeletonModel.functionalEntityArgument }}): {{ skeletonModel.functionalEntityDetailResponseShortName }}
+    {
+        return $this->responseAssembler->create(${{ skeletonModel.functionalEntityArgument }});
+    }
+
+    public function setFunctionalEntityGateway({{ skeletonModel.functionalEntityGatewayShortName}} $gateway): void
+    {
+        $this->gateway = $gateway;
+    }
+
+    public function setFunctionalEntityResponseAssembler({{ skeletonModel.functionalEntityDetailResponseAssemblerShortName}} $assembler): void
+    {
+        $this->responseAssembler = $assembler;
+    }
+}

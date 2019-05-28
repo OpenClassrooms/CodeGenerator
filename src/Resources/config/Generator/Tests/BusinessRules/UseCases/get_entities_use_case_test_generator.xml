@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+
+<container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://symfony.com/schema/dic/services"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+
+        <service
+                id="open_classrooms.code_generator.skeleton_models.tests.business_rules.use_cases.get_entities_use_case_test_skeleton_model_builder"
+                class="OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\UseCases\Impl\GetEntitiesUseCaseTestSkeletonModelBuilderImpl">
+        </service>
+
+        <service
+                id="open_classrooms.code_generator.gateways.file_objects.stub_gateway"
+                class="OpenClassrooms\CodeGenerator\Repository\StubRepository">
+        </service>
+
+        <service
+                id="open_classrooms.code_generator.generator.tests.business_rules.use_cases.get_entities_use_case_test_generator"
+                class="OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\GetEntitiesUseCaseTestGenerator"
+                parent="open_classrooms.code_generator.generator.business_rules.abstract_use_case_generator">
+            <call method="setGetEntitiesUseCaseTestSkeletonModelBuilder">
+                <argument type="service"
+                          id="open_classrooms.code_generator.skeleton_models.tests.business_rules.use_cases.get_entities_use_case_test_skeleton_model_builder"/>
+            </call>
+            <call method="setStubGateway">
+                <argument type="service" id="open_classrooms.code_generator.gateways.file_objects.stub_gateway"/>
+            </call>
+        </service>
+
+    </services>
+</container>

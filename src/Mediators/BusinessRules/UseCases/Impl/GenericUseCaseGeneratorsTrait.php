@@ -14,7 +14,7 @@ use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\GenericU
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\Request\GenericUseCaseTestGeneratorRequestBuilder;
 
 /**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 trait GenericUseCaseGeneratorsTrait
 {

@@ -5,7 +5,7 @@ namespace OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Entities\DT
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Entities\Request\EntityStubGeneratorRequest;
 
 /**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 class EntityStubGeneratorRequestDTO implements EntityStubGeneratorRequest
 {

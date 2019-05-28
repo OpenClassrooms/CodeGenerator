@@ -54,6 +54,8 @@ class ViewModelAssemblerTraitGeneratorTest extends AbstractViewModelGeneratorTes
         $this->viewModelAssemblerTraitGenerator = new ViewModelAssemblerTraitGenerator();
         $this->buildViewModelGenerator($this->viewModelAssemblerTraitGenerator);
 
-        $this->viewModelAssemblerTraitGenerator->setViewModelAssemblerTraitSkeletonModelAssembler(new ViewModelAssemblerTraitSkeletonModelAssemblerImpl());
+        $this->viewModelAssemblerTraitGenerator->setViewModelAssemblerTraitSkeletonModelAssembler(
+            new ViewModelAssemblerTraitSkeletonModelAssemblerImpl()
+        );
     }
 }

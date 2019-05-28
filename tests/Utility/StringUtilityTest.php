@@ -7,7 +7,7 @@ use OpenClassrooms\CodeGenerator\Utility\StringUtility;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 class StringUtilityTest extends TestCase
 {

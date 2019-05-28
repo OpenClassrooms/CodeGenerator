@@ -3,7 +3,7 @@
 namespace OpenClassrooms\CodeGenerator\Mediators;
 
 /**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 final class Options
 {
@@ -12,4 +12,6 @@ final class Options
     const NO_TEST = 'no-test';
 
     const TESTS_ONLY = 'tests-only';
+
+    const CONSTRUCTION_PATTERN = 'construction-pattern';
 }

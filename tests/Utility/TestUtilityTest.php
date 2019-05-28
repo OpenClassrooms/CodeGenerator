@@ -9,7 +9,7 @@ use OpenClassrooms\CodeGenerator\Utility\TestUtility;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 class TestUtilityTest extends TestCase
 {

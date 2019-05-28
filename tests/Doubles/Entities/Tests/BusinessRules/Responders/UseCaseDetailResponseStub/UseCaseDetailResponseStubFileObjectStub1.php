@@ -5,15 +5,15 @@ namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\BusinessRule
 use OpenClassrooms\CodeGenerator\Entities\FileObject;
 
 /**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 class UseCaseDetailResponseStubFileObjectStub1 extends FileObject
 {
-    const CLASS_NAME = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\tests\Doubles\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityDetailResponseStub1';
+    const CLASS_NAME = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityDetailResponseStub1';
 
     public function __construct()
     {
-        $this->content = __DIR__ . '/../../../../../../Fixtures/Classes/tests/Doubles/BusinessRules/Responders/Domain/SubDomain/FunctionalEntityDetailResponseStub1.php';
+        $this->content = __DIR__ . '/../../../../../../Fixtures/Classes/Tests/Doubles/BusinessRules/Responders/Domain/SubDomain/FunctionalEntityDetailResponseStub1.php';
         $this->className = self::CLASS_NAME;
         $this->fields = [
             new UseCaseDetailResponseStubFieldObjectStub1(),

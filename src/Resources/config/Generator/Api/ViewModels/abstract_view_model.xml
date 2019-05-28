@@ -1,14 +1,19 @@
 <?xml version="1.0" ?>
 
-<container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://symfony.com/schema/dic/services" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+<container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://symfony.com/schema/dic/services"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
 
-        <service id="open_classrooms.code_generator.generator.api.abstract_view_model_generator" class="OpenClassrooms\CodeGenerator\Generator\Api\AbstractViewModelGenerator" abstract="true" parent="open_classrooms.code_generator.generator.abstract_generator">
+        <service id="open_classrooms.code_generator.generator.api.abstract_view_model_generator"
+                 class="OpenClassrooms\CodeGenerator\Generator\Api\AbstractViewModelGenerator" abstract="true"
+                 parent="open_classrooms.code_generator.generator.abstract_generator">
             <call method="setUseCaseResponseFileObjectFactory">
-                <argument type="service" id="open_classrooms.code_generator.file_objects.impl.use_case_response_file_object_factory_impl"/>
+                <argument type="service"
+                          id="open_classrooms.code_generator.file_objects.use_case_response_file_object_factory"/>
             </call>
             <call method="setViewModelFileObjectFactory">
-                <argument type="service" id="open_classrooms.code_generator.file_objects.impl.view_model_file_object_factory_impl"/>
+                <argument type="service"
+                          id="open_classrooms.code_generator.file_objects.view_model_file_object_factory"/>
             </call>
         </service>
 

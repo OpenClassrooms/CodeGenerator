@@ -6,9 +6,9 @@ namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseC
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Entities\Domain\SubDomain\FunctionalEntity;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityListItemResponse;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityListItemResponseAssembler;
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\PaginatedUseCaseResponse;
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\PaginatedUseCaseResponseBuilder;
 use OpenClassrooms\UseCase\BusinessRules\Entities\PaginatedCollection;
-use OpenClassrooms\UseCase\BusinessRules\Responders\PaginatedUseCaseResponse;
-use OpenClassrooms\UseCase\BusinessRules\Responders\PaginatedUseCaseResponseBuilder;
 
 /**
  * @author authorStub <author.stub@example.com>

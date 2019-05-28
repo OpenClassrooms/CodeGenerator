@@ -49,7 +49,7 @@ parameters:
     stub_namespace: Doubles\OC\
     tests_base_namespace: OC\
     use_case_namespace: OpenClassrooms\UseCase\BusinessRules\Requestors\UseCase
-    use_case_request_namespace: OpenClassrooms\UseCase\BusinessRules\Requestors\UseCaseRequest
+    use_case_request_classname: OpenClassrooms\UseCase\BusinessRules\Requestors\UseCaseRequest
 ```
 
 ## Usage

@@ -6,7 +6,7 @@ use Composer\Script\Event;
 use Incenteev\ParameterHandler\Processor;
 
 /**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 class ParameterHandler
 {

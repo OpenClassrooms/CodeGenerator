@@ -6,36 +6,45 @@ use OpenClassrooms\CodeGenerator\Entities\AbstractFileObjectFactory;
 use OpenClassrooms\CodeGenerator\Entities\FileObject;
 use OpenClassrooms\CodeGenerator\Entities\UseCaseFileObjectFactory;
 use OpenClassrooms\CodeGenerator\Entities\UseCaseFileObjectType;
+use OpenClassrooms\CodeGenerator\Utility\StringUtility;
 
 /**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 class UseCaseFileObjectFactoryImpl extends AbstractFileObjectFactory implements UseCaseFileObjectFactory
 {
     public function create(string $type, string $domain, string $entity, string $baseNamespace = null): FileObject
     {
-        $fileObject = new FileObject();
-
         $this->baseNamespace = $baseNamespace ?? $this->baseNamespace;
 
         switch ($type) {
-            case UseCaseFileObjectType::BUSINESS_RULES_GET_ENTITY:
-                $fileObject->setClassName(
-                    $this->baseNamespace . 'BusinessRules\UseCases\\' . $domain . '\\Get' . $entity
-                );
-                break;
             case UseCaseFileObjectType::BUSINESS_RULES_USE_CASE:
-                $fileObject->setClassName(
+                return new FileObject(
                     $this->baseNamespace . 'BusinessRules\UseCases\\' . $domain . '\\' . $entity
                 );
-                break;
             case UseCaseFileObjectType::BUSINESS_RULES_USE_CASE_TEST:
-                $fileObject->setClassName(
+                return new FileObject(
                     $this->testsBaseNamespace . 'BusinessRules\UseCases\\' . $domain . '\\' . $entity . 'Test'
                 );
-                break;
-        }
+            case UseCaseFileObjectType::BUSINESS_RULES_GET_ENTITY_USE_CASE:
+                return new FileObject(
+                    $this->baseNamespace . 'BusinessRules\UseCases\\' . $domain . '\\Get' . $entity
+                );
+            case UseCaseFileObjectType::BUSINESS_RULES_GET_ENTITY_USE_CASE_TEST:
+                return new FileObject(
+                    $this->testsBaseNamespace . 'BusinessRules\UseCases\\' . $domain . '\\Get' . $entity . 'Test'
+                );
+            case UseCaseFileObjectType::BUSINESS_RULES_GET_ENTITIES_USE_CASE:
+                return new FileObject(
+                    $this->baseNamespace . 'BusinessRules\UseCases\\' . $domain . '\\Get' . StringUtility::pluralize($entity)
+                );
+            case UseCaseFileObjectType::BUSINESS_RULES_GET_ENTITIES_USE_CASE_TEST:
+                return new FileObject(
+                    $this->testsBaseNamespace . 'BusinessRules\UseCases\\' . $domain . '\\Get' . StringUtility::pluralize($entity) . 'Test'
+                );
 
-        return $fileObject;
+            default:
+                throw new \InvalidArgumentException($type);
+        }
     }
 }

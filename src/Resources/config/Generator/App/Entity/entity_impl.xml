@@ -1,16 +1,21 @@
 <?xml version="1.0" ?>
 
-<container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://symfony.com/schema/dic/services" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+<container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://symfony.com/schema/dic/services"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
 
-        <service id="open_classrooms.code_generator.skeleton_models.app.entity.impl.entity_impl_skeleton_model_assembler_impl" class="OpenClassrooms\CodeGenerator\SkeletonModels\App\Entity\Impl\EntityImplSkeletonModelAssemblerImpl"/>
+        <service id="open_classrooms.code_generator.skeleton_models.app.entity.entity_impl_skeleton_model_assembler"
+                 class="OpenClassrooms\CodeGenerator\SkeletonModels\App\Entity\Impl\EntityImplSkeletonModelAssemblerImpl"/>
 
-        <service id="open_classrooms.code_generator.generator.app.entity.entity_impl_generator" class="OpenClassrooms\CodeGenerator\Generator\App\Entity\EntityImplGenerator" parent="open_classrooms.code_generator.generator.abstract_generator">
+        <service id="open_classrooms.code_generator.generator.app.entity.entity_impl_generator"
+                 class="OpenClassrooms\CodeGenerator\Generator\App\Entity\EntityImplGenerator"
+                 parent="open_classrooms.code_generator.generator.abstract_generator">
             <call method="setEntityImplSkeletonModelAssembler">
-                <argument type="service" id="open_classrooms.code_generator.skeleton_models.app.entity.impl.entity_impl_skeleton_model_assembler_impl"/>
+                <argument type="service"
+                          id="open_classrooms.code_generator.skeleton_models.app.entity.entity_impl_skeleton_model_assembler"/>
             </call>
             <call method="setEntityFileObjectFactory">
-                <argument type="service" id="open_classrooms.code_generator.file_objects.impl.entity_file_object_factory_impl"/>
+                <argument type="service" id="open_classrooms.code_generator.file_objects.entity_file_object_factory"/>
             </call>
         </service>
 

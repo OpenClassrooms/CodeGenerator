@@ -3,25 +3,21 @@
 namespace OpenClassrooms\CodeGenerator\Tests\Commands;
 
 use OpenClassrooms\CodeGenerator\Mediators\Args;
-use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\Impl\UseCaseMediatorImpl;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Commands\GenericUseCaseCommandMock;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Requestors\GenericUseCaseRequestBuilderFileObjectStub1;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Requestors\GenericUseCaseRequestFileObjectStub1;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\GenericUseCaseFileObjectStub1;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\GenericUseCaseRequestBuilderImplFileObjectStub1;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\GenericUseCaseRequestDTOFileObjectStub1;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\BusinessRules\UseCases\GenericUseCaseTestFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Mediators\UseCaseMediatorMock;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Symfony\Component\DependencyInjection\ContainerMock;
 use OpenClassrooms\CodeGenerator\Tests\TestClassUtil;
-use PHPUnit\Framework\MockObject\InvocationMocker;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
-class GenericUseCaseCommandTest extends AbstractCommandTest
+class GenericUseCaseCommandTest extends TestCase
 {
+    use CommandTestCase;
+
     const DOMAIN = 'Domain\SubDomain';
 
     const GENERIC_USE_CASE = 'GenericUseCase';
@@ -32,18 +28,16 @@ class GenericUseCaseCommandTest extends AbstractCommandTest
     protected $commandMock;
 
     /**
-     * @var InvocationMocker|\PHPUnit_Framework_MockObject_MockObject
+     * @var UseCaseMediatorMock
      */
-    private $useCaseMediatorImplMock;
+    private $useCaseMediatorMock;
 
     /**
      * @test
      */
     public function executeCommand_withArguments()
     {
-        $writtenFileObjects = $this->writeFileObjects($this->stubNotWrittenFileObjectProvider());
-        $this->useCaseMediatorImplMock->method('mediate')->willReturn($writtenFileObjects);
-        $this->container->method('get')->willReturn($this->useCaseMediatorImplMock);
+        UseCaseMediatorMock::$fileObjects = $this->writeFileObjects(UseCaseMediatorMock::$fileObjects);
 
         $this->commandTester->execute(
             [
@@ -53,20 +47,7 @@ class GenericUseCaseCommandTest extends AbstractCommandTest
             ]
         );
 
-        $this->assertCommandFileGeneratedOutput($writtenFileObjects);
-
-    }
-
-    private function stubNotWrittenFileObjectProvider()
-    {
-        return [
-            new GenericUseCaseFileObjectStub1(),
-            new GenericUseCaseRequestBuilderFileObjectStub1(),
-            new GenericUseCaseRequestBuilderImplFileObjectStub1(),
-            new GenericUseCaseRequestDTOFileObjectStub1(),
-            new GenericUseCaseRequestFileObjectStub1(),
-            new GenericUseCaseTestFileObjectStub1(),
-        ];
+        $this->assertCommandFileGeneratedOutput(UseCaseMediatorMock::$fileObjects);
     }
 
     /**
@@ -74,9 +55,7 @@ class GenericUseCaseCommandTest extends AbstractCommandTest
      */
     public function executeCommand_withoutArguments()
     {
-        $writtenFileObjects = $this->writeFileObjects($this->stubNotWrittenFileObjectProvider());
-        $this->useCaseMediatorImplMock->method('mediate')->willReturn($writtenFileObjects);
-        $this->container->method('get')->willReturn($this->useCaseMediatorImplMock);
+        UseCaseMediatorMock::$fileObjects = $this->writeFileObjects(UseCaseMediatorMock::$fileObjects);
 
         $this->commandTester->setInputs(
             [
@@ -90,8 +69,7 @@ class GenericUseCaseCommandTest extends AbstractCommandTest
             ]
         );
 
-        $this->assertCommandFileGeneratedOutput($writtenFileObjects);
-
+        $this->assertCommandFileGeneratedOutput(UseCaseMediatorMock::$fileObjects);
     }
 
     protected function setUp()
@@ -100,8 +78,11 @@ class GenericUseCaseCommandTest extends AbstractCommandTest
         $this->application = new Application();
         $this->application->add($this->commandMock);
         $this->commandTester = new CommandTester($this->commandMock);
-        $this->container = $this->createMock(ContainerBuilder::class);
-        $this->useCaseMediatorImplMock = $this->createMock(UseCaseMediatorImpl::class);
+        $this->useCaseMediatorMock = new UseCaseMediatorMock();
+        $this->container = new ContainerMock(
+            ['open_classrooms.code_generator.mediators.business_rules.use_case_mediator' => $this->useCaseMediatorMock]
+
+        );
         TestClassUtil::setProperty('container', $this->container, $this->commandMock);
     }
 }

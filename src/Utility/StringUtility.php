@@ -5,7 +5,7 @@ namespace OpenClassrooms\CodeGenerator\Utility;
 use Doctrine\Common\Inflector\Inflector;
 
 /**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 class StringUtility
 {
@@ -22,11 +22,6 @@ class StringUtility
     public static function isObject(string $string)
     {
         return (bool) preg_match('/([A-Z][a-z0-9]+)+/', $string);
-    }
-
-    public static function isValidConstantName(string $string): bool
-    {
-        return (bool) preg_match('/(([A-Z_][A-Z0-9_]*)|(__.*__))$/', $string);
     }
 
     public static function pluralize(string $string): string

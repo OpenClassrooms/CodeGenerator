@@ -5,7 +5,7 @@ namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\BusinessRule
 use OpenClassrooms\CodeGenerator\Entities\FileObject;
 
 /**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 class GenericUseCaseTestFileObjectStub1 extends FileObject
 {
@@ -13,7 +13,7 @@ class GenericUseCaseTestFileObjectStub1 extends FileObject
 
     public function __construct()
     {
-        $this->content = __DIR__ . '/../../../../../Fixtures/Classes/tests/BusinessRules/UseCases/Domain/SubDomain/GenericUseCaseTest.php';
+        $this->content = __DIR__ . '/../../../../../Fixtures/Classes/Tests/BusinessRules/UseCases/Domain/SubDomain/GenericUseCaseTest.php';
         $this->className = self::CLASS_NAME;
         $this->fields = [];
     }

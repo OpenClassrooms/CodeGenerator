@@ -5,7 +5,7 @@ namespace OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Responders\
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 
 /**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 interface UseCaseDetailResponseStubGeneratorRequest extends GeneratorRequest
 {

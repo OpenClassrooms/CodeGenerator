@@ -8,7 +8,7 @@ use OpenClassrooms\CodeGenerator\Utility\ConstUtility;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 class ConstUtilityTest extends TestCase
 {
@@ -43,8 +43,7 @@ class ConstUtilityTest extends TestCase
 
     public function generateStubConstObjectDataProvider(): array
     {
-        $fileObject = new FileObject();
-        $fileObject->setClassName(self::class);
+        $fileObject = new FileObject(self::class);
 
         return [
             [$this->buildFieldObject('id', 'int'), $fileObject, 'int'],
@@ -78,8 +77,7 @@ class ConstUtilityTest extends TestCase
      */
     public function generateConstsFromStubFileObject_ReturnConstObjects()
     {
-        $stubReference = new FileObject();
-        $stubReference->setClassName(self::class);
+        $stubReference = new FileObject(self::class);
 
         $constsReference = [
             new FieldObject('field1'),
@@ -103,8 +101,7 @@ class ConstUtilityTest extends TestCase
      */
     public function generateConstsFromStubReference_ThrowsException()
     {
-        $fileObject = new FileObject();
-        $fileObject->setClassName(self::class);
+        $fileObject = new FileObject(self::class);
 
         $fieldObject = $this->buildFieldObject('test', 'not exist');
         ConstUtility::generateStubConstObject($fieldObject, $fileObject);

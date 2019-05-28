@@ -14,104 +14,83 @@ class ViewModelFileObjectFactoryImpl extends AbstractFileObjectFactory implement
 {
     public function create(string $type, string $domain, string $entity, string $baseNamespace = null): FileObject
     {
-        $fileObject = new FileObject();
-
         switch ($type) {
             case ViewModelFileObjectType::API_VIEW_MODEL_ASSEMBLER_TRAIT:
-                $fileObject->setClassName(
+                return new FileObject(
                     $this->baseNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\' . $entity . 'AssemblerTrait'
                 );
-                break;
             case ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_ASSEMBLER:
-                $fileObject->setClassName(
+                return new FileObject(
                     $this->baseNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\' . $entity . 'DetailAssembler'
                 );
-                break;
             case ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_ASSEMBLER_IMPL_TEST:
-                $fileObject->setClassName(
+                return new FileObject(
                     $this->testsBaseNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\Impl\\' . $entity . 'DetailAssemblerImplTest'
                 );
-                break;
             case ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_ASSEMBLER_IMPL:
-                $fileObject->setClassName(
+                return new FileObject(
                     $this->baseNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\Impl\\' . $entity . 'DetailAssemblerImpl'
                 );
-                break;
             case ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_ASSEMBLER:
-                $fileObject->setClassName(
+                return new FileObject(
                     $this->baseNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\' . $entity . 'ListItemAssembler'
                 );
-                break;
             case ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_ASSEMBLER_IMPL_TEST:
-                $fileObject->setClassName(
+                return new FileObject(
                     $this->testsBaseNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\Impl\\' . $entity . 'ListItemAssemblerImplTest'
                 );
-                break;
             case ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_ASSEMBLER_IMPL:
-                $fileObject->setClassName(
+                return new FileObject(
                     $this->baseNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\Impl\\' . $entity . 'ListItemAssemblerImpl'
                 );
-                break;
             case ViewModelFileObjectType::API_VIEW_MODEL:
-                $fileObject->setClassName(
+                return new FileObject(
                     $this->baseNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\' . $entity
                 );
-                break;
             case ViewModelFileObjectType::API_VIEW_MODEL_IMPL:
-                $fileObject->setClassName(
+                return new FileObject(
                     $this->baseNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\Impl\\' . $entity . 'Impl'
                 );
-                break;
             case ViewModelFileObjectType::API_VIEW_MODEL_DETAIL:
-                $fileObject->setClassName(
+                return new FileObject(
                     $this->baseNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\' . $entity . 'Detail'
                 );
-                break;
             case ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_IMPL:
-                $fileObject->setClassName(
+                return new FileObject(
                     $this->baseNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\Impl\\' . $entity . 'DetailImpl'
                 );
-                break;
             case ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM:
-                $fileObject->setClassName(
+                return new FileObject(
                     $this->baseNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\' . $entity . 'ListItem'
                 );
-                break;
             case ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_IMPL:
-                $fileObject->setClassName(
+                return new FileObject(
                     $this->baseNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\Impl\\' . $entity . 'ListItemImpl'
                 );
-                break;
             case ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_STUB:
-                $fileObject->setClassName(
+                return new FileObject(
                     $this->stubNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\' . $entity . 'DetailStub1'
                 );
-                break;
             case ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_STUB:
-                $fileObject->setClassName(
+                return new FileObject(
                     $this->stubNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\' . $entity . 'ListItemStub1'
                 );
-                break;
             case ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_TEST_CASE:
-                $fileObject->setClassName(
+                return new FileObject(
                     $this->stubNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\' . $entity . 'ListItemTestCase'
                 );
-                break;
             case ViewModelFileObjectType::API_VIEW_MODEL_TEST_CASE:
-                $fileObject->setClassName(
+                return new FileObject(
                     $this->stubNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\' . $entity . 'TestCase'
                 );
-                break;
             case ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_TEST_CASE:
-                $fileObject->setClassName(
+                return new FileObject(
                     $this->stubNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\' . $entity . 'DetailTestCase'
                 );
-                break;
+
             default:
                 throw new \InvalidArgumentException($type);
         }
-
-        return $fileObject;
     }
 }
 

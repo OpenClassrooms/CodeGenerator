@@ -9,7 +9,7 @@ use OpenClassrooms\CodeGenerator\Utility\FieldUtility;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 class FieldUtilityTest extends TestCase
 {
@@ -61,7 +61,6 @@ class FieldUtilityTest extends TestCase
 
     protected function setUp()
     {
-        $this->fileObject = new FileObject();
-        $this->fileObject->setClassName(self::class);
+        $this->fileObject = new FileObject(self::class);
     }
 }

@@ -10,7 +10,7 @@ use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\UseCaseMediato
 use PHPUnit\Framework\TestCase;
 
 /**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 class UseCaseMediatorImplTest extends TestCase
 {
@@ -43,12 +43,12 @@ class UseCaseMediatorImplTest extends TestCase
         $requestMediator
             ->expects($this->once())
             ->method('mediate')
-            ->willReturn([new FileObject()]);
+            ->willReturn([new FileObject(self::class)]);
 
         $requestMediator
             ->expects($this->once())
             ->method('mediate')
-            ->willReturn([new FileObject()]);
+            ->willReturn([new FileObject(self::class)]);
 
         $this->useCaseMediator->setGenericUseCaseMediator($genericUseCaseMediator);
         $this->useCaseMediator->setRequestMediator($requestMediator);

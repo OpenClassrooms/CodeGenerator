@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+
+<container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://symfony.com/schema/dic/services"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <service id="open_classrooms.code_generator.generator.business_rules.abstract_use_case_generator"
+                 class="OpenClassrooms\CodeGenerator\Generator\BusinessRules\AbstractUseCaseGenerator" abstract="true"
+                 parent="open_classrooms.code_generator.generator.abstract_generator">
+            <call method="setEntityFileObjectFactory">
+                <argument type="service" id="open_classrooms.code_generator.file_objects.entity_file_object_factory"/>
+            </call>
+            <call method="setUseCaseFileObjectFactory">
+                <argument type="service" id="open_classrooms.code_generator.file_objects.use_case_file_object_factory"/>
+            </call>
+            <call method="setUseCaseRequestFileObjectFactory">
+                <argument type="service" id="OpenClassrooms\CodeGenerator\Entities\Impl\UseCaseRequestFileObjectFactoryImpl"/>
+            </call>
+            <call method="setUseCaseResponseFileObjectFactory">
+                <argument type="service" id="open_classrooms.code_generator.file_objects.use_case_response_file_object_factory"/>
+            </call>
+        </service>
+    </services>
+</container>

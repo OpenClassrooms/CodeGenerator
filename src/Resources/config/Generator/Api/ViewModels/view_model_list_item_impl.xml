@@ -1,13 +1,19 @@
 <?xml version="1.0" ?>
 
-<container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://symfony.com/schema/dic/services" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+<container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://symfony.com/schema/dic/services"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
 
-        <service id="open_classrooms.code_generator.skeleton_models.api.view_models.impl.view_model_list_item_impl_skeleton_model_assembler_impl" class="OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModels\Impl\ViewModelListItemImplSkeletonModelAssemblerImpl"/>
+        <service
+                id="open_classrooms.code_generator.skeleton_models.api.view_models.view_model_list_item_impl_skeleton_model_assembler"
+                class="OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModels\Impl\ViewModelListItemImplSkeletonModelAssemblerImpl"/>
 
-        <service id="open_classrooms.code_generator.generator.api.view_models.view_model_list_item_impl_generator" class="OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\ViewModelListItemImplGenerator" parent="open_classrooms.code_generator.generator.api.abstract_view_model_generator">
+        <service id="open_classrooms.code_generator.generator.api.view_models.view_model_list_item_impl_generator"
+                 class="OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\ViewModelListItemImplGenerator"
+                 parent="open_classrooms.code_generator.generator.api.abstract_view_model_generator">
             <call method="setViewModelListItemImplSkeletonModelAssembler">
-                <argument type="service" id="open_classrooms.code_generator.skeleton_models.api.view_models.impl.view_model_list_item_impl_skeleton_model_assembler_impl"/>
+                <argument type="service"
+                          id="open_classrooms.code_generator.skeleton_models.api.view_models.view_model_list_item_impl_skeleton_model_assembler"/>
             </call>
         </service>
 

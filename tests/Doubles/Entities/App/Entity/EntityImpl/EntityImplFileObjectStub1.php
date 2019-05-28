@@ -5,7 +5,7 @@ namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\App\Entity\EntityI
 use OpenClassrooms\CodeGenerator\Entities\FileObject;
 
 /**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 class EntityImplFileObjectStub1 extends FileObject
 {

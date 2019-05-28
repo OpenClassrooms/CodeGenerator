@@ -8,7 +8,7 @@ use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\Requestors\RequestMedia
 use OpenClassrooms\CodeGenerator\Mediators\Options;
 
 /**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 class RequestMediatorImpl implements RequestMediator
 {
@@ -19,7 +19,7 @@ class RequestMediatorImpl implements RequestMediator
      */
     private $fileObjectGateway;
 
-    public function mediate(array $args = [], array $options = [])
+    public function mediate(array $args = [], array $options = []): array
     {
         $useCase = $args[Args::USE_CASE];
         $domain = $args[Args::DOMAIN];

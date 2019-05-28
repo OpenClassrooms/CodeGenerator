@@ -5,6 +5,9 @@ namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Resp
 
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Entities\Domain\SubDomain\FunctionalEntity;
 
+/**
+ * @author authorStub <author.stub@example.com>
+ */
 interface FunctionalEntityDetailResponseAssembler
 {
     public function create(FunctionalEntity $entity): FunctionalEntityDetailResponse;

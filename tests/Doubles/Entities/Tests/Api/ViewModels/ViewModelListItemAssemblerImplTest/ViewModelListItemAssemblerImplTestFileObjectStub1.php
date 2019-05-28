@@ -5,7 +5,7 @@ namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\Api\ViewMode
 use OpenClassrooms\CodeGenerator\Entities\FileObject;
 
 /**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 class ViewModelListItemAssemblerImplTestFileObjectStub1 extends FileObject
 {
@@ -13,7 +13,7 @@ class ViewModelListItemAssemblerImplTestFileObjectStub1 extends FileObject
 
     public function __construct()
     {
-        $this->content = __DIR__ . '/../../../../../../Fixtures/Classes/tests/Api/ViewModels/Domain/SubDomain/Impl/FunctionalEntityListItemAssemblerImplTest.php';
+        $this->content = __DIR__ . '/../../../../../../Fixtures/Classes/Tests/Api/ViewModels/Domain/SubDomain/Impl/FunctionalEntityListItemAssemblerImplTest.php';
         $this->className = self::CLASS_NAME;
     }
 }

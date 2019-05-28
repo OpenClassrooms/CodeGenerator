@@ -3,7 +3,7 @@
 namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Entities\Domain\SubDomain;
 
 /**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 abstract class FunctionalEntity
 {
@@ -37,6 +37,9 @@ abstract class FunctionalEntity
         return $this->field1;
     }
 
+    /**
+     * @return string[]
+     */
     public function getField2(): array
     {
         return $this->field2;
@@ -47,7 +50,7 @@ abstract class FunctionalEntity
         return $this->field3;
     }
 
-    public function getField4(): \DateTimeImmutable
+    public function getField4(): ?\DateTimeImmutable
     {
         return $this->field4;
     }

@@ -1,0 +1,17 @@
+{% include "Header.php.twig" %}
+
+namespace {{ skeletonModel.namespace }};
+
+use {{ skeletonModel.useCaseRequestClassName }};
+
+/**
+ * @author {{ author }} <{{ authorEmail }}>
+ */
+interface {{ skeletonModel.shortName }} extends UseCaseRequest
+{
+    public function create(): {{ skeletonModel.shortName }};
+
+    public function with{{ skeletonModel.entityShortName }}Id(int $id): {{ skeletonModel.shortName }};
+
+    public function build(): {{ skeletonModel.getEntityUseCaseRequest }};
+}

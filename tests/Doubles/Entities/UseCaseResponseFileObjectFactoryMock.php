@@ -6,7 +6,7 @@ use OpenClassrooms\CodeGenerator\Entities\Impl\UseCaseResponseFileObjectFactoryI
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\FixturesConfig;
 
 /**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 class UseCaseResponseFileObjectFactoryMock extends UseCaseResponseFileObjectFactoryImpl
 {

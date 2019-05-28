@@ -1,0 +1,39 @@
+<?php declare(strict_types=1);
+
+namespace {{ skeletonModel.baseNamespace }}SkeletonModels\{{ skeletonModel.domain }}\Impl;
+
+use {{ skeletonModel.baseNamespace }}Entities\FileObject;
+use {{ skeletonModel.baseNamespace }}SkeletonModels\{{ skeletonModel.domain }}\{{ skeletonModel.entity }}SkeletonModel;
+use {{ skeletonModel.baseNamespace }}SkeletonModels\{{ skeletonModel.domain }}\{{ skeletonModel.entity }}SkeletonModelBuilder;
+
+/**
+ * @author {{ author }} <{{ authorEmail }}>
+ */
+class {{ skeletonModel.entity }}SkeletonModelBuilderImpl implements {{ skeletonModel.entity }}SkeletonModelBuilder
+{
+    /**
+     * @var {{ skeletonModel.entity }}SkeletonModel
+     */
+    private $skeletonModel;
+
+    public function create(): {{ skeletonModel.entity }}SkeletonModelBuilder
+    {
+        $this->skeletonModel = new {{ skeletonModel.entity }}SkeletonModelImpl();
+
+        return $this;
+    }
+
+    public function withDefaultObject(FileObject ${{ skeletonModel.argument }}FileObject): {{ skeletonModel.entity }}SkeletonModelBuilder
+    {
+        //TODO implement
+
+        return $this;
+    }
+
+    public function build(): {{ skeletonModel.entity }}SkeletonModel
+    {
+        //TODO implement
+
+        return $this->skeletonModel;
+    }
+}

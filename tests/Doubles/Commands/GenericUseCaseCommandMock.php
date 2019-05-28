@@ -5,11 +5,11 @@ namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Commands;
 use OpenClassrooms\CodeGenerator\Commands\GenericUseCaseCommand;
 
 /**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 class GenericUseCaseCommandMock extends GenericUseCaseCommand
 {
-    const CONFIG_FILE = 'oc_code_generator_test.yml.dist';
+    const CONFIG_FILE = self::ROOT_DIR . 'oc_code_generator_test.yml.dist';
 
     const ROOT_DIR = __DIR__ . '/../../';
 }

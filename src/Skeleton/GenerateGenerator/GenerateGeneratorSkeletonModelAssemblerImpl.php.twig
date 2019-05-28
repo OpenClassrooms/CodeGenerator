@@ -1,0 +1,21 @@
+<?php declare(strict_types=1);
+
+namespace {{ skeletonModel.baseNamespace }}SkeletonModels\{{ skeletonModel.domain }}\Impl;
+
+use {{ skeletonModel.baseNamespace }}SkeletonModels\{{ skeletonModel.domain }}\{{ skeletonModel.entity }}SkeletonModel;
+use {{ skeletonModel.baseNamespace }}SkeletonModels\{{ skeletonModel.domain }}\{{ skeletonModel.entity }}SkeletonModelAssembler;
+
+/**
+ * @author {{ author }} <{{ authorEmail }}>
+ */
+class {{ skeletonModel.entity }}SkeletonModelAssemblerImpl implements {{ skeletonModel.entity }}SkeletonModelAssembler
+{
+    public function create(): {{ skeletonModel.entity }}SkeletonModel
+    {
+        $skeletonModel = new {{ skeletonModel.entity }}SkeletonModelImpl();
+
+        // TODO assemble skeleton model
+
+        return $skeletonModel;
+    }
+}

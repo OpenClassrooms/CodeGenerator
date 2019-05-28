@@ -13,7 +13,7 @@ use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 use Symfony\Component\Yaml\Yaml;
 
 /**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 class ViewModelsCommand extends AbstractCommand
 {
@@ -48,12 +48,12 @@ class ViewModelsCommand extends AbstractCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $codeGeneratorConfig = Yaml::parseFile(static::ROOT_DIR . '/' . static::CONFIG_FILE);
+        $codeGeneratorConfig = Yaml::parseFile($this->getConfigFile());
 
         $this->checkConfiguration($codeGeneratorConfig);
 
         $fileObjects = $this->container
-            ->get('open_classrooms.code_generator.mediators.api.impl.view_model_mediator_impl')
+            ->get('open_classrooms.code_generator.mediators.api.view_model_mediator')
             ->mediate($input->getArguments(), $input->getOptions());
 
         $io = new SymfonyStyle($input, $output);

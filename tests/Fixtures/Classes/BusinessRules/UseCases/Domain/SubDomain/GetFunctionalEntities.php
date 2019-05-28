@@ -4,12 +4,13 @@
 namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain;
 
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gateways\Domain\SubDomain\FunctionalEntityGateway;
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gateways\Pagination;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Requestors\Domain\SubDomain\GetFunctionalEntitiesRequest;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityListItemResponseAssembler;
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\PaginatedUseCaseResponse;
 use OpenClassrooms\UseCase\BusinessRules\Entities\PaginatedCollection;
 use OpenClassrooms\UseCase\BusinessRules\Requestors\UseCase;
 use OpenClassrooms\UseCase\BusinessRules\Requestors\UseCaseRequest;
-use OpenClassrooms\UseCase\BusinessRules\Responders\PaginatedUseCaseResponse;
 
 /**
  * @author authorStub <author.stub@example.com>
@@ -28,15 +29,13 @@ class GetFunctionalEntities implements UseCase
 
     /**
      * @param GetFunctionalEntitiesRequest $useCaseRequest
-     *
-     * @return \OpenClassrooms\UseCase\BusinessRules\Responders\PaginatedUseCaseResponse
      */
-    public function execute(UseCaseRequest $useCaseRequest)
+    public function execute(UseCaseRequest $useCaseRequest): PaginatedUseCaseResponse
     {
         $functionalEntities = $this->getFunctionalEntities(
             $useCaseRequest->getFilters(),
             $useCaseRequest->getSorts(),
-            $this->buildPagination($useCaseRequest->getPage(), $useCaseRequest->getItemsPerPage())
+            $this->getPagination($useCaseRequest->getPage(), $useCaseRequest->getItemsPerPage())
         );
 
         return $this->buildResponse($functionalEntities);
@@ -47,11 +46,11 @@ class GetFunctionalEntities implements UseCase
         return $this->gateway->findAll($filters, $sorts, $pagination);
     }
 
-    private function buildPagination(int $page, int $itemPerPage): array
+    private function getPagination(int $page, int $itemPerPage): array
     {
         return [
-            PaginatedCollection::PAGE           => $page,
-            PaginatedCollection::ITEMS_PER_PAGE => $itemPerPage,
+            Pagination::PAGE           => $page,
+            Pagination::ITEMS_PER_PAGE => $itemPerPage,
         ];
     }
 
@@ -60,12 +59,12 @@ class GetFunctionalEntities implements UseCase
         return $this->responseAssembler->createPaginatedCollection($functionalEntities);
     }
 
-    public function setGateway(FunctionalEntityGateway $gateway): void
+    public function setFunctionalEntityGateway(FunctionalEntityGateway $gateway): void
     {
         $this->gateway = $gateway;
     }
 
-    public function setFunctionalEntityResponseAssembler(FunctionalEntityListItemResponseAssembler $assembler): void
+    public function setFunctionalEntityListItemResponseAssembler(FunctionalEntityListItemResponseAssembler $assembler): void
     {
         $this->responseAssembler = $assembler;
     }

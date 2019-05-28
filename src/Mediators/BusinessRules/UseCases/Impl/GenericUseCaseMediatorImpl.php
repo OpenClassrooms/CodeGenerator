@@ -9,7 +9,7 @@ use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\GenericUseCase
 use OpenClassrooms\CodeGenerator\Mediators\Options;
 
 /**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
+ * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 class GenericUseCaseMediatorImpl implements GenericUseCaseMediator
 {

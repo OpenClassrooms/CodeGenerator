@@ -44,6 +44,11 @@ class FileObject
      */
     protected $methods = [];
 
+    public function __construct(string $className)
+    {
+        $this->className = $className;
+    }
+
     public function alreadyExists(): bool
     {
         return $this->alreadyExists;
@@ -54,24 +59,22 @@ class FileObject
         return $this->content;
     }
 
-    public function setContent(string $content)
+    public function setContent(string $content): void
     {
         $this->content = $content;
-
-        return $this;
     }
 
-    public function getBaseNamespace()
+    public function getBaseNamespace(): string
     {
         return FileObjectUtility::getBaseNamespaceFromClassName($this->className);
     }
 
-    public function getDomain()
+    public function getDomain(): string
     {
         return FileObjectUtility::getDomainFromClassName($this->className);
     }
 
-    public function getEntity()
+    public function getEntity(): string
     {
         return FileObjectUtility::getEntityNameFromClassName($this->className);
     }
@@ -87,7 +90,7 @@ class FileObject
     /**
      * @param FieldObject[]
      */
-    public function setFields(array $fields)
+    public function setFields(array $fields): void
     {
         $this->fields = $fields;
     }
@@ -97,7 +100,7 @@ class FileObject
         return $this->hasBeenWritten;
     }
 
-    public function write()
+    public function write(): void
     {
         $this->hasBeenWritten = true;
     }
@@ -117,35 +120,41 @@ class FileObject
         return $this->className;
     }
 
-    public function setClassName(string $className)
+    public function setClassName(string $className): void
     {
         $this->className = $className;
-
-        return $this;
     }
 
     public function getPath(): string
     {
+        $classname = str_replace('OpenClassrooms\CodeGenerator\\', '', $this->getClassName());
         if ($this->isTest()) {
-            return str_replace('\\', '/', 'tests/' . $this->getClassName() . '.php');
+            return str_replace('\\', '/', 'Tests/' . $classname . '.php');
+        }
+        if ($this->isTemplate()) {
+            return str_replace('\\', '/', 'src/' . $classname);
         }
 
-        return str_replace('\\', '/', 'src/' . $this->getClassName() . '.php');
+        return str_replace('\\', '/', 'src/' . $classname . '.php');
     }
 
-    public function isTest(): bool
+    private function isTest(): bool
     {
-        if (false !== strpos($this->getShortName(), 'Test') || false !== strpos($this->getShortName(), 'Stub')
-        ) {
-            return true;
-        }
-
-        return false;
+        return (bool) preg_match('/Test$|Stub\d$|Mock$/', $this->getShortName());
     }
 
     public function getShortName(): string
     {
         return FileObjectUtility::getShortClassName($this->className);
+    }
+
+    private function isTemplate(): bool
+    {
+        if (false !== strpos($this->getShortName(), 'twig')) {
+            return true;
+        }
+
+        return false;
     }
 
     public function setAlreadyExists(bool $alreadyExists)
