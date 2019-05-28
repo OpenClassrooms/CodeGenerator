@@ -6,11 +6,15 @@ use OpenClassrooms\CodeGenerator\Entities\ConstObject;
 use OpenClassrooms\CodeGenerator\Entities\FieldObject;
 use OpenClassrooms\CodeGenerator\Entities\MethodObject;
 use OpenClassrooms\CodeGenerator\Services\TemplatingService;
+use Twig\Environment;
+use Twig\Loader\FilesystemLoader;
+use Twig\TwigFilter;
+use Twig\TwigFunction;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
-class TemplatingServiceImpl extends \Twig_Environment implements TemplatingService
+class TemplatingServiceImpl extends Environment implements TemplatingService
 {
     /**
      * @var string
@@ -22,7 +26,7 @@ class TemplatingServiceImpl extends \Twig_Environment implements TemplatingServi
         $this->skeletonDir = $skeletonDir;
 
         parent::__construct(
-            new \Twig_Loader_Filesystem(__DIR__ . $this->skeletonDir),
+            new FilesystemLoader(__DIR__ . $this->skeletonDir),
             [
                 'debug'            => true,
                 'cache'            => false,
@@ -43,7 +47,7 @@ class TemplatingServiceImpl extends \Twig_Environment implements TemplatingServi
 
     private function getSortNameByAlphaFilter()
     {
-        return new \Twig_SimpleFilter(
+        return new TwigFilter(
             'sortNameByAlpha',
             function(array $classFields) {
                 $arrayFields = $classFields;
@@ -86,7 +90,7 @@ class TemplatingServiceImpl extends \Twig_Environment implements TemplatingServi
 
     private function getSortIdFirstFilter()
     {
-        return new \Twig_SimpleFilter(
+        return new TwigFilter(
             'sortIdFirst',
             function(array $classFields) {
                 $arrayFields = $classFields;
@@ -105,7 +109,7 @@ class TemplatingServiceImpl extends \Twig_Environment implements TemplatingServi
 
     private function lineBreak()
     {
-        return new \Twig_SimpleFunction(
+        return new TwigFunction(
             'lineBreak',
             function(array $fields, int $key) {
                 $objects = 0;
@@ -122,7 +126,7 @@ class TemplatingServiceImpl extends \Twig_Environment implements TemplatingServi
 
     private function printValue()
     {
-        return new \Twig_SimpleFunction(
+        return new TwigFunction(
             'printValue',
             function($value) {
                 switch ($value) {
@@ -146,7 +150,7 @@ class TemplatingServiceImpl extends \Twig_Environment implements TemplatingServi
 
     private function printReturnType()
     {
-        return new \Twig_SimpleFunction(
+        return new TwigFunction(
             'printReturnType',
             function($value, $isNullable) {
                 $returnType = $value;
