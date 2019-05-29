@@ -38,6 +38,10 @@ class EntityFileObjectFactoryImpl extends AbstractFileObjectFactory implements E
                 return new FileObject(
                     $this->baseNamespace . $this->appDir . 'Entity\\' . $domain . '\\' . $entity . 'Impl'
                 );
+            case EntityFileObjectType::BUSINESS_RULES_ENTITY_REPOSITORY:
+                return new FileObject(
+                    $this->baseNamespace . $this->appDir . 'Repository\\' . $domain . '\\' . $entity . 'Repository'
+                );
             case EntityFileObjectType::BUSINESS_RULES_ENTITY_STUB:
                 return new FileObject(
                     $this->stubNamespace . 'BusinessRules\Entities\\' . $domain . '\\' . $entity . 'Stub1'

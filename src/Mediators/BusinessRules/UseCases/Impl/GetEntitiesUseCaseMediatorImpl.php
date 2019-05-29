@@ -46,17 +46,21 @@ class GetEntitiesUseCaseMediatorImpl implements GetEntitiesUseCaseMediator
      */
     private function generateSources(string $className): array
     {
+        $fileObjects[] = $this->generateEntityGatewayGenerator($className);
+        $fileObjects[] = $this->generateEntityNotFoundExceptionGenerator($className);
+        $fileObjects[] = $this->generateEntityRepositoryGenerator($className);
         $fileObjects[] = $this->generateGetEntitiesUseCaseGenerator($className);
         $fileObjects[] = $this->generateGetEntityUseCaseRequestBuilderGenerator($className);
         $fileObjects[] = $this->generateGetEntityUseCaseRequestBuilderImplGenerator($className);
         $fileObjects[] = $this->generateGetEntityUseCaseRequestDTOGenerator($className);
         $fileObjects[] = $this->generateGetEntityUseCaseRequestGenerator($className);
-        $fileObjects[] = $this->generateUseCaseResponseDTOGenerator($className);
-        $fileObjects[] = $this->generateUseCaseResponseTraitGenerator($className);
         $fileObjects[] = $this->generateUseCaseListItemResponseAssemblerGenerator($className);
         $fileObjects[] = $this->generateUseCaseListItemResponseAssemblerImplGenerator($className);
         $fileObjects[] = $this->generateUseCaseListItemResponseDTOGenerator($className);
         $fileObjects[] = $this->generateUseCaseListItemResponseGenerator($className);
+        $fileObjects[] = $this->generateUseCaseResponseDTOGenerator($className);
+        $fileObjects[] = $this->generateUseCaseResponseGenerator($className);
+        $fileObjects[] = $this->generateUseCaseResponseTraitGenerator($className);
 
         return $fileObjects;
     }

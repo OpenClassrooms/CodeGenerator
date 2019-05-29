@@ -66,8 +66,11 @@ class GenerateGeneratorGenerator
         return $fileObjects;
     }
 
-    private function buildSkeletonModel(string $domain, string $entity, string $constructionPattern): GenerateGeneratorGeneratorSkeletonModel
-    {
+    private function buildSkeletonModel(
+        string $domain,
+        string $entity,
+        string $constructionPattern
+    ): GenerateGeneratorGeneratorSkeletonModel {
         return $this->skeletonModel = $this->assembler->create($domain, $entity, $constructionPattern);
     }
 
@@ -103,11 +106,21 @@ class GenerateGeneratorGenerator
 
     private function buildGeneratorFileObject(string $domain, string $entity): FileObject
     {
-        $fileObject = $this->factory->create(GenerateGeneratorFileObjectType::GENERATOR, $domain, $entity);
+        return $this->buildFileObject(
+            $domain,
+            $entity,
+            GenerateGeneratorFileObjectType::GENERATOR,
+            'GenerateGenerator/GenerateGenerator.php.twig'
+        );
+    }
+
+    private function buildFileObject(string $domain, string $entity, string $type, string $template): FileObject
+    {
+        $fileObject = $this->factory->create($type, $domain, $entity);
 
         $fileObject->setContent(
             $this->templating->render(
-                'GenerateGenerator/GenerateGenerator.php.twig',
+                $template,
                 ['skeletonModel' => $this->skeletonModel]
             )
         );
@@ -117,240 +130,161 @@ class GenerateGeneratorGenerator
 
     private function buildGeneratorFileObjectStubFileObject(string $domain, string $entity): FileObject
     {
-        $fileObject = $this->factory->create(GenerateGeneratorFileObjectType::FILE_OBJECT_STUB, $domain, $entity);
-
-        $fileObject->setContent(
-            $this->templating->render(
-                'GenerateGenerator/GenerateGeneratorFileObjectStub.php.twig',
-                ['skeletonModel' => $this->skeletonModel]
-            )
+        return $this->buildFileObject(
+            $domain,
+            $entity,
+            GenerateGeneratorFileObjectType::FILE_OBJECT_STUB,
+            'GenerateGenerator/GenerateGeneratorFileObjectStub.php.twig'
         );
-
-        return $fileObject;
     }
 
     private function buildGeneratorRequestFileObject(string $domain, string $entity): FileObject
     {
-        $fileObject = $this->factory->create(GenerateGeneratorFileObjectType::GENERATOR_REQUEST, $domain, $entity);
-
-        $fileObject->setContent(
-            $this->templating->render(
-                'GenerateGenerator/GenerateGeneratorRequest.php.twig',
-                ['skeletonModel' => $this->skeletonModel]
-            )
+        return $this->buildFileObject(
+            $domain,
+            $entity,
+            GenerateGeneratorFileObjectType::GENERATOR_REQUEST,
+            'GenerateGenerator/GenerateGeneratorRequest.php.twig'
         );
-
-        return $fileObject;
     }
 
     private function buildGeneratorRequestBuilderFileObject(string $domain, string $entity): FileObject
     {
-        $fileObject = $this->factory->create(
-            GenerateGeneratorFileObjectType::GENERATOR_REQUEST_BUILDER,
+        return $this->buildFileObject(
             $domain,
-            $entity
+            $entity,
+            GenerateGeneratorFileObjectType::GENERATOR_REQUEST_BUILDER,
+            'GenerateGenerator/GenerateGeneratorRequestBuilder.php.twig'
         );
 
-        $fileObject->setContent(
-            $this->templating->render(
-                'GenerateGenerator/GenerateGeneratorRequestBuilder.php.twig',
-                ['skeletonModel' => $this->skeletonModel]
-            )
-        );
-
-        return $fileObject;
     }
 
     private function buildGeneratorRequestBuilderImplFileObject(string $domain, string $entity): FileObject
     {
-        $fileObject = $this->factory->create(
-            GenerateGeneratorFileObjectType::GENERATOR_REQUEST_BUILDER_IMPL,
+        return $this->buildFileObject(
             $domain,
-            $entity
+            $entity,
+            GenerateGeneratorFileObjectType::GENERATOR_REQUEST_BUILDER_IMPL,
+            'GenerateGenerator/GenerateGeneratorRequestBuilderImpl.php.twig'
         );
 
-        $fileObject->setContent(
-            $this->templating->render(
-                'GenerateGenerator/GenerateGeneratorRequestBuilderImpl.php.twig',
-                ['skeletonModel' => $this->skeletonModel]
-            )
-        );
-
-        return $fileObject;
     }
 
     private function buildGeneratorRequestDTOFileObject(string $domain, string $entity): FileObject
     {
-        $fileObject = $this->factory->create(GenerateGeneratorFileObjectType::GENERATOR_REQUEST_DTO, $domain, $entity);
-
-        $fileObject->setContent(
-            $this->templating->render(
-                'GenerateGenerator/GenerateGeneratorRequestDTO.php.twig',
-                ['skeletonModel' => $this->skeletonModel]
-            )
+        return $this->buildFileObject(
+            $domain,
+            $entity,
+            GenerateGeneratorFileObjectType::GENERATOR_REQUEST_DTO,
+            'GenerateGenerator/GenerateGeneratorRequestDTO.php.twig'
         );
-
-        return $fileObject;
     }
 
     private function buildGeneratorTestFileObject(string $domain, string $entity): FileObject
     {
-        $fileObject = $this->factory->create(GenerateGeneratorFileObjectType::GENERATOR_TEST, $domain, $entity);
-
-        $fileObject->setContent(
-            $this->templating->render(
-                'GenerateGenerator/GenerateGeneratorTest.php.twig',
-                ['skeletonModel' => $this->skeletonModel]
-            )
+        return $this->buildFileObject(
+            $domain,
+            $entity,
+            GenerateGeneratorFileObjectType::GENERATOR_TEST,
+            'GenerateGenerator/GenerateGeneratorTest.php.twig'
         );
-
-        return $fileObject;
     }
 
     private function buildSkeletonFileObject(string $domain, string $entity): FileObject
     {
-        $fileObject = $this->factory->create(GenerateGeneratorFileObjectType::SKELETON, $domain, $entity);
-
-        $fileObject->setContent(
-            $this->templating->render(
-                'GenerateGenerator/GenerateGeneratorSkeleton.php.twig',
-                ['skeletonModel' => $this->skeletonModel]
-            )
+        return $this->buildFileObject(
+            $domain,
+            $entity,
+            GenerateGeneratorFileObjectType::SKELETON,
+            'GenerateGenerator/GenerateGeneratorSkeleton.php.twig'
         );
-
-        return $fileObject;
     }
 
     private function buildSkeletonModelFileObject(string $domain, string $entity): FileObject
     {
-        $fileObject = $this->factory->create(GenerateGeneratorFileObjectType::SKELETON_MODEL, $domain, $entity);
-
-        $fileObject->setContent(
-            $this->templating->render(
-                'GenerateGenerator/GenerateGeneratorSkeletonModel.php.twig',
-                ['skeletonModel' => $this->skeletonModel]
-            )
+        return $this->buildFileObject(
+            $domain,
+            $entity,
+            GenerateGeneratorFileObjectType::SKELETON_MODEL,
+            'GenerateGenerator/GenerateGeneratorSkeletonModel.php.twig'
         );
-
-        return $fileObject;
     }
 
     private function buildSkeletonModelAssemblerFileObject(string $domain, string $entity): FileObject
     {
-        $fileObject = $this->factory->create(
-            GenerateGeneratorFileObjectType::SKELETON_MODEL_ASSEMBLER,
+        return $this->buildFileObject(
             $domain,
-            $entity
+            $entity,
+            GenerateGeneratorFileObjectType::SKELETON_MODEL_ASSEMBLER,
+            'GenerateGenerator/GenerateGeneratorSkeletonModelAssembler.php.twig'
         );
 
-        $fileObject->setContent(
-            $this->templating->render(
-                'GenerateGenerator/GenerateGeneratorSkeletonModelAssembler.php.twig',
-                ['skeletonModel' => $this->skeletonModel]
-            )
-        );
-
-        return $fileObject;
     }
 
     private function buildSkeletonModelAssemblerImplFileObject(string $domain, string $entity): FileObject
     {
-        $fileObject = $this->factory->create(
-            GenerateGeneratorFileObjectType::SKELETON_MODEL_ASSEMBLER_IMPL,
+        return $this->buildFileObject(
             $domain,
-            $entity
+            $entity,
+            GenerateGeneratorFileObjectType::SKELETON_MODEL_ASSEMBLER_IMPL,
+            'GenerateGenerator/GenerateGeneratorSkeletonModelAssemblerImpl.php.twig'
         );
 
-        $fileObject->setContent(
-            $this->templating->render(
-                'GenerateGenerator/GenerateGeneratorSkeletonModelAssemblerImpl.php.twig',
-                ['skeletonModel' => $this->skeletonModel]
-            )
-        );
-
-        return $fileObject;
     }
 
     private function buildSkeletonModelAssemblerMockFileObject(string $domain, string $entity): FileObject
     {
-        $fileObject = $this->factory->create(
-            GenerateGeneratorFileObjectType::SKELETON_MODEL_ASSEMBLER_MOCK,
+        return $this->buildFileObject(
             $domain,
-            $entity
+            $entity,
+            GenerateGeneratorFileObjectType::SKELETON_MODEL_ASSEMBLER_MOCK,
+            'GenerateGenerator/GenerateGeneratorSkeletonModelAssemblerMock.php.twig'
         );
 
-        $fileObject->setContent(
-            $this->templating->render(
-                'GenerateGenerator/GenerateGeneratorSkeletonModelAssemblerMock.php.twig',
-                ['skeletonModel' => $this->skeletonModel]
-            )
-        );
-
-        return $fileObject;
     }
 
     private function buildSkeletonModelBuilderFileObject(string $domain, string $entity): FileObject
     {
-        $fileObject = $this->factory->create(GenerateGeneratorFileObjectType::SKELETON_MODEL_BUILDER, $domain, $entity);
-
-        $fileObject->setContent(
-            $this->templating->render(
-                'GenerateGenerator/GenerateGeneratorSkeletonModelBuilder.php.twig',
-                ['skeletonModel' => $this->skeletonModel]
-            )
+        return $this->buildFileObject(
+            $domain,
+            $entity,
+            GenerateGeneratorFileObjectType::SKELETON_MODEL_BUILDER,
+            'GenerateGenerator/GenerateGeneratorSkeletonModelBuilder.php.twig'
         );
 
-        return $fileObject;
     }
 
     private function buildSkeletonModelBuilderImplFileObject(string $domain, string $entity): FileObject
     {
-        $fileObject = $this->factory->create(
-            GenerateGeneratorFileObjectType::SKELETON_MODEL_BUILDER_IMPL,
+        return $this->buildFileObject(
             $domain,
-            $entity
+            $entity,
+            GenerateGeneratorFileObjectType::SKELETON_MODEL_BUILDER_IMPL,
+            'GenerateGenerator/GenerateGeneratorSkeletonModelBuilderImpl.php.twig'
         );
 
-        $fileObject->setContent(
-            $this->templating->render(
-                'GenerateGenerator/GenerateGeneratorSkeletonModelBuilderImpl.php.twig',
-                ['skeletonModel' => $this->skeletonModel]
-            )
-        );
-
-        return $fileObject;
     }
 
     private function buildSkeletonModelBuilderMockFileObject(string $domain, string $entity): FileObject
     {
-        $fileObject = $this->factory->create(
-            GenerateGeneratorFileObjectType::SKELETON_MODEL_BUILDER_MOCK,
+        return $this->buildFileObject(
             $domain,
-            $entity
+            $entity,
+            GenerateGeneratorFileObjectType::SKELETON_MODEL_BUILDER_MOCK,
+            'GenerateGenerator/GenerateGeneratorSkeletonModelBuilderMock.php.twig'
         );
 
-        $fileObject->setContent(
-            $this->templating->render(
-                'GenerateGenerator/GenerateGeneratorSkeletonModelBuilderMock.php.twig',
-                ['skeletonModel' => $this->skeletonModel]
-            )
-        );
-
-        return $fileObject;
     }
 
     private function buildSkeletonModelImplFileObject(string $domain, string $entity): FileObject
     {
-        $fileObject = $this->factory->create(GenerateGeneratorFileObjectType::SKELETON_MODEL_IMPL, $domain, $entity);
-
-        $fileObject->setContent(
-            $this->templating->render(
-                'GenerateGenerator/GenerateGeneratorSkeletonModelImpl.php.twig',
-                ['skeletonModel' => $this->skeletonModel]
-            )
+        return $this->buildFileObject(
+            $domain,
+            $entity,
+            GenerateGeneratorFileObjectType::SKELETON_MODEL_IMPL,
+            'GenerateGenerator/GenerateGeneratorSkeletonModelImpl.php.twig'
         );
 
-        return $fileObject;
     }
 
     /**

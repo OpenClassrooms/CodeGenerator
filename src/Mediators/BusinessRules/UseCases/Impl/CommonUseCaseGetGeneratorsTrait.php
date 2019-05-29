@@ -3,10 +3,18 @@
 namespace OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\Impl;
 
 use OpenClassrooms\CodeGenerator\Entities\FileObject;
+use OpenClassrooms\CodeGenerator\Generator\App\Repository\EntityRepositoryGenerator;
+use OpenClassrooms\CodeGenerator\Generator\App\Repository\Request\EntityRepositoryGeneratorRequestBuilder;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Gateways\EntityGatewayGenerator;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Gateways\EntityNotFoundExceptionGenerator;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Gateways\Request\EntityGatewayGeneratorRequestBuilder;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Gateways\Request\EntityNotFoundExceptionGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\GetEntityUseCaseRequestBuilderGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\GetEntityUseCaseRequestGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\Request\GetEntityUseCaseRequestBuilderGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\Request\GetEntityUseCaseRequestGeneratorRequestBuilder;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Responders\Request\UseCaseResponseGeneratorRequestBuilder;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Responders\UseCaseResponseGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\GetEntityUseCaseRequestBuilderImplGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\GetEntityUseCaseRequestDTOGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\GetEntityUseCaseRequestBuilderImplGeneratorRequestBuilder;
@@ -24,6 +32,24 @@ use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\BusinessRules\Responder
  */
 trait CommonUseCaseGetGeneratorsTrait
 {
+    /** @var EntityGatewayGenerator */
+    private $entityGatewayGenerator;
+
+    /** @var EntityGatewayGeneratorRequestBuilder */
+    private $entityGatewayGeneratorRequestBuilder;
+
+    /** @var EntityNotFoundExceptionGenerator */
+    private $entityNotFoundExceptionGenerator;
+
+    /** @var EntityNotFoundExceptionGeneratorRequestBuilder */
+    private $entityNotFoundExceptionGeneratorRequestBuilder;
+
+    /** @var EntityRepositoryGenerator */
+    private $entityRepositoryGenerator;
+
+    /** @var EntityRepositoryGeneratorRequestBuilder */
+    private $entityRepositoryGeneratorRequestBuilder;
+
     /** @var GetEntityUseCaseRequestBuilderGenerator */
     private $getEntityUseCaseRequestBuilderGenerator;
 
@@ -54,6 +80,12 @@ trait CommonUseCaseGetGeneratorsTrait
     /** @var UseCaseResponseDTOGeneratorRequestBuilder */
     private $useCaseResponseDTOGeneratorRequestBuilder;
 
+    /** @var UseCaseResponseGenerator */
+    private $useCaseResponseGenerator;
+
+    /** @var UseCaseResponseGeneratorRequestBuilder */
+    private $useCaseResponseGeneratorRequestBuilder;
+
     /** @var UseCaseResponseTestCaseGenerator */
     private $useCaseResponseTestCaseGenerator;
 
@@ -65,6 +97,40 @@ trait CommonUseCaseGetGeneratorsTrait
 
     /** @var UseCaseResponseTraitGeneratorRequestBuilder */
     private $useCaseResponseTraitGeneratorRequestBuilder;
+
+    public function setEntityGatewayGenerator(Generator $entityGatewayGenerator): void
+    {
+        $this->entityGatewayGenerator = $entityGatewayGenerator;
+    }
+
+    public function setEntityGatewayGeneratorRequestBuilder(
+        EntityGatewayGeneratorRequestBuilder $entityGatewayGeneratorRequestBuilder
+    ): void {
+        $this->entityGatewayGeneratorRequestBuilder = $entityGatewayGeneratorRequestBuilder;
+    }
+
+    public function setEntityNotFoundExceptionGenerator(
+        Generator $entityNotFoundExceptionGenerator
+    ): void {
+        $this->entityNotFoundExceptionGenerator = $entityNotFoundExceptionGenerator;
+    }
+
+    public function setEntityNotFoundExceptionGeneratorRequestBuilder(
+        EntityNotFoundExceptionGeneratorRequestBuilder $entityNotFoundExceptionGeneratorRequestBuilder
+    ): void {
+        $this->entityNotFoundExceptionGeneratorRequestBuilder = $entityNotFoundExceptionGeneratorRequestBuilder;
+    }
+
+    public function setEntityRepositoryGenerator(Generator $entityRepositoryGenerator): void
+    {
+        $this->entityRepositoryGenerator = $entityRepositoryGenerator;
+    }
+
+    public function setEntityRepositoryGeneratorRequestBuilder(
+        EntityRepositoryGeneratorRequestBuilder $entityRepositoryGeneratorRequestBuilder
+    ): void {
+        $this->entityRepositoryGeneratorRequestBuilder = $entityRepositoryGeneratorRequestBuilder;
+    }
 
     public function setGetEntityUseCaseRequestGenerator(
         Generator $getEntityUseCaseRequestGenerator
@@ -126,6 +192,17 @@ trait CommonUseCaseGetGeneratorsTrait
         $this->useCaseResponseDTOGeneratorRequestBuilder = $useCaseResponseDTOGeneratorRequestBuilder;
     }
 
+    public function setUseCaseResponseGenerator(Generator $useCaseResponseGenerator): void
+    {
+        $this->useCaseResponseGenerator = $useCaseResponseGenerator;
+    }
+
+    public function setUseCaseResponseGeneratorRequestBuilder(
+        UseCaseResponseGeneratorRequestBuilder $useCaseResponseGeneratorRequestBuilder
+    ): void {
+        $this->useCaseResponseGeneratorRequestBuilder = $useCaseResponseGeneratorRequestBuilder;
+    }
+
     public function setUseCaseResponseTraitGenerator(
         Generator $useCaseResponseTraitGenerator
     ): void {
@@ -148,6 +225,36 @@ trait CommonUseCaseGetGeneratorsTrait
         UseCaseResponseTestCaseGeneratorRequestBuilder $useCaseResponseTestCaseGeneratorRequestBuilder
     ): void {
         $this->useCaseResponseTestCaseGeneratorRequestBuilder = $useCaseResponseTestCaseGeneratorRequestBuilder;
+    }
+
+    protected function generateEntityGatewayGenerator(string $className): FileObject
+    {
+        return $this->entityGatewayGenerator->generate(
+            $this->entityGatewayGeneratorRequestBuilder
+                ->create()
+                ->withEntity($className)
+                ->build()
+        );
+    }
+
+    protected function generateEntityNotFoundExceptionGenerator(string $className): FileObject
+    {
+        return $this->entityNotFoundExceptionGenerator->generate(
+            $this->entityNotFoundExceptionGeneratorRequestBuilder
+                ->create()
+                ->withEntity($className)
+                ->build()
+        );
+    }
+
+    protected function generateEntityRepositoryGenerator(string $className): FileObject
+    {
+        return $this->entityRepositoryGenerator->generate(
+            $this->entityRepositoryGeneratorRequestBuilder
+                ->create()
+                ->withEntity($className)
+                ->build()
+        );
     }
 
     protected function generateGetEntityUseCaseRequestGenerator(string $className): FileObject
@@ -216,6 +323,17 @@ trait CommonUseCaseGetGeneratorsTrait
     {
         return $this->useCaseResponseTestCaseGenerator->generate(
             $this->useCaseResponseTestCaseGeneratorRequestBuilder
+                ->create()
+                ->withEntity($className)
+                ->withFields([])
+                ->build()
+        );
+    }
+
+    protected function generateUseCaseResponseGenerator(string $className): FileObject
+    {
+        return $this->useCaseResponseGenerator->generate(
+            $this->useCaseResponseGeneratorRequestBuilder
                 ->create()
                 ->withEntity($className)
                 ->withFields([])

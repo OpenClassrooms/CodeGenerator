@@ -53,7 +53,7 @@ class FileObjectUtility
         for ($i = count($explodedNamespace) - 1; $i > 0 && $i != $limit; $i--) {
             if (array_search(
                 $explodedNamespace[$i],
-                ['Entities', 'Request', 'Response', 'DTO', 'UseCases', 'Impl']
+                ['Entities', 'Request', 'Response', 'DTO', 'UseCases', 'Impl', 'Gateways']
                 ) === false) {
                 $domain[] = $explodedNamespace[$i];
             }
@@ -81,6 +81,7 @@ class FileObjectUtility
         $shortClassName = str_replace('Builder', '', $shortClassName);
         $shortClassName = str_replace('Detail', '', $shortClassName);
         $shortClassName = str_replace('Edit', '', $shortClassName);
+        $shortClassName = str_replace('Gateway', '', $shortClassName);
         $shortClassName = str_replace('Impl', '', $shortClassName);
         $shortClassName = str_replace('ListItem', '', $shortClassName);
         $shortClassName = str_replace('ResponseDTO', '', $shortClassName);
