@@ -1,0 +1,21 @@
+{% include "Header.php.twig" %}
+
+namespace {{ skeletonModel.namespace }};
+
+use {{ skeletonModel.entityGatewayClassName }};
+
+/**
+ * @author {{ author }} <{{ authorEmail }}>
+ */
+class {{ skeletonModel.shortName }} implements {{ skeletonModel.entityGatewayShortName }}
+{
+    public function find($id)
+    {
+        // TODO: Implement find() method.
+    }
+
+    public function findAll(array $filters = [], array $sorts = [], array $pagination = [])
+    {
+        // TODO: Implement findAll() method.
+    }
+}
