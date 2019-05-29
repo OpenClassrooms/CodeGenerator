@@ -12,10 +12,10 @@ class EntityNotFoundExceptionGeneratorRequestDTO implements EntityNotFoundExcept
     /**
      * @var string
      */
-    public $defaultValue;
+    public $entity;
 
     public function getEnity(): string
     {
-        return $this->defaultValue;
+        return $this->entity;
     }
 }

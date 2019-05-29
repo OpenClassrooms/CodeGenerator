@@ -6,6 +6,7 @@
         <import resource="FileObject/abstract_file_object_factory.xml"/>
         <import resource="FileObject/factories.xml"/>
         <import resource="Generator/abstract_generator.xml"/>
+        <import resource="Generator/App/Repository/entity_repository_generator.xml"/>
         <import resource="Generator/BusinessRules/abstract_use_case_generator.xml"/>
         <import resource="Generator/BusinessRules/Gateways/entity_gateway_generator.xml"/>
         <import resource="Generator/BusinessRules/Gateways/entity_not_found_exception_generator.xml"/>

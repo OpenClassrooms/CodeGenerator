@@ -1,0 +1,26 @@
+<?xml version="1.0" ?>
+
+<container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://symfony.com/schema/dic/services"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+
+        <service
+                id="open_classrooms.code_generator.skeleton_models.app.repository.entity_repository_skeleton_model_assembler"
+                class="OpenClassrooms\CodeGenerator\SkeletonModels\App\Repository\Impl\EntityRepositorySkeletonModelAssemblerImpl">
+        </service>
+
+        <service
+                id="open_classrooms.code_generator.generator.app.repository.entity_repository_generator"
+                class="OpenClassrooms\CodeGenerator\Generator\App\Repository\EntityRepositoryGenerator"
+                parent="open_classrooms.code_generator.generator.abstract_generator">
+            <call method="setEntityFileObjectFactory">
+                <argument type="service" id="open_classrooms.code_generator.file_objects.entity_file_object_factory"/>
+            </call>
+            <call method="setEntityRepositorySkeletonModelAssembler">
+                <argument type="service"
+                          id="open_classrooms.code_generator.skeleton_models.app.repository.entity_repository_skeleton_model_assembler"/>
+            </call>
+        </service>
+
+    </services>
+</container>

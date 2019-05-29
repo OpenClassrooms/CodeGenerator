@@ -22,9 +22,9 @@ class EntityNotFoundExceptionGeneratorRequestBuilderImpl implements EntityNotFou
         return $this;
     }
 
-    public function withEntity(string $defaultValue): EntityNotFoundExceptionGeneratorRequestBuilder
+    public function withEntity(string $entity): EntityNotFoundExceptionGeneratorRequestBuilder
     {
-        $this->request->defaultValue = $defaultValue;
+        $this->request->entity = $entity;
 
         return $this;
     }
