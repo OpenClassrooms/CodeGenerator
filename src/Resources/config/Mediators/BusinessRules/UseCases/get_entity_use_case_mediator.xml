@@ -148,6 +148,9 @@
             <call method="setUseCaseDetailResponseTestCaseGeneratorRequestBuilder">
                 <argument type="service" id="open_classrooms.code_generator.generator.tests.doubles.business_rules.responders.dto.request.use_case_detail_response_test_case_generator_request_builder"/>
             </call>
+            <call method="setFileObjectGateway">
+                <argument type="service" id="open_classrooms.code_generator.repository.file_object_repository"/>
+            </call>
         </service>
 
     </services>
