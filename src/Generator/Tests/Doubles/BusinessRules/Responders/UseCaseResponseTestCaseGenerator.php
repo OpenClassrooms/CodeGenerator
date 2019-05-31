@@ -9,6 +9,7 @@ use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\BusinessRules\Responders\Request\UseCaseResponseTestCaseGeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\BusinessRules\Responders\UseCaseResponseTestCaseSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\BusinessRules\Responders\UseCaseResponseTestCaseSkeletonModelAssembler;
+use OpenClassrooms\CodeGenerator\Utility\FieldUtility;
 use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 
 /**
@@ -37,13 +38,14 @@ class UseCaseResponseTestCaseGenerator extends AbstractUseCaseGenerator
     }
 
     /**
-     * @param string[] $fields
+     * @param string[] $wantedFields
      */
-    private function buildUseCaseResponseTestCaseFileObject(string $entityClassName, array $fields): FileObject
+    private function buildUseCaseResponseTestCaseFileObject(string $entityClassName, array $wantedFields = []): FileObject
     {
         $useCaseResponseTestCaseFileObject = $this->createUseCaseResponseTestCaseFileObject($entityClassName);
         $useCaseResponseFileObject = $this->createUseCaseResponseFileObject($useCaseResponseTestCaseFileObject);
 
+        $fields = FieldUtility::getFields($entityClassName, $wantedFields);
         $useCaseResponseFileObject->setMethods($this->getSelectedAccessors($entityClassName, $fields));
 
         $useCaseResponseTestCaseFileObject->setContent(

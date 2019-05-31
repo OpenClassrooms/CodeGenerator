@@ -10,8 +10,8 @@ use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Responders\Reques
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\Responders\UseCaseDetailResponseStubSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\Responders\UseCaseDetailResponseStubSkeletonModelAssembler;
 use OpenClassrooms\CodeGenerator\Utility\ConstUtility;
-use OpenClassrooms\CodeGenerator\Utility\FieldUtility;
 use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
+use OpenClassrooms\CodeGenerator\Utility\StubFieldUtility;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
@@ -104,7 +104,7 @@ class UseCaseDetailResponseStubGenerator extends AbstractUseCaseResponseStubGene
             $useCaseDetailResponseDTOFileObject->getClassName()
         );
 
-        return FieldUtility::generateStubFieldObjects(
+        return StubFieldUtility::generateStubFieldObjects(
             $useCaseDetailResponseFields,
             $useCaseDetailResponseDTOFileObject
         );

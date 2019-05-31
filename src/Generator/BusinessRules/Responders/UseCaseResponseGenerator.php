@@ -10,6 +10,7 @@ use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Responders\Request\UseC
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Responders\UseCaseResponseSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Responders\UseCaseResponseSkeletonModelAssembler;
+use OpenClassrooms\CodeGenerator\Utility\FieldUtility;
 use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 
 /**
@@ -38,13 +39,14 @@ class UseCaseResponseGenerator extends AbstractUseCaseGenerator
     }
 
     /**
-     * @param string[] $fields
+     * @param string[] $wantedFields
      */
-    private function buildUseCaseResponseFileObject(string $entityClassName, array $fields): FileObject
+    private function buildUseCaseResponseFileObject(string $entityClassName, array $wantedFields = []): FileObject
     {
         $entityFileObject = $this->createEntityFileObject($entityClassName);
         $useCaseResponseFileObject = $this->createUseCaseResponseFileObject($entityFileObject);
 
+        $fields = FieldUtility::getFields($entityClassName, $wantedFields);
         $useCaseResponseFileObject->setMethods($this->getSelectedAccessors($entityClassName, $fields));
         $useCaseResponseFileObject->setContent($this->generateContent($useCaseResponseFileObject));
 

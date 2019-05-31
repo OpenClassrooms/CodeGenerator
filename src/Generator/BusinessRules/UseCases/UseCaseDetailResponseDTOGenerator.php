@@ -37,9 +37,9 @@ class UseCaseDetailResponseDTOGenerator extends AbstractUseCaseGenerator
     }
 
     /**
-     * @param string[] $fields
+     * @param string[] $wantedFields
      */
-    private function buildUseCaseDetailResponseDTOFileObject(string $entityClassName, array $fields): FileObject
+    private function buildUseCaseDetailResponseDTOFileObject(string $entityClassName, array $wantedFields = []): FileObject
     {
         $useCaseDetailResponseDTOFileObject = $this->createUseCaseDetailResponseDTOFileObject(
             $entityClassName
@@ -51,9 +51,9 @@ class UseCaseDetailResponseDTOGenerator extends AbstractUseCaseGenerator
             $useCaseDetailResponseDTOFileObject
         );
 
-        $useCaseDetailResponseDTOFileObject->setFields($this->getSelectedFields($entityClassName, $fields));
+        $useCaseDetailResponseDTOFileObject->setFields($this->getSelectedFields($entityClassName, $wantedFields));
         $useCaseDetailResponseDTOFileObject->setMethods(
-            $this->getSelectedAccessors($entityClassName, $fields)
+            $this->getSelectedAccessors($entityClassName, $wantedFields)
         );
 
         $useCaseDetailResponseDTOFileObject->setContent(

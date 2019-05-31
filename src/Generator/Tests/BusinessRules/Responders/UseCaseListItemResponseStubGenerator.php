@@ -11,8 +11,8 @@ use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Responders\Reques
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\Responders\UseCaseListItemResponseStubSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\Responders\UseCaseListItemResponseStubSkeletonModelAssembler;
 use OpenClassrooms\CodeGenerator\Utility\ConstUtility;
-use OpenClassrooms\CodeGenerator\Utility\FieldUtility;
 use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
+use OpenClassrooms\CodeGenerator\Utility\StubFieldUtility;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
@@ -105,7 +105,7 @@ class UseCaseListItemResponseStubGenerator extends AbstractUseCaseResponseStubGe
             $useCaseListItemResponseFileObject->getClassName()
         );
 
-        return FieldUtility::generateStubFieldObjects(
+        return StubFieldUtility::generateStubFieldObjects(
             $useCaseListItemResponseFields,
             $useCaseListItemResponseFileObject
         );

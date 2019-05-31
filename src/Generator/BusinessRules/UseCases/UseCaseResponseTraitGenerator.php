@@ -10,6 +10,7 @@ use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\UseCas
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\UseCaseResponseTraitSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\UseCaseResponseTraitSkeletonModelAssembler;
+use OpenClassrooms\CodeGenerator\Utility\FieldUtility;
 use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 
 /**
@@ -37,13 +38,14 @@ class UseCaseResponseTraitGenerator extends AbstractUseCaseGenerator
         return $useCaseResponseTraitFileObject;
     }
 
-    private function buildUseCaseResponseTraitFileObject(string $entityClassName, array $fields): FileObject
+    private function buildUseCaseResponseTraitFileObject(string $entityClassName, array $wantedFields = []): FileObject
     {
         $entityFileObject = $this->createEntityFileObject($entityClassName);
         $useCaseResponseDTOFileObject = $this->createUseCaseResponseDTOFileObject($entityFileObject);
         $useCaseResponseFileObject = $this->createUseCaseResponseFileObject($entityFileObject);
         $useCaseResponseTraitFileObject = $this->createUseCaseResponseTraitFileObject($entityFileObject);
 
+        $fields = FieldUtility::getFields($entityClassName, $wantedFields);
         $entityFileObject->setMethods($this->getSelectedAccessors($entityClassName, $fields));
 
         $useCaseResponseTraitFileObject->setContent(

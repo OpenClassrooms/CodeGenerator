@@ -11,8 +11,8 @@ use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Entities\Request\EntityStubGeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\Entities\EntityStubSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\Entities\EntityStubSkeletonModelAssembler;
-use OpenClassrooms\CodeGenerator\Utility\FieldUtility;
 use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
+use OpenClassrooms\CodeGenerator\Utility\StubFieldUtility;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
@@ -93,7 +93,7 @@ class EntityStubGenerator extends AbstractGenerator
     {
         $entityFields = $this->getProtectedClassFields($fileObject->getClassName());
 
-        return FieldUtility::generateStubFieldObjects($entityFields, $stubFieldObject);
+        return StubFieldUtility::generateStubFieldObjects($entityFields, $stubFieldObject);
     }
 
     /**

@@ -5,7 +5,7 @@ namespace OpenClassrooms\CodeGenerator\Tests\Utility;
 use OpenClassrooms\CodeGenerator\Entities\ConstObject;
 use OpenClassrooms\CodeGenerator\Entities\FieldObject;
 use OpenClassrooms\CodeGenerator\Entities\FileObject;
-use OpenClassrooms\CodeGenerator\Utility\FieldUtility;
+use OpenClassrooms\CodeGenerator\Utility\StubFieldUtility;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -29,7 +29,7 @@ class FieldUtilityTest extends TestCase
             $this->buildStubFieldObject('field3', 'array'),
             $this->buildStubFieldObject('field4', '\DateTimeImmutable'),
         ];
-        $actualFieldObjects = FieldUtility::generateStubFieldObjects($fields, $this->fileObject);
+        $actualFieldObjects = StubFieldUtility::generateStubFieldObjects($fields, $this->fileObject);
 
         $this->assertCount(count($fields), $actualFieldObjects);
 

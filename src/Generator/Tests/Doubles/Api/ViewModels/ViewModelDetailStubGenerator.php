@@ -11,8 +11,8 @@ use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\Request\
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\Api\ViewModels\ViewModelDetailStubSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\Api\ViewModels\ViewModelDetailStubSkeletonModelAssembler;
 use OpenClassrooms\CodeGenerator\Utility\ConstUtility;
-use OpenClassrooms\CodeGenerator\Utility\FieldUtility;
 use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
+use OpenClassrooms\CodeGenerator\Utility\StubFieldUtility;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
@@ -126,7 +126,7 @@ class ViewModelDetailStubGenerator extends AbstractViewModelGenerator
             $useCaseDetailResponseDTOFileObject->getClassName()
         );
 
-        return FieldUtility::generateStubFieldObjects($viewModelDetailFields, $useCaseDetailResponseDTOFileObject);
+        return StubFieldUtility::generateStubFieldObjects($viewModelDetailFields, $useCaseDetailResponseDTOFileObject);
     }
 
     private function generateConsts(

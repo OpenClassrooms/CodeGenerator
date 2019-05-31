@@ -10,6 +10,7 @@ use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\UseCas
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\UseCaseResponseDTOSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\UseCaseResponseDTOSkeletonModelAssembler;
+use OpenClassrooms\CodeGenerator\Utility\FieldUtility;
 use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 
 /**
@@ -37,12 +38,13 @@ class UseCaseResponseDTOGenerator extends AbstractUseCaseGenerator
         return $useCaseResponseDTOFileObject;
     }
 
-    private function buildUseCaseResponseDTOFileObject(string $entityClassName, array $fields): FileObject
+    private function buildUseCaseResponseDTOFileObject(string $entityClassName, array $wantedFields = []): FileObject
     {
         $entityFileObject = $this->createEntityFileObject($entityClassName);
         $useCaseResponseFileObject = $this->createUseCaseResponseFileObject($entityFileObject);
         $useCaseResponseDTOFileObject = $this->createUseCaseResponseDTOFileObject($entityFileObject);
 
+        $fields = FieldUtility::getFields($entityClassName, $wantedFields);
         $useCaseResponseDTOFileObject->setFields($this->getSelectedFields($entityClassName, $fields));
         $useCaseResponseDTOFileObject->setMethods($this->getSelectedAccessors($entityClassName, $fields));
         $useCaseResponseDTOFileObject->setContent(

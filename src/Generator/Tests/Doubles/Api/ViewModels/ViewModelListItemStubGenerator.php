@@ -11,8 +11,8 @@ use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\Request\
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\Api\ViewModels\ViewModelListItemStubSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\Api\ViewModels\ViewModelListItemStubSkeletonModelAssembler;
 use OpenClassrooms\CodeGenerator\Utility\ConstUtility;
-use OpenClassrooms\CodeGenerator\Utility\FieldUtility;
 use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
+use OpenClassrooms\CodeGenerator\Utility\StubFieldUtility;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
@@ -131,7 +131,7 @@ class ViewModelListItemStubGenerator extends AbstractViewModelGenerator
             $viewModelListItemImplFileObject->getClassName()
         );
 
-        return FieldUtility::generateStubFieldObjects($viewModelListItemFields, $viewModelListItemImplFileObject);
+        return StubFieldUtility::generateStubFieldObjects($viewModelListItemFields, $viewModelListItemImplFileObject);
     }
 
     private function generateConsts(FileObject $viewModelListItemStubFileObject): array

@@ -37,9 +37,9 @@ class UseCaseListItemResponseTestCaseGenerator extends AbstractUseCaseGenerator
     }
 
     /**
-     * @param string[] $fields
+     * @param string[] $wantedFields
      */
-    private function buildUseCaseListItemResponseTestCaseFileObject(string $entityClassName, array $fields): FileObject
+    private function buildUseCaseListItemResponseTestCaseFileObject(string $entityClassName, array $wantedFields = []): FileObject
     {
         $useCaseListItemResponseFileObject = $this->createUseCaseListItemResponseFileObject($entityClassName);
         $useCaseListItemResponseTestCaseFileObject = $this->createUseCaseListItemResponseTestCaseFileObject(
@@ -50,7 +50,7 @@ class UseCaseListItemResponseTestCaseGenerator extends AbstractUseCaseGenerator
             $useCaseListItemResponseFileObject
         );
 
-        $useCaseListItemResponseFileObject->setMethods($this->getSelectedAccessors($entityClassName, $fields));
+        $useCaseListItemResponseFileObject->setMethods($this->getSelectedAccessors($entityClassName, $wantedFields));
 
         $useCaseListItemResponseTestCaseFileObject->setContent(
             $this->generateContent(

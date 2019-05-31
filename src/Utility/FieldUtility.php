@@ -3,35 +3,46 @@
 namespace OpenClassrooms\CodeGenerator\Utility;
 
 use OpenClassrooms\CodeGenerator\Entities\FieldObject;
-use OpenClassrooms\CodeGenerator\Entities\FileObject;
 
 /**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
+ * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
  */
 class FieldUtility
 {
-    /**
-     * @param FieldObject[]
-     *
-     * @return FieldObject[]
-     */
-    public static function generateStubFieldObjects(array $fields, $fileObject): array
+    public static function getFields(string $entityClassName, array $wantedFields = []): array
     {
-        $fieldObjects = [];
-        foreach ($fields as $field) {
-            $fieldObjects[] = self::buildStubFieldObject($field, $fileObject);
+        $fields = self::getEntityFields($entityClassName);
+
+        if (empty($wantedFields)) {
+            return $fields;
         }
 
-        return $fieldObjects;
+        $validatedFields = array_intersect($fields, $wantedFields);
+
+        if (count($validatedFields) !== count($wantedFields)) {
+            throw new \Exception(
+                "Some wanted fields doesn't exist in $entityClassName: " . implode(
+                    ',',
+                    array_diff($validatedFields, $wantedFields)
+                )
+            );
+        }
+
+        return $validatedFields;
     }
 
-    private static function buildStubFieldObject(FieldObject $fieldObject, FileObject $fileObject): FieldObject
+    /**
+     * @return string[]
+     */
+    private static function getEntityFields(string $entityClassName): array
     {
-        $stubFieldObject = new FieldObject($fieldObject->getName());
-        $stubFieldObject->setDocComment($fieldObject->getDocComment());
-        $stubFieldObject->setScope($fieldObject->getScope());
-        $stubFieldObject->setValue(ConstUtility::generateStubConstObject($stubFieldObject, $fileObject));
+        $fields = array_map(
+            function(FieldObject $fieldObject) {
+                return $fieldObject->getName();
+            },
+            FieldObjectUtility::getProtectedClassFields($entityClassName)
+        );
 
-        return $stubFieldObject;
+        return $fields;
     }
 }

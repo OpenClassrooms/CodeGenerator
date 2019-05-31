@@ -9,6 +9,7 @@ use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\BusinessRules\Responders\Request\UseCaseDetailResponseTestCaseGeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\BusinessRules\Responders\UseCaseDetailResponseTestCaseSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\BusinessRules\Responders\UseCaseDetailResponseTestCaseSkeletonModelAssembler;
+use OpenClassrooms\CodeGenerator\Utility\FieldUtility;
 use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 
 /**
@@ -37,18 +38,22 @@ class UseCaseDetailResponseTestCaseGenerator extends AbstractUseCaseGenerator
     }
 
     /**
-     * @param string[] $fields
+     * @param string[] $wantedFields
      */
-    private function buildUseCaseDetailResponseTestCaseFileObject(string $entityClassName, array $fields): FileObject
-    {
+    private function buildUseCaseDetailResponseTestCaseFileObject(
+        string $entityClassName,
+        array $wantedFields = []
+    ): FileObject {
         $useCaseDetailResponseFileObject = $this->createUseCaseDetailResponseFileObject($entityClassName);
         $useCaseDetailResponseTestCaseFileObject = $this->createUseCaseDetailResponseTestCaseFileObject(
             $useCaseDetailResponseFileObject
         );
         $useCaseResponseFileObject = $this->createUseCaseResponseFileObject($useCaseDetailResponseFileObject);
-        $useCaseResponseTestCaseFileObject = $this->createUseCaseResponseTestCaseFileObject($useCaseDetailResponseFileObject);
+        $useCaseResponseTestCaseFileObject = $this->createUseCaseResponseTestCaseFileObject(
+            $useCaseDetailResponseFileObject
+        );
 
-        $useCaseDetailResponseFileObject->setMethods($this->getSelectedAccessors($entityClassName, $fields));
+        $useCaseDetailResponseFileObject->setMethods($this->getSelectedAccessors($entityClassName, $wantedFields));
 
         $useCaseDetailResponseTestCaseFileObject->setContent(
             $this->generateContent(
