@@ -3,7 +3,6 @@
 namespace OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\Impl;
 
 use OpenClassrooms\CodeGenerator\Entities\FileObject;
-use OpenClassrooms\CodeGenerator\Entities\MethodObject;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCaseClassNameTrait;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\GetEntityUseCaseSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\GetEntityUseCaseSkeletonModelBuilder;
@@ -40,8 +39,7 @@ class GetEntityUseCaseSkeletonModelBuilderImpl implements GetEntityUseCaseSkelet
 
     public function withEntityDetailResponse(
         FileObject $entityDetailResponseFileObject
-    ): GetEntityUseCaseSkeletonModelBuilder
-    {
+    ): GetEntityUseCaseSkeletonModelBuilder {
         $this->skeletonModel->functionalEntityDetailResponseClassName = $entityDetailResponseFileObject->getClassName();
         $this->skeletonModel->functionalEntityDetailResponseShortName = $entityDetailResponseFileObject->getShortName();
 
@@ -50,8 +48,7 @@ class GetEntityUseCaseSkeletonModelBuilderImpl implements GetEntityUseCaseSkelet
 
     public function withEntityDetailResponseAssembler(
         FileObject $entityDetailResponseAssemblerFileObject
-    ): GetEntityUseCaseSkeletonModelBuilder
-    {
+    ): GetEntityUseCaseSkeletonModelBuilder {
         $this->skeletonModel->functionalEntityDetailResponseAssemblerClassName = $entityDetailResponseAssemblerFileObject->getClassName(
         );
         $this->skeletonModel->functionalEntityDetailResponseAssemblerShortName = $entityDetailResponseAssemblerFileObject->getShortName(
@@ -70,8 +67,7 @@ class GetEntityUseCaseSkeletonModelBuilderImpl implements GetEntityUseCaseSkelet
 
     public function withEntityNotFoundException(
         FileObject $entityNotFoundExceptionFileObjectFileObject
-    ): GetEntityUseCaseSkeletonModelBuilder
-    {
+    ): GetEntityUseCaseSkeletonModelBuilder {
         $this->skeletonModel->functionalEntityNotFoundExceptionClassName = $entityNotFoundExceptionFileObjectFileObject->getClassName(
         );
 
@@ -96,11 +92,10 @@ class GetEntityUseCaseSkeletonModelBuilderImpl implements GetEntityUseCaseSkelet
 
     public function withGetEntityUseCaseRequest(
         FileObject $getEntityUseCaseRequestFileObject
-    ): GetEntityUseCaseSkeletonModelBuilder
-    {
+    ): GetEntityUseCaseSkeletonModelBuilder {
         $this->skeletonModel->getEntityUseCaseRequestClassName = $getEntityUseCaseRequestFileObject->getClassName();
         $this->skeletonModel->getEntityUseCaseRequestAccessor = $this->getRequestAccessor(
-            $getEntityUseCaseRequestFileObject->getMethods()
+            $getEntityUseCaseRequestFileObject->getEntity()
         );
         $this->skeletonModel->getEntityUseCaseRequestArgument = MethodUtility::createArgumentNameFromMethod(
             $this->skeletonModel->getEntityUseCaseRequestAccessor
@@ -108,6 +103,11 @@ class GetEntityUseCaseSkeletonModelBuilderImpl implements GetEntityUseCaseSkelet
         $this->skeletonModel->getEntityUseCaseRequestShortName = $getEntityUseCaseRequestFileObject->getShortName();
 
         return $this;
+    }
+
+    private function getRequestAccessor(string $entityShortName): string
+    {
+        return lcfirst($entityShortName) . 'Id';
     }
 
     public function build(): GetEntityUseCaseSkeletonModel
@@ -119,13 +119,5 @@ class GetEntityUseCaseSkeletonModelBuilderImpl implements GetEntityUseCaseSkelet
         $this->skeletonModel->useCaseRequestArgument = lcfirst($useCaseRequestShortName);
 
         return $this->skeletonModel;
-    }
-
-    /**
-     * @param MethodObject[]
-     */
-    private function getRequestAccessor(array $methods): string
-    {
-        return array_shift($methods)->getName();
     }
 }

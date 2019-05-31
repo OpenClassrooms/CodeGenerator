@@ -58,6 +58,7 @@ class ViewModelListItemAssemblerImplTestGeneratorTest extends TestCase
         $this->viewModelListItemAssemblerImplTestGenerator = new ViewModelListItemAssemblerImplTestGenerator();
         $viewModelFileObjectFactory = new ViewModelFileObjectFactoryImpl();
         $viewModelFileObjectFactory->setApiDir(FixturesConfig::API_DIR);
+        $viewModelFileObjectFactory->setAppDir(FixturesConfig::APP_DIR);
         $viewModelFileObjectFactory->setBaseNamespace(FixturesConfig::BASE_NAMESPACE);
         $viewModelFileObjectFactory->setTestsBaseNamespace(FixturesConfig::TEST_BASE_NAMESPACE);
         $viewModelFileObjectFactory->setStubNamespace(FixturesConfig::STUB_NAMESPACE);

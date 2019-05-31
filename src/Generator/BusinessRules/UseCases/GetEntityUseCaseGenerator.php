@@ -61,10 +61,6 @@ class GetEntityUseCaseGenerator extends AbstractUseCaseGenerator
             $entityFileObject
         );
 
-        $getEntityUseCaseRequestFileObject->setMethods(
-            MethodUtility::getAccessors($getEntityUseCaseRequestFileObject->getClassName())
-        );
-
         $getEntityUseCaseFileObject = $this->createGetEntityUseCaseFileObject($entityFileObject);
 
         $getEntityUseCaseFileObject->setContent(

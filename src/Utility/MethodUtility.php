@@ -26,11 +26,7 @@ class MethodUtility
     {
         $methods = self::getAccessors($className);
 
-        foreach ($methods as $key => $method) {
-            if (!in_array($method->getFieldName(), $fields)) {
-                unset($methods[$key]);
-            }
-        }
+        $methods = self::removeNotSelectedFields($fields, $methods);
 
         return $methods;
     }
@@ -80,11 +76,34 @@ class MethodUtility
     {
         $methods = [];
         foreach ($accessors as $accessor) {
-            $method = new MethodObject($accessor[self::NAME]);
-            $method->setDocComment($accessor[self::DOC_COMMENT]);
-            $method->setReturnType($accessor[self::RETURN_TYPE]);
-            $method->setNullable($accessor[self::NULLABLE]);
-            $methods[] = $method;
+            $methods[] = self::buildAccessor($accessor);
+        }
+
+        return $methods;
+    }
+
+    private static function buildAccessor(array $accessor): MethodObject
+    {
+        $method = new MethodObject($accessor[self::NAME]);
+        $method->setDocComment($accessor[self::DOC_COMMENT]);
+        $method->setReturnType($accessor[self::RETURN_TYPE]);
+        $method->setNullable($accessor[self::NULLABLE]);
+
+        return $method;
+    }
+
+    /**
+     * @param string[]
+     * @param \ReflectionMethod[]
+     *
+     * @return array
+     */
+    private static function removeNotSelectedFields(array $fields, array $methods): array
+    {
+        foreach ($methods as $key => $method) {
+            if (!in_array($method->getFieldName(), $fields)) {
+                unset($methods[$key]);
+            }
         }
 
         return $methods;
