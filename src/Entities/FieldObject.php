@@ -2,6 +2,7 @@
 
 namespace OpenClassrooms\CodeGenerator\Entities;
 
+use OpenClassrooms\CodeGenerator\Utility\DocCommentUtility;
 use OpenClassrooms\CodeGenerator\Utility\StringUtility;
 
 /**
@@ -94,7 +95,7 @@ class FieldObject
             return 'array';
         }
 
-        return preg_replace('/([\/*@]|[[:space:]]|\[])|(var)/', '', $this->getDocComment());
+        return DocCommentUtility::getType($this->getDocComment());
     }
 
     public function getDocComment(): ?string

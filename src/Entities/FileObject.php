@@ -140,7 +140,7 @@ class FileObject
 
     private function isTest(): bool
     {
-        return (bool) preg_match('/Test$|Stub\d$|Mock$/', $this->getShortName());
+        return (bool) preg_match('/Test$|TestCase$|Stub\d$|Mock$/', $this->getShortName());
     }
 
     public function getShortName(): string

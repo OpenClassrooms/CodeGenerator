@@ -46,10 +46,7 @@ class MethodUtility
         $accessors = [];
         foreach ($methods as $key => $method) {
             if (self::isAccessor($method)) {
-                $accessors[$key][self::DOC_COMMENT] = $method->getDocComment();
-                $accessors[$key][self::NAME] = $method->getName();
-                $accessors[$key][self::RETURN_TYPE] = $method->getReturnType()->getName();
-                $accessors[$key][self::NULLABLE] = $method->getReturnType()->allowsNull();
+                $accessors = self::buildAccessorsArray($method, $accessors, $key);
             }
         }
 
@@ -59,6 +56,21 @@ class MethodUtility
     private static function isAccessor(\ReflectionMethod $method): bool
     {
         return ('get' === substr($method->getName(), 0, 3) || 'is' === substr($method->getName(), 0, 2));
+    }
+
+    private static function buildAccessorsArray(\ReflectionMethod $method, array $accessors, int $key): array
+    {
+        $accessors[$key][self::DOC_COMMENT] = $method->getDocComment();
+        $accessors[$key][self::NAME] = $method->getName();
+        if (null !== $method->getReturnType()) {
+            $accessors[$key][self::RETURN_TYPE] = $method->getReturnType()->getName();
+            $accessors[$key][self::NULLABLE] = $method->getReturnType()->allowsNull();
+        } else {
+            $accessors[$key][self::RETURN_TYPE] = DocCommentUtility::getReturnType($method->getDocComment());
+            $accessors[$key][self::NULLABLE] = DocCommentUtility::allowsNull($method->getDocComment());
+        }
+
+        return $accessors;
     }
 
     /**
