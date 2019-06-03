@@ -16,16 +16,12 @@ class DocCommentUtility
             return self::ARRAY_TYPE;
         }
 
-        if (self::allowsNull($docComment)) {
-            return preg_replace('/(null\|)|(\|null)/', '', $type);
-        }
-
         return $type;
     }
 
     public static function getType(string $docComment): string
     {
-        return preg_replace('/([\/*@]|[[:space:]]|\[])|(var)|(return)/', '', $docComment);
+        return preg_replace('/([\/*@]|[[:space:]]|\[])|(var)|(null\|)|(\|null)|(return)/', '', $docComment);
     }
 
     public static function allowsNull(string $docComment): bool

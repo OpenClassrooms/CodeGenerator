@@ -91,7 +91,7 @@ class FieldObject
 
     public function getType(): string
     {
-        if (null !== $this->getDocComment() && strpos($this->getDocComment(), '[]') !== false) {
+        if (null !== $this->getDocComment() && preg_match('/\[]/', $this->getDocComment())) {
             return 'array';
         }
 
