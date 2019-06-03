@@ -42,7 +42,7 @@ class UseCaseListItemResponseStubGenerator extends AbstractUseCaseResponseStubGe
     /**
      * @param string[] $fields
      */
-    private function buildUseCaseListItemResponseStubFileObject(string $className, array $fields)
+    private function buildUseCaseListItemResponseStubFileObject(string $className, array $fields = [])
     {
         $entityFileObject = $this->createEntityFileObject($className);
         $entityStubFileObject = $this->createEntityStubFileObject($entityFileObject);

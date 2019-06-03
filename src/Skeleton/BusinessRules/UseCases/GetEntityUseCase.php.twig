@@ -50,12 +50,12 @@ class {{ skeletonModel.shortName }} implements UseCase
         return $this->responseAssembler->create(${{ skeletonModel.functionalEntityArgument }});
     }
 
-    public function setFunctionalEntityGateway({{ skeletonModel.functionalEntityGatewayShortName}} $gateway): void
+    public function set{{ skeletonModel.functionalEntityShortName }}Gateway({{ skeletonModel.functionalEntityGatewayShortName }} $gateway): void
     {
         $this->gateway = $gateway;
     }
 
-    public function setFunctionalEntityResponseAssembler({{ skeletonModel.functionalEntityDetailResponseAssemblerShortName}} $assembler): void
+    public function set{{ skeletonModel.functionalEntityShortName }}ResponseAssembler({{ skeletonModel.functionalEntityDetailResponseAssemblerShortName }} $assembler): void
     {
         $this->responseAssembler = $assembler;
     }
