@@ -11,7 +11,7 @@ interface {{ skeletonModel.shortName }} extends {{ skeletonModel.useCaseResponse
 {% if method.docComment %}
     {{ method.docComment }}
 {% endif %}
-    public function {{ method.name }}(): {{ printReturnType(method.returnType, method.Nullable) }};
+    public function {{ method.name }}(): {{ printReturnType(method.returnType, method.nullable) }};
 {% if not loop.last %}
 
 {% endif %}

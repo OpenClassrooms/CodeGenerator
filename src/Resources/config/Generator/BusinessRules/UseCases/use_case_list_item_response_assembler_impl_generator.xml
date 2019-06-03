@@ -8,13 +8,13 @@
                 id="open_classrooms.code_generator.skeleton_models.business_rules.use_cases.use_case_list_item_response_assembler_impl_skeleton_model_assembler"
                 class="OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\Impl\UseCaseListItemResponseAssemblerImplSkeletonModelAssemblerImpl">
             <call method="setPaginatedCollection">
-                <argument type="string">%paginated_collection%</argument>
+                <argument type="string">%paginated_collection_classname%</argument>
             </call>
             <call method="setPaginatedUseCaseResponse">
-                <argument type="string">%paginated_use_case_response%</argument>
+                <argument type="string">%paginated_use_case_response_classname%</argument>
             </call>
             <call method="setPaginatedUseCaseResponseBuilder">
-                <argument type="string">%paginated_use_case_response_builder%</argument>
+                <argument type="string">%paginated_use_case_response_builder_classname%</argument>
             </call>
         </service>
 

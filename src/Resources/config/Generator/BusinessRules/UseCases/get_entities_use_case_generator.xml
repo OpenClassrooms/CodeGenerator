@@ -8,21 +8,19 @@
                 id="open_classrooms.code_generator.skeleton_models.business_rules.use_cases.get_entities_use_case_skeleton_model_assembler"
                 class="OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\Impl\GetEntitiesUseCaseSkeletonModelAssemblerImpl">
             <call method="setPaginatedCollection">
-                <argument type="string">%use_case_namespace%</argument>
+                <argument type="string">%paginated_collection_classname%</argument>
             </call>
             <call method="setPaginatedUseCaseResponse">
-                <argument type="string">%use_case_namespace%</argument>
+                <argument type="string">%paginated_use_case_response%</argument>
             </call>
-            <argument type="string">%use_case_namespace%</argument>
             <call method="setPagination">
-                <argument type="string">%use_case_namespace%</argument>
+                <argument type="string">%pagination_classname%</argument>
             </call>
-            <argument type="string">%use_case_namespace%</argument>
             <call method="setUseCaseClassName">
-                <argument type="string">%use_case_namespace%</argument>
+                <argument type="string">%use_case_classname%</argument>
             </call>
             <call method="setUseCaseRequestClassName">
-                <argument type="string">%use_case_namespace%</argument>
+                <argument type="string">%use_case_request_classname%</argument>
             </call>
 
         </service>

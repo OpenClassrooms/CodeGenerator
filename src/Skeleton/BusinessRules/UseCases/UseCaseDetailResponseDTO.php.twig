@@ -21,7 +21,7 @@ class {{ skeletonModel.shortName }} extends {{ skeletonModel.useCaseResponseDTOS
 {% if method.docComment %}
         {{ method.docComment }}
 {% endif %}
-    public function {{ method.name }}(): {{ printReturnType(method.returnType, method.Nullable) }}
+    public function {{ method.name }}(): {{ printReturnType(method.returnType, method.nullable) }}
     {
         return $this->{{ method.fieldName }};
     }

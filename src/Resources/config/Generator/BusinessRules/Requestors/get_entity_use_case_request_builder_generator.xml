@@ -7,6 +7,9 @@
         <service
                 id="open_classrooms.code_generator.skeleton_models.business_rules.requestors.get_entity_use_case_request_builder_skeleton_model_assembler"
                 class="OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Requestors\Impl\GetEntityUseCaseRequestBuilderSkeletonModelAssemblerImpl">
+                <call method="setUseCaseRequestClassName">
+                    <argument type="string">%use_case_request_classname%</argument>
+                </call>
         </service>
 
         <service

@@ -8,7 +8,7 @@
                 id="open_classrooms.code_generator.skeleton_models.business_rules.use_cases.generic_use_case_request_builder_impl_skeleton_model_assembler"
                 class="OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\Impl\GenericUseCaseRequestBuilderImplSkeletonModelAssemblerImpl">
             <call method="setUseCaseClassName">
-                <argument type="string">%use_case_namespace%</argument>
+                <argument type="string">%use_case_classname%</argument>
             </call>
             <call method="setUseCaseRequestClassName">
                 <argument type="string">%use_case_request_classname%</argument>

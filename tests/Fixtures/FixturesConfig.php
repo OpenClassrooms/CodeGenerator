@@ -7,10 +7,6 @@ namespace OpenClassrooms\CodeGenerator\Tests\Fixtures;
  */
 final class FixturesConfig
 {
-    const ABSTRACT_PAGINATED_USE_CASE_RESPONSE = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\AbstractPaginatedUseCaseResponse';
-
-    const ABSTRACT_PAGINATED_USE_CASE_RESPONSE_BUILDER = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\AbstractPaginatedUseCaseResponseBuilder';
-
     const API_DIR = 'Api\\';
 
     const APP_DIR = 'App\\';

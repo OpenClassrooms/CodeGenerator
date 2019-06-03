@@ -8,10 +8,10 @@
                 id="open_classrooms.code_generator.skeleton_models.business_rules.responders.impl.use_case_list_item_response_assembler_skeleton_model_assembler_impl"
                 class="OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Responders\Impl\UseCaseListItemResponseAssemblerSkeletonModelAssemblerImpl">
             <call method="setPaginatedCollection">
-                <argument type="string">%paginated_collection%</argument>
+                <argument type="string">%paginated_collection_classname%</argument>
             </call>
             <call method="setPaginatedUseCaseResponse">
-                <argument type="string">%paginated_use_case_response%</argument>
+                <argument type="string">%paginated_use_case_response_classname%</argument>
             </call>
         </service>
 

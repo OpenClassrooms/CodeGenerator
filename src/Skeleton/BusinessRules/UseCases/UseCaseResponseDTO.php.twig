@@ -20,7 +20,7 @@ abstract class {{ skeletonModel.shortName }} implements {{ skeletonModel.useCase
      * {@inheritDoc}
      */
 {% endif %}
-    public function {{ method.name }}(): {{ printReturnType(method.returnType, method.Nullable) }}
+    public function {{ method.name }}(): {{ printReturnType(method.returnType, method.nullable) }}
     {
         return $this->{{ method.fieldName }};
     }

@@ -7,12 +7,11 @@
         <service
                 id="open_classrooms.code_generator.skeleton_models.business_rules.use_cases.get_entity_use_case_skeleton_model_builder"
                 class="OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\Impl\GetEntityUseCaseSkeletonModelBuilderImpl">
-            <argument type="string">%use_case_namespace%</argument>
             <call method="setUseCaseClassName">
-                <argument type="string">%use_case_namespace%</argument>
+                <argument type="string">%use_case_classname%</argument>
             </call>
             <call method="setUseCaseRequestClassName">
-                <argument type="string">%use_case_namespace%</argument>
+                <argument type="string">%use_case_request_classname%</argument>
             </call>
         </service>
 
