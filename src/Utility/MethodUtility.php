@@ -9,14 +9,6 @@ use OpenClassrooms\CodeGenerator\Entities\MethodObject;
  */
 class MethodUtility
 {
-    const DOC_COMMENT = 'doc_comment';
-
-    const NAME = 'name';
-
-    const NULLABLE = 'nullable';
-
-    const RETURN_TYPE = 'return_type';
-
     /**
      * @param string[] $fields
      *
@@ -42,11 +34,11 @@ class MethodUtility
         $accessors = [];
         foreach ($methods as $key => $method) {
             if (self::isAccessor($method)) {
-                $accessors = self::buildAccessorsArray($method, $accessors, $key);
+                $accessors[] = self::buildAccessor($method);
             }
         }
 
-        return self::buildAccessors($accessors);
+        return $accessors;
     }
 
     private static function isAccessor(\ReflectionMethod $method): bool
@@ -54,42 +46,37 @@ class MethodUtility
         return ('get' === substr($method->getName(), 0, 3) || 'is' === substr($method->getName(), 0, 2));
     }
 
-    private static function buildAccessorsArray(\ReflectionMethod $method, array $accessors, int $key): array
+    private static function buildAccessor(\ReflectionMethod $method): MethodObject
     {
-        $accessors[$key][self::DOC_COMMENT] = $method->getDocComment();
-        $accessors[$key][self::NAME] = $method->getName();
         if (null !== $method->getReturnType()) {
-            $accessors[$key][self::RETURN_TYPE] = $method->getReturnType()->getName();
-            $accessors[$key][self::NULLABLE] = $method->getReturnType()->allowsNull();
-        } else {
-            $accessors[$key][self::RETURN_TYPE] = DocCommentUtility::getReturnType($method->getDocComment());
-            $accessors[$key][self::NULLABLE] = DocCommentUtility::allowsNull($method->getDocComment());
+            return self::buildAccessorFromReturnType($method);
         }
 
-        return $accessors;
-    }
-
-    /**
-     * @return MethodObject[]
-     */
-    private static function buildAccessors(array $accessors): array
-    {
-        $methods = [];
-        foreach ($accessors as $accessor) {
-            $methods[] = self::buildAccessor($accessor);
+        if (false !== $method->getDocComment()) {
+            return self::buildAccessorFromDocType($method);
         }
 
-        return $methods;
+        throw new \Exception("{$method->class}::{$method->getName()} return value is not typed");
     }
 
-    private static function buildAccessor(array $accessor): MethodObject
+    private static function buildAccessorFromReturnType(\ReflectionMethod $method): MethodObject
     {
-        $method = new MethodObject($accessor[self::NAME]);
-        $method->setDocComment($accessor[self::DOC_COMMENT]);
-        $method->setReturnType($accessor[self::RETURN_TYPE]);
-        $method->setNullable($accessor[self::NULLABLE]);
+        $accessor = new MethodObject($method->getName());
+        $accessor->setDocComment($method->getDocComment());
+        $accessor->setReturnType($method->getReturnType()->getName());
+        $accessor->setNullable($method->getReturnType()->allowsNull());
 
-        return $method;
+        return $accessor;
+    }
+
+    private static function buildAccessorFromDocType(\ReflectionMethod $method): MethodObject
+    {
+        $accessor = new MethodObject($method->getName());
+        $accessor->setDocComment($method->getDocComment());
+        $accessor->setReturnType(DocCommentUtility::getReturnType($method->getDocComment()));
+        $accessor->setNullable(DocCommentUtility::allowsNull($method->getDocComment()));
+
+        return $accessor;
     }
 
     /**
