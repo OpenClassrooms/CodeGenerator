@@ -65,24 +65,4 @@ abstract class AbstractUseCaseGenerator extends AbstractGenerator
     {
         return MethodUtility::getSelectedAccessors($className, $fields);
     }
-
-    /**
-     * @param string[] $fields
-     *
-     * @return FieldObject[]
-     */
-    protected function getSelectedFields(
-        string $entityClassName,
-        array $fields
-    ): array
-    {
-        $fieldObjects = $this->getProtectedClassFields($entityClassName);
-        foreach ($fieldObjects as $key => $fieldObject) {
-            if (!in_array($fieldObject->getName(), $fields)) {
-                unset($fieldObjects[$key]);
-            }
-        }
-
-        return $fieldObjects;
-    }
 }

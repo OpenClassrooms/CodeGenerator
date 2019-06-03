@@ -2,13 +2,13 @@
 
 namespace {{ skeletonModel.namespace }};
 
-use {{ skeletonModel.parentClassName }};
+use {{ skeletonModel.useCaseListItemResponseDTOClassName }};
 use {{ skeletonModel.entityStubClassName }};
 
 /**
  * @author {{ author }} <{{ authorEmail }}>
  */
-class {{ skeletonModel.shortName }} extends {{ skeletonModel.parentShortName }}
+class {{ skeletonModel.shortName }} extends {{ skeletonModel.useCaseListItemResponseDTOShortName }}
 {
 {% for constant in skeletonModel.constants %}
     const {{ constant.name }} = {{ printValue(constant.value) }};
@@ -18,7 +18,7 @@ class {{ skeletonModel.shortName }} extends {{ skeletonModel.parentShortName }}
 {% endfor %}
 
 {% for  field in skeletonModel.fields %}
-    {{ field.scope }} ${{ field.name }} = self::{{ field.value.name }};
+    public ${{ field.name }} = self::{{ field.value.name }};
 {% if not loop.last%}
 
 {% endif %}

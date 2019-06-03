@@ -9,5 +9,10 @@ use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
  */
 interface UseCaseListItemResponseStubGeneratorRequest extends GeneratorRequest
 {
-    public function getUseCaseResponseClassName(): string;
+    public function getClassName(): string;
+
+    /**
+     * @return string[]
+     */
+    public function getFields(): array;
 }

@@ -38,10 +38,10 @@ class UseCaseListItemResponseStubSkeletonModelImpl extends UseCaseListItemRespon
     /**
      * @var string
      */
-    public $parentClassName;
+    public $useCaseListItemResponseDTOClassName;
 
     /**
      * @var string
      */
-    public $parentShortName;
+    public $useCaseListItemResponseDTOShortName;
 }

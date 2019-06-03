@@ -18,7 +18,7 @@ class {{ skeletonModel.shortName }} extends {{ skeletonModel.parentShortName }}
 {% endfor %}
 
 {% for  field in skeletonModel.fields | sortNameByAlpha %}
-    {{ field.scope }} ${{ field.name }} = self::{{ field.value.name }};
+    public ${{ field.name }} = self::{{ field.value.name }};
 {% if not loop.last%}
 
 {% endif %}

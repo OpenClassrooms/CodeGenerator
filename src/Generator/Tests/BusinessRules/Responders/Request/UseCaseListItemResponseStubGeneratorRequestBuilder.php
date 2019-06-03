@@ -11,5 +11,10 @@ interface UseCaseListItemResponseStubGeneratorRequestBuilder
 
     public function create(): UseCaseListItemResponseStubGeneratorRequestBuilder;
 
-    public function withResponseClassName(string $responseClassName): UseCaseListItemResponseStubGeneratorRequestBuilder;
+    public function withClassName(string $responseClassName): UseCaseListItemResponseStubGeneratorRequestBuilder;
+
+    /**
+     * @param string[]
+     */
+    public function withFields(array $fields): UseCaseListItemResponseStubGeneratorRequestBuilder;
 }

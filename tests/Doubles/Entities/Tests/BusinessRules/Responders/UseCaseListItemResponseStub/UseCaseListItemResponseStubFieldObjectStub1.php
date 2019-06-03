@@ -19,7 +19,7 @@ class UseCaseListItemResponseStubFieldObjectStub1 extends FieldObject
 
     protected $name = self::NAME;
 
-    protected $scope = FieldObject::SCOPE_PUBLIC;
+    protected $scope = FieldObject::SCOPE_PROTECTED;
 
     public function __construct()
     {

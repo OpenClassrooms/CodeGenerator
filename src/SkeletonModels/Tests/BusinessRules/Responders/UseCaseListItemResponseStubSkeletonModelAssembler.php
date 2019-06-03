@@ -11,7 +11,7 @@ interface UseCaseListItemResponseStubSkeletonModelAssembler
 {
     public function create(
         FileObject $useCaseListItemResponseStubFileObject,
-        FileObject $useCaseListItemResponseFileObject,
+        FileObject $useCaseListItemResponseDTOFileObject,
         FileObject $entityStubFileObject
     ): UseCaseListItemResponseStubSkeletonModel;
 }

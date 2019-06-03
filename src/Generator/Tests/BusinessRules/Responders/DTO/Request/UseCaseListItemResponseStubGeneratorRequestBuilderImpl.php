@@ -27,9 +27,19 @@ class UseCaseListItemResponseStubGeneratorRequestBuilderImpl implements UseCaseL
         return $this;
     }
 
-    public function withResponseClassName(string $responseClassName): UseCaseListItemResponseStubGeneratorRequestBuilder
+    public function withClassName(string $className): UseCaseListItemResponseStubGeneratorRequestBuilder
     {
-        $this->request->responseClassName = $responseClassName;
+        $this->request->className = $className;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function withFields(array $fields): UseCaseListItemResponseStubGeneratorRequestBuilder
+    {
+        $this->request->fields = $fields;
 
         return $this;
     }

@@ -12,10 +12,23 @@ class UseCaseListItemResponseStubGeneratorRequestDTO implements UseCaseListItemR
     /**
      * @var string
      */
-    public $responseClassName;
+    public $className;
 
-    public function getUseCaseResponseClassName(): string
+    /**
+     * @var array
+     */
+    public $fields;
+
+    public function getClassName(): string
     {
-        return $this->responseClassName;
+        return $this->className;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getFields(): array
+    {
+        return $this->fields;
     }
 }

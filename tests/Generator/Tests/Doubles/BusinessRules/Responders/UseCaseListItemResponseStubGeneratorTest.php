@@ -53,7 +53,8 @@ class UseCaseListItemResponseStubGeneratorTest extends TestCase
         );
         $this->request = $useCaseListItemResponseStubGeneratorRequestBuilder
             ->create()
-            ->withResponseClassName(FunctionalEntityResponse::class)
+            ->withClassName(FunctionalEntityResponse::class)
+            ->withFields(['field1','field2','field3','id'])
             ->build();
 
         $this->useCaseListItemResponseStubGenerator = new UseCaseListItemResponseStubGenerator();
