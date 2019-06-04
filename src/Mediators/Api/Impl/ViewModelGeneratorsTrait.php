@@ -474,6 +474,7 @@ trait ViewModelGeneratorsTrait
             $this->useCaseListItemResponseStubGeneratorRequestBuilder
                 ->create()
                 ->withClassName($className)
+                ->withFields([])
                 ->build()
         );
     }

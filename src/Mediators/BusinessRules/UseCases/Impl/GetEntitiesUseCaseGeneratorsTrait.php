@@ -248,6 +248,7 @@ trait GetEntitiesUseCaseGeneratorsTrait
             $this->useCaseListItemResponseStubGeneratorRequestBuilder
                 ->create()
                 ->withClassName($className)
+                ->withFields([])
                 ->build()
         );
     }
