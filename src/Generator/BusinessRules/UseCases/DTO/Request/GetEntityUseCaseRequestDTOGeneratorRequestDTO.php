@@ -14,7 +14,7 @@ class GetEntityUseCaseRequestDTOGeneratorRequestDTO implements GetEntityUseCaseR
      */
     public $entity;
 
-    public function getEntity(): string
+    public function getEntityClassName(): string
     {
         return $this->entity;
     }

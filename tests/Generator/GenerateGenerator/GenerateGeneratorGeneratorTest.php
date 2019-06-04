@@ -79,7 +79,7 @@ class GenerateGeneratorGeneratorTest extends TestCase
         $this->request = $selfGeneratorGeneratorRequestBuilderImpl
             ->create()
             ->withDomain('GenerateGenerator')
-            ->withEntity('Custom')
+            ->withEntityClassName('Custom')
             ->withConstructionPattern(ConstructionPatternType::BUILDER_PATTERN)
             ->build();
         $actualFileObjects = $this->selfGeneratorGenerator->generate($this->request);
@@ -93,7 +93,7 @@ class GenerateGeneratorGeneratorTest extends TestCase
         $this->request = $selfGeneratorGeneratorRequestBuilderImpl
             ->create()
             ->withDomain('GenerateGenerator')
-            ->withEntity('Custom')
+            ->withEntityClassName('Custom')
             ->withConstructionPattern(ConstructionPatternType::ASSEMBLER_PATTERN)
             ->build();
 

@@ -22,7 +22,7 @@ class UseCaseDetailResponseAssemblerImplGeneratorRequestBuilderImpl implements U
         return $this;
     }
 
-    public function withEntity(string $entity): UseCaseDetailResponseAssemblerImplGeneratorRequestBuilder
+    public function withEntityClassName(string $entity): UseCaseDetailResponseAssemblerImplGeneratorRequestBuilder
     {
         $this->request->entity = $entity;
 

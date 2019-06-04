@@ -22,7 +22,7 @@ class UseCaseDetailResponseTestCaseGeneratorRequestBuilderImpl implements UseCas
         return $this;
     }
 
-    public function withEntity(string $entity): UseCaseDetailResponseTestCaseGeneratorRequestBuilder
+    public function withEntityClassName(string $entity): UseCaseDetailResponseTestCaseGeneratorRequestBuilder
     {
         $this->request->entity = $entity;
 

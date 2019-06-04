@@ -9,7 +9,7 @@ use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
  */
 interface UseCaseDetailResponseDTOGeneratorRequest extends GeneratorRequest
 {
-    public function getEntity(): string;
+    public function getEntityClassName(): string;
 
     /**
      * @return string[]

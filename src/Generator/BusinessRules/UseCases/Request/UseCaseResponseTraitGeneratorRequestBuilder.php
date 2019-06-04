@@ -13,7 +13,7 @@ interface UseCaseResponseTraitGeneratorRequestBuilder extends GeneratorRequest
 
     public function create(): UseCaseResponseTraitGeneratorRequestBuilder;
 
-    public function withEntity(
+    public function withEntityClassName(
         string $entity
     ): UseCaseResponseTraitGeneratorRequestBuilder;
 

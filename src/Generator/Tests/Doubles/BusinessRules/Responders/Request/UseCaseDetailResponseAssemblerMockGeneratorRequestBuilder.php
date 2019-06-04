@@ -13,7 +13,7 @@ interface UseCaseDetailResponseAssemblerMockGeneratorRequestBuilder extends Gene
 
     public function create(): UseCaseDetailResponseAssemblerMockGeneratorRequestBuilder;
 
-    public function withEntity(
+    public function withEntityClassName(
         string $entity
     ): UseCaseDetailResponseAssemblerMockGeneratorRequestBuilder;
 }

@@ -24,7 +24,7 @@ class GetEntitiesUseCaseTestSkeletonModelBuilderImpl implements GetEntitiesUseCa
         return $this;
     }
 
-    public function withEntityFileObject(FileObject $entityFileObject): GetEntitiesUseCaseTestSkeletonModelBuilder
+    public function withEntityClassNameFileObject(FileObject $entityFileObject): GetEntitiesUseCaseTestSkeletonModelBuilder
     {
         $this->skeletonModel->entitiesArgument = StringUtility::pluralize(lcfirst($entityFileObject->getShortName()));
         $this->skeletonModel->entitiesShortName = StringUtility::pluralize($entityFileObject->getShortName());
@@ -32,7 +32,7 @@ class GetEntitiesUseCaseTestSkeletonModelBuilderImpl implements GetEntitiesUseCa
         return $this;
     }
 
-    public function withEntityGatewayFileObject(
+    public function withEntityClassNameGatewayFileObject(
         FileObject $entityGatewayFileObject
     ): GetEntitiesUseCaseTestSkeletonModelBuilder {
         $this->skeletonModel->entityGatewayShortName = $entityGatewayFileObject->getShortName();
@@ -43,7 +43,7 @@ class GetEntitiesUseCaseTestSkeletonModelBuilderImpl implements GetEntitiesUseCa
     /**
      * {@inheritdoc}
      */
-    public function withEntityStubFileObjects(
+    public function withEntityClassNameStubFileObjects(
         array $entityStubFileObjects
     ): GetEntitiesUseCaseTestSkeletonModelBuilder {
         foreach ($entityStubFileObjects as $entityStubFileObject) {

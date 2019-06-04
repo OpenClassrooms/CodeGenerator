@@ -9,5 +9,5 @@ use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
  */
 interface GetEntityUseCaseTestGeneratorRequest extends GeneratorRequest
 {
-    public function getEntity(): string;
+    public function getEntityClassName(): string;
 }

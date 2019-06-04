@@ -17,7 +17,7 @@ interface GenerateGeneratorGeneratorRequestBuilder extends GeneratorRequest
         string $domain
     ): GenerateGeneratorGeneratorRequestBuilder;
 
-    public function withEntity(
+    public function withEntityClassName(
         string $entity
     ): GenerateGeneratorGeneratorRequestBuilder;
 

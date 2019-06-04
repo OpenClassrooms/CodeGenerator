@@ -3,8 +3,8 @@
 namespace OpenClassrooms\CodeGenerator\Tests\Generator\BusinessRules\Responders;
 
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Responders\DTO\Request\UseCaseResponseGeneratorRequestBuilderImpl;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Responders\UseCaseResponseGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Responders\Request\UseCaseResponseGeneratorRequestBuilder;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Responders\UseCaseResponseGenerator;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Responders\UseCaseResponseFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\EntityFileObjectFactoryMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\FileObjectTestCase;
@@ -51,7 +51,7 @@ class UseCaseResponseGeneratorTest extends TestCase
         $useCaseResponseGeneratorRequestBuilderImpl = new UseCaseResponseGeneratorRequestBuilderImpl();
         $this->request = $useCaseResponseGeneratorRequestBuilderImpl
             ->create()
-            ->withEntity(FunctionalEntity::class)
+            ->withEntityClassName(FunctionalEntity::class)
             ->withFields(['field1','field2','id','field3'])
             ->build();
 

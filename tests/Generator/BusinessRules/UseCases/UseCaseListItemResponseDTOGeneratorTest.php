@@ -51,7 +51,7 @@ class UseCaseListItemResponseDTOGeneratorTest extends TestCase
         );
         $this->request = $useCaseListItemResponseDTOGeneratorRequestBuilderImpl
             ->create()
-            ->withEntity(FunctionalEntity::class)
+            ->withEntityClassName(FunctionalEntity::class)
             ->withFields([])
             ->build();
 

@@ -28,7 +28,7 @@ class GetEntityUseCaseSkeletonModelBuilderImpl implements GetEntityUseCaseSkelet
         return $this;
     }
 
-    public function withEntity(FileObject $entityFileObject): GetEntityUseCaseSkeletonModelBuilder
+    public function withEntityClassName(FileObject $entityFileObject): GetEntityUseCaseSkeletonModelBuilder
     {
         $this->skeletonModel->functionalEntityArgument = lcfirst($entityFileObject->getEntity());
         $this->skeletonModel->functionalEntityClassName = $entityFileObject->getClassName();
@@ -37,7 +37,7 @@ class GetEntityUseCaseSkeletonModelBuilderImpl implements GetEntityUseCaseSkelet
         return $this;
     }
 
-    public function withEntityDetailResponse(
+    public function withEntityClassNameDetailResponse(
         FileObject $entityDetailResponseFileObject
     ): GetEntityUseCaseSkeletonModelBuilder {
         $this->skeletonModel->functionalEntityDetailResponseClassName = $entityDetailResponseFileObject->getClassName();
@@ -46,7 +46,7 @@ class GetEntityUseCaseSkeletonModelBuilderImpl implements GetEntityUseCaseSkelet
         return $this;
     }
 
-    public function withEntityDetailResponseAssembler(
+    public function withEntityClassNameDetailResponseAssembler(
         FileObject $entityDetailResponseAssemblerFileObject
     ): GetEntityUseCaseSkeletonModelBuilder {
         $this->skeletonModel->functionalEntityDetailResponseAssemblerClassName = $entityDetailResponseAssemblerFileObject->getClassName(
@@ -57,7 +57,7 @@ class GetEntityUseCaseSkeletonModelBuilderImpl implements GetEntityUseCaseSkelet
         return $this;
     }
 
-    public function withEntityGateway(FileObject $entityGatewayFileObject): GetEntityUseCaseSkeletonModelBuilder
+    public function withEntityClassNameGateway(FileObject $entityGatewayFileObject): GetEntityUseCaseSkeletonModelBuilder
     {
         $this->skeletonModel->functionalEntityGatewayClassName = $entityGatewayFileObject->getClassName();
         $this->skeletonModel->functionalEntityGatewayShortName = $entityGatewayFileObject->getShortName();
@@ -65,7 +65,7 @@ class GetEntityUseCaseSkeletonModelBuilderImpl implements GetEntityUseCaseSkelet
         return $this;
     }
 
-    public function withEntityNotFoundException(
+    public function withEntityClassNameNotFoundException(
         FileObject $entityNotFoundExceptionFileObjectFileObject
     ): GetEntityUseCaseSkeletonModelBuilder {
         $this->skeletonModel->functionalEntityNotFoundExceptionClassName = $entityNotFoundExceptionFileObjectFileObject->getClassName(
@@ -74,7 +74,7 @@ class GetEntityUseCaseSkeletonModelBuilderImpl implements GetEntityUseCaseSkelet
         return $this;
     }
 
-    public function withEntityResponse(FileObject $entityResponseFileObject): GetEntityUseCaseSkeletonModelBuilder
+    public function withEntityClassNameResponse(FileObject $entityResponseFileObject): GetEntityUseCaseSkeletonModelBuilder
     {
         $this->skeletonModel->functionalEntityResponseClassName = $entityResponseFileObject->getClassName();
         $this->skeletonModel->functionalEntityResponseShortName = $entityResponseFileObject->getShortName();

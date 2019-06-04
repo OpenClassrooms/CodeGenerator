@@ -22,7 +22,7 @@ class UseCaseDetailResponseAssemblerMockGeneratorRequestBuilderImpl implements U
         return $this;
     }
 
-    public function withEntity(string $entity): UseCaseDetailResponseAssemblerMockGeneratorRequestBuilder
+    public function withEntityClassName(string $entity): UseCaseDetailResponseAssemblerMockGeneratorRequestBuilder
     {
         $this->request->entity = $entity;
 

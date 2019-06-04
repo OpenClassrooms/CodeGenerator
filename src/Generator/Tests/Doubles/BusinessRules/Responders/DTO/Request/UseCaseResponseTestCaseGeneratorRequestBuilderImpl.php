@@ -23,7 +23,7 @@ class UseCaseResponseTestCaseGeneratorRequestBuilderImpl implements UseCaseRespo
         return $this;
     }
 
-    public function withEntity(string $entity): UseCaseResponseTestCaseGeneratorRequestBuilder
+    public function withEntityClassName(string $entity): UseCaseResponseTestCaseGeneratorRequestBuilder
     {
         $this->request->entity = $entity;
 

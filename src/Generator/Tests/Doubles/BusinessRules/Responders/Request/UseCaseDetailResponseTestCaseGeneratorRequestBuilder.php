@@ -13,7 +13,7 @@ interface UseCaseDetailResponseTestCaseGeneratorRequestBuilder extends Generator
 
     public function create(): UseCaseDetailResponseTestCaseGeneratorRequestBuilder;
 
-    public function withEntity(
+    public function withEntityClassName(
         string $entity
     ): UseCaseDetailResponseTestCaseGeneratorRequestBuilder;
 

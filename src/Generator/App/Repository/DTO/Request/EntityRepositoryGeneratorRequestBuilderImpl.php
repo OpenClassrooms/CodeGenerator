@@ -22,7 +22,7 @@ class EntityRepositoryGeneratorRequestBuilderImpl implements EntityRepositoryGen
         return $this;
     }
 
-    public function withEntity(string $entity): EntityRepositoryGeneratorRequestBuilder
+    public function withEntityClassName(string $entity): EntityRepositoryGeneratorRequestBuilder
     {
         $this->request->entity = $entity;
 

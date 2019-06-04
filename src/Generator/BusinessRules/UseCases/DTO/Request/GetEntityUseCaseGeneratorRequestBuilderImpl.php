@@ -22,7 +22,7 @@ class GetEntityUseCaseGeneratorRequestBuilderImpl implements GetEntityUseCaseGen
         return $this;
     }
 
-    public function withEntity(string $entity): GetEntityUseCaseGeneratorRequestBuilder
+    public function withEntityClassName(string $entity): GetEntityUseCaseGeneratorRequestBuilder
     {
         $this->request->entity = $entity;
 

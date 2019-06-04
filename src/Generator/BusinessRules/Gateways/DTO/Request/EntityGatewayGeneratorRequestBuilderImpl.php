@@ -22,7 +22,7 @@ class EntityGatewayGeneratorRequestBuilderImpl implements EntityGatewayGenerator
         return $this;
     }
 
-    public function withEntity(string $entity): EntityGatewayGeneratorRequestBuilder
+    public function withEntityClassName(string $entity): EntityGatewayGeneratorRequestBuilder
     {
         $this->request->entity = $entity;
 

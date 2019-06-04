@@ -27,7 +27,7 @@ class GetEntityUseCaseRequestGenerator extends AbstractUseCaseGenerator
      */
     public function generate(GeneratorRequest $generatorRequest): FileObject
     {
-        $getEntityUseCaseRequestFileObject = $this->buildGetEntityUseCaseRequestFileObject($generatorRequest->getEntity());
+        $getEntityUseCaseRequestFileObject = $this->buildGetEntityUseCaseRequestFileObject($generatorRequest->getEntityClassName());
 
         $this->insertFileObject($getEntityUseCaseRequestFileObject);
 

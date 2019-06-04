@@ -50,7 +50,7 @@ class EntityGatewayGeneratorTest extends TestCase
         $entityGatewayGeneratorRequestBuilderImpl = new EntityGatewayGeneratorRequestBuilderImpl();
         $this->request = $entityGatewayGeneratorRequestBuilderImpl
             ->create()
-            ->withEntity(FunctionalEntity::class)
+            ->withEntityClassName(FunctionalEntity::class)
             ->build();
 
         $this->entityGatewayGenerator = new EntityGatewayGenerator();

@@ -13,7 +13,7 @@ interface UseCaseListItemResponseAssemblerGeneratorRequestBuilder extends Genera
 
     public function create(): UseCaseListItemResponseAssemblerGeneratorRequestBuilder;
 
-    public function withEntity(
+    public function withEntityClassName(
         string $entity
     ): UseCaseListItemResponseAssemblerGeneratorRequestBuilder;
 }

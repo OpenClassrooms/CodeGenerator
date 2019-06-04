@@ -59,7 +59,7 @@ class GenerateGeneratorMediatorImpl implements GenerateGeneratorMediator
                 ->create()
                 ->withConstructionPattern($constructionPattern)
                 ->withDomain($domain)
-                ->withEntity($entity)
+                ->withEntityClassName($entity)
                 ->build()
         );
     }

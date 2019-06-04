@@ -13,7 +13,7 @@ interface GetEntityUseCaseRequestBuilderImplGeneratorRequestBuilder extends Gene
 
     public function create(): GetEntityUseCaseRequestBuilderImplGeneratorRequestBuilder;
 
-    public function withEntity(
+    public function withEntityClassName(
         string $entity
     ): GetEntityUseCaseRequestBuilderImplGeneratorRequestBuilder;
 }

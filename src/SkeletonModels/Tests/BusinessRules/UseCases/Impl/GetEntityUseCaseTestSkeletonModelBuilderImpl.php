@@ -23,7 +23,7 @@ class GetEntityUseCaseTestSkeletonModelBuilderImpl implements GetEntityUseCaseTe
         return $this;
     }
 
-    public function withEntityStubFileObject(FileObject $entityStubFileObject): GetEntityUseCaseTestSkeletonModelBuilder
+    public function withEntityClassNameStubFileObject(FileObject $entityStubFileObject): GetEntityUseCaseTestSkeletonModelBuilder
     {
         $this->skeletonModel->entityStubClassName = $entityStubFileObject->getClassName();
         $this->skeletonModel->entityStubShortName = $entityStubFileObject->getShortName();
@@ -31,7 +31,7 @@ class GetEntityUseCaseTestSkeletonModelBuilderImpl implements GetEntityUseCaseTe
         return $this;
     }
 
-    public function withEntityNotFoundExceptionFileObject(
+    public function withEntityClassNameNotFoundExceptionFileObject(
         FileObject $entityNotFoundExceptionFileObject
     ): GetEntityUseCaseTestSkeletonModelBuilder {
         $this->skeletonModel->entityNotFoundExceptionFileObjectClassName = $entityNotFoundExceptionFileObject->getClassName(

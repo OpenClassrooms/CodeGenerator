@@ -22,7 +22,7 @@ class UseCaseListItemResponseGeneratorRequestBuilderImpl implements UseCaseListI
         return $this;
     }
 
-    public function withEntity(string $entity): UseCaseListItemResponseGeneratorRequestBuilder
+    public function withEntityClassName(string $entity): UseCaseListItemResponseGeneratorRequestBuilder
     {
         $this->request->entity = $entity;
 

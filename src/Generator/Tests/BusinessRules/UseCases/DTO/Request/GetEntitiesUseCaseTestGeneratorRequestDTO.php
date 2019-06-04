@@ -14,7 +14,7 @@ class GetEntitiesUseCaseTestGeneratorRequestDTO implements GetEntitiesUseCaseTes
      */
     public $defaultValue;
 
-    public function getEntity(): string
+    public function getEntityClassName(): string
     {
         return $this->defaultValue;
     }

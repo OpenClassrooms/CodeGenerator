@@ -28,7 +28,7 @@ class UseCaseResponseTestCaseGenerator extends AbstractUseCaseGenerator
     public function generate(GeneratorRequest $generatorRequest): FileObject
     {
         $useCaseResponseTestCaseFileObject = $this->buildUseCaseResponseTestCaseFileObject(
-            $generatorRequest->getEntity(),
+            $generatorRequest->getEntityClassName(),
             $generatorRequest->getFields()
         );
 

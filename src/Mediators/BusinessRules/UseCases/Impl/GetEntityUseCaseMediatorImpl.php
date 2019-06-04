@@ -71,6 +71,7 @@ class GetEntityUseCaseMediatorImpl implements GetEntityUseCaseMediator
     private function generateTestSources(string $className): array
     {
         $fileObjects[] = $this->generateGetEntityUseCaseTestGenerator($className);
+        $fileObjects[] = $this->generateInMemoryEntityGatewayGenerator($className);
         $fileObjects[] = $this->generateUseCaseDetailResponseAssemblerMockGenerator($className);
         $fileObjects[] = $this->generateUseCaseDetailResponseStubGenerator($className);
         $fileObjects[] = $this->generateUseCaseDetailResponseTestCaseGenerator($className);

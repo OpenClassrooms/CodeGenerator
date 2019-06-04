@@ -13,7 +13,7 @@ interface UseCaseDetailResponseDTOGeneratorRequestBuilder extends GeneratorReque
 
     public function create(): UseCaseDetailResponseDTOGeneratorRequestBuilder;
 
-    public function withEntity(
+    public function withEntityClassName(
         string $entity
     ): UseCaseDetailResponseDTOGeneratorRequestBuilder;
 

@@ -33,7 +33,7 @@ class EntityRepositoryGenerator extends AbstractGenerator
     public function generate(GeneratorRequest $generatorRequest): FileObject
     {
         $entityRepositoryFileObject = $this->buildEntityRepositoryFileObject(
-            $generatorRequest->getEntity()
+            $generatorRequest->getEntityClassName()
         );
 
         $this->insertFileObject($entityRepositoryFileObject);

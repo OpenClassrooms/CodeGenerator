@@ -19,7 +19,7 @@ class UseCaseResponseTraitGeneratorRequestDTO implements UseCaseResponseTraitGen
      */
     public $fields;
 
-    public function getEntity(): string
+    public function getEntityClassName(): string
     {
         return $this->entity;
     }

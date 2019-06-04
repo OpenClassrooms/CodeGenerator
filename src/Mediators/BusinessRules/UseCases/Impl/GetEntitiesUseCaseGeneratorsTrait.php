@@ -195,7 +195,7 @@ trait GetEntitiesUseCaseGeneratorsTrait
         return $this->useCaseListItemResponseAssemblerGenerator->generate(
             $this->useCaseListItemResponseAssemblerGeneratorRequestBuilder
                 ->create()
-                ->withEntity($className)
+                ->withEntityClassName($className)
                 ->build()
         );
     }
@@ -205,7 +205,7 @@ trait GetEntitiesUseCaseGeneratorsTrait
         return $this->useCaseListItemResponseGenerator->generate(
             $this->useCaseListItemResponseGeneratorRequestBuilder
                 ->create()
-                ->withEntity($className)
+                ->withEntityClassName($className)
                 ->build()
         );
     }
@@ -215,7 +215,7 @@ trait GetEntitiesUseCaseGeneratorsTrait
         return $this->getEntitiesUseCaseGenerator->generate(
             $this->getEntitiesUseCaseGeneratorRequestBuilder
                 ->create()
-                ->withEntity($className)
+                ->withEntityClassName($className)
                 ->build()
         );
     }
@@ -225,7 +225,7 @@ trait GetEntitiesUseCaseGeneratorsTrait
         return $this->useCaseListItemResponseAssemblerImplGenerator->generate(
             $this->useCaseListItemResponseAssemblerImplGeneratorRequestBuilder
                 ->create()
-                ->withEntity($className)
+                ->withEntityClassName($className)
                 ->withFields([])
                 ->build()
         );
@@ -236,7 +236,7 @@ trait GetEntitiesUseCaseGeneratorsTrait
         return $this->useCaseListItemResponseDTOGenerator->generate(
             $this->useCaseListItemResponseDTOGeneratorRequestBuilder
                 ->create()
-                ->withEntity($className)
+                ->withEntityClassName($className)
                 ->withFields([])
                 ->build()
         );
@@ -258,7 +258,7 @@ trait GetEntitiesUseCaseGeneratorsTrait
         return $this->getEntitiesUseCaseTestGenerator->generate(
             $this->getEntitiesUseCaseTestGeneratorRequestBuilder
                 ->create()
-                ->withEntity($className)
+                ->withEntityClassName($className)
                 ->build()
         );
     }
@@ -268,7 +268,7 @@ trait GetEntitiesUseCaseGeneratorsTrait
         return $this->useCaseListItemResponseAssemblerMockGenerator->generate(
             $this->useCaseListItemResponseAssemblerMockGeneratorRequestBuilder
                 ->create()
-                ->withEntity($className)
+                ->withEntityClassName($className)
                 ->build()
         );
     }
@@ -278,7 +278,7 @@ trait GetEntitiesUseCaseGeneratorsTrait
         return $this->useCaseListItemResponseTestCaseGenerator->generate(
             $this->useCaseListItemResponseTestCaseGeneratorRequestBuilder
                 ->create()
-                ->withEntity($className)->withFields([])
+                ->withEntityClassName($className)->withFields([])
                 ->build()
         );
     }

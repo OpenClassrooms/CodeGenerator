@@ -27,7 +27,7 @@ class UseCaseListItemResponseAssemblerGenerator extends AbstractUseCaseGenerator
     public function generate(GeneratorRequest $generatorRequest): FileObject
     {
         $useCaseListItemResponseAssemblerFileObject = $this->buildUseCaseListItemResponseAssemblerFileObject(
-            $generatorRequest->getEntity()
+            $generatorRequest->getEntityClassName()
         );
 
         $this->insertFileObject($useCaseListItemResponseAssemblerFileObject);

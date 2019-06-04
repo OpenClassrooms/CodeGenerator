@@ -22,7 +22,7 @@ class UseCaseDetailResponseDTOGeneratorRequestBuilderImpl implements UseCaseDeta
         return $this;
     }
 
-    public function withEntity(string $entity): UseCaseDetailResponseDTOGeneratorRequestBuilder
+    public function withEntityClassName(string $entity): UseCaseDetailResponseDTOGeneratorRequestBuilder
     {
         $this->request->entity = $entity;
 

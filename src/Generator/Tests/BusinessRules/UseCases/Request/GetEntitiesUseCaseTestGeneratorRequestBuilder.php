@@ -13,7 +13,7 @@ interface GetEntitiesUseCaseTestGeneratorRequestBuilder extends GeneratorRequest
 
     public function create(): GetEntitiesUseCaseTestGeneratorRequestBuilder;
 
-    public function withEntity(
+    public function withEntityClassName(
         string $defaultValue
     ): GetEntitiesUseCaseTestGeneratorRequestBuilder;
 }

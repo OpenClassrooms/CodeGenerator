@@ -22,7 +22,7 @@ class UseCaseListItemResponseDTOGeneratorRequestBuilderImpl implements UseCaseLi
         return $this;
     }
 
-    public function withEntity(string $entity): UseCaseListItemResponseDTOGeneratorRequestBuilder
+    public function withEntityClassName(string $entity): UseCaseListItemResponseDTOGeneratorRequestBuilder
     {
         $this->request->entity = $entity;
 

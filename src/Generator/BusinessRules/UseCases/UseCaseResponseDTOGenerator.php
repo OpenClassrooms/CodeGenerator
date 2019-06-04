@@ -29,7 +29,7 @@ class UseCaseResponseDTOGenerator extends AbstractUseCaseGenerator
     public function generate(GeneratorRequest $generatorRequest): FileObject
     {
         $useCaseResponseDTOFileObject = $this->buildUseCaseResponseDTOFileObject(
-            $generatorRequest->getEntity(),
+            $generatorRequest->getEntityClassName(),
             $generatorRequest->getFields()
         );
 

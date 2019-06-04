@@ -31,7 +31,7 @@ class GetEntityUseCaseGenerator extends AbstractUseCaseGenerator
     public function generate(GeneratorRequest $generatorRequest): FileObject
     {
         $getEntityUseCaseFileObject = $this->buildGetEntityUseCaseFileObject(
-            $generatorRequest->getEntity()
+            $generatorRequest->getEntityClassName()
         );
 
         $this->insertFileObject($getEntityUseCaseFileObject);
@@ -181,20 +181,20 @@ class GetEntityUseCaseGenerator extends AbstractUseCaseGenerator
     private function createSkeletonModel(array $fileObjects): GetEntityUseCaseSkeletonModel
     {
         return $this->skeletonModelBuilder->create()
-            ->withEntity(
+            ->withEntityClassName(
                 $fileObjects[EntityFileObjectType::BUSINESS_RULES_ENTITY]
             )
-            ->withEntityDetailResponse(
+            ->withEntityClassNameDetailResponse(
                 $fileObjects[UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE]
             )
-            ->withEntityDetailResponseAssembler(
+            ->withEntityClassNameDetailResponseAssembler(
                 $fileObjects[UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE_ASSEMBLER]
             )
-            ->withEntityGateway($fileObjects[EntityFileObjectType::BUSINESS_RULES_ENTITY_GATEWAY])
-            ->withEntityNotFoundException(
+            ->withEntityClassNameGateway($fileObjects[EntityFileObjectType::BUSINESS_RULES_ENTITY_GATEWAY])
+            ->withEntityClassNameNotFoundException(
                 $fileObjects[EntityFileObjectType::BUSINESS_RULES_ENTITY_NOT_FOUND_EXCEPTION]
             )
-            ->withEntityResponse($fileObjects[UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE])
+            ->withEntityClassNameResponse($fileObjects[UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE])
             ->withGetEntityUseCase($fileObjects[UseCaseFileObjectType::BUSINESS_RULES_USE_CASE])
             ->withGetEntityUseCaseRequest($fileObjects[UseCaseRequestFileObjectType::BUSINESS_RULES_USE_CASE_REQUEST])
             ->build();

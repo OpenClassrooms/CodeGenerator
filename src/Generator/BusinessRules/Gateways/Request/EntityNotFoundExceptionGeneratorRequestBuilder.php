@@ -13,7 +13,7 @@ interface EntityNotFoundExceptionGeneratorRequestBuilder extends GeneratorReques
 
     public function create(): EntityNotFoundExceptionGeneratorRequestBuilder;
 
-    public function withEntity(
+    public function withEntityClassName(
         string $entity
     ): EntityNotFoundExceptionGeneratorRequestBuilder;
 }

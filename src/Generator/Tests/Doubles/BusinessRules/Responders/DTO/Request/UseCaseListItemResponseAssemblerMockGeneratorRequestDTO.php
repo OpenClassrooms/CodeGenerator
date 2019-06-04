@@ -14,7 +14,7 @@ class UseCaseListItemResponseAssemblerMockGeneratorRequestDTO implements UseCase
      */
     public $defaultValue;
 
-    public function getEntity(): string
+    public function getEntityClassName(): string
     {
         return $this->defaultValue;
     }

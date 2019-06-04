@@ -61,6 +61,9 @@
         <service
                 id="open_classrooms.code_generator.generator.business_rules.gateways.dto.request.entity_not_found_exception_generator_request_builder"
                 class="OpenClassrooms\CodeGenerator\Generator\BusinessRules\Gateways\DTO\Request\EntityNotFoundExceptionGeneratorRequestBuilderImpl"/>
+        <service
+                id="open_classrooms.code_generator.generator.tests.doubles.business_rules.gateways.dto.request.in_memory_entity_gateway_generator_request_builder"
+                class="OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\BusinessRules\Gateways\DTO\Request\InMemoryEntityGatewayGeneratorRequestBuilderImpl"/>
 
         <service id="open_classrooms.code_generator.mediators.business_rules.use_cases.get_entity_use_case_mediator"
                  class="OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\Impl\GetEntityUseCaseMediatorImpl">
@@ -215,6 +218,14 @@
             <call method="setEntityRepositoryGeneratorRequestBuilder">
                 <argument type="service"
                           id="open_classrooms.code_generator.generator.app.repository.dto.request.entity_repository_generator_request_builder"/>
+            </call>
+            <call method="setInMemoryEntityGatewayGenerator">
+                <argument type="service"
+                          id="open_classrooms.code_generator.generator.tests.doubles.business_rules.gateways.in_memory_entity_gateway_generator"/>
+            </call>
+            <call method="setInMemoryEntityGatewayGeneratorRequestBuilder">
+                <argument type="service"
+                          id="open_classrooms.code_generator.generator.tests.doubles.business_rules.gateways.dto.request.in_memory_entity_gateway_generator_request_builder"/>
             </call>
             <call method="setUseCaseResponseGenerator">
                 <argument type="service"

@@ -14,7 +14,7 @@ class EntityGatewayGeneratorRequestDTO implements EntityGatewayGeneratorRequest
      */
     public $entity;
 
-    public function getEntity(): string
+    public function getEntityClassName(): string
     {
         return $this->entity;
     }

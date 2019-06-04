@@ -51,7 +51,7 @@ class UseCaseDetailResponseAssemblerMockGeneratorTest extends TestCase
         );
         $this->request = $useCaseDetailResponseAssemblerMockGeneratorRequestBuilderImpl
             ->create()
-            ->withEntity(FunctionalEntity::class)
+            ->withEntityClassName(FunctionalEntity::class)
             ->build();
 
         $this->useCaseDetailResponseAssemblerMockGenerator = new UseCaseDetailResponseAssemblerMockGenerator();

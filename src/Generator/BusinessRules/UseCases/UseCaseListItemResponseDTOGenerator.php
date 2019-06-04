@@ -27,7 +27,7 @@ class UseCaseListItemResponseDTOGenerator extends AbstractUseCaseGenerator
     public function generate(GeneratorRequest $generatorRequest): FileObject
     {
         $useCaseListItemResponseDTOFileObject = $this->buildUseCaseListItemResponseDTOFileObject(
-            $generatorRequest->getEntity(),
+            $generatorRequest->getEntityClassName(),
             $generatorRequest->getFields()
         );
 

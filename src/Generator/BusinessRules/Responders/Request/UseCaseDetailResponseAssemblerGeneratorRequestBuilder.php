@@ -13,7 +13,7 @@ interface UseCaseDetailResponseAssemblerGeneratorRequestBuilder extends Generato
 
     public function create(): UseCaseDetailResponseAssemblerGeneratorRequestBuilder;
 
-    public function withEntity(
+    public function withEntityClassName(
         string $entity
     ): UseCaseDetailResponseAssemblerGeneratorRequestBuilder;
 }

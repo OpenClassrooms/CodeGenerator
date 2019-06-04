@@ -13,7 +13,7 @@ interface EntityGatewayGeneratorRequestBuilder extends GeneratorRequest
 
     public function create(): EntityGatewayGeneratorRequestBuilder;
 
-    public function withEntity(
+    public function withEntityClassName(
         string $entity
     ): EntityGatewayGeneratorRequestBuilder;
 }

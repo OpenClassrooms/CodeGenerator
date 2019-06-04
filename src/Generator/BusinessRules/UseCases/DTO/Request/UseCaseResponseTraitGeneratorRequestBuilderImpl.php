@@ -22,7 +22,7 @@ class UseCaseResponseTraitGeneratorRequestBuilderImpl implements UseCaseResponse
         return $this;
     }
 
-    public function withEntity(string $entity): UseCaseResponseTraitGeneratorRequestBuilder
+    public function withEntityClassName(string $entity): UseCaseResponseTraitGeneratorRequestBuilder
     {
         $this->request->entity = $entity;
 

@@ -38,7 +38,7 @@ class GetEntitiesUseCaseTestGenerator extends AbstractUseCaseGenerator
     public function generate(GeneratorRequest $generatorRequest): FileObject
     {
         $getEntitiesUseCaseTestFileObject = $this->buildGetEntitiesUseCaseTestFileObject(
-            $generatorRequest->getEntity()
+            $generatorRequest->getEntityClassName()
         );
 
         $this->insertFileObject($getEntitiesUseCaseTestFileObject);
@@ -260,9 +260,9 @@ class GetEntitiesUseCaseTestGenerator extends AbstractUseCaseGenerator
     {
         return $this->getEntitiesUseCaseTestSkeletonModelBuilder
             ->create()
-            ->withEntityFileObject($fileObjects[EntityFileObjectType::BUSINESS_RULES_ENTITY])
-            ->withEntityGatewayFileObject($fileObjects[EntityFileObjectType::BUSINESS_RULES_ENTITY_GATEWAY])
-            ->withEntityStubFileObjects($fileObjects[EntityFileObjectType::BUSINESS_RULES_ENTITY_STUB])
+            ->withEntityClassNameFileObject($fileObjects[EntityFileObjectType::BUSINESS_RULES_ENTITY])
+            ->withEntityClassNameGatewayFileObject($fileObjects[EntityFileObjectType::BUSINESS_RULES_ENTITY_GATEWAY])
+            ->withEntityClassNameStubFileObjects($fileObjects[EntityFileObjectType::BUSINESS_RULES_ENTITY_STUB])
             ->withGetEntitiesUseCaseFileObject(
                 $fileObjects[UseCaseFileObjectType::BUSINESS_RULES_GET_ENTITIES_USE_CASE]
             )

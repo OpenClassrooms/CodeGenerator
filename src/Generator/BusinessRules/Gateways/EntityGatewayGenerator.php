@@ -27,7 +27,7 @@ class EntityGatewayGenerator extends AbstractUseCaseGenerator
     public function generate(GeneratorRequest $generatorRequest): FileObject
     {
         $entityGatewayFileObject = $this->buildEntityGatewayFileObject(
-            $generatorRequest->getEntity()
+            $generatorRequest->getEntityClassName()
         );
 
         $this->insertFileObject($entityGatewayFileObject);

@@ -53,7 +53,7 @@ class GetEntityUseCaseTestGeneratorTest extends TestCase
         $getEntityUseCaseTestGeneratorRequestBuilderImpl = new GetEntityUseCaseTestGeneratorRequestBuilderImpl();
         $this->request = $getEntityUseCaseTestGeneratorRequestBuilderImpl
             ->create()
-            ->withEntity(FunctionalEntity::class)
+            ->withEntityClassName(FunctionalEntity::class)
             ->build();
 
         $this->getEntityUseCaseTestGenerator = new GetEntityUseCaseTestGenerator();

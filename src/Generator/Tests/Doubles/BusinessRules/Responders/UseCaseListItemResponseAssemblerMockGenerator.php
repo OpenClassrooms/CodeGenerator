@@ -27,7 +27,7 @@ class UseCaseListItemResponseAssemblerMockGenerator extends AbstractUseCaseGener
     public function generate(GeneratorRequest $generatorRequest): FileObject
     {
         $useCaseListItemResponseAssemblerMockFileObject = $this->buildUseCaseListItemResponseAssemblerMockFileObject(
-            $generatorRequest->getEntity()
+            $generatorRequest->getEntityClassName()
         );
 
         $this->insertFileObject($useCaseListItemResponseAssemblerMockFileObject);

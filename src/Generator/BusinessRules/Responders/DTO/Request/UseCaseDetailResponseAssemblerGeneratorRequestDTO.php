@@ -14,7 +14,7 @@ class UseCaseDetailResponseAssemblerGeneratorRequestDTO implements UseCaseDetail
      */
     public $entity;
 
-    public function getEntity(): string
+    public function getEntityClassName(): string
     {
         return $this->entity;
     }

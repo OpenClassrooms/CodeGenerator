@@ -51,7 +51,7 @@ class UseCaseResponseDTOGeneratorTest extends TestCase
         $useCaseResponseDTOGeneratorRequestBuilderImpl = new UseCaseResponseDTOGeneratorRequestBuilderImpl();
         $this->request = $useCaseResponseDTOGeneratorRequestBuilderImpl
             ->create()
-            ->withEntity(FunctionalEntity::class)
+            ->withEntityClassName(FunctionalEntity::class)
             ->withFields(['field1', 'field2', 'id', 'field3'])
             ->build();
 

@@ -22,7 +22,7 @@ class UseCaseDetailResponseAssemblerGeneratorRequestBuilderImpl implements UseCa
         return $this;
     }
 
-    public function withEntity(string $entity): UseCaseDetailResponseAssemblerGeneratorRequestBuilder
+    public function withEntityClassName(string $entity): UseCaseDetailResponseAssemblerGeneratorRequestBuilder
     {
         $this->request->entity = $entity;
 

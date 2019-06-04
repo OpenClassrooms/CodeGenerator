@@ -19,7 +19,7 @@ class UseCaseDetailResponseGeneratorRequestDTO implements UseCaseDetailResponseG
      */
     public $fields;
 
-    public function getEntity(): string
+    public function getEntityClassName(): string
     {
         return $this->entity;
     }

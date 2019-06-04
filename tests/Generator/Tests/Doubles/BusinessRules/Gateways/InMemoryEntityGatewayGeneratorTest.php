@@ -55,10 +55,10 @@ class InMemoryEntityGatewayGeneratorTest extends TestCase
 
         $this->inMemoryEntityGatewayGenerator = new InMemoryEntityGatewayGenerator();
         $this->inMemoryEntityGatewayGenerator->setEntityFileObjectFactory(new EntityFileObjectFactoryMock());
+        $this->inMemoryEntityGatewayGenerator->setFileObjectGateway(new InMemoryFileObjectGateway());
         $this->inMemoryEntityGatewayGenerator->setInMemoryEntityGatewaySkeletonModelAssembler(
             new InMemoryEntityGatewaySkeletonModelAssemblerMock()
         );
         $this->inMemoryEntityGatewayGenerator->setTemplating(new TemplatingServiceMock());
-        $this->inMemoryEntityGatewayGenerator->setFileObjectGateway(new InMemoryFileObjectGateway());
     }
 }

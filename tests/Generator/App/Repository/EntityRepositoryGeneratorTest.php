@@ -50,7 +50,7 @@ class EntityRepositoryGeneratorTest extends TestCase
         $entityRepositoryGeneratorRequestBuilderImpl = new EntityRepositoryGeneratorRequestBuilderImpl();
         $this->request = $entityRepositoryGeneratorRequestBuilderImpl
             ->create()
-            ->withEntity(FunctionalEntity::class)
+            ->withEntityClassName(FunctionalEntity::class)
             ->build();
 
         $this->entityRepositoryGenerator = new EntityRepositoryGenerator();

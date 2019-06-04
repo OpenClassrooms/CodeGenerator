@@ -13,5 +13,5 @@ interface EntityRepositoryGeneratorRequestBuilder extends GeneratorRequest
 
     public function create(): EntityRepositoryGeneratorRequestBuilder;
 
-    public function withEntity(string $entity): EntityRepositoryGeneratorRequestBuilder;
+    public function withEntityClassName(string $entity): EntityRepositoryGeneratorRequestBuilder;
 }

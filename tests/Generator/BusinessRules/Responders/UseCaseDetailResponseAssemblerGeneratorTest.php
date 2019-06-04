@@ -52,7 +52,7 @@ class UseCaseDetailResponseAssemblerGeneratorTest extends TestCase
         );
         $this->request = $useCaseDetailResponseAssemblerGeneratorRequestBuilderImpl
             ->create()
-            ->withEntity(FunctionalEntity::class)
+            ->withEntityClassName(FunctionalEntity::class)
             ->build();
 
         $this->useCaseDetailResponseAssemblerGenerator = new UseCaseDetailResponseAssemblerGenerator();

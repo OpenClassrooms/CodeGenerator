@@ -51,7 +51,7 @@ class UseCaseListItemResponseAssemblerMockGeneratorTest extends TestCase
         );
         $this->request = $useCaseListItemResponseAssemblerMockGeneratorRequestBuilderImpl
             ->create()
-            ->withEntity(FunctionalEntity::class)
+            ->withEntityClassName(FunctionalEntity::class)
             ->build();
 
         $this->useCaseListItemResponseAssemblerMockGenerator = new UseCaseListItemResponseAssemblerMockGenerator();

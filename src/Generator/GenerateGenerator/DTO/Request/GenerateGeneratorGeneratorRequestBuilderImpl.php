@@ -36,7 +36,7 @@ class GenerateGeneratorGeneratorRequestBuilderImpl implements GenerateGeneratorG
         return $this;
     }
 
-    public function withEntity(string $entity): GenerateGeneratorGeneratorRequestBuilder
+    public function withEntityClassName(string $entity): GenerateGeneratorGeneratorRequestBuilder
     {
         $this->request->entity = $entity;
 

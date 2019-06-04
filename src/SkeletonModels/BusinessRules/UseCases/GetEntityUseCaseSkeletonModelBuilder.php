@@ -11,11 +11,11 @@ interface GetEntityUseCaseSkeletonModelBuilder
 {
     public function create(): GetEntityUseCaseSkeletonModelBuilder;
 
-    public function withEntity(
+    public function withEntityClassName(
         FileObject $entityFileObject
     ): GetEntityUseCaseSkeletonModelBuilder;
 
-    public function withEntityGateway(
+    public function withEntityClassNameGateway(
         FileObject $entityGatewayFileObject
     ): GetEntityUseCaseSkeletonModelBuilder;
 
@@ -27,19 +27,19 @@ interface GetEntityUseCaseSkeletonModelBuilder
         FileObject $getEntityUseCaseRequestFileObject
     ): GetEntityUseCaseSkeletonModelBuilder;
 
-    public function withEntityDetailResponse(
+    public function withEntityClassNameDetailResponse(
         FileObject $entityDetailResponseFileObject
     ): GetEntityUseCaseSkeletonModelBuilder;
 
-    public function withEntityDetailResponseAssembler(
+    public function withEntityClassNameDetailResponseAssembler(
         FileObject $entityDetailResponseAssemblerFileObject
     ): GetEntityUseCaseSkeletonModelBuilder;
 
-    public function withEntityResponse(
+    public function withEntityClassNameResponse(
         FileObject $entityResponseFileObject
     ): GetEntityUseCaseSkeletonModelBuilder;
 
-    public function withEntityNotFoundException(
+    public function withEntityClassNameNotFoundException(
         FileObject $entityNotFoundExceptionFileObject
     ): GetEntityUseCaseSkeletonModelBuilder;
 

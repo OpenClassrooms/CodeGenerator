@@ -16,6 +16,7 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\U
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\UseCaseResponseTraitFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\BusinessRules\Responders\UseCaseDetailResponseStub\UseCaseDetailResponseStubFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\BusinessRules\UseCases\GetEntityUseCaseTestFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\Doubles\BusinessRules\Gateways\InMemoryEntityGatewayFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\Doubles\BusinessRules\Responders\UseCaseDetailResponseAssemblerMockFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\Doubles\BusinessRules\Responders\UseCaseDetailResponseTestCaseFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\Doubles\BusinessRules\Responders\UseCaseResponseTestCaseFileObjectStub1;
@@ -37,14 +38,15 @@ class GetEntityUseCaseMediatorMock extends GetEntityUseCaseMediatorImpl
             new GetEntityUseCaseRequestBuilderImplFileObjectStub1(),
             new GetEntityUseCaseRequestDTOFileObjectStub1(),
             new GetEntityUseCaseRequestFileObjectStub1(),
+            new GetEntityUseCaseTestFileObjectStub1(),
+            new InMemoryEntityGatewayFileObjectStub1(),
             new UseCaseResponseDTOFileObjectStub1(),
             new UseCaseResponseTraitFileObjectStub1(),
             new UseCaseDetailResponseAssemblerFileObjectStub1(),
             new UseCaseDetailResponseAssemblerImplFileObjectStub1(),
+            new UseCaseDetailResponseAssemblerMockFileObjectStub1(),
             new UseCaseDetailResponseDTOFileObjectStub1(),
             new UseCaseDetailResponseFileObjectStub1(),
-            new GetEntityUseCaseTestFileObjectStub1(),
-            new UseCaseDetailResponseAssemblerMockFileObjectStub1(),
             new UseCaseDetailResponseStubFileObjectStub1(),
             new UseCaseDetailResponseTestCaseFileObjectStub1(),
             new UseCaseResponseTestCaseFileObjectStub1(),

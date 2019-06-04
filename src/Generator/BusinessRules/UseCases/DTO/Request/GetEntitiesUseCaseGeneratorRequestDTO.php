@@ -14,7 +14,7 @@ class GetEntitiesUseCaseGeneratorRequestDTO implements GetEntitiesUseCaseGenerat
      */
     public $defaultValue;
 
-    public function getEntity(): string
+    public function getEntityClassName(): string
     {
         return $this->defaultValue;
     }

@@ -50,7 +50,7 @@ class UseCaseResponseTestCaseGeneratorTest extends TestCase
         $useCaseResponseTestCaseGeneratorRequestBuilderImpl = new UseCaseResponseTestCaseGeneratorRequestBuilderImpl();
         $this->request = $useCaseResponseTestCaseGeneratorRequestBuilderImpl
             ->create()
-            ->withEntity(FunctionalEntity::class)
+            ->withEntityClassName(FunctionalEntity::class)
             ->withFields(['field1','field2','field3','id'])
             ->build();
 

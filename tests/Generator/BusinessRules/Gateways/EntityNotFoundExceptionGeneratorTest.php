@@ -50,7 +50,7 @@ class EntityNotFoundExceptionGeneratorTest extends TestCase
         $entityNotFoundExceptionGeneratorRequestBuilderImpl = new EntityNotFoundExceptionGeneratorRequestBuilderImpl();
         $this->request = $entityNotFoundExceptionGeneratorRequestBuilderImpl
             ->create()
-            ->withEntity(FunctionalEntity::class)
+            ->withEntityClassName(FunctionalEntity::class)
             ->build();
 
         $this->entityNotFoundExceptionGenerator = new EntityNotFoundExceptionGenerator();

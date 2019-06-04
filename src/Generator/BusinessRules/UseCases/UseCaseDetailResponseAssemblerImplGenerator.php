@@ -28,7 +28,7 @@ class UseCaseDetailResponseAssemblerImplGenerator extends AbstractUseCaseGenerat
     public function generate(GeneratorRequest $generatorRequest): FileObject
     {
         $useCaseDetailResponseAssemblerImplFileObject = $this->buildUseCaseDetailResponseAssemblerImplFileObject(
-            $generatorRequest->getEntity(),
+            $generatorRequest->getEntityClassName(),
             $generatorRequest->getFields()
         );
 

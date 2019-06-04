@@ -13,7 +13,7 @@ interface UseCaseDetailResponseAssemblerImplGeneratorRequestBuilder extends Gene
 
     public function create(): UseCaseDetailResponseAssemblerImplGeneratorRequestBuilder;
 
-    public function withEntity(
+    public function withEntityClassName(
         string $entity
     ): UseCaseDetailResponseAssemblerImplGeneratorRequestBuilder;
 

@@ -52,7 +52,7 @@ class UseCaseListItemResponseAssemblerImplGeneratorTest extends TestCase
         );
         $this->request = $useCaseListItemResponseAssemblerImplGeneratorRequestBuilderImpl
             ->create()
-            ->withEntity(FunctionalEntity::class)
+            ->withEntityClassName(FunctionalEntity::class)
             ->withFields([])
             ->build();
 
