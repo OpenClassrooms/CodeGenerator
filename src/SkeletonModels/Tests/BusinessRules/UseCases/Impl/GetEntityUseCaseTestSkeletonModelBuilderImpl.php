@@ -23,8 +23,9 @@ class GetEntityUseCaseTestSkeletonModelBuilderImpl implements GetEntityUseCaseTe
         return $this;
     }
 
-    public function withEntityClassNameStubFileObject(FileObject $entityStubFileObject): GetEntityUseCaseTestSkeletonModelBuilder
-    {
+    public function withEntityClassNameStubFileObject(
+        FileObject $entityStubFileObject
+    ): GetEntityUseCaseTestSkeletonModelBuilder {
         $this->skeletonModel->entityStubClassName = $entityStubFileObject->getClassName();
         $this->skeletonModel->entityStubShortName = $entityStubFileObject->getShortName();
 

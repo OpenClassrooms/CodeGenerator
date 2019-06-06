@@ -18,7 +18,6 @@
  */
 exec('git diff --cached --name-status --diff-filter=ACM', $output);
 foreach ($output as $file) {
-
     $fileName = trim(substr($file, 1));
     /**
      * Only PHP file
@@ -39,7 +38,6 @@ foreach ($output as $file) {
              */
             exec("vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix {$fileName} --show-progress=dots --verbose --allow-risky=yes --config=.php_cs.php; git add {$fileName}");
         } else {
-
             echo implode("\n", $lint_output), "\n";
 
             exit(1);

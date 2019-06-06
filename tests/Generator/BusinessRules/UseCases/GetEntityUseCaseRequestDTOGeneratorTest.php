@@ -48,7 +48,8 @@ class GetEntityUseCaseRequestDTOGeneratorTest extends TestCase
 
     protected function setUp()
     {
-        $getEntityUseCaseRequestDTOGeneratorRequestBuilderImpl = new GetEntityUseCaseRequestDTOGeneratorRequestBuilderImpl();
+        $getEntityUseCaseRequestDTOGeneratorRequestBuilderImpl = new GetEntityUseCaseRequestDTOGeneratorRequestBuilderImpl(
+        );
         $this->request = $getEntityUseCaseRequestDTOGeneratorRequestBuilderImpl
             ->create()
             ->withEntityClassName(FunctionalEntity::class)

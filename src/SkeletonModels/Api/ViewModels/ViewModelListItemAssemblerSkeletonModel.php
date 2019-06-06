@@ -11,11 +11,11 @@ abstract class ViewModelListItemAssemblerSkeletonModel extends AbstractSkeletonM
 {
     public $templatePath = 'Api/ViewModels/ViewModelListItemAssembler.php.twig';
 
+    public $useCaseListItemResponseArgument;
+
     public $useCaseListItemResponseClassName;
 
     public $useCaseListItemResponseShortName;
-
-    public $useCaseListItemResponseArgument;
 
     public $viewModelListItemShortName;
 }

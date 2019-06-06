@@ -10,7 +10,6 @@ use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\Request\ViewModelListItemTestCaseGeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\Api\ViewModels\ViewModelListItemTestCaseSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\Api\ViewModels\ViewModelListItemTestCaseSkeletonModelAssembler;
-use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
@@ -27,12 +26,8 @@ class ViewModelListItemTestCaseGenerator extends AbstractViewModelGenerator
      */
     public function generate(GeneratorRequest $generatorRequest): FileObject
     {
-        $useCaseListItemResponseDTOFileObject = $this->createUseCaseListItemResponseDTOFileObject(
-            $generatorRequest->getUseCaseResponseClassName()
-        );
-
         $viewModelListItemTestCaseFileObject = $this->buildListItemTestCaseFileObject(
-            $useCaseListItemResponseDTOFileObject
+            $generatorRequest->getUseCaseResponseClassName()
         );
 
         $this->insertFileObject($viewModelListItemTestCaseFileObject);
@@ -40,29 +35,13 @@ class ViewModelListItemTestCaseGenerator extends AbstractViewModelGenerator
         return $viewModelListItemTestCaseFileObject;
     }
 
-    private function createUseCaseListItemResponseDTOFileObject($useCaseResponseClassName)
+    public function buildListItemTestCaseFileObject(string $useCaseResponseClassName): FileObject
     {
-        [$baseNamespace, $domain, $entity] = FileObjectUtility::getBaseNamespaceDomainAndEntityNameFromClassName($useCaseResponseClassName);
-
-        return $this->createUseCaseResponseFileObject(
-            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE_DTO,
-            $domain,
-            $entity,
-            $baseNamespace
-        );
-    }
-
-    public function buildListItemTestCaseFileObject(FileObject $useCaseListItemResponseDTOFileObject): FileObject
-    {
-        $viewModelListItemTestCaseFileObject = $this->createViewModelListItemTestCaseFileObject(
-            $useCaseListItemResponseDTOFileObject
-        );
-        $viewModelTestCaseFileObject = $this->createViewModelTestCaseFileObject(
-            $useCaseListItemResponseDTOFileObject
-        );
-        $viewModelListItemFileObject = $this->createViewModelListItemFileObject(
-            $useCaseListItemResponseDTOFileObject
-        );
+        $this->initFileObjectParameter($useCaseResponseClassName);
+        $useCaseListItemResponseDTOFileObject = $this->createUseCaseListItemResponseDTOFileObject();
+        $viewModelListItemTestCaseFileObject = $this->createViewModelListItemTestCaseFileObject();
+        $viewModelTestCaseFileObject = $this->createViewModelTestCaseFileObject();
+        $viewModelListItemFileObject = $this->createViewModelListItemFileObject();
 
         $viewModelListItemTestCaseFileObject->setFields(
             $this->getPublicClassFields($useCaseListItemResponseDTOFileObject->getClassName())
@@ -80,37 +59,45 @@ class ViewModelListItemTestCaseGenerator extends AbstractViewModelGenerator
 
     }
 
-    private function createViewModelListItemTestCaseFileObject(
-        FileObject $useCaseListItemResponseDTOFileObject
-    ): FileObject
+    private function createUseCaseListItemResponseDTOFileObject()
+    {
+        return $this->createUseCaseResponseFileObject(
+            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE_DTO,
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
+        );
+    }
+
+    private function createViewModelListItemTestCaseFileObject(): FileObject
     {
         $viewModelListItemTestCaseFileObject = $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_TEST_CASE,
-            $useCaseListItemResponseDTOFileObject->getDomain(),
-            $useCaseListItemResponseDTOFileObject->getEntity(),
-            $useCaseListItemResponseDTOFileObject->getBaseNamespace()
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
         );
 
         return $viewModelListItemTestCaseFileObject;
     }
 
-    private function createViewModelTestCaseFileObject(FileObject $useCaseListItemResponseDTOFileObject): FileObject
+    private function createViewModelTestCaseFileObject(): FileObject
     {
         return $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL_TEST_CASE,
-            $useCaseListItemResponseDTOFileObject->getDomain(),
-            $useCaseListItemResponseDTOFileObject->getEntity(),
-            $useCaseListItemResponseDTOFileObject->getBaseNamespace()
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
         );
     }
 
-    private function createViewModelListItemFileObject(FileObject $useCaseListItemResponseDTOFileObject): FileObject
+    private function createViewModelListItemFileObject(): FileObject
     {
         return $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM,
-            $useCaseListItemResponseDTOFileObject->getDomain(),
-            $useCaseListItemResponseDTOFileObject->getEntity(),
-            $useCaseListItemResponseDTOFileObject->getBaseNamespace()
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
         );
     }
 
@@ -118,8 +105,7 @@ class ViewModelListItemTestCaseGenerator extends AbstractViewModelGenerator
         FileObject $viewModelListItemTestCaseFileObject,
         FileObject $viewModelTestCaseFileObject,
         FileObject $viewModelListItemFileObject
-    ): string
-    {
+    ): string {
         $skeletonModel = $this->createSkeletonModel(
             $viewModelListItemTestCaseFileObject,
             $viewModelTestCaseFileObject,
@@ -133,8 +119,7 @@ class ViewModelListItemTestCaseGenerator extends AbstractViewModelGenerator
         FileObject $viewModelListItemTestCaseFileObject,
         FileObject $viewModelTestCaseFileObject,
         FileObject $viewModelListItemFileObject
-    ): ViewModelListItemTestCaseSkeletonModel
-    {
+    ): ViewModelListItemTestCaseSkeletonModel {
         return $this->viewModelListItemTestCaseSkeletonModelAssembler->create(
             $viewModelListItemTestCaseFileObject,
             $viewModelTestCaseFileObject,
@@ -144,8 +129,7 @@ class ViewModelListItemTestCaseGenerator extends AbstractViewModelGenerator
 
     public function setViewModelListItemTestCaseSkeletonModelAssembler(
         ViewModelListItemTestCaseSkeletonModelAssembler $viewModelListItemTestCaseSkeletonModelAssembler
-    )
-    {
+    ) {
         $this->viewModelListItemTestCaseSkeletonModelAssembler = $viewModelListItemTestCaseSkeletonModelAssembler;
     }
 }

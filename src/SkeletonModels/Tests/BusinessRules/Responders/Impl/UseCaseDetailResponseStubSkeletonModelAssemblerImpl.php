@@ -18,8 +18,7 @@ class UseCaseDetailResponseStubSkeletonModelAssemblerImpl implements UseCaseDeta
         FileObject $useCaseDetailResponseStubFileObject,
         FileObject $useCaseDetailResponseFileObject,
         FileObject $entityStubFileObject
-    ): UseCaseDetailResponseStubSkeletonModel
-    {
+    ): UseCaseDetailResponseStubSkeletonModel {
         $skeletonModel = new UseCaseDetailResponseStubSkeletonModelImpl();
         $skeletonModel->namespace = $useCaseDetailResponseStubFileObject->getNamespace();
         $skeletonModel->className = $useCaseDetailResponseStubFileObject->getClassName();

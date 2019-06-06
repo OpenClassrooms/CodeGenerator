@@ -12,7 +12,6 @@ use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\Request\GetEntityUseCaseTestGeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\UseCases\GetEntityUseCaseTestSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\UseCases\GetEntityUseCaseTestSkeletonModelBuilder;
-use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
@@ -40,29 +39,18 @@ class GetEntityUseCaseTestGenerator extends AbstractUseCaseGenerator
 
     private function buildGetEntityUseCaseTestFileObject(string $entityClassName): FileObject
     {
-        $entityStubFileObject = $this->createEntityStubFileObject($entityClassName);
-        $entityNotFoundExceptionFileObject = $this->createEntityNotFoundExceptionFileObjectFileObject(
-            $entityStubFileObject
-        );
-        $inMemoryEntityGatewayFileObject = $this->createInMemoryEntityUseCaseGatewayFileObject(
-            $entityStubFileObject
-        );
-        $getEntityUseCaseFileObject = $this->createGetEntityUseCaseFileObject($entityStubFileObject);
-        $getEntityUseCaseRequestBuilderImplFileObject = $this->createGetEntityUseCaseRequestBuilderImplFileObject(
-            $entityStubFileObject
-        );
-        $getEntityUseCaseRequestDTOFileObject = $this->createGetEntityUseCaseRequestDTOFileObject(
-            $entityStubFileObject
-        );
-        $getEntityUseCaseRequestFileObject = $this->createGetEntityUseCaseRequestFileObject($entityStubFileObject);
-        $getEntityUseCaseTestFileObject = $this->createGetEntityUseCaseTestFileObject($entityStubFileObject);
-        $useCaseDetailResponseBuilderMockFileObject = $this->createUseCaseDetailResponseBuilderMockFileObject(
-            $entityStubFileObject
-        );
-        $useCaseDetailResponseStubFileObject = $this->createUseCaseDetailResponseStubFileObject($entityStubFileObject);
-        $useCaseDetailResponseTestCaseFileObject = $this->createUseCaseDetailResponseTestCaseFileObject(
-            $entityStubFileObject
-        );
+        $this->initFileObjectParameter($entityClassName);
+        $entityStubFileObject = $this->createEntityStubFileObject();
+        $entityNotFoundExceptionFileObject = $this->createEntityNotFoundExceptionFileObjectFileObject();
+        $inMemoryEntityGatewayFileObject = $this->createInMemoryEntityUseCaseGatewayFileObject();
+        $getEntityUseCaseFileObject = $this->createGetEntityUseCaseFileObject();
+        $getEntityUseCaseRequestBuilderImplFileObject = $this->createGetEntityUseCaseRequestBuilderImplFileObject();
+        $getEntityUseCaseRequestDTOFileObject = $this->createGetEntityUseCaseRequestDTOFileObject();
+        $getEntityUseCaseRequestFileObject = $this->createGetEntityUseCaseRequestFileObject();
+        $getEntityUseCaseTestFileObject = $this->createGetEntityUseCaseTestFileObject();
+        $useCaseDetailResponseBuilderMockFileObject = $this->createUseCaseDetailResponseBuilderMockFileObject();
+        $useCaseDetailResponseStubFileObject = $this->createUseCaseDetailResponseStubFileObject();
+        $useCaseDetailResponseTestCaseFileObject = $this->createUseCaseDetailResponseTestCaseFileObject();
 
         $getEntityUseCaseTestFileObject->setContent(
             $this->generateContent(
@@ -85,120 +73,112 @@ class GetEntityUseCaseTestGenerator extends AbstractUseCaseGenerator
         return $getEntityUseCaseTestFileObject;
     }
 
-    private function createEntityStubFileObject(string $entityClassName): FileObject
+    private function createEntityStubFileObject(): FileObject
     {
-        [$baseNamespace, $domain, $entity] = FileObjectUtility::getBaseNamespaceDomainAndEntityNameFromClassName(
-            $entityClassName
-        );
-
         return $this->entityFileObjectFactory->create(
             EntityFileObjectType::BUSINESS_RULES_ENTITY_STUB,
-            $domain,
-            $entity,
-            $baseNamespace
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
         );
     }
 
-    private function createEntityNotFoundExceptionFileObjectFileObject(
-        FileObject $entityStubFileObject
-    ): FileObject {
+    private function createEntityNotFoundExceptionFileObjectFileObject(): FileObject
+    {
         return $this->entityFileObjectFactory->create(
             EntityFileObjectType::BUSINESS_RULES_ENTITY_NOT_FOUND_EXCEPTION,
-            $entityStubFileObject->getDomain(),
-            $entityStubFileObject->getEntity()
+            $this->domain,
+            $this->entity
         );
     }
 
-    private function createInMemoryEntityUseCaseGatewayFileObject(
-        FileObject $entityStubFileObject
-    ): FileObject {
+    private function createInMemoryEntityUseCaseGatewayFileObject(): FileObject
+    {
         return $this->entityFileObjectFactory->create(
             EntityFileObjectType::BUSINESS_RULES_ENTITY_IN_MEMORY_GATEWAY,
-            $entityStubFileObject->getDomain(),
-            $entityStubFileObject->getEntity()
+            $this->domain,
+            $this->entity
         );
     }
 
-    private function createGetEntityUseCaseFileObject(FileObject $entityStubFileObject): FileObject
+    private function createGetEntityUseCaseFileObject(): FileObject
     {
         return $this->useCaseFileObjectFactory->create(
             UseCaseFileObjectType::BUSINESS_RULES_GET_ENTITY_USE_CASE,
-            $entityStubFileObject->getDomain(),
-            $entityStubFileObject->getEntity()
+            $this->domain,
+            $this->entity
         );
     }
 
-    private function createGetEntityUseCaseRequestBuilderImplFileObject(
-        FileObject $entityStubFileObject
-    ): FileObject {
+    private function createGetEntityUseCaseRequestBuilderImplFileObject(): FileObject
+    {
         return $this->useCaseRequestFileObjectFactory->create(
             UseCaseRequestFileObjectType::BUSINESS_RULES_GET_ENTITY_USE_CASE_REQUEST_BUILDER_IMPL,
-            $entityStubFileObject->getDomain(),
-            $entityStubFileObject->getEntity()
+            $this->domain,
+            $this->entity
         );
     }
 
-    private function createGetEntityUseCaseRequestDTOFileObject(FileObject $entityStubFileObject): FileObject
+    private function createGetEntityUseCaseRequestDTOFileObject(): FileObject
     {
         return $this->useCaseRequestFileObjectFactory->create(
             UseCaseRequestFileObjectType::BUSINESS_RULES_GET_ENTITY_USE_CASE_REQUEST_DTO,
-            $entityStubFileObject->getDomain(),
-            $entityStubFileObject->getEntity()
+            $this->domain,
+            $this->entity
         );
     }
 
-    private function createGetEntityUseCaseRequestFileObject(FileObject $entityStubFileObject): FileObject
+    private function createGetEntityUseCaseRequestFileObject(): FileObject
     {
         return $this->useCaseRequestFileObjectFactory->create(
             UseCaseRequestFileObjectType::BUSINESS_RULES_GET_ENTITY_USE_CASE_REQUEST,
-            $entityStubFileObject->getDomain(),
-            $entityStubFileObject->getEntity()
+            $this->domain,
+            $this->entity
         );
     }
 
-    private function createGetEntityUseCaseTestFileObject(FileObject $entityStubFileObject): FileObject
+    private function createGetEntityUseCaseTestFileObject(): FileObject
     {
         return $this->useCaseFileObjectFactory->create(
             UseCaseFileObjectType::BUSINESS_RULES_GET_ENTITY_USE_CASE_TEST,
-            $entityStubFileObject->getDomain(),
-            $entityStubFileObject->getEntity()
+            $this->domain,
+            $this->entity
         );
     }
 
-    private function createUseCaseDetailResponseBuilderMockFileObject(
-        FileObject $entityStubFileObject
-    ): FileObject {
+    private function createUseCaseDetailResponseBuilderMockFileObject(): FileObject
+    {
         return $this->useCaseResponseFileObjectFactory->create(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE_ASSEMBLER_MOCK,
-            $entityStubFileObject->getDomain(),
-            $entityStubFileObject->getEntity()
+            $this->domain,
+            $this->entity
         );
     }
 
-    private function createUseCaseDetailResponseStubFileObject(FileObject $entityStubFileObject): FileObject
+    private function createUseCaseDetailResponseStubFileObject(): FileObject
     {
         return $this->useCaseResponseFileObjectFactory->create(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE_STUB,
-            $entityStubFileObject->getDomain(),
-            $entityStubFileObject->getEntity()
+            $this->domain,
+            $this->entity
         );
     }
 
-    private function createUseCaseDetailResponseTestCaseFileObject(
-        FileObject $entityStubFileObject
-    ): FileObject {
+    private function createUseCaseDetailResponseTestCaseFileObject(): FileObject
+    {
         return $this->useCaseResponseFileObjectFactory->create(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE_TEST_CASE,
-            $entityStubFileObject->getDomain(),
-            $entityStubFileObject->getEntity()
+            $this->domain,
+            $this->entity
         );
     }
 
     /**
      * @param FileObject[]
      */
-    private function generateContent(array $fileObjects): string
-    {
+    private function generateContent(
+        array $fileObjects
+    ): string {
         $skeletonModel = $this->createSkeletonModel($fileObjects);
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
@@ -207,8 +187,9 @@ class GetEntityUseCaseTestGenerator extends AbstractUseCaseGenerator
     /**
      * @param FileObject[]
      */
-    private function createSkeletonModel(array $fileObjects): GetEntityUseCaseTestSkeletonModel
-    {
+    private function createSkeletonModel(
+        array $fileObjects
+    ): GetEntityUseCaseTestSkeletonModel {
         return $this->getEntityUseCaseTestSkeletonModelBuilder
             ->create()
             ->withEntityClassNameStubFileObject($fileObjects[EntityFileObjectType::BUSINESS_RULES_ENTITY_STUB])

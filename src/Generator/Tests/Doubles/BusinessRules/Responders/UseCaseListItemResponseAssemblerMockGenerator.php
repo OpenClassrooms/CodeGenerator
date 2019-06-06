@@ -9,7 +9,6 @@ use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\BusinessRules\Responders\Request\UseCaseListItemResponseAssemblerMockGeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\BusinessRules\Responders\UseCaseListItemResponseAssemblerMockSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\BusinessRules\Responders\UseCaseListItemResponseAssemblerMockSkeletonModelAssembler;
-use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
@@ -37,12 +36,9 @@ class UseCaseListItemResponseAssemblerMockGenerator extends AbstractUseCaseGener
 
     private function buildUseCaseListItemResponseAssemblerMockFileObject(string $entityClassName): FileObject
     {
-        $useCaseListItemResponseAssemblerImplFileObject = $this->createUseCaseListItemResponseAssemblerImplFileObject(
-            $entityClassName
-        );
-        $useCaseListItemResponseAssemblerMockFileObject = $this->createUseCaseListItemResponseAssemblerMockFileObject(
-            $useCaseListItemResponseAssemblerImplFileObject
-        );
+        $this->initFileObjectParameter($entityClassName);
+        $useCaseListItemResponseAssemblerImplFileObject = $this->createUseCaseListItemResponseAssemblerImplFileObject();
+        $useCaseListItemResponseAssemblerMockFileObject = $this->createUseCaseListItemResponseAssemblerMockFileObject();
 
         $useCaseListItemResponseAssemblerMockFileObject->setContent(
             $this->generateContent(
@@ -54,27 +50,23 @@ class UseCaseListItemResponseAssemblerMockGenerator extends AbstractUseCaseGener
         return $useCaseListItemResponseAssemblerMockFileObject;
     }
 
-    private function createUseCaseListItemResponseAssemblerImplFileObject(string $entityClassName): FileObject
+    private function createUseCaseListItemResponseAssemblerImplFileObject(): FileObject
     {
-        [$baseNamespace, $domain, $entity] = FileObjectUtility::getBaseNamespaceDomainAndEntityNameFromClassName(
-            $entityClassName
-        );
-
         return $this->useCaseResponseFileObjectFactory->create(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE_ASSEMBLER_IMPL,
-            $domain,
-            $entity,
-            $baseNamespace
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
         );
     }
 
-    private function createUseCaseListItemResponseAssemblerMockFileObject(FileObject $fileObject): FileObject
+    private function createUseCaseListItemResponseAssemblerMockFileObject(): FileObject
     {
         return $this->useCaseResponseFileObjectFactory->create(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE_ASSEMBLER_MOCK,
-            $fileObject->getDomain(),
-            $fileObject->getEntity(),
-            $fileObject->getBaseNamespace()
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
         );
     }
 

@@ -24,8 +24,9 @@ class GetEntitiesUseCaseTestSkeletonModelBuilderImpl implements GetEntitiesUseCa
         return $this;
     }
 
-    public function withEntityClassNameFileObject(FileObject $entityFileObject): GetEntitiesUseCaseTestSkeletonModelBuilder
-    {
+    public function withEntityClassNameFileObject(
+        FileObject $entityFileObject
+    ): GetEntitiesUseCaseTestSkeletonModelBuilder {
         $this->skeletonModel->entitiesArgument = StringUtility::pluralize(lcfirst($entityFileObject->getShortName()));
         $this->skeletonModel->entitiesShortName = StringUtility::pluralize($entityFileObject->getShortName());
 

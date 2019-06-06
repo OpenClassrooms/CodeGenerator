@@ -17,8 +17,7 @@ class ViewModelListItemStubSkeletonModelAssemblerImpl implements ViewModelListIt
         FileObject $viewModelListItemStubFileObject,
         FileObject $viewModelListItemImplFileObject,
         FileObject $useCaseListItemResponseStubFileObject
-    ): ViewModelListItemStubSkeletonModel
-    {
+    ): ViewModelListItemStubSkeletonModel {
         $skeletonModel = new ViewModelListItemStubSkeletonModelImpl();
         $skeletonModel->className = $viewModelListItemStubFileObject->getClassName();
         $skeletonModel->namespace = $viewModelListItemStubFileObject->getNamespace();

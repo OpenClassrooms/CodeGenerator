@@ -9,7 +9,9 @@ interface ViewModelListItemAssemblerImplTestGeneratorRequestBuilder
 {
     public function create(): ViewModelListItemAssemblerImplTestGeneratorRequestBuilder;
 
-    public function withResponseClassName(string $responseClassName): ViewModelListItemAssemblerImplTestGeneratorRequestBuilder;
+    public function withResponseClassName(
+        string $responseClassName
+    ): ViewModelListItemAssemblerImplTestGeneratorRequestBuilder;
 
     public function build(): ViewModelListItemAssemblerImplTestGeneratorRequest;
 }

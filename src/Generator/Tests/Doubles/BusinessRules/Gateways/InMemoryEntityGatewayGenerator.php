@@ -10,28 +10,12 @@ use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\BusinessRules\Gateways\Request\InMemoryEntityGatewayGeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\BusinessRules\Gateways\InMemoryEntityGatewaySkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\BusinessRules\Gateways\InMemoryEntityGatewaySkeletonModelAssembler;
-use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 
 /**
  * @author arnaud lefevre <arnaud.lefevre@openclassrooms.com>
  */
 class InMemoryEntityGatewayGenerator extends AbstractGenerator
 {
-    /**
-     * @var string
-     */
-    private $baseNamespace;
-
-    /**
-     * @var string
-     */
-    private $domain;
-
-    /**
-     * @var string
-     */
-    private $entity;
-
     /**
      * @var EntityFileObjectFactory
      */
@@ -54,17 +38,6 @@ class InMemoryEntityGatewayGenerator extends AbstractGenerator
         $this->insertFileObject($inMemoryEntityGatewayFileObject);
 
         return $inMemoryEntityGatewayFileObject;
-    }
-
-    public function setEntityFileObjectFactory(EntityFileObjectFactory $factory): void
-    {
-        $this->entityFileObjectFactory = $factory;
-    }
-
-    public function setInMemoryEntityGatewaySkeletonModelAssembler(
-        InMemoryEntityGatewaySkeletonModelAssembler $assembler
-    ): void {
-        $this->inMemoryEntityGatewaySkeletonModelAssembler = $assembler;
     }
 
     private function buildInMemoryEntityGatewayFileObject(string $entityClassName): FileObject
@@ -93,6 +66,11 @@ class InMemoryEntityGatewayGenerator extends AbstractGenerator
         return $this->createFileObject(EntityFileObjectType::BUSINESS_RULES_ENTITY);
     }
 
+    private function createFileObject(string $type): FileObject
+    {
+        return $this->entityFileObjectFactory->create($type, $this->domain, $this->entity, $this->baseNamespace);
+    }
+
     private function createEntityGatewayFileObject(): FileObject
     {
         return $this->createFileObject(EntityFileObjectType::BUSINESS_RULES_ENTITY_GATEWAY);
@@ -103,28 +81,9 @@ class InMemoryEntityGatewayGenerator extends AbstractGenerator
         return $this->createFileObject(EntityFileObjectType::BUSINESS_RULES_ENTITY_NOT_FOUND_EXCEPTION);
     }
 
-    private function createFileObject(string $type): FileObject
-    {
-        return $this->entityFileObjectFactory->create($type, $this->domain, $this->entity, $this->baseNamespace);
-    }
-
     private function createInMemoryEntityGatewayFileObject(): FileObject
     {
         return $this->createFileObject(EntityFileObjectType::BUSINESS_RULES_ENTITY_IN_MEMORY_GATEWAY);
-    }
-
-    private function createSkeletonModel(
-        FileObject $entityFileObject,
-        FileObject $entityGatewayFileObject,
-        FileObject $entityNotFoundExceptionFileObject,
-        FileObject $inMemoryEntityGatewayFileObject
-    ): InMemoryEntityGatewaySkeletonModel {
-        return $this->inMemoryEntityGatewaySkeletonModelAssembler->create(
-            $entityFileObject,
-            $entityGatewayFileObject,
-            $entityNotFoundExceptionFileObject,
-            $inMemoryEntityGatewayFileObject
-        );
     }
 
     private function generateContent(
@@ -143,14 +102,28 @@ class InMemoryEntityGatewayGenerator extends AbstractGenerator
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
     }
 
-    private function initFileObjectParameter(string $entityClassName): void
-    {
-        [
-            $this->baseNamespace,
-            $this->domain,
-            $this->entity,
-        ] = FileObjectUtility::getBaseNamespaceDomainAndEntityNameFromClassName(
-            $entityClassName
+    private function createSkeletonModel(
+        FileObject $entityFileObject,
+        FileObject $entityGatewayFileObject,
+        FileObject $entityNotFoundExceptionFileObject,
+        FileObject $inMemoryEntityGatewayFileObject
+    ): InMemoryEntityGatewaySkeletonModel {
+        return $this->inMemoryEntityGatewaySkeletonModelAssembler->create(
+            $entityFileObject,
+            $entityGatewayFileObject,
+            $entityNotFoundExceptionFileObject,
+            $inMemoryEntityGatewayFileObject
         );
+    }
+
+    public function setEntityFileObjectFactory(EntityFileObjectFactory $factory): void
+    {
+        $this->entityFileObjectFactory = $factory;
+    }
+
+    public function setInMemoryEntityGatewaySkeletonModelAssembler(
+        InMemoryEntityGatewaySkeletonModelAssembler $assembler
+    ): void {
+        $this->inMemoryEntityGatewaySkeletonModelAssembler = $assembler;
     }
 }

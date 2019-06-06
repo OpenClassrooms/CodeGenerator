@@ -15,8 +15,7 @@ class UseCaseDetailResponseAssemblerSkeletonModelAssemblerImpl implements UseCas
         FileObject $entityFileObject,
         FileObject $useCaseDetailResponseFileObject,
         FileObject $useCaseDetailResponseAssemblerFileObject
-    ): UseCaseDetailResponseAssemblerSkeletonModel
-    {
+    ): UseCaseDetailResponseAssemblerSkeletonModel {
         $skeletonModel = new UseCaseDetailResponseAssemblerSkeletonModelImpl();
         $skeletonModel->namespace = $useCaseDetailResponseAssemblerFileObject->getNamespace();
         $skeletonModel->shortName = $useCaseDetailResponseAssemblerFileObject->getShortName();

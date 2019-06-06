@@ -10,7 +10,6 @@ use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Responders\Reques
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\Responders\UseCaseDetailResponseStubSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\Responders\UseCaseDetailResponseStubSkeletonModelAssembler;
 use OpenClassrooms\CodeGenerator\Utility\ConstUtility;
-use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 use OpenClassrooms\CodeGenerator\Utility\StubFieldUtility;
 
 /**
@@ -39,14 +38,11 @@ class UseCaseDetailResponseStubGenerator extends AbstractUseCaseResponseStubGene
 
     private function buildUseCaseDetailResponseStubFileObject(string $className)
     {
-        $entityFileObject = $this->createEntityFileObject($className);
-        $entityStubFileObject = $this->createEntityStubFileObject($entityFileObject);
-        $useCaseDetailResponseDTOFileObject = $this->createUseCaseDetailResponseDTOFileObject(
-            $entityFileObject
-        );
-        $useCaseDetailResponseStubFileObject = $this->createUseCaseDetailResponseStubFileObject(
-            $entityFileObject
-        );
+        $this->initFileObjectParameter($className);
+        $entityFileObject = $this->createEntityFileObject();
+        $entityStubFileObject = $this->createEntityStubFileObject();
+        $useCaseDetailResponseDTOFileObject = $this->createUseCaseDetailResponseDTOFileObject();
+        $useCaseDetailResponseStubFileObject = $this->createUseCaseDetailResponseStubFileObject();
 
         $useCaseDetailResponseStubFileObject->setFields($this->generateStubFields($entityFileObject));
         $useCaseDetailResponseStubFileObject->setConsts($this->generateConsts($useCaseDetailResponseStubFileObject));
@@ -61,59 +57,55 @@ class UseCaseDetailResponseStubGenerator extends AbstractUseCaseResponseStubGene
         return $useCaseDetailResponseStubFileObject;
     }
 
-    private function createEntityFileObject(string $className): FileObject
+    private function createEntityFileObject(): FileObject
     {
-        [$baseNamespace, $domain, $entity] = FileObjectUtility::getBaseNamespaceDomainAndEntityNameFromClassName(
-            $className
-        );
-
         $useCaseDetailResponseDTOFileObject = $this->entityFileObjectFactory->create(
             EntityFileObjectType::BUSINESS_RULES_ENTITY,
-            $domain,
-            $entity,
-            $baseNamespace
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
         );
 
         return $useCaseDetailResponseDTOFileObject;
     }
 
-    private function createEntityStubFileObject(FileObject $fileObject): FileObject
+    private function createEntityStubFileObject(): FileObject
     {
         $useCaseDetailResponseDTOFileObject = $this->entityFileObjectFactory->create(
             EntityFileObjectType::BUSINESS_RULES_ENTITY_STUB,
-            $fileObject->getDomain(),
-            $fileObject->getEntity(),
-            $fileObject->getBaseNamespace()
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
         );
 
         return $useCaseDetailResponseDTOFileObject;
     }
 
-    private function createUseCaseDetailResponseDTOFileObject(FileObject $fileObject): FileObject
+    private function createUseCaseDetailResponseDTOFileObject(): FileObject
     {
-
         return $this->useCaseResponseFileObjectFactory->create(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE_DTO,
-            $fileObject->getDomain(),
-            $fileObject->getEntity(),
-            $fileObject->getBaseNamespace()
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
         );
     }
 
-    private function createUseCaseDetailResponseStubFileObject(FileObject $fileObject): FileObject
+    private function createUseCaseDetailResponseStubFileObject(): FileObject
     {
         $useCaseDetailResponseStubFileObject = $this->useCaseResponseFileObjectFactory->create(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE_STUB,
-            $fileObject->getDomain(),
-            $fileObject->getEntity(),
-            $fileObject->getBaseNamespace()
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
         );
 
         return $useCaseDetailResponseStubFileObject;
     }
 
-    private function generateStubFields(FileObject $useCaseDetailResponseDTOFileObject): array
-    {
+    private function generateStubFields(
+        FileObject $useCaseDetailResponseDTOFileObject
+    ): array {
         $useCaseDetailResponseFields = $this->getProtectedClassFields(
             $useCaseDetailResponseDTOFileObject->getClassName()
         );
@@ -124,8 +116,9 @@ class UseCaseDetailResponseStubGenerator extends AbstractUseCaseResponseStubGene
         );
     }
 
-    private function generateConsts(FileObject $useCaseDetailResponseStubFileObject): array
-    {
+    private function generateConsts(
+        FileObject $useCaseDetailResponseStubFileObject
+    ): array {
         return ConstUtility::generateConstsFromStubFileObject($useCaseDetailResponseStubFileObject);
     }
 

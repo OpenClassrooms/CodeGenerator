@@ -15,6 +15,8 @@ abstract class UseCaseDetailResponseAssemblerImplSkeletonModel extends AbstractS
 
     public $entityShortName;
 
+    public $templatePath = 'BusinessRules/UseCases/UseCaseDetailResponseAssemblerImpl.php.twig';
+
     public $useCaseDetailResponseAssemblerClassName;
 
     public $useCaseDetailResponseAssemblerImplClassName;
@@ -30,6 +32,4 @@ abstract class UseCaseDetailResponseAssemblerImplSkeletonModel extends AbstractS
     public $useCaseDetailResponseShortName;
 
     public $useCaseResponseTrait;
-
-    public $templatePath = 'BusinessRules/UseCases/UseCaseDetailResponseAssemblerImpl.php.twig';
 }

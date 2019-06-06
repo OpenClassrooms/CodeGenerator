@@ -14,6 +14,11 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileO
 class GeneratorMock implements Generator
 {
     /**
+     * @var FileObjectGateway
+     */
+    public $fileObjectGateway;
+
+    /**
      * @var FileObject
      */
     public $fileObjectResponse;
@@ -22,11 +27,6 @@ class GeneratorMock implements Generator
      * @var string
      */
     public $generatorName;
-
-    /**
-     * @var FileObjectGateway
-     */
-    public $fileObjectGateway;
 
     /**
      * @var bool

@@ -17,8 +17,7 @@ class GetEntityUseCaseRequestSkeletonModelAssemblerImpl implements GetEntityUseC
     public function create(
         FileObject $getEntityUseCaseRequestFileObject,
         FileObject $entityFileObject
-    ): GetEntityUseCaseRequestSkeletonModel
-    {
+    ): GetEntityUseCaseRequestSkeletonModel {
         $skeletonModel = new GetEntityUseCaseRequestSkeletonModelImpl();
         $skeletonModel->namespace = $getEntityUseCaseRequestFileObject->getNamespace();
         $skeletonModel->shortName = $getEntityUseCaseRequestFileObject->getShortName();

@@ -18,8 +18,10 @@ class UseCaseDetailResponseAssemblerMockSkeletonModelAssemblerImpl implements Us
         $skeletonModel = new UseCaseDetailResponseAssemblerMockSkeletonModelImpl();
         $skeletonModel->namespace = $useCaseDetailResponseAssemblerMockFileObject->getNamespace();
         $skeletonModel->shortName = $useCaseDetailResponseAssemblerMockFileObject->getShortName();
-        $skeletonModel->useCaseDetailResponseAssemblerImplClassName = $useCaseDetailResponseAssemblerImplFileObject->getClassName();
-        $skeletonModel->useCaseDetailResponseAssemblerImplShortName = $useCaseDetailResponseAssemblerImplFileObject->getShortName();
+        $skeletonModel->useCaseDetailResponseAssemblerImplClassName = $useCaseDetailResponseAssemblerImplFileObject->getClassName(
+        );
+        $skeletonModel->useCaseDetailResponseAssemblerImplShortName = $useCaseDetailResponseAssemblerImplFileObject->getShortName(
+        );
 
         return $skeletonModel;
     }

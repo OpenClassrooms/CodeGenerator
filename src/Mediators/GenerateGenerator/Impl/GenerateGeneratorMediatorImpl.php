@@ -52,8 +52,7 @@ class GenerateGeneratorMediatorImpl implements GenerateGeneratorMediator
         string $domain,
         string $entity,
         string $constructionPattern
-    ): array
-    {
+    ): array {
         return $this->selfGeneratorGenerator->generate(
             $this->selfGeneratorGeneratorRequestBuilder
                 ->create()
@@ -76,8 +75,7 @@ class GenerateGeneratorMediatorImpl implements GenerateGeneratorMediator
 
     public function setGenerateGeneratorGeneratorRequestBuilder(
         GenerateGeneratorGeneratorRequestBuilder $selfGeneratorGeneratorRequestBuilder
-    ): void
-    {
+    ): void {
         $this->selfGeneratorGeneratorRequestBuilder = $selfGeneratorGeneratorRequestBuilder;
     }
 }

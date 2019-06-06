@@ -18,8 +18,7 @@ class GetEntityUseCaseRequestBuilderSkeletonModelAssemblerImpl implements GetEnt
         FileObject $entityFileObject,
         FileObject $getEntityUseCaseRequestBuilderFileObject,
         FileObject $getEntityUseCaseRequestFileObject
-    ): GetEntityUseCaseRequestBuilderSkeletonModel
-    {
+    ): GetEntityUseCaseRequestBuilderSkeletonModel {
         $skeletonModel = new GetEntityUseCaseRequestBuilderSkeletonModelImpl();
         $skeletonModel->shortName = $getEntityUseCaseRequestBuilderFileObject->getShortName();
         $skeletonModel->namespace = $getEntityUseCaseRequestBuilderFileObject->getNamespace();

@@ -12,7 +12,6 @@ use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\GetEnt
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\GetEntitiesUseCaseSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\GetEntitiesUseCaseSkeletonModelAssembler;
-use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
@@ -40,17 +39,13 @@ class GetEntitiesUseCaseGenerator extends AbstractUseCaseGenerator
 
     private function buildGetEntitiesUseCaseFileObject(string $entityClassName): FileObject
     {
-        $entityFileObject = $this->createEntityFileObject($entityClassName);
-        $entityGatewayFileObject = $this->createEntityGatewayFileObject(
-            $entityFileObject
-        );
-        $getEntitiesUseCaseFileObject = $this->createGetEntitiesUseCaseFileObject($entityFileObject);
+        $this->initFileObjectParameter($entityClassName);
+        $entityFileObject = $this->createEntityFileObject();
+        $entityGatewayFileObject = $this->createEntityGatewayFileObject();
+        $getEntitiesUseCaseFileObject = $this->createGetEntitiesUseCaseFileObject();
         $getEntitiesUseCaseListItemResponseAssemblerFileObject = $this->createGetEntityUseCaseListItemResponseAssemblerFileObject(
-            $entityFileObject
         );
-        $getEntitiesUseCaseRequestFileObject = $this->createGetEntitiesUseCaseRequestFileObject(
-            $entityFileObject
-        );
+        $getEntitiesUseCaseRequestFileObject = $this->createGetEntitiesUseCaseRequestFileObject();
 
         $getEntitiesUseCaseFileObject->setContent(
             $this->generateContent(
@@ -65,57 +60,53 @@ class GetEntitiesUseCaseGenerator extends AbstractUseCaseGenerator
         return $getEntitiesUseCaseFileObject;
     }
 
-    private function createEntityFileObject(string $entityClassName): FileObject
+    private function createEntityFileObject(): FileObject
     {
-        [$baseNamespace, $domain, $entity] = FileObjectUtility::getBaseNamespaceDomainAndEntityNameFromClassName(
-            $entityClassName
-        );
-
         return $this->entityFileObjectFactory->create(
             EntityFileObjectType::BUSINESS_RULES_ENTITY,
-            $domain,
-            $entity,
-            $baseNamespace
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
         );
     }
 
-    private function createEntityGatewayFileObject(FileObject $entityFileObject): FileObject
+    private function createEntityGatewayFileObject(): FileObject
     {
         return $this->entityFileObjectFactory->create(
             EntityFileObjectType::BUSINESS_RULES_ENTITY_GATEWAY,
-            $entityFileObject->getDomain(),
-            $entityFileObject->getEntity(),
-            $entityFileObject->getBaseNamespace()
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
         );
     }
 
-    private function createGetEntitiesUseCaseFileObject(FileObject $entityFileObject): FileObject
+    private function createGetEntitiesUseCaseFileObject(): FileObject
     {
         return $this->useCaseFileObjectFactory->create(
             UseCaseFileObjectType::BUSINESS_RULES_GET_ENTITIES_USE_CASE,
-            $entityFileObject->getDomain(),
-            $entityFileObject->getEntity(),
-            $entityFileObject->getBaseNamespace()
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
         );
     }
 
-    private function createGetEntityUseCaseListItemResponseAssemblerFileObject(FileObject $entityFileObject): FileObject
+    private function createGetEntityUseCaseListItemResponseAssemblerFileObject(): FileObject
     {
         return $this->useCaseResponseFileObjectFactory->create(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE_ASSEMBLER,
-            $entityFileObject->getDomain(),
-            $entityFileObject->getEntity(),
-            $entityFileObject->getBaseNamespace()
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
         );
     }
 
-    private function createGetEntitiesUseCaseRequestFileObject(FileObject $entityFileObject): FileObject
+    private function createGetEntitiesUseCaseRequestFileObject(): FileObject
     {
         return $this->useCaseRequestFileObjectFactory->create(
             UseCaseRequestFileObjectType::BUSINESS_RULES_GET_ENTITIES_USE_CASE_REQUEST,
-            $entityFileObject->getDomain(),
-            $entityFileObject->getEntity(),
-            $entityFileObject->getBaseNamespace()
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
         );
     }
 
@@ -125,8 +116,7 @@ class GetEntitiesUseCaseGenerator extends AbstractUseCaseGenerator
         FileObject $getEntitiesUseCaseFileObject,
         FileObject $getEntitiesUseCaseListItemResponseAssemblerFileObject,
         FileObject $getEntitiesUseCaseRequestFileObject
-    ): string
-    {
+    ): string {
         $skeletonModel = $this->createSkeletonModel(
             $entityFileObject,
             $entityGatewayFileObject,
@@ -144,8 +134,7 @@ class GetEntitiesUseCaseGenerator extends AbstractUseCaseGenerator
         FileObject $getEntitiesUseCaseFileObject,
         FileObject $getEntitiesUseCaseListItemResponseAssemblerFileObject,
         FileObject $getEntitiesUseCaseRequestFileObject
-    ): GetEntitiesUseCaseSkeletonModel
-    {
+    ): GetEntitiesUseCaseSkeletonModel {
         return $this->getEntitiesUseCaseSkeletonModelAssembler->create(
             $entityFileObject,
             $entityGatewayFileObject,
@@ -157,8 +146,7 @@ class GetEntitiesUseCaseGenerator extends AbstractUseCaseGenerator
 
     public function setGetEntitiesUseCaseSkeletonModelAssembler(
         GetEntitiesUseCaseSkeletonModelAssembler $getEntitiesUseCaseSkeletonModelAssembler
-    ): void
-    {
+    ): void {
         $this->getEntitiesUseCaseSkeletonModelAssembler = $getEntitiesUseCaseSkeletonModelAssembler;
     }
 }

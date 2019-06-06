@@ -17,8 +17,7 @@ class UseCaseListItemResponseAssemblerSkeletonModelAssemblerImpl implements UseC
 
     public function create(
         FileObject $useCaseListItemResponseAssemblerFileObject
-    ): UseCaseListItemResponseAssemblerSkeletonModel
-    {
+    ): UseCaseListItemResponseAssemblerSkeletonModel {
         $skeletonModel = new UseCaseListItemResponseAssemblerSkeletonModelImpl();
         $skeletonModel->namespace = $useCaseListItemResponseAssemblerFileObject->getNamespace();
         $skeletonModel->shortName = $useCaseListItemResponseAssemblerFileObject->getShortName();

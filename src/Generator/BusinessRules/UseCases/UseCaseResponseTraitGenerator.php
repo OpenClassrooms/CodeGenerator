@@ -11,7 +11,6 @@ use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\UseCaseResponseTraitSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\UseCaseResponseTraitSkeletonModelAssembler;
 use OpenClassrooms\CodeGenerator\Utility\FieldUtility;
-use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
@@ -40,10 +39,12 @@ class UseCaseResponseTraitGenerator extends AbstractUseCaseGenerator
 
     private function buildUseCaseResponseTraitFileObject(string $entityClassName, array $wantedFields = []): FileObject
     {
-        $entityFileObject = $this->createEntityFileObject($entityClassName);
-        $useCaseResponseDTOFileObject = $this->createUseCaseResponseDTOFileObject($entityFileObject);
-        $useCaseResponseFileObject = $this->createUseCaseResponseFileObject($entityFileObject);
-        $useCaseResponseTraitFileObject = $this->createUseCaseResponseTraitFileObject($entityFileObject);
+        $this->initFileObjectParameter($entityClassName);
+
+        $entityFileObject = $this->createEntityFileObject();
+        $useCaseResponseDTOFileObject = $this->createUseCaseResponseDTOFileObject();
+        $useCaseResponseFileObject = $this->createUseCaseResponseFileObject();
+        $useCaseResponseTraitFileObject = $this->createUseCaseResponseTraitFileObject();
 
         $fields = FieldUtility::getFields($entityClassName, $wantedFields);
         $entityFileObject->setMethods($this->getSelectedAccessors($entityClassName, $fields));
@@ -60,47 +61,43 @@ class UseCaseResponseTraitGenerator extends AbstractUseCaseGenerator
         return $useCaseResponseTraitFileObject;
     }
 
-    private function createEntityFileObject(string $entityClassName): FileObject
+    private function createEntityFileObject(): FileObject
     {
-        [$baseNamespace, $domain, $entity] = FileObjectUtility::getBaseNamespaceDomainAndEntityNameFromClassName(
-            $entityClassName
-        );
-
         return $this->entityFileObjectFactory->create(
             EntityFileObjectType::BUSINESS_RULES_ENTITY,
-            $domain,
-            $entity,
-            $baseNamespace
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
         );
     }
 
-    private function createUseCaseResponseDTOFileObject(FileObject $entityFileObject): FileObject
+    private function createUseCaseResponseDTOFileObject(): FileObject
     {
         return $this->useCaseResponseFileObjectFactory->create(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE_DTO,
-            $entityFileObject->getDomain(),
-            $entityFileObject->getEntity(),
-            $entityFileObject->getBaseNamespace()
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
         );
     }
 
-    private function createUseCaseResponseFileObject(FileObject $entityFileObject): FileObject
+    private function createUseCaseResponseFileObject(): FileObject
     {
         return $this->useCaseResponseFileObjectFactory->create(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE,
-            $entityFileObject->getDomain(),
-            $entityFileObject->getEntity(),
-            $entityFileObject->getBaseNamespace()
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
         );
     }
 
-    private function createUseCaseResponseTraitFileObject(FileObject $entityFileObject): FileObject
+    private function createUseCaseResponseTraitFileObject(): FileObject
     {
         return $this->useCaseResponseFileObjectFactory->create(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE_TRAIT,
-            $entityFileObject->getDomain(),
-            $entityFileObject->getEntity(),
-            $entityFileObject->getBaseNamespace()
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
         );
     }
 
@@ -109,8 +106,7 @@ class UseCaseResponseTraitGenerator extends AbstractUseCaseGenerator
         FileObject $useCaseResponseDTOFileObject,
         FileObject $useCaseResponseFileObject,
         FileObject $useCaseResponseTraitFileObject
-    ): string
-    {
+    ): string {
         $skeletonModel = $this->createSkeletonModel(
             $entityFileObject,
             $useCaseResponseDTOFileObject,
@@ -126,8 +122,7 @@ class UseCaseResponseTraitGenerator extends AbstractUseCaseGenerator
         FileObject $useCaseResponseDTOFileObject,
         FileObject $useCaseResponseFileObject,
         FileObject $useCaseResponseTraitFileObject
-    ): UseCaseResponseTraitSkeletonModel
-    {
+    ): UseCaseResponseTraitSkeletonModel {
         return $this->useCaseResponseTraitSkeletonModelAssembler->create(
             $entityFileObject,
             $useCaseResponseDTOFileObject,
@@ -138,8 +133,7 @@ class UseCaseResponseTraitGenerator extends AbstractUseCaseGenerator
 
     public function setUseCaseResponseTraitSkeletonModelAssembler(
         UseCaseResponseTraitSkeletonModelAssembler $useCaseResponseTraitSkeletonModelAssembler
-    ): void
-    {
+    ): void {
         $this->useCaseResponseTraitSkeletonModelAssembler = $useCaseResponseTraitSkeletonModelAssembler;
     }
 }

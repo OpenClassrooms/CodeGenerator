@@ -16,8 +16,7 @@ class ViewModelTestCaseSkeletonModelAssemblerImpl implements ViewModelTestCaseSk
     public function create(
         FileObject $viewModelTestCaseFileObject,
         FileObject $viewModelFileObject
-    ): ViewModelTestCaseSkeletonModel
-    {
+    ): ViewModelTestCaseSkeletonModel {
         $skeletonModel = new ViewModelTestCaseSkeletonModelImpl();
         $skeletonModel->className = $viewModelTestCaseFileObject->getClassName();
         $skeletonModel->namespace = $viewModelTestCaseFileObject->getNamespace();

@@ -15,18 +15,6 @@ abstract class UseCaseListItemResponseAssemblerImplSkeletonModel extends Abstrac
 
     public $entityShortName;
 
-    public $useCaseListItemResponseAssemblerClassName;
-
-    public $useCaseListItemResponseAssemblerShortName;
-
-    public $useCaseListItemResponseClassName;
-
-    public $useCaseListItemResponseDTOShortName;
-
-    public $useCaseListItemResponseShortName;
-
-    public $useCaseResponseTraitShortName;
-
     public $paginatedCollectionClassName;
 
     public $paginatedCollectionShortName;
@@ -42,4 +30,16 @@ abstract class UseCaseListItemResponseAssemblerImplSkeletonModel extends Abstrac
     public $paginatedUseCaseResponseShortName;
 
     public $templatePath = 'BusinessRules/UseCases/UseCaseListItemResponseAssemblerImpl.php.twig';
+
+    public $useCaseListItemResponseAssemblerClassName;
+
+    public $useCaseListItemResponseAssemblerShortName;
+
+    public $useCaseListItemResponseClassName;
+
+    public $useCaseListItemResponseDTOShortName;
+
+    public $useCaseListItemResponseShortName;
+
+    public $useCaseResponseTraitShortName;
 }

@@ -9,19 +9,19 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
  */
 abstract class GenericUseCaseTestSkeletonModel extends AbstractSkeletonModel
 {
-    public $genericUseCaseRequestClassName;
-
-    public $genericUseCaseRequestShortName;
-
-    public $genericUseCaseRequestDTOClassName;
-
-    public $genericUseCaseRequestDTOShortName;
+    public $genericUseCaseClassName;
 
     public $genericUseCaseRequestBuilderImplClassName;
 
     public $genericUseCaseRequestBuilderImplShortName;
 
-    public $genericUseCaseClassName;
+    public $genericUseCaseRequestClassName;
+
+    public $genericUseCaseRequestDTOClassName;
+
+    public $genericUseCaseRequestDTOShortName;
+
+    public $genericUseCaseRequestShortName;
 
     public $genericUseCaseShortName;
 

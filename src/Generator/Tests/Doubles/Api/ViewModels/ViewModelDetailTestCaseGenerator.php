@@ -10,7 +10,6 @@ use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\Request\ViewModelDetailTestCaseGeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\Api\ViewModels\ViewModelDetailTestCaseSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\Api\ViewModels\ViewModelDetailTestCaseSkeletonModelAssembler;
-use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
@@ -37,16 +36,11 @@ class ViewModelDetailTestCaseGenerator extends AbstractViewModelGenerator
 
     public function buildDetailTestCaseFileObject(string $useCaseResponseClassName): FileObject
     {
-        $useCaseDetailResponseDTOFileObject = $this->createUseCaseDetailResponseDTOFileObject($useCaseResponseClassName);
-        $viewModelTestCaseFileObject = $this->createViewModelTestCaseFileObject(
-            $useCaseDetailResponseDTOFileObject
-        );
-        $viewModelDetailTestCaseFileObject = $this->createViewModelDetailTestCaseFileObject(
-            $useCaseDetailResponseDTOFileObject
-        );
-        $viewModelDetailFileObject = $this->createViewModelDetailFileObject(
-            $useCaseDetailResponseDTOFileObject
-        );
+        $this->initFileObjectParameter($useCaseResponseClassName);
+        $useCaseDetailResponseDTOFileObject = $this->createUseCaseDetailResponseDTOFileObject();
+        $viewModelDetailFileObject = $this->createViewModelDetailFileObject();
+        $viewModelDetailTestCaseFileObject = $this->createViewModelDetailTestCaseFileObject();
+        $viewModelTestCaseFileObject = $this->createViewModelTestCaseFileObject();
         $viewModelDetailTestCaseFileObject->setFields(
             $this->getPublicClassFields($useCaseDetailResponseDTOFileObject->getClassName())
         );
@@ -62,35 +56,43 @@ class ViewModelDetailTestCaseGenerator extends AbstractViewModelGenerator
 
     }
 
-    protected function createUseCaseDetailResponseDTOFileObject(string $viewModelClassName): FileObject
+    protected function createUseCaseDetailResponseDTOFileObject(): FileObject
     {
-        [$baseNamespace, $domain, $entity] = FileObjectUtility::getBaseNamespaceDomainAndEntityNameFromClassName($viewModelClassName);
-
         return $this->createUseCaseResponseFileObject(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE_DTO,
-            $domain,
-            $entity,
-            $baseNamespace
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
         );
     }
 
-    private function createViewModelTestCaseFileObject(FileObject $viewModelListItemFileObject): FileObject
-    {
-        return $this->createViewModelFileObject(
-            ViewModelFileObjectType::API_VIEW_MODEL_TEST_CASE,
-            $viewModelListItemFileObject->getDomain(),
-            $viewModelListItemFileObject->getEntity(),
-            $viewModelListItemFileObject->getBaseNamespace()
-        );
-    }
-
-    private function createViewModelDetailFileObject(FileObject $viewModelListItemFileObject): FileObject
+    private function createViewModelDetailFileObject(): FileObject
     {
         return $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL_DETAIL,
-            $viewModelListItemFileObject->getDomain(),
-            $viewModelListItemFileObject->getEntity(),
-            $viewModelListItemFileObject->getBaseNamespace()
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
+        );
+    }
+
+    private function createViewModelDetailTestCaseFileObject(): FileObject
+    {
+        return $this->createViewModelFileObject(
+            ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_TEST_CASE,
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
+        );
+    }
+
+    private function createViewModelTestCaseFileObject(): FileObject
+    {
+        return $this->createViewModelFileObject(
+            ViewModelFileObjectType::API_VIEW_MODEL_TEST_CASE,
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
         );
     }
 
@@ -98,8 +100,7 @@ class ViewModelDetailTestCaseGenerator extends AbstractViewModelGenerator
         FileObject $viewModelDetailTestCaseFileObject,
         FileObject $useCaseDetailResponseDTOFileObject,
         FileObject $viewModelTestCaseFileObject
-    ): string
-    {
+    ): string {
         $skeletonModel = $this->createSkeletonModel(
             $viewModelDetailTestCaseFileObject,
             $useCaseDetailResponseDTOFileObject,
@@ -113,8 +114,7 @@ class ViewModelDetailTestCaseGenerator extends AbstractViewModelGenerator
         FileObject $viewModelDetailTestCaseFileObject,
         FileObject $useCaseDetailResponseDTOFileObject,
         FileObject $viewModelTestCaseFileObject
-    ): ViewModelDetailTestCaseSkeletonModel
-    {
+    ): ViewModelDetailTestCaseSkeletonModel {
         return $this->viewModelDetailTestCaseSkeletonModelAssembler->create(
             $viewModelDetailTestCaseFileObject,
             $useCaseDetailResponseDTOFileObject,
@@ -124,25 +124,7 @@ class ViewModelDetailTestCaseGenerator extends AbstractViewModelGenerator
 
     public function setViewModelDetailTestCaseSkeletonModelAssembler(
         ViewModelDetailTestCaseSkeletonModelAssembler $viewModelDetailTestCaseSkeletonModelAssembler
-    )
-    {
+    ) {
         $this->viewModelDetailTestCaseSkeletonModelAssembler = $viewModelDetailTestCaseSkeletonModelAssembler;
     }
-
-    /**
-     * @param FileObject $useCaseDetailResponseDTOFileObject
-     *
-     * @return FileObject
-     */
-    private function createViewModelDetailTestCaseFileObject(FileObject $useCaseDetailResponseDTOFileObject): FileObject
-    {
-        $viewModelDetailTestCaseFileObject = $this->createViewModelFileObject(
-            ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_TEST_CASE,
-            $useCaseDetailResponseDTOFileObject->getDomain(),
-            $useCaseDetailResponseDTOFileObject->getEntity(),
-            $useCaseDetailResponseDTOFileObject->getBaseNamespace()
-        );
-
-        return $viewModelDetailTestCaseFileObject;
-}
 }

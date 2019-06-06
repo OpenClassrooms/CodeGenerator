@@ -15,8 +15,7 @@ class ViewModelListItemTestCaseSkeletonModelAssemblerImpl implements ViewModelLi
         FileObject $viewModelListItemTestCaseFileObject,
         FileObject $viewModelTestCaseFileObject,
         FileObject $viewModelListItemFileObject
-    ): ViewModelListItemTestCaseSkeletonModel
-    {
+    ): ViewModelListItemTestCaseSkeletonModel {
         $skeletonModel = new ViewModelListItemTestCaseSkeletonModelImpl();
         $skeletonModel->className = $viewModelListItemTestCaseFileObject->getClassName();
         $skeletonModel->namespace = $viewModelListItemTestCaseFileObject->getNamespace();

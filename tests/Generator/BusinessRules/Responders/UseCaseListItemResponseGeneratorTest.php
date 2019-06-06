@@ -22,14 +22,14 @@ class UseCaseListItemResponseGeneratorTest extends TestCase
     use FileObjectTestCase;
 
     /**
-     * @var UseCaseListItemResponseGenerator
-     */
-    private $useCaseListItemResponseGenerator;
-
-    /**
      * @var UseCaseListItemResponseGeneratorRequestBuilder
      */
     private $request;
+
+    /**
+     * @var UseCaseListItemResponseGenerator
+     */
+    private $useCaseListItemResponseGenerator;
 
     /**
      * @test
@@ -58,7 +58,9 @@ class UseCaseListItemResponseGeneratorTest extends TestCase
         $this->useCaseListItemResponseGenerator->setUseCaseListItemResponseSkeletonModelAssembler(
             new UseCaseListItemResponseSkeletonModelAssemblerImpl()
         );
-        $this->useCaseListItemResponseGenerator->setUseCaseResponseFileObjectFactory(new UseCaseResponseFileObjectFactoryMock());
+        $this->useCaseListItemResponseGenerator->setUseCaseResponseFileObjectFactory(
+            new UseCaseResponseFileObjectFactoryMock()
+        );
         $this->useCaseListItemResponseGenerator->setTemplating(new TemplatingServiceMock());
         $this->useCaseListItemResponseGenerator->setFileObjectGateway(new InMemoryFileObjectGateway());
     }

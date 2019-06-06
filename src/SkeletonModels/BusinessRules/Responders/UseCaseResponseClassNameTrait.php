@@ -20,11 +20,6 @@ trait UseCaseResponseClassNameTrait
     /**
      * @var string
      */
-    public $pagination;
-
-    /**
-     * @var string
-     */
     public $paginatedCollection;
 
     /**
@@ -36,6 +31,11 @@ trait UseCaseResponseClassNameTrait
      * @var string
      */
     public $paginatedUseCaseResponseBuilder;
+
+    /**
+     * @var string
+     */
+    public $pagination;
 
     /**
      * @var string

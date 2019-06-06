@@ -10,7 +10,6 @@ use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\Request\ViewModelListI
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModels\ViewModelListItemAssemblerImplSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModels\ViewModelListItemAssemblerImplSkeletonModelBuilder;
-use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
@@ -38,24 +37,14 @@ class ViewModelListItemAssemblerImplGenerator extends AbstractViewModelGenerator
 
     public function buildViewModelListItemAssemblerImplFileObject(string $useCaseResponseClassName)
     {
-        $useCaseListItemResponseDTOFileObject = $this->createUseCaseListItemResponseDTOFileObject(
-            $useCaseResponseClassName
-        );
-        $useCaseResponseFileObject = $this->createUseCaseResponseObject(
-            $useCaseListItemResponseDTOFileObject
-        );
-        $viewModelListItemFileObject = $this->createViewModelListItemFileObject($useCaseListItemResponseDTOFileObject);
-        $viewModelListItemAssemblerFileObject = $this->createViewModelListItemAssemblerFileObject(
-            $useCaseListItemResponseDTOFileObject
-        );
-        $viewModelListItemAssemblerImplFileObject = $this->createViewModelListItemAssemblerImplFileObject(
-            $useCaseListItemResponseDTOFileObject
-        );
-        $viewModelListItemImplFileObject = $this->createViewModelListItemImplFileObject(
-            $useCaseListItemResponseDTOFileObject
-        );
+        $this->initFileObjectParameter($useCaseResponseClassName);
+        $useCaseResponseFileObject = $this->createUseCaseResponseObject();
+        $viewModelListItemFileObject = $this->createViewModelListItemFileObject();
+        $viewModelListItemAssemblerFileObject = $this->createViewModelListItemAssemblerFileObject();
+        $viewModelListItemAssemblerImplFileObject = $this->createViewModelListItemAssemblerImplFileObject();
+        $viewModelListItemImplFileObject = $this->createViewModelListItemImplFileObject();
 
-        $viewModelAssemblerTrait = $this->createViewModelAssemblerTraitFileObject($useCaseListItemResponseDTOFileObject);
+        $viewModelAssemblerTrait = $this->createViewModelAssemblerTraitFileObject();
 
         $viewModelListItemAssemblerImplFileObject->setContent(
             $this->generateContent(
@@ -73,82 +62,63 @@ class ViewModelListItemAssemblerImplGenerator extends AbstractViewModelGenerator
         return $viewModelListItemAssemblerImplFileObject;
     }
 
-    private function createUseCaseListItemResponseDTOFileObject(string $useCaseResponseClassName): FileObject
+    private function createUseCaseResponseObject(): FileObject
     {
-        [$baseNamespace, $domain, $entity] = FileObjectUtility::getBaseNamespaceDomainAndEntityNameFromClassName($useCaseResponseClassName);
-
-        return $this->createUseCaseResponseFileObject(
-            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE_DTO,
-            $domain,
-            $entity,
-            $baseNamespace
-        );
-    }
-
-    private function createUseCaseResponseObject(FileObject $useCaseListItemResponseFileObject): FileObject
-    {
-
         return $this->createUseCaseResponseFileObject(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE,
-            $useCaseListItemResponseFileObject->getDomain(),
-            $useCaseListItemResponseFileObject->getEntity(),
-            $useCaseListItemResponseFileObject->getBaseNamespace()
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
         );
     }
 
-    private function createViewModelListItemFileObject(FileObject $useCaseListItemResponseFileObject): FileObject
+    private function createViewModelListItemFileObject(): FileObject
     {
         return $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM,
-            $useCaseListItemResponseFileObject->getDomain(),
-            $useCaseListItemResponseFileObject->getEntity(),
-            $useCaseListItemResponseFileObject->getBaseNamespace()
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
         );
     }
 
-    private function createViewModelListItemAssemblerFileObject(
-        FileObject $useCaseListItemResponseFileObject
-    ): FileObject
+    private function createViewModelListItemAssemblerFileObject(): FileObject
     {
         return $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_ASSEMBLER,
-            $useCaseListItemResponseFileObject->getDomain(),
-            $useCaseListItemResponseFileObject->getEntity(),
-            $useCaseListItemResponseFileObject->getBaseNamespace()
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
         );
     }
 
-    private function createViewModelListItemAssemblerImplFileObject(
-        FileObject $useCaseListItemResponseFileObject
-    ): FileObject
+    private function createViewModelListItemAssemblerImplFileObject(): FileObject
     {
         return $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_ASSEMBLER_IMPL,
-            $useCaseListItemResponseFileObject->getDomain(),
-            $useCaseListItemResponseFileObject->getEntity(),
-            $useCaseListItemResponseFileObject->getBaseNamespace()
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
         );
     }
 
-    private function createViewModelListItemImplFileObject(
-        FileObject $useCaseListItemResponseFileObject
-    ): FileObject
+    private function createViewModelListItemImplFileObject(): FileObject
     {
         return $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_IMPL,
-            $useCaseListItemResponseFileObject->getDomain(),
-            $useCaseListItemResponseFileObject->getEntity(),
-            $useCaseListItemResponseFileObject->getBaseNamespace()
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
         );
     }
 
-    private function createViewModelAssemblerTraitFileObject(FileObject $useCaseListItemResponseFileObject): FileObject
+    private function createViewModelAssemblerTraitFileObject(): FileObject
     {
         return $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL_ASSEMBLER_TRAIT,
-            $useCaseListItemResponseFileObject->getDomain(),
-            $useCaseListItemResponseFileObject->getEntity(),
-            $useCaseListItemResponseFileObject->getBaseNamespace()
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
         );
     }
 
@@ -183,8 +153,7 @@ class ViewModelListItemAssemblerImplGenerator extends AbstractViewModelGenerator
 
     public function setViewModelListItemAssemblerImplSkeletonModelBuilder(
         ViewModelListItemAssemblerImplSkeletonModelBuilder $viewModelListItemAssemblerImplSkeletonModelBuilder
-    ): void
-    {
+    ): void {
         $this->viewModelListItemAssemblerImplSkeletonModelBuilder = $viewModelListItemAssemblerImplSkeletonModelBuilder;
     }
 }

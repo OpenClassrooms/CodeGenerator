@@ -23,14 +23,14 @@ class UseCaseDetailResponseGeneratorTest extends TestCase
     use FileObjectTestCase;
 
     /**
-     * @var UseCaseDetailResponseGenerator
-     */
-    private $useCaseDetailResponseGenerator;
-
-    /**
      * @var UseCaseDetailResponseGeneratorRequestBuilder
      */
     private $request;
+
+    /**
+     * @var UseCaseDetailResponseGenerator
+     */
+    private $useCaseDetailResponseGenerator;
 
     /**
      * @test
@@ -48,8 +48,7 @@ class UseCaseDetailResponseGeneratorTest extends TestCase
 
     protected function setUp()
     {
-        $useCaseDetailResponseGeneratorRequestBuilderImpl = new UseCaseDetailResponseGeneratorRequestBuilderImpl(
-        );
+        $useCaseDetailResponseGeneratorRequestBuilderImpl = new UseCaseDetailResponseGeneratorRequestBuilderImpl();
         $this->request = $useCaseDetailResponseGeneratorRequestBuilderImpl
             ->create()
             ->withEntityClassName(FunctionalEntity::class)

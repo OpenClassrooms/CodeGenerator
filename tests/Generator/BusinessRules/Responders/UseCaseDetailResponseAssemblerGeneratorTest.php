@@ -23,14 +23,14 @@ class UseCaseDetailResponseAssemblerGeneratorTest extends TestCase
     use FileObjectTestCase;
 
     /**
-     * @var UseCaseDetailResponseAssemblerGenerator
-     */
-    private $useCaseDetailResponseAssemblerGenerator;
-
-    /**
      * @var UseCaseDetailResponseAssemblerGeneratorRequestBuilder
      */
     private $request;
+
+    /**
+     * @var UseCaseDetailResponseAssemblerGenerator
+     */
+    private $useCaseDetailResponseAssemblerGenerator;
 
     /**
      * @test

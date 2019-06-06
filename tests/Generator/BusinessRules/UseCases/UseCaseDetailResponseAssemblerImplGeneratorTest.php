@@ -23,14 +23,14 @@ class GenericUseCaseDetailResponseAssemblerImplGeneratorTest extends TestCase
     use FileObjectTestCase;
 
     /**
-     * @var UseCaseDetailResponseAssemblerImplGenerator
-     */
-    private $useCaseDetailResponseAssemblerImplGenerator;
-
-    /**
      * @var UseCaseDetailResponseAssemblerImplGeneratorRequestBuilder
      */
     private $request;
+
+    /**
+     * @var UseCaseDetailResponseAssemblerImplGenerator
+     */
+    private $useCaseDetailResponseAssemblerImplGenerator;
 
     /**
      * @test
@@ -56,8 +56,7 @@ class GenericUseCaseDetailResponseAssemblerImplGeneratorTest extends TestCase
             ->withFields(['field4'])
             ->build();
 
-        $this->useCaseDetailResponseAssemblerImplGenerator = new UseCaseDetailResponseAssemblerImplGenerator(
-        );
+        $this->useCaseDetailResponseAssemblerImplGenerator = new UseCaseDetailResponseAssemblerImplGenerator();
 
         $this->useCaseDetailResponseAssemblerImplGenerator->setUseCaseDetailResponseAssemblerImplSkeletonModelAssembler(
             new UseCaseDetailResponseAssemblerImplSkeletonModelAssemblerImpl()

@@ -14,8 +14,7 @@ class ViewModelDetailImplSkeletonModelAssemblerImpl implements ViewModelDetailIm
     public function create(
         FileObject $viewModelDetailFileObject,
         FileObject $viewModelDetailImplFileObject
-    ): ViewModelDetailImplSkeletonModel
-    {
+    ): ViewModelDetailImplSkeletonModel {
         $skeletonModel = new ViewModelDetailImplSkeletonModelImpl();
         $skeletonModel->className = $viewModelDetailImplFileObject->getClassName();
         $skeletonModel->namespace = $viewModelDetailImplFileObject->getNamespace();

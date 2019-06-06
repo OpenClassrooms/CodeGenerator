@@ -18,8 +18,7 @@ class UseCaseListItemResponseStubSkeletonModelAssemblerImpl implements UseCaseLi
         FileObject $useCaseListItemResponseStubFileObject,
         FileObject $useCaseListItemResponseDTOFileObject,
         FileObject $entityStubFileObject
-    ): UseCaseListItemResponseStubSkeletonModel
-    {
+    ): UseCaseListItemResponseStubSkeletonModel {
         $skeletonModel = new UseCaseListItemResponseStubSkeletonModelImpl();
         $skeletonModel->namespace = $useCaseListItemResponseStubFileObject->getNamespace();
         $skeletonModel->className = $useCaseListItemResponseStubFileObject->getClassName();

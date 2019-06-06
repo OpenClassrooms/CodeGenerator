@@ -18,8 +18,7 @@ class GenericUseCaseRequestBuilderSkeletonModelAssemblerImpl implements GenericU
     public function create(
         FileObject $genericUseCaseRequestBuilderFileObject,
         FileObject $genericUseCaseRequestFileObject
-    ): GenericUseCaseRequestBuilderSkeletonModel
-    {
+    ): GenericUseCaseRequestBuilderSkeletonModel {
         $skeletonModel = new GenericUseCaseRequestBuilderSkeletonModelImpl();
         $skeletonModel->namespace = $genericUseCaseRequestBuilderFileObject->getNamespace();
         $skeletonModel->shortName = $genericUseCaseRequestBuilderFileObject->getShortName();

@@ -17,8 +17,7 @@ class ViewModelDetailStubSkeletonModelAssemblerImpl implements ViewModelDetailSt
         FileObject $viewModelDetailStubFileObject,
         FileObject $viewModelDetailImplFileObject,
         FileObject $useCaseDetailResponseStubFileObject
-    ): ViewModelDetailStubSkeletonModel
-    {
+    ): ViewModelDetailStubSkeletonModel {
         $skeletonModel = new ViewModelDetailStubSkeletonModelImpl();
         $skeletonModel->className = $viewModelDetailStubFileObject->getClassName();
         $skeletonModel->namespace = $viewModelDetailStubFileObject->getNamespace();

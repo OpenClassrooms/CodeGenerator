@@ -195,36 +195,31 @@ trait ViewModelGeneratorsTrait
 
     public function setEntityStubGeneratorRequestBuilder(
         EntityStubGeneratorRequestBuilder $entityStubGeneratorRequestBuilder
-    ): void
-    {
+    ): void {
         $this->entityStubGeneratorRequestBuilder = $entityStubGeneratorRequestBuilder;
     }
 
     public function setUseCaseDetailResponseStubGenerator(
         Generator $useCaseDetailResponseStubGenerator
-    ): void
-    {
+    ): void {
         $this->useCaseDetailResponseStubGenerator = $useCaseDetailResponseStubGenerator;
     }
 
     public function setUseCaseDetailResponseStubGeneratorRequestBuilder(
         UseCaseDetailResponseStubGeneratorRequestBuilder $useCaseDetailResponseStubGeneratorRequestBuilder
-    ): void
-    {
+    ): void {
         $this->useCaseDetailResponseStubGeneratorRequestBuilder = $useCaseDetailResponseStubGeneratorRequestBuilder;
     }
 
     public function setUseCaseListItemResponseStubGenerator(
         Generator $useCaseListItemResponseStubGenerator
-    ): void
-    {
+    ): void {
         $this->useCaseListItemResponseStubGenerator = $useCaseListItemResponseStubGenerator;
     }
 
     public function setUseCaseListItemResponseStubGeneratorRequestBuilder(
         UseCaseListItemResponseStubGeneratorRequestBuilder $useCaseListItemResponseStubGeneratorRequestBuilder
-    ): void
-    {
+    ): void {
         $this->useCaseListItemResponseStubGeneratorRequestBuilder = $useCaseListItemResponseStubGeneratorRequestBuilder;
     }
 
@@ -235,8 +230,7 @@ trait ViewModelGeneratorsTrait
 
     public function setViewModelAssemblerTraitGeneratorRequestBuilder(
         $viewModelAssemblerTraitGeneratorRequestBuilder
-    ): void
-    {
+    ): void {
         $this->viewModelAssemblerTraitGeneratorRequestBuilder = $viewModelAssemblerTraitGeneratorRequestBuilder;
     }
 
@@ -247,8 +241,7 @@ trait ViewModelGeneratorsTrait
 
     public function setViewModelDetailAssemblerGeneratorRequestBuilder(
         $viewModelDetailAssemblerGeneratorRequestBuilder
-    ): void
-    {
+    ): void {
         $this->viewModelDetailAssemblerGeneratorRequestBuilder = $viewModelDetailAssemblerGeneratorRequestBuilder;
     }
 
@@ -259,22 +252,19 @@ trait ViewModelGeneratorsTrait
 
     public function setViewModelDetailAssemblerImplGeneratorRequestBuilder(
         $viewModelDetailAssemblerImplGeneratorRequestBuilder
-    ): void
-    {
+    ): void {
         $this->viewModelDetailAssemblerImplGeneratorRequestBuilder = $viewModelDetailAssemblerImplGeneratorRequestBuilder;
     }
 
     public function setViewModelDetailAssemblerImplTestGenerator(
         Generator $viewModelDetailAssemblerImplTestGenerator
-    ): void
-    {
+    ): void {
         $this->viewModelDetailAssemblerImplTestGenerator = $viewModelDetailAssemblerImplTestGenerator;
     }
 
     public function setViewModelDetailAssemblerImplTestGeneratorRequestBuilder(
         ViewModelDetailAssemblerImplTestGeneratorRequestBuilder $viewModelDetailAssemblerImplTestGeneratorRequestBuilder
-    ): void
-    {
+    ): void {
         $this->viewModelDetailAssemblerImplTestGeneratorRequestBuilder = $viewModelDetailAssemblerImplTestGeneratorRequestBuilder;
     }
 
@@ -285,8 +275,7 @@ trait ViewModelGeneratorsTrait
 
     public function setViewModelDetailGeneratorRequestBuilder(
         ViewModelDetailGeneratorRequestBuilder $viewModelDetailGeneratorRequestBuilder
-    ): void
-    {
+    ): void {
         $this->viewModelDetailGeneratorRequestBuilder = $viewModelDetailGeneratorRequestBuilder;
     }
 
@@ -297,8 +286,7 @@ trait ViewModelGeneratorsTrait
 
     public function setViewModelDetailImplGeneratorRequestBuilder(
         ViewModelDetailImplGeneratorRequestBuilder $viewModelDetailImplGeneratorRequestBuilder
-    ): void
-    {
+    ): void {
         $this->viewModelDetailImplGeneratorRequestBuilder = $viewModelDetailImplGeneratorRequestBuilder;
     }
 
@@ -309,22 +297,19 @@ trait ViewModelGeneratorsTrait
 
     public function setViewModelDetailStubGeneratorRequestBuilder(
         ViewModelDetailStubGeneratorRequestBuilder $viewModelDetailStubGeneratorRequestBuilder
-    ): void
-    {
+    ): void {
         $this->viewModelDetailStubGeneratorRequestBuilder = $viewModelDetailStubGeneratorRequestBuilder;
     }
 
     public function setViewModelDetailTestCaseGenerator(
         Generator $viewModelDetailTestCaseGenerator
-    ): void
-    {
+    ): void {
         $this->viewModelDetailTestCaseGenerator = $viewModelDetailTestCaseGenerator;
     }
 
     public function setViewModelDetailTestCaseGeneratorRequestBuilder(
         ViewModelDetailTestCaseGeneratorRequestBuilder $viewModelDetailTestCaseGeneratorRequestBuilder
-    ): void
-    {
+    ): void {
         $this->viewModelDetailTestCaseGeneratorRequestBuilder = $viewModelDetailTestCaseGeneratorRequestBuilder;
     }
 
@@ -335,8 +320,7 @@ trait ViewModelGeneratorsTrait
 
     public function setViewModelGeneratorRequestBuilder(
         ViewModelGeneratorRequestBuilder $viewModelGeneratorRequestBuilder
-    ): void
-    {
+    ): void {
         $this->viewModelGeneratorRequestBuilder = $viewModelGeneratorRequestBuilder;
     }
 
@@ -347,8 +331,7 @@ trait ViewModelGeneratorsTrait
 
     public function setViewModelListItemAssemblerGeneratorRequestBuilder(
         $viewModelListItemAssemblerGeneratorRequestBuilder
-    ): void
-    {
+    ): void {
         $this->viewModelListItemAssemblerGeneratorRequestBuilder = $viewModelListItemAssemblerGeneratorRequestBuilder;
     }
 
@@ -359,22 +342,19 @@ trait ViewModelGeneratorsTrait
 
     public function setViewModelListItemAssemblerImplGeneratorRequestBuilder(
         $viewModelListItemAssemblerImplGeneratorRequestBuilder
-    ): void
-    {
+    ): void {
         $this->viewModelListItemAssemblerImplGeneratorRequestBuilder = $viewModelListItemAssemblerImplGeneratorRequestBuilder;
     }
 
     public function setViewModelListItemAssemblerImplTestGenerator(
         Generator $viewModelListItemAssemblerImplTestGenerator
-    ): void
-    {
+    ): void {
         $this->viewModelListItemAssemblerImplTestGenerator = $viewModelListItemAssemblerImplTestGenerator;
     }
 
     public function setViewModelListItemAssemblerImplTestGeneratorRequestBuilder(
         ViewModelListItemAssemblerImplTestGeneratorRequestBuilder $viewModelListItemAssemblerImplTestGeneratorRequestBuilder
-    ): void
-    {
+    ): void {
         $this->viewModelListItemAssemblerImplTestGeneratorRequestBuilder = $viewModelListItemAssemblerImplTestGeneratorRequestBuilder;
     }
 
@@ -385,50 +365,43 @@ trait ViewModelGeneratorsTrait
 
     public function setViewModelListItemGeneratorRequestBuilder(
         ViewModelListItemGeneratorRequestBuilder $viewModelListItemGeneratorRequestBuilder
-    ): void
-    {
+    ): void {
         $this->viewModelListItemGeneratorRequestBuilder = $viewModelListItemGeneratorRequestBuilder;
     }
 
     public function setViewModelListItemImplGenerator(
         Generator $viewModelListItemImplGenerator
-    ): void
-    {
+    ): void {
         $this->viewModelListItemImplGenerator = $viewModelListItemImplGenerator;
     }
 
     public function setViewModelListItemImplGeneratorRequestBuilder(
         ViewModelListItemImplGeneratorRequestBuilder $viewModelListItemImplGeneratorRequestBuilder
-    ): void
-    {
+    ): void {
         $this->viewModelListItemImplGeneratorRequestBuilder = $viewModelListItemImplGeneratorRequestBuilder;
     }
 
     public function setViewModelListItemStubGenerator(
         Generator $viewModelListItemStubGenerator
-    ): void
-    {
+    ): void {
         $this->viewModelListItemStubGenerator = $viewModelListItemStubGenerator;
     }
 
     public function setViewModelListItemStubGeneratorRequestBuilder(
         ViewModelListItemStubGeneratorRequestBuilder $viewModelListItemStubGeneratorRequestBuilder
-    ): void
-    {
+    ): void {
         $this->viewModelListItemStubGeneratorRequestBuilder = $viewModelListItemStubGeneratorRequestBuilder;
     }
 
     public function setViewModelListItemTestCaseGenerator(
         Generator $viewModelListItemTestCaseGenerator
-    ): void
-    {
+    ): void {
         $this->viewModelListItemTestCaseGenerator = $viewModelListItemTestCaseGenerator;
     }
 
     public function setViewModelListItemTestCaseGeneratorRequestBuilder(
         ViewModelListItemTestCaseGeneratorRequestBuilder $viewModelListItemTestCaseGeneratorRequestBuilder
-    ): void
-    {
+    ): void {
         $this->viewModelListItemTestCaseGeneratorRequestBuilder = $viewModelListItemTestCaseGeneratorRequestBuilder;
     }
 
@@ -439,8 +412,7 @@ trait ViewModelGeneratorsTrait
 
     public function setViewModelTestCaseGeneratorRequestBuilder(
         ViewModelTestCaseGeneratorRequestBuilder $viewModelTestCaseGeneratorRequestBuilder
-    ): void
-    {
+    ): void {
         $this->viewModelTestCaseGeneratorRequestBuilder = $viewModelTestCaseGeneratorRequestBuilder;
     }
 

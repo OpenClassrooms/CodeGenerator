@@ -24,8 +24,7 @@ abstract class AbstractViewModelGenerator extends AbstractGenerator
 
     public function setUseCaseResponseFileObjectFactory(
         UseCaseResponseFileObjectFactory $useCaseResponseFileObjectFactory
-    )
-    {
+    ) {
         $this->useCaseResponseFileObjectFactory = $useCaseResponseFileObjectFactory;
     }
 
@@ -39,8 +38,7 @@ abstract class AbstractViewModelGenerator extends AbstractGenerator
         string $domain,
         string $entity,
         string $baseNamespace = null
-    ): FileObject
-    {
+    ): FileObject {
         return $this->useCaseResponseFileObjectFactory->create($type, $domain, $entity, $baseNamespace);
     }
 
@@ -49,8 +47,7 @@ abstract class AbstractViewModelGenerator extends AbstractGenerator
         string $domain,
         string $entity,
         string $baseNamespace = null
-    ): FileObject
-    {
+    ): FileObject {
         return $this->viewModelFileObjectFactory->create($type, $domain, $entity, $baseNamespace);
     }
 }

@@ -57,7 +57,9 @@ class GetEntityUseCaseRequestBuilderImplGeneratorTest extends TestCase
 
         $this->getEntityUseCaseRequestBuilderImplGenerator = new GetEntityUseCaseRequestBuilderImplGenerator();
 
-        $this->getEntityUseCaseRequestBuilderImplGenerator->setEntityFileObjectFactory(new EntityFileObjectFactoryMock());
+        $this->getEntityUseCaseRequestBuilderImplGenerator->setEntityFileObjectFactory(
+            new EntityFileObjectFactoryMock()
+        );
         $this->getEntityUseCaseRequestBuilderImplGenerator->setGetEntityUseCaseRequestBuilderImplSkeletonModelAssembler(
             new GetEntityUseCaseRequestBuilderImplSkeletonModelAssemblerImpl()
         );

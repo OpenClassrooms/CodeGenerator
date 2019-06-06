@@ -26,9 +26,7 @@ class ViewModelDetailAssemblerImplTestSkeletonModelBuilderImpl implements ViewMo
 
     public function withViewModelDetailAssemblerImpl(
         FileObject $viewModelDetailAssemblerImpl
-    ): ViewModelDetailAssemblerImplTestSkeletonModelBuilder
-    {
-
+    ): ViewModelDetailAssemblerImplTestSkeletonModelBuilder {
         $this->skeletonModel->viewModelDetailAssemblerImplShortName = $viewModelDetailAssemblerImpl->getShortName();
         $this->skeletonModel->viewModelDetailAssemblerImplClassName = $viewModelDetailAssemblerImpl->getClassName();
 
@@ -37,9 +35,7 @@ class ViewModelDetailAssemblerImplTestSkeletonModelBuilderImpl implements ViewMo
 
     public function withViewModelDetailTestCase(
         FileObject $viewModelDetailTestCase
-    ): ViewModelDetailAssemblerImplTestSkeletonModelBuilder
-    {
-
+    ): ViewModelDetailAssemblerImplTestSkeletonModelBuilder {
         $this->skeletonModel->viewModelDetailTestCaseShortName = $viewModelDetailTestCase->getShortName();
         $this->skeletonModel->viewModelDetailTestCaseClassName = $viewModelDetailTestCase->getClassName();
         $this->skeletonModel->viewModelDetailTestCaseMethod = TestUtility::buildTestCaseAssertMethodName(
@@ -51,9 +47,7 @@ class ViewModelDetailAssemblerImplTestSkeletonModelBuilderImpl implements ViewMo
 
     public function withUseCaseDetailResponseStub(
         FileObject $useCaseDetailResponseStub
-    ): ViewModelDetailAssemblerImplTestSkeletonModelBuilder
-    {
-
+    ): ViewModelDetailAssemblerImplTestSkeletonModelBuilder {
         $this->skeletonModel->useCaseDetailResponseStubShortName = $useCaseDetailResponseStub->getShortName();
         $this->skeletonModel->useCaseDetailResponseStubClassName = $useCaseDetailResponseStub->getClassName();
 
@@ -62,8 +56,7 @@ class ViewModelDetailAssemblerImplTestSkeletonModelBuilderImpl implements ViewMo
 
     public function withViewModelDetailStub(
         FileObject $viewModelDetailStub
-    ): ViewModelDetailAssemblerImplTestSkeletonModelBuilder
-    {
+    ): ViewModelDetailAssemblerImplTestSkeletonModelBuilder {
         $this->skeletonModel->viewModelDetailStubShortName = $viewModelDetailStub->getShortName();
         $this->skeletonModel->viewModelDetailStubClassName = $viewModelDetailStub->getClassName();
 
@@ -72,9 +65,7 @@ class ViewModelDetailAssemblerImplTestSkeletonModelBuilderImpl implements ViewMo
 
     public function withViewModelDetailAssembler(
         FileObject $viewModelDetailAssembler
-    ): ViewModelDetailAssemblerImplTestSkeletonModelBuilder
-    {
-
+    ): ViewModelDetailAssemblerImplTestSkeletonModelBuilder {
         $this->skeletonModel->viewModelDetailAssemblerShortName = $viewModelDetailAssembler->getShortName();
         $this->skeletonModel->viewModelDetailAssemblerClassName = $viewModelDetailAssembler->getClassName();
 
@@ -83,8 +74,7 @@ class ViewModelDetailAssemblerImplTestSkeletonModelBuilderImpl implements ViewMo
 
     public function withViewModelDetailAssemblerImplTest(
         FileObject $viewModelDetailAssemblerImplTest
-    ): ViewModelDetailAssemblerImplTestSkeletonModelBuilder
-    {
+    ): ViewModelDetailAssemblerImplTestSkeletonModelBuilder {
         $this->skeletonModel->className = $viewModelDetailAssemblerImplTest->getClassName();
         $this->skeletonModel->shortName = $viewModelDetailAssemblerImplTest->getShortName();
         $this->skeletonModel->namespace = $viewModelDetailAssemblerImplTest->getNamespace();

@@ -22,8 +22,9 @@ class ViewModelListItemAssemblerImplTestGeneratorRequestBuilderImpl implements V
         return $this;
     }
 
-    public function withResponseClassName(string $responseClassName): ViewModelListItemAssemblerImplTestGeneratorRequestBuilder
-    {
+    public function withResponseClassName(
+        string $responseClassName
+    ): ViewModelListItemAssemblerImplTestGeneratorRequestBuilder {
         $this->request->responseClassName = $responseClassName;
 
         return $this;

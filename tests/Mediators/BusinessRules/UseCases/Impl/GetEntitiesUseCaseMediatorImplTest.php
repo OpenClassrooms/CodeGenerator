@@ -166,10 +166,16 @@ class GetEntitiesUseCaseMediatorImplTest extends TestCase
             )
         );
         $this->mediator->setUseCaseListItemResponseDTOGenerator(
-            new GeneratorMock(UseCaseListItemResponseDTOGenerator::class, new UseCaseListItemResponseDTOFileObjectStub1())
+            new GeneratorMock(
+                UseCaseListItemResponseDTOGenerator::class,
+                new UseCaseListItemResponseDTOFileObjectStub1()
+            )
         );
         $this->mediator->setUseCaseListItemResponseStubGenerator(
-            new GeneratorMock(UseCaseListItemResponseStubGenerator::class, new UseCaseListItemResponseStubFileObjectStub1())
+            new GeneratorMock(
+                UseCaseListItemResponseStubGenerator::class,
+                new UseCaseListItemResponseStubFileObjectStub1()
+            )
         );
         $this->mediator->setGetEntitiesUseCaseTestGenerator(
             new GeneratorMock(GetEntitiesUseCaseTestGenerator::class, new GetEntitiesUseCaseTestFileObjectStub1())

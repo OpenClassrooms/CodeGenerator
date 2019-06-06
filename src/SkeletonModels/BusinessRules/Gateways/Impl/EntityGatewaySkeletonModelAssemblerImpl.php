@@ -19,8 +19,7 @@ class EntityGatewaySkeletonModelAssemblerImpl implements EntityGatewaySkeletonMo
         FileObject $entityFileObject,
         FileObject $entityGatewayFileObject,
         FileObject $entityNotFoundExceptionFileObject
-    ): EntityGatewaySkeletonModel
-    {
+    ): EntityGatewaySkeletonModel {
         $skeletonModel = new EntityGatewaySkeletonModelImpl();
         $skeletonModel->namespace = $entityGatewayFileObject->getNamespace();
         $skeletonModel->shortName = $entityGatewayFileObject->getShortName();

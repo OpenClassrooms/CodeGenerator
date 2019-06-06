@@ -17,14 +17,15 @@ class GetEntityUseCaseRequestBuilderImplSkeletonModelAssemblerImpl implements Ge
         FileObject $getEntityUseCaseRequestBuilderImplFileObject,
         FileObject $getEntityUseCaseRequestDTOFileObject,
         FileObject $getEntityUseCaseRequestFileObject
-    ): GetEntityUseCaseRequestBuilderImplSkeletonModel
-    {
+    ): GetEntityUseCaseRequestBuilderImplSkeletonModel {
         $skeletonModel = new GetEntityUseCaseRequestBuilderImplSkeletonModelImpl();
         $skeletonModel->namespace = $getEntityUseCaseRequestBuilderImplFileObject->getNamespace();
         $skeletonModel->shortName = $getEntityUseCaseRequestBuilderImplFileObject->getShortName();
         $skeletonModel->entityShortName = $entityFileObject->getShortName();
-        $skeletonModel->getEntityUseCaseRequestBuilderClassName = $getEntityUseCaseRequestBuilderFileObject->getClassName();
-        $skeletonModel->getEntityUseCaseRequestBuilderShortName = $getEntityUseCaseRequestBuilderFileObject->getShortName();
+        $skeletonModel->getEntityUseCaseRequestBuilderClassName = $getEntityUseCaseRequestBuilderFileObject->getClassName(
+        );
+        $skeletonModel->getEntityUseCaseRequestBuilderShortName = $getEntityUseCaseRequestBuilderFileObject->getShortName(
+        );
         $skeletonModel->getEntityUseCaseRequestClassName = $getEntityUseCaseRequestFileObject->getClassName();
         $skeletonModel->getEntityUseCaseRequestDTOShortName = $getEntityUseCaseRequestDTOFileObject->getShortName();
         $skeletonModel->getEntityUseCaseRequestShortName = $getEntityUseCaseRequestFileObject->getShortName();

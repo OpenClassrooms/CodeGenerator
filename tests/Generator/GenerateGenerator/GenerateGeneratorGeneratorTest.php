@@ -49,8 +49,7 @@ class GenerateGeneratorGeneratorTest extends TestCase
     protected function assertGeneratorFiles(
         $expectedFileObjects,
         array $actualFileObjects
-    ): void
-    {
+    ): void {
         $this->assertCount(count($expectedFileObjects::$fileObjects), $actualFileObjects);
         foreach ($expectedFileObjects::$fileObjects as $key => $fileObject) {
             [$actual, $valueKey] = $this->extractFileObject($fileObject->getClassName(), $actualFileObjects);

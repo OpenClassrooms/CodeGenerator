@@ -10,22 +10,6 @@ use OpenClassrooms\CodeGenerator\Entities\FileObject;
 trait MediatorMockTrait
 {
     /**
-     * @param FileObject[]
-     */
-    protected function writeFileObjects(): array
-    {
-        return array_map(
-            function(FileObject $fileObject) {
-                $otherFileObject = clone $fileObject;
-                $otherFileObject->write();
-
-                return $otherFileObject;
-            },
-            self::$fileObjects
-        );
-    }
-
-    /**
      * @param array $fileObjects
      */
     public function alreadyExistFileObject(): array
@@ -34,6 +18,22 @@ trait MediatorMockTrait
             function(FileObject $fileObject) {
                 $otherFileObject = clone $fileObject;
                 $otherFileObject->setAlreadyExists(true);
+
+                return $otherFileObject;
+            },
+            self::$fileObjects
+        );
+    }
+
+    /**
+     * @param FileObject[]
+     */
+    protected function writeFileObjects(): array
+    {
+        return array_map(
+            function(FileObject $fileObject) {
+                $otherFileObject = clone $fileObject;
+                $otherFileObject->write();
 
                 return $otherFileObject;
             },

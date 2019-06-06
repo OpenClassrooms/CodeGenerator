@@ -17,8 +17,7 @@ class ViewModelDetailTestCaseSkeletonModelAssemblerImpl implements ViewModelDeta
         FileObject $viewModelDetailTestCaseFileObject,
         FileObject $viewModelDetailFileObject,
         FileObject $viewModelTestCaseFileObject
-    ): ViewModelDetailTestCaseSkeletonModel
-    {
+    ): ViewModelDetailTestCaseSkeletonModel {
         $skeletonModel = new ViewModelDetailTestCaseSkeletonModelImpl();
         $skeletonModel->className = $viewModelDetailTestCaseFileObject->getClassName();
         $skeletonModel->namespace = $viewModelDetailTestCaseFileObject->getNamespace();

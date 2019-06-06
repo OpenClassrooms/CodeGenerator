@@ -33,7 +33,7 @@ class FieldUtilityTest extends TestCase
 
         $this->assertCount(count($fields), $actualFieldObjects);
 
-        foreach ($fields as $key => $field){
+        foreach ($fields as $key => $field) {
             $this->assertEquals($field->getName(), $actualFieldObjects[$key]->getName());
             $this->assertEquals($field->getValue()->getName(), $actualFieldObjects[$key]->getValue()->getName());
         }

@@ -15,11 +15,11 @@ abstract class UseCaseResponseTraitSkeletonModel extends AbstractSkeletonModel
 
     public $entityShortName;
 
+    public $templatePath = 'BusinessRules/UseCases/UseCaseResponseTrait.php.twig';
+
     public $useCaseResponseClassName;
 
     public $useCaseResponseDTOShortName;
 
     public $useCaseResponseShortName;
-
-    public $templatePath = 'BusinessRules/UseCases/UseCaseResponseTrait.php.twig';
 }

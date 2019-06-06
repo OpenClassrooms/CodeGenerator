@@ -69,8 +69,7 @@ class GenericUseCaseRequestDTOGenerator extends AbstractUseCaseGenerator
     private function generateContent(
         FileObject $genericUseCaseRequestDTOFileObject,
         FileObject $genericUseCaseRequestFileObject
-    ): string
-    {
+    ): string {
         $skeletonModel = $this->createSkeletonModel(
             $genericUseCaseRequestDTOFileObject,
             $genericUseCaseRequestFileObject
@@ -82,8 +81,7 @@ class GenericUseCaseRequestDTOGenerator extends AbstractUseCaseGenerator
     private function createSkeletonModel(
         FileObject $genericUseCaseRequestDTOFileObject,
         FileObject $genericUseCaseRequestFileObject
-    ): GenericUseCaseRequestDTOSkeletonModel
-    {
+    ): GenericUseCaseRequestDTOSkeletonModel {
         return $this->genericUseCaseRequestDTOSkeletonModelAssembler->create(
             $genericUseCaseRequestDTOFileObject,
             $genericUseCaseRequestFileObject
@@ -92,8 +90,7 @@ class GenericUseCaseRequestDTOGenerator extends AbstractUseCaseGenerator
 
     public function setGenericUseCaseRequestDTOSkeletonModelAssembler(
         GenericUseCaseRequestDTOSkeletonModelAssembler $genericUseCaseRequestDTOSkeletonModelAssembler
-    ): void
-    {
+    ): void {
         $this->genericUseCaseRequestDTOSkeletonModelAssembler = $genericUseCaseRequestDTOSkeletonModelAssembler;
     }
 }

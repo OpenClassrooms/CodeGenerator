@@ -10,7 +10,7 @@ use OpenClassrooms\CodeGenerator\Entities\FieldObject;
 trait StubSkeletonAssemblerUtility
 {
     /**
-     * @param FieldObject $fieldObjects[]
+     * @param FieldObject $fieldObjects []
      */
     private function hasConstructor(array $fieldObjects): bool
     {
@@ -25,6 +25,6 @@ trait StubSkeletonAssemblerUtility
 
     private function getDateTimeType()
     {
-        return [ '\\DateTime', '\\DateTimeImmutable', '\\DateTimeInterface'];
+        return ['\\DateTime', '\\DateTimeImmutable', '\\DateTimeInterface'];
     }
 }

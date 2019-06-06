@@ -10,7 +10,6 @@ use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\Request\ViewModelListI
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModels\ViewModelListItemSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModels\ViewModelListItemSkeletonModelAssembler;
-use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
@@ -37,11 +36,10 @@ class ViewModelListItemGenerator extends AbstractViewModelGenerator
 
     private function buildViewModelListItemFileObject(string $useCaseResponseClassName): FileObject
     {
-        $useCaseDetailResponseFileObject = $this->createUseCaseDetailResponseFileObject(
-            $useCaseResponseClassName
-        );
+        $this->initFileObjectParameter($useCaseResponseClassName);
+        $useCaseDetailResponseFileObject = $this->createUseCaseDetailResponseFileObject();
 
-        $viewModelListItemFileObject = $this->createViewModelListItemFileObject($useCaseDetailResponseFileObject);
+        $viewModelListItemFileObject = $this->createViewModelListItemFileObject();
         $viewModelFileObject = $this->createViewModel($useCaseDetailResponseFileObject);
 
         $viewModelListItemFileObject->setContent(
@@ -51,27 +49,23 @@ class ViewModelListItemGenerator extends AbstractViewModelGenerator
         return $viewModelListItemFileObject;
     }
 
-    private function createUseCaseDetailResponseFileObject(string $useCaseDetailResponseClassName): FileObject
+    private function createUseCaseDetailResponseFileObject(): FileObject
     {
-        [$baseNamespace, $domain, $entity] = FileObjectUtility::getBaseNamespaceDomainAndEntityNameFromClassName(
-            $useCaseDetailResponseClassName
-        );
-
         return $this->createUseCaseResponseFileObject(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE,
-            $domain,
-            $entity,
-            $baseNamespace
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
         );
     }
 
-    private function createViewModelListItemFileObject(FileObject $useCaseDetailResponseFileObject): FileObject
+    private function createViewModelListItemFileObject(): FileObject
     {
         return $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM,
-            $useCaseDetailResponseFileObject->getDomain(),
-            $useCaseDetailResponseFileObject->getEntity(),
-            $useCaseDetailResponseFileObject->getBaseNamespace()
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
         );
     }
 
@@ -79,9 +73,9 @@ class ViewModelListItemGenerator extends AbstractViewModelGenerator
     {
         return $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL,
-            $useCaseDetailResponseFileObject->getDomain(),
-            $useCaseDetailResponseFileObject->getEntity(),
-            $useCaseDetailResponseFileObject->getBaseNamespace()
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
         );
     }
 
@@ -95,8 +89,7 @@ class ViewModelListItemGenerator extends AbstractViewModelGenerator
     private function createSkeletonModel(
         FileObject $viewModelListItemFileObject,
         FileObject $viewModelFileObject
-    ): ViewModelListItemSkeletonModel
-    {
+    ): ViewModelListItemSkeletonModel {
         return $this->viewModelListItemSkeletonModelAssembler->create(
             $viewModelListItemFileObject,
             $viewModelFileObject
@@ -105,8 +98,7 @@ class ViewModelListItemGenerator extends AbstractViewModelGenerator
 
     public function setViewModelListItemSkeletonModelAssembler(
         ViewModelListItemSkeletonModelAssembler $viewModelListItemSkeletonModelAssembler
-    ): void
-    {
+    ): void {
         $this->viewModelListItemSkeletonModelAssembler = $viewModelListItemSkeletonModelAssembler;
     }
 }

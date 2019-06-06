@@ -9,7 +9,6 @@ use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\Request\ViewModelListI
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModels\ViewModelListItemImplSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModels\ViewModelListItemImplSkeletonModelAssembler;
-use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
@@ -36,10 +35,9 @@ class ViewModelListItemImplGenerator extends AbstractViewModelGenerator
 
     private function buildViewModelListItemImplFileObject(string $useCaseResponseClassName): FileObject
     {
-        $viewModelListItemFileObject = $this->createViewModelListItemFileObject(
-            $useCaseResponseClassName
-        );
-        $viewModelListItemImplFileObject = $this->createViewModelListItemImplObject($viewModelListItemFileObject);
+        $this->initFileObjectParameter($useCaseResponseClassName);
+        $viewModelListItemFileObject = $this->createViewModelListItemFileObject();
+        $viewModelListItemImplFileObject = $this->createViewModelListItemImplObject();
 
         $viewModelListItemImplFileObject->setContent(
             $this->generateContent($viewModelListItemFileObject, $viewModelListItemImplFileObject)
@@ -48,33 +46,30 @@ class ViewModelListItemImplGenerator extends AbstractViewModelGenerator
         return $viewModelListItemImplFileObject;
     }
 
-    private function createViewModelListItemFileObject(string $viewModelListItemClassName): FileObject
+    private function createViewModelListItemFileObject(): FileObject
     {
-        [$baseNamespace, $domain, $entity] = FileObjectUtility::getBaseNamespaceDomainAndEntityNameFromClassName($viewModelListItemClassName);
-
         return $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM,
-            $domain,
-            $entity,
-            $baseNamespace
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
         );
     }
 
-    private function createViewModelListItemImplObject(FileObject $viewModelListItemFileObject): FileObject
+    private function createViewModelListItemImplObject(): FileObject
     {
         return $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_IMPL,
-            $viewModelListItemFileObject->getDomain(),
-            $viewModelListItemFileObject->getEntity(),
-            $viewModelListItemFileObject->getBaseNamespace()
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
         );
     }
 
     private function generateContent(
         FileObject $viewModelListItemFileObject,
         FileObject $viewModelListItemImplFileObject
-    ): string
-    {
+    ): string {
         $skeletonModel = $this->createSkeletonModel($viewModelListItemFileObject, $viewModelListItemImplFileObject);
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
@@ -83,8 +78,7 @@ class ViewModelListItemImplGenerator extends AbstractViewModelGenerator
     private function createSkeletonModel(
         FileObject $viewModelListItemFileObject,
         FileObject $viewModelListItemImplFileObject
-    ): ViewModelListItemImplSkeletonModel
-    {
+    ): ViewModelListItemImplSkeletonModel {
         return $this->viewModelListItemImplSkeletonModelAssembler->create(
             $viewModelListItemFileObject,
             $viewModelListItemImplFileObject
@@ -93,8 +87,7 @@ class ViewModelListItemImplGenerator extends AbstractViewModelGenerator
 
     public function setViewModelListItemImplSkeletonModelAssembler(
         ViewModelListItemImplSkeletonModelAssembler $viewModelListItemImplSkeletonModelAssembler
-    ): void
-    {
+    ): void {
         $this->viewModelListItemImplSkeletonModelAssembler = $viewModelListItemImplSkeletonModelAssembler;
     }
 }

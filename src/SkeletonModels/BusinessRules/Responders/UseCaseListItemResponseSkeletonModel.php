@@ -9,7 +9,7 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
  */
 abstract class UseCaseListItemResponseSkeletonModel extends AbstractSkeletonModel
 {
-    public $useCaseResponseShortName;
-
     public $templatePath = 'BusinessRules/Responders/UseCaseListItemResponse.php.twig';
+
+    public $useCaseResponseShortName;
 }

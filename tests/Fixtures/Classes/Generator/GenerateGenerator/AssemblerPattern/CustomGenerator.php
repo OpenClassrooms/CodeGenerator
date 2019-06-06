@@ -47,7 +47,7 @@ class CustomGenerator extends AbstractGenerator
         return $customFileObject;
     }
 
-    private function createCustomFileObject(string $domain, string $useCaseName): FileObject
+    private function createCustomFileObject(): FileObject
     {
         // TODO use factory to create FileObject
     }

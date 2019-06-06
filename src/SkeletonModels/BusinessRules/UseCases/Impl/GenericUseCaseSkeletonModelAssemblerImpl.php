@@ -18,8 +18,7 @@ class GenericUseCaseSkeletonModelAssemblerImpl implements GenericUseCaseSkeleton
     public function create(
         FileObject $genericUseCaseFileObject,
         FileObject $genericUseCaseRequestFileObject
-    ): GenericUseCaseSkeletonModel
-    {
+    ): GenericUseCaseSkeletonModel {
         $skeletonModel = new GenericUseCaseSkeletonModelImpl();
         $skeletonModel->namespace = $genericUseCaseFileObject->getNamespace();
         $skeletonModel->shortName = $genericUseCaseFileObject->getShortName();

@@ -22,14 +22,14 @@ class UseCaseListItemResponseAssemblerGeneratorTest extends TestCase
     use FileObjectTestCase;
 
     /**
-     * @var UseCaseListItemResponseAssemblerGenerator
-     */
-    private $useCaseListItemResponseAssemblerGenerator;
-
-    /**
      * @var UseCaseListItemResponseAssemblerGeneratorRequestBuilder
      */
     private $request;
+
+    /**
+     * @var UseCaseListItemResponseAssemblerGenerator
+     */
+    private $useCaseListItemResponseAssemblerGenerator;
 
     /**
      * @test
@@ -54,8 +54,7 @@ class UseCaseListItemResponseAssemblerGeneratorTest extends TestCase
             ->withEntityClassName(FunctionalEntity::class)
             ->build();
 
-        $this->useCaseListItemResponseAssemblerGenerator = new UseCaseListItemResponseAssemblerGenerator(
-        );
+        $this->useCaseListItemResponseAssemblerGenerator = new UseCaseListItemResponseAssemblerGenerator();
 
         $this->useCaseListItemResponseAssemblerGenerator->setUseCaseListItemResponseAssemblerSkeletonModelAssembler(
             new UseCaseListItemResponseAssemblerSkeletonModelAssemblerMock()

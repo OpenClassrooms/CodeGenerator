@@ -19,8 +19,7 @@ class GenerateGeneratorGeneratorSkeletonModelAssemblerImpl implements GenerateGe
         string $domain,
         string $entity,
         string $constructionPattern
-    ): GenerateGeneratorGeneratorSkeletonModel
-    {
+    ): GenerateGeneratorGeneratorSkeletonModel {
         $skeletonModel = new GenerateGeneratorGeneratorSkeletonModelImpl();
         $skeletonModel->baseNamespace = $this->baseNamespace;
         $skeletonModel->domain = $domain;

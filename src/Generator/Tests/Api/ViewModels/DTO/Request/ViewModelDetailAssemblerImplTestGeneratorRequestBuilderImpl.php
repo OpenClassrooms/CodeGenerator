@@ -22,8 +22,9 @@ class ViewModelDetailAssemblerImplTestGeneratorRequestBuilderImpl implements Vie
         return $this;
     }
 
-    public function withResponseClassName(string $responseClassName): ViewModelDetailAssemblerImplTestGeneratorRequestBuilder
-    {
+    public function withResponseClassName(
+        string $responseClassName
+    ): ViewModelDetailAssemblerImplTestGeneratorRequestBuilder {
         $this->request->responseClassName = $responseClassName;
 
         return $this;

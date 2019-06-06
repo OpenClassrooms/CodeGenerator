@@ -49,7 +49,8 @@ class GetEntityUseCaseRequestBuilderGeneratorTest extends TestCase
 
     protected function setUp()
     {
-        $getEntityUseCaseRequestBuilderGeneratorRequestBuilderImpl = new GetEntityUseCaseRequestBuilderGeneratorRequestBuilderImpl();
+        $getEntityUseCaseRequestBuilderGeneratorRequestBuilderImpl = new GetEntityUseCaseRequestBuilderGeneratorRequestBuilderImpl(
+        );
         $this->request = $getEntityUseCaseRequestBuilderGeneratorRequestBuilderImpl
             ->create()
             ->withEntityClassName(FunctionalEntity::class)

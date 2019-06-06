@@ -11,7 +11,6 @@ use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Responders\UseCaseResponseSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Responders\UseCaseResponseSkeletonModelAssembler;
 use OpenClassrooms\CodeGenerator\Utility\FieldUtility;
-use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
@@ -43,8 +42,8 @@ class UseCaseResponseGenerator extends AbstractUseCaseGenerator
      */
     private function buildUseCaseResponseFileObject(string $entityClassName, array $wantedFields = []): FileObject
     {
-        $entityFileObject = $this->createEntityFileObject($entityClassName);
-        $useCaseResponseFileObject = $this->createUseCaseResponseFileObject($entityFileObject);
+        $this->initFileObjectParameter($entityClassName);
+        $useCaseResponseFileObject = $this->createUseCaseResponseFileObject();
 
         $fields = FieldUtility::getFields($entityClassName, $wantedFields);
         $useCaseResponseFileObject->setMethods($this->getSelectedAccessors($entityClassName, $fields));
@@ -53,26 +52,12 @@ class UseCaseResponseGenerator extends AbstractUseCaseGenerator
         return $useCaseResponseFileObject;
     }
 
-    private function createEntityFileObject(string $entityClassName): FileObject
-    {
-        [$baseNamespace, $domain, $entity] = FileObjectUtility::getBaseNamespaceDomainAndEntityNameFromClassName(
-            $entityClassName
-        );
-
-        return $this->entityFileObjectFactory->create(
-            EntityFileObjectType::BUSINESS_RULES_ENTITY,
-            $domain,
-            $entity,
-            $baseNamespace
-        );
-    }
-
-    private function createUseCaseResponseFileObject(FileObject $entityFileObject): FileObject
+    private function createUseCaseResponseFileObject(): FileObject
     {
         return $this->useCaseResponseFileObjectFactory->create(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE,
-            $entityFileObject->getDomain(),
-            $entityFileObject->getEntity()
+            $this->domain,
+            $this->entity
         );
     }
 
@@ -85,15 +70,23 @@ class UseCaseResponseGenerator extends AbstractUseCaseGenerator
 
     private function createSkeletonModel(
         FileObject $useCaseResponseFileObject
-    ): UseCaseResponseSkeletonModel
-    {
+    ): UseCaseResponseSkeletonModel {
         return $this->useCaseResponseSkeletonModelAssembler->create($useCaseResponseFileObject);
     }
 
     public function setUseCaseResponseSkeletonModelAssembler(
         UseCaseResponseSkeletonModelAssembler $useCaseResponseSkeletonModelAssembler
-    ): void
-    {
+    ): void {
         $this->useCaseResponseSkeletonModelAssembler = $useCaseResponseSkeletonModelAssembler;
+    }
+
+    private function createEntityFileObject(): FileObject
+    {
+        return $this->entityFileObjectFactory->create(
+            EntityFileObjectType::BUSINESS_RULES_ENTITY,
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
+        );
     }
 }

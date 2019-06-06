@@ -10,7 +10,6 @@ use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\Request\ViewModelDetai
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModels\ViewModelDetailAssemblerImplSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModels\ViewModelDetailAssemblerImplSkeletonModelBuilder;
-use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
@@ -38,24 +37,15 @@ class ViewModelDetailAssemblerImplGenerator extends AbstractViewModelGenerator
 
     public function buildViewModelDetailAssemblerImplFileObject(string $useCaseResponseClassName)
     {
-        $useCaseDetailResponseDTOFileObject = $this->createUseCaseDetailResponseDTOFileObject(
-            $useCaseResponseClassName
-        );
-        $useCaseDetailResponseFileObject = $this->createUseCaseDetailResponseFileObject(
-            $useCaseDetailResponseDTOFileObject
-        );
-        $viewModelDetailFileObject = $this->createViewModelDetailFileObject($useCaseDetailResponseDTOFileObject);
-        $viewModelDetailAssemblerFileObject = $this->createViewModelDetailAssemblerFileObject(
-            $useCaseDetailResponseDTOFileObject
-        );
-        $viewModelDetailAssemblerImplFileObject = $this->createViewModelDetailAssemblerImplFileObject(
-            $useCaseDetailResponseDTOFileObject
-        );
-        $viewModelDetailImplFileObject = $this->createViewModelDetailImplFileObject(
-            $useCaseDetailResponseDTOFileObject
-        );
+        $this->initFileObjectParameter($useCaseResponseClassName);
+        $useCaseDetailResponseDTOFileObject = $this->createUseCaseDetailResponseDTOFileObject();
+        $useCaseDetailResponseFileObject = $this->createUseCaseDetailResponseFileObject();
+        $viewModelDetailFileObject = $this->createViewModelDetailFileObject();
+        $viewModelDetailAssemblerFileObject = $this->createViewModelDetailAssemblerFileObject();
+        $viewModelDetailAssemblerImplFileObject = $this->createViewModelDetailAssemblerImplFileObject();
+        $viewModelDetailImplFileObject = $this->createViewModelDetailImplFileObject();
 
-        $viewModelAssemblerTrait = $this->createViewModelAssemblerTraitFileObject($useCaseDetailResponseDTOFileObject);
+        $viewModelAssemblerTrait = $this->createViewModelAssemblerTraitFileObject();
 
         $viewModelDetailAssemblerImplFileObject->setFields(
             $this->getPublicClassFields($useCaseDetailResponseDTOFileObject->getClassName())
@@ -77,82 +67,74 @@ class ViewModelDetailAssemblerImplGenerator extends AbstractViewModelGenerator
         return $viewModelDetailAssemblerImplFileObject;
     }
 
-    private function createUseCaseDetailResponseDTOFileObject(string $useCaseResponseClassName): FileObject
+    private function createUseCaseDetailResponseDTOFileObject(): FileObject
     {
-        [$baseNamespace, $domain, $entity] = FileObjectUtility::getBaseNamespaceDomainAndEntityNameFromClassName($useCaseResponseClassName);
-
         return $this->createUseCaseResponseFileObject(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE_DTO,
-            $domain,
-            $entity,
-            $baseNamespace
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
         );
     }
 
-    private function createUseCaseDetailResponseFileObject(FileObject $useCaseDetailResponseFileObject): FileObject
+    private function createUseCaseDetailResponseFileObject(): FileObject
     {
 
         return $this->createUseCaseResponseFileObject(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE,
-            $useCaseDetailResponseFileObject->getDomain(),
-            $useCaseDetailResponseFileObject->getEntity(),
-            $useCaseDetailResponseFileObject->getBaseNamespace()
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
         );
     }
 
-    private function createViewModelDetailFileObject(FileObject $useCaseDetailResponseFileObject): FileObject
+    private function createViewModelDetailFileObject(): FileObject
     {
         return $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL_DETAIL,
-            $useCaseDetailResponseFileObject->getDomain(),
-            $useCaseDetailResponseFileObject->getEntity(),
-            $useCaseDetailResponseFileObject->getBaseNamespace()
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
         );
     }
 
-    private function createViewModelDetailAssemblerFileObject(
-        FileObject $useCaseDetailResponseFileObject
-    ): FileObject
+    private function createViewModelDetailAssemblerFileObject(): FileObject
     {
         return $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_ASSEMBLER,
-            $useCaseDetailResponseFileObject->getDomain(),
-            $useCaseDetailResponseFileObject->getEntity(),
-            $useCaseDetailResponseFileObject->getBaseNamespace()
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
         );
     }
 
-    private function createViewModelDetailAssemblerImplFileObject(
-        FileObject $useCaseDetailResponseFileObject
-    ): FileObject
+    private function createViewModelDetailAssemblerImplFileObject(): FileObject
     {
         return $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_ASSEMBLER_IMPL,
-            $useCaseDetailResponseFileObject->getDomain(),
-            $useCaseDetailResponseFileObject->getEntity(),
-            $useCaseDetailResponseFileObject->getBaseNamespace()
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
         );
     }
 
-    private function createViewModelDetailImplFileObject(
-        FileObject $useCaseDetailResponseFileObject
-    ): FileObject
+    private function createViewModelDetailImplFileObject(): FileObject
     {
         return $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_IMPL,
-            $useCaseDetailResponseFileObject->getDomain(),
-            $useCaseDetailResponseFileObject->getEntity(),
-            $useCaseDetailResponseFileObject->getBaseNamespace()
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
         );
     }
 
-    private function createViewModelAssemblerTraitFileObject(FileObject $useCaseDetailResponseFileObject): FileObject
+    private function createViewModelAssemblerTraitFileObject(): FileObject
     {
         return $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL_ASSEMBLER_TRAIT,
-            $useCaseDetailResponseFileObject->getDomain(),
-            $useCaseDetailResponseFileObject->getEntity(),
-            $useCaseDetailResponseFileObject->getBaseNamespace()
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
         );
     }
 
@@ -187,8 +169,7 @@ class ViewModelDetailAssemblerImplGenerator extends AbstractViewModelGenerator
 
     public function setViewModelDetailAssemblerImplSkeletonModelBuilder(
         ViewModelDetailAssemblerImplSkeletonModelBuilder $viewModelDetailAssemblerImplSkeletonModelBuilder
-    ): void
-    {
+    ): void {
         $this->viewModelDetailAssemblerImplSkeletonModelBuilder = $viewModelDetailAssemblerImplSkeletonModelBuilder;
     }
 }

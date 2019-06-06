@@ -143,11 +143,6 @@ class TemplatingServiceImpl extends Environment implements TemplatingService
         );
     }
 
-    public function render($name, array $context = []): string
-    {
-        return parent::render($name, $context);
-    }
-
     private function printReturnType()
     {
         return new TwigFunction(
@@ -161,5 +156,10 @@ class TemplatingServiceImpl extends Environment implements TemplatingService
                 return $isNullable ? '?' . $returnType : $returnType;
             }
         );
+    }
+
+    public function render($name, array $context = []): string
+    {
+        return parent::render($name, $context);
     }
 }
