@@ -64,16 +64,6 @@ class FileObject
         $this->content = $content;
     }
 
-    public function getBaseNamespace(): string
-    {
-        return FileObjectUtility::getBaseNamespaceFromClassName($this->className);
-    }
-
-    public function getDomain(): string
-    {
-        return FileObjectUtility::getDomainFromClassName($this->className);
-    }
-
     public function getEntity(): string
     {
         return FileObjectUtility::getEntityNameFromClassName($this->className);

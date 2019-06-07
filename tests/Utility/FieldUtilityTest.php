@@ -5,6 +5,8 @@ namespace OpenClassrooms\CodeGenerator\Tests\Utility;
 use OpenClassrooms\CodeGenerator\Entities\ConstObject;
 use OpenClassrooms\CodeGenerator\Entities\FieldObject;
 use OpenClassrooms\CodeGenerator\Entities\FileObject;
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Entities\Domain\SubDomain\FunctionalEntity;
+use OpenClassrooms\CodeGenerator\Utility\FieldUtility;
 use OpenClassrooms\CodeGenerator\Utility\StubFieldUtility;
 use PHPUnit\Framework\TestCase;
 
@@ -21,7 +23,7 @@ class FieldUtilityTest extends TestCase
     /**
      * @test
      */
-    public function generateStubFieldObjects_ReturnFieldObject(): void
+    public function generateStubFieldObjectsReturnFieldObject(): void
     {
         $fields = [
             $this->buildStubFieldObject('field1', 'string'),
@@ -57,6 +59,27 @@ class FieldUtilityTest extends TestCase
         return [
             [],
         ];
+    }
+
+    /**
+     * @test
+     * @expectedException \Exception
+     */
+    public function getFieldsThrowException()
+    {
+        $fields = ['notExistField'];
+        FieldUtility::getFields(FunctionalEntity::class, $fields);
+    }
+
+    /**
+     * @test
+     */
+    public function getFieldsWithEmptyFields()
+    {
+        $fields = [];
+        $exceptedFields = new \ReflectionClass(FunctionalEntity::class);
+        $actualFields = FieldUtility::getFields(FunctionalEntity::class, $fields);
+        $this->assertCount(count($actualFields), $exceptedFields->getMethods() );
     }
 
     protected function setUp()
