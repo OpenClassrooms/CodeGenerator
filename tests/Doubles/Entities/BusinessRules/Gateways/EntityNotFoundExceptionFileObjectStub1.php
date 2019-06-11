@@ -15,6 +15,6 @@ class EntityNotFoundExceptionFileObjectStub1 extends FileObject
     {
         $this->content = __DIR__ . '/../../../../Fixtures/Classes/BusinessRules/Gateways/Domain/SubDomain/Exceptions/FunctionalEntityNotFoundException.php';
         $this->className = self::CLASS_NAME;
-        $this->fields = [];
+
     }
 }

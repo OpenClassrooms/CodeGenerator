@@ -10,6 +10,7 @@ use PHPUnit\Framework\Assert as Assert;
  */
 trait FileObjectTestCase
 {
+    use ArrayOrderTrait;
     use FieldObjectTestCase;
     use MethodObjectTestCase;
 

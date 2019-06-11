@@ -15,6 +15,5 @@ class CustomFileObjectStub1 extends FileObject
     {
         $this->content = __DIR__ . '/../../../../Fixtures/Classes/GenerateGenerator/Custom.php';
         $this->className = self::CLASS_NAME;
-        $this->fields = [];
     }
 }

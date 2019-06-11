@@ -12,22 +12,22 @@ class MethodObject
     /**
      * @var string
      */
-    private $docComment;
+    protected $docComment;
 
     /**
      * @var string
      */
-    private $name;
+    protected $name;
 
     /**
      * @var bool
      */
-    private $nullable;
+    protected $nullable;
 
     /**
      * @var string
      */
-    private $returnType;
+    protected $returnType;
 
     public function __construct(string $name)
     {

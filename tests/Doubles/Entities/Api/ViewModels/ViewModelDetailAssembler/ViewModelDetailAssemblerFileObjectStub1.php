@@ -15,6 +15,5 @@ class ViewModelDetailAssemblerFileObjectStub1 extends FileObject
     {
         $this->content = __DIR__ . '/../../../../../Fixtures/Classes/Api/ViewModels/Domain/SubDomain/FunctionalEntityDetailAssembler.php';
         $this->className = self::CLASS_NAME;
-        $this->fields = [];
     }
 }

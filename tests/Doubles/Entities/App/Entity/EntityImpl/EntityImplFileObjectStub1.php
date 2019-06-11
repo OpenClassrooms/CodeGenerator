@@ -15,6 +15,5 @@ class EntityImplFileObjectStub1 extends FileObject
     {
         $this->content = __DIR__ . '/../../../../../Fixtures/Classes/App/Entity/Domain/SubDomain/FunctionalEntityImpl.php';
         $this->className = self::CLASS_NAME;
-        $this->fields = [];
     }
 }

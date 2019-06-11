@@ -93,7 +93,7 @@ class MethodUtility
             }
         }
 
-        return $methods;
+        return array_values($methods);
     }
 
     /**

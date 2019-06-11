@@ -18,7 +18,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
-class GenericUseCaseDetailResponseAssemblerImplGeneratorTest extends TestCase
+class UseCaseDetailResponseAssemblerImplGeneratorTest extends TestCase
 {
     use FileObjectTestCase;
 

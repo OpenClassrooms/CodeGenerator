@@ -27,14 +27,6 @@ trait FieldObjectTestCase
         }
     }
 
-    private function orderArraysBeforeCompare(array $expectedFieldObjects, array $actualFieldObjects): array
-    {
-        usort($actualFieldObjects, [$this, "orderFieldObjectsByName"]);
-        usort($expectedFieldObjects, [$this, "orderFieldObjectsByName"]);
-
-        return [$expectedFieldObjects, $actualFieldObjects];
-    }
-
     private function assertFieldObject(FieldObject $expected, FieldObject $actual)
     {
         $this->AssertValue($expected, $actual);
@@ -51,16 +43,5 @@ trait FieldObjectTestCase
         } else {
             Assert::assertEquals($expected->getValue(), $actual->getValue());
         }
-    }
-
-    private function orderFieldObjectsByName(FieldObject $a, FieldObject $b): int
-    {
-        $al = strtolower($a->getName());
-        $bl = strtolower($b->getName());
-        if ($al == $bl) {
-            return 0;
-        }
-
-        return ($al > $bl) ? +1 : -1;
     }
 }

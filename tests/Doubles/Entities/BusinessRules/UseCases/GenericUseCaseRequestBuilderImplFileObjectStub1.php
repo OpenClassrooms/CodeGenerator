@@ -15,6 +15,6 @@ class GenericUseCaseRequestBuilderImplFileObjectStub1 extends FileObject
     {
         $this->content = __DIR__ . '/../../../../Fixtures/Classes/BusinessRules/UseCases/Domain/SubDomain/DTO/Request/GenericUseCaseRequestBuilderImpl.php';
         $this->className = self::CLASS_NAME;
-        $this->fields = [];
+
     }
 }

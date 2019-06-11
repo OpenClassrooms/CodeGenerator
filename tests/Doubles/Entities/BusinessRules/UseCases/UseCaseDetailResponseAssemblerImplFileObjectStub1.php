@@ -15,6 +15,5 @@ class UseCaseDetailResponseAssemblerImplFileObjectStub1 extends FileObject
     {
         $this->content = __DIR__ . '/../../../../Fixtures/Classes/BusinessRules/UseCases/Domain/SubDomain/DTO/Response/FunctionalEntityDetailResponseAssemblerImpl.php';
         $this->className = self::CLASS_NAME;
-        $this->fields = [];
     }
 }

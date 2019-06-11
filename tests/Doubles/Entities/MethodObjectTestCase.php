@@ -16,9 +16,17 @@ trait MethodObjectTestCase
      */
     protected function assertMethodObjects(array $expectedMethodObjects, array $actualMethodObjects): void
     {
+        [$expectedMethodObjects, $actualMethodObjects] = $this->orderArraysBeforeCompare(
+            $expectedMethodObjects,
+            $actualMethodObjects
+        );
         Assert::assertCount(count($expectedMethodObjects), $actualMethodObjects);
         foreach ($expectedMethodObjects as $key => $expectedMethodObject) {
+            Assert::assertEquals($expectedMethodObject->getDocComment(), $actualMethodObjects[$key]->getDocComment());
             Assert::assertEquals($expectedMethodObject->getName(), $actualMethodObjects[$key]->getName());
+            Assert::assertEquals($expectedMethodObject->getFieldName(), $actualMethodObjects[$key]->getFieldName());
+            Assert::assertEquals($expectedMethodObject->getReturnType(), $actualMethodObjects[$key]->getReturnType());
+            Assert::assertEquals($expectedMethodObject->isNullable(), $actualMethodObjects[$key]->isNullable());
         }
     }
 }

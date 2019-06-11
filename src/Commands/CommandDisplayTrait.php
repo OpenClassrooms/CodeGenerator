@@ -130,18 +130,4 @@ trait CommandDisplayTrait
             $input->setArgument(Args::CLASS_NAME, $helper->ask($input, $output, $classNameQuestion));
         }
     }
-
-    /**
-     * @param InputInterface  $input
-     * @param OutputInterface $output
-     */
-    protected function checkInputEntityArgument(InputInterface $input, OutputInterface $output): void
-    {
-        if (null === $input->getArgument(Args::ENTITY)) {
-            $helper = $this->getHelper('question');
-            $classShortName = FileObjectUtility::getShortClassName($input->getArgument(Args::CLASS_NAME));
-            $entityNameQuestion = new Question("Choose entity name (default: $classShortName) : ", $classShortName);
-            $input->setArgument(Args::ENTITY, $helper->ask($input, $output, $entityNameQuestion));
-        }
-    }
 }

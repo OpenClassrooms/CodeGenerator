@@ -15,6 +15,6 @@ class GetEntitiesUseCaseRequestBuilderFileObjectStub1 extends FileObject
     {
         $this->content = __DIR__ . '/../../../../Fixtures/Classes/BusinessRules/Requestors/Domain/SubDomain/GetFunctionalEntitiesRequestBuilder.php';
         $this->className = self::CLASS_NAME;
-        $this->fields = [];
+
     }
 }
