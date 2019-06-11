@@ -12,10 +12,10 @@ class CustomGeneratorRequestDTO implements CustomGeneratorRequest
     /**
      * @var string
      */
-    public $defaultValue;
+    public $entityClassName;
 
-    public function getDefaultValue(): string
+    public function getEntityClassName(): string
     {
-        return $this->defaultValue;
+        return $this->entityClassName;
     }
 }

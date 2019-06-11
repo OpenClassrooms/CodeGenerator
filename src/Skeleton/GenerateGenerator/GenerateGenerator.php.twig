@@ -25,7 +25,7 @@ class {{ skeletonModel.entity }}Generator extends AbstractGenerator
     public function generate(GeneratorRequest $generatorRequest): FileObject
     {
         ${{ skeletonModel.argument }}FileObject = $this->build{{ skeletonModel.entity }}FileObject(
-            $generatorRequest->getDefaultValue()
+            $generatorRequest->getEntityClassName()
         //TODO get UseCaseRequest param(s)
         );
 
@@ -34,8 +34,9 @@ class {{ skeletonModel.entity }}Generator extends AbstractGenerator
         return ${{ skeletonModel.argument }}FileObject;
     }
 
-    private function build{{ skeletonModel.entity }}FileObject(): FileObject
+    private function build{{ skeletonModel.entity }}FileObject(string $entityClassName): FileObject
     {
+        $this->initFileObjectParameter($entityClassName);
         ${{ skeletonModel.argument }}FileObject = $this->create{{ skeletonModel.entity }}FileObject();
 
         ${{ skeletonModel.argument }}FileObject->setContent(
