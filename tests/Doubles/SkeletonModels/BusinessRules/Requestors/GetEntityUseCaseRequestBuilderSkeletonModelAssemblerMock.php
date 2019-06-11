@@ -12,7 +12,7 @@ class GetEntityUseCaseRequestBuilderSkeletonModelAssemblerMock extends GetEntity
 {
     public function __construct()
     {
-        $this->useCaseClassName = FixturesConfig::USE_CASE_CLASSNAME;
-        $this->useCaseRequestClassName = FixturesConfig::USE_CASE_REQUEST_CLASSNAME;
+        $this->setUseCaseClassName(FixturesConfig::USE_CASE_CLASSNAME);
+        $this->setUseCaseRequestClassName(FixturesConfig::USE_CASE_REQUEST_CLASSNAME);
     }
 }

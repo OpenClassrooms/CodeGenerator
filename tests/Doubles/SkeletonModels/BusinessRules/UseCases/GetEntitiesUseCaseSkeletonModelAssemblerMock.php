@@ -12,11 +12,11 @@ class GetEntitiesUseCaseSkeletonModelAssemblerMock extends GetEntitiesUseCaseSke
 {
     public function __construct()
     {
-        $this->useCaseClassName = FixturesConfig::USE_CASE_CLASSNAME;
-        $this->useCaseRequestClassName = FixturesConfig::USE_CASE_REQUEST_CLASSNAME;
-        $this->pagination = FixturesConfig::PAGINATION;
-        $this->paginatedCollection = FixturesConfig::PAGINATED_COLLECTION;
-        $this->paginatedUseCaseResponse = FixturesConfig::PAGINATED_USE_CASE_RESPONSE;
-        $this->paginatedUseCaseResponseBuilder = FixturesConfig::PAGINATED_USE_CASE_RESPONSE_BUILDER;
+        $this->setUseCaseClassName(FixturesConfig::USE_CASE_CLASSNAME);
+        $this->setUseCaseRequestClassName(FixturesConfig::USE_CASE_REQUEST_CLASSNAME);
+        $this->setPagination(FixturesConfig::PAGINATION);
+        $this->setPaginatedCollection(FixturesConfig::PAGINATED_COLLECTION);
+        $this->setPaginatedUseCaseResponse(FixturesConfig::PAGINATED_USE_CASE_RESPONSE);
+        $this->setPaginatedUseCaseResponseBuilder(FixturesConfig::PAGINATED_USE_CASE_RESPONSE_BUILDER);
     }
 }

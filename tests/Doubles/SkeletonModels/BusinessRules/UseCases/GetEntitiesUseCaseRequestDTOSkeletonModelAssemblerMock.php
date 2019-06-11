@@ -12,6 +12,6 @@ class GetEntitiesUseCaseRequestDTOSkeletonModelAssemblerMock extends GetEntities
 {
     public function __construct()
     {
-        $this->pagination = FixturesConfig::PAGINATION;
+        $this->setPagination(FixturesConfig::PAGINATION);
     }
 }

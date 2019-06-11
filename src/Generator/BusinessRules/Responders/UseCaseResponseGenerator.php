@@ -2,7 +2,6 @@
 
 namespace OpenClassrooms\CodeGenerator\Generator\BusinessRules\Responders;
 
-use OpenClassrooms\CodeGenerator\Entities\EntityFileObjectType;
 use OpenClassrooms\CodeGenerator\Entities\FileObject;
 use OpenClassrooms\CodeGenerator\Entities\UseCaseResponseFileObjectType;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\AbstractUseCaseGenerator;
@@ -78,15 +77,5 @@ class UseCaseResponseGenerator extends AbstractUseCaseGenerator
         UseCaseResponseSkeletonModelAssembler $useCaseResponseSkeletonModelAssembler
     ): void {
         $this->useCaseResponseSkeletonModelAssembler = $useCaseResponseSkeletonModelAssembler;
-    }
-
-    private function createEntityFileObject(): FileObject
-    {
-        return $this->entityFileObjectFactory->create(
-            EntityFileObjectType::BUSINESS_RULES_ENTITY,
-            $this->domain,
-            $this->entity,
-            $this->baseNamespace
-        );
     }
 }

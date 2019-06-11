@@ -12,6 +12,6 @@ class GenerateGeneratorGeneratorSkeletonModelAssemblerMock extends GenerateGener
 {
     public function __construct()
     {
-        $this->baseNamespace = FixturesConfig::BASE_NAMESPACE_SELF_GENERATOR;
+        $this->setBaseNamespace(FixturesConfig::BASE_NAMESPACE_SELF_GENERATOR);
     }
 }

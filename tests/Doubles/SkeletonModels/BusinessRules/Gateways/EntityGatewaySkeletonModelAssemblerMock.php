@@ -12,6 +12,6 @@ class EntityGatewaySkeletonModelAssemblerMock extends EntityGatewaySkeletonModel
 {
     public function __construct()
     {
-        $this->paginatedCollection = FixturesConfig::PAGINATED_COLLECTION;
+        $this->setPaginatedCollection(FixturesConfig::PAGINATED_COLLECTION);
     }
 }

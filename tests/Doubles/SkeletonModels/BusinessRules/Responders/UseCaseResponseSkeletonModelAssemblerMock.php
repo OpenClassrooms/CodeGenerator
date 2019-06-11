@@ -12,6 +12,6 @@ class UseCaseResponseSkeletonModelAssemblerMock extends UseCaseResponseSkeletonM
 {
     public function __construct()
     {
-        $this->useCaseResponse = FixturesConfig::USE_CASE_RESPONSE;
+        $this->setUseCaseResponse(FixturesConfig::USE_CASE_RESPONSE);
     }
 }
