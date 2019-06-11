@@ -12,8 +12,8 @@ class GetEntitiesUseCaseSkeletonModelAssemblerMock extends GetEntitiesUseCaseSke
 {
     public function __construct()
     {
-        $this->useCaseClassName = FixturesConfig::USE_CASE_NAMESPACE;
-        $this->useCaseRequestClassName = FixturesConfig::USE_CASE_REQUEST_NAMESPACE;
+        $this->useCaseClassName = FixturesConfig::USE_CASE_CLASSNAME;
+        $this->useCaseRequestClassName = FixturesConfig::USE_CASE_REQUEST_CLASSNAME;
         $this->pagination = FixturesConfig::PAGINATION;
         $this->paginatedCollection = FixturesConfig::PAGINATED_COLLECTION;
         $this->paginatedUseCaseResponse = FixturesConfig::PAGINATED_USE_CASE_RESPONSE;

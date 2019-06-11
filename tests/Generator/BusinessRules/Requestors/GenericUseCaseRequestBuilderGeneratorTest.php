@@ -64,10 +64,10 @@ class GenericUseCaseRequestBuilderGeneratorTest extends TestCase
         $genericUseCaseRequestBuilderSkeletonModelAssemblerImpl = new GenericUseCaseRequestBuilderSkeletonModelAssemblerImpl(
         );
         $genericUseCaseRequestBuilderSkeletonModelAssemblerImpl->setUseCaseClassName(
-            FixturesConfig::USE_CASE_NAMESPACE
+            FixturesConfig::USE_CASE_CLASSNAME
         );
         $genericUseCaseRequestBuilderSkeletonModelAssemblerImpl->setUseCaseRequestClassName(
-            FixturesConfig::USE_CASE_REQUEST_NAMESPACE
+            FixturesConfig::USE_CASE_REQUEST_CLASSNAME
         );
         $this->genericUseCaseRequestBuilderGenerator->setGenericUseCaseRequestBuilderSkeletonModelAssembler(
             $genericUseCaseRequestBuilderSkeletonModelAssemblerImpl

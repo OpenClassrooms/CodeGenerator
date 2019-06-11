@@ -22,8 +22,9 @@ class UseCaseListItemResponseAssemblerMockGeneratorRequestBuilderImpl implements
         return $this;
     }
 
-    public function withEntityClassName(string $entityClassName): UseCaseListItemResponseAssemblerMockGeneratorRequestBuilder
-    {
+    public function withEntityClassName(
+        string $entityClassName
+    ): UseCaseListItemResponseAssemblerMockGeneratorRequestBuilder {
         $this->request->entityClassName = $entityClassName;
 
         return $this;

@@ -50,16 +50,6 @@ trait CommonUseCaseGetGeneratorsMock
         $this->mediator->setEntityRepositoryGenerator(
             new GeneratorMock(EntityRepositoryGenerator::class, new EntityRepositoryFileObjectStub1())
         );
-
-        $this->mediator->setGetEntityUseCaseRequestGenerator(
-            new GeneratorMock(GetEntityUseCaseRequestGenerator::class, new GetEntityUseCaseRequestFileObjectStub1())
-        );
-        $this->mediator->setGetEntityUseCaseRequestBuilderGenerator(
-            new GeneratorMock(
-                GetEntityUseCaseRequestBuilderGenerator::class,
-                new GetEntityUseCaseRequestBuilderFileObjectStub1()
-            )
-        );
         $this->mediator->setInMemoryEntityGatewayGenerator(
             new GeneratorMock(
                 InMemoryEntityGatewayGenerator::class,
@@ -87,13 +77,6 @@ trait CommonUseCaseGetGeneratorsMock
             new EntityNotFoundExceptionGeneratorRequestBuilderImpl()
         );
         $this->mediator->setEntityRepositoryGeneratorRequestBuilder(new EntityRepositoryGeneratorRequestBuilderImpl());
-
-        $this->mediator->setGetEntityUseCaseRequestGeneratorRequestBuilder(
-            new GetEntityUseCaseRequestGeneratorRequestBuilderImpl()
-        );
-        $this->mediator->setGetEntityUseCaseRequestBuilderGeneratorRequestBuilder(
-            new GetEntityUseCaseRequestBuilderGeneratorRequestBuilderImpl()
-        );
         $this->mediator->setInMemoryEntityGatewayGeneratorRequestBuilder(
             new InMemoryEntityGatewayGeneratorRequestBuilderImpl()
         );

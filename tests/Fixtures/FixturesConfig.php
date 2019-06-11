@@ -31,9 +31,9 @@ final class FixturesConfig
 
     const TEST_BASE_NAMESPACE_SELF_GENERATOR = 'OpenClassrooms\CodeGenerator\Tests\\';
 
-    const USE_CASE_NAMESPACE = 'OpenClassrooms\UseCase\BusinessRules\Requestors\UseCase';
+    const USE_CASE_CLASSNAME = 'OpenClassrooms\UseCase\BusinessRules\Requestors\UseCase';
 
-    const USE_CASE_REQUEST_NAMESPACE = 'OpenClassrooms\UseCase\BusinessRules\Requestors\UseCaseRequest';
+    const USE_CASE_REQUEST_CLASSNAME = 'OpenClassrooms\UseCase\BusinessRules\Requestors\UseCaseRequest';
 
     const USE_CASE_RESPONSE = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\UseCaseResponse';
 }
