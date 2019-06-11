@@ -116,8 +116,7 @@ class GenericUseCaseTestGenerator extends AbstractUseCaseGenerator
         FileObject $genericUseCaseRequestDTOFileObject,
         FileObject $genericUseCaseRequestBuilderImplFileObject,
         FileObject $genericUseCaseFileObject
-    ): string
-    {
+    ): string {
         $skeletonModel = $this->createSkeletonModel(
             $genericUseCaseTestFileObject,
             $genericUseCaseRequestFileObject,
@@ -135,8 +134,7 @@ class GenericUseCaseTestGenerator extends AbstractUseCaseGenerator
         FileObject $genericUseCaseRequestDTOFileObject,
         FileObject $genericUseCaseRequestBuilderImplFileObject,
         FileObject $genericUseCaseFileObject
-    ): GenericUseCaseTestSkeletonModel
-    {
+    ): GenericUseCaseTestSkeletonModel {
         return $this->genericUseCaseTestSkeletonModelAssembler->create(
             $genericUseCaseTestFileObject,
             $genericUseCaseRequestFileObject,
@@ -148,8 +146,7 @@ class GenericUseCaseTestGenerator extends AbstractUseCaseGenerator
 
     public function setGenericUseCaseTestSkeletonModelAssembler(
         GenericUseCaseTestSkeletonModelAssembler $genericUseCaseTestSkeletonModelAssembler
-    ): void
-    {
+    ): void {
         $this->genericUseCaseTestSkeletonModelAssembler = $genericUseCaseTestSkeletonModelAssembler;
     }
 }

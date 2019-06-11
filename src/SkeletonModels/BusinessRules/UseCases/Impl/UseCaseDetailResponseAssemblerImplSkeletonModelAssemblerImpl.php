@@ -18,8 +18,7 @@ class UseCaseDetailResponseAssemblerImplSkeletonModelAssemblerImpl implements Us
         FileObject $useCaseDetailResponseDTOFileObject,
         FileObject $useCaseDetailResponseFileObject,
         FileObject $genericUseCaseTraitFileObject
-    ): UseCaseDetailResponseAssemblerImplSkeletonModel
-    {
+    ): UseCaseDetailResponseAssemblerImplSkeletonModel {
         $skeletonModel = new UseCaseDetailResponseAssemblerImplSkeletonModelImpl();
         $skeletonModel->namespace = $useCaseDetailResponseAssemblerImplFileObject->getNamespace();
         $skeletonModel->shortName = $useCaseDetailResponseAssemblerImplFileObject->getShortName();
@@ -35,8 +34,7 @@ class UseCaseDetailResponseAssemblerImplSkeletonModelAssemblerImpl implements Us
         $skeletonModel->useCaseDetailResponseAssemblerShortName = $useCaseDetailResponseAssemblerFileObject->getShortName(
         );
         $skeletonModel->useCaseDetailResponseClassName = $useCaseDetailResponseFileObject->getClassName();
-        $skeletonModel->useCaseDetailResponseDTOShortName = $useCaseDetailResponseDTOFileObject->getShortName(
-        );
+        $skeletonModel->useCaseDetailResponseDTOShortName = $useCaseDetailResponseDTOFileObject->getShortName();
         $skeletonModel->useCaseDetailResponseShortName = $useCaseDetailResponseFileObject->getShortName();
         $skeletonModel->useCaseResponseTrait = $genericUseCaseTraitFileObject->getShortName();
 

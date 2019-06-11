@@ -38,7 +38,8 @@ class GetEntityUseCaseCommand extends AbstractCommand
             ->setName(self::$defaultName)
             ->setDescription('Create get entity use case architecture')
             ->setHelp('This command allows you to create get entity use case architecture')
-            ->addArgument(Args::CLASS_NAME, InputArgument::OPTIONAL, 'set entity class name');
+            ->addArgument(Args::CLASS_NAME, InputArgument::OPTIONAL, 'set entity class name')
+            ->addArgument(Args::ENTITY, InputArgument::OPTIONAL, 'set entity name');
         $this->configureOptions();
     }
 
@@ -47,8 +48,7 @@ class GetEntityUseCaseCommand extends AbstractCommand
         $codeGeneratorConfig = Yaml::parseFile($this->getConfigFile());
 
         $this->checkConfiguration($codeGeneratorConfig);
-
-        $this->checkInputClassNameArgument($input, $output, Args::CLASS_NAME);
+        $this->checkInputClassNameArgument($input, $output);
 
         $fileObjects = $this->container
             ->get('open_classrooms.code_generator.mediators.business_rules.use_cases.get_entity_use_case_mediator')

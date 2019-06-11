@@ -9,7 +9,6 @@ use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\BusinessRules\Responders\Request\UseCaseListItemResponseTestCaseGeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\BusinessRules\Responders\UseCaseListItemResponseTestCaseSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\BusinessRules\Responders\UseCaseListItemResponseTestCaseSkeletonModelAssembler;
-use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
@@ -39,16 +38,15 @@ class UseCaseListItemResponseTestCaseGenerator extends AbstractUseCaseGenerator
     /**
      * @param string[] $wantedFields
      */
-    private function buildUseCaseListItemResponseTestCaseFileObject(string $entityClassName, array $wantedFields = []): FileObject
-    {
-        $useCaseListItemResponseFileObject = $this->createUseCaseListItemResponseFileObject($entityClassName);
-        $useCaseListItemResponseTestCaseFileObject = $this->createUseCaseListItemResponseTestCaseFileObject(
-            $useCaseListItemResponseFileObject
-        );
-        $useCaseResponseFileObject = $this->createUseCaseResponseFileObject($useCaseListItemResponseFileObject);
-        $useCaseResponseTestCaseFileObject = $this->createUseCaseResponseTestCaseFileObject(
-            $useCaseListItemResponseFileObject
-        );
+    private function buildUseCaseListItemResponseTestCaseFileObject(
+        string $entityClassName,
+        array $wantedFields = []
+    ): FileObject {
+        $this->initFileObjectParameter($entityClassName);
+        $useCaseListItemResponseFileObject = $this->createUseCaseListItemResponseFileObject();
+        $useCaseListItemResponseTestCaseFileObject = $this->createUseCaseListItemResponseTestCaseFileObject();
+        $useCaseResponseFileObject = $this->createUseCaseResponseFileObject();
+        $useCaseResponseTestCaseFileObject = $this->createUseCaseResponseTestCaseFileObject();
 
         $useCaseListItemResponseFileObject->setMethods($this->getSelectedAccessors($entityClassName, $wantedFields));
 
@@ -64,47 +62,43 @@ class UseCaseListItemResponseTestCaseGenerator extends AbstractUseCaseGenerator
         return $useCaseListItemResponseTestCaseFileObject;
     }
 
-    private function createUseCaseListItemResponseFileObject(string $entityClassName): FileObject
+    private function createUseCaseListItemResponseFileObject(): FileObject
     {
-        [$baseNamespace, $domain, $entity] = FileObjectUtility::getBaseNamespaceDomainAndEntityNameFromClassName(
-            $entityClassName
-        );
-
         return $this->useCaseResponseFileObjectFactory->create(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE,
-            $domain,
-            $entity,
-            $baseNamespace
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
         );
     }
 
-    private function createUseCaseListItemResponseTestCaseFileObject(FileObject $fileObject): FileObject
+    private function createUseCaseListItemResponseTestCaseFileObject(): FileObject
     {
         return $this->useCaseResponseFileObjectFactory->create(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE_TEST_CASE,
-            $fileObject->getDomain(),
-            $fileObject->getEntity(),
-            $fileObject->getBaseNamespace()
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
         );
     }
 
-    private function createUseCaseResponseFileObject(FileObject $fileObject): FileObject
+    private function createUseCaseResponseFileObject(): FileObject
     {
         return $this->useCaseResponseFileObjectFactory->create(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE,
-            $fileObject->getDomain(),
-            $fileObject->getEntity(),
-            $fileObject->getBaseNamespace()
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
         );
     }
 
-    private function createUseCaseResponseTestCaseFileObject(FileObject $fileObject): FileObject
+    private function createUseCaseResponseTestCaseFileObject(): FileObject
     {
         return $this->useCaseResponseFileObjectFactory->create(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE_TEST_CASE,
-            $fileObject->getDomain(),
-            $fileObject->getEntity(),
-            $fileObject->getBaseNamespace()
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
         );
     }
 

@@ -5,6 +5,7 @@ namespace OpenClassrooms\CodeGenerator\Commands;
 use OpenClassrooms\CodeGenerator\Entities\FileObject;
 use OpenClassrooms\CodeGenerator\Mediators\Args;
 use OpenClassrooms\CodeGenerator\Mediators\Options;
+use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\Question;
@@ -120,14 +121,12 @@ trait CommandDisplayTrait
     /**
      * @param InputInterface  $input
      * @param OutputInterface $output
-     * @param                 $helper
      */
-    protected function checkInputClassNameArgument(InputInterface $input, OutputInterface $output, string $name): void
+    protected function checkInputClassNameArgument(InputInterface $input, OutputInterface $output): void
     {
         if (null === $input->getArgument(Args::CLASS_NAME)) {
             $helper = $this->getHelper('question');
             $classNameQuestion = new Question('Please enter className : ', 'DefaultClassName');
-
             $input->setArgument(Args::CLASS_NAME, $helper->ask($input, $output, $classNameQuestion));
         }
     }

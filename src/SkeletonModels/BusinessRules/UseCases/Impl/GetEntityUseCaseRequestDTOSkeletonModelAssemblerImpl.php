@@ -15,8 +15,7 @@ class GetEntityUseCaseRequestDTOSkeletonModelAssemblerImpl implements GetEntityU
         FileObject $entityFileObject,
         FileObject $getEntityUseCaseRequestDTOFileObject,
         FileObject $getEntityUseCaseRequestFileObject
-    ): GetEntityUseCaseRequestDTOSkeletonModel
-    {
+    ): GetEntityUseCaseRequestDTOSkeletonModel {
         $skeletonModel = new GetEntityUseCaseRequestDTOSkeletonModelImpl();
         $skeletonModel->namespace = $getEntityUseCaseRequestDTOFileObject->getNamespace();
         $skeletonModel->shortName = $getEntityUseCaseRequestDTOFileObject->getShortName();

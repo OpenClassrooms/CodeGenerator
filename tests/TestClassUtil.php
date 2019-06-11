@@ -46,6 +46,6 @@ class TestClassUtil
         $method = new \ReflectionMethod(get_class($object), $methodName);
         $method->setAccessible(true);
 
-        return null === $args ? $method->invoke($object) :  $method->invoke($object, $args);
+        return null === $args ? $method->invoke($object) : $method->invoke($object, $args);
     }
 }

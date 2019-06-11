@@ -22,9 +22,9 @@ class GetEntitiesUseCaseGeneratorRequestBuilderImpl implements GetEntitiesUseCas
         return $this;
     }
 
-    public function withEntityClassName(string $defaultValue): GetEntitiesUseCaseGeneratorRequestBuilder
+    public function withEntityClassName(string $entityClassName): GetEntitiesUseCaseGeneratorRequestBuilder
     {
-        $this->request->defaultValue = $defaultValue;
+        $this->request->entityClassName = $entityClassName;
 
         return $this;
     }

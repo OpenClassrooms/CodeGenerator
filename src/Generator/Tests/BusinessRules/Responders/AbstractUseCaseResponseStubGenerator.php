@@ -34,8 +34,7 @@ abstract class AbstractUseCaseResponseStubGenerator extends AbstractGenerator
 
     public function setUseCaseResponseFileObjectFactory(
         UseCaseResponseFileObjectFactory $useCaseDetailResponseFileObjectFactory
-    ): void
-    {
+    ): void {
         $this->useCaseResponseFileObjectFactory = $useCaseDetailResponseFileObjectFactory;
     }
 

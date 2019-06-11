@@ -69,8 +69,7 @@ class GenericUseCaseGenerator extends AbstractUseCaseGenerator
     private function generateContent(
         FileObject $genericUseCaseFileObject,
         FileObject $genericUseCaseRequestFileObject
-    ): string
-    {
+    ): string {
         $skeletonModel = $this->createSkeletonModel($genericUseCaseFileObject, $genericUseCaseRequestFileObject);
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
@@ -79,8 +78,7 @@ class GenericUseCaseGenerator extends AbstractUseCaseGenerator
     private function createSkeletonModel(
         FileObject $genericUseCaseFileObject,
         FileObject $genericUseCaseRequestFileObject
-    ): GenericUseCaseSkeletonModel
-    {
+    ): GenericUseCaseSkeletonModel {
         return $this->genericUseCaseSkeletonModelAssembler->create(
             $genericUseCaseFileObject,
             $genericUseCaseRequestFileObject
@@ -89,8 +87,7 @@ class GenericUseCaseGenerator extends AbstractUseCaseGenerator
 
     public function setGenericUseCaseSkeletonModelAssembler(
         GenericUseCaseSkeletonModelAssembler $genericUseCaseSkeletonModelAssembler
-    ): void
-    {
+    ): void {
         $this->genericUseCaseSkeletonModelAssembler = $genericUseCaseSkeletonModelAssembler;
     }
 }

@@ -10,7 +10,6 @@ use OpenClassrooms\CodeGenerator\Generator\App\Entity\Request\EntityImplGenerato
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\App\Entity\EntityImplSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\App\Entity\EntityImplSkeletonModelAssembler;
-use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
@@ -40,35 +39,32 @@ class EntityImplGenerator extends AbstractGenerator
 
     private function buildEntityImplFileObject(string $useCaseResponseClassName): FileObject
     {
-        $entityImplFileObject = $this->createEntityImplFileObject($useCaseResponseClassName);
-        $entityFileObject = $this->createEntityFileObject($entityImplFileObject);
+        $this->initFileObjectParameter($useCaseResponseClassName);
+        $entityImplFileObject = $this->createEntityImplFileObject();
+        $entityFileObject = $this->createEntityFileObject();
 
         $entityImplFileObject->setContent($this->generateContent($entityImplFileObject, $entityFileObject));
 
         return $entityImplFileObject;
     }
 
-    private function createEntityImplFileObject(string $useCaseResponseClassName): FileObject
+    private function createEntityImplFileObject(): FileObject
     {
-        [$baseNamespace, $domain, $entity] = FileObjectUtility::getBaseNamespaceDomainAndEntityNameFromClassName(
-            $useCaseResponseClassName
-        );
-
         return $this->entityFileObjectFactory->create(
             EntityFileObjectType::BUSINESS_RULES_ENTITY_IMPL,
-            $domain,
-            $entity,
-            $baseNamespace
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
         );
     }
 
-    private function createEntityFileObject(FileObject $entityImplFileObject): FileObject
+    private function createEntityFileObject(): FileObject
     {
         return $this->entityFileObjectFactory->create(
             EntityFileObjectType::BUSINESS_RULES_ENTITY,
-            $entityImplFileObject->getDomain(),
-            $entityImplFileObject->getEntity(),
-            $entityImplFileObject->getBaseNamespace()
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
         );
     }
 
@@ -82,8 +78,7 @@ class EntityImplGenerator extends AbstractGenerator
     private function createSkeletonModel(
         FileObject $entityImplFileObject,
         FileObject $entityFileObject
-    ): EntityImplSkeletonModel
-    {
+    ): EntityImplSkeletonModel {
         return $this->entityImplSkeletonModelAssembler->create($entityImplFileObject, $entityFileObject);
     }
 
@@ -94,8 +89,7 @@ class EntityImplGenerator extends AbstractGenerator
 
     public function setEntityImplSkeletonModelAssembler(
         EntityImplSkeletonModelAssembler $entityImplSkeletonModelAssembler
-    ): void
-    {
+    ): void {
         $this->entityImplSkeletonModelAssembler = $entityImplSkeletonModelAssembler;
     }
 }

@@ -15,17 +15,14 @@ class UseCaseListItemResponseDTOSkeletonModelAssemblerImpl implements UseCaseLis
         FileObject $useCaseListItemResponseDTOFileObject,
         FileObject $useCaseListItemResponseFileObject,
         FileObject $useCaseResponseDTOFileObject
-    ): UseCaseListItemResponseDTOSkeletonModel
-    {
+    ): UseCaseListItemResponseDTOSkeletonModel {
         $skeletonModel = new UseCaseListItemResponseDTOSkeletonModelImpl();
         $skeletonModel->namespace = $useCaseListItemResponseDTOFileObject->getNamespace();
         $skeletonModel->shortName = $useCaseListItemResponseDTOFileObject->getShortName();
         $skeletonModel->fields = $useCaseListItemResponseDTOFileObject->getFields();
         $skeletonModel->methods = $useCaseListItemResponseDTOFileObject->getMethods();
-        $skeletonModel->useCaseListItemResponseClassName = $useCaseListItemResponseFileObject->getClassName(
-        );
-        $skeletonModel->useCaseListItemResponseShortName = $useCaseListItemResponseFileObject->getShortName(
-        );
+        $skeletonModel->useCaseListItemResponseClassName = $useCaseListItemResponseFileObject->getClassName();
+        $skeletonModel->useCaseListItemResponseShortName = $useCaseListItemResponseFileObject->getShortName();
         $skeletonModel->useCaseResponseDTOShortName = $useCaseResponseDTOFileObject->getShortName();
 
         return $skeletonModel;

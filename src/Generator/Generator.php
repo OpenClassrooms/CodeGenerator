@@ -9,11 +9,11 @@ use OpenClassrooms\CodeGenerator\Entities\FileObject;
  */
 interface Generator
 {
+    const ADMIN = 'admin';
+
     const USE_CASE_GET = 'use case get';
 
     const USE_CASE_GET_ALL = 'use case get all';
-
-    const ADMIN = 'admin';
 
     public function generate(GeneratorRequest $generatorRequest): FileObject;
 }

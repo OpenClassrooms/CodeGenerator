@@ -11,7 +11,9 @@ interface GetEntitiesUseCaseTestSkeletonModelBuilder
 {
     public function create(): GetEntitiesUseCaseTestSkeletonModelBuilder;
 
-    public function withEntityClassNameFileObject(FileObject $entityFileObject): GetEntitiesUseCaseTestSkeletonModelBuilder;
+    public function withEntityClassNameFileObject(
+        FileObject $entityFileObject
+    ): GetEntitiesUseCaseTestSkeletonModelBuilder;
 
     public function withEntityClassNameGatewayFileObject(
         FileObject $entityGatewayFileObject
@@ -20,7 +22,9 @@ interface GetEntitiesUseCaseTestSkeletonModelBuilder
     /**
      * @param array FileObject[]
      */
-    public function withEntityClassNameStubFileObjects(array $entityStubFileObjects): GetEntitiesUseCaseTestSkeletonModelBuilder;
+    public function withEntityClassNameStubFileObjects(
+        array $entityStubFileObjects
+    ): GetEntitiesUseCaseTestSkeletonModelBuilder;
 
     public function withGetEntitiesUseCaseFileObject(
         FileObject $getEntitiesUseCaseFileObject

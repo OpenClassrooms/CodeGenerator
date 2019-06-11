@@ -14,8 +14,7 @@ class UseCaseDetailResponseSkeletonModelAssemblerImpl implements UseCaseDetailRe
     public function create(
         FileObject $useCaseResponseFileObject,
         FileObject $useCaseDetailResponseFileObject
-    ): UseCaseDetailResponseSkeletonModel
-    {
+    ): UseCaseDetailResponseSkeletonModel {
         $skeletonModel = new UseCaseDetailResponseSkeletonModelImpl();
         $skeletonModel->genericUseCaseDetailMethods = $useCaseDetailResponseFileObject->getMethods();
         $skeletonModel->useCaseResponseShortName = $useCaseResponseFileObject->getShortName();

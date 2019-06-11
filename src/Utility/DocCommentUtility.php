@@ -11,12 +11,11 @@ class DocCommentUtility
 
     public static function getReturnType($docComment)
     {
-        $type = self::getType($docComment);
-        if (preg_match('/\[]/', $type)) {
+        if (preg_match('/@return\s\w+\[]/', $docComment)) {
             return self::ARRAY_TYPE;
         }
 
-        return $type;
+        return self::getType($docComment);
     }
 
     public static function getType(string $docComment): string

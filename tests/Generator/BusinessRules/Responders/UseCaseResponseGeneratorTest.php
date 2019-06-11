@@ -23,14 +23,14 @@ class UseCaseResponseGeneratorTest extends TestCase
     use FileObjectTestCase;
 
     /**
-     * @var UseCaseResponseGenerator
-     */
-    private $useCaseResponseGenerator;
-
-    /**
      * @var UseCaseResponseGeneratorRequestBuilder
      */
     private $request;
+
+    /**
+     * @var UseCaseResponseGenerator
+     */
+    private $useCaseResponseGenerator;
 
     /**
      * @test
@@ -52,7 +52,7 @@ class UseCaseResponseGeneratorTest extends TestCase
         $this->request = $useCaseResponseGeneratorRequestBuilderImpl
             ->create()
             ->withEntityClassName(FunctionalEntity::class)
-            ->withFields(['field1','field2','id','field3'])
+            ->withFields(['field1', 'field2', 'id', 'field3'])
             ->build();
 
         $this->useCaseResponseGenerator = new UseCaseResponseGenerator();

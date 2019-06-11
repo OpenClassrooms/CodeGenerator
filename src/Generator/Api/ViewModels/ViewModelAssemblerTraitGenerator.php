@@ -10,7 +10,6 @@ use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\Request\ViewModelAssem
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModels\ViewModelAssemblerTraitSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModels\ViewModelAssemblerTraitSkeletonModelAssembler;
-use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
@@ -37,9 +36,10 @@ class ViewModelAssemblerTraitGenerator extends AbstractViewModelGenerator
 
     private function buildViewModelAssemblerTraitFileObject(string $useCaseResponseClassName): FileObject
     {
-        $useCaseResponseDTOFileObject = $this->createUseCaseResponseDTOFileObject($useCaseResponseClassName);
-        $useCaseResponseFileObject = $this->createUseCaseResponseObject($useCaseResponseDTOFileObject);
-        $viewModelAssemblerTraitFileObject = $this->createViewModelAssemblerTraitObject($useCaseResponseDTOFileObject);
+        $this->initFileObjectParameter($useCaseResponseClassName);
+        $useCaseResponseDTOFileObject = $this->createUseCaseResponseDTOFileObject();
+        $useCaseResponseFileObject = $this->createUseCaseResponseObject();
+        $viewModelAssemblerTraitFileObject = $this->createViewModelAssemblerTraitObject();
 
         $viewModelAssemblerTraitFileObject->setFields(
             $this->getPublicClassFields($useCaseResponseDTOFileObject->getClassName())
@@ -51,45 +51,40 @@ class ViewModelAssemblerTraitGenerator extends AbstractViewModelGenerator
         return $viewModelAssemblerTraitFileObject;
     }
 
-    private function createUseCaseResponseDTOFileObject(string $useCaseResponseClassName): FileObject
+    private function createUseCaseResponseDTOFileObject(): FileObject
     {
-        [$baseNamespace, $domain, $entity] = FileObjectUtility::getBaseNamespaceDomainAndEntityNameFromClassName(
-            $useCaseResponseClassName
-        );
-
         return $this->createUseCaseResponseFileObject(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE_DTO,
-            $domain,
-            $entity,
-            $baseNamespace
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
         );
     }
 
-    private function createUseCaseResponseObject(FileObject $useCaseResponseFileObject): FileObject
+    private function createUseCaseResponseObject(): FileObject
     {
         return $this->createUseCaseResponseFileObject(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE,
-            $useCaseResponseFileObject->getDomain(),
-            $useCaseResponseFileObject->getEntity(),
-            $useCaseResponseFileObject->getBaseNamespace()
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
         );
     }
 
-    private function createViewModelAssemblerTraitObject(FileObject $useCaseResponseFileObject): FileObject
+    private function createViewModelAssemblerTraitObject(): FileObject
     {
         return $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL_ASSEMBLER_TRAIT,
-            $useCaseResponseFileObject->getDomain(),
-            $useCaseResponseFileObject->getEntity(),
-            $useCaseResponseFileObject->getBaseNamespace()
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
         );
     }
 
     private function generateContent(
         FileObject $viewModelAssemblerTraitFileObject,
         FileObject $useCaseResponseFileObject
-    ): string
-    {
+    ): string {
         $skeletonModel = $this->createSkeletonModel($viewModelAssemblerTraitFileObject, $useCaseResponseFileObject);
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
@@ -98,8 +93,7 @@ class ViewModelAssemblerTraitGenerator extends AbstractViewModelGenerator
     private function createSkeletonModel(
         FileObject $viewModelAssemblerTraitFileObject,
         FileObject $useCaseResponseFileObject
-    ): ViewModelAssemblerTraitSkeletonModel
-    {
+    ): ViewModelAssemblerTraitSkeletonModel {
         return $this->viewModelAssemblerTraitSkeletonModelAssembler->create(
             $viewModelAssemblerTraitFileObject,
             $useCaseResponseFileObject
@@ -108,8 +102,7 @@ class ViewModelAssemblerTraitGenerator extends AbstractViewModelGenerator
 
     public function setViewModelAssemblerTraitSkeletonModelAssembler(
         ViewModelAssemblerTraitSkeletonModelAssembler $viewModelAssemblerTraitSkeletonModelAssembler
-    ): void
-    {
+    ): void {
         $this->viewModelAssemblerTraitSkeletonModelAssembler = $viewModelAssemblerTraitSkeletonModelAssembler;
     }
 }

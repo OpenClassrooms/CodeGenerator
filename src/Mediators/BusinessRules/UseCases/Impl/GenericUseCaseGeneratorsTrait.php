@@ -49,29 +49,25 @@ trait GenericUseCaseGeneratorsTrait
 
     public function setGenericUseCaseGeneratorRequestBuilder(
         GenericUseCaseGeneratorRequestBuilder $genericUseCaseGeneratorRequestBuilder
-    ): void
-    {
+    ): void {
         $this->genericUseCaseGeneratorRequestBuilder = $genericUseCaseGeneratorRequestBuilder;
     }
 
     public function setGenericUseCaseRequestBuilderImplGenerator(
         Generator $genericUseCaseRequestBuilderImplGenerator
-    ): void
-    {
+    ): void {
         $this->genericUseCaseRequestBuilderImplGenerator = $genericUseCaseRequestBuilderImplGenerator;
     }
 
     public function setGenericUseCaseRequestBuilderImplGeneratorRequestBuilder(
         GenericUseCaseRequestBuilderImplGeneratorRequestBuilder $genericUseCaseRequestBuilderImplGeneratorRequestBuilder
-    ): void
-    {
+    ): void {
         $this->genericUseCaseRequestBuilderImplGeneratorRequestBuilder = $genericUseCaseRequestBuilderImplGeneratorRequestBuilder;
     }
 
     public function setGenericUseCaseRequestDTOGenerator(
         Generator $genericUseCaseRequestDTOGenerator
-    ): void
-    {
+    ): void {
         $this->genericUseCaseRequestDTOGenerator = $genericUseCaseRequestDTOGenerator;
     }
 
@@ -82,15 +78,13 @@ trait GenericUseCaseGeneratorsTrait
 
     public function setGenericUseCaseTestGeneratorRequestBuilder(
         GenericUseCaseTestGeneratorRequestBuilder $genericUseCaseTestGeneratorRequestBuilder
-    ): void
-    {
+    ): void {
         $this->genericUseCaseTestGeneratorRequestBuilder = $genericUseCaseTestGeneratorRequestBuilder;
     }
 
     public function setGenericUseCaseRequestDTOGeneratorRequestBuilder(
         GenericUseCaseRequestDTOGeneratorRequestBuilder $genericUseCaseRequestDTOGeneratorRequestBuilder
-    ): void
-    {
+    ): void {
         $this->genericUseCaseRequestDTOGeneratorRequestBuilder = $genericUseCaseRequestDTOGeneratorRequestBuilder;
     }
 

@@ -9,16 +9,8 @@ use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Gateways\EntityGatewayG
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Gateways\EntityNotFoundExceptionGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Gateways\Request\EntityGatewayGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Gateways\Request\EntityNotFoundExceptionGeneratorRequestBuilder;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\GetEntityUseCaseRequestBuilderGenerator;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\GetEntityUseCaseRequestGenerator;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\Request\GetEntityUseCaseRequestBuilderGeneratorRequestBuilder;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\Request\GetEntityUseCaseRequestGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Responders\Request\UseCaseResponseGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Responders\UseCaseResponseGenerator;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\GetEntityUseCaseRequestBuilderImplGenerator;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\GetEntityUseCaseRequestDTOGenerator;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\GetEntityUseCaseRequestBuilderImplGeneratorRequestBuilder;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\GetEntityUseCaseRequestDTOGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\UseCaseResponseDTOGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\UseCaseResponseTraitGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\UseCaseResponseDTOGenerator;
@@ -51,30 +43,6 @@ trait CommonUseCaseGetGeneratorsTrait
 
     /** @var EntityRepositoryGeneratorRequestBuilder */
     private $entityRepositoryGeneratorRequestBuilder;
-
-    /** @var GetEntityUseCaseRequestBuilderGenerator */
-    private $getEntityUseCaseRequestBuilderGenerator;
-
-    /** @var GetEntityUseCaseRequestBuilderGeneratorRequestBuilder */
-    private $getEntityUseCaseRequestBuilderGeneratorRequestBuilder;
-
-    /** @var GetEntityUseCaseRequestBuilderImplGenerator */
-    private $getEntityUseCaseRequestBuilderImplGenerator;
-
-    /** @var GetEntityUseCaseRequestBuilderImplGeneratorRequestBuilder */
-    private $getEntityUseCaseRequestBuilderImplGeneratorRequestBuilder;
-
-    /** @var GetEntityUseCaseRequestDTOGenerator */
-    private $getEntityUseCaseRequestDTOGenerator;
-
-    /** @var GetEntityUseCaseRequestDTOGeneratorRequestBuilder */
-    private $getEntityUseCaseRequestDTOGeneratorRequestBuilder;
-
-    /** @var GetEntityUseCaseRequestGenerator */
-    private $getEntityUseCaseRequestGenerator;
-
-    /** @var GetEntityUseCaseRequestGeneratorRequestBuilder */
-    private $getEntityUseCaseRequestGeneratorRequestBuilder;
 
     /** @var InMemoryEntityGatewayGenerator */
     private $inMemoryEntityGatewayGenerator;
@@ -138,54 +106,6 @@ trait CommonUseCaseGetGeneratorsTrait
         EntityRepositoryGeneratorRequestBuilder $entityRepositoryGeneratorRequestBuilder
     ): void {
         $this->entityRepositoryGeneratorRequestBuilder = $entityRepositoryGeneratorRequestBuilder;
-    }
-
-    public function setGetEntityUseCaseRequestGenerator(
-        Generator $getEntityUseCaseRequestGenerator
-    ): void {
-        $this->getEntityUseCaseRequestGenerator = $getEntityUseCaseRequestGenerator;
-    }
-
-    public function setGetEntityUseCaseRequestGeneratorRequestBuilder(
-        GetEntityUseCaseRequestGeneratorRequestBuilder $getEntityUseCaseRequestGeneratorRequestBuilder
-    ): void {
-        $this->getEntityUseCaseRequestGeneratorRequestBuilder = $getEntityUseCaseRequestGeneratorRequestBuilder;
-    }
-
-    public function setGetEntityUseCaseRequestBuilderGenerator(
-        Generator $getEntityUseCaseRequestBuilderGenerator
-    ): void {
-        $this->getEntityUseCaseRequestBuilderGenerator = $getEntityUseCaseRequestBuilderGenerator;
-    }
-
-    public function setGetEntityUseCaseRequestBuilderGeneratorRequestBuilder(
-        GetEntityUseCaseRequestBuilderGeneratorRequestBuilder $getEntityUseCaseRequestBuilderGeneratorRequestBuilder
-    ): void {
-        $this->getEntityUseCaseRequestBuilderGeneratorRequestBuilder = $getEntityUseCaseRequestBuilderGeneratorRequestBuilder;
-    }
-
-    public function setGetEntityUseCaseRequestBuilderImplGenerator(
-        Generator $getEntityUseCaseRequestBuilderImplGenerator
-    ): void {
-        $this->getEntityUseCaseRequestBuilderImplGenerator = $getEntityUseCaseRequestBuilderImplGenerator;
-    }
-
-    public function setGetEntityUseCaseRequestBuilderImplGeneratorRequestBuilder(
-        GetEntityUseCaseRequestBuilderImplGeneratorRequestBuilder $getEntityUseCaseRequestBuilderImplGeneratorRequestBuilder
-    ): void {
-        $this->getEntityUseCaseRequestBuilderImplGeneratorRequestBuilder = $getEntityUseCaseRequestBuilderImplGeneratorRequestBuilder;
-    }
-
-    public function setGetEntityUseCaseRequestDTOGenerator(
-        Generator $getEntityUseCaseRequestDTOGenerator
-    ): void {
-        $this->getEntityUseCaseRequestDTOGenerator = $getEntityUseCaseRequestDTOGenerator;
-    }
-
-    public function setGetEntityUseCaseRequestDTOGeneratorRequestBuilder(
-        GetEntityUseCaseRequestDTOGeneratorRequestBuilder $getEntityUseCaseRequestDTOGeneratorRequestBuilder
-    ): void {
-        $this->getEntityUseCaseRequestDTOGeneratorRequestBuilder = $getEntityUseCaseRequestDTOGeneratorRequestBuilder;
     }
 
     public function setInMemoryEntityGatewayGenerator(Generator $inMemoryEntityGatewayGenerator): void
@@ -270,46 +190,6 @@ trait CommonUseCaseGetGeneratorsTrait
     {
         return $this->entityRepositoryGenerator->generate(
             $this->entityRepositoryGeneratorRequestBuilder
-                ->create()
-                ->withEntityClassName($className)
-                ->build()
-        );
-    }
-
-    protected function generateGetEntityUseCaseRequestGenerator(string $className): FileObject
-    {
-        return $this->getEntityUseCaseRequestGenerator->generate(
-            $this->getEntityUseCaseRequestGeneratorRequestBuilder
-                ->create()
-                ->withEntityClassName($className)
-                ->build()
-        );
-    }
-
-    protected function generateGetEntityUseCaseRequestBuilderGenerator(string $className): FileObject
-    {
-        return $this->getEntityUseCaseRequestBuilderGenerator->generate(
-            $this->getEntityUseCaseRequestBuilderGeneratorRequestBuilder
-                ->create()
-                ->withEntityClassName($className)
-                ->build()
-        );
-    }
-
-    protected function generateGetEntityUseCaseRequestBuilderImplGenerator(string $className): FileObject
-    {
-        return $this->getEntityUseCaseRequestBuilderImplGenerator->generate(
-            $this->getEntityUseCaseRequestBuilderImplGeneratorRequestBuilder
-                ->create()
-                ->withEntityClassName($className)
-                ->build()
-        );
-    }
-
-    protected function generateGetEntityUseCaseRequestDTOGenerator(string $className): FileObject
-    {
-        return $this->getEntityUseCaseRequestDTOGenerator->generate(
-            $this->getEntityUseCaseRequestDTOGeneratorRequestBuilder
                 ->create()
                 ->withEntityClassName($className)
                 ->build()

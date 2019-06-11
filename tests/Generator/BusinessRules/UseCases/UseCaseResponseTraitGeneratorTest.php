@@ -23,14 +23,14 @@ class UseCaseResponseTraitGeneratorTest extends TestCase
     use FileObjectTestCase;
 
     /**
-     * @var UseCaseResponseTraitGenerator
-     */
-    private $useCaseResponseTraitGenerator;
-
-    /**
      * @var UseCaseResponseTraitGeneratorRequestBuilder
      */
     private $request;
+
+    /**
+     * @var UseCaseResponseTraitGenerator
+     */
+    private $useCaseResponseTraitGenerator;
 
     /**
      * @test
@@ -48,8 +48,7 @@ class UseCaseResponseTraitGeneratorTest extends TestCase
 
     protected function setUp()
     {
-        $useCaseResponseTraitGeneratorRequestBuilderImpl = new UseCaseResponseTraitGeneratorRequestBuilderImpl(
-        );
+        $useCaseResponseTraitGeneratorRequestBuilderImpl = new UseCaseResponseTraitGeneratorRequestBuilderImpl();
         $this->request = $useCaseResponseTraitGeneratorRequestBuilderImpl
             ->create()
             ->withEntityClassName(FunctionalEntity::class)

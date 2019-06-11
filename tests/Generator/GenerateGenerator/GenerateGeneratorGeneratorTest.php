@@ -10,7 +10,7 @@ use OpenClassrooms\CodeGenerator\Generator\GenerateGenerator\Request\GenerateGen
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\FileObjectTestCase;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\GenerateGenerator\GenerateGeneratorFileObjectsStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\GenerateGenerator\GenerateGeneratorFileObjectsStub2;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\GenerateGeneratorObjectFactoryMock;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\GenerateGeneratorFileObjectFactoryMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingServiceMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\SkeletonModels\GenerateGenerator\GenerateGeneratorGeneratorSkeletonModelAssemblerMock;
@@ -49,8 +49,7 @@ class GenerateGeneratorGeneratorTest extends TestCase
     protected function assertGeneratorFiles(
         $expectedFileObjects,
         array $actualFileObjects
-    ): void
-    {
+    ): void {
         $this->assertCount(count($expectedFileObjects::$fileObjects), $actualFileObjects);
         foreach ($expectedFileObjects::$fileObjects as $key => $fileObject) {
             [$actual, $valueKey] = $this->extractFileObject($fileObject->getClassName(), $actualFileObjects);
@@ -103,7 +102,7 @@ class GenerateGeneratorGeneratorTest extends TestCase
             new GenerateGeneratorGeneratorSkeletonModelAssemblerMock()
         );
         $this->selfGeneratorGenerator->setFactory(
-            new GenerateGeneratorObjectFactoryMock()
+            new GenerateGeneratorFileObjectFactoryMock()
         );
         $this->selfGeneratorGenerator->setFileObjectGateway(new InMemoryFileObjectGateway());
         $this->selfGeneratorGenerator->setTemplating(new TemplatingServiceMock());

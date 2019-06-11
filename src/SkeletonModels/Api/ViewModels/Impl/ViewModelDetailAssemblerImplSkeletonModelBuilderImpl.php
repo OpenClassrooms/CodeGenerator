@@ -25,8 +25,7 @@ class ViewModelDetailAssemblerImplSkeletonModelBuilderImpl implements ViewModelD
 
     public function withUseCaseDetailResponse(
         FileObject $useCaseDetailResponse
-    ): ViewModelDetailAssemblerImplSkeletonModelBuilder
-    {
+    ): ViewModelDetailAssemblerImplSkeletonModelBuilder {
         $this->skeletonModel->useCaseDetailResponseClassName = $useCaseDetailResponse->getClassName();
         $this->skeletonModel->useCaseDetailResponseShortName = $useCaseDetailResponse->getShortName();
         $this->skeletonModel->useCaseDetailResponseArgument = lcfirst($useCaseDetailResponse->getShortName());
@@ -36,8 +35,7 @@ class ViewModelDetailAssemblerImplSkeletonModelBuilderImpl implements ViewModelD
 
     public function withViewModelDetail(
         FileObject $viewModelDetail
-    ): ViewModelDetailAssemblerImplSkeletonModelBuilder
-    {
+    ): ViewModelDetailAssemblerImplSkeletonModelBuilder {
         $this->skeletonModel->viewModelDetailClassName = $viewModelDetail->getClassName();
         $this->skeletonModel->viewModelDetailShortName = $viewModelDetail->getShortName();
 
@@ -46,8 +44,7 @@ class ViewModelDetailAssemblerImplSkeletonModelBuilderImpl implements ViewModelD
 
     public function withViewModelDetailImpl(
         FileObject $viewModelDetailImpl
-    ): ViewModelDetailAssemblerImplSkeletonModelBuilder
-    {
+    ): ViewModelDetailAssemblerImplSkeletonModelBuilder {
         $this->skeletonModel->viewModelDetailImplShortName = $viewModelDetailImpl->getShortName();
 
         return $this;
@@ -55,8 +52,7 @@ class ViewModelDetailAssemblerImplSkeletonModelBuilderImpl implements ViewModelD
 
     public function withViewModelAssemblerTrait(
         FileObject $viewModelAssemblerTrait
-    ): ViewModelDetailAssemblerImplSkeletonModelBuilder
-    {
+    ): ViewModelDetailAssemblerImplSkeletonModelBuilder {
         $this->skeletonModel->viewModelAssemblerTraitClassName = $viewModelAssemblerTrait->getClassName();
         $this->skeletonModel->viewModelAssemblerTraitShortName = $viewModelAssemblerTrait->getShortName();
 
@@ -65,8 +61,7 @@ class ViewModelDetailAssemblerImplSkeletonModelBuilderImpl implements ViewModelD
 
     public function withViewModelDetailAssembler(
         FileObject $viewModelDetailAssembler
-    ): ViewModelDetailAssemblerImplSkeletonModelBuilder
-    {
+    ): ViewModelDetailAssemblerImplSkeletonModelBuilder {
         $this->skeletonModel->viewModelDetailAssemblerClassName = $viewModelDetailAssembler->getClassName();
         $this->skeletonModel->viewModelDetailAssemblerShortName = $viewModelDetailAssembler->getShortName();
 
@@ -75,8 +70,7 @@ class ViewModelDetailAssemblerImplSkeletonModelBuilderImpl implements ViewModelD
 
     public function withViewModelDetailAssemblerImpl(
         FileObject $viewModelDetailAssemblerImpl
-    ): ViewModelDetailAssemblerImplSkeletonModelBuilder
-    {
+    ): ViewModelDetailAssemblerImplSkeletonModelBuilder {
         $this->skeletonModel->className = $viewModelDetailAssemblerImpl->getClassName();
         $this->skeletonModel->namespace = $viewModelDetailAssemblerImpl->getNamespace();
         $this->skeletonModel->shortName = $viewModelDetailAssemblerImpl->getShortName();

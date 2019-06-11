@@ -25,7 +25,6 @@ class ParameterHandler
     {
         static::initProcessor($event);
         if (self::CODE_GENERATOR !== $event->getComposer()->getPackage()->getName()) {
-
             static::buildParameters();
         }
     }
@@ -37,9 +36,11 @@ class ParameterHandler
 
     private static function buildParameters(): void
     {
-        static::$processor->processFile([
-            'file'      => self::OC_CODE_GENERATOR_YML,
-            'dist-file' => self::OC_CODE_GENERATOR_YML_DIST,
-        ]);
+        static::$processor->processFile(
+            [
+                'file'      => self::OC_CODE_GENERATOR_YML,
+                'dist-file' => self::OC_CODE_GENERATOR_YML_DIST,
+            ]
+        );
     }
 }

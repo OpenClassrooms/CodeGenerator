@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Generator;
 
@@ -7,5 +7,4 @@ namespace Generator;
  */
 interface GeneratorResponse
 {
-
 }

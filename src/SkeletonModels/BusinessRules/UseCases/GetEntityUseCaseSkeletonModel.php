@@ -33,11 +33,11 @@ abstract class GetEntityUseCaseSkeletonModel extends AbstractSkeletonModel
 
     public $functionalEntityShortName;
 
+    public $getEntityUseCaseRequestAccessor;
+
     public $getEntityUseCaseRequestArgument;
 
     public $getEntityUseCaseRequestClassName;
-
-    public $getEntityUseCaseRequestAccessor;
 
     public $getEntityUseCaseRequestShortName;
 

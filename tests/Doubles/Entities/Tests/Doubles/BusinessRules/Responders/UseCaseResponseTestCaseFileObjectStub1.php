@@ -15,6 +15,6 @@ class UseCaseResponseTestCaseFileObjectStub1 extends FileObject
     {
         $this->content = __DIR__ . '/../../../../../../Fixtures/Classes/Tests/Doubles/BusinessRules/Responders/Domain/SubDomain/FunctionalEntityResponseTestCase.php';
         $this->className = self::CLASS_NAME;
-        $this->fields = [];
+
     }
 }

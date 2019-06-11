@@ -22,9 +22,9 @@ class {{ skeletonModel.entity }}GeneratorRequestBuilderImpl implements {{ skelet
         return $this;
     }
 
-    public function withDefaultValue(string $defaultValue): {{ skeletonModel.entity }}GeneratorRequestBuilder
+    public function withEntityClassName(string $entityClassName): {{ skeletonModel.entity }}GeneratorRequestBuilder
     {
-        $this->request->defaultValue = $defaultValue;
+        $this->request->entityClassName = $entityClassName;
 
         return $this;
     }

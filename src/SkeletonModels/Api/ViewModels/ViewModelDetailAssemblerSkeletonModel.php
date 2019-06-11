@@ -11,11 +11,11 @@ abstract class ViewModelDetailAssemblerSkeletonModel extends AbstractSkeletonMod
 {
     public $templatePath = 'Api/ViewModels/ViewModelDetailAssembler.php.twig';
 
+    public $useCaseDetailResponseArgument;
+
     public $useCaseDetailResponseClassName;
 
     public $useCaseDetailResponseShortName;
-
-    public $useCaseDetailResponseArgument;
 
     public $viewModelDetailShortName;
 }

@@ -13,7 +13,7 @@ interface CustomGeneratorRequestBuilder extends GeneratorRequest
 
     public function create(): CustomGeneratorRequestBuilder;
 
-    public function withDefaultValue(
-        string $defaultValue
+    public function withEntityClassName(
+        string $entityClassName
     ): CustomGeneratorRequestBuilder;
 }

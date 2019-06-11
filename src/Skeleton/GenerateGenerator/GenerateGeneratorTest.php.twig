@@ -48,7 +48,7 @@ class {{ skeletonModel.entity }}GeneratorTest extends TestCase
         ${{ skeletonModel.argument }}GeneratorRequestBuilderImpl = new {{ skeletonModel.entity }}GeneratorRequestBuilderImpl();
         $this->request = ${{ skeletonModel.argument }}GeneratorRequestBuilderImpl
             ->create()
-            ->withDefaultValue('')
+            ->withEntityClassName('')
             ->build();
 
         $this->{{ skeletonModel.argument }}Generator = new {{ skeletonModel.entity }}Generator();

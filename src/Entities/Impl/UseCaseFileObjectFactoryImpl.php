@@ -36,11 +36,15 @@ class UseCaseFileObjectFactoryImpl extends AbstractFileObjectFactory implements 
                 );
             case UseCaseFileObjectType::BUSINESS_RULES_GET_ENTITIES_USE_CASE:
                 return new FileObject(
-                    $this->baseNamespace . 'BusinessRules\UseCases\\' . $domain . '\\Get' . StringUtility::pluralize($entity)
+                    $this->baseNamespace . 'BusinessRules\UseCases\\' . $domain . '\\Get' . StringUtility::pluralize(
+                        $entity
+                    )
                 );
             case UseCaseFileObjectType::BUSINESS_RULES_GET_ENTITIES_USE_CASE_TEST:
                 return new FileObject(
-                    $this->testsBaseNamespace . 'BusinessRules\UseCases\\' . $domain . '\\Get' . StringUtility::pluralize($entity) . 'Test'
+                    $this->testsBaseNamespace . 'BusinessRules\UseCases\\' . $domain . '\\Get' . StringUtility::pluralize(
+                        $entity
+                    ) . 'Test'
                 );
 
             default:

@@ -12,10 +12,10 @@ class GetEntitiesUseCaseTestGeneratorRequestDTO implements GetEntitiesUseCaseTes
     /**
      * @var string
      */
-    public $defaultValue;
+    public $entityClassName;
 
     public function getEntityClassName(): string
     {
-        return $this->defaultValue;
+        return $this->entityClassName;
     }
 }

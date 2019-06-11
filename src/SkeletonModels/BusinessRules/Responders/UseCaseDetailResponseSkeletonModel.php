@@ -11,7 +11,7 @@ abstract class UseCaseDetailResponseSkeletonModel extends AbstractSkeletonModel
 {
     public $genericUseCaseDetailMethods;
 
-    public $useCaseResponseShortName;
-
     public $templatePath = 'BusinessRules/Responders/UseCaseDetailResponse.php.twig';
+
+    public $useCaseResponseShortName;
 }

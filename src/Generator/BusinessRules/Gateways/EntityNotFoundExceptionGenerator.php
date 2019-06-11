@@ -9,7 +9,6 @@ use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Gateways\Request\Entity
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Gateways\EntityNotFoundExceptionSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Gateways\EntityNotFoundExceptionSkeletonModelAssembler;
-use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
@@ -37,7 +36,8 @@ class EntityNotFoundExceptionGenerator extends AbstractUseCaseGenerator
 
     private function buildEntityNotFoundExceptionFileObject(string $entityClassName): FileObject
     {
-        $entityNotFoundExceptionFileObject = $this->createEntityNotFoundExceptionFileObject($entityClassName);
+        $this->initFileObjectParameter($entityClassName);
+        $entityNotFoundExceptionFileObject = $this->createEntityNotFoundExceptionFileObject();
 
         $entityNotFoundExceptionFileObject->setContent(
             $this->generateContent($entityNotFoundExceptionFileObject)
@@ -46,36 +46,33 @@ class EntityNotFoundExceptionGenerator extends AbstractUseCaseGenerator
         return $entityNotFoundExceptionFileObject;
     }
 
-    private function createEntityNotFoundExceptionFileObject(string $entityClassName): FileObject
+    private function createEntityNotFoundExceptionFileObject(): FileObject
     {
-        [$baseNamespace, $domain, $entity] = FileObjectUtility::getBaseNamespaceDomainAndEntityNameFromClassName(
-            $entityClassName
-        );
-
         return $this->entityFileObjectFactory->create(
             EntityFileObjectType::BUSINESS_RULES_ENTITY_NOT_FOUND_EXCEPTION,
-            $domain,
-            $entity,
-            $baseNamespace
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
         );
     }
 
-    private function generateContent(FileObject $entityNotFoundExceptionFileObject): string
-    {
+    private function generateContent(
+        FileObject $entityNotFoundExceptionFileObject
+    ): string {
         $skeletonModel = $this->createSkeletonModel($entityNotFoundExceptionFileObject);
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
     }
 
-    private function createSkeletonModel($entityNotFoundExceptionFileObject): EntityNotFoundExceptionSkeletonModel
-    {
+    private function createSkeletonModel(
+        $entityNotFoundExceptionFileObject
+    ): EntityNotFoundExceptionSkeletonModel {
         return $this->entityNotFoundExceptionSkeletonModelAssembler->create($entityNotFoundExceptionFileObject);
     }
 
     public function setEntityNotFoundExceptionSkeletonModelAssembler(
         EntityNotFoundExceptionSkeletonModelAssembler $entityNotFoundExceptionSkeletonModelAssembler
-    ): void
-    {
+    ): void {
         $this->entityNotFoundExceptionSkeletonModelAssembler = $entityNotFoundExceptionSkeletonModelAssembler;
     }
 }

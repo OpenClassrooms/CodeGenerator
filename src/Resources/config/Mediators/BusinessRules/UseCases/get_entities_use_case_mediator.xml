@@ -2,17 +2,17 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
         <service
-                id="open_classrooms.code_generator.generator.business_rules.requestors.dto.request.get_entity_use_case_request_generator_request_builder"
-                class="OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\DTO\Request\GetEntityUseCaseRequestGeneratorRequestBuilderImpl"/>
+                id="open_classrooms.code_generator.generator.business_rules.requestors.dto.request.get_entities_use_case_request_generator_request_builder"
+                class="OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\DTO\Request\GetEntitiesUseCaseRequestGeneratorRequestBuilderImpl"/>
         <service
-                id="open_classrooms.code_generator.generator.business_rules.requestors.dto.request.get_entity_use_case_request_builder_generator_request_builder"
-                class="OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\DTO\Request\GetEntityUseCaseRequestBuilderGeneratorRequestBuilderImpl"/>
+                id="open_classrooms.code_generator.generator.business_rules.requestors.dto.request.get_entities_use_case_request_builder_generator_request_builder"
+                class="OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\DTO\Request\GetEntitiesUseCaseRequestBuilderGeneratorRequestBuilderImpl"/>
         <service
-                id="open_classrooms.code_generator.generator.business_rules.use_cases.dto.request.get_entity_use_case_request_builder_impl_generator_request_builder"
-                class="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\GetEntityUseCaseRequestBuilderImplGeneratorRequestBuilderImpl"/>
+                id="open_classrooms.code_generator.generator.business_rules.use_cases.dto.request.get_entities_use_case_request_builder_impl_generator_request_builder"
+                class="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\GetEntitiesUseCaseRequestBuilderImplGeneratorRequestBuilderImpl"/>
         <service
-                id="open_classrooms.code_generator.generator.business_rules.use_cases.dto.request.get_entity_use_case_request_dto_generator_request_builder"
-                class="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\GetEntityUseCaseRequestDTOGeneratorRequestBuilderImpl"/>
+                id="open_classrooms.code_generator.generator.business_rules.use_cases.dto.request.get_entities_use_case_request_dto_generator_request_builder"
+                class="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\GetEntitiesUseCaseRequestDTOGeneratorRequestBuilderImpl"/>
         <service
                 id="open_classrooms.code_generator.generator.business_rules.use_cases.dto.request.use_case_response_dto_generator_request_builder"
                 class="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\UseCaseResponseDTOGeneratorRequestBuilderImpl"/>
@@ -67,41 +67,41 @@
 
         <service id="open_classrooms.code_generator.mediators.business_rules.use_cases.get_entities_use_case_mediator"
                  class="OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\Impl\GetEntitiesUseCaseMediatorImpl">
-            <call method="setGetEntityUseCaseRequestGenerator">
+            <call method="setGetEntitiesUseCaseRequestGenerator">
                 <argument type="service"
-                          id="open_classrooms.code_generator.generator.business_rules.requestors.get_entity_use_case_request_generator"/>
+                          id="open_classrooms.code_generator.generator.business_rules.requestors.get_entities_use_case_request_generator"/>
             </call>
-            <call method="setGetEntityUseCaseRequestBuilderGenerator">
+            <call method="setGetEntitiesUseCaseRequestBuilderGenerator">
                 <argument type="service"
-                          id="open_classrooms.code_generator.generator.business_rules.requestors.get_entity_use_case_request_builder_generator"/>
+                          id="open_classrooms.code_generator.generator.business_rules.requestors.get_entities_use_case_request_builder_generator"/>
             </call>
-            <call method="setGetEntityUseCaseRequestGeneratorRequestBuilder">
+            <call method="setGetEntitiesUseCaseRequestGeneratorRequestBuilder">
                 <argument type="service"
-                          id="open_classrooms.code_generator.generator.business_rules.requestors.dto.request.get_entity_use_case_request_generator_request_builder"/>
+                          id="open_classrooms.code_generator.generator.business_rules.requestors.dto.request.get_entities_use_case_request_generator_request_builder"/>
             </call>
-            <call method="setGetEntityUseCaseRequestBuilderImplGenerator">
+            <call method="setGetEntitiesUseCaseRequestBuilderImplGenerator">
                 <argument type="service"
-                          id="open_classrooms.code_generator.generator.business_rules.use_cases.get_entity_use_case_request_builder_impl_generator"/>
+                          id="open_classrooms.code_generator.generator.business_rules.use_cases.get_entities_use_case_request_builder_impl_generator"/>
             </call>
-            <call method="setGetEntityUseCaseRequestBuilderGeneratorRequestBuilder">
+            <call method="setGetEntitiesUseCaseRequestBuilderGeneratorRequestBuilder">
                 <argument type="service"
-                          id="open_classrooms.code_generator.generator.business_rules.requestors.dto.request.get_entity_use_case_request_builder_generator_request_builder"/>
+                          id="open_classrooms.code_generator.generator.business_rules.requestors.dto.request.get_entities_use_case_request_builder_generator_request_builder"/>
             </call>
-            <call method="setGetEntityUseCaseRequestDTOGenerator">
+            <call method="setGetEntitiesUseCaseRequestDTOGenerator">
                 <argument type="service"
-                          id="open_classrooms.code_generator.generator.business_rules.use_cases.get_entity_use_case_request_dto_generator"/>
+                          id="open_classrooms.code_generator.generator.business_rules.use_cases.get_entities_use_case_request_dto_generator"/>
             </call>
-            <call method="setGetEntityUseCaseRequestBuilderImplGeneratorRequestBuilder">
+            <call method="setGetEntitiesUseCaseRequestBuilderImplGeneratorRequestBuilder">
                 <argument type="service"
-                          id="open_classrooms.code_generator.generator.business_rules.use_cases.dto.request.get_entity_use_case_request_builder_impl_generator_request_builder"/>
+                          id="open_classrooms.code_generator.generator.business_rules.use_cases.dto.request.get_entities_use_case_request_builder_impl_generator_request_builder"/>
             </call>
             <call method="setUseCaseResponseDTOGenerator">
                 <argument type="service"
                           id="open_classrooms.code_generator.generator.business_rules.use_cases.use_case_response_dto_generator"/>
             </call>
-            <call method="setGetEntityUseCaseRequestDTOGeneratorRequestBuilder">
+            <call method="setGetEntitiesUseCaseRequestDTOGeneratorRequestBuilder">
                 <argument type="service"
-                          id="open_classrooms.code_generator.generator.business_rules.use_cases.dto.request.get_entity_use_case_request_dto_generator_request_builder"/>
+                          id="open_classrooms.code_generator.generator.business_rules.use_cases.dto.request.get_entities_use_case_request_dto_generator_request_builder"/>
             </call>
             <call method="setUseCaseResponseTraitGenerator">
                 <argument type="service"
@@ -137,7 +137,7 @@
             </call>
             <call method="setGetEntitiesUseCaseGenerator">
                 <argument type="service"
-                          id="open_classrooms.code_generator.generator.business_rules.use_cases.get_entity_use_case_generator"/>
+                          id="open_classrooms.code_generator.generator.business_rules.use_cases.get_entities_use_case_generator"/>
             </call>
             <call method="setUseCaseListItemResponseGeneratorRequestBuilder">
                 <argument type="service"

@@ -10,7 +10,6 @@ use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\Request\ViewModelGener
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModels\ViewModelSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModels\ViewModelSkeletonModelAssembler;
-use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
@@ -35,8 +34,9 @@ class ViewModelGenerator extends AbstractViewModelGenerator
 
     private function buildViewModelFileObject(string $useCaseResponseClassName): FileObject
     {
-        $useCaseResponseDTOFileObject = $this->createUseCaseResponseDTOFileObject($useCaseResponseClassName);
-        $viewModelFileObject = $this->createViewModelObject($useCaseResponseDTOFileObject);
+        $this->initFileObjectParameter($useCaseResponseClassName);
+        $useCaseResponseDTOFileObject = $this->createUseCaseResponseDTOFileObject();
+        $viewModelFileObject = $this->createViewModelObject();
 
         $viewModelFileObject->setFields($this->getPublicClassFields($useCaseResponseDTOFileObject->getClassName()));
         $viewModelFileObject->setContent($this->generateContent($viewModelFileObject));
@@ -44,25 +44,23 @@ class ViewModelGenerator extends AbstractViewModelGenerator
         return $viewModelFileObject;
     }
 
-    private function createUseCaseResponseDTOFileObject(string $useCaseResponseClassName): FileObject
+    private function createUseCaseResponseDTOFileObject(): FileObject
     {
-        [$baseNamespace, $domain, $entity] = FileObjectUtility::getBaseNamespaceDomainAndEntityNameFromClassName($useCaseResponseClassName);
-
         return $this->createUseCaseResponseFileObject(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE_DTO,
-            $domain,
-            $entity,
-            $baseNamespace
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
         );
     }
 
-    private function createViewModelObject(FileObject $useCaseResponseDTOFileObject): FileObject
+    private function createViewModelObject(): FileObject
     {
         return $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL,
-            $useCaseResponseDTOFileObject->getDomain(),
-            $useCaseResponseDTOFileObject->getEntity(),
-            $useCaseResponseDTOFileObject->getBaseNamespace()
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
         );
     }
 
@@ -80,8 +78,7 @@ class ViewModelGenerator extends AbstractViewModelGenerator
 
     public function setViewModelSkeletonModelAssembler(
         ViewModelSkeletonModelAssembler $viewModelSkeletonModelAssembler
-    ): void
-    {
+    ): void {
         $this->viewModelSkeletonModelAssembler = $viewModelSkeletonModelAssembler;
     }
 }

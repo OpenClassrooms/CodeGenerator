@@ -8,7 +8,7 @@ use OpenClassrooms\CodeGenerator\Tests\Fixtures\FixturesConfig;
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
-class GenerateGeneratorObjectFactoryMock extends GenerateGeneratorFileObjectFactoryImpl
+class GenerateGeneratorFileObjectFactoryMock extends GenerateGeneratorFileObjectFactoryImpl
 {
     public function __construct()
     {

@@ -110,8 +110,7 @@ class GenericUseCaseRequestBuilderImplGenerator extends AbstractUseCaseGenerator
         FileObject $genericUseCaseRequestBuilderFileObject,
         FileObject $genericUseCaseRequestFileObject,
         FileObject $genericUseCaseRequestDTOFileObject
-    ): string
-    {
+    ): string {
         $skeletonModel = $this->createSkeletonModel(
             $genericUseCaseRequestBuilderImplFileObject,
             $genericUseCaseRequestBuilderFileObject,
@@ -127,8 +126,7 @@ class GenericUseCaseRequestBuilderImplGenerator extends AbstractUseCaseGenerator
         FileObject $genericUseCaseRequestBuilderFileObject,
         FileObject $genericUseCaseRequestFileObject,
         FileObject $genericUseCaseRequestDTOFileObject
-    ): GenericUseCaseRequestBuilderImplSkeletonModel
-    {
+    ): GenericUseCaseRequestBuilderImplSkeletonModel {
         return $this->genericUseCaseRequestBuilderImplSkeletonModelAssembler->create(
             $genericUseCaseRequestBuilderImplFileObject,
             $genericUseCaseRequestBuilderFileObject,
@@ -139,8 +137,7 @@ class GenericUseCaseRequestBuilderImplGenerator extends AbstractUseCaseGenerator
 
     public function setGenericUseCaseRequestBuilderImplSkeletonModelAssembler(
         GenericUseCaseRequestBuilderImplSkeletonModelAssembler $genericUseCaseRequestBuilderImplSkeletonModelAssembler
-    ): void
-    {
+    ): void {
         $this->genericUseCaseRequestBuilderImplSkeletonModelAssembler = $genericUseCaseRequestBuilderImplSkeletonModelAssembler;
     }
 }

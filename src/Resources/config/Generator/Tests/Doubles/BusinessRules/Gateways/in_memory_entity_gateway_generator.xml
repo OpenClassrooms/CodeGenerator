@@ -16,7 +16,8 @@
                 <argument type="service" id="open_classrooms.code_generator.file_objects.entity_file_object_factory"/>
             </call>
             <call method="setInMemoryEntityGatewaySkeletonModelAssembler">
-                <argument type="service" id="open_classrooms.code_generator.skeleton_models.tests.doubles.business_rules.gateways.in_memory_entity_gateway_skeleton_model_assembler"/>
+                <argument type="service"
+                          id="open_classrooms.code_generator.skeleton_models.tests.doubles.business_rules.gateways.in_memory_entity_gateway_skeleton_model_assembler"/>
             </call>
         </service>
 

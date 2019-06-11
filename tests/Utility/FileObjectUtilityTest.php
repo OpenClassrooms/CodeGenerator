@@ -30,8 +30,7 @@ class FileObjectUtilityTest extends TestCase
         $expectedBaseNamespace,
         $expectedDomain,
         $expectedEntity
-    )
-    {
+    ) {
         [
             $actualBaseNamespace,
             $actualDomain,

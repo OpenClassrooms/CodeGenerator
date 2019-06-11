@@ -25,7 +25,7 @@ class CustomGenerator extends AbstractGenerator
     public function generate(GeneratorRequest $generatorRequest): FileObject
     {
         $customFileObject = $this->buildCustomFileObject(
-            $generatorRequest->getDefaultValue()
+            $generatorRequest->getEntityClassName()
         //TODO get UseCaseRequest param(s)
         );
 
@@ -34,8 +34,9 @@ class CustomGenerator extends AbstractGenerator
         return $customFileObject;
     }
 
-    private function buildCustomFileObject(): FileObject
+    private function buildCustomFileObject(string $entityClassName): FileObject
     {
+        $this->initFileObjectParameter($entityClassName);
         $customFileObject = $this->createCustomFileObject();
 
         $customFileObject->setContent(
@@ -47,7 +48,7 @@ class CustomGenerator extends AbstractGenerator
         return $customFileObject;
     }
 
-    private function createCustomFileObject(string $domain, string $useCaseName): FileObject
+    private function createCustomFileObject(): FileObject
     {
         // TODO use factory to create FileObject
     }

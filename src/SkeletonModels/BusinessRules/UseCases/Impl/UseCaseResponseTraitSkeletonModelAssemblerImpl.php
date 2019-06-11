@@ -16,8 +16,7 @@ class UseCaseResponseTraitSkeletonModelAssemblerImpl implements UseCaseResponseT
         FileObject $useCaseResponseDTOFileObject,
         FileObject $useCaseResponseFileObject,
         FileObject $useCaseResponseTraitFileObject
-    ): UseCaseResponseTraitSkeletonModel
-    {
+    ): UseCaseResponseTraitSkeletonModel {
         $skeletonModel = new UseCaseResponseTraitSkeletonModelImpl();
         $skeletonModel->namespace = $useCaseResponseTraitFileObject->getNamespace();
         $skeletonModel->shortName = $useCaseResponseTraitFileObject->getShortName();

@@ -7,5 +7,9 @@ namespace OpenClassrooms\CodeGenerator\SkeletonModels\GenerateGenerator;
  */
 interface GenerateGeneratorGeneratorSkeletonModelAssembler
 {
-    public function create(string $domain, string $entity, string $constructionPattern): GenerateGeneratorGeneratorSkeletonModel;
+    public function create(
+        string $domain,
+        string $entity,
+        string $constructionPattern
+    ): GenerateGeneratorGeneratorSkeletonModel;
 }

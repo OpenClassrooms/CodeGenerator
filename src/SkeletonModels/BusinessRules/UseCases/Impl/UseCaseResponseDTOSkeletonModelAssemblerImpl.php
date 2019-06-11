@@ -14,8 +14,7 @@ class UseCaseResponseDTOSkeletonModelAssemblerImpl implements UseCaseResponseDTO
     public function create(
         FileObject $useCaseResponseFileObject,
         FileObject $useCaseResponseDTOFileObject
-    ): UseCaseResponseDTOSkeletonModel
-    {
+    ): UseCaseResponseDTOSkeletonModel {
         $skeletonModel = new UseCaseResponseDTOSkeletonModelImpl();
         $skeletonModel->fields = $useCaseResponseDTOFileObject->getFields();
         $skeletonModel->methods = $useCaseResponseDTOFileObject->getMethods();

@@ -22,9 +22,10 @@ class UseCaseListItemResponseAssemblerMockGeneratorRequestBuilderImpl implements
         return $this;
     }
 
-    public function withEntityClassName(string $entity): UseCaseListItemResponseAssemblerMockGeneratorRequestBuilder
-    {
-        $this->request->defaultValue = $entity;
+    public function withEntityClassName(
+        string $entityClassName
+    ): UseCaseListItemResponseAssemblerMockGeneratorRequestBuilder {
+        $this->request->entityClassName = $entityClassName;
 
         return $this;
     }

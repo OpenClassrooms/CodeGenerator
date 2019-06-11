@@ -50,10 +50,10 @@ class GetEntitiesUseCaseMediatorImpl implements GetEntitiesUseCaseMediator
         $fileObjects[] = $this->generateEntityNotFoundExceptionGenerator($className);
         $fileObjects[] = $this->generateEntityRepositoryGenerator($className);
         $fileObjects[] = $this->generateGetEntitiesUseCaseGenerator($className);
-        $fileObjects[] = $this->generateGetEntityUseCaseRequestBuilderGenerator($className);
-        $fileObjects[] = $this->generateGetEntityUseCaseRequestBuilderImplGenerator($className);
-        $fileObjects[] = $this->generateGetEntityUseCaseRequestDTOGenerator($className);
-        $fileObjects[] = $this->generateGetEntityUseCaseRequestGenerator($className);
+        $fileObjects[] = $this->generateGetEntitiesUseCaseRequestBuilderGenerator($className);
+        $fileObjects[] = $this->generateGetEntitiesUseCaseRequestBuilderImplGenerator($className);
+        $fileObjects[] = $this->generateGetEntitiesUseCaseRequestDTOGenerator($className);
+        $fileObjects[] = $this->generateGetEntitiesUseCaseRequestGenerator($className);
         $fileObjects[] = $this->generateUseCaseListItemResponseAssemblerGenerator($className);
         $fileObjects[] = $this->generateUseCaseListItemResponseAssemblerImplGenerator($className);
         $fileObjects[] = $this->generateUseCaseListItemResponseDTOGenerator($className);

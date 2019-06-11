@@ -9,5 +9,5 @@ use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
  */
 interface CustomGeneratorRequest extends GeneratorRequest
 {
-    public function getDefaultValue(): string;
+    public function getEntityClassName(): string;
 }

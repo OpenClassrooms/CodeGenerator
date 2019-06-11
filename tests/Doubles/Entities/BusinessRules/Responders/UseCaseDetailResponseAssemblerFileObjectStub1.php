@@ -15,6 +15,6 @@ class UseCaseDetailResponseAssemblerFileObjectStub1 extends FileObject
     {
         $this->content = __DIR__ . '/../../../../Fixtures/Classes/BusinessRules/Responders/Domain/SubDomain/FunctionalEntityDetailResponseAssembler.php';
         $this->className = self::CLASS_NAME;
-        $this->fields = [];
+
     }
 }

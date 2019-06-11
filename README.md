@@ -6,8 +6,10 @@
 
 CodeGenerator is a library who generates classes in Clean Architecture context. 
 
-From any use-case response, developers have the possibility to generate: 
-- UseCase architecture
+From any use case response, developers have the possibility to generate: 
+- use case architecture
+- Entity use case Get architecture
+- Entities use case Get architecture
 - ViewModel architecture
 - Unit tests for each classed generated
 
@@ -48,8 +50,15 @@ parameters:
     base_namespace: OC\
     stub_namespace: Doubles\OC\
     tests_base_namespace: OC\
-    use_case: OpenClassrooms\UseCase\BusinessRules\Requestors\UseCase
-    use_case_request: OpenClassrooms\UseCase\BusinessRules\Requestors\UseCaseRequest
+
+    paginated_collection_classname: OpenClassrooms\UseCase\BusinessRules\Entities\PaginatedCollection
+    use_case_classname: OpenClassrooms\UseCase\BusinessRules\Requestors\UseCase
+    use_case_request_classname: OpenClassrooms\UseCase\BusinessRules\Requestors\UseCaseRequest
+
+    paginated_use_case_response_classname: %base_namespace%BusinessRules\Responders\PaginatedUseCaseResponse
+    paginated_use_case_response_builder_classname: %base_namespace%BusinessRules\Responders\PaginatedUseCaseResponseBuilder
+    use_case_response_classname:  %base_namespace%BusinessRules\Responders\UseCaseResponse
+    pagination_classname:  %base_namespace%BusinessRules\Gateways\Pagination
 ```
 
 ## Usage
@@ -62,12 +71,18 @@ To generate view model architecture:
 ``` 
 php bin/CodeGenerator.php code-generator:view-models useCaseResponseClassName
 ```
-To generate generic Use case architecture: 
+To generate generic use case architecture: 
 ``` 
 php bin/CodeGenerator.php code-generator:generic-use-case
 or  
 php bin/CodeGenerator.php code-generator:generic-use-case Domain\\SubDomain UseCaseName
 ```
+To generate generic entity use case get and get all architecture: 
+``` 
+php bin/CodeGenerator.php code-generator:get-entity-use-case 
+or  
+php bin/CodeGenerator.php code-generator:get-entities-use-case
+```  
 ### Extensions
 To generate without tests:
 ```

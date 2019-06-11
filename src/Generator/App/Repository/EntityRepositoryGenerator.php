@@ -10,7 +10,6 @@ use OpenClassrooms\CodeGenerator\Generator\App\Repository\Request\EntityReposito
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\App\Repository\EntityRepositorySkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\App\Repository\EntityRepositorySkeletonModelAssembler;
-use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
@@ -43,8 +42,9 @@ class EntityRepositoryGenerator extends AbstractGenerator
 
     private function buildEntityRepositoryFileObject(string $entityClassName): FileObject
     {
-        $entityGatewayFileObject = $this->createEntityGatewayFileObject($entityClassName);
-        $entityRepositoryFileObject = $this->createEntityRepositoryFileObject($entityGatewayFileObject);
+        $this->initFileObjectParameter($entityClassName);
+        $entityGatewayFileObject = $this->createEntityGatewayFileObject();
+        $entityRepositoryFileObject = $this->createEntityRepositoryFileObject();
 
         $entityRepositoryFileObject->setContent(
             $this->generateContent(
@@ -56,26 +56,22 @@ class EntityRepositoryGenerator extends AbstractGenerator
         return $entityRepositoryFileObject;
     }
 
-    private function createEntityGatewayFileObject(string $entityClassName): FileObject
+    private function createEntityGatewayFileObject(): FileObject
     {
-        [$baseNamespace, $domain, $entity] = FileObjectUtility::getBaseNamespaceDomainAndEntityNameFromClassName(
-            $entityClassName
-        );
-
         return $this->entityFileObjectFactory->create(
             EntityFileObjectType::BUSINESS_RULES_ENTITY_GATEWAY,
-            $domain,
-            $entity,
-            $baseNamespace
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
         );
     }
 
-    private function createEntityRepositoryFileObject(FileObject $fileObject): FileObject
+    private function createEntityRepositoryFileObject(): FileObject
     {
         return $this->entityFileObjectFactory->create(
             EntityFileObjectType::BUSINESS_RULES_ENTITY_REPOSITORY,
-            $fileObject->getDomain(),
-            $fileObject->getEntity()
+            $this->domain,
+            $this->entity
         );
     }
 
@@ -98,8 +94,9 @@ class EntityRepositoryGenerator extends AbstractGenerator
         );
     }
 
-    public function setEntityFileObjectFactory(EntityFileObjectFactory $entityFileObjectFactory): void
-    {
+    public function setEntityFileObjectFactory(
+        EntityFileObjectFactory $entityFileObjectFactory
+    ): void {
         $this->entityFileObjectFactory = $entityFileObjectFactory;
     }
 

@@ -28,29 +28,25 @@ trait RequestGeneratorsTrait
 
     public function setGenericUseCaseRequestBuilderGenerator(
         Generator $genericUseCaseRequestBuilderGenerator
-    ): void
-    {
+    ): void {
         $this->genericUseCaseRequestBuilderGenerator = $genericUseCaseRequestBuilderGenerator;
     }
 
     public function setGenericUseCaseRequestBuilderGeneratorRequestBuilder(
         GenericUseCaseRequestBuilderGeneratorRequestBuilder $genericUseCaseRequestBuilderGeneratorRequestBuilder
-    ): void
-    {
+    ): void {
         $this->genericUseCaseRequestBuilderGeneratorRequestBuilder = $genericUseCaseRequestBuilderGeneratorRequestBuilder;
     }
 
     public function setGenericUseCaseRequestGenerator(
         Generator $genericUseCaseRequestGenerator
-    ): void
-    {
+    ): void {
         $this->genericUseCaseRequestGenerator = $genericUseCaseRequestGenerator;
     }
 
     public function setGenericUseCaseRequestGeneratorRequestBuilder(
         GenericUseCaseRequestGeneratorRequestBuilder $genericUseCaseRequestGeneratorRequestBuilder
-    ): void
-    {
+    ): void {
         $this->genericUseCaseRequestGeneratorRequestBuilder = $genericUseCaseRequestGeneratorRequestBuilder;
     }
 

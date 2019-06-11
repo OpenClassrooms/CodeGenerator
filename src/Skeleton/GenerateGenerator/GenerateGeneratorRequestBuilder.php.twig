@@ -13,7 +13,7 @@ interface {{ skeletonModel.entity }}GeneratorRequestBuilder extends GeneratorReq
 
     public function create(): {{ skeletonModel.entity }}GeneratorRequestBuilder;
 
-    public function withDefaultValue(
-        string $defaultValue
+    public function withEntityClassName(
+        string $entityClassName
     ): {{ skeletonModel.entity }}GeneratorRequestBuilder;
 }

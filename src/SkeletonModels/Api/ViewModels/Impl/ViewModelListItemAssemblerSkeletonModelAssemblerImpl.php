@@ -16,17 +16,18 @@ class ViewModelListItemAssemblerSkeletonModelAssemblerImpl implements ViewModelL
         FileObject $useCaseListItemResponseFileObject,
         FileObject $viewModelListItemFileObject,
         FileObject $viewModelListItemAssemblerFileObject
-    ): ViewModelListItemAssemblerSkeletonModel
-    {
+    ): ViewModelListItemAssemblerSkeletonModel {
         $skeletonModel = new ViewModelListItemAssemblerSkeletonModelImpl();
         $skeletonModel->className = $viewModelListItemAssemblerFileObject->getClassName();
         $skeletonModel->namespace = $viewModelListItemAssemblerFileObject->getNamespace();
         $skeletonModel->shortName = $viewModelListItemAssemblerFileObject->getShortName();
         $skeletonModel->useCaseListItemResponseClassName = $useCaseListItemResponseFileObject->getClassName();
         $skeletonModel->useCaseListItemResponseShortName = $useCaseListItemResponseFileObject->getShortName();
-        $skeletonModel->useCaseListItemResponseArgument = lcfirst(StringUtility::pluralize(
-            $useCaseListItemResponseFileObject->getEntity()
-        ));
+        $skeletonModel->useCaseListItemResponseArgument = lcfirst(
+            StringUtility::pluralize(
+                $useCaseListItemResponseFileObject->getEntity()
+            )
+        );
         $skeletonModel->viewModelListItemShortName = $viewModelListItemFileObject->getShortName();
 
         return $skeletonModel;

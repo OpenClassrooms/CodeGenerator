@@ -14,8 +14,7 @@ class ViewModelAssemblerTraitSkeletonModelAssemblerImpl implements ViewModelAsse
     public function create(
         FileObject $viewModelAssemblerTraitFileObject,
         FileObject $useCaseResponseFileObject
-    ): ViewModelAssemblerTraitSkeletonModel
-    {
+    ): ViewModelAssemblerTraitSkeletonModel {
         $skeletonModel = new ViewModelAssemblerTraitSkeletonModelImpl();
         $skeletonModel->className = $viewModelAssemblerTraitFileObject->getClassName();
         $skeletonModel->namespace = $viewModelAssemblerTraitFileObject->getNamespace();

@@ -3,14 +3,22 @@
 namespace OpenClassrooms\CodeGenerator\Tests\Mediators\BusinessRules\UseCases\Impl;
 
 use OpenClassrooms\CodeGenerator\Entities\FileObject;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\DTO\Request\GetEntitiesUseCaseRequestBuilderGeneratorRequestBuilderImpl;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\DTO\Request\GetEntitiesUseCaseRequestGeneratorRequestBuilderImpl;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\GetEntitiesUseCaseRequestBuilderGenerator;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\GetEntitiesUseCaseRequestGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Responders\DTO\Request\UseCaseListItemResponseAssemblerGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Responders\DTO\Request\UseCaseListItemResponseGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Responders\UseCaseListItemResponseAssemblerGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Responders\UseCaseListItemResponseGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\GetEntitiesUseCaseGeneratorRequestBuilderImpl;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\GetEntitiesUseCaseRequestBuilderImplGeneratorRequestBuilderImpl;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\GetEntitiesUseCaseRequestDTOGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\UseCaseListItemResponseAssemblerImplGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\UseCaseListItemResponseDTOGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\GetEntitiesUseCaseGenerator;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\GetEntitiesUseCaseRequestBuilderImplGenerator;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\GetEntitiesUseCaseRequestDTOGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\UseCaseListItemResponseAssemblerImplGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\UseCaseListItemResponseDTOGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Responders\DTO\Request\UseCaseListItemResponseStubGeneratorRequestBuilderImpl;
@@ -24,9 +32,13 @@ use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\BusinessRules\Responder
 use OpenClassrooms\CodeGenerator\Mediators\Args;
 use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\Impl\GetEntitiesUseCaseMediatorImpl;
 use OpenClassrooms\CodeGenerator\Mediators\Options;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Requestors\GetEntitiesUseCaseRequestBuilderFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Requestors\GetEntitiesUseCaseRequestFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Responders\UseCaseListItemResponseAssemblerFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Responders\UseCaseListItemResponseFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\GetEntitiesUseCaseFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\GetEntitiesUseCaseRequestBuilderImplFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\GetEntitiesUseCaseRequestDTOFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\UseCaseListItemResponseAssemblerImplFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\UseCaseListItemResponseDTOFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\BusinessRules\Responders\UseCaseListItemResponseStub\UseCaseListItemResponseStubFileObjectStub1;
@@ -147,6 +159,28 @@ class GetEntitiesUseCaseMediatorImplTest extends TestCase
     private function mockGenerators(): void
     {
         $this->mockCommonGenerators();
+        $this->mediator->setGetEntitiesUseCaseRequestGenerator(
+            new GeneratorMock(GetEntitiesUseCaseRequestGenerator::class, new GetEntitiesUseCaseRequestFileObjectStub1())
+        );
+        $this->mediator->setGetEntitiesUseCaseRequestBuilderGenerator(
+            new GeneratorMock(
+                GetEntitiesUseCaseRequestBuilderGenerator::class,
+                new GetEntitiesUseCaseRequestBuilderFileObjectStub1()
+            )
+        );
+        $this->mediator->setGetEntitiesUseCaseRequestBuilderImplGenerator(
+            new GeneratorMock(
+                GetEntitiesUseCaseRequestBuilderImplGenerator::class,
+                new GetEntitiesUseCaseRequestBuilderImplFileObjectStub1()
+
+            )
+        );
+        $this->mediator->setGetEntitiesUseCaseRequestDTOGenerator(
+            new GeneratorMock(
+                GetEntitiesUseCaseRequestDTOGenerator::class,
+                new GetEntitiesUseCaseRequestDTOFileObjectStub1()
+            )
+        );
         $this->mediator->setUseCaseListItemResponseAssemblerGenerator(
             new GeneratorMock(
                 UseCaseListItemResponseAssemblerGenerator::class,
@@ -166,10 +200,16 @@ class GetEntitiesUseCaseMediatorImplTest extends TestCase
             )
         );
         $this->mediator->setUseCaseListItemResponseDTOGenerator(
-            new GeneratorMock(UseCaseListItemResponseDTOGenerator::class, new UseCaseListItemResponseDTOFileObjectStub1())
+            new GeneratorMock(
+                UseCaseListItemResponseDTOGenerator::class,
+                new UseCaseListItemResponseDTOFileObjectStub1()
+            )
         );
         $this->mediator->setUseCaseListItemResponseStubGenerator(
-            new GeneratorMock(UseCaseListItemResponseStubGenerator::class, new UseCaseListItemResponseStubFileObjectStub1())
+            new GeneratorMock(
+                UseCaseListItemResponseStubGenerator::class,
+                new UseCaseListItemResponseStubFileObjectStub1()
+            )
         );
         $this->mediator->setGetEntitiesUseCaseTestGenerator(
             new GeneratorMock(GetEntitiesUseCaseTestGenerator::class, new GetEntitiesUseCaseTestFileObjectStub1())
@@ -191,14 +231,26 @@ class GetEntitiesUseCaseMediatorImplTest extends TestCase
     private function mockRequestBuilder(): void
     {
         $this->mockCommonRequestBuilder();
+        $this->mediator->setGetEntitiesUseCaseRequestGeneratorRequestBuilder(
+            new GetEntitiesUseCaseRequestGeneratorRequestBuilderImpl()
+        );
+        $this->mediator->setGetEntitiesUseCaseRequestBuilderGeneratorRequestBuilder(
+            new GetEntitiesUseCaseRequestBuilderGeneratorRequestBuilderImpl()
+        );
+        $this->mediator->setGetEntitiesUseCaseGeneratorRequestBuilder(
+            new GetEntitiesUseCaseGeneratorRequestBuilderImpl()
+        );
+        $this->mediator->setGetEntitiesUseCaseRequestBuilderImplGeneratorRequestBuilder(
+            new GetEntitiesUseCaseRequestBuilderImplGeneratorRequestBuilderImpl()
+        );
+        $this->mediator->setGetEntitiesUseCaseRequestDTOGeneratorRequestBuilder(
+            new GetEntitiesUseCaseRequestDTOGeneratorRequestBuilderImpl()
+        );
         $this->mediator->setUseCaseListItemResponseAssemblerGeneratorRequestBuilder(
             new UseCaseListItemResponseAssemblerGeneratorRequestBuilderImpl()
         );
         $this->mediator->setUseCaseListItemResponseGeneratorRequestBuilder(
             new UseCaseListItemResponseGeneratorRequestBuilderImpl()
-        );
-        $this->mediator->setGetEntitiesUseCaseGeneratorRequestBuilder(
-            new GetEntitiesUseCaseGeneratorRequestBuilderImpl()
         );
         $this->mediator->setUseCaseListItemResponseAssemblerImplGeneratorRequestBuilder(
             new UseCaseListItemResponseAssemblerImplGeneratorRequestBuilderImpl()

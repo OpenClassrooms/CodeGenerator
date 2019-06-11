@@ -12,17 +12,17 @@ class GenerateGeneratorGeneratorRequestDTO implements GenerateGeneratorGenerator
     /**
      * @var string
      */
+    public $constructionPattern;
+
+    /**
+     * @var string
+     */
     public $domain;
 
     /**
      * @var string
      */
     public $entity;
-
-    /**
-     * @var string
-     */
-    public $constructionPattern;
 
     public function getDomain(): string
     {

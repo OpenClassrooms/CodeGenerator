@@ -26,22 +26,22 @@ class ViewModelListItemAssemblerImplSkeletonModelBuilderImpl implements ViewMode
 
     public function withUseCaseResponse(
         FileObject $useCaseResponse
-    ): ViewModelListItemAssemblerImplSkeletonModelBuilder
-    {
+    ): ViewModelListItemAssemblerImplSkeletonModelBuilder {
         $this->skeletonModel->useCaseResponseClassName = $useCaseResponse->getClassName();
         $this->skeletonModel->useCaseResponseShortName = $useCaseResponse->getShortName();
         $this->skeletonModel->useCaseResponseArgument = lcfirst($useCaseResponse->getEntity());
-        $this->skeletonModel->useCaseListItemResponseArgument = lcfirst(StringUtility::pluralize(
-            $useCaseResponse->getEntity()
-        ));
+        $this->skeletonModel->useCaseListItemResponseArgument = lcfirst(
+            StringUtility::pluralize(
+                $useCaseResponse->getEntity()
+            )
+        );
 
         return $this;
     }
 
     public function withViewModelListItem(
         FileObject $viewModelListItem
-    ): ViewModelListItemAssemblerImplSkeletonModelBuilder
-    {
+    ): ViewModelListItemAssemblerImplSkeletonModelBuilder {
         $this->skeletonModel->viewModelListItemClassName = $viewModelListItem->getClassName();
         $this->skeletonModel->viewModelListItemShortName = $viewModelListItem->getShortName();
 
@@ -50,8 +50,7 @@ class ViewModelListItemAssemblerImplSkeletonModelBuilderImpl implements ViewMode
 
     public function withViewModelListItemImpl(
         FileObject $viewModelListItemImpl
-    ): ViewModelListItemAssemblerImplSkeletonModelBuilder
-    {
+    ): ViewModelListItemAssemblerImplSkeletonModelBuilder {
         $this->skeletonModel->viewModelListItemImplShortName = $viewModelListItemImpl->getShortName();
 
         return $this;
@@ -59,8 +58,7 @@ class ViewModelListItemAssemblerImplSkeletonModelBuilderImpl implements ViewMode
 
     public function withViewModelAssemblerTrait(
         FileObject $viewModelAssemblerTrait
-    ): ViewModelListItemAssemblerImplSkeletonModelBuilder
-    {
+    ): ViewModelListItemAssemblerImplSkeletonModelBuilder {
         $this->skeletonModel->viewModelAssemblerTraitClassName = $viewModelAssemblerTrait->getClassName();
         $this->skeletonModel->viewModelAssemblerTraitShortName = $viewModelAssemblerTrait->getShortName();
 
@@ -69,8 +67,7 @@ class ViewModelListItemAssemblerImplSkeletonModelBuilderImpl implements ViewMode
 
     public function withViewModelListItemAssembler(
         FileObject $viewModelListItemAssembler
-    ): ViewModelListItemAssemblerImplSkeletonModelBuilder
-    {
+    ): ViewModelListItemAssemblerImplSkeletonModelBuilder {
         $this->skeletonModel->viewModelListItemAssemblerClassName = $viewModelListItemAssembler->getClassName();
         $this->skeletonModel->viewModelListItemAssemblerShortName = $viewModelListItemAssembler->getShortName();
 
@@ -79,8 +76,7 @@ class ViewModelListItemAssemblerImplSkeletonModelBuilderImpl implements ViewMode
 
     public function withViewModelListItemAssemblerImpl(
         FileObject $viewModelListItemAssemblerImpl
-    ): ViewModelListItemAssemblerImplSkeletonModelBuilder
-    {
+    ): ViewModelListItemAssemblerImplSkeletonModelBuilder {
         $this->skeletonModel->namespace = $viewModelListItemAssemblerImpl->getNamespace();
         $this->skeletonModel->shortName = $viewModelListItemAssemblerImpl->getShortName();
 

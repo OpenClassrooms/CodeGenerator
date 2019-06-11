@@ -9,5 +9,5 @@ use {{ skeletonModel.baseNamespace }}Generator\GeneratorRequest;
  */
 interface {{ skeletonModel.entity }}GeneratorRequest extends GeneratorRequest
 {
-    public function getDefaultValue(): string;
+    public function getEntityClassName(): string;
 }

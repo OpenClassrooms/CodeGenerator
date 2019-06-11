@@ -67,8 +67,7 @@ class GenericUseCaseRequestGenerator extends AbstractUseCaseGenerator
 
     public function setGenericUseCaseRequestSkeletonModelAssembler(
         GenericUseCaseRequestSkeletonModelAssembler $genericUseCaseRequestSkeletonModelAssembler
-    ): void
-    {
+    ): void {
         $this->genericUseCaseRequestSkeletonModelAssembler = $genericUseCaseRequestSkeletonModelAssembler;
     }
 }

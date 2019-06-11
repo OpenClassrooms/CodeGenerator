@@ -15,6 +15,6 @@ class GetEntitiesUseCaseTestFileObjectStub1 extends FileObject
     {
         $this->content = __DIR__ . '/../../../../../Fixtures/Classes/Tests/BusinessRules/UseCases/Domain/SubDomain/GetFunctionalEntitiesTest.php';
         $this->className = self::CLASS_NAME;
-        $this->fields = [];
+
     }
 }

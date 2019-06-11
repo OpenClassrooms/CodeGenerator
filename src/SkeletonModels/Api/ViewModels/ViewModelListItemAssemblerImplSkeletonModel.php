@@ -13,11 +13,11 @@ abstract class ViewModelListItemAssemblerImplSkeletonModel extends AbstractSkele
 
     public $useCaseListItemResponseArgument;
 
-    public $useCaseResponseClassName;
-
     public $useCaseListItemResponseShortName;
 
     public $useCaseResponseArgument;
+
+    public $useCaseResponseClassName;
 
     public $useCaseResponseShortName;
 

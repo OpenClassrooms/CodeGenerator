@@ -21,8 +21,7 @@ class ConstUtilityTest extends TestCase
         FieldObject $fieldObjectValue,
         FileObject $fileObject,
         $expectedValue
-    ): void
-    {
+    ): void {
         $actualConstObjects = ConstUtility::generateStubConstObject($fieldObjectValue, $fileObject);
         $this->assertNotNull($actualConstObjects->getValue());
         $this->assertType($expectedValue, $actualConstObjects);

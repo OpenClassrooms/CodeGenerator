@@ -8,12 +8,28 @@ use OpenClassrooms\CodeGenerator\Gateways\FileObject\FileObjectGateway;
 use OpenClassrooms\CodeGenerator\Services\Impl\TemplatingServiceImpl;
 use OpenClassrooms\CodeGenerator\Services\TemplatingService;
 use OpenClassrooms\CodeGenerator\Utility\FieldObjectUtility;
+use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 abstract class AbstractGenerator implements Generator
 {
+    /**
+     * @var string
+     */
+    protected $baseNamespace;
+
+    /**
+     * @var string
+     */
+    protected $domain;
+
+    /**
+     * @var string
+     */
+    protected $entity;
+
     /**
      * @var FileObjectGateway
      */
@@ -90,5 +106,16 @@ abstract class AbstractGenerator implements Generator
     protected function getProtectedClassFields(string $className): array
     {
         return FieldObjectUtility::getProtectedClassFields($className);
+    }
+
+    protected function initFileObjectParameter(string $entityClassName): void
+    {
+        [
+            $this->baseNamespace,
+            $this->domain,
+            $this->entity,
+        ] = FileObjectUtility::getBaseNamespaceDomainAndEntityNameFromClassName(
+            $entityClassName
+        );
     }
 }

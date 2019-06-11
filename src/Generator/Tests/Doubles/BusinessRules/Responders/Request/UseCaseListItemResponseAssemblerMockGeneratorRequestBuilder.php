@@ -14,6 +14,6 @@ interface UseCaseListItemResponseAssemblerMockGeneratorRequestBuilder extends Ge
     public function create(): UseCaseListItemResponseAssemblerMockGeneratorRequestBuilder;
 
     public function withEntityClassName(
-        string $entity
+        string $entityClassName
     ): UseCaseListItemResponseAssemblerMockGeneratorRequestBuilder;
 }

@@ -24,8 +24,7 @@ class GetEntitiesUseCaseSkeletonModelAssemblerImpl implements GetEntitiesUseCase
         FileObject $getEntitiesUseCaseFileObject,
         FileObject $getEntitiesUseCaseListItemResponseAssemblerFileObject,
         FileObject $getEntitiesUseCaseRequestFileObject
-    ): GetEntitiesUseCaseSkeletonModel
-    {
+    ): GetEntitiesUseCaseSkeletonModel {
         $skeletonModel = new GetEntitiesUseCaseSkeletonModelImpl();
         $skeletonModel->namespace = $getEntitiesUseCaseFileObject->getNamespace();
         $skeletonModel->shortName = $getEntitiesUseCaseFileObject->getShortName();
@@ -42,7 +41,9 @@ class GetEntitiesUseCaseSkeletonModelAssemblerImpl implements GetEntitiesUseCase
         $skeletonModel->paginatedCollectionClassName = $this->paginatedCollection;
         $skeletonModel->paginatedCollectionShortName = FileObjectUtility::getShortClassName($this->paginatedCollection);
         $skeletonModel->paginatedUseCaseResponseClassName = $this->paginatedUseCaseResponse;
-        $skeletonModel->paginatedUseCaseResponseShortName = FileObjectUtility::getShortClassName($this->paginatedUseCaseResponse);
+        $skeletonModel->paginatedUseCaseResponseShortName = FileObjectUtility::getShortClassName(
+            $this->paginatedUseCaseResponse
+        );
         $skeletonModel->paginationClassName = $this->pagination;
         $skeletonModel->useCaseClassName = $this->useCaseClassName;
         $skeletonModel->useCaseRequestClassName = $this->useCaseRequestClassName;

@@ -3,7 +3,6 @@
 namespace OpenClassrooms\CodeGenerator\Generator\BusinessRules;
 
 use OpenClassrooms\CodeGenerator\Entities\EntityFileObjectFactory;
-use OpenClassrooms\CodeGenerator\Entities\FieldObject;
 use OpenClassrooms\CodeGenerator\Entities\MethodObject;
 use OpenClassrooms\CodeGenerator\Entities\UseCaseFileObjectFactory;
 use OpenClassrooms\CodeGenerator\Entities\UseCaseRequestFileObjectFactory;

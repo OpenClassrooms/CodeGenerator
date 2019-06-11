@@ -2,7 +2,6 @@
 
 namespace OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases;
 
-use OpenClassrooms\CodeGenerator\Entities\EntityFileObjectType;
 use OpenClassrooms\CodeGenerator\Entities\FileObject;
 use OpenClassrooms\CodeGenerator\Entities\UseCaseResponseFileObjectType;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\AbstractUseCaseGenerator;
@@ -11,7 +10,6 @@ use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\UseCaseResponseDTOSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\UseCaseResponseDTOSkeletonModelAssembler;
 use OpenClassrooms\CodeGenerator\Utility\FieldUtility;
-use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
@@ -40,9 +38,9 @@ class UseCaseResponseDTOGenerator extends AbstractUseCaseGenerator
 
     private function buildUseCaseResponseDTOFileObject(string $entityClassName, array $wantedFields = []): FileObject
     {
-        $entityFileObject = $this->createEntityFileObject($entityClassName);
-        $useCaseResponseFileObject = $this->createUseCaseResponseFileObject($entityFileObject);
-        $useCaseResponseDTOFileObject = $this->createUseCaseResponseDTOFileObject($entityFileObject);
+        $this->initFileObjectParameter($entityClassName);
+        $useCaseResponseFileObject = $this->createUseCaseResponseFileObject();
+        $useCaseResponseDTOFileObject = $this->createUseCaseResponseDTOFileObject();
 
         $fields = FieldUtility::getFields($entityClassName, $wantedFields);
         $useCaseResponseDTOFileObject->setFields($this->getSelectedFields($entityClassName, $fields));
@@ -57,45 +55,30 @@ class UseCaseResponseDTOGenerator extends AbstractUseCaseGenerator
         return $useCaseResponseDTOFileObject;
     }
 
-    private function createEntityFileObject(string $entityClassName): FileObject
-    {
-        [$baseNamespace, $domain, $entity] = FileObjectUtility::getBaseNamespaceDomainAndEntityNameFromClassName(
-            $entityClassName
-        );
-
-        return $this->entityFileObjectFactory->create(
-            EntityFileObjectType::BUSINESS_RULES_ENTITY,
-            $domain,
-            $entity,
-            $baseNamespace
-        );
-    }
-
-    private function createUseCaseResponseFileObject(FileObject $entityFileObject): FileObject
+    private function createUseCaseResponseFileObject(): FileObject
     {
         return $this->useCaseResponseFileObjectFactory->create(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE,
-            $entityFileObject->getDomain(),
-            $entityFileObject->getEntity(),
-            $entityFileObject->getBaseNamespace()
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
         );
     }
 
-    private function createUseCaseResponseDTOFileObject(FileObject $entityFileObject): FileObject
+    private function createUseCaseResponseDTOFileObject(): FileObject
     {
         return $this->useCaseResponseFileObjectFactory->create(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE_DTO,
-            $entityFileObject->getDomain(),
-            $entityFileObject->getEntity(),
-            $entityFileObject->getBaseNamespace()
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
         );
     }
 
     private function generateContent(
         FileObject $useCaseResponseFileObject,
         FileObject $useCaseResponseDTOFileObject
-    ): string
-    {
+    ): string {
         $skeletonModel = $this->createSkeletonModel(
             $useCaseResponseFileObject,
             $useCaseResponseDTOFileObject
@@ -107,8 +90,7 @@ class UseCaseResponseDTOGenerator extends AbstractUseCaseGenerator
     private function createSkeletonModel(
         FileObject $useCaseResponseFileObject,
         FileObject $useCaseResponseDTOFileObject
-    ): UseCaseResponseDTOSkeletonModel
-    {
+    ): UseCaseResponseDTOSkeletonModel {
         return $this->useCaseResponseDTOSkeletonModelAssembler->create(
             $useCaseResponseFileObject,
             $useCaseResponseDTOFileObject
@@ -117,8 +99,7 @@ class UseCaseResponseDTOGenerator extends AbstractUseCaseGenerator
 
     public function setUseCaseResponseDTOSkeletonModelAssembler(
         UseCaseResponseDTOSkeletonModelAssembler $useCaseResponseDTOSkeletonModelAssembler
-    ): void
-    {
+    ): void {
         $this->useCaseResponseDTOSkeletonModelAssembler = $useCaseResponseDTOSkeletonModelAssembler;
     }
 }

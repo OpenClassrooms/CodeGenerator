@@ -17,8 +17,7 @@ class GenericUseCaseRequestDTOSkeletonModelAssemblerImpl implements GenericUseCa
     public function create(
         FileObject $genericUseCaseRequestDTOFileObject,
         FileObject $genericUseCaseRequestFileObject
-    ): GenericUseCaseRequestDTOSkeletonModel
-    {
+    ): GenericUseCaseRequestDTOSkeletonModel {
         $skeletonModel = new GenericUseCaseRequestDTOSkeletonModelImpl();
         $skeletonModel->namespace = $genericUseCaseRequestDTOFileObject->getNamespace();
         $skeletonModel->shortName = $genericUseCaseRequestDTOFileObject->getShortName();

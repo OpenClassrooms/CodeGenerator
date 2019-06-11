@@ -3,8 +3,8 @@
 namespace OpenClassrooms\CodeGenerator\Tests\Commands;
 
 use OpenClassrooms\CodeGenerator\Mediators\Args;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\Commands\GenericUseCaseCommandMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Commands\GenerateGeneratorCommandMock;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Commands\GenericUseCaseCommandMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Mediators\GenerateGeneratorMediatorMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Symfony\Component\DependencyInjection\ContainerMock;
 use OpenClassrooms\CodeGenerator\Tests\TestClassUtil;
@@ -38,7 +38,9 @@ class GenerateGeneratorCommandTest extends TestCase
      */
     public function executeCommand_withArguments()
     {
-        GenerateGeneratorMediatorMock::$fileObjects = $this->writeFileObjects(GenerateGeneratorMediatorMock::$fileObjects);
+        GenerateGeneratorMediatorMock::$fileObjects = $this->writeFileObjects(
+            GenerateGeneratorMediatorMock::$fileObjects
+        );
 
         $this->commandTester->execute(
             [
@@ -56,7 +58,9 @@ class GenerateGeneratorCommandTest extends TestCase
      */
     public function executeCommand_withoutArguments()
     {
-        GenerateGeneratorMediatorMock::$fileObjects = $this->writeFileObjects(GenerateGeneratorMediatorMock::$fileObjects);
+        GenerateGeneratorMediatorMock::$fileObjects = $this->writeFileObjects(
+            GenerateGeneratorMediatorMock::$fileObjects
+        );
 
         $this->commandTester->setInputs(
             [

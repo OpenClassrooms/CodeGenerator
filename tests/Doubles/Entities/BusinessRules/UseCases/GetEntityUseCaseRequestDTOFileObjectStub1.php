@@ -15,6 +15,6 @@ class GetEntityUseCaseRequestDTOFileObjectStub1 extends FileObject
     {
         $this->content = __DIR__ . '/../../../../Fixtures/Classes/BusinessRules/UseCases/Domain/SubDomain/DTO/Request/GetFunctionalEntityRequestDTO.php';
         $this->className = self::CLASS_NAME;
-        $this->fields = [];
+
     }
 }

@@ -1,0 +1,25 @@
+{% include "Header.php.twig" %}
+
+namespace {{ skeletonModel.namespace }};
+
+use {{ skeletonModel.useCaseRequestClassName }};
+
+/**
+ * @author {{ author }} <{{ authorEmail }}>
+ */
+interface {{ skeletonModel.shortName }} extends {{ skeletonModel.useCaseRequestShortName}}
+{
+    /**
+     * @return string[]
+     */
+    public function getFilters();
+
+    public function getItemsPerPage(): int;
+
+    public function getPage(): int;
+
+    /**
+     * @return string[]
+     */
+    public function getSorts();
+}

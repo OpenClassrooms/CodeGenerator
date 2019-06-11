@@ -22,9 +22,9 @@ class CustomGeneratorRequestBuilderImpl implements CustomGeneratorRequestBuilder
         return $this;
     }
 
-    public function withDefaultValue(string $defaultValue): CustomGeneratorRequestBuilder
+    public function withEntityClassName(string $entityClassName): CustomGeneratorRequestBuilder
     {
-        $this->request->defaultValue = $defaultValue;
+        $this->request->entityClassName = $entityClassName;
 
         return $this;
     }

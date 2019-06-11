@@ -9,7 +9,6 @@ use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Gateways\Request\Entity
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Gateways\EntityGatewaySkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Gateways\EntityGatewaySkeletonModelAssembler;
-use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
@@ -37,9 +36,10 @@ class EntityGatewayGenerator extends AbstractUseCaseGenerator
 
     private function buildEntityGatewayFileObject(string $entityClassName): FileObject
     {
-        $entityFileObject = $this->createEntityFileObject($entityClassName);
-        $entityGatewayFileObject = $this->createEntityGatewayFileObject($entityFileObject);
-        $entityNotFoundExceptionFileObject = $this->createEntityNotFoundExceptionFileObject($entityFileObject);
+        $this->initFileObjectParameter($entityClassName);
+        $entityFileObject = $this->createEntityFileObject();
+        $entityGatewayFileObject = $this->createEntityGatewayFileObject();
+        $entityNotFoundExceptionFileObject = $this->createEntityNotFoundExceptionFileObject();
 
         $entityGatewayFileObject->setContent(
             $this->generateContent(
@@ -52,46 +52,31 @@ class EntityGatewayGenerator extends AbstractUseCaseGenerator
         return $entityGatewayFileObject;
     }
 
-    private function createEntityFileObject(string $entityClassName): FileObject
+    private function createEntityFileObject(): FileObject
     {
-        [$baseNamespace, $domain, $entity] = FileObjectUtility::getBaseNamespaceDomainAndEntityNameFromClassName(
-            $entityClassName
-        );
-
-        return $this->entityFileObjectFactory->create(
-            EntityFileObjectType::BUSINESS_RULES_ENTITY,
-            $domain,
-            $entity,
-            $baseNamespace
-        );
+        return $this->createFileObject(EntityFileObjectType::BUSINESS_RULES_ENTITY);
     }
 
-    private function createEntityGatewayFileObject(FileObject $entityFileObject): FileObject
+    private function createFileObject(string $type): FileObject
     {
-        return $this->entityFileObjectFactory->create(
-            EntityFileObjectType::BUSINESS_RULES_ENTITY_GATEWAY,
-            $entityFileObject->getDomain(),
-            $entityFileObject->getEntity(),
-            $entityFileObject->getBaseNamespace()
-        );
+        return $this->entityFileObjectFactory->create($type, $this->domain, $this->entity, $this->baseNamespace);
     }
 
-    private function createEntityNotFoundExceptionFileObject(FileObject $entityFileObject): FileObject
+    private function createEntityGatewayFileObject(): FileObject
     {
-        return $this->entityFileObjectFactory->create(
-            EntityFileObjectType::BUSINESS_RULES_ENTITY_NOT_FOUND_EXCEPTION,
-            $entityFileObject->getDomain(),
-            $entityFileObject->getEntity(),
-            $entityFileObject->getBaseNamespace()
-        );
+        return $this->createFileObject(EntityFileObjectType::BUSINESS_RULES_ENTITY_GATEWAY);
+    }
+
+    private function createEntityNotFoundExceptionFileObject(): FileObject
+    {
+        return $this->createFileObject(EntityFileObjectType::BUSINESS_RULES_ENTITY_NOT_FOUND_EXCEPTION);
     }
 
     private function generateContent(
         FileObject $entityFileObject,
         FileObject $entityGatewayFileObject,
         FileObject $entityNotFoundExceptionFileObject
-    ): string
-    {
+    ): string {
         $skeletonModel = $this->createSkeletonModel(
             $entityFileObject,
             $entityGatewayFileObject,
@@ -105,8 +90,7 @@ class EntityGatewayGenerator extends AbstractUseCaseGenerator
         FileObject $entityFileObject,
         FileObject $entityGatewayFileObject,
         FileObject $entityNotFoundExceptionFileObject
-    ): EntityGatewaySkeletonModel
-    {
+    ): EntityGatewaySkeletonModel {
         return $this->entityGatewaySkeletonModelAssembler->create(
             $entityFileObject,
             $entityGatewayFileObject,
@@ -116,8 +100,7 @@ class EntityGatewayGenerator extends AbstractUseCaseGenerator
 
     public function setEntityGatewaySkeletonModelAssembler(
         EntityGatewaySkeletonModelAssembler $entityGatewaySkeletonModelAssembler
-    ): void
-    {
+    ): void {
         $this->entityGatewaySkeletonModelAssembler = $entityGatewaySkeletonModelAssembler;
     }
 }

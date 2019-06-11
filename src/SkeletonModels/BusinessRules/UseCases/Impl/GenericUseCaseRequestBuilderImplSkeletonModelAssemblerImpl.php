@@ -19,8 +19,7 @@ class GenericUseCaseRequestBuilderImplSkeletonModelAssemblerImpl implements Gene
         FileObject $genericUseCaseRequestBuilderFileObject,
         FileObject $genericUseCaseRequestFileObject,
         FileObject $genericUseCaseRequestDTOFileObject
-    ): GenericUseCaseRequestBuilderImplSkeletonModel
-    {
+    ): GenericUseCaseRequestBuilderImplSkeletonModel {
         $skeletonModel = new GenericUseCaseRequestBuilderImplSkeletonModelImpl();
         $skeletonModel->namespace = $genericUseCaseRequestBuilderImplFileObject->getNamespace();
         $skeletonModel->shortName = $genericUseCaseRequestBuilderImplFileObject->getShortName();
