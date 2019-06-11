@@ -12,10 +12,10 @@ class GetEntitiesUseCaseGeneratorRequestDTO implements GetEntitiesUseCaseGenerat
     /**
      * @var string
      */
-    public $defaultValue;
+    public $entityClassName;
 
     public function getEntityClassName(): string
     {
-        return $this->defaultValue;
+        return $this->entityClassName;
     }
 }

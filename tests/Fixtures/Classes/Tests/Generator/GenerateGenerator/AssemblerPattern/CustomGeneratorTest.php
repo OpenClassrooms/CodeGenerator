@@ -48,7 +48,7 @@ class CustomGeneratorTest extends TestCase
         $customGeneratorRequestBuilderImpl = new CustomGeneratorRequestBuilderImpl();
         $this->request = $customGeneratorRequestBuilderImpl
             ->create()
-            ->withDefaultValue('')
+            ->withEntityClassName('')
             ->build();
 
         $this->customGenerator = new CustomGenerator();

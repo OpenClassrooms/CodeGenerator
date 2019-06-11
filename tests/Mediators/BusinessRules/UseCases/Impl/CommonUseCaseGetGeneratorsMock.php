@@ -14,12 +14,8 @@ use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\GetEntityUse
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\GetEntityUseCaseRequestGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Responders\DTO\Request\UseCaseResponseGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Responders\UseCaseResponseGenerator;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\GetEntityUseCaseRequestBuilderImplGeneratorRequestBuilderImpl;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\GetEntityUseCaseRequestDTOGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\UseCaseResponseDTOGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\UseCaseResponseTraitGeneratorRequestBuilderImpl;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\GetEntityUseCaseRequestBuilderImplGenerator;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\GetEntityUseCaseRequestDTOGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\UseCaseResponseDTOGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\UseCaseResponseTraitGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\BusinessRules\Gateways\DTO\Request\InMemoryEntityGatewayGeneratorRequestBuilderImpl;
@@ -32,8 +28,6 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Gateways\E
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Requestors\GetEntityUseCaseRequestBuilderFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Requestors\GetEntityUseCaseRequestFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Responders\UseCaseResponseFileObjectStub1;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\GetEntityUseCaseRequestBuilderImplFileObjectStub1;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\GetEntityUseCaseRequestDTOFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\UseCaseResponseDTOFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\UseCaseResponseTraitFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\Doubles\BusinessRules\Gateways\InMemoryEntityGatewayFileObjectStub1;
@@ -64,19 +58,6 @@ trait CommonUseCaseGetGeneratorsMock
             new GeneratorMock(
                 GetEntityUseCaseRequestBuilderGenerator::class,
                 new GetEntityUseCaseRequestBuilderFileObjectStub1()
-            )
-        );
-        $this->mediator->setGetEntityUseCaseRequestBuilderImplGenerator(
-            new GeneratorMock(
-                GetEntityUseCaseRequestBuilderImplGenerator::class,
-                new GetEntityUseCaseRequestBuilderImplFileObjectStub1()
-
-            )
-        );
-        $this->mediator->setGetEntityUseCaseRequestDTOGenerator(
-            new GeneratorMock(
-                GetEntityUseCaseRequestDTOGenerator::class,
-                new GetEntityUseCaseRequestDTOFileObjectStub1()
             )
         );
         $this->mediator->setInMemoryEntityGatewayGenerator(
@@ -112,12 +93,6 @@ trait CommonUseCaseGetGeneratorsMock
         );
         $this->mediator->setGetEntityUseCaseRequestBuilderGeneratorRequestBuilder(
             new GetEntityUseCaseRequestBuilderGeneratorRequestBuilderImpl()
-        );
-        $this->mediator->setGetEntityUseCaseRequestBuilderImplGeneratorRequestBuilder(
-            new GetEntityUseCaseRequestBuilderImplGeneratorRequestBuilderImpl()
-        );
-        $this->mediator->setGetEntityUseCaseRequestDTOGeneratorRequestBuilder(
-            new GetEntityUseCaseRequestDTOGeneratorRequestBuilderImpl()
         );
         $this->mediator->setInMemoryEntityGatewayGeneratorRequestBuilder(
             new InMemoryEntityGatewayGeneratorRequestBuilderImpl()
