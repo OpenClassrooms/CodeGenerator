@@ -16,11 +16,6 @@ class GetEntityUseCaseMediatorImpl implements GetEntityUseCaseMediator
     use CommonUseCaseGetGeneratorsTrait;
     use GetEntityUseCaseGeneratorsTrait;
 
-    /**
-     * @var FileObjectGateway
-     */
-    private $fileObjectGateway;
-
     public function mediate(array $args = [], array $options = []): array
     {
         $className = $args[Args::CLASS_NAME];

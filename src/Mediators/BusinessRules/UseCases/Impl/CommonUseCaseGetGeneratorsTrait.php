@@ -3,6 +3,7 @@
 namespace OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\Impl;
 
 use OpenClassrooms\CodeGenerator\Entities\FileObject;
+use OpenClassrooms\CodeGenerator\Gateways\FileObject\FileObjectGateway;
 use OpenClassrooms\CodeGenerator\Generator\App\Repository\EntityRepositoryGenerator;
 use OpenClassrooms\CodeGenerator\Generator\App\Repository\Request\EntityRepositoryGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Gateways\EntityGatewayGenerator;
@@ -43,6 +44,9 @@ trait CommonUseCaseGetGeneratorsTrait
 
     /** @var EntityRepositoryGeneratorRequestBuilder */
     private $entityRepositoryGeneratorRequestBuilder;
+
+    /** @var FileObjectGateway */
+    private $fileObjectGateway;
 
     /** @var InMemoryEntityGatewayGenerator */
     private $inMemoryEntityGatewayGenerator;
