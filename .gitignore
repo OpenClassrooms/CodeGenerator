@@ -5,3 +5,4 @@ vendor/
 .php_cs.php
 phpunit.xml
 /oc_code_generator.yml
+/bin/CodeGenerator.php

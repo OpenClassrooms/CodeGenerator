@@ -45,9 +45,6 @@ trait CommonUseCaseGetGeneratorsTrait
     /** @var EntityRepositoryGeneratorRequestBuilder */
     private $entityRepositoryGeneratorRequestBuilder;
 
-    /** @var FileObjectGateway */
-    private $fileObjectGateway;
-
     /** @var InMemoryEntityGatewayGenerator */
     private $inMemoryEntityGatewayGenerator;
 
