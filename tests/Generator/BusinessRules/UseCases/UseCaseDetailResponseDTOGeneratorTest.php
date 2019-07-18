@@ -34,7 +34,7 @@ class UseCaseDetailResponseDTOGeneratorTest extends TestCase
     /**
      * @test
      */
-    public function generate_ReturnFileObject()
+    public function generate_ReturnFileObject(): void
     {
         $actualFileObject = $this->useCaseDetailResponseDTOGenerator->generate($this->request);
 
@@ -45,7 +45,7 @@ class UseCaseDetailResponseDTOGeneratorTest extends TestCase
         $this->assertFileObject(new UseCaseDetailResponseDTOFileObjectStub1(), $actualFileObject);
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $useCaseDetailResponseDTOGeneratorRequestBuilderImpl = new UseCaseDetailResponseDTOGeneratorRequestBuilderImpl(
         );

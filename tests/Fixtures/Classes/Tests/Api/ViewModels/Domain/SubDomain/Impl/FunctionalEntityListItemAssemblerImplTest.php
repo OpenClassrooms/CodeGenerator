@@ -25,14 +25,14 @@ class FunctionalEntityListItemAssemblerImplTest extends TestCase
     /**
      * @test
      */
-    public function onCreateShouldReturnViewModel()
+    final public function onCreateShouldReturnViewModel(): void
     {
         $actual = $this->assembler->createListItems([new FunctionalEntityListItemResponseStub1()]);
         $expected = [new FunctionalEntityListItemStub1()];
         $this->assertFunctionalEntityListItems($expected, $actual);
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->assembler = new FunctionalEntityListItemAssemblerImpl();
     }

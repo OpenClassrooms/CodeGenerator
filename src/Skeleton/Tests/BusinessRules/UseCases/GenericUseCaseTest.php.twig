@@ -26,7 +26,7 @@ class {{ skeletonModel.shortName }} extends TestCase
     /**
      * @test
      */
-    public function {{ skeletonModel.genericUseCaseTestMethod }}ReturnResponse()
+    final public function {{ skeletonModel.genericUseCaseTestMethod }}ReturnResponse(): void
     {
         $this->fail("TODO: Implement this test");
     }
@@ -34,7 +34,7 @@ class {{ skeletonModel.shortName }} extends TestCase
     /**
      * @inheritdoc
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->request = $this->buildRequest();
         $this->useCase = new {{ skeletonModel.genericUseCaseShortName }}();

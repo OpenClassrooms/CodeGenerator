@@ -35,7 +35,7 @@ class ViewModelDetailAssemblerImplTestGeneratorTest extends TestCase
     /**
      * @test
      */
-    public function generate()
+    public function generate(): void
     {
         $actualFileObject = $this->viewModelDetailAssemblerImplTestGenerator->generate($this->request);
 
@@ -46,7 +46,7 @@ class ViewModelDetailAssemblerImplTestGeneratorTest extends TestCase
         $this->assertFileObject(new ViewModelDetailAssemblerImplTestFileObjectStub1(), $actualFileObject);
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $viewModelTestGeneratorRequestBuilder = new ViewModelDetailAssemblerImplTestGeneratorRequestBuilderImpl();
         $this->request = $viewModelTestGeneratorRequestBuilder

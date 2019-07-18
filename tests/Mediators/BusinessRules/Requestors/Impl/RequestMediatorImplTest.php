@@ -42,7 +42,7 @@ class RequestMediatorImplTest extends TestCase
     /**
      * @test
      */
-    public function generateGenericUseCaseRequest_withoutTest()
+    public function generateGenericUseCaseRequest_withoutTest(): void
     {
         $this->options[Options::NO_TEST] = null;
         $fileObjects = $this->mediator->mediate(
@@ -59,7 +59,7 @@ class RequestMediatorImplTest extends TestCase
     /**
      * @test
      */
-    public function generateGenericUseCaseRequest_withDump()
+    public function generateGenericUseCaseRequest_withDump(): void
     {
         $this->options[Options::DUMP] = null;
         $fileObjects = $this->mediator->mediate(
@@ -81,7 +81,7 @@ class RequestMediatorImplTest extends TestCase
     /**
      * @test
      */
-    public function generateGenericUseCaseRequest_withoutOptions()
+    public function generateGenericUseCaseRequest_withoutOptions(): void
     {
         $fileObjects = $this->mediator->mediate(
             [
@@ -95,7 +95,7 @@ class RequestMediatorImplTest extends TestCase
         $this->assertFlushedFileObject($fileObjects);
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         InMemoryFileObjectGateway::$fileObjects = [];
         $this->mediator = new RequestMediatorImpl();

@@ -32,7 +32,7 @@ class ViewModelDetailGeneratorTest extends AbstractViewModelGeneratorTestCase
     /**
      * @test
      */
-    public function generate_ReturnFileObject()
+    public function generate_ReturnFileObject(): void
     {
         $actualFileObject = $this->viewModelDetailGenerator->generate($this->request);
 
@@ -43,7 +43,7 @@ class ViewModelDetailGeneratorTest extends AbstractViewModelGeneratorTestCase
         $this->assertFileObject(new ViewModelDetailFileObjectStub1(), $actualFileObject);
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $viewModelDetailGeneratorRequestBuilder = new ViewModelDetailGeneratorRequestBuilderImpl();
         $this->request = $viewModelDetailGeneratorRequestBuilder

@@ -34,7 +34,7 @@ class EntityNotFoundExceptionGeneratorTest extends TestCase
     /**
      * @test
      */
-    public function generate_ReturnFileObject()
+    public function generate_ReturnFileObject(): void
     {
         $actualFileObject = $this->entityNotFoundExceptionGenerator->generate($this->request);
 
@@ -45,7 +45,7 @@ class EntityNotFoundExceptionGeneratorTest extends TestCase
         $this->assertFileObject(new EntityNotFoundExceptionFileObjectStub1(), $actualFileObject);
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $entityNotFoundExceptionGeneratorRequestBuilderImpl = new EntityNotFoundExceptionGeneratorRequestBuilderImpl();
         $this->request = $entityNotFoundExceptionGeneratorRequestBuilderImpl

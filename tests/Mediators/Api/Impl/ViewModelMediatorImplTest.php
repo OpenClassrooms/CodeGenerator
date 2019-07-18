@@ -94,7 +94,7 @@ class ViewModelMediatorImplTest extends TestCase
     /**
      * @test
      */
-    public function generateViewModel_withoutTest()
+    public function generateViewModel_withoutTest(): void
     {
         $this->options[Options::NO_TEST] = null;
         $fileObjects = $this->mediator->mediate(
@@ -108,7 +108,7 @@ class ViewModelMediatorImplTest extends TestCase
     /**
      * @test
      */
-    public function generateViewModel_withTestOnly()
+    public function generateViewModel_withTestOnly(): void
     {
         $this->options[Options::TESTS_ONLY] = null;
         $fileObjects = $this->mediator->mediate(
@@ -122,7 +122,7 @@ class ViewModelMediatorImplTest extends TestCase
     /**
      * @test
      */
-    public function generateViewModel_withDump()
+    public function generateViewModel_withDump(): void
     {
         $this->options[Options::DUMP] = null;
         $fileObjects = $this->mediator->mediate(
@@ -141,7 +141,7 @@ class ViewModelMediatorImplTest extends TestCase
     /**
      * @test
      */
-    public function generateViewModel_withoutOptions()
+    public function generateViewModel_withoutOptions(): void
     {
         $fileObjects = $this->mediator->mediate(
             [Args::CLASS_NAME => UseCaseDetailResponseStubFileObjectStub1::CLASS_NAME],
@@ -152,7 +152,7 @@ class ViewModelMediatorImplTest extends TestCase
         $this->assertFlushedFileObject($fileObjects);
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         InMemoryFileObjectGateway::$fileObjects = [];
         $this->mediator = new ViewModelMediatorImpl();

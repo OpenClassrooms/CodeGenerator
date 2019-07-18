@@ -35,7 +35,7 @@ class GetEntityUseCaseRequestDTOGeneratorTest extends TestCase
     /**
      * @test
      */
-    public function generate_ReturnFileObject()
+    public function generate_ReturnFileObject(): void
     {
         $actualFileObject = $this->getEntityUseCaseRequestDTOGenerator->generate($this->request);
 
@@ -46,7 +46,7 @@ class GetEntityUseCaseRequestDTOGeneratorTest extends TestCase
         $this->assertFileObject(new GetEntityUseCaseRequestDTOFileObjectStub1(), $actualFileObject);
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $getEntityUseCaseRequestDTOGeneratorRequestBuilderImpl = new GetEntityUseCaseRequestDTOGeneratorRequestBuilderImpl(
         );

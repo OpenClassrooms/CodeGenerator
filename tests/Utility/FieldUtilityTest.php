@@ -41,7 +41,7 @@ class FieldUtilityTest extends TestCase
         }
     }
 
-    private function buildStubFieldObject(string $name, string $type)
+    private function buildStubFieldObject(string $name, string $type): FieldObject
     {
         $stubFieldObject = new FieldObject($name);
         $stubFieldObject->setDocComment(
@@ -54,7 +54,7 @@ class FieldUtilityTest extends TestCase
         return $stubFieldObject;
     }
 
-    public function generateStubFieldObjectsDataProvider()
+    public function generateStubFieldObjectsDataProvider(): array
     {
         return [
             [],
@@ -65,7 +65,7 @@ class FieldUtilityTest extends TestCase
      * @test
      * @expectedException \Exception
      */
-    public function getFieldsThrowException()
+    public function getFieldsThrowException(): void
     {
         $fields = ['notExistField'];
         FieldUtility::getFields(FunctionalEntity::class, $fields);
@@ -74,7 +74,7 @@ class FieldUtilityTest extends TestCase
     /**
      * @test
      */
-    public function getFieldsWithEmptyFields()
+    public function getFieldsWithEmptyFields(): void
     {
         $fields = [];
         $exceptedFields = new \ReflectionClass(FunctionalEntity::class);
@@ -82,7 +82,7 @@ class FieldUtilityTest extends TestCase
         $this->assertCount(count($actualFields), $exceptedFields->getMethods() );
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->fileObject = new FileObject(self::class);
     }

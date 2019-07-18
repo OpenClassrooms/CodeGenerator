@@ -38,7 +38,7 @@ class GetEntitiesUseCaseTestGeneratorTest extends TestCase
     /**
      * @test
      */
-    public function generate_ReturnFileObject()
+    public function generate_ReturnFileObject(): void
     {
         $actualFileObject = $this->getEntitiesUseCaseTestGenerator->generate($this->request);
 
@@ -49,7 +49,7 @@ class GetEntitiesUseCaseTestGeneratorTest extends TestCase
         $this->assertFileObject(new GetEntitiesUseCaseTestFileObjectStub1(), $actualFileObject);
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $getEntitiesUseCaseTestGeneratorRequestBuilderImpl = new GetEntitiesUseCaseTestGeneratorRequestBuilderImpl();
         $this->request = $getEntitiesUseCaseTestGeneratorRequestBuilderImpl

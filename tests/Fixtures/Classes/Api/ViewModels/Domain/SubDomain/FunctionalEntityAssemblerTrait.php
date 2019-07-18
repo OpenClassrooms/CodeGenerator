@@ -10,7 +10,7 @@ use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders
  */
 trait FunctionalEntityAssemblerTrait
 {
-    public function hydrateCommonFields(FunctionalEntity $vm, FunctionalEntityResponse $functionalEntity)
+    public function hydrateCommonFields(FunctionalEntity $vm, FunctionalEntityResponse $functionalEntity): void
     {
         $vm->id = $functionalEntity->getId();
         $vm->field1 = $functionalEntity->getField1();

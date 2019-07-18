@@ -34,7 +34,7 @@ class EntityImplGeneratorTest extends TestCase
     /**
      * @test
      */
-    public function generate_ReturnFileObject()
+    public function generate_ReturnFileObject(): void
     {
         $actualFileObject = $this->entityImplGenerator->generate($this->request);
 
@@ -45,7 +45,7 @@ class EntityImplGeneratorTest extends TestCase
         $this->assertFileObject(new EntityImplFileObjectStub1(), $actualFileObject);
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $entityImplGeneratorRequestBuilder = new EntityImplGeneratorRequestBuilderImpl();
         $this->request = $entityImplGeneratorRequestBuilder

@@ -14,7 +14,7 @@ trait FileObjectTestCase
     use FieldObjectTestCase;
     use MethodObjectTestCase;
 
-    protected function assertFileObject(FileObject $expected, FileObject $actual)
+    protected function assertFileObject(FileObject $expected, FileObject $actual): void
     {
         Assert::assertEquals($expected->getClassName(), $actual->getClassName());
         Assert::assertStringEqualsFile($expected->getContent(), $actual->getContent());

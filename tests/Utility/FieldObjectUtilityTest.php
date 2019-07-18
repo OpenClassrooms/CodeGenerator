@@ -14,7 +14,7 @@ class FieldObjectUtilityTest extends TestCase
     /**
      * @test
      */
-    public function fieldAccessorReturnNull()
+    public function fieldAccessorReturnNull(): void
     {
         $class = (new class() {
             /**

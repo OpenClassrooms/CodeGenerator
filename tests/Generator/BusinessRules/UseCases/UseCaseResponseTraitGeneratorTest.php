@@ -35,7 +35,7 @@ class UseCaseResponseTraitGeneratorTest extends TestCase
     /**
      * @test
      */
-    public function generate_ReturnFileObject()
+    public function generate_ReturnFileObject(): void
     {
         $actualFileObject = $this->useCaseResponseTraitGenerator->generate($this->request);
 
@@ -46,7 +46,7 @@ class UseCaseResponseTraitGeneratorTest extends TestCase
         $this->assertFileObject(new UseCaseResponseTraitFileObjectStub1(), $actualFileObject);
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $useCaseResponseTraitGeneratorRequestBuilderImpl = new UseCaseResponseTraitGeneratorRequestBuilderImpl();
         $this->request = $useCaseResponseTraitGeneratorRequestBuilderImpl

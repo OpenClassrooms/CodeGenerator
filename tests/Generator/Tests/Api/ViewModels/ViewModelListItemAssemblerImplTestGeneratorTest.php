@@ -36,7 +36,7 @@ class ViewModelListItemAssemblerImplTestGeneratorTest extends TestCase
     /**
      * @test
      */
-    public function generate()
+    public function generate(): void
     {
         $actualFileObject = $this->viewModelListItemAssemblerImplTestGenerator->generate($this->request);
 
@@ -47,7 +47,7 @@ class ViewModelListItemAssemblerImplTestGeneratorTest extends TestCase
         $this->assertFileObject(new ViewModelListItemAssemblerImplTestFileObjectStub1(), $actualFileObject);
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $viewModelTestGeneratorRequestBuilder = new ViewModelListItemAssemblerImplTestGeneratorRequestBuilderImpl();
         $this->request = $viewModelTestGeneratorRequestBuilder

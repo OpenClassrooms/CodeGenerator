@@ -37,7 +37,7 @@ class {{skeletonModel.shortName }} extends TestCase
     /**
      * @test
      */
-    public function without{{ skeletonModel.entitiesShortName }}ReturnNothing()
+    final public function without{{ skeletonModel.entitiesShortName }}ReturnNothing(): void
     {
         {{ skeletonModel.inMemoryEntityGatewayShortName }}::${{ skeletonModel.entitiesArgument }} = [];
         $response = $this->useCase->execute($this->request);
@@ -48,7 +48,7 @@ class {{skeletonModel.shortName }} extends TestCase
     /**
      * @test
      */
-    public function get{{ skeletonModel.entitiesShortName }}ShouldReturnResponse()
+    final public function get{{ skeletonModel.entitiesShortName }}ShouldReturnResponse(): void
     {
         {{ skeletonModel.inMemoryEntityGatewayShortName }}::${{ skeletonModel.entitiesArgument }} = [
 {% for entityStubShortName in skeletonModel.entityStubShortNames %}
@@ -71,7 +71,7 @@ class {{skeletonModel.shortName }} extends TestCase
         $this->fail("TODO: configure stub");
     }
 
-    protected function setup()
+    protected function setup(): void
     {
         $this->useCase = new {{skeletonModel.getEntitiesUseCaseShortName }}();
         $this->useCase->set{{ skeletonModel.entityGatewayShortName }}(

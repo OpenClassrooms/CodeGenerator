@@ -15,7 +15,7 @@ class MethodUtilityTest extends TestCase
      * @test
      * @expectedException \Exception
      */
-    public function getAccessorsThrowException()
+    public function getAccessorsThrowException(): void
     {
         $class = (new class() {
             public function getMethod(string $argument)
@@ -30,7 +30,7 @@ class MethodUtilityTest extends TestCase
     /**
      * @test
      */
-    public function getAccessorsReturnMethodObjects()
+    public function getAccessorsReturnMethodObjects(): void
     {
         $class = (new class() {
             /**
@@ -55,7 +55,7 @@ class MethodUtilityTest extends TestCase
     /**
      * @test
      */
-    public function createArgumentNameFromMethodReturnNull()
+    public function createArgumentNameFromMethodReturnNull(): void
     {
         $exceptedValue = MethodUtility::createArgumentNameFromMethod('notWorkingMethodName');
 

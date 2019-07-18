@@ -22,7 +22,7 @@ class UseCaseMediatorImplTest extends TestCase
     /**
      * @test
      */
-    public function mediate_ReturnFileObject()
+    public function mediate_ReturnFileObject(): void
     {
         $expectedFileObjects = $this->useCaseMediator->mediate();
 
@@ -33,7 +33,7 @@ class UseCaseMediatorImplTest extends TestCase
         }
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->useCaseMediator = new UseCaseMediatorImpl();
 

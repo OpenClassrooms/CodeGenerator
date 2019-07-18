@@ -35,7 +35,7 @@ class GenericUseCaseCommandTest extends TestCase
     /**
      * @test
      */
-    public function executeCommand_withArguments()
+    public function executeCommand_withArguments(): void
     {
         UseCaseMediatorMock::$fileObjects = $this->writeFileObjects(UseCaseMediatorMock::$fileObjects);
 
@@ -53,7 +53,7 @@ class GenericUseCaseCommandTest extends TestCase
     /**
      * @test
      */
-    public function executeCommand_withoutArguments()
+    public function executeCommand_withoutArguments(): void
     {
         UseCaseMediatorMock::$fileObjects = $this->writeFileObjects(UseCaseMediatorMock::$fileObjects);
 
@@ -72,7 +72,7 @@ class GenericUseCaseCommandTest extends TestCase
         $this->assertCommandFileGeneratedOutput(UseCaseMediatorMock::$fileObjects);
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->commandMock = new GenericUseCaseCommandMock();
         $this->application = new Application();

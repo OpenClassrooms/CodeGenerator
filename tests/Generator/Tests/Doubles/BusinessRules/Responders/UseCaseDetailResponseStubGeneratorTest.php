@@ -36,7 +36,7 @@ class UseCaseDetailResponseStubGeneratorTest extends TestCase
     /**
      * @test
      */
-    public function generate_ReturnFileObject()
+    public function generate_ReturnFileObject(): void
     {
         $actualFileObject = $this->useCaseDetailResponseStubGenerator->generate($this->request);
 
@@ -47,7 +47,7 @@ class UseCaseDetailResponseStubGeneratorTest extends TestCase
         $this->assertFileObject(new UseCaseDetailResponseStubFileObjectStub1(), $actualFileObject);
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $useCaseDetailResponseStubGeneratorRequestBuilder = new UseCaseDetailResponseStubGeneratorRequestBuilderImpl();
         $this->request = $useCaseDetailResponseStubGeneratorRequestBuilder

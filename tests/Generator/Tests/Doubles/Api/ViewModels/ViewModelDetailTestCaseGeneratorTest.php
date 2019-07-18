@@ -35,7 +35,7 @@ class ViewModelDetailTestCaseGeneratorTest extends TestCase
     /**
      * @test
      */
-    public function generate_ReturnFileObject()
+    public function generate_ReturnFileObject(): void
     {
         $actualFileObject = $this->viewModelDetailTestCaseGenerator->generate($this->request);
 
@@ -46,7 +46,7 @@ class ViewModelDetailTestCaseGeneratorTest extends TestCase
         $this->assertFileObject(new ViewModelDetailTestCaseFileObjectStub1(), $actualFileObject);
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $stub1GeneratorRequestBuilder = new ViewModelDetailTestCaseGeneratorRequestBuilderImpl();
         $this->request = $stub1GeneratorRequestBuilder

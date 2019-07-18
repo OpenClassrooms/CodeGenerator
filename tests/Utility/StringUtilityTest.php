@@ -58,7 +58,7 @@ class StringUtilityTest extends TestCase
         $this->assertEquals($expectedValue, $actualUpperSnakeCase);
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->stringUtility = new StringUtility();
     }

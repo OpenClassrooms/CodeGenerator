@@ -38,7 +38,7 @@ class GetFunctionalEntityTest extends TestCase
      *
      * @expectedException \OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gateways\Domain\SubDomain\Exceptions\FunctionalEntityNotFoundException
      */
-    public function functionalEntityNotFoundShouldThrowException()
+    final public function functionalEntityNotFoundShouldThrowException(): void
     {
         $this->request->id = self::INVALID_ID;
         $this->useCase->execute($this->request);
@@ -47,7 +47,7 @@ class GetFunctionalEntityTest extends TestCase
     /**
      * @test
      */
-    public function getFunctionalEntityShouldReturnResponse()
+    final public function getFunctionalEntityShouldReturnResponse(): void
     {
         $response = $this->useCase->execute($this->request);
 
@@ -56,7 +56,7 @@ class GetFunctionalEntityTest extends TestCase
         $this->fail("TODO: configure stub");
     }
 
-    protected function setup()
+    protected function setup(): void
     {
         $this->useCase = new GetFunctionalEntity();
         $this->useCase->setFunctionalEntityGateway(

@@ -27,7 +27,7 @@ class GenericUseCaseTest extends TestCase
     /**
      * @test
      */
-    public function genericUseCaseReturnResponse()
+    final public function genericUseCaseReturnResponse(): void
     {
         $this->fail("TODO: Implement this test");
     }
@@ -35,7 +35,7 @@ class GenericUseCaseTest extends TestCase
     /**
      * @inheritdoc
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->request = $this->buildRequest();
         $this->useCase = new GenericUseCase();

@@ -15,7 +15,7 @@ abstract class AbstractPaginatedUseCaseResponseBuilder implements PaginatedUseCa
     /**
      * {@inheritdoc}
      */
-    public function withItems($items)
+    public function withItems($items): AbstractPaginatedUseCaseResponseBuilder
     {
         $this->paginatedUseCaseResponse->setItems($items);
 
@@ -25,7 +25,7 @@ abstract class AbstractPaginatedUseCaseResponseBuilder implements PaginatedUseCa
     /**
      * {@inheritdoc}
      */
-    public function withItemsPerPage($itemsPerPage)
+    public function withItemsPerPage($itemsPerPage): AbstractPaginatedUseCaseResponseBuilder
     {
         $this->paginatedUseCaseResponse->setItemsPerPage($itemsPerPage);
 
@@ -35,7 +35,7 @@ abstract class AbstractPaginatedUseCaseResponseBuilder implements PaginatedUseCa
     /**
      * {@inheritdoc}
      */
-    public function withPage($page)
+    public function withPage($page): AbstractPaginatedUseCaseResponseBuilder
     {
         $this->paginatedUseCaseResponse->setPage($page);
 
@@ -55,7 +55,7 @@ abstract class AbstractPaginatedUseCaseResponseBuilder implements PaginatedUseCa
     /**
      * {@inheritdoc}
      */
-    public function build()
+    public function build(): AbstractPaginatedUseCaseResponse
     {
         return $this->paginatedUseCaseResponse;
     }

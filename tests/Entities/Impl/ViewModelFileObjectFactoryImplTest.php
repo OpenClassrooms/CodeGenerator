@@ -37,7 +37,7 @@ class ViewModelFileObjectFactoryImplTest extends TestCase
         $this->assertSame($expected->getClassName(), $actual->getClassName());
     }
 
-    public function fileObjectDataProvider()
+    public function fileObjectDataProvider(): array
     {
         [$baseNamespace, $domain, $entity] = FileObjectUtility::getBaseNamespaceDomainAndEntityNameFromClassName(
             FunctionalEntity::class
@@ -241,7 +241,7 @@ class ViewModelFileObjectFactoryImplTest extends TestCase
 
     }
 
-    private static function getFileObjectViewModelDetail()
+    private static function getFileObjectViewModelDetail(): FileObject
     {
         return new FileObject(
             FixturesConfig::BASE_NAMESPACE . FixturesConfig::API_DIR . 'ViewModels\Domain\SubDomain\\' . self::getEntityName(
@@ -344,12 +344,12 @@ class ViewModelFileObjectFactoryImplTest extends TestCase
      * @test
      * @expectedException \InvalidArgumentException
      */
-    public function InvalidTye_Create_ThrowException()
+    public function InvalidTye_Create_ThrowException(): void
     {
         $this->factory->create('INVALID_TYPE', self::class, '');
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->factory = new ViewModelFileObjectFactoryMock();
     }

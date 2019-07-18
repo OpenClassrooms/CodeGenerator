@@ -42,12 +42,12 @@ class StubUtilityTest extends TestCase
      * @test
      * @expectedException  \InvalidArgumentException
      */
-    public function createFakeValueThrowInvalidArgumentException()
+    public function createFakeValueThrowInvalidArgumentException(): void
     {
         StubUtility::createFakeValue('not exist', '', '');
     }
 
-    public function internalTypeAndInstanceDataProvider()
+    public function internalTypeAndInstanceDataProvider(): array
     {
         return [
             ['int', 'field1', 'FunctionalEntity', 1],

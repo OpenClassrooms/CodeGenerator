@@ -32,7 +32,7 @@ class GetEntitiesUseCaseCommandTest extends TestCase
     /**
      * @test
      */
-    public function executeCommand_withArguments()
+    public function executeCommand_withArguments(): void
     {
         GetEntitiesUseCaseMediatorMock::$fileObjects = $this->writeFileObjects(
             GetEntitiesUseCaseMediatorMock::$fileObjects
@@ -52,7 +52,7 @@ class GetEntitiesUseCaseCommandTest extends TestCase
     /**
      * @test
      */
-    public function executeCommand_withoutArguments()
+    public function executeCommand_withoutArguments(): void
     {
         GetEntitiesUseCaseMediatorMock::$fileObjects = $this->writeFileObjects(
             GetEntitiesUseCaseMediatorMock::$fileObjects
@@ -73,7 +73,7 @@ class GetEntitiesUseCaseCommandTest extends TestCase
         $this->assertCommandFileGeneratedOutput(GetEntitiesUseCaseMediatorMock::$fileObjects);
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->commandMock = new GetEntitiesUseCaseCommandMock();
         $this->application = new Application();

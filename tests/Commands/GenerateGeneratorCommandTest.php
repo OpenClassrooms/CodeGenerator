@@ -36,7 +36,7 @@ class GenerateGeneratorCommandTest extends TestCase
     /**
      * @test
      */
-    public function executeCommand_withArguments()
+    public function executeCommand_withArguments(): void
     {
         GenerateGeneratorMediatorMock::$fileObjects = $this->writeFileObjects(
             GenerateGeneratorMediatorMock::$fileObjects
@@ -56,7 +56,7 @@ class GenerateGeneratorCommandTest extends TestCase
     /**
      * @test
      */
-    public function executeCommand_withoutArguments()
+    public function executeCommand_withoutArguments(): void
     {
         GenerateGeneratorMediatorMock::$fileObjects = $this->writeFileObjects(
             GenerateGeneratorMediatorMock::$fileObjects
@@ -77,7 +77,7 @@ class GenerateGeneratorCommandTest extends TestCase
         $this->assertCommandFileGeneratedOutput(GenerateGeneratorMediatorMock::$fileObjects);
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->commandMock = new GenerateGeneratorCommandMock();
         $this->application = new Application();

@@ -32,7 +32,7 @@ class {{ skeletonModel.entity }}GeneratorTest extends TestCase
     /**
      * @test
      */
-    public function generate_ReturnFileObject()
+    final public function generate_ReturnFileObject(): void
     {
         $actualFileObject = $this->{{ skeletonModel.argument }}Generator->generate($this->request);
 
@@ -43,7 +43,7 @@ class {{ skeletonModel.entity }}GeneratorTest extends TestCase
         $this->assertFileObject(new {{ skeletonModel.entity }}FileObjectStub1(), $actualFileObject);
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         ${{ skeletonModel.argument }}GeneratorRequestBuilderImpl = new {{ skeletonModel.entity }}GeneratorRequestBuilderImpl();
         $this->request = ${{ skeletonModel.argument }}GeneratorRequestBuilderImpl

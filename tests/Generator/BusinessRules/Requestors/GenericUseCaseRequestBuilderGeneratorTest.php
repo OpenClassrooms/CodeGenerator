@@ -34,7 +34,7 @@ class GenericUseCaseRequestBuilderGeneratorTest extends TestCase
     /**
      * @test
      */
-    public function generate_ReturnFileObject()
+    public function generate_ReturnFileObject(): void
     {
         $actualFileObject = $this->genericUseCaseRequestBuilderGenerator->generate($this->request);
 
@@ -45,7 +45,7 @@ class GenericUseCaseRequestBuilderGeneratorTest extends TestCase
         $this->assertFileObject(new GenericUseCaseRequestBuilderFileObjectStub1(), $actualFileObject);
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $genericUseCaseRequestBuilderGeneratorRequestBuilderImpl = new GenericUseCaseRequestBuilderGeneratorRequestBuilderImpl(
         );

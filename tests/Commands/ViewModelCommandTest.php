@@ -34,7 +34,7 @@ class ViewModelCommandTest extends TestCase
      * @test
      * @expectedException \Exception
      */
-    public function fileConfigNotExist_ThrowException()
+    public function fileConfigNotExist_ThrowException(): void
     {
         TestClassUtil::invokeMethod('loadConfigParameters', new ViewModelsCommand());
     }
@@ -42,7 +42,7 @@ class ViewModelCommandTest extends TestCase
     /**
      * @test
      */
-    public function executeCommand_withoutArguments()
+    public function executeCommand_withoutArguments(): void
     {
         ViewModelMediatorMock::$fileObjects = $this->writeFileObjects(ViewModelMediatorMock::$fileObjects);
 
@@ -59,7 +59,7 @@ class ViewModelCommandTest extends TestCase
     /**
      * @test
      */
-    public function executeCommand_withNoTestsArguments()
+    public function executeCommand_withNoTestsArguments(): void
     {
         ViewModelMediatorMock::$fileObjects = $this->writeFileObjects(ViewModelMediatorMock::$fileObjects);
 
@@ -77,7 +77,7 @@ class ViewModelCommandTest extends TestCase
     /**
      * @test
      */
-    public function executeCommand_withTestOnlyArguments()
+    public function executeCommand_withTestOnlyArguments(): void
     {
         ViewModelMediatorMock::$fileObjects = $this->writeFileObjects(ViewModelMediatorMock::$fileObjects);
 
@@ -95,7 +95,7 @@ class ViewModelCommandTest extends TestCase
     /**
      * @test
      */
-    public function executeCommand_whenFileAlreadyExist()
+    public function executeCommand_whenFileAlreadyExist(): void
     {
         ViewModelMediatorMock::$fileObjects = $this->alreadyExistFileObject(ViewModelMediatorMock::$fileObjects);
 
@@ -118,7 +118,7 @@ class ViewModelCommandTest extends TestCase
     /**
      * @test
      */
-    public function executeCommand_withDumpArguments()
+    public function executeCommand_withDumpArguments(): void
     {
         $this->commandTester->execute(
             [
@@ -141,7 +141,7 @@ class ViewModelCommandTest extends TestCase
      * @test
      * @expectedException \ErrorException
      */
-    public function checkConfiguration_OneParameterEmpty()
+    public function checkConfiguration_OneParameterEmpty(): void
     {
         $codeGeneratorConfig = [
             'parameters' => [
@@ -156,7 +156,7 @@ class ViewModelCommandTest extends TestCase
      * @test
      * @expectedException \ErrorException
      */
-    public function checkConfiguration_ManyParametersEmpty()
+    public function checkConfiguration_ManyParametersEmpty(): void
     {
         $codeGeneratorConfig = [
             'parameters' => [
@@ -168,7 +168,7 @@ class ViewModelCommandTest extends TestCase
         TestClassUtil::invokeMethod('checkConfiguration', $this->commandMock, $codeGeneratorConfig);
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->commandMock = new ViewModelsCommandMock();
         $this->application = new Application();

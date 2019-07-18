@@ -24,7 +24,7 @@ class TestUtilityTest extends TestCase
         $this->assertEquals($expectedMethod, $actualMethod);
     }
 
-    public function getTestCaseAssertMethodDataProvider()
+    public function getTestCaseAssertMethodDataProvider(): array
     {
         return [
             [FileObjectUtility::getShortClassName(FunctionalEntityDetail::class), 'assertFunctionalEntityDetail'],

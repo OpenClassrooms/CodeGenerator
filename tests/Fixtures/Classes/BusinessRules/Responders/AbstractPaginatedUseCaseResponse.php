@@ -30,7 +30,7 @@ abstract class AbstractPaginatedUseCaseResponse implements PaginatedUseCaseRespo
     /**
      * @inheritDoc
      */
-    public function count()
+    public function count(): int
     {
         return count($this->items);
     }
@@ -38,12 +38,12 @@ abstract class AbstractPaginatedUseCaseResponse implements PaginatedUseCaseRespo
     /**
      * @inheritdoc
      */
-    public function getItems()
+    public function getItems(): array
     {
         return $this->items;
     }
 
-    public function setItems($items)
+    public function setItems($items): void
     {
         $this->items = $items;
     }
@@ -51,12 +51,12 @@ abstract class AbstractPaginatedUseCaseResponse implements PaginatedUseCaseRespo
     /**
      * @return int
      */
-    public function getItemsPerPage()
+    public function getItemsPerPage(): array
     {
         return $this->itemsPerPage;
     }
 
-    public function setItemsPerPage($itemsPerPage)
+    public function setItemsPerPage($itemsPerPage): void
     {
         $this->itemsPerPage = $itemsPerPage;
     }
@@ -64,7 +64,7 @@ abstract class AbstractPaginatedUseCaseResponse implements PaginatedUseCaseRespo
     /**
      * @inheritdoc
      */
-    public function getIterator()
+    public function getIterator(): array
     {
         return new \ArrayIterator($this->items);
     }
@@ -72,12 +72,12 @@ abstract class AbstractPaginatedUseCaseResponse implements PaginatedUseCaseRespo
     /**
      * @inheritdoc
      */
-    public function getPage()
+    public function getPage(): int
     {
         return $this->page;
     }
 
-    public function setPage($page)
+    public function setPage($page): void
     {
         $this->page = $page;
     }
@@ -85,7 +85,7 @@ abstract class AbstractPaginatedUseCaseResponse implements PaginatedUseCaseRespo
     /**
      * @inheritdoc
      */
-    public function getTotalPages()
+    public function getTotalPages(): int
     {
         if (null !== $this->itemsPerPage && 0 !== $this->itemsPerPage) {
             return (int) ceil($this->totalItems / $this->itemsPerPage);
@@ -98,12 +98,12 @@ abstract class AbstractPaginatedUseCaseResponse implements PaginatedUseCaseRespo
     /**
      * @inheritdoc
      */
-    public function getTotalItems()
+    public function getTotalItems(): int
     {
         return $this->totalItems;
     }
 
-    public function setTotalItems($totalItems)
+    public function setTotalItems($totalItems): void
     {
         $this->totalItems = $totalItems;
     }

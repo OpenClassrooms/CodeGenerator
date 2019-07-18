@@ -36,7 +36,7 @@ class GetFunctionalEntitiesTest extends TestCase
     /**
      * @test
      */
-    public function withoutFunctionalEntitiesReturnNothing()
+    final public function withoutFunctionalEntitiesReturnNothing(): void
     {
         InMemoryFunctionalEntityGateway::$functionalEntities = [];
         $response = $this->useCase->execute($this->request);
@@ -47,7 +47,7 @@ class GetFunctionalEntitiesTest extends TestCase
     /**
      * @test
      */
-    public function getFunctionalEntitiesShouldReturnResponse()
+    final public function getFunctionalEntitiesShouldReturnResponse(): void
     {
         InMemoryFunctionalEntityGateway::$functionalEntities = [
             FunctionalEntityStub1::ID => new FunctionalEntityStub1(),
@@ -68,7 +68,7 @@ class GetFunctionalEntitiesTest extends TestCase
         $this->fail("TODO: configure stub");
     }
 
-    protected function setup()
+    protected function setup(): void
     {
         $this->useCase = new GetFunctionalEntities();
         $this->useCase->setFunctionalEntityGateway(

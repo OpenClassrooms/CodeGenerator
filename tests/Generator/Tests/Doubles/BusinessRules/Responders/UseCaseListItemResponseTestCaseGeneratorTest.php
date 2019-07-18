@@ -34,7 +34,7 @@ class UseCaseListItemResponseTestCaseGeneratorTest extends TestCase
     /**
      * @test
      */
-    public function generate_ReturnFileObject()
+    public function generate_ReturnFileObject(): void
     {
         $actualFileObject = $this->useCaseListItemResponseTestCaseGenerator->generate($this->request);
 
@@ -45,7 +45,7 @@ class UseCaseListItemResponseTestCaseGeneratorTest extends TestCase
         $this->assertFileObject(new UseCaseListItemResponseTestCaseFileObjectStub1(), $actualFileObject);
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $useCaseListItemResponseTestCaseGeneratorRequestBuilderImpl = new UseCaseListItemResponseTestCaseGeneratorRequestBuilderImpl();
         $this->request = $useCaseListItemResponseTestCaseGeneratorRequestBuilderImpl

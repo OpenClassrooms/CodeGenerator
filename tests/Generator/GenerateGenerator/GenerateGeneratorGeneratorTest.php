@@ -36,7 +36,7 @@ class GenerateGeneratorGeneratorTest extends TestCase
     /**
      * @test
      */
-    public function generateWithAssemblerConstructionType_ReturnFileObjects()
+    public function generateWithAssemblerConstructionType_ReturnFileObjects(): void
     {
         $actualFileObjects = $this->selfGeneratorGenerator->generate($this->request);
 
@@ -72,7 +72,7 @@ class GenerateGeneratorGeneratorTest extends TestCase
     /**
      * @test
      */
-    public function generateWithBuilderConstructionType_ReturnFileObjects()
+    public function generateWithBuilderConstructionType_ReturnFileObjects(): void
     {
         $selfGeneratorGeneratorRequestBuilderImpl = new GenerateGeneratorGeneratorRequestBuilderImpl();
         $this->request = $selfGeneratorGeneratorRequestBuilderImpl
@@ -86,7 +86,7 @@ class GenerateGeneratorGeneratorTest extends TestCase
         $this->assertGeneratorFiles(new GenerateGeneratorFileObjectsStub2(), $actualFileObjects);
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $selfGeneratorGeneratorRequestBuilderImpl = new GenerateGeneratorGeneratorRequestBuilderImpl();
         $this->request = $selfGeneratorGeneratorRequestBuilderImpl

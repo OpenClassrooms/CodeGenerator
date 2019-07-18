@@ -20,12 +20,12 @@ class UseCaseRequestFileObjectFactoryImplTest extends TestCase
      * @test
      * @expectedException \InvalidArgumentException
      */
-    public function InvalidType_Create_ThrowException()
+    public function InvalidType_Create_ThrowException(): void
     {
         $this->factory->create('INVALID_TYPE', self::class, '');
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->factory = new UseCaseRequestFileObjectFactoryMock();
     }

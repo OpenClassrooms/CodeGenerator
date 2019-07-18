@@ -27,7 +27,7 @@ class GenerateGeneratorMediatorImplTest extends TestCase
     /**
      * @test
      */
-    public function mediate_ReturnFileObject()
+    public function mediate_ReturnFileObject(): void
     {
         $expectedFileObjects = $this->mediator->mediate(
             [
@@ -47,7 +47,7 @@ class GenerateGeneratorMediatorImplTest extends TestCase
         }
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->mediator = new GenerateGeneratorMediatorImpl();
         $selfGeneratorFileObjectsStub1 = new GenerateGeneratorFileObjectsStub1();

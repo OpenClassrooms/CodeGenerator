@@ -35,7 +35,7 @@ class UseCaseDetailResponseAssemblerImplGeneratorTest extends TestCase
     /**
      * @test
      */
-    public function generate_ReturnFileObject()
+    public function generate_ReturnFileObject(): void
     {
         $actualFileObject = $this->useCaseDetailResponseAssemblerImplGenerator->generate($this->request);
 
@@ -46,7 +46,7 @@ class UseCaseDetailResponseAssemblerImplGeneratorTest extends TestCase
         $this->assertFileObject(new UseCaseDetailResponseAssemblerImplFileObjectStub1(), $actualFileObject);
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $useCaseDetailResponseAssemblerImplGeneratorRequestBuilderImpl = new UseCaseDetailResponseAssemblerImplGeneratorRequestBuilderImpl(
         );

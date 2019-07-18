@@ -32,12 +32,12 @@ class UseCaseResponseFileObjectFactoryImplTest extends TestCase
         string $entity,
         string $baseNamespace,
         FileObject $expected
-    ) {
+    ): void {
         $actual = $this->factory->create($inputType, $domain, $entity, $baseNamespace);
         $this->assertSame($expected->getClassName(), $actual->getClassName());
     }
 
-    public function fileObjectDataProvider()
+        public function fileObjectDataProvider(): array
     {
         [$baseNamespace, $domain, $entity] = FileObjectUtility::getBaseNamespaceDomainAndEntityNameFromClassName(
             FunctionalEntity::class
@@ -178,7 +178,7 @@ class UseCaseResponseFileObjectFactoryImplTest extends TestCase
 
     }
 
-    private static function getFileObjectBusinessRulesUseCaseDetailResponse()
+    private static function getFileObjectBusinessRulesUseCaseDetailResponse(): FileObject
     {
         return $useCaseResponseFileObject = new FileObject(
             FixturesConfig::BASE_NAMESPACE . 'BusinessRules\Responders\Domain\SubDomain\\' . self::getEntityName(
@@ -187,7 +187,7 @@ class UseCaseResponseFileObjectFactoryImplTest extends TestCase
 
     }
 
-    private static function getFileObjectBusinessRulesUseCaseListItemResponse()
+    private static function getFileObjectBusinessRulesUseCaseListItemResponse(): FileObject
     {
         return $useCaseResponseFileObject = new FileObject(
             FixturesConfig::BASE_NAMESPACE . 'BusinessRules\Responders\Domain\SubDomain\\' . self::getEntityName(
@@ -200,12 +200,12 @@ class UseCaseResponseFileObjectFactoryImplTest extends TestCase
      * @test
      * @expectedException \InvalidArgumentException
      */
-    public function InvalidType_Create_ThrowException()
+    public function InvalidType_Create_ThrowException(): void
     {
         $this->factory->create('INVALID_TYPE', self::class, '');
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->factory = new UseCaseResponseFileObjectFactoryMock();
     }

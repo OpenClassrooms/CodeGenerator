@@ -25,14 +25,14 @@ class FunctionalEntityDetailAssemblerImplTest extends TestCase
     /**
      * @test
      */
-    public function onCreateShouldReturnViewModel()
+    final public function onCreateShouldReturnViewModel(): void
     {
         $actual = $this->assembler->create(new FunctionalEntityDetailResponseStub1());
         $expected = new FunctionalEntityDetailStub1();
         $this->assertFunctionalEntityDetailTestCase($expected, $actual);
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->assembler = new FunctionalEntityDetailAssemblerImpl();
     }

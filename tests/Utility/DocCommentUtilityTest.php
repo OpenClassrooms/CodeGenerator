@@ -10,7 +10,7 @@ class DocCommentUtilityTest extends TestCase
     /**
      * @test
      */
-    public function getReturnTypeReturnArray()
+    public function getReturnTypeReturnArray(): void
     {
         $class = (new class() {
             /**

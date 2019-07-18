@@ -34,7 +34,7 @@ class InMemoryEntityGatewayGeneratorTest extends TestCase
     /**
      * @test
      */
-    public function generateReturnFileObject()
+    public function generateReturnFileObject(): void
     {
         $actualFileObject = $this->inMemoryEntityGatewayGenerator->generate($this->request);
 
@@ -45,7 +45,7 @@ class InMemoryEntityGatewayGeneratorTest extends TestCase
         $this->assertFileObject(new InMemoryEntityGatewayFileObjectStub1(), $actualFileObject);
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $inMemoryEntityGatewayGeneratorRequestBuilderImpl = new InMemoryEntityGatewayGeneratorRequestBuilderImpl();
         $this->request = $inMemoryEntityGatewayGeneratorRequestBuilderImpl

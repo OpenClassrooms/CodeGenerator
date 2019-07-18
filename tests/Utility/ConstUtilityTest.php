@@ -74,7 +74,7 @@ class ConstUtilityTest extends TestCase
     /**
      * @test
      */
-    public function generateConstsFromStubFileObject_ReturnConstObjects()
+    public function generateConstsFromStubFileObject_ReturnConstObjects(): void
     {
         $stubReference = new FileObject(self::class);
 
@@ -98,7 +98,7 @@ class ConstUtilityTest extends TestCase
      * @test
      * @expectedException  \InvalidArgumentException
      */
-    public function generateConstsFromStubReference_ThrowsException()
+    public function generateConstsFromStubReference_ThrowsException(): void
     {
         $fileObject = new FileObject(self::class);
 

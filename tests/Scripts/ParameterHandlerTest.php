@@ -38,7 +38,7 @@ class ParameterHandlerTest extends TestCase
     /**
      * @test
      */
-    public function createGeneratorParameters_FileDumped()
+    public function createGeneratorParameters_FileDumped(): void
     {
         $this->processor->expects($this->once())->method('processFile');
 
@@ -48,7 +48,7 @@ class ParameterHandlerTest extends TestCase
     /**
      * @test
      */
-    public function createGeneratorParameters_NotVendorInstallation()
+    public function createGeneratorParameters_NotVendorInstallation(): void
     {
         $this->package->method('getName')->willReturn(ParameterHandlerMock::CODE_GENERATOR);
         $this->processor->expects($this->never())->method('processFile');
@@ -56,7 +56,7 @@ class ParameterHandlerTest extends TestCase
         ParameterHandlerMock::createGeneratorFileParameters($this->event);
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->composer = $this->createMock(Composer::class);
         $this->event = $this->createMock(Event::class);

@@ -32,7 +32,7 @@ class ViewModelListItemGeneratorTest extends AbstractViewModelGeneratorTestCase
     /**
      * @test
      */
-    public function generate_ReturnFileObject()
+    public function generate_ReturnFileObject(): void
     {
         $actualFileObject = $this->viewModelListItemGenerator->generate($this->request);
 
@@ -43,7 +43,7 @@ class ViewModelListItemGeneratorTest extends AbstractViewModelGeneratorTestCase
         $this->assertFileObject(new ViewModelListItemFileObjectStub1(), $actualFileObject);
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $viewModelListItemGeneratorRequestBuilder = new ViewModelListItemGeneratorRequestBuilderImpl();
         $this->request = $viewModelListItemGeneratorRequestBuilder

@@ -72,7 +72,7 @@ class GetEntitiesUseCaseMediatorImplTest extends TestCase
     /**
      * @test
      */
-    public function generateGenericUseCase_withoutTest()
+    public function generateGenericUseCase_withoutTest(): void
     {
         $this->options[Options::NO_TEST] = null;
         $fileObjects = $this->mediator->mediate(
@@ -88,7 +88,7 @@ class GetEntitiesUseCaseMediatorImplTest extends TestCase
     /**
      * @test
      */
-    public function generateGenericUseCase_withTestOnly()
+    public function generateGenericUseCase_withTestOnly(): void
     {
         $this->options[Options::TESTS_ONLY] = null;
         $fileObjects = $this->mediator->mediate(
@@ -105,7 +105,7 @@ class GetEntitiesUseCaseMediatorImplTest extends TestCase
     /**
      * @test
      */
-    public function generateGenericUseCase_withDump()
+    public function generateGenericUseCase_withDump(): void
     {
         $this->options[Options::DUMP] = null;
         $fileObjects = $this->mediator->mediate(
@@ -126,7 +126,7 @@ class GetEntitiesUseCaseMediatorImplTest extends TestCase
     /**
      * @test
      */
-    public function generateGenericUseCase_withoutOptions()
+    public function generateGenericUseCase_withoutOptions(): void
     {
         $fileObjects = $this->mediator->mediate(
             [
@@ -140,7 +140,7 @@ class GetEntitiesUseCaseMediatorImplTest extends TestCase
 
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         InMemoryFileObjectGateway::$fileObjects = [];
         $this->mediator = new GetEntitiesUseCaseMediatorImpl();

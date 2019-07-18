@@ -34,7 +34,7 @@ class EntityGatewayGeneratorTest extends TestCase
     /**
      * @test
      */
-    public function generate_ReturnFileObject()
+    public function generate_ReturnFileObject(): void
     {
         $actualFileObject = $this->entityGatewayGenerator->generate($this->request);
 
@@ -45,7 +45,7 @@ class EntityGatewayGeneratorTest extends TestCase
         $this->assertFileObject(new EntityGatewayFileObjectStub1(), $actualFileObject);
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $entityGatewayGeneratorRequestBuilderImpl = new EntityGatewayGeneratorRequestBuilderImpl();
         $this->request = $entityGatewayGeneratorRequestBuilderImpl

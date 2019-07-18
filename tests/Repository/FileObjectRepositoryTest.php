@@ -28,7 +28,7 @@ class FileObjectRepositoryTest extends TestCase
     /**
      * @test
      */
-    public function insert_PushFileObject()
+    public function insert_PushFileObject(): void
     {
         $fileObject = $this->generateFileObject(FunctionalEntity::class);
 
@@ -45,7 +45,7 @@ class FileObjectRepositoryTest extends TestCase
         $this->assertArrayHasKey($fileObject->getClassName(), $actual);
     }
 
-    private function generateFileObject(string $className)
+    private function generateFileObject(string $className): FileObject
     {
         $fileObject = new FileObject($className);
         $fileObject->setContent(__DIR__ . '/../Fixtures/Classes/Api/ViewModels/Domain/SubDomain/FunctionalEntity.php');
@@ -86,7 +86,7 @@ class FileObjectRepositoryTest extends TestCase
         $this->assertEmpty($actual);
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->fileObjectRepository = new FileObjectRepository();
         $this->fileSystem = $this->createMock(Filesystem::class);

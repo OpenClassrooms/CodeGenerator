@@ -30,7 +30,7 @@ class FileObjectUtilityTest extends TestCase
         $expectedBaseNamespace,
         $expectedDomain,
         $expectedEntity
-    ) {
+    ): void {
         [
             $actualBaseNamespace,
             $actualDomain,
@@ -42,7 +42,7 @@ class FileObjectUtilityTest extends TestCase
         $this->assertEquals($expectedEntity, $actualEntity);
     }
 
-    public function fileObjectDataProvider()
+    public function fileObjectDataProvider(): array
     {
         return [
             [

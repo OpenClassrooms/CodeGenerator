@@ -24,14 +24,14 @@ class {{ skeletonModel.shortName }} extends TestCase
     /**
      * @test
      */
-    public function onCreateShouldReturnViewModel()
+    final public function onCreateShouldReturnViewModel(): void
     {
         $actual = $this->assembler->createListItems([new {{ skeletonModel.useCaseListItemResponseStubShortName }}()]);
         $expected = [new {{ skeletonModel.viewModelListItemStubShortName }}()];
         $this->{{ skeletonModel.viewModelListItemTestCaseMethod }}($expected, $actual);
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->assembler = new {{ skeletonModel.viewModelListItemAssemblerImplShortName }}();
     }

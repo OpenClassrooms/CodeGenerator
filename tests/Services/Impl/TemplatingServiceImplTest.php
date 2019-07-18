@@ -21,7 +21,7 @@ class TemplatingServiceImplTest extends TestCase
     /**
      * @test
      */
-    public function getSortNameByAlphaFilter_ReturnArrayOfFields()
+    public function getSortNameByAlphaFilter_ReturnArrayOfFields(): void
     {
         $fieldObjects = [
             $this->generateFieldObject('omega', 'bool'),
@@ -42,7 +42,7 @@ class TemplatingServiceImplTest extends TestCase
 
     }
 
-    private function generateFieldObject(string $name, string $type)
+    private function generateFieldObject(string $name, string $type): FieldObject
     {
         $fieldObject = new FieldObject($name);
         $fieldObject->setDocComment(
@@ -57,7 +57,7 @@ class TemplatingServiceImplTest extends TestCase
     /**
      * @param FieldObject[]
      */
-    private function getFieldNameList(array $fieldObjects)
+    private function getFieldNameList(array $fieldObjects): array
     {
         $fieldNames = [];
         foreach ($fieldObjects as $fieldObject) {
@@ -81,7 +81,7 @@ class TemplatingServiceImplTest extends TestCase
     /**
      * @test
      */
-    public function getSortIdFirstFilter_ReturnArrayOfFields()
+    public function getSortIdFirstFilter_ReturnArrayOfFields(): void
     {
         $fieldObjects = [
             $this->generateFieldObject('omega', 'bool'),
@@ -106,7 +106,7 @@ class TemplatingServiceImplTest extends TestCase
      * @test
      * @dataProvider printValueProvider
      */
-    public function printValue_ReturnValue($value, $expected)
+    public function printValue_ReturnValue($value, $expected): void
     {
         $twigFunction = TestClassUtil::invokeMethod('printValue', $this->templateServiceImpl);
 
@@ -117,7 +117,7 @@ class TemplatingServiceImplTest extends TestCase
         $this->assertEquals($actualValue, $expected);
     }
 
-    public function printValueProvider()
+    public function printValueProvider(): array
     {
         return [
             [true, 'true'],
@@ -130,7 +130,7 @@ class TemplatingServiceImplTest extends TestCase
     /**
      * @test
      */
-    public function lineBreak_ReturnTrue()
+    public function lineBreak_ReturnTrue(): void
     {
         $fieldObjects = [
             $this->generateFieldObject('id', 'int'),
@@ -147,7 +147,7 @@ class TemplatingServiceImplTest extends TestCase
         $this->assertTrue($actualValue);
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->templateServiceImpl = new  TemplatingServiceImpl('', 'author', 'mail');
     }
