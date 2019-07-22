@@ -72,6 +72,6 @@
     ]
   },
   "bin": [
-    "src/CodeGenerator.php"
+    "src/code-generator"
   ]
 }
