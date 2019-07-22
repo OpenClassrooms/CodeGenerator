@@ -34,7 +34,7 @@ class GetFunctionalEntitiesRequestDTO implements GetFunctionalEntitiesRequest
     /**
      * {@inheritdoc}
      */
-    public function getFilters()
+    public function getFilters(): array
     {
         return $this->filters;
     }
@@ -58,7 +58,7 @@ class GetFunctionalEntitiesRequestDTO implements GetFunctionalEntitiesRequest
     /**
      * {@inheritdoc}
      */
-    public function getSorts()
+    public function getSorts(): array
     {
         return $this->sorts;
     }

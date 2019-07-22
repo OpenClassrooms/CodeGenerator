@@ -33,7 +33,7 @@ abstract class AbstractGenerator implements Generator
     /**
      * @var FileObjectGateway
      */
-    private $fileObjectGateway;
+    protected $fileObjectGateway;
 
     /**
      * @var TemplatingServiceImpl
@@ -71,9 +71,18 @@ abstract class AbstractGenerator implements Generator
         return FieldObjectUtility::getPublicClassFields($className);
     }
 
-    protected function insertFileObject(FileObject $viewModelFileObject): void
+    protected function insertFileObject(FileObject $fileObject): void
     {
-        $this->fileObjectGateway->insert($viewModelFileObject);
+        $pattern = '/\d+$/';
+        $suffix = 1;
+        while ($this->fileObjectGateway->find($fileObject->getId())) {
+            $suffix++;
+            if (preg_match($pattern, $fileObject->getId())) {
+                $fileObject->setClassName(preg_replace($pattern, $suffix, $fileObject->getId()));
+            }
+        }
+
+        $this->fileObjectGateway->insert($fileObject);
     }
 
     protected function render(string $template, array $parameters): string

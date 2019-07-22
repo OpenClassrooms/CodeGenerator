@@ -40,7 +40,7 @@ class ViewModelTestCaseGeneratorTest extends TestCase
         $actualFileObject = $this->viewModelTestCaseGenerator->generate($this->request);
 
         $this->assertSame(
-            InMemoryFileObjectGateway::$fileObjects[$actualFileObject->getId()],
+            InMemoryFileObjectGateway::$fileObjects[$actualFileObject->getId()]->getPath(),
             $actualFileObject->getPath()
         );
         $this->assertFileObject(new ViewModelTestCaseFileObjectStub1(), $actualFileObject);

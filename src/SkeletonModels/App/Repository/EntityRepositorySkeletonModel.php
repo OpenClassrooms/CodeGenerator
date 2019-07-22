@@ -9,9 +9,13 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
  */
 abstract class EntityRepositorySkeletonModel extends AbstractSkeletonModel
 {
+    public $entityClassName;
+
     public $entityGatewayClassName;
 
     public $entityGatewayShortName;
+
+    public $entityShortName;
 
     public $templatePath = 'App/Repository/EntityRepository.php.twig';
 }

@@ -13,7 +13,7 @@ interface GetFunctionalEntitiesRequest extends UseCaseRequest
     /**
      * @return string[]
      */
-    public function getFilters();
+    public function getFilters(): array;
 
     public function getItemsPerPage(): int;
 
@@ -22,5 +22,5 @@ interface GetFunctionalEntitiesRequest extends UseCaseRequest
     /**
      * @return string[]
      */
-    public function getSorts();
+    public function getSorts(): array;
 }

@@ -33,7 +33,7 @@ class {{ skeletonModel.shortName }} implements {{ skeletonModel.getEntitiesUseCa
     /**
      * {@inheritdoc}
      */
-    public function getFilters()
+    public function getFilters(): array
     {
         return $this->filters;
     }
@@ -57,7 +57,7 @@ class {{ skeletonModel.shortName }} implements {{ skeletonModel.getEntitiesUseCa
     /**
      * {@inheritdoc}
      */
-    public function getSorts()
+    public function getSorts(): array
     {
         return $this->sorts;
     }

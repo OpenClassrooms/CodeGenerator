@@ -40,7 +40,7 @@ class GetEntityUseCaseRequestDTOGeneratorTest extends TestCase
         $actualFileObject = $this->getEntityUseCaseRequestDTOGenerator->generate($this->request);
 
         $this->assertSame(
-            InMemoryFileObjectGateway::$fileObjects[$actualFileObject->getId()],
+            InMemoryFileObjectGateway::$fileObjects[$actualFileObject->getId()]->getPath(),
             $actualFileObject->getPath()
         );
         $this->assertFileObject(new GetEntityUseCaseRequestDTOFileObjectStub1(), $actualFileObject);

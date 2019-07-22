@@ -47,6 +47,9 @@ class GetEntitiesUseCaseMediatorImpl implements GetEntitiesUseCaseMediator
         $fileObjects[] = $this->generateInMemoryEntityGatewayGenerator($className);
         $fileObjects[] = $this->generateUseCaseListItemResponseAssemblerMockGenerator($className);
         $fileObjects[] = $this->generateUseCaseListItemResponseStubGenerator($className);
+        $fileObjects[] = $this->generateUseCaseListItemResponseStubGenerator($className);
+        $fileObjects[] = $this->generateEntityStubGenerator($className);
+        $fileObjects[] = $this->generateEntityStubGenerator($className);
         $fileObjects[] = $this->generateUseCaseListItemResponseTestCaseGenerator($className);
         $fileObjects[] = $this->generateUseCaseResponseTestCaseGenerator($className);
 

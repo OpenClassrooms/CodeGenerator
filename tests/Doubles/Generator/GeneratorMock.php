@@ -4,6 +4,7 @@ namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Generator;
 
 use OpenClassrooms\CodeGenerator\Entities\FileObject;
 use OpenClassrooms\CodeGenerator\Gateways\FileObject\FileObjectGateway;
+use OpenClassrooms\CodeGenerator\Generator\AbstractGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Generator;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
@@ -11,7 +12,7 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileO
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
-class GeneratorMock implements Generator
+class GeneratorMock extends AbstractGenerator
 {
     /**
      * @var FileObjectGateway
@@ -45,7 +46,7 @@ class GeneratorMock implements Generator
     {
         $this->hasBeenGenerated = true;
 
-        $this->fileObjectGateway->insert($this->fileObjectResponse);
+        $this->insertFileObject($this->fileObjectResponse);
 
         return $this->fileObjectResponse;
     }

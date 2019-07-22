@@ -61,7 +61,7 @@ class FunctionalEntityListItemResponseAssemblerImpl implements FunctionalEntityL
         return $response;
     }
 
-    public function setPaginatedUseCaseResponseBuilder(PaginatedUseCaseResponseBuilder $builder)
+    public function setPaginatedUseCaseResponseBuilder(PaginatedUseCaseResponseBuilder $builder): void
     {
         $this->paginatedUseCaseResponseBuilder = $builder;
     }

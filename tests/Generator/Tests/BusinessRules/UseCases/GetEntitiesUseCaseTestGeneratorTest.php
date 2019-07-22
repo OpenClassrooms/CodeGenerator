@@ -43,7 +43,7 @@ class GetEntitiesUseCaseTestGeneratorTest extends TestCase
         $actualFileObject = $this->getEntitiesUseCaseTestGenerator->generate($this->request);
 
         $this->assertSame(
-            InMemoryFileObjectGateway::$fileObjects[$actualFileObject->getId()],
+            InMemoryFileObjectGateway::$fileObjects[$actualFileObject->getId()]->getPath(),
             $actualFileObject->getPath()
         );
         $this->assertFileObject(new GetEntitiesUseCaseTestFileObjectStub1(), $actualFileObject);

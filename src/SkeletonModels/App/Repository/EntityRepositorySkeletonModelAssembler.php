@@ -10,6 +10,7 @@ use OpenClassrooms\CodeGenerator\Entities\FileObject;
 interface EntityRepositorySkeletonModelAssembler
 {
     public function create(
+        FileObject $entityFileObject,
         FileObject $entityGatewayFileObject,
         FileObject $entityRepositoryFileObject
     ): EntityRepositorySkeletonModel;

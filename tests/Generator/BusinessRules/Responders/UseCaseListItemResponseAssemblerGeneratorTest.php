@@ -39,7 +39,7 @@ class UseCaseListItemResponseAssemblerGeneratorTest extends TestCase
         $actualFileObject = $this->useCaseListItemResponseAssemblerGenerator->generate($this->request);
 
         $this->assertSame(
-            InMemoryFileObjectGateway::$fileObjects[$actualFileObject->getId()],
+            InMemoryFileObjectGateway::$fileObjects[$actualFileObject->getId()]->getPath(),
             $actualFileObject->getPath()
         );
         $this->assertFileObject(new UseCaseListItemResponseAssemblerFileObjectStub1(), $actualFileObject);

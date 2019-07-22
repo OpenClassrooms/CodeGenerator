@@ -14,7 +14,10 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\U
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\UseCaseListItemResponseDTOFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\UseCaseResponseDTOFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\UseCaseResponseTraitFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\BusinessRules\Entities\EntityStub\EntityStubFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\BusinessRules\Entities\EntityStub\EntityStubFileObjectStub2;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\BusinessRules\Responders\UseCaseListItemResponseStub\UseCaseListItemResponseStubFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\BusinessRules\Responders\UseCaseListItemResponseStub\UseCaseListItemResponseStubFileObjectStub2;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\BusinessRules\UseCases\GetEntitiesUseCaseTestFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\Doubles\BusinessRules\Responders\UseCaseListItemResponseAssemblerMockFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\Doubles\BusinessRules\Responders\UseCaseListItemResponseTestCaseFileObjectStub1;
@@ -32,6 +35,8 @@ class GetEntitiesUseCaseMediatorMock extends GetEntitiesUseCaseMediatorImpl
     public function __construct()
     {
         self::$fileObjects = [
+            new EntityStubFileObjectStub1(),
+            new EntityStubFileObjectStub2(),
             new GetEntitiesUseCaseFileObjectStub1(),
             new GetEntityUseCaseRequestBuilderFileObjectStub1(),
             new GetEntityUseCaseRequestBuilderImplFileObjectStub1(),
@@ -46,6 +51,7 @@ class GetEntitiesUseCaseMediatorMock extends GetEntitiesUseCaseMediatorImpl
             new GetEntitiesUseCaseTestFileObjectStub1(),
             new UseCaseListItemResponseAssemblerMockFileObjectStub1(),
             new UseCaseListItemResponseStubFileObjectStub1(),
+            new UseCaseListItemResponseStubFileObjectStub2(),
             new UseCaseListItemResponseTestCaseFileObjectStub1(),
             new UseCaseResponseTestCaseFileObjectStub1(),
         ];

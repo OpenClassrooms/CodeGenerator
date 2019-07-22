@@ -63,7 +63,7 @@ class {{ skeletonModel.shortName }} implements {{ skeletonModel.useCaseListItemR
         return $response;
     }
 
-    public function set{{ skeletonModel.paginatedUseCaseResponseBuilderShortName }}({{ skeletonModel.paginatedUseCaseResponseBuilderShortName }} $builder)
+    public function set{{ skeletonModel.paginatedUseCaseResponseBuilderShortName }}({{ skeletonModel.paginatedUseCaseResponseBuilderShortName }} $builder): void
     {
         $this->{{ skeletonModel.paginatedUseCaseResponseBuilderArgument }} = $builder;
     }

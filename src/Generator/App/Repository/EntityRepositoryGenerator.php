@@ -43,17 +43,29 @@ class EntityRepositoryGenerator extends AbstractGenerator
     private function buildEntityRepositoryFileObject(string $entityClassName): FileObject
     {
         $this->initFileObjectParameter($entityClassName);
+        $entityFileObject = $this->createEntityFileObject();
         $entityGatewayFileObject = $this->createEntityGatewayFileObject();
         $entityRepositoryFileObject = $this->createEntityRepositoryFileObject();
 
         $entityRepositoryFileObject->setContent(
             $this->generateContent(
+                $entityFileObject,
                 $entityGatewayFileObject,
                 $entityRepositoryFileObject
             )
         );
 
         return $entityRepositoryFileObject;
+    }
+
+    private function createEntityFileObject(): FileObject
+    {
+        return $this->entityFileObjectFactory->create(
+            EntityFileObjectType::BUSINESS_RULES_ENTITY,
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
+        );
     }
 
     private function createEntityGatewayFileObject(): FileObject
@@ -76,19 +88,26 @@ class EntityRepositoryGenerator extends AbstractGenerator
     }
 
     private function generateContent(
+        FileObject $entityFileObject,
         FileObject $entityGatewayFileObject,
         FileObject $entityRepositoryFileObject
     ): string {
-        $skeletonModel = $this->createSkeletonModel($entityGatewayFileObject, $entityRepositoryFileObject);
+        $skeletonModel = $this->createSkeletonModel(
+            $entityFileObject,
+            $entityGatewayFileObject,
+            $entityRepositoryFileObject
+        );
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
     }
 
     private function createSkeletonModel(
+        FileObject $entityFileObject,
         FileObject $entityGatewayFileObject,
         FileObject $entityRepositoryFileObject
     ): EntityRepositorySkeletonModel {
         return $this->entityRepositorySkeletonModelAssembler->create(
+            $entityFileObject,
             $entityGatewayFileObject,
             $entityRepositoryFileObject
         );

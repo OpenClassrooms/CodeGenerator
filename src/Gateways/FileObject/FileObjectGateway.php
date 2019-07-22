@@ -11,5 +11,7 @@ interface FileObjectGateway
 {
     public function insert(FileObject $fileObject);
 
+    public function find(string $classname): ?FileObject;
+
     public function flush();
 }

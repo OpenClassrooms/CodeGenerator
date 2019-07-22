@@ -22,6 +22,7 @@
         <import resource="Generator/BusinessRules/UseCases/use_case_response_trait_generator.xml"/>
         <import resource="Generator/BusinessRules/UseCases/use_case_list_item_response_assembler_impl_generator.xml"/>
         <import resource="Generator/BusinessRules/UseCases/use_case_list_item_response_dto_generator.xml"/>
+        <import resource="Generator/Tests/BusinessRules/Entities/entity_stub.xml"/>
         <import resource="Generator/Tests/BusinessRules/Responders/abstract_use_case_response_stub.xml"/>
         <import resource="Generator/Tests/BusinessRules/Responders/use_case_list_item_response_stub.xml"/>
         <import resource="Generator/Tests/BusinessRules/UseCases/get_entities_use_case_test_generator.xml"/>

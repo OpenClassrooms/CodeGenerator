@@ -40,7 +40,7 @@ class GetEntityUseCaseRequestBuilderImplGeneratorTest extends TestCase
         $actualFileObject = $this->getEntityUseCaseRequestBuilderImplGenerator->generate($this->request);
 
         $this->assertSame(
-            InMemoryFileObjectGateway::$fileObjects[$actualFileObject->getId()],
+            InMemoryFileObjectGateway::$fileObjects[$actualFileObject->getId()]->getPath(),
             $actualFileObject->getPath()
         );
         $this->assertFileObject(new GetEntityUseCaseRequestBuilderImplFileObjectStub1(), $actualFileObject);

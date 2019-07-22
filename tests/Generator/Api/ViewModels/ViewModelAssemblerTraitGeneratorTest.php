@@ -37,7 +37,7 @@ class ViewModelAssemblerTraitGeneratorTest extends AbstractViewModelGeneratorTes
         $actualFileObject = $this->viewModelAssemblerTraitGenerator->generate($this->request);
 
         $this->assertSame(
-            InMemoryFileObjectGateway::$fileObjects[$actualFileObject->getId()],
+            InMemoryFileObjectGateway::$fileObjects[$actualFileObject->getId()]->getPath(),
             $actualFileObject->getPath()
         );
         $this->assertFileObject(new ViewModelAssemblerTraitFileObjectStub1(), $actualFileObject);

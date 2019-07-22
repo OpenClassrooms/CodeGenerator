@@ -39,7 +39,7 @@ class UseCaseDetailResponseDTOGeneratorTest extends TestCase
         $actualFileObject = $this->useCaseDetailResponseDTOGenerator->generate($this->request);
 
         $this->assertSame(
-            InMemoryFileObjectGateway::$fileObjects[$actualFileObject->getId()],
+            InMemoryFileObjectGateway::$fileObjects[$actualFileObject->getId()]->getPath(),
             $actualFileObject->getPath()
         );
         $this->assertFileObject(new UseCaseDetailResponseDTOFileObjectStub1(), $actualFileObject);

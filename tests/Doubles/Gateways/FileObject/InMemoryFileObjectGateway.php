@@ -27,12 +27,17 @@ class InMemoryFileObjectGateway implements FileObjectGateway
 
     public function insert(FileObject $fileObject)
     {
-        self::$fileObjects[$fileObject->getId()] = $fileObject->getPath();
+        self::$fileObjects[$fileObject->getId()] = $fileObject;
     }
 
     public function flush(): void
     {
         self::$flushedFileObjects = self::$fileObjects;
         self::$fileObjects = [];
+    }
+
+    public function find(string $classname): ?FileObject
+    {
+        return self::$fileObjects[$classname] ?? null;
     }
 }

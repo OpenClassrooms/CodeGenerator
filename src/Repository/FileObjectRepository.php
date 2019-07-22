@@ -27,6 +27,11 @@ class FileObjectRepository implements FileObjectGateway
         self::$fileObjects[$fileObject->getId()] = $fileObject;
     }
 
+    public function find(string $classname): ?FileObject
+    {
+        return self::$fileObjects[$classname] ?? null;
+    }
+
     public function flush(): void
     {
         foreach (self::$fileObjects as $key => $fileObject) {

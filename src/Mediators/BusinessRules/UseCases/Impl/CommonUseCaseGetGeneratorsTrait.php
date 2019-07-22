@@ -3,7 +3,6 @@
 namespace OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\Impl;
 
 use OpenClassrooms\CodeGenerator\Entities\FileObject;
-use OpenClassrooms\CodeGenerator\Gateways\FileObject\FileObjectGateway;
 use OpenClassrooms\CodeGenerator\Generator\App\Repository\EntityRepositoryGenerator;
 use OpenClassrooms\CodeGenerator\Generator\App\Repository\Request\EntityRepositoryGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Gateways\EntityGatewayGenerator;
@@ -17,6 +16,8 @@ use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\UseCas
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\UseCaseResponseDTOGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\UseCaseResponseTraitGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Generator;
+use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Entities\EntityStubGenerator;
+use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Entities\Request\EntityStubGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\BusinessRules\Gateways\InMemoryEntityGatewayGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\BusinessRules\Gateways\Request\InMemoryEntityGatewayGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\BusinessRules\Responders\Request\UseCaseResponseTestCaseGeneratorRequestBuilder;
@@ -32,6 +33,12 @@ trait CommonUseCaseGetGeneratorsTrait
 
     /** @var EntityGatewayGeneratorRequestBuilder */
     private $entityGatewayGeneratorRequestBuilder;
+
+    /** @var EntityStubGenerator */
+    private $entityStubGenerator;
+
+    /** @var EntityStubGeneratorRequestBuilder */
+    private $entityStubGeneratorRequestBuilder;
 
     /** @var EntityNotFoundExceptionGenerator */
     private $entityNotFoundExceptionGenerator;
@@ -107,6 +114,17 @@ trait CommonUseCaseGetGeneratorsTrait
         EntityRepositoryGeneratorRequestBuilder $entityRepositoryGeneratorRequestBuilder
     ): void {
         $this->entityRepositoryGeneratorRequestBuilder = $entityRepositoryGeneratorRequestBuilder;
+    }
+
+    public function setEntityStubGenerator(Generator $entityStubGenerator): void
+    {
+        $this->entityStubGenerator = $entityStubGenerator;
+    }
+
+    public function setEntityStubGeneratorRequestBuilder(
+        EntityStubGeneratorRequestBuilder $entityGeneratorRequestBuilder
+    ): void {
+        $this->entityStubGeneratorRequestBuilder = $entityGeneratorRequestBuilder;
     }
 
     public function setInMemoryEntityGatewayGenerator(Generator $inMemoryEntityGatewayGenerator): void
@@ -193,6 +211,16 @@ trait CommonUseCaseGetGeneratorsTrait
             $this->entityRepositoryGeneratorRequestBuilder
                 ->create()
                 ->withEntityClassName($className)
+                ->build()
+        );
+    }
+
+    protected function generateEntityStubGenerator(string $className): FileObject
+    {
+        return $this->entityStubGenerator->generate(
+            $this->entityStubGeneratorRequestBuilder
+                ->create()
+                ->withClassName($className)
                 ->build()
         );
     }

@@ -39,7 +39,7 @@ class GenericUseCaseRequestBuilderGeneratorTest extends TestCase
         $actualFileObject = $this->genericUseCaseRequestBuilderGenerator->generate($this->request);
 
         $this->assertSame(
-            InMemoryFileObjectGateway::$fileObjects[$actualFileObject->getId()],
+            InMemoryFileObjectGateway::$fileObjects[$actualFileObject->getId()]->getPath(),
             $actualFileObject->getPath()
         );
         $this->assertFileObject(new GenericUseCaseRequestBuilderFileObjectStub1(), $actualFileObject);

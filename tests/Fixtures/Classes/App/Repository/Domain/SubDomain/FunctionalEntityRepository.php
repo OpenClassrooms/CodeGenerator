@@ -3,6 +3,7 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\App\Repository\Domain\SubDomain;
 
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Entities\Domain\SubDomain\FunctionalEntity;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gateways\Domain\SubDomain\FunctionalEntityGateway;
 
 /**
@@ -10,12 +11,12 @@ use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gateways\D
  */
 class FunctionalEntityRepository implements FunctionalEntityGateway
 {
-    public function find($id)
+    public function find($id): FunctionalEntity
     {
         // TODO: Implement find() method.
     }
 
-    public function findAll(array $filters = [], array $sorts = [], array $pagination = [])
+    public function findAll(array $filters = [], array $sorts = [], array $pagination = []): iterable
     {
         // TODO: Implement findAll() method.
     }

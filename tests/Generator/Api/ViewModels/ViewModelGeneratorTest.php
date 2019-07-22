@@ -37,7 +37,7 @@ class ViewModelGeneratorTest extends AbstractViewModelGeneratorTestCase
         $actualFileObject = $this->viewModelGenerator->generate($this->request);
 
         $this->assertSame(
-            InMemoryFileObjectGateway::$fileObjects[$actualFileObject->getId()],
+            InMemoryFileObjectGateway::$fileObjects[$actualFileObject->getId()]->getPath(),
             $actualFileObject->getPath()
         );
         $this->assertFileObject(new ViewModelFileObjectStub1(), $actualFileObject);

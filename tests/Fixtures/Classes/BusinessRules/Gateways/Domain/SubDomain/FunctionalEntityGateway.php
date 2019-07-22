@@ -13,13 +13,12 @@ use OpenClassrooms\UseCase\BusinessRules\Entities\PaginatedCollection;
 interface FunctionalEntityGateway
 {
     /**
-     * @return FunctionalEntity
      * @throws FunctionalEntityNotFoundException
      */
-    public function find($id);
+    public function find($id): FunctionalEntity;
 
     /**
      * @return PaginatedCollection|FunctionalEntity[]
      */
-    public function findAll(array $filters = [], array $sorts = [], array $pagination = []);
+    public function findAll(array $filters = [], array $sorts = [], array $pagination = []): iterable;
 }

@@ -37,7 +37,7 @@ class {{ skeletonModel.entity }}GeneratorTest extends TestCase
         $actualFileObject = $this->{{ skeletonModel.argument }}Generator->generate($this->request);
 
         $this->assertSame(
-            InMemoryFileObjectGateway::$fileObjects[$actualFileObject->getId()],
+            InMemoryFileObjectGateway::$fileObjects[$actualFileObject->getId()]->getPath(),
             $actualFileObject->getPath()
         );
         $this->assertFileObject(new {{ skeletonModel.entity }}FileObjectStub1(), $actualFileObject);

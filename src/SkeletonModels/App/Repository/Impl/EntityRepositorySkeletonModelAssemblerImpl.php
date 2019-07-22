@@ -12,6 +12,7 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\App\Repository\EntityRepositoryS
 class EntityRepositorySkeletonModelAssemblerImpl implements EntityRepositorySkeletonModelAssembler
 {
     public function create(
+        FileObject $entityFileObject,
         FileObject $entityGatewayFileObject,
         FileObject $entityRepositoryFileObject
     ): EntityRepositorySkeletonModel {
@@ -20,6 +21,8 @@ class EntityRepositorySkeletonModelAssemblerImpl implements EntityRepositorySkel
         $skeletonModel->shortName = $entityRepositoryFileObject->getShortName();
         $skeletonModel->entityGatewayClassName = $entityGatewayFileObject->getClassName();
         $skeletonModel->entityGatewayShortName = $entityGatewayFileObject->getShortName();
+        $skeletonModel->entityClassName = $entityFileObject->getClassName();
+        $skeletonModel->entityShortName = $entityFileObject->getShortName();
 
         return $skeletonModel;
     }

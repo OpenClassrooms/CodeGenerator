@@ -11,7 +11,7 @@
                 <argument type="string">%paginated_collection_classname%</argument>
             </call>
             <call method="setPaginatedUseCaseResponse">
-                <argument type="string">%paginated_use_case_response_classname%%</argument>
+                <argument type="string">%paginated_use_case_response_classname%</argument>
             </call>
             <call method="setPagination">
                 <argument type="string">%pagination_classname%</argument>

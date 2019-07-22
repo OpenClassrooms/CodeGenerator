@@ -19,8 +19,6 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\UseCases\Get
  */
 class GetEntitiesUseCaseTestGenerator extends AbstractUseCaseGenerator
 {
-    const SUFFIX = '2';
-
     /**
      * @var GetEntitiesUseCaseTestSkeletonModelBuilder
      */
@@ -120,6 +118,7 @@ class GetEntitiesUseCaseTestGenerator extends AbstractUseCaseGenerator
         $this->stubGateway->insert($fileObject);
 
         return $fileObject;
+
     }
 
     private function createGetEntitiesUseCaseFileObject(): FileObject

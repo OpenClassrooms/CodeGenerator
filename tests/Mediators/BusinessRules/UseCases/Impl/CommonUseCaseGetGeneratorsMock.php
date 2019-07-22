@@ -18,6 +18,8 @@ use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\Us
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\UseCaseResponseTraitGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\UseCaseResponseDTOGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\UseCaseResponseTraitGenerator;
+use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Entities\DTO\Request\EntityStubGeneratorRequestBuilderImpl;
+use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Entities\EntityStubGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\BusinessRules\Gateways\DTO\Request\InMemoryEntityGatewayGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\BusinessRules\Gateways\InMemoryEntityGatewayGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\BusinessRules\Responders\DTO\Request\UseCaseResponseTestCaseGeneratorRequestBuilderImpl;
@@ -30,6 +32,7 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Requestors
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Responders\UseCaseResponseFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\UseCaseResponseDTOFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\UseCaseResponseTraitFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\BusinessRules\Entities\EntityStub\EntityStubFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\Doubles\BusinessRules\Gateways\InMemoryEntityGatewayFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\Doubles\BusinessRules\Responders\UseCaseResponseTestCaseFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Generator\GeneratorMock;
@@ -49,6 +52,9 @@ trait CommonUseCaseGetGeneratorsMock
         );
         $this->mediator->setEntityRepositoryGenerator(
             new GeneratorMock(EntityRepositoryGenerator::class, new EntityRepositoryFileObjectStub1())
+        );
+        $this->mediator->setEntityStubGenerator(
+            new GeneratorMock(EntityStubGenerator::class, new EntityStubFileObjectStub1())
         );
         $this->mediator->setInMemoryEntityGatewayGenerator(
             new GeneratorMock(
@@ -77,6 +83,7 @@ trait CommonUseCaseGetGeneratorsMock
             new EntityNotFoundExceptionGeneratorRequestBuilderImpl()
         );
         $this->mediator->setEntityRepositoryGeneratorRequestBuilder(new EntityRepositoryGeneratorRequestBuilderImpl());
+        $this->mediator->setEntityStubGeneratorRequestBuilder(new EntityStubGeneratorRequestBuilderImpl());
         $this->mediator->setInMemoryEntityGatewayGeneratorRequestBuilder(
             new InMemoryEntityGatewayGeneratorRequestBuilderImpl()
         );

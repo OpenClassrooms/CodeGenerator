@@ -39,7 +39,7 @@ class EntityRepositoryGeneratorTest extends TestCase
         $actualFileObject = $this->entityRepositoryGenerator->generate($this->request);
 
         $this->assertSame(
-            InMemoryFileObjectGateway::$fileObjects[$actualFileObject->getId()],
+            InMemoryFileObjectGateway::$fileObjects[$actualFileObject->getId()]->getPath(),
             $actualFileObject->getPath()
         );
         $this->assertFileObject(new EntityRepositoryFileObjectStub1(), $actualFileObject);
