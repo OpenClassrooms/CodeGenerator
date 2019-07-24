@@ -36,7 +36,7 @@ class GetFunctionalEntitiesTest extends TestCase
     /**
      * @test
      */
-    final public function withoutFunctionalEntitiesReturnNothing(): void
+    final public function withoutFunctionalEntitiesReturnEmpty(): void
     {
         InMemoryFunctionalEntityGateway::$functionalEntities = [];
         $response = $this->useCase->execute($this->request);

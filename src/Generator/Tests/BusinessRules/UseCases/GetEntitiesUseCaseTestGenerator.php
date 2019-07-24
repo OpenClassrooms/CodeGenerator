@@ -115,7 +115,7 @@ class GetEntitiesUseCaseTestGenerator extends AbstractUseCaseGenerator
             $this->entity
         );
 
-        $this->stubGateway->insert($fileObject);
+        $this->stubGateway->insertAndIncrementSuffix($fileObject);
 
         return $fileObject;
 
@@ -210,7 +210,7 @@ class GetEntitiesUseCaseTestGenerator extends AbstractUseCaseGenerator
             $this->entity
         );
 
-        $this->stubGateway->insert($fileObject);
+        $this->stubGateway->insertAndIncrementSuffix($fileObject);
 
         return $fileObject;
     }

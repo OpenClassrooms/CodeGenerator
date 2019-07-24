@@ -9,6 +9,7 @@ use OpenClassrooms\CodeGenerator\Services\Impl\TemplatingServiceImpl;
 use OpenClassrooms\CodeGenerator\Services\TemplatingService;
 use OpenClassrooms\CodeGenerator\Utility\FieldObjectUtility;
 use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
+use OpenClassrooms\CodeGenerator\Utility\StubUtility;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
@@ -73,14 +74,7 @@ abstract class AbstractGenerator implements Generator
 
     protected function insertFileObject(FileObject $fileObject): void
     {
-        $pattern = '/\d+$/';
-        $suffix = 1;
-        while ($this->fileObjectGateway->find($fileObject->getId())) {
-            $suffix++;
-            if (preg_match($pattern, $fileObject->getId())) {
-                $fileObject->setClassName(preg_replace($pattern, $suffix, $fileObject->getId()));
-            }
-        }
+        $fileObject = StubUtility::incrementSuffix($fileObject, $this->fileObjectGateway->findAll());
 
         $this->fileObjectGateway->insert($fileObject);
     }

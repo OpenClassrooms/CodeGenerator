@@ -65,36 +65,36 @@ parameters:
 ### Basic execution
 To list all possibilities: 
 ``` 
-php bin/CodeGenerator.php
+php bin/code-generator
 ```
 To generate view model architecture: 
 ``` 
-php bin/CodeGenerator.php code-generator:view-models useCaseResponseClassName
+php bin/code-generator code-generator:view-models useCaseResponseClassName
 ```
 To generate generic use case architecture: 
 ``` 
-php bin/CodeGenerator.php code-generator:generic-use-case
+php bin/code-generator code-generator:generic-use-case
 or  
-php bin/CodeGenerator.php code-generator:generic-use-case Domain\\SubDomain UseCaseName
+php bin/code-generator code-generator:generic-use-case Domain\\SubDomain UseCaseName
 ```
 To generate generic entity use case get and get all architecture: 
 ``` 
-php bin/CodeGenerator.php code-generator:get-entity-use-case 
+php bin/code-generator code-generator:get-entity-use-case 
 or  
-php bin/CodeGenerator.php code-generator:get-entities-use-case
+php bin/code-generator code-generator:get-entities-use-case
 ```  
 ### Extensions
 To generate without tests:
 ```
-php bin/CodeGenerator.php code-generator:view-models useCaseResponseClassName --no-test
+php bin/code-generator code-generator:view-models useCaseResponseClassName --no-test
 ```
 To generate view model architecture tests only if view model classes already exist: 
 ``` 
-php bin/CodeGenerator.php code-generator:view-models useCaseResponseClassName --tests-only
+php bin/code-generator code-generator:view-models useCaseResponseClassName --tests-only
 ```
 To dump preview for view model classes: 
 ``` 
-php bin/CodeGenerator.php code-generator:view-models useCaseResponseClassName --dump
+php bin/code-generator code-generator:view-models useCaseResponseClassName --dump
 ```
 ## How to create a new generator
 

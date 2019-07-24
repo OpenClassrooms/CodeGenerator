@@ -13,5 +13,10 @@ interface FileObjectGateway
 
     public function find(string $classname): ?FileObject;
 
+    /**
+     * @return FileObject
+     */
+    public function findAll(): array;
+
     public function flush();
 }

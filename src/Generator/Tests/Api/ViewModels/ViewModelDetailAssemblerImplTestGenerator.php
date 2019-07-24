@@ -64,8 +64,6 @@ class ViewModelDetailAssemblerImplTestGenerator extends AbstractViewModelGenerat
 
     /**
      * @param string $viewModelDetailAssemblerImplClassName
-     *
-     * @return FileObject
      */
     private function createViewModelDetailAssemblerImplFileObject(): FileObject
     {

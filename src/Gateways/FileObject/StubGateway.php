@@ -9,7 +9,7 @@ use OpenClassrooms\CodeGenerator\Entities\FileObject;
  */
 interface StubGateway
 {
-    public function insert(FileObject $fileObject);
+    public function insertAndIncrementSuffix(FileObject $fileObject);
 
     public function clear();
 }

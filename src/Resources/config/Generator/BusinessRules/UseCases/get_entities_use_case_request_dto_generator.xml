@@ -8,7 +8,7 @@
                 id="open_classrooms.code_generator.skeleton_models.business_rules.use_cases.get_entities_use_case_request_dto_skeleton_model_assembler"
                 class="OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\Impl\GetEntitiesUseCaseRequestDTOSkeletonModelAssemblerImpl">
             <call method="setPagination">
-                <argument type="string">%pagination_classname%%</argument>
+                <argument type="string">%pagination_classname%</argument>
             </call>
         </service>
 

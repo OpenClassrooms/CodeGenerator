@@ -7,10 +7,10 @@ parameters:
     stub_namespace: 'Doubles\OC\'
     tests_base_namespace: 'OC\'
 
-    paginated_collection_classname: 'OpenClassrooms\UseCase\BusinessRules\Entities\PaginatedCollection'
     use_case_classname: 'OpenClassrooms\UseCase\BusinessRules\Requestors\UseCase'
     use_case_request_classname: 'OpenClassrooms\UseCase\BusinessRules\Requestors\UseCaseRequest'
 
+    paginated_collection_classname: '%base_namespace%\BusinessRules\Entities\PaginatedCollection'
     paginated_use_case_response_classname: '%base_namespace%BusinessRules\Responders\PaginatedUseCaseResponse'
     paginated_use_case_response_builder_classname: '%base_namespace%BusinessRules\Responders\PaginatedUseCaseResponseBuilder'
     use_case_response_classname: '%base_namespace%BusinessRules\Responders\UseCaseResponse'

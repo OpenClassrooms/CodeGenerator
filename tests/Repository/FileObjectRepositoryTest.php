@@ -86,6 +86,37 @@ class FileObjectRepositoryTest extends TestCase
         $this->assertEmpty($actual);
     }
 
+    /**
+     * @test
+     */
+    public function find()
+    {
+        $this->fileSystem
+            ->expects($this->atLeastOnce())
+            ->method('exists')
+            ->willReturn(false);
+
+        $this->fileObjectRepository->insert($this->generateFileObject(FunctionalEntity::class));
+
+        $this->assertNotNull($this->fileObjectRepository->find(FunctionalEntity::class));
+    }
+
+    /**
+     * @test
+     */
+    public function findAll()
+    {
+        $this->fileSystem
+            ->expects($this->atLeastOnce())
+            ->method('exists')
+            ->willReturn(false);
+
+        $this->fileObjectRepository->insert($this->generateFileObject(FunctionalEntity::class));
+        $this->fileObjectRepository->insert($this->generateFileObject(FunctionalEntityDetail::class));
+
+        $this->assertNotNull($this->fileObjectRepository->findAll());
+    }
+
     protected function setUp(): void
     {
         $this->fileObjectRepository = new FileObjectRepository();

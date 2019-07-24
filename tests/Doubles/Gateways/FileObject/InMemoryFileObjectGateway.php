@@ -30,6 +30,11 @@ class InMemoryFileObjectGateway implements FileObjectGateway
         self::$fileObjects[$fileObject->getId()] = $fileObject;
     }
 
+    public function findAll(): array
+    {
+        return self::$fileObjects;
+    }
+
     public function flush(): void
     {
         self::$flushedFileObjects = self::$fileObjects;

@@ -37,7 +37,7 @@ class {{skeletonModel.shortName }} extends TestCase
     /**
      * @test
      */
-    final public function without{{ skeletonModel.entitiesShortName }}ReturnNothing(): void
+    final public function without{{ skeletonModel.entitiesShortName }}ReturnEmpty(): void
     {
         {{ skeletonModel.inMemoryEntityGatewayShortName }}::${{ skeletonModel.entitiesArgument }} = [];
         $response = $this->useCase->execute($this->request);

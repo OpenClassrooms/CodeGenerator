@@ -4,6 +4,7 @@ namespace OpenClassrooms\CodeGenerator\Repository;
 
 use OpenClassrooms\CodeGenerator\Entities\FileObject;
 use OpenClassrooms\CodeGenerator\Gateways\FileObject\StubGateway;
+use OpenClassrooms\CodeGenerator\Utility\StubUtility;
 
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
@@ -15,26 +16,10 @@ class StubRepository implements StubGateway
      */
     private static $fileObjects = [];
 
-    public function insert(FileObject $fileObject)
+    public function insertAndIncrementSuffix(FileObject $fileObject)
     {
-        $this->incrementStubSuffix($fileObject);
+        StubUtility::incrementSuffix($fileObject, self::$fileObjects);
         self::$fileObjects[$fileObject->getId()] = $fileObject;
-    }
-
-    private function incrementStubSuffix(FileObject $fileObject): void
-    {
-        $suffix = 1;
-        foreach (self::$fileObjects as $object) {
-            if (strpos($object->getId(), $fileObject->getId()) !== false) {
-                $suffix++;
-            }
-        }
-        $fileObject->setClassName($this->replaceSuffix($fileObject, $suffix));
-    }
-
-    private function replaceSuffix(FileObject $fileObject, int $suffix): string
-    {
-        return preg_replace('/\d+$/', $suffix, $fileObject->getId());
     }
 
     public function clear()

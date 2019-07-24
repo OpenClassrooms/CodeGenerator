@@ -13,8 +13,6 @@ trait FunctionalEntityResponseTrait
 {
     /**
      * @param FunctionalEntityResponseDTO $response
-     *
-     * @return FunctionalEntityResponse
      */
     private function hydrateCommonFields(FunctionalEntity $entity, FunctionalEntityResponse $response): FunctionalEntityResponse
     {

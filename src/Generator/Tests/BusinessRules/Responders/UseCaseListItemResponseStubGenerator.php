@@ -12,6 +12,7 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\Responders\U
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\Responders\UseCaseListItemResponseStubSkeletonModelAssembler;
 use OpenClassrooms\CodeGenerator\Utility\ConstUtility;
 use OpenClassrooms\CodeGenerator\Utility\StubFieldUtility;
+use OpenClassrooms\CodeGenerator\Utility\StubUtility;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
@@ -98,12 +99,16 @@ class UseCaseListItemResponseStubGenerator extends AbstractUseCaseResponseStubGe
 
     private function createUseCaseListItemResponseStubFileObject(): FileObject
     {
-        return $this->useCaseResponseFileObjectFactory->create(
+        $fileObject = $this->useCaseResponseFileObjectFactory->create(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE_STUB,
             $this->domain,
             $this->entity,
             $this->baseNamespace
         );
+
+        $fileObject = StubUtility::incrementSuffix($fileObject, $this->fileObjectGateway->findAll());
+
+        return $fileObject;
     }
 
     /**

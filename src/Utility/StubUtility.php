@@ -4,6 +4,7 @@ namespace OpenClassrooms\CodeGenerator\Utility;
 
 use Carbon\Carbon;
 use Faker\Provider\Base;
+use OpenClassrooms\CodeGenerator\Entities\FileObject;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
@@ -42,5 +43,22 @@ class StubUtility
             default:
                 throw new \InvalidArgumentException($type);
         }
+    }
+
+    /**
+     * @param FileObject[] $fileObjects
+     */
+    public static function incrementSuffix(FileObject $fileObject, array $fileObjects): FileObject
+    {
+        $pattern = '/\d+$/';
+        $suffix = 1;
+        while (isset($fileObjects[$fileObject->getId()])) {
+            $suffix++;
+            if (preg_match($pattern, $fileObject->getId())) {
+                $fileObject->setClassName(preg_replace($pattern, $suffix, $fileObject->getId()));
+            }
+        }
+
+        return $fileObject;
     }
 }
