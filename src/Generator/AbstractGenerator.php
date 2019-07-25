@@ -89,10 +89,11 @@ abstract class AbstractGenerator implements Generator
      *
      * @return FieldObject[]
      */
-    protected function getSelectedFields(
-        string $entityClassName,
-        array $fields
-    ): array {
+    protected function getSelectedFields(string $entityClassName, array $fields): array
+    {
+        if (empty($fields)) {
+            return $fieldObjects = $this->getProtectedClassFields($entityClassName);
+        }
         $fieldObjects = $this->getProtectedClassFields($entityClassName);
         foreach ($fieldObjects as $key => $fieldObject) {
             if (!in_array($fieldObject->getName(), $fields)) {

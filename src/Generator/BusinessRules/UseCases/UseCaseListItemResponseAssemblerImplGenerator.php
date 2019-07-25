@@ -48,9 +48,7 @@ class UseCaseListItemResponseAssemblerImplGenerator extends AbstractUseCaseGener
         $entityFileObject = $this->createEntityFileObject();
         $useCaseListItemResponseAssemblerFileObject = $this->createUseCaseListItemResponseAssemblerFileObject();
         $useCaseListItemResponseAssemblerImplFileObject = $this->createUseCaseListItemResponseAssemblerImplFileObject();
-        $useCaseListItemResponseDTOFileObject = $this->createUseCaseListItemResponseDTO(
-            $entityFileObject
-        );
+        $useCaseListItemResponseDTOFileObject = $this->createUseCaseListItemResponseDTO();
         $useCaseListItemResponseFileObject = $this->createUseCaseListItemResponseFileObject();
         $useCaseResponseTraitFileObject = $this->createUseCaseResponseTraitFileObject();
 
@@ -98,7 +96,7 @@ class UseCaseListItemResponseAssemblerImplGenerator extends AbstractUseCaseGener
         );
     }
 
-    private function createUseCaseListItemResponseDTO(FileObject $entityFileObject): FileObject
+    private function createUseCaseListItemResponseDTO(): FileObject
     {
         return $this->useCaseResponseFileObjectFactory->create(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE_DTO,

@@ -52,11 +52,9 @@ class StubUtility
     {
         $pattern = '/\d+$/';
         $suffix = 1;
-        while (isset($fileObjects[$fileObject->getId()])) {
+        while (isset($fileObjects[$fileObject->getId()]) && preg_match($pattern, $fileObject->getId())) {
             $suffix++;
-            if (preg_match($pattern, $fileObject->getId())) {
-                $fileObject->setClassName(preg_replace($pattern, $suffix, $fileObject->getId()));
-            }
+            $fileObject->setClassName(preg_replace($pattern, $suffix, $fileObject->getId()));
         }
 
         return $fileObject;
