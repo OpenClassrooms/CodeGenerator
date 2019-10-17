@@ -69,7 +69,7 @@
                 class="OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\BusinessRules\Gateways\DTO\Request\InMemoryEntityGatewayGeneratorRequestBuilderImpl"/>
 
         <service id="open_classrooms.code_generator.mediators.business_rules.use_cases.get_entities_use_case_mediator"
-                 class="OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\Impl\GetEntitiesUseCaseMediatorImpl">
+                 class="OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\Impl\GetEntitiesUseCaseMediatorImpl" public="true">
             <call method="setGetEntitiesUseCaseRequestGenerator">
                 <argument type="service"
                           id="open_classrooms.code_generator.generator.business_rules.requestors.get_entities_use_case_request_generator"/>

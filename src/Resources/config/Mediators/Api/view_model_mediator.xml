@@ -68,7 +68,7 @@
                 class="OpenClassrooms\CodeGenerator\Generator\App\Entity\DTO\Request\EntityImplGeneratorRequestBuilderImpl"/>
 
         <service id="open_classrooms.code_generator.mediators.api.view_model_mediator"
-                 class="OpenClassrooms\CodeGenerator\Mediators\Api\Impl\ViewModelMediatorImpl">
+                 class="OpenClassrooms\CodeGenerator\Mediators\Api\Impl\ViewModelMediatorImpl" public="true">
             <call method="setViewModelAssemblerTraitGeneratorRequestBuilder">
                 <argument type="service"
                           id="open_classrooms.code_generator.generator.api.view_models.dto.request.view_model_assembler_trait_generator_request_builder"/>

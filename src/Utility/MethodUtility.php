@@ -104,7 +104,7 @@ class MethodUtility
         if ('get' === substr($method, 0, 3)) {
             return lcfirst(substr($method, 3));
         }
-        if ('is' == substr($method, 0, 2)) {
+        if ('is' === substr($method, 0, 2)) {
             return lcfirst(substr($method, 2));
         }
 
