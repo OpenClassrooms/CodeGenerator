@@ -20,4 +20,9 @@ class FunctionalEntityRepository implements FunctionalEntityGateway
     {
         // TODO: Implement findAll() method.
     }
+
+    public function insert(FunctionalEntity $functionalEntity): void
+    {
+        // TODO: Implement insert() method.
+    }
 }

@@ -21,6 +21,7 @@ class EntityRepositorySkeletonModelAssemblerImpl implements EntityRepositorySkel
         $skeletonModel->shortName = $entityRepositoryFileObject->getShortName();
         $skeletonModel->entityGatewayClassName = $entityGatewayFileObject->getClassName();
         $skeletonModel->entityGatewayShortName = $entityGatewayFileObject->getShortName();
+        $skeletonModel->entityArgument = lcfirst($entityFileObject->getShortName());
         $skeletonModel->entityClassName = $entityFileObject->getClassName();
         $skeletonModel->entityShortName = $entityFileObject->getShortName();
 

@@ -9,6 +9,8 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
  */
 abstract class EntityGatewaySkeletonModel extends AbstractSkeletonModel
 {
+    public $entityArgument;
+
     public $entityClassName;
 
     public $entityNotFoundExceptionClassName;
