@@ -72,6 +72,6 @@
     ]
   },
   "bin": [
-    "src/code-generator"
+    "bin/code-generator"
   ]
 }
