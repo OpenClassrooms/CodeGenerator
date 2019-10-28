@@ -5,9 +5,6 @@ namespace OpenClassrooms\CodeGenerator\Generator\GenerateGenerator\DTO\Request;
 use OpenClassrooms\CodeGenerator\Generator\GenerateGenerator\Request\CustomGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\GenerateGenerator\Request\CustomGeneratorRequestBuilder;
 
-/**
- * @author authorStub <author.stub@example.com>
- */
 class CustomGeneratorRequestBuilderImpl implements CustomGeneratorRequestBuilder
 {
     /**

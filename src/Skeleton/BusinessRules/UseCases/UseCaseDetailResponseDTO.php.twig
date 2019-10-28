@@ -4,9 +4,6 @@ namespace {{ skeletonModel.namespace }};
 
 use {{ skeletonModel.useCaseDetailResponseClassName }};
 
-/**
- * @author {{ author }} <{{ authorEmail }}>
- */
 class {{ skeletonModel.shortName }} extends {{ skeletonModel.useCaseResponseDTOShortName }} implements {{ skeletonModel.useCaseDetailResponseShortName }}
 {
 {% for field in skeletonModel.fields | sortNameByAlpha %}

@@ -5,9 +5,6 @@ namespace {{ skeletonModel.namespace }};
 use {{ skeletonModel.parentClassName }};
 use {{ skeletonModel.useCaseListItemResponseStubClassName }};
 
-/**
- * @author {{ author }} <{{ authorEmail }}>
- */
 class {{ skeletonModel.shortName }} extends {{ skeletonModel.parentShortName }}
 {
 {% for constant in skeletonModel.constants %}

@@ -9,9 +9,6 @@ use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\D
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\GenericUseCase;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author authorStub <author.stub@example.com>
- */
 class GenericUseCaseTest extends TestCase
 {
     /**

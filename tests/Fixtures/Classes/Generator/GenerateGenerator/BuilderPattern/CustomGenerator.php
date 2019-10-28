@@ -9,9 +9,6 @@ use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\GenerateGenerator\CustomSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\GenerateGenerator\CustomSkeletonModelBuilder;
 
-/**
- * @author authorStub <author.stub@example.com>
- */
 class CustomGenerator extends AbstractGenerator
 {
     /**
@@ -26,7 +23,7 @@ class CustomGenerator extends AbstractGenerator
     {
         $customFileObject = $this->buildCustomFileObject(
             $generatorRequest->getEntityClassName()
-        //TODO get UseCaseRequest param(s)
+            //TODO get UseCaseRequest param(s)
         );
 
         $this->insertFileObject($customFileObject);
@@ -41,7 +38,7 @@ class CustomGenerator extends AbstractGenerator
 
         $customFileObject->setContent(
             $this->generateContent(
-            //TODO put FileObject(s)
+                //TODO put FileObject(s)
             )
         );
 
@@ -56,7 +53,7 @@ class CustomGenerator extends AbstractGenerator
     private function generateContent(): string
     {
         $skeletonModel = $this->createSkeletonModel(
-        //TODO put FileObject(s)
+            //TODO put FileObject(s)
         );
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
@@ -71,8 +68,7 @@ class CustomGenerator extends AbstractGenerator
 
     public function setCustomSkeletonModelBuilder(
         CustomSkeletonModelBuilder $customSkeletonModelBuilder
-    ): void
-    {
+    ): void {
         $this->customSkeletonModelBuilder = $customSkeletonModelBuilder;
     }
 }

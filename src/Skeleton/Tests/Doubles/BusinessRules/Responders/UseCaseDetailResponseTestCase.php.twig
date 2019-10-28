@@ -5,9 +5,6 @@ namespace {{ skeletonModel.namespace }};
 use {{ skeletonModel.useCaseDetailResponseClassName }};
 use PHPUnit\Framework\Assert;
 
-/**
- * @author {{ author }} <{{ authorEmail }}>
- */
 trait {{ skeletonModel.shortName }}
 {
     use {{ skeletonModel.useCaseResponseTestCaseShortName }};
@@ -15,8 +12,7 @@ trait {{ skeletonModel.shortName }}
     public function assert{{ skeletonModel.useCaseDetailResponseShortName }}(
         {{ skeletonModel.useCaseDetailResponseShortName }} $expected,
         {{ skeletonModel.useCaseDetailResponseShortName }} $actual
-    ): void
-    {
+    ): void {
         $this->assert{{ skeletonModel.useCaseResponseShortName }}($expected, $actual);
 {% for method in skeletonModel.useCaseDetailResponseMethods | sortNameByAlpha %}
         Assert::assertSame($expected->{{ method.name }}(), $actual->{{ method.name }}());

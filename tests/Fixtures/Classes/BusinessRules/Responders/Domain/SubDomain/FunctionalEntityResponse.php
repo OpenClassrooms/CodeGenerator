@@ -5,9 +5,6 @@ namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Resp
 
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\UseCaseResponse;
 
-/**
- * @author authorStub <author.stub@example.com>
- */
 interface FunctionalEntityResponse extends UseCaseResponse
 {
     public function getField1(): string;

@@ -6,9 +6,6 @@ namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\Api\
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\Impl\FunctionalEntityListItemImpl;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityListItemResponseStub1;
 
-/**
- * @author authorStub <author.stub@example.com>
- */
 class FunctionalEntityListItemStub1 extends FunctionalEntityListItemImpl
 {
     const FIELD_1 = FunctionalEntityListItemResponseStub1::FIELD_1;

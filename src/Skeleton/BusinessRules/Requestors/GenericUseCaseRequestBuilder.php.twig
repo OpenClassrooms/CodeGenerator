@@ -4,9 +4,6 @@ namespace {{ skeletonModel.namespace }};
 
 use {{ skeletonModel.useCaseRequestClassName }};
 
-/**
- * @author {{ author }} <{{ authorEmail }}>
- */
 interface {{  skeletonModel.shortName }} extends {{ skeletonModel.useCaseRequestShortName }}
 {
     public function build(): {{ skeletonModel.genericUseCaseRequestShortName }};

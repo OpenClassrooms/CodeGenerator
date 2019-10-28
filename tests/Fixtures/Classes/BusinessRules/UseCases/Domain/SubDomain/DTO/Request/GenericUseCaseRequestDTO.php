@@ -5,9 +5,6 @@ namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseC
 
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Requestors\Domain\SubDomain\GenericUseCaseRequest;
 
-/**
- * @author authorStub <author.stub@example.com>
- */
 class GenericUseCaseRequestDTO implements GenericUseCaseRequest
 {
 }

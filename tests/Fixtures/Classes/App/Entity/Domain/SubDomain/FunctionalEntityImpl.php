@@ -5,9 +5,6 @@ namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\App\Entity\Domain\
 
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Entities\Domain\SubDomain\FunctionalEntity;
 
-/**
- * @author authorStub <author.stub@example.com>
- */
 class FunctionalEntityImpl extends FunctionalEntity
 {
 }

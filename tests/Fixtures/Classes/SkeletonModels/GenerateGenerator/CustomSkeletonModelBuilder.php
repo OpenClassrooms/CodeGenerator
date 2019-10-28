@@ -4,9 +4,6 @@ namespace OpenClassrooms\CodeGenerator\SkeletonModels\GenerateGenerator;
 
 use OpenClassrooms\CodeGenerator\Entities\FileObject;
 
-/**
- * @author authorStub <author.stub@example.com>
- */
 interface CustomSkeletonModelBuilder
 {
     public function create(): CustomSkeletonModelBuilder;

@@ -3,9 +3,6 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain;
 
-/**
- * @author authorStub <author.stub@example.com>
- */
 abstract class FunctionalEntity
 {
     /**

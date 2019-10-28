@@ -4,9 +4,6 @@ namespace OpenClassrooms\CodeGenerator\Generator\GenerateGenerator\Request;
 
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 
-/**
- * @author authorStub <author.stub@example.com>
- */
 interface CustomGeneratorRequestBuilder extends GeneratorRequest
 {
     public function build(): CustomGeneratorRequest;

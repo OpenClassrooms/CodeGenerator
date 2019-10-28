@@ -12,9 +12,6 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingSer
 use OpenClassrooms\CodeGenerator\Tests\Doubles\SkeletonModels\GenerateGenerator\CustomSkeletonModelBuilderMock;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author authorStub <author.stub@example.com>
- */
 class CustomGeneratorTest extends TestCase
 {
     use FileObjectTestCase;

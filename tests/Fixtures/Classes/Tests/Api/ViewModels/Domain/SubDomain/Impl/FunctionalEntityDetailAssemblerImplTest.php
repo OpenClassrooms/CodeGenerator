@@ -10,9 +10,6 @@ use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\Api\ViewMo
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityDetailResponseStub1;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author authorStub <author.stub@example.com>
- */
 class FunctionalEntityDetailAssemblerImplTest extends TestCase
 {
     use FunctionalEntityDetailTestCase;

@@ -7,9 +7,6 @@ use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Requestors
 use OpenClassrooms\UseCase\BusinessRules\Requestors\UseCase;
 use OpenClassrooms\UseCase\BusinessRules\Requestors\UseCaseRequest;
 
-/**
- * @author authorStub <author.stub@example.com>
- */
 class GenericUseCase implements UseCase
 {
     /**

@@ -12,9 +12,6 @@ use OpenClassrooms\UseCase\BusinessRules\Entities\PaginatedCollection;
 use OpenClassrooms\UseCase\BusinessRules\Requestors\UseCase;
 use OpenClassrooms\UseCase\BusinessRules\Requestors\UseCaseRequest;
 
-/**
- * @author authorStub <author.stub@example.com>
- */
 class GetFunctionalEntities implements UseCase
 {
     /**

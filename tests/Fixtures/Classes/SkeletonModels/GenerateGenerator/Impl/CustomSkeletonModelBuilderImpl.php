@@ -6,9 +6,6 @@ use OpenClassrooms\CodeGenerator\Entities\FileObject;
 use OpenClassrooms\CodeGenerator\SkeletonModels\GenerateGenerator\CustomSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\GenerateGenerator\CustomSkeletonModelBuilder;
 
-/**
- * @author authorStub <author.stub@example.com>
- */
 class CustomSkeletonModelBuilderImpl implements CustomSkeletonModelBuilder
 {
     /**

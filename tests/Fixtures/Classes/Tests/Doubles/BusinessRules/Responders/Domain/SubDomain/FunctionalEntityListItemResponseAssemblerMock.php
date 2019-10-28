@@ -5,9 +5,6 @@ namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\Busi
 
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\DTO\Response\FunctionalEntityListItemResponseAssemblerImpl;
 
-/**
- * @author authorStub <author.stub@example.com>
- */
 class FunctionalEntityListItemResponseAssemblerMock extends FunctionalEntityListItemResponseAssemblerImpl
 {
 }

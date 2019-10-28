@@ -5,9 +5,6 @@ namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Dom
 
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityResponse;
 
-/**
- * @author authorStub <author.stub@example.com>
- */
 trait FunctionalEntityAssemblerTrait
 {
     public function hydrateCommonFields(FunctionalEntity $vm, FunctionalEntityResponse $functionalEntity): void

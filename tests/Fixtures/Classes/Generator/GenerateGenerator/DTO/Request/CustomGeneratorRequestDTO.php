@@ -4,9 +4,6 @@ namespace OpenClassrooms\CodeGenerator\Generator\GenerateGenerator\DTO\Request;
 
 use OpenClassrooms\CodeGenerator\Generator\GenerateGenerator\Request\CustomGeneratorRequest;
 
-/**
- * @author authorStub <author.stub@example.com>
- */
 class CustomGeneratorRequestDTO implements CustomGeneratorRequest
 {
     /**
