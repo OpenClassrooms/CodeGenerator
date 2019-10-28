@@ -3,13 +3,11 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\App\Repository\Domain\SubDomain;
 
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Entities\Domain\SubDomain\FunctionalEntity;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gateways\Domain\SubDomain\FunctionalEntityGateway;
 
-/**
- * @author authorStub <author.stub@example.com>
- */
-class FunctionalEntityRepository implements FunctionalEntityGateway
+class FunctionalEntityRepository extends ServiceEntityRepository implements FunctionalEntityGateway
 {
     public function find($id): FunctionalEntity
     {
@@ -23,6 +21,6 @@ class FunctionalEntityRepository implements FunctionalEntityGateway
 
     public function insert(FunctionalEntity $functionalEntity): void
     {
-        // TODO: Implement insert() method.
+        $this->getEntityManager()->persist($functionalEntity);
     }
 }

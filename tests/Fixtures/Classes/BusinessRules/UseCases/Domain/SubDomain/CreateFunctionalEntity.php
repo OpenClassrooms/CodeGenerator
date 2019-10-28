@@ -6,6 +6,8 @@ use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Entities\D
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Entities\Domain\SubDomain\FunctionalEntityFactory;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gateways\Domain\SubDomain\FunctionalEntityGateway;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Requestors\Domain\SubDomain\CreateFunctionalEntityRequest;
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityDetailResponse;
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityDetailResponseAssembler;
 use OpenClassrooms\UseCase\Application\Annotations\Transaction;
 use OpenClassrooms\UseCase\BusinessRules\Requestors\UseCase;
 use OpenClassrooms\UseCase\BusinessRules\Requestors\UseCaseRequest;
@@ -22,10 +24,17 @@ class CreateFunctionalEntity implements UseCase
      */
     private $functionalEntityGateway;
 
+    /**
+     * @var FunctionalEntityDetailResponseAssembler
+     */
+    private $functionalEntityResponseAssembler;
+
     public function __construct(
+        FunctionalEntityDetailResponseAssembler $functionalEntityResponseAssembler,
         FunctionalEntityFactory $functionalEntityFactory,
         FunctionalEntityGateway $functionalEntityGateway
     ) {
+        $this->functionalEntityResponseAssembler = $functionalEntityResponseAssembler;
         $this->functionalEntityFactory = $functionalEntityFactory;
         $this->functionalEntityGateway = $functionalEntityGateway;
     }
@@ -35,10 +44,12 @@ class CreateFunctionalEntity implements UseCase
      *
      * @param CreateFunctionalEntityRequest $useCaseRequest
      */
-    public function execute(UseCaseRequest $useCaseRequest)
+    public function execute(UseCaseRequest $useCaseRequest): FunctionalEntityDetailResponse
     {
         $functionalEntity = $this->buildFunctionalEntity();
         $this->save($functionalEntity);
+
+        return $this->createResponse($functionalEntity);
     }
 
     private function buildFunctionalEntity(): FunctionalEntity
@@ -49,5 +60,10 @@ class CreateFunctionalEntity implements UseCase
     private function save(FunctionalEntity $functionalEntity): void
     {
         $this->functionalEntityGateway->insert($functionalEntity);
+    }
+
+    private function createResponse(FunctionalEntity $functionalEntity): FunctionalEntityDetailResponse
+    {
+        return $this->functionalEntityResponseAssembler->create($functionalEntity);
     }
 }

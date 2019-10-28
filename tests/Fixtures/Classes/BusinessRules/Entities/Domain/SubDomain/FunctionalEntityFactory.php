@@ -4,8 +4,5 @@ namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Enti
 
 interface FunctionalEntityFactory
 {
-    /**
-     * @return FunctionalEntity
-     */
-    public function create();
+    public function create(): FunctionalEntity;
 }

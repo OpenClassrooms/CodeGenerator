@@ -2,13 +2,11 @@
 
 namespace {{ skeletonModel.namespace }};
 
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use {{ skeletonModel.entityClassName }};
 use {{ skeletonModel.entityGatewayClassName }};
 
-/**
- * @author {{ author }} <{{ authorEmail }}>
- */
-class {{ skeletonModel.shortName }} implements {{ skeletonModel.entityGatewayShortName }}
+class {{ skeletonModel.shortName }} extends ServiceEntityRepository implements {{ skeletonModel.entityGatewayShortName }}
 {
     public function find($id): {{ skeletonModel.entityShortName }}
     {
@@ -22,6 +20,6 @@ class {{ skeletonModel.shortName }} implements {{ skeletonModel.entityGatewaySho
 
     public function insert({{ skeletonModel.entityShortName }} ${{ skeletonModel.entityArgument }}): void
     {
-        // TODO: Implement insert() method.
+        $this->getEntityManager()->persist(${{ skeletonModel.entityArgument }});
     }
 }
