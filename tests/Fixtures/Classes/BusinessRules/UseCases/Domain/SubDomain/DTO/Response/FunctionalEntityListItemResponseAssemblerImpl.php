@@ -10,9 +10,6 @@ use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\PaginatedUseCaseResponseBuilder;
 use OpenClassrooms\UseCase\BusinessRules\Entities\PaginatedCollection;
 
-/**
- * @author authorStub <author.stub@example.com>
- */
 class FunctionalEntityListItemResponseAssemblerImpl implements FunctionalEntityListItemResponseAssembler
 {
     use FunctionalEntityResponseTrait;

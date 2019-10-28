@@ -5,9 +5,6 @@ namespace {{ skeletonModel.namespace }};
 use {{ skeletonModel.useCaseListItemResponseDTOClassName }};
 use {{ skeletonModel.entityStubClassName }};
 
-/**
- * @author {{ author }} <{{ authorEmail }}>
- */
 class {{ skeletonModel.shortName }} extends {{ skeletonModel.useCaseListItemResponseDTOShortName }}
 {
 {% for constant in skeletonModel.constants %}

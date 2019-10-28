@@ -6,9 +6,6 @@ namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\Api\
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\FunctionalEntityDetail;
 use PHPUnit\Framework\Assert;
 
-/**
- * @author authorStub <author.stub@example.com>
- */
 trait FunctionalEntityDetailTestCase
 {
     use FunctionalEntityTestCase;

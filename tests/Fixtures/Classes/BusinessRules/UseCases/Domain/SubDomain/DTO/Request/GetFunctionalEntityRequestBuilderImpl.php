@@ -6,9 +6,6 @@ namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseC
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Requestors\Domain\SubDomain\GetFunctionalEntityRequest;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Requestors\Domain\SubDomain\GetFunctionalEntityRequestBuilder;
 
-/**
- * @author authorStub <author.stub@example.com>
- */
 class GetFunctionalEntityRequestBuilderImpl implements GetFunctionalEntityRequestBuilder
 {
     /**

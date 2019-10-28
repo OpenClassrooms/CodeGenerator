@@ -11,9 +11,6 @@ use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders
 use OpenClassrooms\UseCase\BusinessRules\Requestors\UseCase;
 use OpenClassrooms\UseCase\BusinessRules\Requestors\UseCaseRequest;
 
-/**
- * @author authorStub <author.stub@example.com>
- */
 class GetFunctionalEntity implements UseCase
 {
     /**

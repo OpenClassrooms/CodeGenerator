@@ -16,9 +16,6 @@ use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\BusinessRu
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityListItemResponseTestCase;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author authorStub <author.stub@example.com>
- */
 class GetFunctionalEntitiesTest extends TestCase
 {
     use FunctionalEntityListItemResponseTestCase;

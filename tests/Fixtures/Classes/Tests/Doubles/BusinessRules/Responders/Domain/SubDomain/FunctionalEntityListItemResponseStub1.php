@@ -6,9 +6,6 @@ namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\Busi
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\DTO\Response\FunctionalEntityListItemResponseDTO;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\BusinessRules\Entities\Domain\SubDomain\FunctionalEntityStub1;
 
-/**
- * @author authorStub <author.stub@example.com>
- */
 class FunctionalEntityListItemResponseStub1 extends FunctionalEntityListItemResponseDTO
 {
     const FIELD_1 = FunctionalEntityStub1::FIELD_1;

@@ -4,9 +4,6 @@ namespace {{ skeletonModel.baseNamespace }}Generator\{{ skeletonModel.domain }}\
 
 use {{ skeletonModel.baseNamespace }}Generator\GeneratorRequest;
 
-/**
- * @author {{ author }} <{{ authorEmail }}>
- */
 interface {{ skeletonModel.entity }}GeneratorRequestBuilder extends GeneratorRequest
 {
     public function build(): {{ skeletonModel.entity }}GeneratorRequest;

@@ -9,9 +9,6 @@ use {{ skeletonModel.baseNamespace }}Generator\GeneratorRequest;
 use {{ skeletonModel.baseNamespace }}SkeletonModels\{{ skeletonModel.domain }}\{{ skeletonModel.entity }}SkeletonModel;
 use {{ skeletonModel.baseNamespace }}SkeletonModels\{{ skeletonModel.domain }}\{{ skeletonModel.entity }}SkeletonModel{{ skeletonModel.constructionPattern }};
 
-/**
- * @author {{ author }} <{{ authorEmail }}>
- */
 class {{ skeletonModel.entity }}Generator extends AbstractGenerator
 {
     /**
@@ -26,7 +23,7 @@ class {{ skeletonModel.entity }}Generator extends AbstractGenerator
     {
         ${{ skeletonModel.argument }}FileObject = $this->build{{ skeletonModel.entity }}FileObject(
             $generatorRequest->getEntityClassName()
-        //TODO get UseCaseRequest param(s)
+            //TODO get UseCaseRequest param(s)
         );
 
         $this->insertFileObject(${{ skeletonModel.argument }}FileObject);
@@ -41,7 +38,7 @@ class {{ skeletonModel.entity }}Generator extends AbstractGenerator
 
         ${{ skeletonModel.argument }}FileObject->setContent(
             $this->generateContent(
-            //TODO put FileObject(s)
+                //TODO put FileObject(s)
             )
         );
 
@@ -56,7 +53,7 @@ class {{ skeletonModel.entity }}Generator extends AbstractGenerator
     private function generateContent(): string
     {
         $skeletonModel = $this->createSkeletonModel(
-        //TODO put FileObject(s)
+            //TODO put FileObject(s)
         );
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
@@ -71,8 +68,7 @@ class {{ skeletonModel.entity }}Generator extends AbstractGenerator
 
     public function set{{ skeletonModel.entity }}SkeletonModel{{ skeletonModel.constructionPattern }}(
         {{ skeletonModel.entity }}SkeletonModel{{ skeletonModel.constructionPattern }} ${{ skeletonModel.argument }}SkeletonModel{{ skeletonModel.constructionPattern }}
-    ): void
-    {
+    ): void {
         $this->{{ skeletonModel.argument }}SkeletonModel{{ skeletonModel.constructionPattern }} = ${{ skeletonModel.argument }}SkeletonModel{{ skeletonModel.constructionPattern }};
     }
 }

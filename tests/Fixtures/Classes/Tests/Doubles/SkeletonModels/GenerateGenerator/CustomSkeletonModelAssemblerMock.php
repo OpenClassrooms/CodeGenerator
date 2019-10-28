@@ -4,9 +4,6 @@ namespace OpenClassrooms\CodeGenerator\Tests\Doubles\SkeletonModels\GenerateGene
 
 use OpenClassrooms\CodeGenerator\SkeletonModels\GenerateGenerator\Impl\CustomSkeletonModelAssemblerImpl;
 
-/**
- * @author authorStub <author.stub@example.com>
- */
 class CustomSkeletonModelAssemblerMock extends CustomSkeletonModelAssemblerImpl
 {
 }

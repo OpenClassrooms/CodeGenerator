@@ -6,9 +6,6 @@ namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\Busi
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityListItemResponse;
 use PHPUnit\Framework\Assert;
 
-/**
- * @author authorStub <author.stub@example.com>
- */
 trait FunctionalEntityListItemResponseTestCase
 {
     use FunctionalEntityResponseTestCase;

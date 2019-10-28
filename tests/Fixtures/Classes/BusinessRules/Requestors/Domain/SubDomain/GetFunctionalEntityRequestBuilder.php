@@ -5,9 +5,6 @@ namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Requ
 
 use OpenClassrooms\UseCase\BusinessRules\Requestors\UseCaseRequest;
 
-/**
- * @author authorStub <author.stub@example.com>
- */
 interface GetFunctionalEntityRequestBuilder extends UseCaseRequest
 {
     public function create(): GetFunctionalEntityRequestBuilder;

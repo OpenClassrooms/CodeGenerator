@@ -7,9 +7,6 @@ use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Entities\D
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gateways\Domain\SubDomain\Exceptions\FunctionalEntityNotFoundException;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gateways\Domain\SubDomain\FunctionalEntityGateway;
 
-/**
- * @author authorStub <author.stub@example.com>
- */
 class InMemoryFunctionalEntityGateway implements FunctionalEntityGateway
 {
     /**

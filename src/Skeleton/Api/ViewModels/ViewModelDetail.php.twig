@@ -2,9 +2,6 @@
 
 namespace {{ skeletonModel.namespace }};
 
-/**
- * @author {{ author }} <{{ authorEmail }}>
- */
 abstract class {{ skeletonModel.shortName }} extends {{ skeletonModel.ParentShortName }}
 {
 {% for field in skeletonModel.fields | sortNameByAlpha %}

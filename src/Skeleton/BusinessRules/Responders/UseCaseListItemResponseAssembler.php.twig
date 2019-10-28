@@ -5,9 +5,6 @@ namespace {{ skeletonModel.namespace }};
 use {{ skeletonModel.paginatedUseCaseResponseClassName }};
 use {{ skeletonModel.paginatedCollectionClassName }};
 
-/**
- * @author {{ author }} <{{ authorEmail }}>
- */
 interface {{ skeletonModel.shortName }}
 {
     public function createPaginatedCollection({{ skeletonModel.paginatedCollectionShortName }} $collection): {{ skeletonModel.paginatedUseCaseResponseShortName }};

@@ -3,9 +3,6 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gateways\Domain\SubDomain\Exceptions;
 
-/**
- * @author authorStub <author.stub@example.com>
- */
 class FunctionalEntityNotFoundException extends \Exception
 {
 }

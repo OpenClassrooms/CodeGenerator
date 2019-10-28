@@ -2,9 +2,6 @@
 
 namespace {{ skeletonModel.namespace }};
 
-/**
- * @author {{ author }} <{{ authorEmail }}>
- */
 interface {{ skeletonModel.shortName }} extends {{ skeletonModel.useCaseResponseShortName }}
 {
 {% for method in skeletonModel.genericUseCaseDetailMethods | sortNameByAlpha %}

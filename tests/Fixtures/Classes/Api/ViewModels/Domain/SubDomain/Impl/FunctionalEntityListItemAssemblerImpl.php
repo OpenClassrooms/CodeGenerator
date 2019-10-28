@@ -8,9 +8,6 @@ use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\Su
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\FunctionalEntityListItemAssembler;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityResponse;
 
-/**
- * @author authorStub <author.stub@example.com>
- */
 class FunctionalEntityListItemAssemblerImpl implements FunctionalEntityListItemAssembler
 {
     use FunctionalEntityAssemblerTrait;

@@ -4,9 +4,6 @@ namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\GenerateGenerator;
 
 use OpenClassrooms\CodeGenerator\Entities\FileObject;
 
-/**
- * @author authorStub <author.stub@example.com>
- */
 class CustomFileObjectStub1 extends FileObject
 {
     const CLASS_NAME = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\GenerateGenerator\Custom';

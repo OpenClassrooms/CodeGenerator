@@ -5,9 +5,6 @@ namespace OpenClassrooms\CodeGenerator\SkeletonModels\GenerateGenerator\Impl;
 use OpenClassrooms\CodeGenerator\SkeletonModels\GenerateGenerator\CustomSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\GenerateGenerator\CustomSkeletonModelAssembler;
 
-/**
- * @author authorStub <author.stub@example.com>
- */
 class CustomSkeletonModelAssemblerImpl implements CustomSkeletonModelAssembler
 {
     public function create(): CustomSkeletonModel

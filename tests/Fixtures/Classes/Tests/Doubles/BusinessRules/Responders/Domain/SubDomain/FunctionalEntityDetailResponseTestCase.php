@@ -6,9 +6,6 @@ namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\Busi
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityDetailResponse;
 use PHPUnit\Framework\Assert;
 
-/**
- * @author authorStub <author.stub@example.com>
- */
 trait FunctionalEntityDetailResponseTestCase
 {
     use FunctionalEntityResponseTestCase;
@@ -16,8 +13,7 @@ trait FunctionalEntityDetailResponseTestCase
     public function assertFunctionalEntityDetailResponse(
         FunctionalEntityDetailResponse $expected,
         FunctionalEntityDetailResponse $actual
-    ): void
-    {
+    ): void {
         $this->assertFunctionalEntityResponse($expected, $actual);
         Assert::assertSame($expected->getField4(), $actual->getField4());
     }

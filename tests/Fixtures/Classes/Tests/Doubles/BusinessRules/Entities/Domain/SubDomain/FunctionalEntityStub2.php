@@ -5,9 +5,6 @@ namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\Busi
 
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\App\Entity\Domain\SubDomain\FunctionalEntityImpl;
 
-/**
- * @author authorStub <author.stub@example.com>
- */
 class FunctionalEntityStub2 extends FunctionalEntityImpl
 {
     const FIELD_1 = 'Functional Entity Stub 2 field 1';

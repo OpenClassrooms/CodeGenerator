@@ -5,9 +5,6 @@ namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Dom
 
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\FunctionalEntityDetail;
 
-/**
- * @author authorStub <author.stub@example.com>
- */
 class FunctionalEntityDetailImpl extends FunctionalEntityDetail
 {
 }

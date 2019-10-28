@@ -1,6 +1,4 @@
 parameters:
-    author:
-    author_mail:
     api_dir: 'ApiBundle\'
     app_dir: 'AppBundle\'
     base_namespace: 'OC\'

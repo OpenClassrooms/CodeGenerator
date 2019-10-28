@@ -3,9 +3,6 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain;
 
-/**
- * @author authorStub <author.stub@example.com>
- */
 interface FunctionalEntityDetailResponse extends FunctionalEntityResponse
 {
     public function getField4(): ?\DateTimeImmutable;
