@@ -7,4 +7,11 @@ use OpenClassrooms\UseCase\BusinessRules\Requestors\UseCaseRequest;
 
 interface CreateFunctionalEntityRequest extends UseCaseRequest
 {
+    public function getField1(): string;
+
+    public function getField2(): array;
+
+    public function isField3(): bool;
+
+    public function getField4(): ?\DateTimeImmutable;
 }

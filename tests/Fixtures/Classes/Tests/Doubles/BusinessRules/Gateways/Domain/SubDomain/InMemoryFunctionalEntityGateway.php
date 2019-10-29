@@ -38,4 +38,9 @@ class InMemoryFunctionalEntityGateway implements FunctionalEntityGateway
     {
         return self::$functionalEntities;
     }
+
+    public function insert(FunctionalEntity $functionalEntity): void
+    {
+        // TODO: Implement insert() method.
+    }
 }
