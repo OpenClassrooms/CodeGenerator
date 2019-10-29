@@ -22,6 +22,7 @@ class InMemoryEntityGatewaySkeletonModelAssemblerImpl implements InMemoryEntityG
 
         $skeletonModel->namespace = $inMemoryEntityGatewayFileObject->getNamespace();
         $skeletonModel->shortName = $inMemoryEntityGatewayFileObject->getShortName();
+        $skeletonModel->entityArgument = lcfirst($entityFileObject->getShortName());
         $skeletonModel->entityClassName = $entityFileObject->getClassName();
         $skeletonModel->entityShortName = $entityFileObject->getShortName();
         $skeletonModel->entityGatewayClassName = $entityGatewayFileObject->getClassName();

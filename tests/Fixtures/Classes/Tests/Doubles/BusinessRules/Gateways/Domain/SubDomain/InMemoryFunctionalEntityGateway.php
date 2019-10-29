@@ -22,7 +22,7 @@ class InMemoryFunctionalEntityGateway implements FunctionalEntityGateway
     /**
      * {@inheritdoc}
      */
-    public function find($id)
+    public function find($id): FunctionalEntity
     {
         if (!isset(self::$functionalEntities[$id])) {
             throw new FunctionalEntityNotFoundException();
@@ -34,13 +34,13 @@ class InMemoryFunctionalEntityGateway implements FunctionalEntityGateway
     /**
      * {@inheritdoc}
      */
-    public function findAll(array $filters = [], array $sorts = [], array $pagination = [])
+    public function findAll(array $filters = [], array $sorts = [], array $pagination = []): iterable
     {
         return self::$functionalEntities;
     }
 
     public function insert(FunctionalEntity $functionalEntity): void
     {
-        // TODO: Implement insert() method.
+        self::$functionalEntities[] = $functionalEntity;
     }
 }
