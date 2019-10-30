@@ -13,6 +13,7 @@ class EntityRepositorySkeletonModelAssemblerImpl implements EntityRepositorySkel
 {
     public function create(
         FileObject $entityFileObject,
+        FileObject $entityImplFileObject,
         FileObject $entityGatewayFileObject,
         FileObject $entityRepositoryFileObject
     ): EntityRepositorySkeletonModel {
@@ -24,6 +25,8 @@ class EntityRepositorySkeletonModelAssemblerImpl implements EntityRepositorySkel
         $skeletonModel->entityArgument = lcfirst($entityFileObject->getShortName());
         $skeletonModel->entityClassName = $entityFileObject->getClassName();
         $skeletonModel->entityShortName = $entityFileObject->getShortName();
+        $skeletonModel->entityImplClassName = $entityImplFileObject->getClassName();
+        $skeletonModel->entityImplShortName = $entityImplFileObject->getShortName();
 
         return $skeletonModel;
     }

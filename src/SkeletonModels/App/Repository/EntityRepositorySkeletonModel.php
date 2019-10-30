@@ -17,6 +17,10 @@ abstract class EntityRepositorySkeletonModel extends AbstractSkeletonModel
 
     public $entityGatewayShortName;
 
+    public $entityImplClassName;
+
+    public $entityImplShortName;
+
     public $entityShortName;
 
     public $templatePath = 'App/Repository/EntityRepository.php.twig';

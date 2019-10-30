@@ -3,11 +3,18 @@
 namespace {{ skeletonModel.namespace }};
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use {{ skeletonModel.entityImplClassName }};
 use {{ skeletonModel.entityClassName }};
 use {{ skeletonModel.entityGatewayClassName }};
+use Symfony\Bridge\Doctrine\RegistryInterface;
 
 class {{ skeletonModel.shortName }} extends ServiceEntityRepository implements {{ skeletonModel.entityGatewayShortName }}
 {
+    public function __construct(RegistryInterface $registry)
+    {
+        parent::__construct($registry, {{ skeletonModel.entityImplShortName }}::class);
+    }
+
     public function find($id): {{ skeletonModel.entityShortName }}
     {
         // TODO: Implement find() method.

@@ -11,6 +11,7 @@ interface EntityRepositorySkeletonModelAssembler
 {
     public function create(
         FileObject $entityFileObject,
+        FileObject $entityImplFileObject,
         FileObject $entityGatewayFileObject,
         FileObject $entityRepositoryFileObject
     ): EntityRepositorySkeletonModel;
