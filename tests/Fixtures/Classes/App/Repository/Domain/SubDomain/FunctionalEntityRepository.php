@@ -4,11 +4,18 @@
 namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\App\Repository\Domain\SubDomain;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\App\Entity\Domain\SubDomain\FunctionalEntityImpl;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Entities\Domain\SubDomain\FunctionalEntity;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gateways\Domain\SubDomain\FunctionalEntityGateway;
+use Symfony\Bridge\Doctrine\RegistryInterface;
 
 class FunctionalEntityRepository extends ServiceEntityRepository implements FunctionalEntityGateway
 {
+    public function __construct(RegistryInterface $registry)
+    {
+        parent::__construct($registry, FunctionalEntityImpl::class);
+    }
+
     public function find($id): FunctionalEntity
     {
         // TODO: Implement find() method.
