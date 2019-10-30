@@ -34,9 +34,9 @@ class CreateFunctionalEntity implements UseCase
         FunctionalEntityFactory $functionalEntityFactory,
         FunctionalEntityGateway $functionalEntityGateway
     ) {
-        $this->functionalEntityResponseAssembler = $functionalEntityResponseAssembler;
         $this->functionalEntityFactory = $functionalEntityFactory;
         $this->functionalEntityGateway = $functionalEntityGateway;
+        $this->functionalEntityResponseAssembler = $functionalEntityResponseAssembler;
     }
 
     /**
@@ -46,13 +46,13 @@ class CreateFunctionalEntity implements UseCase
      */
     public function execute(UseCaseRequest $useCaseRequest): FunctionalEntityDetailResponse
     {
-        $functionalEntity = $this->buildFunctionalEntity();
+        $functionalEntity = $this->createFunctionalEntity();
         $this->save($functionalEntity);
 
         return $this->createResponse($functionalEntity);
     }
 
-    private function buildFunctionalEntity(): FunctionalEntity
+    private function createFunctionalEntity(): FunctionalEntity
     {
         return $this->functionalEntityFactory->create();
     }
