@@ -21,7 +21,7 @@ class TemplatingServiceImpl extends Environment implements TemplatingService
      */
     protected $skeletonDir;
 
-    public function __construct(string $skeletonDir, string $author, string $authorMail)
+    public function __construct(string $skeletonDir)
     {
         $this->skeletonDir = $skeletonDir;
 
@@ -34,9 +34,6 @@ class TemplatingServiceImpl extends Environment implements TemplatingService
                 'autoescape'       => false,
             ]
         );
-        $this->addGlobal('author', $author);
-        $this->addGlobal('authorEmail', $authorMail);
-
         $this->addFilter($this->getSortNameByAlphaFilter());
         $this->addFilter($this->getSortIdFirstFilter());
 

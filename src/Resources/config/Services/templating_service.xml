@@ -11,8 +11,6 @@
         <service id="open_classrooms.code_generator.services.templating_service"
                  class="OpenClassrooms\CodeGenerator\Services\Impl\TemplatingServiceImpl" parent="templating">
             <argument key="$skeletonDir">%skeleton_dir%</argument>
-            <argument key="$author">%author%</argument>
-            <argument key="$authorMail">%author_mail%</argument>
         </service>
 
     </services>
