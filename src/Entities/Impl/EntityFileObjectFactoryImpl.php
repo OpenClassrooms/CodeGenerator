@@ -21,21 +21,29 @@ class EntityFileObjectFactoryImpl extends AbstractFileObjectFactory implements E
                 return new FileObject(
                     $this->baseNamespace . 'BusinessRules\Entities\\' . $domain . '\\' . $entity
                 );
-            case EntityFileObjectType::BUSINESS_RULES_ENTITY_NOT_FOUND_EXCEPTION:
+            case EntityFileObjectType::BUSINESS_RULES_ENTITY_FACTORY:
                 return new FileObject(
-                    $this->baseNamespace . 'BusinessRules\Gateways\\' . $domain . '\Exceptions\\' . $entity . 'NotFoundException'
+                    $this->baseNamespace . 'BusinessRules\Entities\\' . $domain . '\\' . $entity . 'Factory'
+                );
+            case EntityFileObjectType::BUSINESS_RULES_ENTITY_FACTORY_IMPL:
+                return new FileObject(
+                    $this->baseNamespace . $this->appDir . 'Entity\\' . $domain . '\\' . $entity . 'FactoryImpl'
                 );
             case EntityFileObjectType::BUSINESS_RULES_ENTITY_GATEWAY:
                 return new FileObject(
                     $this->baseNamespace . 'BusinessRules\Gateways\\' . $domain . '\\' . $entity . 'Gateway'
                 );
+            case EntityFileObjectType::BUSINESS_RULES_ENTITY_IMPL:
+                return new FileObject(
+                    $this->baseNamespace . $this->appDir . 'Entity\\' . $domain . '\\' . $entity . 'Impl'
+                );
             case EntityFileObjectType::BUSINESS_RULES_ENTITY_IN_MEMORY_GATEWAY:
                 return new FileObject(
                     $this->stubNamespace . 'BusinessRules\Gateways\\' . $domain . '\\InMemory' . $entity . 'Gateway'
                 );
-            case EntityFileObjectType::BUSINESS_RULES_ENTITY_IMPL:
+            case EntityFileObjectType::BUSINESS_RULES_ENTITY_NOT_FOUND_EXCEPTION:
                 return new FileObject(
-                    $this->baseNamespace . $this->appDir . 'Entity\\' . $domain . '\\' . $entity . 'Impl'
+                    $this->baseNamespace . 'BusinessRules\Gateways\\' . $domain . '\Exceptions\\' . $entity . 'NotFoundException'
                 );
             case EntityFileObjectType::BUSINESS_RULES_ENTITY_REPOSITORY:
                 return new FileObject(
