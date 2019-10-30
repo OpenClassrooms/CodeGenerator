@@ -5,9 +5,6 @@ namespace {{ skeletonModel.namespace }};
 use {{ skeletonModel.entityClassName }};
 use {{ skeletonModel.entityGatewayClassName }};
 
-/**
- * @author {{ author }} <{{ authorEmail }}>
- */
 class {{ skeletonModel.shortName }} implements {{ skeletonModel.entityGatewayShortName }}
 {
     public function find($id): {{ skeletonModel.entityShortName }}
