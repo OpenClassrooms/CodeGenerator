@@ -21,7 +21,7 @@ class {{ skeletonModel.shortName }} implements {{ skeletonModel.entityGatewaySho
     /**
      * {@inheritdoc}
      */
-    public function find($id)
+    public function find($id): {{ skeletonModel.entityShortName }}
     {
         if (!isset(self::${{ skeletonModel.pluralEntityShortName }}[$id])) {
             throw new {{ skeletonModel.entityNotFoundExceptionShortName }}();
@@ -33,8 +33,13 @@ class {{ skeletonModel.shortName }} implements {{ skeletonModel.entityGatewaySho
     /**
      * {@inheritdoc}
      */
-    public function findAll(array $filters = [], array $sorts = [], array $pagination = [])
+    public function findAll(array $filters = [], array $sorts = [], array $pagination = []): iterable
     {
         return self::${{ skeletonModel.pluralEntityShortName }};
+    }
+
+    public function insert({{ skeletonModel.entityShortName }} ${{ skeletonModel.entityArgument }}): void
+    {
+        self::${{ skeletonModel.pluralEntityShortName }}[] = ${{ skeletonModel.entityArgument }};
     }
 }

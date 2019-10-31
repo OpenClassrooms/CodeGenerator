@@ -18,4 +18,6 @@ interface FunctionalEntityGateway
      * @return PaginatedCollection|FunctionalEntity[]
      */
     public function findAll(array $filters = [], array $sorts = [], array $pagination = []): iterable;
+
+    public function insert(FunctionalEntity $functionalEntity): void;
 }

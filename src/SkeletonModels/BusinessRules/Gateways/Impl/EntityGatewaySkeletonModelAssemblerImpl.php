@@ -27,6 +27,7 @@ class EntityGatewaySkeletonModelAssemblerImpl implements EntityGatewaySkeletonMo
         $skeletonModel->entityNotFoundExceptionClassName = $entityNotFoundExceptionFileObject->getClassName();
         $skeletonModel->entityNotFoundExceptionShortName = $entityNotFoundExceptionFileObject->getShortName();
         $skeletonModel->entityShortName = $entityFileObject->getShortName();
+        $skeletonModel->entityArgument = lcfirst($entityFileObject->getShortName());
         $skeletonModel->paginatedCollectionClassName = $this->paginatedCollection;
         $skeletonModel->paginatedCollectionShortName = FileObjectUtility::getShortClassName($this->paginatedCollection);
 

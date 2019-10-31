@@ -44,12 +44,14 @@ class EntityRepositoryGenerator extends AbstractGenerator
     {
         $this->initFileObjectParameter($entityClassName);
         $entityFileObject = $this->createEntityFileObject();
+        $entityImplFileObject = $this->createEntityImplFileObject();
         $entityGatewayFileObject = $this->createEntityGatewayFileObject();
         $entityRepositoryFileObject = $this->createEntityRepositoryFileObject();
 
         $entityRepositoryFileObject->setContent(
             $this->generateContent(
                 $entityFileObject,
+                $entityImplFileObject,
                 $entityGatewayFileObject,
                 $entityRepositoryFileObject
             )
@@ -62,6 +64,16 @@ class EntityRepositoryGenerator extends AbstractGenerator
     {
         return $this->entityFileObjectFactory->create(
             EntityFileObjectType::BUSINESS_RULES_ENTITY,
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
+        );
+    }
+
+    private function createEntityImplFileObject(): FileObject
+    {
+        return $this->entityFileObjectFactory->create(
+            EntityFileObjectType::BUSINESS_RULES_ENTITY_IMPL,
             $this->domain,
             $this->entity,
             $this->baseNamespace
@@ -89,11 +101,13 @@ class EntityRepositoryGenerator extends AbstractGenerator
 
     private function generateContent(
         FileObject $entityFileObject,
+        FileObject $entityImplFileObject,
         FileObject $entityGatewayFileObject,
         FileObject $entityRepositoryFileObject
     ): string {
         $skeletonModel = $this->createSkeletonModel(
             $entityFileObject,
+            $entityImplFileObject,
             $entityGatewayFileObject,
             $entityRepositoryFileObject
         );
@@ -103,11 +117,13 @@ class EntityRepositoryGenerator extends AbstractGenerator
 
     private function createSkeletonModel(
         FileObject $entityFileObject,
+        FileObject $entityImplFileObject,
         FileObject $entityGatewayFileObject,
         FileObject $entityRepositoryFileObject
     ): EntityRepositorySkeletonModel {
         return $this->entityRepositorySkeletonModelAssembler->create(
             $entityFileObject,
+            $entityImplFileObject,
             $entityGatewayFileObject,
             $entityRepositoryFileObject
         );
