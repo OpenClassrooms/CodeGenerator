@@ -5,7 +5,7 @@ namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseC
 
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Requestors\Domain\SubDomain\CreateFunctionalEntityRequest;
 
-class CreateFunctionalEntityRequestDTO implements CreateFunctionalEntityRequest
+final class CreateFunctionalEntityRequestDTO implements CreateFunctionalEntityRequest
 {
     /**
      * @var string

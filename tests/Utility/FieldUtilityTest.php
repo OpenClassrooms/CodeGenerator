@@ -74,12 +74,25 @@ class FieldUtilityTest extends TestCase
     /**
      * @test
      */
-    public function getFieldsWithEmptyFields(): void
+    public function getFieldsWithEmptyList(): void
     {
         $fields = [];
         $exceptedFields = new \ReflectionClass(FunctionalEntity::class);
         $actualFields = FieldUtility::getFields(FunctionalEntity::class, $fields);
-        $this->assertCount(count($actualFields), $exceptedFields->getMethods() );
+        $exceptedFields = $this->arrayFilterByGetter($exceptedFields->getMethods());
+        $this->assertCount(count($actualFields), $exceptedFields);
+    }
+
+    private function arrayFilterByGetter(array $exceptedFields): array
+    {
+        return array_filter(
+            $exceptedFields,
+            function($method) {
+                if ('set' !== substr($method->getName(), 0, 3)) {
+                    return $method;
+                }
+            }
+        );
     }
 
     protected function setUp(): void
