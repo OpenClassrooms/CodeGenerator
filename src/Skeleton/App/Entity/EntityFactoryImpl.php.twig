@@ -1,0 +1,14 @@
+{% include "Header.php.twig" %}
+
+namespace {{ skeletonModel.namespace }};
+
+use {{ skeletonModel.entityClassName }};
+use {{ skeletonModel.entityFactoryClassName }};
+
+class {{ skeletonModel.shortName }} implements {{ skeletonModel.entityFactoryShortName }}
+{
+    public function create(): {{ skeletonModel.entityShortName }}
+    {
+        return new {{ skeletonModel.entityImplShortName }}();
+    }
+}

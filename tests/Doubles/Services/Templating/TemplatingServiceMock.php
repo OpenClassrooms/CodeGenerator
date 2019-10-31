@@ -9,14 +9,10 @@ use OpenClassrooms\CodeGenerator\Services\Impl\TemplatingServiceImpl;
  */
 class TemplatingServiceMock extends TemplatingServiceImpl
 {
-    const AUTHOR = 'authorStub';
-
-    const AUTHOR_MAIL = 'author.stub@example.com';
-
     const SKELETON_DIR = '/../../../src/Skeleton';
 
     public function __construct()
     {
-        parent::__construct(self::SKELETON_DIR, self::AUTHOR, self::AUTHOR_MAIL);
+        parent::__construct(self::SKELETON_DIR);
     }
 }
