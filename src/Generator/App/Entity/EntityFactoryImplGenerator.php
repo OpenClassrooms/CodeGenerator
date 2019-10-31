@@ -57,38 +57,28 @@ class EntityFactoryImplGenerator extends AbstractGenerator
 
     private function createEntityFactoryFileObject(): FileObject
     {
-        return $this->entityFileObjectFactory->create(
-            EntityFileObjectType::BUSINESS_RULES_ENTITY_FACTORY,
-            $this->domain,
-            $this->entity,
-            $this->baseNamespace
-        );
+        return $this->createFileObject(EntityFileObjectType::BUSINESS_RULES_ENTITY_FACTORY);
     }
 
     private function createEntityFactoryImplFileObject(): FileObject
     {
-        return $this->entityFileObjectFactory->create(
-            EntityFileObjectType::BUSINESS_RULES_ENTITY_FACTORY_IMPL,
-            $this->domain,
-            $this->entity,
-            $this->baseNamespace
-        );
+        return $this->createFileObject(EntityFileObjectType::BUSINESS_RULES_ENTITY_FACTORY_IMPL);
     }
 
     private function createEntityFileObject(): FileObject
     {
-        return $this->entityFileObjectFactory->create(
-            EntityFileObjectType::BUSINESS_RULES_ENTITY,
-            $this->domain,
-            $this->entity,
-            $this->baseNamespace
-        );
+        return $this->createFileObject(EntityFileObjectType::BUSINESS_RULES_ENTITY);
     }
 
     private function createEntityImplFileObject(): FileObject
     {
+        return $this->createFileObject(EntityFileObjectType::BUSINESS_RULES_ENTITY_IMPL);
+    }
+
+    private function createFileObject(string $type): FileObject
+    {
         return $this->entityFileObjectFactory->create(
-            EntityFileObjectType::BUSINESS_RULES_ENTITY_IMPL,
+            $type,
             $this->domain,
             $this->entity,
             $this->baseNamespace
