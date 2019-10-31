@@ -16,7 +16,7 @@ use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\BusinessRu
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityDetailResponseTestCase;
 use PHPUnit\Framework\TestCase;
 
-class CreateFunctionalEntityTest extends TestCase
+final class CreateFunctionalEntityTest extends TestCase
 {
     use FunctionalEntityDetailResponseTestCase;
 
@@ -33,7 +33,7 @@ class CreateFunctionalEntityTest extends TestCase
     /**
      * @test
      */
-    final public function createFunctionalEntityShouldReturnResponse(): void
+    public function createFunctionalEntityShouldReturnResponse(): void
     {
         $response = $this->useCase->execute($this->request);
 
