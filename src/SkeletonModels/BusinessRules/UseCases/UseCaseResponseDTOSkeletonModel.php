@@ -9,7 +9,7 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
  */
 abstract class UseCaseResponseDTOSkeletonModel extends AbstractSkeletonModel
 {
-    public $templatePath = 'BusinessRules/UseCases/UseCaseResponseDTO.php.twig';
+    public $templatePath = 'BusinessRules/UseCases/DTO/Response/UseCaseResponseDTO.php.twig';
 
     public $useCaseResponseClassName;
 
