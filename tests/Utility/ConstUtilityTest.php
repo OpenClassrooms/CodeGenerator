@@ -2,8 +2,8 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Utility;
 
-use OpenClassrooms\CodeGenerator\Entities\FieldObject;
-use OpenClassrooms\CodeGenerator\Entities\FileObject;
+use OpenClassrooms\CodeGenerator\Entities\Object\FieldObject;
+use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\Utility\ConstUtility;
 use PHPUnit\Framework\TestCase;
 

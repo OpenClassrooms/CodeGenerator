@@ -2,7 +2,7 @@
 
 namespace OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\Impl;
 
-use OpenClassrooms\CodeGenerator\Entities\FileObject;
+use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\Generator\App\Repository\EntityRepositoryGenerator;
 use OpenClassrooms\CodeGenerator\Generator\App\Repository\Request\EntityRepositoryGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Gateways\EntityGatewayGenerator;

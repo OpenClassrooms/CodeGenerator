@@ -2,7 +2,7 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Entities;
 
-use OpenClassrooms\CodeGenerator\Entities\MethodObject;
+use OpenClassrooms\CodeGenerator\Entities\Object\MethodObject;
 use PHPUnit\Framework\Assert as Assert;
 
 /**

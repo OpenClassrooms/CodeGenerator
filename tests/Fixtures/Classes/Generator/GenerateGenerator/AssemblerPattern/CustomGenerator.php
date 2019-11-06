@@ -2,7 +2,7 @@
 
 namespace OpenClassrooms\CodeGenerator\Generator\GenerateGenerator;
 
-use OpenClassrooms\CodeGenerator\Entities\FileObject;
+use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\Generator\AbstractGenerator;
 use OpenClassrooms\CodeGenerator\Generator\GenerateGenerator\Request\CustomGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;

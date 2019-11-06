@@ -2,7 +2,7 @@
 
 namespace OpenClassrooms\CodeGenerator\Generator\Api;
 
-use OpenClassrooms\CodeGenerator\Entities\FileObject;
+use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\Entities\UseCaseResponseFileObjectFactory;
 use OpenClassrooms\CodeGenerator\Entities\ViewModelFileObjectFactory;
 use OpenClassrooms\CodeGenerator\Generator\AbstractGenerator;

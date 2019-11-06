@@ -2,11 +2,11 @@
 
 namespace OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases;
 
-use OpenClassrooms\CodeGenerator\Entities\EntityFileObjectType;
-use OpenClassrooms\CodeGenerator\Entities\FileObject;
-use OpenClassrooms\CodeGenerator\Entities\UseCaseFileObjectType;
-use OpenClassrooms\CodeGenerator\Entities\UseCaseRequestFileObjectType;
-use OpenClassrooms\CodeGenerator\Entities\UseCaseResponseFileObjectType;
+use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
+use OpenClassrooms\CodeGenerator\Entities\Type\EntityFileObjectType;
+use OpenClassrooms\CodeGenerator\Entities\Type\UseCaseFileObjectType;
+use OpenClassrooms\CodeGenerator\Entities\Type\UseCaseRequestFileObjectType;
+use OpenClassrooms\CodeGenerator\Entities\Type\UseCaseResponseFileObjectType;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\AbstractUseCaseGenerator;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\Request\GetEntityUseCaseTestGeneratorRequest;

@@ -2,7 +2,7 @@
 
 namespace OpenClassrooms\CodeGenerator\SkeletonModels\GenerateGenerator;
 
-use OpenClassrooms\CodeGenerator\Entities\FileObject;
+use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 
 interface CustomSkeletonModelBuilder
 {

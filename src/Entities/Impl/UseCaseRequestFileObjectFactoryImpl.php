@@ -3,9 +3,9 @@
 namespace OpenClassrooms\CodeGenerator\Entities\Impl;
 
 use OpenClassrooms\CodeGenerator\Entities\AbstractFileObjectFactory;
-use OpenClassrooms\CodeGenerator\Entities\FileObject;
+use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
+use OpenClassrooms\CodeGenerator\Entities\Type\UseCaseRequestFileObjectType;
 use OpenClassrooms\CodeGenerator\Entities\UseCaseRequestFileObjectFactory;
-use OpenClassrooms\CodeGenerator\Entities\UseCaseRequestFileObjectType;
 use OpenClassrooms\CodeGenerator\Utility\StringUtility;
 
 /**

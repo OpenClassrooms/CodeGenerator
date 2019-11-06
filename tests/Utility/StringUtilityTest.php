@@ -2,7 +2,7 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Utility;
 
-use OpenClassrooms\CodeGenerator\Entities\FieldObject;
+use OpenClassrooms\CodeGenerator\Entities\Object\FieldObject;
 use OpenClassrooms\CodeGenerator\Utility\StringUtility;
 use PHPUnit\Framework\TestCase;
 

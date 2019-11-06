@@ -3,8 +3,8 @@
 namespace OpenClassrooms\CodeGenerator\Generator\App\Entity;
 
 use OpenClassrooms\CodeGenerator\Entities\EntityFileObjectFactory;
-use OpenClassrooms\CodeGenerator\Entities\EntityFileObjectType;
-use OpenClassrooms\CodeGenerator\Entities\FileObject;
+use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
+use OpenClassrooms\CodeGenerator\Entities\Type\EntityFileObjectType;
 use OpenClassrooms\CodeGenerator\Generator\AbstractGenerator;
 use OpenClassrooms\CodeGenerator\Generator\App\Entity\Request\EntityImplGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;

@@ -2,7 +2,7 @@
 
 namespace OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\Responders\Impl;
 
-use OpenClassrooms\CodeGenerator\Entities\ConstObject;
+use OpenClassrooms\CodeGenerator\Entities\Object\ConstObject;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\Responders\UseCaseDetailResponseStubSkeletonModel;
 
 /**

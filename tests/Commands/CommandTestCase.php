@@ -3,7 +3,7 @@
 namespace OpenClassrooms\CodeGenerator\Tests\Commands;
 
 use OpenClassrooms\CodeGenerator\Commands\CommandLabelType;
-use OpenClassrooms\CodeGenerator\Entities\FileObject;
+use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use PHPUnit\Framework\MockObject\Builder\InvocationMocker;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;
@@ -34,7 +34,7 @@ trait CommandTestCase
     public function alreadyExistFileObject(array $fileObjects): array
     {
         return array_map(
-            function (FileObject $fileObject) {
+            function(FileObject $fileObject) {
                 $otherFileObject = clone $fileObject;
                 $otherFileObject->setAlreadyExists(true);
 
@@ -64,7 +64,7 @@ trait CommandTestCase
     protected function writeFileObjects(array $fileObjects): array
     {
         return array_map(
-            function (FileObject $fileObject) {
+            function(FileObject $fileObject) {
                 $otherFileObject = clone $fileObject;
                 $otherFileObject->write();
 

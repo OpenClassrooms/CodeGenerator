@@ -2,7 +2,7 @@
 
 namespace OpenClassrooms\CodeGenerator\SkeletonModels\App\Entity;
 
-use OpenClassrooms\CodeGenerator\Entities\FileObject;
+use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 
 interface EntityFactoryImplSkeletonModelAssembler
 {

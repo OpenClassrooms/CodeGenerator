@@ -2,7 +2,7 @@
 
 namespace OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Entities\Impl;
 
-use OpenClassrooms\CodeGenerator\Entities\FileObject;
+use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Entities\EntityFactorySkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Entities\EntityFactorySkeletonModelAssembler;
 

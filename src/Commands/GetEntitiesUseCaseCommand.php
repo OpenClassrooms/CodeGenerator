@@ -38,8 +38,7 @@ class GetEntitiesUseCaseCommand extends AbstractCommand
             ->setName(self::$defaultName)
             ->setDescription('Create get entities use case architecture')
             ->setHelp('This command allows you to create get entities use case architecture')
-            ->addArgument(Args::CLASS_NAME, InputArgument::OPTIONAL, 'set entities class name')
-            ->addArgument(Args::ENTITY, InputArgument::OPTIONAL, 'set entities name');
+            ->addArgument(Args::CLASS_NAME, InputArgument::OPTIONAL, 'set entities class name');
         $this->configureOptions();
     }
 

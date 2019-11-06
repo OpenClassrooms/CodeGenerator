@@ -2,9 +2,9 @@
 
 namespace Tests\FileObjects;
 
-use OpenClassrooms\CodeGenerator\Entities\FileObject;
+use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
+use OpenClassrooms\CodeGenerator\Entities\Type\ViewModelFileObjectType;
 use OpenClassrooms\CodeGenerator\Entities\ViewModelFileObjectFactory;
-use OpenClassrooms\CodeGenerator\Entities\ViewModelFileObjectType;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\ViewModelFileObjectFactoryMock;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\FunctionalEntity;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\FixturesConfig;

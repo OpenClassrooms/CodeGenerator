@@ -2,9 +2,9 @@
 
 namespace OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors;
 
-use OpenClassrooms\CodeGenerator\Entities\EntityFileObjectType;
-use OpenClassrooms\CodeGenerator\Entities\FileObject;
-use OpenClassrooms\CodeGenerator\Entities\UseCaseRequestFileObjectType;
+use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
+use OpenClassrooms\CodeGenerator\Entities\Type\EntityFileObjectType;
+use OpenClassrooms\CodeGenerator\Entities\Type\UseCaseRequestFileObjectType;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\AbstractUseCaseGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\Request\GetEntityUseCaseRequestBuilderGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;

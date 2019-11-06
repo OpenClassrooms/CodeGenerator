@@ -2,7 +2,7 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\ViewModels\ViewModel;
 
-use OpenClassrooms\CodeGenerator\Entities\FieldObject;
+use OpenClassrooms\CodeGenerator\Entities\Object\FieldObject;
 
 class ViewModelFieldObjectStub2 extends FieldObject
 {

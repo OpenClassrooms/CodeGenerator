@@ -2,7 +2,7 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Services\Impl;
 
-use OpenClassrooms\CodeGenerator\Entities\FieldObject;
+use OpenClassrooms\CodeGenerator\Entities\Object\FieldObject;
 use OpenClassrooms\CodeGenerator\Services\Impl\TemplatingServiceImpl;
 use OpenClassrooms\CodeGenerator\Services\TemplatingService;
 use OpenClassrooms\CodeGenerator\Tests\TestClassUtil;

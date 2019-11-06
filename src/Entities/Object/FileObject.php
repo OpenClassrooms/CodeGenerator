@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace OpenClassrooms\CodeGenerator\Entities;
+namespace OpenClassrooms\CodeGenerator\Entities\Object;
 
 use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 

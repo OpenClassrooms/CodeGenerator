@@ -2,9 +2,9 @@
 
 namespace OpenClassrooms\CodeGenerator\Services\Impl;
 
-use OpenClassrooms\CodeGenerator\Entities\ConstObject;
-use OpenClassrooms\CodeGenerator\Entities\FieldObject;
-use OpenClassrooms\CodeGenerator\Entities\MethodObject;
+use OpenClassrooms\CodeGenerator\Entities\Object\ConstObject;
+use OpenClassrooms\CodeGenerator\Entities\Object\FieldObject;
+use OpenClassrooms\CodeGenerator\Entities\Object\MethodObject;
 use OpenClassrooms\CodeGenerator\Services\TemplatingService;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;

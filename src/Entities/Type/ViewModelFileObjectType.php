@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace OpenClassrooms\CodeGenerator\Entities;
+namespace OpenClassrooms\CodeGenerator\Entities\Type;
 
 /**
  * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>

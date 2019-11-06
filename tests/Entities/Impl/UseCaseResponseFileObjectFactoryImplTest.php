@@ -2,9 +2,9 @@
 
 namespace Tests\FileObjects;
 
-use OpenClassrooms\CodeGenerator\Entities\FileObject;
+use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
+use OpenClassrooms\CodeGenerator\Entities\Type\UseCaseResponseFileObjectType;
 use OpenClassrooms\CodeGenerator\Entities\UseCaseResponseFileObjectFactory;
-use OpenClassrooms\CodeGenerator\Entities\UseCaseResponseFileObjectType;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\UseCaseResponseFileObjectFactoryMock;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\FunctionalEntity;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\FixturesConfig;

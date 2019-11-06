@@ -3,9 +3,9 @@
 namespace OpenClassrooms\CodeGenerator\Generator\GenerateGenerator;
 
 use OpenClassrooms\CodeGenerator\Commands\ConstructionPatternType;
-use OpenClassrooms\CodeGenerator\Entities\FileObject;
 use OpenClassrooms\CodeGenerator\Entities\GenerateGeneratorFileObjectFactory;
-use OpenClassrooms\CodeGenerator\Entities\GenerateGeneratorFileObjectType;
+use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
+use OpenClassrooms\CodeGenerator\Entities\Type\GenerateGeneratorFileObjectType;
 use OpenClassrooms\CodeGenerator\Gateways\FileObject\FileObjectGateway;
 use OpenClassrooms\CodeGenerator\Generator\GenerateGenerator\Request\GenerateGeneratorGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;

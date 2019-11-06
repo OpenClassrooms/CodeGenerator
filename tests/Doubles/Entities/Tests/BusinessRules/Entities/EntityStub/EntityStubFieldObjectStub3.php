@@ -2,8 +2,8 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\BusinessRules\Entities\EntityStub;
 
-use OpenClassrooms\CodeGenerator\Entities\ConstObject;
-use OpenClassrooms\CodeGenerator\Entities\FieldObject;
+use OpenClassrooms\CodeGenerator\Entities\Object\ConstObject;
+use OpenClassrooms\CodeGenerator\Entities\Object\FieldObject;
 
 class EntityStubFieldObjectStub3 extends FieldObject
 {

@@ -2,7 +2,7 @@
 
 namespace OpenClassrooms\CodeGenerator\Utility;
 
-use OpenClassrooms\CodeGenerator\Entities\MethodObject;
+use OpenClassrooms\CodeGenerator\Entities\Object\MethodObject;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
@@ -14,7 +14,7 @@ class MethodUtility
      *
      * @return MethodObject[]
      */
-    public static function getSelectedAccessors(string $className, array $fields): array
+    public static function getSelectedAccessors(string $className, array $fields = []): array
     {
         $methods = self::getAccessors($className);
 

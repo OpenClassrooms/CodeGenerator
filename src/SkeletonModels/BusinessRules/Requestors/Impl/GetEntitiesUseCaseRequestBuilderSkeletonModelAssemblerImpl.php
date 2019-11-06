@@ -2,7 +2,7 @@
 
 namespace OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Requestors\Impl;
 
-use OpenClassrooms\CodeGenerator\Entities\FileObject;
+use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Requestors\GetEntitiesUseCaseRequestBuilderSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Requestors\GetEntitiesUseCaseRequestBuilderSkeletonModelAssembler;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCaseClassNameTrait;

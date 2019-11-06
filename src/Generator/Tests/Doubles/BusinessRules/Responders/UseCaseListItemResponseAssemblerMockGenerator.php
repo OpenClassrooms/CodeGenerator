@@ -2,8 +2,8 @@
 
 namespace OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\BusinessRules\Responders;
 
-use OpenClassrooms\CodeGenerator\Entities\FileObject;
-use OpenClassrooms\CodeGenerator\Entities\UseCaseResponseFileObjectType;
+use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
+use OpenClassrooms\CodeGenerator\Entities\Type\UseCaseResponseFileObjectType;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\AbstractUseCaseGenerator;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\BusinessRules\Responders\Request\UseCaseListItemResponseAssemblerMockGeneratorRequest;
