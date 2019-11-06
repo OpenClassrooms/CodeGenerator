@@ -31,5 +31,5 @@ abstract class UseCaseDetailResponseAssemblerImplSkeletonModel extends AbstractS
 
     public $useCaseDetailResponseShortName;
 
-    public $useCaseResponseTrait;
+    public $useCaseResponseAssemblerTrait;
 }

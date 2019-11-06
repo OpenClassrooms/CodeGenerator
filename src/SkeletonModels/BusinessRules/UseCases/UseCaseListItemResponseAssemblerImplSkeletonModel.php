@@ -41,5 +41,5 @@ abstract class UseCaseListItemResponseAssemblerImplSkeletonModel extends Abstrac
 
     public $useCaseListItemResponseShortName;
 
-    public $useCaseResponseTraitShortName;
+    public $useCaseResponseAssemblerTraitShortName;
 }

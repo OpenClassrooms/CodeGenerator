@@ -2,6 +2,7 @@
 
 namespace OpenClassrooms\CodeGenerator\Entities\Impl;
 
+use InvalidArgumentException;
 use OpenClassrooms\CodeGenerator\Entities\AbstractFileObjectFactory;
 use OpenClassrooms\CodeGenerator\Entities\FileObject;
 use OpenClassrooms\CodeGenerator\Entities\UseCaseResponseFileObjectFactory;
@@ -89,13 +90,13 @@ class UseCaseResponseFileObjectFactoryImpl extends AbstractFileObjectFactory imp
                 return new FileObject(
                     $this->stubNamespace . 'BusinessRules\Responders\\' . $domain . '\\' . $entity . 'ListItemResponseAssemblerMock'
                 );
-            case UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE_TRAIT:
+            case UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE_ASSEMBLER_TRAIT:
                 return new FileObject(
-                    $this->baseNamespace . 'BusinessRules\UseCases\\' . $domain . '\DTO\Response\\' . $entity . 'ResponseTrait'
+                    $this->baseNamespace . 'BusinessRules\UseCases\\' . $domain . '\DTO\Response\\' . $entity . 'ResponseAssemblerTrait'
                 );
 
             default:
-                throw new \InvalidArgumentException($type);
+                throw new InvalidArgumentException($type);
         }
     }
 }

@@ -7,7 +7,7 @@ use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
-interface UseCaseResponseTraitGeneratorRequest extends GeneratorRequest
+interface UseCaseResponseAssemblerTraitGeneratorRequest extends GeneratorRequest
 {
     public function getEntityClassName(): string;
 

@@ -3,23 +3,23 @@
 namespace OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\Impl;
 
 use OpenClassrooms\CodeGenerator\Entities\FileObject;
-use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\UseCaseResponseTraitSkeletonModel;
-use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\UseCaseResponseTraitSkeletonModelAssembler;
+use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\UseCaseResponseAssemblerTraitSkeletonModel;
+use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\UseCaseResponseAssemblerTraitSkeletonModelAssembler;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
-class UseCaseResponseTraitSkeletonModelAssemblerImpl implements UseCaseResponseTraitSkeletonModelAssembler
+class UseCaseResponseAssemblerTraitSkeletonModelAssemblerImpl implements UseCaseResponseAssemblerTraitSkeletonModelAssembler
 {
     public function create(
         FileObject $entityFileObject,
         FileObject $useCaseResponseDTOFileObject,
         FileObject $useCaseResponseFileObject,
-        FileObject $useCaseResponseTraitFileObject
-    ): UseCaseResponseTraitSkeletonModel {
-        $skeletonModel = new UseCaseResponseTraitSkeletonModelImpl();
-        $skeletonModel->namespace = $useCaseResponseTraitFileObject->getNamespace();
-        $skeletonModel->shortName = $useCaseResponseTraitFileObject->getShortName();
+        FileObject $useCaseResponseAssemblerTraitFileObject
+    ): UseCaseResponseAssemblerTraitSkeletonModel {
+        $skeletonModel = new UseCaseResponseAssemblerTraitSkeletonModelImpl();
+        $skeletonModel->namespace = $useCaseResponseAssemblerTraitFileObject->getNamespace();
+        $skeletonModel->shortName = $useCaseResponseAssemblerTraitFileObject->getShortName();
         $skeletonModel->entityClassName = $entityFileObject->getClassName();
         $skeletonModel->entityMethods = $entityFileObject->getMethods();
         $skeletonModel->entityShortName = $entityFileObject->getShortName();

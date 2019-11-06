@@ -11,12 +11,26 @@ use {{ skeletonModel.paginatedCollectionClassName }};
 
 class {{ skeletonModel.shortName }} implements {{ skeletonModel.useCaseListItemResponseAssemblerShortName }}
 {
-    use {{ skeletonModel.useCaseResponseTraitShortName }};
+    use {{ skeletonModel.useCaseResponseAssemblerTraitShortName }};
 
     /**
      * @var {{ skeletonModel.paginatedUseCaseResponseBuilderShortName }}
      */
     private $paginatedUseCaseResponseBuilder;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function create({{ skeletonModel.entityShortName }} $entity): {{ skeletonModel.useCaseListItemResponseShortName }}
+    {
+        $response = new {{ skeletonModel.useCaseListItemResponseDTOShortName }}();
+        $this->hydrateCommonFields($entity, $response);
+{% for method in skeletonModel.entityMethods | sortNameByAlpha %}
+            $response->{{ method.fieldName }} = $entity->{{ method.name }}();
+{% endfor %}
+
+        return $response;
+    }
 
     /**
      * {@inheritdoc}
@@ -32,6 +46,11 @@ class {{ skeletonModel.shortName }} implements {{ skeletonModel.useCaseListItemR
             ->build();
     }
 
+    public function set{{ skeletonModel.paginatedUseCaseResponseBuilderShortName }}({{ skeletonModel.paginatedUseCaseResponseBuilderShortName }} $builder): void
+    {
+        $this->{{ skeletonModel.paginatedUseCaseResponseBuilderArgument }} = $builder;
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -44,24 +63,5 @@ class {{ skeletonModel.shortName }} implements {{ skeletonModel.useCaseListItemR
         }
 
         return $items;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function create({{ skeletonModel.entityShortName }} $entity): {{ skeletonModel.useCaseListItemResponseShortName }}
-    {
-        $response = new {{ skeletonModel.useCaseListItemResponseDTOShortName }}();
-        $this->hydrateCommonFields($entity, $response);
-{% for method in skeletonModel.entityMethods | sortNameByAlpha %}
-        $response->{{ method.fieldName }} = $entity->{{ method.name }}();
-{% endfor %}
-
-        return $response;
-    }
-
-    public function set{{ skeletonModel.paginatedUseCaseResponseBuilderShortName }}({{ skeletonModel.paginatedUseCaseResponseBuilderShortName }} $builder): void
-    {
-        $this->{{ skeletonModel.paginatedUseCaseResponseBuilderArgument }} = $builder;
     }
 }

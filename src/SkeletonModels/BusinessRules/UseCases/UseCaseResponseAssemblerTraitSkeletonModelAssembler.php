@@ -7,12 +7,12 @@ use OpenClassrooms\CodeGenerator\Entities\FileObject;
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
-interface UseCaseResponseTraitSkeletonModelAssembler
+interface UseCaseResponseAssemblerTraitSkeletonModelAssembler
 {
     public function create(
         FileObject $entityFileObject,
         FileObject $useCaseResponseDTOFileObject,
         FileObject $useCaseResponseFileObject,
-        FileObject $useCaseResponseTraitFileObject
-    ): UseCaseResponseTraitSkeletonModel;
+        FileObject $useCaseResponseAssemblerTraitFileObject
+    ): UseCaseResponseAssemblerTraitSkeletonModel;
 }

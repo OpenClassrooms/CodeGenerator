@@ -8,8 +8,8 @@
                 id="open_classrooms.code_generator.generator.business_rules.use_cases.dto.request.use_case_response_dto_generator_request_builder"
                 class="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\UseCaseResponseDTOGeneratorRequestBuilderImpl"/>
         <service
-                id="open_classrooms.code_generator.generator.business_rules.use_cases.dto.request.use_case_response_trait_generator_request_builder"
-                class="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\UseCaseResponseTraitGeneratorRequestBuilderImpl"/>
+                id="open_classrooms.code_generator.generator.business_rules.use_cases.dto.request.use_case_response_assembler_trait_generator_request_builder"
+                class="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\UseCaseResponseAssemblerTraitGeneratorRequestBuilderImpl"/>
         <service
                 id="open_classrooms.code_generator.generator.tests.doubles.business_rules.responders.dto.request.use_case_response_test_case_generator_request_builder"
                 class="OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\BusinessRules\Responders\DTO\Request\UseCaseResponseTestCaseGeneratorRequestBuilderImpl"/>

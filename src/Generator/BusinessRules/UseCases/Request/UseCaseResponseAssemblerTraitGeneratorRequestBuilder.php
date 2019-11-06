@@ -7,20 +7,20 @@ use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
-interface UseCaseResponseTraitGeneratorRequestBuilder extends GeneratorRequest
+interface UseCaseResponseAssemblerTraitGeneratorRequestBuilder extends GeneratorRequest
 {
-    public function build(): UseCaseResponseTraitGeneratorRequest;
+    public function build(): UseCaseResponseAssemblerTraitGeneratorRequest;
 
-    public function create(): UseCaseResponseTraitGeneratorRequestBuilder;
+    public function create(): UseCaseResponseAssemblerTraitGeneratorRequestBuilder;
 
     public function withEntityClassName(
         string $entity
-    ): UseCaseResponseTraitGeneratorRequestBuilder;
+    ): UseCaseResponseAssemblerTraitGeneratorRequestBuilder;
 
     /**
      * @param string[] $fields
      */
     public function withFields(
         array $fields
-    ): UseCaseResponseTraitGeneratorRequestBuilder;
+    ): UseCaseResponseAssemblerTraitGeneratorRequestBuilder;
 }

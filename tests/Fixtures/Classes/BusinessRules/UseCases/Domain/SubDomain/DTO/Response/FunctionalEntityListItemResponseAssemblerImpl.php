@@ -12,12 +12,23 @@ use OpenClassrooms\UseCase\BusinessRules\Entities\PaginatedCollection;
 
 class FunctionalEntityListItemResponseAssemblerImpl implements FunctionalEntityListItemResponseAssembler
 {
-    use FunctionalEntityResponseTrait;
+    use FunctionalEntityResponseAssemblerTrait;
 
     /**
      * @var PaginatedUseCaseResponseBuilder
      */
     private $paginatedUseCaseResponseBuilder;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function create(FunctionalEntity $entity): FunctionalEntityListItemResponse
+    {
+        $response = new FunctionalEntityListItemResponseDTO();
+        $this->hydrateCommonFields($entity, $response);
+
+        return $response;
+    }
 
     /**
      * {@inheritdoc}
@@ -33,6 +44,11 @@ class FunctionalEntityListItemResponseAssemblerImpl implements FunctionalEntityL
             ->build();
     }
 
+    public function setPaginatedUseCaseResponseBuilder(PaginatedUseCaseResponseBuilder $builder): void
+    {
+        $this->paginatedUseCaseResponseBuilder = $builder;
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -45,21 +61,5 @@ class FunctionalEntityListItemResponseAssemblerImpl implements FunctionalEntityL
         }
 
         return $items;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function create(FunctionalEntity $entity): FunctionalEntityListItemResponse
-    {
-        $response = new FunctionalEntityListItemResponseDTO();
-        $this->hydrateCommonFields($entity, $response);
-
-        return $response;
-    }
-
-    public function setPaginatedUseCaseResponseBuilder(PaginatedUseCaseResponseBuilder $builder): void
-    {
-        $this->paginatedUseCaseResponseBuilder = $builder;
     }
 }

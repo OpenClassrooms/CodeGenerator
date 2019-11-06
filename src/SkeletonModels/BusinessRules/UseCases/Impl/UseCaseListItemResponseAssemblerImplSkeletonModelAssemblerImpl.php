@@ -21,7 +21,7 @@ class UseCaseListItemResponseAssemblerImplSkeletonModelAssemblerImpl implements 
         FileObject $useCaseListItemResponseAssemblerImplFileObject,
         FileObject $useCaseListItemResponseDTOFileObject,
         FileObject $useCaseListItemResponseFileObject,
-        FileObject $useCaseResponseTraitFileObject
+        FileObject $useCaseResponseAssemblerTraitFileObject
     ): UseCaseListItemResponseAssemblerImplSkeletonModel {
         $skeletonModel = new UseCaseListItemResponseAssemblerImplSkeletonModelImpl();
         $skeletonModel->namespace = $useCaseListItemResponseAssemblerImplFileObject->getNamespace();
@@ -36,7 +36,8 @@ class UseCaseListItemResponseAssemblerImplSkeletonModelAssemblerImpl implements 
         $skeletonModel->useCaseListItemResponseClassName = $useCaseListItemResponseFileObject->getClassName();
         $skeletonModel->useCaseListItemResponseDTOShortName = $useCaseListItemResponseDTOFileObject->getShortName();
         $skeletonModel->useCaseListItemResponseShortName = $useCaseListItemResponseFileObject->getShortName();
-        $skeletonModel->useCaseResponseTraitShortName = $useCaseResponseTraitFileObject->getShortName();
+        $skeletonModel->useCaseResponseAssemblerTraitShortName = $useCaseResponseAssemblerTraitFileObject->getShortName(
+        );
         $skeletonModel->paginatedUseCaseResponseBuilderArgument = lcfirst(
             FileObjectUtility::getShortClassName(
                 $this->paginatedUseCaseResponseBuilder
