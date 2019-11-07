@@ -46,7 +46,7 @@ class CreateFunctionalEntityRequestBuilderImpl implements CreateFunctionalEntity
         return $this;
     }
 
-    public function withField4(\DateTimeImmutable $field4): CreateFunctionalEntityRequestBuilder
+    public function withField4(\DateTimeInterface $field4): CreateFunctionalEntityRequestBuilder
     {
         $this->request->field4 = $field4;
 

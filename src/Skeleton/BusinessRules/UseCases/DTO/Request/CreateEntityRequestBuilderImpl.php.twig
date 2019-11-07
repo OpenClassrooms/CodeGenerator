@@ -1,0 +1,38 @@
+{% include "Header.php.twig" %}
+
+namespace {{ skeletonModel.namespace }};
+
+use {{ skeletonModel.createEntityRequestClassName }};
+use {{ skeletonModel.createEntityRequestBuilderClassName }};
+
+class {{ skeletonModel.shortName }} implements {{ skeletonModel.createEntityRequestBuilderShortName }}
+{
+    /**
+     * @var {{ skeletonModel.createEntityRequestDTOShortName }}
+     */
+    private $request;
+
+    public function build(): {{ skeletonModel.createEntityRequestShortName }}
+    {
+        return $this->request;
+    }
+
+    public function create(): {{ skeletonModel.createEntityRequestBuilderShortName }}
+    {
+        $this->request = new {{ skeletonModel.createEntityRequestDTOShortName }}();
+
+        return $this;
+    }
+
+{% for method in skeletonModel.methods | sortNameByAlpha %}
+    public function {{ method.name }}({{ method.arguments[0].type }} ${{ method.arguments[0].name }}): {{ method.returnType }}
+    {
+        $this->request->{{ method.arguments[0].name }} = ${{ method.arguments[0].name }};
+
+        return $this;
+    }
+{% if not loop.last %}
+
+{% endif %}
+{% endfor %}
+}
