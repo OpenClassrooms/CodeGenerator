@@ -9,7 +9,7 @@ use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\Request\Crea
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Requestors\CreateEntityRequestSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Requestors\CreateEntityRequestSkeletonModelAssembler;
-use OpenClassrooms\CodeGenerator\Utility\MethodUtility;
+use OpenClassrooms\CodeGenerator\Utility\MethodUtilityStrategy;
 
 class CreateEntityRequestGenerator extends AbstractUseCaseGenerator
 {
@@ -17,6 +17,11 @@ class CreateEntityRequestGenerator extends AbstractUseCaseGenerator
      * @var CreateEntityRequestSkeletonModelAssembler
      */
     private $createEntityRequestSkeletonModelAssembler;
+
+    /**
+     * @var MethodUtilityStrategy
+     */
+    private $methodUtility;
 
     /**
      * @param CreateEntityRequestGeneratorRequest $generatorRequest
@@ -36,9 +41,7 @@ class CreateEntityRequestGenerator extends AbstractUseCaseGenerator
     {
         $this->initFileObjectParameter($entityClassName);
         $createEntityRequestFileObject = $this->createCreateEntityRequestFileObject();
-        $createEntityRequestFileObject->setMethods(
-            $this->getAccessorsWithoutId($entityClassName)
-        );
+        $createEntityRequestFileObject->setMethods($this->methodUtility->getAccessors($entityClassName));
 
         $createEntityRequestFileObject->setContent($this->generateContent($createEntityRequestFileObject));
 
@@ -52,22 +55,6 @@ class CreateEntityRequestGenerator extends AbstractUseCaseGenerator
             $this->domain,
             $this->entity
         );
-    }
-
-    /**
-     * @param string[] $fields
-     */
-    public static function getAccessorsWithoutId(string $className): array
-    {
-        $accessors = MethodUtility::getAccessors($className);
-
-        foreach ($accessors as $key => $accessor) {
-            if ($accessor->getName() === 'getId') {
-                unset($accessors[$key]);
-            }
-        }
-
-        return $accessors;
     }
 
     private function generateContent(FileObject $createEntityRequestFileObject): string
@@ -86,5 +73,10 @@ class CreateEntityRequestGenerator extends AbstractUseCaseGenerator
         CreateEntityRequestSkeletonModelAssembler $createEntityRequestSkeletonModelAssembler
     ): void {
         $this->createEntityRequestSkeletonModelAssembler = $createEntityRequestSkeletonModelAssembler;
+    }
+
+    public function setMethodUtility(MethodUtilityStrategy $methodUtility): void
+    {
+        $this->methodUtility = $methodUtility;
     }
 }

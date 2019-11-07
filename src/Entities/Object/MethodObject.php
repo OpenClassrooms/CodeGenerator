@@ -10,6 +10,11 @@ use OpenClassrooms\CodeGenerator\Utility\MethodUtility;
 class MethodObject
 {
     /**
+     * @var FieldObject[]
+     */
+    protected $arguments;
+
+    /**
      * @var string
      */
     protected $docComment;
@@ -28,11 +33,6 @@ class MethodObject
      * @var string
      */
     protected $returnType;
-
-    /**
-     * @var FieldObject[]
-     */
-    protected $arguments;
 
     public function __construct(string $name)
     {
