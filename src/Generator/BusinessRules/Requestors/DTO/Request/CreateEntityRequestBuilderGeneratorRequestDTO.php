@@ -2,9 +2,9 @@
 
 namespace OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\DTO\Request;
 
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\Request\CreateEntityRequestGeneratorRequest;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\Request\CreateEntityRequestBuilderGeneratorRequest;
 
-class CreateEntityRequestGeneratorRequestDTO implements CreateEntityRequestGeneratorRequest
+class CreateEntityRequestBuilderGeneratorRequestDTO implements CreateEntityRequestBuilderGeneratorRequest
 {
     /**
      * @var string

@@ -24,8 +24,7 @@ class CreateEntityRequestGenerator extends AbstractUseCaseGenerator
     public function generate(GeneratorRequest $generatorRequest): FileObject
     {
         $createEntityRequestFileObject = $this->buildCreateEntityRequestFileObject(
-            $generatorRequest->getEntityClassName(),
-            $generatorRequest->getFields()
+            $generatorRequest->getEntityClassName()
         );
 
         $this->insertFileObject($createEntityRequestFileObject);
@@ -33,12 +32,12 @@ class CreateEntityRequestGenerator extends AbstractUseCaseGenerator
         return $createEntityRequestFileObject;
     }
 
-    private function buildCreateEntityRequestFileObject(string $entityClassName, array $wantedFields): FileObject
+    private function buildCreateEntityRequestFileObject(string $entityClassName): FileObject
     {
         $this->initFileObjectParameter($entityClassName);
         $createEntityRequestFileObject = $this->createCreateEntityRequestFileObject();
         $createEntityRequestFileObject->setMethods(
-            $this->getSelectedAccessors($entityClassName, $wantedFields)
+            $this->getAccessorsWithoutId($entityClassName)
         );
 
         $createEntityRequestFileObject->setContent($this->generateContent($createEntityRequestFileObject));
@@ -53,6 +52,22 @@ class CreateEntityRequestGenerator extends AbstractUseCaseGenerator
             $this->domain,
             $this->entity
         );
+    }
+
+    /**
+     * @param string[] $fields
+     */
+    public static function getAccessorsWithoutId(string $className): array
+    {
+        $accessors = MethodUtility::getAccessors($className);
+
+        foreach ($accessors as $key => $accessor) {
+            if ($accessor->getName() === 'getId') {
+                unset($accessors[$key]);
+            }
+        }
+
+        return $accessors;
     }
 
     private function generateContent(FileObject $createEntityRequestFileObject): string

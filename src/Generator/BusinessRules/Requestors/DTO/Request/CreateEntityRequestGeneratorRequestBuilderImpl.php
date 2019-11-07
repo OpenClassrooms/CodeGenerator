@@ -26,13 +26,6 @@ class CreateEntityRequestGeneratorRequestBuilderImpl implements CreateEntityRequ
         return $this;
     }
 
-    public function withFields(array $fields): CreateEntityRequestGeneratorRequestBuilder
-    {
-        $this->request->fields = $fields;
-
-        return $this;
-    }
-
     public function build(): CreateEntityRequestGeneratorRequest
     {
         return $this->request;

@@ -2,6 +2,7 @@
 
 namespace OpenClassrooms\CodeGenerator\Utility;
 
+use OpenClassrooms\CodeGenerator\Entities\Object\FieldObject;
 use OpenClassrooms\CodeGenerator\Entities\Object\MethodObject;
 
 /**
@@ -96,10 +97,44 @@ class MethodUtility
         return array_values($methods);
     }
 
-    /**
-     * @return string|null
-     */
-    public static function createArgumentNameFromMethod(string $method)
+    public static function buildMethodsChained(string $className, string $returnType): array
+    {
+        $rc = new \ReflectionClass($className);
+
+        $methodsChained = [];
+        foreach ($rc->getProperties() as $field) {
+            if ($field->getName() === 'id') {
+                continue;
+            }
+            $methodsChained[] = self::buildMethodObject($returnType, $field);
+        }
+
+        return $methodsChained;
+    }
+
+    private static function buildMethodObject(string $returnType, \ReflectionProperty $field): MethodObject
+    {
+        $methodChained = new MethodObject(self::createMethodsChainedName($field));
+        $methodChained->setReturnType($returnType);
+        $methodChained->setArguments(self::buildArguments($field));
+
+        return $methodChained;
+    }
+
+    private static function createMethodsChainedName(\ReflectionProperty $field): string
+    {
+        return 'with' . ucfirst($field->getName());
+    }
+
+    private static function buildArguments(\ReflectionProperty $field): array
+    {
+        $argument = new FieldObject($field->getName());
+        $argument->setDocComment($field->getDocComment());
+
+        return [$argument];
+    }
+
+    public static function createArgumentNameFromMethod(string $method): ?string
     {
         if ('get' === substr($method, 0, 3)) {
             return lcfirst(substr($method, 3));

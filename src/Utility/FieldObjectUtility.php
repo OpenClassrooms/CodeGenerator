@@ -56,8 +56,7 @@ class FieldObjectUtility
     {
         $field = new FieldObject($reflectionProperty->getName());
         $field->setAccessor(self::getFieldAccessor($reflectionProperty));
-        $docComment = $reflectionProperty->getDocComment();
-        $field->setDocComment($docComment);
+        $field->setDocComment($reflectionProperty->getDocComment());
         $field->setScope($scope);
 
         return $field;

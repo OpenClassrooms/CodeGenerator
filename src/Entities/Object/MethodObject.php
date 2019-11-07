@@ -29,6 +29,11 @@ class MethodObject
      */
     protected $returnType;
 
+    /**
+     * @var FieldObject[]
+     */
+    protected $arguments;
+
     public function __construct(string $name)
     {
         $this->name = $name;
@@ -78,5 +83,21 @@ class MethodObject
     public function setNullable(bool $nullable): void
     {
         $this->nullable = $nullable;
+    }
+
+    /**
+     * @return FieldObject[]
+     */
+    public function getArguments(): array
+    {
+        return $this->arguments;
+    }
+
+    /**
+     * @param FieldObject[] $arguments
+     */
+    public function setArguments(array $arguments): void
+    {
+        $this->arguments = $arguments;
     }
 }

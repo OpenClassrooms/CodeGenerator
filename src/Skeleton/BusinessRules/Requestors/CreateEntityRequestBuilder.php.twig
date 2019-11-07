@@ -1,0 +1,19 @@
+{% include "Header.php.twig" %}
+
+namespace {{ skeletonModel.namespace }};
+
+use {{ skeletonModel.useCaseRequestClassName }};
+
+interface {{ skeletonModel.shortName }} extends {{ skeletonModel.useCaseRequestShortName }}
+{
+    public function build(): {{ skeletonModel.createEntityRequestShortName }};
+
+    public function create(): {{ skeletonModel.shortName }};
+
+{% for method in skeletonModel.methods | sortNameByAlpha %}
+    public function {{ method.name }}({{ method.arguments[0].type }} ${{ method.arguments[0].name }}): {{ skeletonModel.shortName }};
+{% if not loop.last %}
+
+{% endif %}
+{% endfor %}
+}

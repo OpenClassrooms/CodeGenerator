@@ -4,7 +4,7 @@ namespace OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\Reques
 
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 
-interface CreateEntityRequestGeneratorRequest extends GeneratorRequest
+interface CreateEntityRequestBuilderGeneratorRequest extends GeneratorRequest
 {
     public function getEntityClassName(): string;
 }

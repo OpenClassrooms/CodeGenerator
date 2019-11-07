@@ -48,7 +48,6 @@ class CreateEntityRequestGeneratorTest extends TestCase
         $this->request = $createEntityRequestGeneratorRequestBuilderImpl
             ->create()
             ->withEntityClassName(FunctionalEntity::class)
-            ->withFields(['field1','field2','field3','field4'])
             ->build();
 
         $this->createEntityRequestGenerator = new CreateEntityRequestGenerator();
