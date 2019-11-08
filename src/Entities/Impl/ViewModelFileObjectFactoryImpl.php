@@ -17,75 +17,75 @@ class ViewModelFileObjectFactoryImpl extends AbstractFileObjectFactory implement
         switch ($type) {
             case ViewModelFileObjectType::API_VIEW_MODEL_ASSEMBLER_TRAIT:
                 return new FileObject(
-                    $this->baseNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\' . $entity . 'AssemblerTrait'
+                    $this->baseNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\' . $entity . 'ViewModelAssemblerTrait'
                 );
             case ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_ASSEMBLER:
                 return new FileObject(
-                    $this->baseNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\' . $entity . 'DetailAssembler'
+                    $this->baseNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\' . $entity . 'ViewModelDetailAssembler'
                 );
             case ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_ASSEMBLER_IMPL_TEST:
                 return new FileObject(
-                    $this->testsBaseNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\Impl\\' . $entity . 'DetailAssemblerImplTest'
+                    $this->testsBaseNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\Impl\\' . $entity . 'ViewModelDetailAssemblerImplTest'
                 );
             case ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_ASSEMBLER_IMPL:
                 return new FileObject(
-                    $this->baseNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\Impl\\' . $entity . 'DetailAssemblerImpl'
+                    $this->baseNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\Impl\\' . $entity . 'ViewModelDetailAssemblerImpl'
                 );
             case ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_ASSEMBLER:
                 return new FileObject(
-                    $this->baseNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\' . $entity . 'ListItemAssembler'
+                    $this->baseNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\' . $entity . 'ViewModelListItemAssembler'
                 );
             case ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_ASSEMBLER_IMPL_TEST:
                 return new FileObject(
-                    $this->testsBaseNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\Impl\\' . $entity . 'ListItemAssemblerImplTest'
+                    $this->testsBaseNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\Impl\\' . $entity . 'ViewModelListItemAssemblerImplTest'
                 );
             case ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_ASSEMBLER_IMPL:
                 return new FileObject(
-                    $this->baseNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\Impl\\' . $entity . 'ListItemAssemblerImpl'
+                    $this->baseNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\Impl\\' . $entity . 'ViewModelListItemAssemblerImpl'
                 );
             case ViewModelFileObjectType::API_VIEW_MODEL:
                 return new FileObject(
-                    $this->baseNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\' . $entity
+                    $this->baseNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\' . $entity . 'ViewModel'
                 );
             case ViewModelFileObjectType::API_VIEW_MODEL_IMPL:
                 return new FileObject(
-                    $this->baseNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\Impl\\' . $entity . 'Impl'
+                    $this->baseNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\Impl\\' . $entity . 'ViewModelImpl'
                 );
             case ViewModelFileObjectType::API_VIEW_MODEL_DETAIL:
                 return new FileObject(
-                    $this->baseNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\' . $entity . 'Detail'
+                    $this->baseNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\' . $entity . 'ViewModelDetail'
                 );
             case ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_IMPL:
                 return new FileObject(
-                    $this->baseNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\Impl\\' . $entity . 'DetailImpl'
+                    $this->baseNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\Impl\\' . $entity . 'ViewModelDetailImpl'
                 );
             case ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM:
                 return new FileObject(
-                    $this->baseNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\' . $entity . 'ListItem'
+                    $this->baseNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\' . $entity . 'ViewModelListItem'
                 );
             case ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_IMPL:
                 return new FileObject(
-                    $this->baseNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\Impl\\' . $entity . 'ListItemImpl'
+                    $this->baseNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\Impl\\' . $entity . 'ViewModelListItemImpl'
                 );
             case ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_STUB:
                 return new FileObject(
-                    $this->stubNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\' . $entity . 'DetailStub1'
+                    $this->stubNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\' . $entity . 'ViewModelDetailStub1'
                 );
             case ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_STUB:
                 return new FileObject(
-                    $this->stubNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\' . $entity . 'ListItemStub1'
+                    $this->stubNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\' . $entity . 'ViewModelListItemStub1'
                 );
             case ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_TEST_CASE:
                 return new FileObject(
-                    $this->stubNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\' . $entity . 'ListItemTestCase'
+                    $this->stubNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\' . $entity . 'ViewModelListItemTestCase'
                 );
             case ViewModelFileObjectType::API_VIEW_MODEL_TEST_CASE:
                 return new FileObject(
-                    $this->stubNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\' . $entity . 'TestCase'
+                    $this->stubNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\' . $entity . 'ViewModelTestCase'
                 );
             case ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_TEST_CASE:
                 return new FileObject(
-                    $this->stubNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\' . $entity . 'DetailTestCase'
+                    $this->stubNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\' . $entity . 'ViewModelDetailTestCase'
                 );
 
             default:
