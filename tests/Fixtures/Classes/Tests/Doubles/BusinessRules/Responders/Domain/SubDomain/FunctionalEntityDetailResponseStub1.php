@@ -8,15 +8,15 @@ use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\BusinessRu
 
 class FunctionalEntityDetailResponseStub1 extends FunctionalEntityDetailResponseDTO
 {
-    const FIELD_1 = FunctionalEntityStub1::FIELD_1;
+    public const FIELD_1 = FunctionalEntityStub1::FIELD_1;
 
-    const FIELD_2 = FunctionalEntityStub1::FIELD_2;
+    public const FIELD_2 = FunctionalEntityStub1::FIELD_2;
 
-    const FIELD_3 = FunctionalEntityStub1::FIELD_3;
+    public const FIELD_3 = FunctionalEntityStub1::FIELD_3;
 
-    const FIELD_4 = FunctionalEntityStub1::FIELD_4;
+    public const FIELD_4 = FunctionalEntityStub1::FIELD_4;
 
-    const ID = FunctionalEntityStub1::ID;
+    public const ID = FunctionalEntityStub1::ID;
 
     public $field1 = self::FIELD_1;
 
