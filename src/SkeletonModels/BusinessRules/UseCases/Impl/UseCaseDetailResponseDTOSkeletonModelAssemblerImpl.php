@@ -14,7 +14,7 @@ class UseCaseDetailResponseDTOSkeletonModelAssemblerImpl implements UseCaseDetai
     public function create(
         FileObject $useCaseDetailResponseDTOFileObject,
         FileObject $useCaseDetailResponseFileObject,
-        FileObject $useCaseResponseDTOFileObject
+        FileObject $useCaseResponseCommonFieldTraitFileObject
     ): UseCaseDetailResponseDTOSkeletonModel {
         $skeletonModel = new UseCaseDetailResponseDTOSkeletonModelImpl();
         $skeletonModel->namespace = $useCaseDetailResponseDTOFileObject->getNamespace();
@@ -23,7 +23,7 @@ class UseCaseDetailResponseDTOSkeletonModelAssemblerImpl implements UseCaseDetai
         $skeletonModel->methods = $useCaseDetailResponseDTOFileObject->getMethods();
         $skeletonModel->useCaseDetailResponseClassName = $useCaseDetailResponseFileObject->getClassName();
         $skeletonModel->useCaseDetailResponseShortName = $useCaseDetailResponseFileObject->getShortName();
-        $skeletonModel->useCaseResponseDTOShortName = $useCaseResponseDTOFileObject->getShortName();
+        $skeletonModel->useCaseResponseCommonFieldTraitShortName = $useCaseResponseCommonFieldTraitFileObject->getShortName();
 
         return $skeletonModel;
     }

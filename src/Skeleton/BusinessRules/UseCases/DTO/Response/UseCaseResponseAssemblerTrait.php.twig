@@ -8,7 +8,7 @@ use {{ skeletonModel.useCaseResponseClassName }};
 trait {{ skeletonModel.shortName }}
 {
     /**
-     * @param {{ skeletonModel.useCaseResponseDTOShortName }} $response
+     * @param {{ skeletonModel.useCaseResponseCommonFieldTraitShortName }} $response
      */
     private function hydrateCommonFields({{ skeletonModel.entityShortName }} $entity, {{ skeletonModel.useCaseResponseShortName }} $response): {{ skeletonModel.useCaseResponseShortName }}
     {

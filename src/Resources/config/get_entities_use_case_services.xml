@@ -18,7 +18,7 @@
         <import resource="Generator/BusinessRules/UseCases/get_entities_use_case_request_builder_impl_generator.xml"/>
         <import resource="Generator/BusinessRules/UseCases/get_entities_use_case_request_dto_generator.xml"/>
         <import resource="Generator/BusinessRules/UseCases/get_entities_use_case_generator.xml"/>
-        <import resource="Generator/BusinessRules/UseCases/use_case_response_dto_generator.xml"/>
+        <import resource="Generator/BusinessRules/UseCases/use_case_response_common_field_trait_generator.xml"/>
         <import resource="Generator/BusinessRules/UseCases/use_case_response_assembler_trait_generator.xml"/>
         <import resource="Generator/BusinessRules/UseCases/use_case_list_item_response_assembler_impl_generator.xml"/>
         <import resource="Generator/BusinessRules/UseCases/use_case_list_item_response_dto_generator.xml"/>

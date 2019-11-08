@@ -9,7 +9,7 @@ use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders
 trait FunctionalEntityResponseAssemblerTrait
 {
     /**
-     * @param FunctionalEntityResponseDTO $response
+     * @param FunctionalEntityResponseCommonFieldTrait $response
      */
     private function hydrateCommonFields(FunctionalEntity $entity, FunctionalEntityResponse $response): FunctionalEntityResponse
     {

@@ -15,13 +15,13 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Entities\E
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
-class UseCaseResponseDTOFileObjectStub1 extends FileObject
+class UseCaseResponseCommonFieldTraitFileObjectStub1 extends FileObject
 {
-    const CLASS_NAME = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\DTO\Response\FunctionalEntityResponseDTO';
+    private const CLASS_NAME = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\DTO\Response\FunctionalEntityResponseCommonFieldTrait';
 
     public function __construct()
     {
-        $this->content = __DIR__ . '/../../../../Fixtures/Classes/BusinessRules/UseCases/Domain/SubDomain/DTO/Response/FunctionalEntityResponseDTO.php';
+        $this->content = __DIR__ . '/../../../../Fixtures/Classes/BusinessRules/UseCases/Domain/SubDomain/DTO/Response/FunctionalEntityResponseCommonFieldTrait.php';
         $this->className = self::CLASS_NAME;
         $this->fields = [
             new EntityFieldObjectStub1(),

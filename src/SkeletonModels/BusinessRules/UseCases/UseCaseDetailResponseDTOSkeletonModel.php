@@ -15,5 +15,5 @@ abstract class UseCaseDetailResponseDTOSkeletonModel extends AbstractSkeletonMod
 
     public $useCaseDetailResponseShortName;
 
-    public $useCaseResponseDTOShortName;
+    public $useCaseResponseCommonFieldTraitShortName;
 }

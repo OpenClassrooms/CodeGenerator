@@ -15,5 +15,5 @@ abstract class UseCaseListItemResponseDTOSkeletonModel extends AbstractSkeletonM
 
     public $useCaseListItemResponseShortName;
 
-    public $useCaseResponseDTOShortName;
+    public $useCaseResponseCommonFieldTraitShortName;
 }

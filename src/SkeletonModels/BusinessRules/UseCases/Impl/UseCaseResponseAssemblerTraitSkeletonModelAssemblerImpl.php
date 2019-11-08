@@ -13,7 +13,7 @@ class UseCaseResponseAssemblerTraitSkeletonModelAssemblerImpl implements UseCase
 {
     public function create(
         FileObject $entityFileObject,
-        FileObject $useCaseResponseDTOFileObject,
+        FileObject $useCaseResponseCommonFieldTraitFileObject,
         FileObject $useCaseResponseFileObject,
         FileObject $useCaseResponseAssemblerTraitFileObject
     ): UseCaseResponseAssemblerTraitSkeletonModel {
@@ -24,7 +24,7 @@ class UseCaseResponseAssemblerTraitSkeletonModelAssemblerImpl implements UseCase
         $skeletonModel->entityMethods = $entityFileObject->getMethods();
         $skeletonModel->entityShortName = $entityFileObject->getShortName();
         $skeletonModel->useCaseResponseClassName = $useCaseResponseFileObject->getClassName();
-        $skeletonModel->useCaseResponseDTOShortName = $useCaseResponseDTOFileObject->getShortName();
+        $skeletonModel->useCaseResponseCommonFieldTraitShortName = $useCaseResponseCommonFieldTraitFileObject->getShortName();
         $skeletonModel->useCaseResponseShortName = $useCaseResponseFileObject->getShortName();
 
         return $skeletonModel;

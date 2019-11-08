@@ -3,9 +3,7 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\DTO\Response;
 
-use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityResponse;
-
-abstract class FunctionalEntityResponseDTO implements FunctionalEntityResponse
+trait FunctionalEntityResponseCommonFieldTrait
 {
     /**
      * @var string

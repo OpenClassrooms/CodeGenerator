@@ -32,22 +32,33 @@ class ViewModelGenerator extends AbstractViewModelGenerator
         return $viewModelFileObject;
     }
 
+    public function setViewModelSkeletonModelAssembler(
+        ViewModelSkeletonModelAssembler $viewModelSkeletonModelAssembler
+    ): void {
+        $this->viewModelSkeletonModelAssembler = $viewModelSkeletonModelAssembler;
+    }
+
     private function buildViewModelFileObject(string $useCaseResponseClassName): FileObject
     {
         $this->initFileObjectParameter($useCaseResponseClassName);
-        $useCaseResponseDTOFileObject = $this->createUseCaseResponseDTOFileObject();
+        $useCaseResponseCommonFieldTraitFileObject = $this->createUseCaseResponseCommonFieldTraitFileObject();
         $viewModelFileObject = $this->createViewModelObject();
 
-        $viewModelFileObject->setFields($this->getPublicClassFields($useCaseResponseDTOFileObject->getClassName()));
+        $viewModelFileObject->setFields($this->getPublicClassFields($useCaseResponseCommonFieldTraitFileObject->getClassName()));
         $viewModelFileObject->setContent($this->generateContent($viewModelFileObject));
 
         return $viewModelFileObject;
     }
 
-    private function createUseCaseResponseDTOFileObject(): FileObject
+    private function createSkeletonModel(FileObject $viewModelFileObject): ViewModelSkeletonModel
+    {
+        return $this->viewModelSkeletonModelAssembler->create($viewModelFileObject);
+    }
+
+    private function createUseCaseResponseCommonFieldTraitFileObject(): FileObject
     {
         return $this->createUseCaseResponseFileObject(
-            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE_DTO,
+            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE_COMMON_FIELD_TRAIT,
             $this->domain,
             $this->entity,
             $this->baseNamespace
@@ -69,16 +80,5 @@ class ViewModelGenerator extends AbstractViewModelGenerator
         $skeletonModel = $this->createSkeletonModel($viewModelFileObject);
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
-    }
-
-    private function createSkeletonModel(FileObject $viewModelFileObject): ViewModelSkeletonModel
-    {
-        return $this->viewModelSkeletonModelAssembler->create($viewModelFileObject);
-    }
-
-    public function setViewModelSkeletonModelAssembler(
-        ViewModelSkeletonModelAssembler $viewModelSkeletonModelAssembler
-    ): void {
-        $this->viewModelSkeletonModelAssembler = $viewModelSkeletonModelAssembler;
     }
 }

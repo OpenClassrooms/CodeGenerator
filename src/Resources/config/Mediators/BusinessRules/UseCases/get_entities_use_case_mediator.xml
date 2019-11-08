@@ -75,9 +75,9 @@
                 <argument type="service"
                           id="open_classrooms.code_generator.generator.business_rules.use_cases.dto.request.get_entities_use_case_request_builder_impl_generator_request_builder"/>
             </call>
-            <call method="setUseCaseResponseDTOGenerator">
+            <call method="setUseCaseResponseCommonFieldTraitGenerator">
                 <argument type="service"
-                          id="open_classrooms.code_generator.generator.business_rules.use_cases.use_case_response_dto_generator"/>
+                          id="open_classrooms.code_generator.generator.business_rules.use_cases.use_case_response_common_field_trait_generator"/>
             </call>
             <call method="setGetEntitiesUseCaseRequestDTOGeneratorRequestBuilder">
                 <argument type="service"
@@ -87,9 +87,9 @@
                 <argument type="service"
                           id="open_classrooms.code_generator.generator.business_rules.use_cases.use_case_response_assembler_trait_generator"/>
             </call>
-            <call method="setUseCaseResponseDTOGeneratorRequestBuilder">
+            <call method="setUseCaseResponseCommonFieldTraitGeneratorRequestBuilder">
                 <argument type="service"
-                          id="open_classrooms.code_generator.generator.business_rules.use_cases.dto.request.use_case_response_dto_generator_request_builder"/>
+                          id="open_classrooms.code_generator.generator.business_rules.use_cases.dto.request.use_case_response_common_field_trait_generator_request_builder"/>
             </call>
             <call method="setUseCaseResponseTestCaseGenerator">
                 <argument type="service"

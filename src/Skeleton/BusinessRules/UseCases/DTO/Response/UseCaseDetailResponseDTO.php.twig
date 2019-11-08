@@ -4,8 +4,10 @@ namespace {{ skeletonModel.namespace }};
 
 use {{ skeletonModel.useCaseDetailResponseClassName }};
 
-class {{ skeletonModel.shortName }} extends {{ skeletonModel.useCaseResponseDTOShortName }} implements {{ skeletonModel.useCaseDetailResponseShortName }}
+class {{ skeletonModel.shortName }} implements {{ skeletonModel.useCaseDetailResponseShortName }}
 {
+    use {{ skeletonModel.useCaseResponseCommonFieldTraitShortName }};
+
 {% for field in skeletonModel.fields | sortNameByAlpha %}
     {{ field.docComment }}
     public ${{ field.name }};

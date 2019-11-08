@@ -11,7 +11,7 @@ use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityListItemResponse;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityResponse;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\DTO\Response\FunctionalEntityListItemResponseDTO;
-use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\DTO\Response\FunctionalEntityResponseDTO;
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\DTO\Response\FunctionalEntityResponseCommonFieldTrait;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\Api\ViewModels\Domain\SubDomain\FunctionalEntityTestCase;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\BusinessRules\Entities\Domain\SubDomain\FunctionalEntityStub1;
 use PHPUnit\Framework\TestCase;
@@ -21,27 +21,6 @@ use PHPUnit\Framework\TestCase;
  */
 class FileObjectUtilityTest extends TestCase
 {
-    /**
-     * @test
-     * @dataProvider fileObjectDataProvider
-     */
-    public function getBaseNamespaceDomainAndEntityNameFromClassName_ReturnArray(
-        $className,
-        $expectedBaseNamespace,
-        $expectedDomain,
-        $expectedEntity
-    ): void {
-        [
-            $actualBaseNamespace,
-            $actualDomain,
-            $actualEntity,
-        ] = FileObjectUtility::getBaseNamespaceDomainAndEntityNameFromClassName($className);
-
-        $this->assertEquals($expectedBaseNamespace, $actualBaseNamespace);
-        $this->assertEquals($expectedDomain, $actualDomain);
-        $this->assertEquals($expectedEntity, $actualEntity);
-    }
-
     public function fileObjectDataProvider(): array
     {
         return [
@@ -94,7 +73,7 @@ class FileObjectUtilityTest extends TestCase
                 'FunctionalEntity',
             ],
             [
-                FunctionalEntityResponseDTO::class,
+                FunctionalEntityResponseCommonFieldTrait::class,
                 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\\',
                 'Domain\SubDomain',
                 'FunctionalEntity',
@@ -130,5 +109,26 @@ class FileObjectUtilityTest extends TestCase
                 'GenericUseCase',
             ],
         ];
+    }
+
+    /**
+     * @test
+     * @dataProvider fileObjectDataProvider
+     */
+    public function getBaseNamespaceDomainAndEntityNameFromClassName_ReturnArray(
+        string $className,
+        string $expectedBaseNamespace,
+        string $expectedDomain,
+        string $expectedEntity
+    ): void {
+        [
+            $actualBaseNamespace,
+            $actualDomain,
+            $actualEntity,
+        ] = FileObjectUtility::getBaseNamespaceDomainAndEntityNameFromClassName($className);
+
+        $this->assertEquals($expectedBaseNamespace, $actualBaseNamespace);
+        $this->assertEquals($expectedDomain, $actualDomain);
+        $this->assertEquals($expectedEntity, $actualEntity);
     }
 }

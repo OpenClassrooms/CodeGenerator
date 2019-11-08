@@ -7,10 +7,10 @@ use OpenClassrooms\CodeGenerator\Entities\FileObject;
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
-interface UseCaseResponseDTOSkeletonModelAssembler
+interface UseCaseResponseCommonFieldTraitSkeletonModelAssembler
 {
     public function create(
         FileObject $useCaseResponseFileObject,
-        FileObject $useCaseResponseDTOFileObject
-    ): UseCaseResponseDTOSkeletonModel;
+        FileObject $useCaseResponseCommonFieldTraitFileObject
+    ): UseCaseResponseCommonFieldTraitSkeletonModel;
 }

@@ -5,8 +5,10 @@ namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseC
 
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityDetailResponse;
 
-class FunctionalEntityDetailResponseDTO extends FunctionalEntityResponseDTO implements FunctionalEntityDetailResponse
+class FunctionalEntityDetailResponseDTO implements FunctionalEntityDetailResponse
 {
+    use FunctionalEntityResponseCommonFieldTrait;
+
     /**
      * @var \DateTimeImmutable
      */

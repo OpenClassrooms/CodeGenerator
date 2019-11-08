@@ -12,6 +12,6 @@ interface UseCaseListItemResponseDTOSkeletonModelAssembler
     public function create(
         FileObject $useCaseListItemResponseDTOFileObject,
         FileObject $useCaseListItemResponseFileObject,
-        FileObject $useCaseResponseDTOFileObject
+        FileObject $useCaseResponseCommonFieldTraitFileObject
     ): UseCaseListItemResponseDTOSkeletonModel;
 }

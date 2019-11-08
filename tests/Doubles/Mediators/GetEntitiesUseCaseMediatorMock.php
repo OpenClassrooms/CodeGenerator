@@ -13,7 +13,7 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\G
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\UseCaseListItemResponseAssemblerImplFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\UseCaseListItemResponseDTOFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\UseCaseResponseAssemblerTraitFileObjectStub1;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\UseCaseResponseDTOFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\UseCaseResponseCommonFieldTraitFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\BusinessRules\Entities\EntityStub\EntityStubFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\BusinessRules\Entities\EntityStub\EntityStubFileObjectStub2;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\BusinessRules\Responders\UseCaseListItemResponseStub\UseCaseListItemResponseStubFileObjectStub1;
@@ -42,7 +42,7 @@ class GetEntitiesUseCaseMediatorMock extends GetEntitiesUseCaseMediatorImpl
             new GetEntityUseCaseRequestBuilderImplFileObjectStub1(),
             new GetEntityUseCaseRequestDTOFileObjectStub1(),
             new GetEntityUseCaseRequestFileObjectStub1(),
-            new UseCaseResponseDTOFileObjectStub1(),
+            new UseCaseResponseCommonFieldTraitFileObjectStub1(),
             new UseCaseResponseAssemblerTraitFileObjectStub1(),
             new UseCaseListItemResponseAssemblerFileObjectStub1(),
             new UseCaseListItemResponseAssemblerImplFileObjectStub1(),

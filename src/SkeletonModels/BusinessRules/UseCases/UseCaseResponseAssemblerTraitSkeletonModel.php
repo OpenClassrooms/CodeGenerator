@@ -19,7 +19,7 @@ abstract class UseCaseResponseAssemblerTraitSkeletonModel extends AbstractSkelet
 
     public $useCaseResponseClassName;
 
-    public $useCaseResponseDTOShortName;
+    public $useCaseResponseCommonFieldTraitShortName;
 
     public $useCaseResponseShortName;
 }
