@@ -19,6 +19,11 @@ class FunctionalEntityListItemResponseAssemblerImpl implements FunctionalEntityL
      */
     private $paginatedUseCaseResponseBuilder;
 
+    public function __construct(PaginatedUseCaseResponseBuilder $builder)
+    {
+        $this->paginatedUseCaseResponseBuilder = $builder;
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -42,11 +47,6 @@ class FunctionalEntityListItemResponseAssemblerImpl implements FunctionalEntityL
             ->withPage($collection->getPage())
             ->withTotalItems($collection->getTotalItems())
             ->build();
-    }
-
-    public function setPaginatedUseCaseResponseBuilder(PaginatedUseCaseResponseBuilder $builder): void
-    {
-        $this->paginatedUseCaseResponseBuilder = $builder;
     }
 
     /**
