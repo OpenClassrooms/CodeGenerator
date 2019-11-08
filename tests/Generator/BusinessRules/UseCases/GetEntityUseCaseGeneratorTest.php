@@ -70,9 +70,9 @@ class GetEntityUseCaseGeneratorTest extends TestCase
             new UseCaseFileObjectFactoryMock()
         );
         $getEntityUseCaseSkeletonModelBuilderImpl = new GetEntityUseCaseSkeletonModelBuilderImpl();
-        $getEntityUseCaseSkeletonModelBuilderImpl->setUseCaseClassName(FixturesConfig::USE_CASE_CLASSNAME);
+        $getEntityUseCaseSkeletonModelBuilderImpl->setUseCaseClassName(FixturesConfig::USE_CASE);
         $getEntityUseCaseSkeletonModelBuilderImpl->setUseCaseRequestClassName(
-            FixturesConfig::USE_CASE_REQUEST_CLASSNAME
+            FixturesConfig::USE_CASE_REQUEST
         );
         $this->getEntityUseCaseGenerator->setGetEntityUseCaseSkeletonModelBuilder(
             $getEntityUseCaseSkeletonModelBuilderImpl

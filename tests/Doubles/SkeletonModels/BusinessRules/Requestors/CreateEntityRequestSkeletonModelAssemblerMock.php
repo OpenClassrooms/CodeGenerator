@@ -9,6 +9,6 @@ class CreateEntityRequestSkeletonModelAssemblerMock extends CreateEntityRequestS
 {
     public function __construct()
     {
-        $this->setUseCaseRequestClassName(FixturesConfig::USE_CASE_REQUEST_CLASSNAME);
+        $this->setUseCaseRequestClassName(FixturesConfig::USE_CASE_REQUEST);
     }
 }

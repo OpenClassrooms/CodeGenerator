@@ -58,9 +58,9 @@ class GenericUseCaseGeneratorTest extends TestCase
         $this->genericUseCaseGenerator = new GenericUseCaseGenerator();
 
         $genericUseCaseSkeletonModelAssemblerImpl = new GenericUseCaseSkeletonModelAssemblerImpl();
-        $genericUseCaseSkeletonModelAssemblerImpl->setUseCaseClassName(FixturesConfig::USE_CASE_CLASSNAME);
+        $genericUseCaseSkeletonModelAssemblerImpl->setUseCaseClassName(FixturesConfig::USE_CASE);
         $genericUseCaseSkeletonModelAssemblerImpl->setUseCaseRequestClassName(
-            FixturesConfig::USE_CASE_REQUEST_CLASSNAME
+            FixturesConfig::USE_CASE_REQUEST
         );
         $this->genericUseCaseGenerator->setGenericUseCaseSkeletonModelAssembler(
             $genericUseCaseSkeletonModelAssemblerImpl

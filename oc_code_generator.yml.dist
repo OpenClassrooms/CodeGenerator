@@ -5,6 +5,7 @@ parameters:
     stub_namespace: 'Doubles\OC\'
     tests_base_namespace: 'OC\'
 
+    transaction_classname: 'OpenClassrooms\UseCase\Application\Annotations\Transaction'
     use_case_classname: 'OpenClassrooms\UseCase\BusinessRules\Requestors\UseCase'
     use_case_request_classname: 'OpenClassrooms\UseCase\BusinessRules\Requestors\UseCaseRequest'
 
