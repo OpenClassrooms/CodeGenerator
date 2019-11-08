@@ -61,7 +61,9 @@ class FieldObjectUtility
         $reflectionProperties = $rc->getProperties(\ReflectionProperty::IS_PROTECTED);
         $classProperties = [];
         foreach ($reflectionProperties as $reflectionProperty) {
-            if ($reflectionProperty->getDeclaringClass()->getName() === $className) {
+            if ($reflectionProperty->getDeclaringClass()->getName() === $className &&
+                !self::isTraitsProperty($rc->getTraitNames(), $reflectionProperty)
+            ) {
                 $classProperties[] = $reflectionProperty;
             }
         }
