@@ -27,7 +27,17 @@ abstract class ViewModelDetailTestCaseSkeletonModel extends AbstractSkeletonMode
     /**
      * @var string
      */
+    public $viewModelDetailMethod;
+
+    /**
+     * @var string
+     */
     public $viewModelDetailShortName;
+
+    /**
+     * @var string
+     */
+    public $viewModelTestCaseMethod;
 
     /**
      * @var string

@@ -11,6 +11,21 @@ use OpenClassrooms\CodeGenerator\Entities\FileObject;
  */
 class ConstUtility
 {
+    /**
+     * @return ConstObject[]
+     */
+    public static function generateConstsFromStubFileObject(FileObject $fileObject, string $type = null): array
+    {
+        $constObjects = [];
+        foreach ($fileObject->getFields() as $field) {
+            $constObject = new ConstObject($field->getName());
+            $constObject->setValue($fileObject->getEntity() . $type . 'Stub1::' . $constObject->getName());
+            $constObjects[] = $constObject;
+        }
+
+        return $constObjects;
+    }
+
     public static function generateStubConstObject(FieldObject $fieldObject, FileObject $stubFileObject): ConstObject
     {
         $constObject = new ConstObject($fieldObject->getName());
@@ -23,20 +38,5 @@ class ConstUtility
         );
 
         return $constObject;
-    }
-
-    /**
-     * @return ConstObject[]
-     */
-    public static function generateConstsFromStubFileObject(FileObject $entityStub, string $type = null): array
-    {
-        $constObjects = [];
-        foreach ($entityStub->getFields() as $field) {
-            $constObject = new ConstObject($field->getName());
-            $constObject->setValue($entityStub->getEntity() . $type . 'Stub1::' . $constObject->getName());
-            $constObjects[] = $constObject;
-        }
-
-        return $constObjects;
     }
 }

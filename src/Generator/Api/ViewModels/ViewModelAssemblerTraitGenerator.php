@@ -46,12 +46,13 @@ class ViewModelAssemblerTraitGenerator extends AbstractViewModelGenerator
         $useCaseResponseCommonFieldTraitFileObject = $this->createUseCaseResponseCommonFieldTraitFileObject();
         $useCaseResponseFileObject = $this->createUseCaseResponseObject();
         $viewModelAssemblerTraitFileObject = $this->createViewModelAssemblerTraitObject();
+        $viewModelFileObject = $this->createViewModelObject();
 
         $viewModelAssemblerTraitFileObject->setFields(
             $this->getPublicClassFields($useCaseResponseCommonFieldTraitFileObject->getClassName())
         );
         $viewModelAssemblerTraitFileObject->setContent(
-            $this->generateContent($viewModelAssemblerTraitFileObject, $useCaseResponseFileObject)
+            $this->generateContent($viewModelAssemblerTraitFileObject, $useCaseResponseFileObject, $viewModelFileObject)
         );
 
         return $viewModelAssemblerTraitFileObject;
@@ -59,11 +60,13 @@ class ViewModelAssemblerTraitGenerator extends AbstractViewModelGenerator
 
     private function createSkeletonModel(
         FileObject $viewModelAssemblerTraitFileObject,
-        FileObject $useCaseResponseFileObject
+        FileObject $useCaseResponseFileObject,
+        FileObject $viewModelFileObject
     ): ViewModelAssemblerTraitSkeletonModel {
         return $this->viewModelAssemblerTraitSkeletonModelAssembler->create(
             $viewModelAssemblerTraitFileObject,
-            $useCaseResponseFileObject
+            $useCaseResponseFileObject,
+            $viewModelFileObject
         );
     }
 
@@ -97,11 +100,26 @@ class ViewModelAssemblerTraitGenerator extends AbstractViewModelGenerator
         );
     }
 
+    private function createViewModelObject(): FileObject
+    {
+        return $this->createViewModelFileObject(
+            ViewModelFileObjectType::API_VIEW_MODEL,
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
+        );
+    }
+
     private function generateContent(
         FileObject $viewModelAssemblerTraitFileObject,
-        FileObject $useCaseResponseFileObject
+        FileObject $useCaseResponseFileObject,
+        FileObject $viewModelFileObject
     ): string {
-        $skeletonModel = $this->createSkeletonModel($viewModelAssemblerTraitFileObject, $useCaseResponseFileObject);
+        $skeletonModel = $this->createSkeletonModel(
+            $viewModelAssemblerTraitFileObject,
+            $useCaseResponseFileObject,
+            $viewModelFileObject
+        );
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
     }

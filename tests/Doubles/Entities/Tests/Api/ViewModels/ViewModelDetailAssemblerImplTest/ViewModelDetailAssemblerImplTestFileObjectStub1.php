@@ -9,11 +9,11 @@ use OpenClassrooms\CodeGenerator\Entities\FileObject;
  */
 class ViewModelDetailAssemblerImplTestFileObjectStub1 extends FileObject
 {
-    const CLASS_NAME = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Api\ViewModels\Domain\SubDomain\Impl\FunctionalEntityDetailAssemblerImplTest';
+    const CLASS_NAME = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Api\ViewModels\Domain\SubDomain\Impl\FunctionalEntityViewModelDetailAssemblerImplTest';
 
     public function __construct()
     {
-        $this->content = __DIR__ . '/../../../../../../Fixtures/Classes/Tests/Api/ViewModels/Domain/SubDomain/Impl/FunctionalEntityDetailAssemblerImplTest.php';
+        $this->content = __DIR__ . '/../../../../../../Fixtures/Classes/Tests/Api/ViewModels/Domain/SubDomain/Impl/FunctionalEntityViewModelDetailAssemblerImplTest.php';
         $this->className = self::CLASS_NAME;
     }
 }

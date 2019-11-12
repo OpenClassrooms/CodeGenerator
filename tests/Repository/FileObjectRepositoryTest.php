@@ -4,8 +4,8 @@ namespace OpenClassrooms\CodeGenerator\Tests\Repository;
 
 use OpenClassrooms\CodeGenerator\Entities\FileObject;
 use OpenClassrooms\CodeGenerator\Repository\FileObjectRepository;
-use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\FunctionalEntity;
-use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\FunctionalEntityDetail;
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\FunctionalEntityViewModel;
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\FunctionalEntityViewModelDetail;
 use OpenClassrooms\CodeGenerator\Tests\TestClassUtil;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Filesystem\Filesystem;
@@ -28,29 +28,32 @@ class FileObjectRepositoryTest extends TestCase
     /**
      * @test
      */
-    public function insert_PushFileObject(): void
+    public function find()
     {
-        $fileObject = $this->generateFileObject(FunctionalEntity::class);
-
         $this->fileSystem
-            ->expects($this->once())
+            ->expects($this->atLeastOnce())
             ->method('exists')
-            ->with($this->equalTo($fileObject->getPath()))
-            ->willReturn(true);
-        $this->fileObjectRepository->insert($fileObject);
+            ->willReturn(false);
 
-        $actual = TestClassUtil::getProperty('fileObjects', $this->fileObjectRepository);
+        $this->fileObjectRepository->insert($this->generateFileObject(FunctionalEntityViewModel::class));
 
-        $this->assertNotEmpty($actual);
-        $this->assertArrayHasKey($fileObject->getClassName(), $actual);
+        $this->assertNotNull($this->fileObjectRepository->find(FunctionalEntityViewModel::class));
     }
 
-    private function generateFileObject(string $className): FileObject
+    /**
+     * @test
+     */
+    public function findAll()
     {
-        $fileObject = new FileObject($className);
-        $fileObject->setContent(__DIR__ . '/../Fixtures/Classes/Api/ViewModels/Domain/SubDomain/FunctionalEntity.php');
+        $this->fileSystem
+            ->expects($this->atLeastOnce())
+            ->method('exists')
+            ->willReturn(false);
 
-        return $fileObject;
+        $this->fileObjectRepository->insert($this->generateFileObject(FunctionalEntityViewModel::class));
+        $this->fileObjectRepository->insert($this->generateFileObject(FunctionalEntityViewModelDetail::class));
+
+        $this->assertNotNull($this->fileObjectRepository->findAll());
     }
 
     /**
@@ -59,8 +62,8 @@ class FileObjectRepositoryTest extends TestCase
     public function flush(): void
     {
         $fileObjects = [
-            $this->generateFileObject(FunctionalEntity::class),
-            $this->generateFileObject(FunctionalEntityDetail::class),
+            $this->generateFileObject(FunctionalEntityViewModel::class),
+            $this->generateFileObject(FunctionalEntityViewModelDetail::class),
         ];
 
         $actual = TestClassUtil::setProperty('fileObjects', $fileObjects, $this->fileObjectRepository);
@@ -89,32 +92,31 @@ class FileObjectRepositoryTest extends TestCase
     /**
      * @test
      */
-    public function find()
+    public function insert_PushFileObject(): void
     {
+        $fileObject = $this->generateFileObject(FunctionalEntityViewModel::class);
+
         $this->fileSystem
-            ->expects($this->atLeastOnce())
+            ->expects($this->once())
             ->method('exists')
-            ->willReturn(false);
+            ->with($this->equalTo($fileObject->getPath()))
+            ->willReturn(true);
+        $this->fileObjectRepository->insert($fileObject);
 
-        $this->fileObjectRepository->insert($this->generateFileObject(FunctionalEntity::class));
+        $actual = TestClassUtil::getProperty('fileObjects', $this->fileObjectRepository);
 
-        $this->assertNotNull($this->fileObjectRepository->find(FunctionalEntity::class));
+        $this->assertNotEmpty($actual);
+        $this->assertArrayHasKey($fileObject->getClassName(), $actual);
     }
 
-    /**
-     * @test
-     */
-    public function findAll()
+    private function generateFileObject(string $className): FileObject
     {
-        $this->fileSystem
-            ->expects($this->atLeastOnce())
-            ->method('exists')
-            ->willReturn(false);
+        $fileObject = new FileObject($className);
+        $fileObject->setContent(
+            __DIR__ . '/../Fixtures/Classes/Api/ViewModels/Domain/SubDomain/FunctionalEntityViewModel.php'
+        );
 
-        $this->fileObjectRepository->insert($this->generateFileObject(FunctionalEntity::class));
-        $this->fileObjectRepository->insert($this->generateFileObject(FunctionalEntityDetail::class));
-
-        $this->assertNotNull($this->fileObjectRepository->findAll());
+        return $fileObject;
     }
 
     protected function setUp(): void

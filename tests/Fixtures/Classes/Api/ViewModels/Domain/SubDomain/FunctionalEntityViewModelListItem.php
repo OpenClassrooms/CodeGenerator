@@ -3,6 +3,6 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain;
 
-abstract class FunctionalEntityListItem extends FunctionalEntity
+abstract class FunctionalEntityViewModelListItem extends FunctionalEntityViewModel
 {
 }

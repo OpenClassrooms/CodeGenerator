@@ -18,7 +18,7 @@ use OpenClassrooms\CodeGenerator\Utility\StubFieldUtility;
  */
 class ViewModelDetailStubGenerator extends AbstractViewModelGenerator
 {
-    const DETAIL_RESPONSE = 'DetailResponse';
+    public const DETAIL_RESPONSE = 'DetailResponse';
 
     /**
      * @var ViewModelDetailStubSkeletonModelAssembler
@@ -124,10 +124,9 @@ class ViewModelDetailStubGenerator extends AbstractViewModelGenerator
         );
     }
 
-    private function generateConsts(
-        FileObject $viewModelDetailStubFileObject
-    ): array {
-        return ConstUtility::generateConstsFromStubFileObject($viewModelDetailStubFileObject, self::DETAIL_RESPONSE);
+    private function generateConsts(FileObject $responseEntityStub): array
+    {
+        return ConstUtility::generateConstsFromStubFileObject($responseEntityStub, self::DETAIL_RESPONSE);
     }
 
     private function generateContent(

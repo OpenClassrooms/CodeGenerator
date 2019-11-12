@@ -5,9 +5,9 @@ namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Dom
 
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityResponse;
 
-trait FunctionalEntityAssemblerTrait
+trait FunctionalEntityViewModelAssemblerTrait
 {
-    public function hydrateCommonFields(FunctionalEntity $vm, FunctionalEntityResponse $functionalEntity): void
+    public function hydrateCommonFields(FunctionalEntityViewModel $vm, FunctionalEntityResponse $functionalEntity): void
     {
         $vm->id = $functionalEntity->getId();
         $vm->field1 = $functionalEntity->getField1();

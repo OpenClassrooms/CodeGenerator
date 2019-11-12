@@ -3,12 +3,12 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\Api\ViewModels\Domain\SubDomain;
 
-use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\FunctionalEntity;
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\FunctionalEntityViewModel;
 use PHPUnit\Framework\Assert;
 
-trait FunctionalEntityTestCase
+trait FunctionalEntityViewModelTestCase
 {
-    public function assertFunctionalEntityTestCase(FunctionalEntity $expected, FunctionalEntity $actual): void
+    public function assertFunctionalEntityViewModel(FunctionalEntityViewModel $expected, FunctionalEntityViewModel $actual): void
     {
         Assert::assertSame($expected->id, $actual->id);
         Assert::assertSame($expected->field1, $actual->field1);

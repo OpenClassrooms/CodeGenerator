@@ -3,7 +3,7 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain;
 
-abstract class FunctionalEntity
+abstract class FunctionalEntityViewModel
 {
     /**
      * @var string

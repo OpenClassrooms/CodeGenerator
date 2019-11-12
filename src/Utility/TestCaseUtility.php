@@ -5,16 +5,15 @@ namespace OpenClassrooms\CodeGenerator\Utility;
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
-class TestUtility
+final class TestCaseUtility
 {
-    const LIST_ITEM = 'ListItem';
+    private const LIST_ITEM = 'ListItem';
 
     public static function buildTestCaseAssertMethodName(string $classShortName)
     {
+        $classShortName = str_replace('TestCase', '', $classShortName);
         if (false !== strpos($classShortName, self::LIST_ITEM)) {
-            $entityName = FileObjectUtility::getEntityNameFromClassName($classShortName);
-
-            return 'assert' . $entityName . StringUtility::pluralize(self::LIST_ITEM);
+            return 'assert' . StringUtility::pluralize($classShortName);
         }
 
         return 'assert' . $classShortName;

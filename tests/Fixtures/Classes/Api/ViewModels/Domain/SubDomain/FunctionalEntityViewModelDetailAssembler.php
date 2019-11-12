@@ -5,7 +5,7 @@ namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Dom
 
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityDetailResponse;
 
-interface FunctionalEntityDetailAssembler
+interface FunctionalEntityViewModelDetailAssembler
 {
-    public function create(FunctionalEntityDetailResponse $functionalEntityDetailResponse): FunctionalEntityDetail;
+    public function create(FunctionalEntityDetailResponse $functionalEntityDetailResponse): FunctionalEntityViewModelDetail;
 }

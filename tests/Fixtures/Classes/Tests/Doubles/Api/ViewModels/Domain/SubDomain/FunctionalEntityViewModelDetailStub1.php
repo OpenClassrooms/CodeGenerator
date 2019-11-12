@@ -3,20 +3,20 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\Api\ViewModels\Domain\SubDomain;
 
-use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\Impl\FunctionalEntityDetailImpl;
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\Impl\FunctionalEntityViewModelDetailImpl;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityDetailResponseStub1;
 
-class FunctionalEntityDetailStub1 extends FunctionalEntityDetailImpl
+class FunctionalEntityViewModelDetailStub1 extends FunctionalEntityViewModelDetailImpl
 {
-    const FIELD_1 = FunctionalEntityDetailResponseStub1::FIELD_1;
+    public const FIELD_1 = FunctionalEntityDetailResponseStub1::FIELD_1;
 
-    const FIELD_2 = FunctionalEntityDetailResponseStub1::FIELD_2;
+    public const FIELD_2 = FunctionalEntityDetailResponseStub1::FIELD_2;
 
-    const FIELD_3 = FunctionalEntityDetailResponseStub1::FIELD_3;
+    public const FIELD_3 = FunctionalEntityDetailResponseStub1::FIELD_3;
 
-    const FIELD_4 = FunctionalEntityDetailResponseStub1::FIELD_4;
+    public const FIELD_4 = FunctionalEntityDetailResponseStub1::FIELD_4;
 
-    const ID = FunctionalEntityDetailResponseStub1::ID;
+    public const ID = FunctionalEntityDetailResponseStub1::ID;
 
     /**
      * {@inheritdoc}

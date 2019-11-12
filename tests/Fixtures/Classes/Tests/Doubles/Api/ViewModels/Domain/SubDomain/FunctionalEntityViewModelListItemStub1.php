@@ -3,18 +3,18 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\Api\ViewModels\Domain\SubDomain;
 
-use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\Impl\FunctionalEntityListItemImpl;
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\Impl\FunctionalEntityViewModelListItemImpl;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityListItemResponseStub1;
 
-class FunctionalEntityListItemStub1 extends FunctionalEntityListItemImpl
+class FunctionalEntityViewModelListItemStub1 extends FunctionalEntityViewModelListItemImpl
 {
-    const FIELD_1 = FunctionalEntityListItemResponseStub1::FIELD_1;
+    public const FIELD_1 = FunctionalEntityListItemResponseStub1::FIELD_1;
 
-    const FIELD_2 = FunctionalEntityListItemResponseStub1::FIELD_2;
+    public const FIELD_2 = FunctionalEntityListItemResponseStub1::FIELD_2;
 
-    const FIELD_3 = FunctionalEntityListItemResponseStub1::FIELD_3;
+    public const FIELD_3 = FunctionalEntityListItemResponseStub1::FIELD_3;
 
-    const ID = FunctionalEntityListItemResponseStub1::ID;
+    public const ID = FunctionalEntityListItemResponseStub1::ID;
 
     /**
      * {@inheritdoc}

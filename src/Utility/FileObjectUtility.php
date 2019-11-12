@@ -59,6 +59,7 @@ class FileObjectUtility
         $shortClassName = self::getShortClassName($className);
         $shortClassName = str_replace('Assembler', '', $shortClassName);
         $shortClassName = str_replace('Builder', '', $shortClassName);
+        $shortClassName = str_replace('Create', '', $shortClassName);
         $shortClassName = str_replace('CommonFieldTrait', '', $shortClassName);
         $shortClassName = str_replace('Detail', '', $shortClassName);
         $shortClassName = str_replace('Edit', '', $shortClassName);
@@ -71,7 +72,7 @@ class FileObjectUtility
         $shortClassName = str_replace('Request', '', $shortClassName);
         $shortClassName = str_replace('Stub1', '', $shortClassName);
         $shortClassName = str_replace('TestCase', '', $shortClassName);
-        $shortClassName = str_replace('Create', '', $shortClassName);
+        $shortClassName = str_replace('ViewModel', '', $shortClassName);
 
         return $shortClassName;
     }

@@ -3,7 +3,7 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain;
 
-abstract class FunctionalEntityDetail extends FunctionalEntity
+abstract class FunctionalEntityViewModelDetail extends FunctionalEntityViewModel
 {
     /**
      * @var \DateTimeImmutable

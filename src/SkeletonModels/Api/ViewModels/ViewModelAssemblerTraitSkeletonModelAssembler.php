@@ -11,6 +11,7 @@ interface ViewModelAssemblerTraitSkeletonModelAssembler
 {
     public function create(
         FileObject $viewModelAssemblerTraitFileObject,
-        FileObject $useCaseResponseFileObject
+        FileObject $useCaseResponseFileObject,
+        FileObject $viewModelFileObject
     ): ViewModelAssemblerTraitSkeletonModel;
 }
