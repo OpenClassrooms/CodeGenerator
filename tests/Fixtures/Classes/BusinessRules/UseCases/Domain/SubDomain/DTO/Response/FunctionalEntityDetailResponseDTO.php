@@ -8,11 +8,11 @@ use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders
 class FunctionalEntityDetailResponseDTO extends FunctionalEntityResponseDTO implements FunctionalEntityDetailResponse
 {
     /**
-     * @var \DateTimeImmutable
+     * @var \DateTimeInterface
      */
     public $field4;
 
-    public function getField4(): ?\DateTimeImmutable
+    public function getField4(): ?\DateTimeInterface
     {
         return $this->field4;
     }

@@ -16,7 +16,7 @@ class EntityMethodObjectStub5 extends MethodObject
 
     const NULLABLE = true;
 
-    const RETURN_TYPE = 'DateTimeImmutable';
+    const RETURN_TYPE = 'DateTimeInterface';
 
     const VALUE = null;
 

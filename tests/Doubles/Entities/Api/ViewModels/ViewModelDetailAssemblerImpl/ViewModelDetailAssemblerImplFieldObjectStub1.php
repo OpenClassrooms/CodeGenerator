@@ -7,7 +7,7 @@ use OpenClassrooms\CodeGenerator\Entities\Object\FieldObject;
 class ViewModelDetailAssemblerImplFieldObjectStub1 extends FieldObject
 {
     const DOC_COMMENT = '/**
-     * @var \DateTimeImmutable
+     * @var \DateTimeInterface
      */';
 
     const NAME = 'field4';

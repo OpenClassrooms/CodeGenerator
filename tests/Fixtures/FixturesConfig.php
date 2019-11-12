@@ -15,6 +15,8 @@ final class FixturesConfig
 
     const BASE_NAMESPACE_SELF_GENERATOR = 'OpenClassrooms\CodeGenerator\\';
 
+    const ENTITY_UTIL = 'OpenClassrooms\CodeGenerator\Tests\EntityUtil';
+
     const PAGINATED_COLLECTION = 'OpenClassrooms\UseCase\BusinessRules\Entities\PaginatedCollection';
 
     const PAGINATED_USE_CASE_RESPONSE = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\PaginatedUseCaseResponse';

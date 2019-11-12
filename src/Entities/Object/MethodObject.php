@@ -75,6 +75,11 @@ class MethodObject
         return $this->name;
     }
 
+    public function isDateType(): bool
+    {
+        return (bool) preg_match('/Date/', $this->returnType);
+    }
+
     public function isNullable(): bool
     {
         return $this->nullable;

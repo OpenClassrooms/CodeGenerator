@@ -2,6 +2,7 @@
 
 namespace {{ skeletonModel.namespace }};
 
+use {{ skeletonModel.entityUtilClassName }};
 use {{ skeletonModel.entityClassName }};
 use {{ skeletonModel.entityNotFoundExceptionClassName }};
 use {{ skeletonModel.entityGatewayClassName }};
@@ -12,6 +13,11 @@ class {{ skeletonModel.shortName }} implements {{ skeletonModel.entityGatewaySho
      * @var {{ skeletonModel.entityShortName }}[]
      */
     public static ${{ skeletonModel.pluralEntityShortName }} = [];
+
+    /**
+     * @var int
+     */
+    public static $id = 1;
 
     public function __construct(array ${{ skeletonModel.pluralEntityShortName }} = [])
     {
@@ -40,6 +46,7 @@ class {{ skeletonModel.shortName }} implements {{ skeletonModel.entityGatewaySho
 
     public function insert({{ skeletonModel.entityShortName }} ${{ skeletonModel.entityArgument }}): void
     {
+        EntityUtil::setId($functionalEntity, self::$id);
         self::${{ skeletonModel.pluralEntityShortName }}[] = ${{ skeletonModel.entityArgument }};
     }
 }

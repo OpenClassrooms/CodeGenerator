@@ -23,7 +23,7 @@ final class CreateFunctionalEntityRequestDTO implements CreateFunctionalEntityRe
     public $field3;
 
     /**
-     * @var \DateTimeImmutable
+     * @var \DateTimeInterface
      */
     public $field4;
 
@@ -40,7 +40,7 @@ final class CreateFunctionalEntityRequestDTO implements CreateFunctionalEntityRe
         return $this->field2;
     }
 
-    public function getField4(): ?\DateTimeImmutable
+    public function getField4(): ?\DateTimeInterface
     {
         return $this->field4;
     }

@@ -10,7 +10,7 @@ use OpenClassrooms\CodeGenerator\Entities\Object\FieldObject;
 class EntityFieldObjectStub5 extends FieldObject
 {
     const DOC_COMMENT = '/**
-     * @var \DateTimeImmutable
+     * @var \DateTimeInterface
      */';
 
     const NAME = 'field4';

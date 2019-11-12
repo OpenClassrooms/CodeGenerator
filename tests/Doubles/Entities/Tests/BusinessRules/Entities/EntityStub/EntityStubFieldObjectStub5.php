@@ -11,7 +11,7 @@ class EntityStubFieldObjectStub5 extends FieldObject
     const CONST = 'FIELD_4';
 
     const DOC_COMMENT = '/**
-     * @var \DateTimeImmutable
+     * @var \DateTimeInterface
      */';
 
     const NAME = 'field4';
