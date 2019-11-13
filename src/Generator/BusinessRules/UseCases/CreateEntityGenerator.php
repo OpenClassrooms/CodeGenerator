@@ -133,6 +133,9 @@ class CreateEntityGenerator extends AbstractUseCaseGenerator
         );
     }
 
+    /**
+     * @param FileObject[] $fileObjects
+     */
     private function generateContent(array $fileObjects): string
     {
         $skeletonModel = $this->createSkeletonModel($fileObjects);

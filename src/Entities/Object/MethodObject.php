@@ -98,11 +98,8 @@ class MethodObject
         return $this->arguments;
     }
 
-    /**
-     * @param FieldObject[] $arguments
-     */
-    public function setArguments(array $arguments): void
+    public function addArgument(FieldObject $argument): void
     {
-        $this->arguments = $arguments;
+        $this->arguments[] = $argument;
     }
 }

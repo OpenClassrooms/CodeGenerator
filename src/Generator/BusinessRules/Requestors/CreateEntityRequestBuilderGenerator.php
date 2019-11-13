@@ -39,7 +39,7 @@ class CreateEntityRequestBuilderGenerator extends AbstractUseCaseGenerator
         $createEntityRequestFileObject = $this->createCreateEntityRequestFileObject();
 
         $createEntityRequestBuilderFileObject->setMethods(
-            MethodUtility::buildMethodsChained($entityClassName, $createEntityRequestBuilderFileObject->getShortName())
+            MethodUtility::buildWitherMethods($entityClassName, $createEntityRequestBuilderFileObject->getShortName())
         );
 
         $createEntityRequestBuilderFileObject->setContent(
