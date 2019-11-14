@@ -3,7 +3,7 @@
 namespace OpenClassrooms\CodeGenerator\Tests\Mediators\GenerateGenerator\Impl;
 
 use OpenClassrooms\CodeGenerator\Commands\ConstructionPatternType;
-use OpenClassrooms\CodeGenerator\Entities\FileObject;
+use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\Generator\GenerateGenerator\DTO\Request\GenerateGeneratorGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Mediators\Args;
 use OpenClassrooms\CodeGenerator\Mediators\GenerateGenerator\GenerateGeneratorMediator;

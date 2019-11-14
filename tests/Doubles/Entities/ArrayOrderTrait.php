@@ -2,8 +2,8 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Entities;
 
-use OpenClassrooms\CodeGenerator\Entities\FieldObject;
-use OpenClassrooms\CodeGenerator\Entities\MethodObject;
+use OpenClassrooms\CodeGenerator\Entities\Object\FieldObject;
+use OpenClassrooms\CodeGenerator\Entities\Object\MethodObject;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>

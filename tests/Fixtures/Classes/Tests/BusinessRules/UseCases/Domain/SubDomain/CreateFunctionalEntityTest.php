@@ -37,7 +37,8 @@ final class CreateFunctionalEntityTest extends TestCase
     {
         $response = $this->useCase->execute($this->request);
 
-        $this->assertFunctionalEntityDetailResponse(new FunctionalEntityDetailResponseStub1(), $response);
+        $expectedResponse = new FunctionalEntityDetailResponseStub1();
+        $this->assertFunctionalEntityDetailResponse($expectedResponse, $response);
     }
 
     protected function setup(): void

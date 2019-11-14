@@ -2,8 +2,8 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Entities;
 
-use OpenClassrooms\CodeGenerator\Entities\ConstObject;
-use OpenClassrooms\CodeGenerator\Entities\FieldObject;
+use OpenClassrooms\CodeGenerator\Entities\Object\ConstObject;
+use OpenClassrooms\CodeGenerator\Entities\Object\FieldObject;
 use PHPUnit\Framework\Assert as Assert;
 
 /**

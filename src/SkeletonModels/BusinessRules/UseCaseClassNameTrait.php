@@ -7,12 +7,22 @@ trait UseCaseClassNameTrait
     /**
      * @var string
      */
+    protected $transactionClassName;
+
+    /**
+     * @var string
+     */
     protected $useCaseClassName;
 
     /**
      * @var string
      */
     protected $useCaseRequestClassName;
+
+    public function setTransactionClassName(string $transactionClassName): void
+    {
+        $this->transactionClassName = $transactionClassName;
+    }
 
     public function setUseCaseClassName(string $useCaseClassName): void
     {

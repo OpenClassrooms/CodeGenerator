@@ -9,6 +9,8 @@ class DocCommentUtility
 {
     const ARRAY_TYPE = 'array';
 
+    const DATE_TIME_INTERFACE = '\DateTimeInterface';
+
     public static function getReturnType($docComment)
     {
         if (preg_match('/@return\s\w+\[]/', $docComment)) {
@@ -20,7 +22,9 @@ class DocCommentUtility
 
     public static function getType(string $docComment): string
     {
-        return preg_replace('/([\/*@]|[[:space:]]|\[])|(var)|(null\|)|(\|null)|(return)/', '', $docComment);
+        $type = preg_replace('/([\/*@]|[[:space:]]|\[])|(var)|(null\|)|(\|null)|(return)/', '', $docComment);
+
+        return preg_match('/Date/', $docComment) ? self::DATE_TIME_INTERFACE : $type;
     }
 
     public static function allowsNull(string $docComment): bool

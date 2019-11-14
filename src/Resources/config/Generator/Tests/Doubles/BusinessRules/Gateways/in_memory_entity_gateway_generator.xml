@@ -6,7 +6,11 @@
 
         <service
                 id="open_classrooms.code_generator.skeleton_models.tests.doubles.business_rules.gateways.in_memory_entity_gateway_skeleton_model_assembler"
-                class="OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\BusinessRules\Gateways\Impl\InMemoryEntityGatewaySkeletonModelAssemblerImpl"/>
+                class="OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\BusinessRules\Gateways\Impl\InMemoryEntityGatewaySkeletonModelAssemblerImpl">
+            <call method="setEntityUtilClassName">
+                <argument type="string">%entity_util_className%</argument>
+            </call>
+        </service>
 
         <service
                 id="open_classrooms.code_generator.generator.tests.doubles.business_rules.gateways.in_memory_entity_gateway_generator"

@@ -2,8 +2,8 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Entities;
 
-use OpenClassrooms\CodeGenerator\Entities\FieldObject;
-use OpenClassrooms\CodeGenerator\Entities\MethodObject;
+use OpenClassrooms\CodeGenerator\Entities\Object\FieldObject;
+use OpenClassrooms\CodeGenerator\Entities\Object\MethodObject;
 
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
@@ -16,7 +16,7 @@ class EntityMethodObjectStub5 extends MethodObject
 
     const NULLABLE = true;
 
-    const RETURN_TYPE = 'DateTimeImmutable';
+    const RETURN_TYPE = 'DateTimeInterface';
 
     const VALUE = null;
 

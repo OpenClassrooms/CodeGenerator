@@ -2,7 +2,7 @@
 
 namespace OpenClassrooms\CodeGenerator\Utility;
 
-use OpenClassrooms\CodeGenerator\Entities\FieldObject;
+use OpenClassrooms\CodeGenerator\Entities\Object\FieldObject;
 
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
@@ -56,8 +56,7 @@ class FieldObjectUtility
     {
         $field = new FieldObject($reflectionProperty->getName());
         $field->setAccessor(self::getFieldAccessor($reflectionProperty));
-        $docComment = $reflectionProperty->getDocComment();
-        $field->setDocComment($docComment);
+        $field->setDocComment($reflectionProperty->getDocComment());
         $field->setScope($scope);
 
         return $field;

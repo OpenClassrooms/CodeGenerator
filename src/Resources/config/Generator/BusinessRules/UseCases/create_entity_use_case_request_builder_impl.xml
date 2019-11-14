@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+
+<container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://symfony.com/schema/dic/services"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+
+        <service
+                id="OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\Impl\CreateEntityUseCaseRequestBuilderImplSkeletonModelAssemblerImpl"
+                alias="OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\CreateEntityUseCaseRequestBuilderImplSkeletonModelAssembler"
+                public="false">
+        </service>
+
+        <service id="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\CreateEntityUseCaseRequestBuilderImplGenerator"
+                 parent="open_classrooms.code_generator.generator.business_rules.abstract_generator">
+            <call method="setCreateEntityUseCaseRequestBuilderImplSkeletonModelAssembler">
+                <argument type="service"
+                          id="OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\CreateEntityUseCaseRequestBuilderImplSkeletonModelAssembler"/>
+            </call>
+        </service>
+
+    </services>
+</container>

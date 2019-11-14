@@ -4,8 +4,8 @@ namespace OpenClassrooms\CodeGenerator\Entities\Impl;
 
 use OpenClassrooms\CodeGenerator\Entities\AbstractFileObjectFactory;
 use OpenClassrooms\CodeGenerator\Entities\EntityFileObjectFactory;
-use OpenClassrooms\CodeGenerator\Entities\EntityFileObjectType;
-use OpenClassrooms\CodeGenerator\Entities\FileObject;
+use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
+use OpenClassrooms\CodeGenerator\Entities\Type\EntityFileObjectType;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>

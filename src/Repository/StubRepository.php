@@ -2,7 +2,7 @@
 
 namespace OpenClassrooms\CodeGenerator\Repository;
 
-use OpenClassrooms\CodeGenerator\Entities\FileObject;
+use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\Gateways\FileObject\StubGateway;
 use OpenClassrooms\CodeGenerator\Utility\StubUtility;
 

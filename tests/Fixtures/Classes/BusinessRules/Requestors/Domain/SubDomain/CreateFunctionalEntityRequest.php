@@ -11,7 +11,7 @@ interface CreateFunctionalEntityRequest extends UseCaseRequest
 
     public function getField2(): array;
 
-    public function isField3(): bool;
+    public function getField4(): ?\DateTimeInterface;
 
-    public function getField4(): ?\DateTimeImmutable;
+    public function isField3(): bool;
 }

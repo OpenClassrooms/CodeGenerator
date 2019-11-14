@@ -3,9 +3,9 @@
 namespace OpenClassrooms\CodeGenerator\Entities\Impl;
 
 use OpenClassrooms\CodeGenerator\Entities\AbstractFileObjectFactory;
-use OpenClassrooms\CodeGenerator\Entities\FileObject;
+use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
+use OpenClassrooms\CodeGenerator\Entities\Type\UseCaseResponseFileObjectType;
 use OpenClassrooms\CodeGenerator\Entities\UseCaseResponseFileObjectFactory;
-use OpenClassrooms\CodeGenerator\Entities\UseCaseResponseFileObjectType;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>

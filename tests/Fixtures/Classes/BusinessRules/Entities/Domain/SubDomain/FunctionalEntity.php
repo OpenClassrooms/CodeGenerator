@@ -23,7 +23,7 @@ abstract class FunctionalEntity
     protected $field3;
 
     /**
-     * @var \DateTimeImmutable
+     * @var \DateTimeInterface
      */
     protected $field4;
 
@@ -50,7 +50,7 @@ abstract class FunctionalEntity
         return $this->field3;
     }
 
-    public function getField4(): ?\DateTimeImmutable
+    public function getField4(): ?\DateTimeInterface
     {
         return $this->field4;
     }
@@ -75,7 +75,7 @@ abstract class FunctionalEntity
         $this->field3 = $field3;
     }
 
-    public function setField4(\DateTimeImmutable $field4): void
+    public function setField4(\DateTimeInterface $field4): void
     {
         $this->field4 = $field4;
     }

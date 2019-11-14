@@ -13,7 +13,7 @@ final class CreateFunctionalEntityRequestDTO implements CreateFunctionalEntityRe
     public $field1;
 
     /**
-     * @var array
+     * @var string[]
      */
     public $field2;
 
@@ -23,7 +23,7 @@ final class CreateFunctionalEntityRequestDTO implements CreateFunctionalEntityRe
     public $field3;
 
     /**
-     * @var \DateTimeImmutable
+     * @var \DateTimeInterface
      */
     public $field4;
 
@@ -32,18 +32,21 @@ final class CreateFunctionalEntityRequestDTO implements CreateFunctionalEntityRe
         return $this->field1;
     }
 
+    /**
+     * @return string[]
+     */
     public function getField2(): array
     {
         return $this->field2;
     }
 
+    public function getField4(): ?\DateTimeInterface
+    {
+        return $this->field4;
+    }
+
     public function isField3(): bool
     {
         return $this->field3;
-    }
-
-    public function getField4(): ?\DateTimeImmutable
-    {
-        return $this->field4;
     }
 }

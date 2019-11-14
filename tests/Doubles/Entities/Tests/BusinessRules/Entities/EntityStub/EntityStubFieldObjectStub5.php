@@ -3,15 +3,15 @@
 namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\BusinessRules\Entities\EntityStub;
 
 use Carbon\Carbon;
-use OpenClassrooms\CodeGenerator\Entities\ConstObject;
-use OpenClassrooms\CodeGenerator\Entities\FieldObject;
+use OpenClassrooms\CodeGenerator\Entities\Object\ConstObject;
+use OpenClassrooms\CodeGenerator\Entities\Object\FieldObject;
 
 class EntityStubFieldObjectStub5 extends FieldObject
 {
     const CONST = 'FIELD_4';
 
     const DOC_COMMENT = '/**
-     * @var \DateTimeImmutable
+     * @var \DateTimeInterface
      */';
 
     const NAME = 'field4';

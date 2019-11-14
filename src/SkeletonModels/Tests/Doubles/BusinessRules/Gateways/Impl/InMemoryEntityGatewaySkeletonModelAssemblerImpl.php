@@ -2,7 +2,8 @@
 
 namespace OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\BusinessRules\Gateways\Impl;
 
-use OpenClassrooms\CodeGenerator\Entities\FileObject;
+use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
+use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCaseClassNameTrait;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\BusinessRules\Gateways\InMemoryEntityGatewaySkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\BusinessRules\Gateways\InMemoryEntityGatewaySkeletonModelAssembler;
 use OpenClassrooms\CodeGenerator\Utility\StringUtility;
@@ -12,6 +13,8 @@ use OpenClassrooms\CodeGenerator\Utility\StringUtility;
  */
 class InMemoryEntityGatewaySkeletonModelAssemblerImpl implements InMemoryEntityGatewaySkeletonModelAssembler
 {
+    private $entityUtilClassName;
+
     public function create(
         FileObject $entityFileObject,
         FileObject $entityGatewayFileObject,
@@ -29,8 +32,14 @@ class InMemoryEntityGatewaySkeletonModelAssemblerImpl implements InMemoryEntityG
         $skeletonModel->entityGatewayShortName = $entityGatewayFileObject->getShortName();
         $skeletonModel->entityNotFoundExceptionClassName = $entityNotFoundExceptionFileObject->getClassName();
         $skeletonModel->entityNotFoundExceptionShortName = $entityNotFoundExceptionFileObject->getShortName();
+        $skeletonModel->entityUtilClassName = $this->entityUtilClassName;
         $skeletonModel->pluralEntityShortName = lcfirst(StringUtility::pluralize($entityFileObject->getShortName()));
 
         return $skeletonModel;
+    }
+
+    public function setEntityUtilClassName($entityUtilClassName): void
+    {
+        $this->entityUtilClassName = $entityUtilClassName;
     }
 }

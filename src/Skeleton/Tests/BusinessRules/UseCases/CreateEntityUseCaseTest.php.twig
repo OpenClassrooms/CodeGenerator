@@ -1,0 +1,72 @@
+{% include "Header.php.twig" %}
+
+namespace {{ skeletonModel.namespace }};
+
+{% if skeletonModel.useCarbon %}
+use Carbon\Carbon;
+{% endif %}
+use {{ skeletonModel.entityFactoryImplClassName }};
+use {{ skeletonModel.createEntityRequestClassName }};
+use {{ skeletonModel.createEntityClassName }};
+use {{ skeletonModel.createEntityRequestBuilderImplClassName }};
+use {{ skeletonModel.createEntityRequestDTOClassName }};
+use {{ skeletonModel.entityStubClassName }};
+use {{ skeletonModel.inMemoryEntityGatewayClassName }};
+use {{ skeletonModel.entityDetailResponseAssemblerMockClassName }};
+use {{ skeletonModel.entityDetailResponseStubClassName }};
+use {{ skeletonModel.entityDetailResponseTestCaseClassName }};
+use PHPUnit\Framework\TestCase;
+
+final class {{ skeletonModel.shortName }} extends TestCase
+{
+    use {{ skeletonModel.entityDetailResponseTestCaseShortName }};
+
+    /**
+     * @var {{ skeletonModel.createEntityRequestDTOShortName }}
+     */
+    private $request;
+
+    /**
+     * @var {{ skeletonModel.createEntityShortName }}
+     */
+    private $useCase;
+
+    /**
+     * @test
+     */
+    public function create{{ skeletonModel.entityShortName }}ShouldReturnResponse(): void
+    {
+        $response = $this->useCase->execute($this->request);
+
+        $expectedResponse = new {{ skeletonModel.entityDetailResponseStubShortName }}();
+        $this->assert{{ skeletonModel.entityDetailResponseShortName }}($expectedResponse, $response);
+    }
+
+    protected function setup(): void
+    {
+        $this->request = $this->buildRequest();
+        $this->useCase = new {{ skeletonModel.createEntityShortName }}(
+            new {{ skeletonModel.entityDetailResponseAssemblerMockShortName }}(),
+            new {{ skeletonModel.entityFactoryImplShortName }}(),
+            new {{ skeletonModel.inMemoryEntityGatewayShortName }}(
+                [{{ skeletonModel.entityStubShortName }}::ID => new {{ skeletonModel.entityStubShortName }}()]
+            )
+        );
+    }
+
+    private function buildRequest(): {{ skeletonModel.createEntityRequestShortName }}
+    {
+        $builder = new {{ skeletonModel.createEntityRequestBuilderImplShortName }}();
+
+        return $builder
+            ->create()
+{% for method in skeletonModel.createEntityRequestBuilderImplMethods | sortNameByAlpha %}
+{% if method.isDateType %}
+            ->{{ method.name }}(new Carbon({{ method.arguments[0].name }}))
+{% else %}
+            ->{{ method.name }}({{ method.arguments[0].name }})
+{% endif %}
+{% endfor %}
+            ->build();
+    }
+}

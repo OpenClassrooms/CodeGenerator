@@ -62,9 +62,9 @@ class GenericUseCaseRequestDTOGeneratorTest extends TestCase
         );
 
         $genericUseCaseRequestDTOSkeletonModelAssemblerImpl = new GenericUseCaseRequestDTOSkeletonModelAssemblerImpl();
-        $genericUseCaseRequestDTOSkeletonModelAssemblerImpl->setUseCaseClassName(FixturesConfig::USE_CASE_CLASSNAME);
+        $genericUseCaseRequestDTOSkeletonModelAssemblerImpl->setUseCaseClassName(FixturesConfig::USE_CASE);
         $genericUseCaseRequestDTOSkeletonModelAssemblerImpl->setUseCaseRequestClassName(
-            FixturesConfig::USE_CASE_REQUEST_CLASSNAME
+            FixturesConfig::USE_CASE_REQUEST
         );
         $this->genericUseCaseRequestDTOGenerator->setGenericUseCaseRequestDTOSkeletonModelAssembler(
             $genericUseCaseRequestDTOSkeletonModelAssemblerImpl

@@ -15,6 +15,6 @@ trait FunctionalEntityDetailResponseTestCase
         FunctionalEntityDetailResponse $actual
     ): void {
         $this->assertFunctionalEntityResponse($expected, $actual);
-        Assert::assertSame($expected->getField4(), $actual->getField4());
+        Assert::assertEquals($expected->getField4(), $actual->getField4());
     }
 }

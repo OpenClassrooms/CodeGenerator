@@ -23,6 +23,8 @@ abstract class InMemoryEntityGatewaySkeletonModel extends AbstractSkeletonModel
 
     public $entityShortName;
 
+    public $entityUtilClassName;
+
     public $pluralEntityShortName;
 
     public $templatePath = 'Tests/Doubles/BusinessRules/Gateways/InMemoryEntityGateway.php.twig';

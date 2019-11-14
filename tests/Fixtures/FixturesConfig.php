@@ -15,6 +15,8 @@ final class FixturesConfig
 
     const BASE_NAMESPACE_SELF_GENERATOR = 'OpenClassrooms\CodeGenerator\\';
 
+    const ENTITY_UTIL = 'OpenClassrooms\CodeGenerator\Tests\EntityUtil';
+
     const PAGINATED_COLLECTION = 'OpenClassrooms\UseCase\BusinessRules\Entities\PaginatedCollection';
 
     const PAGINATED_USE_CASE_RESPONSE = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\PaginatedUseCaseResponse';
@@ -31,9 +33,11 @@ final class FixturesConfig
 
     const TEST_BASE_NAMESPACE_SELF_GENERATOR = 'OpenClassrooms\CodeGenerator\Tests\\';
 
-    const USE_CASE_CLASSNAME = 'OpenClassrooms\UseCase\BusinessRules\Requestors\UseCase';
+    const TRANSACTION = 'OpenClassrooms\UseCase\Application\Annotations\Transaction';
 
-    const USE_CASE_REQUEST_CLASSNAME = 'OpenClassrooms\UseCase\BusinessRules\Requestors\UseCaseRequest';
+    const USE_CASE = 'OpenClassrooms\UseCase\BusinessRules\Requestors\UseCase';
+
+    const USE_CASE_REQUEST = 'OpenClassrooms\UseCase\BusinessRules\Requestors\UseCaseRequest';
 
     const USE_CASE_RESPONSE = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\UseCaseResponse';
 }

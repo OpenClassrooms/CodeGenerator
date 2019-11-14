@@ -3,9 +3,9 @@
 namespace OpenClassrooms\CodeGenerator\Generator\GenerateGenerator;
 
 use OpenClassrooms\CodeGenerator\Commands\ConstructionPatternType;
-use OpenClassrooms\CodeGenerator\Entities\FileObject;
 use OpenClassrooms\CodeGenerator\Entities\GenerateGeneratorFileObjectFactory;
-use OpenClassrooms\CodeGenerator\Entities\GenerateGeneratorFileObjectType;
+use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
+use OpenClassrooms\CodeGenerator\Entities\Type\GenerateGeneratorFileObjectType;
 use OpenClassrooms\CodeGenerator\Gateways\FileObject\FileObjectGateway;
 use OpenClassrooms\CodeGenerator\Generator\GenerateGenerator\Request\GenerateGeneratorGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
@@ -100,6 +100,7 @@ class GenerateGeneratorGenerator
             $fileObjects[] = $this->buildSkeletonModelBuilderMockFileObject($domain, $entity);
         }
         $fileObjects[] = $this->buildSkeletonModelImplFileObject($domain, $entity);
+        $fileObjects[] = $this->buildServiceXmlFileObject($domain, $entity);
 
         return $fileObjects;
     }
@@ -284,7 +285,16 @@ class GenerateGeneratorGenerator
             GenerateGeneratorFileObjectType::SKELETON_MODEL_IMPL,
             'GenerateGenerator/GenerateGeneratorSkeletonModelImpl.php.twig'
         );
+    }
 
+    private function buildServiceXmlFileObject(string $domain, string $entity): FileObject
+    {
+        return $this->buildFileObject(
+            $domain,
+            $entity,
+            GenerateGeneratorFileObjectType::SERVICE_XML,
+            'GenerateGenerator/GenerateGeneratorServiceXml.php.twig'
+        );
     }
 
     /**
