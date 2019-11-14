@@ -2,6 +2,7 @@
 
 namespace OpenClassrooms\CodeGenerator\Entities\Impl;
 
+use InvalidArgumentException;
 use OpenClassrooms\CodeGenerator\Entities\AbstractFileObjectFactory;
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\Entities\Type\UseCaseResponseFileObjectType;
@@ -17,9 +18,9 @@ class UseCaseResponseFileObjectFactoryImpl extends AbstractFileObjectFactory imp
         $this->baseNamespace = $baseNamespace ?? $this->baseNamespace;
 
         switch ($type) {
-            case UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE_DTO:
+            case UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE_COMMON_FIELD_TRAIT:
                 return new FileObject(
-                    $this->baseNamespace . 'BusinessRules\UseCases\\' . $domain . '\DTO\Response\\' . $entity . 'ResponseDTO'
+                    $this->baseNamespace . 'BusinessRules\UseCases\\' . $domain . '\DTO\Response\\' . $entity . 'ResponseCommonFieldTrait'
                 );
             case UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE_DTO:
                 return new FileObject(
@@ -89,13 +90,13 @@ class UseCaseResponseFileObjectFactoryImpl extends AbstractFileObjectFactory imp
                 return new FileObject(
                     $this->stubNamespace . 'BusinessRules\Responders\\' . $domain . '\\' . $entity . 'ListItemResponseAssemblerMock'
                 );
-            case UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE_TRAIT:
+            case UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE_ASSEMBLER_TRAIT:
                 return new FileObject(
-                    $this->baseNamespace . 'BusinessRules\UseCases\\' . $domain . '\DTO\Response\\' . $entity . 'ResponseTrait'
+                    $this->baseNamespace . 'BusinessRules\UseCases\\' . $domain . '\DTO\Response\\' . $entity . 'ResponseAssemblerTrait'
                 );
 
             default:
-                throw new \InvalidArgumentException($type);
+                throw new InvalidArgumentException($type);
         }
     }
 }

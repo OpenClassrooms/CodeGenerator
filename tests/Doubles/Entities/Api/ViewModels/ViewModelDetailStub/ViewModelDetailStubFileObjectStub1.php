@@ -9,11 +9,11 @@ use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
  */
 class ViewModelDetailStubFileObjectStub1 extends FileObject
 {
-    const CLASS_NAME = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\Api\ViewModels\Domain\SubDomain\FunctionalEntityDetailStub1';
+    const CLASS_NAME = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\Api\ViewModels\Domain\SubDomain\FunctionalEntityViewModelDetailStub1';
 
     public function __construct()
     {
-        $this->content = __DIR__ . '/../../../../../Fixtures/Classes/Tests/Doubles/Api/ViewModels/Domain/SubDomain/FunctionalEntityDetailStub1.php';
+        $this->content = __DIR__ . '/../../../../../Fixtures/Classes/Tests/Doubles/Api/ViewModels/Domain/SubDomain/FunctionalEntityViewModelDetailStub1.php';
         $this->className = self::CLASS_NAME;
         $this->fields = [
             new ViewModelDetailStubFieldObjectStub2(),

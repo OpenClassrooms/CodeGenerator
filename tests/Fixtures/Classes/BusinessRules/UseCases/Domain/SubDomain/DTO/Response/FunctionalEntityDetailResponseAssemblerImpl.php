@@ -9,7 +9,7 @@ use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders
 
 class FunctionalEntityDetailResponseAssemblerImpl implements FunctionalEntityDetailResponseAssembler
 {
-    use FunctionalEntityResponseTrait;
+    use FunctionalEntityResponseAssemblerTrait;
 
     /**
      * {@inheritdoc}

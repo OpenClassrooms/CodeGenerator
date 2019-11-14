@@ -9,9 +9,9 @@ trait {{ skeletonModel.shortName }}
 {
     use {{ skeletonModel.viewModelTestCaseShortName }};
 
-    public function assert{{ skeletonModel.shortName }}({{ skeletonModel.viewModelDetailShortName }} $expected, {{ skeletonModel.viewModelDetailShortName }} $actual): void
+    public function {{ skeletonModel.viewModelDetailMethod }}({{ skeletonModel.viewModelDetailShortName }} $expected, {{ skeletonModel.viewModelDetailShortName }} $actual): void
     {
-        $this->assert{{ skeletonModel.viewModelTestCaseShortName }}($expected, $actual);
+        $this->{{ skeletonModel.viewModelTestCaseMethod }}($expected, $actual);
 {% for field in skeletonModel.fields | sortNameByAlpha if field.type in skeletonModel.dateTimeType %}
         Assert::assertEquals($expected->{{ field.name }}, $actual->{{ field.name }});
 {% endfor %}

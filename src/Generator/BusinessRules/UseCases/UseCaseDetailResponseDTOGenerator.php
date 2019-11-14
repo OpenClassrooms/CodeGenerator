@@ -20,6 +20,24 @@ class UseCaseDetailResponseDTOGenerator extends AbstractUseCaseGenerator
      */
     private $useCaseDetailResponseDTOSkeletonModelAssembler;
 
+    public function createUseCaseDetailResponseFileObject()
+    {
+        return $this->useCaseResponseFileObjectFactory->create(
+            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE,
+            $this->domain,
+            $this->entity
+        );
+    }
+
+    public function createUseCaseResponseCommonFieldTraitFileObject()
+    {
+        return $this->useCaseResponseFileObjectFactory->create(
+            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE_COMMON_FIELD_TRAIT,
+            $this->domain,
+            $this->entity
+        );
+    }
+
     /**
      * @param UseCaseDetailResponseDTOGeneratorRequest $generatorRequest
      */
@@ -35,6 +53,12 @@ class UseCaseDetailResponseDTOGenerator extends AbstractUseCaseGenerator
         return $useCaseDetailResponseDTOFileObject;
     }
 
+    public function setUseCaseDetailResponseDTOSkeletonModelAssembler(
+        UseCaseDetailResponseDTOSkeletonModelAssembler $useCaseDetailResponseDTOSkeletonModelAssembler
+    ): void {
+        $this->useCaseDetailResponseDTOSkeletonModelAssembler = $useCaseDetailResponseDTOSkeletonModelAssembler;
+    }
+
     /**
      * @param string[] $wantedFields
      */
@@ -46,7 +70,7 @@ class UseCaseDetailResponseDTOGenerator extends AbstractUseCaseGenerator
 
         $useCaseDetailResponseDTOFileObject = $this->createUseCaseDetailResponseDTOFileObject();
         $useCaseDetailResponseFileObject = $this->createUseCaseDetailResponseFileObject();
-        $useCaseResponseDTOFileObject = $this->createUseCaseResponseDTOFileObject();
+        $useCaseResponseCommonFieldTraitFileObject = $this->createUseCaseResponseCommonFieldTraitFileObject();
 
         $useCaseDetailResponseDTOFileObject->setFields($this->getSelectedFields($entityClassName, $wantedFields));
         $useCaseDetailResponseDTOFileObject->setMethods(
@@ -57,11 +81,23 @@ class UseCaseDetailResponseDTOGenerator extends AbstractUseCaseGenerator
             $this->generateContent(
                 $useCaseDetailResponseDTOFileObject,
                 $useCaseDetailResponseFileObject,
-                $useCaseResponseDTOFileObject
+                $useCaseResponseCommonFieldTraitFileObject
             )
         );
 
         return $useCaseDetailResponseDTOFileObject;
+    }
+
+    private function createSkeletonModel(
+        FileObject $useCaseDetailResponseDTOFileObject,
+        FileObject $useCaseDetailResponseFileObject,
+        FileObject $useCaseResponseCommonFieldTraitFileObject
+    ): UseCaseDetailResponseDTOSkeletonModel {
+        return $this->useCaseDetailResponseDTOSkeletonModelAssembler->create(
+            $useCaseDetailResponseDTOFileObject,
+            $useCaseDetailResponseFileObject,
+            $useCaseResponseCommonFieldTraitFileObject
+        );
     }
 
     private function createUseCaseDetailResponseDTOFileObject(): FileObject
@@ -74,53 +110,17 @@ class UseCaseDetailResponseDTOGenerator extends AbstractUseCaseGenerator
         );
     }
 
-    public function createUseCaseDetailResponseFileObject()
-    {
-        return $this->useCaseResponseFileObjectFactory->create(
-            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE,
-            $this->domain,
-            $this->entity
-        );
-    }
-
-    public function createUseCaseResponseDTOFileObject()
-    {
-        return $this->useCaseResponseFileObjectFactory->create(
-            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE_DTO,
-            $this->domain,
-            $this->entity
-        );
-    }
-
     private function generateContent(
         FileObject $useCaseDetailResponseDTOFileObject,
         FileObject $useCaseDetailResponseFileObject,
-        FileObject $useCaseResponseDTOFileObject
+        FileObject $useCaseResponseCommonFieldTraitFileObject
     ): string {
         $skeletonModel = $this->createSkeletonModel(
             $useCaseDetailResponseDTOFileObject,
             $useCaseDetailResponseFileObject,
-            $useCaseResponseDTOFileObject
+            $useCaseResponseCommonFieldTraitFileObject
         );
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
-    }
-
-    private function createSkeletonModel(
-        FileObject $useCaseDetailResponseDTOFileObject,
-        FileObject $useCaseDetailResponseFileObject,
-        FileObject $useCaseResponseDTOFileObject
-    ): UseCaseDetailResponseDTOSkeletonModel {
-        return $this->useCaseDetailResponseDTOSkeletonModelAssembler->create(
-            $useCaseDetailResponseDTOFileObject,
-            $useCaseDetailResponseFileObject,
-            $useCaseResponseDTOFileObject
-        );
-    }
-
-    public function setUseCaseDetailResponseDTOSkeletonModelAssembler(
-        UseCaseDetailResponseDTOSkeletonModelAssembler $useCaseDetailResponseDTOSkeletonModelAssembler
-    ): void {
-        $this->useCaseDetailResponseDTOSkeletonModelAssembler = $useCaseDetailResponseDTOSkeletonModelAssembler;
     }
 }

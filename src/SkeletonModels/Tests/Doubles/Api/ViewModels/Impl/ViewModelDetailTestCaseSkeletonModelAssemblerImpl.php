@@ -5,6 +5,7 @@ namespace OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\Api\ViewMode
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\Api\ViewModels\ViewModelDetailTestCaseSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\Api\ViewModels\ViewModelDetailTestCaseSkeletonModelAssembler;
+use OpenClassrooms\CodeGenerator\Utility\TestCaseUtility;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
@@ -23,9 +24,17 @@ class ViewModelDetailTestCaseSkeletonModelAssemblerImpl implements ViewModelDeta
         $skeletonModel->namespace = $viewModelDetailTestCaseFileObject->getNamespace();
         $skeletonModel->shortName = $viewModelDetailTestCaseFileObject->getShortName();
         $skeletonModel->fields = $viewModelDetailTestCaseFileObject->getFields();
+
         $skeletonModel->viewModelDetailClassName = $viewModelDetailFileObject->getClassName();
         $skeletonModel->viewModelDetailShortName = $viewModelDetailFileObject->getShortName();
+        $skeletonModel->viewModelDetailMethod = TestCaseUtility::buildTestCaseAssertMethodName(
+            $viewModelDetailTestCaseFileObject->getShortName()
+        );
+
         $skeletonModel->viewModelTestCaseShortName = $viewModelTestCaseFileObject->getShortName();
+        $skeletonModel->viewModelTestCaseMethod = TestCaseUtility::buildTestCaseAssertMethodName(
+            $viewModelTestCaseFileObject->getShortName()
+        );
         $skeletonModel->dateTimeType = $this->getDateTimeType();
 
         return $skeletonModel;

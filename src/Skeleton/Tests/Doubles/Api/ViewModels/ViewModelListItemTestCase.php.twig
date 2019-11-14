@@ -13,7 +13,7 @@ trait {{ skeletonModel.shortName }}
      * @param {{ skeletonModel.viewModelListItemShortName }}[] $expected
      * @param {{ skeletonModel.viewModelListItemShortName }}[] $actual
      */
-    protected function assert{{ skeletonModel.viewModelListItemShortName }}s(array $expected, array $actual): void
+    protected function {{ skeletonModel.viewModelListItemMethod }}(array $expected, array $actual): void
     {
         Assert::assertCount(count($expected), $actual);
         foreach ($expected as $key => $item) {
@@ -23,6 +23,6 @@ trait {{ skeletonModel.shortName }}
 
     private function assert{{ skeletonModel.viewModelListItemShortName }}({{ skeletonModel.viewModelListItemShortName }} $expected, {{ skeletonModel.viewModelListItemShortName }} $actual): void
     {
-        $this->assert{{ skeletonModel.viewModelTestCaseShortName }}($expected, $actual);
+        $this->{{ skeletonModel.viewModelTestCaseMethod }}($expected, $actual);
     }
 }

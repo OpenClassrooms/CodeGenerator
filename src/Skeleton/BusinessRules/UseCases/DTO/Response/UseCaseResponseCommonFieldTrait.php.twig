@@ -1,0 +1,26 @@
+{% include "Header.php.twig" %}
+
+namespace {{ skeletonModel.namespace }};
+
+trait {{ skeletonModel.shortName }}
+{
+{% for field in skeletonModel.fields | sortNameByAlpha %}
+    {{ field.docComment }}
+    public ${{ field.name }};
+
+{% endfor %}
+{% for method in skeletonModel.methods | sortNameByAlpha %}
+{% if method.docComment %}
+    /**
+     * {@inheritDoc}
+     */
+{% endif %}
+    public function {{ method.name }}(): {{ printReturnType(method.returnType, method.nullable) }}
+    {
+        return $this->{{ method.fieldName }};
+    }
+{% if not loop.last %}
+
+{% endif %}
+{% endfor %}
+}

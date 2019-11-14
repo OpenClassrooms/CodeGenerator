@@ -15,6 +15,6 @@ interface UseCaseDetailResponseAssemblerImplSkeletonModelAssembler
         FileObject $useCaseDetailResponseAssemblerImplFileObject,
         FileObject $useCaseDetailResponseDTOFileObject,
         FileObject $useCaseDetailResponseFileObject,
-        FileObject $genericUseCaseTraitFileObject
+        FileObject $useCaseResponseAssemblerTraitFileObject
     ): UseCaseDetailResponseAssemblerImplSkeletonModel;
 }

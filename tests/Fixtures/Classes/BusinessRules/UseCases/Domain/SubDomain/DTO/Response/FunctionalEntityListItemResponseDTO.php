@@ -5,6 +5,7 @@ namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseC
 
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityListItemResponse;
 
-class FunctionalEntityListItemResponseDTO extends FunctionalEntityResponseDTO implements FunctionalEntityListItemResponse
+class FunctionalEntityListItemResponseDTO implements FunctionalEntityListItemResponse
 {
+    use FunctionalEntityResponseCommonFieldTrait;
 }
