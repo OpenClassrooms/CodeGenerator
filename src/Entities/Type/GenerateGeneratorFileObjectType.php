@@ -38,4 +38,6 @@ final class GenerateGeneratorFileObjectType
     const SKELETON_MODEL_BUILDER_MOCK = 'SKELETON_MODEL_BUILDER_MOCK';
 
     const SKELETON_MODEL_IMPL = 'SKELETON_MODEL_IMPL';
+
+    const SERVICE_XML = 'SERVICE_XML';
 }

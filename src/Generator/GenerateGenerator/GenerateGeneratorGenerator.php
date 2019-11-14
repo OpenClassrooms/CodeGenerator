@@ -100,6 +100,7 @@ class GenerateGeneratorGenerator
             $fileObjects[] = $this->buildSkeletonModelBuilderMockFileObject($domain, $entity);
         }
         $fileObjects[] = $this->buildSkeletonModelImplFileObject($domain, $entity);
+        $fileObjects[] = $this->buildServiceXmlFileObject($domain, $entity);
 
         return $fileObjects;
     }
@@ -284,7 +285,16 @@ class GenerateGeneratorGenerator
             GenerateGeneratorFileObjectType::SKELETON_MODEL_IMPL,
             'GenerateGenerator/GenerateGeneratorSkeletonModelImpl.php.twig'
         );
+    }
 
+    private function buildServiceXmlFileObject(string $domain, string $entity): FileObject
+    {
+        return $this->buildFileObject(
+            $domain,
+            $entity,
+            GenerateGeneratorFileObjectType::SERVICE_XML,
+            'GenerateGenerator/GenerateGeneratorServiceXml.php.twig'
+        );
     }
 
     /**

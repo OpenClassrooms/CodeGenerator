@@ -19,6 +19,7 @@ class GenerateGeneratorFileObjectsStub1
             new CustomGeneratorRequestDTOFileObjectStub1(),
             new CustomGeneratorRequestFileObjectStub1(),
             new CustomGeneratorTestFileObjectStub1(),
+            new CustomServiceXmlFileObjectStub1(),
             new CustomSkeletonModelAssemblerFileObjectStub1(),
             new CustomSkeletonModelAssemblerImplFileObjectStub1(),
             new CustomSkeletonModelAssemblerMockFileObjectStub1(),

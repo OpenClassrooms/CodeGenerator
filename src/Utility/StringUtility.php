@@ -19,6 +19,11 @@ class StringUtility
         return strtoupper(preg_replace('/(?<!^)[A-Z0-9]/', '_$0', $string));
     }
 
+    public static function convertToLowerSnakeCase(string $string): string
+    {
+        return strtolower(preg_replace('/(?<!^)(?<!\\\\)[A-Z0-9]/', '_$0', $string));
+    }
+
     public static function isObject(string $string)
     {
         return (bool) preg_match('/([A-Z][a-z0-9]+)+/', $string);

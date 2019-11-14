@@ -182,12 +182,4 @@ class MethodUtility
 
         return null;
     }
-
-    private static function buildWitherCalledMethodObject(
-        \ReflectionProperty $field,
-        string $className,
-        string $returnType = null
-    ): MethodObject {
-        return self::buildWitherCalledMethod($field, $className);
-    }
 }

@@ -121,7 +121,7 @@ class FileObject
         if ($this->isTest()) {
             return str_replace('\\', '/', 'Tests/' . $classname . '.php');
         }
-        if ($this->isTemplate()) {
+        if ($this->isTemplate() || $this->isXml()) {
             return str_replace('\\', '/', 'src/' . $classname);
         }
 
@@ -140,11 +140,12 @@ class FileObject
 
     private function isTemplate(): bool
     {
-        if (false !== strpos($this->getShortName(), 'twig')) {
-            return true;
-        }
+        return (bool) preg_match('/twig$/', $this->getShortName());
+    }
 
-        return false;
+    private function isXml(): bool
+    {
+        return (bool) preg_match('/xml$/', $this->getShortName());
     }
 
     public function setAlreadyExists(bool $alreadyExists)

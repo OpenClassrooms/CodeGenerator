@@ -6,6 +6,7 @@ use OpenClassrooms\CodeGenerator\Entities\AbstractFileObjectFactory;
 use OpenClassrooms\CodeGenerator\Entities\GenerateGeneratorFileObjectFactory;
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\Entities\Type\GenerateGeneratorFileObjectType;
+use OpenClassrooms\CodeGenerator\Utility\StringUtility;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
@@ -78,6 +79,10 @@ class GenerateGeneratorFileObjectFactoryImpl extends AbstractFileObjectFactory i
             case GenerateGeneratorFileObjectType::SKELETON_MODEL_IMPL:
                 return new FileObject(
                     $this->baseNamespace . 'SkeletonModels\\' . $domain . '\Impl\\' . $entity . 'SkeletonModelImpl'
+                );
+            case GenerateGeneratorFileObjectType::SERVICE_XML:
+                return new FileObject(
+                    $this->baseNamespace . 'Resources\config\Generator\\' . $domain . '\\' . StringUtility::convertToLowerSnakeCase($entity) . '.xml'
                 );
 
             default:

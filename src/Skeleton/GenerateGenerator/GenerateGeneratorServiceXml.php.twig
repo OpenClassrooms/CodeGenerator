@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+
+<container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://symfony.com/schema/dic/services"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+
+        <service
+                id="OpenClassrooms\CodeGenerator\SkeletonModels\{{ skeletonModel.domain }}\Impl\{{ skeletonModel.entity }}SkeletonModel{{ skeletonModel.constructionPattern }}Impl"
+                alias="OpenClassrooms\CodeGenerator\SkeletonModels\{{ skeletonModel.domain }}\{{ skeletonModel.entity }}SkeletonModel{{ skeletonModel.constructionPattern }}"
+                public="false">
+        </service>
+
+        <service id="OpenClassrooms\CodeGenerator\Generator\{{ skeletonModel.domain }}\{{ skeletonModel.entity }}Generator"
+                 parent="open_classrooms.code_generator.generator.business_rules.abstract_generator">
+            <call method="set{{ skeletonModel.entity }}SkeletonModel{{ skeletonModel.constructionPattern }}">
+                <argument type="service"
+                          id="OpenClassrooms\CodeGenerator\SkeletonModels\{{ skeletonModel.domain }}\{{ skeletonModel.entity }}SkeletonModel{{ skeletonModel.constructionPattern }}"/>
+            </call>
+        </service>
+
+    </services>
+</container>
