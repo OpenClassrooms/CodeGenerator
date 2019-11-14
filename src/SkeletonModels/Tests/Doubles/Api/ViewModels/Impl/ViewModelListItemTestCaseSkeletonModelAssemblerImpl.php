@@ -5,6 +5,7 @@ namespace OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\Api\ViewMode
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\Api\ViewModels\ViewModelListItemTestCaseSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\Api\ViewModels\ViewModelListItemTestCaseSkeletonModelAssembler;
+use OpenClassrooms\CodeGenerator\Utility\TestCaseUtility;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
@@ -21,9 +22,17 @@ class ViewModelListItemTestCaseSkeletonModelAssemblerImpl implements ViewModelLi
         $skeletonModel->namespace = $viewModelListItemTestCaseFileObject->getNamespace();
         $skeletonModel->shortName = $viewModelListItemTestCaseFileObject->getShortName();
         $skeletonModel->fields = $viewModelListItemTestCaseFileObject->getFields();
+
         $skeletonModel->viewModelListItemClassName = $viewModelListItemFileObject->getClassName();
         $skeletonModel->viewModelListItemShortName = $viewModelListItemFileObject->getShortName();
+        $skeletonModel->viewModelListItemMethod = TestCaseUtility::buildTestCaseAssertMethodName(
+            $viewModelListItemFileObject->getShortName()
+        );
+
         $skeletonModel->viewModelTestCaseShortName = $viewModelTestCaseFileObject->getShortName();
+        $skeletonModel->viewModelTestCaseMethod = TestCaseUtility::buildTestCaseAssertMethodName(
+            $viewModelTestCaseFileObject->getShortName()
+        );
 
         return $skeletonModel;
     }

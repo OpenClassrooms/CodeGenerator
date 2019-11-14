@@ -14,6 +14,11 @@ class GetEntityUseCaseMediatorImpl implements GetEntityUseCaseMediator
     use CommonUseCaseGetMediatorsTrait;
     use GetEntityUseCaseGeneratorsTrait;
 
+    public function setFileObjectGateway(FileObjectGateway $fileObjectGateway): void
+    {
+        $this->fileObjectGateway = $fileObjectGateway;
+    }
+
     /**
      * @return FileObject[]
      */
@@ -31,9 +36,9 @@ class GetEntityUseCaseMediatorImpl implements GetEntityUseCaseMediator
         $fileObjects[] = $this->generateUseCaseDetailResponseAssemblerImplGenerator($className);
         $fileObjects[] = $this->generateUseCaseDetailResponseDTOGenerator($className);
         $fileObjects[] = $this->generateUseCaseDetailResponseGenerator($className);
-        $fileObjects[] = $this->generateUseCaseResponseDTOGenerator($className);
+        $fileObjects[] = $this->generateUseCaseResponseCommonFieldTraitGenerator($className);
         $fileObjects[] = $this->generateUseCaseResponseGenerator($className);
-        $fileObjects[] = $this->generateUseCaseResponseTraitGenerator($className);
+        $fileObjects[] = $this->generateUseCaseResponseAssemblerTraitGenerator($className);
 
         return $fileObjects;
     }
@@ -51,10 +56,5 @@ class GetEntityUseCaseMediatorImpl implements GetEntityUseCaseMediator
         $fileObjects[] = $this->generateUseCaseResponseTestCaseGenerator($className);
 
         return $fileObjects;
-    }
-
-    public function setFileObjectGateway(FileObjectGateway $fileObjectGateway): void
-    {
-        $this->fileObjectGateway = $fileObjectGateway;
     }
 }

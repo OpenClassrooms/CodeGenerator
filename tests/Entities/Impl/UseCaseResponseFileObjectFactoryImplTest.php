@@ -6,7 +6,7 @@ use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\Entities\Type\UseCaseResponseFileObjectType;
 use OpenClassrooms\CodeGenerator\Entities\UseCaseResponseFileObjectFactory;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\UseCaseResponseFileObjectFactoryMock;
-use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\FunctionalEntity;
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Entities\Domain\SubDomain\FunctionalEntity;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\FixturesConfig;
 use OpenClassrooms\CodeGenerator\Tests\TestClassUtil;
 use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
@@ -45,7 +45,7 @@ class UseCaseResponseFileObjectFactoryImplTest extends TestCase
 
         return [
             [
-                UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE_DTO,
+                UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE_COMMON_FIELD_TRAIT,
                 $domain,
                 $entity,
                 $baseNamespace,
@@ -110,18 +110,27 @@ class UseCaseResponseFileObjectFactoryImplTest extends TestCase
         ];
     }
 
-    private static function getFileObjectBusinessRulesUseCaseResponseDto(): FileObject
+    /**
+     * @test
+     * @expectedException \InvalidArgumentException
+     */
+    public function InvalidType_Create_ThrowException(): void
     {
-        return $useCaseResponseFileObject = new FileObject(
-            FixturesConfig::BASE_NAMESPACE . 'BusinessRules\UseCases\Domain\SubDomain\DTO\Response\\' . self::getEntityName(
-            ) . 'ResponseDTO'
-        );
-
+        $this->factory->create('INVALID_TYPE', self::class, '');
     }
 
     private static function getEntityName(): string
     {
         return TestClassUtil::getShortClassName(FunctionalEntity::class);
+    }
+
+    private static function getFileObjectBusinessRulesUseCaseDetailResponse(): FileObject
+    {
+        return $useCaseResponseFileObject = new FileObject(
+            FixturesConfig::BASE_NAMESPACE . 'BusinessRules\Responders\Domain\SubDomain\\' . self::getEntityName(
+            ) . 'DetailResponse'
+        );
+
     }
 
     private static function getFileObjectBusinessRulesUseCaseDetailResponseDto(): FileObject
@@ -133,29 +142,29 @@ class UseCaseResponseFileObjectFactoryImplTest extends TestCase
 
     }
 
-    private static function getFileObjectBusinessRulesUseCaseListItemResponseDto(): FileObject
-    {
-        return $useCaseResponseFileObject = new FileObject(
-            FixturesConfig::BASE_NAMESPACE . 'BusinessRules\UseCases\Domain\SubDomain\DTO\Response\\' . self::getEntityName(
-            ) . 'ListItemResponseDTO'
-        );
-
-    }
-
-    private static function getFileObjectBusinessRulesUseCaseResponseStub(): FileObject
-    {
-        return $useCaseResponseFileObject = new FileObject(
-            FixturesConfig::STUB_NAMESPACE . 'BusinessRules\Responders\Domain\SubDomain\\' . self::getEntityName(
-            ) . 'ResponseStub1'
-        );
-
-    }
-
     private static function getFileObjectBusinessRulesUseCaseDetailResponseStub(): FileObject
     {
         return $useCaseResponseFileObject = new FileObject(
             FixturesConfig::STUB_NAMESPACE . 'BusinessRules\Responders\Domain\SubDomain\\' . self::getEntityName(
             ) . 'DetailResponseStub1'
+        );
+
+    }
+
+    private static function getFileObjectBusinessRulesUseCaseListItemResponse(): FileObject
+    {
+        return $useCaseResponseFileObject = new FileObject(
+            FixturesConfig::BASE_NAMESPACE . 'BusinessRules\Responders\Domain\SubDomain\\' . self::getEntityName(
+            ) . 'ListItemResponse'
+        );
+
+    }
+
+    private static function getFileObjectBusinessRulesUseCaseListItemResponseDto(): FileObject
+    {
+        return $useCaseResponseFileObject = new FileObject(
+            FixturesConfig::BASE_NAMESPACE . 'BusinessRules\UseCases\Domain\SubDomain\DTO\Response\\' . self::getEntityName(
+            ) . 'ListItemResponseDTO'
         );
 
     }
@@ -178,31 +187,22 @@ class UseCaseResponseFileObjectFactoryImplTest extends TestCase
 
     }
 
-    private static function getFileObjectBusinessRulesUseCaseDetailResponse(): FileObject
+    private static function getFileObjectBusinessRulesUseCaseResponseDto(): FileObject
     {
         return $useCaseResponseFileObject = new FileObject(
-            FixturesConfig::BASE_NAMESPACE . 'BusinessRules\Responders\Domain\SubDomain\\' . self::getEntityName(
-            ) . 'DetailResponse'
+            FixturesConfig::BASE_NAMESPACE . 'BusinessRules\UseCases\Domain\SubDomain\DTO\Response\\' . self::getEntityName(
+            ) . 'ResponseCommonFieldTrait'
         );
 
     }
 
-    private static function getFileObjectBusinessRulesUseCaseListItemResponse(): FileObject
+    private static function getFileObjectBusinessRulesUseCaseResponseStub(): FileObject
     {
         return $useCaseResponseFileObject = new FileObject(
-            FixturesConfig::BASE_NAMESPACE . 'BusinessRules\Responders\Domain\SubDomain\\' . self::getEntityName(
-            ) . 'ListItemResponse'
+            FixturesConfig::STUB_NAMESPACE . 'BusinessRules\Responders\Domain\SubDomain\\' . self::getEntityName(
+            ) . 'ResponseStub1'
         );
 
-    }
-
-    /**
-     * @test
-     * @expectedException \InvalidArgumentException
-     */
-    public function InvalidType_Create_ThrowException(): void
-    {
-        $this->factory->create('INVALID_TYPE', self::class, '');
     }
 
     protected function setUp(): void

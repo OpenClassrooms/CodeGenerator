@@ -11,10 +11,10 @@ use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Gateways\Request\Entity
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Gateways\Request\EntityNotFoundExceptionGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Responders\Request\UseCaseResponseGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Responders\UseCaseResponseGenerator;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\UseCaseResponseDTOGeneratorRequestBuilder;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\UseCaseResponseTraitGeneratorRequestBuilder;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\UseCaseResponseDTOGenerator;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\UseCaseResponseTraitGenerator;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\UseCaseResponseAssemblerTraitGeneratorRequestBuilder;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\UseCaseResponseCommonFieldTraitGeneratorRequestBuilder;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\UseCaseResponseAssemblerTraitGenerator;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\UseCaseResponseCommonFieldTraitGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Generator;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Entities\EntityStubGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Entities\Request\EntityStubGeneratorRequestBuilder;
@@ -34,12 +34,6 @@ trait CommonUseCaseGetGeneratorsTrait
     /** @var EntityGatewayGeneratorRequestBuilder */
     private $entityGatewayGeneratorRequestBuilder;
 
-    /** @var EntityStubGenerator */
-    private $entityStubGenerator;
-
-    /** @var EntityStubGeneratorRequestBuilder */
-    private $entityStubGeneratorRequestBuilder;
-
     /** @var EntityNotFoundExceptionGenerator */
     private $entityNotFoundExceptionGenerator;
 
@@ -52,17 +46,29 @@ trait CommonUseCaseGetGeneratorsTrait
     /** @var EntityRepositoryGeneratorRequestBuilder */
     private $entityRepositoryGeneratorRequestBuilder;
 
+    /** @var EntityStubGenerator */
+    private $entityStubGenerator;
+
+    /** @var EntityStubGeneratorRequestBuilder */
+    private $entityStubGeneratorRequestBuilder;
+
     /** @var InMemoryEntityGatewayGenerator */
     private $inMemoryEntityGatewayGenerator;
 
     /** @var InMemoryEntityGatewayGeneratorRequestBuilder */
     private $inMemoryEntityGatewayGeneratorRequestBuilder;
 
-    /** @var UseCaseResponseDTOGenerator */
-    private $useCaseResponseDTOGenerator;
+    /** @var UseCaseResponseAssemblerTraitGenerator */
+    private $useCaseResponseAssemblerTraitGenerator;
 
-    /** @var UseCaseResponseDTOGeneratorRequestBuilder */
-    private $useCaseResponseDTOGeneratorRequestBuilder;
+    /** @var UseCaseResponseAssemblerTraitGeneratorRequestBuilder */
+    private $useCaseResponseAssemblerTraitGeneratorRequestBuilder;
+
+    /** @var UseCaseResponseCommonFieldTraitGenerator */
+    private $useCaseResponseCommonFieldTraitGenerator;
+
+    /** @var UseCaseResponseCommonFieldTraitGeneratorRequestBuilder */
+    private $useCaseResponseCommonFieldTraitGeneratorRequestBuilder;
 
     /** @var UseCaseResponseGenerator */
     private $useCaseResponseGenerator;
@@ -75,12 +81,6 @@ trait CommonUseCaseGetGeneratorsTrait
 
     /** @var UseCaseResponseTestCaseGeneratorRequestBuilder */
     private $useCaseResponseTestCaseGeneratorRequestBuilder;
-
-    /** @var UseCaseResponseTraitGenerator */
-    private $useCaseResponseTraitGenerator;
-
-    /** @var UseCaseResponseTraitGeneratorRequestBuilder */
-    private $useCaseResponseTraitGeneratorRequestBuilder;
 
     public function setEntityGatewayGenerator(Generator $entityGatewayGenerator): void
     {
@@ -138,16 +138,28 @@ trait CommonUseCaseGetGeneratorsTrait
         $this->inMemoryEntityGatewayGeneratorRequestBuilder = $inMemoryEntityGatewayGeneratorRequestBuilder;
     }
 
-    public function setUseCaseResponseDTOGenerator(
-        Generator $useCaseResponseDTOGenerator
+    public function setUseCaseResponseAssemblerTraitGenerator(
+        Generator $useCaseResponseAssemblerTraitGenerator
     ): void {
-        $this->useCaseResponseDTOGenerator = $useCaseResponseDTOGenerator;
+        $this->useCaseResponseAssemblerTraitGenerator = $useCaseResponseAssemblerTraitGenerator;
     }
 
-    public function setUseCaseResponseDTOGeneratorRequestBuilder(
-        UseCaseResponseDTOGeneratorRequestBuilder $useCaseResponseDTOGeneratorRequestBuilder
+    public function setUseCaseResponseAssemblerTraitGeneratorRequestBuilder(
+        UseCaseResponseAssemblerTraitGeneratorRequestBuilder $useCaseResponseAssemblerTraitGeneratorRequestBuilder
     ): void {
-        $this->useCaseResponseDTOGeneratorRequestBuilder = $useCaseResponseDTOGeneratorRequestBuilder;
+        $this->useCaseResponseAssemblerTraitGeneratorRequestBuilder = $useCaseResponseAssemblerTraitGeneratorRequestBuilder;
+    }
+
+    public function setUseCaseResponseCommonFieldTraitGenerator(
+        Generator $useCaseResponseCommonFieldTraitGenerator
+    ): void {
+        $this->useCaseResponseCommonFieldTraitGenerator = $useCaseResponseCommonFieldTraitGenerator;
+    }
+
+    public function setUseCaseResponseCommonFieldTraitGeneratorRequestBuilder(
+        UseCaseResponseCommonFieldTraitGeneratorRequestBuilder $useCaseResponseCommonFieldTraitGeneratorRequestBuilder
+    ): void {
+        $this->useCaseResponseCommonFieldTraitGeneratorRequestBuilder = $useCaseResponseCommonFieldTraitGeneratorRequestBuilder;
     }
 
     public function setUseCaseResponseGenerator(Generator $useCaseResponseGenerator): void
@@ -159,18 +171,6 @@ trait CommonUseCaseGetGeneratorsTrait
         UseCaseResponseGeneratorRequestBuilder $useCaseResponseGeneratorRequestBuilder
     ): void {
         $this->useCaseResponseGeneratorRequestBuilder = $useCaseResponseGeneratorRequestBuilder;
-    }
-
-    public function setUseCaseResponseTraitGenerator(
-        Generator $useCaseResponseTraitGenerator
-    ): void {
-        $this->useCaseResponseTraitGenerator = $useCaseResponseTraitGenerator;
-    }
-
-    public function setUseCaseResponseTraitGeneratorRequestBuilder(
-        UseCaseResponseTraitGeneratorRequestBuilder $useCaseResponseTraitGeneratorRequestBuilder
-    ): void {
-        $this->useCaseResponseTraitGeneratorRequestBuilder = $useCaseResponseTraitGeneratorRequestBuilder;
     }
 
     public function setUseCaseResponseTestCaseGenerator(
@@ -235,10 +235,10 @@ trait CommonUseCaseGetGeneratorsTrait
         );
     }
 
-    protected function generateUseCaseResponseDTOGenerator(string $className): FileObject
+    protected function generateUseCaseResponseAssemblerTraitGenerator(string $className): FileObject
     {
-        return $this->useCaseResponseDTOGenerator->generate(
-            $this->useCaseResponseDTOGeneratorRequestBuilder
+        return $this->useCaseResponseAssemblerTraitGenerator->generate(
+            $this->useCaseResponseAssemblerTraitGeneratorRequestBuilder
                 ->create()
                 ->withEntityClassName($className)
                 ->withFields([])
@@ -246,21 +246,10 @@ trait CommonUseCaseGetGeneratorsTrait
         );
     }
 
-    protected function generateUseCaseResponseTraitGenerator(string $className): FileObject
+    protected function generateUseCaseResponseCommonFieldTraitGenerator(string $className): FileObject
     {
-        return $this->useCaseResponseTraitGenerator->generate(
-            $this->useCaseResponseTraitGeneratorRequestBuilder
-                ->create()
-                ->withEntityClassName($className)
-                ->withFields([])
-                ->build()
-        );
-    }
-
-    protected function generateUseCaseResponseTestCaseGenerator(string $className): FileObject
-    {
-        return $this->useCaseResponseTestCaseGenerator->generate(
-            $this->useCaseResponseTestCaseGeneratorRequestBuilder
+        return $this->useCaseResponseCommonFieldTraitGenerator->generate(
+            $this->useCaseResponseCommonFieldTraitGeneratorRequestBuilder
                 ->create()
                 ->withEntityClassName($className)
                 ->withFields([])
@@ -272,6 +261,17 @@ trait CommonUseCaseGetGeneratorsTrait
     {
         return $this->useCaseResponseGenerator->generate(
             $this->useCaseResponseGeneratorRequestBuilder
+                ->create()
+                ->withEntityClassName($className)
+                ->withFields([])
+                ->build()
+        );
+    }
+
+    protected function generateUseCaseResponseTestCaseGenerator(string $className): FileObject
+    {
+        return $this->useCaseResponseTestCaseGenerator->generate(
+            $this->useCaseResponseTestCaseGeneratorRequestBuilder
                 ->create()
                 ->withEntityClassName($className)
                 ->withFields([])

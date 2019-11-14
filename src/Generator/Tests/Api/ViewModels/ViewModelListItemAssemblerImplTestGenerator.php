@@ -34,9 +34,14 @@ class ViewModelListItemAssemblerImplTestGenerator extends AbstractViewModelGener
         return $viewModelListItemAssemblerImplTest;
     }
 
-    private function buildViewModelListItemAssemblerImplTestFileObject(
-        string $useCaseResponseClassName
-    ): FileObject {
+    public function setViewModelListItemAssemblerImplTestSkeletonModelBuilder(
+        ViewModelListItemAssemblerImplTestSkeletonModelBuilder $assembler
+    ) {
+        $this->viewModelTestSkeletonModelBuilder = $assembler;
+    }
+
+    private function buildViewModelListItemAssemblerImplTestFileObject(string $useCaseResponseClassName): FileObject
+    {
         $this->initFileObjectParameter($useCaseResponseClassName);
 
         $viewModelListItemAssemblerImpl = $this->createViewModelListItemAssemblerImplFileObject();
@@ -63,81 +68,6 @@ class ViewModelListItemAssemblerImplTestGenerator extends AbstractViewModelGener
     }
 
     /**
-     * @param string $viewModelListItemAssemblerImplClassName
-     *
-     * @return FileObject
-     */
-    private function createViewModelListItemAssemblerImplFileObject(): FileObject
-    {
-        return $this->createViewModelFileObject(
-            ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_ASSEMBLER_IMPL,
-            $this->domain,
-            $this->entity,
-            $this->baseNamespace
-        );
-    }
-
-    private function createViewModelListItemTestCaseFileObject(): FileObject
-    {
-        return $this->createViewModelFileObject(
-            ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_TEST_CASE,
-            $this->domain,
-            $this->entity,
-            $this->baseNamespace
-        );
-    }
-
-    private function createUseCaseListItemResponseStubFileObject(): FileObject
-    {
-        return $this->createUseCaseResponseFileObject(
-            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE_STUB,
-            $this->domain,
-            $this->entity,
-            $this->baseNamespace
-        );
-    }
-
-    private function createViewModelListItemStubFileObject(): FileObject
-    {
-        return $this->createViewModelFileObject(
-            ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_STUB,
-            $this->domain,
-            $this->entity,
-            $this->baseNamespace
-        );
-    }
-
-    private function createViewModelListItemAssemblerFileObject(): FileObject
-    {
-        return $this->createViewModelFileObject(
-            ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_ASSEMBLER,
-            $this->domain,
-            $this->entity,
-            $this->baseNamespace
-        );
-    }
-
-    private function createViewModelListItemAssemblerImplTestFileObject(): FileObject
-    {
-        return $this->createViewModelFileObject(
-            ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_ASSEMBLER_IMPL_TEST,
-            $this->domain,
-            $this->entity,
-            $this->baseNamespace
-        );
-    }
-
-    /**
-     * @param FileObject[]
-     */
-    private function generateContent(array $fileObjects): string
-    {
-        $skeletonModel = $this->createSkeletonModel($fileObjects);
-
-        return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
-    }
-
-    /**
      * @param FileObject[]
      */
     private function createSkeletonModel(array $fileObjects): ViewModelListItemAssemblerImplTestSkeletonModel
@@ -158,9 +88,78 @@ class ViewModelListItemAssemblerImplTestGenerator extends AbstractViewModelGener
             ->build();
     }
 
-    public function setViewModelListItemAssemblerImplTestSkeletonModelBuilder(
-        ViewModelListItemAssemblerImplTestSkeletonModelBuilder $assembler
-    ) {
-        $this->viewModelTestSkeletonModelBuilder = $assembler;
+    private function createUseCaseListItemResponseStubFileObject(): FileObject
+    {
+        return $this->createUseCaseResponseFileObject(
+            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE_STUB,
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
+        );
+    }
+
+    private function createViewModelListItemAssemblerFileObject(): FileObject
+    {
+        return $this->createViewModelFileObject(
+            ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_ASSEMBLER,
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
+        );
+    }
+
+    /**
+     * @param string $viewModelListItemAssemblerImplClassName
+     *
+     * @return FileObject
+     */
+    private function createViewModelListItemAssemblerImplFileObject(): FileObject
+    {
+        return $this->createViewModelFileObject(
+            ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_ASSEMBLER_IMPL,
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
+        );
+    }
+
+    private function createViewModelListItemAssemblerImplTestFileObject(): FileObject
+    {
+        return $this->createViewModelFileObject(
+            ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_ASSEMBLER_IMPL_TEST,
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
+        );
+    }
+
+    private function createViewModelListItemStubFileObject(): FileObject
+    {
+        return $this->createViewModelFileObject(
+            ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_STUB,
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
+        );
+    }
+
+    private function createViewModelListItemTestCaseFileObject(): FileObject
+    {
+        return $this->createViewModelFileObject(
+            ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_TEST_CASE,
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
+        );
+    }
+
+    /**
+     * @param FileObject[]
+     */
+    private function generateContent(array $fileObjects): string
+    {
+        $skeletonModel = $this->createSkeletonModel($fileObjects);
+
+        return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
     }
 }

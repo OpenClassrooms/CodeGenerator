@@ -14,7 +14,7 @@ class UseCaseListItemResponseDTOSkeletonModelAssemblerImpl implements UseCaseLis
     public function create(
         FileObject $useCaseListItemResponseDTOFileObject,
         FileObject $useCaseListItemResponseFileObject,
-        FileObject $useCaseResponseDTOFileObject
+        FileObject $useCaseResponseCommonFieldTraitFileObject
     ): UseCaseListItemResponseDTOSkeletonModel {
         $skeletonModel = new UseCaseListItemResponseDTOSkeletonModelImpl();
         $skeletonModel->namespace = $useCaseListItemResponseDTOFileObject->getNamespace();
@@ -23,7 +23,7 @@ class UseCaseListItemResponseDTOSkeletonModelAssemblerImpl implements UseCaseLis
         $skeletonModel->methods = $useCaseListItemResponseDTOFileObject->getMethods();
         $skeletonModel->useCaseListItemResponseClassName = $useCaseListItemResponseFileObject->getClassName();
         $skeletonModel->useCaseListItemResponseShortName = $useCaseListItemResponseFileObject->getShortName();
-        $skeletonModel->useCaseResponseDTOShortName = $useCaseResponseDTOFileObject->getShortName();
+        $skeletonModel->useCaseResponseCommonFieldTraitShortName = $useCaseResponseCommonFieldTraitFileObject->getShortName();
 
         return $skeletonModel;
     }

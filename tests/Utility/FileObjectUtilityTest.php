@@ -2,17 +2,17 @@
 
 namespace OpenClassrooms\CodeGenerator\Utility;
 
-use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\FunctionalEntityDetail;
-use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\FunctionalEntityDetailAssembler;
-use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\FunctionalEntityListItem;
-use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\FunctionalEntityListItemAssembler;
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\FunctionalEntityViewModelDetail;
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\FunctionalEntityViewModelDetailAssembler;
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\FunctionalEntityViewModelListItem;
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\FunctionalEntityViewModelListItemAssembler;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\App\Entity\Domain\SubDomain\FunctionalEntityImpl;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityDetailResponse;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityListItemResponse;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityResponse;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\DTO\Response\FunctionalEntityListItemResponseDTO;
-use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\DTO\Response\FunctionalEntityResponseDTO;
-use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\Api\ViewModels\Domain\SubDomain\FunctionalEntityTestCase;
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\DTO\Response\FunctionalEntityResponseCommonFieldTrait;
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\Api\ViewModels\Domain\SubDomain\FunctionalEntityViewModelTestCase;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\BusinessRules\Entities\Domain\SubDomain\FunctionalEntityStub1;
 use PHPUnit\Framework\TestCase;
 
@@ -21,32 +21,11 @@ use PHPUnit\Framework\TestCase;
  */
 class FileObjectUtilityTest extends TestCase
 {
-    /**
-     * @test
-     * @dataProvider fileObjectDataProvider
-     */
-    public function getBaseNamespaceDomainAndEntityNameFromClassName_ReturnArray(
-        $className,
-        $expectedBaseNamespace,
-        $expectedDomain,
-        $expectedEntity
-    ): void {
-        [
-            $actualBaseNamespace,
-            $actualDomain,
-            $actualEntity,
-        ] = FileObjectUtility::getBaseNamespaceDomainAndEntityNameFromClassName($className);
-
-        $this->assertEquals($expectedBaseNamespace, $actualBaseNamespace);
-        $this->assertEquals($expectedDomain, $actualDomain);
-        $this->assertEquals($expectedEntity, $actualEntity);
-    }
-
     public function fileObjectDataProvider(): array
     {
         return [
             [
-                FunctionalEntityDetailAssembler::class,
+                FunctionalEntityViewModelDetailAssembler::class,
                 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\\',
                 'Domain\SubDomain',
                 'FunctionalEntity',
@@ -58,7 +37,7 @@ class FileObjectUtilityTest extends TestCase
                 'FunctionalEntity',
             ],
             [
-                FunctionalEntityDetail::class,
+                FunctionalEntityViewModelDetail::class,
                 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\\',
                 'Domain\SubDomain',
                 'FunctionalEntity',
@@ -70,7 +49,7 @@ class FileObjectUtilityTest extends TestCase
                 'FunctionalEntity',
             ],
             [
-                FunctionalEntityListItemAssembler::class,
+                FunctionalEntityViewModelListItemAssembler::class,
                 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\\',
                 'Domain\SubDomain',
                 'FunctionalEntity',
@@ -88,13 +67,13 @@ class FileObjectUtilityTest extends TestCase
                 'FunctionalEntity',
             ],
             [
-                FunctionalEntityListItem::class,
+                FunctionalEntityViewModelListItem::class,
                 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\\',
                 'Domain\SubDomain',
                 'FunctionalEntity',
             ],
             [
-                FunctionalEntityResponseDTO::class,
+                FunctionalEntityResponseCommonFieldTrait::class,
                 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\\',
                 'Domain\SubDomain',
                 'FunctionalEntity',
@@ -112,7 +91,7 @@ class FileObjectUtilityTest extends TestCase
                 'FunctionalEntity',
             ],
             [
-                FunctionalEntityTestCase::class,
+                FunctionalEntityViewModelTestCase::class,
                 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\\',
                 'Domain\SubDomain',
                 'FunctionalEntity',
@@ -130,5 +109,26 @@ class FileObjectUtilityTest extends TestCase
                 'GenericUseCase',
             ],
         ];
+    }
+
+    /**
+     * @test
+     * @dataProvider fileObjectDataProvider
+     */
+    public function getBaseNamespaceDomainAndEntityNameFromClassName_ReturnArray(
+        string $className,
+        string $expectedBaseNamespace,
+        string $expectedDomain,
+        string $expectedEntity
+    ): void {
+        [
+            $actualBaseNamespace,
+            $actualDomain,
+            $actualEntity,
+        ] = FileObjectUtility::getBaseNamespaceDomainAndEntityNameFromClassName($className);
+
+        $this->assertEquals($expectedBaseNamespace, $actualBaseNamespace);
+        $this->assertEquals($expectedDomain, $actualDomain);
+        $this->assertEquals($expectedEntity, $actualEntity);
     }
 }

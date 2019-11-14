@@ -15,6 +15,6 @@ interface UseCaseListItemResponseAssemblerImplSkeletonModelAssembler
         FileObject $useCaseListItemResponseAssemblerImplFileObject,
         FileObject $useCaseListItemResponseDTOFileObject,
         FileObject $useCaseListItemResponseFileObject,
-        FileObject $useCaseResponseTraitFileObject
+        FileObject $useCaseResponseAssemblerTraitFileObject
     ): UseCaseListItemResponseAssemblerImplSkeletonModel;
 }

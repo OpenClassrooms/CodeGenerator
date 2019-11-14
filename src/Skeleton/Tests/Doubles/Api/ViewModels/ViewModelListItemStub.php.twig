@@ -8,7 +8,7 @@ use {{ skeletonModel.useCaseListItemResponseStubClassName }};
 class {{ skeletonModel.shortName }} extends {{ skeletonModel.parentShortName }}
 {
 {% for constant in skeletonModel.constants %}
-    const {{ constant.name }} = {{ printValue(constant.value) }};
+    public const {{ constant.name }} = {{ printValue(constant.value) }};
 {% if not loop.last %}
 
 {% endif %}

@@ -22,7 +22,17 @@ abstract class ViewModelListItemTestCaseSkeletonModel extends AbstractSkeletonMo
     /**
      * @var string
      */
+    public $viewModelListItemMethod;
+
+    /**
+     * @var string
+     */
     public $viewModelListItemShortName;
+
+    /**
+     * @var string
+     */
+    public $viewModelTestCaseMethod;
 
     /**
      * @var string

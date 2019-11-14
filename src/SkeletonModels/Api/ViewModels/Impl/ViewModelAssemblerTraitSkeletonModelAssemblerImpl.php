@@ -13,7 +13,8 @@ class ViewModelAssemblerTraitSkeletonModelAssemblerImpl implements ViewModelAsse
 {
     public function create(
         FileObject $viewModelAssemblerTraitFileObject,
-        FileObject $useCaseResponseFileObject
+        FileObject $useCaseResponseFileObject,
+        FileObject $viewModelFileObject
     ): ViewModelAssemblerTraitSkeletonModel {
         $skeletonModel = new ViewModelAssemblerTraitSkeletonModelImpl();
         $skeletonModel->className = $viewModelAssemblerTraitFileObject->getClassName();
@@ -23,7 +24,7 @@ class ViewModelAssemblerTraitSkeletonModelAssemblerImpl implements ViewModelAsse
         $skeletonModel->useCaseResponseClassName = $useCaseResponseFileObject->getClassName();
         $skeletonModel->useCaseResponseShortName = $useCaseResponseFileObject->getShortName();
         $skeletonModel->useCaseResponseArgument = lcfirst($useCaseResponseFileObject->getEntity());
-        $skeletonModel->viewModelShortName = $useCaseResponseFileObject->getEntity();
+        $skeletonModel->viewModelShortName = $viewModelFileObject->getShortName();
 
         return $skeletonModel;
     }

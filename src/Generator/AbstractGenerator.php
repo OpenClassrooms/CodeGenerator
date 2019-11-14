@@ -54,14 +54,9 @@ abstract class AbstractGenerator implements Generator
     /**
      * @return array|FieldObject[]
      */
-    protected function getParentAndChildPublicClassFields(string $className): array
+    protected function getProtectedClassFields(string $className): array
     {
-        $classFields = array_merge(
-            FieldObjectUtility::getParentPublicClassFields($className),
-            FieldObjectUtility::getPublicClassFields($className)
-        );
-
-        return $classFields;
+        return FieldObjectUtility::getProtectedClassFields($className);
     }
 
     /**
@@ -72,16 +67,18 @@ abstract class AbstractGenerator implements Generator
         return FieldObjectUtility::getPublicClassFields($className);
     }
 
-    protected function insertFileObject(FileObject $fileObject): void
+    /**
+     * @return FieldObject[]
+     */
+    protected function getPublicTraitAndClassFields(string $className): array
     {
-        $fileObject = StubUtility::incrementSuffix($fileObject, $this->fileObjectGateway->findAll());
 
-        $this->fileObjectGateway->insert($fileObject);
-    }
+        $classFields = array_merge(
+            FieldObjectUtility::getPublicTraitsFields($className),
+            FieldObjectUtility::getPublicClassFields($className)
+        );
 
-    protected function render(string $template, array $parameters): string
-    {
-        return $this->templating->render($template, $parameters);
+        return $classFields;
     }
 
     /**
@@ -104,14 +101,6 @@ abstract class AbstractGenerator implements Generator
         return $fieldObjects;
     }
 
-    /**
-     * @return array|FieldObject[]
-     */
-    protected function getProtectedClassFields(string $className): array
-    {
-        return FieldObjectUtility::getProtectedClassFields($className);
-    }
-
     protected function initFileObjectParameter(string $entityClassName): void
     {
         [
@@ -121,5 +110,17 @@ abstract class AbstractGenerator implements Generator
         ] = FileObjectUtility::getBaseNamespaceDomainAndEntityNameFromClassName(
             $entityClassName
         );
+    }
+
+    protected function insertFileObject(FileObject $fileObject): void
+    {
+        $fileObject = StubUtility::incrementSuffix($fileObject, $this->fileObjectGateway->findAll());
+
+        $this->fileObjectGateway->insert($fileObject);
+    }
+
+    protected function render(string $template, array $parameters): string
+    {
+        return $this->templating->render($template, $parameters);
     }
 }
