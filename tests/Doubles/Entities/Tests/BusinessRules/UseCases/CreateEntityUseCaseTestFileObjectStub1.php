@@ -10,7 +10,7 @@ class CreateEntityUseCaseTestFileObjectStub1 extends FileObject
 
     public function __construct()
     {
-        $this->content = __DIR__ . '/../../../../../Fixtures/Classes/Tests/BusinessRules/UseCases/Domain/subDomain/CreateFunctionalEntityTest.php';
+        $this->content = __DIR__ . '/../../../../../Fixtures/Classes/Tests/BusinessRules/UseCases/Domain/SubDomain/CreateFunctionalEntityTest.php';
         $this->className = self::CLASS_NAME;
     }
 }
