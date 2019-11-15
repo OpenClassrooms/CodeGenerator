@@ -46,6 +46,11 @@ class EditFunctionalEntity implements UseCase
 
         $this->update($functionalEntity);
 
+        return $this->createResponse($functionalEntity);
+    }
+
+    private function createResponse(FunctionalEntity $functionalEntity): FunctionalEntityDetailResponse
+    {
         return $this->responseAssembler->create($functionalEntity);
     }
 
