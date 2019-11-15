@@ -20,4 +20,6 @@ interface FunctionalEntityGateway
     public function findAll(array $filters = [], array $sorts = [], array $pagination = []): iterable;
 
     public function insert(FunctionalEntity $functionalEntity): void;
+
+    public function update(FunctionalEntity $functionalEntity): void;
 }

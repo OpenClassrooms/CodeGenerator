@@ -18,6 +18,8 @@ class FunctionalEntityDetailResponseStub1 extends FunctionalEntityDetailResponse
 
     public const ID = FunctionalEntityStub1::ID;
 
+    public const UPDATED_AT = FunctionalEntityStub1::UPDATED_AT;
+
     public $field1 = self::FIELD_1;
 
     public $field2 = self::FIELD_2;
@@ -28,8 +30,11 @@ class FunctionalEntityDetailResponseStub1 extends FunctionalEntityDetailResponse
 
     public $id = self::ID;
 
+    public $updatedAt = self::UPDATED_AT;
+
     public function __construct()
     {
         $this->field4 = new \DateTimeImmutable(self::FIELD_4);
+        $this->updatedAt = new \DateTimeImmutable(self::UPDATED_AT);
     }
 }

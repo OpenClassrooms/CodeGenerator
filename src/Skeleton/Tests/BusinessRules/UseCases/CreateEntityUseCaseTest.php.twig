@@ -48,9 +48,7 @@ final class {{ skeletonModel.shortName }} extends TestCase
         $this->useCase = new {{ skeletonModel.createEntityShortName }}(
             new {{ skeletonModel.entityDetailResponseAssemblerMockShortName }}(),
             new {{ skeletonModel.entityFactoryImplShortName }}(),
-            new {{ skeletonModel.inMemoryEntityGatewayShortName }}(
-                [{{ skeletonModel.entityStubShortName }}::ID => new {{ skeletonModel.entityStubShortName }}()]
-            )
+            new {{ skeletonModel.inMemoryEntityGatewayShortName }}([{{ skeletonModel.entityStubShortName }}::ID => new {{ skeletonModel.entityStubShortName }}()])
         );
     }
 

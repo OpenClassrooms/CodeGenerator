@@ -47,9 +47,7 @@ final class CreateFunctionalEntityTest extends TestCase
         $this->useCase = new CreateFunctionalEntity(
             new FunctionalEntityDetailResponseAssemblerMock(),
             new FunctionalEntityFactoryImpl(),
-            new InMemoryFunctionalEntityGateway(
-                [FunctionalEntityStub1::ID => new FunctionalEntityStub1()]
-            )
+            new InMemoryFunctionalEntityGateway([FunctionalEntityStub1::ID => new FunctionalEntityStub1()])
         );
     }
 

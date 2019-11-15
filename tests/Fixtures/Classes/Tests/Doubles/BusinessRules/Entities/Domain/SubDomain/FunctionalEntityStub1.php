@@ -17,6 +17,8 @@ class FunctionalEntityStub1 extends FunctionalEntityImpl
 
     const ID = 1;
 
+    const UPDATED_AT = '2018-01-01';
+
     protected $field1 = self::FIELD_1;
 
     protected $field2 = self::FIELD_2;
@@ -28,5 +30,6 @@ class FunctionalEntityStub1 extends FunctionalEntityImpl
     public function __construct()
     {
         $this->field4 = new \DateTimeImmutable(self::FIELD_4);
+        $this->updatedAt = new \DateTimeImmutable(self::UPDATED_AT);
     }
 }

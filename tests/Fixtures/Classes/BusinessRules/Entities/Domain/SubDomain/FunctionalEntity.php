@@ -2,6 +2,8 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Entities\Domain\SubDomain;
 
+use Carbon\CarbonImmutable;
+
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
@@ -31,6 +33,11 @@ abstract class FunctionalEntity
      * @var int
      */
     protected $id;
+
+    /**
+     * @var \DateTimeInterface
+     */
+    protected $updatedAt;
 
     public function getField1(): string
     {
@@ -78,5 +85,10 @@ abstract class FunctionalEntity
     public function setField4(\DateTimeInterface $field4): void
     {
         $this->field4 = $field4;
+    }
+
+    public function update(): void
+    {
+        $this->updatedAt = new CarbonImmutable();
     }
 }

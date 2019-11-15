@@ -21,6 +21,7 @@ class EntityStubFileObjectStub1 extends FileObject
             new EntityStubFieldObjectStub4(),
             new EntityStubFieldObjectStub5(),
             new EntityStubFieldObjectStub1(),
+            new EntityStubFieldObjectStub6(),
         ];
     }
 }

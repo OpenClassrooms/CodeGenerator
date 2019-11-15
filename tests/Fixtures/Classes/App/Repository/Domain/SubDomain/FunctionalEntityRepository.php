@@ -30,4 +30,9 @@ class FunctionalEntityRepository extends ServiceEntityRepository implements Func
     {
         $this->getEntityManager()->persist($functionalEntity);
     }
+
+    public function update(FunctionalEntity $functionalEntity): void
+    {
+        $functionalEntity->update();
+    }
 }

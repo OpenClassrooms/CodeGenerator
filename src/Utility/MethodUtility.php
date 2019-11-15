@@ -103,13 +103,17 @@ class MethodUtility
 
         $methodsChained = [];
         foreach ($rc->getProperties() as $field) {
-            if ($field->getName() === 'id') {
-                continue;
+            if (self::isUpdatable($field)) {
+                $methodsChained[] = self::buildWitherMethodObject($field, $returnType);
             }
-            $methodsChained[] = self::buildWitherMethodObject($field, $returnType);
         }
 
         return $methodsChained;
+    }
+
+    private static function isUpdatable(\ReflectionProperty $field): bool
+    {
+        return !in_array($field->getName(), ['id', 'createdAt', 'updatedAt']);
     }
 
     private static function buildWitherMethodObject(\ReflectionProperty $field, string $returnType): MethodObject
@@ -142,10 +146,9 @@ class MethodUtility
 
         $methodsChained = [];
         foreach ($rc->getProperties() as $field) {
-            if ($field->getName() === 'id') {
-                continue;
+            if (self::isUpdatable($field)) {
+                $methodsChained[] = self::buildWitherCalledMethod($field, $className);
             }
-            $methodsChained[] = self::buildWitherCalledMethod($field, $className);
         }
 
         return $methodsChained;

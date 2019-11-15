@@ -13,7 +13,7 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingSer
 use OpenClassrooms\CodeGenerator\Tests\Doubles\SkeletonModels\BusinessRules\UseCases\CreateEntityUseCaseRequestDTOSkeletonModelAssemblerMock;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Entities\Domain\SubDomain\FunctionalEntity;
 use OpenClassrooms\CodeGenerator\Utility\Impl\FieldObjectUtilityContext;
-use OpenClassrooms\CodeGenerator\Utility\Impl\FieldObjectUtilityGetFieldsWithoutId;
+use OpenClassrooms\CodeGenerator\Utility\Impl\FieldObjectUtilityGetFieldsUpdatable;
 use OpenClassrooms\CodeGenerator\Utility\Impl\MethodUtilityContext;
 use OpenClassrooms\CodeGenerator\Utility\Impl\MethodUtilityGetAccessorsWithoutId;
 use PHPUnit\Framework\TestCase;
@@ -60,7 +60,7 @@ class CreateEntityUseCaseRequestDTOGeneratorTest extends TestCase
             new CreateEntityUseCaseRequestDTOSkeletonModelAssemblerMock()
         );
         $this->createEntityRequestDTOGenerator->setFieldUtility(
-            new FieldObjectUtilityContext(new FieldObjectUtilityGetFieldsWithoutId())
+            new FieldObjectUtilityContext(new FieldObjectUtilityGetFieldsUpdatable())
         );
         $this->createEntityRequestDTOGenerator->setMethodUtility(
             new MethodUtilityContext(new MethodUtilityGetAccessorsWithoutId())
