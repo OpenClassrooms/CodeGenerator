@@ -7,6 +7,7 @@ use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Entities\D
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gateways\Domain\SubDomain\FunctionalEntityGateway;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Requestors\Domain\SubDomain\EditFunctionalEntityRequest;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityDetailResponse;
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityDetailResponseAssembler;
 use OpenClassrooms\UseCase\Application\Annotations\Transaction;
 use OpenClassrooms\UseCase\BusinessRules\Requestors\UseCase;
 use OpenClassrooms\UseCase\BusinessRules\Requestors\UseCaseRequest;
@@ -18,10 +19,17 @@ class EditFunctionalEntity implements UseCase
      */
     private $functionalEntityGateway;
 
+    /**
+     * @var FunctionalEntityDetailResponseAssembler
+     */
+    private $responseAssembler;
+
     public function __construct(
-        FunctionalEntityGateway $functionalEntityGateway
+        FunctionalEntityGateway $functionalEntityGateway,
+        FunctionalEntityDetailResponseAssembler $responseAssembler
     ) {
         $this->functionalEntityGateway = $functionalEntityGateway;
+        $this->responseAssembler = $responseAssembler;
     }
 
     /**
@@ -37,6 +45,8 @@ class EditFunctionalEntity implements UseCase
         $this->populate($useCaseRequest, $functionalEntity);
 
         $this->update($functionalEntity);
+
+        return $this->responseAssembler->create($functionalEntity);
     }
 
     /**
