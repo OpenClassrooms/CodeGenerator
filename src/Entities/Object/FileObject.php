@@ -186,4 +186,8 @@ class FileObject
     {
         $this->methods = $methods;
     }
+
+    public function addMethods(MethodObject $method) {
+        $this->methods[] = $method;
+    }
 }

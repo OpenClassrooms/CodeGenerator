@@ -81,10 +81,10 @@ class MethodUtility
     }
 
     /**
-     * @param string[]
-     * @param \ReflectionMethod[]
+     * @param string[] $fields
+     * @param \ReflectionMethod[] $methods
      *
-     * @return array
+     * @return \ReflectionMethod[]
      */
     private static function removeNotSelectedFields(array $fields, array $methods): array
     {
@@ -138,6 +138,48 @@ class MethodUtility
         }
 
         return $argument;
+    }
+
+    public static function buildIsUpdatedMethods(string $className): array
+    {
+        $rc = new \ReflectionClass($className);
+
+        $methodsChained = [];
+        foreach ($rc->getProperties() as $field) {
+            if (self::isUpdatable($field)) {
+                $methodsChained[] = self::buildIsUpdatedMethodObject($field);
+            }
+        }
+
+        return $methodsChained;
+    }
+
+    public static function buildIsUpdatedMethodObject(\ReflectionProperty $field): MethodObject
+    {
+        $methodChained = new MethodObject(self::createIsUpdatedName($field));
+        $methodChained->setReturnType('bool');
+        $methodChained->setNullable(false);
+
+        return $methodChained;
+    }
+
+    private static function createIsUpdatedName(\ReflectionProperty $field): string
+    {
+        return 'is' . ucfirst($field->getName()) . 'Updated';
+    }
+
+    public static function buildGetEntityIdMethodObject(string $shortClassName): MethodObject
+    {
+        $methodChained = new MethodObject(self::creatGetEntityIdName($shortClassName));
+        $methodChained->setReturnType('int');
+        $methodChained->setNullable(false);
+
+        return $methodChained;
+    }
+
+    private static function creatGetEntityIdName(string $shortClassName): string
+    {
+        return 'get' . ucfirst($shortClassName) . 'Id';
     }
 
     public static function buildWitherCalledMethods(string $className): array

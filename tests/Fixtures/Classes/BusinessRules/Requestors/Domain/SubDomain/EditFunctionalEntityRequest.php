@@ -15,11 +15,11 @@ interface EditFunctionalEntityRequest extends UseCaseRequest
 
     public function getFunctionalEntityId(): int;
 
-    public function isField3(): bool;
-
     public function isField1Updated(): bool;
 
     public function isField2Updated(): bool;
+
+    public function isField3(): bool;
 
     public function isField3Updated(): bool;
 
