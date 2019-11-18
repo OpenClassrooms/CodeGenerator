@@ -11,6 +11,7 @@ use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\D
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\EditFunctionalEntity;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\BusinessRules\Entities\Domain\SubDomain\FunctionalEntityStub1;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\BusinessRules\Gateways\Domain\SubDomain\InMemoryFunctionalEntityGateway;
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityDetailResponseAssemblerMock;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityDetailResponseStub1;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityDetailResponseTestCase;
 use PHPUnit\Framework\TestCase;
@@ -43,19 +44,19 @@ final class EditFunctionalEntityTest extends TestCase
      */
     public function editFunctionalEntity(): void
     {
-        $this->useCase->execute($this->request);
+        $response = $this->useCase->execute($this->request);
 
         $expectedResponse = new FunctionalEntityDetailResponseStub1();
-        $actual = array_shift(InMemoryFunctionalEntityGateway::$functionalEntities);
         EntityUtil::setId($expectedResponse, FunctionalEntityStub1::ID);
-        $this->assertFunctionalEntityDetailResponse($expectedResponse, $actual);
+        $this->assertFunctionalEntityDetailResponse($expectedResponse, $response);
     }
 
     protected function setup(): void
     {
         $this->request = $this->buildRequest();
         $this->useCase = new EditFunctionalEntity(
-            new InMemoryFunctionalEntityGateway([FunctionalEntityStub1::ID => new FunctionalEntityStub1()])
+            new InMemoryFunctionalEntityGateway([FunctionalEntityStub1::ID => new FunctionalEntityStub1()]),
+            new FunctionalEntityDetailResponseAssemblerMock()
         );
     }
 
