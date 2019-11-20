@@ -6,15 +6,16 @@ use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\Entities\Type\UseCaseRequestFileObjectType;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\AbstractUseCaseGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\Request\EditEntityUseCaseRequestGeneratorRequest;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\EditUseCaseRequestMethodTrait;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Requestors\EditEntityUseCaseRequestSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Requestors\EditEntityUseCaseRequestSkeletonModelAssembler;
-use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
-use OpenClassrooms\CodeGenerator\Utility\MethodUtility;
 use OpenClassrooms\CodeGenerator\Utility\MethodUtilityStrategy;
 
 class EditEntityUseCaseRequestGenerator extends AbstractUseCaseGenerator
 {
+    use EditUseCaseRequestMethodTrait;
+
     /**
      * @var EditEntityUseCaseRequestSkeletonModelAssembler
      */
@@ -59,18 +60,6 @@ class EditEntityUseCaseRequestGenerator extends AbstractUseCaseGenerator
         );
     }
 
-    private function buildEditUseCaseRequestMethods(string $entityClassName): array
-    {
-        $accessors = $this->methodUtility->getAccessors($entityClassName);
-        $isUpdatedMethods = MethodUtility::buildIsUpdatedMethods($entityClassName);
-        $getEntityMethod = MethodUtility::buildGetEntityIdMethodObject(
-            FileObjectUtility::getShortClassName($entityClassName)
-        );
-        $getEntityMethod = array($getEntityMethod);
-
-        return array_merge($accessors, $isUpdatedMethods, $getEntityMethod);
-    }
-
     private function generateContent(FileObject $editEntityUseCaseRequestFileObject): string
     {
         $skeletonModel = $this->createSkeletonModel($editEntityUseCaseRequestFileObject);
@@ -88,10 +77,5 @@ class EditEntityUseCaseRequestGenerator extends AbstractUseCaseGenerator
         EditEntityUseCaseRequestSkeletonModelAssembler $editEntityUseCaseRequestSkeletonModelAssembler
     ): void {
         $this->editEntityUseCaseRequestSkeletonModelAssembler = $editEntityUseCaseRequestSkeletonModelAssembler;
-    }
-
-    public function setMethodUtility(MethodUtilityStrategy $methodUtility): void
-    {
-        $this->methodUtility = $methodUtility;
     }
 }

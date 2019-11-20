@@ -31,4 +31,11 @@ class DocCommentUtility
     {
         return (bool) preg_match('/null/', $docComment);
     }
+
+    public static function setType(string $type): string
+    {
+        return "/**
+     * @var $type
+     */";
+    }
 }

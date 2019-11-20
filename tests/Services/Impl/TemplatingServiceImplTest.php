@@ -21,7 +21,7 @@ class TemplatingServiceImplTest extends TestCase
     /**
      * @test
      */
-    public function getSortNameByAlphaFilter_ReturnArrayOfFields(): void
+    public function getSortNameByAlphaFilterReturnArrayOfFields(): void
     {
         $fieldObjects = [
             $this->generateFieldObject('omega', 'bool'),
@@ -81,7 +81,7 @@ class TemplatingServiceImplTest extends TestCase
     /**
      * @test
      */
-    public function getSortIdFirstFilter_ReturnArrayOfFields(): void
+    public function getSortIdFirstFilterReturnArrayOfFields(): void
     {
         $fieldObjects = [
             $this->generateFieldObject('omega', 'bool'),
@@ -106,7 +106,7 @@ class TemplatingServiceImplTest extends TestCase
      * @test
      * @dataProvider printValueProvider
      */
-    public function printValue_ReturnValue($value, $expected): void
+    public function printValueReturnValue($value, $expected): void
     {
         $twigFunction = TestClassUtil::invokeMethod('printValue', $this->templateServiceImpl);
 
@@ -130,7 +130,7 @@ class TemplatingServiceImplTest extends TestCase
     /**
      * @test
      */
-    public function lineBreak_ReturnTrue(): void
+    public function lineBreakReturnTrue(): void
     {
         $fieldObjects = [
             $this->generateFieldObject('id', 'int'),
@@ -149,6 +149,6 @@ class TemplatingServiceImplTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->templateServiceImpl = new  TemplatingServiceImpl('', 'author', 'mail');
+        $this->templateServiceImpl = new  TemplatingServiceImpl('');
     }
 }

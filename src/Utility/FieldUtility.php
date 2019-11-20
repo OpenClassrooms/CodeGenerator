@@ -45,4 +45,9 @@ class FieldUtility
 
         return $fields;
     }
+
+    public static function isUpdatable(\ReflectionProperty $field): bool
+    {
+        return !in_array($field->getName(), ['id', 'createdAt', 'updatedAt']);
+    }
 }

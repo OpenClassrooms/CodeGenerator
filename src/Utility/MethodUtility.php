@@ -103,7 +103,7 @@ class MethodUtility
 
         $methodsChained = [];
         foreach ($rc->getProperties() as $field) {
-            if (self::isUpdatable($field)) {
+            if (FieldUtility::isUpdatable($field)) {
                 $methodsChained[] = self::buildWitherMethodObject($field, $returnType);
             }
         }
@@ -111,23 +111,13 @@ class MethodUtility
         return $methodsChained;
     }
 
-    private static function isUpdatable(\ReflectionProperty $field): bool
-    {
-        return !in_array($field->getName(), ['id', 'createdAt', 'updatedAt']);
-    }
-
     private static function buildWitherMethodObject(\ReflectionProperty $field, string $returnType): MethodObject
     {
-        $methodChained = new MethodObject(self::createMethodsChainedName($field));
+        $methodChained = new MethodObject(NameUtility::createMethodsChainedName($field));
         $methodChained->setReturnType($returnType);
         $methodChained->addArgument(self::buildArgument($field));
 
         return $methodChained;
-    }
-
-    private static function createMethodsChainedName(\ReflectionProperty $field): string
-    {
-        return 'with' . ucfirst($field->getName());
     }
 
     private static function buildArgument(\ReflectionProperty $field): FieldObject
@@ -146,7 +136,7 @@ class MethodUtility
 
         $methodsChained = [];
         foreach ($rc->getProperties() as $field) {
-            if (self::isUpdatable($field)) {
+            if (FieldUtility::isUpdatable($field)) {
                 $methodsChained[] = self::buildIsUpdatedMethodObject($field);
             }
         }
@@ -156,30 +146,20 @@ class MethodUtility
 
     public static function buildIsUpdatedMethodObject(\ReflectionProperty $field): MethodObject
     {
-        $methodChained = new MethodObject(self::createIsUpdatedName($field));
+        $methodChained = new MethodObject(NameUtility::createIsUpdatedName($field));
         $methodChained->setReturnType('bool');
         $methodChained->setNullable(false);
 
         return $methodChained;
     }
 
-    private static function createIsUpdatedName(\ReflectionProperty $field): string
-    {
-        return 'is' . ucfirst($field->getName()) . 'Updated';
-    }
-
     public static function buildGetEntityIdMethodObject(string $shortClassName): MethodObject
     {
-        $methodChained = new MethodObject(self::creatGetEntityIdName($shortClassName));
+        $methodChained = new MethodObject(NameUtility::creatGetEntityIdName($shortClassName));
         $methodChained->setReturnType('int');
         $methodChained->setNullable(false);
 
         return $methodChained;
-    }
-
-    private static function creatGetEntityIdName(string $shortClassName): string
-    {
-        return 'get' . ucfirst($shortClassName) . 'Id';
     }
 
     public static function buildWitherCalledMethods(string $className): array
@@ -188,7 +168,7 @@ class MethodUtility
 
         $methodsChained = [];
         foreach ($rc->getProperties() as $field) {
-            if (self::isUpdatable($field)) {
+            if (FieldUtility::isUpdatable($field)) {
                 $methodsChained[] = self::buildWitherCalledMethod($field, $className);
             }
         }
@@ -198,7 +178,7 @@ class MethodUtility
 
     private static function buildWitherCalledMethod(\ReflectionProperty $field, string $className): MethodObject
     {
-        $methodChained = new MethodObject(self::createMethodsChainedName($field));
+        $methodChained = new MethodObject(NameUtility::createMethodsChainedName($field));
         $methodChained->setReturnType(DocCommentUtility::getReturnType($field->getDocComment()));
         $methodChained->addArgument(self::buildConstantArgument($className, $field));
 
