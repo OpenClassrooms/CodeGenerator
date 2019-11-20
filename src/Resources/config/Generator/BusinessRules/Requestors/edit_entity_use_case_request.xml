@@ -9,7 +9,7 @@
                 alias="OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Requestors\EditEntityUseCaseRequestSkeletonModelAssembler"
                 public="false">
             <call method="setUseCaseRequestClassName">
-                <argument type="string">%use_case_request_classname%%</argument>
+                <argument type="string">%use_case_request_classname%</argument>
             </call>
         </service>
 
