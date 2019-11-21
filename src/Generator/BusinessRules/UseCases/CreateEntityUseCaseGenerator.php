@@ -46,8 +46,8 @@ class CreateEntityUseCaseGenerator extends AbstractUseCaseGenerator
         $createEntityFileObject = $this->createCreateEntityUseCaseFileObject();
         $createEntityRequestFileObject = $this->createCreateEntityUseCaseRequestFileObject();
         $entityFileObject = $this->createEntityFileObject();
-        $entityDetailResponseFileObject = $this->createEntityDetailResponseFileObject();
-        $entityDetailResponseAssemblerFileObject = $this->createEntityDetailResponseAssemblerFileObject();
+        $entityUseCaseDetailResponseFileObject = $this->createEntityDetailResponseFileObject();
+        $entityUseCaseDetailResponseAssemblerFileObject = $this->createEntityDetailResponseAssemblerFileObject();
         $entityFactoryFileObject = $this->createEntityFactoryFileObject();
         $entityGatewayFileObject = $this->createEntityGatewayFileObject();
 
@@ -59,8 +59,8 @@ class CreateEntityUseCaseGenerator extends AbstractUseCaseGenerator
                     UseCaseFileObjectType::BUSINESS_RULES_CREATE_ENTITY_USE_CASE                     => $createEntityFileObject,
                     UseCaseRequestFileObjectType::BUSINESS_RULES_CREATE_ENTITY_USE_CASE_REQUEST      => $createEntityRequestFileObject,
                     EntityFileObjectType::BUSINESS_RULES_ENTITY                                      => $entityFileObject,
-                    UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE           => $entityDetailResponseFileObject,
-                    UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE_ASSEMBLER => $entityDetailResponseAssemblerFileObject,
+                    UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE           => $entityUseCaseDetailResponseFileObject,
+                    UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE_ASSEMBLER => $entityUseCaseDetailResponseAssemblerFileObject,
                     EntityFileObjectType::BUSINESS_RULES_ENTITY_FACTORY                              => $entityFactoryFileObject,
                     EntityFileObjectType::BUSINESS_RULES_ENTITY_GATEWAY                              => $entityGatewayFileObject,
                 ]

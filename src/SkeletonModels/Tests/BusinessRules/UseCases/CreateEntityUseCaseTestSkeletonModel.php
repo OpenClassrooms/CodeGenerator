@@ -24,19 +24,19 @@ abstract class CreateEntityUseCaseTestSkeletonModel extends AbstractSkeletonMode
 
     public $createEntityShortName;
 
-    public $entityDetailResponseAssemblerMockClassName;
+    public $entityUseCaseDetailResponseAssemblerMockClassName;
 
-    public $entityDetailResponseAssemblerMockShortName;
+    public $entityUseCaseDetailResponseAssemblerMockShortName;
 
-    public $entityDetailResponseShortName;
+    public $entityUseCaseDetailResponseShortName;
 
-    public $entityDetailResponseStubClassName;
+    public $entityUseCaseDetailResponseStubClassName;
 
-    public $entityDetailResponseStubShortName;
+    public $entityUseCaseDetailResponseStubShortName;
 
-    public $entityDetailResponseTestCaseClassName;
+    public $entityUseCaseDetailResponseTestCaseClassName;
 
-    public $entityDetailResponseTestCaseShortName;
+    public $entityUseCaseDetailResponseTestCaseShortName;
 
     public $entityFactoryImplClassName;
 

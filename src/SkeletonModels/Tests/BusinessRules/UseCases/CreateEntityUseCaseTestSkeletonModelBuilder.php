@@ -31,19 +31,19 @@ interface CreateEntityUseCaseTestSkeletonModelBuilder
     public function withEntityFileObject(FileObject $entityFileObject): CreateEntityUseCaseTestSkeletonModelBuilder;
 
     public function withEntityDetailResponseFileObject(
-        FileObject $entityDetailResponseFileObject
+        FileObject $entityUseCaseDetailResponseFileObject
     ): CreateEntityUseCaseTestSkeletonModelBuilder;
 
     public function withEntityDetailResponseAssemblerMockFileObject(
-        FileObject $entityDetailResponseAssemblerMockFileObject
+        FileObject $entityUseCaseDetailResponseAssemblerMockFileObject
     ): CreateEntityUseCaseTestSkeletonModelBuilder;
 
     public function withEntityDetailResponseStubFileObject(
-        FileObject $entityDetailResponseStubFileObject
+        FileObject $entityUseCaseDetailResponseStubFileObject
     ): CreateEntityUseCaseTestSkeletonModelBuilder;
 
     public function withEntityDetailResponseTestCaseFileObject(
-        FileObject $entityDetailResponseTestCaseFileObject
+        FileObject $entityUseCaseDetailResponseTestCaseFileObject
     ): CreateEntityUseCaseTestSkeletonModelBuilder;
 
     public function withEntityFactoryImplFileObject(

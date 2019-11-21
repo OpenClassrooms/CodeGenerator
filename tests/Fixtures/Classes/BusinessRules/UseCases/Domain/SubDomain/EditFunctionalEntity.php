@@ -42,16 +42,11 @@ class EditFunctionalEntity implements UseCase
     public function execute(UseCaseRequest $useCaseRequest): FunctionalEntityDetailResponse
     {
         $functionalEntity = $this->getFunctionalEntity($useCaseRequest->getFunctionalEntityId());
-        $this->populate($useCaseRequest, $functionalEntity);
+        $this->populate($functionalEntity, $useCaseRequest);
 
         $this->update($functionalEntity);
 
         return $this->createResponse($functionalEntity);
-    }
-
-    private function createResponse(FunctionalEntity $functionalEntity): FunctionalEntityDetailResponse
-    {
-        return $this->responseAssembler->create($functionalEntity);
     }
 
     /**
@@ -62,7 +57,7 @@ class EditFunctionalEntity implements UseCase
         return $this->functionalEntityGateway->find($functionalEntityId);
     }
 
-    private function populate(EditFunctionalEntityRequest $request, FunctionalEntity $functionalEntity): void
+    private function populate(FunctionalEntity $functionalEntity, EditFunctionalEntityRequest $request): void
     {
         !$request->isField1Updated() ?: $functionalEntity->setField1($request->getField1());
         !$request->isField2Updated() ?: $functionalEntity->setField2($request->getField2());
@@ -73,5 +68,10 @@ class EditFunctionalEntity implements UseCase
     private function update(FunctionalEntity $functionalEntity): void
     {
         $this->functionalEntityGateway->update($functionalEntity);
+    }
+
+    private function createResponse(FunctionalEntity $functionalEntity): FunctionalEntityDetailResponse
+    {
+        return $this->responseAssembler->create($functionalEntity);
     }
 }

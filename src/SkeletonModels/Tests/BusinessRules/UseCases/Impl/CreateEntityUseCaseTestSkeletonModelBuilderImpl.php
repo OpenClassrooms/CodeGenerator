@@ -80,40 +80,40 @@ class CreateEntityUseCaseTestSkeletonModelBuilderImpl implements CreateEntityUse
     }
 
     public function withEntityDetailResponseFileObject(
-        FileObject $entityDetailResponseFileObject
+        FileObject $entityUseCaseDetailResponseFileObject
     ): CreateEntityUseCaseTestSkeletonModelBuilder {
-        $this->skeletonModel->entityDetailResponseShortName = $entityDetailResponseFileObject->getShortName();
+        $this->skeletonModel->entityUseCaseDetailResponseShortName = $entityUseCaseDetailResponseFileObject->getShortName();
 
         return $this;
     }
 
     public function withEntityDetailResponseAssemblerMockFileObject(
-        FileObject $entityDetailResponseAssemblerMockFileObject
+        FileObject $entityUseCaseDetailResponseAssemblerMockFileObject
     ): CreateEntityUseCaseTestSkeletonModelBuilder {
 
-        $this->skeletonModel->entityDetailResponseAssemblerMockClassName = $entityDetailResponseAssemblerMockFileObject->getClassName(
+        $this->skeletonModel->entityUseCaseDetailResponseAssemblerMockClassName = $entityUseCaseDetailResponseAssemblerMockFileObject->getClassName(
         );
-        $this->skeletonModel->entityDetailResponseAssemblerMockShortName = $entityDetailResponseAssemblerMockFileObject->getShortName(
+        $this->skeletonModel->entityUseCaseDetailResponseAssemblerMockShortName = $entityUseCaseDetailResponseAssemblerMockFileObject->getShortName(
         );
 
         return $this;
     }
 
     public function withEntityDetailResponseStubFileObject(
-        FileObject $entityDetailResponseStubFileObject
+        FileObject $entityUseCaseDetailResponseStubFileObject
     ): CreateEntityUseCaseTestSkeletonModelBuilder {
-        $this->skeletonModel->entityDetailResponseStubClassName = $entityDetailResponseStubFileObject->getClassName();
-        $this->skeletonModel->entityDetailResponseStubShortName = $entityDetailResponseStubFileObject->getShortName();
+        $this->skeletonModel->entityUseCaseDetailResponseStubClassName = $entityUseCaseDetailResponseStubFileObject->getClassName();
+        $this->skeletonModel->entityUseCaseDetailResponseStubShortName = $entityUseCaseDetailResponseStubFileObject->getShortName();
 
         return $this;
     }
 
     public function withEntityDetailResponseTestCaseFileObject(
-        FileObject $entityDetailResponseTestCaseFileObject
+        FileObject $entityUseCaseDetailResponseTestCaseFileObject
     ): CreateEntityUseCaseTestSkeletonModelBuilder {
-        $this->skeletonModel->entityDetailResponseTestCaseClassName = $entityDetailResponseTestCaseFileObject->getClassName(
+        $this->skeletonModel->entityUseCaseDetailResponseTestCaseClassName = $entityUseCaseDetailResponseTestCaseFileObject->getClassName(
         );
-        $this->skeletonModel->entityDetailResponseTestCaseShortName = $entityDetailResponseTestCaseFileObject->getShortName(
+        $this->skeletonModel->entityUseCaseDetailResponseTestCaseShortName = $entityUseCaseDetailResponseTestCaseFileObject->getShortName(
         );
 
         return $this;

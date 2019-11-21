@@ -31,6 +31,8 @@ final class EditFunctionalEntityTest extends TestCase
     private $useCase;
 
     /**
+     *  @test
+     *
      * @expectedException \OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gateways\Domain\SubDomain\Exceptions\FunctionalEntityNotFoundException
      */
     public function externalResourceNotFoundShouldThrowException(): void
@@ -44,6 +46,7 @@ final class EditFunctionalEntityTest extends TestCase
      */
     public function editFunctionalEntity(): void
     {
+        $this->request->functionalEntityId = FunctionalEntityStub1::ID;
         $response = $this->useCase->execute($this->request);
 
         $expectedResponse = new FunctionalEntityDetailResponseStub1();
@@ -66,7 +69,6 @@ final class EditFunctionalEntityTest extends TestCase
 
         return $builder
             ->create()
-            ->forFunctionalEntity(FunctionalEntityStub1::ID)
             ->withField1(FunctionalEntityStub1::FIELD_1)
             ->withField2(FunctionalEntityStub1::FIELD_2)
             ->withField3(FunctionalEntityStub1::FIELD_3)

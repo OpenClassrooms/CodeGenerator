@@ -18,15 +18,15 @@ abstract class CreateEntityUseCaseSkeletonModel extends AbstractSkeletonModel
 
     public $entityClassName;
 
-    public $entityDetailResponseAssemblerArgument;
+    public $entityUseCaseDetailResponseAssemblerArgument;
 
-    public $entityDetailResponseAssemblerClassName;
+    public $entityUseCaseDetailResponseAssemblerClassName;
 
-    public $entityDetailResponseAssemblerShortName;
+    public $entityUseCaseDetailResponseAssemblerShortName;
 
-    public $entityDetailResponseClassName;
+    public $entityUseCaseDetailResponseClassName;
 
-    public $entityDetailResponseShortName;
+    public $entityUseCaseDetailResponseShortName;
 
     public $entityFactoryArgument;
 

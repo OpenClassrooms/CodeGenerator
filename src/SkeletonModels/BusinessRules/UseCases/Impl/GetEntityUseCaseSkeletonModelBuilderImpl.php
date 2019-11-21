@@ -38,20 +38,20 @@ class GetEntityUseCaseSkeletonModelBuilderImpl implements GetEntityUseCaseSkelet
     }
 
     public function withEntityClassNameDetailResponse(
-        FileObject $entityDetailResponseFileObject
+        FileObject $entityUseCaseDetailResponseFileObject
     ): GetEntityUseCaseSkeletonModelBuilder {
-        $this->skeletonModel->functionalEntityDetailResponseClassName = $entityDetailResponseFileObject->getClassName();
-        $this->skeletonModel->functionalEntityDetailResponseShortName = $entityDetailResponseFileObject->getShortName();
+        $this->skeletonModel->functionalEntityDetailResponseClassName = $entityUseCaseDetailResponseFileObject->getClassName();
+        $this->skeletonModel->functionalEntityDetailResponseShortName = $entityUseCaseDetailResponseFileObject->getShortName();
 
         return $this;
     }
 
     public function withEntityClassNameDetailResponseAssembler(
-        FileObject $entityDetailResponseAssemblerFileObject
+        FileObject $entityUseCaseDetailResponseAssemblerFileObject
     ): GetEntityUseCaseSkeletonModelBuilder {
-        $this->skeletonModel->functionalEntityDetailResponseAssemblerClassName = $entityDetailResponseAssemblerFileObject->getClassName(
+        $this->skeletonModel->functionalEntityDetailResponseAssemblerClassName = $entityUseCaseDetailResponseAssemblerFileObject->getClassName(
         );
-        $this->skeletonModel->functionalEntityDetailResponseAssemblerShortName = $entityDetailResponseAssemblerFileObject->getShortName(
+        $this->skeletonModel->functionalEntityDetailResponseAssemblerShortName = $entityUseCaseDetailResponseAssemblerFileObject->getShortName(
         );
 
         return $this;

@@ -28,11 +28,11 @@ interface GetEntityUseCaseSkeletonModelBuilder
     ): GetEntityUseCaseSkeletonModelBuilder;
 
     public function withEntityClassNameDetailResponse(
-        FileObject $entityDetailResponseFileObject
+        FileObject $entityUseCaseDetailResponseFileObject
     ): GetEntityUseCaseSkeletonModelBuilder;
 
     public function withEntityClassNameDetailResponseAssembler(
-        FileObject $entityDetailResponseAssemblerFileObject
+        FileObject $entityUseCaseDetailResponseAssemblerFileObject
     ): GetEntityUseCaseSkeletonModelBuilder;
 
     public function withEntityClassNameResponse(
