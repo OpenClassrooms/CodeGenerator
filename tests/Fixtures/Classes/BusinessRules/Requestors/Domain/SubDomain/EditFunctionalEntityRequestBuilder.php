@@ -11,8 +11,6 @@ interface EditFunctionalEntityRequestBuilder extends UseCaseRequest
 
     public function create(): EditFunctionalEntityRequestBuilder;
 
-    public function forFunctionalEntity(int $id): EditFunctionalEntityRequestBuilder;
-
     public function withField1(string $field1): EditFunctionalEntityRequestBuilder;
 
     public function withField2(array $field2): EditFunctionalEntityRequestBuilder;

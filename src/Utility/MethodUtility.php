@@ -81,7 +81,7 @@ class MethodUtility
     }
 
     /**
-     * @param string[] $fields
+     * @param string[]            $fields
      * @param \ReflectionMethod[] $methods
      *
      * @return \ReflectionMethod[]
