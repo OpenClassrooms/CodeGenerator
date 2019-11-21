@@ -5,14 +5,14 @@ namespace OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\Respon
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\Responders\UseCaseListItemResponseStubSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\Responders\UseCaseListItemResponseStubSkeletonModelAssembler;
-use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\Api\ViewModels\Impl\StubSkeletonAssemblerUtility;
+use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\Api\ViewModels\Impl\StubSkeletonAssemblerTrait;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 class UseCaseListItemResponseStubSkeletonModelAssemblerImpl implements UseCaseListItemResponseStubSkeletonModelAssembler
 {
-    use StubSkeletonAssemblerUtility;
+    use StubSkeletonAssemblerTrait;
 
     public function create(
         FileObject $useCaseListItemResponseStubFileObject,

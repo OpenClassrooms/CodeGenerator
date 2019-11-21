@@ -7,7 +7,7 @@ use OpenClassrooms\CodeGenerator\Entities\Object\FieldObject;
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
-trait StubSkeletonAssemblerUtility
+trait StubSkeletonAssemblerTrait
 {
     /**
      * @param FieldObject $fieldObjects []

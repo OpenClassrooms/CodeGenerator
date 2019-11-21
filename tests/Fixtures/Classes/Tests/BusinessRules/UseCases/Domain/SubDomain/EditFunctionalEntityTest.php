@@ -35,7 +35,7 @@ final class EditFunctionalEntityTest extends TestCase
      *
      * @expectedException \OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gateways\Domain\SubDomain\Exceptions\FunctionalEntityNotFoundException
      */
-    public function externalResourceNotFoundShouldThrowException(): void
+    public function functionalEntityNotFoundShouldThrowException(): void
     {
         $this->request->functionalEntityId = -1;
         $this->useCase->execute($this->request);

@@ -46,7 +46,8 @@ class CreateEntityUseCaseTestGenerator extends AbstractUseCaseGenerator
         $createEntityRequestDTOFileObject = $this->createEntityRequestDTOFileObject();
         $entityFileObject = $this->entityFileObject();
         $entityUseCaseDetailResponseFileObject = $this->entityUseCaseDetailResponseFileObject();
-        $entityUseCaseDetailResponseAssemblerMockFileObject = $this->entityUseCaseDetailResponseAssemblerMockFileObject();
+        $entityUseCaseDetailResponseAssemblerMockFileObject = $this->entityUseCaseDetailResponseAssemblerMockFileObject(
+        );
         $entityUseCaseDetailResponseStubFileObject = $this->entityUseCaseDetailResponseStubFileObject();
         $entityUseCaseDetailResponseTestCaseFileObject = $this->entityUseCaseDetailResponseTestCaseFileObject();
         $entityFactoryImplFileObject = $this->entityFactoryImplFileObject();
@@ -54,7 +55,7 @@ class CreateEntityUseCaseTestGenerator extends AbstractUseCaseGenerator
         $inMemoryEntityGatewayFileObject = $this->inMemoryEntityGatewayFileObject();
 
         $createEntityRequestBuilderImplFileObject->setMethods(
-            $this->buildEntityRequestBuilderImplMethods($entityFileObject)
+            MethodUtility::buildWitherCalledMethods($entityClassName)
         );
 
         $createEntityTestFileObject->setContent(
@@ -197,13 +198,6 @@ class CreateEntityUseCaseTestGenerator extends AbstractUseCaseGenerator
         );
     }
 
-    private function buildEntityRequestBuilderImplMethods(FileObject $entityFileObject)
-    {
-        $methods = MethodUtility::buildWitherCalledMethods($entityFileObject->getClassName());
-
-        return $methods;
-    }
-
     /**
      * @param FileObject[] $fileObjects
      */
@@ -220,7 +214,9 @@ class CreateEntityUseCaseTestGenerator extends AbstractUseCaseGenerator
             ->withCreateCreateEntityUseCaseTestFileObject(
                 $fileObjects[UseCaseFileObjectType::BUSINESS_RULES_CREATE_ENTITY_USE_CASE_TEST]
             )
-            ->withCreateEntityUseCaseFileObject($fileObjects[UseCaseFileObjectType::BUSINESS_RULES_CREATE_ENTITY_USE_CASE])
+            ->withCreateEntityUseCaseFileObject(
+                $fileObjects[UseCaseFileObjectType::BUSINESS_RULES_CREATE_ENTITY_USE_CASE]
+            )
             ->withCreateEntityUseCaseRequestFileObject(
                 $fileObjects[UseCaseRequestFileObjectType::BUSINESS_RULES_CREATE_ENTITY_USE_CASE_REQUEST]
             )

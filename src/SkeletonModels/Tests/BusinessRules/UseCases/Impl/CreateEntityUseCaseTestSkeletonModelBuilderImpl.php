@@ -3,12 +3,13 @@
 namespace OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\UseCases\Impl;
 
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
-use OpenClassrooms\CodeGenerator\Entities\Object\MethodObject;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\UseCases\CreateEntityUseCaseTestSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\UseCases\CreateEntityUseCaseTestSkeletonModelBuilder;
 
 class CreateEntityUseCaseTestSkeletonModelBuilderImpl implements CreateEntityUseCaseTestSkeletonModelBuilder
 {
+    use CrudSkeletonModelBuilderTrait;
+
     /**
      * @var CreateEntityUseCaseTestSkeletonModel
      */
@@ -31,8 +32,9 @@ class CreateEntityUseCaseTestSkeletonModelBuilderImpl implements CreateEntityUse
         return $this;
     }
 
-    public function withCreateEntityUseCaseFileObject(FileObject $createEntityFileObject): CreateEntityUseCaseTestSkeletonModelBuilder
-    {
+    public function withCreateEntityUseCaseFileObject(
+        FileObject $createEntityFileObject
+    ): CreateEntityUseCaseTestSkeletonModelBuilder {
         $this->skeletonModel->createEntityClassName = $createEntityFileObject->getClassName();
         $this->skeletonModel->createEntityShortName = $createEntityFileObject->getShortName();
 
@@ -82,7 +84,8 @@ class CreateEntityUseCaseTestSkeletonModelBuilderImpl implements CreateEntityUse
     public function withEntityDetailResponseFileObject(
         FileObject $entityUseCaseDetailResponseFileObject
     ): CreateEntityUseCaseTestSkeletonModelBuilder {
-        $this->skeletonModel->entityUseCaseDetailResponseShortName = $entityUseCaseDetailResponseFileObject->getShortName();
+        $this->skeletonModel->entityUseCaseDetailResponseShortName = $entityUseCaseDetailResponseFileObject->getShortName(
+        );
 
         return $this;
     }
@@ -102,8 +105,10 @@ class CreateEntityUseCaseTestSkeletonModelBuilderImpl implements CreateEntityUse
     public function withEntityDetailResponseStubFileObject(
         FileObject $entityUseCaseDetailResponseStubFileObject
     ): CreateEntityUseCaseTestSkeletonModelBuilder {
-        $this->skeletonModel->entityUseCaseDetailResponseStubClassName = $entityUseCaseDetailResponseStubFileObject->getClassName();
-        $this->skeletonModel->entityUseCaseDetailResponseStubShortName = $entityUseCaseDetailResponseStubFileObject->getShortName();
+        $this->skeletonModel->entityUseCaseDetailResponseStubClassName = $entityUseCaseDetailResponseStubFileObject->getClassName(
+        );
+        $this->skeletonModel->entityUseCaseDetailResponseStubShortName = $entityUseCaseDetailResponseStubFileObject->getShortName(
+        );
 
         return $this;
     }
@@ -129,8 +134,9 @@ class CreateEntityUseCaseTestSkeletonModelBuilderImpl implements CreateEntityUse
         return $this;
     }
 
-    public function withEntityStubFileObject(FileObject $entityStubFileObject): CreateEntityUseCaseTestSkeletonModelBuilder
-    {
+    public function withEntityStubFileObject(
+        FileObject $entityStubFileObject
+    ): CreateEntityUseCaseTestSkeletonModelBuilder {
         $this->skeletonModel->entityStubClassName = $entityStubFileObject->getClassName();
         $this->skeletonModel->entityStubShortName = $entityStubFileObject->getShortName();
 
@@ -148,20 +154,8 @@ class CreateEntityUseCaseTestSkeletonModelBuilderImpl implements CreateEntityUse
 
     public function build(): CreateEntityUseCaseTestSkeletonModel
     {
-        $this->skeletonModel->useCarbon = $this->useCarbon();
+        $this->skeletonModel->useCarbon = $this->useCarbon($this->skeletonModel->createEntityRequestBuilderImplMethods);
 
         return $this->skeletonModel;
-    }
-
-    private function useCarbon()
-    {
-        foreach ($this->skeletonModel->createEntityRequestBuilderImplMethods as $method){
-            /** @var MethodObject $method */
-            if($method->isDateType()) {
-                return true;
-            }
-        }
-
-        return false;
     }
 }
