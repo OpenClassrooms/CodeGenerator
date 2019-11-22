@@ -39,12 +39,6 @@ class ViewModelDetailStubGenerator extends AbstractViewModelGenerator
         return $viewModelDetailStubFileObject;
     }
 
-    public function setViewModelDetailStubSkeletonModelAssembler(
-        ViewModelDetailStubSkeletonModelAssembler $viewModelDetailStubSkeletonModelAssembler
-    ): void {
-        $this->viewModelDetailStubSkeletonModelAssembler = $viewModelDetailStubSkeletonModelAssembler;
-    }
-
     private function buildViewModelDetailStubFileObject(
         string $useCaseResponseClassName
     ): FileObject {
@@ -69,18 +63,6 @@ class ViewModelDetailStubGenerator extends AbstractViewModelGenerator
         );
 
         return $viewModelDetailStubFileObject;
-    }
-
-    private function createSkeletonModel(
-        FileObject $stubFileObject,
-        FileObject $viewModelDetailImplFileObject,
-        FileObject $useCaseDetailResponseStubFileObject
-    ): ViewModelDetailStubSkeletonModel {
-        return $this->viewModelDetailStubSkeletonModelAssembler->create(
-            $stubFileObject,
-            $viewModelDetailImplFileObject,
-            $useCaseDetailResponseStubFileObject
-        );
     }
 
     private function createUseCaseDetailResponseDTOFileObject(): FileObject
@@ -124,6 +106,15 @@ class ViewModelDetailStubGenerator extends AbstractViewModelGenerator
         );
     }
 
+    private function generateFields(FileObject $useCaseDetailResponseDTOFileObject): array
+    {
+        $viewModelDetailFields = $this->getPublicTraitAndClassFields(
+            $useCaseDetailResponseDTOFileObject->getClassName()
+        );
+
+        return StubFieldUtility::generateStubFieldObjects($viewModelDetailFields, $useCaseDetailResponseDTOFileObject);
+    }
+
     private function generateConsts(FileObject $responseEntityStub): array
     {
         return ConstUtility::generateConstsFromStubFileObject($responseEntityStub, self::DETAIL_RESPONSE);
@@ -143,12 +134,21 @@ class ViewModelDetailStubGenerator extends AbstractViewModelGenerator
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
     }
 
-    private function generateFields(FileObject $useCaseDetailResponseDTOFileObject): array
-    {
-        $viewModelDetailFields = $this->getPublicTraitAndClassFields(
-            $useCaseDetailResponseDTOFileObject->getClassName()
+    private function createSkeletonModel(
+        FileObject $stubFileObject,
+        FileObject $viewModelDetailImplFileObject,
+        FileObject $useCaseDetailResponseStubFileObject
+    ): ViewModelDetailStubSkeletonModel {
+        return $this->viewModelDetailStubSkeletonModelAssembler->create(
+            $stubFileObject,
+            $viewModelDetailImplFileObject,
+            $useCaseDetailResponseStubFileObject
         );
+    }
 
-        return StubFieldUtility::generateStubFieldObjects($viewModelDetailFields, $useCaseDetailResponseDTOFileObject);
+    public function setViewModelDetailStubSkeletonModelAssembler(
+        ViewModelDetailStubSkeletonModelAssembler $viewModelDetailStubSkeletonModelAssembler
+    ): void {
+        $this->viewModelDetailStubSkeletonModelAssembler = $viewModelDetailStubSkeletonModelAssembler;
     }
 }

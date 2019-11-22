@@ -19,8 +19,8 @@ class CreateEntityUseCaseRequestBuilderImplGeneratorRequestBuilderImpl implement
         return $this;
     }
 
-    public function withEntityClassName(string $entityClassName): CreateEntityUseCaseRequestBuilderImplGeneratorRequestBuilder
-    {
+    public function withEntityClassName(string $entityClassName
+    ): CreateEntityUseCaseRequestBuilderImplGeneratorRequestBuilder {
         $this->request->entityClassName = $entityClassName;
 
         return $this;

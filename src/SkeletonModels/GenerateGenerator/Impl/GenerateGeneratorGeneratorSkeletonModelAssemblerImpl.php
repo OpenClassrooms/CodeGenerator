@@ -4,7 +4,6 @@ namespace OpenClassrooms\CodeGenerator\SkeletonModels\GenerateGenerator\Impl;
 
 use OpenClassrooms\CodeGenerator\SkeletonModels\GenerateGenerator\GenerateGeneratorGeneratorSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\GenerateGenerator\GenerateGeneratorGeneratorSkeletonModelAssembler;
-use OpenClassrooms\CodeGenerator\Utility\StringUtility;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>

@@ -10,9 +10,9 @@ use Incenteev\ParameterHandler\Processor;
  */
 class ParameterHandler
 {
-    const CODE_GENERATOR = 'openclassrooms/code-generator';
+    const CODE_GENERATOR             = 'openclassrooms/code-generator';
 
-    const OC_CODE_GENERATOR_YML = 'oc_code_generator.yml';
+    const OC_CODE_GENERATOR_YML      = 'oc_code_generator.yml';
 
     const OC_CODE_GENERATOR_YML_DIST = 'vendor/openclassrooms/code-generator/oc_code_generator.yml.dist';
 

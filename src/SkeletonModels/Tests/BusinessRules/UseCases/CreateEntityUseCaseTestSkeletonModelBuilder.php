@@ -50,7 +50,8 @@ interface CreateEntityUseCaseTestSkeletonModelBuilder
         FileObject $entityFactoryImplFileObject
     ): CreateEntityUseCaseTestSkeletonModelBuilder;
 
-    public function withEntityStubFileObject(FileObject $entityStubFileObject): CreateEntityUseCaseTestSkeletonModelBuilder;
+    public function withEntityStubFileObject(FileObject $entityStubFileObject
+    ): CreateEntityUseCaseTestSkeletonModelBuilder;
 
     public function withInMemoryEntityGatewayFileObject(
         FileObject $inMemoryEntityGatewayFileObject

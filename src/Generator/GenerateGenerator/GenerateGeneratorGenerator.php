@@ -157,7 +157,6 @@ class GenerateGeneratorGenerator
             GenerateGeneratorFileObjectType::GENERATOR_REQUEST_BUILDER,
             'GenerateGenerator/GenerateGeneratorRequestBuilder.php.twig'
         );
-
     }
 
     private function buildGeneratorRequestBuilderImplFileObject(string $domain, string $entity): FileObject
@@ -168,7 +167,6 @@ class GenerateGeneratorGenerator
             GenerateGeneratorFileObjectType::GENERATOR_REQUEST_BUILDER_IMPL,
             'GenerateGenerator/GenerateGeneratorRequestBuilderImpl.php.twig'
         );
-
     }
 
     private function buildGeneratorRequestDTOFileObject(string $domain, string $entity): FileObject
@@ -219,7 +217,6 @@ class GenerateGeneratorGenerator
             GenerateGeneratorFileObjectType::SKELETON_MODEL_ASSEMBLER,
             'GenerateGenerator/GenerateGeneratorSkeletonModelAssembler.php.twig'
         );
-
     }
 
     private function buildSkeletonModelAssemblerImplFileObject(string $domain, string $entity): FileObject
@@ -230,7 +227,6 @@ class GenerateGeneratorGenerator
             GenerateGeneratorFileObjectType::SKELETON_MODEL_ASSEMBLER_IMPL,
             'GenerateGenerator/GenerateGeneratorSkeletonModelAssemblerImpl.php.twig'
         );
-
     }
 
     private function buildSkeletonModelAssemblerMockFileObject(string $domain, string $entity): FileObject
@@ -241,7 +237,6 @@ class GenerateGeneratorGenerator
             GenerateGeneratorFileObjectType::SKELETON_MODEL_ASSEMBLER_MOCK,
             'GenerateGenerator/GenerateGeneratorSkeletonModelAssemblerMock.php.twig'
         );
-
     }
 
     private function buildSkeletonModelBuilderFileObject(string $domain, string $entity): FileObject
@@ -252,7 +247,6 @@ class GenerateGeneratorGenerator
             GenerateGeneratorFileObjectType::SKELETON_MODEL_BUILDER,
             'GenerateGenerator/GenerateGeneratorSkeletonModelBuilder.php.twig'
         );
-
     }
 
     private function buildSkeletonModelBuilderImplFileObject(string $domain, string $entity): FileObject
@@ -263,7 +257,6 @@ class GenerateGeneratorGenerator
             GenerateGeneratorFileObjectType::SKELETON_MODEL_BUILDER_IMPL,
             'GenerateGenerator/GenerateGeneratorSkeletonModelBuilderImpl.php.twig'
         );
-
     }
 
     private function buildSkeletonModelBuilderMockFileObject(string $domain, string $entity): FileObject
@@ -274,7 +267,6 @@ class GenerateGeneratorGenerator
             GenerateGeneratorFileObjectType::SKELETON_MODEL_BUILDER_MOCK,
             'GenerateGenerator/GenerateGeneratorSkeletonModelBuilderMock.php.twig'
         );
-
     }
 
     private function buildSkeletonModelImplFileObject(string $domain, string $entity): FileObject

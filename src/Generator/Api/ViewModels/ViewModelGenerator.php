@@ -32,27 +32,18 @@ class ViewModelGenerator extends AbstractViewModelGenerator
         return $viewModelFileObject;
     }
 
-    public function setViewModelSkeletonModelAssembler(
-        ViewModelSkeletonModelAssembler $viewModelSkeletonModelAssembler
-    ): void {
-        $this->viewModelSkeletonModelAssembler = $viewModelSkeletonModelAssembler;
-    }
-
     private function buildViewModelFileObject(string $useCaseResponseClassName): FileObject
     {
         $this->initFileObjectParameter($useCaseResponseClassName);
         $useCaseResponseCommonFieldTraitFileObject = $this->createUseCaseResponseCommonFieldTraitFileObject();
         $viewModelFileObject = $this->createViewModelObject();
 
-        $viewModelFileObject->setFields($this->getPublicClassFields($useCaseResponseCommonFieldTraitFileObject->getClassName()));
+        $viewModelFileObject->setFields(
+            $this->getPublicClassFields($useCaseResponseCommonFieldTraitFileObject->getClassName())
+        );
         $viewModelFileObject->setContent($this->generateContent($viewModelFileObject));
 
         return $viewModelFileObject;
-    }
-
-    private function createSkeletonModel(FileObject $viewModelFileObject): ViewModelSkeletonModel
-    {
-        return $this->viewModelSkeletonModelAssembler->create($viewModelFileObject);
     }
 
     private function createUseCaseResponseCommonFieldTraitFileObject(): FileObject
@@ -80,5 +71,16 @@ class ViewModelGenerator extends AbstractViewModelGenerator
         $skeletonModel = $this->createSkeletonModel($viewModelFileObject);
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
+    }
+
+    private function createSkeletonModel(FileObject $viewModelFileObject): ViewModelSkeletonModel
+    {
+        return $this->viewModelSkeletonModelAssembler->create($viewModelFileObject);
+    }
+
+    public function setViewModelSkeletonModelAssembler(
+        ViewModelSkeletonModelAssembler $viewModelSkeletonModelAssembler
+    ): void {
+        $this->viewModelSkeletonModelAssembler = $viewModelSkeletonModelAssembler;
     }
 }

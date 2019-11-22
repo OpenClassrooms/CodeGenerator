@@ -11,8 +11,7 @@ class CreateEntityUseCaseRequestDTOSkeletonModelAssemblerImpl implements CreateE
     public function create(
         FileObject $createEntityRequestFileObject,
         FileObject $createEntityRequestDTOFileObject
-    ): CreateEntityUseCaseRequestDTOSkeletonModel
-    {
+    ): CreateEntityUseCaseRequestDTOSkeletonModel {
         $skeletonModel = new CreateEntityUseCaseRequestDTOSkeletonModelImpl();
 
         $skeletonModel->className = $createEntityRequestDTOFileObject->getClassName();

@@ -20,24 +20,6 @@ class UseCaseDetailResponseDTOGenerator extends AbstractUseCaseGenerator
      */
     private $useCaseDetailResponseDTOSkeletonModelAssembler;
 
-    public function createUseCaseDetailResponseFileObject()
-    {
-        return $this->useCaseResponseFileObjectFactory->create(
-            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE,
-            $this->domain,
-            $this->entity
-        );
-    }
-
-    public function createUseCaseResponseCommonFieldTraitFileObject()
-    {
-        return $this->useCaseResponseFileObjectFactory->create(
-            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE_COMMON_FIELD_TRAIT,
-            $this->domain,
-            $this->entity
-        );
-    }
-
     /**
      * @param UseCaseDetailResponseDTOGeneratorRequest $generatorRequest
      */
@@ -51,12 +33,6 @@ class UseCaseDetailResponseDTOGenerator extends AbstractUseCaseGenerator
         $this->insertFileObject($useCaseDetailResponseDTOFileObject);
 
         return $useCaseDetailResponseDTOFileObject;
-    }
-
-    public function setUseCaseDetailResponseDTOSkeletonModelAssembler(
-        UseCaseDetailResponseDTOSkeletonModelAssembler $useCaseDetailResponseDTOSkeletonModelAssembler
-    ): void {
-        $this->useCaseDetailResponseDTOSkeletonModelAssembler = $useCaseDetailResponseDTOSkeletonModelAssembler;
     }
 
     /**
@@ -88,18 +64,6 @@ class UseCaseDetailResponseDTOGenerator extends AbstractUseCaseGenerator
         return $useCaseDetailResponseDTOFileObject;
     }
 
-    private function createSkeletonModel(
-        FileObject $useCaseDetailResponseDTOFileObject,
-        FileObject $useCaseDetailResponseFileObject,
-        FileObject $useCaseResponseCommonFieldTraitFileObject
-    ): UseCaseDetailResponseDTOSkeletonModel {
-        return $this->useCaseDetailResponseDTOSkeletonModelAssembler->create(
-            $useCaseDetailResponseDTOFileObject,
-            $useCaseDetailResponseFileObject,
-            $useCaseResponseCommonFieldTraitFileObject
-        );
-    }
-
     private function createUseCaseDetailResponseDTOFileObject(): FileObject
     {
         return $this->useCaseResponseFileObjectFactory->create(
@@ -107,6 +71,24 @@ class UseCaseDetailResponseDTOGenerator extends AbstractUseCaseGenerator
             $this->domain,
             $this->entity,
             $this->baseNamespace
+        );
+    }
+
+    public function createUseCaseDetailResponseFileObject()
+    {
+        return $this->useCaseResponseFileObjectFactory->create(
+            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE,
+            $this->domain,
+            $this->entity
+        );
+    }
+
+    public function createUseCaseResponseCommonFieldTraitFileObject()
+    {
+        return $this->useCaseResponseFileObjectFactory->create(
+            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE_COMMON_FIELD_TRAIT,
+            $this->domain,
+            $this->entity
         );
     }
 
@@ -122,5 +104,23 @@ class UseCaseDetailResponseDTOGenerator extends AbstractUseCaseGenerator
         );
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
+    }
+
+    private function createSkeletonModel(
+        FileObject $useCaseDetailResponseDTOFileObject,
+        FileObject $useCaseDetailResponseFileObject,
+        FileObject $useCaseResponseCommonFieldTraitFileObject
+    ): UseCaseDetailResponseDTOSkeletonModel {
+        return $this->useCaseDetailResponseDTOSkeletonModelAssembler->create(
+            $useCaseDetailResponseDTOFileObject,
+            $useCaseDetailResponseFileObject,
+            $useCaseResponseCommonFieldTraitFileObject
+        );
+    }
+
+    public function setUseCaseDetailResponseDTOSkeletonModelAssembler(
+        UseCaseDetailResponseDTOSkeletonModelAssembler $useCaseDetailResponseDTOSkeletonModelAssembler
+    ): void {
+        $this->useCaseDetailResponseDTOSkeletonModelAssembler = $useCaseDetailResponseDTOSkeletonModelAssembler;
     }
 }

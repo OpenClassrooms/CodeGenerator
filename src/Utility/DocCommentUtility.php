@@ -7,7 +7,7 @@ namespace OpenClassrooms\CodeGenerator\Utility;
  */
 class DocCommentUtility
 {
-    const ARRAY_TYPE = 'array';
+    const ARRAY_TYPE          = 'array';
 
     const DATE_TIME_INTERFACE = '\DateTimeInterface';
 

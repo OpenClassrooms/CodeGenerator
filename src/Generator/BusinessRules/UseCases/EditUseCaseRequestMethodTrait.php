@@ -25,7 +25,7 @@ trait EditUseCaseRequestMethodTrait
         $getEntityMethod = MethodUtility::buildGetEntityIdMethodObject(
             FileObjectUtility::getShortClassName($entityClassName)
         );
-        $getEntityMethod = array($getEntityMethod);
+        $getEntityMethod = [$getEntityMethod];
 
         return array_merge($accessors, $isUpdatedMethods, $getEntityMethod);
     }

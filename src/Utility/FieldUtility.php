@@ -37,7 +37,7 @@ class FieldUtility
     private static function getEntityFields(string $entityClassName): array
     {
         $fields = array_map(
-            function(FieldObject $fieldObject) {
+            function (FieldObject $fieldObject) {
                 return $fieldObject->getName();
             },
             FieldObjectUtility::getProtectedClassFields($entityClassName)

@@ -25,7 +25,7 @@ trait EditUseCaseRequestFieldTrait
         $entityIdMethod = FieldObjectUtility::buildEntityIdMethodObject(
             FileObjectUtility::getShortClassName($entityClassName)
         );
-        $entityIdMethod = array($entityIdMethod);
+        $entityIdMethod = [$entityIdMethod];
 
         return array_merge($accessors, $isUpdatedFields, $entityIdMethod);
     }

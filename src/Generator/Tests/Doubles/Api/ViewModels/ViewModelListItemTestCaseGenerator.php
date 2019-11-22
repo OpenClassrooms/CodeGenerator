@@ -56,7 +56,6 @@ class ViewModelListItemTestCaseGenerator extends AbstractViewModelGenerator
         );
 
         return $viewModelListItemTestCaseFileObject;
-
     }
 
     private function createUseCaseListItemResponseDTOFileObject()

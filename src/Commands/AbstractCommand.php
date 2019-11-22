@@ -16,15 +16,15 @@ class AbstractCommand extends Command
 {
     use CommandDisplayTrait;
 
-    const CONFIG_DIR = __DIR__ . '/../Resources/config';
+    const CONFIG_DIR            = __DIR__ . '/../Resources/config';
 
-    const CONFIG_FILE = self::ROOT_DIR . 'oc_code_generator.yml';
+    const CONFIG_FILE           = self::ROOT_DIR . 'oc_code_generator.yml';
 
     const CONFIG_FILE_GENERATOR = self::ROOT_DIR_GENERATOR . 'oc_code_generator.yml';
 
-    const ROOT_DIR = __DIR__ . '/../../../../../';
+    const ROOT_DIR              = __DIR__ . '/../../../../../';
 
-    const ROOT_DIR_GENERATOR = __DIR__ . '/../../';
+    const ROOT_DIR_GENERATOR    = __DIR__ . '/../../';
 
     /**
      * @var ContainerBuilder
