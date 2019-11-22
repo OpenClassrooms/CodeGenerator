@@ -25,13 +25,6 @@ class EditFunctionalEntityRequestBuilderImpl implements EditFunctionalEntityRequ
         return $this;
     }
 
-    public function forFunctionalEntity(int $id): EditFunctionalEntityRequestBuilder
-    {
-        $this->request->functionalEntityId = $id;
-
-        return $this;
-    }
-
     public function withField1(string $field1): EditFunctionalEntityRequestBuilder
     {
         $this->request->field1 = $field1;
@@ -60,6 +53,13 @@ class EditFunctionalEntityRequestBuilderImpl implements EditFunctionalEntityRequ
     {
         $this->request->field4 = $field4;
         $this->request->field4Updated = true;
+
+        return $this;
+    }
+
+    public function withId(int $id): EditFunctionalEntityRequestBuilder
+    {
+        $this->request->functionalEntityId = $id;
 
         return $this;
     }
