@@ -22,31 +22,6 @@ class CreateEntityUseCaseTestGenerator extends AbstractUseCaseGenerator
      */
     private $createEntityTestSkeletonModelBuilder;
 
-    /**
-     * @param CreateEntityUseCaseTestGeneratorRequest $generatorRequest
-     */
-    public function generate(GeneratorRequest $generatorRequest): FileObject
-    {
-        $createEntityTestFileObject = $this->buildCreateEntityUseCaseTestFileObject(
-            $generatorRequest->getEntityClassName()
-        );
-
-        $this->insertFileObject($createEntityTestFileObject);
-
-        return $createEntityTestFileObject;
-    }
-
-    public function setCreateEntityUseCaseTestSkeletonModelBuilder(
-        CreateEntityUseCaseTestSkeletonModelBuilder $createEntityTestSkeletonModelBuilder
-    ): void {
-        $this->createEntityTestSkeletonModelBuilder = $createEntityTestSkeletonModelBuilder;
-    }
-
-    public function setMethodUtility(MethodUtilityStrategy $methodUtility): void
-    {
-        $this->methodUtility = $methodUtility;
-    }
-
     private function buildCreateEntityUseCaseTestFileObject(string $entityClassName): FileObject
     {
         $this->initFileObjectParameter($entityClassName);
@@ -238,6 +213,20 @@ class CreateEntityUseCaseTestGenerator extends AbstractUseCaseGenerator
     }
 
     /**
+     * @param CreateEntityUseCaseTestGeneratorRequest $generatorRequest
+     */
+    public function generate(GeneratorRequest $generatorRequest): FileObject
+    {
+        $createEntityTestFileObject = $this->buildCreateEntityUseCaseTestFileObject(
+            $generatorRequest->getEntityClassName()
+        );
+
+        $this->insertFileObject($createEntityTestFileObject);
+
+        return $createEntityTestFileObject;
+    }
+
+    /**
      * @param FileObject[] $fileObjects
      */
     private function generateContent(array $fileObjects): string
@@ -254,5 +243,16 @@ class CreateEntityUseCaseTestGenerator extends AbstractUseCaseGenerator
             $this->domain,
             $this->entity
         );
+    }
+
+    public function setCreateEntityUseCaseTestSkeletonModelBuilder(
+        CreateEntityUseCaseTestSkeletonModelBuilder $createEntityTestSkeletonModelBuilder
+    ): void {
+        $this->createEntityTestSkeletonModelBuilder = $createEntityTestSkeletonModelBuilder;
+    }
+
+    public function setMethodUtility(MethodUtilityStrategy $methodUtility): void
+    {
+        $this->methodUtility = $methodUtility;
     }
 }

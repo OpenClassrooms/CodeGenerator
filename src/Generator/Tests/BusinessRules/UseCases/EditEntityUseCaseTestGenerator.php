@@ -21,26 +21,6 @@ class EditEntityUseCaseTestGenerator extends AbstractUseCaseGenerator
      */
     private $editEntityUseCaseTestSkeletonModelBuilder;
 
-    /**
-     * @param EditEntityUseCaseTestGeneratorRequest $generatorRequest
-     */
-    public function generate(GeneratorRequest $generatorRequest): FileObject
-    {
-        $editEntityUseCaseTestFileObject = $this->buildEditEntityUseCaseTestFileObject(
-            $generatorRequest->getEntityClassName()
-        );
-
-        $this->insertFileObject($editEntityUseCaseTestFileObject);
-
-        return $editEntityUseCaseTestFileObject;
-    }
-
-    public function setEditEntityUseCaseTestSkeletonModelBuilder(
-        EditEntityUseCaseTestSkeletonModelBuilder $editEntityUseCaseTestSkeletonModelBuilder
-    ): void {
-        $this->editEntityUseCaseTestSkeletonModelBuilder = $editEntityUseCaseTestSkeletonModelBuilder;
-    }
-
     private function buildEditEntityUseCaseTestFileObject(string $entityClassName): FileObject
     {
         $this->initFileObjectParameter($entityClassName);
@@ -247,6 +227,20 @@ class EditEntityUseCaseTestGenerator extends AbstractUseCaseGenerator
     }
 
     /**
+     * @param EditEntityUseCaseTestGeneratorRequest $generatorRequest
+     */
+    public function generate(GeneratorRequest $generatorRequest): FileObject
+    {
+        $editEntityUseCaseTestFileObject = $this->buildEditEntityUseCaseTestFileObject(
+            $generatorRequest->getEntityClassName()
+        );
+
+        $this->insertFileObject($editEntityUseCaseTestFileObject);
+
+        return $editEntityUseCaseTestFileObject;
+    }
+
+    /**
      * @param FileObject[] $fileObjects
      */
     private function generateContent(array $fileObjects): string
@@ -254,5 +248,11 @@ class EditEntityUseCaseTestGenerator extends AbstractUseCaseGenerator
         $skeletonModel = $this->createSkeletonModel($fileObjects);
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
+    }
+
+    public function setEditEntityUseCaseTestSkeletonModelBuilder(
+        EditEntityUseCaseTestSkeletonModelBuilder $editEntityUseCaseTestSkeletonModelBuilder
+    ): void {
+        $this->editEntityUseCaseTestSkeletonModelBuilder = $editEntityUseCaseTestSkeletonModelBuilder;
     }
 }

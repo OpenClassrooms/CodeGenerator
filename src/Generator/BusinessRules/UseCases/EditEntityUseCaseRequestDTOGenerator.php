@@ -20,26 +20,6 @@ class EditEntityUseCaseRequestDTOGenerator extends AbstractUseCaseGenerator
      */
     private $editEntityUseCaseRequestDTOSkeletonModelAssembler;
 
-    /**
-     * @param EditEntityUseCaseRequestDTOGeneratorRequest $generatorRequest
-     */
-    public function generate(GeneratorRequest $generatorRequest): FileObject
-    {
-        $editEntityUseCaseRequestDTOFileObject = $this->buildEditEntityUseCaseRequestDTOFileObject(
-            $generatorRequest->getEntityClassName()
-        );
-
-        $this->insertFileObject($editEntityUseCaseRequestDTOFileObject);
-
-        return $editEntityUseCaseRequestDTOFileObject;
-    }
-
-    public function setEditEntityUseCaseRequestDTOSkeletonModelAssembler(
-        EditEntityUseCaseRequestDTOSkeletonModelAssembler $editEntityUseCaseRequestDTOSkeletonModelAssembler
-    ): void {
-        $this->editEntityUseCaseRequestDTOSkeletonModelAssembler = $editEntityUseCaseRequestDTOSkeletonModelAssembler;
-    }
-
     private function buildEditEntityUseCaseRequestDTOFileObject(string $entityClassName): FileObject
     {
         $this->initFileObjectParameter($entityClassName);
@@ -84,6 +64,20 @@ class EditEntityUseCaseRequestDTOGenerator extends AbstractUseCaseGenerator
         );
     }
 
+    /**
+     * @param EditEntityUseCaseRequestDTOGeneratorRequest $generatorRequest
+     */
+    public function generate(GeneratorRequest $generatorRequest): FileObject
+    {
+        $editEntityUseCaseRequestDTOFileObject = $this->buildEditEntityUseCaseRequestDTOFileObject(
+            $generatorRequest->getEntityClassName()
+        );
+
+        $this->insertFileObject($editEntityUseCaseRequestDTOFileObject);
+
+        return $editEntityUseCaseRequestDTOFileObject;
+    }
+
     private function generateContent(
         FileObject $editEntityUseCaseRequestFileObject,
         FileObject $editEntityUseCaseRequestDTOFileObject
@@ -94,5 +88,11 @@ class EditEntityUseCaseRequestDTOGenerator extends AbstractUseCaseGenerator
         );
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
+    }
+
+    public function setEditEntityUseCaseRequestDTOSkeletonModelAssembler(
+        EditEntityUseCaseRequestDTOSkeletonModelAssembler $editEntityUseCaseRequestDTOSkeletonModelAssembler
+    ): void {
+        $this->editEntityUseCaseRequestDTOSkeletonModelAssembler = $editEntityUseCaseRequestDTOSkeletonModelAssembler;
     }
 }

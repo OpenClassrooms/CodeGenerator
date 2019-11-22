@@ -26,31 +26,6 @@ class CreateEntityUseCaseGenerator extends AbstractUseCaseGenerator
      */
     private $methodUtility;
 
-    /**
-     * @param CreateEntityUseCaseGeneratorRequest $generatorRequest
-     */
-    public function generate(GeneratorRequest $generatorRequest): FileObject
-    {
-        $createEntityFileObject = $this->buildCreateEntityUseCaseFileObject(
-            $generatorRequest->getEntityClassName()
-        );
-
-        $this->insertFileObject($createEntityFileObject);
-
-        return $createEntityFileObject;
-    }
-
-    public function setCreateEntityUseCaseSkeletonModelBuilder(
-        CreateEntityUseCaseSkeletonModelBuilder $createEntitySkeletonModelBuilder
-    ): void {
-        $this->createEntitySkeletonModelBuilder = $createEntitySkeletonModelBuilder;
-    }
-
-    public function setMethodUtility(MethodUtilityStrategy $methodUtility): void
-    {
-        $this->methodUtility = $methodUtility;
-    }
-
     private function buildCreateEntityUseCaseFileObject(string $entityClassName): FileObject
     {
         $this->initFileObjectParameter($entityClassName);
@@ -166,6 +141,20 @@ class CreateEntityUseCaseGenerator extends AbstractUseCaseGenerator
     }
 
     /**
+     * @param CreateEntityUseCaseGeneratorRequest $generatorRequest
+     */
+    public function generate(GeneratorRequest $generatorRequest): FileObject
+    {
+        $createEntityFileObject = $this->buildCreateEntityUseCaseFileObject(
+            $generatorRequest->getEntityClassName()
+        );
+
+        $this->insertFileObject($createEntityFileObject);
+
+        return $createEntityFileObject;
+    }
+
+    /**
      * @param FileObject[] $fileObjects
      */
     private function generateContent(array $fileObjects): string
@@ -173,5 +162,16 @@ class CreateEntityUseCaseGenerator extends AbstractUseCaseGenerator
         $skeletonModel = $this->createSkeletonModel($fileObjects);
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
+    }
+
+    public function setCreateEntityUseCaseSkeletonModelBuilder(
+        CreateEntityUseCaseSkeletonModelBuilder $createEntitySkeletonModelBuilder
+    ): void {
+        $this->createEntitySkeletonModelBuilder = $createEntitySkeletonModelBuilder;
+    }
+
+    public function setMethodUtility(MethodUtilityStrategy $methodUtility): void
+    {
+        $this->methodUtility = $methodUtility;
     }
 }

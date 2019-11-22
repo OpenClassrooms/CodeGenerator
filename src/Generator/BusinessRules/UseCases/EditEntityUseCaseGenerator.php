@@ -26,31 +26,6 @@ class EditEntityUseCaseGenerator extends AbstractUseCaseGenerator
      */
     private $methodUtilityStrategy;
 
-    /**
-     * @param EditEntityUseCaseGeneratorRequest $generatorRequest
-     */
-    public function generate(GeneratorRequest $generatorRequest): FileObject
-    {
-        $editEntityUseCaseFileObject = $this->buildEditEntityUseCaseFileObject(
-            $generatorRequest->getEntityClassName()
-        );
-
-        $this->insertFileObject($editEntityUseCaseFileObject);
-
-        return $editEntityUseCaseFileObject;
-    }
-
-    public function setEditEntityUseCaseSkeletonModelBuilder(
-        EditEntityUseCaseSkeletonModelBuilder $editEntityUseCaseSkeletonModelBuilder
-    ): void {
-        $this->editEntityUseCaseSkeletonModelBuilder = $editEntityUseCaseSkeletonModelBuilder;
-    }
-
-    public function setMethodUtilityStrategy(MethodUtilityStrategy $methodUtilityStrategy): void
-    {
-        $this->methodUtilityStrategy = $methodUtilityStrategy;
-    }
-
     private function buildEditEntityUseCaseFileObject(string $entityClassName): FileObject
     {
         $this->initFileObjectParameter($entityClassName);
@@ -170,6 +145,20 @@ class EditEntityUseCaseGenerator extends AbstractUseCaseGenerator
     }
 
     /**
+     * @param EditEntityUseCaseGeneratorRequest $generatorRequest
+     */
+    public function generate(GeneratorRequest $generatorRequest): FileObject
+    {
+        $editEntityUseCaseFileObject = $this->buildEditEntityUseCaseFileObject(
+            $generatorRequest->getEntityClassName()
+        );
+
+        $this->insertFileObject($editEntityUseCaseFileObject);
+
+        return $editEntityUseCaseFileObject;
+    }
+
+    /**
      * @param FileObject[]
      */
     private function generateContent(array $fileObjects): string
@@ -177,5 +166,16 @@ class EditEntityUseCaseGenerator extends AbstractUseCaseGenerator
         $skeletonModel = $this->createSkeletonModel($fileObjects);
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
+    }
+
+    public function setEditEntityUseCaseSkeletonModelBuilder(
+        EditEntityUseCaseSkeletonModelBuilder $editEntityUseCaseSkeletonModelBuilder
+    ): void {
+        $this->editEntityUseCaseSkeletonModelBuilder = $editEntityUseCaseSkeletonModelBuilder;
+    }
+
+    public function setMethodUtilityStrategy(MethodUtilityStrategy $methodUtilityStrategy): void
+    {
+        $this->methodUtilityStrategy = $methodUtilityStrategy;
     }
 }

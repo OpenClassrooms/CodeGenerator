@@ -27,8 +27,12 @@ class EditEntityUseCaseRequestBuilderImplSkeletonModelAssemblerImpl implements E
         $skeletonModel->editEntityUseCaseRequestBuilderShortName = $editEntityUseCaseRequestBuilderFileObject->getShortName(
         );
         $skeletonModel->editEntityUseCaseRequestDTOShortName = $editEntityUseCaseRequestDTOFileObject->getShortName();
-        $skeletonModel->entityIdMethodName = NameUtility::creatChainedEntityIdMethodName($editEntityUseCaseRequestBuilderFileObject->getEntity());
-        $skeletonModel->entityIdArgumentName = NameUtility::creatEntityIdName($editEntityUseCaseRequestBuilderFileObject->getEntity());
+        $skeletonModel->entityIdMethodName = NameUtility::creatChainedEntityIdMethodName(
+            $editEntityUseCaseRequestBuilderFileObject->getEntity()
+        );
+        $skeletonModel->entityIdArgumentName = NameUtility::creatEntityIdName(
+            $editEntityUseCaseRequestBuilderFileObject->getEntity()
+        );
 
         return $skeletonModel;
     }
