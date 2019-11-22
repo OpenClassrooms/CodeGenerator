@@ -49,11 +49,6 @@ class EditFunctionalEntity implements UseCase
         return $this->createResponse($functionalEntity);
     }
 
-    private function createResponse(FunctionalEntity $functionalEntity): FunctionalEntityDetailResponse
-    {
-        return $this->responseAssembler->create($functionalEntity);
-    }
-
     /**
      * @throws \OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gateways\Domain\SubDomain\Exceptions\FunctionalEntityNotFoundException
      */
@@ -73,5 +68,10 @@ class EditFunctionalEntity implements UseCase
     private function update(FunctionalEntity $functionalEntity): void
     {
         $this->functionalEntityGateway->update($functionalEntity);
+    }
+
+    private function createResponse(FunctionalEntity $functionalEntity): FunctionalEntityDetailResponse
+    {
+        return $this->responseAssembler->create($functionalEntity);
     }
 }

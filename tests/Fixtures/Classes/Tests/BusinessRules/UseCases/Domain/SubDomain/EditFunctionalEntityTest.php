@@ -32,6 +32,17 @@ final class EditFunctionalEntityTest extends TestCase
 
     /**
      * @test
+     *
+     * @expectedException \OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gateways\Domain\SubDomain\Exceptions\FunctionalEntityNotFoundException
+     */
+    public function functionalEntityNotFoundShouldThrowException(): void
+    {
+        $this->request->functionalEntityId = -1;
+        $this->useCase->execute($this->request);
+    }
+
+    /**
+     * @test
      */
     public function editFunctionalEntity(): void
     {
@@ -43,15 +54,13 @@ final class EditFunctionalEntityTest extends TestCase
         $this->assertFunctionalEntityDetailResponse($expectedResponse, $response);
     }
 
-    /**
-     *  @test
-     *
-     * @expectedException \OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gateways\Domain\SubDomain\Exceptions\FunctionalEntityNotFoundException
-     */
-    public function functionalEntityNotFoundShouldThrowException(): void
+    protected function setup(): void
     {
-        $this->request->functionalEntityId = -1;
-        $this->useCase->execute($this->request);
+        $this->request = $this->buildRequest();
+        $this->useCase = new EditFunctionalEntity(
+            new InMemoryFunctionalEntityGateway([FunctionalEntityStub1::ID => new FunctionalEntityStub1()]),
+            new FunctionalEntityDetailResponseAssemblerMock()
+        );
     }
 
     private function buildRequest(): EditFunctionalEntityRequest
@@ -65,14 +74,5 @@ final class EditFunctionalEntityTest extends TestCase
             ->withField3(FunctionalEntityStub1::FIELD_3)
             ->withField4(new Carbon(FunctionalEntityStub1::FIELD_4))
             ->build();
-    }
-
-    protected function setup(): void
-    {
-        $this->request = $this->buildRequest();
-        $this->useCase = new EditFunctionalEntity(
-            new InMemoryFunctionalEntityGateway([FunctionalEntityStub1::ID => new FunctionalEntityStub1()]),
-            new FunctionalEntityDetailResponseAssemblerMock()
-        );
     }
 }
