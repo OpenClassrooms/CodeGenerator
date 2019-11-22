@@ -15,5 +15,5 @@ abstract class GetEntityUseCaseRequestDTOSkeletonModel extends AbstractSkeletonM
 
     public $getEntityUseCaseRequestShortName;
 
-    public $templatePath = 'BusinessRules/UseCases/GetEntityUseCaseRequestDTO.php.twig';
+    public $templatePath = 'BusinessRules/UseCases/DTO/Request/GetEntityUseCaseRequestDTO.php.twig';
 }

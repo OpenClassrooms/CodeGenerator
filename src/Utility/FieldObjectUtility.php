@@ -9,6 +9,25 @@ use OpenClassrooms\CodeGenerator\Entities\Object\FieldObject;
  */
 class FieldObjectUtility
 {
+    public static function buildEntityIdMethodObject(string $shortClassName): FieldObject
+    {
+        $methodChained = new FieldObject(NameUtility::creatEntityIdName($shortClassName));
+        $methodChained->setDocComment(DocCommentUtility::setType('int'));
+        $methodChained->setScope(FieldObject::SCOPE_PUBLIC);
+
+        return $methodChained;
+    }
+
+    private static function buildField(\ReflectionProperty $field, string $scope): FieldObject
+    {
+        $fieldObject = new FieldObject($field->getName());
+        $fieldObject->setAccessor(self::getFieldAccessor($field));
+        $fieldObject->setDocComment($field->getDocComment());
+        $fieldObject->setScope($scope);
+
+        return $fieldObject;
+    }
+
     /**
      * @param \ReflectionProperty[] $reflectionProperties
      *
@@ -17,27 +36,44 @@ class FieldObjectUtility
     private static function buildFields(array $reflectionProperties, string $scope = FieldObject::SCOPE_PUBLIC): array
     {
         $fields = [];
-        foreach ($reflectionProperties as $reflectionProperty) {
-            $fields[] = self::buildField($reflectionProperty, $scope);
+        foreach ($reflectionProperties as $field) {
+            $fields[] = self::buildField($field, $scope);
         }
 
         return $fields;
     }
 
-    private static function buildField(\ReflectionProperty $reflectionProperty, string $scope): FieldObject
+    /**
+     * @return FieldObject[]
+     */
+    public static function buildIsUpdatedFields(string $className, string $scope = FieldObject::SCOPE_PUBLIC): array
     {
-        $field = new FieldObject($reflectionProperty->getName());
-        $field->setAccessor(self::getFieldAccessor($reflectionProperty));
-        $field->setDocComment($reflectionProperty->getDocComment());
+        $rc = new \ReflectionClass($className);
+
+        $fields = [];
+        foreach ($rc->getProperties() as $field) {
+            if (FieldUtility::isUpdatable($field)) {
+                $fields[] = self::buildUpdatedField($field, $scope);
+            }
+        }
+
+        return $fields;
+    }
+
+    private static function buildUpdatedField(\ReflectionProperty $field, string $scope): FieldObject
+    {
+        $field = new FieldObject(NameUtility::createUpdatedName($field));
+        $field->setDocComment(DocCommentUtility::setType('bool'));
         $field->setScope($scope);
+        $field->setValue('false');
 
         return $field;
     }
 
-    private static function getFieldAccessor(\ReflectionProperty $reflectionProperty)
+    private static function getFieldAccessor(\ReflectionProperty $field): ?string
     {
-        $fieldName = $reflectionProperty->getName();
-        $declaringClass = $reflectionProperty->getDeclaringClass();
+        $fieldName = $field->getName();
+        $declaringClass = $field->getDeclaringClass();
 
         $accessor = 'get' . ucfirst($fieldName);
         if ($declaringClass->hasMethod($accessor)) {
@@ -60,11 +96,11 @@ class FieldObjectUtility
         /** @var \ReflectionProperty[] $reflectionProperties */
         $reflectionProperties = $rc->getProperties(\ReflectionProperty::IS_PROTECTED);
         $classProperties = [];
-        foreach ($reflectionProperties as $reflectionProperty) {
-            if ($reflectionProperty->getDeclaringClass()->getName() === $className &&
-                !self::isTraitsProperty($rc->getTraitNames(), $reflectionProperty)
+        foreach ($reflectionProperties as $field) {
+            if ($field->getDeclaringClass()->getName() === $className &&
+                !self::isTraitsProperty($rc->getTraitNames(), $field)
             ) {
-                $classProperties[] = $reflectionProperty;
+                $classProperties[] = $field;
             }
         }
 
@@ -120,16 +156,17 @@ class FieldObjectUtility
         foreach ($rc->getTraitNames() as $traitName) {
             $traitFields = self::getPublicTraitFields($traitName);
         }
+
         return $traitFields;
     }
 
-    private static function isTraitProperty(string $traitName, \ReflectionProperty $reflectionProperty): bool
+    private static function isTraitProperty(string $traitName, \ReflectionProperty $field): bool
     {
         /** @var FieldObject[] $traitProperties */
         $traitProperties = self::getPublicTraitFields($traitName);
 
         foreach ($traitProperties as $traitProperty) {
-            if ($traitProperty->getName() === $reflectionProperty->getName()) {
+            if ($traitProperty->getName() === $field->getName()) {
                 return true;
             }
         }
@@ -137,10 +174,10 @@ class FieldObjectUtility
         return false;
     }
 
-    private static function isTraitsProperty(array $traitNames, \ReflectionProperty $reflectionProperty): bool
+    private static function isTraitsProperty(array $traitNames, \ReflectionProperty $field): bool
     {
         foreach ($traitNames as $traitName) {
-            if (self::isTraitProperty($traitName, $reflectionProperty)) {
+            if (self::isTraitProperty($traitName, $field)) {
                 return true;
             }
         }

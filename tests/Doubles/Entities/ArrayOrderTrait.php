@@ -28,12 +28,6 @@ trait ArrayOrderTrait
      */
     private function orderArrayObjectsByName($a, $b): int
     {
-        $al = strtolower($a->getName());
-        $bl = strtolower($b->getName());
-        if ($al == $bl) {
-            return 0;
-        }
-
-        return ($al > $bl) ? +1 : -1;
+        return strcmp($a->getName(), $b->getName());
     }
 }

@@ -49,4 +49,9 @@ class {{ skeletonModel.shortName }} implements {{ skeletonModel.entityGatewaySho
         EntityUtil::setId($functionalEntity, self::$id);
         self::${{ skeletonModel.pluralEntityShortName }}[] = ${{ skeletonModel.entityArgument }};
     }
+
+    public function update({{ skeletonModel.entityShortName }} ${{ skeletonModel.entityArgument }}): void
+    {
+        $functionalEntity->update();
+    }
 }

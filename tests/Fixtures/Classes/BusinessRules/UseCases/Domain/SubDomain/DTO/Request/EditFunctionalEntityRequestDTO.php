@@ -75,11 +75,6 @@ final class EditFunctionalEntityRequestDTO implements EditFunctionalEntityReques
         return $this->functionalEntityId;
     }
 
-    public function isField3(): bool
-    {
-        return $this->field3;
-    }
-
     public function isField1Updated(): bool
     {
         return $this->field1Updated;
@@ -88,6 +83,11 @@ final class EditFunctionalEntityRequestDTO implements EditFunctionalEntityReques
     public function isField2Updated(): bool
     {
         return $this->field2Updated;
+    }
+
+    public function isField3(): bool
+    {
+        return $this->field3;
     }
 
     public function isField3Updated(): bool

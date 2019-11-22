@@ -21,5 +21,5 @@ abstract class GetEntityUseCaseRequestBuilderImplSkeletonModel extends AbstractS
 
     public $getEntityUseCaseRequestShortName;
 
-    public $templatePath = 'BusinessRules/UseCases/GetEntityUseCaseRequestBuilderImpl.php.twig';
+    public $templatePath = 'BusinessRules/UseCases/DTO/Request/GetEntityUseCaseRequestBuilderImpl.php.twig';
 }

@@ -11,7 +11,7 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\Api\ViewModels\Vie
  */
 class ViewModelDetailStubSkeletonModelAssemblerImpl implements ViewModelDetailStubSkeletonModelAssembler
 {
-    use StubSkeletonAssemblerUtility;
+    use StubSkeletonAssemblerTrait;
 
     public function create(
         FileObject $viewModelDetailStubFileObject,

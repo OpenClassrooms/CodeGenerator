@@ -16,6 +16,15 @@ class CreateEntityUseCaseSkeletonModelBuilderImpl implements CreateEntityUseCase
      */
     private $skeletonModel;
 
+    public function build(): CreateEntityUseCaseSkeletonModel
+    {
+        $this->skeletonModel->transactionClassName = $this->transactionClassName;
+        $this->skeletonModel->useCaseClassName = $this->useCaseClassName;
+        $this->skeletonModel->useCaseRequestClassName = $this->useCaseRequestClassName;
+
+        return $this->skeletonModel;
+    }
+
     public function create(): CreateEntityUseCaseSkeletonModelBuilder
     {
         $this->skeletonModel = new CreateEntityUseCaseSkeletonModelImpl();
@@ -55,20 +64,20 @@ class CreateEntityUseCaseSkeletonModelBuilderImpl implements CreateEntityUseCase
     }
 
     public function withEntityDetailResponse(
-        FileObject $entityDetailResponseFileObject
+        FileObject $entityUseCaseDetailResponseFileObject
     ): CreateEntityUseCaseSkeletonModelBuilder {
-        $this->skeletonModel->entityDetailResponseClassName = $entityDetailResponseFileObject->getClassName();
-        $this->skeletonModel->entityDetailResponseShortName = $entityDetailResponseFileObject->getShortName();
+        $this->skeletonModel->entityUseCaseDetailResponseClassName = $entityUseCaseDetailResponseFileObject->getClassName();
+        $this->skeletonModel->entityUseCaseDetailResponseShortName = $entityUseCaseDetailResponseFileObject->getShortName();
 
         return $this;
     }
 
     public function withEntityDetailResponseAssembler(
-        FileObject $entityDetailResponseAssemblerFileObject
+        FileObject $entityUseCaseDetailResponseAssemblerFileObject
     ): CreateEntityUseCaseSkeletonModelBuilder {
-        $this->skeletonModel->entityDetailResponseAssemblerArgument = lcfirst($entityDetailResponseAssemblerFileObject->getShortName());
-        $this->skeletonModel->entityDetailResponseAssemblerClassName = $entityDetailResponseAssemblerFileObject->getClassName();
-        $this->skeletonModel->entityDetailResponseAssemblerShortName = $entityDetailResponseAssemblerFileObject->getShortName();
+        $this->skeletonModel->entityUseCaseDetailResponseAssemblerArgument = lcfirst($entityUseCaseDetailResponseAssemblerFileObject->getShortName());
+        $this->skeletonModel->entityUseCaseDetailResponseAssemblerClassName = $entityUseCaseDetailResponseAssemblerFileObject->getClassName();
+        $this->skeletonModel->entityUseCaseDetailResponseAssemblerShortName = $entityUseCaseDetailResponseAssemblerFileObject->getShortName();
 
         return $this;
     }
@@ -89,14 +98,5 @@ class CreateEntityUseCaseSkeletonModelBuilderImpl implements CreateEntityUseCase
         $this->skeletonModel->entityGatewayShortName = $entityGatewayFileObject->getShortName();
 
         return $this;
-    }
-
-    public function build(): CreateEntityUseCaseSkeletonModel
-    {
-        $this->skeletonModel->transactionClassName = $this->transactionClassName;
-        $this->skeletonModel->useCaseClassName = $this->useCaseClassName;
-        $this->skeletonModel->useCaseRequestClassName = $this->useCaseRequestClassName;
-
-        return $this->skeletonModel;
     }
 }

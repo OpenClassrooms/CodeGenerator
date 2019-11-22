@@ -9,14 +9,32 @@ use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
  */
 interface GetEntityUseCaseSkeletonModelBuilder
 {
+    public function build(): GetEntityUseCaseSkeletonModel;
+
     public function create(): GetEntityUseCaseSkeletonModelBuilder;
 
     public function withEntityClassName(
         FileObject $entityFileObject
     ): GetEntityUseCaseSkeletonModelBuilder;
 
+    public function withEntityClassNameDetailResponse(
+        FileObject $entityUseCaseDetailResponseFileObject
+    ): GetEntityUseCaseSkeletonModelBuilder;
+
+    public function withEntityClassNameDetailResponseAssembler(
+        FileObject $entityUseCaseDetailResponseAssemblerFileObject
+    ): GetEntityUseCaseSkeletonModelBuilder;
+
     public function withEntityClassNameGateway(
         FileObject $entityGatewayFileObject
+    ): GetEntityUseCaseSkeletonModelBuilder;
+
+    public function withEntityClassNameNotFoundException(
+        FileObject $entityNotFoundExceptionFileObject
+    ): GetEntityUseCaseSkeletonModelBuilder;
+
+    public function withEntityClassNameResponse(
+        FileObject $entityResponseFileObject
     ): GetEntityUseCaseSkeletonModelBuilder;
 
     public function withGetEntityUseCase(
@@ -26,22 +44,4 @@ interface GetEntityUseCaseSkeletonModelBuilder
     public function withGetEntityUseCaseRequest(
         FileObject $getEntityUseCaseRequestFileObject
     ): GetEntityUseCaseSkeletonModelBuilder;
-
-    public function withEntityClassNameDetailResponse(
-        FileObject $entityDetailResponseFileObject
-    ): GetEntityUseCaseSkeletonModelBuilder;
-
-    public function withEntityClassNameDetailResponseAssembler(
-        FileObject $entityDetailResponseAssemblerFileObject
-    ): GetEntityUseCaseSkeletonModelBuilder;
-
-    public function withEntityClassNameResponse(
-        FileObject $entityResponseFileObject
-    ): GetEntityUseCaseSkeletonModelBuilder;
-
-    public function withEntityClassNameNotFoundException(
-        FileObject $entityNotFoundExceptionFileObject
-    ): GetEntityUseCaseSkeletonModelBuilder;
-
-    public function build(): GetEntityUseCaseSkeletonModel;
 }

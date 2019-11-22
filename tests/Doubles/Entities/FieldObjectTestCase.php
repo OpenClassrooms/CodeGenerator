@@ -29,14 +29,14 @@ trait FieldObjectTestCase
 
     private function assertFieldObject(FieldObject $expected, FieldObject $actual)
     {
-        $this->AssertValue($expected, $actual);
+        $this->assertValue($expected, $actual);
         Assert::assertEquals($expected->getDocComment(), $actual->getDocComment());
         Assert::assertEquals($expected->getType(), $actual->getType());
         Assert::assertEquals($expected->getName(), $actual->getName());
         Assert::assertEquals($expected->getScope(), $actual->getScope());
     }
 
-    private function AssertValue(FieldObject $expected, FieldObject $actual): void
+    private function assertValue(FieldObject $expected, FieldObject $actual): void
     {
         if ($actual->getValue() instanceof ConstObject) {
             Assert::assertEquals($expected->getValue()->getName(), $actual->getValue()->getName());

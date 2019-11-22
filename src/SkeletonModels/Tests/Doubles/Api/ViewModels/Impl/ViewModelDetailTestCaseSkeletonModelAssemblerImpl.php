@@ -12,7 +12,7 @@ use OpenClassrooms\CodeGenerator\Utility\TestCaseUtility;
  */
 class ViewModelDetailTestCaseSkeletonModelAssemblerImpl implements ViewModelDetailTestCaseSkeletonModelAssembler
 {
-    use StubSkeletonAssemblerUtility;
+    use StubSkeletonAssemblerTrait;
 
     public function create(
         FileObject $viewModelDetailTestCaseFileObject,

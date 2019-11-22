@@ -19,5 +19,5 @@ interface EditFunctionalEntityRequestBuilder extends UseCaseRequest
 
     public function withField4(\DateTimeInterface $field4): EditFunctionalEntityRequestBuilder;
 
-    public function withId(int $id): EditFunctionalEntityRequestBuilder;
+    public function withFunctionalEntityId(int $id): EditFunctionalEntityRequestBuilder;
 }

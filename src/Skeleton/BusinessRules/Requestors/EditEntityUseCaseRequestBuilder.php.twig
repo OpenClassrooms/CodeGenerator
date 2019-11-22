@@ -16,4 +16,6 @@ interface {{ skeletonModel.shortName }} extends {{ skeletonModel.useCaseRequestS
 
 {% endif %}
 {% endfor %}
+
+    public function {{ skeletonModel.entityIdMethodName }}(int $id): {{ skeletonModel.shortName }};
 }

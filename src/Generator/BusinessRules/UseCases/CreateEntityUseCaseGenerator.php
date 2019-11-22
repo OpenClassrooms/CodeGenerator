@@ -40,14 +40,25 @@ class CreateEntityUseCaseGenerator extends AbstractUseCaseGenerator
         return $createEntityFileObject;
     }
 
+    public function setCreateEntityUseCaseSkeletonModelBuilder(
+        CreateEntityUseCaseSkeletonModelBuilder $createEntitySkeletonModelBuilder
+    ): void {
+        $this->createEntitySkeletonModelBuilder = $createEntitySkeletonModelBuilder;
+    }
+
+    public function setMethodUtility(MethodUtilityStrategy $methodUtility): void
+    {
+        $this->methodUtility = $methodUtility;
+    }
+
     private function buildCreateEntityUseCaseFileObject(string $entityClassName): FileObject
     {
         $this->initFileObjectParameter($entityClassName);
         $createEntityFileObject = $this->createCreateEntityUseCaseFileObject();
         $createEntityRequestFileObject = $this->createCreateEntityUseCaseRequestFileObject();
         $entityFileObject = $this->createEntityFileObject();
-        $entityDetailResponseFileObject = $this->createEntityDetailResponseFileObject();
-        $entityDetailResponseAssemblerFileObject = $this->createEntityDetailResponseAssemblerFileObject();
+        $entityUseCaseDetailResponseFileObject = $this->createEntityDetailResponseFileObject();
+        $entityUseCaseDetailResponseAssemblerFileObject = $this->createEntityDetailResponseAssemblerFileObject();
         $entityFactoryFileObject = $this->createEntityFactoryFileObject();
         $entityGatewayFileObject = $this->createEntityGatewayFileObject();
 
@@ -59,8 +70,8 @@ class CreateEntityUseCaseGenerator extends AbstractUseCaseGenerator
                     UseCaseFileObjectType::BUSINESS_RULES_CREATE_ENTITY_USE_CASE                     => $createEntityFileObject,
                     UseCaseRequestFileObjectType::BUSINESS_RULES_CREATE_ENTITY_USE_CASE_REQUEST      => $createEntityRequestFileObject,
                     EntityFileObjectType::BUSINESS_RULES_ENTITY                                      => $entityFileObject,
-                    UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE           => $entityDetailResponseFileObject,
-                    UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE_ASSEMBLER => $entityDetailResponseAssemblerFileObject,
+                    UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE           => $entityUseCaseDetailResponseFileObject,
+                    UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE_ASSEMBLER => $entityUseCaseDetailResponseAssemblerFileObject,
                     EntityFileObjectType::BUSINESS_RULES_ENTITY_FACTORY                              => $entityFactoryFileObject,
                     EntityFileObjectType::BUSINESS_RULES_ENTITY_GATEWAY                              => $entityGatewayFileObject,
                 ]
@@ -88,10 +99,10 @@ class CreateEntityUseCaseGenerator extends AbstractUseCaseGenerator
         );
     }
 
-    private function createEntityFileObject()
+    private function createEntityDetailResponseAssemblerFileObject()
     {
-        return $this->entityFileObjectFactory->create(
-            EntityFileObjectType::BUSINESS_RULES_ENTITY,
+        return $this->useCaseResponseFileObjectFactory->create(
+            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE_ASSEMBLER,
             $this->domain,
             $this->entity
         );
@@ -106,19 +117,19 @@ class CreateEntityUseCaseGenerator extends AbstractUseCaseGenerator
         );
     }
 
-    private function createEntityDetailResponseAssemblerFileObject()
+    private function createEntityFactoryFileObject()
     {
-        return $this->useCaseResponseFileObjectFactory->create(
-            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE_ASSEMBLER,
+        return $this->entityFileObjectFactory->create(
+            EntityFileObjectType::BUSINESS_RULES_ENTITY_FACTORY,
             $this->domain,
             $this->entity
         );
     }
 
-    private function createEntityFactoryFileObject()
+    private function createEntityFileObject()
     {
         return $this->entityFileObjectFactory->create(
-            EntityFileObjectType::BUSINESS_RULES_ENTITY_FACTORY,
+            EntityFileObjectType::BUSINESS_RULES_ENTITY,
             $this->domain,
             $this->entity
         );
@@ -131,16 +142,6 @@ class CreateEntityUseCaseGenerator extends AbstractUseCaseGenerator
             $this->domain,
             $this->entity
         );
-    }
-
-    /**
-     * @param FileObject[] $fileObjects
-     */
-    private function generateContent(array $fileObjects): string
-    {
-        $skeletonModel = $this->createSkeletonModel($fileObjects);
-
-        return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
     }
 
     private function createSkeletonModel(array $fileObjects): CreateEntityUseCaseSkeletonModel
@@ -164,14 +165,13 @@ class CreateEntityUseCaseGenerator extends AbstractUseCaseGenerator
             ->build();
     }
 
-    public function setCreateEntityUseCaseSkeletonModelBuilder(
-        CreateEntityUseCaseSkeletonModelBuilder $createEntitySkeletonModelBuilder
-    ): void {
-        $this->createEntitySkeletonModelBuilder = $createEntitySkeletonModelBuilder;
-    }
-
-    public function setMethodUtility(MethodUtilityStrategy $methodUtility): void
+    /**
+     * @param FileObject[] $fileObjects
+     */
+    private function generateContent(array $fileObjects): string
     {
-        $this->methodUtility = $methodUtility;
+        $skeletonModel = $this->createSkeletonModel($fileObjects);
+
+        return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
     }
 }

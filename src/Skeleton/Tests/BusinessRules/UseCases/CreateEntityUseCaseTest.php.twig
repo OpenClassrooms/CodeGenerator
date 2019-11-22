@@ -12,14 +12,14 @@ use {{ skeletonModel.createEntityRequestBuilderImplClassName }};
 use {{ skeletonModel.createEntityRequestDTOClassName }};
 use {{ skeletonModel.entityStubClassName }};
 use {{ skeletonModel.inMemoryEntityGatewayClassName }};
-use {{ skeletonModel.entityDetailResponseAssemblerMockClassName }};
-use {{ skeletonModel.entityDetailResponseStubClassName }};
-use {{ skeletonModel.entityDetailResponseTestCaseClassName }};
+use {{ skeletonModel.entityUseCaseDetailResponseAssemblerMockClassName }};
+use {{ skeletonModel.entityUseCaseDetailResponseStubClassName }};
+use {{ skeletonModel.entityUseCaseDetailResponseTestCaseClassName }};
 use PHPUnit\Framework\TestCase;
 
 final class {{ skeletonModel.shortName }} extends TestCase
 {
-    use {{ skeletonModel.entityDetailResponseTestCaseShortName }};
+    use {{ skeletonModel.entityUseCaseDetailResponseTestCaseShortName }};
 
     /**
      * @var {{ skeletonModel.createEntityRequestDTOShortName }}
@@ -38,15 +38,15 @@ final class {{ skeletonModel.shortName }} extends TestCase
     {
         $response = $this->useCase->execute($this->request);
 
-        $expectedResponse = new {{ skeletonModel.entityDetailResponseStubShortName }}();
-        $this->assert{{ skeletonModel.entityDetailResponseShortName }}($expectedResponse, $response);
+        $expectedResponse = new {{ skeletonModel.entityUseCaseDetailResponseStubShortName }}();
+        $this->assert{{ skeletonModel.entityUseCaseDetailResponseShortName }}($expectedResponse, $response);
     }
 
     protected function setup(): void
     {
         $this->request = $this->buildRequest();
         $this->useCase = new {{ skeletonModel.createEntityShortName }}(
-            new {{ skeletonModel.entityDetailResponseAssemblerMockShortName }}(),
+            new {{ skeletonModel.entityUseCaseDetailResponseAssemblerMockShortName }}(),
             new {{ skeletonModel.entityFactoryImplShortName }}(),
             new {{ skeletonModel.inMemoryEntityGatewayShortName }}([{{ skeletonModel.entityStubShortName }}::ID => new {{ skeletonModel.entityStubShortName }}()])
         );

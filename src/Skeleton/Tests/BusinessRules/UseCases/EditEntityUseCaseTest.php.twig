@@ -1,0 +1,82 @@
+{% include "Header.php.twig" %}
+
+namespace {{ skeletonModel.namespace }};
+
+{% if skeletonModel.useCarbon %}
+use Carbon\Carbon;
+{% endif %}
+use {{ skeletonModel.entityUtilClassName }};
+use {{ skeletonModel.editEntityUseCaseRequestClassName }};
+use {{ skeletonModel.editEntityUseCaseRequestBuilderImplClassName }};
+use {{ skeletonModel.editEntityUseCaseRequestDTOClassName }};
+use {{ skeletonModel.editEntityUseCaseClassName }};
+use {{ skeletonModel.entityStubClassName }};
+use {{ skeletonModel.inMemoryEntityUseCaseGatewayClassName }};
+use {{ skeletonModel.entityUseCaseDetailResponseAssemblerMockClassName }};
+use {{ skeletonModel.entityUseCaseDetailResponseStubClassName }};
+use {{ skeletonModel.entityUseCaseDetailResponseTestCaseClassName }};
+use PHPUnit\Framework\TestCase;
+
+final class {{ skeletonModel.shortName }} extends TestCase
+{
+    use {{ skeletonModel.entityUseCaseDetailResponseTestCaseShortName }};
+
+    /**
+     * @var {{ skeletonModel.editEntityUseCaseRequestDTOShortName }}
+     */
+    private $request;
+
+    /**
+     * @var {{ skeletonModel.editEntityUseCaseShortName }}
+     */
+    private $useCase;
+
+    /**
+     *  @test
+     *
+     * @expectedException \{{ skeletonModel.entityNotFoundExceptionClassName }}
+     */
+    public function {{ skeletonModel.entityArgument }}NotFoundShouldThrowException(): void
+    {
+        $this->request->{{ skeletonModel.entityIdArgument }} = -1;
+        $this->useCase->execute($this->request);
+    }
+
+    /**
+     * @test
+     */
+    public function edit{{ skeletonModel.entityShortName }}(): void
+    {
+        $this->request->{{ skeletonModel.entityIdArgument }} = {{ skeletonModel.entityStubShortName }}::ID;
+        $response = $this->useCase->execute($this->request);
+
+        $expectedResponse = new {{ skeletonModel.entityUseCaseDetailResponseStubShortName }}();
+        EntityUtil::setId($expectedResponse, {{ skeletonModel.entityStubShortName }}::ID);
+        $this->assert{{ skeletonModel.entityUseCaseDetailResponseShortName }}($expectedResponse, $response);
+    }
+
+    protected function setup(): void
+    {
+        $this->request = $this->buildRequest();
+        $this->useCase = new {{ skeletonModel.editEntityUseCaseShortName }}(
+            new {{ skeletonModel.inMemoryEntityUseCaseGatewayShortName }}([{{ skeletonModel.entityStubShortName }}::ID => new {{ skeletonModel.entityStubShortName }}()]),
+            new {{ skeletonModel.entityUseCaseDetailResponseAssemblerMockShortName }}()
+        );
+    }
+
+    private function buildRequest(): {{ skeletonModel.editEntityUseCaseRequestShortName }}
+    {
+        $builder = new {{ skeletonModel.editEntityUseCaseRequestBuilderImplShortName }}();
+
+        return $builder
+            ->create()
+{% for method in skeletonModel.editEntityUseCaseRequestBuilderImplMethods | sortNameByAlpha %}
+{% if method.isDateType %}
+            ->{{ method.name }}(new Carbon({{ method.arguments[0].name }}))
+{% else %}
+            ->{{ method.name }}({{ method.arguments[0].name }})
+{% endif %}
+{% endfor %}
+            ->build();
+    }
+}
