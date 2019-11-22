@@ -5,6 +5,7 @@ namespace OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\Imp
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\EditEntityUseCaseRequestBuilderImplSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\EditEntityUseCaseRequestBuilderImplSkeletonModelAssembler;
+use OpenClassrooms\CodeGenerator\Utility\NameUtility;
 
 class EditEntityUseCaseRequestBuilderImplSkeletonModelAssemblerImpl implements EditEntityUseCaseRequestBuilderImplSkeletonModelAssembler
 {
