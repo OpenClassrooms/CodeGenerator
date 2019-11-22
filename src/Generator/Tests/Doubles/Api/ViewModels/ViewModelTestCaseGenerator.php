@@ -36,43 +36,6 @@ class ViewModelTestCaseGenerator extends AbstractViewModelGenerator
         $this->insertFileObject($viewModelTestCaseFileObject);
 
         return $viewModelTestCaseFileObject;
-
-    }
-
-    /**
-     * @param ViewModelTestCaseGeneratorRequest $generatorRequest
-     */
-    public function generate(GeneratorRequest $generatorRequest): FileObject
-    {
-        $viewModelTestCaseFileObject = $this->buildTestCaseFileObject($generatorRequest->getUseCaseResponseClassName());
-
-        return $viewModelTestCaseFileObject;
-
-    }
-
-    public function generateContent(
-        FileObject $viewModelTestCaseFileObject,
-        FileObject $viewModelFileObject
-    ): string {
-        $skeletonModel = $this->createSkeletonModel($viewModelTestCaseFileObject, $viewModelFileObject);
-
-        return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
-    }
-
-    public function setViewModelTestCaseSkeletonModelAssembler(
-        ViewModelTestCaseSkeletonModelAssembler $viewModelTestCaseSkeletonModelAssembler
-    ): void {
-        $this->viewModelTestCaseSkeletonModelAssembler = $viewModelTestCaseSkeletonModelAssembler;
-    }
-
-    protected function createUseCaseResponseCommonFieldTraitFileObject(): FileObject
-    {
-        return $this->createUseCaseResponseFileObject(
-            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE_COMMON_FIELD_TRAIT,
-            $this->domain,
-            $this->entity,
-            $this->baseNamespace
-        );
     }
 
     private function createSkeletonModel(
@@ -82,6 +45,16 @@ class ViewModelTestCaseGenerator extends AbstractViewModelGenerator
         return $this->viewModelTestCaseSkeletonModelAssembler->create(
             $viewModelTestCaseFileObject,
             $viewModelFileObject
+        );
+    }
+
+    protected function createUseCaseResponseCommonFieldTraitFileObject(): FileObject
+    {
+        return $this->createUseCaseResponseFileObject(
+            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE_COMMON_FIELD_TRAIT,
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
         );
     }
 
@@ -103,5 +76,30 @@ class ViewModelTestCaseGenerator extends AbstractViewModelGenerator
             $this->entity,
             $this->baseNamespace
         );
+    }
+
+    /**
+     * @param ViewModelTestCaseGeneratorRequest $generatorRequest
+     */
+    public function generate(GeneratorRequest $generatorRequest): FileObject
+    {
+        $viewModelTestCaseFileObject = $this->buildTestCaseFileObject($generatorRequest->getUseCaseResponseClassName());
+
+        return $viewModelTestCaseFileObject;
+    }
+
+    public function generateContent(
+        FileObject $viewModelTestCaseFileObject,
+        FileObject $viewModelFileObject
+    ): string {
+        $skeletonModel = $this->createSkeletonModel($viewModelTestCaseFileObject, $viewModelFileObject);
+
+        return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
+    }
+
+    public function setViewModelTestCaseSkeletonModelAssembler(
+        ViewModelTestCaseSkeletonModelAssembler $viewModelTestCaseSkeletonModelAssembler
+    ): void {
+        $this->viewModelTestCaseSkeletonModelAssembler = $viewModelTestCaseSkeletonModelAssembler;
     }
 }

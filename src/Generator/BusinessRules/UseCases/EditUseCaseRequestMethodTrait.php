@@ -13,11 +13,6 @@ trait EditUseCaseRequestMethodTrait
      */
     private $methodUtility;
 
-    public function setMethodUtility(MethodUtilityStrategy $methodUtility): void
-    {
-        $this->methodUtility = $methodUtility;
-    }
-
     private function buildEditUseCaseRequestMethods(string $entityClassName): array
     {
         $accessors = $this->methodUtility->getAccessors($entityClassName);
@@ -25,8 +20,13 @@ trait EditUseCaseRequestMethodTrait
         $getEntityMethod = MethodUtility::buildGetEntityIdMethodObject(
             FileObjectUtility::getShortClassName($entityClassName)
         );
-        $getEntityMethod = array($getEntityMethod);
+        $getEntityMethod = [$getEntityMethod];
 
         return array_merge($accessors, $isUpdatedMethods, $getEntityMethod);
+    }
+
+    public function setMethodUtility(MethodUtilityStrategy $methodUtility): void
+    {
+        $this->methodUtility = $methodUtility;
     }
 }

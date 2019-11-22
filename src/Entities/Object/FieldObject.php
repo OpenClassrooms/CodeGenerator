@@ -51,9 +51,9 @@ class FieldObject
         return $this->accessor;
     }
 
-    public function setAccessor(string $accessor = null)
+    public function getDocComment(): ?string
     {
-        $this->accessor = $accessor;
+        return $this->docComment;
     }
 
     public function getName(): string
@@ -66,9 +66,13 @@ class FieldObject
         return $this->scope;
     }
 
-    public function setScope(string $scope)
+    public function getType(): string
     {
-        $this->scope = $scope;
+        if (null !== $this->getDocComment() && preg_match('/\[]/', $this->getDocComment())) {
+            return 'array';
+        }
+
+        return DocCommentUtility::getType($this->getDocComment());
     }
 
     /**
@@ -79,32 +83,28 @@ class FieldObject
         return $this->value;
     }
 
-    public function setValue($value): void
-    {
-        $this->value = $value;
-    }
-
     public function isObject(): bool
     {
         return StringUtility::isObject($this->getType());
     }
 
-    public function getType(): string
+    public function setAccessor(string $accessor = null)
     {
-        if (null !== $this->getDocComment() && preg_match('/\[]/', $this->getDocComment())) {
-            return 'array';
-        }
-
-        return DocCommentUtility::getType($this->getDocComment());
-    }
-
-    public function getDocComment(): ?string
-    {
-        return $this->docComment;
+        $this->accessor = $accessor;
     }
 
     public function setDocComment(string $docComment)
     {
         $this->docComment = $docComment;
+    }
+
+    public function setScope(string $scope)
+    {
+        $this->scope = $scope;
+    }
+
+    public function setValue($value): void
+    {
+        $this->value = $value;
     }
 }

@@ -21,30 +21,15 @@ class ViewModelGenerator extends AbstractViewModelGenerator
      */
     private $viewModelSkeletonModelAssembler;
 
-    /**
-     * @param ViewModelGeneratorRequest $generatorRequest
-     */
-    public function generate(GeneratorRequest $generatorRequest): FileObject
-    {
-        $viewModelFileObject = $this->buildViewModelFileObject($generatorRequest->getUseCaseResponseClassName());
-        $this->insertFileObject($viewModelFileObject);
-
-        return $viewModelFileObject;
-    }
-
-    public function setViewModelSkeletonModelAssembler(
-        ViewModelSkeletonModelAssembler $viewModelSkeletonModelAssembler
-    ): void {
-        $this->viewModelSkeletonModelAssembler = $viewModelSkeletonModelAssembler;
-    }
-
     private function buildViewModelFileObject(string $useCaseResponseClassName): FileObject
     {
         $this->initFileObjectParameter($useCaseResponseClassName);
         $useCaseResponseCommonFieldTraitFileObject = $this->createUseCaseResponseCommonFieldTraitFileObject();
         $viewModelFileObject = $this->createViewModelObject();
 
-        $viewModelFileObject->setFields($this->getPublicClassFields($useCaseResponseCommonFieldTraitFileObject->getClassName()));
+        $viewModelFileObject->setFields(
+            $this->getPublicClassFields($useCaseResponseCommonFieldTraitFileObject->getClassName())
+        );
         $viewModelFileObject->setContent($this->generateContent($viewModelFileObject));
 
         return $viewModelFileObject;
@@ -75,10 +60,27 @@ class ViewModelGenerator extends AbstractViewModelGenerator
         );
     }
 
+    /**
+     * @param ViewModelGeneratorRequest $generatorRequest
+     */
+    public function generate(GeneratorRequest $generatorRequest): FileObject
+    {
+        $viewModelFileObject = $this->buildViewModelFileObject($generatorRequest->getUseCaseResponseClassName());
+        $this->insertFileObject($viewModelFileObject);
+
+        return $viewModelFileObject;
+    }
+
     private function generateContent(FileObject $viewModelFileObject): string
     {
         $skeletonModel = $this->createSkeletonModel($viewModelFileObject);
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
+    }
+
+    public function setViewModelSkeletonModelAssembler(
+        ViewModelSkeletonModelAssembler $viewModelSkeletonModelAssembler
+    ): void {
+        $this->viewModelSkeletonModelAssembler = $viewModelSkeletonModelAssembler;
     }
 }

@@ -23,7 +23,8 @@ class UseCaseListItemResponseDTOSkeletonModelAssemblerImpl implements UseCaseLis
         $skeletonModel->methods = $useCaseListItemResponseDTOFileObject->getMethods();
         $skeletonModel->useCaseListItemResponseClassName = $useCaseListItemResponseFileObject->getClassName();
         $skeletonModel->useCaseListItemResponseShortName = $useCaseListItemResponseFileObject->getShortName();
-        $skeletonModel->useCaseResponseCommonFieldTraitShortName = $useCaseResponseCommonFieldTraitFileObject->getShortName();
+        $skeletonModel->useCaseResponseCommonFieldTraitShortName = $useCaseResponseCommonFieldTraitFileObject->getShortName(
+        );
 
         return $skeletonModel;
     }

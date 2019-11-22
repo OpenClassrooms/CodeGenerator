@@ -52,7 +52,9 @@ interface CreateEntityUseCaseTestSkeletonModelBuilder
 
     public function withEntityFileObject(FileObject $entityFileObject): CreateEntityUseCaseTestSkeletonModelBuilder;
 
-    public function withEntityStubFileObject(FileObject $entityStubFileObject): CreateEntityUseCaseTestSkeletonModelBuilder;
+    public function withEntityStubFileObject(
+        FileObject $entityStubFileObject
+    ): CreateEntityUseCaseTestSkeletonModelBuilder;
 
     public function withInMemoryEntityGatewayFileObject(
         FileObject $inMemoryEntityGatewayFileObject

@@ -53,26 +53,6 @@ class ViewModelDetailAssemblerImplGenerator extends AbstractViewModelGenerator
     }
 
     /**
-     * @param ViewModelDetailAssemblerImplGeneratorRequest $generatorRequest
-     */
-    public function generate(GeneratorRequest $generatorRequest): FileObject
-    {
-        $viewModelDetailAssemblerImplFileObject = $this->buildViewModelDetailAssemblerImplFileObject(
-            $generatorRequest->getUseCaseResponseClassName()
-        );
-
-        $this->insertFileObject($viewModelDetailAssemblerImplFileObject);
-
-        return $viewModelDetailAssemblerImplFileObject;
-    }
-
-    public function setViewModelDetailAssemblerImplSkeletonModelBuilder(
-        ViewModelDetailAssemblerImplSkeletonModelBuilder $viewModelDetailAssemblerImplSkeletonModelBuilder
-    ): void {
-        $this->viewModelDetailAssemblerImplSkeletonModelBuilder = $viewModelDetailAssemblerImplSkeletonModelBuilder;
-    }
-
-    /**
      * @param FileObject[]
      */
     private function createSkeletonModel(array $fileObjects): ViewModelDetailAssemblerImplSkeletonModel
@@ -163,6 +143,20 @@ class ViewModelDetailAssemblerImplGenerator extends AbstractViewModelGenerator
     }
 
     /**
+     * @param ViewModelDetailAssemblerImplGeneratorRequest $generatorRequest
+     */
+    public function generate(GeneratorRequest $generatorRequest): FileObject
+    {
+        $viewModelDetailAssemblerImplFileObject = $this->buildViewModelDetailAssemblerImplFileObject(
+            $generatorRequest->getUseCaseResponseClassName()
+        );
+
+        $this->insertFileObject($viewModelDetailAssemblerImplFileObject);
+
+        return $viewModelDetailAssemblerImplFileObject;
+    }
+
+    /**
      * @param FileObject[]
      */
     private function generateContent(array $fileObjects): string
@@ -170,5 +164,11 @@ class ViewModelDetailAssemblerImplGenerator extends AbstractViewModelGenerator
         $skeletonModel = $this->createSkeletonModel($fileObjects);
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
+    }
+
+    public function setViewModelDetailAssemblerImplSkeletonModelBuilder(
+        ViewModelDetailAssemblerImplSkeletonModelBuilder $viewModelDetailAssemblerImplSkeletonModelBuilder
+    ): void {
+        $this->viewModelDetailAssemblerImplSkeletonModelBuilder = $viewModelDetailAssemblerImplSkeletonModelBuilder;
     }
 }

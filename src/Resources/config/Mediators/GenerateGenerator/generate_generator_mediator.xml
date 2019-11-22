@@ -8,7 +8,8 @@
                 class="OpenClassrooms\CodeGenerator\Generator\GenerateGenerator\DTO\Request\GenerateGeneratorGeneratorRequestBuilderImpl"/>
 
         <service id="open_classrooms.code_generator.mediators.generate_generator.generate_generator_mediator"
-                 class="OpenClassrooms\CodeGenerator\Mediators\GenerateGenerator\Impl\GenerateGeneratorMediatorImpl" public="true">
+                 class="OpenClassrooms\CodeGenerator\Mediators\GenerateGenerator\Impl\GenerateGeneratorMediatorImpl"
+                 public="true">
             <call method="setFileObjectGateway">
                 <argument type="service" id="open_classrooms.code_generator.repository.file_object_repository"/>
             </call>

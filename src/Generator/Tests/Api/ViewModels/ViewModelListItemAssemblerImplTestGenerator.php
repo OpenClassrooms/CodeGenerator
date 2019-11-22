@@ -21,25 +21,6 @@ class ViewModelListItemAssemblerImplTestGenerator extends AbstractViewModelGener
      */
     private $viewModelTestSkeletonModelBuilder;
 
-    /**
-     * @param ViewModelListItemAssemblerImplTestGeneratorRequest $generatorRequest
-     */
-    public function generate(GeneratorRequest $generatorRequest): FileObject
-    {
-        $viewModelListItemAssemblerImplTest = $this->buildViewModelListItemAssemblerImplTestFileObject(
-            $generatorRequest->getUseCaseResponseClassName()
-        );
-        $this->insertFileObject($viewModelListItemAssemblerImplTest);
-
-        return $viewModelListItemAssemblerImplTest;
-    }
-
-    public function setViewModelListItemAssemblerImplTestSkeletonModelBuilder(
-        ViewModelListItemAssemblerImplTestSkeletonModelBuilder $assembler
-    ) {
-        $this->viewModelTestSkeletonModelBuilder = $assembler;
-    }
-
     private function buildViewModelListItemAssemblerImplTestFileObject(string $useCaseResponseClassName): FileObject
     {
         $this->initFileObjectParameter($useCaseResponseClassName);
@@ -154,6 +135,19 @@ class ViewModelListItemAssemblerImplTestGenerator extends AbstractViewModelGener
     }
 
     /**
+     * @param ViewModelListItemAssemblerImplTestGeneratorRequest $generatorRequest
+     */
+    public function generate(GeneratorRequest $generatorRequest): FileObject
+    {
+        $viewModelListItemAssemblerImplTest = $this->buildViewModelListItemAssemblerImplTestFileObject(
+            $generatorRequest->getUseCaseResponseClassName()
+        );
+        $this->insertFileObject($viewModelListItemAssemblerImplTest);
+
+        return $viewModelListItemAssemblerImplTest;
+    }
+
+    /**
      * @param FileObject[]
      */
     private function generateContent(array $fileObjects): string
@@ -161,5 +155,11 @@ class ViewModelListItemAssemblerImplTestGenerator extends AbstractViewModelGener
         $skeletonModel = $this->createSkeletonModel($fileObjects);
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
+    }
+
+    public function setViewModelListItemAssemblerImplTestSkeletonModelBuilder(
+        ViewModelListItemAssemblerImplTestSkeletonModelBuilder $assembler
+    ) {
+        $this->viewModelTestSkeletonModelBuilder = $assembler;
     }
 }

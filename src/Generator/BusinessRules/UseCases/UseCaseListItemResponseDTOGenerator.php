@@ -20,45 +20,6 @@ class UseCaseListItemResponseDTOGenerator extends AbstractUseCaseGenerator
      */
     private $useCaseListItemResponseDTOSkeletonModelAssembler;
 
-    public function createUseCaseListItemResponseFileObject()
-    {
-        return $this->useCaseResponseFileObjectFactory->create(
-            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE,
-            $this->domain,
-            $this->entity
-        );
-    }
-
-    public function createUseCaseResponseCommonFieldTraitFileObject()
-    {
-        return $this->useCaseResponseFileObjectFactory->create(
-            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE_COMMON_FIELD_TRAIT,
-            $this->domain,
-            $this->entity
-        );
-    }
-
-    /**
-     * @param UseCaseListItemResponseDTOGeneratorRequest $generatorRequest
-     */
-    public function generate(GeneratorRequest $generatorRequest): FileObject
-    {
-        $useCaseListItemResponseDTOFileObject = $this->buildUseCaseListItemResponseDTOFileObject(
-            $generatorRequest->getEntityClassName(),
-            $generatorRequest->getFields()
-        );
-
-        $this->insertFileObject($useCaseListItemResponseDTOFileObject);
-
-        return $useCaseListItemResponseDTOFileObject;
-    }
-
-    public function setUseCaseListItemResponseDTOSkeletonModelAssembler(
-        UseCaseListItemResponseDTOSkeletonModelAssembler $useCaseListItemResponseDTOSkeletonModelAssembler
-    ): void {
-        $this->useCaseListItemResponseDTOSkeletonModelAssembler = $useCaseListItemResponseDTOSkeletonModelAssembler;
-    }
-
     /**
      * @param string[] $fields
      */
@@ -110,6 +71,39 @@ class UseCaseListItemResponseDTOGenerator extends AbstractUseCaseGenerator
         );
     }
 
+    public function createUseCaseListItemResponseFileObject()
+    {
+        return $this->useCaseResponseFileObjectFactory->create(
+            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE,
+            $this->domain,
+            $this->entity
+        );
+    }
+
+    public function createUseCaseResponseCommonFieldTraitFileObject()
+    {
+        return $this->useCaseResponseFileObjectFactory->create(
+            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE_COMMON_FIELD_TRAIT,
+            $this->domain,
+            $this->entity
+        );
+    }
+
+    /**
+     * @param UseCaseListItemResponseDTOGeneratorRequest $generatorRequest
+     */
+    public function generate(GeneratorRequest $generatorRequest): FileObject
+    {
+        $useCaseListItemResponseDTOFileObject = $this->buildUseCaseListItemResponseDTOFileObject(
+            $generatorRequest->getEntityClassName(),
+            $generatorRequest->getFields()
+        );
+
+        $this->insertFileObject($useCaseListItemResponseDTOFileObject);
+
+        return $useCaseListItemResponseDTOFileObject;
+    }
+
     private function generateContent(
         FileObject $useCaseListItemResponseDTOFileObject,
         FileObject $useCaseListItemResponseFileObject,
@@ -122,5 +116,11 @@ class UseCaseListItemResponseDTOGenerator extends AbstractUseCaseGenerator
         );
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
+    }
+
+    public function setUseCaseListItemResponseDTOSkeletonModelAssembler(
+        UseCaseListItemResponseDTOSkeletonModelAssembler $useCaseListItemResponseDTOSkeletonModelAssembler
+    ): void {
+        $this->useCaseListItemResponseDTOSkeletonModelAssembler = $useCaseListItemResponseDTOSkeletonModelAssembler;
     }
 }

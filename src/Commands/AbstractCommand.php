@@ -53,6 +53,21 @@ class AbstractCommand extends Command
             );
     }
 
+    protected function getConfigFile()
+    {
+        if (\is_file(static::CONFIG_FILE)) {
+            return static::CONFIG_FILE;
+        }
+
+        return static::CONFIG_FILE_GENERATOR;
+    }
+
+    private function loadConfigFile(string $rootDir, string $configFile): void
+    {
+        $loader = new YamlFileLoader($this->container, new FileLocator($rootDir));
+        $loader->load($configFile);
+    }
+
     protected function loadConfigParameters()
     {
         if (empty($config)) {
@@ -62,20 +77,5 @@ class AbstractCommand extends Command
                 $this->loadConfigFile(static::ROOT_DIR_GENERATOR, static::CONFIG_FILE_GENERATOR);
             }
         }
-    }
-
-    private function loadConfigFile(string $rootDir, string $configFile): void
-    {
-        $loader = new YamlFileLoader($this->container, new FileLocator($rootDir));
-        $loader->load($configFile);
-    }
-
-    protected function getConfigFile()
-    {
-        if (\is_file(static::CONFIG_FILE)) {
-            return static::CONFIG_FILE;
-        }
-
-        return static::CONFIG_FILE_GENERATOR;
     }
 }

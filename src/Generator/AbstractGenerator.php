@@ -41,16 +41,6 @@ abstract class AbstractGenerator implements Generator
      */
     private $templating;
 
-    public function setFileObjectGateway(FileObjectGateway $fileObjectGateway)
-    {
-        $this->fileObjectGateway = $fileObjectGateway;
-    }
-
-    public function setTemplating(TemplatingService $templating): void
-    {
-        $this->templating = $templating;
-    }
-
     /**
      * @return array|FieldObject[]
      */
@@ -122,5 +112,15 @@ abstract class AbstractGenerator implements Generator
     protected function render(string $template, array $parameters): string
     {
         return $this->templating->render($template, $parameters);
+    }
+
+    public function setFileObjectGateway(FileObjectGateway $fileObjectGateway)
+    {
+        $this->fileObjectGateway = $fileObjectGateway;
+    }
+
+    public function setTemplating(TemplatingService $templating): void
+    {
+        $this->templating = $templating;
     }
 }

@@ -24,7 +24,8 @@ class UseCaseResponseAssemblerTraitSkeletonModelAssemblerImpl implements UseCase
         $skeletonModel->entityMethods = $entityFileObject->getMethods();
         $skeletonModel->entityShortName = $entityFileObject->getShortName();
         $skeletonModel->useCaseResponseClassName = $useCaseResponseFileObject->getClassName();
-        $skeletonModel->useCaseResponseCommonFieldTraitShortName = $useCaseResponseCommonFieldTraitFileObject->getShortName();
+        $skeletonModel->useCaseResponseCommonFieldTraitShortName = $useCaseResponseCommonFieldTraitFileObject->getShortName(
+        );
         $skeletonModel->useCaseResponseShortName = $useCaseResponseFileObject->getShortName();
 
         return $skeletonModel;

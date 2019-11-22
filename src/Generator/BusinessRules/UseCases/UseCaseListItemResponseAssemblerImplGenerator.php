@@ -22,27 +22,6 @@ class UseCaseListItemResponseAssemblerImplGenerator extends AbstractUseCaseGener
     private $useCaseListItemResponseAssemblerImplSkeletonModelAssembler;
 
     /**
-     * @param UseCaseListItemResponseAssemblerImplGeneratorRequest $generatorRequest
-     */
-    public function generate(GeneratorRequest $generatorRequest): FileObject
-    {
-        $useCaseListItemResponseAssemblerImplFileObject = $this->buildUseCaseListItemResponseAssemblerImplFileObject(
-            $generatorRequest->getEntityClassName(),
-            $generatorRequest->getFields()
-        );
-
-        $this->insertFileObject($useCaseListItemResponseAssemblerImplFileObject);
-
-        return $useCaseListItemResponseAssemblerImplFileObject;
-    }
-
-    public function setUseCaseListItemResponseAssemblerImplSkeletonModelAssembler(
-        UseCaseListItemResponseAssemblerImplSkeletonModelAssembler $useCaseListItemResponseAssemblerImplSkeletonModelAssembler
-    ): void {
-        $this->useCaseListItemResponseAssemblerImplSkeletonModelAssembler = $useCaseListItemResponseAssemblerImplSkeletonModelAssembler;
-    }
-
-    /**
      * @param string[] $fields
      */
     private function buildUseCaseListItemResponseAssemblerImplFileObject(
@@ -147,6 +126,21 @@ class UseCaseListItemResponseAssemblerImplGenerator extends AbstractUseCaseGener
         );
     }
 
+    /**
+     * @param UseCaseListItemResponseAssemblerImplGeneratorRequest $generatorRequest
+     */
+    public function generate(GeneratorRequest $generatorRequest): FileObject
+    {
+        $useCaseListItemResponseAssemblerImplFileObject = $this->buildUseCaseListItemResponseAssemblerImplFileObject(
+            $generatorRequest->getEntityClassName(),
+            $generatorRequest->getFields()
+        );
+
+        $this->insertFileObject($useCaseListItemResponseAssemblerImplFileObject);
+
+        return $useCaseListItemResponseAssemblerImplFileObject;
+    }
+
     private function generateContent(
         FileObject $entityFileObject,
         FileObject $useCaseListItemResponseAssemblerFileObject,
@@ -165,5 +159,11 @@ class UseCaseListItemResponseAssemblerImplGenerator extends AbstractUseCaseGener
         );
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
+    }
+
+    public function setUseCaseListItemResponseAssemblerImplSkeletonModelAssembler(
+        UseCaseListItemResponseAssemblerImplSkeletonModelAssembler $useCaseListItemResponseAssemblerImplSkeletonModelAssembler
+    ): void {
+        $this->useCaseListItemResponseAssemblerImplSkeletonModelAssembler = $useCaseListItemResponseAssemblerImplSkeletonModelAssembler;
     }
 }

@@ -10,7 +10,9 @@ interface CreateEntityUseCaseSkeletonModelBuilder
 
     public function create(): CreateEntityUseCaseSkeletonModelBuilder;
 
-    public function withCreateEntityUseCaseFileObject(FileObject $createEntityFileObject): CreateEntityUseCaseSkeletonModelBuilder;
+    public function withCreateEntityUseCaseFileObject(
+        FileObject $createEntityFileObject
+    ): CreateEntityUseCaseSkeletonModelBuilder;
 
     public function withCreateEntityUseCaseRequest(
         FileObject $createFunctionalEntityRequestFileObject

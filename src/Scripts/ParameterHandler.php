@@ -21,6 +21,16 @@ class ParameterHandler
      */
     protected static $processor;
 
+    private static function buildParameters(): void
+    {
+        static::$processor->processFile(
+            [
+                'file'      => self::OC_CODE_GENERATOR_YML,
+                'dist-file' => self::OC_CODE_GENERATOR_YML_DIST,
+            ]
+        );
+    }
+
     public static function createGeneratorFileParameters(Event $event)
     {
         static::initProcessor($event);
@@ -32,15 +42,5 @@ class ParameterHandler
     private static function initProcessor(Event $event)
     {
         static::$processor = static::$processor ?? new Processor($event->getIO());
-    }
-
-    private static function buildParameters(): void
-    {
-        static::$processor->processFile(
-            [
-                'file'      => self::OC_CODE_GENERATOR_YML,
-                'dist-file' => self::OC_CODE_GENERATOR_YML_DIST,
-            ]
-        );
     }
 }

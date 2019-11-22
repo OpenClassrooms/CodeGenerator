@@ -25,26 +25,6 @@ class ViewModelDetailStubGenerator extends AbstractViewModelGenerator
      */
     private $viewModelDetailStubSkeletonModelAssembler;
 
-    /**
-     * @param ViewModelDetailStubGeneratorRequest $generatorRequest
-     */
-    public function generate(GeneratorRequest $generatorRequest): FileObject
-    {
-        $viewModelDetailStubFileObject = $this->buildViewModelDetailStubFileObject(
-            $generatorRequest->getUseCaseResponseClassName()
-        );
-
-        $this->insertFileObject($viewModelDetailStubFileObject);
-
-        return $viewModelDetailStubFileObject;
-    }
-
-    public function setViewModelDetailStubSkeletonModelAssembler(
-        ViewModelDetailStubSkeletonModelAssembler $viewModelDetailStubSkeletonModelAssembler
-    ): void {
-        $this->viewModelDetailStubSkeletonModelAssembler = $viewModelDetailStubSkeletonModelAssembler;
-    }
-
     private function buildViewModelDetailStubFileObject(
         string $useCaseResponseClassName
     ): FileObject {
@@ -124,6 +104,20 @@ class ViewModelDetailStubGenerator extends AbstractViewModelGenerator
         );
     }
 
+    /**
+     * @param ViewModelDetailStubGeneratorRequest $generatorRequest
+     */
+    public function generate(GeneratorRequest $generatorRequest): FileObject
+    {
+        $viewModelDetailStubFileObject = $this->buildViewModelDetailStubFileObject(
+            $generatorRequest->getUseCaseResponseClassName()
+        );
+
+        $this->insertFileObject($viewModelDetailStubFileObject);
+
+        return $viewModelDetailStubFileObject;
+    }
+
     private function generateConsts(FileObject $responseEntityStub): array
     {
         return ConstUtility::generateConstsFromStubFileObject($responseEntityStub, self::DETAIL_RESPONSE);
@@ -150,5 +144,11 @@ class ViewModelDetailStubGenerator extends AbstractViewModelGenerator
         );
 
         return StubFieldUtility::generateStubFieldObjects($viewModelDetailFields, $useCaseDetailResponseDTOFileObject);
+    }
+
+    public function setViewModelDetailStubSkeletonModelAssembler(
+        ViewModelDetailStubSkeletonModelAssembler $viewModelDetailStubSkeletonModelAssembler
+    ): void {
+        $this->viewModelDetailStubSkeletonModelAssembler = $viewModelDetailStubSkeletonModelAssembler;
     }
 }

@@ -82,7 +82,9 @@ class GenerateGeneratorFileObjectFactoryImpl extends AbstractFileObjectFactory i
                 );
             case GenerateGeneratorFileObjectType::SERVICE_XML:
                 return new FileObject(
-                    $this->baseNamespace . 'Resources\config\Generator\\' . $domain . '\\' . StringUtility::convertToLowerSnakeCase($entity) . '.xml'
+                    $this->baseNamespace . 'Resources\config\Generator\\' . $domain . '\\' . StringUtility::convertToLowerSnakeCase(
+                        $entity
+                    ) . '.xml'
                 );
 
             default:

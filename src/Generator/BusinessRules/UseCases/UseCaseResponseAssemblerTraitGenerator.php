@@ -22,32 +22,10 @@ class UseCaseResponseAssemblerTraitGenerator extends AbstractUseCaseGenerator
      */
     private $useCaseResponseAssemblerTraitSkeletonModelAssembler;
 
-    /**
-     * @param UseCaseResponseAssemblerTraitGeneratorRequest $generatorRequest
-     */
-    public function generate(GeneratorRequest $generatorRequest): FileObject
-    {
-        $useCaseResponseAssemblerTraitFileObject = $this->buildUseCaseResponseAssemblerTraitFileObject(
-            $generatorRequest->getEntityClassName(),
-            $generatorRequest->getFields()
-        );
-
-        $this->insertFileObject($useCaseResponseAssemblerTraitFileObject);
-
-        return $useCaseResponseAssemblerTraitFileObject;
-    }
-
-    public function setUseCaseResponseAssemblerTraitSkeletonModelAssembler(
-        UseCaseResponseAssemblerTraitSkeletonModelAssembler $useCaseResponseAssemblerTraitSkeletonModelAssembler
-    ): void {
-        $this->useCaseResponseAssemblerTraitSkeletonModelAssembler = $useCaseResponseAssemblerTraitSkeletonModelAssembler;
-    }
-
     private function buildUseCaseResponseAssemblerTraitFileObject(
         string $entityClassName,
         array $wantedFields = []
-    ): FileObject
-    {
+    ): FileObject {
         $this->initFileObjectParameter($entityClassName);
 
         $entityFileObject = $this->createEntityFileObject();
@@ -124,6 +102,21 @@ class UseCaseResponseAssemblerTraitGenerator extends AbstractUseCaseGenerator
         );
     }
 
+    /**
+     * @param UseCaseResponseAssemblerTraitGeneratorRequest $generatorRequest
+     */
+    public function generate(GeneratorRequest $generatorRequest): FileObject
+    {
+        $useCaseResponseAssemblerTraitFileObject = $this->buildUseCaseResponseAssemblerTraitFileObject(
+            $generatorRequest->getEntityClassName(),
+            $generatorRequest->getFields()
+        );
+
+        $this->insertFileObject($useCaseResponseAssemblerTraitFileObject);
+
+        return $useCaseResponseAssemblerTraitFileObject;
+    }
+
     private function generateContent(
         FileObject $entityFileObject,
         FileObject $useCaseResponseCommonFieldTraitFileObject,
@@ -138,5 +131,11 @@ class UseCaseResponseAssemblerTraitGenerator extends AbstractUseCaseGenerator
         );
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
+    }
+
+    public function setUseCaseResponseAssemblerTraitSkeletonModelAssembler(
+        UseCaseResponseAssemblerTraitSkeletonModelAssembler $useCaseResponseAssemblerTraitSkeletonModelAssembler
+    ): void {
+        $this->useCaseResponseAssemblerTraitSkeletonModelAssembler = $useCaseResponseAssemblerTraitSkeletonModelAssembler;
     }
 }
