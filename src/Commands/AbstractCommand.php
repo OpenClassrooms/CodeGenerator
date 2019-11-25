@@ -14,6 +14,7 @@ use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
  */
 class AbstractCommand extends Command
 {
+    use CheckCommandArgumentTrait;
     use CommandDisplayTrait;
 
     const CONFIG_DIR            = __DIR__ . '/../Resources/config';

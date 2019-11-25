@@ -3,11 +3,9 @@
 namespace OpenClassrooms\CodeGenerator\Commands;
 
 use OpenClassrooms\CodeGenerator\Mediators\Args;
-use OpenClassrooms\CodeGenerator\Mediators\Options;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -17,19 +15,19 @@ use Symfony\Component\Yaml\Yaml;
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
-class GenerateGeneratorCommand extends AbstractCommand
+class CreateEntityUseCaseCommand extends AbstractCommand
 {
     /**
      * @var string
      */
-    protected static $defaultName = 'code-generator:generate-generator';
+    protected static $defaultName = 'code-generator:create-entity-use-case';
 
     public function __construct($name = null)
     {
         parent::__construct($name);
         $this->container = new ContainerBuilder();
         $loader = new XmlFileLoader($this->container, new FileLocator(self::CONFIG_DIR));
-        $loader->load('generate_generator.xml');
+        $loader->load('create_entity_use_case_services.xml');
         $this->loadConfigParameters();
         $this->container->compile();
     }
@@ -38,27 +36,19 @@ class GenerateGeneratorCommand extends AbstractCommand
     {
         $this
             ->setName(self::$defaultName)
-            ->setDescription('Create needed classes to add new generator')
-            ->setHelp('This command allows you to create new generator')
-            ->addArgument(Args::DOMAIN, InputArgument::OPTIONAL, 'set Domain/SubDomain')
-            ->addArgument(Args::ENTITY, InputArgument::OPTIONAL, 'set Entity name')
-            ->addOption(
-                Options::CONSTRUCTION_PATTERN,
-                null,
-                InputOption::VALUE_REQUIRED,
-                'choose construction pattern Skeleton model',
-                ConstructionPatternType::ASSEMBLER_PATTERN
-            );
+            ->setDescription('generate create entity use case architecture')
+            ->setHelp('This command allows you to generate create entity use case architecture')
+            ->addArgument(Args::CLASS_NAME, InputArgument::OPTIONAL, 'set entities class name');
         $this->configureOptions();
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $this->checkConfiguration();
-        $this->checkInputDomainAndNameArgument($input, $output, Args::ENTITY);
+        $this->checkInputClassNameArgument($input, $output);
 
         $fileObjects = $this->container
-            ->get('open_classrooms.code_generator.mediators.generate_generator.generate_generator_mediator')
+            ->get('open_classrooms.code_generator.mediators.business_rules.use_cases.get_entities_use_case_mediator')
             ->mediate($input->getArguments(), $input->getOptions());
 
         $this->commandDisplay($input, $output, $fileObjects);

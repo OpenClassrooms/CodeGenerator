@@ -44,21 +44,13 @@ class GetEntitiesUseCaseCommand extends AbstractCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $codeGeneratorConfig = Yaml::parseFile($this->getConfigFile());
-
-        $this->checkConfiguration($codeGeneratorConfig);
+        $this->checkConfiguration();
         $this->checkInputClassNameArgument($input, $output);
 
         $fileObjects = $this->container
             ->get('open_classrooms.code_generator.mediators.business_rules.use_cases.get_entities_use_case_mediator')
             ->mediate($input->getArguments(), $input->getOptions());
 
-        $io = new SymfonyStyle($input, $output);
-
-        [$writtenFiles, $notWrittenFiles] = $this->getFilesWritingStatus($fileObjects);
-
-        $this->displayCreatedFilePath($io, $writtenFiles);
-        $this->displayNotWrittenFilePathAndContent($io, $notWrittenFiles, $input);
-        $this->displayFilePathAndContentDump($io, array_merge($writtenFiles, $notWrittenFiles), $input);
+        $this->commandDisplay($input, $output, $fileObjects);
     }
 }
