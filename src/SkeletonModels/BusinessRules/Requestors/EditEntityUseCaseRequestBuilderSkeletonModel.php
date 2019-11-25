@@ -6,7 +6,7 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 
 abstract class EditEntityUseCaseRequestBuilderSkeletonModel extends AbstractSkeletonModel
 {
-    public $editEntityRequestShortName;
+    public $editEntityUseCaseRequestShortName;
 
     public $entityIdMethodName;
 

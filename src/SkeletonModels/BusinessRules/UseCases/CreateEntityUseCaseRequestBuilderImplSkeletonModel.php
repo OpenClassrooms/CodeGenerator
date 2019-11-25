@@ -6,15 +6,15 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 
 abstract class CreateEntityUseCaseRequestBuilderImplSkeletonModel extends AbstractSkeletonModel
 {
-    public $createEntityRequestBuilderClassName;
+    public $createEntityUseCaseRequestBuilderClassName;
 
-    public $createEntityRequestBuilderShortName;
+    public $createEntityUseCaseRequestBuilderShortName;
 
-    public $createEntityRequestClassName;
+    public $createEntityUseCaseRequestClassName;
 
-    public $createEntityRequestDTOShortName;
+    public $createEntityUseCaseRequestDTOShortName;
 
-    public $createEntityRequestShortName;
+    public $createEntityUseCaseRequestShortName;
 
     public $templatePath = 'BusinessRules/UseCases/DTO/Request/CreateEntityUseCaseRequestBuilderImpl.php.twig';
 }

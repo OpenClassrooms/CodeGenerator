@@ -2,9 +2,9 @@
 
 namespace {{ skeletonModel.namespace }};
 
-use {{ skeletonModel.editEntityRequestClassName }};
+use {{ skeletonModel.editEntityUseCaseRequestClassName }};
 
-final class {{ skeletonModel.shortName }} implements {{ skeletonModel.editEntityRequestShortName }}
+final class {{ skeletonModel.shortName }} implements {{ skeletonModel.editEntityUseCaseRequestShortName }}
 {
 {% for field in skeletonModel.fields | sortNameByAlpha %}
     {{ field.docComment }}

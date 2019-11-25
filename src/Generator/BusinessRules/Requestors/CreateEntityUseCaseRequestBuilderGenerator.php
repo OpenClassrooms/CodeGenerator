@@ -16,40 +16,40 @@ class CreateEntityUseCaseRequestBuilderGenerator extends AbstractUseCaseGenerato
     /**
      * @var CreateEntityUseCaseRequestBuilderSkeletonModelAssembler
      */
-    private $createEntityRequestBuilderSkeletonModelAssembler;
+    private $createEntityUseCaseRequestBuilderSkeletonModelAssembler;
 
     /**
      * @param CreateEntityUseCaseRequestBuilderGeneratorRequest $generatorRequest
      */
     public function generate(GeneratorRequest $generatorRequest): FileObject
     {
-        $createEntityRequestBuilderFileObject = $this->buildCreateEntityUseCaseRequestBuilderFileObject(
+        $createEntityUseCaseRequestBuilderFileObject = $this->buildCreateEntityUseCaseRequestBuilderFileObject(
             $generatorRequest->getEntityClassName()
         );
 
-        $this->insertFileObject($createEntityRequestBuilderFileObject);
+        $this->insertFileObject($createEntityUseCaseRequestBuilderFileObject);
 
-        return $createEntityRequestBuilderFileObject;
+        return $createEntityUseCaseRequestBuilderFileObject;
     }
 
     private function buildCreateEntityUseCaseRequestBuilderFileObject(string $entityClassName): FileObject
     {
         $this->initFileObjectParameter($entityClassName);
-        $createEntityRequestBuilderFileObject = $this->createCreateEntityUseCaseRequestBuilderFileObject();
-        $createEntityRequestFileObject = $this->createCreateEntityUseCaseRequestFileObject();
+        $createEntityUseCaseRequestBuilderFileObject = $this->createCreateEntityUseCaseRequestBuilderFileObject();
+        $createEntityUseCaseRequestFileObject = $this->createCreateEntityUseCaseRequestFileObject();
 
-        $createEntityRequestBuilderFileObject->setMethods(
-            MethodUtility::buildWitherMethods($entityClassName, $createEntityRequestBuilderFileObject->getShortName())
+        $createEntityUseCaseRequestBuilderFileObject->setMethods(
+            MethodUtility::buildWitherMethods($entityClassName, $createEntityUseCaseRequestBuilderFileObject->getShortName())
         );
 
-        $createEntityRequestBuilderFileObject->setContent(
+        $createEntityUseCaseRequestBuilderFileObject->setContent(
             $this->generateContent(
-                $createEntityRequestBuilderFileObject,
-                $createEntityRequestFileObject
+                $createEntityUseCaseRequestBuilderFileObject,
+                $createEntityUseCaseRequestFileObject
             )
         );
 
-        return $createEntityRequestBuilderFileObject;
+        return $createEntityUseCaseRequestBuilderFileObject;
     }
 
     private function createCreateEntityUseCaseRequestBuilderFileObject(): FileObject
@@ -71,30 +71,30 @@ class CreateEntityUseCaseRequestBuilderGenerator extends AbstractUseCaseGenerato
     }
 
     private function generateContent(
-        FileObject $createEntityRequestBuilderFileObject,
-        FileObject $createEntityRequestFileObject
+        FileObject $createEntityUseCaseRequestBuilderFileObject,
+        FileObject $createEntityUseCaseRequestFileObject
     ): string {
         $skeletonModel = $this->createSkeletonModel(
-            $createEntityRequestBuilderFileObject,
-            $createEntityRequestFileObject
+            $createEntityUseCaseRequestBuilderFileObject,
+            $createEntityUseCaseRequestFileObject
         );
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
     }
 
     private function createSkeletonModel(
-        FileObject $createEntityRequestBuilderFileObject,
-        FileObject $createEntityRequestFileObject
+        FileObject $createEntityUseCaseRequestBuilderFileObject,
+        FileObject $createEntityUseCaseRequestFileObject
     ): CreateEntityUseCaseRequestBuilderSkeletonModel {
-        return $this->createEntityRequestBuilderSkeletonModelAssembler->create(
-            $createEntityRequestBuilderFileObject,
-            $createEntityRequestFileObject
+        return $this->createEntityUseCaseRequestBuilderSkeletonModelAssembler->create(
+            $createEntityUseCaseRequestBuilderFileObject,
+            $createEntityUseCaseRequestFileObject
         );
     }
 
     public function setCreateEntityUseCaseRequestBuilderSkeletonModelAssembler(
-        CreateEntityUseCaseRequestBuilderSkeletonModelAssembler $createEntityRequestBuilderSkeletonModelAssembler
+        CreateEntityUseCaseRequestBuilderSkeletonModelAssembler $createEntityUseCaseRequestBuilderSkeletonModelAssembler
     ): void {
-        $this->createEntityRequestBuilderSkeletonModelAssembler = $createEntityRequestBuilderSkeletonModelAssembler;
+        $this->createEntityUseCaseRequestBuilderSkeletonModelAssembler = $createEntityUseCaseRequestBuilderSkeletonModelAssembler;
     }
 }

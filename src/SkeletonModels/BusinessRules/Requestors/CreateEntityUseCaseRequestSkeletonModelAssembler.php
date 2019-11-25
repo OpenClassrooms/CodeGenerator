@@ -6,5 +6,5 @@ use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 
 interface CreateEntityUseCaseRequestSkeletonModelAssembler
 {
-    public function create(FileObject $createEntityRequestFileObject): CreateEntityUseCaseRequestSkeletonModel;
+    public function create(FileObject $createEntityUseCaseRequestFileObject): CreateEntityUseCaseRequestSkeletonModel;
 }

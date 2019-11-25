@@ -5,7 +5,7 @@ namespace {{ skeletonModel.namespace }};
 use {{ skeletonModel.entityClassName }};
 use {{ skeletonModel.entityFactoryClassName }};
 use {{ skeletonModel.entityGatewayClassName }};
-use {{ skeletonModel.createEntityRequestClassName }};
+use {{ skeletonModel.createEntityUseCaseRequestClassName }};
 use {{ skeletonModel.entityUseCaseDetailResponseClassName }};
 use {{ skeletonModel.entityUseCaseDetailResponseAssemblerClassName }};
 use {{ skeletonModel.transactionClassName }};
@@ -42,7 +42,7 @@ class {{ skeletonModel.shortName }} implements UseCase
     /**
      * @Transaction
      *
-     * @param {{ skeletonModel.createEntityRequestShortName }} $useCaseRequest
+     * @param {{ skeletonModel.createEntityUseCaseRequestShortName }} $useCaseRequest
      */
     public function execute(UseCaseRequest $useCaseRequest): {{ skeletonModel.entityUseCaseDetailResponseShortName }}
     {
@@ -52,7 +52,7 @@ class {{ skeletonModel.shortName }} implements UseCase
         return $this->createResponse(${{ skeletonModel.entityArgument }});
     }
 
-    private function create{{ skeletonModel.entityShortName }}({{ skeletonModel.createEntityRequestShortName }} $request): {{ skeletonModel.entityShortName }}
+    private function create{{ skeletonModel.entityShortName }}({{ skeletonModel.createEntityUseCaseRequestShortName }} $request): {{ skeletonModel.entityShortName }}
     {
         ${{ skeletonModel.entityArgument }} = $this->{{ skeletonModel.entityFactoryArgument }}->create();
         $this->populate(${{ skeletonModel.entityArgument }}, $request);
@@ -60,9 +60,9 @@ class {{ skeletonModel.shortName }} implements UseCase
         return ${{ skeletonModel.entityArgument }};
     }
 
-    private function populate({{ skeletonModel.entityShortName }} ${{ skeletonModel.entityArgument }}, {{ skeletonModel.createEntityRequestShortName }} $request): void
+    private function populate({{ skeletonModel.entityShortName }} ${{ skeletonModel.entityArgument }}, {{ skeletonModel.createEntityUseCaseRequestShortName }} $request): void
     {
-{% for method in skeletonModel.createEntityRequestMethods %}
+{% for method in skeletonModel.createEntityUseCaseRequestMethods %}
         ${{ skeletonModel.entityArgument }}->set{{ method.fieldName|capitalize }}($request->{{ method.name }}());
 {% endfor %}
     }

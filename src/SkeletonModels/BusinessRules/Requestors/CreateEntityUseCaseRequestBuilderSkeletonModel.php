@@ -12,5 +12,5 @@ abstract class CreateEntityUseCaseRequestBuilderSkeletonModel extends AbstractSk
 
     public $useCaseRequestShortName;
 
-    public $createEntityRequestShortName;
+    public $createEntityUseCaseRequestShortName;
 }

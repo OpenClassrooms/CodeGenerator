@@ -9,22 +9,22 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\CreateEnt
 class CreateEntityUseCaseRequestBuilderImplSkeletonModelAssemblerImpl implements CreateEntityUseCaseRequestBuilderImplSkeletonModelAssembler
 {
     public function create(
-        FileObject $createEntityRequestBuilderFileObject,
-        FileObject $createEntityRequestBuilderImplFileObject,
-        FileObject $createEntityRequestDTOFileObject,
-        FileObject $createEntityRequestFileObject
+        FileObject $createEntityUseCaseRequestBuilderFileObject,
+        FileObject $createEntityUseCaseRequestBuilderImplFileObject,
+        FileObject $createEntityUseCaseRequestDTOFileObject,
+        FileObject $createEntityUseCaseRequestFileObject
     ): CreateEntityUseCaseRequestBuilderImplSkeletonModel {
         $skeletonModel = new CreateEntityUseCaseRequestBuilderImplSkeletonModelImpl();
 
-        $skeletonModel->className = $createEntityRequestBuilderImplFileObject->getClassName();
-        $skeletonModel->methods = $createEntityRequestBuilderImplFileObject->getMethods();
-        $skeletonModel->shortName = $createEntityRequestBuilderImplFileObject->getShortName();
-        $skeletonModel->namespace = $createEntityRequestBuilderImplFileObject->getNamespace();
-        $skeletonModel->createEntityRequestClassName = $createEntityRequestFileObject->getClassName();
-        $skeletonModel->createEntityRequestShortName = $createEntityRequestFileObject->getShortName();
-        $skeletonModel->createEntityRequestBuilderClassName = $createEntityRequestBuilderFileObject->getClassName();
-        $skeletonModel->createEntityRequestBuilderShortName = $createEntityRequestBuilderFileObject->getShortName();
-        $skeletonModel->createEntityRequestDTOShortName = $createEntityRequestDTOFileObject->getShortName();
+        $skeletonModel->className = $createEntityUseCaseRequestBuilderImplFileObject->getClassName();
+        $skeletonModel->methods = $createEntityUseCaseRequestBuilderImplFileObject->getMethods();
+        $skeletonModel->shortName = $createEntityUseCaseRequestBuilderImplFileObject->getShortName();
+        $skeletonModel->namespace = $createEntityUseCaseRequestBuilderImplFileObject->getNamespace();
+        $skeletonModel->createEntityUseCaseRequestClassName = $createEntityUseCaseRequestFileObject->getClassName();
+        $skeletonModel->createEntityUseCaseRequestShortName = $createEntityUseCaseRequestFileObject->getShortName();
+        $skeletonModel->createEntityUseCaseRequestBuilderClassName = $createEntityUseCaseRequestBuilderFileObject->getClassName();
+        $skeletonModel->createEntityUseCaseRequestBuilderShortName = $createEntityUseCaseRequestBuilderFileObject->getShortName();
+        $skeletonModel->createEntityUseCaseRequestDTOShortName = $createEntityUseCaseRequestDTOFileObject->getShortName();
 
         return $skeletonModel;
     }

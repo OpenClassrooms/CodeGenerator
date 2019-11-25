@@ -13,8 +13,8 @@ class EditEntityUseCaseRequestDTOSkeletonModelAssemblerImpl implements EditEntit
         FileObject $editEntityUseCaseRequestDTOFileObject
     ): EditEntityUseCaseRequestDTOSkeletonModel {
         $skeletonModel = new EditEntityUseCaseRequestDTOSkeletonModelImpl();
-        $skeletonModel->editEntityRequestClassName = $editEntityUseCaseRequestFileObject->getClassName();
-        $skeletonModel->editEntityRequestShortName = $editEntityUseCaseRequestFileObject->getShortName();
+        $skeletonModel->editEntityUseCaseRequestClassName = $editEntityUseCaseRequestFileObject->getClassName();
+        $skeletonModel->editEntityUseCaseRequestShortName = $editEntityUseCaseRequestFileObject->getShortName();
         $skeletonModel->className = $editEntityUseCaseRequestDTOFileObject->getClassName();
         $skeletonModel->fields = $editEntityUseCaseRequestDTOFileObject->getFields();
         $skeletonModel->methods = $editEntityUseCaseRequestDTOFileObject->getMethods();

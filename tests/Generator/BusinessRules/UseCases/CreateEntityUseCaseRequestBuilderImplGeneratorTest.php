@@ -21,7 +21,7 @@ class CreateEntityUseCaseRequestBuilderImplGeneratorTest extends TestCase
     /**
      * @var CreateEntityUseCaseRequestBuilderImplGenerator
      */
-    private $createEntityRequestBuilderImplGenerator;
+    private $createEntityUseCaseRequestBuilderImplGenerator;
 
     /**
      * @var CreateEntityUseCaseRequestBuilderImplGeneratorRequestBuilder
@@ -33,7 +33,7 @@ class CreateEntityUseCaseRequestBuilderImplGeneratorTest extends TestCase
      */
     final public function generate_ReturnFileObject(): void
     {
-        $actualFileObject = $this->createEntityRequestBuilderImplGenerator->generate($this->request);
+        $actualFileObject = $this->createEntityUseCaseRequestBuilderImplGenerator->generate($this->request);
 
         $this->assertSame(
             InMemoryFileObjectGateway::$fileObjects[$actualFileObject->getId()]->getPath(),
@@ -44,21 +44,21 @@ class CreateEntityUseCaseRequestBuilderImplGeneratorTest extends TestCase
 
     protected function setUp(): void
     {
-        $createEntityRequestBuilderImplGeneratorRequestBuilderImpl = new CreateEntityUseCaseRequestBuilderImplGeneratorRequestBuilderImpl(
+        $createEntityUseCaseRequestBuilderImplGeneratorRequestBuilderImpl = new CreateEntityUseCaseRequestBuilderImplGeneratorRequestBuilderImpl(
         );
-        $this->request = $createEntityRequestBuilderImplGeneratorRequestBuilderImpl
+        $this->request = $createEntityUseCaseRequestBuilderImplGeneratorRequestBuilderImpl
             ->create()
             ->withEntityClassName(FunctionalEntity::class)
             ->build();
 
-        $this->createEntityRequestBuilderImplGenerator = new CreateEntityUseCaseRequestBuilderImplGenerator();
+        $this->createEntityUseCaseRequestBuilderImplGenerator = new CreateEntityUseCaseRequestBuilderImplGenerator();
 
-        $this->createEntityRequestBuilderImplGenerator->setCreateEntityUseCaseRequestBuilderImplSkeletonModelAssembler(
+        $this->createEntityUseCaseRequestBuilderImplGenerator->setCreateEntityUseCaseRequestBuilderImplSkeletonModelAssembler(
             new CreateEntityUseCaseRequestBuilderImplSkeletonModelAssemblerMock()
         );
-        $this->createEntityRequestBuilderImplGenerator->setTemplating(new TemplatingServiceMock());
-        $this->createEntityRequestBuilderImplGenerator->setFileObjectGateway(new InMemoryFileObjectGateway());
-        $this->createEntityRequestBuilderImplGenerator->setUseCaseRequestFileObjectFactory(
+        $this->createEntityUseCaseRequestBuilderImplGenerator->setTemplating(new TemplatingServiceMock());
+        $this->createEntityUseCaseRequestBuilderImplGenerator->setFileObjectGateway(new InMemoryFileObjectGateway());
+        $this->createEntityUseCaseRequestBuilderImplGenerator->setUseCaseRequestFileObjectFactory(
             new UseCaseRequestFileObjectFactoryMock()
         );
     }

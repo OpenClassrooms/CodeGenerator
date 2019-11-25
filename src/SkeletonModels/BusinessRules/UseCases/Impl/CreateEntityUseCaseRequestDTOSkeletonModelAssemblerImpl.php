@@ -9,18 +9,18 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\CreateEnt
 class CreateEntityUseCaseRequestDTOSkeletonModelAssemblerImpl implements CreateEntityUseCaseRequestDTOSkeletonModelAssembler
 {
     public function create(
-        FileObject $createEntityRequestFileObject,
-        FileObject $createEntityRequestDTOFileObject
+        FileObject $createEntityUseCaseRequestFileObject,
+        FileObject $createEntityUseCaseRequestDTOFileObject
     ): CreateEntityUseCaseRequestDTOSkeletonModel {
         $skeletonModel = new CreateEntityUseCaseRequestDTOSkeletonModelImpl();
 
-        $skeletonModel->className = $createEntityRequestDTOFileObject->getClassName();
-        $skeletonModel->fields = $createEntityRequestDTOFileObject->getFields();
-        $skeletonModel->methods = $createEntityRequestDTOFileObject->getMethods();
-        $skeletonModel->namespace = $createEntityRequestDTOFileObject->getNamespace();
-        $skeletonModel->shortName = $createEntityRequestDTOFileObject->getShortName();
-        $skeletonModel->createEntityRequestClassName = $createEntityRequestFileObject->getClassName();
-        $skeletonModel->createEntityRequestShortName = $createEntityRequestFileObject->getShortName();
+        $skeletonModel->className = $createEntityUseCaseRequestDTOFileObject->getClassName();
+        $skeletonModel->fields = $createEntityUseCaseRequestDTOFileObject->getFields();
+        $skeletonModel->methods = $createEntityUseCaseRequestDTOFileObject->getMethods();
+        $skeletonModel->namespace = $createEntityUseCaseRequestDTOFileObject->getNamespace();
+        $skeletonModel->shortName = $createEntityUseCaseRequestDTOFileObject->getShortName();
+        $skeletonModel->createEntityUseCaseRequestClassName = $createEntityUseCaseRequestFileObject->getClassName();
+        $skeletonModel->createEntityUseCaseRequestShortName = $createEntityUseCaseRequestFileObject->getShortName();
 
         return $skeletonModel;
     }

@@ -44,20 +44,20 @@ class CreateEntityUseCaseGenerator extends AbstractUseCaseGenerator
     {
         $this->initFileObjectParameter($entityClassName);
         $createEntityFileObject = $this->createCreateEntityUseCaseFileObject();
-        $createEntityRequestFileObject = $this->createCreateEntityUseCaseRequestFileObject();
+        $createEntityUseCaseRequestFileObject = $this->createCreateEntityUseCaseRequestFileObject();
         $entityFileObject = $this->createEntityFileObject();
         $entityUseCaseDetailResponseFileObject = $this->createEntityDetailResponseFileObject();
         $entityUseCaseDetailResponseAssemblerFileObject = $this->createEntityDetailResponseAssemblerFileObject();
         $entityFactoryFileObject = $this->createEntityFactoryFileObject();
         $entityGatewayFileObject = $this->createEntityGatewayFileObject();
 
-        $createEntityRequestFileObject->setMethods($this->methodUtility->getAccessors($entityClassName));
+        $createEntityUseCaseRequestFileObject->setMethods($this->methodUtility->getAccessors($entityClassName));
 
         $createEntityFileObject->setContent(
             $this->generateContent(
                 [
                     UseCaseFileObjectType::BUSINESS_RULES_CREATE_ENTITY_USE_CASE                     => $createEntityFileObject,
-                    UseCaseRequestFileObjectType::BUSINESS_RULES_CREATE_ENTITY_USE_CASE_REQUEST      => $createEntityRequestFileObject,
+                    UseCaseRequestFileObjectType::BUSINESS_RULES_CREATE_ENTITY_USE_CASE_REQUEST      => $createEntityUseCaseRequestFileObject,
                     EntityFileObjectType::BUSINESS_RULES_ENTITY                                      => $entityFileObject,
                     UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE           => $entityUseCaseDetailResponseFileObject,
                     UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE_ASSEMBLER => $entityUseCaseDetailResponseAssemblerFileObject,

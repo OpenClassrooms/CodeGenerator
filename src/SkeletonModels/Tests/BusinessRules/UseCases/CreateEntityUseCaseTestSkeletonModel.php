@@ -8,19 +8,19 @@ abstract class CreateEntityUseCaseTestSkeletonModel extends AbstractSkeletonMode
 {
     public $createEntityClassName;
 
-    public $createEntityRequestBuilderImplClassName;
+    public $createEntityUseCaseRequestBuilderImplClassName;
 
-    public $createEntityRequestBuilderImplMethods;
+    public $createEntityUseCaseRequestBuilderImplMethods;
 
-    public $createEntityRequestBuilderImplShortName;
+    public $createEntityUseCaseRequestBuilderImplShortName;
 
-    public $createEntityRequestClassName;
+    public $createEntityUseCaseRequestClassName;
 
-    public $createEntityRequestDTOClassName;
+    public $createEntityUseCaseRequestDTOClassName;
 
-    public $createEntityRequestDTOShortName;
+    public $createEntityUseCaseRequestDTOShortName;
 
-    public $createEntityRequestShortName;
+    public $createEntityUseCaseRequestShortName;
 
     public $createEntityShortName;
 

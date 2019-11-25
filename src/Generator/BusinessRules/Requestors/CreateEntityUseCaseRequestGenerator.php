@@ -16,7 +16,7 @@ class CreateEntityUseCaseRequestGenerator extends AbstractUseCaseGenerator
     /**
      * @var CreateEntityUseCaseRequestSkeletonModelAssembler
      */
-    private $createEntityRequestSkeletonModelAssembler;
+    private $createEntityUseCaseRequestSkeletonModelAssembler;
 
     /**
      * @var MethodUtilityStrategy
@@ -28,24 +28,24 @@ class CreateEntityUseCaseRequestGenerator extends AbstractUseCaseGenerator
      */
     public function generate(GeneratorRequest $generatorRequest): FileObject
     {
-        $createEntityRequestFileObject = $this->buildCreateEntityUseCaseRequestFileObject(
+        $createEntityUseCaseRequestFileObject = $this->buildCreateEntityUseCaseRequestFileObject(
             $generatorRequest->getEntityClassName()
         );
 
-        $this->insertFileObject($createEntityRequestFileObject);
+        $this->insertFileObject($createEntityUseCaseRequestFileObject);
 
-        return $createEntityRequestFileObject;
+        return $createEntityUseCaseRequestFileObject;
     }
 
     private function buildCreateEntityUseCaseRequestFileObject(string $entityClassName): FileObject
     {
         $this->initFileObjectParameter($entityClassName);
-        $createEntityRequestFileObject = $this->createCreateEntityUseCaseRequestFileObject();
-        $createEntityRequestFileObject->setMethods($this->methodUtility->getAccessors($entityClassName));
+        $createEntityUseCaseRequestFileObject = $this->createCreateEntityUseCaseRequestFileObject();
+        $createEntityUseCaseRequestFileObject->setMethods($this->methodUtility->getAccessors($entityClassName));
 
-        $createEntityRequestFileObject->setContent($this->generateContent($createEntityRequestFileObject));
+        $createEntityUseCaseRequestFileObject->setContent($this->generateContent($createEntityUseCaseRequestFileObject));
 
-        return $createEntityRequestFileObject;
+        return $createEntityUseCaseRequestFileObject;
     }
 
     private function createCreateEntityUseCaseRequestFileObject(): FileObject
@@ -57,23 +57,23 @@ class CreateEntityUseCaseRequestGenerator extends AbstractUseCaseGenerator
         );
     }
 
-    private function generateContent(FileObject $createEntityRequestFileObject): string
+    private function generateContent(FileObject $createEntityUseCaseRequestFileObject): string
     {
-        $skeletonModel = $this->createSkeletonModel($createEntityRequestFileObject);
+        $skeletonModel = $this->createSkeletonModel($createEntityUseCaseRequestFileObject);
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
     }
 
     private function createSkeletonModel(
-        FileObject $createEntityRequestFileObject
+        FileObject $createEntityUseCaseRequestFileObject
     ): CreateEntityUseCaseRequestSkeletonModel {
-        return $this->createEntityRequestSkeletonModelAssembler->create($createEntityRequestFileObject);
+        return $this->createEntityUseCaseRequestSkeletonModelAssembler->create($createEntityUseCaseRequestFileObject);
     }
 
     public function setCreateEntityUseCaseRequestSkeletonModelAssembler(
-        CreateEntityUseCaseRequestSkeletonModelAssembler $createEntityRequestSkeletonModelAssembler
+        CreateEntityUseCaseRequestSkeletonModelAssembler $createEntityUseCaseRequestSkeletonModelAssembler
     ): void {
-        $this->createEntityRequestSkeletonModelAssembler = $createEntityRequestSkeletonModelAssembler;
+        $this->createEntityUseCaseRequestSkeletonModelAssembler = $createEntityUseCaseRequestSkeletonModelAssembler;
     }
 
     public function setMethodUtility(MethodUtilityStrategy $methodUtility): void

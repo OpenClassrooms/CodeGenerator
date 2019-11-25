@@ -6,13 +6,13 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 
 abstract class CreateEntityUseCaseSkeletonModel extends AbstractSkeletonModel
 {
-    public $createEntityRequestArgument;
+    public $createEntityUseCaseRequestArgument;
 
-    public $createEntityRequestClassName;
+    public $createEntityUseCaseRequestClassName;
 
-    public $createEntityRequestMethods;
+    public $createEntityUseCaseRequestMethods;
 
-    public $createEntityRequestShortName;
+    public $createEntityUseCaseRequestShortName;
 
     public $entityArgument;
 

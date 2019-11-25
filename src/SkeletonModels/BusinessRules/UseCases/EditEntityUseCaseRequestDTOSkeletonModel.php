@@ -6,9 +6,9 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 
 abstract class EditEntityUseCaseRequestDTOSkeletonModel extends AbstractSkeletonModel
 {
-    public $editEntityRequestClassName;
+    public $editEntityUseCaseRequestClassName;
 
-    public $editEntityRequestShortName;
+    public $editEntityUseCaseRequestShortName;
 
     public $templatePath = 'BusinessRules/UseCases/DTO/Request/EditEntityUseCaseRequestDTO.php.twig';
 }

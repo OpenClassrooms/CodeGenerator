@@ -14,19 +14,19 @@ class EditEntityUseCaseRequestBuilderSkeletonModelAssemblerImpl implements EditE
     use UseCaseClassNameTrait;
 
     public function create(
-        FileObject $editEntityRequestBuilderFileObject,
-        FileObject $editEntityRequestFileObject
+        FileObject $editEntityUseCaseRequestBuilderFileObject,
+        FileObject $editEntityUseCaseRequestFileObject
     ): EditEntityUseCaseRequestBuilderSkeletonModel {
         $skeletonModel = new EditEntityUseCaseRequestBuilderSkeletonModelImpl();
-        $skeletonModel->className = $editEntityRequestBuilderFileObject->getClassName();
-        $skeletonModel->methods = $editEntityRequestBuilderFileObject->getMethods();
-        $skeletonModel->namespace = $editEntityRequestBuilderFileObject->getNamespace();
-        $skeletonModel->shortName = $editEntityRequestBuilderFileObject->getShortName();
+        $skeletonModel->className = $editEntityUseCaseRequestBuilderFileObject->getClassName();
+        $skeletonModel->methods = $editEntityUseCaseRequestBuilderFileObject->getMethods();
+        $skeletonModel->namespace = $editEntityUseCaseRequestBuilderFileObject->getNamespace();
+        $skeletonModel->shortName = $editEntityUseCaseRequestBuilderFileObject->getShortName();
 
         $skeletonModel->entityIdMethodName = NameUtility::creatChainedEntityIdMethodName(
-            $editEntityRequestBuilderFileObject->getEntity()
+            $editEntityUseCaseRequestBuilderFileObject->getEntity()
         );
-        $skeletonModel->editEntityRequestShortName = $editEntityRequestFileObject->getShortName();
+        $skeletonModel->editEntityUseCaseRequestShortName = $editEntityUseCaseRequestFileObject->getShortName();
         $skeletonModel->useCaseRequestClassName = $this->useCaseRequestClassName;
         $skeletonModel->useCaseRequestShortName = FileObjectUtility::getShortClassName($this->useCaseRequestClassName);
 

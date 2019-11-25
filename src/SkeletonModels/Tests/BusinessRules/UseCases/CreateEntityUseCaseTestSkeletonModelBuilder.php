@@ -19,15 +19,15 @@ interface CreateEntityUseCaseTestSkeletonModelBuilder
     ): CreateEntityUseCaseTestSkeletonModelBuilder;
 
     public function withCreateEntityUseCaseRequestBuilderImplFileObject(
-        FileObject $createEntityRequestBuilderImplFileObject
+        FileObject $createEntityUseCaseRequestBuilderImplFileObject
     ): CreateEntityUseCaseTestSkeletonModelBuilder;
 
     public function withCreateEntityUseCaseRequestDTOFileObject(
-        FileObject $createEntityRequestDTOFileObject
+        FileObject $createEntityUseCaseRequestDTOFileObject
     ): CreateEntityUseCaseTestSkeletonModelBuilder;
 
     public function withCreateEntityUseCaseRequestFileObject(
-        FileObject $createEntityRequestFileObject
+        FileObject $createEntityUseCaseRequestFileObject
     ): CreateEntityUseCaseTestSkeletonModelBuilder;
 
     public function withEntityDetailResponseAssemblerMockFileObject(

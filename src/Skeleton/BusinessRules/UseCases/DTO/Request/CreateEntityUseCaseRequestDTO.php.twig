@@ -2,9 +2,9 @@
 
 namespace {{ skeletonModel.namespace }};
 
-use {{ skeletonModel.createEntityRequestClassName }};
+use {{ skeletonModel.createEntityUseCaseRequestClassName }};
 
-final class {{ skeletonModel.shortName }} implements {{ skeletonModel.createEntityRequestShortName }}
+final class {{ skeletonModel.shortName }} implements {{ skeletonModel.createEntityUseCaseRequestShortName }}
 {
 {% for field in skeletonModel.fields %}
     {{ field.docComment }}
