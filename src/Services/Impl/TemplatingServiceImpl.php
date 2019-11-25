@@ -46,7 +46,7 @@ class TemplatingServiceImpl extends Environment implements TemplatingService
     {
         return new TwigFilter(
             'sortNameByAlpha',
-            function(array $classFields) {
+            function (array $classFields) {
                 $arrayFields = $classFields;
                 usort(
                     $arrayFields,
@@ -61,7 +61,7 @@ class TemplatingServiceImpl extends Environment implements TemplatingService
     private function getSortNameClosure(array $arrayFields)
     {
         if (array_shift($arrayFields) instanceof FieldObject) {
-            return function(FieldObject $a, FieldObject $b) {
+            return function (FieldObject $a, FieldObject $b) {
                 $al = strtolower($a->getName());
                 $bl = strtolower($b->getName());
 
@@ -69,7 +69,7 @@ class TemplatingServiceImpl extends Environment implements TemplatingService
             };
         }
         if (array_shift($arrayFields) instanceof ConstObject) {
-            return function(ConstObject $a, ConstObject $b) {
+            return function (ConstObject $a, ConstObject $b) {
                 $al = strtolower($a->getName());
                 $bl = strtolower($b->getName());
 
@@ -77,7 +77,7 @@ class TemplatingServiceImpl extends Environment implements TemplatingService
             };
         }
 
-        return function(MethodObject $a, MethodObject $b) {
+        return function (MethodObject $a, MethodObject $b) {
             $al = strtolower($a->getName());
             $bl = strtolower($b->getName());
 
@@ -89,7 +89,7 @@ class TemplatingServiceImpl extends Environment implements TemplatingService
     {
         return new TwigFilter(
             'sortIdFirst',
-            function(array $classFields) {
+            function (array $classFields) {
                 $arrayFields = $classFields;
                 foreach ($arrayFields as $key => $field) {
                     /** @var FieldObject $field */
@@ -108,7 +108,7 @@ class TemplatingServiceImpl extends Environment implements TemplatingService
     {
         return new TwigFunction(
             'lineBreak',
-            function(array $fields, int $key) {
+            function (array $fields, int $key) {
                 $objects = 0;
                 foreach ($fields as $field) {
                     if ($field->isObject()) {
@@ -125,7 +125,7 @@ class TemplatingServiceImpl extends Environment implements TemplatingService
     {
         return new TwigFunction(
             'printValue',
-            function($value) {
+            function ($value) {
                 switch ($value) {
                     case is_bool($value):
                         return $value ? 'true' : 'false';
@@ -144,7 +144,7 @@ class TemplatingServiceImpl extends Environment implements TemplatingService
     {
         return new TwigFunction(
             'printReturnType',
-            function($value, $isNullable) {
+            function ($value, $isNullable) {
                 $returnType = $value;
                 if (in_array($value, ['DateTime', 'DateTimeImmutable', 'DateTimeInterface'])) {
                     $returnType = '\\' . $value;
