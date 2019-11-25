@@ -41,7 +41,7 @@ class {{ skeletonModel.shortName }} implements {{ skeletonModel.editEntityUseCas
 {% endif %}
 {% endfor %}
 
-    public function {{  skeletonModel.entityIdMethodName }}(int $id): {{ skeletonModel.editEntityUseCaseRequestBuilderShortName }}
+    public function {{ skeletonModel.entityIdMethodName }}(int $id): {{ skeletonModel.editEntityUseCaseRequestBuilderShortName }}
     {
         $this->request->{{ skeletonModel.entityIdArgumentName }} = $id;
 
