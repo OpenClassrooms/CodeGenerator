@@ -9,9 +9,9 @@ use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
  */
 interface Generator
 {
-    const ADMIN = 'admin';
+    const ADMIN            = 'admin';
 
-    const USE_CASE_GET = 'use case get';
+    const USE_CASE_GET     = 'use case get';
 
     const USE_CASE_GET_ALL = 'use case get all';
 

@@ -43,18 +43,35 @@ class GenerateGeneratorGenerator
      */
     private $templating;
 
-    private function buildFileObject(string $domain, string $entity, string $type, string $template): FileObject
+    /**
+     * @param GenerateGeneratorGeneratorRequest $generatorRequest
+     *
+     * @return FileObject
+     */
+    public function generate(GeneratorRequest $generatorRequest): array
     {
-        $fileObject = $this->factory->create($type, $domain, $entity);
-
-        $fileObject->setContent(
-            $this->templating->render(
-                $template,
-                ['skeletonModel' => $this->skeletonModel]
-            )
+        $this->buildSkeletonModel(
+            $generatorRequest->getDomain(),
+            $generatorRequest->getEntity(),
+            $generatorRequest->getConstructionPattern()
+        );
+        $fileObjects = $this->buildFileObjects(
+            $generatorRequest->getDomain(),
+            $generatorRequest->getEntity(),
+            $generatorRequest->getConstructionPattern()
         );
 
-        return $fileObject;
+        $this->insertFileObjects($fileObjects);
+
+        return $fileObjects;
+    }
+
+    private function buildSkeletonModel(
+        string $domain,
+        string $entity,
+        string $constructionPattern
+    ): GenerateGeneratorGeneratorSkeletonModel {
+        return $this->skeletonModel = $this->assembler->create($domain, $entity, $constructionPattern);
     }
 
     /**
@@ -98,6 +115,20 @@ class GenerateGeneratorGenerator
         );
     }
 
+    private function buildFileObject(string $domain, string $entity, string $type, string $template): FileObject
+    {
+        $fileObject = $this->factory->create($type, $domain, $entity);
+
+        $fileObject->setContent(
+            $this->templating->render(
+                $template,
+                ['skeletonModel' => $this->skeletonModel]
+            )
+        );
+
+        return $fileObject;
+    }
+
     private function buildGeneratorFileObjectStubFileObject(string $domain, string $entity): FileObject
     {
         return $this->buildFileObject(
@@ -105,6 +136,16 @@ class GenerateGeneratorGenerator
             $entity,
             GenerateGeneratorFileObjectType::FILE_OBJECT_STUB,
             'GenerateGenerator/GenerateGeneratorFileObjectStub.php.twig'
+        );
+    }
+
+    private function buildGeneratorRequestFileObject(string $domain, string $entity): FileObject
+    {
+        return $this->buildFileObject(
+            $domain,
+            $entity,
+            GenerateGeneratorFileObjectType::GENERATOR_REQUEST,
+            'GenerateGenerator/GenerateGeneratorRequest.php.twig'
         );
     }
 
@@ -138,16 +179,6 @@ class GenerateGeneratorGenerator
         );
     }
 
-    private function buildGeneratorRequestFileObject(string $domain, string $entity): FileObject
-    {
-        return $this->buildFileObject(
-            $domain,
-            $entity,
-            GenerateGeneratorFileObjectType::GENERATOR_REQUEST,
-            'GenerateGenerator/GenerateGeneratorRequest.php.twig'
-        );
-    }
-
     private function buildGeneratorTestFileObject(string $domain, string $entity): FileObject
     {
         return $this->buildFileObject(
@@ -155,16 +186,6 @@ class GenerateGeneratorGenerator
             $entity,
             GenerateGeneratorFileObjectType::GENERATOR_TEST,
             'GenerateGenerator/GenerateGeneratorTest.php.twig'
-        );
-    }
-
-    private function buildServiceXmlFileObject(string $domain, string $entity): FileObject
-    {
-        return $this->buildFileObject(
-            $domain,
-            $entity,
-            GenerateGeneratorFileObjectType::SERVICE_XML,
-            'GenerateGenerator/GenerateGeneratorServiceXml.php.twig'
         );
     }
 
@@ -178,12 +199,14 @@ class GenerateGeneratorGenerator
         );
     }
 
-    private function buildSkeletonModel(
-        string $domain,
-        string $entity,
-        string $constructionPattern
-    ): GenerateGeneratorGeneratorSkeletonModel {
-        return $this->skeletonModel = $this->assembler->create($domain, $entity, $constructionPattern);
+    private function buildSkeletonModelFileObject(string $domain, string $entity): FileObject
+    {
+        return $this->buildFileObject(
+            $domain,
+            $entity,
+            GenerateGeneratorFileObjectType::SKELETON_MODEL,
+            'GenerateGenerator/GenerateGeneratorSkeletonModel.php.twig'
+        );
     }
 
     private function buildSkeletonModelAssemblerFileObject(string $domain, string $entity): FileObject
@@ -246,16 +269,6 @@ class GenerateGeneratorGenerator
         );
     }
 
-    private function buildSkeletonModelFileObject(string $domain, string $entity): FileObject
-    {
-        return $this->buildFileObject(
-            $domain,
-            $entity,
-            GenerateGeneratorFileObjectType::SKELETON_MODEL,
-            'GenerateGenerator/GenerateGeneratorSkeletonModel.php.twig'
-        );
-    }
-
     private function buildSkeletonModelImplFileObject(string $domain, string $entity): FileObject
     {
         return $this->buildFileObject(
@@ -266,27 +279,14 @@ class GenerateGeneratorGenerator
         );
     }
 
-    /**
-     * @param GenerateGeneratorGeneratorRequest $generatorRequest
-     *
-     * @return FileObject
-     */
-    public function generate(GeneratorRequest $generatorRequest): array
+    private function buildServiceXmlFileObject(string $domain, string $entity): FileObject
     {
-        $this->buildSkeletonModel(
-            $generatorRequest->getDomain(),
-            $generatorRequest->getEntity(),
-            $generatorRequest->getConstructionPattern()
+        return $this->buildFileObject(
+            $domain,
+            $entity,
+            GenerateGeneratorFileObjectType::SERVICE_XML,
+            'GenerateGenerator/GenerateGeneratorServiceXml.php.twig'
         );
-        $fileObjects = $this->buildFileObjects(
-            $generatorRequest->getDomain(),
-            $generatorRequest->getEntity(),
-            $generatorRequest->getConstructionPattern()
-        );
-
-        $this->insertFileObjects($fileObjects);
-
-        return $fileObjects;
     }
 
     /**

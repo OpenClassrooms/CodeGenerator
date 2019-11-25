@@ -22,6 +22,20 @@ class CreateEntityUseCaseTestGenerator extends AbstractUseCaseGenerator
      */
     private $createEntityTestSkeletonModelBuilder;
 
+    /**
+     * @param CreateEntityUseCaseTestGeneratorRequest $generatorRequest
+     */
+    public function generate(GeneratorRequest $generatorRequest): FileObject
+    {
+        $createEntityTestFileObject = $this->buildCreateEntityUseCaseTestFileObject(
+            $generatorRequest->getEntityClassName()
+        );
+
+        $this->insertFileObject($createEntityTestFileObject);
+
+        return $createEntityTestFileObject;
+    }
+
     private function buildCreateEntityUseCaseTestFileObject(string $entityClassName): FileObject
     {
         $this->initFileObjectParameter($entityClassName);
@@ -85,6 +99,15 @@ class CreateEntityUseCaseTestGenerator extends AbstractUseCaseGenerator
         );
     }
 
+    private function createEntityRequestFileObject()
+    {
+        return $this->useCaseRequestFileObjectFactory->create(
+            UseCaseRequestFileObjectType::BUSINESS_RULES_CREATE_ENTITY_USE_CASE_REQUEST,
+            $this->domain,
+            $this->entity
+        );
+    }
+
     private function createEntityRequestBuilderImplFileObject()
     {
         return $this->useCaseRequestFileObjectFactory->create(
@@ -103,13 +126,86 @@ class CreateEntityUseCaseTestGenerator extends AbstractUseCaseGenerator
         );
     }
 
-    private function createEntityRequestFileObject()
+    private function entityFileObject()
     {
-        return $this->useCaseRequestFileObjectFactory->create(
-            UseCaseRequestFileObjectType::BUSINESS_RULES_CREATE_ENTITY_USE_CASE_REQUEST,
+        return $this->entityFileObjectFactory->create(
+            EntityFileObjectType::BUSINESS_RULES_ENTITY,
             $this->domain,
             $this->entity
         );
+    }
+
+    private function entityUseCaseDetailResponseFileObject()
+    {
+        return $this->useCaseResponseFileObjectFactory->create(
+            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE,
+            $this->domain,
+            $this->entity
+        );
+    }
+
+    private function entityUseCaseDetailResponseAssemblerMockFileObject()
+    {
+        return $this->useCaseResponseFileObjectFactory->create(
+            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE_ASSEMBLER_MOCK,
+            $this->domain,
+            $this->entity
+        );
+    }
+
+    private function entityUseCaseDetailResponseStubFileObject()
+    {
+        return $this->useCaseResponseFileObjectFactory->create(
+            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE_STUB,
+            $this->domain,
+            $this->entity
+        );
+    }
+
+    private function entityUseCaseDetailResponseTestCaseFileObject()
+    {
+        return $this->useCaseResponseFileObjectFactory->create(
+            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE_TEST_CASE,
+            $this->domain,
+            $this->entity
+        );
+    }
+
+    private function entityFactoryImplFileObject()
+    {
+        return $this->entityFileObjectFactory->create(
+            EntityFileObjectType::BUSINESS_RULES_ENTITY_FACTORY_IMPL,
+            $this->domain,
+            $this->entity
+        );
+    }
+
+    private function entityStubFileObject()
+    {
+        return $this->entityFileObjectFactory->create(
+            EntityFileObjectType::BUSINESS_RULES_ENTITY_STUB,
+            $this->domain,
+            $this->entity
+        );
+    }
+
+    private function inMemoryEntityGatewayFileObject()
+    {
+        return $this->entityFileObjectFactory->create(
+            EntityFileObjectType::BUSINESS_RULES_ENTITY_IN_MEMORY_GATEWAY,
+            $this->domain,
+            $this->entity
+        );
+    }
+
+    /**
+     * @param FileObject[] $fileObjects
+     */
+    private function generateContent(array $fileObjects): string
+    {
+        $skeletonModel = $this->createSkeletonModel($fileObjects);
+
+        return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
     }
 
     private function createSkeletonModel(array $fileObjects): CreateEntityUseCaseTestSkeletonModel
@@ -147,102 +243,6 @@ class CreateEntityUseCaseTestGenerator extends AbstractUseCaseGenerator
             ->withEntityStubFileObject($fileObjects[EntityFileObjectType::BUSINESS_RULES_ENTITY_STUB])
             ->withInMemoryEntityGatewayFileObject($fileObjects[EntityFileObjectType::BUSINESS_RULES_ENTITY_GATEWAY])
             ->build();
-    }
-
-    private function entityFactoryImplFileObject()
-    {
-        return $this->entityFileObjectFactory->create(
-            EntityFileObjectType::BUSINESS_RULES_ENTITY_FACTORY_IMPL,
-            $this->domain,
-            $this->entity
-        );
-    }
-
-    private function entityFileObject()
-    {
-        return $this->entityFileObjectFactory->create(
-            EntityFileObjectType::BUSINESS_RULES_ENTITY,
-            $this->domain,
-            $this->entity
-        );
-    }
-
-    private function entityStubFileObject()
-    {
-        return $this->entityFileObjectFactory->create(
-            EntityFileObjectType::BUSINESS_RULES_ENTITY_STUB,
-            $this->domain,
-            $this->entity
-        );
-    }
-
-    private function entityUseCaseDetailResponseAssemblerMockFileObject()
-    {
-        return $this->useCaseResponseFileObjectFactory->create(
-            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE_ASSEMBLER_MOCK,
-            $this->domain,
-            $this->entity
-        );
-    }
-
-    private function entityUseCaseDetailResponseFileObject()
-    {
-        return $this->useCaseResponseFileObjectFactory->create(
-            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE,
-            $this->domain,
-            $this->entity
-        );
-    }
-
-    private function entityUseCaseDetailResponseStubFileObject()
-    {
-        return $this->useCaseResponseFileObjectFactory->create(
-            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE_STUB,
-            $this->domain,
-            $this->entity
-        );
-    }
-
-    private function entityUseCaseDetailResponseTestCaseFileObject()
-    {
-        return $this->useCaseResponseFileObjectFactory->create(
-            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE_TEST_CASE,
-            $this->domain,
-            $this->entity
-        );
-    }
-
-    /**
-     * @param CreateEntityUseCaseTestGeneratorRequest $generatorRequest
-     */
-    public function generate(GeneratorRequest $generatorRequest): FileObject
-    {
-        $createEntityTestFileObject = $this->buildCreateEntityUseCaseTestFileObject(
-            $generatorRequest->getEntityClassName()
-        );
-
-        $this->insertFileObject($createEntityTestFileObject);
-
-        return $createEntityTestFileObject;
-    }
-
-    /**
-     * @param FileObject[] $fileObjects
-     */
-    private function generateContent(array $fileObjects): string
-    {
-        $skeletonModel = $this->createSkeletonModel($fileObjects);
-
-        return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
-    }
-
-    private function inMemoryEntityGatewayFileObject()
-    {
-        return $this->entityFileObjectFactory->create(
-            EntityFileObjectType::BUSINESS_RULES_ENTITY_IN_MEMORY_GATEWAY,
-            $this->domain,
-            $this->entity
-        );
     }
 
     public function setCreateEntityUseCaseTestSkeletonModelBuilder(

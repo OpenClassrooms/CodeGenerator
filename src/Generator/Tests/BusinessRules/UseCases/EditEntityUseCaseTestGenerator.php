@@ -21,6 +21,20 @@ class EditEntityUseCaseTestGenerator extends AbstractUseCaseGenerator
      */
     private $editEntityUseCaseTestSkeletonModelBuilder;
 
+    /**
+     * @param EditEntityUseCaseTestGeneratorRequest $generatorRequest
+     */
+    public function generate(GeneratorRequest $generatorRequest): FileObject
+    {
+        $editEntityUseCaseTestFileObject = $this->buildEditEntityUseCaseTestFileObject(
+            $generatorRequest->getEntityClassName()
+        );
+
+        $this->insertFileObject($editEntityUseCaseTestFileObject);
+
+        return $editEntityUseCaseTestFileObject;
+    }
+
     private function buildEditEntityUseCaseTestFileObject(string $entityClassName): FileObject
     {
         $this->initFileObjectParameter($entityClassName);
@@ -66,10 +80,28 @@ class EditEntityUseCaseTestGenerator extends AbstractUseCaseGenerator
         return $editEntityUseCaseTestFileObject;
     }
 
+    private function createEditEntityUseCaseTestFileObject(): FileObject
+    {
+        return $this->useCaseFileObjectFactory->create(
+            UseCaseFileObjectType::BUSINESS_RULES_EDIT_ENTITY_USE_CASE_TEST,
+            $this->domain,
+            $this->entity
+        );
+    }
+
     private function createEditEntityUseCaseFileObject(): FileObject
     {
         return $this->useCaseFileObjectFactory->create(
             UseCaseFileObjectType::BUSINESS_RULES_EDIT_ENTITY_USE_CASE,
+            $this->domain,
+            $this->entity
+        );
+    }
+
+    private function createEditEntityUseCaseRequestFileObject(): FileObject
+    {
+        return $this->useCaseRequestFileObjectFactory->create(
+            UseCaseRequestFileObjectType::BUSINESS_RULES_EDIT_ENTITY_USE_CASE_REQUEST,
             $this->domain,
             $this->entity
         );
@@ -88,24 +120,6 @@ class EditEntityUseCaseTestGenerator extends AbstractUseCaseGenerator
     {
         return $this->useCaseRequestFileObjectFactory->create(
             UseCaseRequestFileObjectType::BUSINESS_RULES_EDIT_ENTITY_USE_CASE_REQUEST_DTO,
-            $this->domain,
-            $this->entity
-        );
-    }
-
-    private function createEditEntityUseCaseRequestFileObject(): FileObject
-    {
-        return $this->useCaseRequestFileObjectFactory->create(
-            UseCaseRequestFileObjectType::BUSINESS_RULES_EDIT_ENTITY_USE_CASE_REQUEST,
-            $this->domain,
-            $this->entity
-        );
-    }
-
-    private function createEditEntityUseCaseTestFileObject(): FileObject
-    {
-        return $this->useCaseFileObjectFactory->create(
-            UseCaseFileObjectType::BUSINESS_RULES_EDIT_ENTITY_USE_CASE_TEST,
             $this->domain,
             $this->entity
         );
@@ -186,6 +200,16 @@ class EditEntityUseCaseTestGenerator extends AbstractUseCaseGenerator
     /**
      * @param FileObject[] $fileObjects
      */
+    private function generateContent(array $fileObjects): string
+    {
+        $skeletonModel = $this->createSkeletonModel($fileObjects);
+
+        return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
+    }
+
+    /**
+     * @param FileObject[] $fileObjects
+     */
     private function createSkeletonModel(array $fileObjects): EditEntityUseCaseTestSkeletonModel
     {
         return $this->editEntityUseCaseTestSkeletonModelBuilder
@@ -224,30 +248,6 @@ class EditEntityUseCaseTestGenerator extends AbstractUseCaseGenerator
                 $fileObjects[EntityFileObjectType::BUSINESS_RULES_ENTITY_IN_MEMORY_GATEWAY]
             )
             ->build();
-    }
-
-    /**
-     * @param EditEntityUseCaseTestGeneratorRequest $generatorRequest
-     */
-    public function generate(GeneratorRequest $generatorRequest): FileObject
-    {
-        $editEntityUseCaseTestFileObject = $this->buildEditEntityUseCaseTestFileObject(
-            $generatorRequest->getEntityClassName()
-        );
-
-        $this->insertFileObject($editEntityUseCaseTestFileObject);
-
-        return $editEntityUseCaseTestFileObject;
-    }
-
-    /**
-     * @param FileObject[] $fileObjects
-     */
-    private function generateContent(array $fileObjects): string
-    {
-        $skeletonModel = $this->createSkeletonModel($fileObjects);
-
-        return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
     }
 
     public function setEditEntityUseCaseTestSkeletonModelBuilder(

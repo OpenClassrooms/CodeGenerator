@@ -26,6 +26,20 @@ class EditEntityUseCaseRequestGenerator extends AbstractUseCaseGenerator
      */
     private $methodUtility;
 
+    /**
+     * @param EditEntityUseCaseRequestGeneratorRequest $generatorRequest
+     */
+    public function generate(GeneratorRequest $generatorRequest): FileObject
+    {
+        $editEntityUseCaseRequestFileObject = $this->buildEditEntityUseCaseRequestFileObject(
+            $generatorRequest->getEntityClassName()
+        );
+
+        $this->insertFileObject($editEntityUseCaseRequestFileObject);
+
+        return $editEntityUseCaseRequestFileObject;
+    }
+
     private function buildEditEntityUseCaseRequestFileObject(string $entityClassName): FileObject
     {
         $this->initFileObjectParameter($entityClassName);
@@ -46,31 +60,17 @@ class EditEntityUseCaseRequestGenerator extends AbstractUseCaseGenerator
         );
     }
 
-    private function createSkeletonModel(
-        FileObject $editEntityUseCaseRequestFileObject
-    ): EditEntityUseCaseRequestSkeletonModel {
-        return $this->editEntityUseCaseRequestSkeletonModelAssembler->create($editEntityUseCaseRequestFileObject);
-    }
-
-    /**
-     * @param EditEntityUseCaseRequestGeneratorRequest $generatorRequest
-     */
-    public function generate(GeneratorRequest $generatorRequest): FileObject
-    {
-        $editEntityUseCaseRequestFileObject = $this->buildEditEntityUseCaseRequestFileObject(
-            $generatorRequest->getEntityClassName()
-        );
-
-        $this->insertFileObject($editEntityUseCaseRequestFileObject);
-
-        return $editEntityUseCaseRequestFileObject;
-    }
-
     private function generateContent(FileObject $editEntityUseCaseRequestFileObject): string
     {
         $skeletonModel = $this->createSkeletonModel($editEntityUseCaseRequestFileObject);
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
+    }
+
+    private function createSkeletonModel(
+        FileObject $editEntityUseCaseRequestFileObject
+    ): EditEntityUseCaseRequestSkeletonModel {
+        return $this->editEntityUseCaseRequestSkeletonModelAssembler->create($editEntityUseCaseRequestFileObject);
     }
 
     public function setEditEntityUseCaseRequestSkeletonModelAssembler(

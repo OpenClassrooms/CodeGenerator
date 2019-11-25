@@ -10,9 +10,9 @@ use Incenteev\ParameterHandler\Processor;
  */
 class ParameterHandler
 {
-    const CODE_GENERATOR = 'openclassrooms/code-generator';
+    const CODE_GENERATOR             = 'openclassrooms/code-generator';
 
-    const OC_CODE_GENERATOR_YML = 'oc_code_generator.yml';
+    const OC_CODE_GENERATOR_YML      = 'oc_code_generator.yml';
 
     const OC_CODE_GENERATOR_YML_DIST = 'vendor/openclassrooms/code-generator/oc_code_generator.yml.dist';
 
@@ -20,16 +20,6 @@ class ParameterHandler
      * @var Processor
      */
     protected static $processor;
-
-    private static function buildParameters(): void
-    {
-        static::$processor->processFile(
-            [
-                'file'      => self::OC_CODE_GENERATOR_YML,
-                'dist-file' => self::OC_CODE_GENERATOR_YML_DIST,
-            ]
-        );
-    }
 
     public static function createGeneratorFileParameters(Event $event)
     {
@@ -42,5 +32,15 @@ class ParameterHandler
     private static function initProcessor(Event $event)
     {
         static::$processor = static::$processor ?? new Processor($event->getIO());
+    }
+
+    private static function buildParameters(): void
+    {
+        static::$processor->processFile(
+            [
+                'file'      => self::OC_CODE_GENERATOR_YML,
+                'dist-file' => self::OC_CODE_GENERATOR_YML_DIST,
+            ]
+        );
     }
 }

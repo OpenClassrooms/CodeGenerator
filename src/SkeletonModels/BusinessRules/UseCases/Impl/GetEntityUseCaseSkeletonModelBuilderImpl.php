@@ -39,11 +39,6 @@ class GetEntityUseCaseSkeletonModelBuilderImpl implements GetEntityUseCaseSkelet
         return $this;
     }
 
-    private function getRequestAccessor(string $entityShortName): string
-    {
-        return lcfirst($entityShortName) . 'Id';
-    }
-
     public function withEntityClassName(FileObject $entityFileObject): GetEntityUseCaseSkeletonModelBuilder
     {
         $this->skeletonModel->functionalEntityArgument = lcfirst($entityFileObject->getEntity());
@@ -123,5 +118,10 @@ class GetEntityUseCaseSkeletonModelBuilderImpl implements GetEntityUseCaseSkelet
         $this->skeletonModel->getEntityUseCaseRequestShortName = $getEntityUseCaseRequestFileObject->getShortName();
 
         return $this;
+    }
+
+    private function getRequestAccessor(string $entityShortName): string
+    {
+        return lcfirst($entityShortName) . 'Id';
     }
 }

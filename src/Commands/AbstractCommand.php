@@ -16,15 +16,15 @@ class AbstractCommand extends Command
 {
     use CommandDisplayTrait;
 
-    const CONFIG_DIR = __DIR__ . '/../Resources/config';
+    const CONFIG_DIR            = __DIR__ . '/../Resources/config';
 
-    const CONFIG_FILE = self::ROOT_DIR . 'oc_code_generator.yml';
+    const CONFIG_FILE           = self::ROOT_DIR . 'oc_code_generator.yml';
 
     const CONFIG_FILE_GENERATOR = self::ROOT_DIR_GENERATOR . 'oc_code_generator.yml';
 
-    const ROOT_DIR = __DIR__ . '/../../../../../';
+    const ROOT_DIR              = __DIR__ . '/../../../../../';
 
-    const ROOT_DIR_GENERATOR = __DIR__ . '/../../';
+    const ROOT_DIR_GENERATOR    = __DIR__ . '/../../';
 
     /**
      * @var ContainerBuilder
@@ -62,12 +62,6 @@ class AbstractCommand extends Command
         return static::CONFIG_FILE_GENERATOR;
     }
 
-    private function loadConfigFile(string $rootDir, string $configFile): void
-    {
-        $loader = new YamlFileLoader($this->container, new FileLocator($rootDir));
-        $loader->load($configFile);
-    }
-
     protected function loadConfigParameters()
     {
         if (empty($config)) {
@@ -77,5 +71,11 @@ class AbstractCommand extends Command
                 $this->loadConfigFile(static::ROOT_DIR_GENERATOR, static::CONFIG_FILE_GENERATOR);
             }
         }
+    }
+
+    private function loadConfigFile(string $rootDir, string $configFile): void
+    {
+        $loader = new YamlFileLoader($this->container, new FileLocator($rootDir));
+        $loader->load($configFile);
     }
 }

@@ -10,11 +10,11 @@ use OpenClassrooms\CodeGenerator\Utility\StringUtility;
  */
 class FieldObject
 {
-    const SCOPE_PRIVATE = 'private';
+    const SCOPE_PRIVATE   = 'private';
 
     const SCOPE_PROTECTED = 'protected';
 
-    const SCOPE_PUBLIC = 'public';
+    const SCOPE_PUBLIC    = 'public';
 
     /**
      * @var string
@@ -51,9 +51,9 @@ class FieldObject
         return $this->accessor;
     }
 
-    public function getDocComment(): ?string
+    public function setAccessor(string $accessor = null)
     {
-        return $this->docComment;
+        $this->accessor = $accessor;
     }
 
     public function getName(): string
@@ -66,13 +66,9 @@ class FieldObject
         return $this->scope;
     }
 
-    public function getType(): string
+    public function setScope(string $scope)
     {
-        if (null !== $this->getDocComment() && preg_match('/\[]/', $this->getDocComment())) {
-            return 'array';
-        }
-
-        return DocCommentUtility::getType($this->getDocComment());
+        $this->scope = $scope;
     }
 
     /**
@@ -83,28 +79,32 @@ class FieldObject
         return $this->value;
     }
 
+    public function setValue($value): void
+    {
+        $this->value = $value;
+    }
+
     public function isObject(): bool
     {
         return StringUtility::isObject($this->getType());
     }
 
-    public function setAccessor(string $accessor = null)
+    public function getType(): string
     {
-        $this->accessor = $accessor;
+        if (null !== $this->getDocComment() && preg_match('/\[]/', $this->getDocComment())) {
+            return 'array';
+        }
+
+        return DocCommentUtility::getType($this->getDocComment());
+    }
+
+    public function getDocComment(): ?string
+    {
+        return $this->docComment;
     }
 
     public function setDocComment(string $docComment)
     {
         $this->docComment = $docComment;
-    }
-
-    public function setScope(string $scope)
-    {
-        $this->scope = $scope;
-    }
-
-    public function setValue($value): void
-    {
-        $this->value = $value;
     }
 }

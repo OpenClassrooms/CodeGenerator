@@ -9,5 +9,5 @@ final class ConstructionPatternType
 {
     const ASSEMBLER_PATTERN = 'assembler';
 
-    const BUILDER_PATTERN = 'builder';
+    const BUILDER_PATTERN   = 'builder';
 }

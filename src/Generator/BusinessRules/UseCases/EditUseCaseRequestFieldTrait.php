@@ -13,6 +13,11 @@ trait EditUseCaseRequestFieldTrait
      */
     private $fieldUtility;
 
+    public function setFieldUtility(FieldObjectUtilityStrategy $fieldUtility): void
+    {
+        $this->fieldUtility = $fieldUtility;
+    }
+
     private function buildEditUseCaseRequestFields(string $entityClassName): array
     {
         $accessors = $this->fieldUtility->getFields($entityClassName);
@@ -23,10 +28,5 @@ trait EditUseCaseRequestFieldTrait
         $entityIdMethod = [$entityIdMethod];
 
         return array_merge($accessors, $isUpdatedFields, $entityIdMethod);
-    }
-
-    public function setFieldUtility(FieldObjectUtilityStrategy $fieldUtility): void
-    {
-        $this->fieldUtility = $fieldUtility;
     }
 }

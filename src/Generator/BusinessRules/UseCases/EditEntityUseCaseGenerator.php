@@ -26,6 +26,20 @@ class EditEntityUseCaseGenerator extends AbstractUseCaseGenerator
      */
     private $methodUtilityStrategy;
 
+    /**
+     * @param EditEntityUseCaseGeneratorRequest $generatorRequest
+     */
+    public function generate(GeneratorRequest $generatorRequest): FileObject
+    {
+        $editEntityUseCaseFileObject = $this->buildEditEntityUseCaseFileObject(
+            $generatorRequest->getEntityClassName()
+        );
+
+        $this->insertFileObject($editEntityUseCaseFileObject);
+
+        return $editEntityUseCaseFileObject;
+    }
+
     private function buildEditEntityUseCaseFileObject(string $entityClassName): FileObject
     {
         $this->initFileObjectParameter($entityClassName);
@@ -122,6 +136,16 @@ class EditEntityUseCaseGenerator extends AbstractUseCaseGenerator
     /**
      * @param FileObject[]
      */
+    private function generateContent(array $fileObjects): string
+    {
+        $skeletonModel = $this->createSkeletonModel($fileObjects);
+
+        return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
+    }
+
+    /**
+     * @param FileObject[]
+     */
     private function createSkeletonModel(array $fileObjects): EditEntityUseCaseSkeletonModel
     {
         return $this->editEntityUseCaseSkeletonModelBuilder
@@ -142,30 +166,6 @@ class EditEntityUseCaseGenerator extends AbstractUseCaseGenerator
                 $fileObjects[UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE]
             )
             ->build();
-    }
-
-    /**
-     * @param EditEntityUseCaseGeneratorRequest $generatorRequest
-     */
-    public function generate(GeneratorRequest $generatorRequest): FileObject
-    {
-        $editEntityUseCaseFileObject = $this->buildEditEntityUseCaseFileObject(
-            $generatorRequest->getEntityClassName()
-        );
-
-        $this->insertFileObject($editEntityUseCaseFileObject);
-
-        return $editEntityUseCaseFileObject;
-    }
-
-    /**
-     * @param FileObject[]
-     */
-    private function generateContent(array $fileObjects): string
-    {
-        $skeletonModel = $this->createSkeletonModel($fileObjects);
-
-        return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
     }
 
     public function setEditEntityUseCaseSkeletonModelBuilder(

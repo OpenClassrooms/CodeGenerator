@@ -11,11 +11,11 @@ use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
  */
 class StubUtility
 {
-    private const BOOL = true;
+    private const BOOL         = true;
 
     private const DEFAULT_DATE = '2018-01-01';
 
-    private const QUOTE = "'";
+    private const QUOTE        = "'";
 
     public static function createFakeValue(string $type, string $fieldName, string $entityName)
     {

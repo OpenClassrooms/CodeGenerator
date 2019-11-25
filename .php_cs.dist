@@ -14,7 +14,10 @@ return PhpCsFixer\Config::create()
             'blank_line_after_namespace'                  => true,
             'single_blank_line_before_namespace'          => true,
             'binary_operator_spaces'                      => [
-                'align_double_arrow' => true,
+                'operators' => [
+                    '=>' => 'align',
+                    '=' => null,
+                ]
             ],
             'method_argument_space'                       => [
                 'ensure_fully_multiline'           => true,
@@ -59,21 +62,22 @@ return PhpCsFixer\Config::create()
             'function_typehint_space'                     => true,
             'concat_space'                                => ["spacing" => 'one'],
             'ordered_class_elements'                      => [
-                'order'         => [
-                    'use_trait',
-                    'constant_public',
-                    'constant_protected',
-                    'constant_private',
-                    'property_public',
-                    'property_protected',
-                    'property_private',
-                    'construct',
+//                'order'         => [
+//                    'use_trait',
+//                    'constant_public',
+//                    'constant_protected',
+//                    'constant_private',
+//                    'constant',
+//                    'property_public',
+//                    'property_protected',
+//                    'property_private',
+//                    'construct',
 //                    'method',
-                    'destruct',
-                    'magic',
-                    'phpunit',
-                ],
-                'sortAlgorithm' => 'alpha',
+//                    'destruct',
+//                    'magic',
+//                    'phpunit',
+//                ],
+//                'sortAlgorithm' => 'alpha',
             ],
         ]
     )

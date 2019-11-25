@@ -23,6 +23,18 @@ class EntityFactoryImplGenerator extends AbstractGenerator
      */
     private $entityFileObjectFactory;
 
+    /**
+     * @param EntityFactoryImplGeneratorRequest $generatorRequest
+     */
+    public function generate(GeneratorRequest $generatorRequest): FileObject
+    {
+        $entityFactoryImplFileObject = $this->buildEntityFactoryImplFileObject($generatorRequest->getEntityClassName());
+
+        $this->insertFileObject($entityFactoryImplFileObject);
+
+        return $entityFactoryImplFileObject;
+    }
+
     private function buildEntityFactoryImplFileObject(string $entityClassName): FileObject
     {
         $this->initFileObjectParameter($entityClassName);
@@ -48,6 +60,16 @@ class EntityFactoryImplGenerator extends AbstractGenerator
         return $this->createFileObject(EntityFileObjectType::BUSINESS_RULES_ENTITY_FACTORY);
     }
 
+    private function createFileObject(string $type): FileObject
+    {
+        return $this->entityFileObjectFactory->create(
+            $type,
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
+        );
+    }
+
     private function createEntityFactoryImplFileObject(): FileObject
     {
         return $this->createFileObject(EntityFileObjectType::BUSINESS_RULES_ENTITY_FACTORY_IMPL);
@@ -61,42 +83,6 @@ class EntityFactoryImplGenerator extends AbstractGenerator
     private function createEntityImplFileObject(): FileObject
     {
         return $this->createFileObject(EntityFileObjectType::BUSINESS_RULES_ENTITY_IMPL);
-    }
-
-    private function createFileObject(string $type): FileObject
-    {
-        return $this->entityFileObjectFactory->create(
-            $type,
-            $this->domain,
-            $this->entity,
-            $this->baseNamespace
-        );
-    }
-
-    private function createSkeletonModel(
-        FileObject $entityFactoryFileObject,
-        FileObject $entityFactoryImplFileObject,
-        FileObject $entityFileObject,
-        FileObject $entityImplFileObject
-    ): EntityFactoryImplSkeletonModel {
-        return $this->entityFactoryImplSkeletonModelAssembler->create(
-            $entityFactoryFileObject,
-            $entityFactoryImplFileObject,
-            $entityFileObject,
-            $entityImplFileObject
-        );
-    }
-
-    /**
-     * @param EntityFactoryImplGeneratorRequest $generatorRequest
-     */
-    public function generate(GeneratorRequest $generatorRequest): FileObject
-    {
-        $entityFactoryImplFileObject = $this->buildEntityFactoryImplFileObject($generatorRequest->getEntityClassName());
-
-        $this->insertFileObject($entityFactoryImplFileObject);
-
-        return $entityFactoryImplFileObject;
     }
 
     private function generateContent(
@@ -113,6 +99,20 @@ class EntityFactoryImplGenerator extends AbstractGenerator
         );
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
+    }
+
+    private function createSkeletonModel(
+        FileObject $entityFactoryFileObject,
+        FileObject $entityFactoryImplFileObject,
+        FileObject $entityFileObject,
+        FileObject $entityImplFileObject
+    ): EntityFactoryImplSkeletonModel {
+        return $this->entityFactoryImplSkeletonModelAssembler->create(
+            $entityFactoryFileObject,
+            $entityFactoryImplFileObject,
+            $entityFileObject,
+            $entityImplFileObject
+        );
     }
 
     public function setEntityFactoryImplSkeletonModelAssembler(
