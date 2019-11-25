@@ -64,7 +64,8 @@ class CreateEntityUseCaseRequestGenerator extends AbstractUseCaseGenerator
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
     }
 
-    private function createSkeletonModel(FileObject $createEntityRequestFileObject
+    private function createSkeletonModel(
+        FileObject $createEntityRequestFileObject
     ): CreateEntityUseCaseRequestSkeletonModel {
         return $this->createEntityRequestSkeletonModelAssembler->create($createEntityRequestFileObject);
     }

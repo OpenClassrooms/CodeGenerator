@@ -17,6 +17,15 @@ class EditEntityUseCaseSkeletonModelBuilderImpl implements EditEntityUseCaseSkel
      */
     private $skeletonModel;
 
+    public function build(): EditEntityUseCaseSkeletonModel
+    {
+        $this->skeletonModel->transactionClassName = $this->transactionClassName;
+        $this->skeletonModel->useCaseClassName = $this->useCaseClassName;
+        $this->skeletonModel->useCaseRequestClassName = $this->useCaseRequestClassName;
+
+        return $this->skeletonModel;
+    }
+
     public function create(): EditEntityUseCaseSkeletonModelBuilder
     {
         $this->skeletonModel = new EditEntityUseCaseSkeletonModelImpl();
@@ -100,14 +109,5 @@ class EditEntityUseCaseSkeletonModelBuilderImpl implements EditEntityUseCaseSkel
         );
 
         return $this;
-    }
-
-    public function build(): EditEntityUseCaseSkeletonModel
-    {
-        $this->skeletonModel->transactionClassName = $this->transactionClassName;
-        $this->skeletonModel->useCaseClassName = $this->useCaseClassName;
-        $this->skeletonModel->useCaseRequestClassName = $this->useCaseRequestClassName;
-
-        return $this->skeletonModel;
     }
 }

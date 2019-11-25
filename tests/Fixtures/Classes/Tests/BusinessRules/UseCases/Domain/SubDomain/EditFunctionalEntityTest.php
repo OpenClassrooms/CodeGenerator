@@ -31,7 +31,7 @@ final class EditFunctionalEntityTest extends TestCase
     private $useCase;
 
     /**
-     *  @test
+     * @test
      *
      * @expectedException \OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gateways\Domain\SubDomain\Exceptions\FunctionalEntityNotFoundException
      */

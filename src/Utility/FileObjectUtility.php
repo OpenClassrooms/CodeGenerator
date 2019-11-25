@@ -52,8 +52,8 @@ class FileObjectUtility
 
         for ($i = count($explodedNamespace) - 1; $i > 0 && $i != $limit; $i--) {
             if (array_search(
-                    $explodedNamespace[$i],
-                    ['Entities', 'Request', 'Response', 'DTO', 'UseCases', 'Impl', 'Gateways']
+                $explodedNamespace[$i],
+                ['Entities', 'Request', 'Response', 'DTO', 'UseCases', 'Impl', 'Gateways']
                 ) === false) {
                 $domain[] = $explodedNamespace[$i];
             }

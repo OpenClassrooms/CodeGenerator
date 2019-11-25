@@ -6,9 +6,12 @@ use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 
 interface CreateEntityUseCaseSkeletonModelBuilder
 {
+    public function build(): CreateEntityUseCaseSkeletonModel;
+
     public function create(): CreateEntityUseCaseSkeletonModelBuilder;
 
-    public function withCreateEntityUseCaseFileObject(FileObject $createEntityFileObject
+    public function withCreateEntityUseCaseFileObject(
+        FileObject $createEntityFileObject
     ): CreateEntityUseCaseSkeletonModelBuilder;
 
     public function withCreateEntityUseCaseRequest(
@@ -28,6 +31,4 @@ interface CreateEntityUseCaseSkeletonModelBuilder
     public function withEntityFactory(FileObject $entityFactoryFileObject): CreateEntityUseCaseSkeletonModelBuilder;
 
     public function withEntityGateway(FileObject $entityGatewayFileObject): CreateEntityUseCaseSkeletonModelBuilder;
-
-    public function build(): CreateEntityUseCaseSkeletonModel;
 }

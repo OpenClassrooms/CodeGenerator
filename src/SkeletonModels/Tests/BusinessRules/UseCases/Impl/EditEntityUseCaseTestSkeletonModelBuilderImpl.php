@@ -18,6 +18,16 @@ class EditEntityUseCaseTestSkeletonModelBuilderImpl implements EditEntityUseCase
      */
     private $skeletonModel;
 
+    public function build(): EditEntityUseCaseTestSkeletonModel
+    {
+        $this->skeletonModel->entityUtilClassName = $this->entityUtilClassName;
+        $this->skeletonModel->useCarbon = $this->useCarbon(
+            $this->skeletonModel->editEntityUseCaseRequestBuilderImplMethods
+        );
+
+        return $this->skeletonModel;
+    }
+
     public function create(): EditEntityUseCaseTestSkeletonModelBuilder
     {
         $this->skeletonModel = new EditEntityUseCaseTestSkeletonModelImpl();
@@ -25,14 +35,9 @@ class EditEntityUseCaseTestSkeletonModelBuilderImpl implements EditEntityUseCase
         return $this;
     }
 
-    public function withEditEntityUseCaseTestFileObject(
-        FileObject $editEntityUseCaseTestFileObject
-    ): EditEntityUseCaseTestSkeletonModelBuilder {
-        $this->skeletonModel->className = $editEntityUseCaseTestFileObject->getClassName();
-        $this->skeletonModel->namespace = $editEntityUseCaseTestFileObject->getNamespace();
-        $this->skeletonModel->shortName = $editEntityUseCaseTestFileObject->getShortName();
-
-        return $this;
+    public function setEntityUtilClassName($entityUtilClassName): void
+    {
+        $this->entityUtilClassName = $entityUtilClassName;
     }
 
     public function withEditEntityUseCaseFileObject(
@@ -40,15 +45,6 @@ class EditEntityUseCaseTestSkeletonModelBuilderImpl implements EditEntityUseCase
     ): EditEntityUseCaseTestSkeletonModelBuilder {
         $this->skeletonModel->editEntityUseCaseClassName = $editEntityUseCaseFileObject->getClassName();
         $this->skeletonModel->editEntityUseCaseShortName = $editEntityUseCaseFileObject->getShortName();
-
-        return $this;
-    }
-
-    public function withEditEntityUseCaseRequestFileObject(
-        FileObject $editEntityUseCaseRequestFileObject
-    ): EditEntityUseCaseTestSkeletonModelBuilder {
-        $this->skeletonModel->editEntityUseCaseRequestClassName = $editEntityUseCaseRequestFileObject->getClassName();
-        $this->skeletonModel->editEntityUseCaseRequestShortName = $editEntityUseCaseRequestFileObject->getShortName();
 
         return $this;
     }
@@ -73,6 +69,25 @@ class EditEntityUseCaseTestSkeletonModelBuilderImpl implements EditEntityUseCase
         );
         $this->skeletonModel->editEntityUseCaseRequestDTOShortName = $editEntityUseCaseRequestDTOFileObject->getShortName(
         );
+
+        return $this;
+    }
+
+    public function withEditEntityUseCaseRequestFileObject(
+        FileObject $editEntityUseCaseRequestFileObject
+    ): EditEntityUseCaseTestSkeletonModelBuilder {
+        $this->skeletonModel->editEntityUseCaseRequestClassName = $editEntityUseCaseRequestFileObject->getClassName();
+        $this->skeletonModel->editEntityUseCaseRequestShortName = $editEntityUseCaseRequestFileObject->getShortName();
+
+        return $this;
+    }
+
+    public function withEditEntityUseCaseTestFileObject(
+        FileObject $editEntityUseCaseTestFileObject
+    ): EditEntityUseCaseTestSkeletonModelBuilder {
+        $this->skeletonModel->className = $editEntityUseCaseTestFileObject->getClassName();
+        $this->skeletonModel->namespace = $editEntityUseCaseTestFileObject->getNamespace();
+        $this->skeletonModel->shortName = $editEntityUseCaseTestFileObject->getShortName();
 
         return $this;
     }
@@ -154,20 +169,5 @@ class EditEntityUseCaseTestSkeletonModelBuilderImpl implements EditEntityUseCase
         );
 
         return $this;
-    }
-
-    public function build(): EditEntityUseCaseTestSkeletonModel
-    {
-        $this->skeletonModel->entityUtilClassName = $this->entityUtilClassName;
-        $this->skeletonModel->useCarbon = $this->useCarbon(
-            $this->skeletonModel->editEntityUseCaseRequestBuilderImplMethods
-        );
-
-        return $this->skeletonModel;
-    }
-
-    public function setEntityUtilClassName($entityUtilClassName): void
-    {
-        $this->entityUtilClassName = $entityUtilClassName;
     }
 }

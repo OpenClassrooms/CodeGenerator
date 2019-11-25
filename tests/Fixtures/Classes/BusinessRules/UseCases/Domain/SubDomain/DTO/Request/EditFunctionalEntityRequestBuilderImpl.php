@@ -56,4 +56,11 @@ class EditFunctionalEntityRequestBuilderImpl implements EditFunctionalEntityRequ
 
         return $this;
     }
+
+    public function withFunctionalEntityId(int $id): EditFunctionalEntityRequestBuilder
+    {
+        $this->request->functionalEntityId = $id;
+
+        return $this;
+    }
 }

@@ -16,5 +16,9 @@ abstract class EditEntityUseCaseRequestBuilderImplSkeletonModel extends Abstract
 
     public $editEntityUseCaseRequestShortName;
 
+    public $entityIdArgumentName;
+
+    public $entityIdMethodName;
+
     public $templatePath = 'BusinessRules/UseCases/DTO/Request/editEntityUseCaseRequestBuilderImpl.php.twig';
 }

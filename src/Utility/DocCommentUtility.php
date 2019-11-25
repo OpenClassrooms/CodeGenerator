@@ -11,6 +11,11 @@ class DocCommentUtility
 
     const DATE_TIME_INTERFACE = '\DateTimeInterface';
 
+    public static function allowsNull(string $docComment): bool
+    {
+        return (bool) preg_match('/null/', $docComment);
+    }
+
     public static function getReturnType($docComment)
     {
         if (preg_match('/@return\s\w+\[]/', $docComment)) {
@@ -25,11 +30,6 @@ class DocCommentUtility
         $type = preg_replace('/([\/*@]|[[:space:]]|\[])|(var)|(null\|)|(\|null)|(return)/', '', $docComment);
 
         return preg_match('/Date/', $docComment) ? self::DATE_TIME_INTERFACE : $type;
-    }
-
-    public static function allowsNull(string $docComment): bool
-    {
-        return (bool) preg_match('/null/', $docComment);
     }
 
     public static function setType(string $type): string

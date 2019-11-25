@@ -35,6 +35,9 @@ class AbstractSkeletonModel
      */
     public $shortName;
 
+    /**
+     * @var string
+     */
     public $templatePath;
 
     public function getTemplatePath(): string

@@ -9,6 +9,42 @@ use OpenClassrooms\CodeGenerator\Entities\Object\FieldObject;
  */
 class FieldObjectUtility
 {
+    public static function buildEntityIdMethodObject(string $shortClassName): FieldObject
+    {
+        $methodChained = new FieldObject(NameUtility::creatEntityIdName($shortClassName));
+        $methodChained->setDocComment(DocCommentUtility::setType('int'));
+        $methodChained->setScope(FieldObject::SCOPE_PUBLIC);
+
+        return $methodChained;
+    }
+
+    /**
+     * @return FieldObject[]
+     */
+    public static function buildIsUpdatedFields(string $className, string $scope = FieldObject::SCOPE_PUBLIC): array
+    {
+        $rc = new \ReflectionClass($className);
+
+        $fields = [];
+        foreach ($rc->getProperties() as $field) {
+            if (FieldUtility::isUpdatable($field)) {
+                $fields[] = self::buildUpdatedField($field, $scope);
+            }
+        }
+
+        return $fields;
+    }
+
+    private static function buildUpdatedField(\ReflectionProperty $field, string $scope): FieldObject
+    {
+        $field = new FieldObject(NameUtility::createUpdatedName($field));
+        $field->setDocComment(DocCommentUtility::setType('bool'));
+        $field->setScope($scope);
+        $field->setValue('false');
+
+        return $field;
+    }
+
     /**
      * @return FieldObject[]
      */
@@ -147,41 +183,5 @@ class FieldObjectUtility
         }
 
         return $traitFields;
-    }
-
-    /**
-     * @return FieldObject[]
-     */
-    public static function buildIsUpdatedFields(string $className, string $scope = FieldObject::SCOPE_PUBLIC): array
-    {
-        $rc = new \ReflectionClass($className);
-
-        $fields = [];
-        foreach ($rc->getProperties() as $field) {
-            if (FieldUtility::isUpdatable($field)) {
-                $fields[] = self::buildUpdatedField($field, $scope);
-            }
-        }
-
-        return $fields;
-    }
-
-    private static function buildUpdatedField(\ReflectionProperty $field, string $scope): FieldObject
-    {
-        $field = new FieldObject(NameUtility::createUpdatedName($field));
-        $field->setDocComment(DocCommentUtility::setType('bool'));
-        $field->setScope($scope);
-        $field->setValue('false');
-
-        return $field;
-    }
-
-    public static function buildEntityIdMethodObject(string $shortClassName): FieldObject
-    {
-        $methodChained = new FieldObject(NameUtility::creatEntityIdName($shortClassName));
-        $methodChained->setDocComment(DocCommentUtility::setType('int'));
-        $methodChained->setScope(FieldObject::SCOPE_PUBLIC);
-
-        return $methodChained;
     }
 }

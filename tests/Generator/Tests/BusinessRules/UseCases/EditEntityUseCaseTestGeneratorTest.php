@@ -15,8 +15,6 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileO
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingServiceMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\SkeletonModels\Tests\BusinessRules\UseCases\EditEntityUseCaseTestSkeletonModelBuilderMock;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Entities\Domain\SubDomain\FunctionalEntity;
-use OpenClassrooms\CodeGenerator\Utility\Impl\MethodUtilityContext;
-use OpenClassrooms\CodeGenerator\Utility\Impl\MethodUtilityGetAccessorsWithoutId;
 use PHPUnit\Framework\TestCase;
 
 class EditEntityUseCaseTestGeneratorTest extends TestCase

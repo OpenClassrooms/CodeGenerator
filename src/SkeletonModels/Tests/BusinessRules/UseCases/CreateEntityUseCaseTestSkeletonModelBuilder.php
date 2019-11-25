@@ -6,6 +6,8 @@ use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 
 interface CreateEntityUseCaseTestSkeletonModelBuilder
 {
+    public function build(): CreateEntityUseCaseTestSkeletonModel;
+
     public function create(): CreateEntityUseCaseTestSkeletonModelBuilder;
 
     public function withCreateCreateEntityUseCaseTestFileObject(
@@ -16,10 +18,6 @@ interface CreateEntityUseCaseTestSkeletonModelBuilder
         FileObject $createEntityFileObject
     ): CreateEntityUseCaseTestSkeletonModelBuilder;
 
-    public function withCreateEntityUseCaseRequestFileObject(
-        FileObject $createEntityRequestFileObject
-    ): CreateEntityUseCaseTestSkeletonModelBuilder;
-
     public function withCreateEntityUseCaseRequestBuilderImplFileObject(
         FileObject $createEntityRequestBuilderImplFileObject
     ): CreateEntityUseCaseTestSkeletonModelBuilder;
@@ -28,14 +26,16 @@ interface CreateEntityUseCaseTestSkeletonModelBuilder
         FileObject $createEntityRequestDTOFileObject
     ): CreateEntityUseCaseTestSkeletonModelBuilder;
 
-    public function withEntityFileObject(FileObject $entityFileObject): CreateEntityUseCaseTestSkeletonModelBuilder;
-
-    public function withEntityDetailResponseFileObject(
-        FileObject $entityUseCaseDetailResponseFileObject
+    public function withCreateEntityUseCaseRequestFileObject(
+        FileObject $createEntityRequestFileObject
     ): CreateEntityUseCaseTestSkeletonModelBuilder;
 
     public function withEntityDetailResponseAssemblerMockFileObject(
         FileObject $entityUseCaseDetailResponseAssemblerMockFileObject
+    ): CreateEntityUseCaseTestSkeletonModelBuilder;
+
+    public function withEntityDetailResponseFileObject(
+        FileObject $entityUseCaseDetailResponseFileObject
     ): CreateEntityUseCaseTestSkeletonModelBuilder;
 
     public function withEntityDetailResponseStubFileObject(
@@ -50,12 +50,13 @@ interface CreateEntityUseCaseTestSkeletonModelBuilder
         FileObject $entityFactoryImplFileObject
     ): CreateEntityUseCaseTestSkeletonModelBuilder;
 
-    public function withEntityStubFileObject(FileObject $entityStubFileObject
+    public function withEntityFileObject(FileObject $entityFileObject): CreateEntityUseCaseTestSkeletonModelBuilder;
+
+    public function withEntityStubFileObject(
+        FileObject $entityStubFileObject
     ): CreateEntityUseCaseTestSkeletonModelBuilder;
 
     public function withInMemoryEntityGatewayFileObject(
         FileObject $inMemoryEntityGatewayFileObject
     ): CreateEntityUseCaseTestSkeletonModelBuilder;
-
-    public function build(): CreateEntityUseCaseTestSkeletonModel;
 }

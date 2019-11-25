@@ -12,6 +12,11 @@ class EditEntityUseCaseRequestGeneratorRequestBuilderImpl implements EditEntityU
      */
     private $request;
 
+    public function build(): EditEntityUseCaseRequestGeneratorRequest
+    {
+        return $this->request;
+    }
+
     public function create(): EditEntityUseCaseRequestGeneratorRequestBuilder
     {
         $this->request = new EditEntityUseCaseRequestGeneratorRequestDTO();
@@ -24,10 +29,5 @@ class EditEntityUseCaseRequestGeneratorRequestBuilderImpl implements EditEntityU
         $this->request->entityClassName = $entityClassName;
 
         return $this;
-    }
-
-    public function build(): EditEntityUseCaseRequestGeneratorRequest
-    {
-        return $this->request;
     }
 }

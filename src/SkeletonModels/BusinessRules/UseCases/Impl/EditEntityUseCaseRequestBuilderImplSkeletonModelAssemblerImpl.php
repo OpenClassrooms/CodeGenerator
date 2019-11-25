@@ -5,6 +5,7 @@ namespace OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\Imp
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\EditEntityUseCaseRequestBuilderImplSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\EditEntityUseCaseRequestBuilderImplSkeletonModelAssembler;
+use OpenClassrooms\CodeGenerator\Utility\NameUtility;
 
 class EditEntityUseCaseRequestBuilderImplSkeletonModelAssemblerImpl implements EditEntityUseCaseRequestBuilderImplSkeletonModelAssembler
 {
@@ -27,6 +28,12 @@ class EditEntityUseCaseRequestBuilderImplSkeletonModelAssemblerImpl implements E
         $skeletonModel->editEntityUseCaseRequestBuilderShortName = $editEntityUseCaseRequestBuilderFileObject->getShortName(
         );
         $skeletonModel->editEntityUseCaseRequestDTOShortName = $editEntityUseCaseRequestDTOFileObject->getShortName();
+        $skeletonModel->entityIdMethodName = NameUtility::creatChainedEntityIdMethodName(
+            $editEntityUseCaseRequestBuilderFileObject->getEntity()
+        );
+        $skeletonModel->entityIdArgumentName = NameUtility::creatEntityIdName(
+            $editEntityUseCaseRequestBuilderFileObject->getEntity()
+        );
 
         return $skeletonModel;
     }

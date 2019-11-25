@@ -6,18 +6,12 @@ use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 
 interface EditEntityUseCaseTestSkeletonModelBuilder
 {
-    public function create(): EditEntityUseCaseTestSkeletonModelBuilder;
+    public function build(): EditEntityUseCaseTestSkeletonModel;
 
-    public function withEditEntityUseCaseTestFileObject(
-        FileObject $editEntityUseCaseTestFileObject
-    ): EditEntityUseCaseTestSkeletonModelBuilder;
+    public function create(): EditEntityUseCaseTestSkeletonModelBuilder;
 
     public function withEditEntityUseCaseFileObject(
         FileObject $editEntityUseCaseFileObject
-    ): EditEntityUseCaseTestSkeletonModelBuilder;
-
-    public function withEditEntityUseCaseRequestFileObject(
-        FileObject $editEntityUseCaseRequestFileObject
     ): EditEntityUseCaseTestSkeletonModelBuilder;
 
     public function withEditEntityUseCaseRequestBuilderImplFileObject(
@@ -26,6 +20,14 @@ interface EditEntityUseCaseTestSkeletonModelBuilder
 
     public function withEditEntityUseCaseRequestDTOFileObject(
         FileObject $editEntityUseCaseRequestDTOFileObject
+    ): EditEntityUseCaseTestSkeletonModelBuilder;
+
+    public function withEditEntityUseCaseRequestFileObject(
+        FileObject $editEntityUseCaseRequestFileObject
+    ): EditEntityUseCaseTestSkeletonModelBuilder;
+
+    public function withEditEntityUseCaseTestFileObject(
+        FileObject $editEntityUseCaseTestFileObject
     ): EditEntityUseCaseTestSkeletonModelBuilder;
 
     public function withEntityFileObject(FileObject $entityFileObject): EditEntityUseCaseTestSkeletonModelBuilder;
@@ -57,6 +59,4 @@ interface EditEntityUseCaseTestSkeletonModelBuilder
     public function withInMemoryEntityUseCaseGatewayFileObject(
         FileObject $inMemoryEntityUseCaseGatewayFileObject
     ): EditEntityUseCaseTestSkeletonModelBuilder;
-
-    public function build(): EditEntityUseCaseTestSkeletonModel;
 }

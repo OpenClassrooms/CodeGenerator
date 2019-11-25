@@ -53,6 +53,15 @@ class AbstractCommand extends Command
             );
     }
 
+    protected function getConfigFile()
+    {
+        if (\is_file(static::CONFIG_FILE)) {
+            return static::CONFIG_FILE;
+        }
+
+        return static::CONFIG_FILE_GENERATOR;
+    }
+
     protected function loadConfigParameters()
     {
         if (empty($config)) {
@@ -68,14 +77,5 @@ class AbstractCommand extends Command
     {
         $loader = new YamlFileLoader($this->container, new FileLocator($rootDir));
         $loader->load($configFile);
-    }
-
-    protected function getConfigFile()
-    {
-        if (\is_file(static::CONFIG_FILE)) {
-            return static::CONFIG_FILE;
-        }
-
-        return static::CONFIG_FILE_GENERATOR;
     }
 }

@@ -6,11 +6,11 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 
 abstract class EditEntityUseCaseTestSkeletonModel extends AbstractSkeletonModel
 {
-    public $editEntityUseCaseRequestBuilderImplMethods;
-
     public $editEntityUseCaseClassName;
 
     public $editEntityUseCaseRequestBuilderImplClassName;
+
+    public $editEntityUseCaseRequestBuilderImplMethods;
 
     public $editEntityUseCaseRequestBuilderImplShortName;
 
