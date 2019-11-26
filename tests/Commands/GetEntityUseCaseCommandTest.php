@@ -42,7 +42,6 @@ class GetEntityUseCaseCommandTest extends TestCase
             [
                 'command'        => $this->commandMock->getName(),
                 Args::CLASS_NAME => FunctionalEntity::class,
-                Args::ENTITY     => 'Test',
             ]
         );
 
@@ -61,7 +60,6 @@ class GetEntityUseCaseCommandTest extends TestCase
         $this->commandTester->setInputs(
             [
                 Args::CLASS_NAME => FunctionalEntity::class,
-                Args::ENTITY     => 'Test',
             ]
         );
         $this->commandTester->execute(

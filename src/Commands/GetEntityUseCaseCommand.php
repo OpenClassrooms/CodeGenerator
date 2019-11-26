@@ -42,7 +42,8 @@ class GetEntityUseCaseCommand extends AbstractCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $this->checkConfiguration();
+        $codeGeneratorConfig = $this->parseConfigFile();
+        $this->checkConfiguration($codeGeneratorConfig);
         $this->checkInputClassNameArgument($input, $output);
 
         $fileObjects = $this->container

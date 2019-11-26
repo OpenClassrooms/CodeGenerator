@@ -7,10 +7,8 @@ use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
-use Symfony\Component\Yaml\Yaml;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
@@ -45,7 +43,8 @@ class GenericUseCaseCommand extends AbstractCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $this->checkConfiguration();
+        $codeGeneratorConfig = $this->parseConfigFile();
+        $this->checkConfiguration($codeGeneratorConfig);
         $this->checkInputDomainAndNameArgument($input, $output, Args::USE_CASE);
 
         $fileObjects = $this->container

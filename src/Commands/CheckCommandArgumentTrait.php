@@ -6,17 +6,14 @@ use OpenClassrooms\CodeGenerator\Mediators\Args;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\Question;
-use Symfony\Component\Yaml\Yaml;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
 trait CheckCommandArgumentTrait
 {
-    protected function checkConfiguration(): void
+    protected function checkConfiguration(array $codeGeneratorConfig): void
     {
-        $codeGeneratorConfig = Yaml::parseFile($this->getConfigFile());
-
         $emptyParameters = [];
         foreach ($codeGeneratorConfig['parameters'] as $parameter => $value) {
             if (null === $value) {
@@ -53,8 +50,26 @@ trait CheckCommandArgumentTrait
     {
         if (null === $input->getArgument(Args::CLASS_NAME)) {
             $helper = $this->getHelper('question');
-            $classNameQuestion = new Question('Please enter class name (ex: BaseNamespace\Domain\Subdomain\ShortClassName): ', 'DefaultClassName');
-            $input->setArgument(Args::CLASS_NAME, $helper->ask($input, $output, $classNameQuestion));
+            $classNameQuestion = new Question(
+                'Please enter class name (ex: BaseNamespace\Domain\Subdomain\ShortClassName): ', 'DefaultClassName'
+            );
+            $className = $helper->ask($input, $output, $classNameQuestion);
+
+            if ($this->isValidClassName($className)) {
+                $input->setArgument(Args::CLASS_NAME, $className);
+            }
         }
+    }
+
+    /**
+     * @throws \ErrorException
+     */
+    private function isValidClassName(string $className): bool
+    {
+        if (class_exists($className)) {
+            return true;
+        }
+
+        throw new \ErrorException("Class $className doesn't exist");
     }
 }

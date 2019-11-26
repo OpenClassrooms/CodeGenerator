@@ -8,6 +8,7 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
+use Symfony\Component\Yaml\Yaml;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
@@ -54,15 +55,6 @@ class AbstractCommand extends Command
             );
     }
 
-    protected function getConfigFile()
-    {
-        if (\is_file(static::CONFIG_FILE)) {
-            return static::CONFIG_FILE;
-        }
-
-        return static::CONFIG_FILE_GENERATOR;
-    }
-
     protected function loadConfigParameters()
     {
         if (empty($config)) {
@@ -78,5 +70,19 @@ class AbstractCommand extends Command
     {
         $loader = new YamlFileLoader($this->container, new FileLocator($rootDir));
         $loader->load($configFile);
+    }
+
+    protected function parseConfigFile(): array
+    {
+        return Yaml::parseFile($this->getConfigFile());
+    }
+
+    private function getConfigFile()
+    {
+        if (\is_file(static::CONFIG_FILE)) {
+            return static::CONFIG_FILE;
+        }
+
+        return static::CONFIG_FILE_GENERATOR;
     }
 }
