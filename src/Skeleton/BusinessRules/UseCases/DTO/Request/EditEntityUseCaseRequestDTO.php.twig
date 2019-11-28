@@ -1,0 +1,26 @@
+{% include "Header.php.twig" %}
+
+namespace {{ skeletonModel.namespace }};
+
+use {{ skeletonModel.editEntityUseCaseRequestClassName }};
+
+final class {{ skeletonModel.shortName }} implements {{ skeletonModel.editEntityUseCaseRequestShortName }}
+{
+{% for field in skeletonModel.fields | sortNameByAlpha %}
+    {{ field.docComment }}
+    public ${{ field.name }}{% if field.value is not null %} = {{ printValue(field.value) }}{% endif %};
+
+{% endfor %}
+{% for method in skeletonModel.methods | sortNameByAlpha %}
+{% if method.docComment %}
+    {{ method.docComment }}
+{% endif %}
+    public function {{ method.name }}(): {{ printReturnType(method.returnType, method.nullable) }}
+    {
+        return $this->{{ method.fieldName }};
+    }
+{% if not loop.last %}
+
+{% endif %}
+{% endfor %}
+}

@@ -8,6 +8,7 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Entities\E
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Entities\EntityFieldObjectStub3;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Entities\EntityFieldObjectStub4;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Entities\EntityFieldObjectStub5;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Entities\EntityFieldObjectStub6;
 
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
@@ -26,6 +27,7 @@ class EntityFileObjectStub1 extends FileObject
             new EntityFieldObjectStub3(),
             new EntityFieldObjectStub4(),
             new EntityFieldObjectStub5(),
+            new EntityFieldObjectStub6(),
         ];
     }
 }

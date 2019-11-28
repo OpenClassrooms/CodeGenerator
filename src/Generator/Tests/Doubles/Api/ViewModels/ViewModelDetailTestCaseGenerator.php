@@ -53,7 +53,6 @@ class ViewModelDetailTestCaseGenerator extends AbstractViewModelGenerator
         );
 
         return $viewModelDetailTestCaseFileObject;
-
     }
 
     protected function createUseCaseDetailResponseDTOFileObject(): FileObject

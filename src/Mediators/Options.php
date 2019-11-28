@@ -9,9 +9,9 @@ final class Options
 {
     const CONSTRUCTION_PATTERN = 'construction-pattern';
 
-    const DUMP = 'dump';
+    const DUMP                 = 'dump';
 
-    const NO_TEST = 'no-test';
+    const NO_TEST              = 'no-test';
 
-    const TESTS_ONLY = 'tests-only';
+    const TESTS_ONLY           = 'tests-only';
 }

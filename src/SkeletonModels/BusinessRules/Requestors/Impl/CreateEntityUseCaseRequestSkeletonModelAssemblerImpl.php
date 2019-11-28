@@ -12,14 +12,14 @@ class CreateEntityUseCaseRequestSkeletonModelAssemblerImpl implements CreateEnti
 {
     use UseCaseClassNameTrait;
 
-    public function create(FileObject $createEntityRequestFileObject): CreateEntityUseCaseRequestSkeletonModel
+    public function create(FileObject $createEntityUseCaseRequestFileObject): CreateEntityUseCaseRequestSkeletonModel
     {
         $skeletonModel = new CreateEntityUseCaseRequestSkeletonModelImpl();
 
-        $skeletonModel->className = $createEntityRequestFileObject->getClassName();
-        $skeletonModel->methods = $createEntityRequestFileObject->getMethods();
-        $skeletonModel->namespace = $createEntityRequestFileObject->getNamespace();
-        $skeletonModel->shortName = $createEntityRequestFileObject->getShortName();
+        $skeletonModel->className = $createEntityUseCaseRequestFileObject->getClassName();
+        $skeletonModel->methods = $createEntityUseCaseRequestFileObject->getMethods();
+        $skeletonModel->namespace = $createEntityUseCaseRequestFileObject->getNamespace();
+        $skeletonModel->shortName = $createEntityUseCaseRequestFileObject->getShortName();
         $skeletonModel->useCaseRequestClassName = $this->useCaseRequestClassName;
         $skeletonModel->useCaseRequestShortName = FileObjectUtility::getShortClassName($this->useCaseRequestClassName);
 

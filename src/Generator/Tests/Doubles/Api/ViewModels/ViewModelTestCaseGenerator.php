@@ -21,6 +21,16 @@ class ViewModelTestCaseGenerator extends AbstractViewModelGenerator
      */
     private $viewModelTestCaseSkeletonModelAssembler;
 
+    /**
+     * @param ViewModelTestCaseGeneratorRequest $generatorRequest
+     */
+    public function generate(GeneratorRequest $generatorRequest): FileObject
+    {
+        $viewModelTestCaseFileObject = $this->buildTestCaseFileObject($generatorRequest->getUseCaseResponseClassName());
+
+        return $viewModelTestCaseFileObject;
+    }
+
     public function buildTestCaseFileObject(string $useCaseResponseClassName): FileObject
     {
         $this->initFileObjectParameter($useCaseResponseClassName);
@@ -36,59 +46,12 @@ class ViewModelTestCaseGenerator extends AbstractViewModelGenerator
         $this->insertFileObject($viewModelTestCaseFileObject);
 
         return $viewModelTestCaseFileObject;
-
-    }
-
-    /**
-     * @param ViewModelTestCaseGeneratorRequest $generatorRequest
-     */
-    public function generate(GeneratorRequest $generatorRequest): FileObject
-    {
-        $viewModelTestCaseFileObject = $this->buildTestCaseFileObject($generatorRequest->getUseCaseResponseClassName());
-
-        return $viewModelTestCaseFileObject;
-
-    }
-
-    public function generateContent(
-        FileObject $viewModelTestCaseFileObject,
-        FileObject $viewModelFileObject
-    ): string {
-        $skeletonModel = $this->createSkeletonModel($viewModelTestCaseFileObject, $viewModelFileObject);
-
-        return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
-    }
-
-    public function setViewModelTestCaseSkeletonModelAssembler(
-        ViewModelTestCaseSkeletonModelAssembler $viewModelTestCaseSkeletonModelAssembler
-    ): void {
-        $this->viewModelTestCaseSkeletonModelAssembler = $viewModelTestCaseSkeletonModelAssembler;
     }
 
     protected function createUseCaseResponseCommonFieldTraitFileObject(): FileObject
     {
         return $this->createUseCaseResponseFileObject(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE_COMMON_FIELD_TRAIT,
-            $this->domain,
-            $this->entity,
-            $this->baseNamespace
-        );
-    }
-
-    private function createSkeletonModel(
-        FileObject $viewModelTestCaseFileObject,
-        FileObject $viewModelFileObject
-    ): ViewModelTestCaseSkeletonModel {
-        return $this->viewModelTestCaseSkeletonModelAssembler->create(
-            $viewModelTestCaseFileObject,
-            $viewModelFileObject
-        );
-    }
-
-    private function createViewModelObject(): FileObject
-    {
-        return $this->createViewModelFileObject(
-            ViewModelFileObjectType::API_VIEW_MODEL,
             $this->domain,
             $this->entity,
             $this->baseNamespace
@@ -103,5 +66,40 @@ class ViewModelTestCaseGenerator extends AbstractViewModelGenerator
             $this->entity,
             $this->baseNamespace
         );
+    }
+
+    private function createViewModelObject(): FileObject
+    {
+        return $this->createViewModelFileObject(
+            ViewModelFileObjectType::API_VIEW_MODEL,
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
+        );
+    }
+
+    public function generateContent(
+        FileObject $viewModelTestCaseFileObject,
+        FileObject $viewModelFileObject
+    ): string {
+        $skeletonModel = $this->createSkeletonModel($viewModelTestCaseFileObject, $viewModelFileObject);
+
+        return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
+    }
+
+    private function createSkeletonModel(
+        FileObject $viewModelTestCaseFileObject,
+        FileObject $viewModelFileObject
+    ): ViewModelTestCaseSkeletonModel {
+        return $this->viewModelTestCaseSkeletonModelAssembler->create(
+            $viewModelTestCaseFileObject,
+            $viewModelFileObject
+        );
+    }
+
+    public function setViewModelTestCaseSkeletonModelAssembler(
+        ViewModelTestCaseSkeletonModelAssembler $viewModelTestCaseSkeletonModelAssembler
+    ): void {
+        $this->viewModelTestCaseSkeletonModelAssembler = $viewModelTestCaseSkeletonModelAssembler;
     }
 }

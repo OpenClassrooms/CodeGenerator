@@ -6,23 +6,23 @@ namespace {{ skeletonModel.namespace }};
 use Carbon\Carbon;
 {% endif %}
 use {{ skeletonModel.entityFactoryImplClassName }};
-use {{ skeletonModel.createEntityRequestClassName }};
+use {{ skeletonModel.createEntityUseCaseRequestClassName }};
 use {{ skeletonModel.createEntityClassName }};
-use {{ skeletonModel.createEntityRequestBuilderImplClassName }};
-use {{ skeletonModel.createEntityRequestDTOClassName }};
+use {{ skeletonModel.createEntityUseCaseRequestBuilderImplClassName }};
+use {{ skeletonModel.createEntityUseCaseRequestDTOClassName }};
 use {{ skeletonModel.entityStubClassName }};
 use {{ skeletonModel.inMemoryEntityGatewayClassName }};
-use {{ skeletonModel.entityDetailResponseAssemblerMockClassName }};
-use {{ skeletonModel.entityDetailResponseStubClassName }};
-use {{ skeletonModel.entityDetailResponseTestCaseClassName }};
+use {{ skeletonModel.entityUseCaseDetailResponseAssemblerMockClassName }};
+use {{ skeletonModel.entityUseCaseDetailResponseStubClassName }};
+use {{ skeletonModel.entityUseCaseDetailResponseTestCaseClassName }};
 use PHPUnit\Framework\TestCase;
 
 final class {{ skeletonModel.shortName }} extends TestCase
 {
-    use {{ skeletonModel.entityDetailResponseTestCaseShortName }};
+    use {{ skeletonModel.entityUseCaseDetailResponseTestCaseShortName }};
 
     /**
-     * @var {{ skeletonModel.createEntityRequestDTOShortName }}
+     * @var {{ skeletonModel.createEntityUseCaseRequestDTOShortName }}
      */
     private $request;
 
@@ -38,29 +38,27 @@ final class {{ skeletonModel.shortName }} extends TestCase
     {
         $response = $this->useCase->execute($this->request);
 
-        $expectedResponse = new {{ skeletonModel.entityDetailResponseStubShortName }}();
-        $this->assert{{ skeletonModel.entityDetailResponseShortName }}($expectedResponse, $response);
+        $expectedResponse = new {{ skeletonModel.entityUseCaseDetailResponseStubShortName }}();
+        $this->assert{{ skeletonModel.entityUseCaseDetailResponseShortName }}($expectedResponse, $response);
     }
 
     protected function setup(): void
     {
         $this->request = $this->buildRequest();
         $this->useCase = new {{ skeletonModel.createEntityShortName }}(
-            new {{ skeletonModel.entityDetailResponseAssemblerMockShortName }}(),
+            new {{ skeletonModel.entityUseCaseDetailResponseAssemblerMockShortName }}(),
             new {{ skeletonModel.entityFactoryImplShortName }}(),
-            new {{ skeletonModel.inMemoryEntityGatewayShortName }}(
-                [{{ skeletonModel.entityStubShortName }}::ID => new {{ skeletonModel.entityStubShortName }}()]
-            )
+            new {{ skeletonModel.inMemoryEntityGatewayShortName }}([{{ skeletonModel.entityStubShortName }}::ID => new {{ skeletonModel.entityStubShortName }}()])
         );
     }
 
-    private function buildRequest(): {{ skeletonModel.createEntityRequestShortName }}
+    private function buildRequest(): {{ skeletonModel.createEntityUseCaseRequestShortName }}
     {
-        $builder = new {{ skeletonModel.createEntityRequestBuilderImplShortName }}();
+        $builder = new {{ skeletonModel.createEntityUseCaseRequestBuilderImplShortName }}();
 
         return $builder
             ->create()
-{% for method in skeletonModel.createEntityRequestBuilderImplMethods | sortNameByAlpha %}
+{% for method in skeletonModel.createEntityUseCaseRequestBuilderImplMethods | sortNameByAlpha %}
 {% if method.isDateType %}
             ->{{ method.name }}(new Carbon({{ method.arguments[0].name }}))
 {% else %}

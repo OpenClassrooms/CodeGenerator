@@ -118,7 +118,6 @@ class GetEntitiesUseCaseTestGenerator extends AbstractUseCaseGenerator
         $this->stubGateway->insertAndIncrementSuffix($fileObject);
 
         return $fileObject;
-
     }
 
     private function createGetEntitiesUseCaseFileObject(): FileObject

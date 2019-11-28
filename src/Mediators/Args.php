@@ -9,9 +9,9 @@ final class Args
 {
     const CLASS_NAME = 'class-name';
 
-    const DOMAIN = 'domain';
+    const DOMAIN     = 'domain';
 
-    const ENTITY = 'entity';
+    const ENTITY     = 'entity';
 
-    const USE_CASE = 'use-case';
+    const USE_CASE   = 'use-case';
 }

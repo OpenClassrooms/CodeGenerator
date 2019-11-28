@@ -10,11 +10,11 @@ use OpenClassrooms\CodeGenerator\Utility\StringUtility;
  */
 class FieldObject
 {
-    const SCOPE_PRIVATE = 'private';
+    const SCOPE_PRIVATE   = 'private';
 
     const SCOPE_PROTECTED = 'protected';
 
-    const SCOPE_PUBLIC = 'public';
+    const SCOPE_PUBLIC    = 'public';
 
     /**
      * @var string

@@ -60,6 +60,16 @@ class EntityFactoryImplGenerator extends AbstractGenerator
         return $this->createFileObject(EntityFileObjectType::BUSINESS_RULES_ENTITY_FACTORY);
     }
 
+    private function createFileObject(string $type): FileObject
+    {
+        return $this->entityFileObjectFactory->create(
+            $type,
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
+        );
+    }
+
     private function createEntityFactoryImplFileObject(): FileObject
     {
         return $this->createFileObject(EntityFileObjectType::BUSINESS_RULES_ENTITY_FACTORY_IMPL);
@@ -73,16 +83,6 @@ class EntityFactoryImplGenerator extends AbstractGenerator
     private function createEntityImplFileObject(): FileObject
     {
         return $this->createFileObject(EntityFileObjectType::BUSINESS_RULES_ENTITY_IMPL);
-    }
-
-    private function createFileObject(string $type): FileObject
-    {
-        return $this->entityFileObjectFactory->create(
-            $type,
-            $this->domain,
-            $this->entity,
-            $this->baseNamespace
-        );
     }
 
     private function generateContent(

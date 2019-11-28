@@ -8,14 +8,14 @@ use OpenClassrooms\CodeGenerator\Utility\FieldObjectUtilityStrategy;
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
  */
-final class FieldObjectUtilityGetFieldsWithoutId implements FieldObjectUtilityStrategy
+final class FieldObjectUtilityGetFieldsUpdatable implements FieldObjectUtilityStrategy
 {
     public function getFields(string $className): array
     {
         $fields = Utility::getProtectedClassFields($className);
 
         foreach ($fields as $key => $field) {
-            if ($field->getName() === 'id') {
+            if (in_array($field->getName(), ['id', 'createdAt', 'updatedAt'])) {
                 unset($fields[$key]);
             }
         }

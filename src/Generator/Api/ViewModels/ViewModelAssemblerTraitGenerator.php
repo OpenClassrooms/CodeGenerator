@@ -34,12 +34,6 @@ class ViewModelAssemblerTraitGenerator extends AbstractViewModelGenerator
         return $viewModelAssemblerTraitFileObject;
     }
 
-    public function setViewModelAssemblerTraitSkeletonModelAssembler(
-        ViewModelAssemblerTraitSkeletonModelAssembler $viewModelAssemblerTraitSkeletonModelAssembler
-    ): void {
-        $this->viewModelAssemblerTraitSkeletonModelAssembler = $viewModelAssemblerTraitSkeletonModelAssembler;
-    }
-
     private function buildViewModelAssemblerTraitFileObject(string $useCaseResponseClassName): FileObject
     {
         $this->initFileObjectParameter($useCaseResponseClassName);
@@ -56,18 +50,6 @@ class ViewModelAssemblerTraitGenerator extends AbstractViewModelGenerator
         );
 
         return $viewModelAssemblerTraitFileObject;
-    }
-
-    private function createSkeletonModel(
-        FileObject $viewModelAssemblerTraitFileObject,
-        FileObject $useCaseResponseFileObject,
-        FileObject $viewModelFileObject
-    ): ViewModelAssemblerTraitSkeletonModel {
-        return $this->viewModelAssemblerTraitSkeletonModelAssembler->create(
-            $viewModelAssemblerTraitFileObject,
-            $useCaseResponseFileObject,
-            $viewModelFileObject
-        );
     }
 
     private function createUseCaseResponseCommonFieldTraitFileObject(): FileObject
@@ -122,5 +104,23 @@ class ViewModelAssemblerTraitGenerator extends AbstractViewModelGenerator
         );
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
+    }
+
+    private function createSkeletonModel(
+        FileObject $viewModelAssemblerTraitFileObject,
+        FileObject $useCaseResponseFileObject,
+        FileObject $viewModelFileObject
+    ): ViewModelAssemblerTraitSkeletonModel {
+        return $this->viewModelAssemblerTraitSkeletonModelAssembler->create(
+            $viewModelAssemblerTraitFileObject,
+            $useCaseResponseFileObject,
+            $viewModelFileObject
+        );
+    }
+
+    public function setViewModelAssemblerTraitSkeletonModelAssembler(
+        ViewModelAssemblerTraitSkeletonModelAssembler $viewModelAssemblerTraitSkeletonModelAssembler
+    ): void {
+        $this->viewModelAssemblerTraitSkeletonModelAssembler = $viewModelAssemblerTraitSkeletonModelAssembler;
     }
 }

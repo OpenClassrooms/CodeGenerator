@@ -6,27 +6,17 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 
 abstract class CreateEntityUseCaseSkeletonModel extends AbstractSkeletonModel
 {
-    public $createEntityRequestArgument;
+    public $createEntityUseCaseRequestArgument;
 
-    public $createEntityRequestClassName;
+    public $createEntityUseCaseRequestClassName;
 
-    public $createEntityRequestMethods;
+    public $createEntityUseCaseRequestMethods;
 
-    public $createEntityRequestShortName;
+    public $createEntityUseCaseRequestShortName;
 
     public $entityArgument;
 
     public $entityClassName;
-
-    public $entityDetailResponseAssemblerArgument;
-
-    public $entityDetailResponseAssemblerClassName;
-
-    public $entityDetailResponseAssemblerShortName;
-
-    public $entityDetailResponseClassName;
-
-    public $entityDetailResponseShortName;
 
     public $entityFactoryArgument;
 
@@ -41,6 +31,16 @@ abstract class CreateEntityUseCaseSkeletonModel extends AbstractSkeletonModel
     public $entityGatewayShortName;
 
     public $entityShortName;
+
+    public $entityUseCaseDetailResponseAssemblerArgument;
+
+    public $entityUseCaseDetailResponseAssemblerClassName;
+
+    public $entityUseCaseDetailResponseAssemblerShortName;
+
+    public $entityUseCaseDetailResponseClassName;
+
+    public $entityUseCaseDetailResponseShortName;
 
     public $templatePath = 'BusinessRules/UseCases/CreateEntityUseCase.php.twig';
 

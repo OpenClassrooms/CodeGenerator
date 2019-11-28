@@ -27,13 +27,6 @@ class TestClassUtil
         return $property->getValue($propertyName);
     }
 
-    public static function getConstants($className)
-    {
-        $reflectionClass = new \ReflectionClass($className);
-
-        return $reflectionClass->getConstants();
-    }
-
     public static function getShortClassName(string $className)
     {
         $rc = new \ReflectionClass($className);

@@ -29,4 +29,9 @@ class {{ skeletonModel.shortName }} extends ServiceEntityRepository implements {
     {
         $this->getEntityManager()->persist(${{ skeletonModel.entityArgument }});
     }
+
+    public function update({{ skeletonModel.entityShortName }} ${{ skeletonModel.entityArgument }}): void
+    {
+        $functionalEntity->update();
+    }
 }

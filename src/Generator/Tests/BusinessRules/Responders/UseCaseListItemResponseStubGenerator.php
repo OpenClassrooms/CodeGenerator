@@ -132,7 +132,6 @@ class UseCaseListItemResponseStubGenerator extends AbstractUseCaseResponseStubGe
         $consts = ConstUtility::generateConstsFromStubFileObject($useCaseListItemResponseStubFileObject);
 
         return $this->filterConstsFromFieldValues($useCaseListItemResponseStubFileObject, $consts);
-
     }
 
     /**

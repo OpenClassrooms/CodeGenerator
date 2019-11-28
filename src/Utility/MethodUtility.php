@@ -10,6 +10,117 @@ use OpenClassrooms\CodeGenerator\Entities\Object\MethodObject;
  */
 class MethodUtility
 {
+    public static function buildGetEntityIdMethodObject(string $shortClassName): MethodObject
+    {
+        $methodChained = new MethodObject(NameUtility::creatGetEntityIdName($shortClassName));
+        $methodChained->setReturnType('int');
+        $methodChained->setNullable(false);
+
+        return $methodChained;
+    }
+
+    public static function buildIsUpdatedMethods(string $className): array
+    {
+        $rc = new \ReflectionClass($className);
+
+        $methodsChained = [];
+        foreach ($rc->getProperties() as $field) {
+            if (FieldUtility::isUpdatable($field)) {
+                $methodsChained[] = self::buildIsUpdatedMethodObject($field);
+            }
+        }
+
+        return $methodsChained;
+    }
+
+    public static function buildIsUpdatedMethodObject(\ReflectionProperty $field): MethodObject
+    {
+        $methodChained = new MethodObject(NameUtility::createIsUpdatedName($field));
+        $methodChained->setReturnType('bool');
+        $methodChained->setNullable(false);
+
+        return $methodChained;
+    }
+
+    public static function buildWitherCalledMethods(string $className): array
+    {
+        $rc = new \ReflectionClass($className);
+
+        $methodsChained = [];
+        foreach ($rc->getProperties() as $field) {
+            if (FieldUtility::isUpdatable($field)) {
+                $methodsChained[] = self::buildWitherCalledMethod($field, $className);
+            }
+        }
+
+        return $methodsChained;
+    }
+
+    private static function buildWitherCalledMethod(\ReflectionProperty $field, string $className): MethodObject
+    {
+        $methodChained = new MethodObject(NameUtility::createMethodsChainedName($field));
+        $methodChained->setReturnType(DocCommentUtility::getReturnType($field->getDocComment()));
+        $methodChained->addArgument(self::buildConstantArgument($className, $field));
+
+        return $methodChained;
+    }
+
+    private static function buildConstantArgument(string $className, \ReflectionProperty $field): FieldObject
+    {
+        $argument = new FieldObject(
+            FileObjectUtility::getShortClassName($className) . 'Stub1::' . StringUtility::convertToUpperSnakeCase(
+                $field->getName()
+            )
+        );
+
+        return $argument;
+    }
+
+    public static function buildWitherMethods(string $className, string $returnType = null): array
+    {
+        $rc = new \ReflectionClass($className);
+
+        $methodsChained = [];
+        foreach ($rc->getProperties() as $field) {
+            if (FieldUtility::isUpdatable($field)) {
+                $methodsChained[] = self::buildWitherMethodObject($field, $returnType);
+            }
+        }
+
+        return $methodsChained;
+    }
+
+    private static function buildWitherMethodObject(\ReflectionProperty $field, string $returnType): MethodObject
+    {
+        $methodChained = new MethodObject(NameUtility::createMethodsChainedName($field));
+        $methodChained->setReturnType($returnType);
+        $methodChained->addArgument(self::buildArgument($field));
+
+        return $methodChained;
+    }
+
+    private static function buildArgument(\ReflectionProperty $field): FieldObject
+    {
+        $argument = new FieldObject($field->getName());
+        if ($field->getDocComment()) {
+            $argument->setDocComment($field->getDocComment());
+        }
+
+        return $argument;
+    }
+
+    public static function createArgumentNameFromMethod(string $method): ?string
+    {
+        if ('get' === substr($method, 0, 3)) {
+            return lcfirst(substr($method, 3));
+        }
+        if ('is' === substr($method, 0, 2)) {
+            return lcfirst(substr($method, 2));
+        }
+
+        return null;
+    }
+
     /**
      * @param string[] $fields
      *
@@ -81,10 +192,10 @@ class MethodUtility
     }
 
     /**
-     * @param string[]
-     * @param \ReflectionMethod[]
+     * @param string[]            $fields
+     * @param \ReflectionMethod[] $methods
      *
-     * @return array
+     * @return \ReflectionMethod[]
      */
     private static function removeNotSelectedFields(array $fields, array $methods): array
     {
@@ -95,91 +206,5 @@ class MethodUtility
         }
 
         return array_values($methods);
-    }
-
-    public static function buildWitherMethods(string $className, string $returnType = null): array
-    {
-        $rc = new \ReflectionClass($className);
-
-        $methodsChained = [];
-        foreach ($rc->getProperties() as $field) {
-            if ($field->getName() === 'id') {
-                continue;
-            }
-            $methodsChained[] = self::buildWitherMethodObject($field, $returnType);
-        }
-
-        return $methodsChained;
-    }
-
-    private static function buildWitherMethodObject(\ReflectionProperty $field, string $returnType): MethodObject
-    {
-        $methodChained = new MethodObject(self::createMethodsChainedName($field));
-        $methodChained->setReturnType($returnType);
-        $methodChained->addArgument(self::buildArgument($field));
-
-        return $methodChained;
-    }
-
-    private static function createMethodsChainedName(\ReflectionProperty $field): string
-    {
-        return 'with' . ucfirst($field->getName());
-    }
-
-    private static function buildArgument(\ReflectionProperty $field): FieldObject
-    {
-        $argument = new FieldObject($field->getName());
-        if ($field->getDocComment()) {
-            $argument->setDocComment($field->getDocComment());
-        }
-
-        return $argument;
-    }
-
-    public static function buildWitherCalledMethods(string $className): array
-    {
-        $rc = new \ReflectionClass($className);
-
-        $methodsChained = [];
-        foreach ($rc->getProperties() as $field) {
-            if ($field->getName() === 'id') {
-                continue;
-            }
-            $methodsChained[] = self::buildWitherCalledMethod($field, $className);
-        }
-
-        return $methodsChained;
-    }
-
-    private static function buildWitherCalledMethod(\ReflectionProperty $field, string $className): MethodObject
-    {
-        $methodChained = new MethodObject(self::createMethodsChainedName($field));
-        $methodChained->setReturnType(DocCommentUtility::getReturnType($field->getDocComment()));
-        $methodChained->addArgument(self::buildConstantArgument($className, $field));
-
-        return $methodChained;
-    }
-
-    private static function buildConstantArgument(string $className, \ReflectionProperty $field): FieldObject
-    {
-        $argument = new FieldObject(
-            FileObjectUtility::getShortClassName($className) . 'Stub1::' . StringUtility::convertToUpperSnakeCase(
-                $field->getName()
-            )
-        );
-
-        return $argument;
-    }
-
-    public static function createArgumentNameFromMethod(string $method): ?string
-    {
-        if ('get' === substr($method, 0, 3)) {
-            return lcfirst(substr($method, 3));
-        }
-        if ('is' === substr($method, 0, 2)) {
-            return lcfirst(substr($method, 2));
-        }
-
-        return null;
     }
 }

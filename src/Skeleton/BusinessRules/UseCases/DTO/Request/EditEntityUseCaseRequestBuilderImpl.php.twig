@@ -1,0 +1,50 @@
+{% include "Header.php.twig" %}
+
+namespace {{ skeletonModel.namespace }};
+
+use {{ skeletonModel.editEntityUseCaseRequestClassName }};
+use {{ skeletonModel.editEntityUseCaseRequestBuilderClassName }};
+
+class {{ skeletonModel.shortName }} implements {{ skeletonModel.editEntityUseCaseRequestBuilderShortName }}
+{
+    /**
+     * @var {{ skeletonModel.editEntityUseCaseRequestDTOShortName }}
+     */
+    private $request;
+
+    public function build(): {{ skeletonModel.editEntityUseCaseRequestShortName }}
+    {
+        return $this->request;
+    }
+
+    public function create(): {{ skeletonModel.editEntityUseCaseRequestBuilderShortName }}
+    {
+        $this->request = new {{ skeletonModel.editEntityUseCaseRequestDTOShortName }}();
+
+        return $this;
+    }
+
+{% for method in skeletonModel.methods | sortNameByAlpha %}
+{% if 'array' in method.arguments[0].type  %}
+    public function {{ method.name }}({{ method.arguments[0].type }} ${{ method.arguments[0].name }} = []): {{ method.returnType }}
+{% else %}
+    public function {{ method.name }}({{ method.arguments[0].type }} ${{ method.arguments[0].name }}): {{ method.returnType }}
+{% endif %}
+    {
+        $this->request->{{ method.arguments[0].name }} = ${{ method.arguments[0].name }};
+        $this->request->{{ method.arguments[0].name }}Updated = true;
+
+        return $this;
+    }
+{% if not loop.last %}
+
+{% endif %}
+{% endfor %}
+
+    public function {{ skeletonModel.entityIdMethodName }}(int $id): {{ skeletonModel.editEntityUseCaseRequestBuilderShortName }}
+    {
+        $this->request->{{ skeletonModel.entityIdArgumentName }} = $id;
+
+        return $this;
+    }
+}

@@ -13,15 +13,15 @@ class CreateEntityUseCaseRequestBuilderSkeletonModelAssemblerImpl implements Cre
     use UseCaseClassNameTrait;
 
     public function create(
-        FileObject $createEntityRequestBuilderFileObject,
-        FileObject $createEntityRequestFileObject
+        FileObject $createEntityUseCaseRequestBuilderFileObject,
+        FileObject $createEntityUseCaseRequestFileObject
     ): CreateEntityUseCaseRequestBuilderSkeletonModel {
         $skeletonModel = new CreateEntityUseCaseRequestBuilderSkeletonModelImpl();
-        $skeletonModel->className = $createEntityRequestBuilderFileObject->getClassName();
-        $skeletonModel->namespace = $createEntityRequestBuilderFileObject->getNamespace();
-        $skeletonModel->shortName = $createEntityRequestBuilderFileObject->getShortName();
-        $skeletonModel->methods = $createEntityRequestBuilderFileObject->getMethods();
-        $skeletonModel->createEntityRequestShortName = $createEntityRequestFileObject->getShortName();
+        $skeletonModel->className = $createEntityUseCaseRequestBuilderFileObject->getClassName();
+        $skeletonModel->namespace = $createEntityUseCaseRequestBuilderFileObject->getNamespace();
+        $skeletonModel->shortName = $createEntityUseCaseRequestBuilderFileObject->getShortName();
+        $skeletonModel->methods = $createEntityUseCaseRequestBuilderFileObject->getMethods();
+        $skeletonModel->createEntityUseCaseRequestShortName = $createEntityUseCaseRequestFileObject->getShortName();
         $skeletonModel->useCaseRequestClassName = $this->useCaseRequestClassName;
         $skeletonModel->useCaseRequestShortName = FileObjectUtility::getShortClassName($this->useCaseRequestClassName);
 

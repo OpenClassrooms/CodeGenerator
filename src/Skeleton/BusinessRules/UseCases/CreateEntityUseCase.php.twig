@@ -5,9 +5,9 @@ namespace {{ skeletonModel.namespace }};
 use {{ skeletonModel.entityClassName }};
 use {{ skeletonModel.entityFactoryClassName }};
 use {{ skeletonModel.entityGatewayClassName }};
-use {{ skeletonModel.createEntityRequestClassName }};
-use {{ skeletonModel.entityDetailResponseClassName }};
-use {{ skeletonModel.entityDetailResponseAssemblerClassName }};
+use {{ skeletonModel.createEntityUseCaseRequestClassName }};
+use {{ skeletonModel.entityUseCaseDetailResponseClassName }};
+use {{ skeletonModel.entityUseCaseDetailResponseAssemblerClassName }};
 use {{ skeletonModel.transactionClassName }};
 use {{ skeletonModel.useCaseClassName }};
 use {{ skeletonModel.useCaseRequestClassName }};
@@ -25,26 +25,26 @@ class {{ skeletonModel.shortName }} implements UseCase
     private ${{ skeletonModel.entityGatewayArgument }};
 
     /**
-     * @var {{ skeletonModel.entityDetailResponseAssemblerShortName }}
+     * @var {{ skeletonModel.entityUseCaseDetailResponseAssemblerShortName }}
      */
-    private ${{ skeletonModel.entityDetailResponseAssemblerArgument }};
+    private ${{ skeletonModel.entityUseCaseDetailResponseAssemblerArgument }};
 
     public function __construct(
-        {{ skeletonModel.entityDetailResponseAssemblerShortName }} ${{ skeletonModel.entityDetailResponseAssemblerArgument }},
+        {{ skeletonModel.entityUseCaseDetailResponseAssemblerShortName }} ${{ skeletonModel.entityUseCaseDetailResponseAssemblerArgument }},
         {{ skeletonModel.entityFactoryShortName }} ${{ skeletonModel.entityFactoryArgument }},
         {{ skeletonModel.entityGatewayShortName }} ${{ skeletonModel.entityGatewayArgument }}
     ) {
         $this->{{ skeletonModel.entityFactoryArgument }} = ${{ skeletonModel.entityFactoryArgument }};
         $this->{{ skeletonModel.entityGatewayArgument }} = ${{ skeletonModel.entityGatewayArgument }};
-        $this->{{ skeletonModel.entityDetailResponseAssemblerArgument }} = ${{ skeletonModel.entityDetailResponseAssemblerArgument }};
+        $this->{{ skeletonModel.entityUseCaseDetailResponseAssemblerArgument }} = ${{ skeletonModel.entityUseCaseDetailResponseAssemblerArgument }};
     }
 
     /**
      * @Transaction
      *
-     * @param {{ skeletonModel.createEntityRequestShortName }} $useCaseRequest
+     * @param {{ skeletonModel.createEntityUseCaseRequestShortName }} $useCaseRequest
      */
-    public function execute(UseCaseRequest $useCaseRequest): {{ skeletonModel.entityDetailResponseShortName }}
+    public function execute(UseCaseRequest $useCaseRequest): {{ skeletonModel.entityUseCaseDetailResponseShortName }}
     {
         ${{ skeletonModel.entityArgument }} = $this->create{{ skeletonModel.entityShortName }}($useCaseRequest);
         $this->save(${{ skeletonModel.entityArgument }});
@@ -52,7 +52,7 @@ class {{ skeletonModel.shortName }} implements UseCase
         return $this->createResponse(${{ skeletonModel.entityArgument }});
     }
 
-    private function create{{ skeletonModel.entityShortName }}({{ skeletonModel.createEntityRequestShortName }} $request): {{ skeletonModel.entityShortName }}
+    private function create{{ skeletonModel.entityShortName }}({{ skeletonModel.createEntityUseCaseRequestShortName }} $request): {{ skeletonModel.entityShortName }}
     {
         ${{ skeletonModel.entityArgument }} = $this->{{ skeletonModel.entityFactoryArgument }}->create();
         $this->populate(${{ skeletonModel.entityArgument }}, $request);
@@ -60,9 +60,9 @@ class {{ skeletonModel.shortName }} implements UseCase
         return ${{ skeletonModel.entityArgument }};
     }
 
-    private function populate({{ skeletonModel.entityShortName }} ${{ skeletonModel.entityArgument }}, {{ skeletonModel.createEntityRequestShortName }} $request): void
+    private function populate({{ skeletonModel.entityShortName }} ${{ skeletonModel.entityArgument }}, {{ skeletonModel.createEntityUseCaseRequestShortName }} $request): void
     {
-{% for method in skeletonModel.createEntityRequestMethods %}
+{% for method in skeletonModel.createEntityUseCaseRequestMethods %}
         ${{ skeletonModel.entityArgument }}->set{{ method.fieldName|capitalize }}($request->{{ method.name }}());
 {% endfor %}
     }
@@ -72,8 +72,8 @@ class {{ skeletonModel.shortName }} implements UseCase
         $this->{{ skeletonModel.entityGatewayArgument }}->insert(${{ skeletonModel.entityArgument }});
     }
 
-    private function createResponse({{ skeletonModel.entityShortName }} ${{ skeletonModel.entityArgument }}): {{ skeletonModel.entityDetailResponseShortName }}
+    private function createResponse({{ skeletonModel.entityShortName }} ${{ skeletonModel.entityArgument }}): {{ skeletonModel.entityUseCaseDetailResponseShortName }}
     {
-        return $this->{{ skeletonModel.entityDetailResponseAssemblerArgument }}->create(${{ skeletonModel.entityArgument }});
+        return $this->{{ skeletonModel.entityUseCaseDetailResponseAssemblerArgument }}->create(${{ skeletonModel.entityArgument }});
     }
 }

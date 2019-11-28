@@ -8,35 +8,21 @@ abstract class CreateEntityUseCaseTestSkeletonModel extends AbstractSkeletonMode
 {
     public $createEntityClassName;
 
-    public $createEntityRequestBuilderImplClassName;
+    public $createEntityUseCaseRequestBuilderImplClassName;
 
-    public $createEntityRequestBuilderImplMethods;
+    public $createEntityUseCaseRequestBuilderImplMethods;
 
-    public $createEntityRequestBuilderImplShortName;
+    public $createEntityUseCaseRequestBuilderImplShortName;
 
-    public $createEntityRequestClassName;
+    public $createEntityUseCaseRequestClassName;
 
-    public $createEntityRequestDTOClassName;
+    public $createEntityUseCaseRequestDTOClassName;
 
-    public $createEntityRequestDTOShortName;
+    public $createEntityUseCaseRequestDTOShortName;
 
-    public $createEntityRequestShortName;
+    public $createEntityUseCaseRequestShortName;
 
     public $createEntityShortName;
-
-    public $entityDetailResponseAssemblerMockClassName;
-
-    public $entityDetailResponseAssemblerMockShortName;
-
-    public $entityDetailResponseShortName;
-
-    public $entityDetailResponseStubClassName;
-
-    public $entityDetailResponseStubShortName;
-
-    public $entityDetailResponseTestCaseClassName;
-
-    public $entityDetailResponseTestCaseShortName;
 
     public $entityFactoryImplClassName;
 
@@ -47,6 +33,20 @@ abstract class CreateEntityUseCaseTestSkeletonModel extends AbstractSkeletonMode
     public $entityStubClassName;
 
     public $entityStubShortName;
+
+    public $entityUseCaseDetailResponseAssemblerMockClassName;
+
+    public $entityUseCaseDetailResponseAssemblerMockShortName;
+
+    public $entityUseCaseDetailResponseShortName;
+
+    public $entityUseCaseDetailResponseStubClassName;
+
+    public $entityUseCaseDetailResponseStubShortName;
+
+    public $entityUseCaseDetailResponseTestCaseClassName;
+
+    public $entityUseCaseDetailResponseTestCaseShortName;
 
     public $inMemoryEntityGatewayClassName;
 

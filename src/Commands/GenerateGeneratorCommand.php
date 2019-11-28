@@ -9,10 +9,8 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
-use Symfony\Component\Yaml\Yaml;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
@@ -54,22 +52,14 @@ class GenerateGeneratorCommand extends AbstractCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $codeGeneratorConfig = Yaml::parseFile($this->getConfigFile());
-
+        $codeGeneratorConfig = $this->parseConfigFile();
         $this->checkConfiguration($codeGeneratorConfig);
-
         $this->checkInputDomainAndNameArgument($input, $output, Args::ENTITY);
 
         $fileObjects = $this->container
             ->get('open_classrooms.code_generator.mediators.generate_generator.generate_generator_mediator')
             ->mediate($input->getArguments(), $input->getOptions());
 
-        $io = new SymfonyStyle($input, $output);
-
-        [$writtenFiles, $notWrittenFiles] = $this->getFilesWritingStatus($fileObjects);
-
-        $this->displayCreatedFilePath($io, $writtenFiles);
-        $this->displayNotWrittenFilePathAndContent($io, $notWrittenFiles, $input);
-        $this->displayFilePathAndContentDump($io, array_merge($writtenFiles, $notWrittenFiles), $input);
+        $this->commandDisplay($input, $output, $fileObjects);
     }
 }

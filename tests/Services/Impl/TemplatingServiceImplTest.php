@@ -21,7 +21,31 @@ class TemplatingServiceImplTest extends TestCase
     /**
      * @test
      */
-    public function getSortNameByAlphaFilter_ReturnArrayOfFields(): void
+    public function getSortIdFirstFilterReturnArrayOfFields(): void
+    {
+        $fieldObjects = [
+            $this->generateFieldObject('omega', 'bool'),
+            $this->generateFieldObject('beta', 'int'),
+            $this->generateFieldObject('alpha', 'string'),
+            $this->generateFieldObject('id', 'int'),
+        ];
+        $expectedFieldNames = $this->getFieldNameList($fieldObjects);
+        $expectedField = end($expectedFieldNames);
+
+        $twigFilter = TestClassUtil::invokeMethod('getSortIdFirstFilter', $this->templateServiceImpl);
+
+        $this->assertTrue(is_callable($twigFilter->getCallable()));
+
+        $actualFieldObjects = $twigFilter->getCallable()->__invoke($fieldObjects);
+        $actualField = array_shift($actualFieldObjects);
+
+        $this->assertEquals($actualField->getName(), $expectedField);
+    }
+
+    /**
+     * @test
+     */
+    public function getSortNameByAlphaFilterReturnArrayOfFields(): void
     {
         $fieldObjects = [
             $this->generateFieldObject('omega', 'bool'),
@@ -40,6 +64,62 @@ class TemplatingServiceImplTest extends TestCase
 
         $this->assertFieldNames($expectedFieldNames, $actualFieldNames);
 
+    }
+
+    /**
+     * @test
+     */
+    public function lineBreakReturnTrue(): void
+    {
+        $fieldObjects = [
+            $this->generateFieldObject('id', 'int'),
+            $this->generateFieldObject('omega', 'bool'),
+            $this->generateFieldObject('beta', 'int'),
+            $this->generateFieldObject('alpha', 'Object'),
+        ];
+        $twigFunction = TestClassUtil::invokeMethod('lineBreak', $this->templateServiceImpl);
+
+        $this->assertTrue(is_callable($twigFunction->getCallable()));
+
+        $actualValue = $twigFunction->getCallable()->__invoke($fieldObjects, 1);
+
+        $this->assertTrue($actualValue);
+    }
+
+    public function printValueProvider(): array
+    {
+        return [
+            [true, 'true'],
+            [['test', 'test2'], '[\'test\', \'test2\']'],
+            ['2018-01-01', '\'2018-01-01\''],
+            ['test', 'test'],
+        ];
+    }
+
+    /**
+     * @test
+     * @dataProvider printValueProvider
+     */
+    public function printValueReturnValue($value, $expected): void
+    {
+        $twigFunction = TestClassUtil::invokeMethod('printValue', $this->templateServiceImpl);
+
+        $this->assertTrue(is_callable($twigFunction->getCallable()));
+
+        $actualValue = $twigFunction->getCallable()->__invoke($value);
+
+        $this->assertEquals($actualValue, $expected);
+    }
+
+    /**
+     * @param string[] $expectedFieldNames
+     * @param string[] $actualFieldNames
+     */
+    private function assertFieldNames(array $expectedFieldNames, array $actualFieldNames): void
+    {
+        foreach ($actualFieldNames as $key => $actualFieldName) {
+            $this->assertEquals($actualFieldName, $expectedFieldNames[$key]);
+        }
     }
 
     private function generateFieldObject(string $name, string $type): FieldObject
@@ -67,88 +147,8 @@ class TemplatingServiceImplTest extends TestCase
         return $fieldNames;
     }
 
-    /**
-     * @param string[] $expectedFieldNames
-     * @param string[] $actualFieldNames
-     */
-    private function assertFieldNames(array $expectedFieldNames, array $actualFieldNames): void
-    {
-        foreach ($actualFieldNames as $key => $actualFieldName) {
-            $this->assertEquals($actualFieldName, $expectedFieldNames[$key]);
-        }
-    }
-
-    /**
-     * @test
-     */
-    public function getSortIdFirstFilter_ReturnArrayOfFields(): void
-    {
-        $fieldObjects = [
-            $this->generateFieldObject('omega', 'bool'),
-            $this->generateFieldObject('beta', 'int'),
-            $this->generateFieldObject('alpha', 'string'),
-            $this->generateFieldObject('id', 'int'),
-        ];
-        $expectedFieldNames = $this->getFieldNameList($fieldObjects);
-        $expectedField = end($expectedFieldNames);
-
-        $twigFilter = TestClassUtil::invokeMethod('getSortIdFirstFilter', $this->templateServiceImpl);
-
-        $this->assertTrue(is_callable($twigFilter->getCallable()));
-
-        $actualFieldObjects = $twigFilter->getCallable()->__invoke($fieldObjects);
-        $actualField = array_shift($actualFieldObjects);
-
-        $this->assertEquals($actualField->getName(), $expectedField);
-    }
-
-    /**
-     * @test
-     * @dataProvider printValueProvider
-     */
-    public function printValue_ReturnValue($value, $expected): void
-    {
-        $twigFunction = TestClassUtil::invokeMethod('printValue', $this->templateServiceImpl);
-
-        $this->assertTrue(is_callable($twigFunction->getCallable()));
-
-        $actualValue = $twigFunction->getCallable()->__invoke($value);
-
-        $this->assertEquals($actualValue, $expected);
-    }
-
-    public function printValueProvider(): array
-    {
-        return [
-            [true, 'true'],
-            [['test', 'test2'], '[\'test\', \'test2\']'],
-            ['2018-01-01', '\'2018-01-01\''],
-            ['test', 'test'],
-        ];
-    }
-
-    /**
-     * @test
-     */
-    public function lineBreak_ReturnTrue(): void
-    {
-        $fieldObjects = [
-            $this->generateFieldObject('id', 'int'),
-            $this->generateFieldObject('omega', 'bool'),
-            $this->generateFieldObject('beta', 'int'),
-            $this->generateFieldObject('alpha', 'Object'),
-        ];
-        $twigFunction = TestClassUtil::invokeMethod('lineBreak', $this->templateServiceImpl);
-
-        $this->assertTrue(is_callable($twigFunction->getCallable()));
-
-        $actualValue = $twigFunction->getCallable()->__invoke($fieldObjects, 1);
-
-        $this->assertTrue($actualValue);
-    }
-
     protected function setUp(): void
     {
-        $this->templateServiceImpl = new  TemplatingServiceImpl('', 'author', 'mail');
+        $this->templateServiceImpl = new  TemplatingServiceImpl('');
     }
 }

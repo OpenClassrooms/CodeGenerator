@@ -54,14 +54,6 @@ abstract class AbstractGenerator implements Generator
     /**
      * @return array|FieldObject[]
      */
-    protected function getProtectedClassFields(string $className): array
-    {
-        return FieldObjectUtility::getProtectedClassFields($className);
-    }
-
-    /**
-     * @return array|FieldObject[]
-     */
     protected function getPublicClassFields(string $className): array
     {
         return FieldObjectUtility::getPublicClassFields($className);
@@ -99,6 +91,14 @@ abstract class AbstractGenerator implements Generator
         }
 
         return $fieldObjects;
+    }
+
+    /**
+     * @return array|FieldObject[]
+     */
+    protected function getProtectedClassFields(string $className): array
+    {
+        return FieldObjectUtility::getProtectedClassFields($className);
     }
 
     protected function initFileObjectParameter(string $entityClassName): void

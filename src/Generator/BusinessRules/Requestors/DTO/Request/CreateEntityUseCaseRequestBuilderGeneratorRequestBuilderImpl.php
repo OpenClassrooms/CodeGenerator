@@ -12,6 +12,11 @@ class CreateEntityUseCaseRequestBuilderGeneratorRequestBuilderImpl implements Cr
      */
     private $request;
 
+    public function build(): CreateEntityUseCaseRequestBuilderGeneratorRequest
+    {
+        return $this->request;
+    }
+
     public function create(): CreateEntityUseCaseRequestBuilderGeneratorRequestBuilder
     {
         $this->request = new CreateEntityUseCaseRequestBuilderGeneratorRequestDTO();
@@ -19,15 +24,11 @@ class CreateEntityUseCaseRequestBuilderGeneratorRequestBuilderImpl implements Cr
         return $this;
     }
 
-    public function withEntityClassName(string $entityClassName): CreateEntityUseCaseRequestBuilderGeneratorRequestBuilder
-    {
+    public function withEntityClassName(
+        string $entityClassName
+    ): CreateEntityUseCaseRequestBuilderGeneratorRequestBuilder {
         $this->request->entityClassName = $entityClassName;
 
         return $this;
-    }
-
-    public function build(): CreateEntityUseCaseRequestBuilderGeneratorRequest
-    {
-        return $this->request;
     }
 }

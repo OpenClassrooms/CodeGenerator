@@ -34,6 +34,14 @@ class FileObjectUtility
         return null;
     }
 
+    public static function getNamespace(string $className)
+    {
+        $classParts = explode('\\', $className);
+        array_pop($classParts);
+
+        return implode('\\', $classParts);
+    }
+
     public static function getDomainFromClassName(string $className): string
     {
         $explodedNamespace = explode('\\', self::getNamespace($className));
@@ -52,6 +60,18 @@ class FileObjectUtility
         }
 
         return implode('\\', array_reverse($domain));
+    }
+
+    private static function getNamespaceLimit(array $explodedNamespace): int
+    {
+        $excludeDir = ['BusinessRules', 'Entity', 'ViewModels', 'Responders', 'Requestors'];
+        foreach (array_reverse($explodedNamespace) as $key => $dir) {
+            if (in_array($dir, $excludeDir)) {
+                return count($explodedNamespace) - 1 - $key;
+            }
+        }
+
+        return 0;
     }
 
     public static function getEntityNameFromClassName(string $className): string
@@ -75,26 +95,6 @@ class FileObjectUtility
         $shortClassName = str_replace('ViewModel', '', $shortClassName);
 
         return $shortClassName;
-    }
-
-    public static function getNamespace(string $className)
-    {
-        $classParts = explode('\\', $className);
-        array_pop($classParts);
-
-        return implode('\\', $classParts);
-    }
-
-    private static function getNamespaceLimit(array $explodedNamespace): int
-    {
-        $excludeDir = ['BusinessRules', 'Entity', 'ViewModels', 'Responders', 'Requestors'];
-        foreach (array_reverse($explodedNamespace) as $key => $dir) {
-            if (in_array($dir, $excludeDir)) {
-                return count($explodedNamespace) - 1 - $key;
-            }
-        }
-
-        return 0;
     }
 
     public static function getShortClassName(string $className): string

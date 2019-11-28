@@ -2,24 +2,24 @@
 
 namespace {{ skeletonModel.namespace }};
 
-use {{ skeletonModel.createEntityRequestClassName }};
-use {{ skeletonModel.createEntityRequestBuilderClassName }};
+use {{ skeletonModel.createEntityUseCaseRequestClassName }};
+use {{ skeletonModel.createEntityUseCaseRequestBuilderClassName }};
 
-class {{ skeletonModel.shortName }} implements {{ skeletonModel.createEntityRequestBuilderShortName }}
+class {{ skeletonModel.shortName }} implements {{ skeletonModel.createEntityUseCaseRequestBuilderShortName }}
 {
     /**
-     * @var {{ skeletonModel.createEntityRequestDTOShortName }}
+     * @var {{ skeletonModel.createEntityUseCaseRequestDTOShortName }}
      */
     private $request;
 
-    public function build(): {{ skeletonModel.createEntityRequestShortName }}
+    public function build(): {{ skeletonModel.createEntityUseCaseRequestShortName }}
     {
         return $this->request;
     }
 
-    public function create(): {{ skeletonModel.createEntityRequestBuilderShortName }}
+    public function create(): {{ skeletonModel.createEntityUseCaseRequestBuilderShortName }}
     {
-        $this->request = new {{ skeletonModel.createEntityRequestDTOShortName }}();
+        $this->request = new {{ skeletonModel.createEntityUseCaseRequestDTOShortName }}();
 
         return $this;
     }

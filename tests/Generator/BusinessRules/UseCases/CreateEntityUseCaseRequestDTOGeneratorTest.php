@@ -13,7 +13,7 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingSer
 use OpenClassrooms\CodeGenerator\Tests\Doubles\SkeletonModels\BusinessRules\UseCases\CreateEntityUseCaseRequestDTOSkeletonModelAssemblerMock;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Entities\Domain\SubDomain\FunctionalEntity;
 use OpenClassrooms\CodeGenerator\Utility\Impl\FieldObjectUtilityContext;
-use OpenClassrooms\CodeGenerator\Utility\Impl\FieldObjectUtilityGetFieldsWithoutId;
+use OpenClassrooms\CodeGenerator\Utility\Impl\FieldObjectUtilityGetFieldsUpdatable;
 use OpenClassrooms\CodeGenerator\Utility\Impl\MethodUtilityContext;
 use OpenClassrooms\CodeGenerator\Utility\Impl\MethodUtilityGetAccessorsWithoutId;
 use PHPUnit\Framework\TestCase;
@@ -25,7 +25,7 @@ class CreateEntityUseCaseRequestDTOGeneratorTest extends TestCase
     /**
      * @var CreateEntityUseCaseRequestDTOGenerator
      */
-    private $createEntityRequestDTOGenerator;
+    private $createEntityUseCaseRequestDTOGenerator;
 
     /**
      * @var CreateEntityUseCaseRequestDTOGeneratorRequestBuilder
@@ -37,7 +37,7 @@ class CreateEntityUseCaseRequestDTOGeneratorTest extends TestCase
      */
     final public function generate_ReturnFileObject(): void
     {
-        $actualFileObject = $this->createEntityRequestDTOGenerator->generate($this->request);
+        $actualFileObject = $this->createEntityUseCaseRequestDTOGenerator->generate($this->request);
 
         $this->assertSame(
             InMemoryFileObjectGateway::$fileObjects[$actualFileObject->getId()]->getPath(),
@@ -48,27 +48,27 @@ class CreateEntityUseCaseRequestDTOGeneratorTest extends TestCase
 
     protected function setUp(): void
     {
-        $createEntityRequestDTOGeneratorRequestBuilderImpl = new CreateEntityUseCaseRequestDTOGeneratorRequestBuilderImpl();
-        $this->request = $createEntityRequestDTOGeneratorRequestBuilderImpl
+        $createEntityUseCaseRequestDTOGeneratorRequestBuilderImpl = new CreateEntityUseCaseRequestDTOGeneratorRequestBuilderImpl();
+        $this->request = $createEntityUseCaseRequestDTOGeneratorRequestBuilderImpl
             ->create()
             ->withEntityClassName(FunctionalEntity::class)
             ->build();
 
-        $this->createEntityRequestDTOGenerator = new CreateEntityUseCaseRequestDTOGenerator();
+        $this->createEntityUseCaseRequestDTOGenerator = new CreateEntityUseCaseRequestDTOGenerator();
 
-        $this->createEntityRequestDTOGenerator->setCreateEntityUseCaseRequestDTOSkeletonModelAssembler(
+        $this->createEntityUseCaseRequestDTOGenerator->setCreateEntityUseCaseRequestDTOSkeletonModelAssembler(
             new CreateEntityUseCaseRequestDTOSkeletonModelAssemblerMock()
         );
-        $this->createEntityRequestDTOGenerator->setFieldUtility(
-            new FieldObjectUtilityContext(new FieldObjectUtilityGetFieldsWithoutId())
+        $this->createEntityUseCaseRequestDTOGenerator->setFieldUtility(
+            new FieldObjectUtilityContext(new FieldObjectUtilityGetFieldsUpdatable())
         );
-        $this->createEntityRequestDTOGenerator->setMethodUtility(
+        $this->createEntityUseCaseRequestDTOGenerator->setMethodUtility(
             new MethodUtilityContext(new MethodUtilityGetAccessorsWithoutId())
         );
-        $this->createEntityRequestDTOGenerator->setTemplating(new TemplatingServiceMock());
-        $this->createEntityRequestDTOGenerator->setTemplating(new TemplatingServiceMock());
-        $this->createEntityRequestDTOGenerator->setFileObjectGateway(new InMemoryFileObjectGateway());
-        $this->createEntityRequestDTOGenerator->setUseCaseRequestFileObjectFactory(
+        $this->createEntityUseCaseRequestDTOGenerator->setTemplating(new TemplatingServiceMock());
+        $this->createEntityUseCaseRequestDTOGenerator->setTemplating(new TemplatingServiceMock());
+        $this->createEntityUseCaseRequestDTOGenerator->setFileObjectGateway(new InMemoryFileObjectGateway());
+        $this->createEntityUseCaseRequestDTOGenerator->setUseCaseRequestFileObjectFactory(
             new UseCaseRequestFileObjectFactoryMock()
         );
     }

@@ -30,6 +30,5 @@ class UseCaseDetailResponseDTOGeneratorRequestDTO implements UseCaseDetailRespon
     public function getFields(): array
     {
         return $this->fields;
-
     }
 }

@@ -21,6 +21,7 @@ class UseCaseDetailResponseStubFileObjectStub1 extends FileObject
             new UseCaseDetailResponseStubFieldObjectStub3(),
             new UseCaseDetailResponseStubFieldObjectStub4(),
             new UseCaseDetailResponseStubFieldObjectStub5(),
+            new UseCaseDetailResponseStubFieldObjectStub6(),
         ];
     }
 }

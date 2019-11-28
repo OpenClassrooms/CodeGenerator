@@ -3,11 +3,9 @@
 namespace OpenClassrooms\CodeGenerator\Commands;
 
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
-use OpenClassrooms\CodeGenerator\Mediators\Args;
 use OpenClassrooms\CodeGenerator\Mediators\Options;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Question\Question;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
 /**
@@ -15,90 +13,22 @@ use Symfony\Component\Console\Style\SymfonyStyle;
  */
 trait CommandDisplayTrait
 {
-    protected function checkConfiguration($codeGeneratorConfig): void
-    {
-        $emptyParameters = [];
-        foreach ($codeGeneratorConfig['parameters'] as $parameter => $value) {
-            if (null === $value) {
-                $emptyParameters[] = $parameter;
-            }
-        }
-        if (!empty($emptyParameters) && count($emptyParameters) === 1) {
-            throw new \ErrorException(
-                'The parameter ' . array_shift($emptyParameters) . ' are empty in oc_code_generator.yml'
-            );
-        } elseif (!empty($emptyParameters)) {
-            throw new \ErrorException(
-                'The parameters ' . implode(', ', $emptyParameters) . ' are empty in oc_code_generator.yml'
-            );
-        }
-    }
-
-    protected function checkInputDomainAndNameArgument(
-        InputInterface $input,
-        OutputInterface $output,
-        string $name
-    ): void {
-        if (null === $input->getArgument(Args::DOMAIN) || null === $input->getArgument($name)) {
-            $helper = $this->getHelper('question');
-            $domainQuestion = new Question('Please enter domain folders (ex: Domain\Subdomain): ', 'Domain\Subdomain');
-            $useCaseQuestion = new Question('Please enter the class short name of the ' . $name . ': ', 'DefaultName');
-
-            $input->setArgument(Args::DOMAIN, $helper->ask($input, $output, $domainQuestion));
-            $input->setArgument($name, $helper->ask($input, $output, $useCaseQuestion));
-        }
-    }
-
     /**
-     * @param FileObject[]
+     * @param FileObject[] $fileObjects
      */
-    protected function displayCreatedFilePath(SymfonyStyle $io, array $fileObjects): void
+    protected function commandDisplay(InputInterface $input, OutputInterface $output, $fileObjects): void
     {
-        if (!empty($fileObjects)) {
-            $io->success(CommandLabelType::GENERATED_OUTPUT);
-            $pathList = [];
-            foreach ($fileObjects as $fileObject) {
-                $pathList[] = $fileObject->getPath();
-            }
-            $io->listing($pathList);
-        }
+        $io = new SymfonyStyle($input, $output);
+
+        [$writtenFiles, $notWrittenFiles] = $this->getFilesWritingStatus($fileObjects);
+
+        $this->displayCreatedFilePath($io, $writtenFiles);
+        $this->displayNotWrittenFilePathAndContent($io, $notWrittenFiles, $input);
+        $this->displayFilePathAndContentDump($io, array_merge($writtenFiles, $notWrittenFiles), $input);
     }
 
     /**
-     * @param FileObject[]
-     */
-    protected function displayFilePathAndContentDump(SymfonyStyle $io, array $fileObjects, InputInterface $input): void
-    {
-        if (false !== $input->getOption(Options::DUMP)) {
-            $io->success(CommandLabelType::DUMP_OUTPUT);
-            foreach ($fileObjects as $fileObject) {
-                $io->section($fileObject->getPath());
-                $io->text($fileObject->getContent());
-            }
-        }
-    }
-
-    /**
-     * @param FileObject[]
-     */
-    protected function displayNotWrittenFilePathAndContent(
-        SymfonyStyle $io,
-        array $fileObjects,
-        InputInterface $input
-    ): void {
-        if (!empty($fileObjects) && false === $input->getOption(Options::DUMP)) {
-            $io->caution(CommandLabelType::ALREADY_EXIST_OUTPUT);
-            foreach ($fileObjects as $fileObject) {
-                if (!$fileObject->hasBeenWritten()) {
-                    $io->section($fileObject->getPath());
-                    $io->text($fileObject->getContent());
-                }
-            }
-        }
-    }
-
-    /**
-     * @param FileObject[]
+     * @param FileObject[] $fileObjects
      *
      * @return array
      */
@@ -118,15 +48,50 @@ trait CommandDisplayTrait
     }
 
     /**
-     * @param InputInterface  $input
-     * @param OutputInterface $output
+     * @param FileObject[] $fileObjects
      */
-    protected function checkInputClassNameArgument(InputInterface $input, OutputInterface $output): void
+    protected function displayCreatedFilePath(SymfonyStyle $io, array $fileObjects): void
     {
-        if (null === $input->getArgument(Args::CLASS_NAME)) {
-            $helper = $this->getHelper('question');
-            $classNameQuestion = new Question('Please enter className : ', 'DefaultClassName');
-            $input->setArgument(Args::CLASS_NAME, $helper->ask($input, $output, $classNameQuestion));
+        if (!empty($fileObjects)) {
+            $io->success(CommandLabelType::GENERATED_OUTPUT);
+            $pathList = [];
+            foreach ($fileObjects as $fileObject) {
+                $pathList[] = $fileObject->getPath();
+            }
+            $io->listing($pathList);
+        }
+    }
+
+    /**
+     * @param FileObject[] $fileObjects
+     */
+    protected function displayNotWrittenFilePathAndContent(
+        SymfonyStyle $io,
+        array $fileObjects,
+        InputInterface $input
+    ): void {
+        if (!empty($fileObjects) && false === $input->getOption(Options::DUMP)) {
+            $io->caution(CommandLabelType::ALREADY_EXIST_OUTPUT);
+            foreach ($fileObjects as $fileObject) {
+                if (!$fileObject->hasBeenWritten()) {
+                    $io->section($fileObject->getPath());
+                    $io->text($fileObject->getContent());
+                }
+            }
+        }
+    }
+
+    /**
+     * @param FileObject[] $fileObjects
+     */
+    protected function displayFilePathAndContentDump(SymfonyStyle $io, array $fileObjects, InputInterface $input): void
+    {
+        if (false !== $input->getOption(Options::DUMP)) {
+            $io->success(CommandLabelType::DUMP_OUTPUT);
+            foreach ($fileObjects as $fileObject) {
+                $io->section($fileObject->getPath());
+                $io->text($fileObject->getContent());
+            }
         }
     }
 }

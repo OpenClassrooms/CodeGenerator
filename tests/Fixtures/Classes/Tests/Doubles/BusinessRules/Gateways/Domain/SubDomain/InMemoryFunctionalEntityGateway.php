@@ -50,4 +50,9 @@ class InMemoryFunctionalEntityGateway implements FunctionalEntityGateway
         EntityUtil::setId($functionalEntity, self::$id);
         self::$functionalEntities[] = $functionalEntity;
     }
+
+    public function update(FunctionalEntity $functionalEntity): void
+    {
+        $functionalEntity->update();
+    }
 }

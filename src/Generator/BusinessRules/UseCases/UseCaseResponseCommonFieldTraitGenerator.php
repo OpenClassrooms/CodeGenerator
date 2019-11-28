@@ -36,8 +36,10 @@ class UseCaseResponseCommonFieldTraitGenerator extends AbstractUseCaseGenerator
         return $useCaseResponseCommonFieldTraitFileObject;
     }
 
-    private function buildUseCaseResponseCommonFieldTraitFileObject(string $entityClassName, array $wantedFields = []): FileObject
-    {
+    private function buildUseCaseResponseCommonFieldTraitFileObject(
+        string $entityClassName,
+        array $wantedFields = []
+    ): FileObject {
         $this->initFileObjectParameter($entityClassName);
         $useCaseResponseFileObject = $this->createUseCaseResponseFileObject();
         $useCaseResponseCommonFieldTraitFileObject = $this->createUseCaseResponseCommonFieldTraitFileObject();
