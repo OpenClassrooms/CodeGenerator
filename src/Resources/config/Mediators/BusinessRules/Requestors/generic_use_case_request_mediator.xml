@@ -11,7 +11,7 @@
                 class="OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\DTO\Request\GenericUseCaseRequestGeneratorRequestBuilderImpl"/>
 
         <service id="open_classrooms.code_generator.mediators.business_rules.requestors.request_mediator"
-                 class="OpenClassrooms\CodeGenerator\Mediators\BusinessRules\Requestors\Impl\RequestMediatorImpl">
+                 class="OpenClassrooms\CodeGenerator\Mediators\BusinessRules\Requestors\Impl\GenericUseCaseRequestMediatorImpl">
             <call method="setGenericUseCaseRequestBuilderGenerator">
                 <argument type="service"
                           id="open_classrooms.code_generator.generator.business_rules.requestors.generic_use_case_request_builder_generator"/>

@@ -4,6 +4,8 @@ namespace OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\Impl;
 
 use OpenClassrooms\CodeGenerator\Gateways\FileObject\FileObjectGateway;
 use OpenClassrooms\CodeGenerator\Mediators\Args;
+use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\Entities\EntitiesMediator;
+use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\Responses\UseCaseResponseCommonMediator;
 use OpenClassrooms\CodeGenerator\Mediators\Options;
 
 /**
@@ -11,12 +13,20 @@ use OpenClassrooms\CodeGenerator\Mediators\Options;
  */
 trait CommonUseCaseGetMediatorsTrait
 {
-    use CommonUseCaseGetGeneratorsTrait;
+    /**
+     * @var EntitiesMediator
+     */
+    private $entitiesMediator;
 
     /**
      * @var FileObjectGateway
      */
     private $fileObjectGateway;
+
+    /**
+     * @var UseCaseResponseCommonMediator
+     */
+    private $useCaseResponseCommonMediator;
 
     public function mediate(array $args = [], array $options = []): array
     {
@@ -36,5 +46,20 @@ trait CommonUseCaseGetMediatorsTrait
         }
 
         return $fileObjects;
+    }
+
+    public function setEntitiesMediator(EntitiesMediator $entitiesMediator): void
+    {
+        $this->entitiesMediator = $entitiesMediator;
+    }
+
+    public function setFileObjectGateway(FileObjectGateway $fileObjectGateway): void
+    {
+        $this->fileObjectGateway = $fileObjectGateway;
+    }
+
+    public function setUseCaseResponseCommonMediator(UseCaseResponseCommonMediator $useCaseResponseCommonMediator): void
+    {
+        $this->useCaseResponseCommonMediator = $useCaseResponseCommonMediator;
     }
 }

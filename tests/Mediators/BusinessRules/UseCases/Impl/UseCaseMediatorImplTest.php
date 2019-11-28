@@ -3,7 +3,8 @@
 namespace OpenClassrooms\CodeGenerator\Tests\Mediators\BusinessRules\UseCases\Impl;
 
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
-use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\Requestors\Impl\RequestMediatorImpl;
+use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\Requestors\Impl\GenericUseCaseRequestMediatorImpl;
+use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\Requestors\Impl\RequestorsMediatorImpl;
 use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\Impl\GenericUseCaseMediatorImpl;
 use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\Impl\UseCaseMediatorImpl;
 use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\UseCaseMediator;
@@ -38,19 +39,19 @@ class UseCaseMediatorImplTest extends TestCase
         $this->useCaseMediator = new UseCaseMediatorImpl();
 
         $genericUseCaseMediator = $this->createMock(GenericUseCaseMediatorImpl::class);
-        $requestMediator = $this->createMock(RequestMediatorImpl::class);
+        $genericUseCaseRequestMediator = $this->createMock(GenericUseCaseRequestMediatorImpl::class);
 
-        $requestMediator
+        $genericUseCaseRequestMediator
             ->expects($this->once())
             ->method('mediate')
             ->willReturn([new FileObject(self::class)]);
 
-        $requestMediator
+        $genericUseCaseRequestMediator
             ->expects($this->once())
             ->method('mediate')
             ->willReturn([new FileObject(self::class)]);
 
         $this->useCaseMediator->setGenericUseCaseMediator($genericUseCaseMediator);
-        $this->useCaseMediator->setRequestMediator($requestMediator);
+        $this->useCaseMediator->setGenericUseCaseRequestMediator($genericUseCaseRequestMediator);
     }
 }

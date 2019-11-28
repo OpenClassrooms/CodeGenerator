@@ -13,7 +13,7 @@
         <import resource="Generator/BusinessRules/Requestors/generic_use_case_request_generator.xml"/>
         <import resource="Generator/BusinessRules/Requestors/generic_use_case_request_builder_generator.xml"/>
         <import resource="Generator/Tests/BusinessRules/UseCases/generic_use_case_test_generator.xml"/>
-        <import resource="Mediators/BusinessRules/Requestors/request_mediator.xml"/>
+        <import resource="Mediators/BusinessRules/Requestors/generic_use_case_request_mediator.xml"/>
         <import resource="Mediators/BusinessRules/UseCases/generic_use_case_mediator.xml"/>
         <import resource="Mediators/BusinessRules/UseCases/use_case_mediator.xml"/>
         <import resource="Services/templating_service.xml"/>

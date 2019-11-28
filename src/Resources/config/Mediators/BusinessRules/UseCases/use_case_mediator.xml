@@ -10,7 +10,7 @@
                 <argument type="service"
                           id="open_classrooms.code_generator.mediators.business_rules.use_cases.generic_use_case_mediator"/>
             </call>
-            <call method="setRequestMediator">
+            <call method="setGenericUseCaseRequestMediator">
                 <argument type="service"
                           id="open_classrooms.code_generator.mediators.business_rules.requestors.request_mediator"/>
             </call>
