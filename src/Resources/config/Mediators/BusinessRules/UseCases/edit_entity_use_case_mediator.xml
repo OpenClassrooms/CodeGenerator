@@ -1,0 +1,111 @@
+<container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://symfony.com/schema/dic/services"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <imports>
+        <import resource="../../Entities/entities_mediator.xml"/>
+        <import resource="../../Responses/use_case_response_common_mediator.xml"/>
+        <import resource="../../Responses/use_case_detail_response_mediator.xml"/>
+    </imports>
+    <services>
+        <service
+                id="OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\DTO\Request\EditEntityUseCaseRequestGeneratorRequestBuilderImpl"/>
+        <service
+                id="OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\DTO\Request\EditEntityUseCaseRequestBuilderGeneratorRequestBuilderImpl"/>
+        <service
+                id="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\EditEntityUseCaseRequestBuilderImplGeneratorRequestBuilderImpl"/>
+        <service
+                id="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\EditEntityUseCaseRequestDTOGeneratorRequestBuilderImpl"/>
+        <service
+                id="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\EditEntityUseCaseGeneratorRequestBuilderImpl"/>
+        <service
+                id="OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\DTO\Request\EditEntityUseCaseTestGeneratorRequestBuilderImpl"/>
+
+        <service
+                id="OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\Request\EditEntityUseCaseRequestGeneratorRequestBuilder"
+                alias="OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\DTO\Request\EditEntityUseCaseRequestGeneratorRequestBuilderImpl"/>
+        <service
+                id="OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\Request\EditEntityUseCaseRequestBuilderGeneratorRequestBuilder"
+                alias="OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\DTO\Request\EditEntityUseCaseRequestBuilderGeneratorRequestBuilderImpl"/>
+        <service
+                id="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\EditEntityUseCaseRequestBuilderImplGeneratorRequestBuilder"
+                alias="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\EditEntityUseCaseRequestBuilderImplGeneratorRequestBuilderImpl"/>
+        <service
+                id="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\EditEntityUseCaseRequestDTOGeneratorRequestBuilder"
+                alias="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\EditEntityUseCaseRequestDTOGeneratorRequestBuilderImpl"/>
+        <service
+                id="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\EditEntityUseCaseGeneratorRequestBuilder"
+                alias="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\EditEntityUseCaseGeneratorRequestBuilderImpl"/>
+        <service
+                id="OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\Request\EditEntityUseCaseTestGeneratorRequestBuilder"
+                alias="OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\DTO\Request\EditEntityUseCaseTestGeneratorRequestBuilderImpl"/>
+
+        <service id="OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\Impl\EditEntityUseCaseMediatorImpl">
+            <call method="setEntitiesMediator">
+                <argument type="service"
+                          id="OpenClassrooms\CodeGenerator\Mediators\BusinessRules\Entities\EntitiesMediator"/>
+            </call>
+            <call method="setUseCaseDetailResponseMediator">
+                <argument type="service"
+                          id="OpenClassrooms\CodeGenerator\Mediators\BusinessRules\Responses\UseCaseDetailResponseMediator"/>
+            </call>
+            <call method="setUseCaseResponseCommonMediator">
+                <argument type="service"
+                          id="OpenClassrooms\CodeGenerator\Mediators\BusinessRules\Responses\UseCaseResponseCommonMediator"/>
+            </call>
+            <call method="setEditEntityUseCaseRequestGenerator">
+                <argument type="service"
+                          id="OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\EditEntityUseCaseRequestGenerator"/>
+            </call>
+            <call method="setEditEntityUseCaseRequestBuilderGenerator">
+                <argument type="service"
+                          id="OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\EditEntityUseCaseRequestBuilderGenerator"/>
+            </call>
+            <call method="setEditEntityUseCaseRequestGeneratorRequestBuilder">
+                <argument type="service"
+                          id="OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\Request\EditEntityUseCaseRequestGeneratorRequestBuilder"/>
+            </call>
+            <call method="setEditEntityUseCaseRequestBuilderImplGenerator">
+                <argument type="service"
+                          id="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\EditEntityUseCaseRequestBuilderImplGenerator"/>
+            </call>
+            <call method="setEditEntityUseCaseRequestBuilderGeneratorRequestBuilder">
+                <argument type="service"
+                          id="OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\Request\EditEntityUseCaseRequestBuilderGeneratorRequestBuilder"/>
+            </call>
+            <call method="setEditEntityUseCaseRequestDTOGenerator">
+                <argument type="service"
+                          id="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\EditEntityUseCaseRequestDTOGenerator"/>
+            </call>
+            <call method="setEditEntityUseCaseRequestBuilderImplGeneratorRequestBuilder">
+                <argument type="service"
+                          id="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\EditEntityUseCaseRequestBuilderImplGeneratorRequestBuilder"/>
+            </call>
+            <call method="setEditEntityUseCaseRequestDTOGeneratorRequestBuilder">
+                <argument type="service"
+                          id="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\EditEntityUseCaseRequestDTOGeneratorRequestBuilder"/>
+            </call>
+            <call method="setEditEntityUseCaseGenerator">
+                <argument type="service"
+                          id="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\EditEntityUseCaseGenerator"/>
+            </call>
+            <call method="setEditEntityUseCaseGeneratorRequestBuilder">
+                <argument type="service"
+                          id="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\EditEntityUseCaseGeneratorRequestBuilder"/>
+            </call>
+            <call method="setEditEntityUseCaseTestGenerator">
+                <argument type="service"
+                          id="OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\EditEntityUseCaseTestGenerator"/>
+            </call>
+            <call method="setEditEntityUseCaseTestGeneratorRequestBuilder">
+                <argument type="service"
+                          id="OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\Request\EditEntityUseCaseTestGeneratorRequestBuilder"/>
+            </call>
+            <call method="setFileObjectGateway">
+                <argument type="service" id="open_classrooms.code_generator.repository.file_object_repository"/>
+            </call>
+        </service>
+        <service id="OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\EditEntityUseCaseMediator"
+                 alias="OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\Impl\EditEntityUseCaseMediatorImpl"
+                 public="true"/>
+    </services>
+</container>
+

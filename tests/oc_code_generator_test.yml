@@ -7,7 +7,8 @@ parameters:
     stub_namespace: 'Doubles\'
     tests_base_namespace: ''
 
-    entity_util_className: '%base_namespace%\Tests\EntityUtil'
+    entity_util_classname: '%base_namespace%\Tests\EntityUtil'
+    transaction_classname: 'OpenClassrooms\UseCase\Application\Annotations\Transaction'
 
     paginated_collection_classname: 'OpenClassrooms\UseCase\BusinessRules\Entities\PaginatedCollection'
     use_case_classname: 'OpenClassrooms\UseCase\BusinessRules\Requestors\UseCase'

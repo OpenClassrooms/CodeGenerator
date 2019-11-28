@@ -7,6 +7,9 @@
         <service
                 id="OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\UseCases\Impl\EditEntityUseCaseTestSkeletonModelBuilderImpl"
                 public="false">
+            <call method="setEntityUtilClassName">
+                <argument type="string">%entity_util_classname%</argument>
+            </call>
         </service>
 
         <service id="OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\EditEntityUseCaseTestGenerator"
