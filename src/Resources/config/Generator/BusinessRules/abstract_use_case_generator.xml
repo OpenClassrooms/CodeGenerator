@@ -2,6 +2,9 @@
 
 <container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://symfony.com/schema/dic/services"
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <imports>
+        <import resource="../../Generator/abstract_generator.xml"/>
+    </imports>
     <services>
         <service id="open_classrooms.code_generator.generator.business_rules.abstract_use_case_generator"
                  class="OpenClassrooms\CodeGenerator\Generator\BusinessRules\AbstractUseCaseGenerator" abstract="true"

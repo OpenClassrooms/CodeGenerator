@@ -6,18 +6,20 @@
 
         <service
                 id="OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\UseCases\Impl\CreateEntityUseCaseTestSkeletonModelBuilderImpl"
-                alias="OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\UseCases\CreateEntityUseCaseTestSkeletonModelBuilder"
                 public="false">
         </service>
 
         <service
                 id="OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\CreateEntityUseCaseTestGenerator"
-                parent="open_classrooms.code_generator.generator.business_rules.abstract_generator">
+                parent="open_classrooms.code_generator.generator.business_rules.abstract_use_case_generator">
             <call method="setCreateEntityUseCaseTestSkeletonModelBuilder">
                 <argument type="service"
                           id="OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\UseCases\CreateEntityUseCaseTestSkeletonModelBuilder"/>
             </call>
         </service>
-
+        <service
+                id="OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\UseCases\CreateEntityUseCaseTestSkeletonModelBuilder"
+                alias="OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\UseCases\Impl\CreateEntityUseCaseTestSkeletonModelBuilderImpl">
+        </service>
     </services>
 </container>

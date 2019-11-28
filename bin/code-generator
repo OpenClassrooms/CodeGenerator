@@ -35,4 +35,5 @@ $application->add(new \OpenClassrooms\CodeGenerator\Commands\GenericUseCaseComma
 $application->add(new \OpenClassrooms\CodeGenerator\Commands\GenerateGeneratorCommand());
 $application->add(new \OpenClassrooms\CodeGenerator\Commands\GetEntitiesUseCaseCommand());
 $application->add(new \OpenClassrooms\CodeGenerator\Commands\GetEntityUseCaseCommand());
+$application->add(new \OpenClassrooms\CodeGenerator\Commands\CreateEntityUseCaseCommand());
 $application->run();

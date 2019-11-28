@@ -1,5 +1,11 @@
 <container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://symfony.com/schema/dic/services"
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <imports>
+        <import resource="../../Generator/BusinessRules/Responders/use_case_response_generator.xml"/>
+        <import resource="../../Generator/BusinessRules/UseCases/use_case_response_common_field_trait_generator.xml"/>
+        <import resource="../../Generator/BusinessRules/UseCases/use_case_response_assembler_trait_generator.xml"/>
+        <import resource="../../Generator/Tests/Doubles/BusinessRules/Responders/use_case_response_test_case_generator.xml"/>
+    </imports>
     <services>
         <service
                 id="open_classrooms.code_generator.generator.business_rules.use_cases.dto.request.use_case_response_common_field_trait_generator_request_builder"

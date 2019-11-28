@@ -6,17 +6,19 @@
 
         <service
                 id="OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\Impl\EditEntityUseCaseRequestDTOSkeletonModelAssemblerImpl"
-                alias="OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\EditEntityUseCaseRequestDTOSkeletonModelAssembler"
                 public="false">
         </service>
 
         <service id="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\EditEntityUseCaseRequestDTOGenerator"
-                 parent="open_classrooms.code_generator.generator.business_rules.abstract_generator">
+                 parent="open_classrooms.code_generator.generator.business_rules.abstract_use_case_generator">
             <call method="setEditEntityUseCaseRequestDTOSkeletonModelAssembler">
                 <argument type="service"
                           id="OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\EditEntityUseCaseRequestDTOSkeletonModelAssembler"/>
             </call>
         </service>
-
+        <service
+                id="OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\EditEntityUseCaseRequestDTOSkeletonModelAssembler"
+                alias="OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\Impl\EditEntityUseCaseRequestDTOSkeletonModelAssemblerImpl">
+        </service>
     </services>
 </container>

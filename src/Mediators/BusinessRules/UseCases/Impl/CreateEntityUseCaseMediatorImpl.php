@@ -3,15 +3,15 @@
 namespace OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\Impl;
 
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
-use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\GetEntityUseCaseMediator;
+use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\CreateEntityUseCaseMediator;
 
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
  */
-class GetEntityUseCaseMediatorImpl implements GetEntityUseCaseMediator
+class CreateEntityUseCaseMediatorImpl implements CreateEntityUseCaseMediator
 {
     use CommonEntityUseCaseMediatorsTrait;
-    use GetEntityUseCaseGeneratorsTrait;
+    use CreateEntityUseCaseGeneratorsTrait;
     use UseCaseDetailResponseMediatorTrait;
 
     /**
@@ -19,11 +19,11 @@ class GetEntityUseCaseMediatorImpl implements GetEntityUseCaseMediator
      */
     protected function generateSources(string $className): array
     {
-        $fileObjects[] = $this->generateGetEntityUseCaseGenerator($className);
-        $fileObjects[] = $this->generateGetEntityUseCaseRequestBuilderGenerator($className);
-        $fileObjects[] = $this->generateGetEntityUseCaseRequestBuilderImplGenerator($className);
-        $fileObjects[] = $this->generateGetEntityUseCaseRequestDTOGenerator($className);
-        $fileObjects[] = $this->generateGetEntityUseCaseRequestGenerator($className);
+        $fileObjects[] = $this->generateCreateEntityUseCaseGenerator($className);
+        $fileObjects[] = $this->generateCreateEntityUseCaseRequestBuilderGenerator($className);
+        $fileObjects[] = $this->generateCreateEntityUseCaseRequestBuilderImplGenerator($className);
+        $fileObjects[] = $this->generateCreateEntityUseCaseRequestDTOGenerator($className);
+        $fileObjects[] = $this->generateCreateEntityUseCaseRequestGenerator($className);
 
         return array_merge(
             $fileObjects,
@@ -38,7 +38,7 @@ class GetEntityUseCaseMediatorImpl implements GetEntityUseCaseMediator
      */
     protected function generateTestSources(string $className): array
     {
-        $fileObjects[] = $this->generateGetEntityUseCaseTestGenerator($className);
+        $fileObjects[] = $this->generateCreateEntityUseCaseTestGenerator($className);
         $fileObjects[] = $this->entitiesMediator->generateInMemoryEntityGatewayGenerator($className);
         $fileObjects[] = $this->useCaseResponseCommonMediator->generateUseCaseResponseTestCaseGenerator($className);
 

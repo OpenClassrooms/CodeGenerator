@@ -2,6 +2,7 @@
 
 namespace OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\Impl;
 
+use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\Gateways\FileObject\FileObjectGateway;
 use OpenClassrooms\CodeGenerator\Mediators\Args;
 use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\Entities\EntitiesMediator;
@@ -11,7 +12,7 @@ use OpenClassrooms\CodeGenerator\Mediators\Options;
 /**
  * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
  */
-trait CommonUseCaseGetMediatorsTrait
+trait CommonEntityUseCaseMediatorsTrait
 {
     /**
      * @var EntitiesMediator
@@ -61,5 +62,33 @@ trait CommonUseCaseGetMediatorsTrait
     public function setUseCaseResponseCommonMediator(UseCaseResponseCommonMediator $useCaseResponseCommonMediator): void
     {
         $this->useCaseResponseCommonMediator = $useCaseResponseCommonMediator;
+    }
+
+    /**
+     * @return FileObject[]
+     */
+    protected function generateEntitiesSources(string $className): array
+    {
+        $fileObjects[] = $this->entitiesMediator->generateEntityGatewayGenerator($className);
+        $fileObjects[] = $this->entitiesMediator->generateEntityNotFoundExceptionGenerator($className);
+        $fileObjects[] = $this->entitiesMediator->generateEntityRepositoryGenerator($className);
+
+        return $fileObjects;
+    }
+
+    /**
+     * @return FileObject[]
+     */
+    protected function generateUseCaseResponseCommonSources(string $className): array
+    {
+        $fileObjects[] = $this->useCaseResponseCommonMediator->generateUseCaseResponseAssemblerTraitGenerator(
+            $className
+        );
+        $fileObjects[] = $this->useCaseResponseCommonMediator->generateUseCaseResponseCommonFieldTraitGenerator(
+            $className
+        );
+        $fileObjects[] = $this->useCaseResponseCommonMediator->generateUseCaseResponseGenerator($className);
+
+        return $fileObjects;
     }
 }

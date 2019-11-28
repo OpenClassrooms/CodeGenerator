@@ -2,22 +2,33 @@
 
 <container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://symfony.com/schema/dic/services"
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <imports>
+        <import resource="../../../Utility/field_utility_strategy.xml"/>
+        <import resource="../../../Utility/method_utility_strategy.xml"/>
+    </imports>
     <services>
-
         <service
                 id="OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\Impl\CreateEntityUseCaseRequestDTOSkeletonModelAssemblerImpl"
-                alias="OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\CreateEntityUseCaseRequestDTOSkeletonModelAssembler"
                 public="false">
         </service>
 
         <service
                 id="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\CreateEntityUseCaseRequestDTOGenerator"
-                parent="open_classrooms.code_generator.generator.business_rules.abstract_generator">
+                parent="open_classrooms.code_generator.generator.business_rules.abstract_use_case_generator">
             <call method="setCreateEntityUseCaseRequestDTOSkeletonModelAssembler">
                 <argument type="service"
                           id="OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\CreateEntityUseCaseRequestDTOSkeletonModelAssembler"/>
             </call>
+            <call method="setFieldUtility">
+                <argument type="service" id="get.fields.updatable"/>
+            </call>
+            <call method="setMethodUtility">
+                <argument type="service" id="get.accessors.without.id"/>
+            </call>
         </service>
-
+        <service
+                id="OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\CreateEntityUseCaseRequestDTOSkeletonModelAssembler"
+                alias="OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\Impl\CreateEntityUseCaseRequestDTOSkeletonModelAssemblerImpl">
+        </service>
     </services>
 </container>

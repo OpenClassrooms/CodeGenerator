@@ -11,7 +11,7 @@ use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\GetEntitiesUse
  */
 class GetEntitiesUseCaseMediatorImpl implements GetEntitiesUseCaseMediator
 {
-    use CommonUseCaseGetMediatorsTrait;
+    use CommonEntityUseCaseMediatorsTrait;
     use GetEntitiesUseCaseGeneratorsTrait;
 
     /**
@@ -30,10 +30,6 @@ class GetEntitiesUseCaseMediatorImpl implements GetEntitiesUseCaseMediator
         $fileObjects[] = $this->generateGetEntitiesUseCaseRequestDTOGenerator($className);
         $fileObjects[] = $this->generateGetEntitiesUseCaseRequestGenerator($className);
 
-        $fileObjects[] = $this->entitiesMediator->generateEntityGatewayGenerator($className);
-        $fileObjects[] = $this->entitiesMediator->generateEntityNotFoundExceptionGenerator($className);
-        $fileObjects[] = $this->entitiesMediator->generateEntityRepositoryGenerator($className);
-
         $fileObjects[] = $this->useCaseListItemResponseMediator->generateUseCaseListItemResponseAssemblerGenerator(
             $className
         );
@@ -45,15 +41,11 @@ class GetEntitiesUseCaseMediatorImpl implements GetEntitiesUseCaseMediator
         );
         $fileObjects[] = $this->useCaseListItemResponseMediator->generateUseCaseListItemResponseGenerator($className);
 
-        $fileObjects[] = $this->useCaseResponseCommonMediator->generateUseCaseResponseCommonFieldTraitGenerator(
-            $className
+        return array_merge(
+            $fileObjects,
+            $this->generateEntitiesSources($className),
+            $this->generateUseCaseResponseCommonSources($className)
         );
-        $fileObjects[] = $this->useCaseResponseCommonMediator->generateUseCaseResponseGenerator($className);
-        $fileObjects[] = $this->useCaseResponseCommonMediator->generateUseCaseResponseAssemblerTraitGenerator(
-            $className
-        );
-
-        return $fileObjects;
     }
 
     /**

@@ -1,5 +1,12 @@
 <container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://symfony.com/schema/dic/services"
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <imports>
+        <import resource="../../Generator/App/Repository/entity_repository_generator.xml"/>
+        <import resource="../../Generator/BusinessRules/Gateways/entity_gateway_generator.xml"/>
+        <import resource="../../Generator/BusinessRules/Gateways/entity_not_found_exception_generator.xml"/>
+        <import resource="../../Generator/Tests/BusinessRules/Entities/entity_stub.xml"/>
+        <import resource="../../Generator/Tests/Doubles/BusinessRules/Gateways/in_memory_entity_gateway_generator.xml"/>
+    </imports>
     <services>
         <service
                 id="open_classrooms.code_generator.generator.tests.business_rules.entities.dto.request.entity_stub_generator_request_builder"

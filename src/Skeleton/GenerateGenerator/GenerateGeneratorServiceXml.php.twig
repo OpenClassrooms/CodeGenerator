@@ -6,7 +6,6 @@
 
         <service
                 id="OpenClassrooms\CodeGenerator\SkeletonModels\{{ skeletonModel.domain }}\Impl\{{ skeletonModel.entity }}SkeletonModel{{ skeletonModel.constructionPattern }}Impl"
-                alias="OpenClassrooms\CodeGenerator\SkeletonModels\{{ skeletonModel.domain }}\{{ skeletonModel.entity }}SkeletonModel{{ skeletonModel.constructionPattern }}"
                 public="false">
         </service>
 
@@ -17,6 +16,8 @@
                           id="OpenClassrooms\CodeGenerator\SkeletonModels\{{ skeletonModel.domain }}\{{ skeletonModel.entity }}SkeletonModel{{ skeletonModel.constructionPattern }}"/>
             </call>
         </service>
-
+        <service id="OpenClassrooms\CodeGenerator\SkeletonModels\{{ skeletonModel.domain }}\{{ skeletonModel.entity }}SkeletonModel{{ skeletonModel.constructionPattern }}"
+                 alias="OpenClassrooms\CodeGenerator\SkeletonModels\{{ skeletonModel.domain }}\Impl\{{ skeletonModel.entity }}SkeletonModel{{ skeletonModel.constructionPattern }}Impl">
+        </service>
     </services>
 </container>

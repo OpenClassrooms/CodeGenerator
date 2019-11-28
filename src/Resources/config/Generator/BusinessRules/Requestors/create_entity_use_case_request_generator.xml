@@ -2,11 +2,12 @@
 
 <container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://symfony.com/schema/dic/services"
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <imports>
+        <import resource="../../../Utility/method_utility_strategy.xml"></import>
+    </imports>
     <services>
-
         <service
                 id="OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Requestors\Impl\CreateEntityUseCaseRequestSkeletonModelAssemblerImpl"
-                alias="OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Requestors\CreateEntityUseCaseRequestSkeletonModelAssembler"
                 public="false">
             <call method="setUseCaseRequestClassName">
                 <argument type="string">%use_case_request_classname%%</argument>
@@ -15,12 +16,18 @@
 
         <service
                 id="OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\CreateEntityUseCaseRequestGenerator"
-                parent="open_classrooms.code_generator.generator.business_rules.abstract_generator">
+                parent="open_classrooms.code_generator.generator.business_rules.abstract_use_case_generator">
             <call method="setCreateEntityUseCaseRequestSkeletonModelAssembler">
                 <argument type="service"
                           id="OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Requestors\CreateEntityUseCaseRequestSkeletonModelAssembler"/>
             </call>
+            <call method="setMethodUtility">
+                <argument type="service" id="get.accessors.without.id"/>
+            </call>
         </service>
-
+        <service
+                id="OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Requestors\CreateEntityUseCaseRequestSkeletonModelAssembler"
+                alias="OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Requestors\Impl\CreateEntityUseCaseRequestSkeletonModelAssemblerImpl">
+        </service>
     </services>
 </container>
