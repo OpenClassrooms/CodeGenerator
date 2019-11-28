@@ -6,7 +6,6 @@
 
         <service
                 id="OpenClassrooms\CodeGenerator\SkeletonModels\GenerateGenerator\Impl\CustomSkeletonModelBuilderImpl"
-                alias="OpenClassrooms\CodeGenerator\SkeletonModels\GenerateGenerator\CustomSkeletonModelBuilder"
                 public="false">
         </service>
 
@@ -17,6 +16,9 @@
                           id="OpenClassrooms\CodeGenerator\SkeletonModels\GenerateGenerator\CustomSkeletonModelBuilder"/>
             </call>
         </service>
-
+        <service
+                id="OpenClassrooms\CodeGenerator\SkeletonModels\GenerateGenerator\CustomSkeletonModelBuilder"
+                alias="OpenClassrooms\CodeGenerator\SkeletonModels\GenerateGenerator\Impl\CustomSkeletonModelBuilderImpl">
+        </service>
     </services>
 </container>

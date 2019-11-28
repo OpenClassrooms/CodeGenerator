@@ -9,11 +9,11 @@ use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
  */
 class CustomServiceXmlFileObjectStub1 extends FileObject
 {
-    const CLASS_NAME = 'OpenClassrooms\CodeGenerator\Resources\config\Generator\GenerateGenerator\custom.xml';
+    const CLASS_NAME = 'OpenClassrooms\CodeGenerator\Resources\config\Generator\GenerateGenerator\custom_generator.xml';
 
     public function __construct()
     {
-        $this->content = __DIR__ . '/../../../Fixtures/Classes/Resources/config/Generator/GenerateGenerator/AssemblerPattern/custom.xml';
+        $this->content = __DIR__ . '/../../../Fixtures/Classes/Resources/config/Generator/GenerateGenerator/AssemblerPattern/custom_generator.xml';
         $this->className = self::CLASS_NAME;
     }
 }
