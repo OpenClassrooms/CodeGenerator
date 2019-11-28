@@ -2,7 +2,7 @@
 
 namespace OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\Impl;
 
-use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\Requestors\RequestMediator;
+use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\Requestors\GenericUseCaseRequestMediator;
 use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\GenericUseCaseMediator;
 use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\UseCaseMediator;
 
@@ -17,25 +17,25 @@ class UseCaseMediatorImpl implements UseCaseMediator
     private $genericUseCaseMediator;
 
     /**
-     * @var RequestMediator
+     * @var GenericUseCaseRequestMediator
      */
-    private $requestMediator;
+    private $genericUseCaseRequestMediator;
 
     public function mediate(array $args = [], array $options = []): array
     {
         return array_merge(
-            $this->requestMediator->mediate($args, $options),
+            $this->genericUseCaseRequestMediator->mediate($args, $options),
             $this->genericUseCaseMediator->mediate($args, $options)
         );
-    }
-
-    public function setRequestMediator(RequestMediator $requestMediator): void
-    {
-        $this->requestMediator = $requestMediator;
     }
 
     public function setGenericUseCaseMediator(GenericUseCaseMediator $genericUseCaseMediator): void
     {
         $this->genericUseCaseMediator = $genericUseCaseMediator;
+    }
+
+    public function setGenericUseCaseRequestMediator(GenericUseCaseRequestMediator $genericUseCaseRequestMediator): void
+    {
+        $this->genericUseCaseRequestMediator = $genericUseCaseRequestMediator;
     }
 }

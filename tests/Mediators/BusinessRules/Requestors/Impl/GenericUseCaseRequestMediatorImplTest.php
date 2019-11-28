@@ -8,8 +8,8 @@ use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\DTO\Request\
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\GenericUseCaseRequestBuilderGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\GenericUseCaseRequestGenerator;
 use OpenClassrooms\CodeGenerator\Mediators\Args;
-use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\Requestors\Impl\RequestMediatorImpl;
-use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\Requestors\RequestMediator;
+use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\Requestors\GenericUseCaseRequestMediator;
+use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\Requestors\Impl\GenericUseCaseRequestMediatorImpl;
 use OpenClassrooms\CodeGenerator\Mediators\Options;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Requestors\GenericUseCaseRequestBuilderFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Requestors\GenericUseCaseRequestFileObjectStub1;
@@ -21,16 +21,16 @@ use PHPUnit\Framework\TestCase;
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
-class RequestMediatorImplTest extends TestCase
+class GenericUseCaseRequestMediatorImplTest extends TestCase
 {
     use FlushedFileObjectTestCase;
 
-    const DOMAIN = 'Domain\SubDomain';
+    const DOMAIN           = 'Domain\SubDomain';
 
     const GENERIC_USE_CASE = 'GenericUseCase';
 
     /**
-     * @var RequestMediator
+     * @var GenericUseCaseRequestMediator
      */
     private $mediator;
 
@@ -98,7 +98,7 @@ class RequestMediatorImplTest extends TestCase
     protected function setUp(): void
     {
         InMemoryFileObjectGateway::$fileObjects = [];
-        $this->mediator = new RequestMediatorImpl();
+        $this->mediator = new GenericUseCaseRequestMediatorImpl();
         $this->mediator->setFileObjectGateway(new InMemoryFileObjectGateway());
 
         $this->options = [

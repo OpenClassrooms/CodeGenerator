@@ -4,15 +4,15 @@ namespace OpenClassrooms\CodeGenerator\Mediators\BusinessRules\Requestors\Impl;
 
 use OpenClassrooms\CodeGenerator\Gateways\FileObject\FileObjectGateway;
 use OpenClassrooms\CodeGenerator\Mediators\Args;
-use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\Requestors\RequestMediator;
+use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\Requestors\GenericUseCaseRequestMediator;
 use OpenClassrooms\CodeGenerator\Mediators\Options;
 
 /**
  * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
  */
-class RequestMediatorImpl implements RequestMediator
+class GenericUseCaseRequestMediatorImpl implements GenericUseCaseRequestMediator
 {
-    use RequestGeneratorsTrait;
+    use GenericUseCaseRequestGeneratorsTrait;
 
     /**
      * @var FileObjectGateway
