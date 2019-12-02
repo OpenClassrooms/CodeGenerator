@@ -20,5 +20,5 @@ interface {{ skeletonModel.shortName }}
 
     public function insert({{ skeletonModel.entityShortName }} ${{ skeletonModel.entityArgument }}): void;
 
-    public function update(FunctionalEntity $functionalEntity): void;
+    public function update({{ skeletonModel.entityShortName }} ${{ skeletonModel.entityArgument }}): void;
 }
