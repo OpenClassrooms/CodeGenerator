@@ -4,6 +4,7 @@
         <import resource="../../Entities/entities_mediator.xml"/>
         <import resource="../../Responses/use_case_response_common_mediator.xml"/>
         <import resource="../../Responses/use_case_detail_response_mediator.xml"/>
+        <import resource="../../BusinessRules/UseCases/entity_use_case_common_request_generator_trait.xml"/>
     </imports>
     <services>
         <service
@@ -98,6 +99,14 @@
             <call method="setEditEntityUseCaseTestGeneratorRequestBuilder">
                 <argument type="service"
                           id="OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\Request\EditEntityUseCaseTestGeneratorRequestBuilder"/>
+            </call>
+            <call method="setEntityUseCaseCommonRequestTraitGenerator">
+                <argument type="service"
+                          id="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\EntityUseCaseCommonRequestTraitGenerator"/>
+            </call>
+            <call method="setEntityUseCaseCommonRequestTraitGeneratorRequestBuilder">
+                <argument type="service"
+                          id="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\EntityUseCaseCommonRequestTraitGeneratorRequestBuilder"/>
             </call>
             <call method="setFileObjectGateway">
                 <argument type="service" id="open_classrooms.code_generator.repository.file_object_repository"/>

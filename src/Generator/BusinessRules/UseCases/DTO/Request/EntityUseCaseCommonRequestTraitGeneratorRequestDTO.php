@@ -2,9 +2,9 @@
 
 namespace OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request;
 
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\EntityUseCaseCommonRequestGeneratorRequest;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\EntityUseCaseCommonRequestTraitGeneratorRequest;
 
-class EntityUseCaseCommonRequestGeneratorRequestDTO implements EntityUseCaseCommonRequestGeneratorRequest
+class EntityUseCaseCommonRequestTraitGeneratorRequestDTO implements EntityUseCaseCommonRequestTraitGeneratorRequest
 {
     /**
      * @var string

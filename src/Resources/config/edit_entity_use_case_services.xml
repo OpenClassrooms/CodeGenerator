@@ -11,6 +11,7 @@
         <import resource="Generator/BusinessRules/UseCases/edit_entity_use_case_request_builder_impl_generator.xml"/>
         <import resource="Generator/BusinessRules/UseCases/edit_entity_use_case_request_dto_generator.xml"/>
         <import resource="Generator/BusinessRules/UseCases/edit_entity_use_case_generator.xml"/>
+        <import resource="Generator/BusinessRules/UseCases/entity_use_case_common_request_trait_generator.xml"/>
         <import resource="Generator/Tests/BusinessRules/UseCases/edit_entity_use_case_test_generator.xml"/>
         <import resource="Generator/Tests/BusinessRules/Responders/abstract_use_case_response_stub.xml"/>
         <import resource="Mediators/BusinessRules/UseCases/edit_entity_use_case_mediator.xml"/>

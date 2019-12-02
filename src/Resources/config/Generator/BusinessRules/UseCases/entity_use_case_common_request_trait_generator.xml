@@ -9,15 +9,15 @@
     <services>
 
         <service
-                id="OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\Impl\EntityUseCaseCommonRequestSkeletonModelAssemblerImpl"
+                id="OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\Impl\EntityUseCaseCommonRequestTraitSkeletonModelAssemblerImpl"
                 public="false">
         </service>
 
-        <service id="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\EntityUseCaseCommonRequestGenerator"
-                 parent="open_classrooms.code_generator.generator.business_rules.abstract_generator">
-            <call method="setEntityUseCaseCommonRequestSkeletonModelAssembler">
+        <service id="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\EntityUseCaseCommonRequestTraitGenerator"
+                 parent="open_classrooms.code_generator.generator.business_rules.abstract_use_case_generator">
+            <call method="setEntityUseCaseCommonRequestTraitSkeletonModelAssembler">
                 <argument type="service"
-                          id="OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\EntityUseCaseCommonRequestSkeletonModelAssembler"/>
+                          id="OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\EntityUseCaseCommonRequestTraitSkeletonModelAssembler"/>
             </call>
             <call method="setFieldUtility">
                 <argument type="service" id="get.fields.updatable"/>
@@ -27,8 +27,8 @@
             </call>
         </service>
         <service
-                id="OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\EntityUseCaseCommonRequestSkeletonModelAssembler"
-                alias="OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\Impl\EntityUseCaseCommonRequestSkeletonModelAssemblerImpl">
+                id="OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\EntityUseCaseCommonRequestTraitSkeletonModelAssembler"
+                alias="OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\Impl\EntityUseCaseCommonRequestTraitSkeletonModelAssemblerImpl">
         </service>
     </services>
 </container>

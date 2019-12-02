@@ -2,15 +2,15 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Generator\BusinessRules\UseCases;
 
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\EntityUseCaseCommonRequestGeneratorRequestBuilderImpl;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\EntityUseCaseCommonRequestGenerator;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\EntityUseCaseCommonRequestGeneratorRequestBuilder;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\EntityUseCaseCommonRequestFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\EntityUseCaseCommonRequestTraitGeneratorRequestBuilderImpl;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\EntityUseCaseCommonRequestTraitGenerator;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\EntityUseCaseCommonRequestTraitGeneratorRequestBuilder;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\EntityUseCaseCommonRequestTraitFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\FileObjectTestCase;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\UseCaseRequestFileObjectFactoryMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingServiceMock;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\SkeletonModels\BusinessRules\UseCases\EntityUseCaseCommonRequestSkeletonModelAssemblerMock;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\SkeletonModels\BusinessRules\UseCases\EntityUseCaseCommonRequestTraitSkeletonModelAssemblerMock;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Entities\Domain\SubDomain\FunctionalEntity;
 use OpenClassrooms\CodeGenerator\Utility\Impl\FieldObjectUtilityContext;
 use OpenClassrooms\CodeGenerator\Utility\Impl\FieldObjectUtilityGetFieldsUpdatable;
@@ -18,17 +18,17 @@ use OpenClassrooms\CodeGenerator\Utility\Impl\MethodUtilityContext;
 use OpenClassrooms\CodeGenerator\Utility\Impl\MethodUtilityGetAccessorsWithoutId;
 use PHPUnit\Framework\TestCase;
 
-class EntityUseCaseCommonRequestGeneratorTest extends TestCase
+class EntityUseCaseCommonRequestTraitGeneratorTest extends TestCase
 {
     use FileObjectTestCase;
 
     /**
-     * @var EntityUseCaseCommonRequestGenerator
+     * @var EntityUseCaseCommonRequestTraitGenerator
      */
     private $entityUseCaseCommonRequestGenerator;
 
     /**
-     * @var EntityUseCaseCommonRequestGeneratorRequestBuilder
+     * @var EntityUseCaseCommonRequestTraitGeneratorRequestBuilder
      */
     private $request;
 
@@ -43,22 +43,22 @@ class EntityUseCaseCommonRequestGeneratorTest extends TestCase
             InMemoryFileObjectGateway::$fileObjects[$actualFileObject->getId()]->getPath(),
             $actualFileObject->getPath()
         );
-        $this->assertFileObject(new EntityUseCaseCommonRequestFileObjectStub1(), $actualFileObject);
+        $this->assertFileObject(new EntityUseCaseCommonRequestTraitFileObjectStub1(), $actualFileObject);
     }
 
     protected function setUp(): void
     {
-        $entityUseCaseCommonRequestGeneratorRequestBuilderImpl = new EntityUseCaseCommonRequestGeneratorRequestBuilderImpl(
+        $entityUseCaseCommonRequestGeneratorRequestBuilderImpl = new EntityUseCaseCommonRequestTraitGeneratorRequestBuilderImpl(
         );
         $this->request = $entityUseCaseCommonRequestGeneratorRequestBuilderImpl
             ->create()
             ->withEntityClassName(FunctionalEntity::class)
             ->build();
 
-        $this->entityUseCaseCommonRequestGenerator = new EntityUseCaseCommonRequestGenerator();
+        $this->entityUseCaseCommonRequestGenerator = new EntityUseCaseCommonRequestTraitGenerator();
 
-        $this->entityUseCaseCommonRequestGenerator->setEntityUseCaseCommonRequestSkeletonModelAssembler(
-            new EntityUseCaseCommonRequestSkeletonModelAssemblerMock()
+        $this->entityUseCaseCommonRequestGenerator->setEntityUseCaseCommonRequestTraitSkeletonModelAssembler(
+            new EntityUseCaseCommonRequestTraitSkeletonModelAssemblerMock()
         );
         $this->entityUseCaseCommonRequestGenerator->setFieldUtility(
             new FieldObjectUtilityContext(new FieldObjectUtilityGetFieldsUpdatable())

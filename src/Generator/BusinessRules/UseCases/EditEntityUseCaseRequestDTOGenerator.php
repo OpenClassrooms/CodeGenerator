@@ -25,7 +25,7 @@ class EditEntityUseCaseRequestDTOGenerator extends AbstractUseCaseGenerator
         $this->initFileObjectParameter($entityClassName);
         $editEntityUseCaseRequestFileObject = $this->createEditEntityUseCaseRequestFileObject();
         $editEntityUseCaseRequestDTOFileObject = $this->createEditEntityUseCaseRequestDTOFileObject();
-        $entityUseCaseCommonRequestTraitFileObject = $this->createEntityUseCaseCommonRequestFileObject();
+        $entityUseCaseCommonRequestTraitFileObject = $this->createEntityUseCaseCommonRequestTraitFileObject();
 
         $editEntityUseCaseRequestDTOFileObject->setFields($this->buildEditUseCaseRequestDTOFields($entityClassName));
         $editEntityUseCaseRequestDTOFileObject->setMethods($this->buildEditUseCaseRequestDTOMethods($entityClassName));
@@ -64,7 +64,7 @@ class EditEntityUseCaseRequestDTOGenerator extends AbstractUseCaseGenerator
         );
     }
 
-    private function createEntityUseCaseCommonRequestFileObject(): FileObject
+    private function createEntityUseCaseCommonRequestTraitFileObject(): FileObject
     {
         return $this->createEditEntityUseCaseRequest(
             UseCaseRequestFileObjectType::BUSINESS_RULES_ENTITY_USE_CASE_COMMON_REQUEST

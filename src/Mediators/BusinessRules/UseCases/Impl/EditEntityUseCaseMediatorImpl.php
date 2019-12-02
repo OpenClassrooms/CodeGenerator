@@ -12,6 +12,7 @@ class EditEntityUseCaseMediatorImpl implements EditEntityUseCaseMediator
 {
     use CommonEntityUseCaseMediatorsTrait;
     use EditEntityUseCaseGeneratorsTrait;
+    use EntityUseCaseCommonRequestGeneratorTrait;
     use UseCaseDetailResponseMediatorTrait;
 
     /**
@@ -24,6 +25,7 @@ class EditEntityUseCaseMediatorImpl implements EditEntityUseCaseMediator
         $fileObjects[] = $this->generateEditEntityUseCaseRequestBuilderImplGenerator($className);
         $fileObjects[] = $this->generateEditEntityUseCaseRequestDTOGenerator($className);
         $fileObjects[] = $this->generateEditEntityUseCaseRequestGenerator($className);
+        $fileObjects[] = $this->generateEntityUseCaseCommonRequestTraitGenerator($className);
 
         return array_merge(
             $fileObjects,

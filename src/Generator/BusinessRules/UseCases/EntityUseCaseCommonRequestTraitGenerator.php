@@ -5,22 +5,22 @@ namespace OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases;
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\Entities\Type\UseCaseRequestFileObjectType;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\AbstractUseCaseGenerator;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\EntityUseCaseCommonRequestGeneratorRequest;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\EntityUseCaseCommonRequestTraitGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
-use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\EntityUseCaseCommonRequestSkeletonModel;
-use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\EntityUseCaseCommonRequestSkeletonModelAssembler;
+use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\EntityUseCaseCommonRequestTraitSkeletonModel;
+use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\EntityUseCaseCommonRequestTraitSkeletonModelAssembler;
 use OpenClassrooms\CodeGenerator\Utility\FieldObjectUtilityStrategy;
 use OpenClassrooms\CodeGenerator\Utility\MethodUtilityStrategy;
 
-class EntityUseCaseCommonRequestGenerator extends AbstractUseCaseGenerator
+class EntityUseCaseCommonRequestTraitGenerator extends AbstractUseCaseGenerator
 {
     /**
-     * @var EntityUseCaseCommonRequestSkeletonModelAssembler
+     * @var EntityUseCaseCommonRequestTraitSkeletonModelAssembler
      */
     private $entityUseCaseCommonRequestSkeletonModelAssembler;
 
     /**
-     * @param EntityUseCaseCommonRequestGeneratorRequest $generatorRequest
+     * @param EntityUseCaseCommonRequestTraitGeneratorRequest $generatorRequest
      */
 
     /**
@@ -33,10 +33,10 @@ class EntityUseCaseCommonRequestGenerator extends AbstractUseCaseGenerator
      */
     private $methodUtility;
 
-    private function buildEntityUseCaseCommonRequestFileObject(string $entityClassName): FileObject
+    private function buildEntityUseCaseCommonRequestTraitFileObject(string $entityClassName): FileObject
     {
         $this->initFileObjectParameter($entityClassName);
-        $entityUseCaseCommonRequestFileObject = $this->createEntityUseCaseCommonRequestFileObject();
+        $entityUseCaseCommonRequestFileObject = $this->createEntityUseCaseCommonRequestTraitFileObject();
 
         $entityUseCaseCommonRequestFileObject->setFields($this->fieldUtility->getFields($entityClassName));
         $entityUseCaseCommonRequestFileObject->setMethods($this->methodUtility->getAccessors($entityClassName));
@@ -48,7 +48,7 @@ class EntityUseCaseCommonRequestGenerator extends AbstractUseCaseGenerator
         return $entityUseCaseCommonRequestFileObject;
     }
 
-    private function createEntityUseCaseCommonRequestFileObject(): FileObject
+    private function createEntityUseCaseCommonRequestTraitFileObject(): FileObject
     {
         return $this->useCaseRequestFileObjectFactory->create(
             UseCaseRequestFileObjectType::BUSINESS_RULES_ENTITY_USE_CASE_COMMON_REQUEST,
@@ -59,13 +59,13 @@ class EntityUseCaseCommonRequestGenerator extends AbstractUseCaseGenerator
 
     private function createSkeletonModel(
         FileObject $entityUseCaseCommonRequestFileObject
-    ): EntityUseCaseCommonRequestSkeletonModel {
+    ): EntityUseCaseCommonRequestTraitSkeletonModel {
         return $this->entityUseCaseCommonRequestSkeletonModelAssembler->create($entityUseCaseCommonRequestFileObject);
     }
 
     public function generate(GeneratorRequest $generatorRequest): FileObject
     {
-        $entityUseCaseCommonRequestFileObject = $this->buildEntityUseCaseCommonRequestFileObject(
+        $entityUseCaseCommonRequestFileObject = $this->buildEntityUseCaseCommonRequestTraitFileObject(
             $generatorRequest->getEntityClassName()
         );
 
@@ -81,8 +81,8 @@ class EntityUseCaseCommonRequestGenerator extends AbstractUseCaseGenerator
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
     }
 
-    public function setEntityUseCaseCommonRequestSkeletonModelAssembler(
-        EntityUseCaseCommonRequestSkeletonModelAssembler $entityUseCaseCommonRequestSkeletonModelAssembler
+    public function setEntityUseCaseCommonRequestTraitSkeletonModelAssembler(
+        EntityUseCaseCommonRequestTraitSkeletonModelAssembler $entityUseCaseCommonRequestSkeletonModelAssembler
     ): void {
         $this->entityUseCaseCommonRequestSkeletonModelAssembler = $entityUseCaseCommonRequestSkeletonModelAssembler;
     }

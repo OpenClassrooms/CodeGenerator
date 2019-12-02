@@ -4,7 +4,7 @@ namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseC
 
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 
-class EntityUseCaseCommonRequestFileObjectStub1 extends FileObject
+class EntityUseCaseCommonRequestTraitFileObjectStub1 extends FileObject
 {
     const CLASS_NAME = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\DTO\Request\FunctionalEntityCommonRequest';
 

@@ -22,7 +22,7 @@ class CreateEntityUseCaseRequestDTOGenerator extends AbstractUseCaseGenerator
         $this->initFileObjectParameter($entityClassName);
         $createEntityUseCaseRequestFileObject = $this->createCreateEntityUseCaseRequestFileObject();
         $createEntityUseCaseRequestDTOFileObject = $this->createCreateEntityUseCaseRequestDTOFileObject();
-        $entityUseCaseCommonRequestFileObject = $this->createEntityUseCaseCommonRequestFileObject();
+        $entityUseCaseCommonRequestFileObject = $this->createEntityUseCaseCommonRequestTraitFileObject();
 
         $createEntityUseCaseRequestDTOFileObject->setContent(
             $this->generateContent(
@@ -58,7 +58,7 @@ class CreateEntityUseCaseRequestDTOGenerator extends AbstractUseCaseGenerator
         );
     }
 
-    public function createEntityUseCaseCommonRequestFileObject(): FileObject
+    public function createEntityUseCaseCommonRequestTraitFileObject(): FileObject
     {
         return $this->createCreateEntityUseCaseRequest(
             UseCaseRequestFileObjectType::BUSINESS_RULES_ENTITY_USE_CASE_COMMON_REQUEST
