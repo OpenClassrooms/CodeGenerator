@@ -9,6 +9,8 @@ use OpenClassrooms\UseCase\BusinessRules\Entities\PaginatedCollection;
 
 interface FunctionalEntityGateway
 {
+    public function delete(FunctionalEntity $functionalEntity): void;
+
     /**
      * @throws FunctionalEntityNotFoundException
      */

@@ -25,6 +25,11 @@ class InMemoryFunctionalEntityGateway implements FunctionalEntityGateway
         self::$functionalEntities = $functionalEntities;
     }
 
+    public function delete(FunctionalEntity $functionalEntity): void
+    {
+        unset(self::$functionalEntities[$functionalEntity->getId()]);
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -43,6 +48,14 @@ class InMemoryFunctionalEntityGateway implements FunctionalEntityGateway
     public function findAll(array $filters = [], array $sorts = [], array $pagination = []): iterable
     {
         return self::$functionalEntities;
+    }
+
+    public function findById(int $functionalEntityId): FunctionalEntity
+    {
+        if (array_key_exists($functionalEntityId, self::$functionalEntities)) {
+            return self::$functionalEntities[$functionalEntityId];
+        }
+        throw new FunctionalEntityNotFoundException();
     }
 
     public function insert(FunctionalEntity $functionalEntity): void
