@@ -32,6 +32,6 @@ class {{ skeletonModel.shortName }} extends ServiceEntityRepository implements {
 
     public function update({{ skeletonModel.entityShortName }} ${{ skeletonModel.entityArgument }}): void
     {
-        $functionalEntity->update();
+        ${{ skeletonModel.entityArgument }}->update();
     }
 }
