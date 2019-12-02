@@ -7,20 +7,12 @@ use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Requestors
 
 final class EditFunctionalEntityRequestDTO implements EditFunctionalEntityRequest
 {
-    /**
-     * @var string
-     */
-    public $field1;
+    use FunctionalEntityCommonRequest;
 
     /**
      * @var bool
      */
     public $field1Updated = false;
-
-    /**
-     * @var string[]
-     */
-    public $field2;
 
     /**
      * @var bool
@@ -30,17 +22,7 @@ final class EditFunctionalEntityRequestDTO implements EditFunctionalEntityReques
     /**
      * @var bool
      */
-    public $field3;
-
-    /**
-     * @var bool
-     */
     public $field3Updated = false;
-
-    /**
-     * @var \DateTimeInterface
-     */
-    public $field4;
 
     /**
      * @var bool
@@ -51,24 +33,6 @@ final class EditFunctionalEntityRequestDTO implements EditFunctionalEntityReques
      * @var int
      */
     public $functionalEntityId;
-
-    public function getField1(): string
-    {
-        return $this->field1;
-    }
-
-    /**
-     * @return string[]
-     */
-    public function getField2(): array
-    {
-        return $this->field2;
-    }
-
-    public function getField4(): ?\DateTimeInterface
-    {
-        return $this->field4;
-    }
 
     public function getFunctionalEntityId(): int
     {
@@ -83,11 +47,6 @@ final class EditFunctionalEntityRequestDTO implements EditFunctionalEntityReques
     public function isField2Updated(): bool
     {
         return $this->field2Updated;
-    }
-
-    public function isField3(): bool
-    {
-        return $this->field3;
     }
 
     public function isField3Updated(): bool

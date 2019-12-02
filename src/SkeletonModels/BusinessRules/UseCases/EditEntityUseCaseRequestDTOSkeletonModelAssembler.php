@@ -8,6 +8,7 @@ interface EditEntityUseCaseRequestDTOSkeletonModelAssembler
 {
     public function create(
         FileObject $editEntityUseCaseRequestFileObject,
-        FileObject $editEntityUseCaseRequestDTOFileObject
+        FileObject $editEntityUseCaseRequestDTOFileObject,
+        FileObject $entityUseCaseCommonRequestTraitFileObject
     ): EditEntityUseCaseRequestDTOSkeletonModel;
 }

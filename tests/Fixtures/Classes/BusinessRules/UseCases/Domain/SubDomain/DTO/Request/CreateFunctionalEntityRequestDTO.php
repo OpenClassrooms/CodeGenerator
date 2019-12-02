@@ -7,46 +7,5 @@ use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Requestors
 
 final class CreateFunctionalEntityRequestDTO implements CreateFunctionalEntityRequest
 {
-    /**
-     * @var string
-     */
-    public $field1;
-
-    /**
-     * @var string[]
-     */
-    public $field2;
-
-    /**
-     * @var bool
-     */
-    public $field3;
-
-    /**
-     * @var \DateTimeInterface
-     */
-    public $field4;
-
-    public function getField1(): string
-    {
-        return $this->field1;
-    }
-
-    /**
-     * @return string[]
-     */
-    public function getField2(): array
-    {
-        return $this->field2;
-    }
-
-    public function getField4(): ?\DateTimeInterface
-    {
-        return $this->field4;
-    }
-
-    public function isField3(): bool
-    {
-        return $this->field3;
-    }
+    use FunctionalEntityCommonRequest;
 }

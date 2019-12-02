@@ -13,20 +13,26 @@ trait EditUseCaseRequestFieldTrait
      */
     private $fieldUtility;
 
-    public function setFieldUtility(FieldObjectUtilityStrategy $fieldUtility): void
+    private function buildEditUseCaseRequestDTOFields(string $entityClassName): array
     {
-        $this->fieldUtility = $fieldUtility;
-    }
-
-    private function buildEditUseCaseRequestFields(string $entityClassName): array
-    {
-        $accessors = $this->fieldUtility->getFields($entityClassName);
         $isUpdatedFields = FieldObjectUtility::buildIsUpdatedFields($entityClassName);
         $entityIdMethod = FieldObjectUtility::buildEntityIdMethodObject(
             FileObjectUtility::getShortClassName($entityClassName)
         );
         $entityIdMethod = [$entityIdMethod];
 
-        return array_merge($accessors, $isUpdatedFields, $entityIdMethod);
+        return array_merge($isUpdatedFields, $entityIdMethod);
+    }
+
+    private function buildEditUseCaseRequestFields(string $entityClassName): array
+    {
+        $accessors = $this->fieldUtility->getFields($entityClassName);
+
+        return array_merge($accessors, $this->buildEditUseCaseRequestDTOFields($entityClassName));
+    }
+
+    public function setFieldUtility(FieldObjectUtilityStrategy $fieldUtility): void
+    {
+        $this->fieldUtility = $fieldUtility;
     }
 }

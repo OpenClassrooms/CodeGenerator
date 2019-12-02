@@ -59,13 +59,6 @@ class CreateEntityUseCaseRequestDTOGeneratorTest extends TestCase
         $this->createEntityUseCaseRequestDTOGenerator->setCreateEntityUseCaseRequestDTOSkeletonModelAssembler(
             new CreateEntityUseCaseRequestDTOSkeletonModelAssemblerMock()
         );
-        $this->createEntityUseCaseRequestDTOGenerator->setFieldUtility(
-            new FieldObjectUtilityContext(new FieldObjectUtilityGetFieldsUpdatable())
-        );
-        $this->createEntityUseCaseRequestDTOGenerator->setMethodUtility(
-            new MethodUtilityContext(new MethodUtilityGetAccessorsWithoutId())
-        );
-        $this->createEntityUseCaseRequestDTOGenerator->setTemplating(new TemplatingServiceMock());
         $this->createEntityUseCaseRequestDTOGenerator->setTemplating(new TemplatingServiceMock());
         $this->createEntityUseCaseRequestDTOGenerator->setFileObjectGateway(new InMemoryFileObjectGateway());
         $this->createEntityUseCaseRequestDTOGenerator->setUseCaseRequestFileObjectFactory(

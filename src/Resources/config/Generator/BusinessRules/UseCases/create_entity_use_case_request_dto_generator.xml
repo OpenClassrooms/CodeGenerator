@@ -19,12 +19,6 @@
                 <argument type="service"
                           id="OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\CreateEntityUseCaseRequestDTOSkeletonModelAssembler"/>
             </call>
-            <call method="setFieldUtility">
-                <argument type="service" id="get.fields.updatable"/>
-            </call>
-            <call method="setMethodUtility">
-                <argument type="service" id="get.accessors.without.id"/>
-            </call>
         </service>
         <service
                 id="OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\CreateEntityUseCaseRequestDTOSkeletonModelAssembler"

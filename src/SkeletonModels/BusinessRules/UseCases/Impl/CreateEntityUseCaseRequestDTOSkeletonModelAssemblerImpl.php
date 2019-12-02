@@ -10,17 +10,17 @@ class CreateEntityUseCaseRequestDTOSkeletonModelAssemblerImpl implements CreateE
 {
     public function create(
         FileObject $createEntityUseCaseRequestFileObject,
-        FileObject $createEntityUseCaseRequestDTOFileObject
+        FileObject $createEntityUseCaseRequestDTOFileObject,
+        FileObject $entityUseCaseCommonRequestFileObject
     ): CreateEntityUseCaseRequestDTOSkeletonModel {
         $skeletonModel = new CreateEntityUseCaseRequestDTOSkeletonModelImpl();
 
         $skeletonModel->className = $createEntityUseCaseRequestDTOFileObject->getClassName();
-        $skeletonModel->fields = $createEntityUseCaseRequestDTOFileObject->getFields();
-        $skeletonModel->methods = $createEntityUseCaseRequestDTOFileObject->getMethods();
         $skeletonModel->namespace = $createEntityUseCaseRequestDTOFileObject->getNamespace();
         $skeletonModel->shortName = $createEntityUseCaseRequestDTOFileObject->getShortName();
         $skeletonModel->createEntityUseCaseRequestClassName = $createEntityUseCaseRequestFileObject->getClassName();
         $skeletonModel->createEntityUseCaseRequestShortName = $createEntityUseCaseRequestFileObject->getShortName();
+        $skeletonModel->entityUseCaseCommonRequestTraitShortName = $entityUseCaseCommonRequestFileObject->getShortName();
 
         return $skeletonModel;
     }

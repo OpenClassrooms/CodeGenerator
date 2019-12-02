@@ -6,6 +6,8 @@ use {{ skeletonModel.editEntityUseCaseRequestClassName }};
 
 final class {{ skeletonModel.shortName }} implements {{ skeletonModel.editEntityUseCaseRequestShortName }}
 {
+    use {{ skeletonModel.entityUseCaseCommonRequestTraitShortName}};
+
 {% for field in skeletonModel.fields | sortNameByAlpha %}
     {{ field.docComment }}
     public ${{ field.name }}{% if field.value is not null %} = {{ printValue(field.value) }}{% endif %};
