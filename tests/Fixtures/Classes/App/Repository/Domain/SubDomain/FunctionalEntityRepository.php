@@ -22,11 +22,6 @@ class FunctionalEntityRepository extends ServiceEntityRepository implements Func
         $this->getEntityManager()->remove($functionalEntity);
     }
 
-    public function find($id): FunctionalEntity
-    {
-        // TODO: Implement find() method.
-    }
-
     public function findAll(array $filters = [], array $sorts = [], array $pagination = []): iterable
     {
         // TODO: Implement findAll() method.

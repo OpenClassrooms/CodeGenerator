@@ -2,9 +2,6 @@
 
 namespace OpenClassrooms\CodeGenerator\Utility;
 
-/**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
- */
 class NameUtility
 {
     public static function creatChainedEntityIdMethodName(string $shortClassName): string

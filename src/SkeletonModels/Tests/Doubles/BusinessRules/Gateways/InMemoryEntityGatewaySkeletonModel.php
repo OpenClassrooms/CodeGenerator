@@ -17,6 +17,8 @@ abstract class InMemoryEntityGatewaySkeletonModel extends AbstractSkeletonModel
 
     public $entityGatewayShortName;
 
+    public $entityIdArgument;
+
     public $entityNotFoundExceptionClassName;
 
     public $entityNotFoundExceptionShortName;

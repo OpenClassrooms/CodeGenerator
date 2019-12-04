@@ -9,9 +9,6 @@ use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\Entities\EntitiesMediat
 use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\Responses\UseCaseResponseCommonMediator;
 use OpenClassrooms\CodeGenerator\Mediators\Options;
 
-/**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
- */
 trait CommonEntityUseCaseMediatorsTrait
 {
     /**
@@ -28,6 +25,34 @@ trait CommonEntityUseCaseMediatorsTrait
      * @var UseCaseResponseCommonMediator
      */
     private $useCaseResponseCommonMediator;
+
+    /**
+     * @return FileObject[]
+     */
+    protected function generateEntitiesSources(string $className): array
+    {
+        $fileObjects[] = $this->entitiesMediator->generateEntityGatewayGenerator($className);
+        $fileObjects[] = $this->entitiesMediator->generateEntityNotFoundExceptionGenerator($className);
+        $fileObjects[] = $this->entitiesMediator->generateEntityRepositoryGenerator($className);
+
+        return $fileObjects;
+    }
+
+    /**
+     * @return FileObject[]
+     */
+    protected function generateUseCaseResponseCommonSources(string $className): array
+    {
+        $fileObjects[] = $this->useCaseResponseCommonMediator->generateUseCaseResponseAssemblerTraitGenerator(
+            $className
+        );
+        $fileObjects[] = $this->useCaseResponseCommonMediator->generateUseCaseResponseCommonFieldTraitGenerator(
+            $className
+        );
+        $fileObjects[] = $this->useCaseResponseCommonMediator->generateUseCaseResponseGenerator($className);
+
+        return $fileObjects;
+    }
 
     public function mediate(array $args = [], array $options = []): array
     {
@@ -62,33 +87,5 @@ trait CommonEntityUseCaseMediatorsTrait
     public function setUseCaseResponseCommonMediator(UseCaseResponseCommonMediator $useCaseResponseCommonMediator): void
     {
         $this->useCaseResponseCommonMediator = $useCaseResponseCommonMediator;
-    }
-
-    /**
-     * @return FileObject[]
-     */
-    protected function generateEntitiesSources(string $className): array
-    {
-        $fileObjects[] = $this->entitiesMediator->generateEntityGatewayGenerator($className);
-        $fileObjects[] = $this->entitiesMediator->generateEntityNotFoundExceptionGenerator($className);
-        $fileObjects[] = $this->entitiesMediator->generateEntityRepositoryGenerator($className);
-
-        return $fileObjects;
-    }
-
-    /**
-     * @return FileObject[]
-     */
-    protected function generateUseCaseResponseCommonSources(string $className): array
-    {
-        $fileObjects[] = $this->useCaseResponseCommonMediator->generateUseCaseResponseAssemblerTraitGenerator(
-            $className
-        );
-        $fileObjects[] = $this->useCaseResponseCommonMediator->generateUseCaseResponseCommonFieldTraitGenerator(
-            $className
-        );
-        $fileObjects[] = $this->useCaseResponseCommonMediator->generateUseCaseResponseGenerator($className);
-
-        return $fileObjects;
     }
 }

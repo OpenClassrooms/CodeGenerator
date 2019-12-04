@@ -17,9 +17,15 @@ abstract class EntityRepositorySkeletonModel extends AbstractSkeletonModel
 
     public $entityGatewayShortName;
 
+    public $entityIdArgument;
+
     public $entityImplClassName;
 
     public $entityImplShortName;
+
+    public $entityNotFoundExceptionClassName;
+
+    public $entityNotFoundExceptionShortName;
 
     public $entityShortName;
 

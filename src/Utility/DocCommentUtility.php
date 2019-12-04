@@ -2,9 +2,6 @@
 
 namespace OpenClassrooms\CodeGenerator\Utility;
 
-/**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
- */
 class DocCommentUtility
 {
     const ARRAY_TYPE          = 'array';

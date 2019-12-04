@@ -12,9 +12,9 @@ final class DeleteFunctionalEntityRequestDTO implements DeleteFunctionalEntityRe
      */
     public $functionalEntityId;
 
-    public function __construct(int $functionalEntityId)
+    public function __construct(int $id)
     {
-        $this->functionalEntityId = $functionalEntityId;
+        $this->functionalEntityId = $id;
     }
 
     public function getFunctionalEntityId(): int

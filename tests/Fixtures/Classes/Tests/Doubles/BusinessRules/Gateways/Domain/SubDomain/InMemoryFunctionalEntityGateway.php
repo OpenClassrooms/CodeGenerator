@@ -33,18 +33,6 @@ class InMemoryFunctionalEntityGateway implements FunctionalEntityGateway
     /**
      * {@inheritdoc}
      */
-    public function find($id): FunctionalEntity
-    {
-        if (!isset(self::$functionalEntities[$id])) {
-            throw new FunctionalEntityNotFoundException();
-        }
-
-        return self::$functionalEntities[$id];
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function findAll(array $filters = [], array $sorts = [], array $pagination = []): iterable
     {
         return self::$functionalEntities;
@@ -55,6 +43,7 @@ class InMemoryFunctionalEntityGateway implements FunctionalEntityGateway
         if (array_key_exists($functionalEntityId, self::$functionalEntities)) {
             return self::$functionalEntities[$functionalEntityId];
         }
+
         throw new FunctionalEntityNotFoundException();
     }
 

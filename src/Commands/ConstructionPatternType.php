@@ -2,9 +2,6 @@
 
 namespace OpenClassrooms\CodeGenerator\Commands;
 
-/**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
- */
 final class ConstructionPatternType
 {
     const ASSEMBLER_PATTERN = 'assembler';

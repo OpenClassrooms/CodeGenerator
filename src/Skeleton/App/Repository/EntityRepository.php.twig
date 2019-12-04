@@ -5,6 +5,7 @@ namespace {{ skeletonModel.namespace }};
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use {{ skeletonModel.entityImplClassName }};
 use {{ skeletonModel.entityClassName }};
+use {{ skeletonModel.entityNotFoundExceptionClassName }};
 use {{ skeletonModel.entityGatewayClassName }};
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
@@ -15,14 +16,24 @@ class {{ skeletonModel.shortName }} extends ServiceEntityRepository implements {
         parent::__construct($registry, {{ skeletonModel.entityImplShortName }}::class);
     }
 
-    public function find($id): {{ skeletonModel.entityShortName }}
+    public function delete({{ skeletonModel.entityShortName }} ${{ skeletonModel.entityArgument }}): void
     {
-        // TODO: Implement find() method.
+        $this->getEntityManager()->remove($functionalEntity);
     }
 
     public function findAll(array $filters = [], array $sorts = [], array $pagination = []): iterable
     {
         // TODO: Implement findAll() method.
+    }
+
+    public function findById(int ${{ skeletonModel.entityIdArgument }}): {{ skeletonModel.entityShortName }}
+    {
+        ${{ skeletonModel.entityArgument }} = parent::find(${{ skeletonModel.entityIdArgument }});
+        if (null === ${{ skeletonModel.entityArgument }}) {
+            throw new {{ skeletonModel.entityNotFoundExceptionShortName }}();
+        }
+
+        return $functionalEntity;
     }
 
     public function insert({{ skeletonModel.entityShortName }} ${{ skeletonModel.entityArgument }}): void

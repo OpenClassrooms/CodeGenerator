@@ -5,6 +5,7 @@ namespace OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\BusinessRule
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\BusinessRules\Gateways\InMemoryEntityGatewaySkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\BusinessRules\Gateways\InMemoryEntityGatewaySkeletonModelAssembler;
+use OpenClassrooms\CodeGenerator\Utility\NameUtility;
 use OpenClassrooms\CodeGenerator\Utility\StringUtility;
 
 /**
@@ -25,6 +26,7 @@ class InMemoryEntityGatewaySkeletonModelAssemblerImpl implements InMemoryEntityG
         $skeletonModel->namespace = $inMemoryEntityGatewayFileObject->getNamespace();
         $skeletonModel->shortName = $inMemoryEntityGatewayFileObject->getShortName();
         $skeletonModel->entityArgument = lcfirst($entityFileObject->getShortName());
+        $skeletonModel->entityIdArgument = NameUtility::creatEntityIdName($entityFileObject->getShortName());
         $skeletonModel->entityClassName = $entityFileObject->getClassName();
         $skeletonModel->entityShortName = $entityFileObject->getShortName();
         $skeletonModel->entityGatewayClassName = $entityGatewayFileObject->getClassName();

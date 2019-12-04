@@ -5,9 +5,6 @@ namespace OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\Impl;
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\CreateEntityUseCaseMediator;
 
-/**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
- */
 class CreateEntityUseCaseMediatorImpl implements CreateEntityUseCaseMediator
 {
     use CommonEntityUseCaseMediatorsTrait;

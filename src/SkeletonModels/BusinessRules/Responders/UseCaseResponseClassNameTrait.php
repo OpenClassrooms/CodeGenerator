@@ -2,9 +2,6 @@
 
 namespace OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Responders;
 
-/**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
- */
 trait UseCaseResponseClassNameTrait
 {
     /**
@@ -32,11 +29,6 @@ trait UseCaseResponseClassNameTrait
      */
     public $useCaseResponse;
 
-    public function setPagination(string $pagination): void
-    {
-        $this->pagination = $pagination;
-    }
-
     public function setPaginatedCollection(string $paginatedCollection): void
     {
         $this->paginatedCollection = $paginatedCollection;
@@ -50,6 +42,11 @@ trait UseCaseResponseClassNameTrait
     public function setPaginatedUseCaseResponseBuilder(string $paginatedUseCaseResponseBuilder): void
     {
         $this->paginatedUseCaseResponseBuilder = $paginatedUseCaseResponseBuilder;
+    }
+
+    public function setPagination(string $pagination): void
+    {
+        $this->pagination = $pagination;
     }
 
     public function setUseCaseResponse(string $useCaseResponse): void

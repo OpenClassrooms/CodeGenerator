@@ -4,9 +4,6 @@ namespace OpenClassrooms\CodeGenerator\Utility\Impl;
 
 use OpenClassrooms\CodeGenerator\Utility\FieldObjectUtilityStrategy;
 
-/**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
- */
 final class FieldObjectUtilityContext implements FieldObjectUtilityStrategy
 {
     private $strategy;

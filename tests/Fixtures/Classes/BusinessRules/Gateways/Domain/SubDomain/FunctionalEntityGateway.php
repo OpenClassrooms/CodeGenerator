@@ -12,14 +12,14 @@ interface FunctionalEntityGateway
     public function delete(FunctionalEntity $functionalEntity): void;
 
     /**
-     * @throws FunctionalEntityNotFoundException
-     */
-    public function find($id): FunctionalEntity;
-
-    /**
      * @return PaginatedCollection|FunctionalEntity[]
      */
     public function findAll(array $filters = [], array $sorts = [], array $pagination = []): iterable;
+
+    /**
+     * @throws FunctionalEntityNotFoundException
+     */
+    public function findById(int $functionalEntityId): FunctionalEntity;
 
     public function insert(FunctionalEntity $functionalEntity): void;
 

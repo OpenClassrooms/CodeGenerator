@@ -13,6 +13,7 @@ interface EntityRepositorySkeletonModelAssembler
         FileObject $entityFileObject,
         FileObject $entityImplFileObject,
         FileObject $entityGatewayFileObject,
+        FileObject $entityNotFoundExceptionFileObject,
         FileObject $entityRepositoryFileObject
     ): EntityRepositorySkeletonModel;
 }

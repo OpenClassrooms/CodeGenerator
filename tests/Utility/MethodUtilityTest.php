@@ -6,25 +6,16 @@ use OpenClassrooms\CodeGenerator\Utility\DocCommentUtility;
 use OpenClassrooms\CodeGenerator\Utility\MethodUtility;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
- */
 class MethodUtilityTest extends TestCase
 {
     /**
      * @test
-     * @expectedException \Exception
      */
-    public function getAccessorsThrowException(): void
+    public function createArgumentNameFromMethodReturnNull(): void
     {
-        $class = (new class() {
-            public function getMethod(string $argument)
-            {
-                echo $argument;
-            }
-        });
+        $exceptedValue = MethodUtility::createArgumentNameFromMethod('notWorkingMethodName');
 
-        MethodUtility::getAccessors(get_class($class));
+        $this->assertNull($exceptedValue);
     }
 
     /**
@@ -54,11 +45,17 @@ class MethodUtilityTest extends TestCase
 
     /**
      * @test
+     * @expectedException \Exception
      */
-    public function createArgumentNameFromMethodReturnNull(): void
+    public function getAccessorsThrowException(): void
     {
-        $exceptedValue = MethodUtility::createArgumentNameFromMethod('notWorkingMethodName');
+        $class = (new class() {
+            public function getMethod(string $argument)
+            {
+                echo $argument;
+            }
+        });
 
-        $this->assertNull($exceptedValue);
+        MethodUtility::getAccessors(get_class($class));
     }
 }

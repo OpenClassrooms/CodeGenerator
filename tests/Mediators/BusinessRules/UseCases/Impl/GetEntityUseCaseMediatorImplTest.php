@@ -33,9 +33,6 @@ use OpenClassrooms\CodeGenerator\Tests\Mediators\BusinessRules\Responses\Impl\Us
 use OpenClassrooms\CodeGenerator\Tests\Mediators\FlushedFileObjectTestCase;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
- */
 class GetEntityUseCaseMediatorImplTest extends TestCase
 {
     use FlushedFileObjectTestCase;

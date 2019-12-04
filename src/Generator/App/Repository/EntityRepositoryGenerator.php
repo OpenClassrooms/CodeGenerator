@@ -26,6 +26,79 @@ class EntityRepositoryGenerator extends AbstractGenerator
      */
     private $entityRepositorySkeletonModelAssembler;
 
+    private function buildEntityRepositoryFileObject(string $entityClassName): FileObject
+    {
+        $this->initFileObjectParameter($entityClassName);
+        $entityFileObject = $this->createEntityFileObject();
+        $entityImplFileObject = $this->createEntityImplFileObject();
+        $entityGatewayFileObject = $this->createEntityGatewayFileObject();
+        $entityRepositoryFileObject = $this->createEntityRepositoryFileObject();
+        $entityNotFoundExceptionFileObject = $this->createEntityNotFoundExceptionFileObject();
+
+        $entityRepositoryFileObject->setContent(
+            $this->generateContent(
+                $entityFileObject,
+                $entityImplFileObject,
+                $entityGatewayFileObject,
+                $entityNotFoundExceptionFileObject,
+                $entityRepositoryFileObject
+            )
+        );
+
+        return $entityRepositoryFileObject;
+    }
+
+    private function createEntityFileObject(): FileObject
+    {
+        return $this->createEntityObject(EntityFileObjectType::BUSINESS_RULES_ENTITY);
+    }
+
+    private function createEntityGatewayFileObject(): FileObject
+    {
+        return $this->createEntityObject(EntityFileObjectType::BUSINESS_RULES_ENTITY_GATEWAY);
+    }
+
+    private function createEntityImplFileObject(): FileObject
+    {
+        return $this->createEntityObject(EntityFileObjectType::BUSINESS_RULES_ENTITY_IMPL);
+    }
+
+    private function createEntityNotFoundExceptionFileObject()
+    {
+        return $this->createEntityObject(EntityFileObjectType::BUSINESS_RULES_ENTITY_NOT_FOUND_EXCEPTION);
+    }
+
+    private function createEntityObject(string $type): FileObject
+    {
+        return $this->entityFileObjectFactory->create(
+            $type,
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
+        );
+    }
+
+    private function createEntityRepositoryFileObject(): FileObject
+    {
+        return $this->createEntityObject(EntityFileObjectType::BUSINESS_RULES_ENTITY_REPOSITORY);
+    }
+
+    private function createSkeletonModel(
+        FileObject $entityFileObject,
+        FileObject $entityImplFileObject,
+        FileObject $entityGatewayFileObject,
+        FileObject $entityNotFoundExceptionFileObject,
+        FileObject $entityRepositoryFileObject
+    ): EntityRepositorySkeletonModel {
+        return $this->entityRepositorySkeletonModelAssembler->create(
+            $entityFileObject,
+            $entityImplFileObject,
+            $entityGatewayFileObject,
+            $entityNotFoundExceptionFileObject,
+            $entityRepositoryFileObject
+        );
+    }
+
     /**
      * @param EntityRepositoryGeneratorRequest $generatorRequest
      */
@@ -40,93 +113,22 @@ class EntityRepositoryGenerator extends AbstractGenerator
         return $entityRepositoryFileObject;
     }
 
-    private function buildEntityRepositoryFileObject(string $entityClassName): FileObject
-    {
-        $this->initFileObjectParameter($entityClassName);
-        $entityFileObject = $this->createEntityFileObject();
-        $entityImplFileObject = $this->createEntityImplFileObject();
-        $entityGatewayFileObject = $this->createEntityGatewayFileObject();
-        $entityRepositoryFileObject = $this->createEntityRepositoryFileObject();
-
-        $entityRepositoryFileObject->setContent(
-            $this->generateContent(
-                $entityFileObject,
-                $entityImplFileObject,
-                $entityGatewayFileObject,
-                $entityRepositoryFileObject
-            )
-        );
-
-        return $entityRepositoryFileObject;
-    }
-
-    private function createEntityFileObject(): FileObject
-    {
-        return $this->entityFileObjectFactory->create(
-            EntityFileObjectType::BUSINESS_RULES_ENTITY,
-            $this->domain,
-            $this->entity,
-            $this->baseNamespace
-        );
-    }
-
-    private function createEntityImplFileObject(): FileObject
-    {
-        return $this->entityFileObjectFactory->create(
-            EntityFileObjectType::BUSINESS_RULES_ENTITY_IMPL,
-            $this->domain,
-            $this->entity,
-            $this->baseNamespace
-        );
-    }
-
-    private function createEntityGatewayFileObject(): FileObject
-    {
-        return $this->entityFileObjectFactory->create(
-            EntityFileObjectType::BUSINESS_RULES_ENTITY_GATEWAY,
-            $this->domain,
-            $this->entity,
-            $this->baseNamespace
-        );
-    }
-
-    private function createEntityRepositoryFileObject(): FileObject
-    {
-        return $this->entityFileObjectFactory->create(
-            EntityFileObjectType::BUSINESS_RULES_ENTITY_REPOSITORY,
-            $this->domain,
-            $this->entity
-        );
-    }
-
     private function generateContent(
         FileObject $entityFileObject,
         FileObject $entityImplFileObject,
         FileObject $entityGatewayFileObject,
+        FileObject $entityNotFoundExceptionFileObject,
         FileObject $entityRepositoryFileObject
     ): string {
         $skeletonModel = $this->createSkeletonModel(
             $entityFileObject,
             $entityImplFileObject,
             $entityGatewayFileObject,
+            $entityNotFoundExceptionFileObject,
             $entityRepositoryFileObject
         );
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
-    }
-
-    private function createSkeletonModel(
-        FileObject $entityFileObject,
-        FileObject $entityImplFileObject,
-        FileObject $entityGatewayFileObject,
-        FileObject $entityRepositoryFileObject
-    ): EntityRepositorySkeletonModel {
-        return $this->entityRepositorySkeletonModelAssembler->create(
-            $entityFileObject,
-            $entityImplFileObject,
-            $entityGatewayFileObject,
-            $entityRepositoryFileObject
-        );
     }
 
     public function setEntityFileObjectFactory(
