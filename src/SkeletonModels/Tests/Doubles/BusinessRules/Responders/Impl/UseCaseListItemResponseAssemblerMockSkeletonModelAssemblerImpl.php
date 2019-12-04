@@ -6,9 +6,6 @@ use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\BusinessRules\Responders\UseCaseListItemResponseAssemblerMockSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\BusinessRules\Responders\UseCaseListItemResponseAssemblerMockSkeletonModelAssembler;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class UseCaseListItemResponseAssemblerMockSkeletonModelAssemblerImpl implements UseCaseListItemResponseAssemblerMockSkeletonModelAssembler
 {
     public function create(

@@ -6,9 +6,6 @@ use OpenClassrooms\CodeGenerator\Entities\GenerateGeneratorFileObjectFactory;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\GenerateGeneratorFileObjectFactoryMock;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class GenerateGeneratorFileObjectFactoryImplTest extends TestCase
 {
     /**

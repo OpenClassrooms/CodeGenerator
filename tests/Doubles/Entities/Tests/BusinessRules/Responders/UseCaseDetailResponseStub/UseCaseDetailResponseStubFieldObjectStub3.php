@@ -6,9 +6,6 @@ use OpenClassrooms\CodeGenerator\Entities\Object\ConstObject;
 use OpenClassrooms\CodeGenerator\Entities\Object\FieldObject;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\BusinessRules\Entities\EntityStub\EntityStubFieldObjectStub3;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class UseCaseDetailResponseStubFieldObjectStub3 extends FieldObject
 {
     const DOC_COMMENT = EntityStubFieldObjectStub3::DOC_COMMENT;

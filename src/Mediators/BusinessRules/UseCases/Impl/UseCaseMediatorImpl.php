@@ -6,9 +6,6 @@ use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\Requestors\GenericUseCa
 use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\GenericUseCaseMediator;
 use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\UseCaseMediator;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class UseCaseMediatorImpl implements UseCaseMediator
 {
     /**

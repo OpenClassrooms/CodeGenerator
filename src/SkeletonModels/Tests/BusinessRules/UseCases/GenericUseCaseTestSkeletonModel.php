@@ -4,9 +4,6 @@ namespace OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\UseCas
 
 use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 abstract class GenericUseCaseTestSkeletonModel extends AbstractSkeletonModel
 {
     public $genericUseCaseClassName;

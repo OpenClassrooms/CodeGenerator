@@ -10,13 +10,10 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\GetEntiti
 use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 use OpenClassrooms\CodeGenerator\Utility\StringUtility;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class GetEntitiesUseCaseSkeletonModelAssemblerImpl implements GetEntitiesUseCaseSkeletonModelAssembler
 {
-    use UseCaseResponseClassNameTrait;
     use UseCaseClassNameTrait;
+    use UseCaseResponseClassNameTrait;
 
     public function create(
         FileObject $entityFileObject,

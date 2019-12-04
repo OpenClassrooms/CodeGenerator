@@ -9,13 +9,13 @@ class EditEntityUseCaseRequestMethodObjectStub1 extends MethodObject
 {
     const DOC_COMMENT = null;
 
-    const NAME = 'isField1Updated';
+    const NAME     = 'isField1Updated';
 
     const NULLABLE = false;
 
     const RETURN_TYPE = 'bool';
 
-    const VALUE = null;
+    const VALUE    = null;
 
     protected $docComment = self::DOC_COMMENT;
 

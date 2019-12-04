@@ -11,29 +11,12 @@ use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\Request\
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\Api\ViewModels\ViewModelListItemTestCaseSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\Api\ViewModels\ViewModelListItemTestCaseSkeletonModelAssembler;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class ViewModelListItemTestCaseGenerator extends AbstractViewModelGenerator
 {
     /**
      * @var ViewModelListItemTestCaseSkeletonModelAssembler
      */
     private $viewModelListItemTestCaseSkeletonModelAssembler;
-
-    /**
-     * @param ViewModelListItemTestCaseGeneratorRequest $generatorRequest
-     */
-    public function generate(GeneratorRequest $generatorRequest): FileObject
-    {
-        $viewModelListItemTestCaseFileObject = $this->buildListItemTestCaseFileObject(
-            $generatorRequest->getUseCaseResponseClassName()
-        );
-
-        $this->insertFileObject($viewModelListItemTestCaseFileObject);
-
-        return $viewModelListItemTestCaseFileObject;
-    }
 
     public function buildListItemTestCaseFileObject(string $useCaseResponseClassName): FileObject
     {
@@ -58,10 +41,32 @@ class ViewModelListItemTestCaseGenerator extends AbstractViewModelGenerator
         return $viewModelListItemTestCaseFileObject;
     }
 
+    private function createSkeletonModel(
+        FileObject $viewModelListItemTestCaseFileObject,
+        FileObject $viewModelTestCaseFileObject,
+        FileObject $viewModelListItemFileObject
+    ): ViewModelListItemTestCaseSkeletonModel {
+        return $this->viewModelListItemTestCaseSkeletonModelAssembler->create(
+            $viewModelListItemTestCaseFileObject,
+            $viewModelTestCaseFileObject,
+            $viewModelListItemFileObject
+        );
+    }
+
     private function createUseCaseListItemResponseDTOFileObject()
     {
         return $this->createUseCaseResponseFileObject(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE_DTO,
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
+        );
+    }
+
+    private function createViewModelListItemFileObject(): FileObject
+    {
+        return $this->createViewModelFileObject(
+            ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM,
             $this->domain,
             $this->entity,
             $this->baseNamespace
@@ -90,14 +95,18 @@ class ViewModelListItemTestCaseGenerator extends AbstractViewModelGenerator
         );
     }
 
-    private function createViewModelListItemFileObject(): FileObject
+    /**
+     * @param ViewModelListItemTestCaseGeneratorRequest $generatorRequest
+     */
+    public function generate(GeneratorRequest $generatorRequest): FileObject
     {
-        return $this->createViewModelFileObject(
-            ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM,
-            $this->domain,
-            $this->entity,
-            $this->baseNamespace
+        $viewModelListItemTestCaseFileObject = $this->buildListItemTestCaseFileObject(
+            $generatorRequest->getUseCaseResponseClassName()
         );
+
+        $this->insertFileObject($viewModelListItemTestCaseFileObject);
+
+        return $viewModelListItemTestCaseFileObject;
     }
 
     public function generateContent(
@@ -112,18 +121,6 @@ class ViewModelListItemTestCaseGenerator extends AbstractViewModelGenerator
         );
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
-    }
-
-    private function createSkeletonModel(
-        FileObject $viewModelListItemTestCaseFileObject,
-        FileObject $viewModelTestCaseFileObject,
-        FileObject $viewModelListItemFileObject
-    ): ViewModelListItemTestCaseSkeletonModel {
-        return $this->viewModelListItemTestCaseSkeletonModelAssembler->create(
-            $viewModelListItemTestCaseFileObject,
-            $viewModelTestCaseFileObject,
-            $viewModelListItemFileObject
-        );
     }
 
     public function setViewModelListItemTestCaseSkeletonModelAssembler(

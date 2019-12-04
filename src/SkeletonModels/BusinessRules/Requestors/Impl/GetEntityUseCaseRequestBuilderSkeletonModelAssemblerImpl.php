@@ -7,9 +7,6 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Requestors\GetEnti
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Requestors\GetEntityUseCaseRequestBuilderSkeletonModelAssembler;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCaseClassNameTrait;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class GetEntityUseCaseRequestBuilderSkeletonModelAssemblerImpl implements GetEntityUseCaseRequestBuilderSkeletonModelAssembler
 {
     use UseCaseClassNameTrait;

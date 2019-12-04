@@ -14,30 +14,12 @@ use OpenClassrooms\CodeGenerator\Utility\ConstUtility;
 use OpenClassrooms\CodeGenerator\Utility\StubFieldUtility;
 use OpenClassrooms\CodeGenerator\Utility\StubUtility;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class UseCaseListItemResponseStubGenerator extends AbstractUseCaseResponseStubGenerator
 {
     /**
      * @var UseCaseListItemResponseStubSkeletonModelAssembler
      */
     private $useCaseListItemResponseStubSkeletonModelAssembler;
-
-    /**
-     * @param UseCaseListItemResponseStubGeneratorRequest $generatorRequest
-     */
-    public function generate(GeneratorRequest $generatorRequest): FileObject
-    {
-        $useCaseListItemResponseStubFileObject = $this->buildUseCaseListItemResponseStubFileObject(
-            $generatorRequest->getClassName(),
-            $generatorRequest->getFields()
-        );
-
-        $this->insertFileObject($useCaseListItemResponseStubFileObject);
-
-        return $useCaseListItemResponseStubFileObject;
-    }
 
     /**
      * @param string[] $fields
@@ -87,6 +69,18 @@ class UseCaseListItemResponseStubGenerator extends AbstractUseCaseResponseStubGe
         );
     }
 
+    private function createSkeletonModel(
+        FileObject $useCaseListItemResponseStubFileObject,
+        FileObject $useCaseListItemResponseDTOFileObject,
+        FileObject $entityStubFileObject
+    ): UseCaseListItemResponseStubSkeletonModel {
+        return $this->useCaseListItemResponseStubSkeletonModelAssembler->create(
+            $useCaseListItemResponseStubFileObject,
+            $useCaseListItemResponseDTOFileObject,
+            $entityStubFileObject
+        );
+    }
+
     private function createUseCaseListItemResponseDTOFileObject(): FileObject
     {
         return $this->useCaseResponseFileObjectFactory->create(
@@ -112,29 +106,6 @@ class UseCaseListItemResponseStubGenerator extends AbstractUseCaseResponseStubGe
     }
 
     /**
-     * @param string[] $fields
-     */
-    private function generateStubFieldsFromSelectedFields(FileObject $entityFileObject, array $fields): array
-    {
-        $useCaseListItemResponseFields = $this->getSelectedFields(
-            $entityFileObject->getClassName(),
-            $fields
-        );
-
-        return StubFieldUtility::generateStubFieldObjects(
-            $useCaseListItemResponseFields,
-            $entityFileObject
-        );
-    }
-
-    private function generateConsts(FileObject $useCaseListItemResponseStubFileObject): array
-    {
-        $consts = ConstUtility::generateConstsFromStubFileObject($useCaseListItemResponseStubFileObject);
-
-        return $this->filterConstsFromFieldValues($useCaseListItemResponseStubFileObject, $consts);
-    }
-
-    /**
      * @param ConstObject[]
      *
      * @return ConstObject[]
@@ -152,15 +123,26 @@ class UseCaseListItemResponseStubGenerator extends AbstractUseCaseResponseStubGe
         return $consts;
     }
 
-    private function getConstNameFromFieldValues(FileObject $useCaseListItemResponseStubFileObject): array
+    /**
+     * @param UseCaseListItemResponseStubGeneratorRequest $generatorRequest
+     */
+    public function generate(GeneratorRequest $generatorRequest): FileObject
     {
-        $constsNameFromFields = [];
-        foreach ($useCaseListItemResponseStubFileObject->getFields() as $field) {
-            $const = $field->getValue();
-            $constsNameFromFields[] = $const->getName();
-        }
+        $useCaseListItemResponseStubFileObject = $this->buildUseCaseListItemResponseStubFileObject(
+            $generatorRequest->getClassName(),
+            $generatorRequest->getFields()
+        );
 
-        return $constsNameFromFields;
+        $this->insertFileObject($useCaseListItemResponseStubFileObject);
+
+        return $useCaseListItemResponseStubFileObject;
+    }
+
+    private function generateConsts(FileObject $useCaseListItemResponseStubFileObject): array
+    {
+        $consts = ConstUtility::generateConstsFromStubFileObject($useCaseListItemResponseStubFileObject);
+
+        return $this->filterConstsFromFieldValues($useCaseListItemResponseStubFileObject, $consts);
     }
 
     private function generateContent(
@@ -177,16 +159,31 @@ class UseCaseListItemResponseStubGenerator extends AbstractUseCaseResponseStubGe
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
     }
 
-    private function createSkeletonModel(
-        FileObject $useCaseListItemResponseStubFileObject,
-        FileObject $useCaseListItemResponseDTOFileObject,
-        FileObject $entityStubFileObject
-    ): UseCaseListItemResponseStubSkeletonModel {
-        return $this->useCaseListItemResponseStubSkeletonModelAssembler->create(
-            $useCaseListItemResponseStubFileObject,
-            $useCaseListItemResponseDTOFileObject,
-            $entityStubFileObject
+    /**
+     * @param string[] $fields
+     */
+    private function generateStubFieldsFromSelectedFields(FileObject $entityFileObject, array $fields): array
+    {
+        $useCaseListItemResponseFields = $this->getSelectedFields(
+            $entityFileObject->getClassName(),
+            $fields
         );
+
+        return StubFieldUtility::generateStubFieldObjects(
+            $useCaseListItemResponseFields,
+            $entityFileObject
+        );
+    }
+
+    private function getConstNameFromFieldValues(FileObject $useCaseListItemResponseStubFileObject): array
+    {
+        $constsNameFromFields = [];
+        foreach ($useCaseListItemResponseStubFileObject->getFields() as $field) {
+            $const = $field->getValue();
+            $constsNameFromFields[] = $const->getName();
+        }
+
+        return $constsNameFromFields;
     }
 
     public function setUseCaseListItemResponseStubSkeletonModelAssembler(

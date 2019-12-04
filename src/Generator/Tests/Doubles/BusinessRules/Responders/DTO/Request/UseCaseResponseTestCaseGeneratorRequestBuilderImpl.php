@@ -5,15 +5,17 @@ namespace OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\BusinessRules\Res
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\BusinessRules\Responders\Request\UseCaseResponseTestCaseGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\BusinessRules\Responders\Request\UseCaseResponseTestCaseGeneratorRequestBuilder;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class UseCaseResponseTestCaseGeneratorRequestBuilderImpl implements UseCaseResponseTestCaseGeneratorRequestBuilder
 {
     /**
      * @var UseCaseResponseTestCaseGeneratorRequestDTO
      */
     private $request;
+
+    public function build(): UseCaseResponseTestCaseGeneratorRequest
+    {
+        return $this->request;
+    }
 
     public function create(): UseCaseResponseTestCaseGeneratorRequestBuilder
     {
@@ -34,10 +36,5 @@ class UseCaseResponseTestCaseGeneratorRequestBuilderImpl implements UseCaseRespo
         $this->request->fields = $fields;
 
         return $this;
-    }
-
-    public function build(): UseCaseResponseTestCaseGeneratorRequest
-    {
-        return $this->request;
     }
 }

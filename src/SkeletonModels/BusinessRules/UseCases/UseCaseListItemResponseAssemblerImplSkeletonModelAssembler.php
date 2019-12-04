@@ -4,9 +4,6 @@ namespace OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases;
 
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 interface UseCaseListItemResponseAssemblerImplSkeletonModelAssembler
 {
     public function create(

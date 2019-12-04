@@ -10,29 +10,12 @@ use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Requestors\GetEntitiesUseCaseRequestSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Requestors\GetEntitiesUseCaseRequestSkeletonModelAssembler;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class GetEntitiesUseCaseRequestGenerator extends AbstractUseCaseGenerator
 {
     /**
      * @var GetEntitiesUseCaseRequestSkeletonModelAssembler
      */
     private $getEntitiesUseCaseRequestSkeletonModelAssembler;
-
-    /**
-     * @param GetEntitiesUseCaseRequestGeneratorRequest $generatorRequest
-     */
-    public function generate(GeneratorRequest $generatorRequest): FileObject
-    {
-        $getEntitiesUseCaseRequestFileObject = $this->buildGetEntitiesUseCaseRequestFileObject(
-            $generatorRequest->getEntityClassName()
-        );
-
-        $this->insertFileObject($getEntitiesUseCaseRequestFileObject);
-
-        return $getEntitiesUseCaseRequestFileObject;
-    }
 
     private function buildGetEntitiesUseCaseRequestFileObject(string $entityClassName): FileObject
     {
@@ -56,17 +39,31 @@ class GetEntitiesUseCaseRequestGenerator extends AbstractUseCaseGenerator
         );
     }
 
+    private function createSkeletonModel(
+        FileObject $getEntitiesUseCaseRequestFileObject
+    ): GetEntitiesUseCaseRequestSkeletonModel {
+        return $this->getEntitiesUseCaseRequestSkeletonModelAssembler->create($getEntitiesUseCaseRequestFileObject);
+    }
+
+    /**
+     * @param GetEntitiesUseCaseRequestGeneratorRequest $generatorRequest
+     */
+    public function generate(GeneratorRequest $generatorRequest): FileObject
+    {
+        $getEntitiesUseCaseRequestFileObject = $this->buildGetEntitiesUseCaseRequestFileObject(
+            $generatorRequest->getEntityClassName()
+        );
+
+        $this->insertFileObject($getEntitiesUseCaseRequestFileObject);
+
+        return $getEntitiesUseCaseRequestFileObject;
+    }
+
     private function generateContent(FileObject $getEntitiesUseCaseRequestFileObject): string
     {
         $skeletonModel = $this->createSkeletonModel($getEntitiesUseCaseRequestFileObject);
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
-    }
-
-    private function createSkeletonModel(
-        FileObject $getEntitiesUseCaseRequestFileObject
-    ): GetEntitiesUseCaseRequestSkeletonModel {
-        return $this->getEntitiesUseCaseRequestSkeletonModelAssembler->create($getEntitiesUseCaseRequestFileObject);
     }
 
     public function setGetEntitiesUseCaseRequestSkeletonModelAssembler(

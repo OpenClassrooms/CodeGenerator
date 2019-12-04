@@ -4,9 +4,6 @@ namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Symfony\Component\Dependenc
 
 use Symfony\Component\DependencyInjection\Container;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class ContainerMock extends Container
 {
     /**

@@ -10,9 +10,6 @@ use OpenClassrooms\CodeGenerator\Tests\TestClassUtil;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Filesystem\Filesystem;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class FileObjectRepositoryTest extends TestCase
 {
     /**
@@ -89,6 +86,16 @@ class FileObjectRepositoryTest extends TestCase
         $this->assertEmpty($actual);
     }
 
+    private function generateFileObject(string $className): FileObject
+    {
+        $fileObject = new FileObject($className);
+        $fileObject->setContent(
+            __DIR__ . '/../Fixtures/Classes/Api/ViewModels/Domain/SubDomain/FunctionalEntityViewModel.php'
+        );
+
+        return $fileObject;
+    }
+
     /**
      * @test
      */
@@ -107,16 +114,6 @@ class FileObjectRepositoryTest extends TestCase
 
         $this->assertNotEmpty($actual);
         $this->assertArrayHasKey($fileObject->getClassName(), $actual);
-    }
-
-    private function generateFileObject(string $className): FileObject
-    {
-        $fileObject = new FileObject($className);
-        $fileObject->setContent(
-            __DIR__ . '/../Fixtures/Classes/Api/ViewModels/Domain/SubDomain/FunctionalEntityViewModel.php'
-        );
-
-        return $fileObject;
     }
 
     protected function setUp(): void

@@ -4,9 +4,6 @@ namespace OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Requestors\I
 
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Requestors\GetEntitiesUseCaseRequestSkeletonModel;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class GetEntitiesUseCaseRequestSkeletonModelImpl extends GetEntitiesUseCaseRequestSkeletonModel
 {
 }

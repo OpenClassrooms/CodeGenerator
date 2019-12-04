@@ -4,9 +4,6 @@ namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\BusinessRule
 
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class UseCaseListItemResponseStubFileObjectStub2 extends FileObject
 {
     const CLASS_NAME = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityListItemResponseStub2';

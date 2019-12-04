@@ -5,15 +5,17 @@ namespace OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\DTO\Re
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\Request\GenericUseCaseRequestGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\Request\GenericUseCaseRequestGeneratorRequestBuilder;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class GenericUseCaseRequestGeneratorRequestBuilderImpl implements GenericUseCaseRequestGeneratorRequestBuilder
 {
     /**
      * @var GenericUseCaseRequestGeneratorRequestDTO
      */
     private $request;
+
+    public function build(): GenericUseCaseRequestGeneratorRequest
+    {
+        return $this->request;
+    }
 
     public function create(): GenericUseCaseRequestGeneratorRequestBuilder
     {
@@ -34,10 +36,5 @@ class GenericUseCaseRequestGeneratorRequestBuilderImpl implements GenericUseCase
         $this->request->useCaseName = $useCaseName;
 
         return $this;
-    }
-
-    public function build(): GenericUseCaseRequestGeneratorRequest
-    {
-        return $this->request;
     }
 }

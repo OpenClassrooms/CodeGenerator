@@ -10,28 +10,12 @@ use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModels\ViewModelListItemImplSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModels\ViewModelListItemImplSkeletonModelAssembler;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class ViewModelListItemImplGenerator extends AbstractViewModelGenerator
 {
     /**
      * @var ViewModelListItemImplSkeletonModelAssembler
      */
     private $viewModelListItemImplSkeletonModelAssembler;
-
-    /**
-     * @param ViewModelListItemImplGeneratorRequest $generatorRequest
-     */
-    public function generate(GeneratorRequest $generatorRequest): FileObject
-    {
-        $viewModelListItemImplFileObject = $this->buildViewModelListItemImplFileObject(
-            $generatorRequest->getUseCaseResponseClassName()
-        );
-        $this->insertFileObject($viewModelListItemImplFileObject);
-
-        return $viewModelListItemImplFileObject;
-    }
 
     private function buildViewModelListItemImplFileObject(string $useCaseResponseClassName): FileObject
     {
@@ -44,6 +28,16 @@ class ViewModelListItemImplGenerator extends AbstractViewModelGenerator
         );
 
         return $viewModelListItemImplFileObject;
+    }
+
+    private function createSkeletonModel(
+        FileObject $viewModelListItemFileObject,
+        FileObject $viewModelListItemImplFileObject
+    ): ViewModelListItemImplSkeletonModel {
+        return $this->viewModelListItemImplSkeletonModelAssembler->create(
+            $viewModelListItemFileObject,
+            $viewModelListItemImplFileObject
+        );
     }
 
     private function createViewModelListItemFileObject(): FileObject
@@ -66,6 +60,19 @@ class ViewModelListItemImplGenerator extends AbstractViewModelGenerator
         );
     }
 
+    /**
+     * @param ViewModelListItemImplGeneratorRequest $generatorRequest
+     */
+    public function generate(GeneratorRequest $generatorRequest): FileObject
+    {
+        $viewModelListItemImplFileObject = $this->buildViewModelListItemImplFileObject(
+            $generatorRequest->getUseCaseResponseClassName()
+        );
+        $this->insertFileObject($viewModelListItemImplFileObject);
+
+        return $viewModelListItemImplFileObject;
+    }
+
     private function generateContent(
         FileObject $viewModelListItemFileObject,
         FileObject $viewModelListItemImplFileObject
@@ -73,16 +80,6 @@ class ViewModelListItemImplGenerator extends AbstractViewModelGenerator
         $skeletonModel = $this->createSkeletonModel($viewModelListItemFileObject, $viewModelListItemImplFileObject);
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
-    }
-
-    private function createSkeletonModel(
-        FileObject $viewModelListItemFileObject,
-        FileObject $viewModelListItemImplFileObject
-    ): ViewModelListItemImplSkeletonModel {
-        return $this->viewModelListItemImplSkeletonModelAssembler->create(
-            $viewModelListItemFileObject,
-            $viewModelListItemImplFileObject
-        );
     }
 
     public function setViewModelListItemImplSkeletonModelAssembler(

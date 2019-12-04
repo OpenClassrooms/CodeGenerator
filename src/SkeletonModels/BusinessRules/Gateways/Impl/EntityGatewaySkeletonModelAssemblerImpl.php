@@ -9,9 +9,6 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Responders\UseCase
 use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 use OpenClassrooms\CodeGenerator\Utility\NameUtility;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class EntityGatewaySkeletonModelAssemblerImpl implements EntityGatewaySkeletonModelAssembler
 {
     use UseCaseResponseClassNameTrait;

@@ -2,9 +2,6 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\GenerateGenerator;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class GenerateGeneratorFileObjectsStub1
 {
     public static $fileObjects = [];

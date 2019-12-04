@@ -5,9 +5,6 @@ namespace OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\DT
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\Request\ViewModelDetailTestCaseGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\Request\ViewModelDetailTestCaseGeneratorRequestBuilder;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class ViewModelDetailTestCaseGeneratorRequestBuilderImpl implements ViewModelDetailTestCaseGeneratorRequestBuilder
 {
     /**

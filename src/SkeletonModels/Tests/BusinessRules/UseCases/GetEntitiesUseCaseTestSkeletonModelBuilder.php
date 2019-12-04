@@ -4,11 +4,10 @@ namespace OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\UseCas
 
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 interface GetEntitiesUseCaseTestSkeletonModelBuilder
 {
+    public function build(): GetEntitiesUseCaseTestSkeletonModel;
+
     public function create(): GetEntitiesUseCaseTestSkeletonModelBuilder;
 
     public function withEntityClassNameFileObject(
@@ -30,10 +29,6 @@ interface GetEntitiesUseCaseTestSkeletonModelBuilder
         FileObject $getEntitiesUseCaseFileObject
     ): GetEntitiesUseCaseTestSkeletonModelBuilder;
 
-    public function withGetEntitiesUseCaseRequestFileObject(
-        FileObject $getEntitiesUseCaseRequestFileObject
-    ): GetEntitiesUseCaseTestSkeletonModelBuilder;
-
     public function withGetEntitiesUseCaseRequestBuilderImplFileObject(
         FileObject $getEntitiesUseCaseRequestBuilderImplFileObject
     ): GetEntitiesUseCaseTestSkeletonModelBuilder;
@@ -42,12 +37,16 @@ interface GetEntitiesUseCaseTestSkeletonModelBuilder
         FileObject $getEntitiesUseCaseRequestDTOFileObject
     ): GetEntitiesUseCaseTestSkeletonModelBuilder;
 
-    public function withInMemoryEntityGatewayFileObject(
-        FileObject $inMemoryEntityGatewayFileObject
+    public function withGetEntitiesUseCaseRequestFileObject(
+        FileObject $getEntitiesUseCaseRequestFileObject
     ): GetEntitiesUseCaseTestSkeletonModelBuilder;
 
-    public function withUseCaseListItemResponseFileObject(
-        FileObject $useCaseListItemResponseFileObject
+    public function withGetEntitiesUseCaseTestFileObject(
+        FileObject $getEntitiesUseCaseTestFileObject
+    ): GetEntitiesUseCaseTestSkeletonModelBuilder;
+
+    public function withInMemoryEntityGatewayFileObject(
+        FileObject $inMemoryEntityGatewayFileObject
     ): GetEntitiesUseCaseTestSkeletonModelBuilder;
 
     public function withUseCaseListItemResponseAssemblerFileObject(
@@ -56,6 +55,10 @@ interface GetEntitiesUseCaseTestSkeletonModelBuilder
 
     public function withUseCaseListItemResponseAssemblerMockFileObject(
         FileObject $useCaseListItemResponseAssemblerMockFileObject
+    ): GetEntitiesUseCaseTestSkeletonModelBuilder;
+
+    public function withUseCaseListItemResponseFileObject(
+        FileObject $useCaseListItemResponseFileObject
     ): GetEntitiesUseCaseTestSkeletonModelBuilder;
 
     /**
@@ -68,10 +71,4 @@ interface GetEntitiesUseCaseTestSkeletonModelBuilder
     public function withUseCaseListItemResponseTestCaseFileObject(
         FileObject $useCaseListItemResponseTestCaseFileObject
     ): GetEntitiesUseCaseTestSkeletonModelBuilder;
-
-    public function withGetEntitiesUseCaseTestFileObject(
-        FileObject $getEntitiesUseCaseTestFileObject
-    ): GetEntitiesUseCaseTestSkeletonModelBuilder;
-
-    public function build(): GetEntitiesUseCaseTestSkeletonModel;
 }

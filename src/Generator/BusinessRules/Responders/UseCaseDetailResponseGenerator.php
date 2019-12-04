@@ -10,30 +10,12 @@ use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Responders\UseCaseDetailResponseSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Responders\UseCaseDetailResponseSkeletonModelAssembler;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class UseCaseDetailResponseGenerator extends AbstractUseCaseGenerator
 {
     /**
      * @var UseCaseDetailResponseSkeletonModelAssembler
      */
     private $useCaseDetailResponseSkeletonModelAssembler;
-
-    /**
-     * @param UseCaseDetailResponseGeneratorRequest $generatorRequest
-     */
-    public function generate(GeneratorRequest $generatorRequest): FileObject
-    {
-        $useCaseDetailResponseFileObject = $this->buildUseCaseDetailResponseFileObject(
-            $generatorRequest->getEntityClassName(),
-            $generatorRequest->getFields()
-        );
-
-        $this->insertFileObject($useCaseDetailResponseFileObject);
-
-        return $useCaseDetailResponseFileObject;
-    }
 
     /**
      * @param string[] $wantedFields
@@ -54,12 +36,13 @@ class UseCaseDetailResponseGenerator extends AbstractUseCaseGenerator
         return $useCaseDetailResponseFileObject;
     }
 
-    private function createUseCaseResponseFileObject(): FileObject
-    {
-        return $this->useCaseResponseFileObjectFactory->create(
-            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE,
-            $this->domain,
-            $this->entity
+    private function createSkeletonModel(
+        FileObject $useCaseResponseFileObject,
+        FileObject $useCaseDetailResponseFileObject
+    ): UseCaseDetailResponseSkeletonModel {
+        return $this->useCaseDetailResponseSkeletonModelAssembler->create(
+            $useCaseResponseFileObject,
+            $useCaseDetailResponseFileObject
         );
     }
 
@@ -72,6 +55,30 @@ class UseCaseDetailResponseGenerator extends AbstractUseCaseGenerator
         );
     }
 
+    private function createUseCaseResponseFileObject(): FileObject
+    {
+        return $this->useCaseResponseFileObjectFactory->create(
+            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE,
+            $this->domain,
+            $this->entity
+        );
+    }
+
+    /**
+     * @param UseCaseDetailResponseGeneratorRequest $generatorRequest
+     */
+    public function generate(GeneratorRequest $generatorRequest): FileObject
+    {
+        $useCaseDetailResponseFileObject = $this->buildUseCaseDetailResponseFileObject(
+            $generatorRequest->getEntityClassName(),
+            $generatorRequest->getFields()
+        );
+
+        $this->insertFileObject($useCaseDetailResponseFileObject);
+
+        return $useCaseDetailResponseFileObject;
+    }
+
     private function generateContent(
         FileObject $useCaseResponseFileObject,
         FileObject $useCaseDetailResponseFileObject
@@ -82,16 +89,6 @@ class UseCaseDetailResponseGenerator extends AbstractUseCaseGenerator
         );
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
-    }
-
-    private function createSkeletonModel(
-        FileObject $useCaseResponseFileObject,
-        FileObject $useCaseDetailResponseFileObject
-    ): UseCaseDetailResponseSkeletonModel {
-        return $this->useCaseDetailResponseSkeletonModelAssembler->create(
-            $useCaseResponseFileObject,
-            $useCaseDetailResponseFileObject
-        );
     }
 
     public function setUseCaseDetailResponseSkeletonModelAssembler(

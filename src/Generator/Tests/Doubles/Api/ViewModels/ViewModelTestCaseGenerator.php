@@ -11,25 +11,12 @@ use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\Request\
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\Api\ViewModels\ViewModelTestCaseSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\Api\ViewModels\ViewModelTestCaseSkeletonModelAssembler;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class ViewModelTestCaseGenerator extends AbstractViewModelGenerator
 {
     /**
      * @var ViewModelTestCaseSkeletonModelAssembler
      */
     private $viewModelTestCaseSkeletonModelAssembler;
-
-    /**
-     * @param ViewModelTestCaseGeneratorRequest $generatorRequest
-     */
-    public function generate(GeneratorRequest $generatorRequest): FileObject
-    {
-        $viewModelTestCaseFileObject = $this->buildTestCaseFileObject($generatorRequest->getUseCaseResponseClassName());
-
-        return $viewModelTestCaseFileObject;
-    }
 
     public function buildTestCaseFileObject(string $useCaseResponseClassName): FileObject
     {
@@ -48,20 +35,20 @@ class ViewModelTestCaseGenerator extends AbstractViewModelGenerator
         return $viewModelTestCaseFileObject;
     }
 
+    private function createSkeletonModel(
+        FileObject $viewModelTestCaseFileObject,
+        FileObject $viewModelFileObject
+    ): ViewModelTestCaseSkeletonModel {
+        return $this->viewModelTestCaseSkeletonModelAssembler->create(
+            $viewModelTestCaseFileObject,
+            $viewModelFileObject
+        );
+    }
+
     protected function createUseCaseResponseCommonFieldTraitFileObject(): FileObject
     {
         return $this->createUseCaseResponseFileObject(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE_COMMON_FIELD_TRAIT,
-            $this->domain,
-            $this->entity,
-            $this->baseNamespace
-        );
-    }
-
-    private function createViewModelTestCaseFileObject(): FileObject
-    {
-        return $this->createViewModelFileObject(
-            ViewModelFileObjectType::API_VIEW_MODEL_TEST_CASE,
             $this->domain,
             $this->entity,
             $this->baseNamespace
@@ -78,6 +65,26 @@ class ViewModelTestCaseGenerator extends AbstractViewModelGenerator
         );
     }
 
+    private function createViewModelTestCaseFileObject(): FileObject
+    {
+        return $this->createViewModelFileObject(
+            ViewModelFileObjectType::API_VIEW_MODEL_TEST_CASE,
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
+        );
+    }
+
+    /**
+     * @param ViewModelTestCaseGeneratorRequest $generatorRequest
+     */
+    public function generate(GeneratorRequest $generatorRequest): FileObject
+    {
+        $viewModelTestCaseFileObject = $this->buildTestCaseFileObject($generatorRequest->getUseCaseResponseClassName());
+
+        return $viewModelTestCaseFileObject;
+    }
+
     public function generateContent(
         FileObject $viewModelTestCaseFileObject,
         FileObject $viewModelFileObject
@@ -85,16 +92,6 @@ class ViewModelTestCaseGenerator extends AbstractViewModelGenerator
         $skeletonModel = $this->createSkeletonModel($viewModelTestCaseFileObject, $viewModelFileObject);
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
-    }
-
-    private function createSkeletonModel(
-        FileObject $viewModelTestCaseFileObject,
-        FileObject $viewModelFileObject
-    ): ViewModelTestCaseSkeletonModel {
-        return $this->viewModelTestCaseSkeletonModelAssembler->create(
-            $viewModelTestCaseFileObject,
-            $viewModelFileObject
-        );
     }
 
     public function setViewModelTestCaseSkeletonModelAssembler(

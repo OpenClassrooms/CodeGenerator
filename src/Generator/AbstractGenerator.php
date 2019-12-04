@@ -11,9 +11,6 @@ use OpenClassrooms\CodeGenerator\Utility\FieldObjectUtility;
 use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 use OpenClassrooms\CodeGenerator\Utility\StubUtility;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 abstract class AbstractGenerator implements Generator
 {
     /**
@@ -41,14 +38,12 @@ abstract class AbstractGenerator implements Generator
      */
     private $templating;
 
-    public function setFileObjectGateway(FileObjectGateway $fileObjectGateway)
+    /**
+     * @return array|FieldObject[]
+     */
+    protected function getProtectedClassFields(string $className): array
     {
-        $this->fileObjectGateway = $fileObjectGateway;
-    }
-
-    public function setTemplating(TemplatingService $templating): void
-    {
-        $this->templating = $templating;
+        return FieldObjectUtility::getProtectedClassFields($className);
     }
 
     /**
@@ -93,14 +88,6 @@ abstract class AbstractGenerator implements Generator
         return $fieldObjects;
     }
 
-    /**
-     * @return array|FieldObject[]
-     */
-    protected function getProtectedClassFields(string $className): array
-    {
-        return FieldObjectUtility::getProtectedClassFields($className);
-    }
-
     protected function initFileObjectParameter(string $entityClassName): void
     {
         [
@@ -122,5 +109,15 @@ abstract class AbstractGenerator implements Generator
     protected function render(string $template, array $parameters): string
     {
         return $this->templating->render($template, $parameters);
+    }
+
+    public function setFileObjectGateway(FileObjectGateway $fileObjectGateway)
+    {
+        $this->fileObjectGateway = $fileObjectGateway;
+    }
+
+    public function setTemplating(TemplatingService $templating): void
+    {
+        $this->templating = $templating;
     }
 }

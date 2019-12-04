@@ -6,9 +6,6 @@ use Carbon\Carbon;
 use Faker\Provider\Base;
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class StubUtility
 {
     private const BOOL         = true;

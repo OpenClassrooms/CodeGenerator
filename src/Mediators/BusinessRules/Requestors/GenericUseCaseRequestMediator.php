@@ -2,9 +2,6 @@
 
 namespace OpenClassrooms\CodeGenerator\Mediators\BusinessRules\Requestors;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 interface GenericUseCaseRequestMediator
 {
     public function mediate(array $args = [], array $options = []): array;

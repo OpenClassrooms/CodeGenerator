@@ -4,9 +4,6 @@ namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Gate
 
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class EntityNotFoundExceptionFileObjectStub1 extends FileObject
 {
     const CLASS_NAME = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gateways\Domain\SubDomain\Exceptions\FunctionalEntityNotFoundException';
@@ -15,6 +12,5 @@ class EntityNotFoundExceptionFileObjectStub1 extends FileObject
     {
         $this->content = __DIR__ . '/../../../../Fixtures/Classes/BusinessRules/Gateways/Domain/SubDomain/Exceptions/FunctionalEntityNotFoundException.php';
         $this->className = self::CLASS_NAME;
-
     }
 }

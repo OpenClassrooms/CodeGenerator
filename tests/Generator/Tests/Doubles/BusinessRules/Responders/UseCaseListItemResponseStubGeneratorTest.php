@@ -16,9 +16,6 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingSer
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityResponse;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class UseCaseListItemResponseStubGeneratorTest extends TestCase
 {
     use FileObjectTestCase;
@@ -54,7 +51,7 @@ class UseCaseListItemResponseStubGeneratorTest extends TestCase
         $this->request = $useCaseListItemResponseStubGeneratorRequestBuilder
             ->create()
             ->withClassName(FunctionalEntityResponse::class)
-            ->withFields(['field1','field2','field3','id'])
+            ->withFields(['field1', 'field2', 'field3', 'id'])
             ->build();
 
         $this->useCaseListItemResponseStubGenerator = new UseCaseListItemResponseStubGenerator();

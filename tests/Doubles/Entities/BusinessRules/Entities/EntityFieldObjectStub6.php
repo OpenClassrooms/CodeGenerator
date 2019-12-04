@@ -10,7 +10,7 @@ class EntityFieldObjectStub6 extends FieldObject
      * @var \DateTimeInterface
      */';
 
-    const NAME = 'updatedAt';
+    const NAME  = 'updatedAt';
 
     const VALUE = null;
 

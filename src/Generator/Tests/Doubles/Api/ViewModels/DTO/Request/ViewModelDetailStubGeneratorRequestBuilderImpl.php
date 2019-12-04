@@ -5,9 +5,6 @@ namespace OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\DT
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\Request\ViewModelDetailStubGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\Request\ViewModelDetailStubGeneratorRequestBuilder;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class ViewModelDetailStubGeneratorRequestBuilderImpl implements ViewModelDetailStubGeneratorRequestBuilder
 {
     /**

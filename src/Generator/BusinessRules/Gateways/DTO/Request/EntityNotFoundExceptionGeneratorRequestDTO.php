@@ -4,9 +4,6 @@ namespace OpenClassrooms\CodeGenerator\Generator\BusinessRules\Gateways\DTO\Requ
 
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Gateways\Request\EntityNotFoundExceptionGeneratorRequest;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class EntityNotFoundExceptionGeneratorRequestDTO implements EntityNotFoundExceptionGeneratorRequest
 {
     /**

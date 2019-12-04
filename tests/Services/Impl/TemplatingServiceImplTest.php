@@ -8,15 +8,48 @@ use OpenClassrooms\CodeGenerator\Services\TemplatingService;
 use OpenClassrooms\CodeGenerator\Tests\TestClassUtil;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class TemplatingServiceImplTest extends TestCase
 {
     /**
      * @var TemplatingService
      */
     private $templateServiceImpl;
+
+    /**
+     * @param string[] $expectedFieldNames
+     * @param string[] $actualFieldNames
+     */
+    private function assertFieldNames(array $expectedFieldNames, array $actualFieldNames): void
+    {
+        foreach ($actualFieldNames as $key => $actualFieldName) {
+            $this->assertEquals($actualFieldName, $expectedFieldNames[$key]);
+        }
+    }
+
+    private function generateFieldObject(string $name, string $type): FieldObject
+    {
+        $fieldObject = new FieldObject($name);
+        $fieldObject->setDocComment(
+            '/**
+     * @var ' . $type . '
+     */'
+        );
+
+        return $fieldObject;
+    }
+
+    /**
+     * @param FieldObject[]
+     */
+    private function getFieldNameList(array $fieldObjects): array
+    {
+        $fieldNames = [];
+        foreach ($fieldObjects as $fieldObject) {
+            $fieldNames[] = $fieldObject->getName();
+        }
+
+        return $fieldNames;
+    }
 
     /**
      * @test
@@ -63,7 +96,6 @@ class TemplatingServiceImplTest extends TestCase
         $actualFieldNames = $this->getFieldNameList($actualFieldObjects);
 
         $this->assertFieldNames($expectedFieldNames, $actualFieldNames);
-
     }
 
     /**
@@ -109,42 +141,6 @@ class TemplatingServiceImplTest extends TestCase
         $actualValue = $twigFunction->getCallable()->__invoke($value);
 
         $this->assertEquals($actualValue, $expected);
-    }
-
-    /**
-     * @param string[] $expectedFieldNames
-     * @param string[] $actualFieldNames
-     */
-    private function assertFieldNames(array $expectedFieldNames, array $actualFieldNames): void
-    {
-        foreach ($actualFieldNames as $key => $actualFieldName) {
-            $this->assertEquals($actualFieldName, $expectedFieldNames[$key]);
-        }
-    }
-
-    private function generateFieldObject(string $name, string $type): FieldObject
-    {
-        $fieldObject = new FieldObject($name);
-        $fieldObject->setDocComment(
-            '/**
-     * @var ' . $type . '
-     */'
-        );
-
-        return $fieldObject;
-    }
-
-    /**
-     * @param FieldObject[]
-     */
-    private function getFieldNameList(array $fieldObjects): array
-    {
-        $fieldNames = [];
-        foreach ($fieldObjects as $fieldObject) {
-            $fieldNames[] = $fieldObject->getName();
-        }
-
-        return $fieldNames;
     }
 
     protected function setUp(): void

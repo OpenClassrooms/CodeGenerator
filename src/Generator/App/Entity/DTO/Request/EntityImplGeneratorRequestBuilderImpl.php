@@ -5,15 +5,17 @@ namespace OpenClassrooms\CodeGenerator\Generator\App\Entity\DTO\Request;
 use OpenClassrooms\CodeGenerator\Generator\App\Entity\Request\EntityImplGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\App\Entity\Request\EntityImplGeneratorRequestBuilder;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class EntityImplGeneratorRequestBuilderImpl implements EntityImplGeneratorRequestBuilder
 {
     /**
      * @var EntityImplGeneratorRequestDTO
      */
     private $request;
+
+    public function build(): EntityImplGeneratorRequest
+    {
+        return $this->request;
+    }
 
     public function create(): EntityImplGeneratorRequestBuilder
     {
@@ -27,10 +29,5 @@ class EntityImplGeneratorRequestBuilderImpl implements EntityImplGeneratorReques
         $this->request->className = $className;
 
         return $this;
-    }
-
-    public function build(): EntityImplGeneratorRequest
-    {
-        return $this->request;
     }
 }

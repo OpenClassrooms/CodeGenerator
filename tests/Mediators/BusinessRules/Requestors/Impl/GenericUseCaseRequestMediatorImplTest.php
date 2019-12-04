@@ -18,9 +18,6 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Generator\GeneratorMock;
 use OpenClassrooms\CodeGenerator\Tests\Mediators\FlushedFileObjectTestCase;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class GenericUseCaseRequestMediatorImplTest extends TestCase
 {
     use FlushedFileObjectTestCase;
@@ -38,23 +35,6 @@ class GenericUseCaseRequestMediatorImplTest extends TestCase
      * @var array
      */
     private $options;
-
-    /**
-     * @test
-     */
-    public function generateGenericUseCaseRequest_withoutTest(): void
-    {
-        $this->options[Options::NO_TEST] = null;
-        $fileObjects = $this->mediator->mediate(
-            [
-                Args::DOMAIN   => self::DOMAIN,
-                Args::USE_CASE => self::GENERIC_USE_CASE,
-            ],
-            $this->options
-        );
-
-        $this->assertFlushedFileObject($fileObjects);
-    }
 
     /**
      * @test
@@ -90,6 +70,23 @@ class GenericUseCaseRequestMediatorImplTest extends TestCase
             ],
             $this->options
 
+        );
+
+        $this->assertFlushedFileObject($fileObjects);
+    }
+
+    /**
+     * @test
+     */
+    public function generateGenericUseCaseRequest_withoutTest(): void
+    {
+        $this->options[Options::NO_TEST] = null;
+        $fileObjects = $this->mediator->mediate(
+            [
+                Args::DOMAIN   => self::DOMAIN,
+                Args::USE_CASE => self::GENERIC_USE_CASE,
+            ],
+            $this->options
         );
 
         $this->assertFlushedFileObject($fileObjects);

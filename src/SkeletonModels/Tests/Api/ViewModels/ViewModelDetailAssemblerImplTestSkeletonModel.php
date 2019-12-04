@@ -5,9 +5,6 @@ namespace OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Api\ViewModels;
 use OpenClassrooms\CodeGenerator\Entities\Object\FieldObject;
 use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 abstract class ViewModelDetailAssemblerImplTestSkeletonModel extends AbstractSkeletonModel
 {
     public $templatePath = 'Tests/Api/ViewModels/Impl/ViewModelDetailAssemblerImplTest.php.twig';

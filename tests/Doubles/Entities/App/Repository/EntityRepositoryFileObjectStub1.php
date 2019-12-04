@@ -4,9 +4,6 @@ namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\App\Repository;
 
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class EntityRepositoryFileObjectStub1 extends FileObject
 {
     const CLASS_NAME = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\App\Repository\Domain\SubDomain\FunctionalEntityRepository';
@@ -15,6 +12,5 @@ class EntityRepositoryFileObjectStub1 extends FileObject
     {
         $this->content = __DIR__ . '/../../../../Fixtures/Classes/App/Repository/Domain/SubDomain/FunctionalEntityRepository.php';
         $this->className = self::CLASS_NAME;
-
     }
 }

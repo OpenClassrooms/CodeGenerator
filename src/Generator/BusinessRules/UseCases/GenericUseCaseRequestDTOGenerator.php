@@ -10,30 +10,12 @@ use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\GenericUseCaseRequestDTOSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\GenericUseCaseRequestDTOSkeletonModelAssembler;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class GenericUseCaseRequestDTOGenerator extends AbstractUseCaseGenerator
 {
     /**
      * @var GenericUseCaseRequestDTOSkeletonModelAssembler
      */
     private $genericUseCaseRequestDTOSkeletonModelAssembler;
-
-    /**
-     * @param GenericUseCaseRequestDTOGeneratorRequest $generatorRequest
-     */
-    public function generate(GeneratorRequest $generatorRequest): FileObject
-    {
-        $genericUseCaseRequestDTOFileObject = $this->buildGenericUseCaseRequestDTOFileObject(
-            $generatorRequest->getDomain(),
-            $generatorRequest->getUseCaseName()
-        );
-
-        $this->insertFileObject($genericUseCaseRequestDTOFileObject);
-
-        return $genericUseCaseRequestDTOFileObject;
-    }
 
     private function buildGenericUseCaseRequestDTOFileObject(string $domain, string $useCaseName): FileObject
     {
@@ -66,6 +48,31 @@ class GenericUseCaseRequestDTOGenerator extends AbstractUseCaseGenerator
         );
     }
 
+    private function createSkeletonModel(
+        FileObject $genericUseCaseRequestDTOFileObject,
+        FileObject $genericUseCaseRequestFileObject
+    ): GenericUseCaseRequestDTOSkeletonModel {
+        return $this->genericUseCaseRequestDTOSkeletonModelAssembler->create(
+            $genericUseCaseRequestDTOFileObject,
+            $genericUseCaseRequestFileObject
+        );
+    }
+
+    /**
+     * @param GenericUseCaseRequestDTOGeneratorRequest $generatorRequest
+     */
+    public function generate(GeneratorRequest $generatorRequest): FileObject
+    {
+        $genericUseCaseRequestDTOFileObject = $this->buildGenericUseCaseRequestDTOFileObject(
+            $generatorRequest->getDomain(),
+            $generatorRequest->getUseCaseName()
+        );
+
+        $this->insertFileObject($genericUseCaseRequestDTOFileObject);
+
+        return $genericUseCaseRequestDTOFileObject;
+    }
+
     private function generateContent(
         FileObject $genericUseCaseRequestDTOFileObject,
         FileObject $genericUseCaseRequestFileObject
@@ -76,16 +83,6 @@ class GenericUseCaseRequestDTOGenerator extends AbstractUseCaseGenerator
         );
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
-    }
-
-    private function createSkeletonModel(
-        FileObject $genericUseCaseRequestDTOFileObject,
-        FileObject $genericUseCaseRequestFileObject
-    ): GenericUseCaseRequestDTOSkeletonModel {
-        return $this->genericUseCaseRequestDTOSkeletonModelAssembler->create(
-            $genericUseCaseRequestDTOFileObject,
-            $genericUseCaseRequestFileObject
-        );
     }
 
     public function setGenericUseCaseRequestDTOSkeletonModelAssembler(

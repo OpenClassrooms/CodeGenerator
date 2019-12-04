@@ -4,9 +4,6 @@ namespace OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\Imp
 
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\UseCaseDetailResponseAssemblerImplSkeletonModel;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class UseCaseDetailResponseAssemblerImplSkeletonModelImpl extends UseCaseDetailResponseAssemblerImplSkeletonModel
 {
 }

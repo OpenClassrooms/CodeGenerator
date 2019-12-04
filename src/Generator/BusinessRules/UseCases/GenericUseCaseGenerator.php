@@ -11,30 +11,12 @@ use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\GenericUseCaseSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\GenericUseCaseSkeletonModelAssembler;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class GenericUseCaseGenerator extends AbstractUseCaseGenerator
 {
     /**
      * @var GenericUseCaseSkeletonModelAssembler
      */
     private $genericUseCaseSkeletonModelAssembler;
-
-    /**
-     * @param GenericUseCaseGeneratorRequest $generatorRequest
-     */
-    public function generate(GeneratorRequest $generatorRequest): FileObject
-    {
-        $genericUseCaseFileObject = $this->buildGenericUseCaseFileObject(
-            $generatorRequest->getDomain(),
-            $generatorRequest->getUseCaseName()
-        );
-
-        $this->insertFileObject($genericUseCaseFileObject);
-
-        return $genericUseCaseFileObject;
-    }
 
     private function buildGenericUseCaseFileObject(string $domain, string $useCaseName): FileObject
     {
@@ -66,15 +48,6 @@ class GenericUseCaseGenerator extends AbstractUseCaseGenerator
         );
     }
 
-    private function generateContent(
-        FileObject $genericUseCaseFileObject,
-        FileObject $genericUseCaseRequestFileObject
-    ): string {
-        $skeletonModel = $this->createSkeletonModel($genericUseCaseFileObject, $genericUseCaseRequestFileObject);
-
-        return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
-    }
-
     private function createSkeletonModel(
         FileObject $genericUseCaseFileObject,
         FileObject $genericUseCaseRequestFileObject
@@ -83,6 +56,30 @@ class GenericUseCaseGenerator extends AbstractUseCaseGenerator
             $genericUseCaseFileObject,
             $genericUseCaseRequestFileObject
         );
+    }
+
+    /**
+     * @param GenericUseCaseGeneratorRequest $generatorRequest
+     */
+    public function generate(GeneratorRequest $generatorRequest): FileObject
+    {
+        $genericUseCaseFileObject = $this->buildGenericUseCaseFileObject(
+            $generatorRequest->getDomain(),
+            $generatorRequest->getUseCaseName()
+        );
+
+        $this->insertFileObject($genericUseCaseFileObject);
+
+        return $genericUseCaseFileObject;
+    }
+
+    private function generateContent(
+        FileObject $genericUseCaseFileObject,
+        FileObject $genericUseCaseRequestFileObject
+    ): string {
+        $skeletonModel = $this->createSkeletonModel($genericUseCaseFileObject, $genericUseCaseRequestFileObject);
+
+        return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
     }
 
     public function setGenericUseCaseSkeletonModelAssembler(

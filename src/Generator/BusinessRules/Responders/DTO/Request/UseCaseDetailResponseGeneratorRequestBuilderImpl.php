@@ -5,15 +5,17 @@ namespace OpenClassrooms\CodeGenerator\Generator\BusinessRules\Responders\DTO\Re
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Responders\Request\UseCaseDetailResponseGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Responders\Request\UseCaseDetailResponseGeneratorRequestBuilder;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class UseCaseDetailResponseGeneratorRequestBuilderImpl implements UseCaseDetailResponseGeneratorRequestBuilder
 {
     /**
      * @var UseCaseDetailResponseGeneratorRequestDTO
      */
     private $request;
+
+    public function build(): UseCaseDetailResponseGeneratorRequest
+    {
+        return $this->request;
+    }
 
     public function create(): UseCaseDetailResponseGeneratorRequestBuilder
     {
@@ -37,10 +39,5 @@ class UseCaseDetailResponseGeneratorRequestBuilderImpl implements UseCaseDetailR
         $this->request->fields = $fields;
 
         return $this;
-    }
-
-    public function build(): UseCaseDetailResponseGeneratorRequest
-    {
-        return $this->request;
     }
 }

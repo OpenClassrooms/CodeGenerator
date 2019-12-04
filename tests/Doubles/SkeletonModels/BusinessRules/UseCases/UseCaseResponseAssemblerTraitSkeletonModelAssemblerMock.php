@@ -4,9 +4,6 @@ namespace OpenClassrooms\CodeGenerator\Tests\Doubles\SkeletonModels\BusinessRule
 
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\Impl\UseCaseResponseAssemblerTraitSkeletonModelAssemblerImpl;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class UseCaseResponseAssemblerTraitSkeletonModelAssemblerMock extends UseCaseResponseAssemblerTraitSkeletonModelAssemblerImpl
 {
 }

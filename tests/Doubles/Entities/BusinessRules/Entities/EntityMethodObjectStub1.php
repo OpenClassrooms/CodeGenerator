@@ -9,13 +9,13 @@ class EntityMethodObjectStub1 extends MethodObject
 {
     const DOC_COMMENT = null;
 
-    const NAME = 'getId';
+    const NAME     = 'getId';
 
     const NULLABLE = false;
 
     const RETURN_TYPE = 'int';
 
-    const VALUE = null;
+    const VALUE    = null;
 
     protected $docComment = self::DOC_COMMENT;
 

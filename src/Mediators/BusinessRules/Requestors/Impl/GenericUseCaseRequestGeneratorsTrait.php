@@ -9,9 +9,6 @@ use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\Request\Gene
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\Request\GenericUseCaseRequestGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Generator\Generator;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 trait GenericUseCaseRequestGeneratorsTrait
 {
     /** @var GenericUseCaseRequestBuilderGenerator */
@@ -25,6 +22,24 @@ trait GenericUseCaseRequestGeneratorsTrait
 
     /** @var GenericUseCaseRequestGeneratorRequestBuilder */
     private $genericUseCaseRequestGeneratorRequestBuilder;
+
+    protected function generateGenericUseCaseRequest(string $domain, string $useCaseName): FileObject
+    {
+        return $this->genericUseCaseRequestGenerator->generate(
+            $this->genericUseCaseRequestGeneratorRequestBuilder->create()->withDomain($domain)
+                ->withUseCaseName($useCaseName)
+                ->build()
+        );
+    }
+
+    protected function generateGenericUseCaseRequestBuilder(string $domain, string $useCaseName): FileObject
+    {
+        return $this->genericUseCaseRequestBuilderGenerator->generate(
+            $this->genericUseCaseRequestBuilderGeneratorRequestBuilder->create()->withDomain($domain)
+                ->withUseCaseName($useCaseName)
+                ->build()
+        );
+    }
 
     public function setGenericUseCaseRequestBuilderGenerator(
         Generator $genericUseCaseRequestBuilderGenerator
@@ -48,23 +63,5 @@ trait GenericUseCaseRequestGeneratorsTrait
         GenericUseCaseRequestGeneratorRequestBuilder $genericUseCaseRequestGeneratorRequestBuilder
     ): void {
         $this->genericUseCaseRequestGeneratorRequestBuilder = $genericUseCaseRequestGeneratorRequestBuilder;
-    }
-
-    protected function generateGenericUseCaseRequestBuilder(string $domain, string $useCaseName): FileObject
-    {
-        return $this->genericUseCaseRequestBuilderGenerator->generate(
-            $this->genericUseCaseRequestBuilderGeneratorRequestBuilder->create()->withDomain($domain)
-                ->withUseCaseName($useCaseName)
-                ->build()
-        );
-    }
-
-    protected function generateGenericUseCaseRequest(string $domain, string $useCaseName): FileObject
-    {
-        return $this->genericUseCaseRequestGenerator->generate(
-            $this->genericUseCaseRequestGeneratorRequestBuilder->create()->withDomain($domain)
-                ->withUseCaseName($useCaseName)
-                ->build()
-        );
     }
 }

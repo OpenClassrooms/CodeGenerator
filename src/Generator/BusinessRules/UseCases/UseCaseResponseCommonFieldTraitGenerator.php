@@ -11,30 +11,12 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\UseCaseRe
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\UseCaseResponseCommonFieldTraitSkeletonModelAssembler;
 use OpenClassrooms\CodeGenerator\Utility\FieldUtility;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class UseCaseResponseCommonFieldTraitGenerator extends AbstractUseCaseGenerator
 {
     /**
      * @var UseCaseResponseCommonFieldTraitSkeletonModelAssembler
      */
     private $useCaseResponseCommonFieldTraitSkeletonModelAssembler;
-
-    /**
-     * @param UseCaseResponseCommonFieldTraitGeneratorRequest $generatorRequest
-     */
-    public function generate(GeneratorRequest $generatorRequest): FileObject
-    {
-        $useCaseResponseCommonFieldTraitFileObject = $this->buildUseCaseResponseCommonFieldTraitFileObject(
-            $generatorRequest->getEntityClassName(),
-            $generatorRequest->getFields()
-        );
-
-        $this->insertFileObject($useCaseResponseCommonFieldTraitFileObject);
-
-        return $useCaseResponseCommonFieldTraitFileObject;
-    }
 
     private function buildUseCaseResponseCommonFieldTraitFileObject(
         string $entityClassName,
@@ -57,13 +39,13 @@ class UseCaseResponseCommonFieldTraitGenerator extends AbstractUseCaseGenerator
         return $useCaseResponseCommonFieldTraitFileObject;
     }
 
-    private function createUseCaseResponseFileObject(): FileObject
-    {
-        return $this->useCaseResponseFileObjectFactory->create(
-            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE,
-            $this->domain,
-            $this->entity,
-            $this->baseNamespace
+    private function createSkeletonModel(
+        FileObject $useCaseResponseFileObject,
+        FileObject $useCaseResponseCommonFieldTraitFileObject
+    ): UseCaseResponseCommonFieldTraitSkeletonModel {
+        return $this->useCaseResponseCommonFieldTraitSkeletonModelAssembler->create(
+            $useCaseResponseFileObject,
+            $useCaseResponseCommonFieldTraitFileObject
         );
     }
 
@@ -77,6 +59,31 @@ class UseCaseResponseCommonFieldTraitGenerator extends AbstractUseCaseGenerator
         );
     }
 
+    private function createUseCaseResponseFileObject(): FileObject
+    {
+        return $this->useCaseResponseFileObjectFactory->create(
+            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE,
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
+        );
+    }
+
+    /**
+     * @param UseCaseResponseCommonFieldTraitGeneratorRequest $generatorRequest
+     */
+    public function generate(GeneratorRequest $generatorRequest): FileObject
+    {
+        $useCaseResponseCommonFieldTraitFileObject = $this->buildUseCaseResponseCommonFieldTraitFileObject(
+            $generatorRequest->getEntityClassName(),
+            $generatorRequest->getFields()
+        );
+
+        $this->insertFileObject($useCaseResponseCommonFieldTraitFileObject);
+
+        return $useCaseResponseCommonFieldTraitFileObject;
+    }
+
     private function generateContent(
         FileObject $useCaseResponseFileObject,
         FileObject $useCaseResponseCommonFieldTraitFileObject
@@ -87,16 +94,6 @@ class UseCaseResponseCommonFieldTraitGenerator extends AbstractUseCaseGenerator
         );
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
-    }
-
-    private function createSkeletonModel(
-        FileObject $useCaseResponseFileObject,
-        FileObject $useCaseResponseCommonFieldTraitFileObject
-    ): UseCaseResponseCommonFieldTraitSkeletonModel {
-        return $this->useCaseResponseCommonFieldTraitSkeletonModelAssembler->create(
-            $useCaseResponseFileObject,
-            $useCaseResponseCommonFieldTraitFileObject
-        );
     }
 
     public function setUseCaseResponseCommonFieldTraitSkeletonModelAssembler(

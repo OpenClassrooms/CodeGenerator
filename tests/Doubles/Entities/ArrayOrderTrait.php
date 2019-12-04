@@ -5,11 +5,17 @@ namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Entities;
 use OpenClassrooms\CodeGenerator\Entities\Object\FieldObject;
 use OpenClassrooms\CodeGenerator\Entities\Object\MethodObject;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 trait ArrayOrderTrait
 {
+    /**
+     * @param FieldObject|MethodObject $a
+     * @param FieldObject|MethodObject $b
+     */
+    private function orderArrayObjectsByName($a, $b): int
+    {
+        return strcmp($a->getName(), $b->getName());
+    }
+
     /**
      * @param FieldObject[]|MethodObject[] $expectedObjects
      * @param FieldObject[]|MethodObject[] $actualObjects
@@ -20,14 +26,5 @@ trait ArrayOrderTrait
         usort($expectedObjects, [$this, "orderArrayObjectsByName"]);
 
         return [$expectedObjects, $actualObjects];
-    }
-
-    /**
-     * @param FieldObject|MethodObject $a
-     * @param FieldObject|MethodObject $b
-     */
-    private function orderArrayObjectsByName($a, $b): int
-    {
-        return strcmp($a->getName(), $b->getName());
     }
 }

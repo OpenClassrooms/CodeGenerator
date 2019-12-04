@@ -4,9 +4,6 @@ namespace OpenClassrooms\CodeGenerator\Entities\Object;
 
 use OpenClassrooms\CodeGenerator\Utility\MethodUtility;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class MethodObject
 {
     /**
@@ -39,30 +36,25 @@ class MethodObject
         $this->name = $name;
     }
 
+    public function addArgument(FieldObject $argument): void
+    {
+        $this->arguments[] = $argument;
+    }
+
+    /**
+     * @return FieldObject[]
+     */
+    public function getArguments(): array
+    {
+        return $this->arguments;
+    }
+
     /**
      * @return string|bool
      */
     public function getDocComment()
     {
         return $this->docComment;
-    }
-
-    /**
-     * @param string|bool
-     */
-    public function setDocComment($docComment): void
-    {
-        $this->docComment = $docComment;
-    }
-
-    public function getReturnType(): string
-    {
-        return $this->returnType;
-    }
-
-    public function setReturnType(string $returnType): void
-    {
-        $this->returnType = $returnType;
     }
 
     public function getFieldName(): string
@@ -75,6 +67,11 @@ class MethodObject
         return $this->name;
     }
 
+    public function getReturnType(): string
+    {
+        return $this->returnType;
+    }
+
     public function isDateType(): bool
     {
         return (bool) preg_match('/Date/', $this->returnType);
@@ -85,21 +82,21 @@ class MethodObject
         return $this->nullable;
     }
 
+    /**
+     * @param string|bool
+     */
+    public function setDocComment($docComment): void
+    {
+        $this->docComment = $docComment;
+    }
+
     public function setNullable(bool $nullable): void
     {
         $this->nullable = $nullable;
     }
 
-    /**
-     * @return FieldObject[]
-     */
-    public function getArguments(): array
+    public function setReturnType(string $returnType): void
     {
-        return $this->arguments;
-    }
-
-    public function addArgument(FieldObject $argument): void
-    {
-        $this->arguments[] = $argument;
+        $this->returnType = $returnType;
     }
 }

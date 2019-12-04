@@ -6,9 +6,6 @@ use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\SkeletonModels\App\Entity\EntityImplSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\App\Entity\EntityImplSkeletonModelAssembler;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class EntityImplSkeletonModelAssemblerImpl implements EntityImplSkeletonModelAssembler
 {
     public function create(FileObject $entityImplFileObject, FileObject $entityFileObject): EntityImplSkeletonModel

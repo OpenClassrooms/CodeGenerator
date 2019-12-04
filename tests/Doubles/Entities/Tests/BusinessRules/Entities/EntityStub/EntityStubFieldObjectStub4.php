@@ -13,7 +13,7 @@ class EntityStubFieldObjectStub4 extends FieldObject
      * @var bool
      */';
 
-    const NAME = 'field3';
+    const NAME  = 'field3';
 
     const VALUE = true;
 

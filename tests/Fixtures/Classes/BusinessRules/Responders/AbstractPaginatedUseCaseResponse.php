@@ -2,9 +2,6 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 abstract class AbstractPaginatedUseCaseResponse implements PaginatedUseCaseResponse
 {
     /**
@@ -43,22 +40,12 @@ abstract class AbstractPaginatedUseCaseResponse implements PaginatedUseCaseRespo
         return $this->items;
     }
 
-    public function setItems($items): void
-    {
-        $this->items = $items;
-    }
-
     /**
      * @return int
      */
     public function getItemsPerPage(): array
     {
         return $this->itemsPerPage;
-    }
-
-    public function setItemsPerPage($itemsPerPage): void
-    {
-        $this->itemsPerPage = $itemsPerPage;
     }
 
     /**
@@ -77,9 +64,12 @@ abstract class AbstractPaginatedUseCaseResponse implements PaginatedUseCaseRespo
         return $this->page;
     }
 
-    public function setPage($page): void
+    /**
+     * @inheritdoc
+     */
+    public function getTotalItems(): int
     {
-        $this->page = $page;
+        return $this->totalItems;
     }
 
     /**
@@ -95,12 +85,19 @@ abstract class AbstractPaginatedUseCaseResponse implements PaginatedUseCaseRespo
 
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function getTotalItems(): int
+    public function setItems($items): void
     {
-        return $this->totalItems;
+        $this->items = $items;
+    }
+
+    public function setItemsPerPage($itemsPerPage): void
+    {
+        $this->itemsPerPage = $itemsPerPage;
+    }
+
+    public function setPage($page): void
+    {
+        $this->page = $page;
     }
 
     public function setTotalItems($totalItems): void

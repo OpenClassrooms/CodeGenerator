@@ -4,9 +4,6 @@ namespace OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\BusinessRule
 
 use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 abstract class UseCaseDetailResponseAssemblerMockSkeletonModel extends AbstractSkeletonModel
 {
     public $templatePath = 'Tests/Doubles/BusinessRules/Responders/UseCaseDetailResponseAssemblerMock.php.twig';

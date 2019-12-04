@@ -4,9 +4,6 @@ namespace OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Requ
 
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\GetEntityUseCaseRequestBuilderImplGeneratorRequest;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class GetEntityUseCaseRequestBuilderImplGeneratorRequestDTO implements GetEntityUseCaseRequestBuilderImplGeneratorRequest
 {
     /**

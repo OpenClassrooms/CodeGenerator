@@ -6,11 +6,17 @@ use OpenClassrooms\CodeGenerator\Entities\Object\ConstObject;
 use OpenClassrooms\CodeGenerator\Entities\Object\FieldObject;
 use PHPUnit\Framework\Assert as Assert;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 trait FieldObjectTestCase
 {
+    private function assertFieldObject(FieldObject $expected, FieldObject $actual)
+    {
+        $this->assertValue($expected, $actual);
+        Assert::assertEquals($expected->getDocComment(), $actual->getDocComment());
+        Assert::assertEquals($expected->getType(), $actual->getType());
+        Assert::assertEquals($expected->getName(), $actual->getName());
+        Assert::assertEquals($expected->getScope(), $actual->getScope());
+    }
+
     /**
      * @param FieldObject[] $expectedFieldObjects
      * @param FieldObject[] $actualFieldObjects
@@ -25,15 +31,6 @@ trait FieldObjectTestCase
         foreach ($expectedFieldObjects as $key => $expectedFieldObject) {
             $this->assertFieldObject($expectedFieldObject, $actualFieldObjects[$key]);
         }
-    }
-
-    private function assertFieldObject(FieldObject $expected, FieldObject $actual)
-    {
-        $this->assertValue($expected, $actual);
-        Assert::assertEquals($expected->getDocComment(), $actual->getDocComment());
-        Assert::assertEquals($expected->getType(), $actual->getType());
-        Assert::assertEquals($expected->getName(), $actual->getName());
-        Assert::assertEquals($expected->getScope(), $actual->getScope());
     }
 
     private function assertValue(FieldObject $expected, FieldObject $actual): void

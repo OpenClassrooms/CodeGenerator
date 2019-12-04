@@ -2,11 +2,13 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 interface PaginatedUseCaseResponseBuilder
 {
+    /**
+     * @return PaginatedUseCaseResponse
+     */
+    public function build();
+
     /**
      * @return PaginatedUseCaseResponseBuilder
      */
@@ -31,9 +33,4 @@ interface PaginatedUseCaseResponseBuilder
      * @return PaginatedUseCaseResponseBuilder
      */
     public function withTotalItems($totalItems);
-
-    /**
-     * @return PaginatedUseCaseResponse
-     */
-    public function build();
 }

@@ -2,9 +2,6 @@
 
 namespace OpenClassrooms\CodeGenerator\Entities\Type;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 final class GenerateGeneratorFileObjectType
 {
     const FILE_OBJECT_STUB               = 'FILE_OBJECT_STUB';

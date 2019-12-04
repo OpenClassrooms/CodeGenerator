@@ -8,9 +8,6 @@ use OpenClassrooms\CodeGenerator\Entities\Type\UseCaseFileObjectType;
 use OpenClassrooms\CodeGenerator\Entities\UseCaseFileObjectFactory;
 use OpenClassrooms\CodeGenerator\Utility\StringUtility;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class UseCaseFileObjectFactoryImpl extends AbstractFileObjectFactory implements UseCaseFileObjectFactory
 {
     public function create(string $type, string $domain, string $entity, string $baseNamespace = null): FileObject

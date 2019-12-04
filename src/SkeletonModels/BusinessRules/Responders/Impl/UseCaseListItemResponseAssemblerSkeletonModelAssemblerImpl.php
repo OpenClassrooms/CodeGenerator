@@ -8,9 +8,6 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Responders\UseCase
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Responders\UseCaseResponseClassNameTrait;
 use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class UseCaseListItemResponseAssemblerSkeletonModelAssemblerImpl implements UseCaseListItemResponseAssemblerSkeletonModelAssembler
 {
     use UseCaseResponseClassNameTrait;

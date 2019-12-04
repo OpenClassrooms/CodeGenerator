@@ -174,15 +174,6 @@ class ViewModelFileObjectFactoryImplTest extends TestCase
         ];
     }
 
-    /**
-     * @test
-     * @expectedException \InvalidArgumentException
-     */
-    public function InvalidTye_Create_ThrowException(): void
-    {
-        $this->factory->create('INVALID_TYPE', self::class, '');
-    }
-
     private static function getEntityName(): string
     {
         return TestClassUtil::getShortClassName(FunctionalEntityViewModel::class);
@@ -330,6 +321,15 @@ class ViewModelFileObjectFactoryImplTest extends TestCase
             FixturesConfig::STUB_NAMESPACE . FixturesConfig::API_DIR . 'ViewModels\Domain\SubDomain\\' . self::getEntityName(
             ) . 'TestCase'
         );
+    }
+
+    /**
+     * @test
+     * @expectedException \InvalidArgumentException
+     */
+    public function InvalidTye_Create_ThrowException(): void
+    {
+        $this->factory->create('INVALID_TYPE', self::class, '');
     }
 
     protected function setUp(): void

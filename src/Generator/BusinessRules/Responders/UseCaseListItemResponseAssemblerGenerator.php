@@ -10,15 +10,42 @@ use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Responders\UseCaseListItemResponseAssemblerSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Responders\UseCaseListItemResponseAssemblerSkeletonModelAssembler;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class UseCaseListItemResponseAssemblerGenerator extends AbstractUseCaseGenerator
 {
     /**
      * @var UseCaseListItemResponseAssemblerSkeletonModelAssembler
      */
     private $useCaseListItemResponseAssemblerSkeletonModelAssembler;
+
+    private function buildUseCaseListItemResponseAssemblerFileObject(string $entityClassName): FileObject
+    {
+        $this->initFileObjectParameter($entityClassName);
+        $useCaseListItemResponseAssemblerFileObject = $this->createUseCaseListItemResponseAssemblerFileObject();
+
+        $useCaseListItemResponseAssemblerFileObject->setContent(
+            $this->generateContent($useCaseListItemResponseAssemblerFileObject)
+        );
+
+        return $useCaseListItemResponseAssemblerFileObject;
+    }
+
+    private function createSkeletonModel(
+        FileObject $useCaseListItemResponseAssemblerFileObject
+    ): UseCaseListItemResponseAssemblerSkeletonModel {
+        return $this->useCaseListItemResponseAssemblerSkeletonModelAssembler->create(
+            $useCaseListItemResponseAssemblerFileObject
+        );
+    }
+
+    private function createUseCaseListItemResponseAssemblerFileObject(): FileObject
+    {
+        return $this->useCaseResponseFileObjectFactory->create(
+            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE_ASSEMBLER,
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
+        );
+    }
 
     /**
      * @param UseCaseListItemResponseAssemblerGeneratorRequest $generatorRequest
@@ -34,28 +61,6 @@ class UseCaseListItemResponseAssemblerGenerator extends AbstractUseCaseGenerator
         return $useCaseListItemResponseAssemblerFileObject;
     }
 
-    private function buildUseCaseListItemResponseAssemblerFileObject(string $entityClassName): FileObject
-    {
-        $this->initFileObjectParameter($entityClassName);
-        $useCaseListItemResponseAssemblerFileObject = $this->createUseCaseListItemResponseAssemblerFileObject();
-
-        $useCaseListItemResponseAssemblerFileObject->setContent(
-            $this->generateContent($useCaseListItemResponseAssemblerFileObject)
-        );
-
-        return $useCaseListItemResponseAssemblerFileObject;
-    }
-
-    private function createUseCaseListItemResponseAssemblerFileObject(): FileObject
-    {
-        return $this->useCaseResponseFileObjectFactory->create(
-            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE_ASSEMBLER,
-            $this->domain,
-            $this->entity,
-            $this->baseNamespace
-        );
-    }
-
     private function generateContent(
         FileObject $useCaseListItemResponseAssemblerFileObject
     ): string {
@@ -64,14 +69,6 @@ class UseCaseListItemResponseAssemblerGenerator extends AbstractUseCaseGenerator
         );
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
-    }
-
-    private function createSkeletonModel(
-        FileObject $useCaseListItemResponseAssemblerFileObject
-    ): UseCaseListItemResponseAssemblerSkeletonModel {
-        return $this->useCaseListItemResponseAssemblerSkeletonModelAssembler->create(
-            $useCaseListItemResponseAssemblerFileObject
-        );
     }
 
     public function setUseCaseListItemResponseAssemblerSkeletonModelAssembler(

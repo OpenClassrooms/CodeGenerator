@@ -4,9 +4,6 @@ namespace OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases;
 
 use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 abstract class UseCaseListItemResponseAssemblerImplSkeletonModel extends AbstractSkeletonModel
 {
     public $entityClassName;

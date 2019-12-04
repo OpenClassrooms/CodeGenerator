@@ -16,9 +16,6 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingSer
 use OpenClassrooms\CodeGenerator\Tests\Doubles\SkeletonModels\GenerateGenerator\GenerateGeneratorGeneratorSkeletonModelAssemblerMock;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class GenerateGeneratorGeneratorTest extends TestCase
 {
     use FileObjectTestCase;

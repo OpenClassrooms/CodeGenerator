@@ -7,9 +7,6 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Api\ViewModels\ViewModelLi
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Api\ViewModels\ViewModelListItemAssemblerImplTestSkeletonModelBuilder;
 use OpenClassrooms\CodeGenerator\Utility\TestCaseUtility;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class ViewModelListItemAssemblerImplTestSkeletonModelBuilderImpl implements ViewModelListItemAssemblerImplTestSkeletonModelBuilder
 {
     /**

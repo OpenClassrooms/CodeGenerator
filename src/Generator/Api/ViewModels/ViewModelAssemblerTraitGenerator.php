@@ -11,28 +11,12 @@ use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModels\ViewModelAssemblerTraitSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModels\ViewModelAssemblerTraitSkeletonModelAssembler;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class ViewModelAssemblerTraitGenerator extends AbstractViewModelGenerator
 {
     /**
      * @var ViewModelAssemblerTraitSkeletonModelAssembler
      */
     private $viewModelAssemblerTraitSkeletonModelAssembler;
-
-    /**
-     * @param ViewModelAssemblerTraitGeneratorRequest $generatorRequest
-     */
-    public function generate(GeneratorRequest $generatorRequest): FileObject
-    {
-        $viewModelAssemblerTraitFileObject = $this->buildViewModelAssemblerTraitFileObject(
-            $generatorRequest->getUseCaseResponseClassName()
-        );
-        $this->insertFileObject($viewModelAssemblerTraitFileObject);
-
-        return $viewModelAssemblerTraitFileObject;
-    }
 
     private function buildViewModelAssemblerTraitFileObject(string $useCaseResponseClassName): FileObject
     {
@@ -50,6 +34,18 @@ class ViewModelAssemblerTraitGenerator extends AbstractViewModelGenerator
         );
 
         return $viewModelAssemblerTraitFileObject;
+    }
+
+    private function createSkeletonModel(
+        FileObject $viewModelAssemblerTraitFileObject,
+        FileObject $useCaseResponseFileObject,
+        FileObject $viewModelFileObject
+    ): ViewModelAssemblerTraitSkeletonModel {
+        return $this->viewModelAssemblerTraitSkeletonModelAssembler->create(
+            $viewModelAssemblerTraitFileObject,
+            $useCaseResponseFileObject,
+            $viewModelFileObject
+        );
     }
 
     private function createUseCaseResponseCommonFieldTraitFileObject(): FileObject
@@ -92,6 +88,19 @@ class ViewModelAssemblerTraitGenerator extends AbstractViewModelGenerator
         );
     }
 
+    /**
+     * @param ViewModelAssemblerTraitGeneratorRequest $generatorRequest
+     */
+    public function generate(GeneratorRequest $generatorRequest): FileObject
+    {
+        $viewModelAssemblerTraitFileObject = $this->buildViewModelAssemblerTraitFileObject(
+            $generatorRequest->getUseCaseResponseClassName()
+        );
+        $this->insertFileObject($viewModelAssemblerTraitFileObject);
+
+        return $viewModelAssemblerTraitFileObject;
+    }
+
     private function generateContent(
         FileObject $viewModelAssemblerTraitFileObject,
         FileObject $useCaseResponseFileObject,
@@ -104,18 +113,6 @@ class ViewModelAssemblerTraitGenerator extends AbstractViewModelGenerator
         );
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
-    }
-
-    private function createSkeletonModel(
-        FileObject $viewModelAssemblerTraitFileObject,
-        FileObject $useCaseResponseFileObject,
-        FileObject $viewModelFileObject
-    ): ViewModelAssemblerTraitSkeletonModel {
-        return $this->viewModelAssemblerTraitSkeletonModelAssembler->create(
-            $viewModelAssemblerTraitFileObject,
-            $useCaseResponseFileObject,
-            $viewModelFileObject
-        );
     }
 
     public function setViewModelAssemblerTraitSkeletonModelAssembler(

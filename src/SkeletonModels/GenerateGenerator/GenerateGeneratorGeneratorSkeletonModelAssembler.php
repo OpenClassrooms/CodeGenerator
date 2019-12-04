@@ -2,9 +2,6 @@
 
 namespace OpenClassrooms\CodeGenerator\SkeletonModels\GenerateGenerator;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 interface GenerateGeneratorGeneratorSkeletonModelAssembler
 {
     public function create(

@@ -7,26 +7,8 @@ use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\Utility\ConstUtility;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class ConstUtilityTest extends TestCase
 {
-    /**
-     * @test
-     *
-     * @dataProvider generateStubConstObjectDataProvider
-     */
-    public function generateStubConstObject_ReturnFieldObject(
-        FieldObject $fieldObjectValue,
-        FileObject $fileObject,
-        $expectedValue
-    ): void {
-        $actualConstObjects = ConstUtility::generateStubConstObject($fieldObjectValue, $fileObject);
-        $this->assertNotNull($actualConstObjects->getValue());
-        $this->assertType($expectedValue, $actualConstObjects);
-    }
-
     /**
      * @param mixed $expectedValue
      * @param mixed $actual
@@ -38,22 +20,6 @@ class ConstUtilityTest extends TestCase
         } else {
             $this->assertInternalType($expectedValue, $actual->getValue());
         }
-    }
-
-    public function generateStubConstObjectDataProvider(): array
-    {
-        $fileObject = new FileObject(self::class);
-
-        return [
-            [$this->buildFieldObject('id', 'int'), $fileObject, 'int'],
-            [$this->buildFieldObject('field1', 'bool'), $fileObject, 'bool'],
-            [$this->buildFieldObject('field2', 'string'), $fileObject, 'string'],
-            [$this->buildFieldObject('field3', 'string[]'), $fileObject, 'array'],
-            [$this->buildFieldObject('field4', 'float'), $fileObject, 'float'],
-            [$this->buildFieldObject('field5', 'array'), $fileObject, 'array'],
-            [$this->buildFieldObject('field6', '\DateTimeImmutable'), $fileObject, 'string'],
-            [$this->buildFieldObject('field6', '\DateTimeInterface'), $fileObject, 'string'],
-        ];
     }
 
     /**
@@ -104,5 +70,36 @@ class ConstUtilityTest extends TestCase
 
         $fieldObject = $this->buildFieldObject('test', 'not exist');
         ConstUtility::generateStubConstObject($fieldObject, $fileObject);
+    }
+
+    /**
+     * @test
+     *
+     * @dataProvider generateStubConstObjectDataProvider
+     */
+    public function generateStubConstObject_ReturnFieldObject(
+        FieldObject $fieldObjectValue,
+        FileObject $fileObject,
+        $expectedValue
+    ): void {
+        $actualConstObjects = ConstUtility::generateStubConstObject($fieldObjectValue, $fileObject);
+        $this->assertNotNull($actualConstObjects->getValue());
+        $this->assertType($expectedValue, $actualConstObjects);
+    }
+
+    public function generateStubConstObjectDataProvider(): array
+    {
+        $fileObject = new FileObject(self::class);
+
+        return [
+            [$this->buildFieldObject('id', 'int'), $fileObject, 'int'],
+            [$this->buildFieldObject('field1', 'bool'), $fileObject, 'bool'],
+            [$this->buildFieldObject('field2', 'string'), $fileObject, 'string'],
+            [$this->buildFieldObject('field3', 'string[]'), $fileObject, 'array'],
+            [$this->buildFieldObject('field4', 'float'), $fileObject, 'float'],
+            [$this->buildFieldObject('field5', 'array'), $fileObject, 'array'],
+            [$this->buildFieldObject('field6', '\DateTimeImmutable'), $fileObject, 'string'],
+            [$this->buildFieldObject('field6', '\DateTimeInterface'), $fileObject, 'string'],
+        ];
     }
 }

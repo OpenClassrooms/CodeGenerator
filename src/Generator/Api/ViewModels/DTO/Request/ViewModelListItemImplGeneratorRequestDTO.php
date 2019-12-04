@@ -4,9 +4,6 @@ namespace OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\DTO\Request;
 
 use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\Request\ViewModelListItemImplGeneratorRequest;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class ViewModelListItemImplGeneratorRequestDTO implements ViewModelListItemImplGeneratorRequest
 {
     /**

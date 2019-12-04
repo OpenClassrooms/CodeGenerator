@@ -18,9 +18,6 @@ use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Entities\D
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\FixturesConfig;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class GetEntityUseCaseGeneratorTest extends TestCase
 {
     use FileObjectTestCase;

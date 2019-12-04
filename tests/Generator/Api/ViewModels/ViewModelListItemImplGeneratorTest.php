@@ -12,9 +12,6 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileO
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityResponse;
 use OpenClassrooms\CodeGenerator\Tests\Generator\Api\ViewModels\AbstractViewModelGeneratorTestCase;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class ViewModelListItemImplGeneratorTest extends AbstractViewModelGeneratorTestCase
 {
     use FileObjectTestCase;

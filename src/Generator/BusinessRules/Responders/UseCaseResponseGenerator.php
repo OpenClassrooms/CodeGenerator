@@ -11,30 +11,12 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Responders\UseCase
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Responders\UseCaseResponseSkeletonModelAssembler;
 use OpenClassrooms\CodeGenerator\Utility\FieldUtility;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class UseCaseResponseGenerator extends AbstractUseCaseGenerator
 {
     /**
      * @var UseCaseResponseSkeletonModelAssembler
      */
     private $useCaseResponseSkeletonModelAssembler;
-
-    /**
-     * @param UseCaseResponseGeneratorRequest $generatorRequest
-     */
-    public function generate(GeneratorRequest $generatorRequest): FileObject
-    {
-        $useCaseResponseFileObject = $this->buildUseCaseResponseFileObject(
-            $generatorRequest->getEntityClassName(),
-            $generatorRequest->getFields()
-        );
-
-        $this->insertFileObject($useCaseResponseFileObject);
-
-        return $useCaseResponseFileObject;
-    }
 
     /**
      * @param string[] $wantedFields
@@ -51,6 +33,12 @@ class UseCaseResponseGenerator extends AbstractUseCaseGenerator
         return $useCaseResponseFileObject;
     }
 
+    private function createSkeletonModel(
+        FileObject $useCaseResponseFileObject
+    ): UseCaseResponseSkeletonModel {
+        return $this->useCaseResponseSkeletonModelAssembler->create($useCaseResponseFileObject);
+    }
+
     private function createUseCaseResponseFileObject(): FileObject
     {
         return $this->useCaseResponseFileObjectFactory->create(
@@ -60,17 +48,26 @@ class UseCaseResponseGenerator extends AbstractUseCaseGenerator
         );
     }
 
+    /**
+     * @param UseCaseResponseGeneratorRequest $generatorRequest
+     */
+    public function generate(GeneratorRequest $generatorRequest): FileObject
+    {
+        $useCaseResponseFileObject = $this->buildUseCaseResponseFileObject(
+            $generatorRequest->getEntityClassName(),
+            $generatorRequest->getFields()
+        );
+
+        $this->insertFileObject($useCaseResponseFileObject);
+
+        return $useCaseResponseFileObject;
+    }
+
     private function generateContent(FileObject $useCaseResponseFileObject): string
     {
         $skeletonModel = $this->createSkeletonModel($useCaseResponseFileObject);
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
-    }
-
-    private function createSkeletonModel(
-        FileObject $useCaseResponseFileObject
-    ): UseCaseResponseSkeletonModel {
-        return $this->useCaseResponseSkeletonModelAssembler->create($useCaseResponseFileObject);
     }
 
     public function setUseCaseResponseSkeletonModelAssembler(

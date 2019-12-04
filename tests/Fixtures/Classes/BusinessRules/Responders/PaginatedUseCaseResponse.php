@@ -2,9 +2,6 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 interface PaginatedUseCaseResponse extends UseCaseResponse, \IteratorAggregate, \Countable
 {
     /**

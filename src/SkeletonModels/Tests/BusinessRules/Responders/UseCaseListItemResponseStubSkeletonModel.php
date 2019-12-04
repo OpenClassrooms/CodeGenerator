@@ -4,9 +4,6 @@ namespace OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\Respon
 
 use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 abstract class UseCaseListItemResponseStubSkeletonModel extends AbstractSkeletonModel
 {
     public $templatePath = 'Tests/Doubles/BusinessRules/Responders/UseCaseListItemResponseStub.php.twig';

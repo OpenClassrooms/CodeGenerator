@@ -6,21 +6,8 @@ use Carbon\Carbon;
 use OpenClassrooms\CodeGenerator\Utility\StubUtility;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class StubUtilityTest extends TestCase
 {
-    /**
-     * @test
-     * @dataProvider internalTypeAndInstanceDataProvider
-     */
-    public function createFakeValueReturnData(string $type, string $fieldName, string $entityName, $expectedValue)
-    {
-        $actual = StubUtility::createFakeValue($type, $fieldName, $entityName);
-        $this->assertType($expectedValue, $actual);
-    }
-
     private function assertType($expectedValue, $actual): void
     {
         if ($this->isValidDateFormat($actual)) {
@@ -31,11 +18,13 @@ class StubUtilityTest extends TestCase
     }
 
     /**
-     * @param mixed $value
+     * @test
+     * @dataProvider internalTypeAndInstanceDataProvider
      */
-    private function isValidDateFormat($value): bool
+    public function createFakeValueReturnData(string $type, string $fieldName, string $entityName, $expectedValue)
     {
-        return is_string($value) && (preg_match("/\d{4}\-\d{2}-\d{2}/", $value));
+        $actual = StubUtility::createFakeValue($type, $fieldName, $entityName);
+        $this->assertType($expectedValue, $actual);
     }
 
     /**
@@ -60,5 +49,13 @@ class StubUtilityTest extends TestCase
             ['\DateTimeInterface', 'field1', 'FunctionalEntity', new \DateTime()],
             ['Object', 'field1', 'FunctionalEntity', ''],
         ];
+    }
+
+    /**
+     * @param mixed $value
+     */
+    private function isValidDateFormat($value): bool
+    {
+        return is_string($value) && (preg_match("/\d{4}\-\d{2}-\d{2}/", $value));
     }
 }

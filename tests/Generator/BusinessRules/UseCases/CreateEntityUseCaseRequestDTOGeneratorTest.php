@@ -12,10 +12,6 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileO
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingServiceMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\SkeletonModels\BusinessRules\UseCases\CreateEntityUseCaseRequestDTOSkeletonModelAssemblerMock;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Entities\Domain\SubDomain\FunctionalEntity;
-use OpenClassrooms\CodeGenerator\Utility\Impl\FieldObjectUtilityContext;
-use OpenClassrooms\CodeGenerator\Utility\Impl\FieldObjectUtilityGetFieldsUpdatable;
-use OpenClassrooms\CodeGenerator\Utility\Impl\MethodUtilityContext;
-use OpenClassrooms\CodeGenerator\Utility\Impl\MethodUtilityGetAccessorsWithoutId;
 use PHPUnit\Framework\TestCase;
 
 class CreateEntityUseCaseRequestDTOGeneratorTest extends TestCase
@@ -48,7 +44,8 @@ class CreateEntityUseCaseRequestDTOGeneratorTest extends TestCase
 
     protected function setUp(): void
     {
-        $createEntityUseCaseRequestDTOGeneratorRequestBuilderImpl = new CreateEntityUseCaseRequestDTOGeneratorRequestBuilderImpl();
+        $createEntityUseCaseRequestDTOGeneratorRequestBuilderImpl = new CreateEntityUseCaseRequestDTOGeneratorRequestBuilderImpl(
+        );
         $this->request = $createEntityUseCaseRequestDTOGeneratorRequestBuilderImpl
             ->create()
             ->withEntityClassName(FunctionalEntity::class)

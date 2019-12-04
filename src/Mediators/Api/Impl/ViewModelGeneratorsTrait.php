@@ -47,9 +47,6 @@ use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\ViewMode
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\ViewModelListItemTestCaseGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\ViewModelTestCaseGenerator;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 trait ViewModelGeneratorsTrait
 {
     /** @var EntityImplGenerator */
@@ -177,6 +174,166 @@ trait ViewModelGeneratorsTrait
 
     /** @var ViewModelTestCaseGeneratorRequestBuilder */
     private $viewModelTestCaseGeneratorRequestBuilder;
+
+    protected function generateEntityImplGenerator(string $className): FileObject
+    {
+        return $this->entityImplGenerator->generate(
+            $this->entityImplGeneratorRequestBuilder->create()->withClassName($className)->build()
+        );
+    }
+
+    protected function generateEntityStub(string $className): FileObject
+    {
+        return $this->entityStubGenerator->generate(
+            $this->entityStubGeneratorRequestBuilder->create()->withClassName($className)->build()
+        );
+    }
+
+    protected function generateUseCaseDetailResponseStub(string $className): FileObject
+    {
+        return $this->useCaseDetailResponseStubGenerator->generate(
+            $this->useCaseDetailResponseStubGeneratorRequestBuilder
+                ->create()
+                ->withResponseClassName($className)
+                ->build()
+        );
+    }
+
+    protected function generateUseCaseListItemResponseStub(string $className): FileObject
+    {
+        return $this->useCaseListItemResponseStubGenerator->generate(
+            $this->useCaseListItemResponseStubGeneratorRequestBuilder
+                ->create()
+                ->withClassName($className)
+                ->withFields([])
+                ->build()
+        );
+    }
+
+    protected function generateViewModel(string $className): FileObject
+    {
+        return $this->viewModelGenerator->generate(
+            $this->viewModelGeneratorRequestBuilder->create()->withClassName($className)->build()
+        );
+    }
+
+    protected function generateViewModelAssemblerTraitGenerator(string $className): FileObject
+    {
+        return $this->viewModelAssemblerTraitGenerator->generate(
+            $this->viewModelAssemblerTraitGeneratorRequestBuilder->create()->withClassName($className)->build()
+        );
+    }
+
+    protected function generateViewModelDetail(string $className): FileObject
+    {
+        return $this->viewModelDetailGenerator->generate(
+            $this->viewModelDetailGeneratorRequestBuilder->create()->withClassName($className)->build()
+        );
+    }
+
+    protected function generateViewModelDetailAssemblerGenerator(string $className): FileObject
+    {
+        return $this->viewModelDetailAssemblerGenerator->generate(
+            $this->viewModelDetailAssemblerGeneratorRequestBuilder->create()->withClassName($className)->build()
+        );
+    }
+
+    protected function generateViewModelDetailAssemblerImplGenerator(string $className): FileObject
+    {
+        return $this->viewModelDetailAssemblerImplGenerator->generate(
+            $this->viewModelDetailAssemblerImplGeneratorRequestBuilder->create()->withClassName($className)->build()
+        );
+    }
+
+    protected function generateViewModelDetailAssemblerImplTest(string $className): FileObject
+    {
+        return $this->viewModelDetailAssemblerImplTestGenerator->generate(
+            $this->viewModelDetailAssemblerImplTestGeneratorRequestBuilder
+                ->create()
+                ->withResponseClassName($className)
+                ->build()
+        );
+    }
+
+    protected function generateViewModelDetailImpl(string $className): FileObject
+    {
+        return $this->viewModelDetailImplGenerator->generate(
+            $this->viewModelDetailImplGeneratorRequestBuilder->create()->withClassName($className)->build()
+        );
+    }
+
+    protected function generateViewModelDetailStub(string $className): FileObject
+    {
+        return $this->viewModelDetailStubGenerator->generate(
+            $this->viewModelDetailStubGeneratorRequestBuilder->create()->withClassName($className)->build()
+        );
+    }
+
+    protected function generateViewModelDetailTestCase(string $className): FileObject
+    {
+        return $this->viewModelDetailTestCaseGenerator->generate(
+            $this->viewModelDetailTestCaseGeneratorRequestBuilder->create()->withClassName($className)->build()
+        );
+    }
+
+    protected function generateViewModelListItem(string $className): FileObject
+    {
+        return $this->viewModelListItemGenerator->generate(
+            $this->viewModelListItemGeneratorRequestBuilder->create()->withClassName($className)->build()
+        );
+    }
+
+    protected function generateViewModelListItemAssemblerGenerator(string $className): FileObject
+    {
+        return $this->viewModelListItemAssemblerGenerator->generate(
+            $this->viewModelListItemAssemblerGeneratorRequestBuilder->create()->withClassName($className)->build()
+        );
+    }
+
+    protected function generateViewModelListItemAssemblerImplGenerator(string $className): FileObject
+    {
+        return $this->viewModelListItemAssemblerImplGenerator->generate(
+            $this->viewModelListItemAssemblerImplGeneratorRequestBuilder->create()->withClassName($className)->build()
+        );
+    }
+
+    protected function generateViewModelListItemAssemblerImplTest(string $className): FileObject
+    {
+        return $this->viewModelListItemAssemblerImplTestGenerator->generate(
+            $this->viewModelListItemAssemblerImplTestGeneratorRequestBuilder
+                ->create()
+                ->withResponseClassName($className)
+                ->build()
+        );
+    }
+
+    protected function generateViewModelListItemImpl(string $className): FileObject
+    {
+        return $this->viewModelListItemImplGenerator->generate(
+            $this->viewModelListItemImplGeneratorRequestBuilder->create()->withClassName($className)->build()
+        );
+    }
+
+    protected function generateViewModelListItemStub(string $className): FileObject
+    {
+        return $this->viewModelListItemStubGenerator->generate(
+            $this->viewModelListItemStubGeneratorRequestBuilder->create()->withClassName($className)->build()
+        );
+    }
+
+    protected function generateViewModelListItemTestCase(string $className): FileObject
+    {
+        return $this->viewModelListItemTestCaseGenerator->generate(
+            $this->viewModelListItemTestCaseGeneratorRequestBuilder->create()->withClassName($className)->build()
+        );
+    }
+
+    protected function generateViewModelTestCase(string $className): FileObject
+    {
+        return $this->viewModelTestCaseGenerator->generate(
+            $this->viewModelTestCaseGeneratorRequestBuilder->create()->withClassName($className)->build()
+        );
+    }
 
     public function setEntityImplGenerator($entityImplGenerator): void
     {
@@ -414,165 +571,5 @@ trait ViewModelGeneratorsTrait
         ViewModelTestCaseGeneratorRequestBuilder $viewModelTestCaseGeneratorRequestBuilder
     ): void {
         $this->viewModelTestCaseGeneratorRequestBuilder = $viewModelTestCaseGeneratorRequestBuilder;
-    }
-
-    protected function generateEntityImplGenerator(string $className): FileObject
-    {
-        return $this->entityImplGenerator->generate(
-            $this->entityImplGeneratorRequestBuilder->create()->withClassName($className)->build()
-        );
-    }
-
-    protected function generateEntityStub(string $className): FileObject
-    {
-        return $this->entityStubGenerator->generate(
-            $this->entityStubGeneratorRequestBuilder->create()->withClassName($className)->build()
-        );
-    }
-
-    protected function generateUseCaseDetailResponseStub(string $className): FileObject
-    {
-        return $this->useCaseDetailResponseStubGenerator->generate(
-            $this->useCaseDetailResponseStubGeneratorRequestBuilder
-                ->create()
-                ->withResponseClassName($className)
-                ->build()
-        );
-    }
-
-    protected function generateUseCaseListItemResponseStub(string $className): FileObject
-    {
-        return $this->useCaseListItemResponseStubGenerator->generate(
-            $this->useCaseListItemResponseStubGeneratorRequestBuilder
-                ->create()
-                ->withClassName($className)
-                ->withFields([])
-                ->build()
-        );
-    }
-
-    protected function generateViewModel(string $className): FileObject
-    {
-        return $this->viewModelGenerator->generate(
-            $this->viewModelGeneratorRequestBuilder->create()->withClassName($className)->build()
-        );
-    }
-
-    protected function generateViewModelAssemblerTraitGenerator(string $className): FileObject
-    {
-        return $this->viewModelAssemblerTraitGenerator->generate(
-            $this->viewModelAssemblerTraitGeneratorRequestBuilder->create()->withClassName($className)->build()
-        );
-    }
-
-    protected function generateViewModelDetail(string $className): FileObject
-    {
-        return $this->viewModelDetailGenerator->generate(
-            $this->viewModelDetailGeneratorRequestBuilder->create()->withClassName($className)->build()
-        );
-    }
-
-    protected function generateViewModelDetailAssemblerGenerator(string $className): FileObject
-    {
-        return $this->viewModelDetailAssemblerGenerator->generate(
-            $this->viewModelDetailAssemblerGeneratorRequestBuilder->create()->withClassName($className)->build()
-        );
-    }
-
-    protected function generateViewModelDetailAssemblerImplGenerator(string $className): FileObject
-    {
-        return $this->viewModelDetailAssemblerImplGenerator->generate(
-            $this->viewModelDetailAssemblerImplGeneratorRequestBuilder->create()->withClassName($className)->build()
-        );
-    }
-
-    protected function generateViewModelDetailAssemblerImplTest(string $className): FileObject
-    {
-        return $this->viewModelDetailAssemblerImplTestGenerator->generate(
-            $this->viewModelDetailAssemblerImplTestGeneratorRequestBuilder
-                ->create()
-                ->withResponseClassName($className)
-                ->build()
-        );
-    }
-
-    protected function generateViewModelDetailImpl(string $className): FileObject
-    {
-        return $this->viewModelDetailImplGenerator->generate(
-            $this->viewModelDetailImplGeneratorRequestBuilder->create()->withClassName($className)->build()
-        );
-    }
-
-    protected function generateViewModelDetailStub(string $className): FileObject
-    {
-        return $this->viewModelDetailStubGenerator->generate(
-            $this->viewModelDetailStubGeneratorRequestBuilder->create()->withClassName($className)->build()
-        );
-    }
-
-    protected function generateViewModelDetailTestCase(string $className): FileObject
-    {
-        return $this->viewModelDetailTestCaseGenerator->generate(
-            $this->viewModelDetailTestCaseGeneratorRequestBuilder->create()->withClassName($className)->build()
-        );
-    }
-
-    protected function generateViewModelListItem(string $className): FileObject
-    {
-        return $this->viewModelListItemGenerator->generate(
-            $this->viewModelListItemGeneratorRequestBuilder->create()->withClassName($className)->build()
-        );
-    }
-
-    protected function generateViewModelListItemAssemblerGenerator(string $className): FileObject
-    {
-        return $this->viewModelListItemAssemblerGenerator->generate(
-            $this->viewModelListItemAssemblerGeneratorRequestBuilder->create()->withClassName($className)->build()
-        );
-    }
-
-    protected function generateViewModelListItemAssemblerImplGenerator(string $className): FileObject
-    {
-        return $this->viewModelListItemAssemblerImplGenerator->generate(
-            $this->viewModelListItemAssemblerImplGeneratorRequestBuilder->create()->withClassName($className)->build()
-        );
-    }
-
-    protected function generateViewModelListItemAssemblerImplTest(string $className): FileObject
-    {
-        return $this->viewModelListItemAssemblerImplTestGenerator->generate(
-            $this->viewModelListItemAssemblerImplTestGeneratorRequestBuilder
-                ->create()
-                ->withResponseClassName($className)
-                ->build()
-        );
-    }
-
-    protected function generateViewModelListItemImpl(string $className): FileObject
-    {
-        return $this->viewModelListItemImplGenerator->generate(
-            $this->viewModelListItemImplGeneratorRequestBuilder->create()->withClassName($className)->build()
-        );
-    }
-
-    protected function generateViewModelListItemStub(string $className): FileObject
-    {
-        return $this->viewModelListItemStubGenerator->generate(
-            $this->viewModelListItemStubGeneratorRequestBuilder->create()->withClassName($className)->build()
-        );
-    }
-
-    protected function generateViewModelListItemTestCase(string $className): FileObject
-    {
-        return $this->viewModelListItemTestCaseGenerator->generate(
-            $this->viewModelListItemTestCaseGeneratorRequestBuilder->create()->withClassName($className)->build()
-        );
-    }
-
-    protected function generateViewModelTestCase(string $className): FileObject
-    {
-        return $this->viewModelTestCaseGenerator->generate(
-            $this->viewModelTestCaseGeneratorRequestBuilder->create()->withClassName($className)->build()
-        );
     }
 }

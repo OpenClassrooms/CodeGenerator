@@ -2,9 +2,6 @@
 
 namespace OpenClassrooms\CodeGenerator\Entities\Type;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 final class UseCaseResponseFileObjectType
 {
     public const BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE                   = 'BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE';

@@ -5,9 +5,6 @@ namespace OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\Entiti
 use OpenClassrooms\CodeGenerator\Entities\Object\ConstObject;
 use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 abstract class EntityStubSkeletonModel extends AbstractSkeletonModel
 {
     /**

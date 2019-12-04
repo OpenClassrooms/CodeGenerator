@@ -11,9 +11,6 @@ use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 use OpenClassrooms\CodeGenerator\Utility\TestCaseUtility;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 final class TestCaseUtilityTest extends TestCase
 {
     public function getTestCaseAssertMethodDataProvider(): Generator

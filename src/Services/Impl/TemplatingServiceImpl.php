@@ -11,9 +11,6 @@ use Twig\Loader\FilesystemLoader;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class TemplatingServiceImpl extends Environment implements TemplatingService
 {
     /**
@@ -40,6 +37,25 @@ class TemplatingServiceImpl extends Environment implements TemplatingService
         $this->addFunction($this->lineBreak());
         $this->addFunction($this->printValue());
         $this->addFunction($this->printReturnType());
+    }
+
+    private function getSortIdFirstFilter()
+    {
+        return new TwigFilter(
+            'sortIdFirst',
+            function (array $classFields) {
+                $arrayFields = $classFields;
+                foreach ($arrayFields as $key => $field) {
+                    /** @var FieldObject $field */
+                    if ('id' === $field->getName()) {
+                        unset($arrayFields[$key]);
+                        array_unshift($arrayFields, $field);
+                    }
+                }
+
+                return $arrayFields;
+            }
+        );
     }
 
     private function getSortNameByAlphaFilter()
@@ -85,25 +101,6 @@ class TemplatingServiceImpl extends Environment implements TemplatingService
         };
     }
 
-    private function getSortIdFirstFilter()
-    {
-        return new TwigFilter(
-            'sortIdFirst',
-            function (array $classFields) {
-                $arrayFields = $classFields;
-                foreach ($arrayFields as $key => $field) {
-                    /** @var FieldObject $field */
-                    if ('id' === $field->getName()) {
-                        unset($arrayFields[$key]);
-                        array_unshift($arrayFields, $field);
-                    }
-                }
-
-                return $arrayFields;
-            }
-        );
-    }
-
     private function lineBreak()
     {
         return new TwigFunction(
@@ -117,6 +114,21 @@ class TemplatingServiceImpl extends Environment implements TemplatingService
                 }
 
                 return $key < (count($fields) - 1) - $objects;
+            }
+        );
+    }
+
+    private function printReturnType()
+    {
+        return new TwigFunction(
+            'printReturnType',
+            function ($value, $isNullable) {
+                $returnType = $value;
+                if (in_array($value, ['DateTime', 'DateTimeImmutable', 'DateTimeInterface'])) {
+                    $returnType = '\\' . $value;
+                }
+
+                return $isNullable ? '?' . $returnType : $returnType;
             }
         );
     }
@@ -136,21 +148,6 @@ class TemplatingServiceImpl extends Environment implements TemplatingService
                     default:
                         return $value;
                 }
-            }
-        );
-    }
-
-    private function printReturnType()
-    {
-        return new TwigFunction(
-            'printReturnType',
-            function ($value, $isNullable) {
-                $returnType = $value;
-                if (in_array($value, ['DateTime', 'DateTimeImmutable', 'DateTimeInterface'])) {
-                    $returnType = '\\' . $value;
-                }
-
-                return $isNullable ? '?' . $returnType : $returnType;
             }
         );
     }

@@ -4,9 +4,6 @@ namespace OpenClassrooms\CodeGenerator\Generator\BusinessRules\Responders\DTO\Re
 
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Responders\Request\UseCaseListItemResponseAssemblerGeneratorRequest;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class UseCaseListItemResponseAssemblerGeneratorRequestDTO implements UseCaseListItemResponseAssemblerGeneratorRequest
 {
     /**

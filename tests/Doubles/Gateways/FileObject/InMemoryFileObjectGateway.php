@@ -5,9 +5,6 @@ namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject;
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\Gateways\FileObject\FileObjectGateway;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class InMemoryFileObjectGateway implements FileObjectGateway
 {
     /**
@@ -25,9 +22,9 @@ class InMemoryFileObjectGateway implements FileObjectGateway
         self::$flushedFileObjects = [];
     }
 
-    public function insert(FileObject $fileObject)
+    public function find(string $classname): ?FileObject
     {
-        self::$fileObjects[$fileObject->getId()] = $fileObject;
+        return self::$fileObjects[$classname] ?? null;
     }
 
     public function findAll(): array
@@ -41,8 +38,8 @@ class InMemoryFileObjectGateway implements FileObjectGateway
         self::$fileObjects = [];
     }
 
-    public function find(string $classname): ?FileObject
+    public function insert(FileObject $fileObject)
     {
-        return self::$fileObjects[$classname] ?? null;
+        self::$fileObjects[$fileObject->getId()] = $fileObject;
     }
 }

@@ -4,9 +4,6 @@ namespace OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\BusinessRules\Res
 
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\BusinessRules\Responders\Request\UseCaseListItemResponseTestCaseGeneratorRequest;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class UseCaseListItemResponseTestCaseGeneratorRequestDTO implements UseCaseListItemResponseTestCaseGeneratorRequest
 {
     /**

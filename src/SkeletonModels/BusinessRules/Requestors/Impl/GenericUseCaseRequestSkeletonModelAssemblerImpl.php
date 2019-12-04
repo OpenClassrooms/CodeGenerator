@@ -8,9 +8,6 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Requestors\Generic
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCaseClassNameTrait;
 use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class GenericUseCaseRequestSkeletonModelAssemblerImpl implements GenericUseCaseRequestSkeletonModelAssembler
 {
     use UseCaseClassNameTrait;

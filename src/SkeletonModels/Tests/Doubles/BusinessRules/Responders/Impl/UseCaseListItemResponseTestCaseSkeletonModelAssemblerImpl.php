@@ -7,9 +7,6 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\BusinessRules\Resp
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\BusinessRules\Responders\UseCaseListItemResponseTestCaseSkeletonModelAssembler;
 use OpenClassrooms\CodeGenerator\Utility\StringUtility;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class UseCaseListItemResponseTestCaseSkeletonModelAssemblerImpl implements UseCaseListItemResponseTestCaseSkeletonModelAssembler
 {
     public function create(

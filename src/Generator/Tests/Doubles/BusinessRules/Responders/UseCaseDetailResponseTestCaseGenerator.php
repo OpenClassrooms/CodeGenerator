@@ -10,30 +10,12 @@ use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\BusinessRules\Responder
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\BusinessRules\Responders\UseCaseDetailResponseTestCaseSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\BusinessRules\Responders\UseCaseDetailResponseTestCaseSkeletonModelAssembler;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class UseCaseDetailResponseTestCaseGenerator extends AbstractUseCaseGenerator
 {
     /**
      * @var UseCaseDetailResponseTestCaseSkeletonModelAssembler
      */
     private $useCaseDetailResponseTestCaseSkeletonModelAssembler;
-
-    /**
-     * @param UseCaseDetailResponseTestCaseGeneratorRequest $generatorRequest
-     */
-    public function generate(GeneratorRequest $generatorRequest): FileObject
-    {
-        $useCaseDetailResponseTestCaseFileObject = $this->buildUseCaseDetailResponseTestCaseFileObject(
-            $generatorRequest->getEntityClassName(),
-            $generatorRequest->getFields()
-        );
-
-        $this->insertFileObject($useCaseDetailResponseTestCaseFileObject);
-
-        return $useCaseDetailResponseTestCaseFileObject;
-    }
 
     /**
      * @param string[] $wantedFields
@@ -60,6 +42,20 @@ class UseCaseDetailResponseTestCaseGenerator extends AbstractUseCaseGenerator
         );
 
         return $useCaseDetailResponseTestCaseFileObject;
+    }
+
+    private function createSkeletonModel(
+        FileObject $useCaseDetailResponseFileObject,
+        FileObject $useCaseDetailResponseTestCaseFileObject,
+        FileObject $useCaseResponseFileObject,
+        FileObject $useCaseResponseTestCaseFileObject
+    ): UseCaseDetailResponseTestCaseSkeletonModel {
+        return $this->useCaseDetailResponseTestCaseSkeletonModelAssembler->create(
+            $useCaseDetailResponseFileObject,
+            $useCaseDetailResponseTestCaseFileObject,
+            $useCaseResponseFileObject,
+            $useCaseResponseTestCaseFileObject
+        );
     }
 
     private function createUseCaseDetailResponseFileObject(): FileObject
@@ -102,6 +98,21 @@ class UseCaseDetailResponseTestCaseGenerator extends AbstractUseCaseGenerator
         );
     }
 
+    /**
+     * @param UseCaseDetailResponseTestCaseGeneratorRequest $generatorRequest
+     */
+    public function generate(GeneratorRequest $generatorRequest): FileObject
+    {
+        $useCaseDetailResponseTestCaseFileObject = $this->buildUseCaseDetailResponseTestCaseFileObject(
+            $generatorRequest->getEntityClassName(),
+            $generatorRequest->getFields()
+        );
+
+        $this->insertFileObject($useCaseDetailResponseTestCaseFileObject);
+
+        return $useCaseDetailResponseTestCaseFileObject;
+    }
+
     private function generateContent(
         FileObject $useCaseDetailResponseFileObject,
         FileObject $useCaseDetailResponseTestCaseFileObject,
@@ -116,20 +127,6 @@ class UseCaseDetailResponseTestCaseGenerator extends AbstractUseCaseGenerator
         );
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
-    }
-
-    private function createSkeletonModel(
-        FileObject $useCaseDetailResponseFileObject,
-        FileObject $useCaseDetailResponseTestCaseFileObject,
-        FileObject $useCaseResponseFileObject,
-        FileObject $useCaseResponseTestCaseFileObject
-    ): UseCaseDetailResponseTestCaseSkeletonModel {
-        return $this->useCaseDetailResponseTestCaseSkeletonModelAssembler->create(
-            $useCaseDetailResponseFileObject,
-            $useCaseDetailResponseTestCaseFileObject,
-            $useCaseResponseFileObject,
-            $useCaseResponseTestCaseFileObject
-        );
     }
 
     public function setUseCaseDetailResponseTestCaseSkeletonModelAssembler(

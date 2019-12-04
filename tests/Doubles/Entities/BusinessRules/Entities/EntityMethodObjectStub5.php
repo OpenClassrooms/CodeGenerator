@@ -9,13 +9,13 @@ class EntityMethodObjectStub5 extends MethodObject
 {
     const DOC_COMMENT = null;
 
-    const NAME = 'getField4';
+    const NAME     = 'getField4';
 
     const NULLABLE = true;
 
     const RETURN_TYPE = 'DateTimeInterface';
 
-    const VALUE = null;
+    const VALUE    = null;
 
     protected $docComment = self::DOC_COMMENT;
 

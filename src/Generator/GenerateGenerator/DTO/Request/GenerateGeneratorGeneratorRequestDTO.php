@@ -4,9 +4,6 @@ namespace OpenClassrooms\CodeGenerator\Generator\GenerateGenerator\DTO\Request;
 
 use OpenClassrooms\CodeGenerator\Generator\GenerateGenerator\Request\GenerateGeneratorGeneratorRequest;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class GenerateGeneratorGeneratorRequestDTO implements GenerateGeneratorGeneratorRequest
 {
     /**
@@ -24,6 +21,11 @@ class GenerateGeneratorGeneratorRequestDTO implements GenerateGeneratorGenerator
      */
     public $entity;
 
+    public function getConstructionPattern(): string
+    {
+        return $this->constructionPattern;
+    }
+
     public function getDomain(): string
     {
         return $this->domain;
@@ -32,10 +34,5 @@ class GenerateGeneratorGeneratorRequestDTO implements GenerateGeneratorGenerator
     public function getEntity(): string
     {
         return $this->entity;
-    }
-
-    public function getConstructionPattern(): string
-    {
-        return $this->constructionPattern;
     }
 }

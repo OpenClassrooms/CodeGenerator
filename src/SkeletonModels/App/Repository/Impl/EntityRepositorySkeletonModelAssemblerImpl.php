@@ -7,9 +7,6 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\App\Repository\EntityRepositoryS
 use OpenClassrooms\CodeGenerator\SkeletonModels\App\Repository\EntityRepositorySkeletonModelAssembler;
 use OpenClassrooms\CodeGenerator\Utility\NameUtility;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class EntityRepositorySkeletonModelAssemblerImpl implements EntityRepositorySkeletonModelAssembler
 {
     public function create(

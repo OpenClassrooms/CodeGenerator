@@ -8,9 +8,6 @@ use OpenClassrooms\CodeGenerator\Mediators\Args;
 use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\GenericUseCaseMediator;
 use OpenClassrooms\CodeGenerator\Mediators\Options;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class GenericUseCaseMediatorImpl implements GenericUseCaseMediator
 {
     use GenericUseCaseGeneratorsTrait;
@@ -19,6 +16,18 @@ class GenericUseCaseMediatorImpl implements GenericUseCaseMediator
      * @var FileObjectGateway
      */
     private $fileObjectGateway;
+
+    /**
+     * @return FileObject[]
+     */
+    private function generateSources(string $domain, string $useCase): array
+    {
+        $fileObjects[] = $this->generateGenericUseCase($domain, $useCase);
+        $fileObjects[] = $this->generateGenericUseCaseRequestDTO($domain, $useCase);
+        $fileObjects[] = $this->generateGenericUseCaseRequestBuilderImpl($domain, $useCase);
+
+        return $fileObjects;
+    }
 
     /**
      * @return FileObject[]
@@ -40,18 +49,6 @@ class GenericUseCaseMediatorImpl implements GenericUseCaseMediator
         if (false === $options[Options::DUMP]) {
             $this->fileObjectGateway->flush();
         }
-
-        return $fileObjects;
-    }
-
-    /**
-     * @return FileObject[]
-     */
-    private function generateSources(string $domain, string $useCase): array
-    {
-        $fileObjects[] = $this->generateGenericUseCase($domain, $useCase);
-        $fileObjects[] = $this->generateGenericUseCaseRequestDTO($domain, $useCase);
-        $fileObjects[] = $this->generateGenericUseCaseRequestBuilderImpl($domain, $useCase);
 
         return $fileObjects;
     }

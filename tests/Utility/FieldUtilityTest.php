@@ -10,9 +10,6 @@ use OpenClassrooms\CodeGenerator\Utility\FieldUtility;
 use OpenClassrooms\CodeGenerator\Utility\StubFieldUtility;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class FieldUtilityTest extends TestCase
 {
     /**
@@ -20,25 +17,16 @@ class FieldUtilityTest extends TestCase
      */
     private $fileObject;
 
-    /**
-     * @test
-     */
-    public function generateStubFieldObjectsReturnFieldObject(): void
+    private function arrayFilterByGetter(array $exceptedFields): array
     {
-        $fields = [
-            $this->buildStubFieldObject('field1', 'string'),
-            $this->buildStubFieldObject('field2', 'bool'),
-            $this->buildStubFieldObject('field3', 'array'),
-            $this->buildStubFieldObject('field4', '\DateTimeImmutable'),
-        ];
-        $actualFieldObjects = StubFieldUtility::generateStubFieldObjects($fields, $this->fileObject);
-
-        $this->assertCount(count($fields), $actualFieldObjects);
-
-        foreach ($fields as $key => $field) {
-            $this->assertEquals($field->getName(), $actualFieldObjects[$key]->getName());
-            $this->assertEquals($field->getValue()->getName(), $actualFieldObjects[$key]->getValue()->getName());
-        }
+        return array_filter(
+            $exceptedFields,
+            function ($method) {
+                if ('set' !== substr($method->getName(), 0, 3)) {
+                    return $method;
+                }
+            }
+        );
     }
 
     private function buildStubFieldObject(string $name, string $type): FieldObject
@@ -63,6 +51,27 @@ class FieldUtilityTest extends TestCase
 
     /**
      * @test
+     */
+    public function generateStubFieldObjectsReturnFieldObject(): void
+    {
+        $fields = [
+            $this->buildStubFieldObject('field1', 'string'),
+            $this->buildStubFieldObject('field2', 'bool'),
+            $this->buildStubFieldObject('field3', 'array'),
+            $this->buildStubFieldObject('field4', '\DateTimeImmutable'),
+        ];
+        $actualFieldObjects = StubFieldUtility::generateStubFieldObjects($fields, $this->fileObject);
+
+        $this->assertCount(count($fields), $actualFieldObjects);
+
+        foreach ($fields as $key => $field) {
+            $this->assertEquals($field->getName(), $actualFieldObjects[$key]->getName());
+            $this->assertEquals($field->getValue()->getName(), $actualFieldObjects[$key]->getValue()->getName());
+        }
+    }
+
+    /**
+     * @test
      * @expectedException \Exception
      */
     public function getFieldsThrowException(): void
@@ -81,18 +90,6 @@ class FieldUtilityTest extends TestCase
         $actualFields = FieldUtility::getFields(FunctionalEntity::class, $fields);
         $exceptedFields = $this->arrayFilterByGetter($exceptedFields->getMethods());
         $this->assertCount(count($actualFields), $exceptedFields);
-    }
-
-    private function arrayFilterByGetter(array $exceptedFields): array
-    {
-        return array_filter(
-            $exceptedFields,
-            function($method) {
-                if ('set' !== substr($method->getName(), 0, 3)) {
-                    return $method;
-                }
-            }
-        );
     }
 
     protected function setUp(): void

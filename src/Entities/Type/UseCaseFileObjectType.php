@@ -2,9 +2,6 @@
 
 namespace OpenClassrooms\CodeGenerator\Entities\Type;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 final class UseCaseFileObjectType
 {
     const BUSINESS_RULES_CREATE_ENTITY_USE_CASE      = 'BUSINESS_RULES_CREATE_ENTITY_USE_CASE';

@@ -14,7 +14,7 @@ class EntityStubFieldObjectStub6 extends FieldObject
      * @var \DateTimeInterface
      */';
 
-    const NAME = 'updatedAt';
+    const NAME  = 'updatedAt';
 
     protected $docComment = self::DOC_COMMENT;
 

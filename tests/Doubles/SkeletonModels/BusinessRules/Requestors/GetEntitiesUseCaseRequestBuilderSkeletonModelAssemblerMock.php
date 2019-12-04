@@ -5,9 +5,6 @@ namespace OpenClassrooms\CodeGenerator\Tests\Doubles\SkeletonModels\BusinessRule
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Requestors\Impl\GetEntitiesUseCaseRequestBuilderSkeletonModelAssemblerImpl;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\FixturesConfig;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class GetEntitiesUseCaseRequestBuilderSkeletonModelAssemblerMock extends GetEntitiesUseCaseRequestBuilderSkeletonModelAssemblerImpl
 {
     public function __construct()

@@ -13,7 +13,7 @@ class EntityStubFieldObjectStub1 extends FieldObject
      * @var int
      */';
 
-    const NAME = 'id';
+    const NAME  = 'id';
 
     const VALUE = 1;
 

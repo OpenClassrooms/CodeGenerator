@@ -6,9 +6,6 @@ use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\UseCases\GetEntityUseCaseTestSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\UseCases\GetEntityUseCaseTestSkeletonModelBuilder;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class GetEntityUseCaseTestSkeletonModelBuilderImpl implements GetEntityUseCaseTestSkeletonModelBuilder
 {
     /**
@@ -16,18 +13,17 @@ class GetEntityUseCaseTestSkeletonModelBuilderImpl implements GetEntityUseCaseTe
      */
     private $skeletonModel;
 
+    public function build(FileObject $fileObject): GetEntityUseCaseTestSkeletonModel
+    {
+        $this->skeletonModel->entityShortName = $fileObject->getEntity();
+        $this->skeletonModel->entityShortNameArgument = lcfirst($fileObject->getEntity());
+
+        return $this->skeletonModel;
+    }
+
     public function create(): GetEntityUseCaseTestSkeletonModelBuilder
     {
         $this->skeletonModel = new GetEntityUseCaseTestSkeletonModelImpl();
-
-        return $this;
-    }
-
-    public function withEntityClassNameStubFileObject(
-        FileObject $entityStubFileObject
-    ): GetEntityUseCaseTestSkeletonModelBuilder {
-        $this->skeletonModel->entityStubClassName = $entityStubFileObject->getClassName();
-        $this->skeletonModel->entityStubShortName = $entityStubFileObject->getShortName();
 
         return $this;
     }
@@ -43,11 +39,11 @@ class GetEntityUseCaseTestSkeletonModelBuilderImpl implements GetEntityUseCaseTe
         return $this;
     }
 
-    public function withInMemoryEntityGatewayFileObject(
-        FileObject $inMemoryEntityGatewayFileObject
+    public function withEntityClassNameStubFileObject(
+        FileObject $entityStubFileObject
     ): GetEntityUseCaseTestSkeletonModelBuilder {
-        $this->skeletonModel->inMemoryEntityGatewayClassName = $inMemoryEntityGatewayFileObject->getClassName();
-        $this->skeletonModel->inMemoryEntityGatewayShortName = $inMemoryEntityGatewayFileObject->getShortName();
+        $this->skeletonModel->entityStubClassName = $entityStubFileObject->getClassName();
+        $this->skeletonModel->entityStubShortName = $entityStubFileObject->getShortName();
 
         return $this;
     }
@@ -101,6 +97,15 @@ class GetEntityUseCaseTestSkeletonModelBuilderImpl implements GetEntityUseCaseTe
         return $this;
     }
 
+    public function withInMemoryEntityGatewayFileObject(
+        FileObject $inMemoryEntityGatewayFileObject
+    ): GetEntityUseCaseTestSkeletonModelBuilder {
+        $this->skeletonModel->inMemoryEntityGatewayClassName = $inMemoryEntityGatewayFileObject->getClassName();
+        $this->skeletonModel->inMemoryEntityGatewayShortName = $inMemoryEntityGatewayFileObject->getShortName();
+
+        return $this;
+    }
+
     public function withUseCaseDetailResponseAssemblerMockFileObject(
         FileObject $useCaseDetailResponseAssemblerMockFileObject
     ): GetEntityUseCaseTestSkeletonModelBuilder {
@@ -130,13 +135,5 @@ class GetEntityUseCaseTestSkeletonModelBuilderImpl implements GetEntityUseCaseTe
         );
 
         return $this;
-    }
-
-    public function build(FileObject $fileObject): GetEntityUseCaseTestSkeletonModel
-    {
-        $this->skeletonModel->entityShortName = $fileObject->getEntity();
-        $this->skeletonModel->entityShortNameArgument = lcfirst($fileObject->getEntity());
-
-        return $this->skeletonModel;
     }
 }

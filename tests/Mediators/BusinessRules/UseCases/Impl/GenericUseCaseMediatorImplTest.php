@@ -24,9 +24,6 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Generator\GeneratorMock;
 use OpenClassrooms\CodeGenerator\Tests\Mediators\FlushedFileObjectTestCase;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class GenericUseCaseMediatorImplTest extends TestCase
 {
     use FlushedFileObjectTestCase;
@@ -44,41 +41,6 @@ class GenericUseCaseMediatorImplTest extends TestCase
      * @var array
      */
     private $options;
-
-    /**
-     * @test
-     */
-    public function generateGenericUseCase_withoutTest(): void
-    {
-        $this->options[Options::NO_TEST] = null;
-        $fileObjects = $this->mediator->mediate(
-            [
-                Args::DOMAIN   => self::DOMAIN,
-                Args::USE_CASE => self::GENERIC_USE_CASE,
-            ],
-            $this->options
-        );
-
-        $this->assertFlushedFileObject($fileObjects);
-    }
-
-    /**
-     * @test
-     */
-    public function generateGenericUseCase_withTestOnly(): void
-    {
-        $this->options[Options::TESTS_ONLY] = null;
-        $fileObjects = $this->mediator->mediate(
-            [
-                Args::DOMAIN   => self::DOMAIN,
-                Args::USE_CASE => self::GENERIC_USE_CASE,
-            ],
-            $this->options
-        );
-
-        $this->assertFlushedFileObject($fileObjects);
-
-    }
 
     /**
      * @test
@@ -117,7 +79,40 @@ class GenericUseCaseMediatorImplTest extends TestCase
         );
 
         $this->assertFlushedFileObject($fileObjects);
+    }
 
+    /**
+     * @test
+     */
+    public function generateGenericUseCase_withoutTest(): void
+    {
+        $this->options[Options::NO_TEST] = null;
+        $fileObjects = $this->mediator->mediate(
+            [
+                Args::DOMAIN   => self::DOMAIN,
+                Args::USE_CASE => self::GENERIC_USE_CASE,
+            ],
+            $this->options
+        );
+
+        $this->assertFlushedFileObject($fileObjects);
+    }
+
+    /**
+     * @test
+     */
+    public function generateGenericUseCase_withTestOnly(): void
+    {
+        $this->options[Options::TESTS_ONLY] = null;
+        $fileObjects = $this->mediator->mediate(
+            [
+                Args::DOMAIN   => self::DOMAIN,
+                Args::USE_CASE => self::GENERIC_USE_CASE,
+            ],
+            $this->options
+        );
+
+        $this->assertFlushedFileObject($fileObjects);
     }
 
     protected function setUp(): void

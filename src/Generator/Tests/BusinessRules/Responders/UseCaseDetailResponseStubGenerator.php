@@ -12,29 +12,12 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\Responders\U
 use OpenClassrooms\CodeGenerator\Utility\ConstUtility;
 use OpenClassrooms\CodeGenerator\Utility\StubFieldUtility;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class UseCaseDetailResponseStubGenerator extends AbstractUseCaseResponseStubGenerator
 {
     /**
      * @var UseCaseDetailResponseStubSkeletonModelAssembler
      */
     private $useCaseDetailResponseStubSkeletonModelAssembler;
-
-    /**
-     * @param UseCaseDetailResponseStubGeneratorRequest $generatorRequest
-     */
-    public function generate(GeneratorRequest $generatorRequest): FileObject
-    {
-        $useCaseDetailResponseStubFileObject = $this->buildUseCaseDetailResponseStubFileObject(
-            $generatorRequest->getClassName()
-        );
-
-        $this->insertFileObject($useCaseDetailResponseStubFileObject);
-
-        return $useCaseDetailResponseStubFileObject;
-    }
 
     private function buildUseCaseDetailResponseStubFileObject(string $className)
     {
@@ -81,6 +64,18 @@ class UseCaseDetailResponseStubGenerator extends AbstractUseCaseResponseStubGene
         return $useCaseDetailResponseDTOFileObject;
     }
 
+    private function createSkeletonModel(
+        FileObject $useCaseDetailResponseStubFileObject,
+        FileObject $useCaseDetailResponseDTOFileObject,
+        FileObject $entityStubFileObject
+    ): UseCaseDetailResponseStubSkeletonModel {
+        return $this->useCaseDetailResponseStubSkeletonModelAssembler->create(
+            $useCaseDetailResponseStubFileObject,
+            $useCaseDetailResponseDTOFileObject,
+            $entityStubFileObject
+        );
+    }
+
     private function createUseCaseDetailResponseDTOFileObject(): FileObject
     {
         return $this->useCaseResponseFileObjectFactory->create(
@@ -103,17 +98,18 @@ class UseCaseDetailResponseStubGenerator extends AbstractUseCaseResponseStubGene
         return $useCaseDetailResponseStubFileObject;
     }
 
-    private function generateStubFields(
-        FileObject $useCaseDetailResponseDTOFileObject
-    ): array {
-        $useCaseDetailResponseFields = $this->getProtectedClassFields(
-            $useCaseDetailResponseDTOFileObject->getClassName()
+    /**
+     * @param UseCaseDetailResponseStubGeneratorRequest $generatorRequest
+     */
+    public function generate(GeneratorRequest $generatorRequest): FileObject
+    {
+        $useCaseDetailResponseStubFileObject = $this->buildUseCaseDetailResponseStubFileObject(
+            $generatorRequest->getClassName()
         );
 
-        return StubFieldUtility::generateStubFieldObjects(
-            $useCaseDetailResponseFields,
-            $useCaseDetailResponseDTOFileObject
-        );
+        $this->insertFileObject($useCaseDetailResponseStubFileObject);
+
+        return $useCaseDetailResponseStubFileObject;
     }
 
     private function generateConsts(
@@ -136,15 +132,16 @@ class UseCaseDetailResponseStubGenerator extends AbstractUseCaseResponseStubGene
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
     }
 
-    private function createSkeletonModel(
-        FileObject $useCaseDetailResponseStubFileObject,
-        FileObject $useCaseDetailResponseDTOFileObject,
-        FileObject $entityStubFileObject
-    ): UseCaseDetailResponseStubSkeletonModel {
-        return $this->useCaseDetailResponseStubSkeletonModelAssembler->create(
-            $useCaseDetailResponseStubFileObject,
-            $useCaseDetailResponseDTOFileObject,
-            $entityStubFileObject
+    private function generateStubFields(
+        FileObject $useCaseDetailResponseDTOFileObject
+    ): array {
+        $useCaseDetailResponseFields = $this->getProtectedClassFields(
+            $useCaseDetailResponseDTOFileObject->getClassName()
+        );
+
+        return StubFieldUtility::generateStubFieldObjects(
+            $useCaseDetailResponseFields,
+            $useCaseDetailResponseDTOFileObject
         );
     }
 

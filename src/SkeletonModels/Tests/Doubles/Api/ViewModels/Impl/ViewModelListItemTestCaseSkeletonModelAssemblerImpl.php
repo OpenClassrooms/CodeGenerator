@@ -7,9 +7,6 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\Api\ViewModels\Vie
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\Api\ViewModels\ViewModelListItemTestCaseSkeletonModelAssembler;
 use OpenClassrooms\CodeGenerator\Utility\TestCaseUtility;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class ViewModelListItemTestCaseSkeletonModelAssemblerImpl implements ViewModelListItemTestCaseSkeletonModelAssembler
 {
     public function create(

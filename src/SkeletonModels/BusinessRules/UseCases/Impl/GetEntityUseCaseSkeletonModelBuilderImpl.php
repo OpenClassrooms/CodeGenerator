@@ -9,9 +9,6 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\GetEntity
 use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 use OpenClassrooms\CodeGenerator\Utility\MethodUtility;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class GetEntityUseCaseSkeletonModelBuilderImpl implements GetEntityUseCaseSkeletonModelBuilder
 {
     use UseCaseClassNameTrait;
@@ -37,6 +34,11 @@ class GetEntityUseCaseSkeletonModelBuilderImpl implements GetEntityUseCaseSkelet
         $this->skeletonModel = new GetEntityUseCaseSkeletonModelImpl();
 
         return $this;
+    }
+
+    private function getRequestAccessor(string $entityShortName): string
+    {
+        return lcfirst($entityShortName) . 'Id';
     }
 
     public function withEntityClassName(FileObject $entityFileObject): GetEntityUseCaseSkeletonModelBuilder
@@ -118,10 +120,5 @@ class GetEntityUseCaseSkeletonModelBuilderImpl implements GetEntityUseCaseSkelet
         $this->skeletonModel->getEntityUseCaseRequestShortName = $getEntityUseCaseRequestFileObject->getShortName();
 
         return $this;
-    }
-
-    private function getRequestAccessor(string $entityShortName): string
-    {
-        return lcfirst($entityShortName) . 'Id';
     }
 }

@@ -8,9 +8,6 @@ use OpenClassrooms\CodeGenerator\Generator\GenerateGenerator\GenerateGeneratorGe
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class GenerateGeneratorGeneratorMock extends GenerateGeneratorGenerator
 {
     /**

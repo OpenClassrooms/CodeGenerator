@@ -4,9 +4,6 @@ namespace OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\UseCas
 
 use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 abstract class GetEntitiesUseCaseTestSkeletonModel extends AbstractSkeletonModel
 {
     public $entitiesArgument;
@@ -47,6 +44,8 @@ abstract class GetEntitiesUseCaseTestSkeletonModel extends AbstractSkeletonModel
 
     public $useCaseListItemResponseAssemblerShortName;
 
+    public $useCaseListItemResponsesShortName;
+
     public $useCaseListItemResponseStubClassNames = [];
 
     public $useCaseListItemResponseStubShortNames = [];
@@ -54,6 +53,4 @@ abstract class GetEntitiesUseCaseTestSkeletonModel extends AbstractSkeletonModel
     public $useCaseListItemResponseTestCaseClassName;
 
     public $useCaseListItemResponseTestCaseShortName;
-
-    public $useCaseListItemResponsesShortName;
 }

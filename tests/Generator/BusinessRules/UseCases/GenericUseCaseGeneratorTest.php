@@ -15,9 +15,6 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingSer
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\FixturesConfig;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class GenericUseCaseGeneratorTest extends TestCase
 {
     use FileObjectTestCase;

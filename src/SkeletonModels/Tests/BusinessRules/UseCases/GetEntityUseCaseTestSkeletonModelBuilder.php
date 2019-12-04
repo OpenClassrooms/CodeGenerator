@@ -4,23 +4,18 @@ namespace OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\UseCas
 
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 interface GetEntityUseCaseTestSkeletonModelBuilder
 {
-    public function create(): GetEntityUseCaseTestSkeletonModelBuilder;
+    public function build(FileObject $fileObject): GetEntityUseCaseTestSkeletonModel;
 
-    public function withEntityClassNameStubFileObject(
-        FileObject $entityStubFileObject
-    ): GetEntityUseCaseTestSkeletonModelBuilder;
+    public function create(): GetEntityUseCaseTestSkeletonModelBuilder;
 
     public function withEntityClassNameNotFoundExceptionFileObject(
         FileObject $entityNotFoundExceptionFileObject
     ): GetEntityUseCaseTestSkeletonModelBuilder;
 
-    public function withInMemoryEntityGatewayFileObject(
-        FileObject $inMemoryEntityGatewayFileObject
+    public function withEntityClassNameStubFileObject(
+        FileObject $entityStubFileObject
     ): GetEntityUseCaseTestSkeletonModelBuilder;
 
     public function withGetEntityUseCaseFileObject(
@@ -43,6 +38,10 @@ interface GetEntityUseCaseTestSkeletonModelBuilder
         FileObject $getEntityUseCaseTestFileObject
     ): GetEntityUseCaseTestSkeletonModelBuilder;
 
+    public function withInMemoryEntityGatewayFileObject(
+        FileObject $inMemoryEntityGatewayFileObject
+    ): GetEntityUseCaseTestSkeletonModelBuilder;
+
     public function withUseCaseDetailResponseAssemblerMockFileObject(
         FileObject $useCaseDetailResponseAssemblerMockFileObject
     ): GetEntityUseCaseTestSkeletonModelBuilder;
@@ -54,6 +53,4 @@ interface GetEntityUseCaseTestSkeletonModelBuilder
     public function withUseCaseDetailResponseTestCaseFileObject(
         FileObject $useCaseDetailResponseTestCaseFileObject
     ): GetEntityUseCaseTestSkeletonModelBuilder;
-
-    public function build(FileObject $fileObject): GetEntityUseCaseTestSkeletonModel;
 }

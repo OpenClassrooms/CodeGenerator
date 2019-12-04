@@ -4,9 +4,6 @@ namespace OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\DT
 
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\Request\GetEntitiesUseCaseTestGeneratorRequest;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class GetEntitiesUseCaseTestGeneratorRequestDTO implements GetEntitiesUseCaseTestGeneratorRequest
 {
     /**

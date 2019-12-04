@@ -10,9 +10,6 @@ use OpenClassrooms\CodeGenerator\Entities\UseCaseResponseFileObjectFactory;
 use OpenClassrooms\CodeGenerator\Generator\AbstractGenerator;
 use OpenClassrooms\CodeGenerator\Utility\MethodUtility;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 abstract class AbstractUseCaseGenerator extends AbstractGenerator
 {
     /**
@@ -35,6 +32,16 @@ abstract class AbstractUseCaseGenerator extends AbstractGenerator
      */
     protected $useCaseResponseFileObjectFactory;
 
+    /**
+     * @param string[] $fields
+     *
+     * @return MethodObject[]
+     */
+    protected function getSelectedAccessors(string $className, array $fields): array
+    {
+        return MethodUtility::getSelectedAccessors($className, $fields);
+    }
+
     public function setEntityFileObjectFactory(EntityFileObjectFactory $entityFileObjectFactory): void
     {
         $this->entityFileObjectFactory = $entityFileObjectFactory;
@@ -53,15 +60,5 @@ abstract class AbstractUseCaseGenerator extends AbstractGenerator
     public function setUseCaseResponseFileObjectFactory(UseCaseResponseFileObjectFactory $factory): void
     {
         $this->useCaseResponseFileObjectFactory = $factory;
-    }
-
-    /**
-     * @param string[] $fields
-     *
-     * @return MethodObject[]
-     */
-    protected function getSelectedAccessors(string $className, array $fields): array
-    {
-        return MethodUtility::getSelectedAccessors($className, $fields);
     }
 }

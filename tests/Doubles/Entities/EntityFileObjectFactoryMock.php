@@ -5,9 +5,6 @@ namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Entities;
 use OpenClassrooms\CodeGenerator\Entities\Impl\EntityFileObjectFactoryImpl;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\FixturesConfig;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class EntityFileObjectFactoryMock extends EntityFileObjectFactoryImpl
 {
     public function __construct()

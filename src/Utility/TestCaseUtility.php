@@ -2,9 +2,6 @@
 
 namespace OpenClassrooms\CodeGenerator\Utility;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 final class TestCaseUtility
 {
     private const LIST_ITEM = 'ListItem';

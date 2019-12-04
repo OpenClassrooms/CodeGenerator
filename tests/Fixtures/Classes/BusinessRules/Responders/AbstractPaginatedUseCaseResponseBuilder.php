@@ -2,15 +2,20 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 abstract class AbstractPaginatedUseCaseResponseBuilder implements PaginatedUseCaseResponseBuilder
 {
     /**
      * @var AbstractPaginatedUseCaseResponse
      */
     protected $paginatedUseCaseResponse;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function build(): AbstractPaginatedUseCaseResponse
+    {
+        return $this->paginatedUseCaseResponse;
+    }
 
     /**
      * {@inheritdoc}
@@ -50,13 +55,5 @@ abstract class AbstractPaginatedUseCaseResponseBuilder implements PaginatedUseCa
         $this->paginatedUseCaseResponse->setTotalItems($totalItems);
 
         return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function build(): AbstractPaginatedUseCaseResponse
-    {
-        return $this->paginatedUseCaseResponse;
     }
 }

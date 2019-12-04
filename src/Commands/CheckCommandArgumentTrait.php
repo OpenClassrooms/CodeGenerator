@@ -7,9 +7,6 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\Question;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 trait CheckCommandArgumentTrait
 {
     protected function checkConfiguration(array $codeGeneratorConfig): void
@@ -31,6 +28,22 @@ trait CheckCommandArgumentTrait
         }
     }
 
+    protected function checkInputClassNameArgument(InputInterface $input, OutputInterface $output): void
+    {
+        if (null === $input->getArgument(Args::CLASS_NAME)) {
+            $helper = $this->getHelper('question');
+            $classNameQuestion = new Question(
+                'Please enter class name (ex: BaseNamespace\Domain\Subdomain\ShortClassName): ',
+                'DefaultClassName'
+            );
+            $className = $helper->ask($input, $output, $classNameQuestion);
+
+            if ($this->isValidClassName($className)) {
+                $input->setArgument(Args::CLASS_NAME, $className);
+            }
+        }
+    }
+
     protected function checkInputDomainAndNameArgument(
         InputInterface $input,
         OutputInterface $output,
@@ -43,21 +56,6 @@ trait CheckCommandArgumentTrait
 
             $input->setArgument(Args::DOMAIN, $helper->ask($input, $output, $domainQuestion));
             $input->setArgument($name, $helper->ask($input, $output, $useCaseQuestion));
-        }
-    }
-
-    protected function checkInputClassNameArgument(InputInterface $input, OutputInterface $output): void
-    {
-        if (null === $input->getArgument(Args::CLASS_NAME)) {
-            $helper = $this->getHelper('question');
-            $classNameQuestion = new Question(
-                'Please enter class name (ex: BaseNamespace\Domain\Subdomain\ShortClassName): ', 'DefaultClassName'
-            );
-            $className = $helper->ask($input, $output, $classNameQuestion);
-
-            if ($this->isValidClassName($className)) {
-                $input->setArgument(Args::CLASS_NAME, $className);
-            }
         }
     }
 

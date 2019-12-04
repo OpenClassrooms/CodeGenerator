@@ -10,7 +10,7 @@ class EntityFieldObjectStub2 extends FieldObject
      * @var string
      */';
 
-    const NAME = 'field1';
+    const NAME  = 'field1';
 
     const VALUE = null;
 

@@ -8,9 +8,6 @@ use PHPUnit\Framework\MockObject\Builder\InvocationMocker;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 trait CommandTestCase
 {
     /**
@@ -34,7 +31,7 @@ trait CommandTestCase
     public function alreadyExistFileObject(array $fileObjects): array
     {
         return array_map(
-            function(FileObject $fileObject) {
+            function (FileObject $fileObject) {
                 $otherFileObject = clone $fileObject;
                 $otherFileObject->setAlreadyExists(true);
 
@@ -64,7 +61,7 @@ trait CommandTestCase
     protected function writeFileObjects(array $fileObjects): array
     {
         return array_map(
-            function(FileObject $fileObject) {
+            function (FileObject $fileObject) {
                 $otherFileObject = clone $fileObject;
                 $otherFileObject->write();
 

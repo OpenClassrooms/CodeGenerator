@@ -2,9 +2,6 @@
 
 namespace OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Responders\Request;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 interface UseCaseListItemResponseStubGeneratorRequestBuilder
 {
     public function build(): UseCaseListItemResponseStubGeneratorRequest;

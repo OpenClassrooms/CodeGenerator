@@ -18,9 +18,6 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\SkeletonModels\Tests\BusinessRule
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Entities\Domain\SubDomain\FunctionalEntity;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class GetEntitiesUseCaseTestGeneratorTest extends TestCase
 {
     use FileObjectTestCase;

@@ -5,9 +5,6 @@ namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Entities;
 use OpenClassrooms\CodeGenerator\Entities\Impl\ViewModelFileObjectFactoryImpl;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\FixturesConfig;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class ViewModelFileObjectFactoryMock extends ViewModelFileObjectFactoryImpl
 {
     public function __construct()

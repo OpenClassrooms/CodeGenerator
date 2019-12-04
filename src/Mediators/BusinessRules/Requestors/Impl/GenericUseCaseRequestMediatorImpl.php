@@ -7,9 +7,6 @@ use OpenClassrooms\CodeGenerator\Mediators\Args;
 use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\Requestors\GenericUseCaseRequestMediator;
 use OpenClassrooms\CodeGenerator\Mediators\Options;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class GenericUseCaseRequestMediatorImpl implements GenericUseCaseRequestMediator
 {
     use GenericUseCaseRequestGeneratorsTrait;

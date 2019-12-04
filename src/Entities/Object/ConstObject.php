@@ -4,9 +4,6 @@ namespace OpenClassrooms\CodeGenerator\Entities\Object;
 
 use OpenClassrooms\CodeGenerator\Utility\StringUtility;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class ConstObject
 {
     /**
@@ -24,11 +21,6 @@ class ConstObject
         $this->name = $this->isValidConstantName($name) ? $name : StringUtility::convertToUpperSnakeCase($name);
     }
 
-    private function isValidConstantName(string $string): bool
-    {
-        return (bool) preg_match('/(([A-Z_][A-Z0-9_]*)|(__.*__))$/', $string);
-    }
-
     public function getName(): string
     {
         return $this->name;
@@ -37,6 +29,11 @@ class ConstObject
     public function getValue()
     {
         return $this->value;
+    }
+
+    private function isValidConstantName(string $string): bool
+    {
+        return (bool) preg_match('/(([A-Z_][A-Z0-9_]*)|(__.*__))$/', $string);
     }
 
     public function setValue($value): void

@@ -10,29 +10,12 @@ use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\GetEntitiesUseCaseRequestBuilderImplSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\GetEntitiesUseCaseRequestBuilderImplSkeletonModelAssembler;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class GetEntitiesUseCaseRequestBuilderImplGenerator extends AbstractUseCaseGenerator
 {
     /**
      * @var GetEntitiesUseCaseRequestBuilderImplSkeletonModelAssembler
      */
     private $getEntitiesUseCaseRequestBuilderImplSkeletonModelAssembler;
-
-    /**
-     * @param GetEntitiesUseCaseRequestBuilderImplGeneratorRequest $generatorRequest
-     */
-    public function generate(GeneratorRequest $generatorRequest): FileObject
-    {
-        $getEntitiesUseCaseRequestBuilderImplFileObject = $this->buildGetEntitiesUseCaseRequestBuilderImplFileObject(
-            $generatorRequest->getEntityClassName()
-        );
-
-        $this->insertFileObject($getEntitiesUseCaseRequestBuilderImplFileObject);
-
-        return $getEntitiesUseCaseRequestBuilderImplFileObject;
-    }
 
     private function buildGetEntitiesUseCaseRequestBuilderImplFileObject(string $entityClassName): FileObject
     {
@@ -54,27 +37,17 @@ class GetEntitiesUseCaseRequestBuilderImplGenerator extends AbstractUseCaseGener
         return $getEntitiesUseCaseRequestBuilderImplFileObject;
     }
 
-    private function createGetEntitiesUseCaseRequestBuilderImplFileObject(): FileObject
-    {
-        return $this->createUseCaseRequestFileObject(
-            UseCaseRequestFileObjectType::BUSINESS_RULES_GET_ENTITIES_USE_CASE_REQUEST_BUILDER_IMPL
-        );
-    }
-
-    private function createUseCaseRequestFileObject(string $type): FileObject
-    {
-        return $this->useCaseRequestFileObjectFactory->create(
-            $type,
-            $this->domain,
-            $this->entity,
-            $this->baseNamespace
-        );
-    }
-
     private function createGetEntitiesUseCaseRequestBuilderFileObject(): FileObject
     {
         return $this->createUseCaseRequestFileObject(
             UseCaseRequestFileObjectType::BUSINESS_RULES_GET_ENTITIES_USE_CASE_REQUEST_BUILDER
+        );
+    }
+
+    private function createGetEntitiesUseCaseRequestBuilderImplFileObject(): FileObject
+    {
+        return $this->createUseCaseRequestFileObject(
+            UseCaseRequestFileObjectType::BUSINESS_RULES_GET_ENTITIES_USE_CASE_REQUEST_BUILDER_IMPL
         );
     }
 
@@ -92,6 +65,44 @@ class GetEntitiesUseCaseRequestBuilderImplGenerator extends AbstractUseCaseGener
         );
     }
 
+    private function createSkeletonModel(
+        FileObject $getEntitiesUseCaseRequestBuilderImplFileObject,
+        FileObject $getEntitiesUseCaseRequestBuilderFileObject,
+        FileObject $getEntitiesUseCaseRequestDTOFileObject,
+        FileObject $getEntitiesUseCaseRequestFileObject
+    ): GetEntitiesUseCaseRequestBuilderImplSkeletonModel {
+        return $this->getEntitiesUseCaseRequestBuilderImplSkeletonModelAssembler->create(
+            $getEntitiesUseCaseRequestBuilderImplFileObject,
+            $getEntitiesUseCaseRequestBuilderFileObject,
+            $getEntitiesUseCaseRequestDTOFileObject,
+            $getEntitiesUseCaseRequestFileObject
+        );
+    }
+
+    private function createUseCaseRequestFileObject(string $type): FileObject
+    {
+        return $this->useCaseRequestFileObjectFactory->create(
+            $type,
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
+        );
+    }
+
+    /**
+     * @param GetEntitiesUseCaseRequestBuilderImplGeneratorRequest $generatorRequest
+     */
+    public function generate(GeneratorRequest $generatorRequest): FileObject
+    {
+        $getEntitiesUseCaseRequestBuilderImplFileObject = $this->buildGetEntitiesUseCaseRequestBuilderImplFileObject(
+            $generatorRequest->getEntityClassName()
+        );
+
+        $this->insertFileObject($getEntitiesUseCaseRequestBuilderImplFileObject);
+
+        return $getEntitiesUseCaseRequestBuilderImplFileObject;
+    }
+
     private function generateContent(
         FileObject $getEntitiesUseCaseRequestBuilderImplFileObject,
         FileObject $getEntitiesUseCaseRequestBuilderFileObject,
@@ -106,20 +117,6 @@ class GetEntitiesUseCaseRequestBuilderImplGenerator extends AbstractUseCaseGener
         );
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
-    }
-
-    private function createSkeletonModel(
-        FileObject $getEntitiesUseCaseRequestBuilderImplFileObject,
-        FileObject $getEntitiesUseCaseRequestBuilderFileObject,
-        FileObject $getEntitiesUseCaseRequestDTOFileObject,
-        FileObject $getEntitiesUseCaseRequestFileObject
-    ): GetEntitiesUseCaseRequestBuilderImplSkeletonModel {
-        return $this->getEntitiesUseCaseRequestBuilderImplSkeletonModelAssembler->create(
-            $getEntitiesUseCaseRequestBuilderImplFileObject,
-            $getEntitiesUseCaseRequestBuilderFileObject,
-            $getEntitiesUseCaseRequestDTOFileObject,
-            $getEntitiesUseCaseRequestFileObject
-        );
     }
 
     public function setGetEntitiesUseCaseRequestBuilderImplSkeletonModelAssembler(

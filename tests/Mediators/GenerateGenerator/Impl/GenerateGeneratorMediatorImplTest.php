@@ -14,9 +14,6 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileO
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Generator\GenerateGeneratorGeneratorMock;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class GenerateGeneratorMediatorImplTest extends TestCase
 {
     /**

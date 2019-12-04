@@ -7,15 +7,17 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\UseCases\Get
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\UseCases\GetEntitiesUseCaseTestSkeletonModelBuilder;
 use OpenClassrooms\CodeGenerator\Utility\StringUtility;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class GetEntitiesUseCaseTestSkeletonModelBuilderImpl implements GetEntitiesUseCaseTestSkeletonModelBuilder
 {
     /**
      * @var GetEntitiesUseCaseTestSkeletonModel
      */
     private $skeletonModel;
+
+    public function build(): GetEntitiesUseCaseTestSkeletonModel
+    {
+        return $this->skeletonModel;
+    }
 
     public function create(): GetEntitiesUseCaseTestSkeletonModelBuilder
     {
@@ -64,15 +66,6 @@ class GetEntitiesUseCaseTestSkeletonModelBuilderImpl implements GetEntitiesUseCa
         return $this;
     }
 
-    public function withGetEntitiesUseCaseRequestFileObject(
-        FileObject $getEntitiesUseCaseRequestFileObject
-    ): GetEntitiesUseCaseTestSkeletonModelBuilder {
-        $this->skeletonModel->getEntitiesUseCaseRequestClassName = $getEntitiesUseCaseRequestFileObject->getClassName();
-        $this->skeletonModel->getEntitiesUseCaseRequestShortName = $getEntitiesUseCaseRequestFileObject->getShortName();
-
-        return $this;
-    }
-
     public function withGetEntitiesUseCaseRequestBuilderImplFileObject(
         FileObject $getEntitiesUseCaseRequestBuilderImplFileObject
     ): GetEntitiesUseCaseTestSkeletonModelBuilder {
@@ -95,21 +88,29 @@ class GetEntitiesUseCaseTestSkeletonModelBuilderImpl implements GetEntitiesUseCa
         return $this;
     }
 
+    public function withGetEntitiesUseCaseRequestFileObject(
+        FileObject $getEntitiesUseCaseRequestFileObject
+    ): GetEntitiesUseCaseTestSkeletonModelBuilder {
+        $this->skeletonModel->getEntitiesUseCaseRequestClassName = $getEntitiesUseCaseRequestFileObject->getClassName();
+        $this->skeletonModel->getEntitiesUseCaseRequestShortName = $getEntitiesUseCaseRequestFileObject->getShortName();
+
+        return $this;
+    }
+
+    public function withGetEntitiesUseCaseTestFileObject(
+        FileObject $getEntitiesUseCaseTestFileObject
+    ): GetEntitiesUseCaseTestSkeletonModelBuilder {
+        $this->skeletonModel->namespace = $getEntitiesUseCaseTestFileObject->getNamespace();
+        $this->skeletonModel->shortName = $getEntitiesUseCaseTestFileObject->getShortName();
+
+        return $this;
+    }
+
     public function withInMemoryEntityGatewayFileObject(
         FileObject $inMemoryEntityGatewayFileObject
     ): GetEntitiesUseCaseTestSkeletonModelBuilder {
         $this->skeletonModel->inMemoryEntityGatewayClassName = $inMemoryEntityGatewayFileObject->getClassName();
         $this->skeletonModel->inMemoryEntityGatewayShortName = $inMemoryEntityGatewayFileObject->getShortName();
-
-        return $this;
-    }
-
-    public function withUseCaseListItemResponseFileObject(
-        FileObject $useCaseListItemResponseFileObject
-    ): GetEntitiesUseCaseTestSkeletonModelBuilder {
-        $this->skeletonModel->useCaseListItemResponsesShortName = StringUtility::pluralize(
-            $useCaseListItemResponseFileObject->getShortName()
-        );
 
         return $this;
     }
@@ -129,6 +130,16 @@ class GetEntitiesUseCaseTestSkeletonModelBuilderImpl implements GetEntitiesUseCa
         $this->skeletonModel->useCaseListItemResponseAssemblerMockClassName = $useCaseListItemResponseAssemblerMockFileObject->getClassName(
         );
         $this->skeletonModel->useCaseListItemResponseAssemblerMockShortName = $useCaseListItemResponseAssemblerMockFileObject->getShortName(
+        );
+
+        return $this;
+    }
+
+    public function withUseCaseListItemResponseFileObject(
+        FileObject $useCaseListItemResponseFileObject
+    ): GetEntitiesUseCaseTestSkeletonModelBuilder {
+        $this->skeletonModel->useCaseListItemResponsesShortName = StringUtility::pluralize(
+            $useCaseListItemResponseFileObject->getShortName()
         );
 
         return $this;
@@ -159,19 +170,5 @@ class GetEntitiesUseCaseTestSkeletonModelBuilderImpl implements GetEntitiesUseCa
         );
 
         return $this;
-    }
-
-    public function withGetEntitiesUseCaseTestFileObject(
-        FileObject $getEntitiesUseCaseTestFileObject
-    ): GetEntitiesUseCaseTestSkeletonModelBuilder {
-        $this->skeletonModel->namespace = $getEntitiesUseCaseTestFileObject->getNamespace();
-        $this->skeletonModel->shortName = $getEntitiesUseCaseTestFileObject->getShortName();
-
-        return $this;
-    }
-
-    public function build(): GetEntitiesUseCaseTestSkeletonModel
-    {
-        return $this->skeletonModel;
     }
 }

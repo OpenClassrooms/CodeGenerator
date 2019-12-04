@@ -9,13 +9,13 @@ class EditEntityUseCaseRequestMethodObjectStub5 extends MethodObject
 {
     const DOC_COMMENT = null;
 
-    const NAME = 'getFunctionalEntityId';
+    const NAME     = 'getFunctionalEntityId';
 
     const NULLABLE = false;
 
     const RETURN_TYPE = 'int';
 
-    const VALUE = null;
+    const VALUE    = null;
 
     protected $docComment = self::DOC_COMMENT;
 
