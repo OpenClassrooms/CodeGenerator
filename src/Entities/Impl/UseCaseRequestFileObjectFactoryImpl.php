@@ -31,6 +31,22 @@ class UseCaseRequestFileObjectFactoryImpl extends AbstractFileObjectFactory impl
                 return new FileObject(
                     $this->baseNamespace . 'BusinessRules\UseCases\\' . $domain . '\DTO\Request\Create' . $entity . 'RequestDTO'
                 );
+            case UseCaseRequestFileObjectType::BUSINESS_RULES_DELETE_ENTITY_USE_CASE_REQUEST:
+                return new FileObject(
+                    $this->baseNamespace . 'BusinessRules\Requestors\\' . $domain . '\\Delete' . $entity . 'Request'
+                );
+            case UseCaseRequestFileObjectType::BUSINESS_RULES_DELETE_ENTITY_USE_CASE_REQUEST_BUILDER:
+                return new FileObject(
+                    $this->baseNamespace . 'BusinessRules\Requestors\\' . $domain . '\\Delete' . $entity . 'RequestBuilder'
+                );
+            case UseCaseRequestFileObjectType::BUSINESS_RULES_DELETE_ENTITY_USE_CASE_REQUEST_BUILDER_IMPL:
+                return new FileObject(
+                    $this->baseNamespace . 'BusinessRules\UseCases\\' . $domain . '\DTO\Request\Delete' . $entity . 'RequestBuilderImpl'
+                );
+            case UseCaseRequestFileObjectType::BUSINESS_RULES_DELETE_ENTITY_USE_CASE_REQUEST_DTO:
+                return new FileObject(
+                    $this->baseNamespace . 'BusinessRules\UseCases\\' . $domain . '\DTO\Request\Delete' . $entity . 'RequestDTO'
+                );
             case UseCaseRequestFileObjectType::BUSINESS_RULES_ENTITY_USE_CASE_COMMON_REQUEST:
                 return new FileObject(
                     $this->baseNamespace . 'BusinessRules\UseCases\\' . $domain . '\DTO\Request\\' . $entity . 'CommonRequest'

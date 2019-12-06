@@ -23,6 +23,14 @@ class UseCaseFileObjectFactoryImpl extends AbstractFileObjectFactory implements 
                 return new FileObject(
                     $this->testsBaseNamespace . 'BusinessRules\UseCases\\' . $domain . '\\Create' . $entity . 'Test'
                 );
+            case UseCaseFileObjectType::BUSINESS_RULES_DELETE_ENTITY_USE_CASE:
+                return new FileObject(
+                    $this->baseNamespace . 'BusinessRules\UseCases\\' . $domain . '\\Delete' . $entity
+                );
+            case UseCaseFileObjectType::BUSINESS_RULES_DELETE_ENTITY_USE_CASE_TEST:
+                return new FileObject(
+                    $this->testsBaseNamespace . 'BusinessRules\UseCases\\' . $domain . '\\Delete' . $entity . 'Test'
+                );
             case UseCaseFileObjectType::BUSINESS_RULES_EDIT_ENTITY_USE_CASE:
                 return new FileObject(
                     $this->baseNamespace . 'BusinessRules\UseCases\\' . $domain . '\\Edit' . $entity

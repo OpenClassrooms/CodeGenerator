@@ -1,0 +1,10 @@
+{% include "Header.php.twig" %}
+
+namespace {{ skeletonModel.namespace }};
+
+use {{ skeletonModel.useCaseRequestClassName }};
+
+interface {{ skeletonModel.shortName }} extends {{ skeletonModel.useCaseRequestShortName }}
+{
+    public function {{ skeletonModel.entityIdMethodName }}(): int;
+}

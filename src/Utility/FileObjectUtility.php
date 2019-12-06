@@ -34,14 +34,6 @@ class FileObjectUtility
         return null;
     }
 
-    public static function getNamespace(string $className)
-    {
-        $classParts = explode('\\', $className);
-        array_pop($classParts);
-
-        return implode('\\', $classParts);
-    }
-
     public static function getDomainFromClassName(string $className): string
     {
         $explodedNamespace = explode('\\', self::getNamespace($className));
@@ -62,6 +54,47 @@ class FileObjectUtility
         return implode('\\', array_reverse($domain));
     }
 
+    public static function getEntityNameFromClassName(string $className): string
+    {
+        $shortClassName = self::getShortClassName($className);
+
+        $classTypes = [
+            'Assembler',
+            'Builder',
+            'Create',
+            'CommonFieldTrait',
+            'Delete',
+            'Detail',
+            'Edit',
+            'Gateway',
+            'Impl',
+            'ListItem',
+            'ResponseDTO',
+            'Response',
+            'RequestDTO',
+            'Request',
+            'Stub1',
+            'TestCase',
+            'ViewModel',
+        ];
+
+        foreach ($classTypes as $type) {
+            if (false !== strpos($shortClassName, $type)) {
+                $shortClassName = str_replace($type, '', $shortClassName);
+            }
+        }
+
+        return $shortClassName;
+    }
+
+    public static function getNamespace(string $className)
+    {
+        $classParts = explode('\\', $className);
+        array_pop($classParts);
+
+        return implode('\\', $classParts);
+    }
+
     private static function getNamespaceLimit(array $explodedNamespace): int
     {
         $excludeDir = ['BusinessRules', 'Entity', 'ViewModels', 'Responders', 'Requestors'];
@@ -72,29 +105,6 @@ class FileObjectUtility
         }
 
         return 0;
-    }
-
-    public static function getEntityNameFromClassName(string $className): string
-    {
-        $shortClassName = self::getShortClassName($className);
-        $shortClassName = str_replace('Assembler', '', $shortClassName);
-        $shortClassName = str_replace('Builder', '', $shortClassName);
-        $shortClassName = str_replace('Create', '', $shortClassName);
-        $shortClassName = str_replace('CommonFieldTrait', '', $shortClassName);
-        $shortClassName = str_replace('Detail', '', $shortClassName);
-        $shortClassName = str_replace('Edit', '', $shortClassName);
-        $shortClassName = str_replace('Gateway', '', $shortClassName);
-        $shortClassName = str_replace('Impl', '', $shortClassName);
-        $shortClassName = str_replace('ListItem', '', $shortClassName);
-        $shortClassName = str_replace('ResponseDTO', '', $shortClassName);
-        $shortClassName = str_replace('Response', '', $shortClassName);
-        $shortClassName = str_replace('RequestDTO', '', $shortClassName);
-        $shortClassName = str_replace('Request', '', $shortClassName);
-        $shortClassName = str_replace('Stub1', '', $shortClassName);
-        $shortClassName = str_replace('TestCase', '', $shortClassName);
-        $shortClassName = str_replace('ViewModel', '', $shortClassName);
-
-        return $shortClassName;
     }
 
     public static function getShortClassName(string $className): string
