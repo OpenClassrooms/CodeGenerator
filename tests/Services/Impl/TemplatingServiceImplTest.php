@@ -3,6 +3,7 @@
 namespace OpenClassrooms\CodeGenerator\Tests\Services\Impl;
 
 use OpenClassrooms\CodeGenerator\Entities\Object\FieldObject;
+use OpenClassrooms\CodeGenerator\Entities\Object\MethodObject;
 use OpenClassrooms\CodeGenerator\Services\Impl\TemplatingServiceImpl;
 use OpenClassrooms\CodeGenerator\Services\TemplatingService;
 use OpenClassrooms\CodeGenerator\Tests\TestClassUtil;
@@ -49,6 +50,37 @@ class TemplatingServiceImplTest extends TestCase
         }
 
         return $fieldNames;
+    }
+
+    /**
+     * @test
+     */
+    public function getSortAccessorsFieldNameByAlphaFilterReturnArrayOfFields(): void
+    {
+        $methodObjects = [
+            new MethodObject('getField4'),
+            new MethodObject('getField2'),
+            new MethodObject('getField1'),
+            new MethodObject('isField3'),
+        ];
+
+        $expectedOrder = [
+            'getField1',
+            'getField2',
+            'isField3',
+            'getField4',
+        ];
+
+        $twigFilter = TestClassUtil::invokeMethod('getSortAccessorsFieldNameByAlphaFilter', $this->templateServiceImpl);
+
+        $this->assertTrue(is_callable($twigFilter->getCallable()));
+
+        $actualMethodObjects = $twigFilter->getCallable()->__invoke($methodObjects);
+
+        foreach ($actualMethodObjects as $key => $actualMethodObject){
+            /** @var MethodObject $actualMethodObject */
+            $this->assertSame($actualMethodObject->getName(), $expectedOrder[$key]);
+        }
     }
 
     /**

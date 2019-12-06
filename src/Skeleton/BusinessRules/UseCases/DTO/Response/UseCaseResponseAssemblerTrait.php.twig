@@ -12,7 +12,7 @@ trait {{ skeletonModel.shortName }}
      */
     private function hydrateCommonFields({{ skeletonModel.entityShortName }} $entity, {{ skeletonModel.useCaseResponseShortName }} $response): {{ skeletonModel.useCaseResponseShortName }}
     {
-{% for method in skeletonModel.entityMethods %}
+{% for method in skeletonModel.entityMethods|sortAccessorsFieldNameByAlpha %}
         $response->{{ method.fieldName }} = $entity->{{ method.name }}();
 {% endfor %}
 

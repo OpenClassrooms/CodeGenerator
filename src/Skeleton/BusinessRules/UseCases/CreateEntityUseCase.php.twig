@@ -62,7 +62,7 @@ class {{ skeletonModel.shortName }} implements UseCase
 
     private function populate({{ skeletonModel.entityShortName }} ${{ skeletonModel.entityArgument }}, {{ skeletonModel.createEntityUseCaseRequestShortName }} $request): void
     {
-{% for method in skeletonModel.createEntityUseCaseRequestMethods %}
+{% for method in skeletonModel.createEntityUseCaseRequestMethods|sortAccessorsFieldNameByAlpha %}
         ${{ skeletonModel.entityArgument }}->set{{ method.fieldName|capitalize }}($request->{{ method.name }}());
 {% endfor %}
     }
