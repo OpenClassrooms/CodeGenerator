@@ -15,7 +15,7 @@ class GenericUseCaseCommandTest extends TestCase
 {
     use CommandTestCase;
 
-    const DOMAIN = 'Domain\SubDomain';
+    const DOMAIN           = 'Domain\SubDomain';
 
     const GENERIC_USE_CASE = 'GenericUseCase';
 

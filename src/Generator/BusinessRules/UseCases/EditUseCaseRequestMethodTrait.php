@@ -13,15 +13,9 @@ trait EditUseCaseRequestMethodTrait
      */
     private $methodUtility;
 
-    private function buildEditUseCaseRequestDTOMethods(string $entityClassName): array
+    public function setMethodUtility(MethodUtilityStrategy $methodUtility): void
     {
-        $isUpdatedMethods = MethodUtility::buildIsUpdatedMethods($entityClassName);
-        $getEntityMethod = MethodUtility::buildGetEntityIdMethodObject(
-            FileObjectUtility::getShortClassName($entityClassName)
-        );
-        $getEntityMethod = [$getEntityMethod];
-
-        return array_merge($isUpdatedMethods, $getEntityMethod);
+        $this->methodUtility = $methodUtility;
     }
 
     private function buildEditUseCaseRequestMethods(string $entityClassName): array
@@ -31,8 +25,14 @@ trait EditUseCaseRequestMethodTrait
         return array_merge($accessors, $this->buildEditUseCaseRequestDTOMethods($entityClassName));
     }
 
-    public function setMethodUtility(MethodUtilityStrategy $methodUtility): void
+    private function buildEditUseCaseRequestDTOMethods(string $entityClassName): array
     {
-        $this->methodUtility = $methodUtility;
+        $isUpdatedMethods = MethodUtility::buildIsUpdatedMethods($entityClassName);
+        $getEntityMethod = MethodUtility::buildGetEntityIdMethodObject(
+            FileObjectUtility::getShortClassName($entityClassName)
+        );
+        $getEntityMethod = [$getEntityMethod];
+
+        return array_merge($isUpdatedMethods, $getEntityMethod);
     }
 }

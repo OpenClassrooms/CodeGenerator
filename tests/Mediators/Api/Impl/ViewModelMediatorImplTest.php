@@ -149,6 +149,22 @@ class ViewModelMediatorImplTest extends TestCase
         $this->assertFlushedFileObject($fileObjects);
     }
 
+    protected function setUp(): void
+    {
+        InMemoryFileObjectGateway::$fileObjects = [];
+        $this->mediator = new ViewModelMediatorImpl();
+        $this->mediator->setFileObjectGateway(new InMemoryFileObjectGateway());
+
+        $this->options = [
+            Options::DUMP       => false,
+            Options::NO_TEST    => false,
+            Options::TESTS_ONLY => false,
+        ];
+
+        $this->mockGenerators();
+        $this->mockRequestBuilder();
+    }
+
     private function mockGenerators(): void
     {
         $this->mediator->setViewModelDetailGenerator(
@@ -298,21 +314,5 @@ class ViewModelMediatorImplTest extends TestCase
         $this->mediator->setEntityImplGeneratorRequestBuilder(
             new EntityImplGeneratorRequestBuilderImpl()
         );
-    }
-
-    protected function setUp(): void
-    {
-        InMemoryFileObjectGateway::$fileObjects = [];
-        $this->mediator = new ViewModelMediatorImpl();
-        $this->mediator->setFileObjectGateway(new InMemoryFileObjectGateway());
-
-        $this->options = [
-            Options::DUMP       => false,
-            Options::NO_TEST    => false,
-            Options::TESTS_ONLY => false,
-        ];
-
-        $this->mockGenerators();
-        $this->mockRequestBuilder();
     }
 }

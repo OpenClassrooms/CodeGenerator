@@ -116,6 +116,25 @@ class GetEntitiesUseCaseMediatorImplTest extends TestCase
         $this->assertFlushedFileObject($fileObjects);
     }
 
+    protected function setUp(): void
+    {
+        InMemoryFileObjectGateway::$fileObjects = [];
+        $this->mediator = new GetEntitiesUseCaseMediatorImpl();
+        $this->mediator->setEntitiesMediator(new EntitiesMediatorMock());
+        $this->mediator->setFileObjectGateway(new InMemoryFileObjectGateway());
+        $this->mediator->setUseCaseListItemResponseMediator(new UseCaseListItemResponseMediatorMock());
+        $this->mediator->setUseCaseResponseCommonMediator(new UseCaseResponseCommonMediatorMock());
+
+        $this->options = [
+            Options::DUMP       => false,
+            Options::NO_TEST    => false,
+            Options::TESTS_ONLY => false,
+        ];
+
+        $this->mockGenerators();
+        $this->mockRequestBuilder();
+    }
+
     private function mockGenerators(): void
     {
         $this->mediator->setGetEntitiesUseCaseGenerator(
@@ -168,24 +187,5 @@ class GetEntitiesUseCaseMediatorImplTest extends TestCase
         $this->mediator->setGetEntitiesUseCaseRequestDTOGeneratorRequestBuilder(
             new GetEntitiesUseCaseRequestDTOGeneratorRequestBuilderImpl()
         );
-    }
-
-    protected function setUp(): void
-    {
-        InMemoryFileObjectGateway::$fileObjects = [];
-        $this->mediator = new GetEntitiesUseCaseMediatorImpl();
-        $this->mediator->setEntitiesMediator(new EntitiesMediatorMock());
-        $this->mediator->setFileObjectGateway(new InMemoryFileObjectGateway());
-        $this->mediator->setUseCaseListItemResponseMediator(new UseCaseListItemResponseMediatorMock());
-        $this->mediator->setUseCaseResponseCommonMediator(new UseCaseResponseCommonMediatorMock());
-
-        $this->options = [
-            Options::DUMP       => false,
-            Options::NO_TEST    => false,
-            Options::TESTS_ONLY => false,
-        ];
-
-        $this->mockGenerators();
-        $this->mockRequestBuilder();
     }
 }

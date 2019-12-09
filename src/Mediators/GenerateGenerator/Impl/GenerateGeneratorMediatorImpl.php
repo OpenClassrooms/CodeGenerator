@@ -27,6 +27,21 @@ class GenerateGeneratorMediatorImpl implements GenerateGeneratorMediator
      */
     private $selfGeneratorGeneratorRequestBuilder;
 
+    public function mediate(array $args = [], array $options = []): array
+    {
+        $domain = $args[Args::DOMAIN];
+        $entity = $args[Args::ENTITY];
+        $constructionPattern = $options[Options::CONSTRUCTION_PATTERN];
+
+        $fileObjects = $this->generateGenerateGeneratorFileObjects($domain, $entity, $constructionPattern);
+
+        if (false === $options[Options::DUMP]) {
+            $this->fileObjectGateway->flush();
+        }
+
+        return $fileObjects;
+    }
+
     /**
      * @return FileObject[]
      */
@@ -43,21 +58,6 @@ class GenerateGeneratorMediatorImpl implements GenerateGeneratorMediator
                 ->withEntityClassName($entity)
                 ->build()
         );
-    }
-
-    public function mediate(array $args = [], array $options = []): array
-    {
-        $domain = $args[Args::DOMAIN];
-        $entity = $args[Args::ENTITY];
-        $constructionPattern = $options[Options::CONSTRUCTION_PATTERN];
-
-        $fileObjects = $this->generateGenerateGeneratorFileObjects($domain, $entity, $constructionPattern);
-
-        if (false === $options[Options::DUMP]) {
-            $this->fileObjectGateway->flush();
-        }
-
-        return $fileObjects;
     }
 
     public function setFileObjectGateway(FileObjectGateway $fileObjectGateway): void

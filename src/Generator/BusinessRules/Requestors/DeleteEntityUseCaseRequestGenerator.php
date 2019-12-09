@@ -17,6 +17,20 @@ class DeleteEntityUseCaseRequestGenerator extends AbstractUseCaseGenerator
      */
     private $deleteEntityUseCaseRequestSkeletonModelAssembler;
 
+    /**
+     * @param DeleteEntityUseCaseRequestGeneratorRequest $generatorRequest
+     */
+    public function generate(GeneratorRequest $generatorRequest): FileObject
+    {
+        $deleteEntityUseCaseRequestFileObject = $this->buildDeleteEntityUseCaseRequestFileObject(
+            $generatorRequest->getEntityClassName()
+        );
+
+        $this->insertFileObject($deleteEntityUseCaseRequestFileObject);
+
+        return $deleteEntityUseCaseRequestFileObject;
+    }
+
     private function buildDeleteEntityUseCaseRequestFileObject(string $entityClassName): FileObject
     {
         $this->initFileObjectParameter($entityClassName);
@@ -38,31 +52,17 @@ class DeleteEntityUseCaseRequestGenerator extends AbstractUseCaseGenerator
         );
     }
 
-    private function createSkeletonModel(
-        FileObject $deleteEntityUseCaseRequestFileObject
-    ): DeleteEntityUseCaseRequestSkeletonModel {
-        return $this->deleteEntityUseCaseRequestSkeletonModelAssembler->create($deleteEntityUseCaseRequestFileObject);
-    }
-
-    /**
-     * @param DeleteEntityUseCaseRequestGeneratorRequest $generatorRequest
-     */
-    public function generate(GeneratorRequest $generatorRequest): FileObject
-    {
-        $deleteEntityUseCaseRequestFileObject = $this->buildDeleteEntityUseCaseRequestFileObject(
-            $generatorRequest->getEntityClassName()
-        );
-
-        $this->insertFileObject($deleteEntityUseCaseRequestFileObject);
-
-        return $deleteEntityUseCaseRequestFileObject;
-    }
-
     private function generateContent(FileObject $deleteEntityUseCaseRequestFileObject): string
     {
         $skeletonModel = $this->createSkeletonModel($deleteEntityUseCaseRequestFileObject);
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
+    }
+
+    private function createSkeletonModel(
+        FileObject $deleteEntityUseCaseRequestFileObject
+    ): DeleteEntityUseCaseRequestSkeletonModel {
+        return $this->deleteEntityUseCaseRequestSkeletonModelAssembler->create($deleteEntityUseCaseRequestFileObject);
     }
 
     public function setDeleteEntityUseCaseRequestSkeletonModelAssembler(

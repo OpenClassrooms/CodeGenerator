@@ -43,7 +43,9 @@ class CreateEntityUseCaseRequestGenerator extends AbstractUseCaseGenerator
         $createEntityUseCaseRequestFileObject = $this->createCreateEntityUseCaseRequestFileObject();
         $createEntityUseCaseRequestFileObject->setMethods($this->methodUtility->getAccessors($entityClassName));
 
-        $createEntityUseCaseRequestFileObject->setContent($this->generateContent($createEntityUseCaseRequestFileObject));
+        $createEntityUseCaseRequestFileObject->setContent(
+            $this->generateContent($createEntityUseCaseRequestFileObject)
+        );
 
         return $createEntityUseCaseRequestFileObject;
     }

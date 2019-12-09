@@ -11,6 +11,11 @@ trait UseCaseDetailResponseMediatorTrait
      */
     private $useCaseDetailResponseMediator;
 
+    public function setUseCaseDetailResponseMediator(UseCaseDetailResponseMediator $useCaseDetailResponseMediator): void
+    {
+        $this->useCaseDetailResponseMediator = $useCaseDetailResponseMediator;
+    }
+
     private function generateUseCaseDetailSources(string $className): array
     {
         $fileObjects[] = $this->useCaseDetailResponseMediator->generateUseCaseDetailResponseAssemblerGenerator(
@@ -36,10 +41,5 @@ trait UseCaseDetailResponseMediatorTrait
         );
 
         return $fileObjects;
-    }
-
-    public function setUseCaseDetailResponseMediator(UseCaseDetailResponseMediator $useCaseDetailResponseMediator): void
-    {
-        $this->useCaseDetailResponseMediator = $useCaseDetailResponseMediator;
     }
 }

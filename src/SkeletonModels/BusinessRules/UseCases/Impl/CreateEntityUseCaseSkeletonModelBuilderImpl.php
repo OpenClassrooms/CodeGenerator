@@ -48,9 +48,12 @@ class CreateEntityUseCaseSkeletonModelBuilderImpl implements CreateEntityUseCase
         $this->skeletonModel->createEntityUseCaseRequestArgument = lcfirst(
             $createFunctionalEntityRequestFileObject->getShortName()
         );
-        $this->skeletonModel->createEntityUseCaseRequestClassName = $createFunctionalEntityRequestFileObject->getClassName();
-        $this->skeletonModel->createEntityUseCaseRequestMethods = $createFunctionalEntityRequestFileObject->getMethods();
-        $this->skeletonModel->createEntityUseCaseRequestShortName = $createFunctionalEntityRequestFileObject->getShortName();
+        $this->skeletonModel->createEntityUseCaseRequestClassName = $createFunctionalEntityRequestFileObject->getClassName(
+        );
+        $this->skeletonModel->createEntityUseCaseRequestMethods = $createFunctionalEntityRequestFileObject->getMethods(
+        );
+        $this->skeletonModel->createEntityUseCaseRequestShortName = $createFunctionalEntityRequestFileObject->getShortName(
+        );
 
         return $this;
     }

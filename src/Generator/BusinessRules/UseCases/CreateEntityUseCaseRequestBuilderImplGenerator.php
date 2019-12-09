@@ -36,12 +36,16 @@ class CreateEntityUseCaseRequestBuilderImplGenerator extends AbstractUseCaseGene
     {
         $this->initFileObjectParameter($entityClassName);
         $createEntityUseCaseRequestBuilderFileObject = $this->createCreateEntityUseCaseRequestBuilderFileObject();
-        $createEntityUseCaseRequestBuilderImplFileObject = $this->createCreateEntityUseCaseRequestBuilderImplFileObject();
+        $createEntityUseCaseRequestBuilderImplFileObject = $this->createCreateEntityUseCaseRequestBuilderImplFileObject(
+        );
         $createEntityUseCaseRequestDTOFileObject = $this->createCreateEntityUseCaseRequestDTOFileObject();
         $createEntityUseCaseRequestFileObject = $this->createCreateEntityUseCaseRequestFileObject();
 
         $createEntityUseCaseRequestBuilderImplFileObject->setMethods(
-            MethodUtility::buildWitherMethods($entityClassName, $createEntityUseCaseRequestBuilderFileObject->getShortName())
+            MethodUtility::buildWitherMethods(
+                $entityClassName,
+                $createEntityUseCaseRequestBuilderFileObject->getShortName()
+            )
         );
 
         $createEntityUseCaseRequestBuilderImplFileObject->setContent(

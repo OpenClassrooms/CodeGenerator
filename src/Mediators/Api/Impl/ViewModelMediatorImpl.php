@@ -20,11 +20,25 @@ class ViewModelMediatorImpl implements ViewModelMediator
     /**
      * @return FileObject[]
      */
-    private function generateEntityAndUseCaseResponseTests(string $className): array
+    public function mediate(array $args = [], array $options = []): array
     {
-        $fileObjects[] = $this->generateEntityStub($className);
-        $fileObjects[] = $this->generateUseCaseDetailResponseStub($className);
-        $fileObjects[] = $this->generateUseCaseListItemResponseStub($className);
+        $className = $args[Args::CLASS_NAME];
+
+        if (false !== $options[Options::NO_TEST]) {
+            $fileObjects = $this->generateSources($className);
+        } elseif (false !== $options[Options::TESTS_ONLY]) {
+            $entityAndUseCaseResponseFileObjects = $this->generateEntityAndUseCaseResponseTests($className);
+            $viewModelTestFileObjects = $this->generateViewModelTests($className);
+            $fileObjects = array_merge($entityAndUseCaseResponseFileObjects, $viewModelTestFileObjects);
+        } else {
+            $sourcesFileObjects = $this->generateSources($className);
+            $testsFileObjects = $this->generateEntityAndUseCaseResponseTests($className);
+            $viewModelTestFileObjects = $this->generateViewModelTests($className);
+            $fileObjects = array_merge($sourcesFileObjects, $testsFileObjects, $viewModelTestFileObjects);
+        }
+        if (false === $options[Options::DUMP]) {
+            $this->fileObjectGateway->flush();
+        }
 
         return $fileObjects;
     }
@@ -52,6 +66,18 @@ class ViewModelMediatorImpl implements ViewModelMediator
     /**
      * @return FileObject[]
      */
+    private function generateEntityAndUseCaseResponseTests(string $className): array
+    {
+        $fileObjects[] = $this->generateEntityStub($className);
+        $fileObjects[] = $this->generateUseCaseDetailResponseStub($className);
+        $fileObjects[] = $this->generateUseCaseListItemResponseStub($className);
+
+        return $fileObjects;
+    }
+
+    /**
+     * @return FileObject[]
+     */
     private function generateViewModelTests(string $className): array
     {
         $fileObjects[] = $this->generateViewModelTestCase($className);
@@ -61,32 +87,6 @@ class ViewModelMediatorImpl implements ViewModelMediator
         $fileObjects[] = $this->generateViewModelListItemTestCase($className);
         $fileObjects[] = $this->generateViewModelDetailAssemblerImplTest($className);
         $fileObjects[] = $this->generateViewModelListItemAssemblerImplTest($className);
-
-        return $fileObjects;
-    }
-
-    /**
-     * @return FileObject[]
-     */
-    public function mediate(array $args = [], array $options = []): array
-    {
-        $className = $args[Args::CLASS_NAME];
-
-        if (false !== $options[Options::NO_TEST]) {
-            $fileObjects = $this->generateSources($className);
-        } elseif (false !== $options[Options::TESTS_ONLY]) {
-            $entityAndUseCaseResponseFileObjects = $this->generateEntityAndUseCaseResponseTests($className);
-            $viewModelTestFileObjects = $this->generateViewModelTests($className);
-            $fileObjects = array_merge($entityAndUseCaseResponseFileObjects, $viewModelTestFileObjects);
-        } else {
-            $sourcesFileObjects = $this->generateSources($className);
-            $testsFileObjects = $this->generateEntityAndUseCaseResponseTests($className);
-            $viewModelTestFileObjects = $this->generateViewModelTests($className);
-            $fileObjects = array_merge($sourcesFileObjects, $testsFileObjects, $viewModelTestFileObjects);
-        }
-        if (false === $options[Options::DUMP]) {
-            $this->fileObjectGateway->flush();
-        }
 
         return $fileObjects;
     }

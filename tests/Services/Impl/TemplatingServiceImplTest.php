@@ -17,14 +17,58 @@ class TemplatingServiceImplTest extends TestCase
     private $templateServiceImpl;
 
     /**
-     * @param string[] $expectedFieldNames
-     * @param string[] $actualFieldNames
+     * @test
      */
-    private function assertFieldNames(array $expectedFieldNames, array $actualFieldNames): void
+    public function getSortAccessorsFieldNameByAlphaFilterReturnArrayOfFields(): void
     {
-        foreach ($actualFieldNames as $key => $actualFieldName) {
-            $this->assertEquals($actualFieldName, $expectedFieldNames[$key]);
+        $methodObjects = [
+            new MethodObject('getField4'),
+            new MethodObject('getField2'),
+            new MethodObject('getField1'),
+            new MethodObject('isField3'),
+        ];
+
+        $expectedOrder = [
+            'getField1',
+            'getField2',
+            'isField3',
+            'getField4',
+        ];
+
+        $twigFilter = TestClassUtil::invokeMethod('getSortAccessorsFieldNameByAlphaFilter', $this->templateServiceImpl);
+
+        $this->assertTrue(is_callable($twigFilter->getCallable()));
+
+        $actualMethodObjects = $twigFilter->getCallable()->__invoke($methodObjects);
+
+        foreach ($actualMethodObjects as $key => $actualMethodObject) {
+            /** @var MethodObject $actualMethodObject */
+            $this->assertSame($actualMethodObject->getName(), $expectedOrder[$key]);
         }
+    }
+
+    /**
+     * @test
+     */
+    public function getSortIdFirstFilterReturnArrayOfFields(): void
+    {
+        $fieldObjects = [
+            $this->generateFieldObject('omega', 'bool'),
+            $this->generateFieldObject('beta', 'int'),
+            $this->generateFieldObject('alpha', 'string'),
+            $this->generateFieldObject('id', 'int'),
+        ];
+        $expectedFieldNames = $this->getFieldNameList($fieldObjects);
+        $expectedField = end($expectedFieldNames);
+
+        $twigFilter = TestClassUtil::invokeMethod('getSortIdFirstFilter', $this->templateServiceImpl);
+
+        $this->assertTrue(is_callable($twigFilter->getCallable()));
+
+        $actualFieldObjects = $twigFilter->getCallable()->__invoke($fieldObjects);
+        $actualField = array_shift($actualFieldObjects);
+
+        $this->assertEquals($actualField->getName(), $expectedField);
     }
 
     private function generateFieldObject(string $name, string $type): FieldObject
@@ -55,61 +99,6 @@ class TemplatingServiceImplTest extends TestCase
     /**
      * @test
      */
-    public function getSortAccessorsFieldNameByAlphaFilterReturnArrayOfFields(): void
-    {
-        $methodObjects = [
-            new MethodObject('getField4'),
-            new MethodObject('getField2'),
-            new MethodObject('getField1'),
-            new MethodObject('isField3'),
-        ];
-
-        $expectedOrder = [
-            'getField1',
-            'getField2',
-            'isField3',
-            'getField4',
-        ];
-
-        $twigFilter = TestClassUtil::invokeMethod('getSortAccessorsFieldNameByAlphaFilter', $this->templateServiceImpl);
-
-        $this->assertTrue(is_callable($twigFilter->getCallable()));
-
-        $actualMethodObjects = $twigFilter->getCallable()->__invoke($methodObjects);
-
-        foreach ($actualMethodObjects as $key => $actualMethodObject){
-            /** @var MethodObject $actualMethodObject */
-            $this->assertSame($actualMethodObject->getName(), $expectedOrder[$key]);
-        }
-    }
-
-    /**
-     * @test
-     */
-    public function getSortIdFirstFilterReturnArrayOfFields(): void
-    {
-        $fieldObjects = [
-            $this->generateFieldObject('omega', 'bool'),
-            $this->generateFieldObject('beta', 'int'),
-            $this->generateFieldObject('alpha', 'string'),
-            $this->generateFieldObject('id', 'int'),
-        ];
-        $expectedFieldNames = $this->getFieldNameList($fieldObjects);
-        $expectedField = end($expectedFieldNames);
-
-        $twigFilter = TestClassUtil::invokeMethod('getSortIdFirstFilter', $this->templateServiceImpl);
-
-        $this->assertTrue(is_callable($twigFilter->getCallable()));
-
-        $actualFieldObjects = $twigFilter->getCallable()->__invoke($fieldObjects);
-        $actualField = array_shift($actualFieldObjects);
-
-        $this->assertEquals($actualField->getName(), $expectedField);
-    }
-
-    /**
-     * @test
-     */
     public function getSortNameByAlphaFilterReturnArrayOfFields(): void
     {
         $fieldObjects = [
@@ -128,6 +117,17 @@ class TemplatingServiceImplTest extends TestCase
         $actualFieldNames = $this->getFieldNameList($actualFieldObjects);
 
         $this->assertFieldNames($expectedFieldNames, $actualFieldNames);
+    }
+
+    /**
+     * @param string[] $expectedFieldNames
+     * @param string[] $actualFieldNames
+     */
+    private function assertFieldNames(array $expectedFieldNames, array $actualFieldNames): void
+    {
+        foreach ($actualFieldNames as $key => $actualFieldName) {
+            $this->assertEquals($actualFieldName, $expectedFieldNames[$key]);
+        }
     }
 
     /**

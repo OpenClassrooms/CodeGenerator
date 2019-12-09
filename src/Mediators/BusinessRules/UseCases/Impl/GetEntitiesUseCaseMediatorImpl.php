@@ -16,6 +16,12 @@ class GetEntitiesUseCaseMediatorImpl implements GetEntitiesUseCaseMediator
      */
     private $useCaseListItemResponseMediator;
 
+    public function setUseCaseListItemResponseMediator(
+        UseCaseListItemResponseMediator $useCaseListItemResponseMediator
+    ): void {
+        $this->useCaseListItemResponseMediator = $useCaseListItemResponseMediator;
+    }
+
     /**
      * @return FileObject[]
      */
@@ -72,11 +78,5 @@ class GetEntitiesUseCaseMediatorImpl implements GetEntitiesUseCaseMediator
         $fileObjects[] = $this->useCaseResponseCommonMediator->generateUseCaseResponseTestCaseGenerator($className);
 
         return $fileObjects;
-    }
-
-    public function setUseCaseListItemResponseMediator(
-        UseCaseListItemResponseMediator $useCaseListItemResponseMediator
-    ): void {
-        $this->useCaseListItemResponseMediator = $useCaseListItemResponseMediator;
     }
 }

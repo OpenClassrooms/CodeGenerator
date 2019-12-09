@@ -8,9 +8,6 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\BusinessRules\Gate
 use OpenClassrooms\CodeGenerator\Utility\NameUtility;
 use OpenClassrooms\CodeGenerator\Utility\StringUtility;
 
-/**
- * @author arnaud lefevre <arnaud.lefevre@openclassrooms.com>
- */
 class InMemoryEntityGatewaySkeletonModelAssemblerImpl implements InMemoryEntityGatewaySkeletonModelAssembler
 {
     private $entityUtilClassName;

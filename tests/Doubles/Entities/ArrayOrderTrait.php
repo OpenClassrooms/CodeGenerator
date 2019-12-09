@@ -8,15 +8,6 @@ use OpenClassrooms\CodeGenerator\Entities\Object\MethodObject;
 trait ArrayOrderTrait
 {
     /**
-     * @param FieldObject|MethodObject $a
-     * @param FieldObject|MethodObject $b
-     */
-    private function orderArrayObjectsByName($a, $b): int
-    {
-        return strcmp($a->getName(), $b->getName());
-    }
-
-    /**
      * @param FieldObject[]|MethodObject[] $expectedObjects
      * @param FieldObject[]|MethodObject[] $actualObjects
      */
@@ -26,5 +17,14 @@ trait ArrayOrderTrait
         usort($expectedObjects, [$this, "orderArrayObjectsByName"]);
 
         return [$expectedObjects, $actualObjects];
+    }
+
+    /**
+     * @param FieldObject|MethodObject $a
+     * @param FieldObject|MethodObject $b
+     */
+    private function orderArrayObjectsByName($a, $b): int
+    {
+        return strcmp($a->getName(), $b->getName());
     }
 }

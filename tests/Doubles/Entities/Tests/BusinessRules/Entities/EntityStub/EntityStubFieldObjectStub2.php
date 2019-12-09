@@ -7,15 +7,15 @@ use OpenClassrooms\CodeGenerator\Entities\Object\FieldObject;
 
 class EntityStubFieldObjectStub2 extends FieldObject
 {
-    const CONST = 'FIELD_1';
+    const CONST       = 'FIELD_1';
 
     const DOC_COMMENT = '/**
      * @var string
      */';
 
-    const NAME  = 'field1';
+    const NAME        = 'field1';
 
-    const VALUE = '\'Functional Entity Stub 1 field 1\'';
+    const VALUE       = '\'Functional Entity Stub 1 field 1\'';
 
     protected $docComment = self::DOC_COMMENT;
 

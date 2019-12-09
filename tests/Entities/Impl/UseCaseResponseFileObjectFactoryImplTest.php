@@ -107,17 +107,17 @@ class UseCaseResponseFileObjectFactoryImplTest extends TestCase
         ];
     }
 
+    private static function getFileObjectBusinessRulesUseCaseResponseDto(): FileObject
+    {
+        return $useCaseResponseFileObject = new FileObject(
+            FixturesConfig::BASE_NAMESPACE . 'BusinessRules\UseCases\Domain\SubDomain\DTO\Response\\' . self::getEntityName(
+            ) . 'ResponseCommonFieldTrait'
+        );
+    }
+
     private static function getEntityName(): string
     {
         return TestClassUtil::getShortClassName(FunctionalEntity::class);
-    }
-
-    private static function getFileObjectBusinessRulesUseCaseDetailResponse(): FileObject
-    {
-        return $useCaseResponseFileObject = new FileObject(
-            FixturesConfig::BASE_NAMESPACE . 'BusinessRules\Responders\Domain\SubDomain\\' . self::getEntityName(
-            ) . 'DetailResponse'
-        );
     }
 
     private static function getFileObjectBusinessRulesUseCaseDetailResponseDto(): FileObject
@@ -128,27 +128,27 @@ class UseCaseResponseFileObjectFactoryImplTest extends TestCase
         );
     }
 
-    private static function getFileObjectBusinessRulesUseCaseDetailResponseStub(): FileObject
-    {
-        return $useCaseResponseFileObject = new FileObject(
-            FixturesConfig::STUB_NAMESPACE . 'BusinessRules\Responders\Domain\SubDomain\\' . self::getEntityName(
-            ) . 'DetailResponseStub1'
-        );
-    }
-
-    private static function getFileObjectBusinessRulesUseCaseListItemResponse(): FileObject
-    {
-        return $useCaseResponseFileObject = new FileObject(
-            FixturesConfig::BASE_NAMESPACE . 'BusinessRules\Responders\Domain\SubDomain\\' . self::getEntityName(
-            ) . 'ListItemResponse'
-        );
-    }
-
     private static function getFileObjectBusinessRulesUseCaseListItemResponseDto(): FileObject
     {
         return $useCaseResponseFileObject = new FileObject(
             FixturesConfig::BASE_NAMESPACE . 'BusinessRules\UseCases\Domain\SubDomain\DTO\Response\\' . self::getEntityName(
             ) . 'ListItemResponseDTO'
+        );
+    }
+
+    private static function getFileObjectBusinessRulesUseCaseResponseStub(): FileObject
+    {
+        return $useCaseResponseFileObject = new FileObject(
+            FixturesConfig::STUB_NAMESPACE . 'BusinessRules\Responders\Domain\SubDomain\\' . self::getEntityName(
+            ) . 'ResponseStub1'
+        );
+    }
+
+    private static function getFileObjectBusinessRulesUseCaseDetailResponseStub(): FileObject
+    {
+        return $useCaseResponseFileObject = new FileObject(
+            FixturesConfig::STUB_NAMESPACE . 'BusinessRules\Responders\Domain\SubDomain\\' . self::getEntityName(
+            ) . 'DetailResponseStub1'
         );
     }
 
@@ -168,19 +168,19 @@ class UseCaseResponseFileObjectFactoryImplTest extends TestCase
         );
     }
 
-    private static function getFileObjectBusinessRulesUseCaseResponseDto(): FileObject
+    private static function getFileObjectBusinessRulesUseCaseDetailResponse(): FileObject
     {
         return $useCaseResponseFileObject = new FileObject(
-            FixturesConfig::BASE_NAMESPACE . 'BusinessRules\UseCases\Domain\SubDomain\DTO\Response\\' . self::getEntityName(
-            ) . 'ResponseCommonFieldTrait'
+            FixturesConfig::BASE_NAMESPACE . 'BusinessRules\Responders\Domain\SubDomain\\' . self::getEntityName(
+            ) . 'DetailResponse'
         );
     }
 
-    private static function getFileObjectBusinessRulesUseCaseResponseStub(): FileObject
+    private static function getFileObjectBusinessRulesUseCaseListItemResponse(): FileObject
     {
         return $useCaseResponseFileObject = new FileObject(
-            FixturesConfig::STUB_NAMESPACE . 'BusinessRules\Responders\Domain\SubDomain\\' . self::getEntityName(
-            ) . 'ResponseStub1'
+            FixturesConfig::BASE_NAMESPACE . 'BusinessRules\Responders\Domain\SubDomain\\' . self::getEntityName(
+            ) . 'ListItemResponse'
         );
     }
 

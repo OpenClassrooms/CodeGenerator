@@ -10,34 +10,6 @@ use PHPUnit\Framework\TestCase;
 class ConstUtilityTest extends TestCase
 {
     /**
-     * @param mixed $expectedValue
-     * @param mixed $actual
-     */
-    private function assertType($expectedValue, $actual): void
-    {
-        if (('\DateTime' || '\DateTimeImmutable' || '\DateTimeInterface') === $expectedValue) {
-            $this->assertInstanceOf($expectedValue, $actual->getValue());
-        } else {
-            $this->assertInternalType($expectedValue, $actual->getValue());
-        }
-    }
-
-    /**
-     * @return FieldObject
-     */
-    private function buildFieldObject($name, $type): FieldObject
-    {
-        $stubFieldObject = new FieldObject($name);
-        $stubFieldObject->setDocComment(
-            '/**
-     * @var ' . $type . '
-     */'
-        );
-
-        return $stubFieldObject;
-    }
-
-    /**
      * @test
      */
     public function generateConstsFromStubFileObject_ReturnConstObjects(): void
@@ -73,6 +45,21 @@ class ConstUtilityTest extends TestCase
     }
 
     /**
+     * @return FieldObject
+     */
+    private function buildFieldObject($name, $type): FieldObject
+    {
+        $stubFieldObject = new FieldObject($name);
+        $stubFieldObject->setDocComment(
+            '/**
+     * @var ' . $type . '
+     */'
+        );
+
+        return $stubFieldObject;
+    }
+
+    /**
      * @test
      *
      * @dataProvider generateStubConstObjectDataProvider
@@ -85,6 +72,19 @@ class ConstUtilityTest extends TestCase
         $actualConstObjects = ConstUtility::generateStubConstObject($fieldObjectValue, $fileObject);
         $this->assertNotNull($actualConstObjects->getValue());
         $this->assertType($expectedValue, $actualConstObjects);
+    }
+
+    /**
+     * @param mixed $expectedValue
+     * @param mixed $actual
+     */
+    private function assertType($expectedValue, $actual): void
+    {
+        if (('\DateTime' || '\DateTimeImmutable' || '\DateTimeInterface') === $expectedValue) {
+            $this->assertInstanceOf($expectedValue, $actual->getValue());
+        } else {
+            $this->assertInternalType($expectedValue, $actual->getValue());
+        }
     }
 
     public function generateStubConstObjectDataProvider(): array

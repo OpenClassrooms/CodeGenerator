@@ -7,16 +7,6 @@ use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 
 class StubFieldUtility
 {
-    private static function buildStubFieldObject(FieldObject $fieldObject, FileObject $fileObject): FieldObject
-    {
-        $stubFieldObject = new FieldObject($fieldObject->getName());
-        $stubFieldObject->setDocComment($fieldObject->getDocComment());
-        $stubFieldObject->setScope($fieldObject->getScope());
-        $stubFieldObject->setValue(ConstUtility::generateStubConstObject($stubFieldObject, $fileObject));
-
-        return $stubFieldObject;
-    }
-
     /**
      * @param FieldObject[]
      *
@@ -30,5 +20,15 @@ class StubFieldUtility
         }
 
         return $fieldObjects;
+    }
+
+    private static function buildStubFieldObject(FieldObject $fieldObject, FileObject $fileObject): FieldObject
+    {
+        $stubFieldObject = new FieldObject($fieldObject->getName());
+        $stubFieldObject->setDocComment($fieldObject->getDocComment());
+        $stubFieldObject->setScope($fieldObject->getScope());
+        $stubFieldObject->setValue(ConstUtility::generateStubConstObject($stubFieldObject, $fileObject));
+
+        return $stubFieldObject;
     }
 }

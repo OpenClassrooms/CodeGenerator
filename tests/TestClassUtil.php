@@ -2,9 +2,6 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests;
 
-/**
- * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
- */
 class TestClassUtil
 {
     /**

@@ -6,21 +6,6 @@ use OpenClassrooms\CodeGenerator\Entities\Object\FieldObject;
 
 class FieldUtility
 {
-    /**
-     * @return string[]
-     */
-    private static function getEntityFields(string $entityClassName): array
-    {
-        $fields = array_map(
-            function (FieldObject $fieldObject) {
-                return $fieldObject->getName();
-            },
-            FieldObjectUtility::getProtectedClassFields($entityClassName)
-        );
-
-        return $fields;
-    }
-
     public static function getFields(string $entityClassName, array $wantedFields = []): array
     {
         $fields = self::getEntityFields($entityClassName);
@@ -41,6 +26,21 @@ class FieldUtility
         }
 
         return $validatedFields;
+    }
+
+    /**
+     * @return string[]
+     */
+    private static function getEntityFields(string $entityClassName): array
+    {
+        $fields = array_map(
+            function (FieldObject $fieldObject) {
+                return $fieldObject->getName();
+            },
+            FieldObjectUtility::getProtectedClassFields($entityClassName)
+        );
+
+        return $fields;
     }
 
     public static function isUpdatable(\ReflectionProperty $field): bool

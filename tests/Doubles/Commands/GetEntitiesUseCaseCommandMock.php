@@ -8,5 +8,5 @@ class GetEntitiesUseCaseCommandMock extends GetEntitiesUseCaseCommand
 {
     const CONFIG_FILE = self::ROOT_DIR . 'oc_code_generator_test.yml.dist';
 
-    const ROOT_DIR = __DIR__ . '/../../';
+    const ROOT_DIR    = __DIR__ . '/../../';
 }

@@ -17,6 +17,20 @@ class EntityNotFoundExceptionGenerator extends AbstractUseCaseGenerator
      */
     private $entityNotFoundExceptionSkeletonModelAssembler;
 
+    /**
+     * @param EntityNotFoundExceptionGeneratorRequest $generatorRequest
+     */
+    public function generate(GeneratorRequest $generatorRequest): FileObject
+    {
+        $entityNotFoundExceptionFileObject = $this->buildEntityNotFoundExceptionFileObject(
+            $generatorRequest->getEnity()
+        );
+
+        $this->insertFileObject($entityNotFoundExceptionFileObject);
+
+        return $entityNotFoundExceptionFileObject;
+    }
+
     private function buildEntityNotFoundExceptionFileObject(string $entityClassName): FileObject
     {
         $this->initFileObjectParameter($entityClassName);
@@ -39,32 +53,18 @@ class EntityNotFoundExceptionGenerator extends AbstractUseCaseGenerator
         );
     }
 
-    private function createSkeletonModel(
-        $entityNotFoundExceptionFileObject
-    ): EntityNotFoundExceptionSkeletonModel {
-        return $this->entityNotFoundExceptionSkeletonModelAssembler->create($entityNotFoundExceptionFileObject);
-    }
-
-    /**
-     * @param EntityNotFoundExceptionGeneratorRequest $generatorRequest
-     */
-    public function generate(GeneratorRequest $generatorRequest): FileObject
-    {
-        $entityNotFoundExceptionFileObject = $this->buildEntityNotFoundExceptionFileObject(
-            $generatorRequest->getEnity()
-        );
-
-        $this->insertFileObject($entityNotFoundExceptionFileObject);
-
-        return $entityNotFoundExceptionFileObject;
-    }
-
     private function generateContent(
         FileObject $entityNotFoundExceptionFileObject
     ): string {
         $skeletonModel = $this->createSkeletonModel($entityNotFoundExceptionFileObject);
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
+    }
+
+    private function createSkeletonModel(
+        $entityNotFoundExceptionFileObject
+    ): EntityNotFoundExceptionSkeletonModel {
+        return $this->entityNotFoundExceptionSkeletonModelAssembler->create($entityNotFoundExceptionFileObject);
     }
 
     public function setEntityNotFoundExceptionSkeletonModelAssembler(

@@ -4,9 +4,6 @@ namespace OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModels;
 
 use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 
-/**
- * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
- */
 abstract class ViewModelDetailAssemblerImplSkeletonModel extends AbstractSkeletonModel
 {
     public $templatePath = 'Api/ViewModels/ViewModelDetailAssemblerImpl.php.twig';

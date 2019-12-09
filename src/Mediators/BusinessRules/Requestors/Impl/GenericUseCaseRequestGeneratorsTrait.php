@@ -23,24 +23,6 @@ trait GenericUseCaseRequestGeneratorsTrait
     /** @var GenericUseCaseRequestGeneratorRequestBuilder */
     private $genericUseCaseRequestGeneratorRequestBuilder;
 
-    protected function generateGenericUseCaseRequest(string $domain, string $useCaseName): FileObject
-    {
-        return $this->genericUseCaseRequestGenerator->generate(
-            $this->genericUseCaseRequestGeneratorRequestBuilder->create()->withDomain($domain)
-                ->withUseCaseName($useCaseName)
-                ->build()
-        );
-    }
-
-    protected function generateGenericUseCaseRequestBuilder(string $domain, string $useCaseName): FileObject
-    {
-        return $this->genericUseCaseRequestBuilderGenerator->generate(
-            $this->genericUseCaseRequestBuilderGeneratorRequestBuilder->create()->withDomain($domain)
-                ->withUseCaseName($useCaseName)
-                ->build()
-        );
-    }
-
     public function setGenericUseCaseRequestBuilderGenerator(
         Generator $genericUseCaseRequestBuilderGenerator
     ): void {
@@ -63,5 +45,23 @@ trait GenericUseCaseRequestGeneratorsTrait
         GenericUseCaseRequestGeneratorRequestBuilder $genericUseCaseRequestGeneratorRequestBuilder
     ): void {
         $this->genericUseCaseRequestGeneratorRequestBuilder = $genericUseCaseRequestGeneratorRequestBuilder;
+    }
+
+    protected function generateGenericUseCaseRequest(string $domain, string $useCaseName): FileObject
+    {
+        return $this->genericUseCaseRequestGenerator->generate(
+            $this->genericUseCaseRequestGeneratorRequestBuilder->create()->withDomain($domain)
+                ->withUseCaseName($useCaseName)
+                ->build()
+        );
+    }
+
+    protected function generateGenericUseCaseRequestBuilder(string $domain, string $useCaseName): FileObject
+    {
+        return $this->genericUseCaseRequestBuilderGenerator->generate(
+            $this->genericUseCaseRequestBuilderGeneratorRequestBuilder->create()->withDomain($domain)
+                ->withUseCaseName($useCaseName)
+                ->build()
+        );
     }
 }

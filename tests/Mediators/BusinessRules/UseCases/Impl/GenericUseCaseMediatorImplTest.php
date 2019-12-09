@@ -28,7 +28,7 @@ class GenericUseCaseMediatorImplTest extends TestCase
 {
     use FlushedFileObjectTestCase;
 
-    const DOMAIN = 'Domain\SubDomain';
+    const DOMAIN           = 'Domain\SubDomain';
 
     const GENERIC_USE_CASE = 'GenericUseCase';
 

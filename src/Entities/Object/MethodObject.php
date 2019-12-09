@@ -57,6 +57,14 @@ class MethodObject
         return $this->docComment;
     }
 
+    /**
+     * @param string|bool
+     */
+    public function setDocComment($docComment): void
+    {
+        $this->docComment = $docComment;
+    }
+
     public function getFieldName(): string
     {
         return MethodUtility::createArgumentNameFromMethod($this->getName());
@@ -72,6 +80,11 @@ class MethodObject
         return $this->returnType;
     }
 
+    public function setReturnType(string $returnType): void
+    {
+        $this->returnType = $returnType;
+    }
+
     public function isDateType(): bool
     {
         return (bool) preg_match('/Date/', $this->returnType);
@@ -82,21 +95,8 @@ class MethodObject
         return $this->nullable;
     }
 
-    /**
-     * @param string|bool
-     */
-    public function setDocComment($docComment): void
-    {
-        $this->docComment = $docComment;
-    }
-
     public function setNullable(bool $nullable): void
     {
         $this->nullable = $nullable;
-    }
-
-    public function setReturnType(string $returnType): void
-    {
-        $this->returnType = $returnType;
     }
 }

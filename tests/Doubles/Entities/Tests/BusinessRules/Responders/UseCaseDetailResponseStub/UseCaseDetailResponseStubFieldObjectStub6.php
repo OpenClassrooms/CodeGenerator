@@ -10,7 +10,7 @@ class UseCaseDetailResponseStubFieldObjectStub6 extends FieldObject
 {
     const DOC_COMMENT = EntityStubFieldObjectStub6::DOC_COMMENT;
 
-    const NAME = EntityStubFieldObjectStub6::NAME;
+    const NAME        = EntityStubFieldObjectStub6::NAME;
 
     protected $docComment = self::DOC_COMMENT;
 

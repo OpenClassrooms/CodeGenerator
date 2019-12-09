@@ -2,9 +2,6 @@
 
 namespace OpenClassrooms\CodeGenerator\Entities\Type;
 
-/**
- * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
- */
 final class ViewModelFileObjectType
 {
     const API_VIEW_MODEL                               = 'API_VIEW_MODEL';

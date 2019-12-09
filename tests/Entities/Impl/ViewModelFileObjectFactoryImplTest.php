@@ -13,9 +13,6 @@ use OpenClassrooms\CodeGenerator\Tests\TestClassUtil;
 use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
- */
 class ViewModelFileObjectFactoryImplTest extends TestCase
 {
     /**
@@ -174,41 +171,17 @@ class ViewModelFileObjectFactoryImplTest extends TestCase
         ];
     }
 
-    private static function getEntityName(): string
-    {
-        return TestClassUtil::getShortClassName(FunctionalEntityViewModel::class);
-    }
-
-    private static function getFileObjectViewModel(): FileObject
-    {
-        return new FileObject(
-            FixturesConfig::BASE_NAMESPACE . FixturesConfig::API_DIR . 'ViewModels\Domain\SubDomain\\' . self::getEntityName(
-            )
-        );
-    }
-
-    private static function getFileObjectViewModelAssemblerTrait(): FileObject
-    {
-        return new FileObject(
-            FixturesConfig::BASE_NAMESPACE . FixturesConfig::API_DIR . 'ViewModels\Domain\SubDomain\\' . self::getEntityName(
-            ) . 'AssemblerTrait'
-        );
-    }
-
-    private static function getFileObjectViewModelDetail(): FileObject
-    {
-        return new FileObject(
-            FixturesConfig::BASE_NAMESPACE . FixturesConfig::API_DIR . 'ViewModels\Domain\SubDomain\\' . self::getEntityName(
-            ) . 'Detail'
-        );
-    }
-
     private static function getFileObjectViewModelDetailAssembler(): FileObject
     {
         return new FileObject(
             FixturesConfig::BASE_NAMESPACE . FixturesConfig::API_DIR . 'ViewModels\Domain\SubDomain\\' . self::getEntityName(
             ) . 'DetailAssembler'
         );
+    }
+
+    private static function getEntityName(): string
+    {
+        return TestClassUtil::getShortClassName(FunctionalEntityViewModel::class);
     }
 
     private static function getFileObjectViewModelDetailAssemblerImpl(): FileObject
@@ -224,46 +197,6 @@ class ViewModelFileObjectFactoryImplTest extends TestCase
         return new FileObject(
             FixturesConfig::TEST_BASE_NAMESPACE . FixturesConfig::API_DIR . 'ViewModels\Domain\SubDomain\Impl\\' . self::getEntityName(
             ) . 'DetailAssemblerImplTest'
-        );
-    }
-
-    private static function getFileObjectViewModelDetailImpl(): FileObject
-    {
-        return new FileObject(
-            FixturesConfig::BASE_NAMESPACE . FixturesConfig::API_DIR . 'ViewModels\Domain\SubDomain\Impl\\' . self::getEntityName(
-            ) . 'DetailImpl'
-        );
-    }
-
-    private static function getFileObjectViewModelDetailStub(): FileObject
-    {
-        return new FileObject(
-            FixturesConfig::STUB_NAMESPACE . FixturesConfig::API_DIR . 'ViewModels\Domain\SubDomain\\' . self::getEntityName(
-            ) . 'DetailStub1'
-        );
-    }
-
-    private static function getFileObjectViewModelDetailTestCase(): FileObject
-    {
-        return new FileObject(
-            FixturesConfig::STUB_NAMESPACE . FixturesConfig::API_DIR . 'ViewModels\Domain\SubDomain\\' . self::getEntityName(
-            ) . 'DetailTestCase'
-        );
-    }
-
-    private static function getFileObjectViewModelImpl(): FileObject
-    {
-        return new FileObject(
-            FixturesConfig::BASE_NAMESPACE . FixturesConfig::API_DIR . 'ViewModels\Domain\SubDomain\Impl\\' . self::getEntityName(
-            ) . 'Impl'
-        );
-    }
-
-    private static function getFileObjectViewModelListItem(): FileObject
-    {
-        return new FileObject(
-            FixturesConfig::BASE_NAMESPACE . FixturesConfig::API_DIR . 'ViewModels\Domain\SubDomain\\' . self::getEntityName(
-            ) . 'ListItem'
         );
     }
 
@@ -291,11 +224,35 @@ class ViewModelFileObjectFactoryImplTest extends TestCase
         );
     }
 
-    private static function getFileObjectViewModelListItemImpl(): FileObject
+    private static function getFileObjectViewModel(): FileObject
     {
         return new FileObject(
-            FixturesConfig::BASE_NAMESPACE . FixturesConfig::API_DIR . 'ViewModels\Domain\SubDomain\Impl\\' . self::getEntityName(
-            ) . 'ListItemImpl'
+            FixturesConfig::BASE_NAMESPACE . FixturesConfig::API_DIR . 'ViewModels\Domain\SubDomain\\' . self::getEntityName(
+            )
+        );
+    }
+
+    private static function getFileObjectViewModelDetail(): FileObject
+    {
+        return new FileObject(
+            FixturesConfig::BASE_NAMESPACE . FixturesConfig::API_DIR . 'ViewModels\Domain\SubDomain\\' . self::getEntityName(
+            ) . 'Detail'
+        );
+    }
+
+    private static function getFileObjectViewModelListItem(): FileObject
+    {
+        return new FileObject(
+            FixturesConfig::BASE_NAMESPACE . FixturesConfig::API_DIR . 'ViewModels\Domain\SubDomain\\' . self::getEntityName(
+            ) . 'ListItem'
+        );
+    }
+
+    private static function getFileObjectViewModelDetailStub(): FileObject
+    {
+        return new FileObject(
+            FixturesConfig::STUB_NAMESPACE . FixturesConfig::API_DIR . 'ViewModels\Domain\SubDomain\\' . self::getEntityName(
+            ) . 'DetailStub1'
         );
     }
 
@@ -307,6 +264,14 @@ class ViewModelFileObjectFactoryImplTest extends TestCase
         );
     }
 
+    private static function getFileObjectViewModelTestCase(): FileObject
+    {
+        return new FileObject(
+            FixturesConfig::STUB_NAMESPACE . FixturesConfig::API_DIR . 'ViewModels\Domain\SubDomain\\' . self::getEntityName(
+            ) . 'TestCase'
+        );
+    }
+
     private static function getFileObjectViewModelListItemTestCase(): FileObject
     {
         return new FileObject(
@@ -315,11 +280,43 @@ class ViewModelFileObjectFactoryImplTest extends TestCase
         );
     }
 
-    private static function getFileObjectViewModelTestCase(): FileObject
+    private static function getFileObjectViewModelListItemImpl(): FileObject
+    {
+        return new FileObject(
+            FixturesConfig::BASE_NAMESPACE . FixturesConfig::API_DIR . 'ViewModels\Domain\SubDomain\Impl\\' . self::getEntityName(
+            ) . 'ListItemImpl'
+        );
+    }
+
+    private static function getFileObjectViewModelDetailImpl(): FileObject
+    {
+        return new FileObject(
+            FixturesConfig::BASE_NAMESPACE . FixturesConfig::API_DIR . 'ViewModels\Domain\SubDomain\Impl\\' . self::getEntityName(
+            ) . 'DetailImpl'
+        );
+    }
+
+    private static function getFileObjectViewModelDetailTestCase(): FileObject
     {
         return new FileObject(
             FixturesConfig::STUB_NAMESPACE . FixturesConfig::API_DIR . 'ViewModels\Domain\SubDomain\\' . self::getEntityName(
-            ) . 'TestCase'
+            ) . 'DetailTestCase'
+        );
+    }
+
+    private static function getFileObjectViewModelImpl(): FileObject
+    {
+        return new FileObject(
+            FixturesConfig::BASE_NAMESPACE . FixturesConfig::API_DIR . 'ViewModels\Domain\SubDomain\Impl\\' . self::getEntityName(
+            ) . 'Impl'
+        );
+    }
+
+    private static function getFileObjectViewModelAssemblerTrait(): FileObject
+    {
+        return new FileObject(
+            FixturesConfig::BASE_NAMESPACE . FixturesConfig::API_DIR . 'ViewModels\Domain\SubDomain\\' . self::getEntityName(
+            ) . 'AssemblerTrait'
         );
     }
 

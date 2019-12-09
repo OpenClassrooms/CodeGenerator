@@ -14,8 +14,7 @@ class DeleteEntityUseCaseRequestBuilderImplSkeletonModelAssemblerImpl implements
         FileObject $deleteEntityUseCaseRequestBuilderImplFileObject,
         FileObject $deleteEntityUseCaseRequestDTOFileObject,
         FileObject $deleteEntityUseCaseRequestFileObject
-    ): DeleteEntityUseCaseRequestBuilderImplSkeletonModel
-    {
+    ): DeleteEntityUseCaseRequestBuilderImplSkeletonModel {
         $skeletonModel = new DeleteEntityUseCaseRequestBuilderImplSkeletonModelImpl();
         $skeletonModel->className = $deleteEntityUseCaseRequestBuilderImplFileObject->getClassName();
         $skeletonModel->namespace = $deleteEntityUseCaseRequestBuilderImplFileObject->getNamespace();
@@ -28,8 +27,12 @@ class DeleteEntityUseCaseRequestBuilderImplSkeletonModelAssemblerImpl implements
         $skeletonModel->deleteEntityUseCaseRequestDTOShortName = $deleteEntityUseCaseRequestDTOFileObject->getShortName(
         );
         $skeletonModel->deleteEntityUseCaseRequestShortName = $deleteEntityUseCaseRequestFileObject->getShortName();
-        $skeletonModel->entityIdArgument = NameUtility::creatEntityIdName($deleteEntityUseCaseRequestBuilderImplFileObject->getEntity());
-        $skeletonModel->withEntityIdMethod = NameUtility::creatChainedEntityIdMethodName($deleteEntityUseCaseRequestBuilderImplFileObject->getEntity());
+        $skeletonModel->entityIdArgument = NameUtility::creatEntityIdName(
+            $deleteEntityUseCaseRequestBuilderImplFileObject->getEntity()
+        );
+        $skeletonModel->withEntityIdMethod = NameUtility::creatChainedEntityIdMethodName(
+            $deleteEntityUseCaseRequestBuilderImplFileObject->getEntity()
+        );
 
         return $skeletonModel;
     }

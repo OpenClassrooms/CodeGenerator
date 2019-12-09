@@ -17,6 +17,20 @@ class UseCaseListItemResponseAssemblerMockGenerator extends AbstractUseCaseGener
      */
     private $useCaseListItemResponseAssemblerMockSkeletonModelAssembler;
 
+    /**
+     * @param UseCaseListItemResponseAssemblerMockGeneratorRequest $generatorRequest
+     */
+    public function generate(GeneratorRequest $generatorRequest): FileObject
+    {
+        $useCaseListItemResponseAssemblerMockFileObject = $this->buildUseCaseListItemResponseAssemblerMockFileObject(
+            $generatorRequest->getEntityClassName()
+        );
+
+        $this->insertFileObject($useCaseListItemResponseAssemblerMockFileObject);
+
+        return $useCaseListItemResponseAssemblerMockFileObject;
+    }
+
     private function buildUseCaseListItemResponseAssemblerMockFileObject(string $entityClassName): FileObject
     {
         $this->initFileObjectParameter($entityClassName);
@@ -31,16 +45,6 @@ class UseCaseListItemResponseAssemblerMockGenerator extends AbstractUseCaseGener
         );
 
         return $useCaseListItemResponseAssemblerMockFileObject;
-    }
-
-    private function createSkeletonModel(
-        FileObject $useCaseListItemResponseAssemblerImplFileObject,
-        FileObject $useCaseListItemResponseAssemblerMockFileObject
-    ): UseCaseListItemResponseAssemblerMockSkeletonModel {
-        return $this->useCaseListItemResponseAssemblerMockSkeletonModelAssembler->create(
-            $useCaseListItemResponseAssemblerImplFileObject,
-            $useCaseListItemResponseAssemblerMockFileObject
-        );
     }
 
     private function createUseCaseListItemResponseAssemblerImplFileObject(): FileObject
@@ -63,20 +67,6 @@ class UseCaseListItemResponseAssemblerMockGenerator extends AbstractUseCaseGener
         );
     }
 
-    /**
-     * @param UseCaseListItemResponseAssemblerMockGeneratorRequest $generatorRequest
-     */
-    public function generate(GeneratorRequest $generatorRequest): FileObject
-    {
-        $useCaseListItemResponseAssemblerMockFileObject = $this->buildUseCaseListItemResponseAssemblerMockFileObject(
-            $generatorRequest->getEntityClassName()
-        );
-
-        $this->insertFileObject($useCaseListItemResponseAssemblerMockFileObject);
-
-        return $useCaseListItemResponseAssemblerMockFileObject;
-    }
-
     private function generateContent(
         FileObject $useCaseListItemResponseAssemblerImplFileObject,
         FileObject $useCaseListItemResponseAssemblerMockFileObject
@@ -87,6 +77,16 @@ class UseCaseListItemResponseAssemblerMockGenerator extends AbstractUseCaseGener
         );
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
+    }
+
+    private function createSkeletonModel(
+        FileObject $useCaseListItemResponseAssemblerImplFileObject,
+        FileObject $useCaseListItemResponseAssemblerMockFileObject
+    ): UseCaseListItemResponseAssemblerMockSkeletonModel {
+        return $this->useCaseListItemResponseAssemblerMockSkeletonModelAssembler->create(
+            $useCaseListItemResponseAssemblerImplFileObject,
+            $useCaseListItemResponseAssemblerMockFileObject
+        );
     }
 
     public function setUseCaseListItemResponseAssemblerMockSkeletonModelAssembler(

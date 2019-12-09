@@ -4,9 +4,6 @@ namespace OpenClassrooms\CodeGenerator\SkeletonModels\App\Entity\Impl;
 
 use OpenClassrooms\CodeGenerator\SkeletonModels\App\Entity\EntityImplSkeletonModel;
 
-/**
- * @author Samuel Gomis <samuel.gomis@openclassrooms.com>
- */
 class EntityImplSkeletonModelImpl extends EntityImplSkeletonModel
 {
 }

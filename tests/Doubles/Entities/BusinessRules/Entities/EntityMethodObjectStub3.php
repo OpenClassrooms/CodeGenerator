@@ -11,13 +11,13 @@ class EntityMethodObjectStub3 extends MethodObject
      * @return string[]
      */';
 
-    const NAME     = 'getField2';
+    const NAME        = 'getField2';
 
-    const NULLABLE = false;
+    const NULLABLE    = false;
 
     const RETURN_TYPE = 'array';
 
-    const VALUE    = null;
+    const VALUE       = null;
 
     protected $docComment = self::DOC_COMMENT;
 

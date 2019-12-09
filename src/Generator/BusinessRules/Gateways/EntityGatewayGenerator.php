@@ -17,6 +17,20 @@ class EntityGatewayGenerator extends AbstractUseCaseGenerator
      */
     private $entityGatewaySkeletonModelAssembler;
 
+    /**
+     * @param EntityGatewayGeneratorRequest $generatorRequest
+     */
+    public function generate(GeneratorRequest $generatorRequest): FileObject
+    {
+        $entityGatewayFileObject = $this->buildEntityGatewayFileObject(
+            $generatorRequest->getEntityClassName()
+        );
+
+        $this->insertFileObject($entityGatewayFileObject);
+
+        return $entityGatewayFileObject;
+    }
+
     private function buildEntityGatewayFileObject(string $entityClassName): FileObject
     {
         $this->initFileObjectParameter($entityClassName);
@@ -40,6 +54,11 @@ class EntityGatewayGenerator extends AbstractUseCaseGenerator
         return $this->createFileObject(EntityFileObjectType::BUSINESS_RULES_ENTITY);
     }
 
+    private function createFileObject(string $type): FileObject
+    {
+        return $this->entityFileObjectFactory->create($type, $this->domain, $this->entity, $this->baseNamespace);
+    }
+
     private function createEntityGatewayFileObject(): FileObject
     {
         return $this->createFileObject(EntityFileObjectType::BUSINESS_RULES_ENTITY_GATEWAY);
@@ -48,37 +67,6 @@ class EntityGatewayGenerator extends AbstractUseCaseGenerator
     private function createEntityNotFoundExceptionFileObject(): FileObject
     {
         return $this->createFileObject(EntityFileObjectType::BUSINESS_RULES_ENTITY_NOT_FOUND_EXCEPTION);
-    }
-
-    private function createFileObject(string $type): FileObject
-    {
-        return $this->entityFileObjectFactory->create($type, $this->domain, $this->entity, $this->baseNamespace);
-    }
-
-    private function createSkeletonModel(
-        FileObject $entityFileObject,
-        FileObject $entityGatewayFileObject,
-        FileObject $entityNotFoundExceptionFileObject
-    ): EntityGatewaySkeletonModel {
-        return $this->entityGatewaySkeletonModelAssembler->create(
-            $entityFileObject,
-            $entityGatewayFileObject,
-            $entityNotFoundExceptionFileObject
-        );
-    }
-
-    /**
-     * @param EntityGatewayGeneratorRequest $generatorRequest
-     */
-    public function generate(GeneratorRequest $generatorRequest): FileObject
-    {
-        $entityGatewayFileObject = $this->buildEntityGatewayFileObject(
-            $generatorRequest->getEntityClassName()
-        );
-
-        $this->insertFileObject($entityGatewayFileObject);
-
-        return $entityGatewayFileObject;
     }
 
     private function generateContent(
@@ -93,6 +81,18 @@ class EntityGatewayGenerator extends AbstractUseCaseGenerator
         );
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
+    }
+
+    private function createSkeletonModel(
+        FileObject $entityFileObject,
+        FileObject $entityGatewayFileObject,
+        FileObject $entityNotFoundExceptionFileObject
+    ): EntityGatewaySkeletonModel {
+        return $this->entityGatewaySkeletonModelAssembler->create(
+            $entityFileObject,
+            $entityGatewayFileObject,
+            $entityNotFoundExceptionFileObject
+        );
     }
 
     public function setEntityGatewaySkeletonModelAssembler(

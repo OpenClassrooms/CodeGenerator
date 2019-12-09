@@ -2,9 +2,6 @@
 
 namespace OpenClassrooms\CodeGenerator\Entities;
 
-/**
- * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
- */
 abstract class AbstractFileObjectFactory
 {
     /**

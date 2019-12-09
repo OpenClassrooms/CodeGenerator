@@ -18,6 +18,20 @@ class GetEntityUseCaseRequestDTOGenerator extends AbstractUseCaseGenerator
      */
     private $getEntityUseCaseRequestDTOSkeletonModelAssembler;
 
+    /**
+     * @param GetEntityUseCaseRequestDTOGeneratorRequest $generatorRequest
+     */
+    public function generate(GeneratorRequest $generatorRequest): FileObject
+    {
+        $getEntityUseCaseRequestDTOFileObject = $this->buildGetEntityUseCaseRequestDTOFileObject(
+            $generatorRequest->getEntityClassName()
+        );
+
+        $this->insertFileObject($getEntityUseCaseRequestDTOFileObject);
+
+        return $getEntityUseCaseRequestDTOFileObject;
+    }
+
     private function buildGetEntityUseCaseRequestDTOFileObject(string $entityClassName): FileObject
     {
         $this->initFileObjectParameter($entityClassName);
@@ -65,32 +79,6 @@ class GetEntityUseCaseRequestDTOGenerator extends AbstractUseCaseGenerator
         );
     }
 
-    private function createSkeletonModel(
-        FileObject $entityFileObject,
-        FileObject $getEntityUseCaseRequestDTOFileObject,
-        FileObject $getEntityUseCaseRequestFileObject
-    ): GetEntityUseCaseRequestDTOSkeletonModel {
-        return $this->getEntityUseCaseRequestDTOSkeletonModelAssembler->create(
-            $entityFileObject,
-            $getEntityUseCaseRequestDTOFileObject,
-            $getEntityUseCaseRequestFileObject
-        );
-    }
-
-    /**
-     * @param GetEntityUseCaseRequestDTOGeneratorRequest $generatorRequest
-     */
-    public function generate(GeneratorRequest $generatorRequest): FileObject
-    {
-        $getEntityUseCaseRequestDTOFileObject = $this->buildGetEntityUseCaseRequestDTOFileObject(
-            $generatorRequest->getEntityClassName()
-        );
-
-        $this->insertFileObject($getEntityUseCaseRequestDTOFileObject);
-
-        return $getEntityUseCaseRequestDTOFileObject;
-    }
-
     private function generateContent(
         FileObject $entityFileObject,
         FileObject $getEntityUseCaseRequestDTOFileObject,
@@ -103,6 +91,18 @@ class GetEntityUseCaseRequestDTOGenerator extends AbstractUseCaseGenerator
         );
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
+    }
+
+    private function createSkeletonModel(
+        FileObject $entityFileObject,
+        FileObject $getEntityUseCaseRequestDTOFileObject,
+        FileObject $getEntityUseCaseRequestFileObject
+    ): GetEntityUseCaseRequestDTOSkeletonModel {
+        return $this->getEntityUseCaseRequestDTOSkeletonModelAssembler->create(
+            $entityFileObject,
+            $getEntityUseCaseRequestDTOFileObject,
+            $getEntityUseCaseRequestFileObject
+        );
     }
 
     public function setGetEntityUseCaseRequestDTOSkeletonModelAssembler(

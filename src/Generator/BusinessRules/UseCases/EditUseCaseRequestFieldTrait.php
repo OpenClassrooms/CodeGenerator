@@ -13,15 +13,9 @@ trait EditUseCaseRequestFieldTrait
      */
     private $fieldUtility;
 
-    private function buildEditUseCaseRequestDTOFields(string $entityClassName): array
+    public function setFieldUtility(FieldObjectUtilityStrategy $fieldUtility): void
     {
-        $isUpdatedFields = FieldObjectUtility::buildIsUpdatedFields($entityClassName);
-        $entityIdMethod = FieldObjectUtility::buildEntityIdMethodObject(
-            FileObjectUtility::getShortClassName($entityClassName)
-        );
-        $entityIdMethod = [$entityIdMethod];
-
-        return array_merge($isUpdatedFields, $entityIdMethod);
+        $this->fieldUtility = $fieldUtility;
     }
 
     private function buildEditUseCaseRequestFields(string $entityClassName): array
@@ -31,8 +25,14 @@ trait EditUseCaseRequestFieldTrait
         return array_merge($accessors, $this->buildEditUseCaseRequestDTOFields($entityClassName));
     }
 
-    public function setFieldUtility(FieldObjectUtilityStrategy $fieldUtility): void
+    private function buildEditUseCaseRequestDTOFields(string $entityClassName): array
     {
-        $this->fieldUtility = $fieldUtility;
+        $isUpdatedFields = FieldObjectUtility::buildIsUpdatedFields($entityClassName);
+        $entityIdMethod = FieldObjectUtility::buildEntityIdMethodObject(
+            FileObjectUtility::getShortClassName($entityClassName)
+        );
+        $entityIdMethod = [$entityIdMethod];
+
+        return array_merge($isUpdatedFields, $entityIdMethod);
     }
 }

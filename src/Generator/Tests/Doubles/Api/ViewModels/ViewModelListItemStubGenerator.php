@@ -22,6 +22,20 @@ class ViewModelListItemStubGenerator extends AbstractViewModelGenerator
      */
     private $viewModelStubListItemSkeletonModelAssembler;
 
+    /**
+     * @param ViewModelListItemStubGeneratorRequest $generatorRequest
+     */
+    public function generate(GeneratorRequest $generatorRequest): FileObject
+    {
+        $viewModelListItemStubFileObject = $this->buildViewModelListItemStubFileObject(
+            $generatorRequest->getUseCaseResponseClassName()
+        );
+
+        $this->insertFileObject($viewModelListItemStubFileObject);
+
+        return $viewModelListItemStubFileObject;
+    }
+
     private function buildViewModelListItemStubFileObject(
         string $useCaseResponseClassName
     ): FileObject {
@@ -44,18 +58,6 @@ class ViewModelListItemStubGenerator extends AbstractViewModelGenerator
         );
 
         return $viewModelListItemStubFileObject;
-    }
-
-    private function createSkeletonModel(
-        FileObject $viewModelListItemStubFileObject,
-        FileObject $viewModelListItemImplFileObject,
-        FileObject $useCaseListItemResponseStubFileObject
-    ): ViewModelListItemStubSkeletonModel {
-        return $this->viewModelStubListItemSkeletonModelAssembler->create(
-            $viewModelListItemStubFileObject,
-            $viewModelListItemImplFileObject,
-            $useCaseListItemResponseStubFileObject
-        );
     }
 
     private function createUseCaseListItemResponseDTOFileObject(): FileObject
@@ -98,18 +100,13 @@ class ViewModelListItemStubGenerator extends AbstractViewModelGenerator
         );
     }
 
-    /**
-     * @param ViewModelListItemStubGeneratorRequest $generatorRequest
-     */
-    public function generate(GeneratorRequest $generatorRequest): FileObject
+    private function generateFields(FileObject $viewModelListItemImplFileObject): array
     {
-        $viewModelListItemStubFileObject = $this->buildViewModelListItemStubFileObject(
-            $generatorRequest->getUseCaseResponseClassName()
+        $viewModelListItemFields = $this->getPublicTraitAndClassFields(
+            $viewModelListItemImplFileObject->getClassName()
         );
 
-        $this->insertFileObject($viewModelListItemStubFileObject);
-
-        return $viewModelListItemStubFileObject;
+        return StubFieldUtility::generateStubFieldObjects($viewModelListItemFields, $viewModelListItemImplFileObject);
     }
 
     private function generateConsts(FileObject $viewModelListItemStubFileObject): array
@@ -134,13 +131,16 @@ class ViewModelListItemStubGenerator extends AbstractViewModelGenerator
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
     }
 
-    private function generateFields(FileObject $viewModelListItemImplFileObject): array
-    {
-        $viewModelListItemFields = $this->getPublicTraitAndClassFields(
-            $viewModelListItemImplFileObject->getClassName()
+    private function createSkeletonModel(
+        FileObject $viewModelListItemStubFileObject,
+        FileObject $viewModelListItemImplFileObject,
+        FileObject $useCaseListItemResponseStubFileObject
+    ): ViewModelListItemStubSkeletonModel {
+        return $this->viewModelStubListItemSkeletonModelAssembler->create(
+            $viewModelListItemStubFileObject,
+            $viewModelListItemImplFileObject,
+            $useCaseListItemResponseStubFileObject
         );
-
-        return StubFieldUtility::generateStubFieldObjects($viewModelListItemFields, $viewModelListItemImplFileObject);
     }
 
     public function setViewModelStubListItemSkeletonModelAssembler(

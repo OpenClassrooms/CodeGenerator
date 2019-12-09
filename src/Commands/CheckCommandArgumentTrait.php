@@ -44,6 +44,18 @@ trait CheckCommandArgumentTrait
         }
     }
 
+    /**
+     * @throws \ErrorException
+     */
+    private function isValidClassName(string $className): bool
+    {
+        if (class_exists($className)) {
+            return true;
+        }
+
+        throw new \ErrorException("Class $className doesn't exist");
+    }
+
     protected function checkInputDomainAndNameArgument(
         InputInterface $input,
         OutputInterface $output,
@@ -57,17 +69,5 @@ trait CheckCommandArgumentTrait
             $input->setArgument(Args::DOMAIN, $helper->ask($input, $output, $domainQuestion));
             $input->setArgument($name, $helper->ask($input, $output, $useCaseQuestion));
         }
-    }
-
-    /**
-     * @throws \ErrorException
-     */
-    private function isValidClassName(string $className): bool
-    {
-        if (class_exists($className)) {
-            return true;
-        }
-
-        throw new \ErrorException("Class $className doesn't exist");
     }
 }

@@ -19,36 +19,6 @@ class UseCaseResponseGenerator extends AbstractUseCaseGenerator
     private $useCaseResponseSkeletonModelAssembler;
 
     /**
-     * @param string[] $wantedFields
-     */
-    private function buildUseCaseResponseFileObject(string $entityClassName, array $wantedFields = []): FileObject
-    {
-        $this->initFileObjectParameter($entityClassName);
-        $useCaseResponseFileObject = $this->createUseCaseResponseFileObject();
-
-        $fields = FieldUtility::getFields($entityClassName, $wantedFields);
-        $useCaseResponseFileObject->setMethods($this->getSelectedAccessors($entityClassName, $fields));
-        $useCaseResponseFileObject->setContent($this->generateContent($useCaseResponseFileObject));
-
-        return $useCaseResponseFileObject;
-    }
-
-    private function createSkeletonModel(
-        FileObject $useCaseResponseFileObject
-    ): UseCaseResponseSkeletonModel {
-        return $this->useCaseResponseSkeletonModelAssembler->create($useCaseResponseFileObject);
-    }
-
-    private function createUseCaseResponseFileObject(): FileObject
-    {
-        return $this->useCaseResponseFileObjectFactory->create(
-            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE,
-            $this->domain,
-            $this->entity
-        );
-    }
-
-    /**
      * @param UseCaseResponseGeneratorRequest $generatorRequest
      */
     public function generate(GeneratorRequest $generatorRequest): FileObject
@@ -63,11 +33,41 @@ class UseCaseResponseGenerator extends AbstractUseCaseGenerator
         return $useCaseResponseFileObject;
     }
 
+    /**
+     * @param string[] $wantedFields
+     */
+    private function buildUseCaseResponseFileObject(string $entityClassName, array $wantedFields = []): FileObject
+    {
+        $this->initFileObjectParameter($entityClassName);
+        $useCaseResponseFileObject = $this->createUseCaseResponseFileObject();
+
+        $fields = FieldUtility::getFields($entityClassName, $wantedFields);
+        $useCaseResponseFileObject->setMethods($this->getSelectedAccessors($entityClassName, $fields));
+        $useCaseResponseFileObject->setContent($this->generateContent($useCaseResponseFileObject));
+
+        return $useCaseResponseFileObject;
+    }
+
+    private function createUseCaseResponseFileObject(): FileObject
+    {
+        return $this->useCaseResponseFileObjectFactory->create(
+            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE,
+            $this->domain,
+            $this->entity
+        );
+    }
+
     private function generateContent(FileObject $useCaseResponseFileObject): string
     {
         $skeletonModel = $this->createSkeletonModel($useCaseResponseFileObject);
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
+    }
+
+    private function createSkeletonModel(
+        FileObject $useCaseResponseFileObject
+    ): UseCaseResponseSkeletonModel {
+        return $this->useCaseResponseSkeletonModelAssembler->create($useCaseResponseFileObject);
     }
 
     public function setUseCaseResponseSkeletonModelAssembler(

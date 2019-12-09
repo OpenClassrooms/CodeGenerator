@@ -17,6 +17,21 @@ class GenericUseCaseRequestBuilderGenerator extends AbstractUseCaseGenerator
      */
     private $genericUseCaseRequestBuilderSkeletonModelAssembler;
 
+    /**
+     * @param GenericUseCaseRequestGeneratorRequest $generatorRequest
+     */
+    public function generate(GeneratorRequest $generatorRequest): FileObject
+    {
+        $genericUseCaseRequestBuilderFileObject = $this->buildGenericUseCaseRequestBuilderFileObject(
+            $generatorRequest->getDomain(),
+            $generatorRequest->getUseCaseName()
+        );
+
+        $this->insertFileObject($genericUseCaseRequestBuilderFileObject);
+
+        return $genericUseCaseRequestBuilderFileObject;
+    }
+
     private function buildGenericUseCaseRequestBuilderFileObject(string $domain, string $useCaseName): FileObject
     {
         $genericUseCaseRequestBuilderFileObject = $this->createGenericUseCaseRequestBuilderFileObject(
@@ -54,31 +69,6 @@ class GenericUseCaseRequestBuilderGenerator extends AbstractUseCaseGenerator
         );
     }
 
-    private function createSkeletonModel(
-        FileObject $genericUseCaseRequestBuilderFileObject,
-        FileObject $genericUseCaseRequestFileObject
-    ): GenericUseCaseRequestBuilderSkeletonModel {
-        return $this->genericUseCaseRequestBuilderSkeletonModelAssembler->create(
-            $genericUseCaseRequestBuilderFileObject,
-            $genericUseCaseRequestFileObject
-        );
-    }
-
-    /**
-     * @param GenericUseCaseRequestGeneratorRequest $generatorRequest
-     */
-    public function generate(GeneratorRequest $generatorRequest): FileObject
-    {
-        $genericUseCaseRequestBuilderFileObject = $this->buildGenericUseCaseRequestBuilderFileObject(
-            $generatorRequest->getDomain(),
-            $generatorRequest->getUseCaseName()
-        );
-
-        $this->insertFileObject($genericUseCaseRequestBuilderFileObject);
-
-        return $genericUseCaseRequestBuilderFileObject;
-    }
-
     private function generateContent(
         FileObject $genericUseCaseRequestBuilderFileObject,
         FileObject $genericUseCaseRequestFileObject
@@ -89,6 +79,16 @@ class GenericUseCaseRequestBuilderGenerator extends AbstractUseCaseGenerator
         );
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
+    }
+
+    private function createSkeletonModel(
+        FileObject $genericUseCaseRequestBuilderFileObject,
+        FileObject $genericUseCaseRequestFileObject
+    ): GenericUseCaseRequestBuilderSkeletonModel {
+        return $this->genericUseCaseRequestBuilderSkeletonModelAssembler->create(
+            $genericUseCaseRequestBuilderFileObject,
+            $genericUseCaseRequestFileObject
+        );
     }
 
     public function setGenericUseCaseRequestBuilderSkeletonModelAssembler(

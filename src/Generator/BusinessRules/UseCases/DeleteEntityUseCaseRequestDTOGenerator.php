@@ -17,6 +17,20 @@ class DeleteEntityUseCaseRequestDTOGenerator extends AbstractUseCaseGenerator
      */
     private $deleteEntityUseCaseRequestDTOSkeletonModelAssembler;
 
+    /**
+     * @param DeleteEntityUseCaseRequestDTOGeneratorRequest $generatorRequest
+     */
+    public function generate(GeneratorRequest $generatorRequest): FileObject
+    {
+        $deleteEntityUseCaseRequestDTOFileObject = $this->buildDeleteEntityUseCaseRequestDTOFileObject(
+            $generatorRequest->getEntityClassName()
+        );
+
+        $this->insertFileObject($deleteEntityUseCaseRequestDTOFileObject);
+
+        return $deleteEntityUseCaseRequestDTOFileObject;
+    }
+
     private function buildDeleteEntityUseCaseRequestDTOFileObject(string $entityClassName): FileObject
     {
         $this->initFileObjectParameter($entityClassName);
@@ -51,30 +65,6 @@ class DeleteEntityUseCaseRequestDTOGenerator extends AbstractUseCaseGenerator
         );
     }
 
-    private function createSkeletonModel(
-        FileObject $deleteEntityUseCaseRequestDTOFileObject,
-        FileObject $deleteEntityUseCaseRequestFileObject
-    ): DeleteEntityUseCaseRequestDTOSkeletonModel {
-        return $this->deleteEntityUseCaseRequestDTOSkeletonModelAssembler->create(
-            $deleteEntityUseCaseRequestDTOFileObject,
-            $deleteEntityUseCaseRequestFileObject
-        );
-    }
-
-    /**
-     * @param DeleteEntityUseCaseRequestDTOGeneratorRequest $generatorRequest
-     */
-    public function generate(GeneratorRequest $generatorRequest): FileObject
-    {
-        $deleteEntityUseCaseRequestDTOFileObject = $this->buildDeleteEntityUseCaseRequestDTOFileObject(
-            $generatorRequest->getEntityClassName()
-        );
-
-        $this->insertFileObject($deleteEntityUseCaseRequestDTOFileObject);
-
-        return $deleteEntityUseCaseRequestDTOFileObject;
-    }
-
     private function generateContent(
         FileObject $deleteEntityUseCaseRequestDTOFileObject,
         FileObject $deleteEntityUseCaseRequestFileObject
@@ -85,6 +75,16 @@ class DeleteEntityUseCaseRequestDTOGenerator extends AbstractUseCaseGenerator
         );
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
+    }
+
+    private function createSkeletonModel(
+        FileObject $deleteEntityUseCaseRequestDTOFileObject,
+        FileObject $deleteEntityUseCaseRequestFileObject
+    ): DeleteEntityUseCaseRequestDTOSkeletonModel {
+        return $this->deleteEntityUseCaseRequestDTOSkeletonModelAssembler->create(
+            $deleteEntityUseCaseRequestDTOFileObject,
+            $deleteEntityUseCaseRequestFileObject
+        );
     }
 
     public function setDeleteEntityUseCaseRequestDTOSkeletonModelAssembler(

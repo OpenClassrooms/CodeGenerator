@@ -10,7 +10,7 @@ class ViewModelListItemStubFieldObjectStub3 extends FieldObject
 {
     const DOC_COMMENT = EntityStubFieldObjectStub3::DOC_COMMENT;
 
-    const NAME = EntityStubFieldObjectStub3::NAME;
+    const NAME        = EntityStubFieldObjectStub3::NAME;
 
     protected $docComment = self::DOC_COMMENT;
 

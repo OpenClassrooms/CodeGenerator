@@ -9,8 +9,9 @@
                 public="false">
         </service>
 
-        <service id="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DeleteEntityUseCaseRequestDTOGenerator"
-                 parent="open_classrooms.code_generator.generator.business_rules.abstract_generator">
+        <service
+                id="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DeleteEntityUseCaseRequestDTOGenerator"
+                parent="open_classrooms.code_generator.generator.business_rules.abstract_generator">
             <call method="setDeleteEntityUseCaseRequestDTOSkeletonModelAssembler">
                 <argument type="service"
                           id="OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\DeleteEntityUseCaseRequestDTOSkeletonModelAssembler"/>

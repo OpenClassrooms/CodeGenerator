@@ -4,9 +4,6 @@ namespace OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\BusinessRule
 
 use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 
-/**
- * @author arnaud lefevre <arnaud.lefevre@openclassrooms.com>
- */
 abstract class InMemoryEntityGatewaySkeletonModel extends AbstractSkeletonModel
 {
     public $entityArgument;

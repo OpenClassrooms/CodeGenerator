@@ -24,8 +24,9 @@ class DeleteEntityUseCaseRequestBuilderGeneratorRequestBuilderImpl implements De
         return $this;
     }
 
-    public function withEntityClassName(string $entityClassName): DeleteEntityUseCaseRequestBuilderGeneratorRequestBuilder
-    {
+    public function withEntityClassName(
+        string $entityClassName
+    ): DeleteEntityUseCaseRequestBuilderGeneratorRequestBuilder {
         $this->request->entityClassName = $entityClassName;
 
         return $this;

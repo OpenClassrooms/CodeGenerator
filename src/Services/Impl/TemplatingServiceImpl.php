@@ -40,19 +40,6 @@ class TemplatingServiceImpl extends Environment implements TemplatingService
         $this->addFunction($this->printReturnType());
     }
 
-    private function extractFieldNameFromAccessor(string $acccessorName): ?string
-    {
-        if (false !== strpos($acccessorName, 'get')) {
-            return substr($acccessorName, 0, 3);
-        }
-
-        if (false !== strpos($acccessorName, 'is')) {
-            return substr($acccessorName, 0, 2);
-        }
-
-        return null;
-    }
-
     private function getSortAccessorsFieldNameByAlphaFilter()
     {
         return new TwigFilter(
@@ -74,25 +61,6 @@ class TemplatingServiceImpl extends Environment implements TemplatingService
         return function (MethodObject $a, MethodObject $b) {
             return strcmp($a->getFieldName(), $b->getFieldName());
         };
-    }
-
-    private function getSortIdFirstFilter()
-    {
-        return new TwigFilter(
-            'sortIdFirst',
-            function (array $classFields) {
-                $arrayFields = $classFields;
-                foreach ($arrayFields as $key => $field) {
-                    /** @var FieldObject $field */
-                    if ('id' === $field->getName()) {
-                        unset($arrayFields[$key]);
-                        array_unshift($arrayFields, $field);
-                    }
-                }
-
-                return $arrayFields;
-            }
-        );
     }
 
     private function getSortNameByAlphaFilter()
@@ -129,6 +97,25 @@ class TemplatingServiceImpl extends Environment implements TemplatingService
         };
     }
 
+    private function getSortIdFirstFilter()
+    {
+        return new TwigFilter(
+            'sortIdFirst',
+            function (array $classFields) {
+                $arrayFields = $classFields;
+                foreach ($arrayFields as $key => $field) {
+                    /** @var FieldObject $field */
+                    if ('id' === $field->getName()) {
+                        unset($arrayFields[$key]);
+                        array_unshift($arrayFields, $field);
+                    }
+                }
+
+                return $arrayFields;
+            }
+        );
+    }
+
     private function lineBreak()
     {
         return new TwigFunction(
@@ -142,21 +129,6 @@ class TemplatingServiceImpl extends Environment implements TemplatingService
                 }
 
                 return $key < (count($fields) - 1) - $objects;
-            }
-        );
-    }
-
-    private function printReturnType()
-    {
-        return new TwigFunction(
-            'printReturnType',
-            function ($value, $isNullable) {
-                $returnType = $value;
-                if (in_array($value, ['DateTime', 'DateTimeImmutable', 'DateTimeInterface'])) {
-                    $returnType = '\\' . $value;
-                }
-
-                return $isNullable ? '?' . $returnType : $returnType;
             }
         );
     }
@@ -180,8 +152,36 @@ class TemplatingServiceImpl extends Environment implements TemplatingService
         );
     }
 
+    private function printReturnType()
+    {
+        return new TwigFunction(
+            'printReturnType',
+            function ($value, $isNullable) {
+                $returnType = $value;
+                if (in_array($value, ['DateTime', 'DateTimeImmutable', 'DateTimeInterface'])) {
+                    $returnType = '\\' . $value;
+                }
+
+                return $isNullable ? '?' . $returnType : $returnType;
+            }
+        );
+    }
+
     public function render($name, array $context = []): string
     {
         return parent::render($name, $context);
+    }
+
+    private function extractFieldNameFromAccessor(string $acccessorName): ?string
+    {
+        if (false !== strpos($acccessorName, 'get')) {
+            return substr($acccessorName, 0, 3);
+        }
+
+        if (false !== strpos($acccessorName, 'is')) {
+            return substr($acccessorName, 0, 2);
+        }
+
+        return null;
     }
 }

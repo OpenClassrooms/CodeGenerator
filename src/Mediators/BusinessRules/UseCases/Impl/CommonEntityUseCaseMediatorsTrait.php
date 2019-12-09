@@ -26,34 +26,6 @@ trait CommonEntityUseCaseMediatorsTrait
      */
     private $useCaseResponseCommonMediator;
 
-    /**
-     * @return FileObject[]
-     */
-    protected function generateEntitiesSources(string $className): array
-    {
-        $fileObjects[] = $this->entitiesMediator->generateEntityGatewayGenerator($className);
-        $fileObjects[] = $this->entitiesMediator->generateEntityNotFoundExceptionGenerator($className);
-        $fileObjects[] = $this->entitiesMediator->generateEntityRepositoryGenerator($className);
-
-        return $fileObjects;
-    }
-
-    /**
-     * @return FileObject[]
-     */
-    protected function generateUseCaseResponseCommonSources(string $className): array
-    {
-        $fileObjects[] = $this->useCaseResponseCommonMediator->generateUseCaseResponseAssemblerTraitGenerator(
-            $className
-        );
-        $fileObjects[] = $this->useCaseResponseCommonMediator->generateUseCaseResponseCommonFieldTraitGenerator(
-            $className
-        );
-        $fileObjects[] = $this->useCaseResponseCommonMediator->generateUseCaseResponseGenerator($className);
-
-        return $fileObjects;
-    }
-
     public function mediate(array $args = [], array $options = []): array
     {
         $className = $args[Args::CLASS_NAME];
@@ -87,5 +59,33 @@ trait CommonEntityUseCaseMediatorsTrait
     public function setUseCaseResponseCommonMediator(UseCaseResponseCommonMediator $useCaseResponseCommonMediator): void
     {
         $this->useCaseResponseCommonMediator = $useCaseResponseCommonMediator;
+    }
+
+    /**
+     * @return FileObject[]
+     */
+    protected function generateEntitiesSources(string $className): array
+    {
+        $fileObjects[] = $this->entitiesMediator->generateEntityGatewayGenerator($className);
+        $fileObjects[] = $this->entitiesMediator->generateEntityNotFoundExceptionGenerator($className);
+        $fileObjects[] = $this->entitiesMediator->generateEntityRepositoryGenerator($className);
+
+        return $fileObjects;
+    }
+
+    /**
+     * @return FileObject[]
+     */
+    protected function generateUseCaseResponseCommonSources(string $className): array
+    {
+        $fileObjects[] = $this->useCaseResponseCommonMediator->generateUseCaseResponseAssemblerTraitGenerator(
+            $className
+        );
+        $fileObjects[] = $this->useCaseResponseCommonMediator->generateUseCaseResponseCommonFieldTraitGenerator(
+            $className
+        );
+        $fileObjects[] = $this->useCaseResponseCommonMediator->generateUseCaseResponseGenerator($className);
+
+        return $fileObjects;
     }
 }

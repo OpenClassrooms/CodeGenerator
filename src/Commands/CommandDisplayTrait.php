@@ -26,6 +26,26 @@ trait CommandDisplayTrait
 
     /**
      * @param FileObject[] $fileObjects
+     *
+     * @return array
+     */
+    protected function getFilesWritingStatus(array $fileObjects): array
+    {
+        $writtenFiles = [];
+        $notWrittenFiles = [];
+        foreach ($fileObjects as $fileObject) {
+            if ($fileObject->hasBeenWritten()) {
+                $writtenFiles[] = $fileObject;
+            } else {
+                $notWrittenFiles[] = $fileObject;
+            }
+        }
+
+        return [$writtenFiles, $notWrittenFiles];
+    }
+
+    /**
+     * @param FileObject[] $fileObjects
      */
     protected function displayCreatedFilePath(SymfonyStyle $io, array $fileObjects): void
     {
@@ -36,20 +56,6 @@ trait CommandDisplayTrait
                 $pathList[] = $fileObject->getPath();
             }
             $io->listing($pathList);
-        }
-    }
-
-    /**
-     * @param FileObject[] $fileObjects
-     */
-    protected function displayFilePathAndContentDump(SymfonyStyle $io, array $fileObjects, InputInterface $input): void
-    {
-        if (false !== $input->getOption(Options::DUMP)) {
-            $io->success(CommandLabelType::DUMP_OUTPUT);
-            foreach ($fileObjects as $fileObject) {
-                $io->section($fileObject->getPath());
-                $io->text($fileObject->getContent());
-            }
         }
     }
 
@@ -74,21 +80,15 @@ trait CommandDisplayTrait
 
     /**
      * @param FileObject[] $fileObjects
-     *
-     * @return array
      */
-    protected function getFilesWritingStatus(array $fileObjects): array
+    protected function displayFilePathAndContentDump(SymfonyStyle $io, array $fileObjects, InputInterface $input): void
     {
-        $writtenFiles = [];
-        $notWrittenFiles = [];
-        foreach ($fileObjects as $fileObject) {
-            if ($fileObject->hasBeenWritten()) {
-                $writtenFiles[] = $fileObject;
-            } else {
-                $notWrittenFiles[] = $fileObject;
+        if (false !== $input->getOption(Options::DUMP)) {
+            $io->success(CommandLabelType::DUMP_OUTPUT);
+            foreach ($fileObjects as $fileObject) {
+                $io->section($fileObject->getPath());
+                $io->text($fileObject->getContent());
             }
         }
-
-        return [$writtenFiles, $notWrittenFiles];
     }
 }

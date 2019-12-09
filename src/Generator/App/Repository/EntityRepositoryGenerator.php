@@ -23,6 +23,20 @@ class EntityRepositoryGenerator extends AbstractGenerator
      */
     private $entityRepositorySkeletonModelAssembler;
 
+    /**
+     * @param EntityRepositoryGeneratorRequest $generatorRequest
+     */
+    public function generate(GeneratorRequest $generatorRequest): FileObject
+    {
+        $entityRepositoryFileObject = $this->buildEntityRepositoryFileObject(
+            $generatorRequest->getEntityClassName()
+        );
+
+        $this->insertFileObject($entityRepositoryFileObject);
+
+        return $entityRepositoryFileObject;
+    }
+
     private function buildEntityRepositoryFileObject(string $entityClassName): FileObject
     {
         $this->initFileObjectParameter($entityClassName);
@@ -50,21 +64,6 @@ class EntityRepositoryGenerator extends AbstractGenerator
         return $this->createEntityObject(EntityFileObjectType::BUSINESS_RULES_ENTITY);
     }
 
-    private function createEntityGatewayFileObject(): FileObject
-    {
-        return $this->createEntityObject(EntityFileObjectType::BUSINESS_RULES_ENTITY_GATEWAY);
-    }
-
-    private function createEntityImplFileObject(): FileObject
-    {
-        return $this->createEntityObject(EntityFileObjectType::BUSINESS_RULES_ENTITY_IMPL);
-    }
-
-    private function createEntityNotFoundExceptionFileObject()
-    {
-        return $this->createEntityObject(EntityFileObjectType::BUSINESS_RULES_ENTITY_NOT_FOUND_EXCEPTION);
-    }
-
     private function createEntityObject(string $type): FileObject
     {
         return $this->entityFileObjectFactory->create(
@@ -75,39 +74,24 @@ class EntityRepositoryGenerator extends AbstractGenerator
         );
     }
 
+    private function createEntityImplFileObject(): FileObject
+    {
+        return $this->createEntityObject(EntityFileObjectType::BUSINESS_RULES_ENTITY_IMPL);
+    }
+
+    private function createEntityGatewayFileObject(): FileObject
+    {
+        return $this->createEntityObject(EntityFileObjectType::BUSINESS_RULES_ENTITY_GATEWAY);
+    }
+
     private function createEntityRepositoryFileObject(): FileObject
     {
         return $this->createEntityObject(EntityFileObjectType::BUSINESS_RULES_ENTITY_REPOSITORY);
     }
 
-    private function createSkeletonModel(
-        FileObject $entityFileObject,
-        FileObject $entityImplFileObject,
-        FileObject $entityGatewayFileObject,
-        FileObject $entityNotFoundExceptionFileObject,
-        FileObject $entityRepositoryFileObject
-    ): EntityRepositorySkeletonModel {
-        return $this->entityRepositorySkeletonModelAssembler->create(
-            $entityFileObject,
-            $entityImplFileObject,
-            $entityGatewayFileObject,
-            $entityNotFoundExceptionFileObject,
-            $entityRepositoryFileObject
-        );
-    }
-
-    /**
-     * @param EntityRepositoryGeneratorRequest $generatorRequest
-     */
-    public function generate(GeneratorRequest $generatorRequest): FileObject
+    private function createEntityNotFoundExceptionFileObject()
     {
-        $entityRepositoryFileObject = $this->buildEntityRepositoryFileObject(
-            $generatorRequest->getEntityClassName()
-        );
-
-        $this->insertFileObject($entityRepositoryFileObject);
-
-        return $entityRepositoryFileObject;
+        return $this->createEntityObject(EntityFileObjectType::BUSINESS_RULES_ENTITY_NOT_FOUND_EXCEPTION);
     }
 
     private function generateContent(
@@ -126,6 +110,22 @@ class EntityRepositoryGenerator extends AbstractGenerator
         );
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
+    }
+
+    private function createSkeletonModel(
+        FileObject $entityFileObject,
+        FileObject $entityImplFileObject,
+        FileObject $entityGatewayFileObject,
+        FileObject $entityNotFoundExceptionFileObject,
+        FileObject $entityRepositoryFileObject
+    ): EntityRepositorySkeletonModel {
+        return $this->entityRepositorySkeletonModelAssembler->create(
+            $entityFileObject,
+            $entityImplFileObject,
+            $entityGatewayFileObject,
+            $entityNotFoundExceptionFileObject,
+            $entityRepositoryFileObject
+        );
     }
 
     public function setEntityFileObjectFactory(

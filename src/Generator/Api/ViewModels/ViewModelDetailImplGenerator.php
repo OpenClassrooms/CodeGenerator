@@ -17,6 +17,19 @@ class ViewModelDetailImplGenerator extends AbstractViewModelGenerator
      */
     private $viewModelDetailImplSkeletonModelAssembler;
 
+    /**
+     * @param ViewModelDetailImplGeneratorRequest $generatorRequest
+     */
+    public function generate(GeneratorRequest $generatorRequest): FileObject
+    {
+        $viewModelDetailImplFileObject = $this->buildViewModelDetailImplFileObject(
+            $generatorRequest->getUseCaseResponseClassName()
+        );
+        $this->insertFileObject($viewModelDetailImplFileObject);
+
+        return $viewModelDetailImplFileObject;
+    }
+
     private function buildViewModelDetailImplFileObject(string $useCaseResponseClassName): FileObject
     {
         $this->initFileObjectParameter($useCaseResponseClassName);
@@ -28,16 +41,6 @@ class ViewModelDetailImplGenerator extends AbstractViewModelGenerator
         );
 
         return $viewModelDetailImplFileObject;
-    }
-
-    private function createSkeletonModel(
-        FileObject $viewModelDetailFileObject,
-        FileObject $viewModelDetailImplFileObject
-    ): ViewModelDetailImplSkeletonModel {
-        return $this->viewModelDetailImplSkeletonModelAssembler->create(
-            $viewModelDetailFileObject,
-            $viewModelDetailImplFileObject
-        );
     }
 
     private function createViewModelDetailFileObject(): FileObject
@@ -60,19 +63,6 @@ class ViewModelDetailImplGenerator extends AbstractViewModelGenerator
         );
     }
 
-    /**
-     * @param ViewModelDetailImplGeneratorRequest $generatorRequest
-     */
-    public function generate(GeneratorRequest $generatorRequest): FileObject
-    {
-        $viewModelDetailImplFileObject = $this->buildViewModelDetailImplFileObject(
-            $generatorRequest->getUseCaseResponseClassName()
-        );
-        $this->insertFileObject($viewModelDetailImplFileObject);
-
-        return $viewModelDetailImplFileObject;
-    }
-
     private function generateContent(
         FileObject $viewModelDetailFileObject,
         FileObject $viewModelDetailImplFileObject
@@ -80,6 +70,16 @@ class ViewModelDetailImplGenerator extends AbstractViewModelGenerator
         $skeletonModel = $this->createSkeletonModel($viewModelDetailFileObject, $viewModelDetailImplFileObject);
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
+    }
+
+    private function createSkeletonModel(
+        FileObject $viewModelDetailFileObject,
+        FileObject $viewModelDetailImplFileObject
+    ): ViewModelDetailImplSkeletonModel {
+        return $this->viewModelDetailImplSkeletonModelAssembler->create(
+            $viewModelDetailFileObject,
+            $viewModelDetailImplFileObject
+        );
     }
 
     public function setViewModelDetailImplSkeletonModelAssembler(

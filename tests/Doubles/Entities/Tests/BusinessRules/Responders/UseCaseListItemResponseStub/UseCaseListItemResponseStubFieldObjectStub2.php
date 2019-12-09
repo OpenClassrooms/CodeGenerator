@@ -10,7 +10,7 @@ class UseCaseListItemResponseStubFieldObjectStub2 extends FieldObject
 {
     const DOC_COMMENT = EntityStubFieldObjectStub2::DOC_COMMENT;
 
-    const NAME = EntityStubFieldObjectStub2::NAME;
+    const NAME        = EntityStubFieldObjectStub2::NAME;
 
     protected $docComment = self::DOC_COMMENT;
 

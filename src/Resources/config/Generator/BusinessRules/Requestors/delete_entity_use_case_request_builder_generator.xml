@@ -12,8 +12,9 @@
             </call>
         </service>
 
-        <service id="OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\DeleteEntityUseCaseRequestBuilderGenerator"
-                 parent="open_classrooms.code_generator.generator.business_rules.abstract_use_case_generator">
+        <service
+                id="OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\DeleteEntityUseCaseRequestBuilderGenerator"
+                parent="open_classrooms.code_generator.generator.business_rules.abstract_use_case_generator">
             <call method="setDeleteEntityUseCaseRequestBuilderSkeletonModelAssembler">
                 <argument type="service"
                           id="OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Requestors\DeleteEntityUseCaseRequestBuilderSkeletonModelAssembler"/>

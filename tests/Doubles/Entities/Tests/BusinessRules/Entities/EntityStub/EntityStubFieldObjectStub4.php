@@ -7,15 +7,15 @@ use OpenClassrooms\CodeGenerator\Entities\Object\FieldObject;
 
 class EntityStubFieldObjectStub4 extends FieldObject
 {
-    const CONST = 'FIELD_3';
+    const CONST       = 'FIELD_3';
 
     const DOC_COMMENT = '/**
      * @var bool
      */';
 
-    const NAME  = 'field3';
+    const NAME        = 'field3';
 
-    const VALUE = true;
+    const VALUE       = true;
 
     protected $docComment = self::DOC_COMMENT;
 

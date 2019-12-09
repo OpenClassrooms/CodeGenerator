@@ -17,6 +17,20 @@ class DeleteEntityUseCaseRequestBuilderGenerator extends AbstractUseCaseGenerato
      */
     private $deleteEntityUseCaseRequestBuilderSkeletonModelAssembler;
 
+    /**
+     * @param DeleteEntityUseCaseRequestBuilderGeneratorRequest $generatorRequest
+     */
+    public function generate(GeneratorRequest $generatorRequest): FileObject
+    {
+        $deleteEntityUseCaseRequestBuilderFileObject = $this->buildDeleteEntityUseCaseRequestBuilderFileObject(
+            $generatorRequest->getEntityClassName()
+        );
+
+        $this->insertFileObject($deleteEntityUseCaseRequestBuilderFileObject);
+
+        return $deleteEntityUseCaseRequestBuilderFileObject;
+    }
+
     private function buildDeleteEntityUseCaseRequestBuilderFileObject(string $entityClassName): FileObject
     {
         $this->initFileObjectParameter($entityClassName);
@@ -48,30 +62,6 @@ class DeleteEntityUseCaseRequestBuilderGenerator extends AbstractUseCaseGenerato
         );
     }
 
-    private function createSkeletonModel(
-        FileObject $deleteEntityUseCaseRequestBuilderFileObject,
-        FileObject $deleteEntityUseCaseRequestFileObject
-    ): DeleteEntityUseCaseRequestBuilderSkeletonModel {
-        return $this->deleteEntityUseCaseRequestBuilderSkeletonModelAssembler->create(
-            $deleteEntityUseCaseRequestBuilderFileObject,
-            $deleteEntityUseCaseRequestFileObject
-        );
-    }
-
-    /**
-     * @param DeleteEntityUseCaseRequestBuilderGeneratorRequest $generatorRequest
-     */
-    public function generate(GeneratorRequest $generatorRequest): FileObject
-    {
-        $deleteEntityUseCaseRequestBuilderFileObject = $this->buildDeleteEntityUseCaseRequestBuilderFileObject(
-            $generatorRequest->getEntityClassName()
-        );
-
-        $this->insertFileObject($deleteEntityUseCaseRequestBuilderFileObject);
-
-        return $deleteEntityUseCaseRequestBuilderFileObject;
-    }
-
     private function generateContent(
         FileObject $deleteEntityUseCaseRequestBuilderFileObject,
         FileObject $deleteEntityUseCaseRequestFileObject
@@ -82,6 +72,16 @@ class DeleteEntityUseCaseRequestBuilderGenerator extends AbstractUseCaseGenerato
         );
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
+    }
+
+    private function createSkeletonModel(
+        FileObject $deleteEntityUseCaseRequestBuilderFileObject,
+        FileObject $deleteEntityUseCaseRequestFileObject
+    ): DeleteEntityUseCaseRequestBuilderSkeletonModel {
+        return $this->deleteEntityUseCaseRequestBuilderSkeletonModelAssembler->create(
+            $deleteEntityUseCaseRequestBuilderFileObject,
+            $deleteEntityUseCaseRequestFileObject
+        );
     }
 
     public function setDeleteEntityUseCaseRequestBuilderSkeletonModelAssembler(

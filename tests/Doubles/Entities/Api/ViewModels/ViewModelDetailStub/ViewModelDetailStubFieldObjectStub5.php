@@ -10,7 +10,7 @@ class ViewModelDetailStubFieldObjectStub5 extends FieldObject
 {
     const DOC_COMMENT = EntityStubFieldObjectStub5::DOC_COMMENT;
 
-    const NAME = EntityStubFieldObjectStub5::NAME;
+    const NAME        = EntityStubFieldObjectStub5::NAME;
 
     protected $docComment = self::DOC_COMMENT;
 

@@ -116,6 +116,25 @@ class GetEntityUseCaseMediatorImplTest extends TestCase
         $this->assertFlushedFileObject($fileObjects);
     }
 
+    protected function setUp(): void
+    {
+        InMemoryFileObjectGateway::$fileObjects = [];
+        $this->mediator = new GetEntityUseCaseMediatorImpl();
+        $this->mediator->setEntitiesMediator(new EntitiesMediatorMock());
+        $this->mediator->setFileObjectGateway(new InMemoryFileObjectGateway());
+        $this->mediator->setUseCaseDetailResponseMediator(new UseCaseDetailResponseMediatorMock());
+        $this->mediator->setUseCaseResponseCommonMediator(new UseCaseResponseCommonMediatorMock());
+
+        $this->options = [
+            Options::DUMP       => false,
+            Options::NO_TEST    => false,
+            Options::TESTS_ONLY => false,
+        ];
+
+        $this->mockGenerators();
+        $this->mockRequestBuilder();
+    }
+
     private function mockGenerators(): void
     {
         $this->mediator->setGetEntityUseCaseGenerator(
@@ -166,24 +185,5 @@ class GetEntityUseCaseMediatorImplTest extends TestCase
         $this->mediator->setGetEntityUseCaseRequestBuilderGeneratorRequestBuilder(
             new GetEntityUseCaseRequestBuilderGeneratorRequestBuilderImpl()
         );
-    }
-
-    protected function setUp(): void
-    {
-        InMemoryFileObjectGateway::$fileObjects = [];
-        $this->mediator = new GetEntityUseCaseMediatorImpl();
-        $this->mediator->setEntitiesMediator(new EntitiesMediatorMock());
-        $this->mediator->setFileObjectGateway(new InMemoryFileObjectGateway());
-        $this->mediator->setUseCaseDetailResponseMediator(new UseCaseDetailResponseMediatorMock());
-        $this->mediator->setUseCaseResponseCommonMediator(new UseCaseResponseCommonMediatorMock());
-
-        $this->options = [
-            Options::DUMP       => false,
-            Options::NO_TEST    => false,
-            Options::TESTS_ONLY => false,
-        ];
-
-        $this->mockGenerators();
-        $this->mockRequestBuilder();
     }
 }

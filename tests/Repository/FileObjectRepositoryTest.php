@@ -37,6 +37,16 @@ class FileObjectRepositoryTest extends TestCase
         $this->assertNotNull($this->fileObjectRepository->find(FunctionalEntityViewModel::class));
     }
 
+    private function generateFileObject(string $className): FileObject
+    {
+        $fileObject = new FileObject($className);
+        $fileObject->setContent(
+            __DIR__ . '/../Fixtures/Classes/Api/ViewModels/Domain/SubDomain/FunctionalEntityViewModel.php'
+        );
+
+        return $fileObject;
+    }
+
     /**
      * @test
      */
@@ -84,16 +94,6 @@ class FileObjectRepositoryTest extends TestCase
         $actual = TestClassUtil::getProperty('fileObjects', $this->fileObjectRepository);
 
         $this->assertEmpty($actual);
-    }
-
-    private function generateFileObject(string $className): FileObject
-    {
-        $fileObject = new FileObject($className);
-        $fileObject->setContent(
-            __DIR__ . '/../Fixtures/Classes/Api/ViewModels/Domain/SubDomain/FunctionalEntityViewModel.php'
-        );
-
-        return $fileObject;
     }
 
     /**

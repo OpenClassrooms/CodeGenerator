@@ -17,31 +17,6 @@ class FieldUtilityTest extends TestCase
      */
     private $fileObject;
 
-    private function arrayFilterByGetter(array $exceptedFields): array
-    {
-        return array_filter(
-            $exceptedFields,
-            function ($method) {
-                if ('set' !== substr($method->getName(), 0, 3)) {
-                    return $method;
-                }
-            }
-        );
-    }
-
-    private function buildStubFieldObject(string $name, string $type): FieldObject
-    {
-        $stubFieldObject = new FieldObject($name);
-        $stubFieldObject->setDocComment(
-            '/**
-     * @var ' . $type . '
-     */'
-        );
-        $stubFieldObject->setValue(new ConstObject($name));
-
-        return $stubFieldObject;
-    }
-
     public function generateStubFieldObjectsDataProvider(): array
     {
         return [
@@ -70,6 +45,19 @@ class FieldUtilityTest extends TestCase
         }
     }
 
+    private function buildStubFieldObject(string $name, string $type): FieldObject
+    {
+        $stubFieldObject = new FieldObject($name);
+        $stubFieldObject->setDocComment(
+            '/**
+     * @var ' . $type . '
+     */'
+        );
+        $stubFieldObject->setValue(new ConstObject($name));
+
+        return $stubFieldObject;
+    }
+
     /**
      * @test
      * @expectedException \Exception
@@ -90,6 +78,18 @@ class FieldUtilityTest extends TestCase
         $actualFields = FieldUtility::getFields(FunctionalEntity::class, $fields);
         $exceptedFields = $this->arrayFilterByGetter($exceptedFields->getMethods());
         $this->assertCount(count($actualFields), $exceptedFields);
+    }
+
+    private function arrayFilterByGetter(array $exceptedFields): array
+    {
+        return array_filter(
+            $exceptedFields,
+            function ($method) {
+                if ('set' !== substr($method->getName(), 0, 3)) {
+                    return $method;
+                }
+            }
+        );
     }
 
     protected function setUp(): void

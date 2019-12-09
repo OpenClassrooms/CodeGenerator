@@ -13,8 +13,9 @@
                 public="false">
         </service>
 
-        <service id="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\EntityUseCaseCommonRequestTraitGenerator"
-                 parent="open_classrooms.code_generator.generator.business_rules.abstract_use_case_generator">
+        <service
+                id="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\EntityUseCaseCommonRequestTraitGenerator"
+                parent="open_classrooms.code_generator.generator.business_rules.abstract_use_case_generator">
             <call method="setEntityUseCaseCommonRequestTraitSkeletonModelAssembler">
                 <argument type="service"
                           id="OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\EntityUseCaseCommonRequestTraitSkeletonModelAssembler"/>

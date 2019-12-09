@@ -39,42 +39,6 @@ trait GenericUseCaseGeneratorsTrait
     /** @var GenericUseCaseTestGeneratorRequestBuilder */
     private $genericUseCaseTestGeneratorRequestBuilder;
 
-    protected function generateGenericUseCase(string $domain, string $useCase): FileObject
-    {
-        return $this->genericUseCaseGenerator->generate(
-            $this->genericUseCaseGeneratorRequestBuilder->create()->withDomain($domain)
-                ->withUseCaseName($useCase)
-                ->build()
-        );
-    }
-
-    protected function generateGenericUseCaseRequestBuilderImpl(string $domain, string $useCase): FileObject
-    {
-        return $this->genericUseCaseRequestBuilderImplGenerator->generate(
-            $this->genericUseCaseRequestBuilderImplGeneratorRequestBuilder->create()->withDomain($domain)
-                ->withUseCaseName($useCase)
-                ->build()
-        );
-    }
-
-    protected function generateGenericUseCaseRequestDTO(string $domain, string $useCase): FileObject
-    {
-        return $this->genericUseCaseRequestDTOGenerator->generate(
-            $this->genericUseCaseRequestDTOGeneratorRequestBuilder->create()->withDomain($domain)
-                ->withUseCaseName($useCase)
-                ->build()
-        );
-    }
-
-    protected function generateGenericUseCaseTest(string $domain, string $useCase): FileObject
-    {
-        return $this->genericUseCaseTestGenerator->generate(
-            $this->genericUseCaseTestGeneratorRequestBuilder->create()->withDomain($domain)
-                ->withUseCaseName($useCase)
-                ->build()
-        );
-    }
-
     public function setGenericUseCaseGenerator(Generator $genericUseCaseGenerator): void
     {
         $this->genericUseCaseGenerator = $genericUseCaseGenerator;
@@ -119,5 +83,41 @@ trait GenericUseCaseGeneratorsTrait
         GenericUseCaseTestGeneratorRequestBuilder $genericUseCaseTestGeneratorRequestBuilder
     ): void {
         $this->genericUseCaseTestGeneratorRequestBuilder = $genericUseCaseTestGeneratorRequestBuilder;
+    }
+
+    protected function generateGenericUseCase(string $domain, string $useCase): FileObject
+    {
+        return $this->genericUseCaseGenerator->generate(
+            $this->genericUseCaseGeneratorRequestBuilder->create()->withDomain($domain)
+                ->withUseCaseName($useCase)
+                ->build()
+        );
+    }
+
+    protected function generateGenericUseCaseRequestBuilderImpl(string $domain, string $useCase): FileObject
+    {
+        return $this->genericUseCaseRequestBuilderImplGenerator->generate(
+            $this->genericUseCaseRequestBuilderImplGeneratorRequestBuilder->create()->withDomain($domain)
+                ->withUseCaseName($useCase)
+                ->build()
+        );
+    }
+
+    protected function generateGenericUseCaseRequestDTO(string $domain, string $useCase): FileObject
+    {
+        return $this->genericUseCaseRequestDTOGenerator->generate(
+            $this->genericUseCaseRequestDTOGeneratorRequestBuilder->create()->withDomain($domain)
+                ->withUseCaseName($useCase)
+                ->build()
+        );
+    }
+
+    protected function generateGenericUseCaseTest(string $domain, string $useCase): FileObject
+    {
+        return $this->genericUseCaseTestGenerator->generate(
+            $this->genericUseCaseTestGeneratorRequestBuilder->create()->withDomain($domain)
+                ->withUseCaseName($useCase)
+                ->build()
+        );
     }
 }

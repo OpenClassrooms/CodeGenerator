@@ -10,9 +10,9 @@ class EntityFieldObjectStub1 extends FieldObject
      * @var int
      */';
 
-    const NAME  = 'id';
+    const NAME        = 'id';
 
-    const VALUE = null;
+    const VALUE       = null;
 
     protected $docComment = self::DOC_COMMENT;
 
