@@ -19,7 +19,7 @@ class NameUtility
         return 'with' . ucfirst($field->getName());
     }
 
-    public static function creatEntityIdName(string $shortClassName): string
+    public static function createEntityIdName(string $shortClassName): string
     {
         return lcfirst($shortClassName) . 'Id';
     }
@@ -32,5 +32,10 @@ class NameUtility
     public static function creatGetEntityIdName(string $shortClassName): string
     {
         return 'get' . ucfirst($shortClassName) . 'Id';
+    }
+
+    public static function createGetEntityName(string $shortClassName): string
+    {
+        return 'get' . ucfirst($shortClassName);
     }
 }

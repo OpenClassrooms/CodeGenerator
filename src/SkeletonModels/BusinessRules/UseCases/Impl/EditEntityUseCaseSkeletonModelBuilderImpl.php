@@ -59,7 +59,7 @@ class EditEntityUseCaseSkeletonModelBuilderImpl implements EditEntityUseCaseSkel
         $this->skeletonModel->entityArgument = lcfirst($entityFileObject->getShortName());
         $this->skeletonModel->entityClassName = $entityFileObject->getClassName();
         $this->skeletonModel->entityShortName = $entityFileObject->getShortName();
-        $this->skeletonModel->entityIdArgument = NameUtility::creatEntityIdName($entityFileObject->getShortName());
+        $this->skeletonModel->entityIdArgument = NameUtility::createEntityIdName($entityFileObject->getShortName());
 
         return $this;
     }

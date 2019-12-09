@@ -26,7 +26,7 @@ class EntityRepositorySkeletonModelAssemblerImpl implements EntityRepositorySkel
         $skeletonModel->entityShortName = $entityFileObject->getShortName();
         $skeletonModel->entityImplClassName = $entityImplFileObject->getClassName();
         $skeletonModel->entityImplShortName = $entityImplFileObject->getShortName();
-        $skeletonModel->entityIdArgument = NameUtility::creatEntityIdName($entityFileObject->getShortName());
+        $skeletonModel->entityIdArgument = NameUtility::createEntityIdName($entityFileObject->getShortName());
         $skeletonModel->entityNotFoundExceptionClassName = $entityNotFoundExceptionFileObject->getClassName();
         $skeletonModel->entityNotFoundExceptionShortName = $entityNotFoundExceptionFileObject->getShortName();
 

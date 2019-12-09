@@ -27,7 +27,7 @@ class DeleteEntityUseCaseRequestBuilderImplSkeletonModelAssemblerImpl implements
         $skeletonModel->deleteEntityUseCaseRequestDTOShortName = $deleteEntityUseCaseRequestDTOFileObject->getShortName(
         );
         $skeletonModel->deleteEntityUseCaseRequestShortName = $deleteEntityUseCaseRequestFileObject->getShortName();
-        $skeletonModel->entityIdArgument = NameUtility::creatEntityIdName(
+        $skeletonModel->entityIdArgument = NameUtility::createEntityIdName(
             $deleteEntityUseCaseRequestBuilderImplFileObject->getEntity()
         );
         $skeletonModel->withEntityIdMethod = NameUtility::creatChainedEntityIdMethodName(
