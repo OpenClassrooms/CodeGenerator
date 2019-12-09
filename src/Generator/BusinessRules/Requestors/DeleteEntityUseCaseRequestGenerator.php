@@ -38,8 +38,9 @@ class DeleteEntityUseCaseRequestGenerator extends AbstractUseCaseGenerator
         );
     }
 
-    private function createSkeletonModel(FileObject $deleteEntityUseCaseRequestFileObject): DeleteEntityUseCaseRequestSkeletonModel
-    {
+    private function createSkeletonModel(
+        FileObject $deleteEntityUseCaseRequestFileObject
+    ): DeleteEntityUseCaseRequestSkeletonModel {
         return $this->deleteEntityUseCaseRequestSkeletonModelAssembler->create($deleteEntityUseCaseRequestFileObject);
     }
 
