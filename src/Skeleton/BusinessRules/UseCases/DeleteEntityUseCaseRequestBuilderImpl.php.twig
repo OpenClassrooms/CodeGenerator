@@ -1,0 +1,31 @@
+{% include "Header.php.twig" %}
+
+namespace {{ skeletonModel.namespace }};
+
+use {{ skeletonModel.deleteEntityUseCaseRequestClassName }};
+use {{ skeletonModel.deleteEntityUseCaseRequestBuilderClassName }};
+
+class {{ skeletonModel.shortName }} implements {{ skeletonModel.deleteEntityUseCaseRequestBuilderShortName }}
+{
+    /**
+     * @var int
+     */
+    private ${{ skeletonModel.entityIdArgument }};
+
+    public function build(): {{ skeletonModel.deleteEntityUseCaseRequestShortName }}
+    {
+        return new {{ skeletonModel.deleteEntityUseCaseRequestDTOShortName }}($this->{{ skeletonModel.entityIdArgument }});
+    }
+
+    public function create(): {{ skeletonModel.deleteEntityUseCaseRequestBuilderShortName }}
+    {
+        return $this;
+    }
+
+    public function {{ skeletonModel.withEntityIdMethod }}(int $id): {{ skeletonModel.deleteEntityUseCaseRequestBuilderShortName }}
+    {
+        $this->{{ skeletonModel.entityIdArgument }} = $id;
+
+        return $this;
+    }
+}
