@@ -2,7 +2,6 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Mediators\BusinessRules\UseCases\Impl;
 
-use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\DTO\Request\GetEntitiesUseCaseRequestBuilderGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\DTO\Request\GetEntitiesUseCaseRequestGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\GetEntitiesUseCaseRequestBuilderGenerator;
@@ -15,7 +14,6 @@ use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\GetEntitiesUse
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\GetEntitiesUseCaseRequestDTOGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\DTO\Request\GetEntitiesUseCaseTestGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\GetEntitiesUseCaseTestGenerator;
-use OpenClassrooms\CodeGenerator\Mediators\Args;
 use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\Impl\GetEntitiesUseCaseMediatorImpl;
 use OpenClassrooms\CodeGenerator\Mediators\Options;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Requestors\GetEntitiesUseCaseRequestBuilderFileObjectStub1;
@@ -26,7 +24,6 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\G
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\BusinessRules\UseCases\GetEntitiesUseCaseTestFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Generator\GeneratorMock;
-use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Entities\Domain\SubDomain\FunctionalEntity;
 use OpenClassrooms\CodeGenerator\Tests\Mediators\BusinessRules\Entities\Impl\EntitiesMediatorMock;
 use OpenClassrooms\CodeGenerator\Tests\Mediators\BusinessRules\Responses\Impl\UseCaseListItemResponseMediatorMock;
 use OpenClassrooms\CodeGenerator\Tests\Mediators\BusinessRules\Responses\Impl\UseCaseResponseCommonMediatorMock;
@@ -36,6 +33,7 @@ use PHPUnit\Framework\TestCase;
 class GetEntitiesUseCaseMediatorImplTest extends TestCase
 {
     use FlushedFileObjectTestCase;
+    use CommonEntityUseCaseMediatorTestTrait;
 
     /**
      * @var GetEntitiesUseCaseMediatorImpl
@@ -46,75 +44,6 @@ class GetEntitiesUseCaseMediatorImplTest extends TestCase
      * @var array
      */
     private $options;
-
-    /**
-     * @test
-     */
-    public function generateGenericUseCase_withDump(): void
-    {
-        $this->options[Options::DUMP] = null;
-        $fileObjects = $this->mediator->mediate(
-            [
-                Args::CLASS_NAME => FunctionalEntity::class,
-            ],
-            $this->options
-        );
-
-        $this->assertEmpty(InMemoryFileObjectGateway::$flushedFileObjects);
-        $this->assertNotEmpty(InMemoryFileObjectGateway::$fileObjects);
-        foreach ($fileObjects as $fileObject) {
-            /** @var FileObject $fileObject */
-            $this->assertArrayHasKey($fileObject->getClassName(), InMemoryFileObjectGateway::$fileObjects);
-        }
-    }
-
-    /**
-     * @test
-     */
-    public function generateGenericUseCase_withoutOptions(): void
-    {
-        $fileObjects = $this->mediator->mediate(
-            [
-                Args::CLASS_NAME => FunctionalEntity::class,
-            ],
-            $this->options
-
-        );
-
-        $this->assertFlushedFileObject($fileObjects);
-    }
-
-    /**
-     * @test
-     */
-    public function generateGenericUseCase_withoutTest(): void
-    {
-        $this->options[Options::NO_TEST] = null;
-        $fileObjects = $this->mediator->mediate(
-            [
-                Args::CLASS_NAME => FunctionalEntity::class,
-            ],
-            $this->options
-        );
-
-        $this->assertFlushedFileObject($fileObjects);
-    }
-
-    /**
-     * @test
-     */
-    public function generateGenericUseCase_withTestOnly(): void
-    {
-        $this->options[Options::TESTS_ONLY] = null;
-        $fileObjects = $this->mediator->mediate(
-            [
-                Args::CLASS_NAME => FunctionalEntity::class,
-            ],
-            $this->options
-        );
-
-        $this->assertFlushedFileObject($fileObjects);
-    }
 
     protected function setUp(): void
     {

@@ -5,6 +5,7 @@ namespace OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\Impl;
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\EntityUseCaseCommonRequestTraitGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\EntityUseCaseCommonRequestTraitGeneratorRequestBuilder;
+use OpenClassrooms\CodeGenerator\Generator\Generator;
 
 trait EntityUseCaseCommonRequestGeneratorTrait
 {
@@ -26,7 +27,7 @@ trait EntityUseCaseCommonRequestGeneratorTrait
     }
 
     public function setEntityUseCaseCommonRequestTraitGenerator(
-        EntityUseCaseCommonRequestTraitGenerator $entityUseCaseCommonRequestTraitGenerator
+        Generator $entityUseCaseCommonRequestTraitGenerator
     ): void {
         $this->entityUseCaseCommonRequestTraitGenerator = $entityUseCaseCommonRequestTraitGenerator;
     }
