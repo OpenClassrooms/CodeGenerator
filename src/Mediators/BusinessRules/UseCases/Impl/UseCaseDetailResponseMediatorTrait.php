@@ -4,15 +4,17 @@ namespace OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\Impl;
 
 use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\Responses\UseCaseDetailResponseMediator;
 
-/**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
- */
 trait UseCaseDetailResponseMediatorTrait
 {
     /**
      * @var UseCaseDetailResponseMediator
      */
     private $useCaseDetailResponseMediator;
+
+    public function setUseCaseDetailResponseMediator(UseCaseDetailResponseMediator $useCaseDetailResponseMediator): void
+    {
+        $this->useCaseDetailResponseMediator = $useCaseDetailResponseMediator;
+    }
 
     private function generateUseCaseDetailSources(string $className): array
     {
@@ -39,10 +41,5 @@ trait UseCaseDetailResponseMediatorTrait
         );
 
         return $fileObjects;
-    }
-
-    public function setUseCaseDetailResponseMediator(UseCaseDetailResponseMediator $useCaseDetailResponseMediator): void
-    {
-        $this->useCaseDetailResponseMediator = $useCaseDetailResponseMediator;
     }
 }

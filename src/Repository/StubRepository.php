@@ -6,9 +6,6 @@ use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\Gateways\FileObject\StubGateway;
 use OpenClassrooms\CodeGenerator\Utility\StubUtility;
 
-/**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
- */
 class StubRepository implements StubGateway
 {
     /**
@@ -16,14 +13,14 @@ class StubRepository implements StubGateway
      */
     private static $fileObjects = [];
 
+    public function clear()
+    {
+        self::$fileObjects = [];
+    }
+
     public function insertAndIncrementSuffix(FileObject $fileObject)
     {
         StubUtility::incrementSuffix($fileObject, self::$fileObjects);
         self::$fileObjects[$fileObject->getId()] = $fileObject;
-    }
-
-    public function clear()
-    {
-        self::$fileObjects = [];
     }
 }

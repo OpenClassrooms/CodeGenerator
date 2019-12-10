@@ -7,9 +7,6 @@ use OpenClassrooms\CodeGenerator\Entities\UseCaseResponseFileObjectFactory;
 use OpenClassrooms\CodeGenerator\Entities\ViewModelFileObjectFactory;
 use OpenClassrooms\CodeGenerator\Generator\AbstractGenerator;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 abstract class AbstractViewModelGenerator extends AbstractGenerator
 {
     /**

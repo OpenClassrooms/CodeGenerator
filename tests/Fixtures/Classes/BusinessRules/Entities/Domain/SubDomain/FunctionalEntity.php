@@ -4,9 +4,6 @@ namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Enti
 
 use Carbon\CarbonImmutable;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 abstract class FunctionalEntity
 {
     /**
@@ -52,11 +49,6 @@ abstract class FunctionalEntity
         return $this->field2;
     }
 
-    public function isField3(): bool
-    {
-        return $this->field3;
-    }
-
     public function getField4(): ?\DateTimeInterface
     {
         return $this->field4;
@@ -65,6 +57,11 @@ abstract class FunctionalEntity
     public function getId(): int
     {
         return $this->id;
+    }
+
+    public function isField3(): bool
+    {
+        return $this->field3;
     }
 
     public function setField1(string $field1): void

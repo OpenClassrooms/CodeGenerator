@@ -4,9 +4,6 @@ namespace OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Responders\
 
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Responders\Request\UseCaseDetailResponseStubGeneratorRequest;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class UseCaseDetailResponseStubGeneratorRequestDTO implements UseCaseDetailResponseStubGeneratorRequest
 {
     /**

@@ -4,9 +4,6 @@ namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Mediators;
 
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 trait MediatorMockTrait
 {
     /**
@@ -15,7 +12,7 @@ trait MediatorMockTrait
     public function alreadyExistFileObject(): array
     {
         return array_map(
-            function(FileObject $fileObject) {
+            function (FileObject $fileObject) {
                 $otherFileObject = clone $fileObject;
                 $otherFileObject->setAlreadyExists(true);
 
@@ -31,7 +28,7 @@ trait MediatorMockTrait
     protected function writeFileObjects(): array
     {
         return array_map(
-            function(FileObject $fileObject) {
+            function (FileObject $fileObject) {
                 $otherFileObject = clone $fileObject;
                 $otherFileObject->write();
 

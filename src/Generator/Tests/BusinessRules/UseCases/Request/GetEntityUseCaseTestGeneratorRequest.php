@@ -4,9 +4,6 @@ namespace OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\Re
 
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 interface GetEntityUseCaseTestGeneratorRequest extends GeneratorRequest
 {
     public function getEntityClassName(): string;

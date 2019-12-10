@@ -4,9 +4,6 @@ namespace OpenClassrooms\CodeGenerator\Utility;
 
 use OpenClassrooms\CodeGenerator\Entities\Object\FieldObject;
 
-/**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
- */
 class FieldUtility
 {
     public static function getFields(string $entityClassName, array $wantedFields = []): array

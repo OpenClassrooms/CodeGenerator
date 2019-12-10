@@ -10,7 +10,7 @@ class ViewModelAssemblerTraitFieldObjectStub1 extends FieldObject
      * @var int
      */';
 
-    const NAME = 'id';
+    const NAME        = 'id';
 
     protected $docComment = self::DOC_COMMENT;
 

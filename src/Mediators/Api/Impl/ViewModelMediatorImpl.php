@@ -8,9 +8,6 @@ use OpenClassrooms\CodeGenerator\Mediators\Api\ViewModelMediator;
 use OpenClassrooms\CodeGenerator\Mediators\Args;
 use OpenClassrooms\CodeGenerator\Mediators\Options;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class ViewModelMediatorImpl implements ViewModelMediator
 {
     use ViewModelGeneratorsTrait;

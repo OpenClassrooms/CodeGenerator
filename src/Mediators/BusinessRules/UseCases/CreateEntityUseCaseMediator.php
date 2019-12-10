@@ -2,9 +2,6 @@
 
 namespace OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases;
 
-/**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
- */
 interface CreateEntityUseCaseMediator
 {
     public function mediate(array $args = [], array $options = []): array;

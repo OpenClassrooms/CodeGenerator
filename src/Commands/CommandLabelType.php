@@ -2,9 +2,6 @@
 
 namespace OpenClassrooms\CodeGenerator\Commands;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 final class CommandLabelType
 {
     const ALREADY_EXIST_OUTPUT = 'This files were not created because they already exist:';

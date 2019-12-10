@@ -5,9 +5,6 @@ namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Entities;
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use PHPUnit\Framework\Assert as Assert;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 trait FileObjectTestCase
 {
     use ArrayOrderTrait;

@@ -11,9 +11,6 @@ use OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\Request\ViewMode
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Api\ViewModels\ViewModelListItemAssemblerImplTestSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Api\ViewModels\ViewModelListItemAssemblerImplTestSkeletonModelBuilder;
 
-/**
- * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
- */
 class ViewModelListItemAssemblerImplTestGenerator extends AbstractViewModelGenerator
 {
     /**

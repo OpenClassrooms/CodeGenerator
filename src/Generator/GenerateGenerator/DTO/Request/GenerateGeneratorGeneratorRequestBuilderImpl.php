@@ -5,15 +5,17 @@ namespace OpenClassrooms\CodeGenerator\Generator\GenerateGenerator\DTO\Request;
 use OpenClassrooms\CodeGenerator\Generator\GenerateGenerator\Request\GenerateGeneratorGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\GenerateGenerator\Request\GenerateGeneratorGeneratorRequestBuilder;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class GenerateGeneratorGeneratorRequestBuilderImpl implements GenerateGeneratorGeneratorRequestBuilder
 {
     /**
      * @var GenerateGeneratorGeneratorRequestDTO
      */
     private $request;
+
+    public function build(): GenerateGeneratorGeneratorRequest
+    {
+        return $this->request;
+    }
 
     public function create(): GenerateGeneratorGeneratorRequestBuilder
     {
@@ -41,10 +43,5 @@ class GenerateGeneratorGeneratorRequestBuilderImpl implements GenerateGeneratorG
         $this->request->entity = $entity;
 
         return $this;
-    }
-
-    public function build(): GenerateGeneratorGeneratorRequest
-    {
-        return $this->request;
     }
 }

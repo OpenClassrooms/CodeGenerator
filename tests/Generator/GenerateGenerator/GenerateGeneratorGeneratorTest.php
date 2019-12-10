@@ -16,9 +16,6 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingSer
 use OpenClassrooms\CodeGenerator\Tests\Doubles\SkeletonModels\GenerateGenerator\GenerateGeneratorGeneratorSkeletonModelAssemblerMock;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class GenerateGeneratorGeneratorTest extends TestCase
 {
     use FileObjectTestCase;
@@ -32,6 +29,16 @@ class GenerateGeneratorGeneratorTest extends TestCase
      * @var GenerateGeneratorGenerator
      */
     private $selfGeneratorGenerator;
+
+    /**
+     * @test
+     */
+    public function generateWithAssemblerConstructionType_ReturnFileObjects(): void
+    {
+        $actualFileObjects = $this->selfGeneratorGenerator->generate($this->request);
+
+        $this->assertGeneratorFiles(new GenerateGeneratorFileObjectsStub1(), $actualFileObjects);
+    }
 
     /**
      * @param FileObject[]
@@ -58,16 +65,6 @@ class GenerateGeneratorGeneratorTest extends TestCase
             }
         }
         $actualFileObject;
-    }
-
-    /**
-     * @test
-     */
-    public function generateWithAssemblerConstructionType_ReturnFileObjects(): void
-    {
-        $actualFileObjects = $this->selfGeneratorGenerator->generate($this->request);
-
-        $this->assertGeneratorFiles(new GenerateGeneratorFileObjectsStub1(), $actualFileObjects);
     }
 
     /**

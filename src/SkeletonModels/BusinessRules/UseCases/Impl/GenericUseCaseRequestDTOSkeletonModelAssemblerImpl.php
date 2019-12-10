@@ -7,9 +7,6 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCaseClassNameTr
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\GenericUseCaseRequestDTOSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\GenericUseCaseRequestDTOSkeletonModelAssembler;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class GenericUseCaseRequestDTOSkeletonModelAssemblerImpl implements GenericUseCaseRequestDTOSkeletonModelAssembler
 {
     use UseCaseClassNameTrait;

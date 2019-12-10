@@ -8,8 +8,9 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\EntityUse
 
 class EntityUseCaseCommonRequestTraitSkeletonModelAssemblerImpl implements EntityUseCaseCommonRequestTraitSkeletonModelAssembler
 {
-    public function create(FileObject $entityUseCaseCommonRequestFileObject): EntityUseCaseCommonRequestTraitSkeletonModel
-    {
+    public function create(
+        FileObject $entityUseCaseCommonRequestFileObject
+    ): EntityUseCaseCommonRequestTraitSkeletonModel {
         $skeletonModel = new EntityUseCaseCommonRequestTraitSkeletonModelImpl();
 
         $skeletonModel->className = $entityUseCaseCommonRequestFileObject->getClassName();

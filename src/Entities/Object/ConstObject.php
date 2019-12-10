@@ -4,9 +4,6 @@ namespace OpenClassrooms\CodeGenerator\Entities\Object;
 
 use OpenClassrooms\CodeGenerator\Utility\StringUtility;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class ConstObject
 {
     /**

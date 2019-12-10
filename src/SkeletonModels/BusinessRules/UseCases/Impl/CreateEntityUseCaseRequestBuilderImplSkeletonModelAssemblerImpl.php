@@ -22,9 +22,12 @@ class CreateEntityUseCaseRequestBuilderImplSkeletonModelAssemblerImpl implements
         $skeletonModel->namespace = $createEntityUseCaseRequestBuilderImplFileObject->getNamespace();
         $skeletonModel->createEntityUseCaseRequestClassName = $createEntityUseCaseRequestFileObject->getClassName();
         $skeletonModel->createEntityUseCaseRequestShortName = $createEntityUseCaseRequestFileObject->getShortName();
-        $skeletonModel->createEntityUseCaseRequestBuilderClassName = $createEntityUseCaseRequestBuilderFileObject->getClassName();
-        $skeletonModel->createEntityUseCaseRequestBuilderShortName = $createEntityUseCaseRequestBuilderFileObject->getShortName();
-        $skeletonModel->createEntityUseCaseRequestDTOShortName = $createEntityUseCaseRequestDTOFileObject->getShortName();
+        $skeletonModel->createEntityUseCaseRequestBuilderClassName = $createEntityUseCaseRequestBuilderFileObject->getClassName(
+        );
+        $skeletonModel->createEntityUseCaseRequestBuilderShortName = $createEntityUseCaseRequestBuilderFileObject->getShortName(
+        );
+        $skeletonModel->createEntityUseCaseRequestDTOShortName = $createEntityUseCaseRequestDTOFileObject->getShortName(
+        );
 
         return $skeletonModel;
     }

@@ -4,9 +4,6 @@ namespace OpenClassrooms\CodeGenerator\Tests\Doubles\SkeletonModels\BusinessRule
 
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\Impl\UseCaseResponseCommonFieldTraitSkeletonModelAssemblerImpl;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class UseCaseResponseCommonFieldTraitSkeletonModelAssemblerMock extends UseCaseResponseCommonFieldTraitSkeletonModelAssemblerImpl
 {
 }

@@ -7,9 +7,6 @@ use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\Entities\Type\ViewModelFileObjectType;
 use OpenClassrooms\CodeGenerator\Entities\ViewModelFileObjectFactory;
 
-/**
- * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
- */
 class ViewModelFileObjectFactoryImpl extends AbstractFileObjectFactory implements ViewModelFileObjectFactory
 {
     public function create(string $type, string $domain, string $entity, string $baseNamespace = null): FileObject

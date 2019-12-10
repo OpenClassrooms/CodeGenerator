@@ -46,7 +46,8 @@ class CreateEntityUseCaseRequestGeneratorTest extends TestCase
 
     protected function setUp(): void
     {
-        $createEntityUseCaseRequestGeneratorRequestBuilderImpl = new CreateEntityUseCaseRequestGeneratorRequestBuilderImpl();
+        $createEntityUseCaseRequestGeneratorRequestBuilderImpl = new CreateEntityUseCaseRequestGeneratorRequestBuilderImpl(
+        );
         $this->request = $createEntityUseCaseRequestGeneratorRequestBuilderImpl
             ->create()
             ->withEntityClassName(FunctionalEntity::class)
@@ -57,9 +58,13 @@ class CreateEntityUseCaseRequestGeneratorTest extends TestCase
         $this->createEntityUseCaseRequestGenerator->setCreateEntityUseCaseRequestSkeletonModelAssembler(
             new CreateEntityUseCaseRequestSkeletonModelAssemblerMock()
         );
-        $this->createEntityUseCaseRequestGenerator->setMethodUtility(new MethodUtilityContext(new MethodUtilityGetAccessorsWithoutId()));
+        $this->createEntityUseCaseRequestGenerator->setMethodUtility(
+            new MethodUtilityContext(new MethodUtilityGetAccessorsWithoutId())
+        );
         $this->createEntityUseCaseRequestGenerator->setTemplating(new TemplatingServiceMock());
         $this->createEntityUseCaseRequestGenerator->setFileObjectGateway(new InMemoryFileObjectGateway());
-        $this->createEntityUseCaseRequestGenerator->setUseCaseRequestFileObjectFactory(new UseCaseRequestFileObjectFactoryMock());
+        $this->createEntityUseCaseRequestGenerator->setUseCaseRequestFileObjectFactory(
+            new UseCaseRequestFileObjectFactoryMock()
+        );
     }
 }

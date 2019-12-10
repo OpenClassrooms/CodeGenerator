@@ -7,11 +7,58 @@ use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\Utility\ConstUtility;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class ConstUtilityTest extends TestCase
 {
+    /**
+     * @test
+     */
+    public function generateConstsFromStubFileObject_ReturnConstObjects(): void
+    {
+        $stubReference = new FileObject(self::class);
+
+        $constsReference = [
+            new FieldObject('field1'),
+            new FieldObject('field2'),
+            new FieldObject('field3'),
+            new FieldObject('field4'),
+        ];
+        $stubReference->setFields($constsReference);
+
+        $actualConstsObject = ConstUtility::generateConstsFromStubFileObject($stubReference);
+
+        $this->assertCount(count($stubReference->getFields()), $actualConstsObject);
+        foreach ($stubReference->getConsts() as $key => $expectedConsts) {
+            $this->assertEquals($expectedConsts->getName(), $actualConstsObject[$key]->getName());
+        }
+    }
+
+    /**
+     * @test
+     * @expectedException  \InvalidArgumentException
+     */
+    public function generateConstsFromStubReference_ThrowsException(): void
+    {
+        $fileObject = new FileObject(self::class);
+
+        $fieldObject = $this->buildFieldObject('test', 'not exist');
+        ConstUtility::generateStubConstObject($fieldObject, $fileObject);
+    }
+
+    /**
+     * @return FieldObject
+     */
+    private function buildFieldObject($name, $type): FieldObject
+    {
+        $stubFieldObject = new FieldObject($name);
+        $stubFieldObject->setDocComment(
+            '/**
+     * @var ' . $type . '
+     */'
+        );
+
+        return $stubFieldObject;
+    }
+
     /**
      * @test
      *
@@ -54,55 +101,5 @@ class ConstUtilityTest extends TestCase
             [$this->buildFieldObject('field6', '\DateTimeImmutable'), $fileObject, 'string'],
             [$this->buildFieldObject('field6', '\DateTimeInterface'), $fileObject, 'string'],
         ];
-    }
-
-    /**
-     * @return FieldObject
-     */
-    private function buildFieldObject($name, $type): FieldObject
-    {
-        $stubFieldObject = new FieldObject($name);
-        $stubFieldObject->setDocComment(
-            '/**
-     * @var ' . $type . '
-     */'
-        );
-
-        return $stubFieldObject;
-    }
-
-    /**
-     * @test
-     */
-    public function generateConstsFromStubFileObject_ReturnConstObjects(): void
-    {
-        $stubReference = new FileObject(self::class);
-
-        $constsReference = [
-            new FieldObject('field1'),
-            new FieldObject('field2'),
-            new FieldObject('field3'),
-            new FieldObject('field4'),
-        ];
-        $stubReference->setFields($constsReference);
-
-        $actualConstsObject = ConstUtility::generateConstsFromStubFileObject($stubReference);
-
-        $this->assertCount(count($stubReference->getFields()), $actualConstsObject);
-        foreach ($stubReference->getConsts() as $key => $expectedConsts) {
-            $this->assertEquals($expectedConsts->getName(), $actualConstsObject[$key]->getName());
-        }
-    }
-
-    /**
-     * @test
-     * @expectedException  \InvalidArgumentException
-     */
-    public function generateConstsFromStubReference_ThrowsException(): void
-    {
-        $fileObject = new FileObject(self::class);
-
-        $fieldObject = $this->buildFieldObject('test', 'not exist');
-        ConstUtility::generateStubConstObject($fieldObject, $fileObject);
     }
 }

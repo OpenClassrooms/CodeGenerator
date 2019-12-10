@@ -46,7 +46,8 @@ class EditEntityUseCaseRequestGeneratorTest extends TestCase
 
     protected function setUp(): void
     {
-        $editEntityUseCaseRequestGeneratorRequestBuilderImpl = new EditEntityUseCaseRequestGeneratorRequestBuilderImpl();
+        $editEntityUseCaseRequestGeneratorRequestBuilderImpl = new EditEntityUseCaseRequestGeneratorRequestBuilderImpl(
+        );
         $this->request = $editEntityUseCaseRequestGeneratorRequestBuilderImpl
             ->create()
             ->withEntityClassName(FunctionalEntity::class)
@@ -58,8 +59,12 @@ class EditEntityUseCaseRequestGeneratorTest extends TestCase
             new EditEntityUseCaseRequestSkeletonModelAssemblerMock()
         );
         $this->editEntityUseCaseRequestGenerator->setFileObjectGateway(new InMemoryFileObjectGateway());
-        $this->editEntityUseCaseRequestGenerator->setMethodUtility(new MethodUtilityContext(new MethodUtilityGetAccessorsWithoutId()));
+        $this->editEntityUseCaseRequestGenerator->setMethodUtility(
+            new MethodUtilityContext(new MethodUtilityGetAccessorsWithoutId())
+        );
         $this->editEntityUseCaseRequestGenerator->setTemplating(new TemplatingServiceMock());
-        $this->editEntityUseCaseRequestGenerator->setUseCaseRequestFileObjectFactory(new UseCaseRequestFileObjectFactoryMock());
+        $this->editEntityUseCaseRequestGenerator->setUseCaseRequestFileObjectFactory(
+            new UseCaseRequestFileObjectFactoryMock()
+        );
     }
 }

@@ -6,9 +6,6 @@ use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Gateways\EntityNotFoundExceptionSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Gateways\EntityNotFoundExceptionSkeletonModelAssembler;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class EntityNotFoundExceptionSkeletonModelAssemblerImpl implements EntityNotFoundExceptionSkeletonModelAssembler
 {
     public function create(FileObject $entityNotFoundExceptionFileObject): EntityNotFoundExceptionSkeletonModel

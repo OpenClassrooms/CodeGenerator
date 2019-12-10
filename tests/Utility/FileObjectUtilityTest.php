@@ -16,9 +16,6 @@ use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\Api\ViewMo
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\BusinessRules\Entities\Domain\SubDomain\FunctionalEntityStub1;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class FileObjectUtilityTest extends TestCase
 {
     public function fileObjectDataProvider(): array
@@ -100,7 +97,7 @@ class FileObjectUtilityTest extends TestCase
                 FileObjectUtilityTest::class,
                 'OpenClassrooms\CodeGenerator\Utility\\',
                 'CodeGenerator\Utility',
-                'FileObjectUtilityTest',
+                'FileObjectUtility',
             ],
             [
                 'BusinessRules\UseCases\Domain\SubDomain\GenericUseCase',

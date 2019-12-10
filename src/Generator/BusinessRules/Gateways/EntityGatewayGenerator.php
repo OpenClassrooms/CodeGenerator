@@ -10,9 +10,6 @@ use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Gateways\EntityGatewaySkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Gateways\EntityGatewaySkeletonModelAssembler;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class EntityGatewayGenerator extends AbstractUseCaseGenerator
 {
     /**

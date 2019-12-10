@@ -5,15 +5,17 @@ namespace OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Requ
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\UseCaseListItemResponseDTOGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\UseCaseListItemResponseDTOGeneratorRequestBuilder;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class UseCaseListItemResponseDTOGeneratorRequestBuilderImpl implements UseCaseListItemResponseDTOGeneratorRequestBuilder
 {
     /**
      * @var UseCaseListItemResponseDTOGeneratorRequestDTO
      */
     private $request;
+
+    public function build(): UseCaseListItemResponseDTOGeneratorRequest
+    {
+        return $this->request;
+    }
 
     public function create(): UseCaseListItemResponseDTOGeneratorRequestBuilder
     {
@@ -37,10 +39,5 @@ class UseCaseListItemResponseDTOGeneratorRequestBuilderImpl implements UseCaseLi
         $this->request->fields = $fields;
 
         return $this;
-    }
-
-    public function build(): UseCaseListItemResponseDTOGeneratorRequest
-    {
-        return $this->request;
     }
 }

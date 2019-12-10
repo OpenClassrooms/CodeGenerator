@@ -5,20 +5,17 @@ namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Requ
 use OpenClassrooms\CodeGenerator\Entities\Object\FieldObject;
 use OpenClassrooms\CodeGenerator\Entities\Object\MethodObject;
 
-/**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
- */
 class EditEntityUseCaseRequestMethodObjectStub2 extends MethodObject
 {
     const DOC_COMMENT = null;
 
-    const NAME = 'isField2Updated';
+    const NAME        = 'isField2Updated';
 
-    const NULLABLE = false;
+    const NULLABLE    = false;
 
     const RETURN_TYPE = 'bool';
 
-    const VALUE = null;
+    const VALUE       = null;
 
     protected $docComment = self::DOC_COMMENT;
 

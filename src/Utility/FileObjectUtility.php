@@ -2,9 +2,6 @@
 
 namespace OpenClassrooms\CodeGenerator\Utility;
 
-/**
- * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
- */
 class FileObjectUtility
 {
     public static function getBaseNamespaceDomainAndEntityNameFromClassName(string $className): array
@@ -77,22 +74,33 @@ class FileObjectUtility
     public static function getEntityNameFromClassName(string $className): string
     {
         $shortClassName = self::getShortClassName($className);
-        $shortClassName = str_replace('Assembler', '', $shortClassName);
-        $shortClassName = str_replace('Builder', '', $shortClassName);
-        $shortClassName = str_replace('Create', '', $shortClassName);
-        $shortClassName = str_replace('CommonFieldTrait', '', $shortClassName);
-        $shortClassName = str_replace('Detail', '', $shortClassName);
-        $shortClassName = str_replace('Edit', '', $shortClassName);
-        $shortClassName = str_replace('Gateway', '', $shortClassName);
-        $shortClassName = str_replace('Impl', '', $shortClassName);
-        $shortClassName = str_replace('ListItem', '', $shortClassName);
-        $shortClassName = str_replace('ResponseDTO', '', $shortClassName);
-        $shortClassName = str_replace('Response', '', $shortClassName);
-        $shortClassName = str_replace('RequestDTO', '', $shortClassName);
-        $shortClassName = str_replace('Request', '', $shortClassName);
-        $shortClassName = str_replace('Stub1', '', $shortClassName);
-        $shortClassName = str_replace('TestCase', '', $shortClassName);
-        $shortClassName = str_replace('ViewModel', '', $shortClassName);
+
+        $classTypes = [
+            'Assembler',
+            'Builder',
+            'Create',
+            'CommonFieldTrait',
+            'Delete',
+            'Detail',
+            'Edit',
+            'Gateway',
+            'Impl',
+            'ListItem',
+            'ResponseDTO',
+            'Response',
+            'RequestDTO',
+            'Request',
+            'Stub1',
+            'TestCase',
+            'Test',
+            'ViewModel',
+        ];
+
+        foreach ($classTypes as $type) {
+            if (false !== strpos($shortClassName, $type)) {
+                $shortClassName = str_replace($type, '', $shortClassName);
+            }
+        }
 
         return $shortClassName;
     }

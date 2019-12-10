@@ -9,7 +9,8 @@
             <argument type="service" id="OpenClassrooms\CodeGenerator\Utility\Impl\FieldObjectUtilityGetFields"/>
         </service>
         <service id="get.fields.updatable" class="OpenClassrooms\CodeGenerator\Utility\Impl\FieldObjectUtilityContext">
-            <argument type="service" id="OpenClassrooms\CodeGenerator\Utility\Impl\FieldObjectUtilityGetFieldsUpdatable"/>
+            <argument type="service"
+                      id="OpenClassrooms\CodeGenerator\Utility\Impl\FieldObjectUtilityGetFieldsUpdatable"/>
         </service>
     </services>
 </container>

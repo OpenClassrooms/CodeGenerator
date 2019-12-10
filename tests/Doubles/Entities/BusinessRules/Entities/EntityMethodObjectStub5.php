@@ -5,20 +5,17 @@ namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Enti
 use OpenClassrooms\CodeGenerator\Entities\Object\FieldObject;
 use OpenClassrooms\CodeGenerator\Entities\Object\MethodObject;
 
-/**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
- */
 class EntityMethodObjectStub5 extends MethodObject
 {
     const DOC_COMMENT = null;
 
-    const NAME = 'getField4';
+    const NAME        = 'getField4';
 
-    const NULLABLE = true;
+    const NULLABLE    = true;
 
     const RETURN_TYPE = 'DateTimeInterface';
 
-    const VALUE = null;
+    const VALUE       = null;
 
     protected $docComment = self::DOC_COMMENT;
 

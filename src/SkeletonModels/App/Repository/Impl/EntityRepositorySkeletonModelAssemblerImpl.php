@@ -5,16 +5,15 @@ namespace OpenClassrooms\CodeGenerator\SkeletonModels\App\Repository\Impl;
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\SkeletonModels\App\Repository\EntityRepositorySkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\App\Repository\EntityRepositorySkeletonModelAssembler;
+use OpenClassrooms\CodeGenerator\Utility\NameUtility;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class EntityRepositorySkeletonModelAssemblerImpl implements EntityRepositorySkeletonModelAssembler
 {
     public function create(
         FileObject $entityFileObject,
         FileObject $entityImplFileObject,
         FileObject $entityGatewayFileObject,
+        FileObject $entityNotFoundExceptionFileObject,
         FileObject $entityRepositoryFileObject
     ): EntityRepositorySkeletonModel {
         $skeletonModel = new EntityRepositorySkeletonModelImpl();
@@ -27,6 +26,9 @@ class EntityRepositorySkeletonModelAssemblerImpl implements EntityRepositorySkel
         $skeletonModel->entityShortName = $entityFileObject->getShortName();
         $skeletonModel->entityImplClassName = $entityImplFileObject->getClassName();
         $skeletonModel->entityImplShortName = $entityImplFileObject->getShortName();
+        $skeletonModel->entityIdArgument = NameUtility::createEntityIdName($entityFileObject->getShortName());
+        $skeletonModel->entityNotFoundExceptionClassName = $entityNotFoundExceptionFileObject->getClassName();
+        $skeletonModel->entityNotFoundExceptionShortName = $entityNotFoundExceptionFileObject->getShortName();
 
         return $skeletonModel;
     }

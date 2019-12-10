@@ -8,15 +8,17 @@ use {{ skeletonModel.paginatedCollectionClassName }};
 
 interface {{ skeletonModel.shortName }}
 {
-    /**
-     * @throws {{ skeletonModel.entityNotFoundExceptionShortName }}
-     */
-    public function find($id): {{ skeletonModel.entityShortName }};
+    public function delete({{ skeletonModel.entityShortName }} ${{ skeletonModel.entityArgument }}): void;
 
     /**
      * @return {{ skeletonModel.paginatedCollectionShortName }}|{{ skeletonModel.entityShortName }}[]
      */
     public function findAll(array $filters = [], array $sorts = [], array $pagination = []): iterable;
+
+    /**
+     * @throws {{ skeletonModel.entityNotFoundExceptionShortName }}
+     */
+    public function findById(int ${{ skeletonModel.entityIdArgument }}): {{ skeletonModel.entityShortName }};
 
     public function insert({{ skeletonModel.entityShortName }} ${{ skeletonModel.entityArgument }}): void;
 

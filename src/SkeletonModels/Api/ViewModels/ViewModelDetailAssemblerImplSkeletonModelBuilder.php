@@ -4,27 +4,22 @@ namespace OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModels;
 
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 interface ViewModelDetailAssemblerImplSkeletonModelBuilder
 {
+    public function build(): ViewModelDetailAssemblerImplSkeletonModel;
+
     public function create(): ViewModelDetailAssemblerImplSkeletonModelBuilder;
 
     public function withUseCaseDetailResponse(
         FileObject $useCaseDetailResponse
     ): ViewModelDetailAssemblerImplSkeletonModelBuilder;
 
-    public function withViewModelDetail(
-        FileObject $viewModelDetail
-    ): ViewModelDetailAssemblerImplSkeletonModelBuilder;
-
-    public function withViewModelDetailImpl(
-        FileObject $viewModelDetailImpl
-    ): ViewModelDetailAssemblerImplSkeletonModelBuilder;
-
     public function withViewModelAssemblerTrait(
         FileObject $viewModelAssemblerTrait
+    ): ViewModelDetailAssemblerImplSkeletonModelBuilder;
+
+    public function withViewModelDetail(
+        FileObject $viewModelDetail
     ): ViewModelDetailAssemblerImplSkeletonModelBuilder;
 
     public function withViewModelDetailAssembler(
@@ -35,5 +30,7 @@ interface ViewModelDetailAssemblerImplSkeletonModelBuilder
         FileObject $viewModelDetailAssemblerImpl
     ): ViewModelDetailAssemblerImplSkeletonModelBuilder;
 
-    public function build(): ViewModelDetailAssemblerImplSkeletonModel;
+    public function withViewModelDetailImpl(
+        FileObject $viewModelDetailImpl
+    ): ViewModelDetailAssemblerImplSkeletonModelBuilder;
 }

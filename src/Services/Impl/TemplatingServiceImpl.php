@@ -11,9 +11,6 @@ use Twig\Loader\FilesystemLoader;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class TemplatingServiceImpl extends Environment implements TemplatingService
 {
     /**
@@ -34,12 +31,36 @@ class TemplatingServiceImpl extends Environment implements TemplatingService
                 'autoescape'       => false,
             ]
         );
+        $this->addFilter($this->getSortAccessorsFieldNameByAlphaFilter());
         $this->addFilter($this->getSortNameByAlphaFilter());
         $this->addFilter($this->getSortIdFirstFilter());
 
         $this->addFunction($this->lineBreak());
         $this->addFunction($this->printValue());
         $this->addFunction($this->printReturnType());
+    }
+
+    private function getSortAccessorsFieldNameByAlphaFilter()
+    {
+        return new TwigFilter(
+            'sortAccessorsFieldNameByAlpha',
+            function (array $classFields) {
+                $arrayFields = $classFields;
+                usort(
+                    $arrayFields,
+                    $this->getSortFieldNameClosure()
+                );
+
+                return $arrayFields;
+            }
+        );
+    }
+
+    private function getSortFieldNameClosure()
+    {
+        return function (MethodObject $a, MethodObject $b) {
+            return strcmp($a->getFieldName(), $b->getFieldName());
+        };
     }
 
     private function getSortNameByAlphaFilter()
@@ -62,26 +83,17 @@ class TemplatingServiceImpl extends Environment implements TemplatingService
     {
         if (array_shift($arrayFields) instanceof FieldObject) {
             return function (FieldObject $a, FieldObject $b) {
-                $al = strtolower($a->getName());
-                $bl = strtolower($b->getName());
-
-                return ($al > $bl) ? +1 : -1;
+                return strcmp($a->getName(), $b->getName());
             };
         }
         if (array_shift($arrayFields) instanceof ConstObject) {
             return function (ConstObject $a, ConstObject $b) {
-                $al = strtolower($a->getName());
-                $bl = strtolower($b->getName());
-
-                return ($al > $bl) ? +1 : -1;
+                return strcmp($a->getName(), $b->getName());
             };
         }
 
         return function (MethodObject $a, MethodObject $b) {
-            $al = strtolower($a->getName());
-            $bl = strtolower($b->getName());
-
-            return ($al > $bl) ? +1 : -1;
+            return strcmp($a->getName(), $b->getName());
         };
     }
 
@@ -158,5 +170,18 @@ class TemplatingServiceImpl extends Environment implements TemplatingService
     public function render($name, array $context = []): string
     {
         return parent::render($name, $context);
+    }
+
+    private function extractFieldNameFromAccessor(string $acccessorName): ?string
+    {
+        if (false !== strpos($acccessorName, 'get')) {
+            return substr($acccessorName, 0, 3);
+        }
+
+        if (false !== strpos($acccessorName, 'is')) {
+            return substr($acccessorName, 0, 2);
+        }
+
+        return null;
     }
 }

@@ -8,9 +8,6 @@ use OpenClassrooms\CodeGenerator\Entities\Type\UseCaseFileObjectType;
 use OpenClassrooms\CodeGenerator\Entities\UseCaseFileObjectFactory;
 use OpenClassrooms\CodeGenerator\Utility\StringUtility;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class UseCaseFileObjectFactoryImpl extends AbstractFileObjectFactory implements UseCaseFileObjectFactory
 {
     public function create(string $type, string $domain, string $entity, string $baseNamespace = null): FileObject
@@ -25,6 +22,14 @@ class UseCaseFileObjectFactoryImpl extends AbstractFileObjectFactory implements 
             case UseCaseFileObjectType::BUSINESS_RULES_CREATE_ENTITY_USE_CASE_TEST:
                 return new FileObject(
                     $this->testsBaseNamespace . 'BusinessRules\UseCases\\' . $domain . '\\Create' . $entity . 'Test'
+                );
+            case UseCaseFileObjectType::BUSINESS_RULES_DELETE_ENTITY_USE_CASE:
+                return new FileObject(
+                    $this->baseNamespace . 'BusinessRules\UseCases\\' . $domain . '\\Delete' . $entity
+                );
+            case UseCaseFileObjectType::BUSINESS_RULES_DELETE_ENTITY_USE_CASE_TEST:
+                return new FileObject(
+                    $this->testsBaseNamespace . 'BusinessRules\UseCases\\' . $domain . '\\Delete' . $entity . 'Test'
                 );
             case UseCaseFileObjectType::BUSINESS_RULES_EDIT_ENTITY_USE_CASE:
                 return new FileObject(

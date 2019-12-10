@@ -8,13 +8,13 @@ use OpenClassrooms\CodeGenerator\Entities\Object\FieldObject;
 
 class EntityStubFieldObjectStub6 extends FieldObject
 {
-    const CONST = 'UPDATED_AT';
+    const CONST       = 'UPDATED_AT';
 
     const DOC_COMMENT = '/**
      * @var \DateTimeInterface
      */';
 
-    const NAME = 'updatedAt';
+    const NAME        = 'updatedAt';
 
     protected $docComment = self::DOC_COMMENT;
 

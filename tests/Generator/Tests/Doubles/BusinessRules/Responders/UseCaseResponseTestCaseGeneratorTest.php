@@ -14,22 +14,19 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\SkeletonModels\Tests\Doubles\Busi
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Entities\Domain\SubDomain\FunctionalEntity;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class UseCaseResponseTestCaseGeneratorTest extends TestCase
 {
     use FileObjectTestCase;
 
     /**
-     * @var UseCaseResponseTestCaseGenerator
-     */
-    private $useCaseResponseTestCaseGenerator;
-
-    /**
      * @var UseCaseResponseTestCaseGeneratorRequestBuilder
      */
     private $request;
+
+    /**
+     * @var UseCaseResponseTestCaseGenerator
+     */
+    private $useCaseResponseTestCaseGenerator;
 
     /**
      * @test
@@ -51,14 +48,16 @@ class UseCaseResponseTestCaseGeneratorTest extends TestCase
         $this->request = $useCaseResponseTestCaseGeneratorRequestBuilderImpl
             ->create()
             ->withEntityClassName(FunctionalEntity::class)
-            ->withFields(['field1','field2','field3','id'])
+            ->withFields(['field1', 'field2', 'field3', 'id'])
             ->build();
 
         $this->useCaseResponseTestCaseGenerator = new UseCaseResponseTestCaseGenerator();
 
         $this->useCaseResponseTestCaseGenerator->setFileObjectGateway(new InMemoryFileObjectGateway());
         $this->useCaseResponseTestCaseGenerator->setTemplating(new TemplatingServiceMock());
-        $this->useCaseResponseTestCaseGenerator->setUseCaseResponseFileObjectFactory(new UseCaseResponseFileObjectFactoryMock());
+        $this->useCaseResponseTestCaseGenerator->setUseCaseResponseFileObjectFactory(
+            new UseCaseResponseFileObjectFactoryMock()
+        );
         $this->useCaseResponseTestCaseGenerator->setUseCaseResponseTestCaseSkeletonModelAssembler(
             new UseCaseResponseTestCaseSkeletonModelAssemblerMock()
         );

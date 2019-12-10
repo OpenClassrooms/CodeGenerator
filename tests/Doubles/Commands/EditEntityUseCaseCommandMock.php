@@ -4,9 +4,6 @@ namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Commands;
 
 use OpenClassrooms\CodeGenerator\Commands\EditEntityUseCaseCommand;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class EditEntityUseCaseCommandMock extends EditEntityUseCaseCommand
 {
     const CONFIG_FILE = self::ROOT_DIR . 'oc_code_generator_test.yml.dist';

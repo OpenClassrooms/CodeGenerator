@@ -5,9 +5,6 @@ namespace OpenClassrooms\CodeGenerator\Scripts;
 use Composer\Script\Event;
 use Incenteev\ParameterHandler\Processor;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class ParameterHandler
 {
     const CODE_GENERATOR             = 'openclassrooms/code-generator';

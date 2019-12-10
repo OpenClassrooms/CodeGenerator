@@ -10,9 +10,6 @@ use OpenClassrooms\CodeGenerator\Mediators\Args;
 use OpenClassrooms\CodeGenerator\Mediators\GenerateGenerator\GenerateGeneratorMediator;
 use OpenClassrooms\CodeGenerator\Mediators\Options;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class GenerateGeneratorMediatorImpl implements GenerateGeneratorMediator
 {
     /**

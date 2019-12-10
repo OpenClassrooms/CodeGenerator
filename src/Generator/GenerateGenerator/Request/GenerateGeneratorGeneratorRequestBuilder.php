@@ -4,14 +4,15 @@ namespace OpenClassrooms\CodeGenerator\Generator\GenerateGenerator\Request;
 
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 interface GenerateGeneratorGeneratorRequestBuilder extends GeneratorRequest
 {
     public function build(): GenerateGeneratorGeneratorRequest;
 
     public function create(): GenerateGeneratorGeneratorRequestBuilder;
+
+    public function withConstructionPattern(
+        string $constructionPattern
+    ): GenerateGeneratorGeneratorRequestBuilder;
 
     public function withDomain(
         string $domain
@@ -19,9 +20,5 @@ interface GenerateGeneratorGeneratorRequestBuilder extends GeneratorRequest
 
     public function withEntityClassName(
         string $entity
-    ): GenerateGeneratorGeneratorRequestBuilder;
-
-    public function withConstructionPattern(
-        string $constructionPattern
     ): GenerateGeneratorGeneratorRequestBuilder;
 }

@@ -5,15 +5,17 @@ namespace OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Requ
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\UseCaseResponseAssemblerTraitGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\UseCaseResponseAssemblerTraitGeneratorRequestBuilder;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class UseCaseResponseAssemblerTraitGeneratorRequestBuilderImpl implements UseCaseResponseAssemblerTraitGeneratorRequestBuilder
 {
     /**
      * @var UseCaseResponseAssemblerTraitGeneratorRequestDTO
      */
     private $request;
+
+    public function build(): UseCaseResponseAssemblerTraitGeneratorRequest
+    {
+        return $this->request;
+    }
 
     public function create(): UseCaseResponseAssemblerTraitGeneratorRequestBuilder
     {
@@ -37,10 +39,5 @@ class UseCaseResponseAssemblerTraitGeneratorRequestBuilderImpl implements UseCas
         $this->request->fields = $fields;
 
         return $this;
-    }
-
-    public function build(): UseCaseResponseAssemblerTraitGeneratorRequest
-    {
-        return $this->request;
     }
 }

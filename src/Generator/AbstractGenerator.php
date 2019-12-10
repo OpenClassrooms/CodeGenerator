@@ -11,9 +11,6 @@ use OpenClassrooms\CodeGenerator\Utility\FieldObjectUtility;
 use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 use OpenClassrooms\CodeGenerator\Utility\StubUtility;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 abstract class AbstractGenerator implements Generator
 {
     /**

@@ -5,15 +5,17 @@ namespace OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Requ
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\GetEntityUseCaseRequestBuilderImplGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\GetEntityUseCaseRequestBuilderImplGeneratorRequestBuilder;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class GetEntityUseCaseRequestBuilderImplGeneratorRequestBuilderImpl implements GetEntityUseCaseRequestBuilderImplGeneratorRequestBuilder
 {
     /**
      * @var GetEntityUseCaseRequestBuilderImplGeneratorRequestDTO
      */
     private $request;
+
+    public function build(): GetEntityUseCaseRequestBuilderImplGeneratorRequest
+    {
+        return $this->request;
+    }
 
     public function create(): GetEntityUseCaseRequestBuilderImplGeneratorRequestBuilder
     {
@@ -27,10 +29,5 @@ class GetEntityUseCaseRequestBuilderImplGeneratorRequestBuilderImpl implements G
         $this->request->entity = $entity;
 
         return $this;
-    }
-
-    public function build(): GetEntityUseCaseRequestBuilderImplGeneratorRequest
-    {
-        return $this->request;
     }
 }

@@ -4,9 +4,6 @@ namespace OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\DTO\Reques
 
 use OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\Request\ViewModelDetailAssemblerImplTestGeneratorRequest;
 
-/**
- * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
- */
 class ViewModelDetailAssemblerImplTestGeneratorRequestDTO implements ViewModelDetailAssemblerImplTestGeneratorRequest
 {
     /**

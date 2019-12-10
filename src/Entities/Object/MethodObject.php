@@ -4,9 +4,6 @@ namespace OpenClassrooms\CodeGenerator\Entities\Object;
 
 use OpenClassrooms\CodeGenerator\Utility\MethodUtility;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class MethodObject
 {
     /**
@@ -39,6 +36,19 @@ class MethodObject
         $this->name = $name;
     }
 
+    public function addArgument(FieldObject $argument): void
+    {
+        $this->arguments[] = $argument;
+    }
+
+    /**
+     * @return FieldObject[]
+     */
+    public function getArguments(): array
+    {
+        return $this->arguments;
+    }
+
     /**
      * @return string|bool
      */
@@ -55,16 +65,6 @@ class MethodObject
         $this->docComment = $docComment;
     }
 
-    public function getReturnType(): string
-    {
-        return $this->returnType;
-    }
-
-    public function setReturnType(string $returnType): void
-    {
-        $this->returnType = $returnType;
-    }
-
     public function getFieldName(): string
     {
         return MethodUtility::createArgumentNameFromMethod($this->getName());
@@ -73,6 +73,16 @@ class MethodObject
     public function getName(): string
     {
         return $this->name;
+    }
+
+    public function getReturnType(): string
+    {
+        return $this->returnType;
+    }
+
+    public function setReturnType(string $returnType): void
+    {
+        $this->returnType = $returnType;
     }
 
     public function isDateType(): bool
@@ -88,18 +98,5 @@ class MethodObject
     public function setNullable(bool $nullable): void
     {
         $this->nullable = $nullable;
-    }
-
-    /**
-     * @return FieldObject[]
-     */
-    public function getArguments(): array
-    {
-        return $this->arguments;
-    }
-
-    public function addArgument(FieldObject $argument): void
-    {
-        $this->arguments[] = $argument;
     }
 }

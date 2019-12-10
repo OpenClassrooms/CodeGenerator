@@ -6,6 +6,7 @@ namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\App\Repository\Dom
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\App\Entity\Domain\SubDomain\FunctionalEntityImpl;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Entities\Domain\SubDomain\FunctionalEntity;
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gateways\Domain\SubDomain\Exceptions\FunctionalEntityNotFoundException;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gateways\Domain\SubDomain\FunctionalEntityGateway;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
@@ -16,14 +17,24 @@ class FunctionalEntityRepository extends ServiceEntityRepository implements Func
         parent::__construct($registry, FunctionalEntityImpl::class);
     }
 
-    public function find($id): FunctionalEntity
+    public function delete(FunctionalEntity $functionalEntity): void
     {
-        // TODO: Implement find() method.
+        $this->getEntityManager()->remove($functionalEntity);
     }
 
     public function findAll(array $filters = [], array $sorts = [], array $pagination = []): iterable
     {
         // TODO: Implement findAll() method.
+    }
+
+    public function findById(int $functionalEntityId): FunctionalEntity
+    {
+        $functionalEntity = parent::find($functionalEntityId);
+        if (null === $functionalEntity) {
+            throw new FunctionalEntityNotFoundException();
+        }
+
+        return $functionalEntity;
     }
 
     public function insert(FunctionalEntity $functionalEntity): void

@@ -20,7 +20,8 @@ class CreateEntityUseCaseRequestDTOSkeletonModelAssemblerImpl implements CreateE
         $skeletonModel->shortName = $createEntityUseCaseRequestDTOFileObject->getShortName();
         $skeletonModel->createEntityUseCaseRequestClassName = $createEntityUseCaseRequestFileObject->getClassName();
         $skeletonModel->createEntityUseCaseRequestShortName = $createEntityUseCaseRequestFileObject->getShortName();
-        $skeletonModel->entityUseCaseCommonRequestTraitShortName = $entityUseCaseCommonRequestFileObject->getShortName();
+        $skeletonModel->entityUseCaseCommonRequestTraitShortName = $entityUseCaseCommonRequestFileObject->getShortName(
+        );
 
         return $skeletonModel;
     }

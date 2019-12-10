@@ -17,9 +17,6 @@ use OpenClassrooms\CodeGenerator\Generator\Generator;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\GetEntitiesUseCaseTestGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\Request\GetEntitiesUseCaseTestGeneratorRequestBuilder;
 
-/**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
- */
 trait GetEntitiesUseCaseGeneratorsTrait
 {
     /** @var GetEntitiesUseCaseGenerator */
@@ -57,66 +54,6 @@ trait GetEntitiesUseCaseGeneratorsTrait
 
     /** @var GetEntitiesUseCaseTestGeneratorRequestBuilder */
     private $getEntitiesUseCaseTestGeneratorRequestBuilder;
-
-    protected function generateGetEntitiesUseCaseGenerator(string $className): FileObject
-    {
-        return $this->getEntitiesUseCaseGenerator->generate(
-            $this->getEntitiesUseCaseGeneratorRequestBuilder
-                ->create()
-                ->withEntityClassName($className)
-                ->build()
-        );
-    }
-
-    protected function generateGetEntitiesUseCaseRequestBuilderGenerator(string $className): FileObject
-    {
-        return $this->getEntitiesUseCaseRequestBuilderGenerator->generate(
-            $this->getEntitiesUseCaseRequestBuilderGeneratorRequestBuilder
-                ->create()
-                ->withEntityClassName($className)
-                ->build()
-        );
-    }
-
-    protected function generateGetEntitiesUseCaseRequestBuilderImplGenerator(string $className): FileObject
-    {
-        return $this->getEntitiesUseCaseRequestBuilderImplGenerator->generate(
-            $this->getEntitiesUseCaseRequestBuilderImplGeneratorRequestBuilder
-                ->create()
-                ->withEntityClassName($className)
-                ->build()
-        );
-    }
-
-    protected function generateGetEntitiesUseCaseRequestDTOGenerator(string $className): FileObject
-    {
-        return $this->getEntitiesUseCaseRequestDTOGenerator->generate(
-            $this->getEntitiesUseCaseRequestDTOGeneratorRequestBuilder
-                ->create()
-                ->withEntityClassName($className)
-                ->build()
-        );
-    }
-
-    protected function generateGetEntitiesUseCaseRequestGenerator(string $className): FileObject
-    {
-        return $this->getEntitiesUseCaseRequestGenerator->generate(
-            $this->getEntitiesUseCaseRequestGeneratorRequestBuilder
-                ->create()
-                ->withEntityClassName($className)
-                ->build()
-        );
-    }
-
-    protected function generateGetEntitiesUseCaseTestGenerator(string $className): FileObject
-    {
-        return $this->getEntitiesUseCaseTestGenerator->generate(
-            $this->getEntitiesUseCaseTestGeneratorRequestBuilder
-                ->create()
-                ->withEntityClassName($className)
-                ->build()
-        );
-    }
 
     public function setGetEntitiesUseCaseGenerator(
         Generator $getEntitiesUseCaseGenerator
@@ -188,5 +125,65 @@ trait GetEntitiesUseCaseGeneratorsTrait
         GetEntitiesUseCaseTestGeneratorRequestBuilder $getEntitiesUseCaseTestGeneratorRequestBuilder
     ): void {
         $this->getEntitiesUseCaseTestGeneratorRequestBuilder = $getEntitiesUseCaseTestGeneratorRequestBuilder;
+    }
+
+    protected function generateGetEntitiesUseCaseGenerator(string $className): FileObject
+    {
+        return $this->getEntitiesUseCaseGenerator->generate(
+            $this->getEntitiesUseCaseGeneratorRequestBuilder
+                ->create()
+                ->withEntityClassName($className)
+                ->build()
+        );
+    }
+
+    protected function generateGetEntitiesUseCaseRequestBuilderGenerator(string $className): FileObject
+    {
+        return $this->getEntitiesUseCaseRequestBuilderGenerator->generate(
+            $this->getEntitiesUseCaseRequestBuilderGeneratorRequestBuilder
+                ->create()
+                ->withEntityClassName($className)
+                ->build()
+        );
+    }
+
+    protected function generateGetEntitiesUseCaseRequestBuilderImplGenerator(string $className): FileObject
+    {
+        return $this->getEntitiesUseCaseRequestBuilderImplGenerator->generate(
+            $this->getEntitiesUseCaseRequestBuilderImplGeneratorRequestBuilder
+                ->create()
+                ->withEntityClassName($className)
+                ->build()
+        );
+    }
+
+    protected function generateGetEntitiesUseCaseRequestDTOGenerator(string $className): FileObject
+    {
+        return $this->getEntitiesUseCaseRequestDTOGenerator->generate(
+            $this->getEntitiesUseCaseRequestDTOGeneratorRequestBuilder
+                ->create()
+                ->withEntityClassName($className)
+                ->build()
+        );
+    }
+
+    protected function generateGetEntitiesUseCaseRequestGenerator(string $className): FileObject
+    {
+        return $this->getEntitiesUseCaseRequestGenerator->generate(
+            $this->getEntitiesUseCaseRequestGeneratorRequestBuilder
+                ->create()
+                ->withEntityClassName($className)
+                ->build()
+        );
+    }
+
+    protected function generateGetEntitiesUseCaseTestGenerator(string $className): FileObject
+    {
+        return $this->getEntitiesUseCaseTestGenerator->generate(
+            $this->getEntitiesUseCaseTestGeneratorRequestBuilder
+                ->create()
+                ->withEntityClassName($className)
+                ->build()
+        );
     }
 }

@@ -9,9 +9,6 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\GetEntity
 use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 use OpenClassrooms\CodeGenerator\Utility\MethodUtility;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class GetEntityUseCaseSkeletonModelBuilderImpl implements GetEntityUseCaseSkeletonModelBuilder
 {
     use UseCaseClassNameTrait;

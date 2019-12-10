@@ -4,9 +4,6 @@ namespace OpenClassrooms\CodeGenerator\Entities;
 
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 interface UseCaseResponseFileObjectFactory
 {
     public function create(string $type, string $domain, string $entity, string $baseNamespace = null): FileObject;

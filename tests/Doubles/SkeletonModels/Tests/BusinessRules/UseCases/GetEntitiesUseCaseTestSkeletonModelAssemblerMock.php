@@ -4,9 +4,6 @@ namespace OpenClassrooms\CodeGenerator\Tests\Doubles\SkeletonModels\Tests\Busine
 
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\UseCases\Impl\GetEntitiesUseCaseTestSkeletonModelBuilderImpl;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class GetEntitiesUseCaseTestSkeletonModelAssemblerMock extends GetEntitiesUseCaseTestSkeletonModelBuilderImpl
 {
 }

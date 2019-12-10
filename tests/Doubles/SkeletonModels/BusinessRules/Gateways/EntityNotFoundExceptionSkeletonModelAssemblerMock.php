@@ -4,9 +4,6 @@ namespace OpenClassrooms\CodeGenerator\Tests\Doubles\SkeletonModels\BusinessRule
 
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Gateways\Impl\EntityNotFoundExceptionSkeletonModelAssemblerImpl;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class EntityNotFoundExceptionSkeletonModelAssemblerMock extends EntityNotFoundExceptionSkeletonModelAssemblerImpl
 {
 }

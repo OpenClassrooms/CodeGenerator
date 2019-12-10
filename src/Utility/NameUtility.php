@@ -2,9 +2,6 @@
 
 namespace OpenClassrooms\CodeGenerator\Utility;
 
-/**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
- */
 class NameUtility
 {
     public static function creatChainedEntityIdMethodName(string $shortClassName): string
@@ -22,7 +19,7 @@ class NameUtility
         return 'with' . ucfirst($field->getName());
     }
 
-    public static function creatEntityIdName(string $shortClassName): string
+    public static function createEntityIdName(string $shortClassName): string
     {
         return lcfirst($shortClassName) . 'Id';
     }
@@ -35,5 +32,15 @@ class NameUtility
     public static function creatGetEntityIdName(string $shortClassName): string
     {
         return 'get' . ucfirst($shortClassName) . 'Id';
+    }
+
+    public static function createGetEntityName(string $shortClassName): string
+    {
+        return 'get' . ucfirst($shortClassName);
+    }
+
+    public static function createEntityStubsName(string $shortClassName): string
+    {
+        return lcfirst($shortClassName) . 'Stubs';
     }
 }

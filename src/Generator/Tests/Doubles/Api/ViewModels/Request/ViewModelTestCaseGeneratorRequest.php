@@ -4,9 +4,6 @@ namespace OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\Re
 
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 interface ViewModelTestCaseGeneratorRequest extends GeneratorRequest
 {
     public function getUseCaseResponseClassName(): string;

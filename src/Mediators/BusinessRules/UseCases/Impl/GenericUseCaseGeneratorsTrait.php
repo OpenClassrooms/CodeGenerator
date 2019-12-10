@@ -13,9 +13,6 @@ use OpenClassrooms\CodeGenerator\Generator\Generator;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\GenericUseCaseTestGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\Request\GenericUseCaseTestGeneratorRequestBuilder;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 trait GenericUseCaseGeneratorsTrait
 {
     /** @var GenericUseCaseGenerator */
@@ -71,6 +68,12 @@ trait GenericUseCaseGeneratorsTrait
         $this->genericUseCaseRequestDTOGenerator = $genericUseCaseRequestDTOGenerator;
     }
 
+    public function setGenericUseCaseRequestDTOGeneratorRequestBuilder(
+        GenericUseCaseRequestDTOGeneratorRequestBuilder $genericUseCaseRequestDTOGeneratorRequestBuilder
+    ): void {
+        $this->genericUseCaseRequestDTOGeneratorRequestBuilder = $genericUseCaseRequestDTOGeneratorRequestBuilder;
+    }
+
     public function setGenericUseCaseTestGenerator(Generator $genericUseCaseTestGenerator): void
     {
         $this->genericUseCaseTestGenerator = $genericUseCaseTestGenerator;
@@ -82,16 +85,10 @@ trait GenericUseCaseGeneratorsTrait
         $this->genericUseCaseTestGeneratorRequestBuilder = $genericUseCaseTestGeneratorRequestBuilder;
     }
 
-    public function setGenericUseCaseRequestDTOGeneratorRequestBuilder(
-        GenericUseCaseRequestDTOGeneratorRequestBuilder $genericUseCaseRequestDTOGeneratorRequestBuilder
-    ): void {
-        $this->genericUseCaseRequestDTOGeneratorRequestBuilder = $genericUseCaseRequestDTOGeneratorRequestBuilder;
-    }
-
-    protected function generateGenericUseCaseRequestDTO(string $domain, string $useCase): FileObject
+    protected function generateGenericUseCase(string $domain, string $useCase): FileObject
     {
-        return $this->genericUseCaseRequestDTOGenerator->generate(
-            $this->genericUseCaseRequestDTOGeneratorRequestBuilder->create()->withDomain($domain)
+        return $this->genericUseCaseGenerator->generate(
+            $this->genericUseCaseGeneratorRequestBuilder->create()->withDomain($domain)
                 ->withUseCaseName($useCase)
                 ->build()
         );
@@ -106,10 +103,10 @@ trait GenericUseCaseGeneratorsTrait
         );
     }
 
-    protected function generateGenericUseCase(string $domain, string $useCase): FileObject
+    protected function generateGenericUseCaseRequestDTO(string $domain, string $useCase): FileObject
     {
-        return $this->genericUseCaseGenerator->generate(
-            $this->genericUseCaseGeneratorRequestBuilder->create()->withDomain($domain)
+        return $this->genericUseCaseRequestDTOGenerator->generate(
+            $this->genericUseCaseRequestDTOGeneratorRequestBuilder->create()->withDomain($domain)
                 ->withUseCaseName($useCase)
                 ->build()
         );

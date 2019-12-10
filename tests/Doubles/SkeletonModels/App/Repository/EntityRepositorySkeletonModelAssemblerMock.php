@@ -4,9 +4,6 @@ namespace OpenClassrooms\CodeGenerator\Tests\Doubles\SkeletonModels\App\Reposito
 
 use OpenClassrooms\CodeGenerator\SkeletonModels\App\Repository\Impl\EntityRepositorySkeletonModelAssemblerImpl;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class EntityRepositorySkeletonModelAssemblerMock extends EntityRepositorySkeletonModelAssemblerImpl
 {
 }

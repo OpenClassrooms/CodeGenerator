@@ -14,9 +14,6 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\SkeletonModels\BusinessRules\Requ
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Entities\Domain\SubDomain\FunctionalEntity;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class GetEntitiesUseCaseRequestGeneratorTest extends TestCase
 {
     use FileObjectTestCase;
@@ -47,7 +44,8 @@ class GetEntitiesUseCaseRequestGeneratorTest extends TestCase
 
     protected function setUp(): void
     {
-        $getEntitiesUseCaseRequestGeneratorRequestBuilderImpl = new GetEntitiesUseCaseRequestGeneratorRequestBuilderImpl();
+        $getEntitiesUseCaseRequestGeneratorRequestBuilderImpl = new GetEntitiesUseCaseRequestGeneratorRequestBuilderImpl(
+        );
         $this->request = $getEntitiesUseCaseRequestGeneratorRequestBuilderImpl
             ->create()
             ->withEntityClassName(FunctionalEntity::class)
@@ -60,6 +58,8 @@ class GetEntitiesUseCaseRequestGeneratorTest extends TestCase
             new GetEntitiesUseCaseRequestSkeletonModelAssemblerMock()
         );
         $this->getEntitiesUseCaseRequestGenerator->setTemplating(new TemplatingServiceMock());
-        $this->getEntitiesUseCaseRequestGenerator->setUseCaseRequestFileObjectFactory(new UseCaseRequestFileObjectFactoryMock());
+        $this->getEntitiesUseCaseRequestGenerator->setUseCaseRequestFileObjectFactory(
+            new UseCaseRequestFileObjectFactoryMock()
+        );
     }
 }

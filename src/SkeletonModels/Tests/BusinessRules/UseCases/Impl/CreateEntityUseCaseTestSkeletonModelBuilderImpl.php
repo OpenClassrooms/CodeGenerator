@@ -17,7 +17,9 @@ class CreateEntityUseCaseTestSkeletonModelBuilderImpl implements CreateEntityUse
 
     public function build(): CreateEntityUseCaseTestSkeletonModel
     {
-        $this->skeletonModel->useCarbon = $this->useCarbon($this->skeletonModel->createEntityUseCaseRequestBuilderImplMethods);
+        $this->skeletonModel->useCarbon = $this->useCarbon(
+            $this->skeletonModel->createEntityUseCaseRequestBuilderImplMethods
+        );
 
         return $this->skeletonModel;
     }
@@ -65,8 +67,10 @@ class CreateEntityUseCaseTestSkeletonModelBuilderImpl implements CreateEntityUse
         FileObject $createEntityUseCaseRequestDTOFileObject
     ): CreateEntityUseCaseTestSkeletonModelBuilder {
 
-        $this->skeletonModel->createEntityUseCaseRequestDTOClassName = $createEntityUseCaseRequestDTOFileObject->getClassName();
-        $this->skeletonModel->createEntityUseCaseRequestDTOShortName = $createEntityUseCaseRequestDTOFileObject->getShortName();
+        $this->skeletonModel->createEntityUseCaseRequestDTOClassName = $createEntityUseCaseRequestDTOFileObject->getClassName(
+        );
+        $this->skeletonModel->createEntityUseCaseRequestDTOShortName = $createEntityUseCaseRequestDTOFileObject->getShortName(
+        );
 
         return $this;
     }
@@ -74,9 +78,11 @@ class CreateEntityUseCaseTestSkeletonModelBuilderImpl implements CreateEntityUse
     public function withCreateEntityUseCaseRequestFileObject(
         FileObject $createEntityUseCaseRequestFileObject
     ): CreateEntityUseCaseTestSkeletonModelBuilder {
-        $this->skeletonModel->createEntityUseCaseRequestClassName = $createEntityUseCaseRequestFileObject->getClassName();
+        $this->skeletonModel->createEntityUseCaseRequestClassName = $createEntityUseCaseRequestFileObject->getClassName(
+        );
 
-        $this->skeletonModel->createEntityUseCaseRequestShortName = $createEntityUseCaseRequestFileObject->getShortName();
+        $this->skeletonModel->createEntityUseCaseRequestShortName = $createEntityUseCaseRequestFileObject->getShortName(
+        );
 
         return $this;
     }

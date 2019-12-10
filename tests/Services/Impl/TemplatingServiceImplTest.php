@@ -3,20 +3,49 @@
 namespace OpenClassrooms\CodeGenerator\Tests\Services\Impl;
 
 use OpenClassrooms\CodeGenerator\Entities\Object\FieldObject;
+use OpenClassrooms\CodeGenerator\Entities\Object\MethodObject;
 use OpenClassrooms\CodeGenerator\Services\Impl\TemplatingServiceImpl;
 use OpenClassrooms\CodeGenerator\Services\TemplatingService;
 use OpenClassrooms\CodeGenerator\Tests\TestClassUtil;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class TemplatingServiceImplTest extends TestCase
 {
     /**
      * @var TemplatingService
      */
     private $templateServiceImpl;
+
+    /**
+     * @test
+     */
+    public function getSortAccessorsFieldNameByAlphaFilterReturnArrayOfFields(): void
+    {
+        $methodObjects = [
+            new MethodObject('getField4'),
+            new MethodObject('getField2'),
+            new MethodObject('getField1'),
+            new MethodObject('isField3'),
+        ];
+
+        $expectedOrder = [
+            'getField1',
+            'getField2',
+            'isField3',
+            'getField4',
+        ];
+
+        $twigFilter = TestClassUtil::invokeMethod('getSortAccessorsFieldNameByAlphaFilter', $this->templateServiceImpl);
+
+        $this->assertTrue(is_callable($twigFilter->getCallable()));
+
+        $actualMethodObjects = $twigFilter->getCallable()->__invoke($methodObjects);
+
+        foreach ($actualMethodObjects as $key => $actualMethodObject) {
+            /** @var MethodObject $actualMethodObject */
+            $this->assertSame($actualMethodObject->getName(), $expectedOrder[$key]);
+        }
+    }
 
     /**
      * @test
@@ -42,6 +71,31 @@ class TemplatingServiceImplTest extends TestCase
         $this->assertEquals($actualField->getName(), $expectedField);
     }
 
+    private function generateFieldObject(string $name, string $type): FieldObject
+    {
+        $fieldObject = new FieldObject($name);
+        $fieldObject->setDocComment(
+            '/**
+     * @var ' . $type . '
+     */'
+        );
+
+        return $fieldObject;
+    }
+
+    /**
+     * @param FieldObject[]
+     */
+    private function getFieldNameList(array $fieldObjects): array
+    {
+        $fieldNames = [];
+        foreach ($fieldObjects as $fieldObject) {
+            $fieldNames[] = $fieldObject->getName();
+        }
+
+        return $fieldNames;
+    }
+
     /**
      * @test
      */
@@ -63,7 +117,17 @@ class TemplatingServiceImplTest extends TestCase
         $actualFieldNames = $this->getFieldNameList($actualFieldObjects);
 
         $this->assertFieldNames($expectedFieldNames, $actualFieldNames);
+    }
 
+    /**
+     * @param string[] $expectedFieldNames
+     * @param string[] $actualFieldNames
+     */
+    private function assertFieldNames(array $expectedFieldNames, array $actualFieldNames): void
+    {
+        foreach ($actualFieldNames as $key => $actualFieldName) {
+            $this->assertEquals($actualFieldName, $expectedFieldNames[$key]);
+        }
     }
 
     /**
@@ -109,42 +173,6 @@ class TemplatingServiceImplTest extends TestCase
         $actualValue = $twigFunction->getCallable()->__invoke($value);
 
         $this->assertEquals($actualValue, $expected);
-    }
-
-    /**
-     * @param string[] $expectedFieldNames
-     * @param string[] $actualFieldNames
-     */
-    private function assertFieldNames(array $expectedFieldNames, array $actualFieldNames): void
-    {
-        foreach ($actualFieldNames as $key => $actualFieldName) {
-            $this->assertEquals($actualFieldName, $expectedFieldNames[$key]);
-        }
-    }
-
-    private function generateFieldObject(string $name, string $type): FieldObject
-    {
-        $fieldObject = new FieldObject($name);
-        $fieldObject->setDocComment(
-            '/**
-     * @var ' . $type . '
-     */'
-        );
-
-        return $fieldObject;
-    }
-
-    /**
-     * @param FieldObject[]
-     */
-    private function getFieldNameList(array $fieldObjects): array
-    {
-        $fieldNames = [];
-        foreach ($fieldObjects as $fieldObject) {
-            $fieldNames[] = $fieldObject->getName();
-        }
-
-        return $fieldNames;
     }
 
     protected function setUp(): void

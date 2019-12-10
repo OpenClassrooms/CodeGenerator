@@ -5,9 +5,6 @@ namespace OpenClassrooms\CodeGenerator\Tests\Doubles\SkeletonModels\GenerateGene
 use OpenClassrooms\CodeGenerator\SkeletonModels\GenerateGenerator\Impl\GenerateGeneratorGeneratorSkeletonModelAssemblerImpl;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\FixturesConfig;
 
-/**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
- */
 class GenerateGeneratorGeneratorSkeletonModelAssemblerMock extends GenerateGeneratorGeneratorSkeletonModelAssemblerImpl
 {
     public function __construct()

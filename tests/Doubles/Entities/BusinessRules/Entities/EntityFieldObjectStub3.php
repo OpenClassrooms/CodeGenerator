@@ -4,18 +4,15 @@ namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Enti
 
 use OpenClassrooms\CodeGenerator\Entities\Object\FieldObject;
 
-/**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
- */
 class EntityFieldObjectStub3 extends FieldObject
 {
     const DOC_COMMENT = '/**
      * @var string[]
      */';
 
-    const NAME = 'field2';
+    const NAME        = 'field2';
 
-    const VALUE = null;
+    const VALUE       = null;
 
     protected $docComment = self::DOC_COMMENT;
 

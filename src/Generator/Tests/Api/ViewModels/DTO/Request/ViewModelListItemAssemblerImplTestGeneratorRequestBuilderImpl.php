@@ -5,15 +5,17 @@ namespace OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\DTO\Reques
 use OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\Request\ViewModelListItemAssemblerImplTestGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\Request\ViewModelListItemAssemblerImplTestGeneratorRequestBuilder;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class ViewModelListItemAssemblerImplTestGeneratorRequestBuilderImpl implements ViewModelListItemAssemblerImplTestGeneratorRequestBuilder
 {
     /**
      * @var ViewModelListItemAssemblerImplTestGeneratorRequestDTO
      */
     private $request;
+
+    public function build(): ViewModelListItemAssemblerImplTestGeneratorRequest
+    {
+        return $this->request;
+    }
 
     public function create(): ViewModelListItemAssemblerImplTestGeneratorRequestBuilder
     {
@@ -28,10 +30,5 @@ class ViewModelListItemAssemblerImplTestGeneratorRequestBuilderImpl implements V
         $this->request->responseClassName = $responseClassName;
 
         return $this;
-    }
-
-    public function build(): ViewModelListItemAssemblerImplTestGeneratorRequest
-    {
-        return $this->request;
     }
 }

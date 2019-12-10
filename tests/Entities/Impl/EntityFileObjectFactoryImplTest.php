@@ -6,9 +6,6 @@ use OpenClassrooms\CodeGenerator\Entities\EntityFileObjectFactory;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\EntityFileObjectFactoryMock;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class EntityFileObjectFactoryImplTest extends TestCase
 {
     /**

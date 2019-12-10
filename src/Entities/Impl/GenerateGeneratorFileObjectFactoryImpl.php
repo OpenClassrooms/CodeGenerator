@@ -8,9 +8,6 @@ use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\Entities\Type\GenerateGeneratorFileObjectType;
 use OpenClassrooms\CodeGenerator\Utility\StringUtility;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class GenerateGeneratorFileObjectFactoryImpl extends AbstractFileObjectFactory implements GenerateGeneratorFileObjectFactory
 {
     public function create(string $type, string $domain, string $entity): FileObject

@@ -4,14 +4,11 @@ namespace OpenClassrooms\CodeGenerator\Utility;
 
 use OpenClassrooms\CodeGenerator\Entities\Object\FieldObject;
 
-/**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
- */
 class FieldObjectUtility
 {
     public static function buildEntityIdMethodObject(string $shortClassName): FieldObject
     {
-        $methodChained = new FieldObject(NameUtility::creatEntityIdName($shortClassName));
+        $methodChained = new FieldObject(NameUtility::createEntityIdName($shortClassName));
         $methodChained->setDocComment(DocCommentUtility::setType('int'));
         $methodChained->setScope(FieldObject::SCOPE_PUBLIC);
 

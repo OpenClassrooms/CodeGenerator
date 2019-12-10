@@ -6,9 +6,6 @@ use OpenClassrooms\CodeGenerator\Entities\UseCaseRequestFileObjectFactory;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\UseCaseRequestFileObjectFactoryMock;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class UseCaseRequestFileObjectFactoryImplTest extends TestCase
 {
     /**

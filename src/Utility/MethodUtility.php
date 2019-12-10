@@ -5,9 +5,6 @@ namespace OpenClassrooms\CodeGenerator\Utility;
 use OpenClassrooms\CodeGenerator\Entities\Object\FieldObject;
 use OpenClassrooms\CodeGenerator\Entities\Object\MethodObject;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class MethodUtility
 {
     public static function buildGetEntityIdMethodObject(string $shortClassName): MethodObject

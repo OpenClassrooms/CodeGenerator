@@ -10,9 +10,6 @@ use Incenteev\ParameterHandler\Processor;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Scripts\ParameterHandlerMock;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class ParameterHandlerTest extends TestCase
 {
     /**

@@ -14,9 +14,6 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\Entities\Ent
 use OpenClassrooms\CodeGenerator\Utility\StubFieldUtility;
 use OpenClassrooms\CodeGenerator\Utility\StubUtility;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class EntityStubGenerator extends AbstractGenerator
 {
     /**
@@ -128,14 +125,14 @@ class EntityStubGenerator extends AbstractGenerator
         return $this->entityStubSkeletonModelAssembler->create($entityImplFileObject, $entityStubFileObject);
     }
 
+    public function setEntityFileObjectFactory(EntityFileObjectFactory $entityFileObjectFactory): void
+    {
+        $this->entityFileObjectFactory = $entityFileObjectFactory;
+    }
+
     public function setEntityStubSkeletonModelAssembler(
         EntityStubSkeletonModelAssembler $entityStubSkeletonModelAssembler
     ): void {
         $this->entityStubSkeletonModelAssembler = $entityStubSkeletonModelAssembler;
-    }
-
-    public function setEntityFileObjectFactory(EntityFileObjectFactory $entityFileObjectFactory): void
-    {
-        $this->entityFileObjectFactory = $entityFileObjectFactory;
     }
 }

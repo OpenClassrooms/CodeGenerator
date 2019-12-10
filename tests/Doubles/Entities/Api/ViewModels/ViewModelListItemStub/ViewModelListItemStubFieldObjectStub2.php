@@ -6,14 +6,11 @@ use OpenClassrooms\CodeGenerator\Entities\Object\ConstObject;
 use OpenClassrooms\CodeGenerator\Entities\Object\FieldObject;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\BusinessRules\Entities\EntityStub\EntityStubFieldObjectStub2;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class ViewModelListItemStubFieldObjectStub2 extends FieldObject
 {
     const DOC_COMMENT = EntityStubFieldObjectStub2::DOC_COMMENT;
 
-    const NAME = EntityStubFieldObjectStub2::NAME;
+    const NAME        = EntityStubFieldObjectStub2::NAME;
 
     protected $docComment = self::DOC_COMMENT;
 

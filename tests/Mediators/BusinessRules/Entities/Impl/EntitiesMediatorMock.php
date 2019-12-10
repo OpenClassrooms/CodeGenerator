@@ -20,9 +20,6 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\BusinessRules\Enti
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\Doubles\BusinessRules\Gateways\InMemoryEntityGatewayFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Generator\GeneratorMock;
 
-/**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
- */
 class EntitiesMediatorMock extends EntitiesMediatorImpl
 {
     public function __construct()

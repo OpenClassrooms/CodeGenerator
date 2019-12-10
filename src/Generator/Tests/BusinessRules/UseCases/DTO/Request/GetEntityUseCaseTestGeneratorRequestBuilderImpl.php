@@ -5,15 +5,17 @@ namespace OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\DT
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\Request\GetEntityUseCaseTestGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\Request\GetEntityUseCaseTestGeneratorRequestBuilder;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class GetEntityUseCaseTestGeneratorRequestBuilderImpl implements GetEntityUseCaseTestGeneratorRequestBuilder
 {
     /**
      * @var GetEntityUseCaseTestGeneratorRequestDTO
      */
     private $request;
+
+    public function build(): GetEntityUseCaseTestGeneratorRequest
+    {
+        return $this->request;
+    }
 
     public function create(): GetEntityUseCaseTestGeneratorRequestBuilder
     {
@@ -27,10 +29,5 @@ class GetEntityUseCaseTestGeneratorRequestBuilderImpl implements GetEntityUseCas
         $this->request->entity = $entity;
 
         return $this;
-    }
-
-    public function build(): GetEntityUseCaseTestGeneratorRequest
-    {
-        return $this->request;
     }
 }

@@ -6,5 +6,7 @@ use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 
 interface EntityUseCaseCommonRequestTraitSkeletonModelAssembler
 {
-    public function create(FileObject $entityUseCaseCommonRequestFileObject): EntityUseCaseCommonRequestTraitSkeletonModel;
+    public function create(
+        FileObject $entityUseCaseCommonRequestFileObject
+    ): EntityUseCaseCommonRequestTraitSkeletonModel;
 }

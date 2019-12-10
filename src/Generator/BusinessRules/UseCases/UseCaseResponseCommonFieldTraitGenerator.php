@@ -11,9 +11,6 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\UseCaseRe
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\UseCaseResponseCommonFieldTraitSkeletonModelAssembler;
 use OpenClassrooms\CodeGenerator\Utility\FieldUtility;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class UseCaseResponseCommonFieldTraitGenerator extends AbstractUseCaseGenerator
 {
     /**

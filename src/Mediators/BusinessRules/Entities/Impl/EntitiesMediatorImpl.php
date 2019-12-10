@@ -16,9 +16,6 @@ use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\BusinessRules\Gateways\
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\BusinessRules\Gateways\Request\InMemoryEntityGatewayGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\Entities\EntitiesMediator;
 
-/**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
- */
 class EntitiesMediatorImpl implements EntitiesMediator
 {
     /** @var EntityGatewayGenerator */

@@ -4,17 +4,13 @@ namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\BusinessRule
 
 use OpenClassrooms\CodeGenerator\Entities\Object\ConstObject;
 use OpenClassrooms\CodeGenerator\Entities\Object\FieldObject;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\BusinessRules\Entities\EntityStub\EntityStubFieldObjectStub5;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\BusinessRules\Entities\EntityStub\EntityStubFieldObjectStub6;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class UseCaseDetailResponseStubFieldObjectStub6 extends FieldObject
 {
     const DOC_COMMENT = EntityStubFieldObjectStub6::DOC_COMMENT;
 
-    const NAME = EntityStubFieldObjectStub6::NAME;
+    const NAME        = EntityStubFieldObjectStub6::NAME;
 
     protected $docComment = self::DOC_COMMENT;
 

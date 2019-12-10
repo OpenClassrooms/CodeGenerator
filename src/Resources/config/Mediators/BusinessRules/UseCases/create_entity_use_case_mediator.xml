@@ -39,7 +39,8 @@
                 id="OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\Request\CreateEntityUseCaseTestGeneratorRequestBuilder"
                 alias="OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\DTO\Request\CreateEntityUseCaseTestGeneratorRequestBuilderImpl"/>
 
-        <service id="OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\Impl\CreateEntityUseCaseMediatorImpl">
+        <service
+                id="OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\Impl\CreateEntityUseCaseMediatorImpl">
             <call method="setEntitiesMediator">
                 <argument type="service"
                           id="OpenClassrooms\CodeGenerator\Mediators\BusinessRules\Entities\EntitiesMediator"/>

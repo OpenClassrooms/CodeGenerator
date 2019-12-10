@@ -4,18 +4,15 @@ namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Enti
 
 use OpenClassrooms\CodeGenerator\Entities\Object\FieldObject;
 
-/**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
- */
 class EntityFieldObjectStub5 extends FieldObject
 {
     const DOC_COMMENT = '/**
      * @var \DateTimeInterface
      */';
 
-    const NAME = 'field4';
+    const NAME        = 'field4';
 
-    const VALUE = null;
+    const VALUE       = null;
 
     protected $docComment = self::DOC_COMMENT;
 

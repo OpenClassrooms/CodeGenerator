@@ -9,9 +9,6 @@ use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\Entities\EntitiesMediat
 use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\Responses\UseCaseResponseCommonMediator;
 use OpenClassrooms\CodeGenerator\Mediators\Options;
 
-/**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
- */
 trait CommonEntityUseCaseMediatorsTrait
 {
     /**

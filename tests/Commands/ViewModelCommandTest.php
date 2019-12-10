@@ -13,9 +13,6 @@ use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class ViewModelCommandTest extends TestCase
 {
     use CommandTestCase;
@@ -32,64 +29,33 @@ class ViewModelCommandTest extends TestCase
 
     /**
      * @test
-     * @expectedException \Exception
+     * @expectedException \ErrorException
      */
-    public function fileConfigNotExist_ThrowException(): void
+    public function checkConfiguration_ManyParametersEmpty(): void
     {
-        TestClassUtil::invokeMethod('loadConfigParameters', new ViewModelsCommand());
+        $codeGeneratorConfig = [
+            'parameters' => [
+                'author'      => null,
+                'author_mail' => null,
+            ],
+        ];
+
+        TestClassUtil::invokeMethod('checkConfiguration', $this->commandMock, $codeGeneratorConfig);
     }
 
     /**
      * @test
+     * @expectedException \ErrorException
      */
-    public function executeCommand_withoutArguments(): void
+    public function checkConfiguration_OneParameterEmpty(): void
     {
-        ViewModelMediatorMock::$fileObjects = $this->writeFileObjects(ViewModelMediatorMock::$fileObjects);
+        $codeGeneratorConfig = [
+            'parameters' => [
+                'author' => null,
+            ],
+        ];
 
-        $this->commandTester->execute(
-            [
-                'command'    => $this->commandMock->getName(),
-                'class-name' => FunctionalEntityResponse::class,
-            ]
-        );
-
-        $this->assertCommandFileGeneratedOutput(ViewModelMediatorMock::$fileObjects);
-    }
-
-    /**
-     * @test
-     */
-    public function executeCommand_withNoTestsArguments(): void
-    {
-        ViewModelMediatorMock::$fileObjects = $this->writeFileObjects(ViewModelMediatorMock::$fileObjects);
-
-        $this->commandTester->execute(
-            [
-                'command'    => $this->commandMock->getName(),
-                'class-name' => FunctionalEntityResponse::class,
-                '--no-test'  => null,
-            ]
-        );
-
-        $this->assertCommandFileGeneratedOutput(ViewModelMediatorMock::$fileObjects);
-    }
-
-    /**
-     * @test
-     */
-    public function executeCommand_withTestOnlyArguments(): void
-    {
-        ViewModelMediatorMock::$fileObjects = $this->writeFileObjects(ViewModelMediatorMock::$fileObjects);
-
-        $this->commandTester->execute(
-            [
-                'command'      => $this->commandMock->getName(),
-                'class-name'   => FunctionalEntityResponse::class,
-                '--tests-only' => null,
-            ]
-        );
-
-        $this->assertCommandFileGeneratedOutput(ViewModelMediatorMock::$fileObjects);
+        TestClassUtil::invokeMethod('checkConfiguration', $this->commandMock, $codeGeneratorConfig);
     }
 
     /**
@@ -139,33 +105,64 @@ class ViewModelCommandTest extends TestCase
 
     /**
      * @test
-     * @expectedException \ErrorException
      */
-    public function checkConfiguration_OneParameterEmpty(): void
+    public function executeCommand_withNoTestsArguments(): void
     {
-        $codeGeneratorConfig = [
-            'parameters' => [
-                'author' => null,
-            ],
-        ];
+        ViewModelMediatorMock::$fileObjects = $this->writeFileObjects(ViewModelMediatorMock::$fileObjects);
 
-        TestClassUtil::invokeMethod('checkConfiguration', $this->commandMock, $codeGeneratorConfig);
+        $this->commandTester->execute(
+            [
+                'command'    => $this->commandMock->getName(),
+                'class-name' => FunctionalEntityResponse::class,
+                '--no-test'  => null,
+            ]
+        );
+
+        $this->assertCommandFileGeneratedOutput(ViewModelMediatorMock::$fileObjects);
     }
 
     /**
      * @test
-     * @expectedException \ErrorException
      */
-    public function checkConfiguration_ManyParametersEmpty(): void
+    public function executeCommand_withoutArguments(): void
     {
-        $codeGeneratorConfig = [
-            'parameters' => [
-                'author'      => null,
-                'author_mail' => null,
-            ],
-        ];
+        ViewModelMediatorMock::$fileObjects = $this->writeFileObjects(ViewModelMediatorMock::$fileObjects);
 
-        TestClassUtil::invokeMethod('checkConfiguration', $this->commandMock, $codeGeneratorConfig);
+        $this->commandTester->execute(
+            [
+                'command'    => $this->commandMock->getName(),
+                'class-name' => FunctionalEntityResponse::class,
+            ]
+        );
+
+        $this->assertCommandFileGeneratedOutput(ViewModelMediatorMock::$fileObjects);
+    }
+
+    /**
+     * @test
+     */
+    public function executeCommand_withTestOnlyArguments(): void
+    {
+        ViewModelMediatorMock::$fileObjects = $this->writeFileObjects(ViewModelMediatorMock::$fileObjects);
+
+        $this->commandTester->execute(
+            [
+                'command'      => $this->commandMock->getName(),
+                'class-name'   => FunctionalEntityResponse::class,
+                '--tests-only' => null,
+            ]
+        );
+
+        $this->assertCommandFileGeneratedOutput(ViewModelMediatorMock::$fileObjects);
+    }
+
+    /**
+     * @test
+     * @expectedException \Exception
+     */
+    public function fileConfigNotExist_ThrowException(): void
+    {
+        TestClassUtil::invokeMethod('loadConfigParameters', new ViewModelsCommand());
     }
 
     protected function setUp(): void

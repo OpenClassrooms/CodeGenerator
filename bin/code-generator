@@ -37,4 +37,5 @@ $application->add(new \OpenClassrooms\CodeGenerator\Commands\GetEntitiesUseCaseC
 $application->add(new \OpenClassrooms\CodeGenerator\Commands\GetEntityUseCaseCommand());
 $application->add(new \OpenClassrooms\CodeGenerator\Commands\CreateEntityUseCaseCommand());
 $application->add(new \OpenClassrooms\CodeGenerator\Commands\EditEntityUseCaseCommand());
+$application->add(new \OpenClassrooms\CodeGenerator\Commands\DeleteEntityUseCaseCommand());
 $application->run();

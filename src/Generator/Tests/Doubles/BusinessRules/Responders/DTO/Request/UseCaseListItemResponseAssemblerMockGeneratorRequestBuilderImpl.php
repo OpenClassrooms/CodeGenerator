@@ -5,15 +5,17 @@ namespace OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\BusinessRules\Res
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\BusinessRules\Responders\Request\UseCaseListItemResponseAssemblerMockGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\BusinessRules\Responders\Request\UseCaseListItemResponseAssemblerMockGeneratorRequestBuilder;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class UseCaseListItemResponseAssemblerMockGeneratorRequestBuilderImpl implements UseCaseListItemResponseAssemblerMockGeneratorRequestBuilder
 {
     /**
      * @var UseCaseListItemResponseAssemblerMockGeneratorRequestDTO
      */
     private $request;
+
+    public function build(): UseCaseListItemResponseAssemblerMockGeneratorRequest
+    {
+        return $this->request;
+    }
 
     public function create(): UseCaseListItemResponseAssemblerMockGeneratorRequestBuilder
     {
@@ -28,10 +30,5 @@ class UseCaseListItemResponseAssemblerMockGeneratorRequestBuilderImpl implements
         $this->request->entityClassName = $entityClassName;
 
         return $this;
-    }
-
-    public function build(): UseCaseListItemResponseAssemblerMockGeneratorRequest
-    {
-        return $this->request;
     }
 }

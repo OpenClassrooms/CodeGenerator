@@ -2,9 +2,6 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gateways;
 
-/**
- * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
- */
 final class Pagination
 {
     const DEFAULT_PAGE_NUMBER = 1;

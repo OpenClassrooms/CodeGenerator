@@ -7,10 +7,8 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Gateways\EntityGat
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Gateways\EntityGatewaySkeletonModelAssembler;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Responders\UseCaseResponseClassNameTrait;
 use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
+use OpenClassrooms\CodeGenerator\Utility\NameUtility;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class EntityGatewaySkeletonModelAssemblerImpl implements EntityGatewaySkeletonModelAssembler
 {
     use UseCaseResponseClassNameTrait;
@@ -28,6 +26,7 @@ class EntityGatewaySkeletonModelAssemblerImpl implements EntityGatewaySkeletonMo
         $skeletonModel->entityNotFoundExceptionShortName = $entityNotFoundExceptionFileObject->getShortName();
         $skeletonModel->entityShortName = $entityFileObject->getShortName();
         $skeletonModel->entityArgument = lcfirst($entityFileObject->getShortName());
+        $skeletonModel->entityIdArgument = NameUtility::createEntityIdName($entityFileObject->getShortName());
         $skeletonModel->paginatedCollectionClassName = $this->paginatedCollection;
         $skeletonModel->paginatedCollectionShortName = FileObjectUtility::getShortClassName($this->paginatedCollection);
 

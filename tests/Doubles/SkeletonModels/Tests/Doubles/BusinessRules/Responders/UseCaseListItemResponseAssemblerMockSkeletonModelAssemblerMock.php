@@ -4,9 +4,6 @@ namespace OpenClassrooms\CodeGenerator\Tests\Doubles\SkeletonModels\Tests\Double
 
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\BusinessRules\Responders\Impl\UseCaseListItemResponseAssemblerMockSkeletonModelAssemblerImpl;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class UseCaseListItemResponseAssemblerMockSkeletonModelAssemblerMock extends UseCaseListItemResponseAssemblerMockSkeletonModelAssemblerImpl
 {
 }

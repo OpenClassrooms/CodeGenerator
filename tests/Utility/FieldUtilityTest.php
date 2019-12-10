@@ -10,15 +10,19 @@ use OpenClassrooms\CodeGenerator\Utility\FieldUtility;
 use OpenClassrooms\CodeGenerator\Utility\StubFieldUtility;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class FieldUtilityTest extends TestCase
 {
     /**
      * @var FileObject
      */
     private $fileObject;
+
+    public function generateStubFieldObjectsDataProvider(): array
+    {
+        return [
+            [],
+        ];
+    }
 
     /**
      * @test
@@ -54,13 +58,6 @@ class FieldUtilityTest extends TestCase
         return $stubFieldObject;
     }
 
-    public function generateStubFieldObjectsDataProvider(): array
-    {
-        return [
-            [],
-        ];
-    }
-
     /**
      * @test
      * @expectedException \Exception
@@ -87,7 +84,7 @@ class FieldUtilityTest extends TestCase
     {
         return array_filter(
             $exceptedFields,
-            function($method) {
+            function ($method) {
                 if ('set' !== substr($method->getName(), 0, 3)) {
                     return $method;
                 }

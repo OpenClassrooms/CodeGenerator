@@ -2,7 +2,6 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Mediators\BusinessRules\UseCases\Impl;
 
-use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\DTO\Request\GetEntitiesUseCaseRequestBuilderGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\DTO\Request\GetEntitiesUseCaseRequestGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\GetEntitiesUseCaseRequestBuilderGenerator;
@@ -15,7 +14,6 @@ use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\GetEntitiesUse
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\GetEntitiesUseCaseRequestDTOGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\DTO\Request\GetEntitiesUseCaseTestGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\GetEntitiesUseCaseTestGenerator;
-use OpenClassrooms\CodeGenerator\Mediators\Args;
 use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\Impl\GetEntitiesUseCaseMediatorImpl;
 use OpenClassrooms\CodeGenerator\Mediators\Options;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Requestors\GetEntitiesUseCaseRequestBuilderFileObjectStub1;
@@ -26,19 +24,16 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\G
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\BusinessRules\UseCases\GetEntitiesUseCaseTestFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Generator\GeneratorMock;
-use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Entities\Domain\SubDomain\FunctionalEntity;
 use OpenClassrooms\CodeGenerator\Tests\Mediators\BusinessRules\Entities\Impl\EntitiesMediatorMock;
 use OpenClassrooms\CodeGenerator\Tests\Mediators\BusinessRules\Responses\Impl\UseCaseListItemResponseMediatorMock;
 use OpenClassrooms\CodeGenerator\Tests\Mediators\BusinessRules\Responses\Impl\UseCaseResponseCommonMediatorMock;
 use OpenClassrooms\CodeGenerator\Tests\Mediators\FlushedFileObjectTestCase;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
- */
 class GetEntitiesUseCaseMediatorImplTest extends TestCase
 {
     use FlushedFileObjectTestCase;
+    use CommonEntityUseCaseMediatorTestTrait;
 
     /**
      * @var GetEntitiesUseCaseMediatorImpl
@@ -50,73 +45,23 @@ class GetEntitiesUseCaseMediatorImplTest extends TestCase
      */
     private $options;
 
-    /**
-     * @test
-     */
-    public function generateGenericUseCase_withDump(): void
+    protected function setUp(): void
     {
-        $this->options[Options::DUMP] = null;
-        $fileObjects = $this->mediator->mediate(
-            [
-                Args::CLASS_NAME => FunctionalEntity::class,
-            ],
-            $this->options
-        );
+        InMemoryFileObjectGateway::$fileObjects = [];
+        $this->mediator = new GetEntitiesUseCaseMediatorImpl();
+        $this->mediator->setEntitiesMediator(new EntitiesMediatorMock());
+        $this->mediator->setFileObjectGateway(new InMemoryFileObjectGateway());
+        $this->mediator->setUseCaseListItemResponseMediator(new UseCaseListItemResponseMediatorMock());
+        $this->mediator->setUseCaseResponseCommonMediator(new UseCaseResponseCommonMediatorMock());
 
-        $this->assertEmpty(InMemoryFileObjectGateway::$flushedFileObjects);
-        $this->assertNotEmpty(InMemoryFileObjectGateway::$fileObjects);
-        foreach ($fileObjects as $fileObject) {
-            /** @var FileObject $fileObject */
-            $this->assertArrayHasKey($fileObject->getClassName(), InMemoryFileObjectGateway::$fileObjects);
-        }
-    }
+        $this->options = [
+            Options::DUMP       => false,
+            Options::NO_TEST    => false,
+            Options::TESTS_ONLY => false,
+        ];
 
-    /**
-     * @test
-     */
-    public function generateGenericUseCase_withoutOptions(): void
-    {
-        $fileObjects = $this->mediator->mediate(
-            [
-                Args::CLASS_NAME => FunctionalEntity::class,
-            ],
-            $this->options
-
-        );
-
-        $this->assertFlushedFileObject($fileObjects);
-    }
-
-    /**
-     * @test
-     */
-    public function generateGenericUseCase_withoutTest(): void
-    {
-        $this->options[Options::NO_TEST] = null;
-        $fileObjects = $this->mediator->mediate(
-            [
-                Args::CLASS_NAME => FunctionalEntity::class,
-            ],
-            $this->options
-        );
-
-        $this->assertFlushedFileObject($fileObjects);
-    }
-
-    /**
-     * @test
-     */
-    public function generateGenericUseCase_withTestOnly(): void
-    {
-        $this->options[Options::TESTS_ONLY] = null;
-        $fileObjects = $this->mediator->mediate(
-            [
-                Args::CLASS_NAME => FunctionalEntity::class,
-            ],
-            $this->options
-        );
-
-        $this->assertFlushedFileObject($fileObjects);
+        $this->mockGenerators();
+        $this->mockRequestBuilder();
     }
 
     private function mockGenerators(): void
@@ -171,24 +116,5 @@ class GetEntitiesUseCaseMediatorImplTest extends TestCase
         $this->mediator->setGetEntitiesUseCaseRequestDTOGeneratorRequestBuilder(
             new GetEntitiesUseCaseRequestDTOGeneratorRequestBuilderImpl()
         );
-    }
-
-    protected function setUp(): void
-    {
-        InMemoryFileObjectGateway::$fileObjects = [];
-        $this->mediator = new GetEntitiesUseCaseMediatorImpl();
-        $this->mediator->setEntitiesMediator(new EntitiesMediatorMock());
-        $this->mediator->setFileObjectGateway(new InMemoryFileObjectGateway());
-        $this->mediator->setUseCaseListItemResponseMediator(new UseCaseListItemResponseMediatorMock());
-        $this->mediator->setUseCaseResponseCommonMediator(new UseCaseResponseCommonMediatorMock());
-
-        $this->options = [
-            Options::DUMP       => false,
-            Options::NO_TEST    => false,
-            Options::TESTS_ONLY => false,
-        ];
-
-        $this->mockGenerators();
-        $this->mockRequestBuilder();
     }
 }

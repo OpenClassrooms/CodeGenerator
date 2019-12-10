@@ -4,15 +4,13 @@ namespace OpenClassrooms\CodeGenerator\SkeletonModels\App\Repository;
 
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 interface EntityRepositorySkeletonModelAssembler
 {
     public function create(
         FileObject $entityFileObject,
         FileObject $entityImplFileObject,
         FileObject $entityGatewayFileObject,
+        FileObject $entityNotFoundExceptionFileObject,
         FileObject $entityRepositoryFileObject
     ): EntityRepositorySkeletonModel;
 }

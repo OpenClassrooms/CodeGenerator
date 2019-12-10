@@ -7,9 +7,6 @@ use OpenClassrooms\CodeGenerator\Entities\EntityFileObjectFactory;
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\Entities\Type\EntityFileObjectType;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class EntityFileObjectFactoryImpl extends AbstractFileObjectFactory implements EntityFileObjectFactory
 {
     public function create(string $type, string $domain, string $entity, string $baseNamespace = null): FileObject

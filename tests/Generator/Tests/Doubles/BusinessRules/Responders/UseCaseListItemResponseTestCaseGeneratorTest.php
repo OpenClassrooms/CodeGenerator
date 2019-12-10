@@ -14,22 +14,19 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\SkeletonModels\Tests\Doubles\Busi
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Entities\Domain\SubDomain\FunctionalEntity;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class UseCaseListItemResponseTestCaseGeneratorTest extends TestCase
 {
     use FileObjectTestCase;
 
     /**
-     * @var UseCaseListItemResponseTestCaseGenerator
-     */
-    private $useCaseListItemResponseTestCaseGenerator;
-
-    /**
      * @var UseCaseListItemResponseTestCaseGeneratorRequestBuilder
      */
     private $request;
+
+    /**
+     * @var UseCaseListItemResponseTestCaseGenerator
+     */
+    private $useCaseListItemResponseTestCaseGenerator;
 
     /**
      * @test
@@ -47,7 +44,8 @@ class UseCaseListItemResponseTestCaseGeneratorTest extends TestCase
 
     protected function setUp(): void
     {
-        $useCaseListItemResponseTestCaseGeneratorRequestBuilderImpl = new UseCaseListItemResponseTestCaseGeneratorRequestBuilderImpl();
+        $useCaseListItemResponseTestCaseGeneratorRequestBuilderImpl = new UseCaseListItemResponseTestCaseGeneratorRequestBuilderImpl(
+        );
         $this->request = $useCaseListItemResponseTestCaseGeneratorRequestBuilderImpl
             ->create()
             ->withEntityClassName(FunctionalEntity::class)
@@ -61,6 +59,8 @@ class UseCaseListItemResponseTestCaseGeneratorTest extends TestCase
         $this->useCaseListItemResponseTestCaseGenerator->setUseCaseListItemResponseTestCaseSkeletonModelAssembler(
             new UseCaseListItemResponseTestCaseSkeletonModelAssemblerMock()
         );
-        $this->useCaseListItemResponseTestCaseGenerator->setUseCaseResponseFileObjectFactory(new UseCaseResponseFileObjectFactoryMock());
+        $this->useCaseListItemResponseTestCaseGenerator->setUseCaseResponseFileObjectFactory(
+            new UseCaseResponseFileObjectFactoryMock()
+        );
     }
 }

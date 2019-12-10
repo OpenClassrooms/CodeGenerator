@@ -95,7 +95,7 @@ class EditEntityUseCaseTestSkeletonModelBuilderImpl implements EditEntityUseCase
     public function withEntityFileObject(FileObject $entityFileObject): EditEntityUseCaseTestSkeletonModelBuilder
     {
         $this->skeletonModel->entityArgument = lcfirst($entityFileObject->getShortName());
-        $this->skeletonModel->entityIdArgument = NameUtility::creatEntityIdName($entityFileObject->getShortName());
+        $this->skeletonModel->entityIdArgument = NameUtility::createEntityIdName($entityFileObject->getShortName());
         $this->skeletonModel->entityShortName = $entityFileObject->getShortName();
 
         return $this;

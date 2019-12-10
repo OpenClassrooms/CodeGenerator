@@ -9,9 +9,6 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileO
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingServiceMock;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 abstract class AbstractViewModelGeneratorTestCase extends TestCase
 {
     protected function buildViewModelGenerator(AbstractViewModelGenerator $viewModelGenerator): void

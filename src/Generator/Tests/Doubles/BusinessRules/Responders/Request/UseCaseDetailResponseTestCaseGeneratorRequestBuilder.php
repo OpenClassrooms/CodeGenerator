@@ -4,9 +4,6 @@ namespace OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\BusinessRules\Res
 
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 interface UseCaseDetailResponseTestCaseGeneratorRequestBuilder extends GeneratorRequest
 {
     public function build(): UseCaseDetailResponseTestCaseGeneratorRequest;

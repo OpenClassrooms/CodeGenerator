@@ -4,14 +4,13 @@ namespace OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Gateways;
 
 use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 abstract class EntityGatewaySkeletonModel extends AbstractSkeletonModel
 {
     public $entityArgument;
 
     public $entityClassName;
+
+    public $entityIdArgument;
 
     public $entityNotFoundExceptionClassName;
 

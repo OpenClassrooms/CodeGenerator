@@ -5,9 +5,6 @@ namespace OpenClassrooms\CodeGenerator\Tests\Mediators;
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 trait FlushedFileObjectTestCase
 {
     /**

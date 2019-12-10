@@ -33,6 +33,17 @@ class EntityUseCaseCommonRequestTraitGenerator extends AbstractUseCaseGenerator
      */
     private $methodUtility;
 
+    public function generate(GeneratorRequest $generatorRequest): FileObject
+    {
+        $entityUseCaseCommonRequestFileObject = $this->buildEntityUseCaseCommonRequestTraitFileObject(
+            $generatorRequest->getEntityClassName()
+        );
+
+        $this->insertFileObject($entityUseCaseCommonRequestFileObject);
+
+        return $entityUseCaseCommonRequestFileObject;
+    }
+
     private function buildEntityUseCaseCommonRequestTraitFileObject(string $entityClassName): FileObject
     {
         $this->initFileObjectParameter($entityClassName);
@@ -57,28 +68,17 @@ class EntityUseCaseCommonRequestTraitGenerator extends AbstractUseCaseGenerator
         );
     }
 
-    private function createSkeletonModel(
-        FileObject $entityUseCaseCommonRequestFileObject
-    ): EntityUseCaseCommonRequestTraitSkeletonModel {
-        return $this->entityUseCaseCommonRequestSkeletonModelAssembler->create($entityUseCaseCommonRequestFileObject);
-    }
-
-    public function generate(GeneratorRequest $generatorRequest): FileObject
-    {
-        $entityUseCaseCommonRequestFileObject = $this->buildEntityUseCaseCommonRequestTraitFileObject(
-            $generatorRequest->getEntityClassName()
-        );
-
-        $this->insertFileObject($entityUseCaseCommonRequestFileObject);
-
-        return $entityUseCaseCommonRequestFileObject;
-    }
-
     private function generateContent(FileObject $entityUseCaseCommonRequestFileObject): string
     {
         $skeletonModel = $this->createSkeletonModel($entityUseCaseCommonRequestFileObject);
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
+    }
+
+    private function createSkeletonModel(
+        FileObject $entityUseCaseCommonRequestFileObject
+    ): EntityUseCaseCommonRequestTraitSkeletonModel {
+        return $this->entityUseCaseCommonRequestSkeletonModelAssembler->create($entityUseCaseCommonRequestFileObject);
     }
 
     public function setEntityUseCaseCommonRequestTraitSkeletonModelAssembler(

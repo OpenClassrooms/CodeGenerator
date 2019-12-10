@@ -4,9 +4,6 @@ namespace OpenClassrooms\CodeGenerator\Generator\App\Repository\Request;
 
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 interface EntityRepositoryGeneratorRequestBuilder extends GeneratorRequest
 {
     public function build(): EntityRepositoryGeneratorRequest;

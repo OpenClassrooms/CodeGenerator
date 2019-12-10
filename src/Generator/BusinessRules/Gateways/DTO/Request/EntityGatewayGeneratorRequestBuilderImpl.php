@@ -5,15 +5,17 @@ namespace OpenClassrooms\CodeGenerator\Generator\BusinessRules\Gateways\DTO\Requ
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Gateways\Request\EntityGatewayGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Gateways\Request\EntityGatewayGeneratorRequestBuilder;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class EntityGatewayGeneratorRequestBuilderImpl implements EntityGatewayGeneratorRequestBuilder
 {
     /**
      * @var EntityGatewayGeneratorRequestDTO
      */
     private $request;
+
+    public function build(): EntityGatewayGeneratorRequest
+    {
+        return $this->request;
+    }
 
     public function create(): EntityGatewayGeneratorRequestBuilder
     {
@@ -27,10 +29,5 @@ class EntityGatewayGeneratorRequestBuilderImpl implements EntityGatewayGenerator
         $this->request->entity = $entity;
 
         return $this;
-    }
-
-    public function build(): EntityGatewayGeneratorRequest
-    {
-        return $this->request;
     }
 }

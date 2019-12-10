@@ -15,9 +15,6 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\SkeletonModels\BusinessRules\UseC
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Entities\Domain\SubDomain\FunctionalEntity;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class UseCaseResponseCommonFieldTraitGeneratorTest extends TestCase
 {
     use FileObjectTestCase;
@@ -48,7 +45,8 @@ class UseCaseResponseCommonFieldTraitGeneratorTest extends TestCase
 
     protected function setUp(): void
     {
-        $useCaseResponseCommonFieldTraitGeneratorRequestBuilderImpl = new UseCaseResponseCommonFieldTraitGeneratorRequestBuilderImpl();
+        $useCaseResponseCommonFieldTraitGeneratorRequestBuilderImpl = new UseCaseResponseCommonFieldTraitGeneratorRequestBuilderImpl(
+        );
         $this->request = $useCaseResponseCommonFieldTraitGeneratorRequestBuilderImpl
             ->create()
             ->withEntityClassName(FunctionalEntity::class)

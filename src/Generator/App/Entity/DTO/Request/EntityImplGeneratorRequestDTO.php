@@ -4,9 +4,6 @@ namespace OpenClassrooms\CodeGenerator\Generator\App\Entity\DTO\Request;
 
 use OpenClassrooms\CodeGenerator\Generator\App\Entity\Request\EntityImplGeneratorRequest;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class EntityImplGeneratorRequestDTO implements EntityImplGeneratorRequest
 {
     /**

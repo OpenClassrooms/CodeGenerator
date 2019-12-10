@@ -5,9 +5,6 @@ namespace OpenClassrooms\CodeGenerator\Entities\Object;
 use OpenClassrooms\CodeGenerator\Utility\DocCommentUtility;
 use OpenClassrooms\CodeGenerator\Utility\StringUtility;
 
-/**
- * @author Romain Kuzniak <romain.kuzniak@openclassrooms.com>
- */
 class FieldObject
 {
     const SCOPE_PRIVATE   = 'private';

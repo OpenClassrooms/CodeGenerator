@@ -2,9 +2,6 @@
 
 namespace OpenClassrooms\CodeGenerator\Mediators;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 final class Args
 {
     const CLASS_NAME = 'class-name';

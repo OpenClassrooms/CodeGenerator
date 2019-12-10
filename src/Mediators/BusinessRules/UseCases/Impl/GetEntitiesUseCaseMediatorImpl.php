@@ -6,9 +6,6 @@ use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\Responses\UseCaseListItemResponseMediator;
 use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\GetEntitiesUseCaseMediator;
 
-/**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
- */
 class GetEntitiesUseCaseMediatorImpl implements GetEntitiesUseCaseMediator
 {
     use CommonEntityUseCaseMediatorsTrait;
@@ -18,6 +15,12 @@ class GetEntitiesUseCaseMediatorImpl implements GetEntitiesUseCaseMediator
      * @var UseCaseListItemResponseMediator
      */
     private $useCaseListItemResponseMediator;
+
+    public function setUseCaseListItemResponseMediator(
+        UseCaseListItemResponseMediator $useCaseListItemResponseMediator
+    ): void {
+        $this->useCaseListItemResponseMediator = $useCaseListItemResponseMediator;
+    }
 
     /**
      * @return FileObject[]
@@ -75,11 +78,5 @@ class GetEntitiesUseCaseMediatorImpl implements GetEntitiesUseCaseMediator
         $fileObjects[] = $this->useCaseResponseCommonMediator->generateUseCaseResponseTestCaseGenerator($className);
 
         return $fileObjects;
-    }
-
-    public function setUseCaseListItemResponseMediator(
-        UseCaseListItemResponseMediator $useCaseListItemResponseMediator
-    ): void {
-        $this->useCaseListItemResponseMediator = $useCaseListItemResponseMediator;
     }
 }

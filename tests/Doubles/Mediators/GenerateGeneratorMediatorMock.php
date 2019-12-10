@@ -18,9 +18,6 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\GenerateGenerator\Custom
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\GenerateGenerator\CustomSkeletonModelImplFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\GenerateGenerator\CustomTemplateFileObjectStub1;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class GenerateGeneratorMediatorMock extends GenerateGeneratorMediatorImpl
 {
     public static $fileObjects = [];

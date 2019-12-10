@@ -2,16 +2,13 @@
 
 namespace OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\Request;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 interface ViewModelListItemAssemblerImplTestGeneratorRequestBuilder
 {
+    public function build(): ViewModelListItemAssemblerImplTestGeneratorRequest;
+
     public function create(): ViewModelListItemAssemblerImplTestGeneratorRequestBuilder;
 
     public function withResponseClassName(
         string $responseClassName
     ): ViewModelListItemAssemblerImplTestGeneratorRequestBuilder;
-
-    public function build(): ViewModelListItemAssemblerImplTestGeneratorRequest;
 }

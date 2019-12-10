@@ -7,9 +7,6 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModels\ViewModelListItem
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModels\ViewModelListItemAssemblerSkeletonModelAssembler;
 use OpenClassrooms\CodeGenerator\Utility\StringUtility;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class ViewModelListItemAssemblerSkeletonModelAssemblerImpl implements ViewModelListItemAssemblerSkeletonModelAssembler
 {
     public function create(

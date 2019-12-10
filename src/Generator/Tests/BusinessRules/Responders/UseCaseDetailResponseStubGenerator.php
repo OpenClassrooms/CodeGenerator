@@ -12,9 +12,6 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\Responders\U
 use OpenClassrooms\CodeGenerator\Utility\ConstUtility;
 use OpenClassrooms\CodeGenerator\Utility\StubFieldUtility;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 class UseCaseDetailResponseStubGenerator extends AbstractUseCaseResponseStubGenerator
 {
     /**

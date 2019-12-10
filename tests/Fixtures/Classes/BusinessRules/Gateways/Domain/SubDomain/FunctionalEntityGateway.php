@@ -9,15 +9,17 @@ use OpenClassrooms\UseCase\BusinessRules\Entities\PaginatedCollection;
 
 interface FunctionalEntityGateway
 {
-    /**
-     * @throws FunctionalEntityNotFoundException
-     */
-    public function find($id): FunctionalEntity;
+    public function delete(FunctionalEntity $functionalEntity): void;
 
     /**
      * @return PaginatedCollection|FunctionalEntity[]
      */
     public function findAll(array $filters = [], array $sorts = [], array $pagination = []): iterable;
+
+    /**
+     * @throws FunctionalEntityNotFoundException
+     */
+    public function findById(int $functionalEntityId): FunctionalEntity;
 
     public function insert(FunctionalEntity $functionalEntity): void;
 

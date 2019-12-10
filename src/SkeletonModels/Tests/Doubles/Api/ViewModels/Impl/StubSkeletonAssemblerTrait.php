@@ -4,11 +4,13 @@ namespace OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\Api\ViewMode
 
 use OpenClassrooms\CodeGenerator\Entities\Object\FieldObject;
 
-/**
- * @author Samuel Gomis <samuel.gomis@external.openclassrooms.com>
- */
 trait StubSkeletonAssemblerTrait
 {
+    private function getDateTimeType()
+    {
+        return ['\\DateTime', '\\DateTimeImmutable', '\\DateTimeInterface'];
+    }
+
     /**
      * @param FieldObject $fieldObjects []
      */
@@ -21,10 +23,5 @@ trait StubSkeletonAssemblerTrait
         }
 
         return false;
-    }
-
-    private function getDateTimeType()
-    {
-        return ['\\DateTime', '\\DateTimeImmutable', '\\DateTimeInterface'];
     }
 }

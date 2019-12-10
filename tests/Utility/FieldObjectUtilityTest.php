@@ -6,9 +6,6 @@ use OpenClassrooms\CodeGenerator\Entities\Object\FieldObject;
 use OpenClassrooms\CodeGenerator\Utility\FieldObjectUtility;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author Samuel Gomis <gomis.samuel@external.openclassrooms.com>
- */
 class FieldObjectUtilityTest extends TestCase
 {
     /**

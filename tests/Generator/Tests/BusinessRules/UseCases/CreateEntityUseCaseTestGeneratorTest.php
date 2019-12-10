@@ -62,10 +62,14 @@ class CreateEntityUseCaseTestGeneratorTest extends TestCase
         );
         $this->createEntityTestGenerator->setEntityFileObjectFactory(new EntityFileObjectFactoryMock());
         $this->createEntityTestGenerator->setFileObjectGateway(new InMemoryFileObjectGateway());
-        $this->createEntityTestGenerator->setMethodUtility(new MethodUtilityContext(new MethodUtilityGetAccessorsWithoutId()));
+        $this->createEntityTestGenerator->setMethodUtility(
+            new MethodUtilityContext(new MethodUtilityGetAccessorsWithoutId())
+        );
         $this->createEntityTestGenerator->setTemplating(new TemplatingServiceMock());
         $this->createEntityTestGenerator->setUseCaseFileObjectFactory(new UseCaseFileObjectFactoryMock());
         $this->createEntityTestGenerator->setUseCaseRequestFileObjectFactory(new UseCaseRequestFileObjectFactoryMock());
-        $this->createEntityTestGenerator->setUseCaseResponseFileObjectFactory(new UseCaseResponseFileObjectFactoryMock());
+        $this->createEntityTestGenerator->setUseCaseResponseFileObjectFactory(
+            new UseCaseResponseFileObjectFactoryMock()
+        );
     }
 }

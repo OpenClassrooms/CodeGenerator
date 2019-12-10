@@ -4,9 +4,6 @@ namespace OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModels\Impl;
 
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModels\ViewModelDetailImplSkeletonModel;
 
-/**
- * @author Samuel Gomis <samuel.gomis@openclassrooms.com>
- */
 class ViewModelDetailImplSkeletonModelImpl extends ViewModelDetailImplSkeletonModel
 {
 }
