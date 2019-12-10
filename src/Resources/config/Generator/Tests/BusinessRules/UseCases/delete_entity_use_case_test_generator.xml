@@ -5,20 +5,20 @@
     <services>
 
         <service
-                id="OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\UseCases\Impl\DeleteEntityUseCaseTestSkeletonModelAssemblerImpl"
+                id="OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\UseCases\Impl\DeleteEntityUseCaseTestSkeletonModelBuilderImpl"
                 public="false">
         </service>
 
         <service id="OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\DeleteEntityUseCaseTestGenerator"
-                 parent="open_classrooms.code_generator.generator.business_rules.abstract_generator">
-            <call method="setDeleteEntityUseCaseTestSkeletonModelAssembler">
+                 parent="open_classrooms.code_generator.generator.business_rules.abstract_use_case_generator">
+            <call method="setDeleteEntityUseCaseTestSkeletonModelBuilder">
                 <argument type="service"
-                          id="OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\UseCases\DeleteEntityUseCaseTestSkeletonModelAssembler"/>
+                          id="OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\UseCases\DeleteEntityUseCaseTestSkeletonModelBuilder"/>
             </call>
         </service>
         <service
-                id="OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\UseCases\DeleteEntityUseCaseTestSkeletonModelAssembler"
-                alias="OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\UseCases\Impl\DeleteEntityUseCaseTestSkeletonModelAssemblerImpl">
+                id="OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\UseCases\DeleteEntityUseCaseTestSkeletonModelBuilder"
+                alias="OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\UseCases\Impl\DeleteEntityUseCaseTestSkeletonModelBuilderImpl">
         </service>
     </services>
 </container>
