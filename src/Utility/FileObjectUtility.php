@@ -92,6 +92,7 @@ class FileObjectUtility
             'Request',
             'Stub1',
             'TestCase',
+            'Test',
             'ViewModel',
         ];
 

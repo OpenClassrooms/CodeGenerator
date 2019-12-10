@@ -97,7 +97,7 @@ class FileObjectUtilityTest extends TestCase
                 FileObjectUtilityTest::class,
                 'OpenClassrooms\CodeGenerator\Utility\\',
                 'CodeGenerator\Utility',
-                'FileObjectUtilityTest',
+                'FileObjectUtility',
             ],
             [
                 'BusinessRules\UseCases\Domain\SubDomain\GenericUseCase',
