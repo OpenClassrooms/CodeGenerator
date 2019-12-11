@@ -54,11 +54,10 @@ class {{ skeletonModel.shortName }} extends TestCase
 
     protected function setup(): void
     {
-        $this->useCase = new {{ skeletonModel.getEntityUseCaseShortName }}();
-        $this->useCase->set{{ skeletonModel.entityShortName }}Gateway(
+        $this->useCase = new {{ skeletonModel.getEntityUseCaseShortName }}(
+            new {{ skeletonModel.useCaseDetailResponseAssemblerMockShortName }}(),
             new {{ skeletonModel.inMemoryEntityGatewayShortName }}([{{ skeletonModel.entityStubShortName }}::ID => new {{ skeletonModel.entityStubShortName }}()])
         );
-        $this->useCase->set{{ skeletonModel.entityShortName }}ResponseAssembler(new {{ skeletonModel.useCaseDetailResponseAssemblerMockShortName }}());
         $this->request = $this->buildRequest();
     }
 

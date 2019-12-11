@@ -10,35 +10,31 @@ interface GetEntityUseCaseSkeletonModelBuilder
 
     public function create(): GetEntityUseCaseSkeletonModelBuilder;
 
-    public function withEntityClassName(
+    public function withEntityFileObject(
         FileObject $entityFileObject
     ): GetEntityUseCaseSkeletonModelBuilder;
 
-    public function withEntityClassNameDetailResponse(
+    public function withEntityUseCaseDetailResponseFileObject(
         FileObject $entityUseCaseDetailResponseFileObject
     ): GetEntityUseCaseSkeletonModelBuilder;
 
-    public function withEntityClassNameDetailResponseAssembler(
+    public function withEntityUseCaseDetailResponseAssemblerFileObject(
         FileObject $entityUseCaseDetailResponseAssemblerFileObject
     ): GetEntityUseCaseSkeletonModelBuilder;
 
-    public function withEntityClassNameGateway(
+    public function withEntityGatewayFileObject(
         FileObject $entityGatewayFileObject
     ): GetEntityUseCaseSkeletonModelBuilder;
 
-    public function withEntityClassNameNotFoundException(
+    public function withEntityNotFoundExceptionFileObject(
         FileObject $entityNotFoundExceptionFileObject
     ): GetEntityUseCaseSkeletonModelBuilder;
 
-    public function withEntityClassNameResponse(
-        FileObject $entityResponseFileObject
-    ): GetEntityUseCaseSkeletonModelBuilder;
-
-    public function withGetEntityUseCase(
+    public function withGetEntityUseCaseFileObject(
         FileObject $getEntityFileObject
     ): GetEntityUseCaseSkeletonModelBuilder;
 
-    public function withGetEntityUseCaseRequest(
+    public function withGetEntityUseCaseRequestFileObject(
         FileObject $getEntityUseCaseRequestFileObject
     ): GetEntityUseCaseSkeletonModelBuilder;
 }

@@ -10,11 +10,11 @@ interface GetEntityUseCaseTestSkeletonModelBuilder
 
     public function create(): GetEntityUseCaseTestSkeletonModelBuilder;
 
-    public function withEntityClassNameNotFoundExceptionFileObject(
+    public function withEntityNotFoundExceptionFileObject(
         FileObject $entityNotFoundExceptionFileObject
     ): GetEntityUseCaseTestSkeletonModelBuilder;
 
-    public function withEntityClassNameStubFileObject(
+    public function withEntityStubFileObject(
         FileObject $entityStubFileObject
     ): GetEntityUseCaseTestSkeletonModelBuilder;
 

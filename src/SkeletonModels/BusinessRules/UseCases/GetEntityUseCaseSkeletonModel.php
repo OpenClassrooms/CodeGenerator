@@ -6,29 +6,29 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 
 abstract class GetEntityUseCaseSkeletonModel extends AbstractSkeletonModel
 {
-    public $functionalEntityArgument;
+    public $entityArgument;
 
-    public $functionalEntityClassName;
+    public $entityClassName;
 
-    public $functionalEntityDetailResponseAssemblerClassName;
+    public $entityUseCaseDetailResponseAssemblerClassName;
 
-    public $functionalEntityDetailResponseAssemblerShortName;
+    public $entityUseCaseDetailResponseAssemblerShortName;
 
-    public $functionalEntityDetailResponseClassName;
+    public $entityUseCaseDetailResponseClassName;
 
-    public $functionalEntityDetailResponseShortName;
+    public $entityUseCaseDetailResponseShortName;
 
-    public $functionalEntityGatewayClassName;
+    public $entityGatewayClassName;
 
-    public $functionalEntityGatewayShortName;
+    public $entityGatewayShortName;
 
-    public $functionalEntityNotFoundExceptionClassName;
+    public $entityNotFoundExceptionClassName;
 
-    public $functionalEntityResponseClassName;
+    public $entityResponseClassName;
 
-    public $functionalEntityResponseShortName;
+    public $entityResponseShortName;
 
-    public $functionalEntityShortName;
+    public $entityShortName;
 
     public $getEntityUseCaseRequestAccessor;
 

@@ -24,6 +24,12 @@ class GetFunctionalEntities implements UseCase
      */
     private $responseAssembler;
 
+    public function __construct(FunctionalEntityGateway $gateway, FunctionalEntityListItemResponseAssembler $assembler)
+    {
+        $this->gateway = $gateway;
+        $this->responseAssembler = $assembler;
+    }
+
     /**
      * @param GetFunctionalEntitiesRequest $useCaseRequest
      */
@@ -54,15 +60,5 @@ class GetFunctionalEntities implements UseCase
     private function buildResponse(PaginatedCollection $functionalEntities): PaginatedUseCaseResponse
     {
         return $this->responseAssembler->createPaginatedCollection($functionalEntities);
-    }
-
-    public function setFunctionalEntityGateway(FunctionalEntityGateway $gateway): void
-    {
-        $this->gateway = $gateway;
-    }
-
-    public function setFunctionalEntityListItemResponseAssembler(FunctionalEntityListItemResponseAssembler $assembler): void
-    {
-        $this->responseAssembler = $assembler;
     }
 }

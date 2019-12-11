@@ -23,6 +23,12 @@ class {{ skeletonModel.shortName }} implements {{ skeletonModel.useCaseShortName
      */
     private $responseAssembler;
 
+    public function __construct({{ skeletonModel.entityGatewayShortName }} $gateway, {{ skeletonModel.entityUseCaseListItemResponseAssemblerShortName }} $assembler)
+    {
+        $this->gateway = $gateway;
+        $this->responseAssembler = $assembler;
+    }
+
     /**
      * @param {{ skeletonModel.getEntitiesUseCaseRequestShortName }} $useCaseRequest
      */
@@ -53,15 +59,5 @@ class {{ skeletonModel.shortName }} implements {{ skeletonModel.useCaseShortName
     private function buildResponse({{ skeletonModel.paginatedCollectionShortName }} ${{ skeletonModel.entitiesArgument }}): {{ skeletonModel.paginatedUseCaseResponseShortName }}
     {
         return $this->responseAssembler->createPaginatedCollection(${{ skeletonModel.entitiesArgument }});
-    }
-
-    public function set{{ skeletonModel.entityGatewayShortName }}({{ skeletonModel.entityGatewayShortName }} $gateway): void
-    {
-        $this->gateway = $gateway;
-    }
-
-    public function set{{ skeletonModel.entityUseCaseListItemResponseAssemblerShortName }}({{ skeletonModel.entityUseCaseListItemResponseAssemblerShortName }} $assembler): void
-    {
-        $this->responseAssembler = $assembler;
     }
 }

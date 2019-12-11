@@ -67,11 +67,8 @@ class GetFunctionalEntitiesTest extends TestCase
 
     protected function setup(): void
     {
-        $this->useCase = new GetFunctionalEntities();
-        $this->useCase->setFunctionalEntityGateway(
-            new InMemoryFunctionalEntityGateway([FunctionalEntityStub1::ID => new FunctionalEntityStub1()])
-        );
-        $this->useCase->setFunctionalEntityListItemResponseAssembler(
+        $this->useCase = new GetFunctionalEntities(
+            new InMemoryFunctionalEntityGateway([FunctionalEntityStub1::ID => new FunctionalEntityStub1()]),
             new FunctionalEntityListItemResponseAssemblerMock()
         );
         $this->request = $this->buildRequest();

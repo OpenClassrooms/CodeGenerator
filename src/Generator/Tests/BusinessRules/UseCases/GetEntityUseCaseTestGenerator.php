@@ -189,8 +189,8 @@ class GetEntityUseCaseTestGenerator extends AbstractUseCaseGenerator
     ): GetEntityUseCaseTestSkeletonModel {
         return $this->getEntityUseCaseTestSkeletonModelBuilder
             ->create()
-            ->withEntityClassNameStubFileObject($fileObjects[EntityFileObjectType::BUSINESS_RULES_ENTITY_STUB])
-            ->withEntityClassNameNotFoundExceptionFileObject(
+            ->withEntityStubFileObject($fileObjects[EntityFileObjectType::BUSINESS_RULES_ENTITY_STUB])
+            ->withEntityNotFoundExceptionFileObject(
                 $fileObjects[EntityFileObjectType::BUSINESS_RULES_ENTITY_NOT_FOUND_EXCEPTION]
             )
             ->withInMemoryEntityGatewayFileObject(

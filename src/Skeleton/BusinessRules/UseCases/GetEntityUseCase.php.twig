@@ -2,58 +2,54 @@
 
 namespace {{ skeletonModel.namespace }};
 
-use {{ skeletonModel.functionalEntityClassName }};
-use {{ skeletonModel.functionalEntityGatewayClassName }};
+use {{ skeletonModel.entityClassName }};
+use {{ skeletonModel.entityGatewayClassName }};
 use {{ skeletonModel.getEntityUseCaseRequestClassName }};
-use {{ skeletonModel.functionalEntityDetailResponseClassName }};
-use {{ skeletonModel.functionalEntityDetailResponseAssemblerClassName }};
+use {{ skeletonModel.entityUseCaseDetailResponseClassName }};
+use {{ skeletonModel.entityUseCaseDetailResponseAssemblerClassName }};
 use {{ skeletonModel.useCaseClassName }};
 use {{ skeletonModel.useCaseRequestClassName }};
 
 class {{ skeletonModel.shortName }} implements UseCase
 {
     /**
-     * @var {{ skeletonModel.functionalEntityGatewayShortName }}
+     * @var {{ skeletonModel.entityGatewayShortName }}
      */
     private $gateway;
 
     /**
-     * @var {{ skeletonModel.functionalEntityDetailResponseAssemblerShortName }}
+     * @var {{ skeletonModel.entityUseCaseDetailResponseAssemblerShortName }}
      */
     private $responseAssembler;
+
+    public function __construct({{ skeletonModel.entityUseCaseDetailResponseAssemblerShortName }} $assembler, {{ skeletonModel.entityGatewayShortName }} $gateway)
+    {
+        $this->gateway = $gateway;
+        $this->responseAssembler = $assembler;
+    }
 
     /**
      * @param {{ skeletonModel.getEntityUseCaseRequestShortName }} $useCaseRequest
      *
-     * @throws \{{ skeletonModel.functionalEntityNotFoundExceptionClassName }}
+     * @throws \{{ skeletonModel.entityNotFoundExceptionClassName }}
      */
-    public function execute(UseCaseRequest $useCaseRequest): {{ skeletonModel.functionalEntityDetailResponseShortName }}
+    public function execute(UseCaseRequest $useCaseRequest): {{ skeletonModel.entityUseCaseDetailResponseShortName }}
     {
-        ${{ skeletonModel.functionalEntityArgument }} = $this->get{{ skeletonModel.functionalEntityShortName }}($useCaseRequest->{{ skeletonModel.getEntityUseCaseRequestAccessor }}());
+        ${{ skeletonModel.entityArgument }} = $this->get{{ skeletonModel.entityShortName }}($useCaseRequest->{{ skeletonModel.getEntityUseCaseRequestAccessor }}());
 
-        return $this->buildResponse(${{ skeletonModel.functionalEntityArgument }});
+        return $this->buildResponse(${{ skeletonModel.entityArgument }});
     }
 
     /**
-     * @throws \{{ skeletonModel.functionalEntityNotFoundExceptionClassName }}
+     * @throws \{{ skeletonModel.entityNotFoundExceptionClassName }}
      */
-    private function get{{ skeletonModel.functionalEntityShortName }}(int ${{ skeletonModel.getEntityUseCaseRequestArgument }}): {{ skeletonModel.functionalEntityShortName }}
+    private function get{{ skeletonModel.entityShortName }}(int ${{ skeletonModel.getEntityUseCaseRequestArgument }}): {{ skeletonModel.entityShortName }}
     {
-        return $this->gateway->find(${{ skeletonModel.getEntityUseCaseRequestArgument }});
+        return $this->gateway->findById(${{ skeletonModel.getEntityUseCaseRequestArgument }});
     }
 
-    private function buildResponse({{ skeletonModel.functionalEntityShortName }} ${{ skeletonModel.functionalEntityArgument }}): {{ skeletonModel.functionalEntityDetailResponseShortName }}
+    private function buildResponse({{ skeletonModel.entityShortName }} ${{ skeletonModel.entityArgument }}): {{ skeletonModel.entityUseCaseDetailResponseShortName }}
     {
-        return $this->responseAssembler->create(${{ skeletonModel.functionalEntityArgument }});
-    }
-
-    public function set{{ skeletonModel.functionalEntityShortName }}Gateway({{ skeletonModel.functionalEntityGatewayShortName }} $gateway): void
-    {
-        $this->gateway = $gateway;
-    }
-
-    public function set{{ skeletonModel.functionalEntityShortName }}ResponseAssembler({{ skeletonModel.functionalEntityDetailResponseAssemblerShortName }} $assembler): void
-    {
-        $this->responseAssembler = $assembler;
+        return $this->responseAssembler->create(${{ skeletonModel.entityArgument }});
     }
 }
