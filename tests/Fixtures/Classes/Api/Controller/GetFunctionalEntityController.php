@@ -21,7 +21,7 @@ class GetFunctionalEntityController extends AbstractApiController
         try {
             $functionalEntity = $this->getFunctionalEntity($userId);
 
-            $vm = $this->createVm($functionalEntity);
+            $vm = $this->createViewModel($functionalEntity);
 
             return $this->createJsonResponse($vm);
         } catch (FunctionalEntityNotFoundException $e) {
@@ -32,17 +32,17 @@ class GetFunctionalEntityController extends AbstractApiController
     /**
      * @throws \OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gateways\Domain\SubDomain\Exceptions\FunctionalEntityNotFoundException
      */
-    private function getFunctionalEntity(int $id): FunctionalEntityResponse
+    private function getFunctionalEntity(int $functionalEntityId): FunctionalEntityResponse
     {
         return $this->get(GetFunctionalEntity::class)->execute(
             $this->get(GetFunctionalEntityRequestBuilder::class)
                 ->create()
-                ->withFunctionalEntityId($id)
+                ->withFunctionalEntityId($functionalEntityId)
                 ->build()
         );
     }
 
-    protected function createVm(FunctionalEntityResponse $functionalEntity): FunctionalEntityViewModel
+    protected function createViewModel(FunctionalEntityResponse $functionalEntity): FunctionalEntityViewModel
     {
         return $this->get(FunctionalEntityDetailResponseAssembler::class)->create($functionalEntity);
     }

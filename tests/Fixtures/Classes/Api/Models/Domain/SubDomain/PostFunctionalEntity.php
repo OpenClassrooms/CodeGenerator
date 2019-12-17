@@ -2,43 +2,6 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\Models\Domain\SubDomain;
 
-use Symfony\Component\Validator\Constraints as Assert;
-
-class PostFunctionalEntity
+class PostFunctionalEntity extends AbstractFunctionalEntity
 {
-    /**
-     * @var string
-     *
-     * @Assert\Type("string")
-     */
-    public $field1;
-
-    /**
-     * @var string[]
-     */
-    public $field2;
-
-    /**
-     * @var bool
-     *
-     * @Assert\NotBlank
-     * @Assert\Type("bool")
-     */
-    public $field3;
-
-    /**
-     * @var \DateTimeInterface
-     *
-     * @Assert\NotBlank
-     * @Assert\DateTime(format="Y-m-d\TH:i:sO")
-     */
-    public $field4;
-
-    /**
-     * @var \DateTimeInterface
-     *
-     * @Assert\NotBlank
-     * @Assert\DateTime(format="Y-m-d\TH:i:sO")
-     */
-    public $updatedAt;
 }
