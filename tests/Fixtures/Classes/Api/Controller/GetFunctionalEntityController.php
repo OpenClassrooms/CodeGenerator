@@ -4,9 +4,10 @@ namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\Controller;
 
 use OC\ApiBundle\Framework\FrameworkBundle\Controller\AbstractApiController;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\FunctionalEntityViewModel;
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\FunctionalEntityViewModelDetailAssembler;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gateways\Domain\SubDomain\Exceptions\FunctionalEntityNotFoundException;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Requestors\Domain\SubDomain\GetFunctionalEntityRequestBuilder;
-use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityDetailResponseAssembler;
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityDetailResponse;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityResponse;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\GetFunctionalEntity;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -14,36 +15,53 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class GetFunctionalEntityController extends AbstractApiController
 {
     /**
+     * @var FunctionalEntityViewModelDetailAssembler
+     */
+    private $functionalEntityViewModelDetailAssembler;
+
+    /**
+     * @var GetFunctionalEntityRequestBuilder
+     */
+    private $getFunctionalEntityRequestBuilder;
+
+    public function __construct(
+        FunctionalEntityViewModelDetailAssembler $assembler,
+        GetFunctionalEntityRequestBuilder $builder
+    ) {
+        $this->functionalEntityViewModelDetailAssembler = $assembler;
+        $this->getFunctionalEntityRequestBuilder = $builder;
+    }
+
+    /**
      * @Security("")
      */
     public function getAction(int $userId): JsonResponse
     {
         try {
             $functionalEntity = $this->getFunctionalEntity($userId);
-
-            $vm = $this->createViewModel($functionalEntity);
+            $vm = $this->buildViewModel($functionalEntity);
 
             return $this->createJsonResponse($vm);
         } catch (FunctionalEntityNotFoundException $e) {
-            throw $this->createNotFoundException();
+            throw $this->throwNotFoundException();
         }
     }
 
     /**
-     * @throws \OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gateways\Domain\SubDomain\Exceptions\FunctionalEntityNotFoundException
+     * @throws FunctionalEntityNotFoundException
      */
     private function getFunctionalEntity(int $functionalEntityId): FunctionalEntityResponse
     {
         return $this->get(GetFunctionalEntity::class)->execute(
-            $this->get(GetFunctionalEntityRequestBuilder::class)
+            $this->getFunctionalEntityRequestBuilder
                 ->create()
                 ->withFunctionalEntityId($functionalEntityId)
                 ->build()
         );
     }
 
-    protected function createViewModel(FunctionalEntityResponse $functionalEntity): FunctionalEntityViewModel
+    protected function buildViewModel(FunctionalEntityDetailResponse $functionalEntity): FunctionalEntityViewModel
     {
-        return $this->get(FunctionalEntityDetailResponseAssembler::class)->create($functionalEntity);
+        return $this->functionalEntityViewModelDetailAssembler->create($functionalEntity);
     }
 }

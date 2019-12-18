@@ -4,19 +4,12 @@ namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\Models\Domain\
 
 use Symfony\Component\Validator\Constraints as Assert;
 
-abstract class AbstractFunctionalEntity
+trait FunctionalEntityModelTrait
 {
-    protected const FIELD_1_API_FIELD_NAME = 'field1';
-
-    protected const FIELD_2_API_FIELD_NAME = 'field2';
-
-    protected const FIELD_3_API_FIELD_NAME = 'field3';
-
-    protected const FIELD_4_API_FIELD_NAME = 'field4';
-
     /**
      * @var string
      *
+     * @Assert\NotBlank
      * @Assert\Type("string")
      */
     public $field1;
@@ -29,7 +22,7 @@ abstract class AbstractFunctionalEntity
     /**
      * @var bool
      *
-     * @Assert\NotBlank
+     * @Assert\NotNull
      * @Assert\Type("bool")
      */
     public $field3;

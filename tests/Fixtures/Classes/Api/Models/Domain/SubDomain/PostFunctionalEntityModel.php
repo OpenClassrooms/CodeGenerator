@@ -2,6 +2,7 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\Models\Domain\SubDomain;
 
-class PostFunctionalEntity extends AbstractFunctionalEntity
+class PostFunctionalEntityModel
 {
+    use FunctionalEntityModelTrait;
 }

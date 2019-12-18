@@ -2,8 +2,18 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\Models\Domain\SubDomain;
 
-class PatchFunctionalEntity extends AbstractFunctionalEntity
+class PatchFunctionalEntityModel
 {
+    use FunctionalEntityModelTrait;
+
+    protected const FIELD_1_API_FIELD_NAME = 'field1';
+
+    protected const FIELD_2_API_FIELD_NAME = 'field2';
+
+    protected const FIELD_3_API_FIELD_NAME = 'field3';
+
+    protected const FIELD_4_API_FIELD_NAME = 'field4';
+
     /**
      * @var bool
      */

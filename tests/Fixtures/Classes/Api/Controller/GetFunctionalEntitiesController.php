@@ -3,6 +3,7 @@
 namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\Controller;
 
 use OC\ApiBundle\Framework\FrameworkBundle\Controller\AbstractApiController;
+use OC\ApiBundle\ParamConverter\CollectionInformation;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\FunctionalEntityViewModelListItem;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\FunctionalEntityViewModelListItemAssembler;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gateways\Domain\SubDomain\Exceptions\FunctionalEntityNotFoundException;
@@ -15,33 +16,51 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class GetFunctionalEntitiesController extends AbstractApiController
 {
     /**
-     * @Security("")
+     * @var FunctionalEntityViewModelListItemAssembler
      */
-    public function getAction(int $userId): JsonResponse
+    private $functionalEntityViewModelListItemAssembler;
+
+    /**
+     * @var GetFunctionalEntitiesRequestBuilder
+     */
+    private $getFunctionalEntitiesRequestBuilder;
+
+    public function __construct(
+        FunctionalEntityViewModelListItemAssembler $assembler,
+        GetFunctionalEntitiesRequestBuilder $builder
+    ) {
+        $this->functionalEntityViewModelListItemAssembler = $assembler;
+        $this->getFunctionalEntitiesRequestBuilder = $builder;
+    }
+
+    /**
+     * @Security("")
+     * @ParamConverter("collectionInformation", options={"itemsPerPage":"200"}) // default 20 to remove if not necessary
+     */
+    public function getAction(CollectionInformation $collectionInformation, int $userId): JsonResponse
     {
         try {
-            $functionalEntities = $this->getFunctionalEntities();
-
+            $functionalEntities = $this->getFunctionalEntities($collectionInformation);
             $vm = $this->buildViewModel($functionalEntities);
 
             return $this->createJsonResponse($vm);
         } catch (FunctionalEntityNotFoundException $e) {
-            throw $this->createNotFoundException();
+            throw $this->throwNotFoundException();
         }
     }
 
     /**
-     * @throws \OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gateways\Domain\SubDomain\Exceptions\FunctionalEntityNotFoundException
+     * @throws FunctionalEntityNotFoundException
      */
-    private function getFunctionalEntities(): FunctionalEntityResponse
+    private function getFunctionalEntities(collectionInformation $collectionInformation): FunctionalEntityResponse
     {
         return $this->get(GetFunctionalEntities::class)->execute(
-            $this->get(GetFunctionalEntitiesRequestBuilder::class)
+            $this->getFunctionalEntitiesRequestBuilder
                 ->create()
-                ->withFilters()
-                ->withItemsPerPage()
-                ->withPage()
-                ->withSort()
+                ->withFilters($collectionInformation->getFilters())
+                ->withItemsPerPage($collectionInformation->getItemsPerPage())
+                ->withPage($collectionInformation->getPage())
+                ->withSort($collectionInformation->getSorts())
                 ->build()
         );
     }
@@ -51,7 +70,7 @@ class GetFunctionalEntitiesController extends AbstractApiController
      */
     private function buildViewModel(PaginatedUseCaseResponse $functionalEntities): array
     {
-        return $this->get(FunctionalEntityViewModelListItemAssembler::class)->createListItems(
+        return $this->functionalEntityViewModelListItemAssembler->createListItems(
             $functionalEntities->getItems()
         );
     }

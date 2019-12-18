@@ -14,11 +14,11 @@ class DeleteFunctionalEntityController extends AbstractApiController
     /**
      * @var DeleteFunctionalEntityRequestBuilder
      */
-    private $builder;
+    private $deleteFunctionalEntityRequestBuilder;
 
     public function __construct(DeleteFunctionalEntityRequestBuilder $builder)
     {
-        $this->builder = $builder;
+        $this->deleteFunctionalEntityRequestBuilder = $builder;
     }
 
     /**
@@ -35,10 +35,10 @@ class DeleteFunctionalEntityController extends AbstractApiController
         }
     }
 
-    private function deleteFunctionalEntity(int $functionalEntityId)
+    private function deleteFunctionalEntity(int $functionalEntityId): void
     {
-        return $this->get(DeleteFunctionalEntity::class)->execute(
-            $this->builder
+        $this->get(DeleteFunctionalEntity::class)->execute(
+            $this->deleteFunctionalEntityRequestBuilder
                 ->create()
                 ->withFunctionalEntityId($functionalEntityId)
                 ->build()
