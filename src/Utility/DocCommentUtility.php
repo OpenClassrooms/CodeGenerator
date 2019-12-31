@@ -24,9 +24,17 @@ class DocCommentUtility
 
     public static function getType(string $docComment): string
     {
-        $type = preg_replace('/([\/*@]|[[:space:]]|\[])|(var)|(null\|)|(\|null)|(return)/', '', $docComment);
+        $type = self::getInternalTypeNameFromDocComment($docComment);
 
-        return preg_match('/Date/', $docComment) ? self::DATE_TIME_INTERFACE : $type;
+        if (preg_match('/Date/', $docComment)){
+            return self::DATE_TIME_INTERFACE;
+        }
+
+        if (preg_match('/@var\s\w+\[]/', $docComment)){
+            return self::ARRAY_TYPE;
+        }
+
+        return $type;
     }
 
     public static function setType(string $type): string
@@ -34,5 +42,10 @@ class DocCommentUtility
         return "/**
      * @var $type
      */";
+    }
+
+    public static function getInternalTypeNameFromDocComment(string $docComment)
+    {
+        return preg_replace('/([\/*@]|[[:space:]]|\[])|(var)|(null\|)|(\|null)|(return)/', '', $docComment);
     }
 }

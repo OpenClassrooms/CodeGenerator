@@ -88,10 +88,6 @@ class FieldObject
 
     public function getType(): string
     {
-        if (null !== $this->getDocComment() && preg_match('/\[]/', $this->getDocComment())) {
-            return 'array';
-        }
-
         return DocCommentUtility::getType($this->getDocComment());
     }
 
