@@ -18,13 +18,6 @@ trait EditUseCaseRequestFieldTrait
         $this->fieldUtility = $fieldUtility;
     }
 
-    private function buildEditUseCaseRequestFields(string $entityClassName): array
-    {
-        $accessors = $this->fieldUtility->getFields($entityClassName);
-
-        return array_merge($accessors, $this->buildEditUseCaseRequestDTOFields($entityClassName));
-    }
-
     private function buildEditUseCaseRequestDTOFields(string $entityClassName): array
     {
         $isUpdatedFields = FieldObjectUtility::buildIsUpdatedFields($entityClassName);

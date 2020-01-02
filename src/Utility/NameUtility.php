@@ -43,4 +43,9 @@ class NameUtility
     {
         return lcfirst($shortClassName) . 'Stubs';
     }
+
+    public static function createConstantNameForPatchEntityModel(\ReflectionProperty $field): string
+    {
+        return StringUtility::convertToUpperSnakeCase($field->getName()) . '_API_FIELD_NAME';
+    }
 }

@@ -18,26 +18,29 @@ class FieldObjectUtility
     /**
      * @return FieldObject[]
      */
-    public static function buildIsUpdatedFields(string $className, string $scope = FieldObject::SCOPE_PUBLIC): array
-    {
+    public static function buildIsUpdatedFields(
+        string $className,
+        string $defaultValue = 'false',
+        string $scope = FieldObject::SCOPE_PUBLIC
+    ): array {
         $rc = new \ReflectionClass($className);
 
         $fields = [];
         foreach ($rc->getProperties() as $field) {
             if (FieldUtility::isUpdatable($field)) {
-                $fields[] = self::buildUpdatedField($field, $scope);
+                $fields[] = self::buildUpdatedField($field, $defaultValue, $scope);
             }
         }
 
         return $fields;
     }
 
-    private static function buildUpdatedField(\ReflectionProperty $field, string $scope): FieldObject
+    private static function buildUpdatedField(\ReflectionProperty $field, string $defaultValue, string $scope): FieldObject
     {
         $field = new FieldObject(NameUtility::createUpdatedName($field));
         $field->setDocComment(DocCommentUtility::setType('bool'));
         $field->setScope($scope);
-        $field->setValue('false');
+        $field->setValue($defaultValue);
 
         return $field;
     }

@@ -171,17 +171,4 @@ class TemplatingServiceImpl extends Environment implements TemplatingService
     {
         return parent::render($name, $context);
     }
-
-    private function extractFieldNameFromAccessor(string $acccessorName): ?string
-    {
-        if (false !== strpos($acccessorName, 'get')) {
-            return substr($acccessorName, 0, 3);
-        }
-
-        if (false !== strpos($acccessorName, 'is')) {
-            return substr($acccessorName, 0, 2);
-        }
-
-        return null;
-    }
 }
