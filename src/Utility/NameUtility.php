@@ -4,7 +4,7 @@ namespace OpenClassrooms\CodeGenerator\Utility;
 
 class NameUtility
 {
-    public static function creatChainedEntityIdMethodName(string $shortClassName): string
+    public static function createChainedEntityIdMethodName(string $shortClassName): string
     {
         return 'with' . ucfirst($shortClassName) . 'Id';
     }
@@ -44,7 +44,7 @@ class NameUtility
         return lcfirst($shortClassName) . 'Stubs';
     }
 
-    public static function createConstantNameForPatchEntityModel(\ReflectionProperty $field): string
+    public static function createPatchEntityModelConstantName(\ReflectionProperty $field): string
     {
         return StringUtility::convertToUpperSnakeCase($field->getName()) . '_API_FIELD_NAME';
     }

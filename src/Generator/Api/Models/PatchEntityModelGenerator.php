@@ -57,7 +57,7 @@ class PatchEntityModelGenerator extends AbstractGenerator
     private function createEntityModelTraitFileObject(): FileObject
     {
         return $this->modelFileObjectFactory->create(
-            ModelFileObjectType::MODEL_ENTITY_TRAIT,
+            ModelFileObjectType::API_MODEL_ENTITY_TRAIT,
             $this->domain,
             $this->entity
         );
@@ -66,7 +66,7 @@ class PatchEntityModelGenerator extends AbstractGenerator
     private function createPatchEntityModelFileObject(): FileObject
     {
         return $this->modelFileObjectFactory->create(
-            ModelFileObjectType::MODEL_PATCH_ENTITY,
+            ModelFileObjectType::API_MODEL_PATCH_ENTITY,
             $this->domain,
             $this->entity
         );

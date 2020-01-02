@@ -54,7 +54,7 @@ class EntityModelTraitGenerator extends AbstractGenerator
     private function createEntityModelTraitFileObject(): FileObject
     {
         return $this->modelFileObjectFactory->create(
-            ModelFileObjectType::MODEL_ENTITY_TRAIT,
+            ModelFileObjectType::API_MODEL_ENTITY_TRAIT,
             $this->domain,
             $this->entity
         );

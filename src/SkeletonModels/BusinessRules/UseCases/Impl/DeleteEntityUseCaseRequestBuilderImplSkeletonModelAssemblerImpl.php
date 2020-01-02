@@ -30,7 +30,7 @@ class DeleteEntityUseCaseRequestBuilderImplSkeletonModelAssemblerImpl implements
         $skeletonModel->entityIdArgument = NameUtility::createEntityIdName(
             $deleteEntityUseCaseRequestBuilderImplFileObject->getEntity()
         );
-        $skeletonModel->withEntityIdMethod = NameUtility::creatChainedEntityIdMethodName(
+        $skeletonModel->withEntityIdMethod = NameUtility::createChainedEntityIdMethodName(
             $deleteEntityUseCaseRequestBuilderImplFileObject->getEntity()
         );
 

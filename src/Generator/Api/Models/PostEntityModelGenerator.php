@@ -53,7 +53,7 @@ class PostEntityModelGenerator extends AbstractGenerator
     private function createEntityModelTraitFileObject(): FileObject
     {
         return $this->modelFileObjectFactory->create(
-            ModelFileObjectType::MODEL_ENTITY_TRAIT,
+            ModelFileObjectType::API_MODEL_ENTITY_TRAIT,
             $this->domain,
             $this->entity
         );
@@ -62,7 +62,7 @@ class PostEntityModelGenerator extends AbstractGenerator
     private function createPostEntityModelFileObject(): FileObject
     {
         return $this->modelFileObjectFactory->create(
-            ModelFileObjectType::MODEL_POST_ENTITY,
+            ModelFileObjectType::API_MODEL_POST_ENTITY,
             $this->domain,
             $this->entity
         );

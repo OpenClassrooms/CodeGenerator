@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+
+<container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://symfony.com/schema/dic/services"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+
+        <service
+                id="OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\Impl\DeleteEntityControllerSkeletonModelAssemblerImpl"
+                public="false">
+        </service>
+
+        <service id="OpenClassrooms\CodeGenerator\Generator\Api\Controller\DeleteEntityControllerGenerator"
+                 parent="open_classrooms.code_generator.generator.business_rules.abstract_generator">
+            <call method="setDeleteEntityControllerSkeletonModelAssembler">
+                <argument type="service"
+                          id="OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\DeleteEntityControllerSkeletonModelAssembler"/>
+            </call>
+        </service>
+        <service
+                id="OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\DeleteEntityControllerSkeletonModelAssembler"
+                alias="OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\Impl\DeleteEntityControllerSkeletonModelAssemblerImpl">
+        </service>
+    </services>
+</container>

@@ -57,7 +57,7 @@ class ConstUtility
 
     private static function buildPatchConst(\ReflectionProperty $field): ConstObject
     {
-        $constObject = new ConstObject(NameUtility::createConstantNameForPatchEntityModel($field));
+        $constObject = new ConstObject(NameUtility::createPatchEntityModelConstantName($field));
         $constObject->setValue($field->getName());
 
         return $constObject;
