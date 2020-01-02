@@ -22,7 +22,7 @@ class ModelFileObjectFactoryImpl extends AbstractFileObjectFactory implements Mo
                 );
             case ModelFileObjectType::MODEL_POST_ENTITY:
                 return new FileObject(
-                    $this->baseNamespace . $this->appDir . 'Models\\' . $domain . '\\Post' . $entity . 'Model'
+                    $this->baseNamespace . $this->apiDir . 'Models\\' . $domain . '\\Post' . $entity . 'Model'
                 );
             default:
                 throw new \InvalidArgumentException($type);
