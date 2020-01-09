@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\UseCases\Impl;
+namespace OpenClassrooms\CodeGenerator\Utility;
 
 use OpenClassrooms\CodeGenerator\Entities\Object\MethodObject;
 
-trait CrudSkeletonModelBuilderTrait
+trait useCarbonTrait
 {
     /**
      * @param MethodObject[] $methods
@@ -14,6 +14,21 @@ trait CrudSkeletonModelBuilderTrait
         foreach ($methods as $method) {
             /** @var MethodObject $method */
             if ($method->isDateType()) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * @param MethodObject[] $methods
+     */
+    private function methodArgumentUseCarbon(array $methods)
+    {
+        foreach ($methods as $method) {
+            foreach ($method->getArguments() as $argument)
+            if ($argument->isDateType()) {
                 return true;
             }
         }

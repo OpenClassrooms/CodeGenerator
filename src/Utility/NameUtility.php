@@ -44,6 +44,11 @@ class NameUtility
         return 'update' . $shortClassName;
     }
 
+    public static function createCreateEntityMethodName(string $shortClassName): string
+    {
+        return 'create' . $shortClassName;
+    }
+
     public static function createEntityStubsName(string $shortClassName): string
     {
         return lcfirst($shortClassName) . 'Stubs';

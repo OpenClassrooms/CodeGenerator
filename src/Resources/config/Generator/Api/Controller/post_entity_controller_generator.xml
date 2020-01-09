@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+
+<container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://symfony.com/schema/dic/services"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+
+        <service
+                id="PostEntityControllerSkeletonModelBuilderImpl"
+                public="false">
+        </service>
+
+        <service id="OpenClassrooms\CodeGenerator\Generator\Api\Controller\PostEntityControllerGenerator"
+                 parent="open_classrooms.code_generator.generator.business_rules.abstract_generator">
+            <call method="setPostEntityControllerSkeletonModelBuilder">
+                <argument type="service"
+                          id="OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\PostEntityControllerSkeletonModelAssembler"/>
+            </call>
+        </service>
+        <service
+                id="PostEntityControllerSkeletonModelBuilder"
+                alias="PostEntityControllerSkeletonModelBuilderImpl">
+        </service>
+    </services>
+</container>

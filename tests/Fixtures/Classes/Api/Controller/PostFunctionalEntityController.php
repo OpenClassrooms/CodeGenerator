@@ -59,7 +59,7 @@ class PostFunctionalEntityController extends AbstractApiController
                 ->withField1($model->field1)
                 ->withField2($model->field2)
                 ->withField3($model->field3)
-                ->withField4((new CarbonImmutable(($model->field4))))
+                ->withField4(new CarbonImmutable($model->field4))
                 ->build()
         );
     }

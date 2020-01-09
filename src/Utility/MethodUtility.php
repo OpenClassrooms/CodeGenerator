@@ -87,10 +87,12 @@ class MethodUtility
         return $methodsChained;
     }
 
-    private static function buildWitherMethodObject(\ReflectionProperty $field, string $returnType): MethodObject
+    private static function buildWitherMethodObject(\ReflectionProperty $field, ?string $returnType): MethodObject
     {
         $methodChained = new MethodObject(NameUtility::createMethodsChainedName($field));
-        $methodChained->setReturnType($returnType);
+        if (null !== $returnType) {
+            $methodChained->setReturnType($returnType);
+        }
         $methodChained->addArgument(self::buildArgument($field));
 
         return $methodChained;
