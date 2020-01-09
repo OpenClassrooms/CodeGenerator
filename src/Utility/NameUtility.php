@@ -39,6 +39,11 @@ class NameUtility
         return 'get' . ucfirst($shortClassName);
     }
 
+    public static function createUpdateEntityMethodName(string $shortClassName): string
+    {
+        return 'update' . $shortClassName;
+    }
+
     public static function createEntityStubsName(string $shortClassName): string
     {
         return lcfirst($shortClassName) . 'Stubs';

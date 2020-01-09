@@ -60,12 +60,6 @@ class PatchFunctionalEntityController extends AbstractApiController
         $this->get(EditFunctionalEntity::class)->execute($this->buildRequest($functionalEntityId, $model));
     }
 
-    /**
-     * @param int                        $functionalEntityId
-     * @param PatchFunctionalEntityModel $model
-     *
-     * @return EditFunctionalEntityRequest
-     */
     private function buildRequest(
         int $functionalEntityId,
         PatchFunctionalEntityModel $model
