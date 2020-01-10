@@ -5,7 +5,7 @@
     <services>
 
         <service
-                id="GetEntitiesControllerSkeletonModelBuilderImpl"
+                id="OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\Impl\GetEntitiesControllerSkeletonModelBuilderImpl"
                 public="false">
         </service>
 
@@ -13,12 +13,30 @@
                  parent="open_classrooms.code_generator.generator.business_rules.abstract_generator">
             <call method="setGetEntitiesControllerSkeletonModelBuilder">
                 <argument type="service"
-                          id="OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\GetEntitiesControllerSkeletonModelAssembler"/>
+                          id="OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\GetEntitiesControllerSkeletonModelBuilder"/>
+            </call>
+            <call method="setControllerFileObjectFactory">
+                <argument type="service" id="OpenClassrooms\CodeGenerator\Entities\ControllerFileObjectFactory"/>
+            </call>
+            <call method="setEntityFileObjectFactory">
+                <argument type="service" id="open_classrooms.code_generator.file_objects.entity_file_object_factory"/>
+            </call>
+            <call method="setUseCaseFileObjectFactory">
+                <argument type="service" id="open_classrooms.code_generator.file_objects.use_case_file_object_factory"/>
+            </call>
+            <call method="setUseCaseRequestFileObjectFactory">
+                <argument type="service" id="OpenClassrooms\CodeGenerator\Entities\UseCaseRequestFileObjectFactory"/>
+            </call>
+            <call method="setUseCaseResponseFileObjectFactory">
+                <argument type="service" id="open_classrooms.code_generator.file_objects.use_case_response_file_object_factory"/>
+            </call>
+            <call method="setViewModelFileObjectFactory">
+                <argument type="service" id="open_classrooms.code_generator.file_objects.view_model_file_object_factory"/>
             </call>
         </service>
         <service
-                id="GetEntitiesControllerSkeletonModelBuilder"
-                alias="GetEntitiesControllerSkeletonModelBuilderImpl">
+                id="OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\GetEntitiesControllerSkeletonModelBuilder"
+                alias="OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\Impl\GetEntitiesControllerSkeletonModelBuilderImpl">
         </service>
     </services>
 </container>

@@ -15,6 +15,21 @@
                 <argument type="service"
                           id="OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\DeleteEntityControllerSkeletonModelAssembler"/>
             </call>
+            <call method="setUseCaseFileObjectFactory">
+                <argument type="service" id="open_classrooms.code_generator.file_objects.use_case_file_object_factory"/>
+            </call>
+            <call method="setModelFileObjectFactory">
+                <argument type="service" id="OpenClassrooms\CodeGenerator\Entities\ModelFileObjectFactory"/>
+            </call>
+            <call method="setUseCaseRequestFileObjectFactory">
+                <argument type="service" id="OpenClassrooms\CodeGenerator\Entities\UseCaseRequestFileObjectFactory"/>
+            </call>
+            <call method="setEntityFileObjectFactory">
+                <argument type="service" id="open_classrooms.code_generator.file_objects.entity_file_object_factory"/>
+            </call>
+            <call method="setControllerFileObjectFactory">
+                <argument type="service" id="OpenClassrooms\CodeGenerator\Entities\ControllerFileObjectFactory"/>
+            </call>
         </service>
         <service
                 id="OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\DeleteEntityControllerSkeletonModelAssembler"
