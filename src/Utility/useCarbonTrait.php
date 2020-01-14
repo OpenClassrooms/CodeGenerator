@@ -9,7 +9,7 @@ trait useCarbonTrait
     /**
      * @param MethodObject[] $methods
      */
-    private function useCarbon(array $methods)
+    private function useCarbon(array $methods): bool
     {
         foreach ($methods as $method) {
             /** @var MethodObject $method */
@@ -24,12 +24,13 @@ trait useCarbonTrait
     /**
      * @param MethodObject[] $methods
      */
-    private function methodArgumentUseCarbon(array $methods)
+    private function methodArgumentUseCarbon(array $methods): bool
     {
         foreach ($methods as $method) {
-            foreach ($method->getArguments() as $argument)
-            if ($argument->isDateType()) {
-                return true;
+            foreach ($method->getArguments() as $argument) {
+                if ($argument->isDateType()) {
+                    return true;
+                }
             }
         }
 

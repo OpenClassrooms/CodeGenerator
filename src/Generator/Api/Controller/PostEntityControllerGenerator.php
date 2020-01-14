@@ -73,7 +73,6 @@ class PostEntityControllerGenerator extends AbstractGenerator
     {
         $postEntityControllerFileObject = $this->buildPostEntityControllerFileObject(
             $generatorRequest->getEntityClassName()
-        //TODO get UseCaseRequest param(s)
         );
 
         $this->insertFileObject($postEntityControllerFileObject);
