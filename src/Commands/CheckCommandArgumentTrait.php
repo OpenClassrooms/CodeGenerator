@@ -2,6 +2,7 @@
 
 namespace OpenClassrooms\CodeGenerator\Commands;
 
+use OpenClassrooms\CodeGenerator\Exceptions\ClassNameNotExistException;
 use OpenClassrooms\CodeGenerator\Mediators\Args;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -45,7 +46,7 @@ trait CheckCommandArgumentTrait
     }
 
     /**
-     * @throws \ErrorException
+     * @throws ClassNameNotExistException
      */
     private function isValidClassName(string $className): bool
     {
@@ -53,7 +54,7 @@ trait CheckCommandArgumentTrait
             return true;
         }
 
-        throw new \ErrorException("Class $className doesn't exist");
+        throw new ClassNameNotExistException("Class $className doesn't exist");
     }
 
     protected function checkInputDomainAndNameArgument(
