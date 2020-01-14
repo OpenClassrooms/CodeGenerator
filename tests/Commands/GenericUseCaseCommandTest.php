@@ -2,7 +2,9 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Commands;
 
+use OpenClassrooms\CodeGenerator\Commands\GenericUseCaseCommand;
 use OpenClassrooms\CodeGenerator\Mediators\Args;
+use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\UseCaseMediator;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Commands\GenericUseCaseCommandMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Mediators\UseCaseMediatorMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Symfony\Component\DependencyInjection\ContainerMock;
@@ -20,25 +22,25 @@ class GenericUseCaseCommandTest extends TestCase
     const GENERIC_USE_CASE = 'GenericUseCase';
 
     /**
-     * @var GenericUseCaseCommandMock
+     * @var GenericUseCaseCommand
      */
-    protected $commandMock;
+    protected $command;
 
     /**
-     * @var UseCaseMediatorMock
+     * @var UseCaseMediator
      */
-    private $useCaseMediatorMock;
+    private $useCaseMediator;
 
     /**
      * @test
      */
-    public function executeCommand_withArguments(): void
+    public function executeCommandWithArguments(): void
     {
         UseCaseMediatorMock::$fileObjects = $this->writeFileObjects(UseCaseMediatorMock::$fileObjects);
 
         $this->commandTester->execute(
             [
-                'command'      => $this->commandMock->getName(),
+                'command'      => $this->command->getName(),
                 Args::DOMAIN   => self::DOMAIN,
                 Args::USE_CASE => self::GENERIC_USE_CASE,
             ]
@@ -50,7 +52,7 @@ class GenericUseCaseCommandTest extends TestCase
     /**
      * @test
      */
-    public function executeCommand_withoutArguments(): void
+    public function executeCommandWithoutArguments(): void
     {
         UseCaseMediatorMock::$fileObjects = $this->writeFileObjects(UseCaseMediatorMock::$fileObjects);
 
@@ -62,7 +64,7 @@ class GenericUseCaseCommandTest extends TestCase
         );
         $this->commandTester->execute(
             [
-                'command' => $this->commandMock->getName(),
+                'command' => $this->command->getName(),
             ]
         );
 
@@ -71,16 +73,16 @@ class GenericUseCaseCommandTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->commandMock = new GenericUseCaseCommandMock();
+        $this->command = new GenericUseCaseCommandMock();
         $this->application = new Application();
-        $this->application->add($this->commandMock);
-        $this->commandTester = new CommandTester($this->commandMock);
-        $this->useCaseMediatorMock = new UseCaseMediatorMock();
+        $this->application->add($this->command);
+        $this->commandTester = new CommandTester($this->command);
+        $this->useCaseMediator = new UseCaseMediatorMock();
         $this->container = new ContainerMock(
-            ['open_classrooms.code_generator.mediators.business_rules.use_case_mediator' => $this->useCaseMediatorMock]
+            ['open_classrooms.code_generator.mediators.business_rules.use_case_mediator' => $this->useCaseMediator]
 
         );
-        TestClassUtil::setProperty('container', $this->container, $this->commandMock);
+        TestClassUtil::setProperty('container', $this->container, $this->command);
     }
 }
 

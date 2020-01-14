@@ -2,6 +2,7 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Commands;
 
+use OpenClassrooms\CodeGenerator\Commands\CreateEntityUseCaseCommand;
 use OpenClassrooms\CodeGenerator\Mediators\Args;
 use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\CreateEntityUseCaseMediator;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Commands\CreateEntityUseCaseCommandMock;
@@ -18,19 +19,19 @@ class CreateEntityUseCaseCommandTest extends TestCase
     use CommandTestCase;
 
     /**
-     * @var CreateEntityUseCaseCommandMock
+     * @var CreateEntityUseCaseCommand
      */
-    protected $commandMock;
+    protected $command;
 
     /**
-     * @var CreateEntityUseCaseMediatorMock
+     * @var CreateEntityUseCaseMediator
      */
     private $createEntityUseCaseMediatorMock;
 
     /**
      * @test
      */
-    public function executeCommand_withArguments(): void
+    public function executeCommandWithArguments(): void
     {
         CreateEntityUseCaseMediatorMock::$fileObjects = $this->writeFileObjects(
             CreateEntityUseCaseMediatorMock::$fileObjects
@@ -38,7 +39,7 @@ class CreateEntityUseCaseCommandTest extends TestCase
 
         $this->commandTester->execute(
             [
-                'command'        => $this->commandMock->getName(),
+                'command'        => $this->command->getName(),
                 Args::CLASS_NAME => FunctionalEntity::class,
             ]
         );
@@ -49,7 +50,7 @@ class CreateEntityUseCaseCommandTest extends TestCase
     /**
      * @test
      */
-    public function executeCommand_withoutArguments(): void
+    public function executeCommandWithoutArguments(): void
     {
         CreateEntityUseCaseMediatorMock::$fileObjects = $this->writeFileObjects(
             CreateEntityUseCaseMediatorMock::$fileObjects
@@ -62,7 +63,31 @@ class CreateEntityUseCaseCommandTest extends TestCase
         );
         $this->commandTester->execute(
             [
-                'command' => $this->commandMock->getName(),
+                'command' => $this->command->getName(),
+            ]
+        );
+
+        $this->assertCommandFileGeneratedOutput(CreateEntityUseCaseMediatorMock::$fileObjects);
+    }
+
+    /**
+     * @test
+     * @expectedException \OpenClassrooms\CodeGenerator\Exceptions\ClassNameNotExistException
+     */
+    public function executeCommandWithBadClassNameArgument(): void
+    {
+        CreateEntityUseCaseMediatorMock::$fileObjects = $this->writeFileObjects(
+            CreateEntityUseCaseMediatorMock::$fileObjects
+        );
+
+        $this->commandTester->setInputs(
+            [
+                Args::CLASS_NAME => -1,
+            ]
+        );
+        $this->commandTester->execute(
+            [
+                'command' => $this->command->getName(),
             ]
         );
 
@@ -71,16 +96,16 @@ class CreateEntityUseCaseCommandTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->commandMock = new CreateEntityUseCaseCommandMock();
+        $this->command = new CreateEntityUseCaseCommandMock();
         $this->application = new Application();
-        $this->application->add($this->commandMock);
-        $this->commandTester = new CommandTester($this->commandMock);
+        $this->application->add($this->command);
+        $this->commandTester = new CommandTester($this->command);
         $this->createEntityUseCaseMediatorMock = new CreateEntityUseCaseMediatorMock();
         $this->container = new ContainerMock(
             [CreateEntityUseCaseMediator::class => $this->createEntityUseCaseMediatorMock]
 
         );
-        TestClassUtil::setProperty('container', $this->container, $this->commandMock);
+        TestClassUtil::setProperty('container', $this->container, $this->command);
     }
 }
 
