@@ -30,12 +30,12 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Generator\GeneratorMock;
 use OpenClassrooms\CodeGenerator\Tests\Mediators\BusinessRules\Entities\Impl\EntitiesMediatorMock;
 use OpenClassrooms\CodeGenerator\Tests\Mediators\BusinessRules\Responses\Impl\UseCaseDetailResponseMediatorMock;
 use OpenClassrooms\CodeGenerator\Tests\Mediators\BusinessRules\Responses\Impl\UseCaseResponseCommonMediatorMock;
-use OpenClassrooms\CodeGenerator\Tests\Mediators\FlushedFileObjectTestCase;
+use OpenClassrooms\CodeGenerator\Tests\Mediators\MediatorFileObjectTestCase;
 use PHPUnit\Framework\TestCase;
 
 class CreateEntityUseCaseMediatorImplTest extends TestCase
 {
-    use FlushedFileObjectTestCase;
+    use MediatorFileObjectTestCase;
     use CommonEntityUseCaseMediatorTestTrait;
 
     /**

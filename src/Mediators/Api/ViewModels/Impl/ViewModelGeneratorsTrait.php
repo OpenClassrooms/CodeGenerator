@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace OpenClassrooms\CodeGenerator\Mediators\Api\Impl;
+namespace OpenClassrooms\CodeGenerator\Mediators\Api\ViewModels\Impl;
 
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\Request\ViewModelAssemblerTraitGeneratorRequestBuilder;

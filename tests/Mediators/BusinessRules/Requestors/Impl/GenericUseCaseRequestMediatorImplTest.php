@@ -15,12 +15,12 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Requestors
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Requestors\GenericUseCaseRequestFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Generator\GeneratorMock;
-use OpenClassrooms\CodeGenerator\Tests\Mediators\FlushedFileObjectTestCase;
+use OpenClassrooms\CodeGenerator\Tests\Mediators\MediatorFileObjectTestCase;
 use PHPUnit\Framework\TestCase;
 
 class GenericUseCaseRequestMediatorImplTest extends TestCase
 {
-    use FlushedFileObjectTestCase;
+    use MediatorFileObjectTestCase;
 
     const DOMAIN           = 'Domain\SubDomain';
 

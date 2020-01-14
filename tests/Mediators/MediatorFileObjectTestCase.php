@@ -5,7 +5,7 @@ namespace OpenClassrooms\CodeGenerator\Tests\Mediators;
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
 
-trait FlushedFileObjectTestCase
+trait MediatorFileObjectTestCase
 {
     /**
      * @param FileObject[]
@@ -17,6 +17,19 @@ trait FlushedFileObjectTestCase
         foreach ($fileObjects as $fileObject) {
             /** @var FileObject $fileObject */
             $this->assertArrayHasKey($fileObject->getClassName(), InMemoryFileObjectGateway::$flushedFileObjects);
+        }
+    }
+
+    /**
+     * @param FileObject[]
+     */
+    private function assertNotFlushedFileObject($fileObjects): void
+    {
+        $this->assertEmpty(InMemoryFileObjectGateway::$flushedFileObjects);
+        $this->assertNotEmpty(InMemoryFileObjectGateway::$fileObjects);
+        foreach ($fileObjects as $fileObject) {
+            /** @var FileObject $fileObject */
+            $this->assertArrayHasKey($fileObject->getClassName(), InMemoryFileObjectGateway::$fileObjects);
         }
     }
 }

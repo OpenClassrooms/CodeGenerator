@@ -6,6 +6,8 @@ final class Args
 {
     const CLASS_NAME = 'class-name';
 
+    const TYPE       = 'type';
+
     const DOMAIN     = 'domain';
 
     const ENTITY     = 'entity';
