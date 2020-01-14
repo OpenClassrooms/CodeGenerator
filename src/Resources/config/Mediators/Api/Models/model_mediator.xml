@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+
+<container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://symfony.com/schema/dic/services"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+    <service class="OpenClassrooms\CodeGenerator\Mediators\Api\Models\Impl\ModelMediatorImpl" id="open_classrooms.code_generator.mediators.api.models.impl.model_mediator_impl">
+  <call method="setPatchEntityModelGenerator">
+    <argument id="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\EntityUseCaseCommonRequestTraitGenerator" type="service"/>
+  </call>
+  <call method="setEntityModelTraitGenerator">
+    <argument id="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\EntityUseCaseCommonRequestTraitGenerator" type="service"/>
+  </call>
+  <call method="setPostEntityModelGenerator">
+    <argument id="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\EntityUseCaseCommonRequestTraitGenerator" type="service"/>
+  </call>
+</service>
+</services>

@@ -4,7 +4,7 @@ namespace OpenClassrooms\CodeGenerator\Mediators\Api\Impl;
 
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\Gateways\FileObject\FileObjectGateway;
-use OpenClassrooms\CodeGenerator\Mediators\Api\ViewModelMediator;
+use OpenClassrooms\CodeGenerator\Mediators\Api\ViewModels\ViewModelMediator;
 use OpenClassrooms\CodeGenerator\Mediators\Args;
 use OpenClassrooms\CodeGenerator\Mediators\Options;
 
