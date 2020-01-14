@@ -34,29 +34,29 @@ class ModelFieldUtility
 
     private static function buildAssertDocComment(string $docComment): ?string
     {
-        switch ($docComment) {
-            case DocCommentUtility::getType($docComment) === 'int':
+        switch (DocCommentUtility::getType($docComment)) {
+            case 'int':
                 return "/**
      * @var int
      *
      * @Assert\NotBlank
      * @Assert\Type(\"integer\")
      */";
-            case DocCommentUtility::getType($docComment) === 'string':
+            case 'string':
                 return "/**
      * @var string
      *
      * @Assert\NotBlank
      * @Assert\Type(\"string\")
      */";
-            case DocCommentUtility::getType($docComment) === 'bool':
+            case 'bool':
                 return "/**
      * @var bool
      *
      * @Assert\NotNull
      * @Assert\Type(\"bool\")
      */";
-            case DocCommentUtility::getType($docComment) === 'array':
+            case 'array':
                 return "/**
      * @var " . DocCommentUtility::getInternalTypeNameFromDocComment($docComment) . "[]
      *
@@ -73,7 +73,9 @@ class ModelFieldUtility
      * @Assert\DateTime(format=\"Y-m-d\TH:i:sO\")
      */";
             default:
-                return null;
+                return "/**
+     * @var " . DocCommentUtility::getType($docComment) . "
+     */";
         }
     }
 }
