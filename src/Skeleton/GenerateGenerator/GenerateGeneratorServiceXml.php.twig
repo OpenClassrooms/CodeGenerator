@@ -10,7 +10,7 @@
         </service>
 
         <service id="OpenClassrooms\CodeGenerator\Generator\{{ skeletonModel.domain }}\{{ skeletonModel.entity }}Generator"
-                 parent="open_classrooms.code_generator.generator.business_rules.abstract_generator">
+                 parent="open_classrooms.code_generator.generator.abstract_generator">
             <call method="set{{ skeletonModel.entity }}SkeletonModel{{ skeletonModel.constructionPattern }}">
                 <argument type="service"
                           id="OpenClassrooms\CodeGenerator\SkeletonModels\{{ skeletonModel.domain }}\{{ skeletonModel.entity }}SkeletonModel{{ skeletonModel.constructionPattern }}"/>
