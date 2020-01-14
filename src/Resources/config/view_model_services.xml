@@ -29,7 +29,7 @@
         <import resource="Generator/Tests/Doubles/Api/ViewModels/view_model_list_item_test_case.xml"/>
         <import resource="Generator/Tests/Doubles/Api/ViewModels/view_model_list_item_stub.xml"/>
         <import resource="Generator/Tests/Doubles/Api/ViewModels/view_model_test_case.xml"/>
-        <import resource="Mediators/Api/view_model_mediator.xml"/>
+        <import resource="Mediators/Api/ViewModels/view_model_mediator.xml"/>
         <import resource="Services/templating_service.xml"/>
     </imports>
 </container>

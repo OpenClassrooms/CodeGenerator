@@ -5,14 +5,16 @@
     <imports>
         <import resource="FileObject/abstract_file_object_factory.xml"/>
         <import resource="FileObject/factories.xml"/>
-        <import resource="Generator/BusinessRules/abstract_use_case_generator.xml"/>
-        <import resource="Generator/BusinessRules/Requestors/delete_entity_use_case_request_builder_generator.xml"/>
-        <import resource="Generator/BusinessRules/Requestors/delete_entity_use_case_request_generator.xml"/>
-        <import resource="Generator/BusinessRules/UseCases/delete_entity_use_case_request_builder_impl_generator.xml"/>
-        <import resource="Generator/BusinessRules/UseCases/delete_entity_use_case_request_dto_generator.xml"/>
-        <import resource="Generator/BusinessRules/UseCases/delete_entity_use_case_generator.xml"/>
-        <import resource="Generator/Tests/BusinessRules/UseCases/delete_entity_use_case_test_generator.xml"/>
-        <import resource="Mediators/BusinessRules/UseCases/delete_entity_use_case_mediator.xml"/>
+        <import resource="Generator/abstract_generator.xml"/>
+        <import resource="Generator/Api/Controller/delete_entity_controller_generator.xml"/>
+        <import resource="Generator/Api/Controller/get_entities_controller_generator.xml"/>
+        <import resource="Generator/Api/Controller/get_entity_controller_generator.xml"/>
+        <import resource="Generator/Api/Controller/patch_entity_controller_generator.xml"/>
+        <import resource="Generator/Api/Controller/post_entity_controller_generator.xml"/>
+        <import resource="Generator/Api/Models/entity_model_trait_generator.xml"/>
+        <import resource="Generator/Api/Models/patch_entity_model_generator.xml"/>
+        <import resource="Generator/Api/Models/post_entity_model_generator.xml"/>
+        <import resource="Mediators/Api/Controller/common_controller_mediator.xml"/>
         <import resource="Services/templating_service.xml"/>
     </imports>
 </container>

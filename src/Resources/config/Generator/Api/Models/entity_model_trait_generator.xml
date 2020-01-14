@@ -10,10 +10,14 @@
         </service>
 
         <service id="OpenClassrooms\CodeGenerator\Generator\Api\Models\EntityModelTraitGenerator"
-                 parent="open_classrooms.code_generator.generator.business_rules.abstract_generator">
+                 parent="open_classrooms.code_generator.generator.abstract_generator">
             <call method="setEntityModelTraitSkeletonModelAssembler">
                 <argument type="service"
                           id="OpenClassrooms\CodeGenerator\SkeletonModels\Api\Models\EntityModelTraitSkeletonModelAssembler"/>
+            </call>
+            <call method="setModelFileObjectFactory">
+                <argument type="service"
+                          id="OpenClassrooms\CodeGenerator\Entities\ModelFileObjectFactory"/>
             </call>
         </service>
         <service

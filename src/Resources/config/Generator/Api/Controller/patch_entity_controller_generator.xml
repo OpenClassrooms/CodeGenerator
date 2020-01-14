@@ -10,7 +10,7 @@
         </service>
 
         <service id="OpenClassrooms\CodeGenerator\Generator\Api\Controller\PatchEntityControllerGenerator"
-                 parent="open_classrooms.code_generator.generator.business_rules.abstract_generator">
+                 parent="open_classrooms.code_generator.generator.abstract_generator">
             <call method="setPatchEntityControllerSkeletonModelBuilder">
                 <argument type="service"
                           id="OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\PatchEntityControllerSkeletonModelBuilder"/>
