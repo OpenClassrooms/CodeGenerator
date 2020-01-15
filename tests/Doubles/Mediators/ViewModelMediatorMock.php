@@ -11,8 +11,6 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\ViewModels\ViewModel
 
 class ViewModelMediatorMock extends ViewModelMediatorImpl
 {
-    public static $alreadyExistFileObjects = [];
-
     public static $fileObjects = [];
 
     public function __construct()

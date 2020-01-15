@@ -64,13 +64,11 @@ class MethodUtility
 
     private static function buildConstantArgument(string $className, \ReflectionProperty $field): FieldObject
     {
-        $argument = new FieldObject(
+        return new FieldObject(
             FileObjectUtility::getShortClassName($className) . 'Stub1::' . StringUtility::convertToUpperSnakeCase(
                 $field->getName()
             )
         );
-
-        return $argument;
     }
 
     public static function buildWitherMethods(string $className, string $returnType = null): array

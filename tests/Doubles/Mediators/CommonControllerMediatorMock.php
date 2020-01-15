@@ -14,8 +14,6 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\Models\PostEntityMod
 
 class CommonControllerMediatorMock extends CommonControllerMediatorImpl
 {
-    public static $alreadyExistFileObjects = [];
-
     public static $fileObjects = [];
 
     public function __construct()

@@ -24,7 +24,7 @@ class UseCaseMediatorImplTest extends TestCase
     {
         $expectedFileObjects = $this->useCaseMediator->mediate();
 
-        $this->assertInternalType('array', $expectedFileObjects);
+        $this->assertIsArray($expectedFileObjects);
         $this->assertNotEmpty($expectedFileObjects);
         foreach ($expectedFileObjects as $fileObject) {
             $this->assertInstanceOf(FileObject::class, $fileObject);

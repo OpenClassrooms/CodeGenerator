@@ -23,8 +23,6 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\Doubles\BusinessRu
 
 class GetEntityUseCaseMediatorMock extends GetEntityUseCaseMediatorImpl
 {
-    public static $alreadyExistFileObjects = [];
-
     public static $fileObjects = [];
 
     public function __construct()

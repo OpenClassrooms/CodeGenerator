@@ -25,6 +25,8 @@ class ViewModelTestCaseGenerator extends AbstractViewModelGenerator
     {
         $viewModelTestCaseFileObject = $this->buildTestCaseFileObject($generatorRequest->getUseCaseResponseClassName());
 
+        $this->insertFileObject($viewModelTestCaseFileObject);
+
         return $viewModelTestCaseFileObject;
     }
 
@@ -40,7 +42,6 @@ class ViewModelTestCaseGenerator extends AbstractViewModelGenerator
         $viewModelTestCaseFileObject->setContent(
             $this->generateContent($viewModelTestCaseFileObject, $viewModelFileObject)
         );
-        $this->insertFileObject($viewModelTestCaseFileObject);
 
         return $viewModelTestCaseFileObject;
     }

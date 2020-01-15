@@ -75,15 +75,15 @@ class ConstUtilityTest extends TestCase
     }
 
     /**
-     * @param mixed $expectedValue
+     * @param mixed $internalType
      * @param mixed $actual
      */
-    private function assertType($expectedValue, $actual): void
+    private function assertType($internalType, $actual): void
     {
-        if (('\DateTime' || '\DateTimeImmutable' || '\DateTimeInterface') === $expectedValue) {
-            $this->assertInstanceOf($expectedValue, $actual->getValue());
+        if (('\DateTime' || '\DateTimeImmutable' || '\DateTimeInterface') === $internalType) {
+            $this->assertInstanceOf($internalType, $actual->getValue());
         } else {
-            $this->assertInternalType($expectedValue, $actual->getValue());
+            $this->{'assertIs' . $internalType}($actual->getValue());
         }
     }
 

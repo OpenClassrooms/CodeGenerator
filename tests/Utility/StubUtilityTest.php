@@ -23,7 +23,7 @@ class StubUtilityTest extends TestCase
         if ($this->isValidDateFormat($actual)) {
             $this->assertInstanceOf(get_class($expectedValue), Carbon::parse($actual));
         } else {
-            $this->assertInternalType(gettype($expectedValue), $actual);
+            $this->{'assertIs' . $this->getInternalTypeFromValue($expectedValue)}($actual);
         }
     }
 
@@ -33,6 +33,24 @@ class StubUtilityTest extends TestCase
     private function isValidDateFormat($value): bool
     {
         return is_string($value) && (preg_match("/\d{4}\-\d{2}-\d{2}/", $value));
+    }
+
+    /**
+     * @param mixed
+     */
+    private function getInternalTypeFromValue($value): string
+    {
+        if ('integer' === gettype($value)) {
+            return 'Int';
+        }
+        if ('double' === gettype($value)) {
+            return 'Numeric';
+        }
+        if ('boolean' === gettype($value)) {
+            return 'Bool';
+        }
+
+        return ucfirst(gettype($value));
     }
 
     /**

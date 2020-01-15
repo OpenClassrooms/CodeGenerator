@@ -104,14 +104,12 @@ class ViewModelDetailAssemblerImplTestGenerator extends AbstractViewModelGenerat
 
     private function createViewModelDetailAssemblerFileObject(): FileObject
     {
-        $viewModelDetailAssembler = $this->createViewModelFileObject(
+        return $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_ASSEMBLER,
             $this->domain,
             $this->entity,
             $this->baseNamespace
         );
-
-        return $viewModelDetailAssembler;
     }
 
     private function createViewModelDetailAssemblerImplTestFileObjectFileObject(): FileObject

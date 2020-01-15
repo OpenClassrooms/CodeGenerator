@@ -64,7 +64,8 @@ class GenerateGeneratorGeneratorTest extends TestCase
                 return [$actualFileObject, $key];
             }
         }
-        $actualFileObject;
+
+        return null;
     }
 
     /**

@@ -45,7 +45,7 @@ class UseCarbonTraitTest extends TestCase
              */
             public function getValue(string $argument)
             {
-                echo $argument;
+                return $argument;
             }
         });
     }

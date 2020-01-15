@@ -23,6 +23,11 @@ class CreateEntityUseCaseTestGenerator extends AbstractUseCaseGenerator
     private $createEntityTestSkeletonModelBuilder;
 
     /**
+     * @var MethodUtilityStrategy
+     */
+    private $methodUtility;
+
+    /**
      * @param CreateEntityUseCaseTestGeneratorRequest $generatorRequest
      */
     public function generate(GeneratorRequest $generatorRequest): FileObject

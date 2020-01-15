@@ -12,8 +12,6 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\BusinessRules\UseC
 
 class DeleteEntityUseCaseMediatorMock extends DeleteEntityUseCaseMediatorImpl
 {
-    public static $alreadyExistFileObjects = [];
-
     public static $fileObjects = [];
 
     public function __construct()
