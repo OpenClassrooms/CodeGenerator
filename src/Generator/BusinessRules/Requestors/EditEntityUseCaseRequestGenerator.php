@@ -22,11 +22,6 @@ class EditEntityUseCaseRequestGenerator extends AbstractUseCaseGenerator
     private $editEntityUseCaseRequestSkeletonModelAssembler;
 
     /**
-     * @var MethodUtilityStrategy
-     */
-    private $methodUtility;
-
-    /**
      * @param EditEntityUseCaseRequestGeneratorRequest $generatorRequest
      */
     public function generate(GeneratorRequest $generatorRequest): FileObject
