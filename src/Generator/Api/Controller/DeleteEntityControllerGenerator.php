@@ -36,11 +36,6 @@ class DeleteEntityControllerGenerator extends AbstractGenerator
     private $entityFileObjectFactory;
 
     /**
-     * @var ModelFileObjectFactory
-     */
-    private $modelFileObjectFactory;
-
-    /**
      * @var UseCaseFileObjectFactory
      */
     private $useCaseFileObjectFactory;
@@ -158,11 +153,6 @@ class DeleteEntityControllerGenerator extends AbstractGenerator
     public function setUseCaseFileObjectFactory(UseCaseFileObjectFactory $useCaseFileObjectFactory): void
     {
         $this->useCaseFileObjectFactory = $useCaseFileObjectFactory;
-    }
-
-    public function setModelFileObjectFactory(ModelFileObjectFactory $modelFileObjectFactory): void
-    {
-        $this->modelFileObjectFactory = $modelFileObjectFactory;
     }
 
     public function setUseCaseRequestFileObjectFactory(

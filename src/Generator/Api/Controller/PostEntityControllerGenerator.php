@@ -26,6 +26,8 @@ use OpenClassrooms\CodeGenerator\Utility\MethodUtility;
 
 class PostEntityControllerGenerator extends AbstractGenerator
 {
+    use CommonControllerFactoryTrait;
+
     /**
      * @var PostEntityControllerSkeletonModelBuilder
      */
@@ -241,40 +243,8 @@ class PostEntityControllerGenerator extends AbstractGenerator
         $this->postEntityControllerSkeletonModelBuilder = $postEntityControllerSkeletonModelBuilder;
     }
 
-    public function setControllerFileObjectFactory(ControllerFileObjectFactory $controllerFileObjectFactory): void
-    {
-        $this->controllerFileObjectFactory = $controllerFileObjectFactory;
-    }
-
-    public function setEntityFileObjectFactory(EntityFileObjectFactory $entityFileObjectFactory): void
-    {
-        $this->entityFileObjectFactory = $entityFileObjectFactory;
-    }
-
     public function setModelFileObjectFactory(ModelFileObjectFactory $modelFileObjectFactory): void
     {
         $this->modelFileObjectFactory = $modelFileObjectFactory;
-    }
-
-    public function setUseCaseFileObjectFactory(UseCaseFileObjectFactory $useCaseFileObjectFactory): void
-    {
-        $this->useCaseFileObjectFactory = $useCaseFileObjectFactory;
-    }
-
-    public function setUseCaseRequestFileObjectFactory(
-        UseCaseRequestFileObjectFactory $useCaseRequestFileObjectFactory
-    ): void {
-        $this->useCaseRequestFileObjectFactory = $useCaseRequestFileObjectFactory;
-    }
-
-    public function setUseCaseResponseFileObjectFactory(
-        UseCaseResponseFileObjectFactory $useCaseResponseFileObjectFactory
-    ): void {
-        $this->useCaseResponseFileObjectFactory = $useCaseResponseFileObjectFactory;
-    }
-
-    public function setViewModelFileObjectFactory(ViewModelFileObjectFactory $viewModelFileObjectFactory): void
-    {
-        $this->viewModelFileObjectFactory = $viewModelFileObjectFactory;
     }
 }

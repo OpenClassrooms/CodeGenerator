@@ -2,8 +2,6 @@
 
 namespace OpenClassrooms\CodeGenerator\Generator\Api\Controller;
 
-use OpenClassrooms\CodeGenerator\Entities\ControllerFileObjectFactory;
-use OpenClassrooms\CodeGenerator\Entities\EntityFileObjectFactory;
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\Entities\Type\ControllerFileObjectType;
 use OpenClassrooms\CodeGenerator\Entities\Type\EntityFileObjectType;
@@ -11,10 +9,6 @@ use OpenClassrooms\CodeGenerator\Entities\Type\UseCaseFileObjectType;
 use OpenClassrooms\CodeGenerator\Entities\Type\UseCaseRequestFileObjectType;
 use OpenClassrooms\CodeGenerator\Entities\Type\UseCaseResponseFileObjectType;
 use OpenClassrooms\CodeGenerator\Entities\Type\ViewModelFileObjectType;
-use OpenClassrooms\CodeGenerator\Entities\UseCaseFileObjectFactory;
-use OpenClassrooms\CodeGenerator\Entities\UseCaseRequestFileObjectFactory;
-use OpenClassrooms\CodeGenerator\Entities\UseCaseResponseFileObjectFactory;
-use OpenClassrooms\CodeGenerator\Entities\ViewModelFileObjectFactory;
 use OpenClassrooms\CodeGenerator\Generator\AbstractGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Api\Controller\Request\GetEntityControllerGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
@@ -23,40 +17,12 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\GetEntityControll
 
 class GetEntityControllerGenerator extends AbstractGenerator
 {
+    use CommonControllerFactoryTrait;
+
     /**
      * @var GetEntityControllerSkeletonModelBuilder
      */
     private $getEntityControllerSkeletonModelBuilder;
-
-    /**
-     * @var ControllerFileObjectFactory
-     */
-    private $controllerFileObjectFactory;
-
-    /**
-     * @var EntityFileObjectFactory
-     */
-    private $entityFileObjectFactory;
-
-    /**
-     * @var UseCaseFileObjectFactory
-     */
-    private $useCaseFileObjectFactory;
-
-    /**
-     * @var UseCaseRequestFileObjectFactory
-     */
-    private $useCaseRequestFileObjectFactory;
-
-    /**
-     * @var UseCaseResponseFileObjectFactory
-     */
-    private $useCaseResponseFileObjectFactory;
-
-    /**
-     * @var ViewModelFileObjectFactory
-     */
-    private $viewModelFileObjectFactory;
 
     /**
      * @param GetEntityControllerGeneratorRequest $generatorRequest
@@ -215,41 +181,5 @@ class GetEntityControllerGenerator extends AbstractGenerator
         GetEntityControllerSkeletonModelBuilder $getEntityControllerSkeletonModelBuilder
     ): void {
         $this->getEntityControllerSkeletonModelBuilder = $getEntityControllerSkeletonModelBuilder;
-    }
-
-    public function setControllerFileObjectFactory(
-        ControllerFileObjectFactory $controllerFileObjectFactory
-    ): void {
-        $this->controllerFileObjectFactory = $controllerFileObjectFactory;
-    }
-
-    public function setEntityFileObjectFactory(
-        EntityFileObjectFactory $entityFileObjectFactory
-    ): void {
-        $this->entityFileObjectFactory = $entityFileObjectFactory;
-    }
-
-    public function setUseCaseFileObjectFactory(
-        UseCaseFileObjectFactory $useCaseFileObjectFactory
-    ): void {
-        $this->useCaseFileObjectFactory = $useCaseFileObjectFactory;
-    }
-
-    public function setUseCaseRequestFileObjectFactory(
-        UseCaseRequestFileObjectFactory $useCaseRequestFileObjectFactory
-    ): void {
-        $this->useCaseRequestFileObjectFactory = $useCaseRequestFileObjectFactory;
-    }
-
-    public function setUseCaseResponseFileObjectFactory(
-        UseCaseResponseFileObjectFactory $useCaseResponseFileObjectFactory
-    ): void {
-        $this->useCaseResponseFileObjectFactory = $useCaseResponseFileObjectFactory;
-    }
-
-    public function setViewModelFileObjectFactory(
-        ViewModelFileObjectFactory $viewModelFileObjectFactory
-    ): void {
-        $this->viewModelFileObjectFactory = $viewModelFileObjectFactory;
     }
 }
