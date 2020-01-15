@@ -16,7 +16,19 @@
                  class="OpenClassrooms\CodeGenerator\Entities\Impl\UseCaseFileObjectFactoryImpl"
                  parent="open_classrooms.code_generator.file_objects.abstract_file_object_factory"/>
         <service id="OpenClassrooms\CodeGenerator\Entities\Impl\UseCaseRequestFileObjectFactoryImpl"
-                 class="OpenClassrooms\CodeGenerator\Entities\Impl\UseCaseRequestFileObjectFactoryImpl"
-                 parent="open_classrooms.code_generator.file_objects.abstract_file_object_factory"/>
+                 parent="open_classrooms.code_generator.file_objects.abstract_file_object_factory"
+                 public="false"/>
+        <service id="OpenClassrooms\CodeGenerator\Entities\UseCaseRequestFileObjectFactory"
+                 alias="OpenClassrooms\CodeGenerator\Entities\Impl\UseCaseRequestFileObjectFactoryImpl"/>
+        <service id="OpenClassrooms\CodeGenerator\Entities\Impl\ModelFileObjectFactoryImpl"
+                 parent="open_classrooms.code_generator.file_objects.abstract_file_object_factory"
+                 public="false"/>
+        <service id="OpenClassrooms\CodeGenerator\Entities\ModelFileObjectFactory"
+                 alias="OpenClassrooms\CodeGenerator\Entities\Impl\ModelFileObjectFactoryImpl"/>
+        <service id="OpenClassrooms\CodeGenerator\Entities\Impl\ControllerFileObjectFactoryImpl"
+                 parent="open_classrooms.code_generator.file_objects.abstract_file_object_factory"
+                 public="false"/>
+        <service id="OpenClassrooms\CodeGenerator\Entities\ControllerFileObjectFactory"
+                 alias="OpenClassrooms\CodeGenerator\Entities\Impl\ControllerFileObjectFactoryImpl"/>
     </services>
 </container>

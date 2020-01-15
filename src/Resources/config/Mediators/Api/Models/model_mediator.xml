@@ -1,0 +1,59 @@
+<?xml version="1.0" ?>
+
+<container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://symfony.com/schema/dic/services"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <service
+                id="OpenClassrooms\CodeGenerator\Generator\Api\Models\DTO\Request\PatchEntityModelGeneratorRequestBuilderImpl"/>
+        <service
+                id="OpenClassrooms\CodeGenerator\Generator\Api\Models\DTO\Request\EntityModelTraitGeneratorRequestBuilderImpl"/>
+        <service
+                id="OpenClassrooms\CodeGenerator\Generator\Api\Models\DTO\Request\PostEntityModelGeneratorRequestBuilderImpl"/>
+
+        <service
+                id="OpenClassrooms\CodeGenerator\Generator\Api\Models\Request\PatchEntityModelGeneratorRequestBuilder"
+                alias="OpenClassrooms\CodeGenerator\Generator\Api\Models\DTO\Request\PatchEntityModelGeneratorRequestBuilderImpl"/>
+        <service
+                id="OpenClassrooms\CodeGenerator\Generator\Api\Models\Request\EntityModelTraitGeneratorRequestBuilder"
+                alias="OpenClassrooms\CodeGenerator\Generator\Api\Models\DTO\Request\EntityModelTraitGeneratorRequestBuilderImpl"/>
+        <service
+                id="OpenClassrooms\CodeGenerator\Generator\Api\Models\Request\PostEntityModelGeneratorRequestBuilder"
+                alias="OpenClassrooms\CodeGenerator\Generator\Api\Models\DTO\Request\PostEntityModelGeneratorRequestBuilderImpl"/>
+
+        <service id="OpenClassrooms\CodeGenerator\Mediators\Api\Models\Impl\ModelMediatorImpl">
+            <call method="setPatchEntityModelGenerator">
+                <argument
+                        id="OpenClassrooms\CodeGenerator\Generator\Api\Models\PatchEntityModelGenerator"
+                        type="service"/>
+            </call>
+            <call method="setEntityModelTraitGenerator">
+                <argument
+                        id="OpenClassrooms\CodeGenerator\Generator\Api\Models\EntityModelTraitGenerator"
+                        type="service"/>
+            </call>
+            <call method="setPostEntityModelGenerator">
+                <argument
+                        id="OpenClassrooms\CodeGenerator\Generator\Api\Models\PostEntityModelGenerator"
+                        type="service"/>
+            </call>
+            <call method="setPatchEntityModelGeneratorRequestBuilder">
+                <argument
+                        id="OpenClassrooms\CodeGenerator\Generator\Api\Models\Request\PatchEntityModelGeneratorRequestBuilder"
+                        type="service"/>
+            </call>
+            <call method="setEntityModelTraitGeneratorRequestBuilder">
+                <argument
+                        id="OpenClassrooms\CodeGenerator\Generator\Api\Models\Request\EntityModelTraitGeneratorRequestBuilder"
+                        type="service"/>
+            </call>
+            <call method="setPostEntityModelGeneratorRequestBuilder">
+                <argument
+                        id="OpenClassrooms\CodeGenerator\Generator\Api\Models\Request\PostEntityModelGeneratorRequestBuilder"
+                        type="service"/>
+            </call>
+        </service>
+        <service id="OpenClassrooms\CodeGenerator\Mediators\Api\Models\ModelMediator"
+                 alias="OpenClassrooms\CodeGenerator\Mediators\Api\Models\Impl\ModelMediatorImpl">
+        </service>
+    </services>
+</container>

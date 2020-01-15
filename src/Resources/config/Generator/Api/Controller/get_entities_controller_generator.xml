@@ -1,0 +1,42 @@
+<?xml version="1.0" ?>
+
+<container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://symfony.com/schema/dic/services"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+
+        <service
+                id="OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\Impl\GetEntitiesControllerSkeletonModelBuilderImpl"
+                public="false">
+        </service>
+
+        <service id="OpenClassrooms\CodeGenerator\Generator\Api\Controller\GetEntitiesControllerGenerator"
+                 parent="open_classrooms.code_generator.generator.abstract_generator">
+            <call method="setGetEntitiesControllerSkeletonModelBuilder">
+                <argument type="service"
+                          id="OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\GetEntitiesControllerSkeletonModelBuilder"/>
+            </call>
+            <call method="setControllerFileObjectFactory">
+                <argument type="service" id="OpenClassrooms\CodeGenerator\Entities\ControllerFileObjectFactory"/>
+            </call>
+            <call method="setEntityFileObjectFactory">
+                <argument type="service" id="open_classrooms.code_generator.file_objects.entity_file_object_factory"/>
+            </call>
+            <call method="setUseCaseFileObjectFactory">
+                <argument type="service" id="open_classrooms.code_generator.file_objects.use_case_file_object_factory"/>
+            </call>
+            <call method="setUseCaseRequestFileObjectFactory">
+                <argument type="service" id="OpenClassrooms\CodeGenerator\Entities\UseCaseRequestFileObjectFactory"/>
+            </call>
+            <call method="setUseCaseResponseFileObjectFactory">
+                <argument type="service" id="open_classrooms.code_generator.file_objects.use_case_response_file_object_factory"/>
+            </call>
+            <call method="setViewModelFileObjectFactory">
+                <argument type="service" id="open_classrooms.code_generator.file_objects.view_model_file_object_factory"/>
+            </call>
+        </service>
+        <service
+                id="OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\GetEntitiesControllerSkeletonModelBuilder"
+                alias="OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\Impl\GetEntitiesControllerSkeletonModelBuilderImpl">
+        </service>
+    </services>
+</container>

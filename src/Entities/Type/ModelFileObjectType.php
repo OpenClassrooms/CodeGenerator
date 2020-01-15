@@ -4,9 +4,9 @@ namespace OpenClassrooms\CodeGenerator\Entities\Type;
 
 final class ModelFileObjectType
 {
-    const MODEL_ENTITY_TRAIT = 'MODEL_ENTITY_TRAIT';
+    public const API_MODEL_ENTITY_TRAIT = 'API_MODEL_ENTITY_TRAIT';
 
-    const MODEL_PATCH_ENTITY = 'MODEL_PATCH_ENTITY';
+    public const API_MODEL_PATCH_ENTITY = 'API_MODEL_PATCH_ENTITY';
 
-    const MODEL_POST_ENTITY  = 'MODEL_POST_ENTITY';
+    public const API_MODEL_POST_ENTITY  = 'API_MODEL_POST_ENTITY';
 }

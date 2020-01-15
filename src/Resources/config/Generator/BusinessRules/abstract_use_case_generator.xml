@@ -17,7 +17,7 @@
             </call>
             <call method="setUseCaseRequestFileObjectFactory">
                 <argument type="service"
-                          id="OpenClassrooms\CodeGenerator\Entities\Impl\UseCaseRequestFileObjectFactoryImpl"/>
+                          id="OpenClassrooms\CodeGenerator\Entities\UseCaseRequestFileObjectFactory"/>
             </call>
             <call method="setUseCaseResponseFileObjectFactory">
                 <argument type="service"

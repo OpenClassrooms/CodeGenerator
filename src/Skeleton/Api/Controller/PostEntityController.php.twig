@@ -1,0 +1,77 @@
+{% include "Header.php.twig" %}
+
+namespace {{ skeletonModel.namespace }};
+
+{% if skeletonModel.useCarbon %}
+use Carbon\CarbonImmutable;
+{% endif %}
+use {{ skeletonModel.postEntityModelClassName }};
+use {{ skeletonModel.entityViewModelDetailClassName }};
+use {{ skeletonModel.entityViewModelDetailAssemblerClassName }};
+use {{ skeletonModel.entityNotFoundExceptionClassName }};
+use {{ skeletonModel.createEntityUseCaseRequestBuilderClassName }};
+use {{ skeletonModel.entityUseCaseDetailResponseClassName }};
+use {{ skeletonModel.createEntityUseCaseClassName }};
+use Symfony\Component\HttpFoundation\JsonResponse;
+
+class {{ skeletonModel.shortName }} extends AbstractApiController
+{
+    /**
+     * @var {{ skeletonModel.createEntityUseCaseRequestBuilderShortName }}
+     */
+    private ${{ skeletonModel.createEntityUseCaseRequestBuilderArgument }};
+
+    /**
+     * @var {{ skeletonModel.entityViewModelDetailAssemblerShortName}}
+     */
+    private ${{ skeletonModel.entityViewModelDetailAssemblerArgument }};
+
+    public function __construct(
+        {{ skeletonModel.entityViewModelDetailAssemblerShortName }} $assembler,
+        {{ skeletonModel.createEntityUseCaseRequestBuilderShortName }} $builder
+    ) {
+        $this->{{ skeletonModel.entityViewModelDetailAssemblerArgument }} = $assembler;
+        $this->{{ skeletonModel.createEntityUseCaseRequestBuilderArgument }} = $builder;
+    }
+
+    /**
+     * @Security("")
+     */
+    public function postAction(): JsonResponse
+    {
+        try {
+            $model = $this->getModelFromRequest({{ skeletonModel.postEntityModelShortName }}::class);
+            $response = $this->{{ skeletonModel.createEntityMethod }}($model);
+
+            return $this->createCreatedResponse($this->generateLocationUrl(), $this->buildViewModel($response));
+        } catch ({{ skeletonModel.entityNotFoundExceptionShortName }} $e) {
+            $this->throwNotFoundException();
+        }
+    }
+
+    private function {{ skeletonModel.createEntityMethod }}({{ skeletonModel.postEntityModelShortName }} $model): {{ skeletonModel.entityUseCaseDetailResponseShortName }}
+    {
+        return $this->get({{ skeletonModel.createEntityUseCaseShortName }}::class)->execute(
+            $this->{{ skeletonModel.createEntityUseCaseRequestBuilderArgument}}
+                ->create()
+{% for method in skeletonModel.postEntityModelMethods %}
+{% if method.arguments[0].isDateType %}
+                ->{{ method.name }}(new CarbonImmutable($model->{{ method.arguments[0].name }}))
+{% else %}
+                ->{{ method.name }}($model->{{ method.arguments[0].name }})
+{% endif %}
+{% endfor %}
+                ->build()
+        );
+    }
+
+    private function generateLocationUrl(): string
+    {
+        return $this->generateUrl('', []);
+    }
+
+    private function buildViewModel({{ skeletonModel.entityUseCaseDetailResponseShortName }} $response): {{ skeletonModel.entityViewModelDetailShortName }}
+    {
+        return $this->{{ skeletonModel.entityViewModelDetailAssemblerArgument }}->create($response);
+    }
+}

@@ -88,6 +88,8 @@ class FieldUtilityTest extends TestCase
                 if ('set' !== substr($method->getName(), 0, 3)) {
                     return $method;
                 }
+
+                return null;
             }
         );
     }

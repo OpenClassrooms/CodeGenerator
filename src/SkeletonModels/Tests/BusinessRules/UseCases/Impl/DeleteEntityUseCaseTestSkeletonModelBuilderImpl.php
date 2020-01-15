@@ -38,7 +38,7 @@ class DeleteEntityUseCaseTestSkeletonModelBuilderImpl implements DeleteEntityUse
         $this->skeletonModel->className = $deleteEntityUseCaseTestFileObject->getClassName();
         $this->skeletonModel->shortName = $deleteEntityUseCaseTestFileObject->getShortName();
         $this->skeletonModel->namespace = $deleteEntityUseCaseTestFileObject->getNamespace();
-        $this->skeletonModel->withEntityIdMethod = NameUtility::creatChainedEntityIdMethodName(
+        $this->skeletonModel->withEntityIdMethod = NameUtility::createChainedEntityIdMethodName(
             $deleteEntityUseCaseTestFileObject->getEntity()
         );
         $this->skeletonModel->entitiesArgument = lcfirst(

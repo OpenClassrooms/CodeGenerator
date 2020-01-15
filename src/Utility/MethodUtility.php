@@ -64,13 +64,11 @@ class MethodUtility
 
     private static function buildConstantArgument(string $className, \ReflectionProperty $field): FieldObject
     {
-        $argument = new FieldObject(
+        return new FieldObject(
             FileObjectUtility::getShortClassName($className) . 'Stub1::' . StringUtility::convertToUpperSnakeCase(
                 $field->getName()
             )
         );
-
-        return $argument;
     }
 
     public static function buildWitherMethods(string $className, string $returnType = null): array
@@ -87,10 +85,12 @@ class MethodUtility
         return $methodsChained;
     }
 
-    private static function buildWitherMethodObject(\ReflectionProperty $field, string $returnType): MethodObject
+    private static function buildWitherMethodObject(\ReflectionProperty $field, ?string $returnType): MethodObject
     {
         $methodChained = new MethodObject(NameUtility::createMethodsChainedName($field));
-        $methodChained->setReturnType($returnType);
+        if (null !== $returnType) {
+            $methodChained->setReturnType($returnType);
+        }
         $methodChained->addArgument(self::buildArgument($field));
 
         return $methodChained;

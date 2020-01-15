@@ -24,12 +24,12 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\D
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\BusinessRules\UseCases\DeleteEntityUseCaseTestFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Generator\GeneratorMock;
-use OpenClassrooms\CodeGenerator\Tests\Mediators\FlushedFileObjectTestCase;
+use OpenClassrooms\CodeGenerator\Tests\Mediators\MediatorFileObjectTestCase;
 use PHPUnit\Framework\TestCase;
 
 class DeleteEntityUseCaseMediatorImplTest extends TestCase
 {
-    use FlushedFileObjectTestCase;
+    use MediatorFileObjectTestCase;
     use CommonEntityUseCaseMediatorTestTrait;
 
     /**

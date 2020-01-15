@@ -36,4 +36,30 @@ class ConstUtility
 
         return $constObject;
     }
+
+    /**
+     * @return ConstObject[]
+     */
+    public static function generatePatchModelConsts(string $className): array
+    {
+        $rc = new \ReflectionClass($className);
+        /** @var \ReflectionProperty[] $reflectionProperties */
+        $reflectionProperties = $rc->getProperties(\ReflectionProperty::IS_PROTECTED);
+        $constObjects = [];
+        foreach ($reflectionProperties as $field) {
+            if ($field->getDeclaringClass()->getName() === $className && FieldUtility::isUpdatable($field)) {
+                $constObjects[] = self::buildPatchConst($field);
+            }
+        }
+
+        return $constObjects;
+    }
+
+    private static function buildPatchConst(\ReflectionProperty $field): ConstObject
+    {
+        $constObject = new ConstObject(NameUtility::createPatchEntityModelConstantName($field));
+        $constObject->setValue($field->getName());
+
+        return $constObject;
+    }
 }

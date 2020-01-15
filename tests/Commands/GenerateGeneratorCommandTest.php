@@ -2,9 +2,10 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Commands;
 
+use OpenClassrooms\CodeGenerator\Commands\GenericUseCaseCommand;
 use OpenClassrooms\CodeGenerator\Mediators\Args;
+use OpenClassrooms\CodeGenerator\Mediators\GenerateGenerator\GenerateGeneratorMediator;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Commands\GenerateGeneratorCommandMock;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\Commands\GenericUseCaseCommandMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Mediators\GenerateGeneratorMediatorMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Symfony\Component\DependencyInjection\ContainerMock;
 use OpenClassrooms\CodeGenerator\Tests\TestClassUtil;
@@ -21,19 +22,19 @@ class GenerateGeneratorCommandTest extends TestCase
     const ENTITY = 'Custom';
 
     /**
-     * @var GenericUseCaseCommandMock
+     * @var GenericUseCaseCommand
      */
-    protected $commandMock;
+    protected $command;
 
     /**
-     * @var GenerateGeneratorMediatorMock
+     * @var GenerateGeneratorMediator
      */
-    private $selfGeneratorMediatorMock;
+    private $selfGeneratorMediator;
 
     /**
      * @test
      */
-    public function executeCommand_withArguments(): void
+    public function executeCommandWithArguments(): void
     {
         GenerateGeneratorMediatorMock::$fileObjects = $this->writeFileObjects(
             GenerateGeneratorMediatorMock::$fileObjects
@@ -41,7 +42,7 @@ class GenerateGeneratorCommandTest extends TestCase
 
         $this->commandTester->execute(
             [
-                'command'    => $this->commandMock->getName(),
+                'command'    => $this->command->getName(),
                 Args::DOMAIN => self::DOMAIN,
                 Args::ENTITY => self::ENTITY,
             ]
@@ -53,7 +54,7 @@ class GenerateGeneratorCommandTest extends TestCase
     /**
      * @test
      */
-    public function executeCommand_withoutArguments(): void
+    public function executeCommandWithoutArguments(): void
     {
         GenerateGeneratorMediatorMock::$fileObjects = $this->writeFileObjects(
             GenerateGeneratorMediatorMock::$fileObjects
@@ -67,7 +68,7 @@ class GenerateGeneratorCommandTest extends TestCase
         );
         $this->commandTester->execute(
             [
-                'command' => $this->commandMock->getName(),
+                'command' => $this->command->getName(),
             ]
         );
 
@@ -76,16 +77,16 @@ class GenerateGeneratorCommandTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->commandMock = new GenerateGeneratorCommandMock();
+        $this->command = new GenerateGeneratorCommandMock();
         $this->application = new Application();
-        $this->application->add($this->commandMock);
-        $this->commandTester = new CommandTester($this->commandMock);
-        $this->selfGeneratorMediatorMock = new GenerateGeneratorMediatorMock();
+        $this->application->add($this->command);
+        $this->commandTester = new CommandTester($this->command);
+        $this->selfGeneratorMediator = new GenerateGeneratorMediatorMock();
         $this->container = new ContainerMock(
-            ['open_classrooms.code_generator.mediators.generate_generator.generate_generator_mediator' => $this->selfGeneratorMediatorMock]
+            ['open_classrooms.code_generator.mediators.generate_generator.generate_generator_mediator' => $this->selfGeneratorMediator]
 
         );
-        TestClassUtil::setProperty('container', $this->container, $this->commandMock);
+        TestClassUtil::setProperty('container', $this->container, $this->command);
     }
 }
 

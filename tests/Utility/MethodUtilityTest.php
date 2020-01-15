@@ -52,7 +52,7 @@ class MethodUtilityTest extends TestCase
         $class = (new class() {
             public function getMethod(string $argument)
             {
-                echo $argument;
+                return $argument;
             }
         });
 

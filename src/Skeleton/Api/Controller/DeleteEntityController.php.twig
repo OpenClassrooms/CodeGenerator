@@ -1,0 +1,47 @@
+{% include "Header.php.twig" %}
+
+namespace {{ skeletonModel.namespace }};
+
+use OC\ApiBundle\Framework\FrameworkBundle\Controller\AbstractApiController;
+use {{ skeletonModel.entityNotFoundExceptionClassName }};
+use {{ skeletonModel.deleteEntityRequestBuilderClassName }};
+use {{ skeletonModel.deleteEntityClassName }};
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Symfony\Component\HttpFoundation\JsonResponse;
+
+class {{ skeletonModel.shortName }} extends AbstractApiController
+{
+    /**
+     * @var {{ skeletonModel.deleteEntityRequestBuilderShortName }}
+     */
+    private ${{ skeletonModel.deleteEntityRequestBuilderArgument }};
+
+    public function __construct({{ skeletonModel.deleteEntityRequestBuilderShortName }} $builder)
+    {
+        $this->{{ skeletonModel.deleteEntityRequestBuilderArgument }} = $builder;
+    }
+
+    /**
+     * @Security("")
+     */
+    public function deleteAction(int ${{ skeletonModel.entityIdArgument }}): JsonResponse
+    {
+        try {
+            $this->{{ skeletonModel.deleteEntityMethod }}(${{ skeletonModel.entityIdArgument }});
+
+            return $this->createDeletedResponse();
+        } catch ({{ skeletonModel.entityNotFoundExceptionShortName}} $exception) {
+            return $this->throwNotFoundException();
+        }
+    }
+
+    private function {{ skeletonModel.deleteEntityMethod }}(int ${{ skeletonModel.entityIdArgument }}): void
+    {
+        $this->get({{ skeletonModel.deleteEntityShortName }}::class)->execute(
+            $this->{{ skeletonModel.deleteEntityRequestBuilderArgument }}
+                ->create()
+                ->{{ skeletonModel.withEntityIdMethod}}(${{ skeletonModel.entityIdArgument }})
+                ->build()
+        );
+    }
+}

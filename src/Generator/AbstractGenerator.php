@@ -61,13 +61,10 @@ abstract class AbstractGenerator implements Generator
      */
     protected function getPublicTraitAndClassFields(string $className): array
     {
-
-        $classFields = array_merge(
+        return array_merge(
             FieldObjectUtility::getPublicTraitsFields($className),
             FieldObjectUtility::getPublicClassFields($className)
         );
-
-        return $classFields;
     }
 
     /**

@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+
+<container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://symfony.com/schema/dic/services"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <imports>
+        <import resource="FileObject/abstract_file_object_factory.xml"/>
+        <import resource="FileObject/factories.xml"/>
+        <import resource="Generator/abstract_generator.xml"/>
+        <import resource="Generator/Api/Controller/delete_entity_controller_generator.xml"/>
+        <import resource="Generator/Api/Controller/get_entities_controller_generator.xml"/>
+        <import resource="Generator/Api/Controller/get_entity_controller_generator.xml"/>
+        <import resource="Generator/Api/Controller/patch_entity_controller_generator.xml"/>
+        <import resource="Generator/Api/Controller/post_entity_controller_generator.xml"/>
+        <import resource="Generator/Api/Models/entity_model_trait_generator.xml"/>
+        <import resource="Generator/Api/Models/patch_entity_model_generator.xml"/>
+        <import resource="Generator/Api/Models/post_entity_model_generator.xml"/>
+        <import resource="Mediators/Api/Controller/common_controller_mediator.xml"/>
+        <import resource="Services/templating_service.xml"/>
+    </imports>
+</container>

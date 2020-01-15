@@ -4,6 +4,7 @@ namespace OpenClassrooms\CodeGenerator\Tests\Commands;
 
 use OpenClassrooms\CodeGenerator\Commands\CommandLabelType;
 use OpenClassrooms\CodeGenerator\Commands\ViewModelsCommand;
+use OpenClassrooms\CodeGenerator\Mediators\Api\ViewModels\ViewModelMediator;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Commands\ViewModelsCommandMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Mediators\ViewModelMediatorMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Symfony\Component\DependencyInjection\ContainerMock;
@@ -18,20 +19,20 @@ class ViewModelCommandTest extends TestCase
     use CommandTestCase;
 
     /**
-     * @var ViewModelsCommandMock
+     * @var ViewModelsCommand
      */
-    protected $commandMock;
+    protected $command;
 
     /**
-     * @var ViewModelMediatorMock
+     * @var ViewModelMediator
      */
-    private $viewModelMediatorImplMock;
+    private $viewModelMediator;
 
     /**
      * @test
      * @expectedException \ErrorException
      */
-    public function checkConfiguration_ManyParametersEmpty(): void
+    public function checkConfigurationManyParametersEmpty(): void
     {
         $codeGeneratorConfig = [
             'parameters' => [
@@ -40,14 +41,14 @@ class ViewModelCommandTest extends TestCase
             ],
         ];
 
-        TestClassUtil::invokeMethod('checkConfiguration', $this->commandMock, $codeGeneratorConfig);
+        TestClassUtil::invokeMethod('checkConfiguration', $this->command, $codeGeneratorConfig);
     }
 
     /**
      * @test
      * @expectedException \ErrorException
      */
-    public function checkConfiguration_OneParameterEmpty(): void
+    public function checkConfigurationOneParameterEmpty(): void
     {
         $codeGeneratorConfig = [
             'parameters' => [
@@ -55,19 +56,19 @@ class ViewModelCommandTest extends TestCase
             ],
         ];
 
-        TestClassUtil::invokeMethod('checkConfiguration', $this->commandMock, $codeGeneratorConfig);
+        TestClassUtil::invokeMethod('checkConfiguration', $this->command, $codeGeneratorConfig);
     }
 
     /**
      * @test
      */
-    public function executeCommand_whenFileAlreadyExist(): void
+    public function executeCommandWhenFileAlreadyExist(): void
     {
         ViewModelMediatorMock::$fileObjects = $this->alreadyExistFileObject(ViewModelMediatorMock::$fileObjects);
 
         $this->commandTester->execute(
             [
-                'command'    => $this->commandMock->getName(),
+                'command'    => $this->command->getName(),
                 'class-name' => FunctionalEntityResponse::class,
             ]
         );
@@ -84,11 +85,11 @@ class ViewModelCommandTest extends TestCase
     /**
      * @test
      */
-    public function executeCommand_withDumpArguments(): void
+    public function executeCommandWithDumpArguments(): void
     {
         $this->commandTester->execute(
             [
-                'command'    => $this->commandMock->getName(),
+                'command'    => $this->command->getName(),
                 'class-name' => FunctionalEntityResponse::class,
                 '--dump'     => null,
             ]
@@ -106,13 +107,13 @@ class ViewModelCommandTest extends TestCase
     /**
      * @test
      */
-    public function executeCommand_withNoTestsArguments(): void
+    public function executeCommandWithNoTestsArguments(): void
     {
         ViewModelMediatorMock::$fileObjects = $this->writeFileObjects(ViewModelMediatorMock::$fileObjects);
 
         $this->commandTester->execute(
             [
-                'command'    => $this->commandMock->getName(),
+                'command'    => $this->command->getName(),
                 'class-name' => FunctionalEntityResponse::class,
                 '--no-test'  => null,
             ]
@@ -124,13 +125,13 @@ class ViewModelCommandTest extends TestCase
     /**
      * @test
      */
-    public function executeCommand_withoutArguments(): void
+    public function executeCommandWithoutArguments(): void
     {
         ViewModelMediatorMock::$fileObjects = $this->writeFileObjects(ViewModelMediatorMock::$fileObjects);
 
         $this->commandTester->execute(
             [
-                'command'    => $this->commandMock->getName(),
+                'command'    => $this->command->getName(),
                 'class-name' => FunctionalEntityResponse::class,
             ]
         );
@@ -141,13 +142,13 @@ class ViewModelCommandTest extends TestCase
     /**
      * @test
      */
-    public function executeCommand_withTestOnlyArguments(): void
+    public function executeCommandWithTestOnlyArguments(): void
     {
         ViewModelMediatorMock::$fileObjects = $this->writeFileObjects(ViewModelMediatorMock::$fileObjects);
 
         $this->commandTester->execute(
             [
-                'command'      => $this->commandMock->getName(),
+                'command'      => $this->command->getName(),
                 'class-name'   => FunctionalEntityResponse::class,
                 '--tests-only' => null,
             ]
@@ -160,22 +161,22 @@ class ViewModelCommandTest extends TestCase
      * @test
      * @expectedException \Exception
      */
-    public function fileConfigNotExist_ThrowException(): void
+    public function fileConfigNotExistThrowException(): void
     {
         TestClassUtil::invokeMethod('loadConfigParameters', new ViewModelsCommand());
     }
 
     protected function setUp(): void
     {
-        $this->commandMock = new ViewModelsCommandMock();
+        $this->command = new ViewModelsCommandMock();
         $this->application = new Application();
-        $this->application->add($this->commandMock);
-        $this->commandTester = new CommandTester($this->commandMock);
-        $this->viewModelMediatorImplMock = new ViewModelMediatorMock();
+        $this->application->add($this->command);
+        $this->commandTester = new CommandTester($this->command);
+        $this->viewModelMediator = new ViewModelMediatorMock();
         $this->container = new ContainerMock(
-            ['open_classrooms.code_generator.mediators.api.view_model_mediator' => $this->viewModelMediatorImplMock]
+            ['open_classrooms.code_generator.mediators.api.view_model_mediator' => $this->viewModelMediator]
         );
-        TestClassUtil::setProperty('container', $this->container, $this->commandMock);
+        TestClassUtil::setProperty('container', $this->container, $this->command);
     }
 }
 

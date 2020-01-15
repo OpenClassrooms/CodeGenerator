@@ -1,0 +1,39 @@
+<?xml version="1.0" ?>
+
+<container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://symfony.com/schema/dic/services"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+
+        <service
+                id="OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\Impl\DeleteEntityControllerSkeletonModelAssemblerImpl"
+                public="false">
+        </service>
+
+        <service id="OpenClassrooms\CodeGenerator\Generator\Api\Controller\DeleteEntityControllerGenerator"
+                 parent="open_classrooms.code_generator.generator.abstract_generator">
+            <call method="setDeleteEntityControllerSkeletonModelAssembler">
+                <argument type="service"
+                          id="OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\DeleteEntityControllerSkeletonModelAssembler"/>
+            </call>
+            <call method="setUseCaseFileObjectFactory">
+                <argument type="service" id="open_classrooms.code_generator.file_objects.use_case_file_object_factory"/>
+            </call>
+            <call method="setModelFileObjectFactory">
+                <argument type="service" id="OpenClassrooms\CodeGenerator\Entities\ModelFileObjectFactory"/>
+            </call>
+            <call method="setUseCaseRequestFileObjectFactory">
+                <argument type="service" id="OpenClassrooms\CodeGenerator\Entities\UseCaseRequestFileObjectFactory"/>
+            </call>
+            <call method="setEntityFileObjectFactory">
+                <argument type="service" id="open_classrooms.code_generator.file_objects.entity_file_object_factory"/>
+            </call>
+            <call method="setControllerFileObjectFactory">
+                <argument type="service" id="OpenClassrooms\CodeGenerator\Entities\ControllerFileObjectFactory"/>
+            </call>
+        </service>
+        <service
+                id="OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\DeleteEntityControllerSkeletonModelAssembler"
+                alias="OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\Impl\DeleteEntityControllerSkeletonModelAssemblerImpl">
+        </service>
+    </services>
+</container>

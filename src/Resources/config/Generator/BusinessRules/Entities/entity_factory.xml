@@ -11,7 +11,7 @@
         </service>
 
         <service id="OpenClassrooms\CodeGenerator\Generator\BusinessRules\Entities\EntityFactoryGenerator"
-                 parent="open_classrooms.code_generator.generator.business_rules.abstract_generator">
+                 parent="open_classrooms.code_generator.generator.abstract_generator">
             <call method="setEntityFactorySkeletonModelAssembler">
                 <argument type="service"
                           id="OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Entities\EntityFactorySkeletonModelAssembler"/>

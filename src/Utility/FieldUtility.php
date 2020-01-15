@@ -33,14 +33,12 @@ class FieldUtility
      */
     private static function getEntityFields(string $entityClassName): array
     {
-        $fields = array_map(
+        return array_map(
             function (FieldObject $fieldObject) {
                 return $fieldObject->getName();
             },
             FieldObjectUtility::getProtectedClassFields($entityClassName)
         );
-
-        return $fields;
     }
 
     public static function isUpdatable(\ReflectionProperty $field): bool

@@ -2,8 +2,11 @@
 
 namespace OpenClassrooms\CodeGenerator\Tests\Commands;
 
+use OpenClassrooms\CodeGenerator\Commands\GetEntityUseCaseCommand;
 use OpenClassrooms\CodeGenerator\Mediators\Args;
+use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\GetEntityUseCaseMediator;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Commands\GetEntityUseCaseCommandMock;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Mediators\GetEntitiesUseCaseMediatorMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Mediators\GetEntityUseCaseMediatorMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Symfony\Component\DependencyInjection\ContainerMock;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Entities\Domain\SubDomain\FunctionalEntity;
@@ -17,19 +20,19 @@ class GetEntityUseCaseCommandTest extends TestCase
     use CommandTestCase;
 
     /**
-     * @var GetEntityUseCaseCommandMock
+     * @var GetEntityUseCaseCommand
      */
-    protected $commandMock;
+    protected $command;
 
     /**
-     * @var GetEntityUseCaseMediatorMock
+     * @var GetEntityUseCaseMediator
      */
-    private $getEntityUseCaseMediatorMock;
+    private $getEntityUseCaseMediator;
 
     /**
      * @test
      */
-    public function executeCommand_withArguments(): void
+    public function executeCommandWithArguments(): void
     {
         GetEntityUseCaseMediatorMock::$fileObjects = $this->writeFileObjects(
             GetEntityUseCaseMediatorMock::$fileObjects
@@ -37,7 +40,7 @@ class GetEntityUseCaseCommandTest extends TestCase
 
         $this->commandTester->execute(
             [
-                'command'        => $this->commandMock->getName(),
+                'command'        => $this->command->getName(),
                 Args::CLASS_NAME => FunctionalEntity::class,
             ]
         );
@@ -48,7 +51,7 @@ class GetEntityUseCaseCommandTest extends TestCase
     /**
      * @test
      */
-    public function executeCommand_withoutArguments(): void
+    public function executeCommandWithoutArguments(): void
     {
         GetEntityUseCaseMediatorMock::$fileObjects = $this->writeFileObjects(
             GetEntityUseCaseMediatorMock::$fileObjects
@@ -61,7 +64,31 @@ class GetEntityUseCaseCommandTest extends TestCase
         );
         $this->commandTester->execute(
             [
-                'command' => $this->commandMock->getName(),
+                'command' => $this->command->getName(),
+            ]
+        );
+
+        $this->assertCommandFileGeneratedOutput(GetEntityUseCaseMediatorMock::$fileObjects);
+    }
+
+    /**
+     * @test
+     * @expectedException \OpenClassrooms\CodeGenerator\Exceptions\ClassNameNotExistException
+     */
+    public function executeCommandWithBadClassNameArgument(): void
+    {
+        GetEntityUseCaseMediatorMock::$fileObjects = $this->writeFileObjects(
+            GetEntityUseCaseMediatorMock::$fileObjects
+        );
+
+        $this->commandTester->setInputs(
+            [
+                Args::CLASS_NAME => -1,
+            ]
+        );
+        $this->commandTester->execute(
+            [
+                'command' => $this->command->getName(),
             ]
         );
 
@@ -70,16 +97,16 @@ class GetEntityUseCaseCommandTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->commandMock = new GetEntityUseCaseCommandMock();
+        $this->command = new GetEntityUseCaseCommandMock();
         $this->application = new Application();
-        $this->application->add($this->commandMock);
-        $this->commandTester = new CommandTester($this->commandMock);
-        $this->getEntityUseCaseMediatorMock = new GetEntityUseCaseMediatorMock();
+        $this->application->add($this->command);
+        $this->commandTester = new CommandTester($this->command);
+        $this->getEntityUseCaseMediator = new GetEntityUseCaseMediatorMock();
         $this->container = new ContainerMock(
-            ['open_classrooms.code_generator.mediators.business_rules.use_cases.get_entity_use_case_mediator' => $this->getEntityUseCaseMediatorMock]
+            ['open_classrooms.code_generator.mediators.business_rules.use_cases.get_entity_use_case_mediator' => $this->getEntityUseCaseMediator]
 
         );
-        TestClassUtil::setProperty('container', $this->container, $this->commandMock);
+        TestClassUtil::setProperty('container', $this->container, $this->command);
     }
 }
 

@@ -2,6 +2,7 @@
 
 namespace OpenClassrooms\CodeGenerator\Commands;
 
+use OpenClassrooms\CodeGenerator\Exceptions\ClassNameNotExistException;
 use OpenClassrooms\CodeGenerator\Mediators\Args;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -33,7 +34,7 @@ trait CheckCommandArgumentTrait
         if (null === $input->getArgument(Args::CLASS_NAME)) {
             $helper = $this->getHelper('question');
             $classNameQuestion = new Question(
-                'Please enter class name (ex: BaseNamespace\Domain\Subdomain\ShortClassName): ',
+                'Please enter class name (ex: BaseNamespace\Domain\SubDomain\ShortClassName): ',
                 'DefaultClassName'
             );
             $className = $helper->ask($input, $output, $classNameQuestion);
@@ -45,7 +46,7 @@ trait CheckCommandArgumentTrait
     }
 
     /**
-     * @throws \ErrorException
+     * @throws ClassNameNotExistException
      */
     private function isValidClassName(string $className): bool
     {
@@ -53,7 +54,7 @@ trait CheckCommandArgumentTrait
             return true;
         }
 
-        throw new \ErrorException("Class $className doesn't exist");
+        throw new ClassNameNotExistException("Class $className doesn't exist");
     }
 
     protected function checkInputDomainAndNameArgument(
@@ -63,7 +64,7 @@ trait CheckCommandArgumentTrait
     ): void {
         if (null === $input->getArgument(Args::DOMAIN) || null === $input->getArgument($name)) {
             $helper = $this->getHelper('question');
-            $domainQuestion = new Question('Please enter domain folders (ex: Domain\Subdomain): ', 'Domain\Subdomain');
+            $domainQuestion = new Question('Please enter domain folders (ex: Domain\SubDomain): ', 'Domain\SubDomain');
             $useCaseQuestion = new Question('Please enter the class short name of the ' . $name . ': ', 'DefaultName');
 
             $input->setArgument(Args::DOMAIN, $helper->ask($input, $output, $domainQuestion));

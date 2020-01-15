@@ -3,11 +3,7 @@
 <container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://symfony.com/schema/dic/services"
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
-        <service id="OpenClassrooms\CodeGenerator\Utility\Impl\FieldObjectUtilityGetFields"/>
         <service id="OpenClassrooms\CodeGenerator\Utility\Impl\FieldObjectUtilityGetFieldsUpdatable"/>
-        <service id="get.fields" class="OpenClassrooms\CodeGenerator\Utility\Impl\FieldObjectUtilityContext">
-            <argument type="service" id="OpenClassrooms\CodeGenerator\Utility\Impl\FieldObjectUtilityGetFields"/>
-        </service>
         <service id="get.fields.updatable" class="OpenClassrooms\CodeGenerator\Utility\Impl\FieldObjectUtilityContext">
             <argument type="service"
                       id="OpenClassrooms\CodeGenerator\Utility\Impl\FieldObjectUtilityGetFieldsUpdatable"/>

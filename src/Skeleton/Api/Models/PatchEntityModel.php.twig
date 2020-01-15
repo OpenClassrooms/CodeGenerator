@@ -1,0 +1,36 @@
+{% include "Header.php.twig" %}
+
+namespace {{ skeletonModel.namespace }};
+
+class {{ skeletonModel.shortName }}
+{
+    use {{ skeletonModel.entityModelTraitShortName }};
+
+{% for constant in skeletonModel.constants | sortNameByAlpha %}
+    protected const {{ constant.name }} = '{{ constant.value }}';
+{% if not loop.last %}
+
+{% endif %}
+{% endfor %}
+
+{% for fieldUpdated in skeletonModel.fields| sortNameByAlpha %}
+    {{ fieldUpdated.docComment }}
+    public ${{ fieldUpdated.name }} = {{ fieldUpdated.value }};
+{% if not loop.last %}
+
+{% endif %}
+{% endfor %}
+
+    protected function build(array $data)
+    {
+{% for constant in skeletonModel.constants | sortNameByAlpha %}
+        if (array_key_exists(self::{{ constant.name }}, $data)) {
+            $this->{{ constant.value }} = $data[self::{{ constant.name }}];
+            $this->{{ constant.value }}Updated = true;
+        }
+{% if not loop.last %}
+
+{% endif %}
+{% endfor %}
+    }
+}

@@ -86,6 +86,11 @@ class FieldObject
         return StringUtility::isObject($this->getType());
     }
 
+    public function isDateType(): bool
+    {
+        return (bool) preg_match('/Date/', $this->docComment);
+    }
+
     public function getType(): string
     {
         return DocCommentUtility::getType($this->getDocComment());

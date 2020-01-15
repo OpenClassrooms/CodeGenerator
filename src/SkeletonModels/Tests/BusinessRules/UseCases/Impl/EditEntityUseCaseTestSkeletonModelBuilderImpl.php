@@ -6,10 +6,11 @@ use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\UseCases\EditEntityUseCaseTestSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\UseCases\EditEntityUseCaseTestSkeletonModelBuilder;
 use OpenClassrooms\CodeGenerator\Utility\NameUtility;
+use OpenClassrooms\CodeGenerator\Utility\useCarbonTrait;
 
 class EditEntityUseCaseTestSkeletonModelBuilderImpl implements EditEntityUseCaseTestSkeletonModelBuilder
 {
-    use CrudSkeletonModelBuilderTrait;
+    use useCarbonTrait;
 
     private $entityUtilClassName;
 

@@ -23,7 +23,7 @@ class EditEntityUseCaseRequestBuilderSkeletonModelAssemblerImpl implements EditE
         $skeletonModel->namespace = $editEntityUseCaseRequestBuilderFileObject->getNamespace();
         $skeletonModel->shortName = $editEntityUseCaseRequestBuilderFileObject->getShortName();
 
-        $skeletonModel->entityIdMethodName = NameUtility::creatChainedEntityIdMethodName(
+        $skeletonModel->entityIdMethodName = NameUtility::createChainedEntityIdMethodName(
             $editEntityUseCaseRequestBuilderFileObject->getEntity()
         );
         $skeletonModel->editEntityUseCaseRequestShortName = $editEntityUseCaseRequestFileObject->getShortName();

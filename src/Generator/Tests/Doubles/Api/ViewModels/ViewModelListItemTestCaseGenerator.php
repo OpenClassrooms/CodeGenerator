@@ -67,14 +67,12 @@ class ViewModelListItemTestCaseGenerator extends AbstractViewModelGenerator
 
     private function createViewModelListItemTestCaseFileObject(): FileObject
     {
-        $viewModelListItemTestCaseFileObject = $this->createViewModelFileObject(
+        return $this->createViewModelFileObject(
             ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_TEST_CASE,
             $this->domain,
             $this->entity,
             $this->baseNamespace
         );
-
-        return $viewModelListItemTestCaseFileObject;
     }
 
     private function createViewModelTestCaseFileObject(): FileObject

@@ -56,26 +56,22 @@ class UseCaseDetailResponseStubGenerator extends AbstractUseCaseResponseStubGene
 
     private function createEntityFileObject(): FileObject
     {
-        $useCaseDetailResponseDTOFileObject = $this->entityFileObjectFactory->create(
+        return $this->entityFileObjectFactory->create(
             EntityFileObjectType::BUSINESS_RULES_ENTITY,
             $this->domain,
             $this->entity,
             $this->baseNamespace
         );
-
-        return $useCaseDetailResponseDTOFileObject;
     }
 
     private function createEntityStubFileObject(): FileObject
     {
-        $useCaseDetailResponseDTOFileObject = $this->entityFileObjectFactory->create(
+        return $this->entityFileObjectFactory->create(
             EntityFileObjectType::BUSINESS_RULES_ENTITY_STUB,
             $this->domain,
             $this->entity,
             $this->baseNamespace
         );
-
-        return $useCaseDetailResponseDTOFileObject;
     }
 
     private function createUseCaseDetailResponseDTOFileObject(): FileObject
@@ -90,14 +86,12 @@ class UseCaseDetailResponseStubGenerator extends AbstractUseCaseResponseStubGene
 
     private function createUseCaseDetailResponseStubFileObject(): FileObject
     {
-        $useCaseDetailResponseStubFileObject = $this->useCaseResponseFileObjectFactory->create(
+        return $this->useCaseResponseFileObjectFactory->create(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE_STUB,
             $this->domain,
             $this->entity,
             $this->baseNamespace
         );
-
-        return $useCaseDetailResponseStubFileObject;
     }
 
     private function generateStubFields(
