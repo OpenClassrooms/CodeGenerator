@@ -7,10 +7,13 @@
 CodeGenerator is a library who generates classes in Clean Architecture context. 
 
 From any use case response, developers have the possibility to generate: 
-- use case architecture
+- generic use case architecture
 - Entity use case Get architecture
 - Entities use case Get architecture
+- Create Entity use case architecture
+- Delete Entity use case architecture
 - ViewModel architecture
+- Controller and models classes
 - Unit tests for each classed generated
 
 ## Installation
@@ -51,14 +54,17 @@ parameters:
     stub_namespace: Doubles\OC\
     tests_base_namespace: OC\
 
-    paginated_collection_classname: OpenClassrooms\UseCase\BusinessRules\Entities\PaginatedCollection
-    use_case_classname: OpenClassrooms\UseCase\BusinessRules\Requestors\UseCase
-    use_case_request_classname: OpenClassrooms\UseCase\BusinessRules\Requestors\UseCaseRequest
+    entity_util_classname: 'OC\Util\EntityUtil'
 
-    paginated_use_case_response_classname: %base_namespace%BusinessRules\Responders\PaginatedUseCaseResponse
-    paginated_use_case_response_builder_classname: %base_namespace%BusinessRules\Responders\PaginatedUseCaseResponseBuilder
-    use_case_response_classname:  %base_namespace%BusinessRules\Responders\UseCaseResponse
-    pagination_classname:  %base_namespace%BusinessRules\Gateways\Pagination
+    transaction_classname: 'OpenClassrooms\UseCase\Application\Annotations\Transaction'
+    use_case_classname: 'OpenClassrooms\UseCase\BusinessRules\Requestors\UseCase'
+    use_case_request_classname: 'OpenClassrooms\UseCase\BusinessRules\Requestors\UseCaseRequest'
+
+    paginated_collection_classname: '%base_namespace%\BusinessRules\Entities\PaginatedCollection'
+    paginated_use_case_response_classname: '%base_namespace%BusinessRules\Responders\PaginatedUseCaseResponse'
+    paginated_use_case_response_builder_classname: '%base_namespace%BusinessRules\Responders\PaginatedUseCaseResponseBuilder'
+    use_case_response_classname: '%base_namespace%BusinessRules\Responders\UseCaseResponse'
+    pagination_classname: '%base_namespace%BusinessRules\Gateways\Pagination'
 ```
 
 ## Usage
