@@ -5,6 +5,7 @@ namespace OpenClassrooms\CodeGenerator\Mediators\Api\ViewModels\Impl;
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\Gateways\FileObject\FileObjectGateway;
 use OpenClassrooms\CodeGenerator\Mediators\Api\ViewModels\ViewModelMediator;
+use OpenClassrooms\CodeGenerator\Mediators\Api\ViewModelOptions;
 use OpenClassrooms\CodeGenerator\Mediators\Args;
 use OpenClassrooms\CodeGenerator\Mediators\Options;
 
@@ -24,18 +25,33 @@ class ViewModelMediatorImpl implements ViewModelMediator
     {
         $className = $args[Args::CLASS_NAME];
 
-        if (false !== $options[Options::NO_TEST]) {
-            $fileObjects = $this->generateSources($className);
-        } elseif (false !== $options[Options::TESTS_ONLY]) {
-            $entityAndUseCaseResponseFileObjects = $this->generateEntityAndUseCaseResponseTests($className);
-            $viewModelTestFileObjects = $this->generateViewModelTests($className);
-            $fileObjects = array_merge($entityAndUseCaseResponseFileObjects, $viewModelTestFileObjects);
-        } else {
-            $sourcesFileObjects = $this->generateSources($className);
-            $testsFileObjects = $this->generateEntityAndUseCaseResponseTests($className);
-            $viewModelTestFileObjects = $this->generateViewModelTests($className);
-            $fileObjects = array_merge($sourcesFileObjects, $testsFileObjects, $viewModelTestFileObjects);
+        if ($this->isAskNoTest($options)) {
+            $fileObjects[] = $this->generateViewModel($className);
+            $fileObjects[] = $this->generateViewModelAssemblerTraitGenerator($className);
+            $fileObjects[] = $this->generateEntityImplGenerator($className);
+
+            if ($this->isAskDetailOnly($options)) {
+                $fileObjects = $this->generateDetail($className, $fileObjects);
+            }
+
+            if ($this->isAskListItemOnly($options)) {
+                $fileObjects = $this->generateListItem($className, $fileObjects);
+            }
         }
+
+        if ($this->isAskTestOnly($options)) {
+            $fileObjects[] = $this->generateEntityStub($className);
+            $fileObjects[] = $this->generateViewModelTestCase($className);
+
+            if ($this->isAskDetailOnly($options)) {
+                $fileObjects = $this->generateDetailTest($className, $fileObjects);
+            }
+
+            if ($this->isAskListItemOnly($options)) {
+                $fileObjects = $this->generateListItemTest($className, $fileObjects);
+            }
+        }
+
         if (false === $options[Options::DUMP]) {
             $this->fileObjectGateway->flush();
         }
@@ -43,49 +59,61 @@ class ViewModelMediatorImpl implements ViewModelMediator
         return $fileObjects;
     }
 
-    /**
-     * @return FileObject[]
-     */
-    private function generateSources(string $className): array
+    private function isAskNoTest(array $options): bool
     {
-        $fileObjects[] = $this->generateViewModel($className);
+        return !(false !== $options[Options::TESTS_ONLY]);
+    }
+
+    private function isAskDetailOnly(array $options): bool
+    {
+        return !(false !== $options[ViewModelOptions::NO_DETAIL]);
+    }
+
+    private function generateDetail(string $className, array $fileObjects): array
+    {
         $fileObjects[] = $this->generateViewModelDetail($className);
         $fileObjects[] = $this->generateViewModelDetailImpl($className);
-        $fileObjects[] = $this->generateViewModelListItem($className);
-        $fileObjects[] = $this->generateViewModelListItemImpl($className);
-        $fileObjects[] = $this->generateViewModelAssemblerTraitGenerator($className);
         $fileObjects[] = $this->generateViewModelDetailAssemblerGenerator($className);
         $fileObjects[] = $this->generateViewModelDetailAssemblerImplGenerator($className);
+
+        return $fileObjects;
+    }
+
+    private function isAskListItemOnly(array $options): bool
+    {
+        return !(false !== $options[ViewModelOptions::NO_LIST_ITEM]);
+    }
+
+    private function generateListItem(string $className, array $fileObjects): array
+    {
+        $fileObjects[] = $this->generateViewModelListItem($className);
+        $fileObjects[] = $this->generateViewModelListItemImpl($className);
         $fileObjects[] = $this->generateViewModelListItemAssemblerGenerator($className);
         $fileObjects[] = $this->generateViewModelListItemAssemblerImplGenerator($className);
-        $fileObjects[] = $this->generateEntityImplGenerator($className);
 
         return $fileObjects;
     }
 
-    /**
-     * @return FileObject[]
-     */
-    private function generateEntityAndUseCaseResponseTests(string $className): array
+    private function isAskTestOnly(array $options): bool
     {
-        $fileObjects[] = $this->generateEntityStub($className);
+        return !(false !== $options[Options::NO_TEST]);
+    }
+
+    private function generateDetailTest(string $className, array $fileObjects): array
+    {
         $fileObjects[] = $this->generateUseCaseDetailResponseStub($className);
-        $fileObjects[] = $this->generateUseCaseListItemResponseStub($className);
+        $fileObjects[] = $this->generateViewModelDetailStub($className);
+        $fileObjects[] = $this->generateViewModelDetailTestCase($className);
+        $fileObjects[] = $this->generateViewModelDetailAssemblerImplTest($className);
 
         return $fileObjects;
     }
 
-    /**
-     * @return FileObject[]
-     */
-    private function generateViewModelTests(string $className): array
+    private function generateListItemTest(string $className, array $fileObjects): array
     {
-        $fileObjects[] = $this->generateViewModelTestCase($className);
-        $fileObjects[] = $this->generateViewModelDetailStub($className);
+        $fileObjects[] = $this->generateUseCaseListItemResponseStub($className);
         $fileObjects[] = $this->generateViewModelListItemStub($className);
-        $fileObjects[] = $this->generateViewModelDetailTestCase($className);
         $fileObjects[] = $this->generateViewModelListItemTestCase($className);
-        $fileObjects[] = $this->generateViewModelDetailAssemblerImplTest($className);
         $fileObjects[] = $this->generateViewModelListItemAssemblerImplTest($className);
 
         return $fileObjects;

@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace OpenClassrooms\CodeGenerator\Tests\Mediators\Api\ViewModels\Impl;
 
@@ -44,6 +46,7 @@ use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\ViewMode
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\ViewModelListItemStubGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\ViewModelListItemTestCaseGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\ViewModelTestCaseGenerator;
+use OpenClassrooms\CodeGenerator\Mediators\Api\ViewModelOptions;
 use OpenClassrooms\CodeGenerator\Mediators\Api\ViewModels\Impl\ViewModelMediatorImpl;
 use OpenClassrooms\CodeGenerator\Mediators\Args;
 use OpenClassrooms\CodeGenerator\Mediators\Options;
@@ -85,7 +88,7 @@ class ViewModelMediatorImplTest extends TestCase
     /**
      * @var array
      */
-    private $options;
+    private $options = [];
 
     /**
      * @test
@@ -109,7 +112,6 @@ class ViewModelMediatorImplTest extends TestCase
         $fileObjects = $this->mediator->mediate(
             [Args::CLASS_NAME => UseCaseDetailResponseStubFileObjectStub1::CLASS_NAME],
             $this->options
-
         );
 
         $this->assertFlushedFileObject($fileObjects);
@@ -143,6 +145,34 @@ class ViewModelMediatorImplTest extends TestCase
         $this->assertFlushedFileObject($fileObjects);
     }
 
+    /**
+     * @test
+     */
+    public function generateViewModelWithNoDetail(): void
+    {
+        $this->options[ViewModelOptions::NO_DETAIL] = null;
+        $fileObjects = $this->mediator->mediate(
+            [Args::CLASS_NAME => UseCaseDetailResponseStubFileObjectStub1::CLASS_NAME],
+            $this->options
+        );
+
+        $this->assertFlushedFileObject($fileObjects);
+    }
+
+    /**
+     * @test
+     */
+    public function generateViewModelWithNoListItem(): void
+    {
+        $this->options[ViewModelOptions::NO_LIST_ITEM] = null;
+        $fileObjects = $this->mediator->mediate(
+            [Args::CLASS_NAME => UseCaseDetailResponseStubFileObjectStub1::CLASS_NAME],
+            $this->options
+        );
+
+        $this->assertFlushedFileObject($fileObjects);
+    }
+
     protected function setUp(): void
     {
         InMemoryFileObjectGateway::$fileObjects = [];
@@ -150,9 +180,11 @@ class ViewModelMediatorImplTest extends TestCase
         $this->mediator->setFileObjectGateway(new InMemoryFileObjectGateway());
 
         $this->options = [
-            Options::DUMP       => false,
-            Options::NO_TEST    => false,
-            Options::TESTS_ONLY => false,
+            Options::DUMP                  => false,
+            Options::NO_TEST               => false,
+            Options::TESTS_ONLY            => false,
+            ViewModelOptions::NO_LIST_ITEM => false,
+            ViewModelOptions::NO_DETAIL    => false,
         ];
 
         $this->mockGenerators();

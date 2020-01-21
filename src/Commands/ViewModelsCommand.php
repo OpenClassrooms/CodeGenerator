@@ -2,10 +2,12 @@
 
 namespace OpenClassrooms\CodeGenerator\Commands;
 
+use OpenClassrooms\CodeGenerator\Mediators\Api\ViewModelOptions;
 use OpenClassrooms\CodeGenerator\Mediators\Args;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
@@ -37,7 +39,9 @@ class ViewModelsCommand extends AbstractCommand
                 Args::CLASS_NAME,
                 InputArgument::OPTIONAL,
                 'Use Case Response Classname'
-            );
+            )
+            ->addOption(ViewModelOptions::NO_DETAIL, null, InputOption::VALUE_NONE, 'No Detail')
+            ->addOption(ViewModelOptions::NO_LIST_ITEM, null, InputOption::VALUE_NONE, 'No List Item');
         $this->configureOptions();
     }
 
