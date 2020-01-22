@@ -2,7 +2,7 @@
 
 namespace OpenClassrooms\CodeGenerator\Commands;
 
-use OpenClassrooms\CodeGenerator\Mediators\Api\ViewModelOptions;
+use OpenClassrooms\CodeGenerator\Mediators\Api\ViewModels\ViewModelOptions;
 use OpenClassrooms\CodeGenerator\Mediators\Args;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Console\Input\InputArgument;

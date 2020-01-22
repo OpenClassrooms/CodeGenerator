@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OpenClassrooms\CodeGenerator\Mediators\Api;
+namespace OpenClassrooms\CodeGenerator\Mediators\Api\ViewModels;
 
 final class ViewModelOptions
 {

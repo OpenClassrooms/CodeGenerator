@@ -46,8 +46,8 @@ use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\ViewMode
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\ViewModelListItemStubGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\ViewModelListItemTestCaseGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\ViewModelTestCaseGenerator;
-use OpenClassrooms\CodeGenerator\Mediators\Api\ViewModelOptions;
 use OpenClassrooms\CodeGenerator\Mediators\Api\ViewModels\Impl\ViewModelMediatorImpl;
+use OpenClassrooms\CodeGenerator\Mediators\Api\ViewModels\ViewModelOptions;
 use OpenClassrooms\CodeGenerator\Mediators\Args;
 use OpenClassrooms\CodeGenerator\Mediators\Options;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\ViewModels\ViewModel\ViewModelFileObjectStub1;
