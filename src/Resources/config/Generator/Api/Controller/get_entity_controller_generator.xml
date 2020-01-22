@@ -7,6 +7,9 @@
         <service
                 id="OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\Impl\GetEntityControllerSkeletonModelBuilderImpl"
                 public="false">
+            <call method="setAbstractControllerClassName">
+                <argument type="string">%abstract_controller%</argument>
+            </call>
         </service>
 
         <service id="OpenClassrooms\CodeGenerator\Generator\Api\Controller\GetEntityControllerGenerator"

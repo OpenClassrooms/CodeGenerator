@@ -5,10 +5,13 @@ namespace OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\Impl;
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\DeleteEntityControllerSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\DeleteEntityControllerSkeletonModelAssembler;
+use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 use OpenClassrooms\CodeGenerator\Utility\NameUtility;
 
 class DeleteEntityControllerSkeletonModelAssemblerImpl implements DeleteEntityControllerSkeletonModelAssembler
 {
+    use AbstractControllerClassNameTrait;
+
     public function create(
         FileObject $deleteEntityControllerFileObject,
         FileObject $deleteEntityFileObject,
@@ -19,6 +22,10 @@ class DeleteEntityControllerSkeletonModelAssemblerImpl implements DeleteEntityCo
         $skeletonModel->className = $deleteEntityControllerFileObject->getClassName();
         $skeletonModel->namespace = $deleteEntityControllerFileObject->getNamespace();
         $skeletonModel->shortName = $deleteEntityControllerFileObject->getShortName();
+        $skeletonModel->abstractControllerClassName = $this->abstractControllerClassName;
+        $skeletonModel->abstractControllerShortName = FileObjectUtility::getShortClassName(
+            $this->abstractControllerClassName
+        );
         $skeletonModel->deleteEntityClassName = $deleteEntityFileObject->getClassName();
         $skeletonModel->deleteEntityShortName = $deleteEntityFileObject->getShortName();
         $skeletonModel->deleteEntityMethod = lcfirst($deleteEntityFileObject->getShortName());

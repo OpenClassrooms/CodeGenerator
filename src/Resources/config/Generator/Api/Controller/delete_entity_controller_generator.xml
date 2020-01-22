@@ -7,6 +7,9 @@
         <service
                 id="OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\Impl\DeleteEntityControllerSkeletonModelAssemblerImpl"
                 public="false">
+            <call method="setAbstractControllerClassName">
+                <argument type="string">%abstract_controller%</argument>
+            </call>
         </service>
 
         <service id="OpenClassrooms\CodeGenerator\Generator\Api\Controller\DeleteEntityControllerGenerator"
@@ -17,9 +20,6 @@
             </call>
             <call method="setUseCaseFileObjectFactory">
                 <argument type="service" id="open_classrooms.code_generator.file_objects.use_case_file_object_factory"/>
-            </call>
-            <call method="setModelFileObjectFactory">
-                <argument type="service" id="OpenClassrooms\CodeGenerator\Entities\ModelFileObjectFactory"/>
             </call>
             <call method="setUseCaseRequestFileObjectFactory">
                 <argument type="service" id="OpenClassrooms\CodeGenerator\Entities\UseCaseRequestFileObjectFactory"/>

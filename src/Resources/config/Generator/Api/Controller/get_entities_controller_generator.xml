@@ -7,6 +7,12 @@
         <service
                 id="OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\Impl\GetEntitiesControllerSkeletonModelBuilderImpl"
                 public="false">
+            <call method="setAbstractControllerClassName">
+                <argument type="string">%abstract_controller%</argument>
+            </call>
+            <call method="setCollectionInformationClassName">
+                <argument type="string">%collection_information%</argument>
+            </call>
         </service>
 
         <service id="OpenClassrooms\CodeGenerator\Generator\Api\Controller\GetEntitiesControllerGenerator"
@@ -28,10 +34,12 @@
                 <argument type="service" id="OpenClassrooms\CodeGenerator\Entities\UseCaseRequestFileObjectFactory"/>
             </call>
             <call method="setUseCaseResponseFileObjectFactory">
-                <argument type="service" id="open_classrooms.code_generator.file_objects.use_case_response_file_object_factory"/>
+                <argument type="service"
+                          id="open_classrooms.code_generator.file_objects.use_case_response_file_object_factory"/>
             </call>
             <call method="setViewModelFileObjectFactory">
-                <argument type="service" id="open_classrooms.code_generator.file_objects.view_model_file_object_factory"/>
+                <argument type="service"
+                          id="open_classrooms.code_generator.file_objects.view_model_file_object_factory"/>
             </call>
         </service>
         <service

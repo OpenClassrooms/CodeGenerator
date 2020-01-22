@@ -2,8 +2,8 @@
 
 namespace {{ skeletonModel.namespace }};
 
-use OC\ApiBundle\Framework\FrameworkBundle\Controller\AbstractApiController;
-use OC\ApiBundle\ParamConverter\CollectionInformation;
+use {{ skeletonModel.abstractControllerClassName }};
+use {{ skeletonModel.collectionInformationClassName }};
 use {{ skeletonModel.entityViewModelListItemClassName }};
 use {{ skeletonModel.entityViewModelListItemAssemblerClassName }};
 use {{ skeletonModel.entityNotFoundExceptionClassName }};
@@ -13,7 +13,7 @@ use {{ skeletonModel.paginatedUseCaseResponseClassName }};
 use {{ skeletonModel.getEntitiesUseCaseClassName }};
 use Symfony\Component\HttpFoundation\JsonResponse;
 
-class {{ skeletonModel.shortName }} extends AbstractApiController
+class {{ skeletonModel.shortName }} extends {{ skeletonModel.abstractControllerShortName }}
 {
     /**
      * @var {{ skeletonModel.entityViewModelListItemAssemblerShortName }}
@@ -37,7 +37,7 @@ class {{ skeletonModel.shortName }} extends AbstractApiController
      * @Security("")
      * @ParamConverter("collectionInformation", options={"itemsPerPage":"200"}) // default 20 to remove if not necessary
      */
-    public function getAction(CollectionInformation $collectionInformation, int $userId): JsonResponse
+    public function getAction({{ skeletonModel.collectionInformationShortName }} $collectionInformation, int $userId): JsonResponse
     {
         try {
             ${{ skeletonModel.entitiesArgument }} = $this->{{ skeletonModel.getEntitiesMethod }}($collectionInformation);
@@ -52,7 +52,7 @@ class {{ skeletonModel.shortName }} extends AbstractApiController
     /**
      * @throws {{ skeletonModel.entityNotFoundExceptionShortName }}
      */
-    private function {{ skeletonModel.getEntitiesMethod }}(collectionInformation $collectionInformation): {{ skeletonModel.entityUseCaseResponseShortName }}
+    private function {{ skeletonModel.getEntitiesMethod }}({{ skeletonModel.collectionInformationShortName }} $collectionInformation): {{ skeletonModel.entityUseCaseResponseShortName }}
     {
         return $this->get({{ skeletonModel.getEntitiesUseCaseShortName}}::class)->execute(
             $this->{{ skeletonModel.getEntitiesUseCaseRequestBuilderArgument }}
@@ -68,7 +68,7 @@ class {{ skeletonModel.shortName }} extends AbstractApiController
     /**
      * @return {{ skeletonModel.entityViewModelListItemShortName }}[]
      */
-    private function buildViewModel(PaginatedUseCaseResponse ${{ skeletonModel.entitiesArgument }}): array
+    private function buildViewModel({{ skeletonModel.paginatedUseCaseResponseShortName}} ${{ skeletonModel.entitiesArgument }}): array
     {
         return $this->{{ skeletonModel.entityViewModelListItemAssemblerArgument }}->createListItems(
             ${{ skeletonModel.entitiesArgument }}->getItems()

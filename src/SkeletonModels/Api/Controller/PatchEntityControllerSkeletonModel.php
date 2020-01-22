@@ -6,6 +6,10 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 
 abstract class PatchEntityControllerSkeletonModel extends AbstractSkeletonModel
 {
+    public $abstractControllerClassName;
+
+    public $abstractControllerShortName;
+
     public $editEntityUseCaseClassName;
 
     public $editEntityUseCaseRequestBuilderArgument;

@@ -11,8 +11,11 @@ parameters:
     use_case_classname: 'OpenClassrooms\UseCase\BusinessRules\Requestors\UseCase'
     use_case_request_classname: 'OpenClassrooms\UseCase\BusinessRules\Requestors\UseCaseRequest'
 
-    paginated_collection_classname: '%base_namespace%\BusinessRules\Entities\PaginatedCollection'
-    paginated_use_case_response_classname: '%base_namespace%BusinessRules\Responders\PaginatedUseCaseResponse'
-    paginated_use_case_response_builder_classname: '%base_namespace%BusinessRules\Responders\PaginatedUseCaseResponseBuilder'
-    use_case_response_classname: '%base_namespace%BusinessRules\Responders\UseCaseResponse'
-    pagination_classname: '%base_namespace%BusinessRules\Gateways\Pagination'
+    paginated_collection_classname: 'OC\BusinessRules\Entities\PaginatedCollection'
+    paginated_use_case_response_classname: 'OC\BusinessRules\Responders\PaginatedUseCaseResponse'
+    paginated_use_case_response_builder_classname: 'OC\BusinessRules\Responders\PaginatedUseCaseResponseBuilder'
+    use_case_response_classname: 'OC\BusinessRules\Responders\UseCaseResponse'
+    pagination_classname: 'OC\BusinessRules\Gateways\Pagination'
+
+    abstract_controller : 'OC\ApiBundle\Framework\FrameworkBundle\Controller\AbstractApiController'
+    collection_information : 'OC\ApiBundle\ParamConverter\CollectionInformation'

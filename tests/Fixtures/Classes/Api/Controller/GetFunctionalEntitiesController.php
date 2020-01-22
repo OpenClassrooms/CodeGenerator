@@ -56,7 +56,7 @@ class GetFunctionalEntitiesController extends AbstractApiController
     /**
      * @throws FunctionalEntityNotFoundException
      */
-    private function getFunctionalEntities(collectionInformation $collectionInformation): FunctionalEntityResponse
+    private function getFunctionalEntities(CollectionInformation $collectionInformation): FunctionalEntityResponse
     {
         return $this->get(GetFunctionalEntities::class)->execute(
             $this->getFunctionalEntitiesRequestBuilder

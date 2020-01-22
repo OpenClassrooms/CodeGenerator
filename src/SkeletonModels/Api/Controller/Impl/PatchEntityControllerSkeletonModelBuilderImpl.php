@@ -5,10 +5,13 @@ namespace OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\Impl;
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\PatchEntityControllerSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\PatchEntityControllerSkeletonModelBuilder;
+use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 use OpenClassrooms\CodeGenerator\Utility\NameUtility;
 
 class PatchEntityControllerSkeletonModelBuilderImpl implements PatchEntityControllerSkeletonModelBuilder
 {
+    use AbstractControllerClassNameTrait;
+
     /**
      * @var PatchEntityControllerSkeletonModel
      */
@@ -132,6 +135,10 @@ class PatchEntityControllerSkeletonModelBuilderImpl implements PatchEntityContro
 
     public function build(): PatchEntityControllerSkeletonModel
     {
+        $this->skeletonModel->abstractControllerClassName = $this->abstractControllerClassName;
+        $this->skeletonModel->abstractControllerShortName = FileObjectUtility::getShortClassName(
+            $this->abstractControllerClassName
+        );
 
         return $this->skeletonModel;
     }

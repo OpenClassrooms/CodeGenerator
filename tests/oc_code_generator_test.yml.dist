@@ -18,3 +18,6 @@ parameters:
     paginated_use_case_response_builder_classname: '%base_namespace%BusinessRules\Responders\PaginatedUseCaseResponseBuilder'
     use_case_response_classname: '%base_namespace%BusinessRules\Responders\UseCaseResponse'
     pagination_classname: '%base_namespace%BusinessRules\Gateways\Pagination'
+    abstract_controller: 'OC\ApiBundle\Framework\FrameworkBundle\Controller\AbstractApiController'
+    collection_information: 'OC\ApiBundle\ParamConverter\CollectionInformation'
+

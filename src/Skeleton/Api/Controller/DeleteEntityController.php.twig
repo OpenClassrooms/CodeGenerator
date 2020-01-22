@@ -2,14 +2,14 @@
 
 namespace {{ skeletonModel.namespace }};
 
-use OC\ApiBundle\Framework\FrameworkBundle\Controller\AbstractApiController;
+use {{ skeletonModel.abstractControllerClassName }};
 use {{ skeletonModel.entityNotFoundExceptionClassName }};
 use {{ skeletonModel.deleteEntityRequestBuilderClassName }};
 use {{ skeletonModel.deleteEntityClassName }};
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
-class {{ skeletonModel.shortName }} extends AbstractApiController
+class {{ skeletonModel.shortName }} extends {{ skeletonModel.abstractControllerShortName }}
 {
     /**
      * @var {{ skeletonModel.deleteEntityRequestBuilderShortName }}

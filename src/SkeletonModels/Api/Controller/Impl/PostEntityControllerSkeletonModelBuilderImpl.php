@@ -5,11 +5,13 @@ namespace OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\Impl;
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\PostEntityControllerSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\PostEntityControllerSkeletonModelBuilder;
+use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 use OpenClassrooms\CodeGenerator\Utility\NameUtility;
 use OpenClassrooms\CodeGenerator\Utility\useCarbonTrait;
 
 class PostEntityControllerSkeletonModelBuilderImpl implements PostEntityControllerSkeletonModelBuilder
 {
+    use AbstractControllerClassNameTrait;
     use useCarbonTrait;
 
     /**
@@ -121,6 +123,10 @@ class PostEntityControllerSkeletonModelBuilderImpl implements PostEntityControll
 
     public function build(): PostEntityControllerSkeletonModel
     {
+        $this->skeletonModel->abstractControllerClassName = $this->abstractControllerClassName;
+        $this->skeletonModel->abstractControllerShortName = FileObjectUtility::getShortClassName(
+            $this->abstractControllerClassName
+        );
         $this->skeletonModel->useCarbon = $this->methodArgumentUseCarbon($this->skeletonModel->postEntityModelMethods);
 
         return $this->skeletonModel;
