@@ -10,5 +10,7 @@ class GetEntitiesControllerSkeletonModelBuilderMock extends GetEntitiesControlle
     public function __construct()
     {
         $this->paginatedUseCaseResponse = FixturesConfig::PAGINATED_USE_CASE_RESPONSE;
+        $this->abstractControllerClassName = FixturesConfig::ABSTRACT_CONTROLLER;
+        $this->collectionInformationClassName = FixturesConfig::COLLECTION_INFORMATION;
     }
 }

@@ -6,6 +6,14 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 
 abstract class GetEntitiesControllerSkeletonModel extends AbstractSkeletonModel
 {
+    public $abstractControllerClassName;
+
+    public $abstractControllerShortName;
+
+    public $collectionInformationClassName;
+
+    public $collectionInformationShortName;
+
     public $entitiesArgument;
 
     public $entityNotFoundExceptionClassName;
@@ -39,6 +47,8 @@ abstract class GetEntitiesControllerSkeletonModel extends AbstractSkeletonModel
     public $getEntitiesUseCaseShortName;
 
     public $paginatedUseCaseResponseClassName;
+
+    public $paginatedUseCaseResponseShortName;
 
     public $templatePath = 'Api/Controller/GetEntitiesController.php.twig';
 }

@@ -7,6 +7,7 @@ declare(strict_types=1);
 namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\Controller;
 
 use Carbon\CarbonImmutable;
+use OC\ApiBundle\Framework\FrameworkBundle\Controller\AbstractApiController;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\Models\Domain\SubDomain\PostFunctionalEntityModel;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\FunctionalEntityViewModelDetail;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\FunctionalEntityViewModelDetailAssembler;

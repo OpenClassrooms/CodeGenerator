@@ -5,6 +5,7 @@ namespace {{ skeletonModel.namespace }};
 {% if skeletonModel.useCarbon %}
 use Carbon\CarbonImmutable;
 {% endif %}
+use {{ skeletonModel.abstractControllerClassName }};
 use {{ skeletonModel.postEntityModelClassName }};
 use {{ skeletonModel.entityViewModelDetailClassName }};
 use {{ skeletonModel.entityViewModelDetailAssemblerClassName }};
@@ -14,7 +15,7 @@ use {{ skeletonModel.entityUseCaseDetailResponseClassName }};
 use {{ skeletonModel.createEntityUseCaseClassName }};
 use Symfony\Component\HttpFoundation\JsonResponse;
 
-class {{ skeletonModel.shortName }} extends AbstractApiController
+class {{ skeletonModel.shortName }} extends {{ skeletonModel.abstractControllerShortName }}
 {
     /**
      * @var {{ skeletonModel.createEntityUseCaseRequestBuilderShortName }}

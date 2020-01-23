@@ -5,10 +5,13 @@ namespace OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\Impl;
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\GetEntityControllerSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\GetEntityControllerSkeletonModelBuilder;
+use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 use OpenClassrooms\CodeGenerator\Utility\NameUtility;
 
 class GetEntityControllerSkeletonModelBuilderImpl implements GetEntityControllerSkeletonModelBuilder
 {
+    use AbstractControllerClassNameTrait;
+
     /**
      * @var GetEntityControllerSkeletonModel
      */
@@ -117,6 +120,8 @@ class GetEntityControllerSkeletonModelBuilderImpl implements GetEntityController
 
     public function build(): GetEntityControllerSkeletonModel
     {
+        $this->skeletonModel->abstractControllerClassName = $this->abstractControllerClassName;
+        $this->skeletonModel->abstractControllerShortName = FileObjectUtility::getShortClassName($this->abstractControllerClassName);
         $this->skeletonModel->entityArgument = lcfirst($this->entity);
         $this->skeletonModel->entityIdArgument = NameUtility::createEntityIdName($this->entity);
         $this->skeletonModel->getEntityMethod = NameUtility::createGetEntityName($this->entity);

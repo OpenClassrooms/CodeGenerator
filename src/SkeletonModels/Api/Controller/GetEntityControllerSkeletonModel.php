@@ -6,6 +6,10 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 
 abstract class GetEntityControllerSkeletonModel extends AbstractSkeletonModel
 {
+    public $abstractControllerClassName;
+
+    public $abstractControllerShortName;
+
     public $entityArgument;
 
     public $entityIdArgument;

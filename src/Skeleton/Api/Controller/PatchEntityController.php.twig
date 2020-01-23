@@ -2,6 +2,7 @@
 
 namespace {{ skeletonModel.namespace }};
 
+use {{ skeletonModel.abstractControllerClassName }};
 use {{ skeletonModel.patchEntityModelClassName }};
 use {{ skeletonModel.entityViewModelDetailClassName }};
 use {{ skeletonModel.entityViewModelDetailAssemblerClassName }};
@@ -13,7 +14,7 @@ use {{ skeletonModel.editEntityUseCaseClassName }};
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
-class {{ skeletonModel.shortName }} extends AbstractApiController
+class {{ skeletonModel.shortName }} extends {{ skeletonModel.abstractControllerShortName }}
 {
     /**
      * @var {{ skeletonModel.editEntityUseCaseRequestBuilderShortName }}

@@ -6,6 +6,10 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 
 abstract class PostEntityControllerSkeletonModel extends AbstractSkeletonModel
 {
+    public $abstractControllerClassName;
+
+    public $abstractControllerShortName;
+
     public $createEntityMethod;
 
     public $createEntityUseCaseShortName;

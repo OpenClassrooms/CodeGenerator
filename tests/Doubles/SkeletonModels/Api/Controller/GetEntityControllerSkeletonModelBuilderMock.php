@@ -3,7 +3,12 @@
 namespace OpenClassrooms\CodeGenerator\Tests\Doubles\SkeletonModels\Api\Controller;
 
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\Impl\GetEntityControllerSkeletonModelBuilderImpl;
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\FixturesConfig;
 
 class GetEntityControllerSkeletonModelBuilderMock extends GetEntityControllerSkeletonModelBuilderImpl
 {
+    public function __construct()
+    {
+        $this->abstractControllerClassName = FixturesConfig::ABSTRACT_CONTROLLER;
+    }
 }

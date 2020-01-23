@@ -6,6 +6,10 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 
 abstract class DeleteEntityControllerSkeletonModel extends AbstractSkeletonModel
 {
+    public $abstractControllerClassName;
+
+    public $abstractControllerShortName;
+
     public $deleteEntityClassName;
 
     public $deleteEntityShortName;

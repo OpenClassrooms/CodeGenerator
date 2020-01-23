@@ -6,12 +6,19 @@ use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\GetEntitiesControllerSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\GetEntitiesControllerSkeletonModelBuilder;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Responders\UseCaseResponseClassNameTrait;
+use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 use OpenClassrooms\CodeGenerator\Utility\NameUtility;
 use OpenClassrooms\CodeGenerator\Utility\StringUtility;
 
 class GetEntitiesControllerSkeletonModelBuilderImpl implements GetEntitiesControllerSkeletonModelBuilder
 {
+    use AbstractControllerClassNameTrait;
     use UseCaseResponseClassNameTrait;
+
+    /**
+     * @var string
+     */
+    protected $collectionInformationClassName;
 
     /**
      * private GetEntitiesControllerSkeletonModel
@@ -108,10 +115,28 @@ class GetEntitiesControllerSkeletonModelBuilderImpl implements GetEntitiesContro
 
     public function build(): GetEntitiesControllerSkeletonModel
     {
+        $this->skeletonModel->abstractControllerClassName = $this->abstractControllerClassName;
+        $this->skeletonModel->abstractControllerShortName = FileObjectUtility::getShortClassName(
+            $this->abstractControllerClassName
+        );
+        $this->skeletonModel->collectionInformationClassName = $this->collectionInformationClassName;
+        $this->skeletonModel->collectionInformationShortName = FileObjectUtility::getShortClassName(
+            $this->collectionInformationClassName
+        );
         $this->skeletonModel->paginatedUseCaseResponseClassName = $this->paginatedUseCaseResponse;
+        $this->skeletonModel->paginatedUseCaseResponseShortName = FileObjectUtility::getShortClassName(
+            $this->paginatedUseCaseResponse
+        );
         $this->skeletonModel->entitiesArgument = lcfirst(StringUtility::pluralize($this->entity));
-        $this->skeletonModel->getEntitiesMethod = NameUtility::createGetEntityName(StringUtility::pluralize($this->entity));
+        $this->skeletonModel->getEntitiesMethod = NameUtility::createGetEntityName(
+            StringUtility::pluralize($this->entity)
+        );
 
         return $this->skeletonModel;
+    }
+
+    public function setCollectionInformationClassName(string $collectionInformationClassName): void
+    {
+        $this->collectionInformationClassName = $collectionInformationClassName;
     }
 }

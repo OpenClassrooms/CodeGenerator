@@ -68,6 +68,7 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\Api\ViewModels\Vie
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\BusinessRules\Entities\EntityStub\EntityStubFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\BusinessRules\Responders\UseCaseDetailResponseStub\UseCaseDetailResponseStubFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\BusinessRules\Responders\UseCaseListItemResponseStub\UseCaseListItemResponseStubFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\UseCaseResponseFileObjectFactoryMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Generator\GeneratorMock;
 use OpenClassrooms\CodeGenerator\Tests\Mediators\MediatorFileObjectTestCase;
@@ -251,6 +252,9 @@ class ViewModelMediatorImplTest extends TestCase
     private function mockRequestBuilder(): void
     {
         $this->mediator->setEntityStubGeneratorRequestBuilder(new EntityStubGeneratorRequestBuilderImpl());
+        $this->mediator->setUseCaseResponseFileObjectFactory(
+            new UseCaseResponseFileObjectFactoryMock()
+        );
         $this->mediator->setUseCaseDetailResponseStubGeneratorRequestBuilder(
             new UseCaseDetailResponseStubGeneratorRequestBuilderImpl()
         );
