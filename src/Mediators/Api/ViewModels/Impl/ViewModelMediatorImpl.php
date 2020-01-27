@@ -101,7 +101,7 @@ class ViewModelMediatorImpl implements ViewModelMediator
         return $fileObjects;
     }
 
-    public function isDetailResponseExist(): bool
+    private function isDetailResponseExist(): bool
     {
         $fileObject = $this->createUseCaseResponseFileObject(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE
@@ -120,7 +120,7 @@ class ViewModelMediatorImpl implements ViewModelMediator
         );
     }
 
-    public function isListItemResponseExist(): bool
+    private function isListItemResponseExist(): bool
     {
         $fileObject = $this->createUseCaseResponseFileObject(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE
