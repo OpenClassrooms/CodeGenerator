@@ -25,11 +25,20 @@ class ViewModelMediatorImpl implements ViewModelMediator
      */
     private $useCaseResponseFileObjectFactory;
 
-    public function setUseCaseResponseFileObjectFactory(
-        UseCaseResponseFileObjectFactory $useCaseResponseFileObjectFactory
-    ): void {
-        $this->useCaseResponseFileObjectFactory = $useCaseResponseFileObjectFactory;
-    }
+    /**
+     * @var string
+     */
+    private $baseNamespace;
+
+    /**
+     * @var string
+     */
+    private $domain;
+
+    /**
+     * @var string
+     */
+    private $entity;
 
     /**
      * @return FileObject[]
@@ -37,6 +46,8 @@ class ViewModelMediatorImpl implements ViewModelMediator
     public function mediate(array $args = [], array $options = []): array
     {
         $className = $args[Args::CLASS_NAME];
+
+        $this->initFileObjectParameter($className);
 
         if (false !== $options[Options::NO_TEST]) {
             $fileObjects = $this->generateSources($className);
@@ -57,21 +68,30 @@ class ViewModelMediatorImpl implements ViewModelMediator
         return $fileObjects;
     }
 
+    private function initFileObjectParameter(string $className): void
+    {
+        [
+            $this->baseNamespace,
+            $this->domain,
+            $this->entity,
+        ] = FileObjectUtility::getBaseNamespaceDomainAndEntityNameFromClassName($className);
+    }
+
     /**
      * @return FileObject[]
      */
     private function generateSources(string $className): array
     {
         $fileObjects[] = $this->generateViewModel($className);
-        if ($this->isDetailResponseExist($className)) {
-            $fileObjects[] = $this->generateViewModelDetail($className);
-            $fileObjects[] = $this->generateViewModelDetailImpl($className);
+        if ($this->isDetailResponseExist()) {
+            $fileObjects[] = $this->generateViewModelDetailGenerator($className);
+            $fileObjects[] = $this->generateViewModelDetailImplGenerator($className);
             $fileObjects[] = $this->generateViewModelDetailAssemblerGenerator($className);
             $fileObjects[] = $this->generateViewModelDetailAssemblerImplGenerator($className);
         }
-        if ($this->isListItemResponseExist($className)) {
-            $fileObjects[] = $this->generateViewModelListItem($className);
-            $fileObjects[] = $this->generateViewModelListItemImpl($className);
+        if ($this->isListItemResponseExist()) {
+            $fileObjects[] = $this->generateViewModelListItemGenerator($className);
+            $fileObjects[] = $this->generateViewModelListItemImplGenerator($className);
             $fileObjects[] = $this->generateViewModelListItemAssemblerGenerator($className);
             $fileObjects[] = $this->generateViewModelListItemAssemblerImplGenerator($className);
         }
@@ -81,25 +101,29 @@ class ViewModelMediatorImpl implements ViewModelMediator
         return $fileObjects;
     }
 
-    public function isDetailResponseExist(string $className): bool
+    public function isDetailResponseExist(): bool
     {
-        $fileObject = $this->useCaseResponseFileObjectFactory->create(
-            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE,
-            FileObjectUtility::getDomainFromClassName($className),
-            FileObjectUtility::getEntityNameFromClassName($className),
-            FileObjectUtility::getBaseNamespaceFromClassName($className)
+        $fileObject = $this->createUseCaseResponseFileObject(
+            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE
         );
 
-        return class_exists($fileObject->getClassName());
+        return interface_exists($fileObject->getClassName());
     }
 
-    public function isListItemResponseExist(string $className): bool
+    private function createUseCaseResponseFileObject(string $type): FileObject
     {
-        $fileObject = $this->useCaseResponseFileObjectFactory->create(
-            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE,
-            FileObjectUtility::getDomainFromClassName($className),
-            FileObjectUtility::getEntityNameFromClassName($className),
-            FileObjectUtility::getBaseNamespaceFromClassName($className)
+        return $this->useCaseResponseFileObjectFactory->create(
+            $type,
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
+        );
+    }
+
+    public function isListItemResponseExist(): bool
+    {
+        $fileObject = $this->createUseCaseResponseFileObject(
+            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE
         );
 
         return interface_exists($fileObject->getClassName());
@@ -110,11 +134,13 @@ class ViewModelMediatorImpl implements ViewModelMediator
      */
     private function generateEntityAndUseCaseResponseTests(string $className): array
     {
-        $fileObjects[] = $this->generateEntityStub($className);
-        $this->isDetailResponseExist($className) ? $fileObjects[] = $this->generateUseCaseDetailResponseStub($className)
-            : null;
-        $this->isListItemResponseExist($className) ? $fileObjects[] = $this->generateUseCaseListItemResponseStub($className)
-            : null;
+        $fileObjects[] = $this->generateEntityStubGenerator($className);
+        if ($this->isDetailResponseExist()) {
+            $fileObjects[] = $this->generateUseCaseDetailResponseStubGenerator($className);
+        }
+        if ($this->isListItemResponseExist()) {
+            $fileObjects[] = $this->generateUseCaseListItemResponseStubGenerator($className);
+        }
 
         return $fileObjects;
     }
@@ -124,16 +150,16 @@ class ViewModelMediatorImpl implements ViewModelMediator
      */
     private function generateViewModelTests(string $className): array
     {
-        $fileObjects[] = $this->generateViewModelTestCase($className);
-        if ($this->isListItemResponseExist($className)) {
-            $fileObjects[] = $this->generateViewModelListItemStub($className);
-            $fileObjects[] = $this->generateViewModelListItemTestCase($className);
-            $fileObjects[] = $this->generateViewModelListItemAssemblerImplTest($className);
+        $fileObjects[] = $this->generateViewModelTestCaseGenerator($className);
+        if ($this->isDetailResponseExist()) {
+            $fileObjects[] = $this->generateViewModelDetailTestCaseGenerator($className);
+            $fileObjects[] = $this->generateViewModelDetailStubGenerator($className);
+            $fileObjects[] = $this->generateViewModelDetailAssemblerImplTestGenerator($className);
         }
-        if ($this->isDetailResponseExist($className)) {
-            $fileObjects[] = $this->generateViewModelDetailTestCase($className);
-            $fileObjects[] = $this->generateViewModelDetailStub($className);
-            $fileObjects[] = $this->generateViewModelDetailAssemblerImplTest($className);
+        if ($this->isListItemResponseExist()) {
+            $fileObjects[] = $this->generateViewModelListItemStubGenerator($className);
+            $fileObjects[] = $this->generateViewModelListItemTestCaseGenerator($className);
+            $fileObjects[] = $this->generateViewModelListItemAssemblerImplTestGenerator($className);
         }
 
         return $fileObjects;
@@ -142,5 +168,11 @@ class ViewModelMediatorImpl implements ViewModelMediator
     public function setFileObjectGateway(FileObjectGateway $fileObjectGateway): void
     {
         $this->fileObjectGateway = $fileObjectGateway;
+    }
+
+    public function setUseCaseResponseFileObjectFactory(
+        UseCaseResponseFileObjectFactory $useCaseResponseFileObjectFactory
+    ): void {
+        $this->useCaseResponseFileObjectFactory = $useCaseResponseFileObjectFactory;
     }
 }
