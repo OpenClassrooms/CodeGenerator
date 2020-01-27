@@ -9,6 +9,6 @@ class DeleteEntityControllerSkeletonModelAssemblerMock extends DeleteEntityContr
 {
     public function __construct()
     {
-        $this->abstractControllerClassName = FixturesConfig::ABSTRACT_CONTROLLER;
+        $this->setAbstractControllerClassName(FixturesConfig::ABSTRACT_CONTROLLER);
     }
 }

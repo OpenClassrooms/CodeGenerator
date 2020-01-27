@@ -69,6 +69,10 @@
 
         <service id="open_classrooms.code_generator.mediators.api.view_model_mediator"
                  class="OpenClassrooms\CodeGenerator\Mediators\Api\ViewModels\Impl\ViewModelMediatorImpl" public="true">
+            <call method="setUseCaseResponseFileObjectFactory">
+                <argument type="service"
+                          id="open_classrooms.code_generator.file_objects.use_case_response_file_object_factory"/>
+            </call>
             <call method="setViewModelAssemblerTraitGeneratorRequestBuilder">
                 <argument type="service"
                           id="open_classrooms.code_generator.generator.api.view_models.dto.request.view_model_assembler_trait_generator_request_builder"/>

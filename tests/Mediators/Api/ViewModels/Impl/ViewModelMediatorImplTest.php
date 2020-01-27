@@ -68,8 +68,10 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\Api\ViewModels\Vie
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\BusinessRules\Entities\EntityStub\EntityStubFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\BusinessRules\Responders\UseCaseDetailResponseStub\UseCaseDetailResponseStubFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\BusinessRules\Responders\UseCaseListItemResponseStub\UseCaseListItemResponseStubFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\UseCaseResponseFileObjectFactoryMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Generator\GeneratorMock;
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityResponse;
 use OpenClassrooms\CodeGenerator\Tests\Mediators\MediatorFileObjectTestCase;
 use PHPUnit\Framework\TestCase;
 
@@ -94,7 +96,7 @@ class ViewModelMediatorImplTest extends TestCase
     {
         $this->options[Options::DUMP] = null;
         $fileObjects = $this->mediator->mediate(
-            [Args::CLASS_NAME => UseCaseDetailResponseStubFileObjectStub1::CLASS_NAME],
+            [Args::CLASS_NAME => FunctionalEntityResponse::class],
             $this->options
         );
 
@@ -107,7 +109,7 @@ class ViewModelMediatorImplTest extends TestCase
     public function generateViewModelWithoutOptions(): void
     {
         $fileObjects = $this->mediator->mediate(
-            [Args::CLASS_NAME => UseCaseDetailResponseStubFileObjectStub1::CLASS_NAME],
+            [Args::CLASS_NAME => FunctionalEntityResponse::class],
             $this->options
 
         );
@@ -122,7 +124,7 @@ class ViewModelMediatorImplTest extends TestCase
     {
         $this->options[Options::NO_TEST] = null;
         $fileObjects = $this->mediator->mediate(
-            [Args::CLASS_NAME => UseCaseDetailResponseStubFileObjectStub1::CLASS_NAME],
+            [Args::CLASS_NAME => FunctionalEntityResponse::class],
             $this->options
         );
 
@@ -136,10 +138,44 @@ class ViewModelMediatorImplTest extends TestCase
     {
         $this->options[Options::TESTS_ONLY] = null;
         $fileObjects = $this->mediator->mediate(
-            [Args::CLASS_NAME => UseCaseDetailResponseStubFileObjectStub1::CLASS_NAME],
+            [Args::CLASS_NAME => FunctionalEntityResponse::class],
             $this->options
         );
 
+        $this->assertFlushedFileObject($fileObjects);
+    }
+
+    /**
+     * @test
+     */
+    public function generateViewModelWithoutDetail(): void
+    {
+        $this->mediator->setUseCaseResponseFileObjectFactory(new UseCaseResponseFileObjectFactoryMock(false, true));
+        $fileObjects = $this->mediator->mediate(
+            [Args::CLASS_NAME => FunctionalEntityResponse::class],
+            $this->options
+        );
+
+        foreach ($fileObjects as $fileObject) {
+            $this->assertNotContains('Detail', $fileObject->getClassName());
+        }
+        $this->assertFlushedFileObject($fileObjects);
+    }
+
+    /**
+     * @test
+     */
+    public function generateViewModelWithoutListItem(): void
+    {
+        $this->mediator->setUseCaseResponseFileObjectFactory(new UseCaseResponseFileObjectFactoryMock(true, false));
+        $fileObjects = $this->mediator->mediate(
+            [Args::CLASS_NAME => FunctionalEntityResponse::class],
+            $this->options
+        );
+
+        foreach ($fileObjects as $fileObject) {
+            $this->assertNotContains('ListItem', $fileObject->getClassName());
+        }
         $this->assertFlushedFileObject($fileObjects);
     }
 
@@ -148,6 +184,7 @@ class ViewModelMediatorImplTest extends TestCase
         InMemoryFileObjectGateway::$fileObjects = [];
         $this->mediator = new ViewModelMediatorImpl();
         $this->mediator->setFileObjectGateway(new InMemoryFileObjectGateway());
+        $this->mediator->setUseCaseResponseFileObjectFactory(new UseCaseResponseFileObjectFactoryMock());
 
         $this->options = [
             Options::DUMP       => false,
@@ -251,6 +288,9 @@ class ViewModelMediatorImplTest extends TestCase
     private function mockRequestBuilder(): void
     {
         $this->mediator->setEntityStubGeneratorRequestBuilder(new EntityStubGeneratorRequestBuilderImpl());
+        $this->mediator->setUseCaseResponseFileObjectFactory(
+            new UseCaseResponseFileObjectFactoryMock()
+        );
         $this->mediator->setUseCaseDetailResponseStubGeneratorRequestBuilder(
             new UseCaseDetailResponseStubGeneratorRequestBuilderImpl()
         );
