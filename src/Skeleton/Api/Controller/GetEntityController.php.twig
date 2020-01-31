@@ -43,12 +43,12 @@ class {{ skeletonModel.shortName }} extends {{ skeletonModel.abstractControllerS
 
             return $this->createJsonResponse($vm);
         } catch ({{ skeletonModel.entityNotFoundExceptionShortName }} $e) {
-            throw $this->throwNotFoundException();
-        }
-    }
+$this->throwNotFoundException();
+}
+}
 
-    /**
-     * @throws {{ skeletonModel.entityNotFoundExceptionShortName }}
+/**
+* @throws {{ skeletonModel.entityNotFoundExceptionShortName }}
      */
     private function {{ skeletonModel.getEntityMethod }}(int ${{ skeletonModel.entityIdArgument }}): {{ skeletonModel.entityUseCaseResponseShortName }}
     {

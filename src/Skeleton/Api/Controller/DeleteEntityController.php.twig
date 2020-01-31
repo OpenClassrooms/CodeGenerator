@@ -31,11 +31,11 @@ class {{ skeletonModel.shortName }} extends {{ skeletonModel.abstractControllerS
 
             return $this->createDeletedResponse();
         } catch ({{ skeletonModel.entityNotFoundExceptionShortName}} $exception) {
-            return $this->throwNotFoundException();
-        }
-    }
+$this->throwNotFoundException();
+}
+}
 
-    private function {{ skeletonModel.deleteEntityMethod }}(int ${{ skeletonModel.entityIdArgument }}): void
+private function {{ skeletonModel.deleteEntityMethod }}(int ${{ skeletonModel.entityIdArgument }}): void
     {
         $this->get({{ skeletonModel.deleteEntityShortName }}::class)->execute(
             $this->{{ skeletonModel.deleteEntityRequestBuilderArgument }}

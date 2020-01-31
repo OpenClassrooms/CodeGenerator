@@ -39,7 +39,7 @@ class GetFunctionalEntitiesController extends AbstractApiController
 
     /**
      * @Security("")
-     * @ParamConverter("collectionInformation", options={"itemsPerPage":"200"}) // default 20 to remove if not necessary
+     * @ParamConverter("collectionInformation")
      */
     public function getAction(CollectionInformation $collectionInformation, int $userId): JsonResponse
     {
@@ -49,7 +49,7 @@ class GetFunctionalEntitiesController extends AbstractApiController
 
             return $this->createJsonResponse($vm);
         } catch (FunctionalEntityNotFoundException $e) {
-            throw $this->throwNotFoundException();
+            $this->throwNotFoundException();
         }
     }
 
