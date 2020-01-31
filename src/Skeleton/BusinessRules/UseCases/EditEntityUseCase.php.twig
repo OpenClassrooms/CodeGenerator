@@ -42,7 +42,6 @@ class {{ skeletonModel.shortName }} implements UseCase
     {
         ${{ skeletonModel.entityArgument }} = $this->get{{ skeletonModel.entityShortName }}($useCaseRequest->get{{ skeletonModel.entityShortName }}Id());
         $this->populate(${{ skeletonModel.entityArgument }}, $useCaseRequest);
-
         $this->update(${{ skeletonModel.entityArgument }});
 
         return $this->createResponse(${{ skeletonModel.entityArgument }});

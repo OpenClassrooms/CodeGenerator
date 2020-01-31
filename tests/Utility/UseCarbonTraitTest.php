@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace OpenClassrooms\CodeGenerator\Tests\Utility;
 
 use OpenClassrooms\CodeGenerator\Utility\MethodUtility;
-use OpenClassrooms\CodeGenerator\Utility\useCarbonTrait;
+use OpenClassrooms\CodeGenerator\Utility\UseCarbonTrait;
 use PHPUnit\Framework\TestCase;
 
 class UseCarbonTraitTest extends TestCase
 {
-    use useCarbonTrait;
+    use UseCarbonTrait;
 
     /**
      * @var __anonymous@919

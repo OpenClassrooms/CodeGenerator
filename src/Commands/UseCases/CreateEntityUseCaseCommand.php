@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace OpenClassrooms\CodeGenerator\Commands;
+namespace OpenClassrooms\CodeGenerator\Commands\UseCases;
 
+use OpenClassrooms\CodeGenerator\Commands\AbstractCommand;
 use OpenClassrooms\CodeGenerator\Mediators\Args;
 use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\CreateEntityUseCaseMediator;
 use Symfony\Component\Config\FileLocator;

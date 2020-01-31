@@ -6,7 +6,7 @@ namespace OpenClassrooms\CodeGenerator\Utility;
 
 use OpenClassrooms\CodeGenerator\Entities\Object\MethodObject;
 
-trait useCarbonTrait
+trait UseCarbonTrait
 {
     /**
      * @param MethodObject[] $methods

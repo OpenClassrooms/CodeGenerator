@@ -36,26 +36,26 @@ class {{ skeletonModel.shortName }} implements UseCase
     ) {
         $this->{{ skeletonModel.entityFactoryArgument }} = ${{ skeletonModel.entityFactoryArgument }};
         $this->{{ skeletonModel.entityGatewayArgument }} = ${{ skeletonModel.entityGatewayArgument }};
-        $this->{{ skeletonModel.entityUseCaseDetailResponseAssemblerArgument }} = ${{ skeletonModel.entityUseCaseDetailResponseAssemblerArgument }};
-    }
+$this->{{ skeletonModel.entityUseCaseDetailResponseAssemblerArgument }} = ${{ skeletonModel.entityUseCaseDetailResponseAssemblerArgument }};
+}
 
-    /**
-     * @Transaction
-     *
-     * @param {{ skeletonModel.createEntityUseCaseRequestShortName }} $useCaseRequest
-     */
-    public function execute(UseCaseRequest $useCaseRequest): {{ skeletonModel.entityUseCaseDetailResponseShortName }}
-    {
-        ${{ skeletonModel.entityArgument }} = $this->create{{ skeletonModel.entityShortName }}($useCaseRequest);
-        $this->save(${{ skeletonModel.entityArgument }});
+/**
+* @Transaction
+*
+* @param {{ skeletonModel.createEntityUseCaseRequestShortName }} $useCaseRequest
+*/
+public function execute(UseCaseRequest $useCaseRequest): {{ skeletonModel.entityUseCaseDetailResponseShortName }}
+{
+${{ skeletonModel.entityArgument }} = $this->create($useCaseRequest);
+$this->save(${{ skeletonModel.entityArgument }});
 
-        return $this->createResponse(${{ skeletonModel.entityArgument }});
-    }
+return $this->createResponse(${{ skeletonModel.entityArgument }});
+}
 
-    private function create{{ skeletonModel.entityShortName }}({{ skeletonModel.createEntityUseCaseRequestShortName }} $request): {{ skeletonModel.entityShortName }}
-    {
-        ${{ skeletonModel.entityArgument }} = $this->{{ skeletonModel.entityFactoryArgument }}->create();
-        $this->populate(${{ skeletonModel.entityArgument }}, $request);
+private function create{{ skeletonModel.entityShortName }}({{ skeletonModel.createEntityUseCaseRequestShortName }} $request): {{ skeletonModel.entityShortName }}
+{
+${{ skeletonModel.entityArgument }} = $this->{{ skeletonModel.entityFactoryArgument }}->create();
+$this->populate(${{ skeletonModel.entityArgument }}, $request);
 
         return ${{ skeletonModel.entityArgument }};
     }

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace OpenClassrooms\CodeGenerator\Tests\Commands;
 
-use OpenClassrooms\CodeGenerator\Commands\GenericUseCaseCommand;
+use OpenClassrooms\CodeGenerator\Commands\UseCases\GenericUseCaseCommand;
 use OpenClassrooms\CodeGenerator\Mediators\Args;
 use OpenClassrooms\CodeGenerator\Mediators\GenerateGenerator\GenerateGeneratorMediator;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Commands\GenerateGeneratorCommandMock;

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace OpenClassrooms\CodeGenerator\Commands;
 
-use OpenClassrooms\CodeGenerator\Exceptions\ClassNameNotExistException;
+use OpenClassrooms\CodeGenerator\Commands\Exceptions\ClassNameNotExistException;
 use OpenClassrooms\CodeGenerator\Mediators\Args;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;

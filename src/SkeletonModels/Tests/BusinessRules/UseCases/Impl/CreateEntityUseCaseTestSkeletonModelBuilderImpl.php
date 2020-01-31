@@ -7,11 +7,11 @@ namespace OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\UseCas
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\UseCases\CreateEntityUseCaseTestSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\UseCases\CreateEntityUseCaseTestSkeletonModelBuilder;
-use OpenClassrooms\CodeGenerator\Utility\useCarbonTrait;
+use OpenClassrooms\CodeGenerator\Utility\UseCarbonTrait;
 
 class CreateEntityUseCaseTestSkeletonModelBuilderImpl implements CreateEntityUseCaseTestSkeletonModelBuilder
 {
-    use useCarbonTrait;
+    use UseCarbonTrait;
 
     /**
      * @var CreateEntityUseCaseTestSkeletonModel

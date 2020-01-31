@@ -13,6 +13,9 @@
             <call method="setCollectionInformationClassName">
                 <argument type="string">%collection_information%</argument>
             </call>
+            <call method="setPaginatedUseCaseResponse">
+                <argument type="string">%paginated_use_case_response_classname%</argument>
+            </call>
         </service>
 
         <service id="OpenClassrooms\CodeGenerator\Generator\Api\Controller\GetEntitiesControllerGenerator"

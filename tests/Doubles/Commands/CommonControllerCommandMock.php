@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Commands;
 
-use OpenClassrooms\CodeGenerator\Commands\CommonControllerCommand;
+use OpenClassrooms\CodeGenerator\Commands\Presentation\CommonControllerCommand;
 
 class CommonControllerCommandMock extends CommonControllerCommand
 {

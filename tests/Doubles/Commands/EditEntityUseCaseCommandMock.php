@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Commands;
 
-use OpenClassrooms\CodeGenerator\Commands\EditEntityUseCaseCommand;
+use OpenClassrooms\CodeGenerator\Commands\UseCases\EditEntityUseCaseCommand;
 
 class EditEntityUseCaseCommandMock extends EditEntityUseCaseCommand
 {

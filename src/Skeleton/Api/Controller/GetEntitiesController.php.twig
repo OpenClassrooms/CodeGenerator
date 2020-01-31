@@ -31,13 +31,13 @@ class {{ skeletonModel.shortName }} extends {{ skeletonModel.abstractControllerS
     ) {
         $this->{{ skeletonModel.entityViewModelListItemAssemblerArgument }} = $assembler;
         $this->{{ skeletonModel.getEntitiesUseCaseRequestBuilderArgument }} = $builder;
-    }
+}
 
-    /**
-     * @Security("")
-     * @ParamConverter("collectionInformation", options={"itemsPerPage":"200"}) // default 20 to remove if not necessary
-     */
-    public function getAction({{ skeletonModel.collectionInformationShortName }} $collectionInformation, int $userId): JsonResponse
+/**
+* @Security("")
+* @ParamConverter("collectionInformation") // default 20 to remove if not necessary
+*/
+public function getAction({{ skeletonModel.collectionInformationShortName }} $collectionInformation, int $userId): JsonResponse
     {
         try {
             ${{ skeletonModel.entitiesArgument }} = $this->{{ skeletonModel.getEntitiesMethod }}($collectionInformation);

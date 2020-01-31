@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OpenClassrooms\CodeGenerator\Commands\GenerateGenrator;
+namespace OpenClassrooms\CodeGenerator\Commands\GenerateGenerator;
 
 use OpenClassrooms\CodeGenerator\Commands\AbstractCommand;
 use OpenClassrooms\CodeGenerator\Commands\ConstructionPatternType;

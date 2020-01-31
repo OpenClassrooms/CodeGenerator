@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace OpenClassrooms\CodeGenerator\Tests\Commands;
 
 use OpenClassrooms\CodeGenerator\Commands\CommandLabelType;
-use OpenClassrooms\CodeGenerator\Commands\ViewModelsCommand;
+use OpenClassrooms\CodeGenerator\Commands\Presentation\ViewModelsCommand;
 use OpenClassrooms\CodeGenerator\Mediators\Api\ViewModels\ViewModelMediator;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Commands\ViewModelsCommandMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Mediators\ViewModelMediatorMock;

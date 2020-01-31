@@ -17,8 +17,6 @@ class {{ skeletonModel.shortName }} extends TestCase
 {
     use {{ skeletonModel.useCaseDetailResponseTestCaseShortName }};
 
-    const INVALID_ID = -1;
-
     /**
      * @var {{ skeletonModel.getEntityUseCaseRequestDTOShortName }}
      */
@@ -35,15 +33,15 @@ class {{ skeletonModel.shortName }} extends TestCase
      * @expectedException \{{ skeletonModel.entityNotFoundExceptionFileObjectClassName }}
      */
     final public function {{ skeletonModel.entityShortNameArgument }}NotFoundShouldThrowException(): void
-    {
-        $this->request->id = self::INVALID_ID;
-        $this->useCase->execute($this->request);
-    }
+{
+$this->request->id = -1;
+$this->useCase->execute($this->request);
+}
 
-    /**
-     * @test
-     */
-    final public function get{{ skeletonModel.entityShortName }}ShouldReturnResponse(): void
+/**
+* @test
+*/
+final public function get{{ skeletonModel.entityShortName }}ShouldReturnResponse(): void
     {
         $response = $this->useCase->execute($this->request);
 

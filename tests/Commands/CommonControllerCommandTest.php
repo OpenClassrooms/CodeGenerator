@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace OpenClassrooms\CodeGenerator\Tests\Commands;
 
-use OpenClassrooms\CodeGenerator\Commands\CommonControllerCommand;
+use OpenClassrooms\CodeGenerator\Commands\Presentation\CommonControllerCommand;
 use OpenClassrooms\CodeGenerator\Mediators\Api\Controller\CommonControllerMediator;
 use OpenClassrooms\CodeGenerator\Mediators\Args;
 use OpenClassrooms\CodeGenerator\Mediators\ClassType;
@@ -34,7 +34,7 @@ class CommonControllerCommandTest extends TestCase
 
     /**
      * @test
-     * @expectedException \OpenClassrooms\CodeGenerator\Exceptions\BadCommandArgumentException
+     * @expectedException \OpenClassrooms\CodeGenerator\Commands\Exceptions\BadCommandArgumentException
      */
     public function executeCommandWithBadArgumentType(): void
     {
@@ -101,7 +101,7 @@ class CommonControllerCommandTest extends TestCase
 
     /**
      * @test
-     * @expectedException \OpenClassrooms\CodeGenerator\Exceptions\ClassNameNotExistException
+     * @expectedException \OpenClassrooms\CodeGenerator\Commands\Exceptions\ClassNameNotExistException
      */
     public function executeCommandWithBadClassNameArgument(): void
     {

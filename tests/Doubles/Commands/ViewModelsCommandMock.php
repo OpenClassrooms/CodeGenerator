@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Commands;
 
-use OpenClassrooms\CodeGenerator\Commands\ViewModelsCommand;
+use OpenClassrooms\CodeGenerator\Commands\Presentation\ViewModelsCommand;
 
 class ViewModelsCommandMock extends ViewModelsCommand
 {

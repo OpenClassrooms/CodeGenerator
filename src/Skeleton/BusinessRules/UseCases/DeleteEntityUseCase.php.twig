@@ -19,11 +19,6 @@ class {{ skeletonModel.shortName }}
         $this->{{ skeletonModel.entityGatewayArgument }} = $gateway;
     }
 
-    private function delete({{ skeletonModel.entityShortName }} ${{ skeletonModel.entityArgument }}): void
-    {
-        $this->{{ skeletonModel.entityGatewayArgument }}->delete(${{ skeletonModel.entityArgument }});
-    }
-
     /**
      * @Transaction
      *
@@ -31,14 +26,19 @@ class {{ skeletonModel.shortName }}
      *
      * @throws \{{ skeletonModel.entityNotFoundExceptionClassName }}
      */
-    public function execute(UseCaseRequest $useCaseRequest): void
-    {
-        ${{ skeletonModel.entityArgument }} = $this->{{ skeletonModel.getEntityIdMethod }}($useCaseRequest->{{ skeletonModel.entityIdMethod }}());
-        $this->delete(${{ skeletonModel.entityArgument }});
-    }
+public function execute(UseCaseRequest $useCaseRequest): void
+{
+${{ skeletonModel.entityArgument }} = $this->{{ skeletonModel.getEntityIdMethod }}($useCaseRequest->{{ skeletonModel.entityIdMethod }}());
+$this->delete(${{ skeletonModel.entityArgument }});
+}
 
-    private function {{ skeletonModel.getEntityIdMethod }}(int ${{ skeletonModel.entityIdArgument }}): {{ skeletonModel.entityShortName }}
-    {
-        return $this->{{ skeletonModel.entityGatewayArgument }}->findById(${{ skeletonModel.entityIdArgument }});
-    }
+private function {{ skeletonModel.getEntityIdMethod }}(int ${{ skeletonModel.entityIdArgument }}): {{ skeletonModel.entityShortName }}
+{
+return $this->{{ skeletonModel.entityGatewayArgument }}->findById(${{ skeletonModel.entityIdArgument }});
+}
+
+private function delete({{ skeletonModel.entityShortName }} ${{ skeletonModel.entityArgument }}): void
+{
+$this->{{ skeletonModel.entityGatewayArgument }}->delete(${{ skeletonModel.entityArgument }});
+}
 }

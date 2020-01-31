@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-namespace OpenClassrooms\CodeGenerator\Commands;
+namespace OpenClassrooms\CodeGenerator\Commands\Presentation;
 
-use OpenClassrooms\CodeGenerator\Exceptions\BadCommandArgumentException;
+use OpenClassrooms\CodeGenerator\Commands\AbstractCommand;
+use OpenClassrooms\CodeGenerator\Commands\Exceptions\BadCommandArgumentException;
 use OpenClassrooms\CodeGenerator\Mediators\Api\Controller\CommonControllerMediator;
 use OpenClassrooms\CodeGenerator\Mediators\Args;
 use OpenClassrooms\CodeGenerator\Mediators\ClassType;

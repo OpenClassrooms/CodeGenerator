@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Commands;
 
-use OpenClassrooms\CodeGenerator\Commands\DeleteEntityUseCaseCommand;
+use OpenClassrooms\CodeGenerator\Commands\UseCases\DeleteEntityUseCaseCommand;
 
 class DeleteEntityUseCaseCommandMock extends DeleteEntityUseCaseCommand
 {

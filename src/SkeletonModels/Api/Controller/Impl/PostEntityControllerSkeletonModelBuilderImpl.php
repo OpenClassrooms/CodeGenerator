@@ -9,12 +9,12 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\PostEntityControl
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\PostEntityControllerSkeletonModelBuilder;
 use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 use OpenClassrooms\CodeGenerator\Utility\NameUtility;
-use OpenClassrooms\CodeGenerator\Utility\useCarbonTrait;
+use OpenClassrooms\CodeGenerator\Utility\UseCarbonTrait;
 
 class PostEntityControllerSkeletonModelBuilderImpl implements PostEntityControllerSkeletonModelBuilder
 {
     use AbstractControllerClassNameTrait;
-    use useCarbonTrait;
+    use UseCarbonTrait;
 
     /**
      * @var PostEntityControllerSkeletonModel

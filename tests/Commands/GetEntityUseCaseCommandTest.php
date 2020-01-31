@@ -4,11 +4,10 @@ declare(strict_types=1);
 
 namespace OpenClassrooms\CodeGenerator\Tests\Commands;
 
-use OpenClassrooms\CodeGenerator\Commands\GetEntityUseCaseCommand;
+use OpenClassrooms\CodeGenerator\Commands\UseCases\GetEntityUseCaseCommand;
 use OpenClassrooms\CodeGenerator\Mediators\Args;
 use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\GetEntityUseCaseMediator;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Commands\GetEntityUseCaseCommandMock;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\Mediators\GetEntitiesUseCaseMediatorMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Mediators\GetEntityUseCaseMediatorMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Symfony\Component\DependencyInjection\ContainerMock;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Entities\Domain\SubDomain\FunctionalEntity;
@@ -75,7 +74,7 @@ class GetEntityUseCaseCommandTest extends TestCase
 
     /**
      * @test
-     * @expectedException \OpenClassrooms\CodeGenerator\Exceptions\ClassNameNotExistException
+     * @expectedException \OpenClassrooms\CodeGenerator\Commands\Exceptions\ClassNameNotExistException
      */
     public function executeCommandWithBadClassNameArgument(): void
     {
