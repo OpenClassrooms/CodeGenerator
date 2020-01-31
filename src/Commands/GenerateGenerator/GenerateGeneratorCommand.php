@@ -2,8 +2,10 @@
 
 declare(strict_types=1);
 
-namespace OpenClassrooms\CodeGenerator\Commands;
+namespace OpenClassrooms\CodeGenerator\Commands\GenerateGenrator;
 
+use OpenClassrooms\CodeGenerator\Commands\AbstractCommand;
+use OpenClassrooms\CodeGenerator\Commands\ConstructionPatternType;
 use OpenClassrooms\CodeGenerator\Mediators\Args;
 use OpenClassrooms\CodeGenerator\Mediators\Options;
 use Symfony\Component\Config\FileLocator;
