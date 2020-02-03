@@ -7,12 +7,15 @@ declare(strict_types=1);
 namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain;
 
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Requestors\Domain\SubDomain\GenericUseCaseRequest;
+use OpenClassrooms\UseCase\Application\Annotations\Security;
 use OpenClassrooms\UseCase\BusinessRules\Requestors\UseCase;
 use OpenClassrooms\UseCase\BusinessRules\Requestors\UseCaseRequest;
 
 class GenericUseCase implements UseCase
 {
     /**
+     * @Security(roles="")
+     *
      * @param GenericUseCaseRequest $useCaseRequest
      */
     public function execute(UseCaseRequest $useCaseRequest)

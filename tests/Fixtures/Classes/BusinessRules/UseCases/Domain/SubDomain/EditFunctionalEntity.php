@@ -11,12 +11,15 @@ use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gateways\D
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Requestors\Domain\SubDomain\EditFunctionalEntityRequest;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityDetailResponse;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityDetailResponseAssembler;
+use OpenClassrooms\UseCase\Application\Annotations\Security;
 use OpenClassrooms\UseCase\Application\Annotations\Transaction;
 use OpenClassrooms\UseCase\BusinessRules\Requestors\UseCase;
 use OpenClassrooms\UseCase\BusinessRules\Requestors\UseCaseRequest;
 
 class EditFunctionalEntity implements UseCase
 {
+    use FunctionalEntityCommonHydratorTrait;
+
     /**
      * @var FunctionalEntityGateway
      */
@@ -37,6 +40,7 @@ class EditFunctionalEntity implements UseCase
 
     /**
      * @Transaction
+     * @Security(roles="")
      *
      * @param EditFunctionalEntityRequest $useCaseRequest
      *
@@ -45,7 +49,7 @@ class EditFunctionalEntity implements UseCase
     public function execute(UseCaseRequest $useCaseRequest): FunctionalEntityDetailResponse
     {
         $functionalEntity = $this->getFunctionalEntity($useCaseRequest->getFunctionalEntityId());
-        $this->populate($functionalEntity, $useCaseRequest);
+        $this->populateFromRequest($functionalEntity, $useCaseRequest);
 
         $this->update($functionalEntity);
 
@@ -58,14 +62,6 @@ class EditFunctionalEntity implements UseCase
     private function getFunctionalEntity(int $functionalEntityId): FunctionalEntity
     {
         return $this->functionalEntityGateway->find($functionalEntityId);
-    }
-
-    private function populate(FunctionalEntity $functionalEntity, EditFunctionalEntityRequest $request): void
-    {
-        !$request->isField1Updated() ?: $functionalEntity->setField1($request->getField1());
-        !$request->isField2Updated() ?: $functionalEntity->setField2($request->getField2());
-        !$request->isField3Updated() ?: $functionalEntity->setField3($request->isField3());
-        !$request->isField4Updated() ?: $functionalEntity->setField4($request->getField4());
     }
 
     private function update(FunctionalEntity $functionalEntity): void

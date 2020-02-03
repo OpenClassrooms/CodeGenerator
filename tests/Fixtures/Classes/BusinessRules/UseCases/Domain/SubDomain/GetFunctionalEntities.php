@@ -11,6 +11,7 @@ use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gateways\P
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Requestors\Domain\SubDomain\GetFunctionalEntitiesRequest;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityListItemResponseAssembler;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\PaginatedUseCaseResponse;
+use OpenClassrooms\UseCase\Application\Annotations\Security;
 use OpenClassrooms\UseCase\BusinessRules\Entities\PaginatedCollection;
 use OpenClassrooms\UseCase\BusinessRules\Requestors\UseCase;
 use OpenClassrooms\UseCase\BusinessRules\Requestors\UseCaseRequest;
@@ -34,22 +35,24 @@ class GetFunctionalEntities implements UseCase
     }
 
     /**
+     * @Security(roles="")
+     *
      * @param GetFunctionalEntitiesRequest $useCaseRequest
      */
     public function execute(UseCaseRequest $useCaseRequest): PaginatedUseCaseResponse
     {
-        $functionalEntities = $this->getFunctionalEntities(
-            $useCaseRequest->getFilters(),
-            $useCaseRequest->getSorts(),
-            $this->getPagination($useCaseRequest->getPage(), $useCaseRequest->getItemsPerPage())
-        );
+        $functionalEntities = $this->getFunctionalEntities($useCaseRequest);
 
         return $this->buildResponse($functionalEntities);
     }
 
-    private function getFunctionalEntities(array $filters, array $sorts, array $pagination): PaginatedCollection
+    private function getFunctionalEntities(UseCaseRequest $useCaseRequest): PaginatedCollection
     {
-        return $this->gateway->findAll($filters, $sorts, $pagination);
+        return $this->gateway->findAll(
+            $useCaseRequest->getFilters(),
+            $useCaseRequest->getSorts(),
+            $this->getPagination($useCaseRequest->getPage(), $useCaseRequest->getItemsPerPage())
+        );
     }
 
     private function getPagination(int $page, int $itemPerPage): array

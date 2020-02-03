@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OpenClassrooms\CodeGenerator\Tests\Scripts;
+namespace OpenClassrooms\CodeGenerator\Tests\Composer;
 
 use Composer\Composer;
 use Composer\IO\IOInterface;

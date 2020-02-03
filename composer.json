@@ -54,11 +54,11 @@
     "post-install-cmd": [
       "bash hooks/install.sh",
       "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
-      "OpenClassrooms\\CodeGenerator\\Scripts\\ParameterHandler::createGeneratorFileParameters"
+      "OpenClassrooms\\CodeGenerator\\Composer\\ParameterHandler::createGeneratorFileParameters"
     ],
     "post-update-cmd": [
       "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
-      "OpenClassrooms\\CodeGenerator\\Scripts\\ParameterHandler::createGeneratorFileParameters"
+      "OpenClassrooms\\CodeGenerator\\Composer\\ParameterHandler::createGeneratorFileParameters"
     ]
   },
   "extra": {

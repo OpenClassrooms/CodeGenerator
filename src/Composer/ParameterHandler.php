@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OpenClassrooms\CodeGenerator\Scripts;
+namespace OpenClassrooms\CodeGenerator\Composer;
 
 use Composer\Script\Event;
 use Incenteev\ParameterHandler\Processor;

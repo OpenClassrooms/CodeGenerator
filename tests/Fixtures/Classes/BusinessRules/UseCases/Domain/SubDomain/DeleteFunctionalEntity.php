@@ -9,6 +9,8 @@ namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseC
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Entities\Domain\SubDomain\FunctionalEntity;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gateways\Domain\SubDomain\FunctionalEntityGateway;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Requestors\Domain\SubDomain\DeleteFunctionalEntityRequest;
+use OpenClassrooms\UseCase\Application\Annotations\Security;
+use OpenClassrooms\UseCase\Application\Annotations\Transaction;
 use OpenClassrooms\UseCase\BusinessRules\Requestors\UseCaseRequest;
 
 class DeleteFunctionalEntity
@@ -23,13 +25,9 @@ class DeleteFunctionalEntity
         $this->functionalEntityGateway = $gateway;
     }
 
-    private function delete(FunctionalEntity $functionalEntity): void
-    {
-        $this->functionalEntityGateway->delete($functionalEntity);
-    }
-
     /**
      * @Transaction
+     * @Security(roles="")
      *
      * @param DeleteFunctionalEntityRequest $useCaseRequest
      *
@@ -44,5 +42,10 @@ class DeleteFunctionalEntity
     private function getFunctionalEntity(int $functionalEntityId): FunctionalEntity
     {
         return $this->functionalEntityGateway->findById($functionalEntityId);
+    }
+
+    private function delete(FunctionalEntity $functionalEntity): void
+    {
+        $this->functionalEntityGateway->delete($functionalEntity);
     }
 }

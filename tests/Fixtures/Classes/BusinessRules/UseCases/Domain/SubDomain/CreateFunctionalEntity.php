@@ -12,12 +12,15 @@ use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gateways\D
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Requestors\Domain\SubDomain\CreateFunctionalEntityRequest;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityDetailResponse;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityDetailResponseAssembler;
+use OpenClassrooms\UseCase\Application\Annotations\Security;
 use OpenClassrooms\UseCase\Application\Annotations\Transaction;
 use OpenClassrooms\UseCase\BusinessRules\Requestors\UseCase;
 use OpenClassrooms\UseCase\BusinessRules\Requestors\UseCaseRequest;
 
 class CreateFunctionalEntity implements UseCase
 {
+    use FunctionalEntityCommonHydratorTrait;
+
     /**
      * @var FunctionalEntityFactory
      */
@@ -45,6 +48,7 @@ class CreateFunctionalEntity implements UseCase
 
     /**
      * @Transaction
+     * @Security(roles="")
      *
      * @param CreateFunctionalEntityRequest $useCaseRequest
      */
@@ -59,17 +63,9 @@ class CreateFunctionalEntity implements UseCase
     private function createFunctionalEntity(CreateFunctionalEntityRequest $request): FunctionalEntity
     {
         $functionalEntity = $this->functionalEntityFactory->create();
-        $this->populate($functionalEntity, $request);
+        $this->populateFromRequest($functionalEntity, $request);
 
         return $functionalEntity;
-    }
-
-    private function populate(FunctionalEntity $functionalEntity, CreateFunctionalEntityRequest $request): void
-    {
-        $functionalEntity->setField1($request->getField1());
-        $functionalEntity->setField2($request->getField2());
-        $functionalEntity->setField3($request->isField3());
-        $functionalEntity->setField4($request->getField4());
     }
 
     private function save(FunctionalEntity $functionalEntity): void

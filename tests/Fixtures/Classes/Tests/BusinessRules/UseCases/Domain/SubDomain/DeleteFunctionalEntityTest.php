@@ -26,12 +26,14 @@ final class DeleteFunctionalEntityTest extends TestCase
      */
     private $useCase;
 
-    private function buildRequest(): DeleteFunctionalEntityRequest
+    /**
+     * @test
+     * @expectedException \OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gateways\Domain\SubDomain\Exceptions\FunctionalEntityNotFoundException
+     */
+    public function functionalEntityNotFoundThrowException(): void
     {
-        return (new DeleteFunctionalEntityRequestBuilderImpl())
-            ->create()
-            ->withFunctionalEntityId(FunctionalEntityStub1::ID)
-            ->build();
+        $this->request->functionalEntityId = -1;
+        $this->useCase->execute($this->request);
     }
 
     /**
@@ -45,20 +47,18 @@ final class DeleteFunctionalEntityTest extends TestCase
         $this->assertEmpty(InMemoryFunctionalEntityGateway::$functionalEntities);
     }
 
-    /**
-     * @test
-     * @expectedException \OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gateways\Domain\SubDomain\Exceptions\FunctionalEntityNotFoundException
-     */
-    public function functionalEntityNotFoundThrowException(): void
-    {
-        $this->request->functionalEntityId = -1;
-        $this->useCase->execute($this->request);
-    }
-
     protected function setUp(): void
     {
         $functionalEntityStubs = [FunctionalEntityStub1::ID => new FunctionalEntityStub1()];
         $this->request = $this->buildRequest();
         $this->useCase = new DeleteFunctionalEntity(new InMemoryFunctionalEntityGateway($functionalEntityStubs));
+    }
+
+    private function buildRequest(): DeleteFunctionalEntityRequest
+    {
+        return (new DeleteFunctionalEntityRequestBuilderImpl())
+            ->create()
+            ->withFunctionalEntityId(FunctionalEntityStub1::ID)
+            ->build();
     }
 }

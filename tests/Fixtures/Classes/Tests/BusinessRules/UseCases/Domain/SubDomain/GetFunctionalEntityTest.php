@@ -21,8 +21,6 @@ class GetFunctionalEntityTest extends TestCase
 {
     use FunctionalEntityDetailResponseTestCase;
 
-    const INVALID_ID = -1;
-
     /**
      * @var GetFunctionalEntityRequestDTO
      */
@@ -40,7 +38,7 @@ class GetFunctionalEntityTest extends TestCase
      */
     final public function functionalEntityNotFoundShouldThrowException(): void
     {
-        $this->request->id = self::INVALID_ID;
+        $this->request->id = -1;
         $this->useCase->execute($this->request);
     }
 

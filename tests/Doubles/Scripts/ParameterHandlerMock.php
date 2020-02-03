@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Scripts;
 
-use OpenClassrooms\CodeGenerator\Scripts\ParameterHandler;
+use OpenClassrooms\CodeGenerator\Composer\ParameterHandler;
 use Symfony\Component\Filesystem\Filesystem;
 
 class ParameterHandlerMock extends ParameterHandler
