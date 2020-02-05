@@ -30,13 +30,13 @@ if (!defined('CODE_GENERATOR_COMPOSER_INSTALL')) {
 require CODE_GENERATOR_COMPOSER_INSTALL;
 
 $application = new \Symfony\Component\Console\Application();
-$application->add(new \OpenClassrooms\CodeGenerator\Commands\ViewModelsCommand());
-$application->add(new \OpenClassrooms\CodeGenerator\Commands\GenericUseCaseCommand());
-$application->add(new \OpenClassrooms\CodeGenerator\Commands\GenerateGeneratorCommand());
-$application->add(new \OpenClassrooms\CodeGenerator\Commands\GetEntitiesUseCaseCommand());
-$application->add(new \OpenClassrooms\CodeGenerator\Commands\GetEntityUseCaseCommand());
-$application->add(new \OpenClassrooms\CodeGenerator\Commands\CreateEntityUseCaseCommand());
-$application->add(new \OpenClassrooms\CodeGenerator\Commands\EditEntityUseCaseCommand());
-$application->add(new \OpenClassrooms\CodeGenerator\Commands\DeleteEntityUseCaseCommand());
-$application->add(new \OpenClassrooms\CodeGenerator\Commands\CommonControllerCommand());
+$application->add(new \OpenClassrooms\CodeGenerator\Commands\Presentation\ViewModelsCommand());
+$application->add(new \OpenClassrooms\CodeGenerator\Commands\UseCases\GenericUseCaseCommand());
+$application->add(new \OpenClassrooms\CodeGenerator\Commands\GenerateGenerator\GenerateGeneratorCommand());
+$application->add(new \OpenClassrooms\CodeGenerator\Commands\UseCases\GetEntitiesUseCaseCommand());
+$application->add(new \OpenClassrooms\CodeGenerator\Commands\UseCases\GetEntityUseCaseCommand());
+$application->add(new \OpenClassrooms\CodeGenerator\Commands\UseCases\CreateEntityUseCaseCommand());
+$application->add(new \OpenClassrooms\CodeGenerator\Commands\UseCases\EditEntityUseCaseCommand());
+$application->add(new \OpenClassrooms\CodeGenerator\Commands\UseCases\DeleteEntityUseCaseCommand());
+$application->add(new \OpenClassrooms\CodeGenerator\Commands\Presentation\CommonControllerCommand());
 $application->run();

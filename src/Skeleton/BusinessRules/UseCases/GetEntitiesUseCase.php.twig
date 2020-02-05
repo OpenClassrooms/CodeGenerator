@@ -7,6 +7,7 @@ use {{ skeletonModel.paginationClassName }};
 use {{ skeletonModel.getEntitiesUseCaseRequestClassName }};
 use {{ skeletonModel.entityUseCaseListItemResponseAssemblerClassName }};
 use {{ skeletonModel.paginatedUseCaseResponseClassName }};
+use {{ skeletonModel.securityClassName }};
 use {{ skeletonModel.paginatedCollectionClassName }};
 use {{ skeletonModel.useCaseClassName }};
 use {{ skeletonModel.useCaseRequestClassName }};
@@ -30,22 +31,24 @@ class {{ skeletonModel.shortName }} implements {{ skeletonModel.useCaseShortName
     }
 
     /**
+     * @Security(roles="")
+     *
      * @param {{ skeletonModel.getEntitiesUseCaseRequestShortName }} $useCaseRequest
      */
     public function execute({{ skeletonModel.useCaseRequestShortName }} $useCaseRequest): {{ skeletonModel.paginatedUseCaseResponseShortName }}
     {
-        ${{ skeletonModel.entitiesArgument }} = $this->get{{ skeletonModel.entitiesShortName }}(
-            $useCaseRequest->getFilters(),
-            $useCaseRequest->getSorts(),
-            $this->getPagination($useCaseRequest->getPage(), $useCaseRequest->getItemsPerPage())
-        );
+        ${{ skeletonModel.entitiesArgument }} = $this->get{{ skeletonModel.entitiesShortName }}($useCaseRequest);
 
         return $this->buildResponse(${{ skeletonModel.entitiesArgument }});
     }
 
-    private function get{{ skeletonModel.entitiesShortName }}(array $filters, array $sorts, array $pagination): {{ skeletonModel.paginatedCollectionShortName }}
+    private function get{{ skeletonModel.entitiesShortName }}({{ skeletonModel.useCaseRequestShortName }} $useCaseRequest): {{ skeletonModel.paginatedCollectionShortName }}
     {
-        return $this->gateway->findAll($filters, $sorts, $pagination);
+        return $this->gateway->findAll(
+            $useCaseRequest->getFilters(),
+            $useCaseRequest->getSorts(),
+            $this->getPagination($useCaseRequest->getPage(), $useCaseRequest->getItemsPerPage())
+        );
     }
 
     private function getPagination(int $page, int $itemPerPage): array

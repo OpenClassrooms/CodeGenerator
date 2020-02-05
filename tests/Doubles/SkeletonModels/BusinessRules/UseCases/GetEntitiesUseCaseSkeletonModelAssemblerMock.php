@@ -17,5 +17,6 @@ class GetEntitiesUseCaseSkeletonModelAssemblerMock extends GetEntitiesUseCaseSke
         $this->setPaginatedCollection(FixturesConfig::PAGINATED_COLLECTION);
         $this->setPaginatedUseCaseResponse(FixturesConfig::PAGINATED_USE_CASE_RESPONSE);
         $this->setPaginatedUseCaseResponseBuilder(FixturesConfig::PAGINATED_USE_CASE_RESPONSE_BUILDER);
+        $this->setSecurityClassName(FixturesConfig::SECURITY);
     }
 }

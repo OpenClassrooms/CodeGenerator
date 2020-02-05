@@ -4,6 +4,7 @@
         <import resource="../../Entities/entities_mediator.xml"/>
         <import resource="../../Responses/use_case_response_common_mediator.xml"/>
         <import resource="../../Responses/use_case_detail_response_mediator.xml"/>
+        <import resource="../../BusinessRules/UseCases/entity_common_hydrator_trait_generator_trait.xml"/>
         <import resource="../../BusinessRules/UseCases/entity_use_case_common_request_generator_trait.xml"/>
     </imports>
     <services>
@@ -15,6 +16,8 @@
                 id="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\CreateEntityUseCaseRequestBuilderImplGeneratorRequestBuilderImpl"/>
         <service
                 id="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\CreateEntityUseCaseRequestDTOGeneratorRequestBuilderImpl"/>
+        <service
+                id="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\CreateRequestTraitGeneratorRequestBuilderImpl"/>
         <service
                 id="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\CreateEntityUseCaseGeneratorRequestBuilderImpl"/>
         <service
@@ -35,6 +38,9 @@
         <service
                 id="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\CreateEntityUseCaseGeneratorRequestBuilder"
                 alias="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\CreateEntityUseCaseGeneratorRequestBuilderImpl"/>
+        <service
+                id="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\CreateRequestTraitGeneratorRequestBuilder"
+                alias="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\CreateRequestTraitGeneratorRequestBuilderImpl"/>
         <service
                 id="OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\Request\CreateEntityUseCaseTestGeneratorRequestBuilder"
                 alias="OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\DTO\Request\CreateEntityUseCaseTestGeneratorRequestBuilderImpl"/>
@@ -100,6 +106,22 @@
             <call method="setCreateEntityUseCaseTestGeneratorRequestBuilder">
                 <argument type="service"
                           id="OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\Request\CreateEntityUseCaseTestGeneratorRequestBuilder"/>
+            </call>
+            <call method="setCreateRequestTraitGenerator">
+                <argument type="service"
+                          id="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\CreateRequestTraitGenerator"/>
+            </call>
+            <call method="setCreateRequestTraitGeneratorRequestBuilder">
+                <argument type="service"
+                          id="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\CreateRequestTraitGeneratorRequestBuilder"/>
+            </call>
+            <call method="setEntityCommonHydratorTraitGenerator">
+                <argument type="service"
+                          id="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\EntityCommonHydratorTraitGenerator"/>
+            </call>
+            <call method="setEntityCommonHydratorTraitGeneratorRequestBuilder">
+                <argument type="service"
+                          id="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\EntityCommonHydratorTraitGeneratorRequestBuilder"/>
             </call>
             <call method="setEntityUseCaseCommonRequestTraitGenerator">
                 <argument type="service"

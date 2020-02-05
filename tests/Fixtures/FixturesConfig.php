@@ -26,6 +26,8 @@ final class FixturesConfig
 
     const STUB_NAMESPACE                      = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\\';
 
+    const SECURITY                            = 'OpenClassrooms\UseCase\Application\Annotations\Security';
+
     const STUB_NAMESPACE_SELF_GENERATOR       = 'OpenClassrooms\CodeGenerator\Tests\Doubles\\';
 
     const TEST_BASE_NAMESPACE                 = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\\';

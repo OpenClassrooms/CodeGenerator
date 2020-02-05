@@ -6,6 +6,7 @@ namespace OpenClassrooms\CodeGenerator\Entities\Impl;
 
 use OpenClassrooms\CodeGenerator\Entities\AbstractFileObjectFactory;
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
+use OpenClassrooms\CodeGenerator\Entities\Type\UseCaseFileObjectType;
 use OpenClassrooms\CodeGenerator\Entities\Type\UseCaseRequestFileObjectType;
 use OpenClassrooms\CodeGenerator\Entities\UseCaseRequestFileObjectFactory;
 use OpenClassrooms\CodeGenerator\Utility\StringUtility;
@@ -124,6 +125,10 @@ class UseCaseRequestFileObjectFactoryImpl extends AbstractFileObjectFactory impl
                     $this->baseNamespace . 'BusinessRules\UseCases\\' . $domain . '\DTO\Request\\Get' . StringUtility::pluralize(
                         $entity
                     ) . 'RequestDTO'
+                );
+            case UseCaseRequestFileObjectType::BUSINESS_RULES_CREATE_REQUEST_TRAIT:
+                return new FileObject(
+                    $this->baseNamespace . 'BusinessRules\UseCases\CreateRequestTrait'
                 );
 
             default:

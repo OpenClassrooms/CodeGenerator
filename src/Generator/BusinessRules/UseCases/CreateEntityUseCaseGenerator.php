@@ -14,7 +14,6 @@ use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\Create
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\CreateEntityUseCaseSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\CreateEntityUseCaseSkeletonModelBuilder;
-use OpenClassrooms\CodeGenerator\Utility\MethodUtilityStrategy;
 
 class CreateEntityUseCaseGenerator extends AbstractUseCaseGenerator
 {
@@ -22,11 +21,6 @@ class CreateEntityUseCaseGenerator extends AbstractUseCaseGenerator
      * @var CreateEntityUseCaseSkeletonModelBuilder
      */
     private $createEntitySkeletonModelBuilder;
-
-    /**
-     * @var MethodUtilityStrategy
-     */
-    private $methodUtility;
 
     /**
      * @param CreateEntityUseCaseGeneratorRequest $generatorRequest
@@ -47,19 +41,19 @@ class CreateEntityUseCaseGenerator extends AbstractUseCaseGenerator
         $this->initFileObjectParameter($entityClassName);
         $createEntityFileObject = $this->createCreateEntityUseCaseFileObject();
         $createEntityUseCaseRequestFileObject = $this->createCreateEntityUseCaseRequestFileObject();
+        $entityCommonHydratorTraitFileObject = $this->createEntityCommonHydratorTraitFileObject();
         $entityFileObject = $this->createEntityFileObject();
         $entityUseCaseDetailResponseFileObject = $this->createEntityDetailResponseFileObject();
         $entityUseCaseDetailResponseAssemblerFileObject = $this->createEntityDetailResponseAssemblerFileObject();
         $entityFactoryFileObject = $this->createEntityFactoryFileObject();
         $entityGatewayFileObject = $this->createEntityGatewayFileObject();
 
-        $createEntityUseCaseRequestFileObject->setMethods($this->methodUtility->getAccessors($entityClassName));
-
         $createEntityFileObject->setContent(
             $this->generateContent(
                 [
                     UseCaseFileObjectType::BUSINESS_RULES_CREATE_ENTITY_USE_CASE                     => $createEntityFileObject,
                     UseCaseRequestFileObjectType::BUSINESS_RULES_CREATE_ENTITY_USE_CASE_REQUEST      => $createEntityUseCaseRequestFileObject,
+                    UseCaseFileObjectType::BUSINESS_RULES_ENTITY_COMMON_HYDRATOR_TRAIT               => $entityCommonHydratorTraitFileObject,
                     EntityFileObjectType::BUSINESS_RULES_ENTITY                                      => $entityFileObject,
                     UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE           => $entityUseCaseDetailResponseFileObject,
                     UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE_ASSEMBLER => $entityUseCaseDetailResponseAssemblerFileObject,
@@ -85,6 +79,15 @@ class CreateEntityUseCaseGenerator extends AbstractUseCaseGenerator
     {
         return $this->useCaseRequestFileObjectFactory->create(
             UseCaseRequestFileObjectType::BUSINESS_RULES_CREATE_ENTITY_USE_CASE_REQUEST,
+            $this->domain,
+            $this->entity
+        );
+    }
+
+    private function createEntityCommonHydratorTraitFileObject(): FileObject
+    {
+        return $this->useCaseFileObjectFactory->create(
+            UseCaseFileObjectType::BUSINESS_RULES_ENTITY_COMMON_HYDRATOR_TRAIT,
             $this->domain,
             $this->entity
         );
@@ -154,6 +157,9 @@ class CreateEntityUseCaseGenerator extends AbstractUseCaseGenerator
             ->withCreateEntityUseCaseRequest(
                 $fileObjects[UseCaseRequestFileObjectType::BUSINESS_RULES_CREATE_ENTITY_USE_CASE_REQUEST]
             )
+            ->withEntityCommonHydratorTraitFileObject(
+                $fileObjects[UseCaseFileObjectType::BUSINESS_RULES_ENTITY_COMMON_HYDRATOR_TRAIT]
+            )
             ->withEntity($fileObjects[EntityFileObjectType::BUSINESS_RULES_ENTITY])
             ->withEntityDetailResponse(
                 $fileObjects[UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE]
@@ -170,10 +176,5 @@ class CreateEntityUseCaseGenerator extends AbstractUseCaseGenerator
         CreateEntityUseCaseSkeletonModelBuilder $createEntitySkeletonModelBuilder
     ): void {
         $this->createEntitySkeletonModelBuilder = $createEntitySkeletonModelBuilder;
-    }
-
-    public function setMethodUtility(MethodUtilityStrategy $methodUtility): void
-    {
-        $this->methodUtility = $methodUtility;
     }
 }

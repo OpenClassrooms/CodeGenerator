@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+
+<container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://symfony.com/schema/dic/services"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+
+        <service
+                id="OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\Impl\CreateRequestTraitSkeletonModelAssemblerImpl"
+                public="false">
+        </service>
+
+        <service id="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\CreateRequestTraitGenerator"
+                 parent="open_classrooms.code_generator.generator.business_rules.abstract_use_case_generator">
+            <call method="setCreateRequestTraitSkeletonModelAssembler">
+                <argument type="service"
+                          id="OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\CreateRequestTraitSkeletonModelAssembler"/>
+            </call>
+        </service>
+        <service
+                id="OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\CreateRequestTraitSkeletonModelAssembler"
+                alias="OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\Impl\CreateRequestTraitSkeletonModelAssemblerImpl">
+        </service>
+    </services>
+</container>

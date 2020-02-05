@@ -26,10 +26,6 @@ abstract class GetEntityUseCaseSkeletonModel extends AbstractSkeletonModel
 
     public $entityNotFoundExceptionClassName;
 
-    public $entityResponseClassName;
-
-    public $entityResponseShortName;
-
     public $entityShortName;
 
     public $getEntityUseCaseRequestAccessor;
@@ -41,6 +37,8 @@ abstract class GetEntityUseCaseSkeletonModel extends AbstractSkeletonModel
     public $getEntityUseCaseRequestShortName;
 
     public $shortName;
+
+    public $securityClassName;
 
     public $templatePath = 'BusinessRules/UseCases/GetEntityUseCase.php.twig';
 

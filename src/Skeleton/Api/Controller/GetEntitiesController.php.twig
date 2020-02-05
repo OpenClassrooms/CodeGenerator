@@ -31,13 +31,13 @@ class {{ skeletonModel.shortName }} extends {{ skeletonModel.abstractControllerS
     ) {
         $this->{{ skeletonModel.entityViewModelListItemAssemblerArgument }} = $assembler;
         $this->{{ skeletonModel.getEntitiesUseCaseRequestBuilderArgument }} = $builder;
-}
+    }
 
-/**
-* @Security("")
-* @ParamConverter("collectionInformation")
-*/
-public function getAction({{ skeletonModel.collectionInformationShortName }} $collectionInformation, int $userId): JsonResponse
+    /**
+     * @Security("")
+     * @ParamConverter("collectionInformation")
+     */
+    public function getAction({{ skeletonModel.collectionInformationShortName }} $collectionInformation, int $userId): JsonResponse
     {
         try {
             ${{ skeletonModel.entitiesArgument }} = $this->{{ skeletonModel.getEntitiesMethod }}($collectionInformation);
@@ -45,7 +45,7 @@ public function getAction({{ skeletonModel.collectionInformationShortName }} $co
 
             return $this->createJsonResponse($vm);
         } catch ({{ skeletonModel.entityNotFoundExceptionShortName }} $e) {
-            throw $this->throwNotFoundException();
+            $this->throwNotFoundException();
         }
     }
 

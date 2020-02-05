@@ -7,17 +7,18 @@ parameters:
     stub_namespace: 'Doubles\'
     tests_base_namespace: ''
 
-    entity_util_classname: '%base_namespace%\Tests\EntityUtil'
+    entity_util_classname: 'OpenClassrooms\CodeGenerator\Tests\EntityUtil'
+    security_classname: 'OpenClassrooms\UseCase\Application\Annotations\Security'
     transaction_classname: 'OpenClassrooms\UseCase\Application\Annotations\Transaction'
 
     paginated_collection_classname: 'OpenClassrooms\UseCase\BusinessRules\Entities\PaginatedCollection'
     use_case_classname: 'OpenClassrooms\UseCase\BusinessRules\Requestors\UseCase'
     use_case_request_classname: 'OpenClassrooms\UseCase\BusinessRules\Requestors\UseCaseRequest'
 
-    paginated_use_case_response_classname: '%base_namespace%BusinessRules\Responders\PaginatedUseCaseResponse'
-    paginated_use_case_response_builder_classname: '%base_namespace%BusinessRules\Responders\PaginatedUseCaseResponseBuilder'
-    use_case_response_classname: ' %base_namespace%BusinessRules\Responders\UseCaseResponse'
-    pagination_classname: ' %base_namespace%BusinessRules\Gateways\Pagination'
+    paginated_use_case_response_classname: 'OpenClassrooms\CodeGenerator\BusinessRules\Responders\PaginatedUseCaseResponse'
+    paginated_use_case_response_builder_classname: 'OpenClassrooms\CodeGenerator\BusinessRules\Responders\PaginatedUseCaseResponseBuilder'
+    use_case_response_classname: 'OpenClassrooms\CodeGenerator\BusinessRules\Responders\UseCaseResponse'
+    pagination_classname: 'OpenClassrooms\CodeGenerator\BusinessRules\Gateways\Pagination'
     abstract_controller: 'OC\ApiBundle\Framework\FrameworkBundle\Controller\AbstractApiController'
     collection_information: 'OC\ApiBundle\ParamConverter\CollectionInformation'
 

@@ -14,7 +14,6 @@ use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\EditEn
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\EditEntityUseCaseSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\EditEntityUseCaseSkeletonModelBuilder;
-use OpenClassrooms\CodeGenerator\Utility\MethodUtilityStrategy;
 
 class EditEntityUseCaseGenerator extends AbstractUseCaseGenerator
 {
@@ -22,11 +21,6 @@ class EditEntityUseCaseGenerator extends AbstractUseCaseGenerator
      * @var EditEntityUseCaseSkeletonModelBuilder
      */
     private $editEntityUseCaseSkeletonModelBuilder;
-
-    /**
-     * @var MethodUtilityStrategy
-     */
-    private $methodUtilityStrategy;
 
     /**
      * @param EditEntityUseCaseGeneratorRequest $generatorRequest
@@ -47,18 +41,18 @@ class EditEntityUseCaseGenerator extends AbstractUseCaseGenerator
         $this->initFileObjectParameter($entityClassName);
         $editEntityUseCaseFileObject = $this->createEditEntityUseCaseFileObject();
         $editEntityUseCaseRequestFileObject = $this->createEditEntityUseCaseRequestFileObject();
+        $entityCommonHydratorTraitFileObject = $this->createEntityCommonHydratorTraitFileObject();
         $entityFileObject = $this->createEntityFileObject();
         $entityGatewayFileObject = $this->createEntityGatewayFileObject();
         $entityNotFoundExceptionFileObject = $this->createEntityNotFoundExceptionFileObject();
         $entityUseCaseDetailResponseAssemblerFileObject = $this->createEntityUseCaseDetailResponseAssemblerFileObject();
         $entityUseCaseDetailResponseFileObject = $this->createEntityUseCaseDetailResponseFileObject();
 
-        $editEntityUseCaseRequestFileObject->setMethods($this->methodUtilityStrategy->getAccessors($entityClassName));
-
         $editEntityUseCaseFileObject->setContent(
             $this->generateContent(
                 [
                     UseCaseFileObjectType::BUSINESS_RULES_EDIT_ENTITY_USE_CASE                       => $editEntityUseCaseFileObject,
+                    UseCaseFileObjectType::BUSINESS_RULES_ENTITY_COMMON_HYDRATOR_TRAIT               => $entityCommonHydratorTraitFileObject,
                     UseCaseRequestFileObjectType::BUSINESS_RULES_EDIT_ENTITY_USE_CASE_REQUEST        => $editEntityUseCaseRequestFileObject,
                     EntityFileObjectType::BUSINESS_RULES_ENTITY                                      => $entityFileObject,
                     EntityFileObjectType::BUSINESS_RULES_ENTITY_GATEWAY                              => $entityGatewayFileObject,
@@ -85,6 +79,15 @@ class EditEntityUseCaseGenerator extends AbstractUseCaseGenerator
     {
         return $this->useCaseRequestFileObjectFactory->create(
             UseCaseRequestFileObjectType::BUSINESS_RULES_EDIT_ENTITY_USE_CASE_REQUEST,
+            $this->domain,
+            $this->entity
+        );
+    }
+
+    private function createEntityCommonHydratorTraitFileObject(): FileObject
+    {
+        return $this->useCaseFileObjectFactory->create(
+            UseCaseFileObjectType::BUSINESS_RULES_ENTITY_COMMON_HYDRATOR_TRAIT,
             $this->domain,
             $this->entity
         );
@@ -156,6 +159,9 @@ class EditEntityUseCaseGenerator extends AbstractUseCaseGenerator
             ->withEditEntityUseCaseRequestFileObject(
                 $fileObjects[UseCaseRequestFileObjectType::BUSINESS_RULES_EDIT_ENTITY_USE_CASE_REQUEST]
             )
+            ->withEntityCommonHydratorTraitFileObject(
+                $fileObjects[UseCaseFileObjectType::BUSINESS_RULES_ENTITY_COMMON_HYDRATOR_TRAIT]
+            )
             ->withEntityFileObject($fileObjects[EntityFileObjectType::BUSINESS_RULES_ENTITY])
             ->withEntityGatewayFileObject($fileObjects[EntityFileObjectType::BUSINESS_RULES_ENTITY_GATEWAY])
             ->withEntityNotFoundExceptionFileObject(
@@ -174,10 +180,5 @@ class EditEntityUseCaseGenerator extends AbstractUseCaseGenerator
         EditEntityUseCaseSkeletonModelBuilder $editEntityUseCaseSkeletonModelBuilder
     ): void {
         $this->editEntityUseCaseSkeletonModelBuilder = $editEntityUseCaseSkeletonModelBuilder;
-    }
-
-    public function setMethodUtilityStrategy(MethodUtilityStrategy $methodUtilityStrategy): void
-    {
-        $this->methodUtilityStrategy = $methodUtilityStrategy;
     }
 }

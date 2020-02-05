@@ -12,13 +12,13 @@ abstract class CreateEntityUseCaseSkeletonModel extends AbstractSkeletonModel
 
     public $createEntityUseCaseRequestClassName;
 
-    public $createEntityUseCaseRequestMethods;
-
     public $createEntityUseCaseRequestShortName;
 
     public $entityArgument;
 
     public $entityClassName;
+
+    public $entityCommonHydratorTraitShortName;
 
     public $entityFactoryArgument;
 
@@ -43,6 +43,8 @@ abstract class CreateEntityUseCaseSkeletonModel extends AbstractSkeletonModel
     public $entityUseCaseDetailResponseClassName;
 
     public $entityUseCaseDetailResponseShortName;
+
+    public $securityClassName;
 
     public $templatePath = 'BusinessRules/UseCases/CreateEntityUseCase.php.twig';
 

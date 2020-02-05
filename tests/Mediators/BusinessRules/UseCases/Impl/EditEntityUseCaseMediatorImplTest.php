@@ -11,10 +11,12 @@ use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\EditEntityUs
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\EditEntityUseCaseGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\EditEntityUseCaseRequestBuilderImplGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\EditEntityUseCaseRequestDTOGeneratorRequestBuilderImpl;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\EntityCommonHydratorTraitGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\EntityUseCaseCommonRequestTraitGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\EditEntityUseCaseGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\EditEntityUseCaseRequestBuilderImplGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\EditEntityUseCaseRequestDTOGenerator;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\EntityCommonHydratorTraitGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\EntityUseCaseCommonRequestTraitGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\DTO\Request\EditEntityUseCaseTestGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\EditEntityUseCaseTestGenerator;
@@ -25,6 +27,7 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Requestors
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\EditEntityUseCaseFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\EditEntityUseCaseRequestBuilderImplFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\EditEntityUseCaseRequestDTOFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\EntityCommonHydratorTraitFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\EntityUseCaseCommonRequestTraitFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\BusinessRules\UseCases\EditEntityUseCaseTestFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
@@ -102,6 +105,12 @@ class EditEntityUseCaseMediatorImplTest extends TestCase
                 new EditEntityUseCaseRequestDTOFileObjectStub1()
             )
         );
+        $this->mediator->setEntityCommonHydratorTraitGenerator(
+            new GeneratorMock(
+                EntityCommonHydratorTraitGenerator::class,
+                new EntityCommonHydratorTraitFileObjectStub1()
+            )
+        );
         $this->mediator->setEntityUseCaseCommonRequestTraitGenerator(
             new GeneratorMock(
                 EntityUseCaseCommonRequestTraitGenerator::class,
@@ -132,6 +141,9 @@ class EditEntityUseCaseMediatorImplTest extends TestCase
         );
         $this->mediator->setEntityUseCaseCommonRequestTraitGeneratorRequestBuilder(
             new EntityUseCaseCommonRequestTraitGeneratorRequestBuilderImpl()
+        );
+        $this->mediator->setEntityCommonHydratorTraitGeneratorRequestBuilder(
+            new EntityCommonHydratorTraitGeneratorRequestBuilderImpl()
         );
     }
 }

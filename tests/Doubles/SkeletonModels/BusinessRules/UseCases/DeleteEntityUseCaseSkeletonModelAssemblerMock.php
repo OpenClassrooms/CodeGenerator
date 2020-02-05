@@ -11,6 +11,8 @@ class DeleteEntityUseCaseSkeletonModelAssemblerMock extends DeleteEntityUseCaseS
 {
     public function __construct()
     {
+        $this->setSecurityClassName(FixturesConfig::SECURITY);
+        $this->setTransactionClassName(FixturesConfig::TRANSACTION);
         $this->setUseCaseRequestClassName(FixturesConfig::USE_CASE_REQUEST);
     }
 }

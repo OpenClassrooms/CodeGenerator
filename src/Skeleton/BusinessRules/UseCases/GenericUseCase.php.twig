@@ -3,12 +3,15 @@
 namespace {{ skeletonModel.namespace }};
 
 use {{ skeletonModel.genericUseCaseRequestClassName }};
+use {{ skeletonModel.securityClassName }};
 use {{ skeletonModel.useCaseClassName }};
 use {{ skeletonModel.useCaseRequestClassName }};
 
 class {{ skeletonModel.shortName }} implements UseCase
 {
     /**
+     * @Security(roles="")
+     *
      * @param {{ skeletonModel.genericUseCaseRequestShortName }} ${{ skeletonModel.useCaseRequestArgument }}
      */
     public function execute({{ skeletonModel.useCaseRequestShortName }} ${{ skeletonModel.useCaseRequestArgument }})

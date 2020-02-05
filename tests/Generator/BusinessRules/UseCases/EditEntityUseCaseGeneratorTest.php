@@ -65,9 +65,6 @@ class EditEntityUseCaseGeneratorTest extends TestCase
         $this->editEntityUseCaseGenerator->setEntityFileObjectFactory(new EntityFileObjectFactoryMock());
         $this->editEntityUseCaseGenerator->setTemplating(new TemplatingServiceMock());
         $this->editEntityUseCaseGenerator->setFileObjectGateway(new InMemoryFileObjectGateway());
-        $this->editEntityUseCaseGenerator->setMethodUtilityStrategy(
-            new MethodUtilityContext(new MethodUtilityGetAccessorsWithoutId())
-        );
         $this->editEntityUseCaseGenerator->setUseCaseFileObjectFactory(new UseCaseFileObjectFactoryMock());
         $this->editEntityUseCaseGenerator->setUseCaseRequestFileObjectFactory(
             new UseCaseRequestFileObjectFactoryMock()

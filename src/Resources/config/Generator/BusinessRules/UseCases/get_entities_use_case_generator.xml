@@ -16,6 +16,9 @@
             <call method="setPagination">
                 <argument type="string">%pagination_classname%</argument>
             </call>
+            <call method="setSecurityClassName">
+                <argument type="string">%security_classname%</argument>
+            </call>
             <call method="setUseCaseClassName">
                 <argument type="string">%use_case_classname%</argument>
             </call>

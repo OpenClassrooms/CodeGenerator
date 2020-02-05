@@ -12,9 +12,11 @@ use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\Request\Crea
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\CreateEntityUseCaseGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\CreateEntityUseCaseRequestBuilderImplGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\CreateEntityUseCaseRequestDTOGenerator;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\CreateRequestTraitGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\CreateEntityUseCaseGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\CreateEntityUseCaseRequestBuilderImplGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\CreateEntityUseCaseRequestDTOGeneratorRequestBuilder;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\CreateRequestTraitGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Generator\Generator;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\CreateEntityUseCaseTestGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\Request\CreateEntityUseCaseTestGeneratorRequestBuilder;
@@ -56,6 +58,12 @@ trait CreateEntityUseCaseGeneratorsTrait
 
     /** @var CreateEntityUseCaseTestGeneratorRequestBuilder */
     private $createEntityUseCaseTestGeneratorRequestBuilder;
+
+    /** @var CreateRequestTraitGenerator */
+    private $createRequestTraitGenerator;
+
+    /** @var CreateRequestTraitGeneratorRequestBuilder */
+    private $createRequestTraitGeneratorRequestBuilder;
 
     public function setCreateEntityUseCaseGenerator(
         Generator $createEntityUseCaseGenerator
@@ -129,6 +137,17 @@ trait CreateEntityUseCaseGeneratorsTrait
         $this->createEntityUseCaseTestGeneratorRequestBuilder = $createEntityUseCaseTestGeneratorRequestBuilder;
     }
 
+    public function setCreateRequestTraitGenerator(Generator $createRequestTraitGenerator): void
+    {
+        $this->createRequestTraitGenerator = $createRequestTraitGenerator;
+    }
+
+    public function setCreateRequestTraitGeneratorRequestBuilder(
+        CreateRequestTraitGeneratorRequestBuilder $createRequestTraitGeneratorRequestBuilder
+    ): void {
+        $this->createRequestTraitGeneratorRequestBuilder = $createRequestTraitGeneratorRequestBuilder;
+    }
+
     protected function generateCreateEntityUseCaseGenerator(string $className): FileObject
     {
         return $this->createEntityUseCaseGenerator->generate(
@@ -183,6 +202,16 @@ trait CreateEntityUseCaseGeneratorsTrait
     {
         return $this->createEntityUseCaseTestGenerator->generate(
             $this->createEntityUseCaseTestGeneratorRequestBuilder
+                ->create()
+                ->withEntityClassName($className)
+                ->build()
+        );
+    }
+
+    protected function generateCreateRequestTraitGenerator(string $className): FileObject
+    {
+        return $this->createRequestTraitGenerator->generate(
+            $this->createRequestTraitGeneratorRequestBuilder
                 ->create()
                 ->withEntityClassName($className)
                 ->build()

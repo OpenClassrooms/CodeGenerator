@@ -3,8 +3,10 @@
 namespace {{ skeletonModel.namespace }};
 
 use {{ skeletonModel.createEntityUseCaseRequestClassName }};
+use {{ skeletonModel.createRequestTraitClassName }};
 
 final class {{ skeletonModel.shortName }} implements {{ skeletonModel.createEntityUseCaseRequestShortName }}
 {
     use {{ skeletonModel.entityUseCaseCommonRequestTraitShortName}};
+    use {{ skeletonModel.createRequestTraitShortName}};
 }

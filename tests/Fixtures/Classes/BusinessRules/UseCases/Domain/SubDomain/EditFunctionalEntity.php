@@ -50,7 +50,6 @@ class EditFunctionalEntity implements UseCase
     {
         $functionalEntity = $this->getFunctionalEntity($useCaseRequest->getFunctionalEntityId());
         $this->populateFromRequest($functionalEntity, $useCaseRequest);
-
         $this->update($functionalEntity);
 
         return $this->createResponse($functionalEntity);

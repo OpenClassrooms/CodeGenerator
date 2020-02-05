@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\Impl;
 
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
+use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\SecurityClassNameTrait;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCaseClassNameTrait;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\DeleteEntityUseCaseSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\DeleteEntityUseCaseSkeletonModelAssembler;
@@ -13,6 +14,7 @@ use OpenClassrooms\CodeGenerator\Utility\NameUtility;
 class DeleteEntityUseCaseSkeletonModelAssemblerImpl implements DeleteEntityUseCaseSkeletonModelAssembler
 {
     use UseCaseClassNameTrait;
+    use SecurityClassNameTrait;
 
     public function create(
         FileObject $deleteEntityUseCaseFileObject,
@@ -38,6 +40,8 @@ class DeleteEntityUseCaseSkeletonModelAssemblerImpl implements DeleteEntityUseCa
         $skeletonModel->entityShortName = $entityFileObject->getShortName();
         $skeletonModel->entityNotFoundExceptionClassName = $entityNotFoundExceptionFileObject->getClassName();
         $skeletonModel->getEntityIdMethod = NameUtility::createGetEntityName($entityFileObject->getShortName());
+        $skeletonModel->securityClassName = $this->securityClassName;
+        $skeletonModel->transactionClassName = $this->transactionClassName;
         $skeletonModel->useCaseRequestClassName = $this->useCaseRequestClassName;
 
         return $skeletonModel;

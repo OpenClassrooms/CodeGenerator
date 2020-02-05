@@ -12,6 +12,10 @@ abstract class CreateEntityUseCaseRequestDTOSkeletonModel extends AbstractSkelet
 
     public $createEntityUseCaseRequestShortName;
 
+    public $createRequestTraitClassName;
+
+    public $createRequestTraitShortName;
+
     public $entityUseCaseCommonRequestTraitShortName;
 
     public $templatePath = 'BusinessRules/UseCases/DTO/Request/CreateEntityUseCaseRequestDTO.php.twig';

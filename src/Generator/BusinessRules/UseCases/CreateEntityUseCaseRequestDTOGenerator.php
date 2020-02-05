@@ -39,11 +39,13 @@ class CreateEntityUseCaseRequestDTOGenerator extends AbstractUseCaseGenerator
         $createEntityUseCaseRequestFileObject = $this->createCreateEntityUseCaseRequestFileObject();
         $createEntityUseCaseRequestDTOFileObject = $this->createCreateEntityUseCaseRequestDTOFileObject();
         $entityUseCaseCommonRequestFileObject = $this->createEntityUseCaseCommonRequestTraitFileObject();
+        $createRequestTraitFileObject = $this->createCreateRequestTraitFileObject();
 
         $createEntityUseCaseRequestDTOFileObject->setContent(
             $this->generateContent(
                 $createEntityUseCaseRequestFileObject,
                 $createEntityUseCaseRequestDTOFileObject,
+                $createRequestTraitFileObject,
                 $entityUseCaseCommonRequestFileObject
             )
         );
@@ -81,14 +83,23 @@ class CreateEntityUseCaseRequestDTOGenerator extends AbstractUseCaseGenerator
         );
     }
 
+    private function createCreateRequestTraitFileObject(): FileObject
+    {
+        return $this->createCreateEntityUseCaseRequest(
+            UseCaseRequestFileObjectType::BUSINESS_RULES_CREATE_REQUEST_TRAIT
+        );
+    }
+
     private function generateContent(
         FileObject $createEntityUseCaseRequestFileObject,
         FileObject $createEntityUseCaseRequestDTOFileObject,
+        FileObject $createRequestTraitFileObject,
         FileObject $entityUseCaseCommonRequestFileObject
     ): string {
         $skeletonModel = $this->createSkeletonModel(
             $createEntityUseCaseRequestFileObject,
             $createEntityUseCaseRequestDTOFileObject,
+            $createRequestTraitFileObject,
             $entityUseCaseCommonRequestFileObject
         );
 
@@ -98,11 +109,13 @@ class CreateEntityUseCaseRequestDTOGenerator extends AbstractUseCaseGenerator
     private function createSkeletonModel(
         FileObject $createEntityUseCaseRequestFileObject,
         FileObject $createEntityUseCaseRequestDTOFileObject,
+        FileObject $createRequestTraitFileObject,
         FileObject $entityUseCaseCommonRequestFileObject
     ): CreateEntityUseCaseRequestDTOSkeletonModel {
         return $this->createEntityUseCaseRequestDTOSkeletonModelAssembler->create(
             $createEntityUseCaseRequestFileObject,
             $createEntityUseCaseRequestDTOFileObject,
+            $createRequestTraitFileObject,
             $entityUseCaseCommonRequestFileObject
         );
     }

@@ -34,6 +34,8 @@ abstract class GetEntitiesUseCaseSkeletonModel extends AbstractSkeletonModel
 
     public $paginationClassName;
 
+    public $securityClassName;
+
     public $templatePath = 'BusinessRules/UseCases/GetEntitiesUseCase.php.twig';
 
     public $useCaseClassName;

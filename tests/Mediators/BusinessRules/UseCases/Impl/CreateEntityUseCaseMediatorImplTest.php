@@ -11,10 +11,14 @@ use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\DTO\Request\
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\CreateEntityUseCaseGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\CreateEntityUseCaseRequestBuilderImplGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\CreateEntityUseCaseRequestDTOGenerator;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\CreateRequestTraitGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\CreateEntityUseCaseGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\CreateEntityUseCaseRequestBuilderImplGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\CreateEntityUseCaseRequestDTOGeneratorRequestBuilderImpl;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\CreateRequestTraitGeneratorRequestBuilderImpl;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\EntityCommonHydratorTraitGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\EntityUseCaseCommonRequestTraitGeneratorRequestBuilderImpl;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\EntityCommonHydratorTraitGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\EntityUseCaseCommonRequestTraitGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\CreateEntityUseCaseTestGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\DTO\Request\CreateEntityUseCaseTestGeneratorRequestBuilderImpl;
@@ -25,6 +29,8 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Requestors
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\CreateEntityUseCaseFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\CreateEntityUseCaseRequestBuilderImplFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\CreateEntityUseCaseRequestDTOFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\CreateRequestTraitFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\EntityCommonHydratorTraitFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\EntityUseCaseCommonRequestTraitFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\BusinessRules\UseCases\CreateEntityUseCaseTestFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
@@ -102,6 +108,18 @@ class CreateEntityUseCaseMediatorImplTest extends TestCase
                 new CreateEntityUseCaseRequestDTOFileObjectStub1()
             )
         );
+        $this->mediator->setCreateRequestTraitGenerator(
+            new GeneratorMock(
+                CreateRequestTraitGenerator::class,
+                new CreateRequestTraitFileObjectStub1()
+            )
+        );
+        $this->mediator->setEntityCommonHydratorTraitGenerator(
+            new GeneratorMock(
+                EntityCommonHydratorTraitGenerator::class,
+                new EntityCommonHydratorTraitFileObjectStub1()
+            )
+        );
         $this->mediator->setEntityUseCaseCommonRequestTraitGenerator(
             new GeneratorMock(
                 EntityUseCaseCommonRequestTraitGenerator::class,
@@ -129,6 +147,12 @@ class CreateEntityUseCaseMediatorImplTest extends TestCase
         );
         $this->mediator->setCreateEntityUseCaseRequestBuilderGeneratorRequestBuilder(
             new CreateEntityUseCaseRequestBuilderGeneratorRequestBuilderImpl()
+        );
+        $this->mediator->setCreateRequestTraitGeneratorRequestBuilder(
+            new CreateRequestTraitGeneratorRequestBuilderImpl()
+        );
+        $this->mediator->setEntityCommonHydratorTraitGeneratorRequestBuilder(
+            new EntityCommonHydratorTraitGeneratorRequestBuilderImpl()
         );
         $this->mediator->setEntityUseCaseCommonRequestTraitGeneratorRequestBuilder(
             new EntityUseCaseCommonRequestTraitGeneratorRequestBuilderImpl()

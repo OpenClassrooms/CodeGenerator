@@ -11,6 +11,7 @@ interface CreateEntityUseCaseRequestDTOSkeletonModelAssembler
     public function create(
         FileObject $createEntityUseCaseRequestFileObject,
         FileObject $createEntityUseCaseRequestDTOFileObject,
+        FileObject $createRequestTraitFileObject,
         FileObject $entityUseCaseCommonRequestFileObject
     ): CreateEntityUseCaseRequestDTOSkeletonModel;
 }

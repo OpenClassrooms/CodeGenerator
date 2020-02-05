@@ -7,6 +7,12 @@
         <service
                 id="OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\Impl\DeleteEntityUseCaseSkeletonModelAssemblerImpl"
                 public="false">
+            <call method="setSecurityClassName">
+                <argument type="string">%security_classname%</argument>
+            </call>
+            <call method="setTransactionClassName">
+                <argument type="string">%transaction_classname%</argument>
+            </call>
             <call method="setUseCaseRequestClassName">
                 <argument type="string">%use_case_request_classname%</argument>
             </call>

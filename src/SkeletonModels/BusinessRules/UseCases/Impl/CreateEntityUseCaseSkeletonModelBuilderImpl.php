@@ -5,12 +5,14 @@ declare(strict_types=1);
 namespace OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\Impl;
 
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
+use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\SecurityClassNameTrait;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCaseClassNameTrait;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\CreateEntityUseCaseSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\CreateEntityUseCaseSkeletonModelBuilder;
 
 class CreateEntityUseCaseSkeletonModelBuilderImpl implements CreateEntityUseCaseSkeletonModelBuilder
 {
+    use SecurityClassNameTrait;
     use UseCaseClassNameTrait;
 
     /**
@@ -23,6 +25,7 @@ class CreateEntityUseCaseSkeletonModelBuilderImpl implements CreateEntityUseCase
         $this->skeletonModel->transactionClassName = $this->transactionClassName;
         $this->skeletonModel->useCaseClassName = $this->useCaseClassName;
         $this->skeletonModel->useCaseRequestClassName = $this->useCaseRequestClassName;
+        $this->skeletonModel->securityClassName = $this->securityClassName;
 
         return $this->skeletonModel;
     }
@@ -30,6 +33,14 @@ class CreateEntityUseCaseSkeletonModelBuilderImpl implements CreateEntityUseCase
     public function create(): CreateEntityUseCaseSkeletonModelBuilder
     {
         $this->skeletonModel = new CreateEntityUseCaseSkeletonModelImpl();
+
+        return $this;
+    }
+
+    public function withEntityCommonHydratorTraitFileObject(
+        FileObject $entityCommonHydratorTraitFileObject
+    ): CreateEntityUseCaseSkeletonModelBuilder {
+        $this->skeletonModel->entityCommonHydratorTraitShortName = $entityCommonHydratorTraitFileObject->getShortName();
 
         return $this;
     }
@@ -51,8 +62,6 @@ class CreateEntityUseCaseSkeletonModelBuilderImpl implements CreateEntityUseCase
             $createFunctionalEntityRequestFileObject->getShortName()
         );
         $this->skeletonModel->createEntityUseCaseRequestClassName = $createFunctionalEntityRequestFileObject->getClassName(
-        );
-        $this->skeletonModel->createEntityUseCaseRequestMethods = $createFunctionalEntityRequestFileObject->getMethods(
         );
         $this->skeletonModel->createEntityUseCaseRequestShortName = $createFunctionalEntityRequestFileObject->getShortName(
         );

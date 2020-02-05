@@ -20,6 +20,10 @@ interface CreateEntityUseCaseSkeletonModelBuilder
         FileObject $createFunctionalEntityRequestFileObject
     ): CreateEntityUseCaseSkeletonModelBuilder;
 
+    public function withEntityCommonHydratorTraitFileObject(
+        FileObject $entityCommonHydratorTraitFileObject
+    ): CreateEntityUseCaseSkeletonModelBuilder;
+
     public function withEntity(FileObject $entityFileObject): CreateEntityUseCaseSkeletonModelBuilder;
 
     public function withEntityDetailResponse(

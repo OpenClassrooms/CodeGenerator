@@ -63,6 +63,8 @@ class DeleteEntityUseCaseGeneratorTest extends TestCase
         $this->deleteEntityUseCaseGenerator->setFileObjectGateway(new InMemoryFileObjectGateway());
         $this->deleteEntityUseCaseGenerator->setTemplating(new TemplatingServiceMock());
         $this->deleteEntityUseCaseGenerator->setUseCaseFileObjectFactory(new UseCaseFileObjectFactoryMock());
+        $this->deleteEntityUseCaseGenerator->setUseCaseFileObjectFactory(new UseCaseFileObjectFactoryMock());
+        $this->deleteEntityUseCaseGenerator->setUseCaseFileObjectFactory(new UseCaseFileObjectFactoryMock());
         $this->deleteEntityUseCaseGenerator->setUseCaseRequestFileObjectFactory(
             new UseCaseRequestFileObjectFactoryMock()
         );

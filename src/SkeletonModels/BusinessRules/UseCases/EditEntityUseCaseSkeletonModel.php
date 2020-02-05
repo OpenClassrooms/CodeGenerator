@@ -10,13 +10,13 @@ abstract class EditEntityUseCaseSkeletonModel extends AbstractSkeletonModel
 {
     public $editEntityUseCaseRequestClassName;
 
-    public $editEntityUseCaseRequestMethods;
-
     public $editEntityUseCaseRequestShortName;
 
     public $entityArgument;
 
     public $entityClassName;
+
+    public $entityCommonHydratorTraitShortName;
 
     public $entityGatewayArgument;
 
@@ -39,6 +39,8 @@ abstract class EditEntityUseCaseSkeletonModel extends AbstractSkeletonModel
     public $entityUseCaseDetailResponseClassName;
 
     public $entityUseCaseDetailResponseShortName;
+
+    public $securityClassName;
 
     public $templatePath = 'BusinessRules/UseCases/EditEntityUseCase.php.twig';
 

@@ -11,6 +11,7 @@ class CreateEntityUseCaseMediatorImpl implements CreateEntityUseCaseMediator
 {
     use CommonEntityUseCaseMediatorsTrait;
     use CreateEntityUseCaseGeneratorsTrait;
+    use EntityCommonHydratorTraitGeneratorTrait;
     use EntityUseCaseCommonRequestGeneratorTrait;
     use UseCaseDetailResponseMediatorTrait;
 
@@ -19,12 +20,14 @@ class CreateEntityUseCaseMediatorImpl implements CreateEntityUseCaseMediator
      */
     protected function generateSources(string $className): array
     {
+        $fileObjects[] = $this->generateEntityCommonHydratorTraitGenerator($className);
         $fileObjects[] = $this->generateCreateEntityUseCaseGenerator($className);
         $fileObjects[] = $this->generateCreateEntityUseCaseRequestBuilderGenerator($className);
         $fileObjects[] = $this->generateCreateEntityUseCaseRequestBuilderImplGenerator($className);
         $fileObjects[] = $this->generateCreateEntityUseCaseRequestDTOGenerator($className);
         $fileObjects[] = $this->generateCreateEntityUseCaseRequestGenerator($className);
         $fileObjects[] = $this->generateEntityUseCaseCommonRequestTraitGenerator($className);
+        $fileObjects[] = $this->generateCreateRequestTraitGenerator($className);
 
         return array_merge(
             $fileObjects,

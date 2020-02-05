@@ -6,6 +6,7 @@ namespace OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\Imp
 
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Responders\UseCaseResponseClassNameTrait;
+use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\SecurityClassNameTrait;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCaseClassNameTrait;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\GetEntitiesUseCaseSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\GetEntitiesUseCaseSkeletonModelAssembler;
@@ -14,6 +15,7 @@ use OpenClassrooms\CodeGenerator\Utility\StringUtility;
 
 class GetEntitiesUseCaseSkeletonModelAssemblerImpl implements GetEntitiesUseCaseSkeletonModelAssembler
 {
+    use SecurityClassNameTrait;
     use UseCaseClassNameTrait;
     use UseCaseResponseClassNameTrait;
 
@@ -44,6 +46,7 @@ class GetEntitiesUseCaseSkeletonModelAssemblerImpl implements GetEntitiesUseCase
             $this->paginatedUseCaseResponse
         );
         $skeletonModel->paginationClassName = $this->pagination;
+        $skeletonModel->securityClassName = $this->securityClassName;
         $skeletonModel->useCaseClassName = $this->useCaseClassName;
         $skeletonModel->useCaseRequestClassName = $this->useCaseRequestClassName;
         $skeletonModel->useCaseRequestShortName = FileObjectUtility::getShortClassName($this->useCaseRequestClassName);

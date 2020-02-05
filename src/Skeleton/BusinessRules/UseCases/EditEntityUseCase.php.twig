@@ -7,12 +7,15 @@ use {{ skeletonModel.entityGatewayClassName }};
 use {{ skeletonModel.editEntityUseCaseRequestClassName }};
 use {{ skeletonModel.entityUseCaseDetailResponseClassName }};
 use {{ skeletonModel.entityUseCaseDetailResponseAssemblerClassName }};
+use {{ skeletonModel.securityClassName }};
 use {{ skeletonModel.transactionClassName }};
 use {{ skeletonModel.useCaseClassName }};
 use {{ skeletonModel.useCaseRequestClassName }};
 
 class {{ skeletonModel.shortName }} implements UseCase
 {
+    use {{ skeletonModel.entityCommonHydratorTraitShortName }};
+
     /**
      * @var {{ skeletonModel.entityGatewayShortName }}
      */
@@ -33,6 +36,7 @@ class {{ skeletonModel.shortName }} implements UseCase
 
     /**
      * @Transaction
+     * @Security(roles="")
      *
      * @param {{ skeletonModel.editEntityUseCaseRequestShortName }} $useCaseRequest
      *
@@ -41,7 +45,7 @@ class {{ skeletonModel.shortName }} implements UseCase
     public function execute(UseCaseRequest $useCaseRequest): {{ skeletonModel.entityUseCaseDetailResponseShortName }}
     {
         ${{ skeletonModel.entityArgument }} = $this->get{{ skeletonModel.entityShortName }}($useCaseRequest->get{{ skeletonModel.entityShortName }}Id());
-        $this->populate(${{ skeletonModel.entityArgument }}, $useCaseRequest);
+        $this->populateFromRequest(${{ skeletonModel.entityArgument }}, $useCaseRequest);
         $this->update(${{ skeletonModel.entityArgument }});
 
         return $this->createResponse(${{ skeletonModel.entityArgument }});
@@ -53,13 +57,6 @@ class {{ skeletonModel.shortName }} implements UseCase
     private function get{{ skeletonModel.entityShortName }}(int ${{ skeletonModel.entityIdArgument }}): {{ skeletonModel.entityShortName }}
     {
         return $this->{{ skeletonModel.entityGatewayArgument }}->find(${{ skeletonModel.entityIdArgument }});
-    }
-
-    private function populate({{ skeletonModel.entityShortName }} ${{ skeletonModel.entityArgument }}, {{ skeletonModel.editEntityUseCaseRequestShortName }} $request): void
-    {
-{% for method in skeletonModel.editEntityUseCaseRequestMethods|sortAccessorsFieldNameByAlpha %}
-        !$request->is{{ method.fieldName|capitalize }}Updated() ?: ${{ skeletonModel.entityArgument }}->set{{ method.fieldName|capitalize }}($request->{{ method.name }}());
-{% endfor %}
     }
 
     private function update({{ skeletonModel.entityShortName }} ${{ skeletonModel.entityArgument }}): void

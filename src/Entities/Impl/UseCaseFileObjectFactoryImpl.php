@@ -69,6 +69,10 @@ class UseCaseFileObjectFactoryImpl extends AbstractFileObjectFactory implements 
                         $entity
                     ) . 'Test'
                 );
+            case UseCaseFileObjectType::BUSINESS_RULES_ENTITY_COMMON_HYDRATOR_TRAIT:
+                return new FileObject(
+                    $this->baseNamespace . 'BusinessRules\UseCases\\' . $domain . '\\' . $entity . 'CommonHydratorTrait'
+                );
 
             default:
                 throw new \InvalidArgumentException($type);

@@ -4,6 +4,7 @@
         <import resource="../../Entities/entities_mediator.xml"/>
         <import resource="../../Responses/use_case_response_common_mediator.xml"/>
         <import resource="../../Responses/use_case_detail_response_mediator.xml"/>
+        <import resource="../../BusinessRules/UseCases/entity_common_hydrator_trait_generator_trait.xml"/>
         <import resource="../../BusinessRules/UseCases/entity_use_case_common_request_generator_trait.xml"/>
     </imports>
     <services>
@@ -99,6 +100,14 @@
             <call method="setEditEntityUseCaseTestGeneratorRequestBuilder">
                 <argument type="service"
                           id="OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\Request\EditEntityUseCaseTestGeneratorRequestBuilder"/>
+            </call>
+            <call method="setEntityCommonHydratorTraitGenerator">
+                <argument type="service"
+                          id="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\EntityCommonHydratorTraitGenerator"/>
+            </call>
+            <call method="setEntityCommonHydratorTraitGeneratorRequestBuilder">
+                <argument type="service"
+                          id="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\EntityCommonHydratorTraitGeneratorRequestBuilder"/>
             </call>
             <call method="setEntityUseCaseCommonRequestTraitGenerator">
                 <argument type="service"

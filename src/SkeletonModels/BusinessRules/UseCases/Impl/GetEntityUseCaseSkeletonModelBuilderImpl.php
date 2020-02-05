@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\Impl;
 
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
+use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\SecurityClassNameTrait;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCaseClassNameTrait;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\GetEntityUseCaseSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\GetEntityUseCaseSkeletonModelBuilder;
@@ -13,6 +14,7 @@ use OpenClassrooms\CodeGenerator\Utility\MethodUtility;
 
 class GetEntityUseCaseSkeletonModelBuilderImpl implements GetEntityUseCaseSkeletonModelBuilder
 {
+    use SecurityClassNameTrait;
     use UseCaseClassNameTrait;
 
     /**
@@ -23,6 +25,7 @@ class GetEntityUseCaseSkeletonModelBuilderImpl implements GetEntityUseCaseSkelet
     public function build(): GetEntityUseCaseSkeletonModel
     {
         $useCaseRequestShortName = FileObjectUtility::getShortClassName($this->useCaseRequestClassName);
+        $this->skeletonModel->securityClassName = $this->securityClassName;
         $this->skeletonModel->useCaseRequestClassName = $this->useCaseRequestClassName;
         $this->skeletonModel->useCaseClassName = $this->useCaseClassName;
         $this->skeletonModel->useCaseRequestShortName = $useCaseRequestShortName;

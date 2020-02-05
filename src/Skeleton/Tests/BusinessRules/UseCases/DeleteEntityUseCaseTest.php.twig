@@ -22,12 +22,14 @@ final class {{ skeletonModel.shortName }} extends TestCase
      */
     private $useCase;
 
-    private function buildRequest(): {{ skeletonModel.deleteEntityUseCaseRequestShortName }}
+    /**
+     * @test
+     * @expectedException \{{ skeletonModel.entityNotFoundExceptionClassName }}
+     */
+    public function {{ skeletonModel.entityArgument }}NotFoundThrowException(): void
     {
-        return (new {{ skeletonModel.deleteEntityUseCaseRequestBuilderImplShortName }}())
-            ->create()
-            ->{{ skeletonModel.withEntityIdMethod }}({{ skeletonModel.entityStubShortName }}::ID)
-            ->build();
+        $this->request->{{ skeletonModel.entityIdArgument }} = -1;
+        $this->useCase->execute($this->request);
     }
 
     /**
@@ -41,20 +43,18 @@ final class {{ skeletonModel.shortName }} extends TestCase
         $this->assertEmpty({{ skeletonModel.inMemoryEntityGatewayShortName }}::${{ skeletonModel.entitiesArgument }});
     }
 
-    /**
-     * @test
-     * @expectedException \{{ skeletonModel.entityNotFoundExceptionClassName }}
-     */
-    public function {{ skeletonModel.entityArgument }}NotFoundThrowException(): void
-    {
-        $this->request->{{ skeletonModel.entityIdArgument }} = -1;
-        $this->useCase->execute($this->request);
-    }
-
     protected function setUp(): void
     {
         ${{ skeletonModel.entityStubsArgument }} = [{{ skeletonModel.entityStubShortName }}::ID => new {{ skeletonModel.entityStubShortName }}()];
         $this->request = $this->buildRequest();
         $this->useCase = new {{ skeletonModel.deleteEntityUseCaseShortName }}(new {{ skeletonModel.inMemoryEntityGatewayShortName }}(${{ skeletonModel.entityStubsArgument }}));
+    }
+
+    private function buildRequest(): {{ skeletonModel.deleteEntityUseCaseRequestShortName }}
+    {
+        return (new {{ skeletonModel.deleteEntityUseCaseRequestBuilderImplShortName }}())
+            ->create()
+            ->{{ skeletonModel.withEntityIdMethod }}({{ skeletonModel.entityStubShortName }}::ID)
+            ->build();
     }
 }

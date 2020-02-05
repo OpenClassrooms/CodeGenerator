@@ -5,13 +5,16 @@ declare(strict_types=1);
 namespace OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\Impl;
 
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
+use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\SecurityClassNameTrait;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCaseClassNameTrait;
+use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\CreateEntityUseCaseSkeletonModelBuilder;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\EditEntityUseCaseSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\EditEntityUseCaseSkeletonModelBuilder;
 use OpenClassrooms\CodeGenerator\Utility\NameUtility;
 
 class EditEntityUseCaseSkeletonModelBuilderImpl implements EditEntityUseCaseSkeletonModelBuilder
 {
+    use SecurityClassNameTrait;
     use UseCaseClassNameTrait;
 
     /**
@@ -24,6 +27,7 @@ class EditEntityUseCaseSkeletonModelBuilderImpl implements EditEntityUseCaseSkel
         $this->skeletonModel->transactionClassName = $this->transactionClassName;
         $this->skeletonModel->useCaseClassName = $this->useCaseClassName;
         $this->skeletonModel->useCaseRequestClassName = $this->useCaseRequestClassName;
+        $this->skeletonModel->securityClassName = $this->securityClassName;
 
         return $this->skeletonModel;
     }
@@ -50,8 +54,15 @@ class EditEntityUseCaseSkeletonModelBuilderImpl implements EditEntityUseCaseSkel
     ): EditEntityUseCaseSkeletonModelBuilder {
 
         $this->skeletonModel->editEntityUseCaseRequestClassName = $editEntityUseCaseRequestFileObject->getClassName();
-        $this->skeletonModel->editEntityUseCaseRequestMethods = $editEntityUseCaseRequestFileObject->getMethods();
         $this->skeletonModel->editEntityUseCaseRequestShortName = $editEntityUseCaseRequestFileObject->getShortName();
+
+        return $this;
+    }
+
+    public function withEntityCommonHydratorTraitFileObject(
+        FileObject $entityCommonHydratorTraitFileObject
+    ): EditEntityUseCaseSkeletonModelBuilder {
+        $this->skeletonModel->entityCommonHydratorTraitShortName = $entityCommonHydratorTraitFileObject->getShortName();
 
         return $this;
     }
