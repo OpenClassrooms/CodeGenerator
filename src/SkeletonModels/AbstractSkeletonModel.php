@@ -7,7 +7,7 @@ namespace OpenClassrooms\CodeGenerator\SkeletonModels;
 use OpenClassrooms\CodeGenerator\Entities\Object\FieldObject;
 use OpenClassrooms\CodeGenerator\Entities\Object\MethodObject;
 
-class AbstractSkeletonModel
+abstract class AbstractSkeletonModel
 {
     /**
      * @var string
