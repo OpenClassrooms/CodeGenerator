@@ -43,7 +43,7 @@ class {{ skeletonModel.shortName }} extends {{ skeletonModel.abstractControllerS
             $model = $this->getModelFromRequest({{ skeletonModel.patchEntityModelShortName }}::class);
             $response = $this->{{ skeletonModel.updateEntityMethod }}(${{ skeletonModel.entityIdArgument }}, $model);
 
-            return $this->createJsonResponse($this->buildViewModel($response));
+            return $this->createUpdatedResponse($this->buildViewModel($response));
         } catch ({{ skeletonModel.entityNotFoundExceptionShortName }} $e) {
             $this->throwNotFoundException();
         }

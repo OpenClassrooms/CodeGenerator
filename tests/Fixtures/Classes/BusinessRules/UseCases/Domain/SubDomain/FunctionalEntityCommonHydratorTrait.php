@@ -11,7 +11,7 @@ use OpenClassrooms\UseCase\BusinessRules\Requestors\UseCaseRequest;
 
 trait FunctionalEntityCommonHydratorTrait
 {
-    public function populateFromRequest(FunctionalEntity $functionalEntity, UseCaseRequest $request): void
+    protected function populateFromRequest(FunctionalEntity $functionalEntity, UseCaseRequest $request): void
     {
         !$request->isField1Updated() ?: $functionalEntity->setField1($request->getField1());
         !$request->isField2Updated() ?: $functionalEntity->setField2($request->getField2());

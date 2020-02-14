@@ -9,7 +9,7 @@ trait {{ skeletonModel.shortName }}
 {
     use {{ skeletonModel.useCaseResponseTestCaseShortName }};
 
-    public function assert{{ skeletonModel.useCaseDetailResponseShortName }}(
+    protected function assert{{ skeletonModel.useCaseDetailResponseShortName }}(
         {{ skeletonModel.useCaseDetailResponseShortName }} $expected,
         {{ skeletonModel.useCaseDetailResponseShortName }} $actual
     ): void {

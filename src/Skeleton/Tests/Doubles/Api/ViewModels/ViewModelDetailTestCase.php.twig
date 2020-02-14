@@ -9,7 +9,7 @@ trait {{ skeletonModel.shortName }}
 {
     use {{ skeletonModel.viewModelTestCaseShortName }};
 
-    public function {{ skeletonModel.viewModelDetailMethod }}({{ skeletonModel.viewModelDetailShortName }} $expected, {{ skeletonModel.viewModelDetailShortName }} $actual): void
+    protected function {{ skeletonModel.viewModelDetailMethod }}({{ skeletonModel.viewModelDetailShortName }} $expected, {{ skeletonModel.viewModelDetailShortName }} $actual): void
     {
         $this->{{ skeletonModel.viewModelTestCaseMethod }}($expected, $actual);
 {% for field in skeletonModel.fields | sortNameByAlpha if field.type in skeletonModel.dateTimeType %}

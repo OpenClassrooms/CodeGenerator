@@ -42,14 +42,10 @@ class PostFunctionalEntityController extends AbstractApiController
      */
     public function postAction(): JsonResponse
     {
-        try {
-            $model = $this->getModelFromRequest(PostFunctionalEntityModel::class);
-            $response = $this->createFunctionalEntity($model);
+        $model = $this->getModelFromRequest(PostFunctionalEntityModel::class);
+        $response = $this->createFunctionalEntity($model);
 
-            return $this->createCreatedResponse($this->generateLocationUrl(), $this->buildViewModel($response));
-        } catch (FunctionalEntityNotFoundException $e) {
-            $this->throwNotFoundException();
-        }
+        return $this->createCreatedResponse($this->generateLocationUrl(), $this->buildViewModel($response));
     }
 
     private function createFunctionalEntity(PostFunctionalEntityModel $model): FunctionalEntityDetailResponse

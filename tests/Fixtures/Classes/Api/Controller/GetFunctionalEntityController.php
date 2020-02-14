@@ -38,6 +38,7 @@ class GetFunctionalEntityController extends AbstractApiController
 
     /**
      * @Security("")
+     * @throws \HttpNotFoundException
      */
     public function getAction(int $userId): JsonResponse
     {
