@@ -13,4 +13,6 @@ interface ModelMediator
     public function generatePatchEntityModelGenerator(string $className): FileObject;
 
     public function generatePostEntityModelGenerator(string $className): FileObject;
+
+    public function generatePutEntityModelGenerator(string $className): FileObject;
 }

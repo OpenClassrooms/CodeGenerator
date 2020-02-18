@@ -17,9 +17,11 @@ use OpenClassrooms\CodeGenerator\Generator\Api\Controller\PostEntityControllerGe
 use OpenClassrooms\CodeGenerator\Generator\Api\Models\DTO\Request\EntityModelTraitGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\Api\Models\DTO\Request\PatchEntityModelGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\Api\Models\DTO\Request\PostEntityModelGeneratorRequestBuilderImpl;
+use OpenClassrooms\CodeGenerator\Generator\Api\Models\DTO\Request\PutEntityModelGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\Api\Models\EntityModelTraitGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Api\Models\PatchEntityModelGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Api\Models\PostEntityModelGenerator;
+use OpenClassrooms\CodeGenerator\Generator\Api\Models\PutEntityModelGenerator;
 use OpenClassrooms\CodeGenerator\Mediators\Api\Controller\CommonControllerMediator;
 use OpenClassrooms\CodeGenerator\Mediators\Api\Controller\ControllerMediator;
 use OpenClassrooms\CodeGenerator\Mediators\Api\Controller\Impl\CommonControllerMediatorImpl;
@@ -37,6 +39,7 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\Controller\PostEntit
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\Models\EntityModelTraitFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\Models\PatchEntityModelFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\Models\PostEntityModelFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\Models\PutEntityModelFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Generator\GeneratorMock;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Entities\Domain\SubDomain\FunctionalEntity;
@@ -165,6 +168,12 @@ final class CommonControllerMediatorImplTest extends TestCase
         $this->modelMediator->setPostEntityModelGeneratorRequestBuilder(
             new PostEntityModelGeneratorRequestBuilderImpl()
         );
+        $this->modelMediator->setPutEntityModelGenerator(
+            new GeneratorMock(PutEntityModelGenerator::class, new PutEntityModelFileObjectStub1())
+        );
+        $this->modelMediator->setPutEntityModelGeneratorRequestBuilder(
+            new PutEntityModelGeneratorRequestBuilderImpl()
+        );
 
         $this->args = [
             ClassType::DELETE  => false,
@@ -172,6 +181,7 @@ final class CommonControllerMediatorImplTest extends TestCase
             ClassType::GET_ALL => false,
             ClassType::PATCH   => false,
             ClassType::POST    => false,
+            ClassType::PUT     => false,
         ];
 
         $this->commonControllerMediator->setControllerMediator($this->controllerMediator);

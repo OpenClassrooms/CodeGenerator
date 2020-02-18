@@ -6,13 +6,15 @@ namespace OpenClassrooms\CodeGenerator\Mediators;
 
 final class ClassType
 {
-    const DELETE  = 'delete';
+    public const DELETE  = 'delete';
 
-    const GET     = 'get';
+    public const GET     = 'get';
 
-    const GET_ALL = 'get-all';
+    public const GET_ALL = 'get-all';
 
-    const PATCH   = 'patch';
+    public const PATCH   = 'patch';
 
-    const POST    = 'post';
+    public const POST    = 'post';
+
+    public const PUT     = 'put';
 }
