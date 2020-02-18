@@ -17,10 +17,6 @@ interface GetEntitiesControllerSkeletonModelBuilder
         FileObject $getEntitiesControllerFileObject
     ): GetEntitiesControllerSkeletonModelBuilder;
 
-    public function withEntityNotFoundExceptionFileObject(
-        FileObject $entityNotFoundExceptionFileObject
-    ): GetEntitiesControllerSkeletonModelBuilder;
-
     public function withEntityUseCaseResponseFileObject(
         FileObject $entityUseCaseResponseFileObject
     ): GetEntitiesControllerSkeletonModelBuilder;

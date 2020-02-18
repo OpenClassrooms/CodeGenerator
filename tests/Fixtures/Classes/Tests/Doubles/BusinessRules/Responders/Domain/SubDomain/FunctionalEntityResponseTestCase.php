@@ -11,7 +11,7 @@ use PHPUnit\Framework\Assert;
 
 trait FunctionalEntityResponseTestCase
 {
-    public function assertFunctionalEntityResponse(
+    private function assertFunctionalEntityResponse(
         FunctionalEntityResponse $expected,
         FunctionalEntityResponse $actual
     ): void {

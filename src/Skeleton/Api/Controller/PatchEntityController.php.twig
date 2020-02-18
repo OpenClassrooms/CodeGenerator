@@ -13,6 +13,7 @@ use {{ skeletonModel.entityUseCaseDetailResponseClassName }};
 use {{ skeletonModel.editEntityUseCaseClassName }};
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class {{ skeletonModel.shortName }} extends {{ skeletonModel.abstractControllerShortName }}
 {
@@ -36,6 +37,7 @@ class {{ skeletonModel.shortName }} extends {{ skeletonModel.abstractControllerS
 
     /**
      * @Security("")
+     * @throws NotFoundHttpException
      */
     public function patchAction(Request $request, int ${{ skeletonModel.entityIdArgument }}): JsonResponse
     {
@@ -43,7 +45,7 @@ class {{ skeletonModel.shortName }} extends {{ skeletonModel.abstractControllerS
             $model = $this->getModelFromRequest({{ skeletonModel.patchEntityModelShortName }}::class);
             $response = $this->{{ skeletonModel.updateEntityMethod }}(${{ skeletonModel.entityIdArgument }}, $model);
 
-            return $this->createJsonResponse($this->buildViewModel($response));
+            return $this->createUpdatedResponse($this->buildViewModel($response));
         } catch ({{ skeletonModel.entityNotFoundExceptionShortName }} $e) {
             $this->throwNotFoundException();
         }

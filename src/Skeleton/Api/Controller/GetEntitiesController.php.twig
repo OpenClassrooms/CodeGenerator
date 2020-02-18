@@ -6,7 +6,6 @@ use {{ skeletonModel.abstractControllerClassName }};
 use {{ skeletonModel.collectionInformationClassName }};
 use {{ skeletonModel.entityViewModelListItemClassName }};
 use {{ skeletonModel.entityViewModelListItemAssemblerClassName }};
-use {{ skeletonModel.entityNotFoundExceptionClassName }};
 use {{ skeletonModel.getEntitiesUseCaseRequestBuilderClassName }};
 use {{ skeletonModel.entityUseCaseResponseClassName }};
 use {{ skeletonModel.paginatedUseCaseResponseClassName }};
@@ -39,19 +38,12 @@ class {{ skeletonModel.shortName }} extends {{ skeletonModel.abstractControllerS
      */
     public function getAction({{ skeletonModel.collectionInformationShortName }} $collectionInformation, int $userId): JsonResponse
     {
-        try {
-            ${{ skeletonModel.entitiesArgument }} = $this->{{ skeletonModel.getEntitiesMethod }}($collectionInformation);
-            $vm = $this->buildViewModel(${{ skeletonModel.entitiesArgument }});
+        ${{ skeletonModel.entitiesArgument }} = $this->{{ skeletonModel.getEntitiesMethod }}($collectionInformation);
+        $vm = $this->buildViewModel(${{ skeletonModel.entitiesArgument }});
 
-            return $this->createJsonResponse($vm);
-        } catch ({{ skeletonModel.entityNotFoundExceptionShortName }} $e) {
-            $this->throwNotFoundException();
-        }
+        return $this->createJsonResponse($vm);
     }
 
-    /**
-     * @throws {{ skeletonModel.entityNotFoundExceptionShortName }}
-     */
     private function {{ skeletonModel.getEntitiesMethod }}({{ skeletonModel.collectionInformationShortName }} $collectionInformation): {{ skeletonModel.entityUseCaseResponseShortName }}
     {
         return $this->get({{ skeletonModel.getEntitiesUseCaseShortName}}::class)->execute(

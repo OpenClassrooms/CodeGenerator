@@ -11,7 +11,6 @@ use OC\ApiBundle\Framework\FrameworkBundle\Controller\AbstractApiController;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\Models\Domain\SubDomain\PostFunctionalEntityModel;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\FunctionalEntityViewModelDetail;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\FunctionalEntityViewModelDetailAssembler;
-use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gateways\Domain\SubDomain\Exceptions\FunctionalEntityNotFoundException;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Requestors\Domain\SubDomain\CreateFunctionalEntityRequestBuilder;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityDetailResponse;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\CreateFunctionalEntity;
@@ -42,14 +41,10 @@ class PostFunctionalEntityController extends AbstractApiController
      */
     public function postAction(): JsonResponse
     {
-        try {
-            $model = $this->getModelFromRequest(PostFunctionalEntityModel::class);
-            $response = $this->createFunctionalEntity($model);
+        $model = $this->getModelFromRequest(PostFunctionalEntityModel::class);
+        $response = $this->createFunctionalEntity($model);
 
-            return $this->createCreatedResponse($this->generateLocationUrl(), $this->buildViewModel($response));
-        } catch (FunctionalEntityNotFoundException $e) {
-            $this->throwNotFoundException();
-        }
+        return $this->createCreatedResponse($this->generateLocationUrl(), $this->buildViewModel($response));
     }
 
     private function createFunctionalEntity(PostFunctionalEntityModel $model): FunctionalEntityDetailResponse

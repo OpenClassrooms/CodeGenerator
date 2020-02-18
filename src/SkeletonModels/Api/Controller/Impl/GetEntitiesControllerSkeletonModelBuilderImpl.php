@@ -49,15 +49,6 @@ class GetEntitiesControllerSkeletonModelBuilderImpl implements GetEntitiesContro
         return $this;
     }
 
-    public function withEntityNotFoundExceptionFileObject(
-        FileObject $entityNotFoundExceptionFileObject
-    ): GetEntitiesControllerSkeletonModelBuilder {
-        $this->skeletonModel->entityNotFoundExceptionClassName = $entityNotFoundExceptionFileObject->getClassName();
-        $this->skeletonModel->entityNotFoundExceptionShortName = $entityNotFoundExceptionFileObject->getShortName();
-
-        return $this;
-    }
-
     public function withEntityUseCaseResponseFileObject(
         FileObject $entityUseCaseResponseFileObject
     ): GetEntitiesControllerSkeletonModelBuilder {

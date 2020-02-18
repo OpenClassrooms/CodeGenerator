@@ -7,7 +7,7 @@ use {{ skeletonModel.useCaseRequestClassName }};
 
 trait {{ skeletonModel.shortName }}
 {
-    public function populateFromRequest({{ skeletonModel.entityShortName }} ${{ skeletonModel.entityArgument }}, {{ skeletonModel.useCaseRequestShortName }} $request): void
+    protected function populateFromRequest({{ skeletonModel.entityShortName }} ${{ skeletonModel.entityArgument }}, {{ skeletonModel.useCaseRequestShortName }} $request): void
     {
 {% for method in skeletonModel.editEntityUseCaseRequestMethods|sortAccessorsFieldNameByAlpha %}
         !$request->is{{ method.fieldName|capitalize }}Updated() ?: ${{ skeletonModel.entityArgument }}->set{{ method.fieldName|capitalize }}($request->{{ method.name }}());

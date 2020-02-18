@@ -18,10 +18,6 @@ abstract class GetEntitiesControllerSkeletonModel extends AbstractSkeletonModel
 
     public $entitiesArgument;
 
-    public $entityNotFoundExceptionClassName;
-
-    public $entityNotFoundExceptionShortName;
-
     public $entityUseCaseResponseShortName;
 
     public $entityUseCaseResponseClassName;

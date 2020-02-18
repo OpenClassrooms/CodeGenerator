@@ -7,7 +7,7 @@ use PHPUnit\Framework\Assert;
 
 trait {{ skeletonModel.shortName }}
 {
-    public function assert{{ skeletonModel.useCaseResponseShortName }}(
+    private function assert{{ skeletonModel.useCaseResponseShortName }}(
         {{ skeletonModel.useCaseResponseShortName }} $expected,
         {{ skeletonModel.useCaseResponseShortName }} $actual
     ): void {

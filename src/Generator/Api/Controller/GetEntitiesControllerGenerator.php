@@ -44,7 +44,6 @@ class GetEntitiesControllerGenerator extends AbstractGenerator
     {
         $this->initFileObjectParameter($entityClassName);
         $getEntitiesControllerFileObject = $this->createGetEntitiesControllerFileObject();
-        $entityNotFoundExceptionFileObject = $this->createEntityNotFoundExceptionFileObject();
         $entityUseCaseResponseFileObject = $this->createEntityUseCaseResponseFileObject();
         $entityViewModelListItemAssemblerFileObject = $this->createEntityViewModelListItemAssemblerFileObject();
         $entityViewModelListItemFileObject = $this->createEntityViewModelListItemFileObject();
@@ -55,7 +54,6 @@ class GetEntitiesControllerGenerator extends AbstractGenerator
             $this->generateContent(
                 [
                     ControllerFileObjectType::API_CONTROLLER_GET_ENTITIES                              => $getEntitiesControllerFileObject,
-                    EntityFileObjectType::BUSINESS_RULES_ENTITY_NOT_FOUND_EXCEPTION                    => $entityNotFoundExceptionFileObject,
                     UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE                    => $entityUseCaseResponseFileObject,
                     ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_ASSEMBLER                        => $entityViewModelListItemAssemblerFileObject,
                     ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM                                  => $entityViewModelListItemFileObject,
@@ -72,15 +70,6 @@ class GetEntitiesControllerGenerator extends AbstractGenerator
     {
         return $this->controllerFileObjectFactory->create(
             ControllerFileObjectType::API_CONTROLLER_GET_ENTITIES,
-            $this->entity
-        );
-    }
-
-    private function createEntityNotFoundExceptionFileObject(): FileObject
-    {
-        return $this->entityFileObjectFactory->create(
-            EntityFileObjectType::BUSINESS_RULES_ENTITY_NOT_FOUND_EXCEPTION,
-            $this->domain,
             $this->entity
         );
     }
@@ -148,9 +137,6 @@ class GetEntitiesControllerGenerator extends AbstractGenerator
         return $this->getEntitiesControllerSkeletonModelAssembler
             ->create()
             ->withGetEntitiesControllerFileObject($fileObjects[ControllerFileObjectType::API_CONTROLLER_GET_ENTITIES])
-            ->withEntityNotFoundExceptionFileObject(
-                $fileObjects[EntityFileObjectType::BUSINESS_RULES_ENTITY_NOT_FOUND_EXCEPTION]
-            )
             ->withEntityUseCaseResponseFileObject(
                 $fileObjects[UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE]
             )

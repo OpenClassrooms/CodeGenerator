@@ -11,7 +11,7 @@ use PHPUnit\Framework\Assert;
 
 trait FunctionalEntityViewModelTestCase
 {
-    public function assertFunctionalEntityViewModel(FunctionalEntityViewModel $expected, FunctionalEntityViewModel $actual): void
+    private function assertFunctionalEntityViewModel(FunctionalEntityViewModel $expected, FunctionalEntityViewModel $actual): void
     {
         Assert::assertSame($expected->id, $actual->id);
         Assert::assertSame($expected->field1, $actual->field1);

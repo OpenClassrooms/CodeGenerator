@@ -29,7 +29,7 @@ trait CommandDisplayTrait
     /**
      * @param FileObject[] $fileObjects
      *
-     * @return array
+     * @return FileObject[]
      */
     protected function getFilesWritingStatus(array $fileObjects): array
     {

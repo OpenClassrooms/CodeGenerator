@@ -10,7 +10,6 @@ use OC\ApiBundle\Framework\FrameworkBundle\Controller\AbstractApiController;
 use OC\ApiBundle\ParamConverter\CollectionInformation;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\FunctionalEntityViewModelListItem;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\FunctionalEntityViewModelListItemAssembler;
-use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gateways\Domain\SubDomain\Exceptions\FunctionalEntityNotFoundException;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Requestors\Domain\SubDomain\GetFunctionalEntitiesRequestBuilder;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityResponse;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\PaginatedUseCaseResponse;
@@ -43,19 +42,12 @@ class GetFunctionalEntitiesController extends AbstractApiController
      */
     public function getAction(CollectionInformation $collectionInformation, int $userId): JsonResponse
     {
-        try {
-            $functionalEntities = $this->getFunctionalEntities($collectionInformation);
-            $vm = $this->buildViewModel($functionalEntities);
+        $functionalEntities = $this->getFunctionalEntities($collectionInformation);
+        $vm = $this->buildViewModel($functionalEntities);
 
-            return $this->createJsonResponse($vm);
-        } catch (FunctionalEntityNotFoundException $e) {
-            $this->throwNotFoundException();
-        }
+        return $this->createJsonResponse($vm);
     }
 
-    /**
-     * @throws FunctionalEntityNotFoundException
-     */
     private function getFunctionalEntities(CollectionInformation $collectionInformation): FunctionalEntityResponse
     {
         return $this->get(GetFunctionalEntities::class)->execute(

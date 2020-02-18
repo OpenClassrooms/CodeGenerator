@@ -15,6 +15,7 @@ use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityResponse;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\GetFunctionalEntity;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class GetFunctionalEntityController extends AbstractApiController
 {
@@ -38,6 +39,7 @@ class GetFunctionalEntityController extends AbstractApiController
 
     /**
      * @Security("")
+     * @throws NotFoundHttpException
      */
     public function getAction(int $userId): JsonResponse
     {

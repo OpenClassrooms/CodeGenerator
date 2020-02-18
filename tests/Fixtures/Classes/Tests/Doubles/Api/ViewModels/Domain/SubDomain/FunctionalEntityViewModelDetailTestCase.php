@@ -13,7 +13,7 @@ trait FunctionalEntityViewModelDetailTestCase
 {
     use FunctionalEntityViewModelTestCase;
 
-    public function assertFunctionalEntityViewModelDetail(FunctionalEntityViewModelDetail $expected, FunctionalEntityViewModelDetail $actual): void
+    private function assertFunctionalEntityViewModelDetail(FunctionalEntityViewModelDetail $expected, FunctionalEntityViewModelDetail $actual): void
     {
         $this->assertFunctionalEntityViewModel($expected, $actual);
         Assert::assertEquals($expected->field4, $actual->field4);
