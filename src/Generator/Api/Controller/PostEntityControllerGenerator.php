@@ -90,7 +90,6 @@ class PostEntityControllerGenerator extends AbstractGenerator
         $postEntityControllerFileObject = $this->createPostEntityControllerFileObject();
         $createEntityUseCaseFileObject = $this->createCreateEntityUseCaseFileObject();
         $createEntityUseCaseRequestBuilderFileObject = $this->createCreateEntityUseCaseRequestBuilderFileObject();
-        $entityNotFoundExceptionFileObject = $this->createEntityNotFoundExceptionFileObject();
         $entityUseCaseDetailResponseFileObject = $this->createEntityUseCaseDetailResponseFileObject();
         $entityViewModelDetailAssemblerFileObject = $this->createEntityViewModelDetailAssemblerFileObject();
         $entityViewModelDetailFileObject = $this->createEntityViewModelDetailFileObject();
@@ -105,7 +104,6 @@ class PostEntityControllerGenerator extends AbstractGenerator
                     ControllerFileObjectType::API_CONTROLLER_POST_ENTITY                                => $postEntityControllerFileObject,
                     UseCaseFileObjectType::BUSINESS_RULES_CREATE_ENTITY_USE_CASE                        => $createEntityUseCaseFileObject,
                     UseCaseRequestFileObjectType::BUSINESS_RULES_CREATE_ENTITY_USE_CASE_REQUEST_BUILDER => $createEntityUseCaseRequestBuilderFileObject,
-                    EntityFileObjectType::BUSINESS_RULES_ENTITY_NOT_FOUND_EXCEPTION                     => $entityNotFoundExceptionFileObject,
                     UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE              => $entityUseCaseDetailResponseFileObject,
                     ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_ASSEMBLER                            => $entityViewModelDetailAssemblerFileObject,
                     ViewModelFileObjectType::API_VIEW_MODEL_DETAIL                                      => $entityViewModelDetailFileObject,
@@ -139,15 +137,6 @@ class PostEntityControllerGenerator extends AbstractGenerator
     {
         return $this->useCaseRequestFileObjectFactory->create(
             UseCaseRequestFileObjectType::BUSINESS_RULES_CREATE_ENTITY_USE_CASE_REQUEST_BUILDER,
-            $this->domain,
-            $this->entity
-        );
-    }
-
-    private function createEntityNotFoundExceptionFileObject(): FileObject
-    {
-        return $this->entityFileObjectFactory->create(
-            EntityFileObjectType::BUSINESS_RULES_ENTITY_NOT_FOUND_EXCEPTION,
             $this->domain,
             $this->entity
         );
@@ -223,9 +212,6 @@ class PostEntityControllerGenerator extends AbstractGenerator
             )
             ->withCreateEntityUseCaseRequestBuilderFileObject(
                 $fileObjects[UseCaseRequestFileObjectType::BUSINESS_RULES_CREATE_ENTITY_USE_CASE_REQUEST_BUILDER]
-            )
-            ->withEntityNotFoundExceptionFileObject(
-                $fileObjects[EntityFileObjectType::BUSINESS_RULES_ENTITY_NOT_FOUND_EXCEPTION]
             )
             ->withEntityUseCaseDetailResponseFileObject(
                 $fileObjects[UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE]

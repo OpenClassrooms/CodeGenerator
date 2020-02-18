@@ -17,6 +17,7 @@ use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\EditFunctionalEntity;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class PatchFunctionalEntityController extends AbstractApiController
 {
@@ -40,6 +41,7 @@ class PatchFunctionalEntityController extends AbstractApiController
 
     /**
      * @Security("")
+     * @throws NotFoundHttpException
      */
     public function patchAction(Request $request, int $functionalEntityId): JsonResponse
     {
@@ -47,7 +49,7 @@ class PatchFunctionalEntityController extends AbstractApiController
             $model = $this->getModelFromRequest(PatchFunctionalEntityModel::class);
             $response = $this->updateFunctionalEntity($functionalEntityId, $model);
 
-            return $this->createJsonResponse($this->buildViewModel($response));
+            return $this->createUpdatedResponse($this->buildViewModel($response));
         } catch (FunctionalEntityNotFoundException $e) {
             $this->throwNotFoundException();
         }

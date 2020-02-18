@@ -61,15 +61,6 @@ class PostEntityControllerSkeletonModelBuilderImpl implements PostEntityControll
         return $this;
     }
 
-    public function withEntityNotFoundExceptionFileObject(
-        FileObject $entityNotFoundExceptionFileObject
-    ): PostEntityControllerSkeletonModelBuilder {
-        $this->skeletonModel->entityNotFoundExceptionClassName = $entityNotFoundExceptionFileObject->getClassName();
-        $this->skeletonModel->entityNotFoundExceptionShortName = $entityNotFoundExceptionFileObject->getShortName();
-
-        return $this;
-    }
-
     public function withEntityUseCaseDetailResponseFileObject(
         FileObject $entityUseCaseDetailResponseFileObject
     ): PostEntityControllerSkeletonModelBuilder {

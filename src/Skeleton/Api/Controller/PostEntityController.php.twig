@@ -9,7 +9,6 @@ use {{ skeletonModel.abstractControllerClassName }};
 use {{ skeletonModel.postEntityModelClassName }};
 use {{ skeletonModel.entityViewModelDetailClassName }};
 use {{ skeletonModel.entityViewModelDetailAssemblerClassName }};
-use {{ skeletonModel.entityNotFoundExceptionClassName }};
 use {{ skeletonModel.createEntityUseCaseRequestBuilderClassName }};
 use {{ skeletonModel.entityUseCaseDetailResponseClassName }};
 use {{ skeletonModel.createEntityUseCaseClassName }};
@@ -40,14 +39,10 @@ class {{ skeletonModel.shortName }} extends {{ skeletonModel.abstractControllerS
      */
     public function postAction(): JsonResponse
     {
-        try {
-            $model = $this->getModelFromRequest({{ skeletonModel.postEntityModelShortName }}::class);
-            $response = $this->{{ skeletonModel.createEntityMethod }}($model);
+        $model = $this->getModelFromRequest({{ skeletonModel.postEntityModelShortName }}::class);
+        $response = $this->{{ skeletonModel.createEntityMethod }}($model);
 
-            return $this->createCreatedResponse($this->generateLocationUrl(), $this->buildViewModel($response));
-        } catch ({{ skeletonModel.entityNotFoundExceptionShortName }} $e) {
-            $this->throwNotFoundException();
-        }
+        return $this->createCreatedResponse($this->generateLocationUrl(), $this->buildViewModel($response));
     }
 
     private function {{ skeletonModel.createEntityMethod }}({{ skeletonModel.postEntityModelShortName }} $model): {{ skeletonModel.entityUseCaseDetailResponseShortName }}

@@ -24,10 +24,6 @@ abstract class PostEntityControllerSkeletonModel extends AbstractSkeletonModel
 
     public $createEntityUseCaseRequestBuilderShortName;
 
-    public $entityNotFoundExceptionClassName;
-
-    public $entityNotFoundExceptionShortName;
-
     public $entityUseCaseDetailResponseClassName;
 
     public $entityUseCaseDetailResponseShortName;

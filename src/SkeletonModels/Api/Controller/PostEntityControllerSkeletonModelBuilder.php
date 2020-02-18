@@ -22,10 +22,6 @@ interface PostEntityControllerSkeletonModelBuilder
         FileObject $createEntityUseCaseRequestBuilderFileObject
     ): PostEntityControllerSkeletonModelBuilder;
 
-    public function withEntityNotFoundExceptionFileObject(
-        FileObject $entityNotFoundExceptionFileObject
-    ): PostEntityControllerSkeletonModelBuilder;
-
     public function withEntityUseCaseDetailResponseFileObject(
         FileObject $entityUseCaseDetailResponseFileObject
     ): PostEntityControllerSkeletonModelBuilder;

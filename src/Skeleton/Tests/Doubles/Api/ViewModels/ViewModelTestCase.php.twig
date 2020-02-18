@@ -7,7 +7,7 @@ use PHPUnit\Framework\Assert;
 
 trait {{ skeletonModel.shortName }}
 {
-    protected function {{ skeletonModel.viewModelMethod }}({{ skeletonModel.sourceShortName }} $expected, {{ skeletonModel.sourceShortName }} $actual): void
+    private function {{ skeletonModel.viewModelMethod }}({{ skeletonModel.sourceShortName }} $expected, {{ skeletonModel.sourceShortName }} $actual): void
     {
 {% for field in skeletonModel.fields | sortNameByAlpha if field.type in skeletonModel.dateTimeType %}
         Assert::assertEquals($expected->{{ field.name }}, $actual->{{ field.name }});

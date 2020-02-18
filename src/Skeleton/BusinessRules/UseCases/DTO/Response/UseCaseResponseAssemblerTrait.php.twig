@@ -10,7 +10,7 @@ trait {{ skeletonModel.shortName }}
     /**
      * @param {{ skeletonModel.useCaseResponseCommonFieldTraitShortName }} $response
      */
-    protected function hydrateCommonFields({{ skeletonModel.entityShortName }} $entity, {{ skeletonModel.useCaseResponseShortName }} $response): {{ skeletonModel.useCaseResponseShortName }}
+    private function hydrateCommonFields({{ skeletonModel.entityShortName }} $entity, {{ skeletonModel.useCaseResponseShortName }} $response): {{ skeletonModel.useCaseResponseShortName }}
     {
 {% for method in skeletonModel.entityMethods|sortAccessorsFieldNameByAlpha %}
         $response->{{ method.fieldName }} = $entity->{{ method.name }}();
