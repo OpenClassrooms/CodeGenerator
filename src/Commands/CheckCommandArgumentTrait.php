@@ -33,30 +33,44 @@ trait CheckCommandArgumentTrait
 
     protected function checkInputClassNameArgument(InputInterface $input, OutputInterface $output): void
     {
-        if (null === $input->getArgument(Args::CLASS_NAME)) {
+        $className = $input->getArgument(Args::CLASS_NAME);
+        if (null === $className) {
             $helper = $this->getHelper('question');
             $classNameQuestion = new Question(
                 'Please enter class name (ex: BaseNamespace\Domain\SubDomain\ShortClassName): ',
                 'DefaultClassName'
             );
             $className = $helper->ask($input, $output, $classNameQuestion);
-
-            if ($this->isValidClassName($className)) {
-                $input->setArgument(Args::CLASS_NAME, $className);
-            }
         }
+        $className = $this->normalizeClassName($className);
+        if ($this->isValidClassName($className)) {
+            $input->setArgument(Args::CLASS_NAME, $className);
+        }
+    }
+
+    protected function normalizeClassName(string $className): string
+    {
+        if (preg_match('/\.\w+/', $className)) {
+            $content = file_get_contents($className);
+            preg_match('#/(\w+).php#', $className, $matches);
+            $shortname = $matches[1];
+            preg_match('#namespace\s+(.+?);#', $content, $matches);
+            $className = $matches[1] . '\\' . $shortname;
+        }
+
+        return $className;
     }
 
     /**
      * @throws ClassNameNotExistException
      */
-    private function isValidClassName(string $className): bool
+    protected function isValidClassName(string $className): bool
     {
-        if (class_exists($className)) {
+        if (class_exists($className) || interface_exists($className)) {
             return true;
         }
 
-        throw new ClassNameNotExistException("Class $className doesn't exist");
+        throw new ClassNameNotExistException("Class or interface $className doesn't exist");
     }
 
     protected function checkInputDomainAndNameArgument(

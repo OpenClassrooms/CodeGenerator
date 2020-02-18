@@ -46,25 +46,28 @@ Add script in `composer.json` to create `oc_code_generator.yml` configuration us
 The script create file `oc_code_generator.yml` at the root of the project. The script will ask you interactively for parameters which are missing in the parameters file, using the value of the dist file as default value.
 ``` yaml
 parameters:
-    author:
-    author_mail:
-    api_dir: ApiBundle\
-    app_dir: AppBundle\
-    base_namespace: OC\
-    stub_namespace: Doubles\OC\
-    tests_base_namespace: OC\
+    api_dir: 'ApiBundle\'
+    app_dir: 'AppBundle\'
+    base_namespace: 'OC\'
+    stub_namespace: 'Doubles\OC\'
+    tests_base_namespace: 'OC\'
 
     entity_util_classname: 'OC\Util\EntityUtil'
 
+    security_classname: 'OpenClassrooms\UseCase\Application\Annotations\Security'
     transaction_classname: 'OpenClassrooms\UseCase\Application\Annotations\Transaction'
     use_case_classname: 'OpenClassrooms\UseCase\BusinessRules\Requestors\UseCase'
     use_case_request_classname: 'OpenClassrooms\UseCase\BusinessRules\Requestors\UseCaseRequest'
 
-    paginated_collection_classname: '%base_namespace%\BusinessRules\Entities\PaginatedCollection'
-    paginated_use_case_response_classname: '%base_namespace%BusinessRules\Responders\PaginatedUseCaseResponse'
-    paginated_use_case_response_builder_classname: '%base_namespace%BusinessRules\Responders\PaginatedUseCaseResponseBuilder'
-    use_case_response_classname: '%base_namespace%BusinessRules\Responders\UseCaseResponse'
-    pagination_classname: '%base_namespace%BusinessRules\Gateways\Pagination'
+    paginated_collection_classname: 'OC\BusinessRules\Entities\PaginatedCollection'
+    paginated_use_case_response_classname: 'OC\BusinessRules\Responders\PaginatedUseCaseResponse'
+    paginated_use_case_response_builder_classname: 'OC\BusinessRules\Responders\PaginatedUseCaseResponseBuilder'
+    use_case_response_classname: 'OC\BusinessRules\Responders\UseCaseResponse'
+    pagination_classname: 'OC\BusinessRules\Gateways\Pagination'
+
+    abstract_controller : 'OC\ApiBundle\Framework\FrameworkBundle\Controller\AbstractApiController'
+    collection_information : 'OC\ApiBundle\ParamConverter\CollectionInformation'
+
 ```
 
 ## Usage
@@ -83,11 +86,18 @@ php bin/code-generator code-generator:generic-use-case
 or  
 php bin/code-generator code-generator:generic-use-case Domain\\SubDomain UseCaseName
 ```
-To generate generic entity use case get and get all architecture: 
+To generate entity CRUD use case architecture: 
 ``` 
-php bin/code-generator code-generator:get-entity-use-case 
-or  
-php bin/code-generator code-generator:get-entities-use-case
+Create: 
+php bin/code-generator code-generator:create-entity-use-case Domain\\SubDomain\\Entity
+Delete: 
+php bin/code-generator code-generator:delete-entity-use-case Domain\\SubDomain\\Entity
+Edit:
+php bin/code-generator code-generator:edit-entity-use-case Domain\\SubDomain\\Entity
+Get all:
+php bin/code-generator code-generator:get-entities-use-case Domain\\SubDomain\\Entity
+Get:
+php bin/code-generator code-generator:get-entity-use-case Domain\\SubDomain\\Entity
 ```  
 ### Extensions
 To generate without tests:
