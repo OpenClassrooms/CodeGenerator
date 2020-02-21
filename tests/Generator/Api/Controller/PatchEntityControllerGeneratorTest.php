@@ -7,7 +7,7 @@ namespace OpenClassrooms\CodeGenerator\Tests\Generator\Api\Controller;
 use OpenClassrooms\CodeGenerator\Generator\Api\Controller\DTO\Request\PatchEntityControllerGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\Api\Controller\PatchEntityControllerGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Api\Controller\Request\PatchEntityControllerGeneratorRequestBuilder;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\Controller\PatchEntityControllerFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\Controller\Domain\SubDomain\PatchEntityControllerFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\ControllerFileObjectFactoryMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\EntityFileObjectFactoryMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\FileObjectTestCase;

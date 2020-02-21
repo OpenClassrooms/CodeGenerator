@@ -4,7 +4,7 @@
 
 declare(strict_types=1);
 
-namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\Controller;
+namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\Controller\Domain\SubDomain;
 
 use OC\ApiBundle\Framework\FrameworkBundle\Controller\AbstractApiController;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\FunctionalEntityViewModel;
@@ -12,7 +12,6 @@ use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\Su
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gateways\Domain\SubDomain\Exceptions\FunctionalEntityNotFoundException;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Requestors\Domain\SubDomain\GetFunctionalEntityRequestBuilder;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityDetailResponse;
-use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityResponse;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\GetFunctionalEntity;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -56,7 +55,7 @@ class GetFunctionalEntityController extends AbstractApiController
     /**
      * @throws FunctionalEntityNotFoundException
      */
-    private function getFunctionalEntity(int $functionalEntityId): FunctionalEntityResponse
+    private function getFunctionalEntity(int $functionalEntityId): FunctionalEntityDetailResponse
     {
         return $this->get(GetFunctionalEntity::class)->execute(
             $this->getFunctionalEntityRequestBuilder

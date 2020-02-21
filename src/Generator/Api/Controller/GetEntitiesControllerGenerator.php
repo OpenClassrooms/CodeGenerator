@@ -6,7 +6,6 @@ namespace OpenClassrooms\CodeGenerator\Generator\Api\Controller;
 
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\Entities\Type\ControllerFileObjectType;
-use OpenClassrooms\CodeGenerator\Entities\Type\EntityFileObjectType;
 use OpenClassrooms\CodeGenerator\Entities\Type\UseCaseFileObjectType;
 use OpenClassrooms\CodeGenerator\Entities\Type\UseCaseRequestFileObjectType;
 use OpenClassrooms\CodeGenerator\Entities\Type\UseCaseResponseFileObjectType;
@@ -70,6 +69,7 @@ class GetEntitiesControllerGenerator extends AbstractGenerator
     {
         return $this->controllerFileObjectFactory->create(
             ControllerFileObjectType::API_CONTROLLER_GET_ENTITIES,
+            $this->domain,
             $this->entity
         );
     }

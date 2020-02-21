@@ -87,6 +87,7 @@ class PatchEntityControllerGenerator extends AbstractGenerator
     {
         return $this->controllerFileObjectFactory->create(
             ControllerFileObjectType::API_CONTROLLER_PATCH_ENTITY,
+            $this->domain,
             $this->entity
         );
     }

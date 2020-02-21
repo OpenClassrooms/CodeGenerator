@@ -120,6 +120,7 @@ class PostEntityControllerGenerator extends AbstractGenerator
     {
         return $this->controllerFileObjectFactory->create(
             ControllerFileObjectType::API_CONTROLLER_POST_ENTITY,
+            $this->domain,
             $this->entity
         );
     }

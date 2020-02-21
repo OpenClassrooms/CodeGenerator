@@ -8,5 +8,5 @@ use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 
 interface ControllerFileObjectFactory
 {
-    public function create(string $type, string $entity): FileObject;
+    public function create(string $type, string $domain, string $entity): FileObject;
 }

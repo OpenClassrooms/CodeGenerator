@@ -24,10 +24,6 @@ interface GetEntityControllerSkeletonModelBuilder
         FileObject $entityUseCaseDetailResponseFileObject
     ): GetEntityControllerSkeletonModelBuilder;
 
-    public function createEntityUseCaseResponseFileObject(
-        FileObject $entityUseCaseResponseFileObject
-    ): GetEntityControllerSkeletonModelBuilder;
-
     public function createEntityViewModelFileObject(
         FileObject $entityViewModelFileObject
     ): GetEntityControllerSkeletonModelBuilder;

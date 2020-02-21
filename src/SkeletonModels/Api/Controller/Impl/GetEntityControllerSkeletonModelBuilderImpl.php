@@ -64,21 +64,12 @@ class GetEntityControllerSkeletonModelBuilderImpl implements GetEntityController
         return $this;
     }
 
-    public function createEntityUseCaseResponseFileObject(
-        FileObject $entityUseCaseResponseFileObject
-    ): GetEntityControllerSkeletonModelBuilder {
-        $this->skeletonModel->entityUseCaseResponseClassName = $entityUseCaseResponseFileObject->getClassName();
-        $this->skeletonModel->entityUseCaseResponseShortName = $entityUseCaseResponseFileObject->getShortName();
-        $this->entity = $entityUseCaseResponseFileObject->getEntity();
-
-        return $this;
-    }
-
     public function createEntityViewModelFileObject(
         FileObject $entityViewModelFileObject
     ): GetEntityControllerSkeletonModelBuilder {
         $this->skeletonModel->entityViewModelClassName = $entityViewModelFileObject->getClassName();
         $this->skeletonModel->entityViewModelShortName = $entityViewModelFileObject->getShortName();
+        $this->entity = $entityViewModelFileObject->getEntity();
 
         return $this;
     }

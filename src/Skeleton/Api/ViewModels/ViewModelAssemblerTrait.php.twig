@@ -8,7 +8,7 @@ trait {{ skeletonModel.shortName }}
 {
     private function hydrateCommonFields({{ skeletonModel.viewModelShortName }} $vm, {{ skeletonModel.useCaseResponseShortName }} ${{ skeletonModel.useCaseResponseArgument }}): void
     {
-{% for field in skeletonModel.fields | sortIdFirst %}
+{% for field in skeletonModel.fields | sortNameByAlpha %}
         $vm->{{ field.name }} = ${{ skeletonModel.useCaseResponseArgument}}->{{ field.accessor }}();
 {% endfor %}
     }

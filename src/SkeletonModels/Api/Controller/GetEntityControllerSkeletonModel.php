@@ -26,11 +26,7 @@ abstract class GetEntityControllerSkeletonModel extends AbstractSkeletonModel
 
     public $entityUseCaseDetailResponseShortName;
 
-    public $entityUseCaseResponseClassName;
-
     public $entityViewModelDetailAssemblerClassName;
-
-    public $entityUseCaseResponseShortName;
 
     public $entityViewModelClassName;
 

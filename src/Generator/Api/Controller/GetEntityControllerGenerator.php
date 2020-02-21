@@ -46,7 +46,6 @@ class GetEntityControllerGenerator extends AbstractGenerator
         $getEntityControllerFileObject = $this->createGetEntityControllerFileObject();
         $entityNotFoundExceptionFileObject = $this->createEntityNotFoundExceptionFileObject();
         $entityUseCaseDetailResponseFileObject = $this->createEntityUseCaseDetailResponseFileObject();
-        $entityUseCaseResponseFileObject = $this->createEntityUseCaseResponseFileObject();
         $entityViewModelFileObject = $this->createEntityViewModelFileObject();
         $entityViewModelDetailAssemblerFileObject = $this->createEntityViewModelDetailAssemblerFileObject();
         $getEntityUseCaseFileObject = $this->createGetEntityUseCaseFileObject();
@@ -58,7 +57,6 @@ class GetEntityControllerGenerator extends AbstractGenerator
                     ControllerFileObjectType::API_CONTROLLER_GET_ENTITY                              => $getEntityControllerFileObject,
                     EntityFileObjectType::BUSINESS_RULES_ENTITY_NOT_FOUND_EXCEPTION                  => $entityNotFoundExceptionFileObject,
                     UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE           => $entityUseCaseDetailResponseFileObject,
-                    UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE                  => $entityUseCaseResponseFileObject,
                     ViewModelFileObjectType::API_VIEW_MODEL                                          => $entityViewModelFileObject,
                     ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_ASSEMBLER                         => $entityViewModelDetailAssemblerFileObject,
                     UseCaseFileObjectType::BUSINESS_RULES_GET_ENTITY_USE_CASE                        => $getEntityUseCaseFileObject,
@@ -74,6 +72,7 @@ class GetEntityControllerGenerator extends AbstractGenerator
     {
         return $this->controllerFileObjectFactory->create(
             ControllerFileObjectType::API_CONTROLLER_GET_ENTITY,
+            $this->domain,
             $this->entity
         );
     }
@@ -91,15 +90,6 @@ class GetEntityControllerGenerator extends AbstractGenerator
     {
         return $this->useCaseResponseFileObjectFactory->create(
             UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE,
-            $this->domain,
-            $this->entity
-        );
-    }
-
-    public function createEntityUseCaseResponseFileObject(): FileObject
-    {
-        return $this->useCaseResponseFileObjectFactory->create(
-            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE,
             $this->domain,
             $this->entity
         );
@@ -164,9 +154,6 @@ class GetEntityControllerGenerator extends AbstractGenerator
             )
             ->createEntityUseCaseDetailResponseFileObject(
                 $fileObjects[UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE]
-            )
-            ->createEntityUseCaseResponseFileObject(
-                $fileObjects[UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE]
             )
             ->createEntityViewModelFileObject($fileObjects[ViewModelFileObjectType::API_VIEW_MODEL])
             ->createEntityViewModelDetailAssemblerFileObject(

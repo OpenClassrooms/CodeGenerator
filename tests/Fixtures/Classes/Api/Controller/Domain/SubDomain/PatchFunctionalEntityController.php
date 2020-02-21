@@ -4,7 +4,7 @@
 
 declare(strict_types=1);
 
-namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\Controller;
+namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\Controller\Domain\SubDomain;
 
 use OC\ApiBundle\Framework\FrameworkBundle\Controller\AbstractApiController;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\Models\Domain\SubDomain\PatchFunctionalEntityModel;

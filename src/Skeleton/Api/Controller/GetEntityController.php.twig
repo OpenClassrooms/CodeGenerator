@@ -8,7 +8,6 @@ use {{ skeletonModel.entityViewModelDetailAssemblerClassName }};
 use {{ skeletonModel.entityNotFoundExceptionClassName }};
 use {{ skeletonModel.getEntityUseCaseRequestBuilderClassName }};
 use {{ skeletonModel.entityUseCaseDetailResponseClassName }};
-use {{ skeletonModel.entityUseCaseResponseClassName }};
 use {{ skeletonModel.getEntityUseCaseClassName }};
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -52,7 +51,7 @@ class {{ skeletonModel.shortName }} extends {{ skeletonModel.abstractControllerS
     /**
      * @throws {{ skeletonModel.entityNotFoundExceptionShortName }}
      */
-    private function {{ skeletonModel.getEntityMethod }}(int ${{ skeletonModel.entityIdArgument }}): {{ skeletonModel.entityUseCaseResponseShortName }}
+    private function {{ skeletonModel.getEntityMethod }}(int ${{ skeletonModel.entityIdArgument }}): {{ skeletonModel.entityUseCaseDetailResponseShortName }}
     {
         return $this->get({{ skeletonModel.getEntityUseCaseShortName }}::class)->execute(
             $this->{{ skeletonModel.getEntityUseCaseRequestBuilderArgument }}

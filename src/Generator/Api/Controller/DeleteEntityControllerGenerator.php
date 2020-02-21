@@ -6,7 +6,6 @@ namespace OpenClassrooms\CodeGenerator\Generator\Api\Controller;
 
 use OpenClassrooms\CodeGenerator\Entities\ControllerFileObjectFactory;
 use OpenClassrooms\CodeGenerator\Entities\EntityFileObjectFactory;
-use OpenClassrooms\CodeGenerator\Entities\ModelFileObjectFactory;
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\Entities\Type\ControllerFileObjectType;
 use OpenClassrooms\CodeGenerator\Entities\Type\EntityFileObjectType;
@@ -85,6 +84,7 @@ class DeleteEntityControllerGenerator extends AbstractGenerator
     {
         return $this->controllerFileObjectFactory->create(
             ControllerFileObjectType::API_CONTROLLER_DELETE_ENTITY,
+            $this->domain,
             $this->entity
         );
     }

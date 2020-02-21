@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Mediators;
 
 use OpenClassrooms\CodeGenerator\Mediators\Api\Controller\Impl\CommonControllerMediatorImpl;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\Controller\DeleteEntityControllerFileObjectStub1;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\Controller\GetEntitiesControllerFileObjectStub1;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\Controller\GetEntityControllerFileObjectStub1;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\Controller\PatchEntityControllerFileObjectStub1;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\Controller\PostEntityControllerFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\Controller\Domain\SubDomain\DeleteEntityControllerFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\Controller\Domain\SubDomain\GetEntitiesControllerFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\Controller\Domain\SubDomain\GetEntityControllerFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\Controller\Domain\SubDomain\PatchEntityControllerFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\Controller\Domain\SubDomain\PostEntityControllerFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\Models\EntityModelTraitFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\Models\PatchEntityModelFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\Models\PostEntityModelFileObjectStub1;
