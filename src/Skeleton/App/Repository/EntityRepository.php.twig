@@ -18,7 +18,7 @@ class {{ skeletonModel.shortName }} extends ServiceEntityRepository implements {
 
     public function delete({{ skeletonModel.entityShortName }} ${{ skeletonModel.entityArgument }}): void
     {
-        $this->getEntityManager()->remove($functionalEntity);
+        $this->getEntityManager()->remove(${{ skeletonModel.entityArgument }});
     }
 
     public function findAll(array $filters = [], array $sorts = [], array $pagination = []): iterable
@@ -33,7 +33,7 @@ class {{ skeletonModel.shortName }} extends ServiceEntityRepository implements {
             throw new {{ skeletonModel.entityNotFoundExceptionShortName }}();
         }
 
-        return $functionalEntity;
+        return ${{ skeletonModel.entityArgument }};
     }
 
     public function insert({{ skeletonModel.entityShortName }} ${{ skeletonModel.entityArgument }}): void

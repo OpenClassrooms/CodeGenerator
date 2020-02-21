@@ -48,12 +48,12 @@ class {{ skeletonModel.shortName }} implements {{ skeletonModel.entityGatewaySho
 
     public function insert({{ skeletonModel.entityShortName }} ${{ skeletonModel.entityArgument }}): void
     {
-        EntityUtil::setId($functionalEntity, self::$id);
+        EntityUtil::setId(${{ skeletonModel.entityArgument }}, self::$id);
         self::${{ skeletonModel.pluralEntityShortName }}[] = ${{ skeletonModel.entityArgument }};
     }
 
     public function update({{ skeletonModel.entityShortName }} ${{ skeletonModel.entityArgument }}): void
     {
-        $functionalEntity->update();
+        ${{ skeletonModel.entityArgument }}->update();
     }
 }
