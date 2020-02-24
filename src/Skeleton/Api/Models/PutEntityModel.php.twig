@@ -1,0 +1,22 @@
+{% include "Header.php.twig" %}
+
+namespace {{ skeletonModel.namespace }};
+
+class {{ skeletonModel.shortName }}
+{
+    use {{ skeletonModel.entityModelTraitShortName }};
+
+{% for constant in skeletonModel.constants | sortNameByAlpha %}
+    protected const {{ constant.name }} = '{{ constant.value }}';
+{% if not loop.last %}
+
+{% endif %}
+{% endfor %}
+
+    protected function build(array $data)
+    {
+{% for constant in skeletonModel.constants | sortNameByAlpha %}
+        $this->{{ constant.value }} = $data[self::{{ constant.name }}] ?? null;
+{% endfor %}
+    }
+}

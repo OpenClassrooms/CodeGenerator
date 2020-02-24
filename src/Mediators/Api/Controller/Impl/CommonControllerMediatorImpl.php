@@ -52,6 +52,9 @@ class CommonControllerMediatorImpl implements CommonControllerMediator
                 $fileObjects[] = $this->modelMediator->generateEntityModelTraitGenerator($className);
                 $fileObjects[] = $this->modelMediator->generatePostEntityModelGenerator($className);
                 break;
+            case ClassType::PUT:
+                $fileObjects[] = $this->modelMediator->generatePutEntityModelGenerator($className);
+                break;
             default:
                 throw new \ErrorException("Invalid type send");
         }

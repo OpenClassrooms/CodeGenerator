@@ -8,9 +8,11 @@ use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\Generator\Api\Models\EntityModelTraitGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Api\Models\PatchEntityModelGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Api\Models\PostEntityModelGenerator;
+use OpenClassrooms\CodeGenerator\Generator\Api\Models\PutEntityModelGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Api\Models\Request\EntityModelTraitGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Generator\Api\Models\Request\PatchEntityModelGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Generator\Api\Models\Request\PostEntityModelGeneratorRequestBuilder;
+use OpenClassrooms\CodeGenerator\Generator\Api\Models\Request\PutEntityModelGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Generator\Generator;
 use OpenClassrooms\CodeGenerator\Mediators\Api\Models\ModelMediator;
 
@@ -33,6 +35,12 @@ class ModelMediatorImpl implements ModelMediator
 
     /** @var PostEntityModelGeneratorRequestBuilder */
     private $postEntityModelGeneratorRequestBuilder;
+
+    /** @var PutEntityModelGenerator */
+    private $putEntityModelGenerator;
+
+    /** @var PutEntityModelGeneratorRequestBuilder */
+    private $putEntityModelGeneratorRequestBuilder;
 
     public function generateEntityModelTraitGenerator(string $className): FileObject
     {
@@ -62,6 +70,37 @@ class ModelMediatorImpl implements ModelMediator
                 ->withEntityClassName($className)
                 ->build()
         );
+    }
+
+    public function generatePutEntityModelGenerator(string $className): FileObject
+    {
+        return $this->putEntityModelGenerator->generate(
+            $this->putEntityModelGeneratorRequestBuilder
+                ->create()
+                ->withEntityClassName($className)
+                ->build()
+        );
+    }
+
+    public function getPutEntityModelGenerator(): PutEntityModelGenerator
+    {
+        return $this->putEntityModelGenerator;
+    }
+
+    public function setPutEntityModelGenerator(Generator $putEntityModelGenerator): void
+    {
+        $this->putEntityModelGenerator = $putEntityModelGenerator;
+    }
+
+    public function getPutEntityModelGeneratorRequestBuilder(): PutEntityModelGeneratorRequestBuilder
+    {
+        return $this->putEntityModelGeneratorRequestBuilder;
+    }
+
+    public function setPutEntityModelGeneratorRequestBuilder(
+        PutEntityModelGeneratorRequestBuilder $putEntityModelGeneratorRequestBuilder
+    ): void {
+        $this->putEntityModelGeneratorRequestBuilder = $putEntityModelGeneratorRequestBuilder;
     }
 
     public function setPatchEntityModelGenerator(Generator $patchEntityModelGenerator): void

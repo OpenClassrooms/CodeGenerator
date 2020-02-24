@@ -46,7 +46,7 @@ class CommonControllerCommand extends AbstractCommand
             ->addArgument(
                 Args::TYPE,
                 InputArgument::OPTIONAL,
-                'set type of class to generate (delete, get, get-all, patch, post)'
+                'set type of class to generate (delete, get, get-all, patch, post, put)'
             )
             ->addOption(
                 Options::DUMP,
@@ -75,7 +75,7 @@ class CommonControllerCommand extends AbstractCommand
         if (null === $input->getArgument(Args::TYPE)) {
             $helper = $this->getHelper('question');
             $typeQuestion = new Question(
-                'Please enter type of class to generate (delete, get, get-all, patch, post) : '
+                'Please enter type of class to generate (delete, get, get-all, patch, post, put) : '
             );
             $type = $helper->ask($input, $output, $typeQuestion);
 
@@ -92,7 +92,7 @@ class CommonControllerCommand extends AbstractCommand
     {
         if (in_array(
             $type,
-            [ClassType::DELETE, ClassType::GET, ClassType::GET_ALL, ClassType::PATCH, ClassType::POST]
+            [ClassType::DELETE, ClassType::GET, ClassType::GET_ALL, ClassType::PATCH, ClassType::POST, ClassType::PUT]
         )) {
             return true;
         }

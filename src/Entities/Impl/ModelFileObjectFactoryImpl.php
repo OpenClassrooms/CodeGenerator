@@ -22,6 +22,10 @@ class ModelFileObjectFactoryImpl extends AbstractFileObjectFactory implements Mo
                 return new FileObject(
                     $this->baseNamespace . $this->apiDir . 'Models\\' . $domain . '\\Patch' . $entity . 'Model'
                 );
+            case ModelFileObjectType::API_MODEL_PUT_ENTITY:
+                return new FileObject(
+                    $this->baseNamespace . $this->apiDir . 'Models\\' . $domain . '\\Put' . $entity . 'Model'
+                );
             case ModelFileObjectType::API_MODEL_POST_ENTITY:
                 return new FileObject(
                     $this->baseNamespace . $this->apiDir . 'Models\\' . $domain . '\\Post' . $entity . 'Model'
