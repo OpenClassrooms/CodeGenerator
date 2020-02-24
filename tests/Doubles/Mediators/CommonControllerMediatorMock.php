@@ -10,9 +10,9 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\Controller\Domain\Su
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\Controller\Domain\SubDomain\GetEntityControllerFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\Controller\Domain\SubDomain\PatchEntityControllerFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\Controller\Domain\SubDomain\PostEntityControllerFileObjectStub1;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\Models\EntityModelTraitFileObjectStub1;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\Models\PatchEntityModelFileObjectStub1;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\Models\PostEntityModelFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\Models\Domain\SubDomain\EntityModelTraitFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\Models\Domain\SubDomain\PatchEntityModelFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\Models\Domain\SubDomain\PostEntityModelFileObjectStub1;
 
 class CommonControllerMediatorMock extends CommonControllerMediatorImpl
 {

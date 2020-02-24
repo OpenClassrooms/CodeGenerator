@@ -6,17 +6,22 @@
 
         <service
                 id="OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Entities\Impl\EntityFactorySkeletonModelAssemblerImpl"
-                alias="OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Entities\EntityFactorySkeletonModelAssembler"
                 public="false">
         </service>
 
         <service id="OpenClassrooms\CodeGenerator\Generator\BusinessRules\Entities\EntityFactoryGenerator"
                  parent="open_classrooms.code_generator.generator.abstract_generator">
+            <call method="setEntityFileObjectFactory">
+                <argument type="service" id="open_classrooms.code_generator.file_objects.entity_file_object_factory"/>
+            </call>
             <call method="setEntityFactorySkeletonModelAssembler">
                 <argument type="service"
                           id="OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Entities\EntityFactorySkeletonModelAssembler"/>
             </call>
         </service>
-
+        <service
+                id="OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Entities\EntityFactorySkeletonModelAssembler"
+                alias="OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Entities\Impl\EntityFactorySkeletonModelAssemblerImpl">
+        </service>
     </services>
 </container>

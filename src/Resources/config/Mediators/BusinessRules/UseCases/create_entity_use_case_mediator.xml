@@ -22,6 +22,10 @@
                 id="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\CreateEntityUseCaseGeneratorRequestBuilderImpl"/>
         <service
                 id="OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\DTO\Request\CreateEntityUseCaseTestGeneratorRequestBuilderImpl"/>
+        <service
+                id="OpenClassrooms\CodeGenerator\Generator\BusinessRules\Entities\DTO\Request\EntityFactoryGeneratorRequestBuilderImpl"/>
+        <service
+                id="OpenClassrooms\CodeGenerator\Generator\App\Entity\DTO\Request\EntityFactoryImplGeneratorRequestBuilderImpl"/>
 
         <service
                 id="OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\Request\CreateEntityUseCaseRequestGeneratorRequestBuilder"
@@ -44,7 +48,12 @@
         <service
                 id="OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\Request\CreateEntityUseCaseTestGeneratorRequestBuilder"
                 alias="OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\DTO\Request\CreateEntityUseCaseTestGeneratorRequestBuilderImpl"/>
-
+        <service
+                id="OpenClassrooms\CodeGenerator\Generator\BusinessRules\Entities\Request\EntityFactoryGeneratorRequestBuilder"
+                alias="OpenClassrooms\CodeGenerator\Generator\BusinessRules\Entities\DTO\Request\EntityFactoryGeneratorRequestBuilderImpl"/>
+        <service
+                id="OpenClassrooms\CodeGenerator\Generator\App\Entity\Request\EntityFactoryImplGeneratorRequestBuilder"
+                alias="OpenClassrooms\CodeGenerator\Generator\App\Entity\DTO\Request\EntityFactoryImplGeneratorRequestBuilderImpl"/>
         <service
                 id="OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\Impl\CreateEntityUseCaseMediatorImpl">
             <call method="setEntitiesMediator">
@@ -74,6 +83,14 @@
             <call method="setCreateEntityUseCaseRequestBuilderImplGenerator">
                 <argument type="service"
                           id="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\CreateEntityUseCaseRequestBuilderImplGenerator"/>
+            </call>
+            <call method="setEntityFactoryGenerator">
+                <argument type="service"
+                          id="OpenClassrooms\CodeGenerator\Generator\BusinessRules\Entities\EntityFactoryGenerator"/>
+            </call>
+            <call method="setEntityFactoryImplGenerator">
+                <argument type="service"
+                          id="OpenClassrooms\CodeGenerator\Generator\App\Entity\EntityFactoryImplGenerator"/>
             </call>
             <call method="setCreateEntityUseCaseRequestBuilderGeneratorRequestBuilder">
                 <argument type="service"
@@ -130,6 +147,14 @@
             <call method="setEntityUseCaseCommonRequestTraitGeneratorRequestBuilder">
                 <argument type="service"
                           id="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\EntityUseCaseCommonRequestTraitGeneratorRequestBuilder"/>
+            </call>
+            <call method="setEntityFactoryGeneratorRequestBuilder">
+                <argument type="service"
+                          id="OpenClassrooms\CodeGenerator\Generator\BusinessRules\Entities\Request\EntityFactoryGeneratorRequestBuilder"/>
+            </call>
+            <call method="setEntityFactoryImplGeneratorRequestBuilder">
+                <argument type="service"
+                          id="OpenClassrooms\CodeGenerator\Generator\App\Entity\Request\EntityFactoryImplGeneratorRequestBuilder"/>
             </call>
             <call method="setFileObjectGateway">
                 <argument type="service" id="open_classrooms.code_generator.repository.file_object_repository"/>

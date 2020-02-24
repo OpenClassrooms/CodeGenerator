@@ -5,6 +5,10 @@ declare(strict_types=1);
 namespace OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\Impl;
 
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
+use OpenClassrooms\CodeGenerator\Generator\App\Entity\EntityFactoryImplGenerator;
+use OpenClassrooms\CodeGenerator\Generator\App\Entity\Request\EntityFactoryImplGeneratorRequestBuilder;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Entities\EntityFactoryGenerator;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Entities\Request\EntityFactoryGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\CreateEntityUseCaseRequestBuilderGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\CreateEntityUseCaseRequestGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\Request\CreateEntityUseCaseRequestBuilderGeneratorRequestBuilder;
@@ -64,6 +68,18 @@ trait CreateEntityUseCaseGeneratorsTrait
 
     /** @var CreateRequestTraitGeneratorRequestBuilder */
     private $createRequestTraitGeneratorRequestBuilder;
+
+    /** @var EntityFactoryGenerator */
+    private $entityFactoryGenerator;
+
+    /** @var EntityFactoryGeneratorRequestBuilder */
+    private $entityFactoryGeneratorRequestBuilder;
+
+    /** @var EntityFactoryImplGenerator */
+    private $entityFactoryImplGenerator;
+
+    /** @var EntityFactoryImplGeneratorRequestBuilder */
+    private $entityFactoryImplGeneratorRequestBuilder;
 
     public function setCreateEntityUseCaseGenerator(
         Generator $createEntityUseCaseGenerator
@@ -148,6 +164,28 @@ trait CreateEntityUseCaseGeneratorsTrait
         $this->createRequestTraitGeneratorRequestBuilder = $createRequestTraitGeneratorRequestBuilder;
     }
 
+    public function setEntityFactoryGenerator(Generator $entityFactoryGenerator): void
+    {
+        $this->entityFactoryGenerator = $entityFactoryGenerator;
+    }
+
+    public function setEntityFactoryGeneratorRequestBuilder(
+        EntityFactoryGeneratorRequestBuilder $entityFactoryGeneratorRequestBuilder
+    ): void {
+        $this->entityFactoryGeneratorRequestBuilder = $entityFactoryGeneratorRequestBuilder;
+    }
+
+    public function setEntityFactoryImplGenerator(Generator $entityFactoryImplGenerator): void
+    {
+        $this->entityFactoryImplGenerator = $entityFactoryImplGenerator;
+    }
+
+    public function setEntityFactoryImplGeneratorRequestBuilder(
+        EntityFactoryImplGeneratorRequestBuilder $entityFactoryImplGeneratorRequestBuilder
+    ): void {
+        $this->entityFactoryImplGeneratorRequestBuilder = $entityFactoryImplGeneratorRequestBuilder;
+    }
+
     protected function generateCreateEntityUseCaseGenerator(string $className): FileObject
     {
         return $this->createEntityUseCaseGenerator->generate(
@@ -212,6 +250,26 @@ trait CreateEntityUseCaseGeneratorsTrait
     {
         return $this->createRequestTraitGenerator->generate(
             $this->createRequestTraitGeneratorRequestBuilder
+                ->create()
+                ->withEntityClassName($className)
+                ->build()
+        );
+    }
+
+    protected function generateEntityFactoryGenerator(string $className): FileObject
+    {
+        return $this->entityFactoryGenerator->generate(
+            $this->entityFactoryGeneratorRequestBuilder
+                ->create()
+                ->withEntityClassName($className)
+                ->build()
+        );
+    }
+
+    protected function generateEntityFactoryImplGenerator(string $className): FileObject
+    {
+        return $this->entityFactoryImplGenerator->generate(
+            $this->entityFactoryImplGeneratorRequestBuilder
                 ->create()
                 ->withEntityClassName($className)
                 ->build()

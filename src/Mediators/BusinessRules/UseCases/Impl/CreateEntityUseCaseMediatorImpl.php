@@ -28,6 +28,8 @@ class CreateEntityUseCaseMediatorImpl implements CreateEntityUseCaseMediator
         $fileObjects[] = $this->generateCreateEntityUseCaseRequestGenerator($className);
         $fileObjects[] = $this->generateEntityUseCaseCommonRequestTraitGenerator($className);
         $fileObjects[] = $this->generateCreateRequestTraitGenerator($className);
+        $fileObjects[] = $this->generateEntityFactoryGenerator($className);
+        $fileObjects[] = $this->generateEntityFactoryImplGenerator($className);
 
         return array_merge(
             $fileObjects,

@@ -5,7 +5,9 @@
     <imports>
         <import resource="FileObject/abstract_file_object_factory.xml"/>
         <import resource="FileObject/factories.xml"/>
+        <import resource="Generator/App/Entity/entity_factory_impl_generator.xml"/>
         <import resource="Generator/BusinessRules/abstract_use_case_generator.xml"/>
+        <import resource="Generator/BusinessRules/Entities/entity_factory_generator.xml"/>
         <import resource="Generator/BusinessRules/Requestors/create_entity_use_case_request_builder_generator.xml"/>
         <import resource="Generator/BusinessRules/Requestors/create_entity_use_case_request_generator.xml"/>
         <import resource="Generator/BusinessRules/UseCases/create_entity_use_case_request_builder_impl_generator.xml"/>

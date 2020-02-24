@@ -4,6 +4,10 @@ declare(strict_types=1);
 
 namespace OpenClassrooms\CodeGenerator\Tests\Mediators\BusinessRules\UseCases\Impl;
 
+use OpenClassrooms\CodeGenerator\Generator\App\Entity\DTO\Request\EntityFactoryImplGeneratorRequestBuilderImpl;
+use OpenClassrooms\CodeGenerator\Generator\App\Entity\EntityFactoryImplGenerator;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Entities\DTO\Request\EntityFactoryGeneratorRequestBuilderImpl;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Entities\EntityFactoryGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\CreateEntityUseCaseRequestBuilderGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\CreateEntityUseCaseRequestGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\DTO\Request\CreateEntityUseCaseRequestBuilderGeneratorRequestBuilderImpl;
@@ -24,6 +28,8 @@ use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\CreateEn
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\DTO\Request\CreateEntityUseCaseTestGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\Impl\CreateEntityUseCaseMediatorImpl;
 use OpenClassrooms\CodeGenerator\Mediators\Options;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\App\Entity\EntityFactoryImplFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Entities\EntityFactoryFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Requestors\CreateEntityUseCaseRequestBuilderFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Requestors\CreateEntityUseCaseRequestFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\CreateEntityUseCaseFileObjectStub1;
@@ -126,6 +132,12 @@ class CreateEntityUseCaseMediatorImplTest extends TestCase
                 new EntityUseCaseCommonRequestTraitFileObjectStub1()
             )
         );
+        $this->mediator->setEntityFactoryGenerator(
+            new GeneratorMock(EntityFactoryGenerator::class, new EntityFactoryFileObjectStub1())
+        );
+        $this->mediator->setEntityFactoryImplGenerator(
+            new GeneratorMock(EntityFactoryImplGenerator::class, new EntityFactoryImplFileObjectStub1())
+        );
     }
 
     private function mockRequestBuilder(): void
@@ -156,6 +168,10 @@ class CreateEntityUseCaseMediatorImplTest extends TestCase
         );
         $this->mediator->setEntityUseCaseCommonRequestTraitGeneratorRequestBuilder(
             new EntityUseCaseCommonRequestTraitGeneratorRequestBuilderImpl()
+        );
+        $this->mediator->setEntityFactoryGeneratorRequestBuilder(new EntityFactoryGeneratorRequestBuilderImpl());
+        $this->mediator->setEntityFactoryImplGeneratorRequestBuilder(
+            new EntityFactoryImplGeneratorRequestBuilderImpl()
         );
     }
 }
