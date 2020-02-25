@@ -2,21 +2,27 @@
 
 declare(strict_types=1);
 
-namespace OpenClassrooms\CodeGenerator\Tests\Utility;
+namespace OpenClassrooms\CodeGenerator\Tests\Utility\Impl;
 
 use Carbon\Carbon;
-use OpenClassrooms\CodeGenerator\Utility\StubUtility;
+use OpenClassrooms\CodeGenerator\Utility\Impl\StubUtilityGetFixedValue;
+use OpenClassrooms\CodeGenerator\Utility\StubUtilityStrategy;
 use PHPUnit\Framework\TestCase;
 
-class StubUtilityTest extends TestCase
+final class StubUtilityGetFixedValueTest extends TestCase
 {
+    /**
+     * @var StubUtilityStrategy
+     */
+    private $stubUtilityStrategy;
+
     /**
      * @test
      * @dataProvider internalTypeAndInstanceDataProvider
      */
     public function createFakeValueReturnData(string $type, string $fieldName, string $entityName, $expectedValue)
     {
-        $actual = StubUtility::createFakeValue($type, $fieldName, $entityName);
+        $actual = $this->stubUtilityStrategy->createFakeValue($type, $fieldName, $entityName);
         $this->assertType($expectedValue, $actual);
     }
 
@@ -61,7 +67,7 @@ class StubUtilityTest extends TestCase
      */
     public function createFakeValueThrowInvalidArgumentException(): void
     {
-        StubUtility::createFakeValue('not exist', '', '');
+        $this->stubUtilityStrategy->createFakeValue('not exist', '', '');
     }
 
     public function internalTypeAndInstanceDataProvider(): array
@@ -77,5 +83,10 @@ class StubUtilityTest extends TestCase
             ['\DateTimeInterface', 'field1', 'FunctionalEntity', new \DateTime()],
             ['Object', 'field1', 'FunctionalEntity', ''],
         ];
+    }
+
+    protected function setUp()
+    {
+        $this->stubUtilityStrategy = new StubUtilityGetFixedValue();
     }
 }

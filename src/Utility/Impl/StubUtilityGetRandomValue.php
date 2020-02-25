@@ -2,29 +2,29 @@
 
 declare(strict_types=1);
 
-namespace OpenClassrooms\CodeGenerator\Utility;
+namespace OpenClassrooms\CodeGenerator\Utility\Impl;
 
 use Carbon\Carbon;
 use Faker\Provider\Base;
-use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
+use OpenClassrooms\CodeGenerator\Utility\StringUtility;
+use OpenClassrooms\CodeGenerator\Utility\StubUtilityStrategy;
 
-class StubUtility
+final class StubUtilityGetRandomValue implements StubUtilityStrategy
 {
-    private const BOOL         = true;
+    private const QUOTE = "'";
 
-    private const DEFAULT_DATE = '2018-01-01';
-
-    private const QUOTE        = "'";
-
-    public static function createFakeValue(string $type, string $fieldName, string $entityName)
+    /**
+     * @return mixed
+     */
+    public function createFakeValue(string $type, string $fieldName, string $entityName)
     {
         switch ($type) {
             case 'int' :
-                return 1;
+                return random_int(1, 999999);
             case 'float' :
                 return Base::randomFloat();
             case 'bool' :
-                return self::BOOL;
+                return true;
             case 'string' :
                 return self::QUOTE . StringUtility::convertToSpacedString($entityName . ' ' . $fieldName) . self::QUOTE;
             case 'array' :
@@ -34,7 +34,7 @@ class StubUtility
             case '\DateTime' :
             case '\DateTimeImmutable' :
             case '\DateTimeInterface' :
-                return Carbon::createFromFormat('Y-m-d', self::DEFAULT_DATE)->toDateString();
+                return Carbon::now();
             case StringUtility::isObject($type):
                 return self::QUOTE . StringUtility::convertToSpacedString(
                     $entityName . ' ' . $fieldName
@@ -42,20 +42,5 @@ class StubUtility
             default:
                 throw new \InvalidArgumentException($type);
         }
-    }
-
-    /**
-     * @param FileObject[] $fileObjects
-     */
-    public static function incrementSuffix(FileObject $fileObject, array $fileObjects): FileObject
-    {
-        $pattern = '/\d+$/';
-        $suffix = 1;
-        while (isset($fileObjects[$fileObject->getId()]) && preg_match($pattern, $fileObject->getId())) {
-            $suffix++;
-            $fileObject->setClassName(preg_replace($pattern, $suffix, $fileObject->getId()));
-        }
-
-        return $fileObject;
     }
 }
