@@ -13,7 +13,7 @@ use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\Entity
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\EntityCommonHydratorTraitSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\EntityCommonHydratorTraitSkeletonModelAssembler;
-use OpenClassrooms\CodeGenerator\Utility\MethodUtilityStrategy;
+use OpenClassrooms\CodeGenerator\Utility\MethodUtility;
 
 class EntityCommonHydratorTraitGenerator extends AbstractUseCaseGenerator
 {
@@ -21,11 +21,6 @@ class EntityCommonHydratorTraitGenerator extends AbstractUseCaseGenerator
      * @var EntityCommonHydratorTraitSkeletonModelAssembler
      */
     private $entityCommonHydratorTraitSkeletonModelAssembler;
-
-    /**
-     * @var MethodUtilityStrategy
-     */
-    private $methodUtilityStrategy;
 
     /**
      * @param EntityCommonHydratorTraitGeneratorRequest $generatorRequest
@@ -48,7 +43,7 @@ class EntityCommonHydratorTraitGenerator extends AbstractUseCaseGenerator
         $entityFileObject = $this->createEntityFileObject();
         $editEntityUseCaseRequestFileObject = $this->createEditEntityUseCaseRequestFileObject();
 
-        $editEntityUseCaseRequestFileObject->setMethods($this->methodUtilityStrategy->getAccessors($entityClassName));
+        $editEntityUseCaseRequestFileObject->setMethods(MethodUtility::getAccessorsUpdatable($entityClassName));
 
         $entityCommonHydratorTraitFileObject->setContent(
             $this->generateContent(
@@ -119,10 +114,5 @@ class EntityCommonHydratorTraitGenerator extends AbstractUseCaseGenerator
         EntityCommonHydratorTraitSkeletonModelAssembler $entityCommonHydratorTraitSkeletonModelAssembler
     ): void {
         $this->entityCommonHydratorTraitSkeletonModelAssembler = $entityCommonHydratorTraitSkeletonModelAssembler;
-    }
-
-    public function setMethodUtilityStrategy(MethodUtilityStrategy $methodUtilityStrategy): void
-    {
-        $this->methodUtilityStrategy = $methodUtilityStrategy;
     }
 }

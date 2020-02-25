@@ -82,19 +82,9 @@ class ModelMediatorImpl implements ModelMediator
         );
     }
 
-    public function getPutEntityModelGenerator(): PutEntityModelGenerator
-    {
-        return $this->putEntityModelGenerator;
-    }
-
     public function setPutEntityModelGenerator(Generator $putEntityModelGenerator): void
     {
         $this->putEntityModelGenerator = $putEntityModelGenerator;
-    }
-
-    public function getPutEntityModelGeneratorRequestBuilder(): PutEntityModelGeneratorRequestBuilder
-    {
-        return $this->putEntityModelGeneratorRequestBuilder;
     }
 
     public function setPutEntityModelGeneratorRequestBuilder(

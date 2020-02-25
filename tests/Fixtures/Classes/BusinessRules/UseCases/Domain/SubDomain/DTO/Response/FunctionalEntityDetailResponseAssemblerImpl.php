@@ -14,9 +14,6 @@ class FunctionalEntityDetailResponseAssemblerImpl implements FunctionalEntityDet
 {
     use FunctionalEntityResponseAssemblerTrait;
 
-    /**
-     * {@inheritdoc}
-     */
     public function create(FunctionalEntity $entity): FunctionalEntityDetailResponse
     {
         $response = new FunctionalEntityDetailResponseDTO();

@@ -110,6 +110,7 @@ final class CommonControllerMediatorImplTest extends TestCase
             [ClassType::GET_ALL],
             [ClassType::PATCH],
             [ClassType::POST],
+            [ClassType::PUT],
         ];
     }
 

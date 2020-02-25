@@ -67,9 +67,9 @@ class MethodObject
         $this->docComment = $docComment;
     }
 
-    public function getFieldName(): string
+    public function getAccessorName(): string
     {
-        return MethodUtility::createArgumentNameFromMethod($this->getName());
+        return MethodUtility::createAccessorNameFromMethod($this->getName());
     }
 
     public function getName(): string

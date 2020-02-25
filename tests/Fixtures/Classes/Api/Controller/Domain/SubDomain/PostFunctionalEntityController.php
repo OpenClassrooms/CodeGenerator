@@ -14,6 +14,7 @@ use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\Su
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Requestors\Domain\SubDomain\CreateFunctionalEntityRequestBuilder;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityDetailResponse;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\CreateFunctionalEntity;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 class PostFunctionalEntityController extends AbstractApiController
@@ -41,6 +42,7 @@ class PostFunctionalEntityController extends AbstractApiController
      */
     public function postAction(): JsonResponse
     {
+        /** @var PostFunctionalEntityModel $model */
         $model = $this->getModelFromRequest(PostFunctionalEntityModel::class);
         $response = $this->createFunctionalEntity($model);
 

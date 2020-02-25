@@ -14,10 +14,6 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileO
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingServiceMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\SkeletonModels\BusinessRules\UseCases\EditEntityUseCaseRequestDTOSkeletonModelAssemblerMock;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Entities\Domain\SubDomain\FunctionalEntity;
-use OpenClassrooms\CodeGenerator\Utility\Impl\FieldObjectUtilityContext;
-use OpenClassrooms\CodeGenerator\Utility\Impl\FieldObjectUtilityGetFieldsUpdatable;
-use OpenClassrooms\CodeGenerator\Utility\Impl\MethodUtilityContext;
-use OpenClassrooms\CodeGenerator\Utility\Impl\MethodUtilityGetAccessorsWithoutId;
 use PHPUnit\Framework\TestCase;
 
 class EditEntityUseCaseRequestDTOGeneratorTest extends TestCase
@@ -66,12 +62,6 @@ class EditEntityUseCaseRequestDTOGeneratorTest extends TestCase
         $this->editEntityUseCaseRequestDTOGenerator->setFileObjectGateway(new InMemoryFileObjectGateway());
         $this->editEntityUseCaseRequestDTOGenerator->setUseCaseRequestFileObjectFactory(
             new UseCaseRequestFileObjectFactoryMock()
-        );
-        $this->editEntityUseCaseRequestDTOGenerator->setMethodUtility(
-            new MethodUtilityContext(new MethodUtilityGetAccessorsWithoutId())
-        );
-        $this->editEntityUseCaseRequestDTOGenerator->setFieldUtility(
-            new FieldObjectUtilityContext(new FieldObjectUtilityGetFieldsUpdatable())
         );
     }
 }

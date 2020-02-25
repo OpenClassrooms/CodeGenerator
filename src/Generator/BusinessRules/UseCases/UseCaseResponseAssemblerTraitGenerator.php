@@ -43,7 +43,6 @@ class UseCaseResponseAssemblerTraitGenerator extends AbstractUseCaseGenerator
         $this->initFileObjectParameter($entityClassName);
 
         $entityFileObject = $this->createEntityFileObject();
-        $useCaseResponseCommonFieldTraitFileObject = $this->createUseCaseResponseCommonFieldTraitFileObject();
         $useCaseResponseFileObject = $this->createUseCaseResponseFileObject();
         $useCaseResponseAssemblerTraitFileObject = $this->createUseCaseResponseAssemblerTraitFileObject();
 
@@ -53,7 +52,6 @@ class UseCaseResponseAssemblerTraitGenerator extends AbstractUseCaseGenerator
         $useCaseResponseAssemblerTraitFileObject->setContent(
             $this->generateContent(
                 $entityFileObject,
-                $useCaseResponseCommonFieldTraitFileObject,
                 $useCaseResponseFileObject,
                 $useCaseResponseAssemblerTraitFileObject
             )
@@ -66,16 +64,6 @@ class UseCaseResponseAssemblerTraitGenerator extends AbstractUseCaseGenerator
     {
         return $this->entityFileObjectFactory->create(
             EntityFileObjectType::BUSINESS_RULES_ENTITY,
-            $this->domain,
-            $this->entity,
-            $this->baseNamespace
-        );
-    }
-
-    private function createUseCaseResponseCommonFieldTraitFileObject(): FileObject
-    {
-        return $this->useCaseResponseFileObjectFactory->create(
-            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE_COMMON_FIELD_TRAIT,
             $this->domain,
             $this->entity,
             $this->baseNamespace
@@ -104,13 +92,11 @@ class UseCaseResponseAssemblerTraitGenerator extends AbstractUseCaseGenerator
 
     private function generateContent(
         FileObject $entityFileObject,
-        FileObject $useCaseResponseCommonFieldTraitFileObject,
         FileObject $useCaseResponseFileObject,
         FileObject $useCaseResponseAssemblerTraitFileObject
     ): string {
         $skeletonModel = $this->createSkeletonModel(
             $entityFileObject,
-            $useCaseResponseCommonFieldTraitFileObject,
             $useCaseResponseFileObject,
             $useCaseResponseAssemblerTraitFileObject
         );
@@ -120,13 +106,11 @@ class UseCaseResponseAssemblerTraitGenerator extends AbstractUseCaseGenerator
 
     private function createSkeletonModel(
         FileObject $entityFileObject,
-        FileObject $useCaseResponseCommonFieldTraitFileObject,
         FileObject $useCaseResponseFileObject,
         FileObject $useCaseResponseAssemblerTraitFileObject
     ): UseCaseResponseAssemblerTraitSkeletonModel {
         return $this->useCaseResponseAssemblerTraitSkeletonModelAssembler->create(
             $entityFileObject,
-            $useCaseResponseCommonFieldTraitFileObject,
             $useCaseResponseFileObject,
             $useCaseResponseAssemblerTraitFileObject
         );

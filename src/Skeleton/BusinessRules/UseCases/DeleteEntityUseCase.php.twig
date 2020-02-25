@@ -16,9 +16,9 @@ class {{ skeletonModel.shortName }}
      */
     private ${{ skeletonModel.entityGatewayArgument }};
 
-    public function __construct({{ skeletonModel.entityGatewayShortName }} $gateway)
+    public function __construct({{ skeletonModel.entityGatewayShortName }} ${{ skeletonModel.entityGatewayArgument }})
     {
-        $this->{{ skeletonModel.entityGatewayArgument }} = $gateway;
+        $this->{{ skeletonModel.entityGatewayArgument }} = ${{ skeletonModel.entityGatewayArgument }};
     }
 
     /**

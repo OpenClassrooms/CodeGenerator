@@ -12,6 +12,7 @@ use {{ skeletonModel.entityViewModelDetailAssemblerClassName }};
 use {{ skeletonModel.createEntityUseCaseRequestBuilderClassName }};
 use {{ skeletonModel.entityUseCaseDetailResponseClassName }};
 use {{ skeletonModel.createEntityUseCaseClassName }};
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 class {{ skeletonModel.shortName }} extends {{ skeletonModel.abstractControllerShortName }}
@@ -39,6 +40,7 @@ class {{ skeletonModel.shortName }} extends {{ skeletonModel.abstractControllerS
      */
     public function postAction(): JsonResponse
     {
+        /** @var {{ skeletonModel.postEntityModelShortName }} $model */
         $model = $this->getModelFromRequest({{ skeletonModel.postEntityModelShortName }}::class);
         $response = $this->{{ skeletonModel.createEntityMethod }}($model);
 

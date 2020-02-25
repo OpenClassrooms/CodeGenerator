@@ -10,14 +10,17 @@ use OpenClassrooms\CodeGenerator\Entities\Type\EntityFileObjectType;
 use OpenClassrooms\CodeGenerator\Entities\Type\UseCaseResponseFileObjectType;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Responders\Request\UseCaseListItemResponseStubGeneratorRequest;
+use OpenClassrooms\CodeGenerator\Generator\Tests\StubFieldObjectTrait;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\Responders\UseCaseListItemResponseStubSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\Responders\UseCaseListItemResponseStubSkeletonModelAssembler;
 use OpenClassrooms\CodeGenerator\Utility\ConstUtility;
 use OpenClassrooms\CodeGenerator\Utility\StubFieldUtility;
-use OpenClassrooms\CodeGenerator\Utility\StubUtility;
+use OpenClassrooms\CodeGenerator\Utility\StubSuffixUtility;
 
 class UseCaseListItemResponseStubGenerator extends AbstractUseCaseResponseStubGenerator
 {
+    use StubFieldObjectTrait;
+
     /**
      * @var UseCaseListItemResponseStubSkeletonModelAssembler
      */
@@ -105,7 +108,7 @@ class UseCaseListItemResponseStubGenerator extends AbstractUseCaseResponseStubGe
             $this->baseNamespace
         );
 
-        $fileObject = StubUtility::incrementSuffix($fileObject, $this->fileObjectGateway->findAll());
+        $fileObject = StubSuffixUtility::incrementSuffix($fileObject, $this->fileObjectGateway->findAll());
 
         return $fileObject;
     }
@@ -120,10 +123,12 @@ class UseCaseListItemResponseStubGenerator extends AbstractUseCaseResponseStubGe
             $fields
         );
 
-        return StubFieldUtility::generateStubFieldObjects(
+        $stubFieldsObjects = StubFieldUtility::generateStubFieldObjects(
             $useCaseListItemResponseFields,
             $entityFileObject
         );
+
+        return $this->buildStubFieldObjects($entityFileObject, $stubFieldsObjects);
     }
 
     private function generateConsts(FileObject $useCaseListItemResponseStubFileObject): array

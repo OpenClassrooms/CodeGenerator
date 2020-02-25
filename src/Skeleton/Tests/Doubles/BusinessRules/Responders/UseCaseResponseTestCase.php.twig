@@ -12,7 +12,11 @@ trait {{ skeletonModel.shortName }}
         {{ skeletonModel.useCaseResponseShortName }} $actual
     ): void {
 {% for method in skeletonModel.useCaseResponseMethods | sortNameByAlpha %}
+{% if method.isDateType %}
+        Assert::assertEquals($expected->{{ method.name }}(), $actual->{{ method.name }}());
+{% else %}
         Assert::assertSame($expected->{{ method.name }}(), $actual->{{ method.name }}());
+{% endif %}
 {% endfor %}
     }
 }

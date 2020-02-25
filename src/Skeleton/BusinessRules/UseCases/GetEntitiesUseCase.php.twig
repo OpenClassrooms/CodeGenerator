@@ -17,16 +17,16 @@ class {{ skeletonModel.shortName }} implements {{ skeletonModel.useCaseShortName
     /**
      * @var {{ skeletonModel.entityGatewayShortName }}
      */
-    private $gateway;
+    private ${{ skeletonModel.entityGatewayArgument }};
 
     /**
      * @var {{ skeletonModel.entityUseCaseListItemResponseAssemblerShortName }}
      */
     private $responseAssembler;
 
-    public function __construct({{ skeletonModel.entityGatewayShortName }} $gateway, {{ skeletonModel.entityUseCaseListItemResponseAssemblerShortName }} $assembler)
+    public function __construct({{ skeletonModel.entityGatewayShortName }} ${{ skeletonModel.entityGatewayArgument }}, {{ skeletonModel.entityUseCaseListItemResponseAssemblerShortName }} $assembler)
     {
-        $this->gateway = $gateway;
+        $this->{{ skeletonModel.entityGatewayArgument }} = ${{ skeletonModel.entityGatewayArgument }};
         $this->responseAssembler = $assembler;
     }
 
@@ -44,7 +44,7 @@ class {{ skeletonModel.shortName }} implements {{ skeletonModel.useCaseShortName
 
     private function get{{ skeletonModel.entitiesShortName }}({{ skeletonModel.useCaseRequestShortName }} $useCaseRequest): {{ skeletonModel.paginatedCollectionShortName }}
     {
-        return $this->gateway->findAll(
+        return $this->{{ skeletonModel.entityGatewayArgument }}->findAll(
             $useCaseRequest->getFilters(),
             $useCaseRequest->getSorts(),
             $this->getPagination($useCaseRequest->getPage(), $useCaseRequest->getItemsPerPage())

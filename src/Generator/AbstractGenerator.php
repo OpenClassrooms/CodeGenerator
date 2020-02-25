@@ -11,7 +11,7 @@ use OpenClassrooms\CodeGenerator\Services\Impl\TemplatingServiceImpl;
 use OpenClassrooms\CodeGenerator\Services\TemplatingService;
 use OpenClassrooms\CodeGenerator\Utility\FieldObjectUtility;
 use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
-use OpenClassrooms\CodeGenerator\Utility\StubUtility;
+use OpenClassrooms\CodeGenerator\Utility\StubSuffixUtility;
 
 abstract class AbstractGenerator implements Generator
 {
@@ -77,7 +77,7 @@ abstract class AbstractGenerator implements Generator
     protected function getSelectedFields(string $entityClassName, array $fields): array
     {
         if (empty($fields)) {
-            return $fieldObjects = $this->getProtectedClassFields($entityClassName);
+            return [];
         }
         $fieldObjects = $this->getProtectedClassFields($entityClassName);
         foreach ($fieldObjects as $key => $fieldObject) {
@@ -110,7 +110,7 @@ abstract class AbstractGenerator implements Generator
 
     protected function insertFileObject(FileObject $fileObject): void
     {
-        $fileObject = StubUtility::incrementSuffix($fileObject, $this->fileObjectGateway->findAll());
+        $fileObject = StubSuffixUtility::incrementSuffix($fileObject, $this->fileObjectGateway->findAll());
 
         $this->fileObjectGateway->insert($fileObject);
     }

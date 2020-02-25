@@ -3,7 +3,9 @@
 namespace {{ skeletonModel.namespace }};
 
 use {{ skeletonModel.useCaseDetailResponseClassName }};
+{% if skeletonModel.useCaseDetailResponseMethods is not empty %}
 use PHPUnit\Framework\Assert;
+{% endif %}
 
 trait {{ skeletonModel.shortName }}
 {

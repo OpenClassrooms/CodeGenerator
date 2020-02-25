@@ -15,6 +15,8 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\ViewModelFileObjectFacto
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingServiceMock;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityResponse;
+use OpenClassrooms\CodeGenerator\Utility\Impl\StubUtilityContext;
+use OpenClassrooms\CodeGenerator\Utility\Impl\StubUtilityGetFixedValue;
 use PHPUnit\Framework\TestCase;
 
 class ViewModelListItemStubGeneratorTest extends TestCase
@@ -56,9 +58,10 @@ class ViewModelListItemStubGeneratorTest extends TestCase
         $this->viewModelStub1Generator = new ViewModelListItemStubGenerator();
 
         $this->viewModelStub1Generator->setFileObjectGateway(new InMemoryFileObjectGateway());
+        $this->viewModelStub1Generator->setStubUtilityStrategy(new StubUtilityContext(new StubUtilityGetFixedValue()));
         $this->viewModelStub1Generator->setTemplating(new TemplatingServiceMock());
-        $this->viewModelStub1Generator->setViewModelFileObjectFactory(new ViewModelFileObjectFactoryMock());
         $this->viewModelStub1Generator->setUseCaseResponseFileObjectFactory(new UseCaseResponseFileObjectFactoryMock());
+        $this->viewModelStub1Generator->setViewModelFileObjectFactory(new ViewModelFileObjectFactoryMock());
         $this->viewModelStub1Generator->setViewModelStubListItemSkeletonModelAssembler(
             new ViewModelListItemStubSkeletonModelAssemblerImpl()
         );

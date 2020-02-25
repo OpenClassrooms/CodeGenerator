@@ -16,16 +16,16 @@ class {{ skeletonModel.shortName }} implements UseCase
     /**
      * @var {{ skeletonModel.entityGatewayShortName }}
      */
-    private $gateway;
+    private ${{ skeletonModel.entityGatewayArgument }};
 
     /**
      * @var {{ skeletonModel.entityUseCaseDetailResponseAssemblerShortName }}
      */
     private $responseAssembler;
 
-    public function __construct({{ skeletonModel.entityUseCaseDetailResponseAssemblerShortName }} $assembler, {{ skeletonModel.entityGatewayShortName }} $gateway)
+    public function __construct({{ skeletonModel.entityUseCaseDetailResponseAssemblerShortName }} $assembler, {{ skeletonModel.entityGatewayShortName }} ${{ skeletonModel.entityGatewayArgument }})
     {
-        $this->gateway = $gateway;
+        $this->{{ skeletonModel.entityGatewayArgument }} = ${{ skeletonModel.entityGatewayArgument }};
         $this->responseAssembler = $assembler;
     }
 
@@ -48,7 +48,7 @@ class {{ skeletonModel.shortName }} implements UseCase
      */
     private function get{{ skeletonModel.entityShortName }}(int ${{ skeletonModel.getEntityUseCaseRequestArgument }}): {{ skeletonModel.entityShortName }}
     {
-        return $this->gateway->findById(${{ skeletonModel.getEntityUseCaseRequestArgument }});
+        return $this->{{ skeletonModel.entityGatewayArgument }}->findById(${{ skeletonModel.getEntityUseCaseRequestArgument }});
     }
 
     private function buildResponse({{ skeletonModel.entityShortName }} ${{ skeletonModel.entityArgument }}): {{ skeletonModel.entityUseCaseDetailResponseShortName }}

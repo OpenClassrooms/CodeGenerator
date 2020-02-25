@@ -8,7 +8,7 @@ namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseC
 
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Requestors\Domain\SubDomain\GetFunctionalEntityRequest;
 
-class GetFunctionalEntityRequestDTO implements GetFunctionalEntityRequest
+final class GetFunctionalEntityRequestDTO implements GetFunctionalEntityRequest
 {
     /**
      * @var int

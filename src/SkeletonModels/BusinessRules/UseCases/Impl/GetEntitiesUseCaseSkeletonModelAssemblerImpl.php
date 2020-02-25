@@ -31,6 +31,7 @@ class GetEntitiesUseCaseSkeletonModelAssemblerImpl implements GetEntitiesUseCase
         $skeletonModel->shortName = $getEntitiesUseCaseFileObject->getShortName();
         $skeletonModel->entitiesArgument = lcfirst(StringUtility::pluralize($entityFileObject->getShortName()));
         $skeletonModel->entitiesShortName = StringUtility::pluralize($entityFileObject->getShortName());
+        $skeletonModel->entityGatewayArgument = lcfirst($entityGatewayFileObject->getShortName());
         $skeletonModel->entityGatewayClassname = $entityGatewayFileObject->getClassName();
         $skeletonModel->entityGatewayShortName = $entityGatewayFileObject->getShortName();
         $skeletonModel->entityUseCaseListItemResponseAssemblerClassName = $getEntitiesUseCaseListItemResponseAssemblerFileObject->getClassName(

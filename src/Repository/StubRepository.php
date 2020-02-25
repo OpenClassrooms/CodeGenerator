@@ -6,7 +6,7 @@ namespace OpenClassrooms\CodeGenerator\Repository;
 
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\Gateways\FileObject\StubGateway;
-use OpenClassrooms\CodeGenerator\Utility\StubUtility;
+use OpenClassrooms\CodeGenerator\Utility\StubSuffixUtility;
 
 class StubRepository implements StubGateway
 {
@@ -22,7 +22,7 @@ class StubRepository implements StubGateway
 
     public function insertAndIncrementSuffix(FileObject $fileObject)
     {
-        StubUtility::incrementSuffix($fileObject, self::$fileObjects);
+        StubSuffixUtility::incrementSuffix($fileObject, self::$fileObjects);
         self::$fileObjects[$fileObject->getId()] = $fileObject;
     }
 }

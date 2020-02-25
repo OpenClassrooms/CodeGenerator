@@ -36,6 +36,7 @@ class TemplatingServiceImpl extends Environment implements TemplatingService
         $this->addFilter($this->getSortAccessorsFieldNameByAlphaFilter());
         $this->addFilter($this->getSortNameByAlphaFilter());
         $this->addFilter($this->getSortIdFirstFilter());
+        $this->addFilter($this->ucFirst());
 
         $this->addFunction($this->lineBreak());
         $this->addFunction($this->printValue());
@@ -61,7 +62,7 @@ class TemplatingServiceImpl extends Environment implements TemplatingService
     private function getSortFieldNameClosure()
     {
         return function (MethodObject $a, MethodObject $b) {
-            return strcmp($a->getFieldName(), $b->getFieldName());
+            return strcmp($a->getAccessorName(), $b->getAccessorName());
         };
     }
 
@@ -115,6 +116,16 @@ class TemplatingServiceImpl extends Environment implements TemplatingService
 
                 return $arrayFields;
             }
+        );
+    }
+
+    private function ucFirst()
+    {
+        return new TwigFilter(
+            'ucFirst',
+            function ($value) {
+            return ucfirst($value);
+        }
         );
     }
 

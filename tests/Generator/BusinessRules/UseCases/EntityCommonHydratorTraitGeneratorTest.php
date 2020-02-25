@@ -16,8 +16,6 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileO
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingServiceMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\SkeletonModels\BusinessRules\UseCases\EntityCommonHydratorTraitSkeletonModelAssemblerMock;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Entities\Domain\SubDomain\FunctionalEntity;
-use OpenClassrooms\CodeGenerator\Utility\Impl\MethodUtilityContext;
-use OpenClassrooms\CodeGenerator\Utility\Impl\MethodUtilityGetAccessorsWithoutId;
 use PHPUnit\Framework\TestCase;
 
 class EntityCommonHydratorTraitGeneratorTest extends TestCase
@@ -69,8 +67,5 @@ class EntityCommonHydratorTraitGeneratorTest extends TestCase
             new UseCaseRequestFileObjectFactoryMock()
         );
         $this->entityCommonHydratorTraitGenerator->setUseCaseFileObjectFactory(new UseCaseFileObjectFactoryMock());
-        $this->entityCommonHydratorTraitGenerator->setMethodUtilityStrategy(
-            new MethodUtilityContext(new MethodUtilityGetAccessorsWithoutId())
-        );
     }
 }

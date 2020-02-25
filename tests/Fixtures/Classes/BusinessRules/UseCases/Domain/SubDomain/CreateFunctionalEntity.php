@@ -54,18 +54,16 @@ class CreateFunctionalEntity implements UseCase
      */
     public function execute(UseCaseRequest $useCaseRequest): FunctionalEntityDetailResponse
     {
-        $functionalEntity = $this->create($useCaseRequest);
+        $functionalEntity = $this->create();
+        $this->populateFromRequest($functionalEntity, $useCaseRequest);
         $this->save($functionalEntity);
 
         return $this->createResponse($functionalEntity);
     }
 
-    private function create(CreateFunctionalEntityRequest $request): FunctionalEntity
+    private function create(): FunctionalEntity
     {
-        $functionalEntity = $this->functionalEntityFactory->create();
-        $this->populateFromRequest($functionalEntity, $request);
-
-        return $functionalEntity;
+        return $this->functionalEntityFactory->create();
     }
 
     private function save(FunctionalEntity $functionalEntity): void

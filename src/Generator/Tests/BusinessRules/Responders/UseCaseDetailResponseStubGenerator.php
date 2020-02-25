@@ -9,6 +9,7 @@ use OpenClassrooms\CodeGenerator\Entities\Type\EntityFileObjectType;
 use OpenClassrooms\CodeGenerator\Entities\Type\UseCaseResponseFileObjectType;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Responders\Request\UseCaseDetailResponseStubGeneratorRequest;
+use OpenClassrooms\CodeGenerator\Generator\Tests\StubFieldObjectTrait;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\Responders\UseCaseDetailResponseStubSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\Responders\UseCaseDetailResponseStubSkeletonModelAssembler;
 use OpenClassrooms\CodeGenerator\Utility\ConstUtility;
@@ -16,6 +17,8 @@ use OpenClassrooms\CodeGenerator\Utility\StubFieldUtility;
 
 class UseCaseDetailResponseStubGenerator extends AbstractUseCaseResponseStubGenerator
 {
+    use StubFieldObjectTrait;
+
     /**
      * @var UseCaseDetailResponseStubSkeletonModelAssembler
      */
@@ -103,10 +106,12 @@ class UseCaseDetailResponseStubGenerator extends AbstractUseCaseResponseStubGene
             $useCaseDetailResponseDTOFileObject->getClassName()
         );
 
-        return StubFieldUtility::generateStubFieldObjects(
+        $stubFieldsObjects = StubFieldUtility::generateStubFieldObjects(
             $useCaseDetailResponseFields,
             $useCaseDetailResponseDTOFileObject
         );
+
+        return $this->buildStubFieldObjects($useCaseDetailResponseDTOFileObject, $stubFieldsObjects);
     }
 
     private function generateConsts(

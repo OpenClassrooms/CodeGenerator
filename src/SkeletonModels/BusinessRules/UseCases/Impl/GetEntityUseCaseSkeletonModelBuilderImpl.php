@@ -75,6 +75,7 @@ class GetEntityUseCaseSkeletonModelBuilderImpl implements GetEntityUseCaseSkelet
     public function withEntityGatewayFileObject(
         FileObject $entityGatewayFileObject
     ): GetEntityUseCaseSkeletonModelBuilder {
+        $this->skeletonModel->entityGatewayArgument = lcfirst($entityGatewayFileObject->getShortName());
         $this->skeletonModel->entityGatewayClassName = $entityGatewayFileObject->getClassName();
         $this->skeletonModel->entityGatewayShortName = $entityGatewayFileObject->getShortName();
 
@@ -105,7 +106,7 @@ class GetEntityUseCaseSkeletonModelBuilderImpl implements GetEntityUseCaseSkelet
         $this->skeletonModel->getEntityUseCaseRequestAccessor = $this->getRequestAccessor(
             $getEntityUseCaseRequestFileObject->getEntity()
         );
-        $this->skeletonModel->getEntityUseCaseRequestArgument = MethodUtility::createArgumentNameFromMethod(
+        $this->skeletonModel->getEntityUseCaseRequestArgument = MethodUtility::createAccessorNameFromMethod(
             $this->skeletonModel->getEntityUseCaseRequestAccessor
         );
         $this->skeletonModel->getEntityUseCaseRequestShortName = $getEntityUseCaseRequestFileObject->getShortName();

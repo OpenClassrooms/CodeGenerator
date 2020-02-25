@@ -15,7 +15,7 @@ class MethodUtilityTest extends TestCase
      */
     public function createArgumentNameFromMethodReturnNull(): void
     {
-        $exceptedValue = MethodUtility::createArgumentNameFromMethod('notWorkingMethodName');
+        $exceptedValue = MethodUtility::createAccessorNameFromMethod('notWorkingMethodName');
 
         $this->assertNull($exceptedValue);
     }

@@ -13,6 +13,7 @@ use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gateways\D
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Requestors\Domain\SubDomain\GetFunctionalEntityRequestBuilder;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityDetailResponse;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\GetFunctionalEntity;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -40,10 +41,10 @@ class GetFunctionalEntityController extends AbstractApiController
      * @Security("")
      * @throws NotFoundHttpException
      */
-    public function getAction(int $userId): JsonResponse
+    public function getAction(int $functionalEntity): JsonResponse
     {
         try {
-            $functionalEntity = $this->getFunctionalEntity($userId);
+            $functionalEntity = $this->getFunctionalEntity($functionalEntity);
             $vm = $this->buildViewModel($functionalEntity);
 
             return $this->createJsonResponse($vm);

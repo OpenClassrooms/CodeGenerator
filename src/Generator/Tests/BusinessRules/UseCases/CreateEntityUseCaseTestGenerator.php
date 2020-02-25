@@ -257,9 +257,4 @@ class CreateEntityUseCaseTestGenerator extends AbstractUseCaseGenerator
     ): void {
         $this->createEntityTestSkeletonModelBuilder = $createEntityTestSkeletonModelBuilder;
     }
-
-    public function setMethodUtility(MethodUtilityStrategy $methodUtility): void
-    {
-        $this->methodUtility = $methodUtility;
-    }
 }

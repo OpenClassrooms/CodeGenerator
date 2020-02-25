@@ -20,16 +20,16 @@ class GetFunctionalEntity implements UseCase
     /**
      * @var FunctionalEntityGateway
      */
-    private $gateway;
+    private $functionalEntityGateway;
 
     /**
      * @var FunctionalEntityDetailResponseAssembler
      */
     private $responseAssembler;
 
-    public function __construct(FunctionalEntityDetailResponseAssembler $assembler, FunctionalEntityGateway $gateway)
+    public function __construct(FunctionalEntityDetailResponseAssembler $assembler, FunctionalEntityGateway $functionalEntityGateway)
     {
-        $this->gateway = $gateway;
+        $this->functionalEntityGateway = $functionalEntityGateway;
         $this->responseAssembler = $assembler;
     }
 
@@ -52,7 +52,7 @@ class GetFunctionalEntity implements UseCase
      */
     private function getFunctionalEntity(int $functionalEntityId): FunctionalEntity
     {
-        return $this->gateway->findById($functionalEntityId);
+        return $this->functionalEntityGateway->findById($functionalEntityId);
     }
 
     private function buildResponse(FunctionalEntity $functionalEntity): FunctionalEntityDetailResponse

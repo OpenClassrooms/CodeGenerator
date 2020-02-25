@@ -29,7 +29,6 @@ class StubFieldUtility
         $stubFieldObject = new FieldObject($fieldObject->getName());
         $stubFieldObject->setDocComment($fieldObject->getDocComment());
         $stubFieldObject->setScope($fieldObject->getScope());
-        $stubFieldObject->setValue(ConstUtility::generateStubConstObject($stubFieldObject, $fileObject));
 
         return $stubFieldObject;
     }

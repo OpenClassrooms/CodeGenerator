@@ -11,9 +11,6 @@ use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders
 
 trait FunctionalEntityResponseAssemblerTrait
 {
-    /**
-     * @param FunctionalEntityResponseCommonFieldTrait $response
-     */
     private function hydrateCommonFields(FunctionalEntity $entity, FunctionalEntityResponse $response): FunctionalEntityResponse
     {
         $response->field1 = $entity->getField1();

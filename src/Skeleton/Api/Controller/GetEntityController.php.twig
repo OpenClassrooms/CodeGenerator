@@ -9,6 +9,7 @@ use {{ skeletonModel.entityNotFoundExceptionClassName }};
 use {{ skeletonModel.getEntityUseCaseRequestBuilderClassName }};
 use {{ skeletonModel.entityUseCaseDetailResponseClassName }};
 use {{ skeletonModel.getEntityUseCaseClassName }};
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -36,10 +37,10 @@ class {{ skeletonModel.shortName }} extends {{ skeletonModel.abstractControllerS
      * @Security("")
      * @throws NotFoundHttpException
      */
-    public function getAction(int $userId): JsonResponse
+    public function getAction(int ${{ skeletonModel.entityArgument }}): JsonResponse
     {
         try {
-            ${{ skeletonModel.entityArgument }} = $this->{{ skeletonModel.getEntityMethod }}($userId);
+            ${{ skeletonModel.entityArgument }} = $this->{{ skeletonModel.getEntityMethod }}(${{ skeletonModel.entityArgument }});
             $vm = $this->buildViewModel(${{ skeletonModel.entityArgument }});
 
             return $this->createJsonResponse($vm);

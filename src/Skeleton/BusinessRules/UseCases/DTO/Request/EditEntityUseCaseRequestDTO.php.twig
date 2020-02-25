@@ -19,7 +19,7 @@ final class {{ skeletonModel.shortName }} implements {{ skeletonModel.editEntity
 {% endif %}
     public function {{ method.name }}(): {{ printReturnType(method.returnType, method.nullable) }}
     {
-        return $this->{{ method.fieldName }};
+        return $this->{{ method.accessorName }};
     }
 {% if not loop.last %}
 

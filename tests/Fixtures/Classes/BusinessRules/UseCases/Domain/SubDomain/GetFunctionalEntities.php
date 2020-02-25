@@ -21,16 +21,16 @@ class GetFunctionalEntities implements UseCase
     /**
      * @var FunctionalEntityGateway
      */
-    private $gateway;
+    private $functionalEntityGateway;
 
     /**
      * @var FunctionalEntityListItemResponseAssembler
      */
     private $responseAssembler;
 
-    public function __construct(FunctionalEntityGateway $gateway, FunctionalEntityListItemResponseAssembler $assembler)
+    public function __construct(FunctionalEntityGateway $functionalEntityGateway, FunctionalEntityListItemResponseAssembler $assembler)
     {
-        $this->gateway = $gateway;
+        $this->functionalEntityGateway = $functionalEntityGateway;
         $this->responseAssembler = $assembler;
     }
 
@@ -48,7 +48,7 @@ class GetFunctionalEntities implements UseCase
 
     private function getFunctionalEntities(UseCaseRequest $useCaseRequest): PaginatedCollection
     {
-        return $this->gateway->findAll(
+        return $this->functionalEntityGateway->findAll(
             $useCaseRequest->getFilters(),
             $useCaseRequest->getSorts(),
             $this->getPagination($useCaseRequest->getPage(), $useCaseRequest->getItemsPerPage())

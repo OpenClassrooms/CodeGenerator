@@ -25,20 +25,6 @@ class ConstUtility
         return $constObjects;
     }
 
-    public static function generateStubConstObject(FieldObject $fieldObject, FileObject $stubFileObject): ConstObject
-    {
-        $constObject = new ConstObject($fieldObject->getName());
-        $constObject->setValue(
-            StubUtility::createFakeValue(
-                $fieldObject->getType(),
-                $fieldObject->getName(),
-                $stubFileObject->getShortName()
-            )
-        );
-
-        return $constObject;
-    }
-
     /**
      * @return ConstObject[]
      */
@@ -49,7 +35,7 @@ class ConstUtility
         $reflectionProperties = $rc->getProperties(\ReflectionProperty::IS_PROTECTED);
         $constObjects = [];
         foreach ($reflectionProperties as $field) {
-            if ($field->getDeclaringClass()->getName() === $className && FieldUtility::isUpdatable($field)) {
+            if ($field->getDeclaringClass()->getName() === $className && FieldUtility::isUpdatable($field->getName())) {
                 $constObjects[] = self::buildPatchConst($field);
             }
         }

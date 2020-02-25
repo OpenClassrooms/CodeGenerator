@@ -35,18 +35,6 @@ class ConstUtilityTest extends TestCase
     }
 
     /**
-     * @test
-     * @expectedException  \InvalidArgumentException
-     */
-    public function generateConstsFromStubReference_ThrowsException(): void
-    {
-        $fileObject = new FileObject(self::class);
-
-        $fieldObject = $this->buildFieldObject('test', 'not exist');
-        ConstUtility::generateStubConstObject($fieldObject, $fileObject);
-    }
-
-    /**
      * @return FieldObject
      */
     private function buildFieldObject($name, $type): FieldObject
@@ -62,21 +50,6 @@ class ConstUtilityTest extends TestCase
     }
 
     /**
-     * @test
-     *
-     * @dataProvider generateStubConstObjectDataProvider
-     */
-    public function generateStubConstObject_ReturnFieldObject(
-        FieldObject $fieldObjectValue,
-        FileObject $fileObject,
-        $expectedValue
-    ): void {
-        $actualConstObjects = ConstUtility::generateStubConstObject($fieldObjectValue, $fileObject);
-        $this->assertNotNull($actualConstObjects->getValue());
-        $this->assertType($expectedValue, $actualConstObjects);
-    }
-
-    /**
      * @param mixed $internalType
      * @param mixed $actual
      */
@@ -87,21 +60,5 @@ class ConstUtilityTest extends TestCase
         } else {
             $this->{'assertIs' . $internalType}($actual->getValue());
         }
-    }
-
-    public function generateStubConstObjectDataProvider(): array
-    {
-        $fileObject = new FileObject(self::class);
-
-        return [
-            [$this->buildFieldObject('id', 'int'), $fileObject, 'int'],
-            [$this->buildFieldObject('field1', 'bool'), $fileObject, 'bool'],
-            [$this->buildFieldObject('field2', 'string'), $fileObject, 'string'],
-            [$this->buildFieldObject('field3', 'string[]'), $fileObject, 'array'],
-            [$this->buildFieldObject('field4', 'float'), $fileObject, 'float'],
-            [$this->buildFieldObject('field5', 'array'), $fileObject, 'array'],
-            [$this->buildFieldObject('field6', '\DateTimeImmutable'), $fileObject, 'string'],
-            [$this->buildFieldObject('field6', '\DateTimeInterface'), $fileObject, 'string'],
-        ];
     }
 }

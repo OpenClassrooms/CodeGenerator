@@ -10,6 +10,7 @@ use OpenClassrooms\CodeGenerator\Entities\Type\ViewModelFileObjectType;
 use OpenClassrooms\CodeGenerator\Generator\Api\AbstractViewModelGenerator;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\Request\ViewModelListItemStubGeneratorRequest;
+use OpenClassrooms\CodeGenerator\Generator\Tests\StubFieldObjectTrait;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\Api\ViewModels\ViewModelListItemStubSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\Api\ViewModels\ViewModelListItemStubSkeletonModelAssembler;
 use OpenClassrooms\CodeGenerator\Utility\ConstUtility;
@@ -17,6 +18,8 @@ use OpenClassrooms\CodeGenerator\Utility\StubFieldUtility;
 
 class ViewModelListItemStubGenerator extends AbstractViewModelGenerator
 {
+    use StubFieldObjectTrait;
+
     const LIST_ITEM_RESPONSE = 'ListItemResponse';
 
     /**
@@ -108,7 +111,12 @@ class ViewModelListItemStubGenerator extends AbstractViewModelGenerator
             $viewModelListItemImplFileObject->getClassName()
         );
 
-        return StubFieldUtility::generateStubFieldObjects($viewModelListItemFields, $viewModelListItemImplFileObject);
+        $stubFieldObjects = StubFieldUtility::generateStubFieldObjects(
+            $viewModelListItemFields,
+            $viewModelListItemImplFileObject
+        );
+
+        return $this->buildStubFieldObjects($viewModelListItemImplFileObject, $stubFieldObjects);
     }
 
     private function generateConsts(FileObject $viewModelListItemStubFileObject): array

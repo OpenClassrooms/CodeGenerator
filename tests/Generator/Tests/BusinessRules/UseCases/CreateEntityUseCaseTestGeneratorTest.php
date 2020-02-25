@@ -17,8 +17,6 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileO
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingServiceMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\SkeletonModels\Tests\BusinessRules\UseCases\CreateEntityUseCaseTestSkeletonModelBuilderMock;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Entities\Domain\SubDomain\FunctionalEntity;
-use OpenClassrooms\CodeGenerator\Utility\Impl\MethodUtilityContext;
-use OpenClassrooms\CodeGenerator\Utility\Impl\MethodUtilityGetAccessorsWithoutId;
 use PHPUnit\Framework\TestCase;
 
 class CreateEntityUseCaseTestGeneratorTest extends TestCase
@@ -64,9 +62,6 @@ class CreateEntityUseCaseTestGeneratorTest extends TestCase
         );
         $this->createEntityTestGenerator->setEntityFileObjectFactory(new EntityFileObjectFactoryMock());
         $this->createEntityTestGenerator->setFileObjectGateway(new InMemoryFileObjectGateway());
-        $this->createEntityTestGenerator->setMethodUtility(
-            new MethodUtilityContext(new MethodUtilityGetAccessorsWithoutId())
-        );
         $this->createEntityTestGenerator->setTemplating(new TemplatingServiceMock());
         $this->createEntityTestGenerator->setUseCaseFileObjectFactory(new UseCaseFileObjectFactoryMock());
         $this->createEntityTestGenerator->setUseCaseRequestFileObjectFactory(new UseCaseRequestFileObjectFactoryMock());

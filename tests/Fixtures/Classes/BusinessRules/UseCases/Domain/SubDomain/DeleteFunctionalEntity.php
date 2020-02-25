@@ -20,9 +20,9 @@ class DeleteFunctionalEntity
      */
     private $functionalEntityGateway;
 
-    public function __construct(FunctionalEntityGateway $gateway)
+    public function __construct(FunctionalEntityGateway $functionalEntityGateway)
     {
-        $this->functionalEntityGateway = $gateway;
+        $this->functionalEntityGateway = $functionalEntityGateway;
     }
 
     /**

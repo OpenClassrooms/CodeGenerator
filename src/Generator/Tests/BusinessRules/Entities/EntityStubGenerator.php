@@ -11,13 +11,16 @@ use OpenClassrooms\CodeGenerator\Entities\Type\EntityFileObjectType;
 use OpenClassrooms\CodeGenerator\Generator\AbstractGenerator;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Entities\Request\EntityStubGeneratorRequest;
+use OpenClassrooms\CodeGenerator\Generator\Tests\StubFieldObjectTrait;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\Entities\EntityStubSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\Entities\EntityStubSkeletonModelAssembler;
 use OpenClassrooms\CodeGenerator\Utility\StubFieldUtility;
-use OpenClassrooms\CodeGenerator\Utility\StubUtility;
+use OpenClassrooms\CodeGenerator\Utility\StubSuffixUtility;
 
 class EntityStubGenerator extends AbstractGenerator
 {
+    use StubFieldObjectTrait;
+
     /**
      * @var EntityFileObjectFactory
      */
@@ -74,7 +77,7 @@ class EntityStubGenerator extends AbstractGenerator
             $this->baseNamespace
         );
 
-        $fileObject = StubUtility::incrementSuffix($fileObject, $this->fileObjectGateway->findAll());
+        $fileObject = StubSuffixUtility::incrementSuffix($fileObject, $this->fileObjectGateway->findAll());
 
         return $fileObject;
     }
@@ -89,11 +92,13 @@ class EntityStubGenerator extends AbstractGenerator
         );
     }
 
-    private function generateFields(FileObject $fileObject, FileObject $stubFieldObject): array
+    private function generateFields(FileObject $fileObject, FileObject $stubFileObject): array
     {
         $entityFields = $this->getProtectedClassFields($fileObject->getClassName());
 
-        return StubFieldUtility::generateStubFieldObjects($entityFields, $stubFieldObject);
+        $stubFieldObjects = StubFieldUtility::generateStubFieldObjects($entityFields, $stubFileObject);
+
+        return $this->buildStubFieldObjects($stubFileObject, $stubFieldObjects);
     }
 
     /**

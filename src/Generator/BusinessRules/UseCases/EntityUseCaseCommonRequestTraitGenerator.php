@@ -11,8 +11,8 @@ use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\Entity
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\EntityUseCaseCommonRequestTraitSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\EntityUseCaseCommonRequestTraitSkeletonModelAssembler;
-use OpenClassrooms\CodeGenerator\Utility\FieldObjectUtilityStrategy;
-use OpenClassrooms\CodeGenerator\Utility\MethodUtilityStrategy;
+use OpenClassrooms\CodeGenerator\Utility\FieldUtility;
+use OpenClassrooms\CodeGenerator\Utility\MethodUtility;
 
 class EntityUseCaseCommonRequestTraitGenerator extends AbstractUseCaseGenerator
 {
@@ -24,17 +24,6 @@ class EntityUseCaseCommonRequestTraitGenerator extends AbstractUseCaseGenerator
     /**
      * @param EntityUseCaseCommonRequestTraitGeneratorRequest $generatorRequest
      */
-
-    /**
-     * @var FieldObjectUtilityStrategy
-     */
-    private $fieldUtility;
-
-    /**
-     * @var MethodUtilityStrategy
-     */
-    private $methodUtility;
-
     public function generate(GeneratorRequest $generatorRequest): FileObject
     {
         $entityUseCaseCommonRequestFileObject = $this->buildEntityUseCaseCommonRequestTraitFileObject(
@@ -51,8 +40,8 @@ class EntityUseCaseCommonRequestTraitGenerator extends AbstractUseCaseGenerator
         $this->initFileObjectParameter($entityClassName);
         $entityUseCaseCommonRequestFileObject = $this->createEntityUseCaseCommonRequestTraitFileObject();
 
-        $entityUseCaseCommonRequestFileObject->setFields($this->fieldUtility->getFields($entityClassName));
-        $entityUseCaseCommonRequestFileObject->setMethods($this->methodUtility->getAccessors($entityClassName));
+        $entityUseCaseCommonRequestFileObject->setFields(FieldUtility::getFieldsUpdatable($entityClassName));
+        $entityUseCaseCommonRequestFileObject->setMethods(MethodUtility::getAccessorsUpdatable($entityClassName));
 
         $entityUseCaseCommonRequestFileObject->setContent(
             $this->generateContent($entityUseCaseCommonRequestFileObject)
@@ -87,15 +76,5 @@ class EntityUseCaseCommonRequestTraitGenerator extends AbstractUseCaseGenerator
         EntityUseCaseCommonRequestTraitSkeletonModelAssembler $entityUseCaseCommonRequestSkeletonModelAssembler
     ): void {
         $this->entityUseCaseCommonRequestSkeletonModelAssembler = $entityUseCaseCommonRequestSkeletonModelAssembler;
-    }
-
-    public function setFieldUtility(FieldObjectUtilityStrategy $fieldUtility): void
-    {
-        $this->fieldUtility = $fieldUtility;
-    }
-
-    public function setMethodUtility(MethodUtilityStrategy $methodUtility): void
-    {
-        $this->methodUtility = $methodUtility;
     }
 }

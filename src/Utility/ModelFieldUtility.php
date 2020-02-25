@@ -18,7 +18,7 @@ class ModelFieldUtility
         $reflectionProperties = $rc->getProperties(\ReflectionProperty::IS_PROTECTED);
         $modelFieldObjects = [];
         foreach ($reflectionProperties as $field) {
-            if ($field->getDeclaringClass()->getName() === $className && FieldUtility::isUpdatable($field)) {
+            if ($field->getDeclaringClass()->getName() === $className && FieldUtility::isUpdatable($field->getName())) {
                 $modelFieldObjects[] = self::buildModelField($field);
             }
         }

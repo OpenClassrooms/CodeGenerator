@@ -29,7 +29,7 @@ class FieldObjectUtility
 
         $fields = [];
         foreach ($rc->getProperties() as $field) {
-            if (FieldUtility::isUpdatable($field)) {
+            if (FieldUtility::isUpdatable($field->getName())) {
                 $fields[] = self::buildUpdatedField($field, $defaultValue, $scope);
             }
         }

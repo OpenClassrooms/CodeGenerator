@@ -24,7 +24,7 @@ class MethodUtility
 
         $methodsChained = [];
         foreach ($rc->getProperties() as $field) {
-            if (FieldUtility::isUpdatable($field)) {
+            if (FieldUtility::isUpdatable($field->getName())) {
                 $methodsChained[] = self::buildIsUpdatedMethodObject($field);
             }
         }
@@ -47,7 +47,7 @@ class MethodUtility
 
         $methodsChained = [];
         foreach ($rc->getProperties() as $field) {
-            if (FieldUtility::isUpdatable($field)) {
+            if (FieldUtility::isUpdatable($field->getName())) {
                 $methodsChained[] = self::buildWitherCalledMethod($field, $className);
             }
         }
@@ -79,7 +79,7 @@ class MethodUtility
 
         $methodsChained = [];
         foreach ($rc->getProperties() as $field) {
-            if (FieldUtility::isUpdatable($field)) {
+            if (FieldUtility::isUpdatable($field->getName())) {
                 $methodsChained[] = self::buildWitherMethodObject($field, $returnType);
             }
         }
@@ -108,7 +108,7 @@ class MethodUtility
         return $argument;
     }
 
-    public static function createArgumentNameFromMethod(string $method): ?string
+    public static function createAccessorNameFromMethod(string $method): ?string
     {
         if ('get' === substr($method, 0, 3)) {
             return lcfirst(substr($method, 3));
@@ -134,9 +134,6 @@ class MethodUtility
         return $methods;
     }
 
-    /**
-     * @param string[] $fields
-     */
     public static function getAccessors(string $className): array
     {
         $rc = new \ReflectionClass($className);
@@ -199,11 +196,27 @@ class MethodUtility
     private static function removeNotSelectedFields(array $fields, array $methods): array
     {
         foreach ($methods as $key => $method) {
-            if (!in_array($method->getFieldName(), $fields)) {
+            if (!in_array($method->getAccessorName(), $fields)) {
                 unset($methods[$key]);
             }
         }
 
         return array_values($methods);
+    }
+
+    /**
+     * @return MethodObject[]
+     */
+    public static function getAccessorsUpdatable(string $className): array
+    {
+        $accessors = self::getAccessors($className);
+
+        foreach ($accessors as $key => $accessor) {
+            if (in_array($accessor->getName(), ['getId', 'getCreatedAt', 'getUpdatedAt'])) {
+                unset($accessors[$key]);
+            }
+        }
+
+        return $accessors;
     }
 }

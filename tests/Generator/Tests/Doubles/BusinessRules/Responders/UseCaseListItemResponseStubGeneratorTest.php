@@ -16,6 +16,8 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\ViewModelFileObjectFacto
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingServiceMock;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityResponse;
+use OpenClassrooms\CodeGenerator\Utility\Impl\StubUtilityContext;
+use OpenClassrooms\CodeGenerator\Utility\Impl\StubUtilityGetFixedValue;
 use PHPUnit\Framework\TestCase;
 
 class UseCaseListItemResponseStubGeneratorTest extends TestCase
@@ -67,6 +69,9 @@ class UseCaseListItemResponseStubGeneratorTest extends TestCase
             new UseCaseResponseFileObjectFactoryMock()
         );
         $this->useCaseListItemResponseStubGenerator->setEntityFileObjectFactory(new EntityFileObjectFactoryMock());
+        $this->useCaseListItemResponseStubGenerator->setStubUtilityStrategy(
+            new StubUtilityContext(new StubUtilityGetFixedValue())
+        );
         $this->useCaseListItemResponseStubGenerator->setUseCaseListItemResponseStubSkeletonModelAssembler(
             new UseCaseListItemResponseStubSkeletonModelAssemblerImpl()
         );

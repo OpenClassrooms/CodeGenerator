@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace OpenClassrooms\CodeGenerator\Tests\Utility\Impl;
 
 use Carbon\Carbon;
+use OpenClassrooms\CodeGenerator\Utility\Impl\StubUtilityContext;
 use OpenClassrooms\CodeGenerator\Utility\Impl\StubUtilityGetFixedValue;
+use OpenClassrooms\CodeGenerator\Utility\Impl\StubUtilityGetRandomValue;
 use OpenClassrooms\CodeGenerator\Utility\StubUtilityStrategy;
 use PHPUnit\Framework\TestCase;
 
@@ -14,15 +16,16 @@ final class StubUtilityGetFixedValueTest extends TestCase
     /**
      * @var StubUtilityStrategy
      */
-    private $stubUtilityStrategy;
+    private $stubUtilityContext;
 
     /**
      * @test
      * @dataProvider internalTypeAndInstanceDataProvider
      */
-    public function createFakeValueReturnData(string $type, string $fieldName, string $entityName, $expectedValue)
+    public function createFixedFakeValueReturnData(string $type, string $fieldName, string $entityName, $expectedValue)
     {
-        $actual = $this->stubUtilityStrategy->createFakeValue($type, $fieldName, $entityName);
+        $this->stubUtilityContext = new StubUtilityContext(new StubUtilityGetFixedValue());
+        $actual = $this->stubUtilityContext->createFakeValue($type, $fieldName, $entityName);
         $this->assertType($expectedValue, $actual);
     }
 
@@ -63,11 +66,33 @@ final class StubUtilityGetFixedValueTest extends TestCase
 
     /**
      * @test
+     * @dataProvider internalTypeAndInstanceDataProvider
+     */
+    public function createFakeRandomValueReturnData(string $type, string $fieldName, string $entityName, $expectedValue)
+    {
+        $this->stubUtilityContext = new StubUtilityContext(new StubUtilityGetRandomValue());
+        $actual = $this->stubUtilityContext->createFakeValue($type, $fieldName, $entityName);
+        $this->assertType($expectedValue, $actual);
+    }
+
+    /**
+     * @test
      * @expectedException  \InvalidArgumentException
      */
-    public function createFakeValueThrowInvalidArgumentException(): void
+    public function createFixedFakeValueThrowInvalidArgumentException(): void
     {
-        $this->stubUtilityStrategy->createFakeValue('not exist', '', '');
+        $this->stubUtilityContext = new StubUtilityContext(new StubUtilityGetFixedValue());
+        $this->stubUtilityContext->createFakeValue('not exist', '', '');
+    }
+
+    /**
+     * @test
+     * @expectedException  \InvalidArgumentException
+     */
+    public function createRandomFakeValueThrowInvalidArgumentException(): void
+    {
+        $this->stubUtilityContext = new StubUtilityContext(new StubUtilityGetRandomValue());
+        $this->stubUtilityContext->createFakeValue('not exist', '', '');
     }
 
     public function internalTypeAndInstanceDataProvider(): array
@@ -83,10 +108,5 @@ final class StubUtilityGetFixedValueTest extends TestCase
             ['\DateTimeInterface', 'field1', 'FunctionalEntity', new \DateTime()],
             ['Object', 'field1', 'FunctionalEntity', ''],
         ];
-    }
-
-    protected function setUp()
-    {
-        $this->stubUtilityStrategy = new StubUtilityGetFixedValue();
     }
 }

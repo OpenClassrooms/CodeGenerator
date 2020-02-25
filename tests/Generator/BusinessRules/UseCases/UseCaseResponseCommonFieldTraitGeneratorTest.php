@@ -7,6 +7,7 @@ namespace OpenClassrooms\CodeGenerator\Tests\Generator\BusinessRules\UseCases;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\UseCaseResponseCommonFieldTraitGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\UseCaseResponseCommonFieldTraitGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\UseCaseResponseCommonFieldTraitGenerator;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\BusinessRules\Entities\Domain\SubDomain\EntityFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\UseCaseResponseCommonFieldTraitFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\EntityFileObjectFactoryMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\FileObjectTestCase;
@@ -43,6 +44,21 @@ class UseCaseResponseCommonFieldTraitGeneratorTest extends TestCase
             $actualFileObject->getPath()
         );
         $this->assertFileObject(new UseCaseResponseCommonFieldTraitFileObjectStub1(), $actualFileObject);
+    }
+
+    /**
+     * @test
+     */
+    public function generateReturnFileObjectWithEntityFields(): void
+    {
+        $request = (new UseCaseResponseCommonFieldTraitGeneratorRequestBuilderImpl())
+            ->create()
+            ->withEntityClassName(FunctionalEntity::class)
+            ->withFields([])
+            ->build();
+
+        $actualFileObject = $this->useCaseResponseCommonFieldTraitGenerator->generate($request);
+        $this->assertFieldObjects($actualFileObject->getFields(), (new EntityFileObjectStub1())->getFields());
     }
 
     protected function setUp(): void

@@ -10,7 +10,6 @@ interface UseCaseResponseAssemblerTraitSkeletonModelAssembler
 {
     public function create(
         FileObject $entityFileObject,
-        FileObject $useCaseResponseCommonFieldTraitFileObject,
         FileObject $useCaseResponseFileObject,
         FileObject $useCaseResponseAssemblerTraitFileObject
     ): UseCaseResponseAssemblerTraitSkeletonModel;

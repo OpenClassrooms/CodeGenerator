@@ -8,7 +8,6 @@ use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\Us
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\UseCaseListItemResponseDTOGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\UseCaseListItemResponseDTOGenerator;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\Impl\UseCaseListItemResponseDTOSkeletonModelAssemblerImpl;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\BusinessRules\Entities\Domain\SubDomain\EntityFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\UseCaseListItemResponseDTOFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\FileObjectTestCase;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\UseCaseResponseFileObjectFactoryMock;
@@ -45,21 +44,6 @@ class UseCaseListItemResponseDTOGeneratorTest extends TestCase
         $this->assertFileObject(new UseCaseListItemResponseDTOFileObjectStub1(), $actualFileObject);
     }
 
-    /**
-     * @test
-     */
-    public function generateReturnFileObjectWithEntityFields(): void
-    {
-        $request = (new UseCaseListItemResponseDTOGeneratorRequestBuilderImpl())
-            ->create()
-            ->withEntityClassName(FunctionalEntity::class)
-            ->withFields([])
-            ->build();
-
-        $actualFileObject = $this->useCaseListItemResponseDTOGenerator->generate($request);
-        $this->assertFieldObjects($actualFileObject->getFields(), (new EntityFileObjectStub1())->getFields());
-    }
-
     protected function setUp(): void
     {
         $useCaseListItemResponseDTOGeneratorRequestBuilderImpl = new UseCaseListItemResponseDTOGeneratorRequestBuilderImpl(
@@ -67,7 +51,7 @@ class UseCaseListItemResponseDTOGeneratorTest extends TestCase
         $this->request = $useCaseListItemResponseDTOGeneratorRequestBuilderImpl
             ->create()
             ->withEntityClassName(FunctionalEntity::class)
-            ->withFields([''])
+            ->withFields([])
             ->build();
 
         $this->useCaseListItemResponseDTOGenerator = new UseCaseListItemResponseDTOGenerator();

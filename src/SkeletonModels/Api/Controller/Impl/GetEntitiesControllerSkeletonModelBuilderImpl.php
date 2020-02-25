@@ -23,7 +23,7 @@ class GetEntitiesControllerSkeletonModelBuilderImpl implements GetEntitiesContro
     protected $collectionInformationClassName;
 
     /**
-     * private GetEntitiesControllerSkeletonModel
+     * @var GetEntitiesControllerSkeletonModel
      */
     private $skeletonModel;
 

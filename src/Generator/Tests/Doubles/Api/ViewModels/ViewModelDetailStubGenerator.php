@@ -10,6 +10,7 @@ use OpenClassrooms\CodeGenerator\Entities\Type\ViewModelFileObjectType;
 use OpenClassrooms\CodeGenerator\Generator\Api\AbstractViewModelGenerator;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\Request\ViewModelDetailStubGeneratorRequest;
+use OpenClassrooms\CodeGenerator\Generator\Tests\StubFieldObjectTrait;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\Api\ViewModels\ViewModelDetailStubSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\Api\ViewModels\ViewModelDetailStubSkeletonModelAssembler;
 use OpenClassrooms\CodeGenerator\Utility\ConstUtility;
@@ -17,6 +18,8 @@ use OpenClassrooms\CodeGenerator\Utility\StubFieldUtility;
 
 class ViewModelDetailStubGenerator extends AbstractViewModelGenerator
 {
+    use StubFieldObjectTrait;
+
     public const DETAIL_RESPONSE = 'DetailResponse';
 
     /**
@@ -111,7 +114,10 @@ class ViewModelDetailStubGenerator extends AbstractViewModelGenerator
             $useCaseDetailResponseDTOFileObject->getClassName()
         );
 
-        return StubFieldUtility::generateStubFieldObjects($viewModelDetailFields, $useCaseDetailResponseDTOFileObject);
+        $stubFieldObjects =  StubFieldUtility::generateStubFieldObjects($viewModelDetailFields, $useCaseDetailResponseDTOFileObject);
+
+        return $this->buildStubFieldObjects($useCaseDetailResponseDTOFileObject, $stubFieldObjects);
+
     }
 
     private function generateConsts(FileObject $responseEntityStub): array

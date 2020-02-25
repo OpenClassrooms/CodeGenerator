@@ -38,6 +38,7 @@ final class CreateFunctionalEntityTest extends TestCase
      */
     public function createFunctionalEntityShouldReturnResponse(): void
     {
+        InMemoryFunctionalEntityGateway::$id = FunctionalEntityStub1::ID;
         $response = $this->useCase->execute($this->request);
 
         $expectedResponse = new FunctionalEntityDetailResponseStub1();

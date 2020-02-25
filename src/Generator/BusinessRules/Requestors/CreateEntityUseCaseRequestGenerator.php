@@ -11,7 +11,7 @@ use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\Request\Crea
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Requestors\CreateEntityUseCaseRequestSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Requestors\CreateEntityUseCaseRequestSkeletonModelAssembler;
-use OpenClassrooms\CodeGenerator\Utility\MethodUtilityStrategy;
+use OpenClassrooms\CodeGenerator\Utility\MethodUtility;
 
 class CreateEntityUseCaseRequestGenerator extends AbstractUseCaseGenerator
 {
@@ -19,11 +19,6 @@ class CreateEntityUseCaseRequestGenerator extends AbstractUseCaseGenerator
      * @var CreateEntityUseCaseRequestSkeletonModelAssembler
      */
     private $createEntityUseCaseRequestSkeletonModelAssembler;
-
-    /**
-     * @var MethodUtilityStrategy
-     */
-    private $methodUtility;
 
     /**
      * @param CreateEntityUseCaseRequestGeneratorRequest $generatorRequest
@@ -43,7 +38,7 @@ class CreateEntityUseCaseRequestGenerator extends AbstractUseCaseGenerator
     {
         $this->initFileObjectParameter($entityClassName);
         $createEntityUseCaseRequestFileObject = $this->createCreateEntityUseCaseRequestFileObject();
-        $createEntityUseCaseRequestFileObject->setMethods($this->methodUtility->getAccessors($entityClassName));
+        $createEntityUseCaseRequestFileObject->setMethods(MethodUtility::getAccessorsUpdatable($entityClassName));
 
         $createEntityUseCaseRequestFileObject->setContent(
             $this->generateContent($createEntityUseCaseRequestFileObject)
@@ -78,10 +73,5 @@ class CreateEntityUseCaseRequestGenerator extends AbstractUseCaseGenerator
         CreateEntityUseCaseRequestSkeletonModelAssembler $createEntityUseCaseRequestSkeletonModelAssembler
     ): void {
         $this->createEntityUseCaseRequestSkeletonModelAssembler = $createEntityUseCaseRequestSkeletonModelAssembler;
-    }
-
-    public function setMethodUtility(MethodUtilityStrategy $methodUtility): void
-    {
-        $this->methodUtility = $methodUtility;
     }
 }

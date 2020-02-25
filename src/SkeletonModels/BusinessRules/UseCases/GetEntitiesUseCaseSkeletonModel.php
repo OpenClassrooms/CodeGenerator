@@ -12,6 +12,8 @@ abstract class GetEntitiesUseCaseSkeletonModel extends AbstractSkeletonModel
 
     public $entitiesShortName;
 
+    public $entityGatewayArgument;
+
     public $entityGatewayClassname;
 
     public $entityGatewayShortName;

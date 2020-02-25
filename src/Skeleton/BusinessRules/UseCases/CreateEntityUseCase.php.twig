@@ -50,18 +50,16 @@ class {{ skeletonModel.shortName }} implements UseCase
      */
     public function execute(UseCaseRequest $useCaseRequest): {{ skeletonModel.entityUseCaseDetailResponseShortName }}
     {
-        ${{ skeletonModel.entityArgument }} = $this->create($useCaseRequest);
+        ${{ skeletonModel.entityArgument }} = $this->create();
+        $this->populateFromRequest(${{ skeletonModel.entityArgument }}, $useCaseRequest);
         $this->save(${{ skeletonModel.entityArgument }});
 
         return $this->createResponse(${{ skeletonModel.entityArgument }});
     }
 
-    private function create({{ skeletonModel.createEntityUseCaseRequestShortName }} $request): {{ skeletonModel.entityShortName }}
+    private function create(): {{ skeletonModel.entityShortName }}
     {
-        ${{ skeletonModel.entityArgument }} = $this->{{ skeletonModel.entityFactoryArgument }}->create();
-        $this->populateFromRequest(${{ skeletonModel.entityArgument }}, $request);
-
-        return ${{ skeletonModel.entityArgument }};
+        return $this->{{ skeletonModel.entityFactoryArgument }}->create();
     }
 
     private function save({{ skeletonModel.entityShortName }} ${{ skeletonModel.entityArgument }}): void

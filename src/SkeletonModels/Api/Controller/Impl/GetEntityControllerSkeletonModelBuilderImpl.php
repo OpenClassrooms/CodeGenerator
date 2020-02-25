@@ -114,7 +114,9 @@ class GetEntityControllerSkeletonModelBuilderImpl implements GetEntityController
     public function build(): GetEntityControllerSkeletonModel
     {
         $this->skeletonModel->abstractControllerClassName = $this->abstractControllerClassName;
-        $this->skeletonModel->abstractControllerShortName = FileObjectUtility::getShortClassName($this->abstractControllerClassName);
+        $this->skeletonModel->abstractControllerShortName = FileObjectUtility::getShortClassName(
+            $this->abstractControllerClassName
+        );
         $this->skeletonModel->entityArgument = lcfirst($this->entity);
         $this->skeletonModel->entityIdArgument = NameUtility::createEntityIdName($this->entity);
         $this->skeletonModel->getEntityMethod = NameUtility::createGetEntityName($this->entity);

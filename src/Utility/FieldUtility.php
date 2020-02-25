@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace OpenClassrooms\CodeGenerator\Utility;
 
 use OpenClassrooms\CodeGenerator\Entities\Object\FieldObject;
+use OpenClassrooms\CodeGenerator\Utility\FieldObjectUtility as Utility;
 
 class FieldUtility
 {
@@ -43,8 +44,24 @@ class FieldUtility
         );
     }
 
-    public static function isUpdatable(\ReflectionProperty $field): bool
+    /**
+     * @return FieldObject[]
+     */
+    public static function getFieldsUpdatable(string $className): array
     {
-        return !in_array($field->getName(), ['id', 'createdAt', 'updatedAt']);
+        $fields = Utility::getProtectedClassFields($className);
+
+        foreach ($fields as $key => $field) {
+            if (!self::isUpdatable($field->getName())) {
+                unset($fields[$key]);
+            }
+        }
+
+        return $fields;
+    }
+
+    public static function isUpdatable(string $fieldName): bool
+    {
+        return !in_array($fieldName, ['id', 'createdAt', 'updatedAt']);
     }
 }

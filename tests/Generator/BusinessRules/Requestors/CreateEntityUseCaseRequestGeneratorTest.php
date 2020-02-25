@@ -15,7 +15,7 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingSer
 use OpenClassrooms\CodeGenerator\Tests\Doubles\SkeletonModels\BusinessRules\Requestors\CreateEntityUseCaseRequestSkeletonModelAssemblerMock;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Entities\Domain\SubDomain\FunctionalEntity;
 use OpenClassrooms\CodeGenerator\Utility\Impl\MethodUtilityContext;
-use OpenClassrooms\CodeGenerator\Utility\Impl\MethodUtilityGetAccessorsWithoutId;
+use OpenClassrooms\CodeGenerator\Utility\MethodUtilityGetAccessorsWithoutId;
 use PHPUnit\Framework\TestCase;
 
 class CreateEntityUseCaseRequestGeneratorTest extends TestCase
@@ -59,9 +59,6 @@ class CreateEntityUseCaseRequestGeneratorTest extends TestCase
 
         $this->createEntityUseCaseRequestGenerator->setCreateEntityUseCaseRequestSkeletonModelAssembler(
             new CreateEntityUseCaseRequestSkeletonModelAssemblerMock()
-        );
-        $this->createEntityUseCaseRequestGenerator->setMethodUtility(
-            new MethodUtilityContext(new MethodUtilityGetAccessorsWithoutId())
         );
         $this->createEntityUseCaseRequestGenerator->setTemplating(new TemplatingServiceMock());
         $this->createEntityUseCaseRequestGenerator->setFileObjectGateway(new InMemoryFileObjectGateway());

@@ -9,7 +9,7 @@ namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseC
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gateways\Pagination;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Requestors\Domain\SubDomain\GetFunctionalEntitiesRequest;
 
-class GetFunctionalEntitiesRequestDTO implements GetFunctionalEntitiesRequest
+final class GetFunctionalEntitiesRequestDTO implements GetFunctionalEntitiesRequest
 {
     /**
      * @var string[]

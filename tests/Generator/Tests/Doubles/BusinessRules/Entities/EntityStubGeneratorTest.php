@@ -14,6 +14,9 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\BusinessRules\Enti
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingServiceMock;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityResponse;
+use OpenClassrooms\CodeGenerator\Utility\Impl\StubUtilityContext;
+use OpenClassrooms\CodeGenerator\Utility\Impl\StubUtilityGetFixedValue;
+use OpenClassrooms\CodeGenerator\Utility\Impl\StubUtilityGetRandomValue;
 use PHPUnit\Framework\TestCase;
 
 class EntityStubGeneratorTest extends TestCase
@@ -60,5 +63,6 @@ class EntityStubGeneratorTest extends TestCase
         $this->entityStubGenerator->setEntityStubSkeletonModelAssembler(
             new EntityStubSkeletonModelAssemblerImpl()
         );
+        $this->entityStubGenerator->setStubUtilityStrategy(new StubUtilityContext(new StubUtilityGetFixedValue()));
     }
 }
