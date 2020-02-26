@@ -57,11 +57,10 @@ class GetEntityUseCaseCommandTest extends TestCase
         GetEntityUseCaseMediatorMock::$fileObjects = $this->writeFileObjects(
             GetEntityUseCaseMediatorMock::$fileObjects
         );
-
         $this->commandTester->execute(
             [
                 'command'        => $this->command->getName(),
-                Args::CLASS_NAME => '/Users/samuel.gomis/projects/CodeGenerator/tests/Fixtures/Classes/BusinessRules/Entities/Domain/SubDomain/FunctionalEntity.php',
+                Args::CLASS_NAME => realpath('./tests/Fixtures/Classes/BusinessRules/Entities/Domain/SubDomain/FunctionalEntity.php'),
             ]
         );
 

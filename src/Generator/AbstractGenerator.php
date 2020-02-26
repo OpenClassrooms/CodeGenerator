@@ -79,6 +79,17 @@ abstract class AbstractGenerator implements Generator
         if (empty($fields)) {
             return [];
         }
+
+        return $this->deleteNotSelectedField($entityClassName, $fields);
+    }
+
+    /**
+     * @param string[] $fields
+     *
+     * @return  FieldObject[]
+     */
+    protected function deleteNotSelectedField(string $entityClassName, array $fields): array
+    {
         $fieldObjects = $this->getProtectedClassFields($entityClassName);
         foreach ($fieldObjects as $key => $fieldObject) {
             if (!in_array($fieldObject->getName(), $fields)) {

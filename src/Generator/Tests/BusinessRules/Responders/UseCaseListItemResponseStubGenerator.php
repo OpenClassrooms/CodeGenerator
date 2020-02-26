@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Responders;
 
 use OpenClassrooms\CodeGenerator\Entities\Object\ConstObject;
+use OpenClassrooms\CodeGenerator\Entities\Object\FieldObject;
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\Entities\Type\EntityFileObjectType;
 use OpenClassrooms\CodeGenerator\Entities\Type\UseCaseResponseFileObjectType;
@@ -129,6 +130,20 @@ class UseCaseListItemResponseStubGenerator extends AbstractUseCaseResponseStubGe
         );
 
         return $this->buildStubFieldObjects($entityFileObject, $stubFieldsObjects);
+    }
+
+    /**
+     * @param string[] $fields
+     *
+     * @return FieldObject[]
+     */
+    protected function getSelectedFields(string $entityClassName, array $fields): array
+    {
+        if (empty($fields)) {
+            return $fieldObjects = $this->getProtectedClassFields($entityClassName);
+        }
+
+        return $this->deleteNotSelectedField($entityClassName, $fields);
     }
 
     private function generateConsts(FileObject $useCaseListItemResponseStubFileObject): array
