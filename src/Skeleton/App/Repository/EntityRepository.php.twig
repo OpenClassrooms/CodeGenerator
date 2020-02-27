@@ -3,6 +3,8 @@
 namespace {{ skeletonModel.namespace }};
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
+use {{ skeletonModel.paginatedCollectionFactoryClassName }};
 use {{ skeletonModel.entityImplClassName }};
 use {{ skeletonModel.entityClassName }};
 use {{ skeletonModel.entityNotFoundExceptionClassName }};
@@ -11,9 +13,15 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
 
 class {{ skeletonModel.shortName }} extends ServiceEntityRepository implements {{ skeletonModel.entityGatewayShortName }}
 {
-    public function __construct(RegistryInterface $registry)
+    /**
+     * @var {{ skeletonModel.paginatedCollectionFactoryShortName }}
+     */
+    private ${{ skeletonModel.paginatedCollectionFactoryArgument }};
+
+    public function __construct(RegistryInterface $registry, {{ skeletonModel.paginatedCollectionFactoryShortName }} ${{ skeletonModel.paginatedCollectionFactoryArgument }})
     {
         parent::__construct($registry, {{ skeletonModel.entityImplShortName }}::class);
+        $this->{{ skeletonModel.paginatedCollectionFactoryArgument }} = ${{ skeletonModel.paginatedCollectionFactoryArgument }};
     }
 
     public function delete({{ skeletonModel.entityShortName }} ${{ skeletonModel.entityArgument }}): void
@@ -23,7 +31,14 @@ class {{ skeletonModel.shortName }} extends ServiceEntityRepository implements {
 
     public function findAll(array $filters = [], array $sorts = [], array $pagination = []): iterable
     {
-        // TODO: Implement findAll() method.
+        $queryBuilder = $this->getQueryBuilder();
+
+        return $this->{{ skeletonModel.paginatedCollectionFactoryArgument }}->make($queryBuilder, $pagination);
+    }
+
+    private function getQueryBuilder(): QueryBuilder
+    {
+        return $this->createQueryBuilder('{{ skeletonModel.entityFirstLetter }}');
     }
 
     public function findById(int ${{ skeletonModel.entityIdArgument }}): {{ skeletonModel.entityShortName }}

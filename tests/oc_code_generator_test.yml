@@ -13,6 +13,7 @@ parameters:
 
     paginated_collection_builder_impl: 'OpenClassrooms\UseCase\Application\Entity\PaginatedCollectionBuilderImpl'
     paginated_collection_classname: 'OpenClassrooms\UseCase\BusinessRules\Entities\PaginatedCollection'
+    paginated_collection_factory: 'OC\AppBundle\Repository\PaginatedCollectionFactory'
     use_case_classname: 'OpenClassrooms\UseCase\BusinessRules\Requestors\UseCase'
     use_case_request_classname: 'OpenClassrooms\UseCase\BusinessRules\Requestors\UseCaseRequest'
 

@@ -14,6 +14,7 @@ parameters:
 
     paginated_collection_builder_impl: 'OpenClassrooms\UseCase\Application\Entity\PaginatedCollectionBuilderImpl'
     paginated_collection_classname: 'OC\BusinessRules\Entities\PaginatedCollection'
+    paginated_collection_factory: 'OC\AppBundle\Repository\PaginatedCollectionFactory'
     paginated_use_case_response_classname: 'OC\BusinessRules\Responders\PaginatedUseCaseResponse'
     paginated_use_case_response_builder_classname: 'OC\BusinessRules\Responders\PaginatedUseCaseResponseBuilder'
     use_case_response_classname: 'OC\BusinessRules\Responders\UseCaseResponse'

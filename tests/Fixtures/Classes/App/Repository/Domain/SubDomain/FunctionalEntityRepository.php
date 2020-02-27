@@ -7,6 +7,8 @@ declare(strict_types=1);
 namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\App\Repository\Domain\SubDomain;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
+use OC\AppBundle\Repository\PaginatedCollectionFactory;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\App\Entity\Domain\SubDomain\FunctionalEntityImpl;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Entities\Domain\SubDomain\FunctionalEntity;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gateways\Domain\SubDomain\Exceptions\FunctionalEntityNotFoundException;
@@ -15,9 +17,15 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
 
 class FunctionalEntityRepository extends ServiceEntityRepository implements FunctionalEntityGateway
 {
-    public function __construct(RegistryInterface $registry)
+    /**
+     * @var PaginatedCollectionFactory
+     */
+    private $paginatedCollectionFactory;
+
+    public function __construct(RegistryInterface $registry, PaginatedCollectionFactory $paginatedCollectionFactory)
     {
         parent::__construct($registry, FunctionalEntityImpl::class);
+        $this->paginatedCollectionFactory = $paginatedCollectionFactory;
     }
 
     public function delete(FunctionalEntity $functionalEntity): void
@@ -27,7 +35,14 @@ class FunctionalEntityRepository extends ServiceEntityRepository implements Func
 
     public function findAll(array $filters = [], array $sorts = [], array $pagination = []): iterable
     {
-        // TODO: Implement findAll() method.
+        $queryBuilder = $this->getQueryBuilder();
+
+        return $this->paginatedCollectionFactory->make($queryBuilder, $pagination);
+    }
+
+    private function getQueryBuilder(): QueryBuilder
+    {
+        return $this->createQueryBuilder('f');
     }
 
     public function findById(int $functionalEntityId): FunctionalEntity

@@ -12,6 +12,8 @@ abstract class EntityRepositorySkeletonModel extends AbstractSkeletonModel
 
     public $entityClassName;
 
+    public $entityFirstLetter;
+
     public $entityGatewayClassName;
 
     public $entityGatewayShortName;
@@ -27,6 +29,12 @@ abstract class EntityRepositorySkeletonModel extends AbstractSkeletonModel
     public $entityNotFoundExceptionShortName;
 
     public $entityShortName;
+
+    public $paginatedCollectionFactoryArgument;
+
+    public $paginatedCollectionFactoryClassName;
+
+    public $paginatedCollectionFactoryShortName;
 
     public $templatePath = 'App/Repository/EntityRepository.php.twig';
 }

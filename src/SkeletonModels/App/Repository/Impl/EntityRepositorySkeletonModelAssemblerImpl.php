@@ -7,10 +7,16 @@ namespace OpenClassrooms\CodeGenerator\SkeletonModels\App\Repository\Impl;
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\SkeletonModels\App\Repository\EntityRepositorySkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\App\Repository\EntityRepositorySkeletonModelAssembler;
+use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 use OpenClassrooms\CodeGenerator\Utility\NameUtility;
 
 class EntityRepositorySkeletonModelAssemblerImpl implements EntityRepositorySkeletonModelAssembler
 {
+    /**
+     * @var string
+     */
+    private $paginatedCollectionFactoryClassName;
+
     public function create(
         FileObject $entityFileObject,
         FileObject $entityImplFileObject,
@@ -31,7 +37,20 @@ class EntityRepositorySkeletonModelAssemblerImpl implements EntityRepositorySkel
         $skeletonModel->entityIdArgument = NameUtility::createEntityIdName($entityFileObject->getShortName());
         $skeletonModel->entityNotFoundExceptionClassName = $entityNotFoundExceptionFileObject->getClassName();
         $skeletonModel->entityNotFoundExceptionShortName = $entityNotFoundExceptionFileObject->getShortName();
+        $skeletonModel->entityFirstLetter = lcfirst($entityFileObject->getShortName()[0]);
+        $skeletonModel->paginatedCollectionFactoryArgument = lcfirst(
+            FileObjectUtility::getShortClassName($this->paginatedCollectionFactoryClassName)
+        );
+        $skeletonModel->paginatedCollectionFactoryClassName = $this->paginatedCollectionFactoryClassName;
+        $skeletonModel->paginatedCollectionFactoryShortName = FileObjectUtility::getShortClassName(
+            $this->paginatedCollectionFactoryClassName
+        );
 
         return $skeletonModel;
+    }
+
+    public function setPaginatedCollectionFactoryClassName(string $paginatedCollectionFactoryClassName): void
+    {
+        $this->paginatedCollectionFactoryClassName = $paginatedCollectionFactoryClassName;
     }
 }
