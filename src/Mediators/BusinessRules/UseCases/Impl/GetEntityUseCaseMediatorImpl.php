@@ -37,6 +37,7 @@ class GetEntityUseCaseMediatorImpl implements GetEntityUseCaseMediator
      */
     protected function generateTestSources(string $className): array
     {
+        $fileObjects[] = $this->entitiesMediator->generateEntityStubGenerator($className);
         $fileObjects[] = $this->generateGetEntityUseCaseTestGenerator($className);
         $fileObjects[] = $this->entitiesMediator->generateInMemoryEntityGatewayGenerator($className);
         $fileObjects[] = $this->useCaseResponseCommonMediator->generateUseCaseResponseTestCaseGenerator($className);
