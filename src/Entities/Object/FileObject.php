@@ -53,7 +53,7 @@ class FileObject
         return $this->alreadyExists;
     }
 
-    public function getContent(): string
+    public function getContent(): ?string
     {
         return $this->content;
     }

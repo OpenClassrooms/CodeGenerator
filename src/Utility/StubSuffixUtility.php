@@ -14,10 +14,19 @@ class StubSuffixUtility
     public static function incrementSuffix(FileObject $fileObject, array $fileObjects): FileObject
     {
         $pattern = '/\d+$/';
-        $suffix = 1;
+        preg_match($pattern, $fileObject->getId(), $match);
+        $suffix = $match[0] ?? 1;
+        $suffix = (int) $suffix;
         while (isset($fileObjects[$fileObject->getId()]) && preg_match($pattern, $fileObject->getId())) {
             $suffix++;
             $fileObject->setClassName(preg_replace($pattern, $suffix, $fileObject->getId()));
+        }
+
+        if (null !== $fileObject->getContent()) {
+            $fileObject->setClassName(preg_replace('/Stub(\d+)(::|;)/', 'Stub' . $suffix . '$2', $fileObject->getId()));
+            $fileObject->setContent(
+                preg_replace('/Stub(\d+)(::|;)/', 'Stub' . $suffix . '$2', $fileObject->getContent())
+            );
         }
 
         return $fileObject;
