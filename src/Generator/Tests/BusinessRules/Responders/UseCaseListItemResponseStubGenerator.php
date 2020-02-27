@@ -82,12 +82,16 @@ class UseCaseListItemResponseStubGenerator extends AbstractUseCaseResponseStubGe
 
     private function createEntityStubFileObject(): FileObject
     {
-        return $this->entityFileObjectFactory->create(
+        $fileObject =  $this->entityFileObjectFactory->create(
             EntityFileObjectType::BUSINESS_RULES_ENTITY_STUB,
             $this->domain,
             $this->entity,
             $this->baseNamespace
         );
+
+        $fileObject = StubSuffixUtility::incrementSuffix($fileObject, $this->fileObjectGateway->findAll());
+
+        return $fileObject;
     }
 
     private function createUseCaseListItemResponseDTOFileObject(): FileObject
