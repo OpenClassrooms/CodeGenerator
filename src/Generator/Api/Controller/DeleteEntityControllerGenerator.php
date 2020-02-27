@@ -17,9 +17,9 @@ use OpenClassrooms\CodeGenerator\Generator\AbstractGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Api\Controller\Request\DeleteEntityControllerGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\Mediators\ClassType;
-use OpenClassrooms\CodeGenerator\Services\RoutingFactoryService;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\DeleteEntityControllerSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\DeleteEntityControllerSkeletonModelAssembler;
+use OpenClassrooms\CodeGenerator\Utility\RoutingUtility;
 
 class DeleteEntityControllerGenerator extends AbstractGenerator
 {
@@ -37,11 +37,6 @@ class DeleteEntityControllerGenerator extends AbstractGenerator
      * @var EntityFileObjectFactory
      */
     private $entityFileObjectFactory;
-
-    /**
-     * @var RoutingFactoryService
-     */
-    private $routingFactoryService;
 
     /**
      * @var UseCaseFileObjectFactory
@@ -74,7 +69,7 @@ class DeleteEntityControllerGenerator extends AbstractGenerator
         $deleteEntityFileObject = $this->createDeleteEntityFileObject();
         $deleteEntityRequestBuilderFileObject = $this->createDeleteEntityRequestBuilderFileObject();
         $entityNotFoundExceptionFileObject = $this->createEntityNotFoundExceptionFileObject();
-        $route = $this->createRoute();
+        $routeAnnotation = $this->createRouteAnnotation();
 
         $deleteEntityControllerFileObject->setContent(
             $this->generateContent(
@@ -82,7 +77,7 @@ class DeleteEntityControllerGenerator extends AbstractGenerator
                 $deleteEntityFileObject,
                 $deleteEntityRequestBuilderFileObject,
                 $entityNotFoundExceptionFileObject,
-                $route
+                $routeAnnotation
             )
         );
 
@@ -125,9 +120,9 @@ class DeleteEntityControllerGenerator extends AbstractGenerator
         );
     }
 
-    private function createRoute(): string
+    private function createRouteAnnotation(): string
     {
-        return $this->routingFactoryService->create($this->domain, $this->entity, ClassType::DELETE);
+        return RoutingUtility::create($this->baseNamespace, $this->domain, $this->entity, ClassType::DELETE);
     }
 
     private function generateContent(
@@ -135,14 +130,14 @@ class DeleteEntityControllerGenerator extends AbstractGenerator
         FileObject $deleteEntityFileObject,
         FileObject $deleteEntityRequestBuilderFileObject,
         FileObject $entityNotFoundExceptionFileObject,
-        string $route
+        string $routeAnnotation
     ): string {
         $skeletonModel = $this->createSkeletonModel(
             $deleteEntityControllerFileObject,
             $deleteEntityFileObject,
             $deleteEntityRequestBuilderFileObject,
             $entityNotFoundExceptionFileObject,
-            $route
+            $routeAnnotation
         );
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
@@ -153,14 +148,14 @@ class DeleteEntityControllerGenerator extends AbstractGenerator
         FileObject $deleteEntityFileObject,
         FileObject $deleteEntityRequestBuilderFileObject,
         FileObject $entityNotFoundExceptionFileObject,
-        string $route
+        string $routeAnnotation
     ): DeleteEntityControllerSkeletonModel {
         return $this->deleteEntityControllerSkeletonModelAssembler->create(
             $deleteEntityControllerFileObject,
             $deleteEntityFileObject,
             $deleteEntityRequestBuilderFileObject,
             $entityNotFoundExceptionFileObject,
-            $route
+            $routeAnnotation
         );
     }
 
@@ -178,11 +173,6 @@ class DeleteEntityControllerGenerator extends AbstractGenerator
         DeleteEntityControllerSkeletonModelAssembler $deleteEntityControllerSkeletonModelAssembler
     ): void {
         $this->deleteEntityControllerSkeletonModelAssembler = $deleteEntityControllerSkeletonModelAssembler;
-    }
-
-    public function setRoutingFactoryService(RoutingFactoryService $routingFactoryService): void
-    {
-        $this->routingFactoryService = $routingFactoryService;
     }
 
     public function setUseCaseFileObjectFactory(UseCaseFileObjectFactory $useCaseFileObjectFactory): void

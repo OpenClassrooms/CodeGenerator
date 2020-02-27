@@ -37,8 +37,11 @@ class FieldObjectUtility
         return $fields;
     }
 
-    private static function buildUpdatedField(\ReflectionProperty $field, string $defaultValue, string $scope): FieldObject
-    {
+    private static function buildUpdatedField(
+        \ReflectionProperty $field,
+        string $defaultValue,
+        string $scope
+    ): FieldObject {
         $field = new FieldObject(NameUtility::createUpdatedName($field));
         $field->setDocComment(DocCommentUtility::setType('bool'));
         $field->setScope($scope);

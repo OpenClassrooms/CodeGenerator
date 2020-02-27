@@ -114,10 +114,9 @@ class ViewModelDetailStubGenerator extends AbstractViewModelGenerator
             $useCaseDetailResponseDTOFileObject->getClassName()
         );
 
-        $stubFieldObjects =  StubFieldUtility::generateStubFieldObjects($viewModelDetailFields, $useCaseDetailResponseDTOFileObject);
+        $stubFieldObjects = StubFieldUtility::generateStubFieldObjects($viewModelDetailFields);
 
         return $this->buildStubFieldObjects($useCaseDetailResponseDTOFileObject, $stubFieldObjects);
-
     }
 
     private function generateConsts(FileObject $responseEntityStub): array

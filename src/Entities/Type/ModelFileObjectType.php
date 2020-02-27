@@ -10,7 +10,7 @@ final class ModelFileObjectType
 
     public const API_MODEL_PATCH_ENTITY = 'API_MODEL_PATCH_ENTITY';
 
-    public const API_MODEL_PUT_ENTITY = 'API_MODEL_PUT_ENTITY';
+    public const API_MODEL_PUT_ENTITY   = 'API_MODEL_PUT_ENTITY';
 
     public const API_MODEL_POST_ENTITY  = 'API_MODEL_POST_ENTITY';
 }

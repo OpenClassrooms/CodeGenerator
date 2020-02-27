@@ -124,10 +124,7 @@ class UseCaseListItemResponseStubGenerator extends AbstractUseCaseResponseStubGe
             $fields
         );
 
-        $stubFieldsObjects = StubFieldUtility::generateStubFieldObjects(
-            $useCaseListItemResponseFields,
-            $entityFileObject
-        );
+        $stubFieldsObjects = StubFieldUtility::generateStubFieldObjects($useCaseListItemResponseFields);
 
         return $this->buildStubFieldObjects($entityFileObject, $stubFieldsObjects);
     }

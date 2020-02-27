@@ -10,7 +10,6 @@ use OpenClassrooms\CodeGenerator\Entities\UseCaseFileObjectFactory;
 use OpenClassrooms\CodeGenerator\Entities\UseCaseRequestFileObjectFactory;
 use OpenClassrooms\CodeGenerator\Entities\UseCaseResponseFileObjectFactory;
 use OpenClassrooms\CodeGenerator\Entities\ViewModelFileObjectFactory;
-use OpenClassrooms\CodeGenerator\Services\RoutingFactoryService;
 
 trait CommonControllerFactoryTrait
 {
@@ -23,11 +22,6 @@ trait CommonControllerFactoryTrait
      * @var EntityFileObjectFactory
      */
     private $entityFileObjectFactory;
-
-    /**
-     * @var RoutingFactoryService
-     */
-    private $routingFactoryService;
 
     /**
      * @var UseCaseFileObjectFactory
@@ -52,11 +46,6 @@ trait CommonControllerFactoryTrait
     public function setEntityFileObjectFactory(EntityFileObjectFactory $entityFileObjectFactory): void
     {
         $this->entityFileObjectFactory = $entityFileObjectFactory;
-    }
-
-    public function setRoutingFactoryService(RoutingFactoryService $routingFactoryService): void
-    {
-        $this->routingFactoryService = $routingFactoryService;
     }
 
     public function setUseCaseFileObjectFactory(UseCaseFileObjectFactory $useCaseFileObjectFactory): void

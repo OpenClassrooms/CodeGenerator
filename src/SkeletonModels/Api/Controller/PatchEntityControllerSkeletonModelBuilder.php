@@ -50,7 +50,7 @@ interface PatchEntityControllerSkeletonModelBuilder
         FileObject $entityFileObject
     ): PatchEntityControllerSkeletonModelBuilder;
 
-    public function withRoute(string $route): PatchEntityControllerSkeletonModelBuilder;
+    public function withRouteAnnotation(string $routeAnnotation): PatchEntityControllerSkeletonModelBuilder;
 
     public function build(): PatchEntityControllerSkeletonModel;
 }

@@ -111,10 +111,7 @@ class ViewModelListItemStubGenerator extends AbstractViewModelGenerator
             $viewModelListItemImplFileObject->getClassName()
         );
 
-        $stubFieldObjects = StubFieldUtility::generateStubFieldObjects(
-            $viewModelListItemFields,
-            $viewModelListItemImplFileObject
-        );
+        $stubFieldObjects = StubFieldUtility::generateStubFieldObjects($viewModelListItemFields);
 
         return $this->buildStubFieldObjects($viewModelListItemImplFileObject, $stubFieldObjects);
     }

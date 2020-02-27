@@ -11,7 +11,6 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\Responders\I
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\EntityFileObjectFactoryMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\FileObjectTestCase;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\BusinessRules\Responders\UseCaseListItemResponseStub\UseCaseListItemResponseStubFileObjectStub1;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\BusinessRules\Responders\UseCaseListItemResponseStub\UseCaseListItemResponseStubFileObjectStub2;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\UseCaseResponseFileObjectFactoryMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\ViewModelFileObjectFactoryMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
@@ -54,7 +53,8 @@ class UseCaseListItemResponseStubGeneratorTest extends TestCase
      */
     public function generateWithEmptyFieldReturnFileObject(): void
     {
-        $useCaseListItemResponseStubGeneratorRequestBuilder = new UseCaseListItemResponseStubGeneratorRequestBuilderImpl();
+        $useCaseListItemResponseStubGeneratorRequestBuilder = new UseCaseListItemResponseStubGeneratorRequestBuilderImpl(
+        );
         $request = $useCaseListItemResponseStubGeneratorRequestBuilder->create()
             ->withClassName(FunctionalEntityResponse::class)
             ->withFields([])

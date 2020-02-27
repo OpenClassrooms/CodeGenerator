@@ -98,9 +98,9 @@ class GetEntitiesControllerSkeletonModelBuilderImpl implements GetEntitiesContro
         return $this;
     }
 
-    public function withRoute(string $route): GetEntitiesControllerSkeletonModelBuilder
+    public function withRouteAnnotation(string $routeAnnotation): GetEntitiesControllerSkeletonModelBuilder
     {
-        $this->skeletonModel->route = $route;
+        $this->skeletonModel->routeAnnotation = $routeAnnotation;
 
         return $this;
     }

@@ -33,7 +33,7 @@ interface GetEntitiesControllerSkeletonModelBuilder
         FileObject $getEntitiesUseCaseRequestBuilderFileObject
     ): GetEntitiesControllerSkeletonModelBuilder;
 
-    public function withRoute(string $route): GetEntitiesControllerSkeletonModelBuilder;
+    public function withRouteAnnotation(string $routeAnnotation): GetEntitiesControllerSkeletonModelBuilder;
 
     public function build(): GetEntitiesControllerSkeletonModel;
 }

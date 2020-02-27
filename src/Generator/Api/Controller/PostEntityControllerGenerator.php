@@ -26,6 +26,7 @@ use OpenClassrooms\CodeGenerator\Mediators\ClassType;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\PostEntityControllerSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\PostEntityControllerSkeletonModelBuilder;
 use OpenClassrooms\CodeGenerator\Utility\MethodUtility;
+use OpenClassrooms\CodeGenerator\Utility\RoutingUtility;
 
 class PostEntityControllerGenerator extends AbstractGenerator
 {
@@ -96,7 +97,8 @@ class PostEntityControllerGenerator extends AbstractGenerator
         $entityViewModelDetailFileObject = $this->createEntityViewModelDetailFileObject();
         $postEntityModelFileObject = $this->createPostEntityModelFileObject();
         $entityFileObject = $this->createEntityFileObject();
-        $route = $this->createRoute();
+        $routeAnnotation = $this->createRouteAnnotation();
+        $routeName = $this->createRouteName();
 
         $postEntityModelFileObject->setMethods(MethodUtility::buildWitherMethods($entityClassName));
 
@@ -112,7 +114,8 @@ class PostEntityControllerGenerator extends AbstractGenerator
                     ModelFileObjectType::API_MODEL_POST_ENTITY                                          => $postEntityModelFileObject,
                     EntityFileObjectType::BUSINESS_RULES_ENTITY                                         => $entityFileObject,
                 ],
-                $route
+                $routeAnnotation,
+                $routeName
             )
         );
 
@@ -191,17 +194,22 @@ class PostEntityControllerGenerator extends AbstractGenerator
         );
     }
 
-    private function createRoute(): string
+    private function createRouteAnnotation(): string
     {
-        return $this->routingFactoryService->create($this->domain, $this->entity, ClassType::POST);
+        return RoutingUtility::create($this->baseNamespace, $this->domain, $this->entity, ClassType::POST);
+    }
+
+    private function createRouteName(): string
+    {
+        return RoutingUtility::buildName($this->baseNamespace, $this->domain, $this->entity, ClassType::POST);
     }
 
     /**
      * @param FileObject[] $fileObjects
      */
-    private function generateContent(array $fileObjects, string $route): string
+    private function generateContent(array $fileObjects, string $routeAnnotation, string $routeName): string
     {
-        $skeletonModel = $this->createSkeletonModel($fileObjects, $route);
+        $skeletonModel = $this->createSkeletonModel($fileObjects, $routeAnnotation, $routeName);
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
     }
@@ -209,8 +217,11 @@ class PostEntityControllerGenerator extends AbstractGenerator
     /**
      * @param FileObject[] $fileObjects
      */
-    private function createSkeletonModel(array $fileObjects, string $route): PostEntityControllerSkeletonModel
-    {
+    private function createSkeletonModel(
+        array $fileObjects,
+        string $routeAnnotation,
+        string $routeName
+    ): PostEntityControllerSkeletonModel {
         return $this->postEntityControllerSkeletonModelBuilder
             ->create()
             ->withPostEntityControllerFileObject(
@@ -232,7 +243,8 @@ class PostEntityControllerGenerator extends AbstractGenerator
             ->withPostEntityModelFileObject($fileObjects[ModelFileObjectType::API_MODEL_POST_ENTITY])
             ->withEntityFileObject($fileObjects[EntityFileObjectType::BUSINESS_RULES_ENTITY])
             ->withEntityFileObject($fileObjects[EntityFileObjectType::BUSINESS_RULES_ENTITY])
-            ->withRoute($route)
+            ->withRouteAnnotation($routeAnnotation)
+            ->withRouteName($routeName)
             ->build();
     }
 

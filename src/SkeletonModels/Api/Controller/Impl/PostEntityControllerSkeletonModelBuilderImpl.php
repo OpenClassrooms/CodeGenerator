@@ -110,13 +110,21 @@ class PostEntityControllerSkeletonModelBuilderImpl implements PostEntityControll
         $this->skeletonModel->createEntityMethod = NameUtility::createCreateEntityMethodName(
             $entityFileObject->getShortName()
         );
+        $this->skeletonModel->entityIdArgument = NameUtility::createEntityIdName($entityFileObject->getShortName());
 
         return $this;
     }
 
-    public function withRoute(string $route): PostEntityControllerSkeletonModelBuilder
+    public function withRouteAnnotation(string $routeAnnotation): PostEntityControllerSkeletonModelBuilder
     {
-        $this->skeletonModel->route = $route;
+        $this->skeletonModel->routeAnnotation = $routeAnnotation;
+
+        return $this;
+    }
+
+    public function withRouteName(string $routeName): PostEntityControllerSkeletonModelBuilder
+    {
+        $this->skeletonModel->routeName = $routeName;
 
         return $this;
     }

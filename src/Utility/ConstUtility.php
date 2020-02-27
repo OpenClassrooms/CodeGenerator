@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace OpenClassrooms\CodeGenerator\Utility;
 
 use OpenClassrooms\CodeGenerator\Entities\Object\ConstObject;
-use OpenClassrooms\CodeGenerator\Entities\Object\FieldObject;
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 
 class ConstUtility

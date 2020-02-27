@@ -37,7 +37,7 @@ class FieldUtilityTest extends TestCase
             $this->buildStubFieldObject('field3', 'array'),
             $this->buildStubFieldObject('field4', '\DateTimeImmutable'),
         ];
-        $actualFieldObjects = StubFieldUtility::generateStubFieldObjects($fields, $this->fileObject);
+        $actualFieldObjects = StubFieldUtility::generateStubFieldObjects($fields);
 
         $this->assertCount(count($fields), $actualFieldObjects);
 

@@ -30,7 +30,7 @@ class PutFunctionalEntityController extends AbstractApiController
     }
 
     /**
-     * @Route("/functional-entities/{functionalEntityId}", name="oc_api_sub_domain_functional_entity_put", methods={"PUT"}, requirements={"functionalEntityId"="^\d{1,9}$"})
+     * @Route("/functional-entities/{functionalEntityId}", name="openclassrooms_codegenerator_tests_fixtures_classes_api_sub_domain_functional_entity_put", methods={"PUT"}, requirements={"functionalEntityId"="^\d{1,9}$"})
      *
      * @Security("")
      */

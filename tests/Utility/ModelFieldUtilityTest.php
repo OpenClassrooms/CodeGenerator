@@ -16,9 +16,12 @@ final class ModelFieldUtilityTest extends TestCase
     {
         $actuals = ModelFieldUtility::generateModelFieldObjects(ModelFieldUtilityEntityFixtureWithBadDocComment::class);
         $actual = array_shift($actuals);
-        $this->assertSame("/**
+        $this->assertSame(
+            "/**
      * @var abcde
-     */", $actual->getDocComment());
+     */",
+            $actual->getDocComment()
+        );
     }
 
     /**

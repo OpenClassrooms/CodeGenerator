@@ -48,7 +48,7 @@ abstract class GetEntityControllerSkeletonModel extends AbstractSkeletonModel
 
     public $getEntityUseCaseRequestBuilderShortName;
 
-    public $route;
+    public $routeAnnotation;
 
     public $withEntityIdMethod;
 

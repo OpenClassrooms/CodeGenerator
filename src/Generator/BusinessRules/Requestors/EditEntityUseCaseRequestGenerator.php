@@ -12,7 +12,6 @@ use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\EditUseCaseReq
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Requestors\EditEntityUseCaseRequestSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Requestors\EditEntityUseCaseRequestSkeletonModelAssembler;
-use OpenClassrooms\CodeGenerator\Utility\MethodUtilityStrategy;
 
 class EditEntityUseCaseRequestGenerator extends AbstractUseCaseGenerator
 {

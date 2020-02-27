@@ -30,7 +30,7 @@ abstract class DeleteEntityControllerSkeletonModel extends AbstractSkeletonModel
 
     public $entityNotFoundExceptionShortName;
 
-    public $route;
+    public $routeAnnotation;
 
     public $withEntityIdMethod;
 

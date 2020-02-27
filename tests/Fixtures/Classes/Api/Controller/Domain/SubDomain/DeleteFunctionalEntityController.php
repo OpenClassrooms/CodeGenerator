@@ -27,7 +27,7 @@ class DeleteFunctionalEntityController extends AbstractApiController
     }
 
     /**
-     * @Route("/functional-entities/{functionalEntityId}", name="oc_api_sub_domain_functional_entity_delete", methods={"DELETE"}, requirements={"functionalEntityId"="^\d{1,9}$"})
+     * @Route("/functional-entities/{functionalEntityId}", name="openclassrooms_codegenerator_tests_fixtures_classes_api_sub_domain_functional_entity_delete", methods={"DELETE"}, requirements={"functionalEntityId"="^\d{1,9}$"})
      *
      * @Security("")
      */

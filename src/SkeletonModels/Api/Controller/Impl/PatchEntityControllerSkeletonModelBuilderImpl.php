@@ -135,9 +135,9 @@ class PatchEntityControllerSkeletonModelBuilderImpl implements PatchEntityContro
         return $this;
     }
 
-    public function withRoute(string $route): PatchEntityControllerSkeletonModelBuilder
+    public function withRouteAnnotation(string $routeAnnotation): PatchEntityControllerSkeletonModelBuilder
     {
-        $this->skeletonModel->route = $route;
+        $this->skeletonModel->routeAnnotation = $routeAnnotation;
 
         return $this;
     }

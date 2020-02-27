@@ -21,7 +21,7 @@ class DeleteEntityControllerSkeletonModelAssemblerImpl implements DeleteEntityCo
         FileObject $deleteEntityFileObject,
         FileObject $deleteEntityRequestBuilderFileObject,
         FileObject $entityNotFoundExceptionFileObject,
-        string $route
+        string $routeAnnotation
     ): DeleteEntityControllerSkeletonModel {
         $skeletonModel = new DeleteEntityControllerSkeletonModelImpl();
         $skeletonModel->className = $deleteEntityControllerFileObject->getClassName();
@@ -45,7 +45,7 @@ class DeleteEntityControllerSkeletonModelAssemblerImpl implements DeleteEntityCo
         $skeletonModel->withEntityIdMethod = NameUtility::createChainedEntityIdMethodName(
             $deleteEntityFileObject->getEntity()
         );
-        $skeletonModel->route = $route;
+        $skeletonModel->routeAnnotation = $routeAnnotation;
 
         return $skeletonModel;
     }

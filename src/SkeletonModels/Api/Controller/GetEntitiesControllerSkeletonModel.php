@@ -44,7 +44,7 @@ abstract class GetEntitiesControllerSkeletonModel extends AbstractSkeletonModel
 
     public $paginatedUseCaseResponseShortName;
 
-    public $route;
+    public $routeAnnotation;
 
     public $templatePath = 'Api/Controller/GetEntitiesController.php.twig';
 }

@@ -15,6 +15,7 @@ use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\Mediators\ClassType;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\GetEntitiesControllerSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\GetEntitiesControllerSkeletonModelBuilder;
+use OpenClassrooms\CodeGenerator\Utility\RoutingUtility;
 
 class GetEntitiesControllerGenerator extends AbstractGenerator
 {
@@ -47,7 +48,7 @@ class GetEntitiesControllerGenerator extends AbstractGenerator
         $entityViewModelListItemFileObject = $this->createEntityViewModelListItemFileObject();
         $getEntitiesUseCaseFileObject = $this->createGetEntitiesUseCaseFileObject();
         $getEntitiesUseCaseRequestBuilderFileObject = $this->createGetEntitiesUseCaseRequestBuilderFileObject();
-        $route = $this->createRoute();
+        $routeAnnotation = $this->createRouteAnnotation();
 
         $getEntitiesControllerFileObject->setContent(
             $this->generateContent(
@@ -58,7 +59,7 @@ class GetEntitiesControllerGenerator extends AbstractGenerator
                     UseCaseFileObjectType::BUSINESS_RULES_GET_ENTITIES_USE_CASE                        => $getEntitiesUseCaseFileObject,
                     UseCaseRequestFileObjectType::BUSINESS_RULES_GET_ENTITIES_USE_CASE_REQUEST_BUILDER => $getEntitiesUseCaseRequestBuilderFileObject,
                 ],
-                $route
+                $routeAnnotation
             )
         );
 
@@ -110,17 +111,17 @@ class GetEntitiesControllerGenerator extends AbstractGenerator
         );
     }
 
-    private function createRoute(): string
+    private function createRouteAnnotation(): string
     {
-        return $this->routingFactoryService->create($this->domain, $this->entity, ClassType::GET_ALL);
+        return RoutingUtility::create($this->baseNamespace, $this->domain, $this->entity, ClassType::GET_ALL);
     }
 
     /**
      * @param FileObject[] $fileObjects
      */
-    private function generateContent(array $fileObjects, string $route): string
+    private function generateContent(array $fileObjects, string $routeAnnotation): string
     {
-        $skeletonModel = $this->createSkeletonModel($fileObjects, $route);
+        $skeletonModel = $this->createSkeletonModel($fileObjects, $routeAnnotation);
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
     }
@@ -128,8 +129,10 @@ class GetEntitiesControllerGenerator extends AbstractGenerator
     /**
      * @param FileObject[] $fileObjects
      */
-    private function createSkeletonModel(array $fileObjects, string $route): GetEntitiesControllerSkeletonModel
-    {
+    private function createSkeletonModel(
+        array $fileObjects,
+        string $routeAnnotation
+    ): GetEntitiesControllerSkeletonModel {
         return $this->getEntitiesControllerSkeletonModelBuilder
             ->create()
             ->withGetEntitiesControllerFileObject($fileObjects[ControllerFileObjectType::API_CONTROLLER_GET_ENTITIES])
@@ -143,7 +146,7 @@ class GetEntitiesControllerGenerator extends AbstractGenerator
             ->withGetEntitiesUseCaseRequestBuilderFileObject(
                 $fileObjects[UseCaseRequestFileObjectType::BUSINESS_RULES_GET_ENTITIES_USE_CASE_REQUEST_BUILDER]
             )
-            ->withRoute($route)
+            ->withRouteAnnotation($routeAnnotation)
             ->build();
     }
 

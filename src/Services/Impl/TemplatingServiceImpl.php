@@ -124,8 +124,8 @@ class TemplatingServiceImpl extends Environment implements TemplatingService
         return new TwigFilter(
             'ucFirst',
             function ($value) {
-            return ucfirst($value);
-        }
+                return ucfirst($value);
+            }
         );
     }
 

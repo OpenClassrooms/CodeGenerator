@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating;
 
-use OpenClassrooms\CodeGenerator\Services\Impl\RoutingFactoryServiceImpl;
+use OpenClassrooms\CodeGenerator\Utility\RoutingUtility;
 
-class RoutingServiceFactoryMock extends RoutingFactoryServiceImpl
+class RoutingServiceFactoryMock extends RoutingUtility
 {
     public function __construct()
     {

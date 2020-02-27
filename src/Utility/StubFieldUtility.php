@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace OpenClassrooms\CodeGenerator\Utility;
 
 use OpenClassrooms\CodeGenerator\Entities\Object\FieldObject;
-use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 
 class StubFieldUtility
 {
@@ -14,17 +13,17 @@ class StubFieldUtility
      *
      * @return FieldObject[]
      */
-    public static function generateStubFieldObjects(array $fields, $fileObject): array
+    public static function generateStubFieldObjects(array $fields): array
     {
         $fieldObjects = [];
         foreach ($fields as $field) {
-            $fieldObjects[] = self::buildStubFieldObject($field, $fileObject);
+            $fieldObjects[] = self::buildStubFieldObject($field);
         }
 
         return $fieldObjects;
     }
 
-    private static function buildStubFieldObject(FieldObject $fieldObject, FileObject $fileObject): FieldObject
+    private static function buildStubFieldObject(FieldObject $fieldObject): FieldObject
     {
         $stubFieldObject = new FieldObject($fieldObject->getName());
         $stubFieldObject->setDocComment($fieldObject->getDocComment());

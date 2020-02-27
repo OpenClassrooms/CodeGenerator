@@ -39,7 +39,7 @@ class GetFunctionalEntitiesController extends AbstractApiController
     }
 
     /**
-     * @Route("/functional-entities", name="oc_api_sub_domain_functional_entity_get_all", methods={"GET"})
+     * @Route("/functional-entities", name="openclassrooms_codegenerator_tests_fixtures_classes_api_sub_domain_functional_entity_get_all", methods={"GET"})
      *
      * @Security("")
      * @ParamConverter("collectionInformation")

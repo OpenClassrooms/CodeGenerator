@@ -24,6 +24,8 @@ abstract class PostEntityControllerSkeletonModel extends AbstractSkeletonModel
 
     public $createEntityUseCaseRequestBuilderShortName;
 
+    public $entityIdArgument;
+
     public $entityUseCaseDetailResponseClassName;
 
     public $entityUseCaseDetailResponseShortName;
@@ -44,7 +46,9 @@ abstract class PostEntityControllerSkeletonModel extends AbstractSkeletonModel
 
     public $postEntityModelShortName;
 
-    public $route;
+    public $routeAnnotation;
+
+    public $routeName;
 
     public $useCarbon;
 

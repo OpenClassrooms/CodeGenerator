@@ -17,6 +17,5 @@
         <import resource="Generator/Api/Models/put_entity_model_generator.xml"/>
         <import resource="Mediators/Api/Controller/common_controller_mediator.xml"/>
         <import resource="Services/templating_service.xml"/>
-        <import resource="Services/routing_factory_service.xml"/>
     </imports>
 </container>

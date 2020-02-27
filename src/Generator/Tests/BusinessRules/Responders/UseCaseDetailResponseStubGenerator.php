@@ -106,10 +106,7 @@ class UseCaseDetailResponseStubGenerator extends AbstractUseCaseResponseStubGene
             $useCaseDetailResponseDTOFileObject->getClassName()
         );
 
-        $stubFieldsObjects = StubFieldUtility::generateStubFieldObjects(
-            $useCaseDetailResponseFields,
-            $useCaseDetailResponseDTOFileObject
-        );
+        $stubFieldsObjects = StubFieldUtility::generateStubFieldObjects($useCaseDetailResponseFields);
 
         return $this->buildStubFieldObjects($useCaseDetailResponseDTOFileObject, $stubFieldsObjects);
     }

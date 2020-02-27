@@ -39,7 +39,7 @@ class PostFunctionalEntityController extends AbstractApiController
     }
 
     /**
-     * @Route("/functional-entities", name="oc_api_sub_domain_functional_entity_post", methods={"POST"})
+     * @Route("/functional-entities", name="openclassrooms_codegenerator_tests_fixtures_classes_api_sub_domain_functional_entity_post", methods={"POST"})
      *
      * @Security("")
      */
@@ -49,7 +49,7 @@ class PostFunctionalEntityController extends AbstractApiController
         $model = $this->getModelFromRequest(PostFunctionalEntityModel::class);
         $response = $this->createFunctionalEntity($model);
 
-        return $this->createCreatedResponse($this->generateLocationUrl(), $this->buildViewModel($response));
+        return $this->createCreatedResponse($this->generateLocationUrl($response), $this->buildViewModel($response));
     }
 
     private function createFunctionalEntity(PostFunctionalEntityModel $model): FunctionalEntityDetailResponse
@@ -65,9 +65,9 @@ class PostFunctionalEntityController extends AbstractApiController
         );
     }
 
-    private function generateLocationUrl(): string
+    private function generateLocationUrl(FunctionalEntityDetailResponse $response): string
     {
-        return $this->generateUrl('', []);
+        return $this->generateUrl('openclassrooms_codegenerator_tests_fixtures_classes_api_sub_domain_functional_entity_post', ['functionalEntityId' => $response->getId()]);
     }
 
     private function buildViewModel(FunctionalEntityDetailResponse $response): FunctionalEntityViewModelDetail

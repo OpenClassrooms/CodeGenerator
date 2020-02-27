@@ -16,7 +16,6 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingSer
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityResponse;
 use OpenClassrooms\CodeGenerator\Utility\Impl\StubUtilityContext;
 use OpenClassrooms\CodeGenerator\Utility\Impl\StubUtilityGetFixedValue;
-use OpenClassrooms\CodeGenerator\Utility\Impl\StubUtilityGetRandomValue;
 use PHPUnit\Framework\TestCase;
 
 class EntityStubGeneratorTest extends TestCase

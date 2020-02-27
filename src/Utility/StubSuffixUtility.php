@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace OpenClassrooms\CodeGenerator\Utility;
 
-use Carbon\Carbon;
-use Faker\Provider\Base;
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 
 class StubSuffixUtility

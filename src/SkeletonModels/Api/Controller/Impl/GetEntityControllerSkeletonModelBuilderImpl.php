@@ -111,9 +111,9 @@ class GetEntityControllerSkeletonModelBuilderImpl implements GetEntityController
         return $this;
     }
 
-    public function withRoute(string $route): GetEntityControllerSkeletonModelBuilder
+    public function withRouteAnnotation(string $routeAnnotation): GetEntityControllerSkeletonModelBuilder
     {
-        $this->skeletonModel->route = $route;
+        $this->skeletonModel->routeAnnotation = $routeAnnotation;
 
         return $this;
     }

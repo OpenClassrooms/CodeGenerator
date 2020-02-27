@@ -91,8 +91,9 @@ class GetEntityUseCaseSkeletonModelBuilderImpl implements GetEntityUseCaseSkelet
         return $this;
     }
 
-    public function withGetEntityUseCaseFileObject(FileObject $getEntityFileObject): GetEntityUseCaseSkeletonModelBuilder
-    {
+    public function withGetEntityUseCaseFileObject(
+        FileObject $getEntityFileObject
+    ): GetEntityUseCaseSkeletonModelBuilder {
         $this->skeletonModel->shortName = $getEntityFileObject->getShortName();
         $this->skeletonModel->namespace = $getEntityFileObject->getNamespace();
 

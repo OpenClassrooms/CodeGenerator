@@ -37,7 +37,7 @@ class {{ skeletonModel.shortName }} extends {{ skeletonModel.abstractControllerS
     }
 
     /**
-     * @Route({{ skeletonModel.route }})
+     * @Route({{ skeletonModel.routeAnnotation }})
      *
      * @Security("")
      */
@@ -47,7 +47,7 @@ class {{ skeletonModel.shortName }} extends {{ skeletonModel.abstractControllerS
         $model = $this->getModelFromRequest({{ skeletonModel.postEntityModelShortName }}::class);
         $response = $this->{{ skeletonModel.createEntityMethod }}($model);
 
-        return $this->createCreatedResponse($this->generateLocationUrl(), $this->buildViewModel($response));
+        return $this->createCreatedResponse($this->generateLocationUrl($response), $this->buildViewModel($response));
     }
 
     private function {{ skeletonModel.createEntityMethod }}({{ skeletonModel.postEntityModelShortName }} $model): {{ skeletonModel.entityUseCaseDetailResponseShortName }}
@@ -66,9 +66,9 @@ class {{ skeletonModel.shortName }} extends {{ skeletonModel.abstractControllerS
         );
     }
 
-    private function generateLocationUrl(): string
+    private function generateLocationUrl({{ skeletonModel.entityUseCaseDetailResponseShortName }} $response): string
     {
-        return $this->generateUrl('', []);
+        return $this->generateUrl('{{ skeletonModel.routeName }}', ['{{ skeletonModel.entityIdArgument }}' => $response->getId()]);
     }
 
     private function buildViewModel({{ skeletonModel.entityUseCaseDetailResponseShortName }} $response): {{ skeletonModel.entityViewModelDetailShortName }}

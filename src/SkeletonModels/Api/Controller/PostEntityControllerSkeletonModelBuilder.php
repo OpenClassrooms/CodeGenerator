@@ -40,7 +40,9 @@ interface PostEntityControllerSkeletonModelBuilder
 
     public function withEntityFileObject(FileObject $entityFileObject): PostEntityControllerSkeletonModelBuilder;
 
-    public function withRoute(string $route): PostEntityControllerSkeletonModelBuilder;
+    public function withRouteAnnotation(string $routeAnnotation): PostEntityControllerSkeletonModelBuilder;
+
+    public function withRouteName(string $routeName): PostEntityControllerSkeletonModelBuilder;
 
     public function build(): PostEntityControllerSkeletonModel;
 }

@@ -96,7 +96,7 @@ class EntityStubGenerator extends AbstractGenerator
     {
         $entityFields = $this->getProtectedClassFields($fileObject->getClassName());
 
-        $stubFieldObjects = StubFieldUtility::generateStubFieldObjects($entityFields, $stubFileObject);
+        $stubFieldObjects = StubFieldUtility::generateStubFieldObjects($entityFields);
 
         return $this->buildStubFieldObjects($stubFileObject, $stubFieldObjects);
     }
