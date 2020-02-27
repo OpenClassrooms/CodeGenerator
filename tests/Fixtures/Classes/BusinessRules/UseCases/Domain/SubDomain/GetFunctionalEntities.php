@@ -46,7 +46,7 @@ class GetFunctionalEntities implements UseCase
         return $this->buildResponse($functionalEntities);
     }
 
-    private function getFunctionalEntities(UseCaseRequest $useCaseRequest): PaginatedCollection
+    private function getFunctionalEntities(GetFunctionalEntitiesRequest $useCaseRequest): PaginatedCollection
     {
         return $this->functionalEntityGateway->findAll(
             $useCaseRequest->getFilters(),

@@ -22,6 +22,8 @@ final class FixturesConfig
 
     const PAGINATED_USE_CASE_RESPONSE_BUILDER = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\PaginatedUseCaseResponseBuilder';
 
+    const PAGINATED_COLLECTION_BUILDER_IMPL   = 'OpenClassrooms\UseCase\Application\Entity\PaginatedCollectionBuilderImpl';
+
     const PAGINATION                          = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gateways\Pagination';
 
     const STUB_NAMESPACE                      = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\\';

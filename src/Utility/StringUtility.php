@@ -13,6 +13,11 @@ class StringUtility
         return strtolower(preg_replace('/(?<!^)(?<!\\\\)[A-Z0-9]/', '_$0', $string));
     }
 
+    public static function convertToLowerHyphenated(string $string): string
+    {
+        return strtolower(preg_replace('/(?<!^)(?<!\\\\)[A-Z0-9]/', '-$0', $string));
+    }
+
     public static function convertToSpacedString(string $string): string
     {
         return preg_replace('/(?<!^)[A-Z0-9]/', ' $0', $string);

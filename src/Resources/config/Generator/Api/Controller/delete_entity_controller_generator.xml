@@ -30,6 +30,9 @@
             <call method="setControllerFileObjectFactory">
                 <argument type="service" id="OpenClassrooms\CodeGenerator\Entities\ControllerFileObjectFactory"/>
             </call>
+            <call method="setRoutingFactoryService">
+                <argument type="service" id="OpenClassrooms\CodeGenerator\Services\RoutingFactoryService"/>
+            </call>
         </service>
         <service
                 id="OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\DeleteEntityControllerSkeletonModelAssembler"

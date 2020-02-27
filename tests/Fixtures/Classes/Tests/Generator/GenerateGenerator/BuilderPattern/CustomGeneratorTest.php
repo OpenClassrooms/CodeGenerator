@@ -31,7 +31,7 @@ class CustomGeneratorTest extends TestCase
     /**
      * @test
      */
-    final public function generate_ReturnFileObject(): void
+    final public function generateReturnFileObject(): void
     {
         $actualFileObject = $this->customGenerator->generate($this->request);
 

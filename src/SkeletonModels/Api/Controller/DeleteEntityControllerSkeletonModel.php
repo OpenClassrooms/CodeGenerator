@@ -30,6 +30,8 @@ abstract class DeleteEntityControllerSkeletonModel extends AbstractSkeletonModel
 
     public $entityNotFoundExceptionShortName;
 
+    public $route;
+
     public $withEntityIdMethod;
 
     public $templatePath = 'Api/Controller/DeleteEntityController.php.twig';

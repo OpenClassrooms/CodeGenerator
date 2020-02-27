@@ -19,6 +19,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Routing\Annotation\Route;
 
 class PatchFunctionalEntityController extends AbstractApiController
 {
@@ -41,12 +42,15 @@ class PatchFunctionalEntityController extends AbstractApiController
     }
 
     /**
+     * @Route("/functional-entities/{functionalEntityId}", name="oc_api_sub_domain_functional_entity_patch", methods={"PATCH"}, requirements={"functionalEntityId"="^\d{1,9}$"})
+     *
      * @Security("")
      * @throws NotFoundHttpException
      */
     public function patchAction(Request $request, int $functionalEntityId): JsonResponse
     {
         try {
+            /** @var PatchFunctionalEntityModel $model */
             $model = $this->getModelFromRequest(PatchFunctionalEntityModel::class);
             $response = $this->updateFunctionalEntity($functionalEntityId, $model);
 
@@ -64,10 +68,8 @@ class PatchFunctionalEntityController extends AbstractApiController
         $this->get(EditFunctionalEntity::class)->execute($this->buildRequest($functionalEntityId, $model));
     }
 
-    private function buildRequest(
-        int $functionalEntityId,
-        PatchFunctionalEntityModel $model
-    ): EditFunctionalEntityRequest {
+    private function buildRequest(int $functionalEntityId, PatchFunctionalEntityModel $model): EditFunctionalEntityRequest
+    {
         $requestBuilder = $this->editFunctionalEntityRequestBuilder
             ->create()
             ->withFunctionalEntityId($functionalEntityId);

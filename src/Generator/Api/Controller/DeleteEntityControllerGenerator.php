@@ -16,6 +16,8 @@ use OpenClassrooms\CodeGenerator\Entities\UseCaseRequestFileObjectFactory;
 use OpenClassrooms\CodeGenerator\Generator\AbstractGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Api\Controller\Request\DeleteEntityControllerGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
+use OpenClassrooms\CodeGenerator\Mediators\ClassType;
+use OpenClassrooms\CodeGenerator\Services\RoutingFactoryService;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\DeleteEntityControllerSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\DeleteEntityControllerSkeletonModelAssembler;
 
@@ -35,6 +37,11 @@ class DeleteEntityControllerGenerator extends AbstractGenerator
      * @var EntityFileObjectFactory
      */
     private $entityFileObjectFactory;
+
+    /**
+     * @var RoutingFactoryService
+     */
+    private $routingFactoryService;
 
     /**
      * @var UseCaseFileObjectFactory
@@ -67,13 +74,15 @@ class DeleteEntityControllerGenerator extends AbstractGenerator
         $deleteEntityFileObject = $this->createDeleteEntityFileObject();
         $deleteEntityRequestBuilderFileObject = $this->createDeleteEntityRequestBuilderFileObject();
         $entityNotFoundExceptionFileObject = $this->createEntityNotFoundExceptionFileObject();
+        $route = $this->createRoute();
 
         $deleteEntityControllerFileObject->setContent(
             $this->generateContent(
                 $deleteEntityControllerFileObject,
                 $deleteEntityFileObject,
                 $deleteEntityRequestBuilderFileObject,
-                $entityNotFoundExceptionFileObject
+                $entityNotFoundExceptionFileObject,
+                $route
             )
         );
 
@@ -116,17 +125,24 @@ class DeleteEntityControllerGenerator extends AbstractGenerator
         );
     }
 
+    private function createRoute(): string
+    {
+        return $this->routingFactoryService->create($this->domain, $this->entity, ClassType::DELETE);
+    }
+
     private function generateContent(
         FileObject $deleteEntityControllerFileObject,
         FileObject $deleteEntityFileObject,
         FileObject $deleteEntityRequestBuilderFileObject,
-        FileObject $entityNotFoundExceptionFileObject
+        FileObject $entityNotFoundExceptionFileObject,
+        string $route
     ): string {
         $skeletonModel = $this->createSkeletonModel(
             $deleteEntityControllerFileObject,
             $deleteEntityFileObject,
             $deleteEntityRequestBuilderFileObject,
-            $entityNotFoundExceptionFileObject
+            $entityNotFoundExceptionFileObject,
+            $route
         );
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
@@ -136,20 +152,37 @@ class DeleteEntityControllerGenerator extends AbstractGenerator
         FileObject $deleteEntityControllerFileObject,
         FileObject $deleteEntityFileObject,
         FileObject $deleteEntityRequestBuilderFileObject,
-        FileObject $entityNotFoundExceptionFileObject
+        FileObject $entityNotFoundExceptionFileObject,
+        string $route
     ): DeleteEntityControllerSkeletonModel {
         return $this->deleteEntityControllerSkeletonModelAssembler->create(
             $deleteEntityControllerFileObject,
             $deleteEntityFileObject,
             $deleteEntityRequestBuilderFileObject,
-            $entityNotFoundExceptionFileObject
+            $entityNotFoundExceptionFileObject,
+            $route
         );
+    }
+
+    public function setEntityFileObjectFactory(EntityFileObjectFactory $entityFileObjectFactory): void
+    {
+        $this->entityFileObjectFactory = $entityFileObjectFactory;
+    }
+
+    public function setControllerFileObjectFactory(ControllerFileObjectFactory $controllerFileObjectFactory): void
+    {
+        $this->controllerFileObjectFactory = $controllerFileObjectFactory;
     }
 
     public function setDeleteEntityControllerSkeletonModelAssembler(
         DeleteEntityControllerSkeletonModelAssembler $deleteEntityControllerSkeletonModelAssembler
     ): void {
         $this->deleteEntityControllerSkeletonModelAssembler = $deleteEntityControllerSkeletonModelAssembler;
+    }
+
+    public function setRoutingFactoryService(RoutingFactoryService $routingFactoryService): void
+    {
+        $this->routingFactoryService = $routingFactoryService;
     }
 
     public function setUseCaseFileObjectFactory(UseCaseFileObjectFactory $useCaseFileObjectFactory): void
@@ -161,15 +194,5 @@ class DeleteEntityControllerGenerator extends AbstractGenerator
         UseCaseRequestFileObjectFactory $useCaseRequestFileObjectFactory
     ): void {
         $this->useCaseRequestFileObjectFactory = $useCaseRequestFileObjectFactory;
-    }
-
-    public function setEntityFileObjectFactory(EntityFileObjectFactory $entityFileObjectFactory): void
-    {
-        $this->entityFileObjectFactory = $entityFileObjectFactory;
-    }
-
-    public function setControllerFileObjectFactory(ControllerFileObjectFactory $controllerFileObjectFactory): void
-    {
-        $this->controllerFileObjectFactory = $controllerFileObjectFactory;
     }
 }

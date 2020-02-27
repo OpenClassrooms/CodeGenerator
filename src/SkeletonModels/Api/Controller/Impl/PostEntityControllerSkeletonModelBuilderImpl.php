@@ -114,6 +114,13 @@ class PostEntityControllerSkeletonModelBuilderImpl implements PostEntityControll
         return $this;
     }
 
+    public function withRoute(string $route): PostEntityControllerSkeletonModelBuilder
+    {
+        $this->skeletonModel->route = $route;
+
+        return $this;
+    }
+
     public function build(): PostEntityControllerSkeletonModel
     {
         $this->skeletonModel->abstractControllerClassName = $this->abstractControllerClassName;

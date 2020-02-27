@@ -16,6 +16,7 @@ use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\D
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Routing\Annotation\Route;
 
 class GetFunctionalEntityController extends AbstractApiController
 {
@@ -38,6 +39,8 @@ class GetFunctionalEntityController extends AbstractApiController
     }
 
     /**
+     * @Route("/functional-entities/{functionalEntityId}", name="oc_api_sub_domain_functional_entity_get", methods={"GET"}, requirements={"functionalEntityId"="^\d{1,9}$"})
+     *
      * @Security("")
      * @throws NotFoundHttpException
      */

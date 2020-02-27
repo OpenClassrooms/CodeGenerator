@@ -12,31 +12,33 @@ interface GetEntityControllerSkeletonModelBuilder
 
     public function create(): GetEntityControllerSkeletonModelBuilder;
 
-    public function createGetEntityControllerFileObject(
+    public function withCreateGetEntityControllerFileObject(
         FileObject $getEntityControllerFileObject
     ): GetEntityControllerSkeletonModelBuilder;
 
-    public function createEntityNotFoundExceptionFileObject(
+    public function withCreateEntityNotFoundExceptionFileObject(
         FileObject $entityNotFoundExceptionFileObject
     ): GetEntityControllerSkeletonModelBuilder;
 
-    public function createEntityUseCaseDetailResponseFileObject(
+    public function withCreateEntityUseCaseDetailResponseFileObject(
         FileObject $entityUseCaseDetailResponseFileObject
     ): GetEntityControllerSkeletonModelBuilder;
 
-    public function createEntityViewModelFileObject(
+    public function withCreateEntityViewModelFileObject(
         FileObject $entityViewModelFileObject
     ): GetEntityControllerSkeletonModelBuilder;
 
-    public function createEntityViewModelDetailAssemblerFileObject(
+    public function withCreateEntityViewModelDetailAssemblerFileObject(
         FileObject $entityViewModelDetailAssemblerFileObject
     ): GetEntityControllerSkeletonModelBuilder;
 
-    public function createGetEntityUseCaseFileObject(
+    public function withCreateGetEntityUseCaseFileObject(
         FileObject $getEntityUseCaseFileObject
     ): GetEntityControllerSkeletonModelBuilder;
 
-    public function createGetEntityUseCaseRequestBuilderFileObject(
+    public function withCreateGetEntityUseCaseRequestBuilderFileObject(
         FileObject $getEntityUseCaseRequestBuilderFileObject
     ): GetEntityControllerSkeletonModelBuilder;
+
+    public function withRoute(string $route): GetEntityControllerSkeletonModelBuilder;
 }

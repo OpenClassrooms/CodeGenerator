@@ -99,7 +99,7 @@ class DeleteEntityUseCaseTestSkeletonModelBuilderImpl implements DeleteEntityUse
         FileObject $entityStubFileObject
     ): DeleteEntityUseCaseTestSkeletonModelBuilder {
         $this->skeletonModel->entityStubClassName = $entityStubFileObject->getClassName();
-        $this->skeletonModel->entityStubsArgument = NameUtility::createEntityStubsName(
+        $this->skeletonModel->entityStubArgument = NameUtility::createEntityStubName(
             $entityStubFileObject->getEntity()
         );
         $this->skeletonModel->entityStubShortName = $entityStubFileObject->getShortName();

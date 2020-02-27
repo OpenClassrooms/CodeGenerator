@@ -44,6 +44,8 @@ abstract class PostEntityControllerSkeletonModel extends AbstractSkeletonModel
 
     public $postEntityModelShortName;
 
+    public $route;
+
     public $useCarbon;
 
     public $templatePath = 'Api/Controller/PostEntityController.php.twig';

@@ -42,7 +42,7 @@ class {{ skeletonModel.shortName }} implements {{ skeletonModel.useCaseShortName
         return $this->buildResponse(${{ skeletonModel.entitiesArgument }});
     }
 
-    private function get{{ skeletonModel.entitiesShortName }}({{ skeletonModel.useCaseRequestShortName }} $useCaseRequest): {{ skeletonModel.paginatedCollectionShortName }}
+    private function get{{ skeletonModel.entitiesShortName }}({{ skeletonModel.getEntitiesUseCaseRequestShortName }} $useCaseRequest): {{ skeletonModel.paginatedCollectionShortName }}
     {
         return $this->{{ skeletonModel.entityGatewayArgument }}->findAll(
             $useCaseRequest->getFilters(),

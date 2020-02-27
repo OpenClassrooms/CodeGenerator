@@ -7,9 +7,10 @@ use {{ skeletonModel.entityGatewayClassName }};
 use {{ skeletonModel.deleteEntityUseCaseRequestClassName }};
 use {{ skeletonModel.securityClassName }};
 use {{ skeletonModel.transactionClassName }};
+use {{ skeletonModel.useCaseClassName }};
 use {{ skeletonModel.useCaseRequestClassName }};
 
-class {{ skeletonModel.shortName }}
+class {{ skeletonModel.shortName }} implements UseCase
 {
     /**
      * @var {{ skeletonModel.entityGatewayShortName }}

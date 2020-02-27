@@ -44,6 +44,9 @@
                 <argument type="service"
                           id="open_classrooms.code_generator.file_objects.view_model_file_object_factory"/>
             </call>
+            <call method="setRoutingFactoryService">
+                <argument type="service" id="OpenClassrooms\CodeGenerator\Services\RoutingFactoryService"/>
+            </call>
         </service>
         <service
                 id="OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\GetEntitiesControllerSkeletonModelBuilder"

@@ -17,10 +17,6 @@ interface GetEntitiesControllerSkeletonModelBuilder
         FileObject $getEntitiesControllerFileObject
     ): GetEntitiesControllerSkeletonModelBuilder;
 
-    public function withEntityUseCaseResponseFileObject(
-        FileObject $entityUseCaseResponseFileObject
-    ): GetEntitiesControllerSkeletonModelBuilder;
-
     public function withEntityViewModelListItemAssemblerFileObject(
         FileObject $entityViewModelListItemAssemblerFileObject
     ): GetEntitiesControllerSkeletonModelBuilder;
@@ -36,6 +32,8 @@ interface GetEntitiesControllerSkeletonModelBuilder
     public function withGetEntitiesUseCaseRequestBuilderFileObject(
         FileObject $getEntitiesUseCaseRequestBuilderFileObject
     ): GetEntitiesControllerSkeletonModelBuilder;
+
+    public function withRoute(string $route): GetEntitiesControllerSkeletonModelBuilder;
 
     public function build(): GetEntitiesControllerSkeletonModel;
 }

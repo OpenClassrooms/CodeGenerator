@@ -31,7 +31,7 @@ class GetEntityControllerSkeletonModelBuilderImpl implements GetEntityController
         return $this;
     }
 
-    public function createGetEntityControllerFileObject(
+    public function withCreateGetEntityControllerFileObject(
         FileObject $getEntityControllerFileObject
     ): GetEntityControllerSkeletonModelBuilder {
         $this->skeletonModel->className = $getEntityControllerFileObject->getClassName();
@@ -41,7 +41,7 @@ class GetEntityControllerSkeletonModelBuilderImpl implements GetEntityController
         return $this;
     }
 
-    public function createEntityNotFoundExceptionFileObject(
+    public function withCreateEntityNotFoundExceptionFileObject(
         FileObject $entityNotFoundExceptionFileObject
     ): GetEntityControllerSkeletonModelBuilder {
         $this->skeletonModel->entityNotFoundExceptionArgument = lcfirst(
@@ -53,7 +53,7 @@ class GetEntityControllerSkeletonModelBuilderImpl implements GetEntityController
         return $this;
     }
 
-    public function createEntityUseCaseDetailResponseFileObject(
+    public function withCreateEntityUseCaseDetailResponseFileObject(
         FileObject $entityUseCaseDetailResponseFileObject
     ): GetEntityControllerSkeletonModelBuilder {
         $this->skeletonModel->entityUseCaseDetailResponseClassName = $entityUseCaseDetailResponseFileObject->getClassName(
@@ -64,7 +64,7 @@ class GetEntityControllerSkeletonModelBuilderImpl implements GetEntityController
         return $this;
     }
 
-    public function createEntityViewModelFileObject(
+    public function withCreateEntityViewModelFileObject(
         FileObject $entityViewModelFileObject
     ): GetEntityControllerSkeletonModelBuilder {
         $this->skeletonModel->entityViewModelClassName = $entityViewModelFileObject->getClassName();
@@ -74,7 +74,7 @@ class GetEntityControllerSkeletonModelBuilderImpl implements GetEntityController
         return $this;
     }
 
-    public function createEntityViewModelDetailAssemblerFileObject(
+    public function withCreateEntityViewModelDetailAssemblerFileObject(
         FileObject $entityViewModelDetailAssemblerFileObject
     ): GetEntityControllerSkeletonModelBuilder {
         $this->skeletonModel->entityViewModelDetailAssemblerArgument = lcfirst(
@@ -88,7 +88,7 @@ class GetEntityControllerSkeletonModelBuilderImpl implements GetEntityController
         return $this;
     }
 
-    public function createGetEntityUseCaseFileObject(
+    public function withCreateGetEntityUseCaseFileObject(
         FileObject $getEntityUseCaseFileObject
     ): GetEntityControllerSkeletonModelBuilder {
         $this->skeletonModel->getEntityUseCaseClassName = $getEntityUseCaseFileObject->getClassName();
@@ -97,7 +97,7 @@ class GetEntityControllerSkeletonModelBuilderImpl implements GetEntityController
         return $this;
     }
 
-    public function createGetEntityUseCaseRequestBuilderFileObject(
+    public function withCreateGetEntityUseCaseRequestBuilderFileObject(
         FileObject $getEntityUseCaseRequestBuilderFileObject
     ): GetEntityControllerSkeletonModelBuilder {
         $this->skeletonModel->getEntityUseCaseRequestBuilderArgument = lcfirst(
@@ -107,6 +107,13 @@ class GetEntityControllerSkeletonModelBuilderImpl implements GetEntityController
         );
         $this->skeletonModel->getEntityUseCaseRequestBuilderShortName = $getEntityUseCaseRequestBuilderFileObject->getShortName(
         );
+
+        return $this;
+    }
+
+    public function withRoute(string $route): GetEntityControllerSkeletonModelBuilder
+    {
+        $this->skeletonModel->route = $route;
 
         return $this;
     }

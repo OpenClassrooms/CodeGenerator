@@ -30,7 +30,7 @@ class ViewModelDetailAssemblerImplGeneratorTest extends AbstractViewModelGenerat
     /**
      * @test
      */
-    public function generate_ReturnFileObject(): void
+    public function generateReturnFileObject(): void
     {
         $actualFileObject = $this->viewModelDetailAssemblerImplGenerator->generate($this->request);
 

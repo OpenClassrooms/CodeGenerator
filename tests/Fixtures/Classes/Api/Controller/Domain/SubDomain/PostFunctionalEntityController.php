@@ -16,6 +16,7 @@ use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\CreateFunctionalEntity;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Routing\Annotation\Route;
 
 class PostFunctionalEntityController extends AbstractApiController
 {
@@ -38,6 +39,8 @@ class PostFunctionalEntityController extends AbstractApiController
     }
 
     /**
+     * @Route("/functional-entities", name="oc_api_sub_domain_functional_entity_post", methods={"POST"})
+     *
      * @Security("")
      */
     public function postAction(): JsonResponse

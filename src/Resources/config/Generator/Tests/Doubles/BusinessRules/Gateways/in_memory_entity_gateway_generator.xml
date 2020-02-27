@@ -10,6 +10,9 @@
             <call method="setEntityUtilClassName">
                 <argument type="string">%entity_util_classname%</argument>
             </call>
+            <call method="setPaginatedCollectionBuilderImplClassName">
+                <argument type="string">%paginated_collection_builder_impl%</argument>
+            </call>
         </service>
 
         <service

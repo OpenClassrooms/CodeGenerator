@@ -42,6 +42,7 @@ class DeleteEntityUseCaseSkeletonModelAssemblerImpl implements DeleteEntityUseCa
         $skeletonModel->getEntityIdMethod = NameUtility::createGetEntityName($entityFileObject->getShortName());
         $skeletonModel->securityClassName = $this->securityClassName;
         $skeletonModel->transactionClassName = $this->transactionClassName;
+        $skeletonModel->useCaseClassName = $this->useCaseClassName;
         $skeletonModel->useCaseRequestClassName = $this->useCaseRequestClassName;
 
         return $skeletonModel;

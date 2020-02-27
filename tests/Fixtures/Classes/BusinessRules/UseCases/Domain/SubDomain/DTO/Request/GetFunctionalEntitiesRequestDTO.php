@@ -39,17 +39,11 @@ final class GetFunctionalEntitiesRequestDTO implements GetFunctionalEntitiesRequ
         return $this->filters;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getItemsPerPage(): int
     {
         return $this->itemsPerPage;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getPage(): int
     {
         return $this->page;

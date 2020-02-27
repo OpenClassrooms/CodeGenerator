@@ -33,7 +33,7 @@ class DeleteEntityUseCaseRequestDTOGeneratorTest extends TestCase
     /**
      * @test
      */
-    final public function generate_ReturnFileObject(): void
+    final public function generateReturnFileObject(): void
     {
         $actualFileObject = $this->deleteEntityUseCaseRequestDTOGenerator->generate($this->request);
 

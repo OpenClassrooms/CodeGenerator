@@ -15,6 +15,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Routing\Annotation\Route;
 
 class {{ skeletonModel.shortName }} extends {{ skeletonModel.abstractControllerShortName }}
 {
@@ -37,12 +38,15 @@ class {{ skeletonModel.shortName }} extends {{ skeletonModel.abstractControllerS
     }
 
     /**
+     * @Route({{ skeletonModel.route }})
+     *
      * @Security("")
      * @throws NotFoundHttpException
      */
     public function patchAction(Request $request, int ${{ skeletonModel.entityIdArgument }}): JsonResponse
     {
         try {
+            /** @var {{ skeletonModel.patchEntityModelShortName }} $model */
             $model = $this->getModelFromRequest({{ skeletonModel.patchEntityModelShortName }}::class);
             $response = $this->{{ skeletonModel.updateEntityMethod }}(${{ skeletonModel.entityIdArgument }}, $model);
 
@@ -60,10 +64,8 @@ class {{ skeletonModel.shortName }} extends {{ skeletonModel.abstractControllerS
         $this->get({{ skeletonModel.editEntityUseCaseShortName }}::class)->execute($this->buildRequest(${{ skeletonModel.entityIdArgument}}, $model));
     }
 
-    private function buildRequest(
-        int ${{ skeletonModel.entityIdArgument}},
-        {{ skeletonModel.patchEntityModelShortName }} $model
-    ): {{ skeletonModel.editEntityUseCaseRequestShortName }} {
+    private function buildRequest(int ${{ skeletonModel.entityIdArgument}}, {{ skeletonModel.patchEntityModelShortName }} $model): {{ skeletonModel.editEntityUseCaseRequestShortName }}
+    {
         $requestBuilder = $this->{{ skeletonModel.editEntityUseCaseRequestBuilderArgument }}
             ->create()
             ->{{ skeletonModel.withEntityIdMethod }}(${{ skeletonModel.entityIdArgument}});

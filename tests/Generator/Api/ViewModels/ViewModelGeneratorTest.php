@@ -31,7 +31,7 @@ class ViewModelGeneratorTest extends AbstractViewModelGeneratorTestCase
     /**
      * @test
      */
-    public function generate_ReturnFileObject(): void
+    public function generateReturnFileObject(): void
     {
         $actualFileObject = $this->viewModelGenerator->generate($this->request);
 

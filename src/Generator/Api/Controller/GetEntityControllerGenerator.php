@@ -14,6 +14,7 @@ use OpenClassrooms\CodeGenerator\Entities\Type\ViewModelFileObjectType;
 use OpenClassrooms\CodeGenerator\Generator\AbstractGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Api\Controller\Request\GetEntityControllerGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
+use OpenClassrooms\CodeGenerator\Mediators\ClassType;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\GetEntityControllerSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\GetEntityControllerSkeletonModelBuilder;
 
@@ -50,6 +51,7 @@ class GetEntityControllerGenerator extends AbstractGenerator
         $entityViewModelDetailAssemblerFileObject = $this->createEntityViewModelDetailAssemblerFileObject();
         $getEntityUseCaseFileObject = $this->createGetEntityUseCaseFileObject();
         $getEntityUseCaseRequestBuilderFileObject = $this->createGetEntityUseCaseRequestBuilderFileObject();
+        $route = $this->createRoute();
 
         $getEntityControllerFileObject->setContent(
             $this->generateContent(
@@ -61,7 +63,8 @@ class GetEntityControllerGenerator extends AbstractGenerator
                     ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_ASSEMBLER                         => $entityViewModelDetailAssemblerFileObject,
                     UseCaseFileObjectType::BUSINESS_RULES_GET_ENTITY_USE_CASE                        => $getEntityUseCaseFileObject,
                     UseCaseRequestFileObjectType::BUSINESS_RULES_GET_ENTITY_USE_CASE_REQUEST_BUILDER => $getEntityUseCaseRequestBuilderFileObject,
-                ]
+                ],
+                $route
             )
         );
 
@@ -131,12 +134,17 @@ class GetEntityControllerGenerator extends AbstractGenerator
         );
     }
 
+    private function createRoute(): string
+    {
+        return $this->routingFactoryService->create($this->domain, $this->entity, ClassType::GET);
+    }
+
     /**
      * @param FileObject[] $fileObjects
      */
-    private function generateContent(array $fileObjects): string
+    private function generateContent(array $fileObjects, string $route): string
     {
-        $skeletonModel = $this->createSkeletonModel($fileObjects);
+        $skeletonModel = $this->createSkeletonModel($fileObjects, $route);
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
     }
@@ -144,25 +152,28 @@ class GetEntityControllerGenerator extends AbstractGenerator
     /**
      * @param FileObject[] $fileObjects
      */
-    private function createSkeletonModel(array $fileObjects): GetEntityControllerSkeletonModel
+    private function createSkeletonModel(array $fileObjects, string $route): GetEntityControllerSkeletonModel
     {
         return $this->getEntityControllerSkeletonModelBuilder
             ->create()
-            ->createGetEntityControllerFileObject($fileObjects[ControllerFileObjectType::API_CONTROLLER_GET_ENTITY])
-            ->createEntityNotFoundExceptionFileObject(
+            ->withCreateGetEntityControllerFileObject($fileObjects[ControllerFileObjectType::API_CONTROLLER_GET_ENTITY])
+            ->withCreateEntityNotFoundExceptionFileObject(
                 $fileObjects[EntityFileObjectType::BUSINESS_RULES_ENTITY_NOT_FOUND_EXCEPTION]
             )
-            ->createEntityUseCaseDetailResponseFileObject(
+            ->withCreateEntityUseCaseDetailResponseFileObject(
                 $fileObjects[UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE]
             )
-            ->createEntityViewModelFileObject($fileObjects[ViewModelFileObjectType::API_VIEW_MODEL])
-            ->createEntityViewModelDetailAssemblerFileObject(
+            ->withCreateEntityViewModelFileObject($fileObjects[ViewModelFileObjectType::API_VIEW_MODEL])
+            ->withCreateEntityViewModelDetailAssemblerFileObject(
                 $fileObjects[ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_ASSEMBLER]
             )
-            ->createGetEntityUseCaseFileObject($fileObjects[UseCaseFileObjectType::BUSINESS_RULES_GET_ENTITY_USE_CASE])
-            ->createGetEntityUseCaseRequestBuilderFileObject(
+            ->withCreateGetEntityUseCaseFileObject(
+                $fileObjects[UseCaseFileObjectType::BUSINESS_RULES_GET_ENTITY_USE_CASE]
+            )
+            ->withCreateGetEntityUseCaseRequestBuilderFileObject(
                 $fileObjects[UseCaseRequestFileObjectType::BUSINESS_RULES_GET_ENTITY_USE_CASE_REQUEST_BUILDER]
             )
+            ->withRoute($route)
             ->build();
     }
 

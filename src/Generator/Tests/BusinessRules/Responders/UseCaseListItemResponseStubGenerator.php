@@ -140,7 +140,7 @@ class UseCaseListItemResponseStubGenerator extends AbstractUseCaseResponseStubGe
     protected function getSelectedFields(string $entityClassName, array $fields): array
     {
         if (empty($fields)) {
-            return $fieldObjects = $this->getProtectedClassFields($entityClassName);
+            return $this->getProtectedClassFields($entityClassName);
         }
 
         return $this->deleteNotSelectedField($entityClassName, $fields);

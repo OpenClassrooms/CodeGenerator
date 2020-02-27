@@ -48,6 +48,8 @@ abstract class GetEntityControllerSkeletonModel extends AbstractSkeletonModel
 
     public $getEntityUseCaseRequestBuilderShortName;
 
+    public $route;
+
     public $withEntityIdMethod;
 
     public $templatePath = 'Api/Controller/GetEntityController.php.twig';

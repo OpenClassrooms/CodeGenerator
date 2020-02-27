@@ -7,6 +7,9 @@
         <service
                 id="open_classrooms.code_generator.skeleton_models.tests.business_rules.use_cases.get_entities_use_case_test_skeleton_model_builder"
                 class="OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\UseCases\Impl\GetEntitiesUseCaseTestSkeletonModelBuilderImpl">
+            <call method="setPagination">
+                <argument type="string">%pagination_classname%</argument>
+            </call>
         </service>
 
         <service

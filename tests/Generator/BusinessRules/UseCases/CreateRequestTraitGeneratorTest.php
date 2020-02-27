@@ -33,7 +33,7 @@ class CreateRequestTraitGeneratorTest extends TestCase
     /**
      * @test
      */
-    final public function generate_ReturnFileObject(): void
+    final public function generateReturnFileObject(): void
     {
         $actualFileObject = $this->createRequestTraitGenerator->generate($this->request);
 

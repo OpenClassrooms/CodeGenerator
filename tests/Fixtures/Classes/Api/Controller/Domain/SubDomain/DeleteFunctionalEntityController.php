@@ -12,6 +12,7 @@ use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Requestors
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\DeleteFunctionalEntity;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Routing\Annotation\Route;
 
 class DeleteFunctionalEntityController extends AbstractApiController
 {
@@ -26,6 +27,8 @@ class DeleteFunctionalEntityController extends AbstractApiController
     }
 
     /**
+     * @Route("/functional-entities/{functionalEntityId}", name="oc_api_sub_domain_functional_entity_delete", methods={"DELETE"}, requirements={"functionalEntityId"="^\d{1,9}$"})
+     *
      * @Security("")
      */
     public function deleteAction(int $functionalEntityId): JsonResponse

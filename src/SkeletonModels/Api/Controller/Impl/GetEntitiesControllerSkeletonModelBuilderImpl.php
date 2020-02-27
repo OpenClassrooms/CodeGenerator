@@ -49,16 +49,6 @@ class GetEntitiesControllerSkeletonModelBuilderImpl implements GetEntitiesContro
         return $this;
     }
 
-    public function withEntityUseCaseResponseFileObject(
-        FileObject $entityUseCaseResponseFileObject
-    ): GetEntitiesControllerSkeletonModelBuilder {
-        $this->skeletonModel->entityUseCaseResponseShortName = $entityUseCaseResponseFileObject->getShortName();
-        $this->skeletonModel->entityUseCaseResponseClassName = $entityUseCaseResponseFileObject->getClassName();
-        $this->entity = $entityUseCaseResponseFileObject->getEntity();
-
-        return $this;
-    }
-
     public function withEntityViewModelListItemAssemblerFileObject(
         FileObject $entityViewModelListItemAssemblerFileObject
     ): GetEntitiesControllerSkeletonModelBuilder {
@@ -69,6 +59,8 @@ class GetEntitiesControllerSkeletonModelBuilderImpl implements GetEntitiesContro
         );
         $this->skeletonModel->entityViewModelListItemAssemblerShortName = $entityViewModelListItemAssemblerFileObject->getShortName(
         );
+
+        $this->entity = str_replace('ViewModel', '', $entityViewModelListItemAssemblerFileObject->getEntity());
 
         return $this;
     }
@@ -102,6 +94,13 @@ class GetEntitiesControllerSkeletonModelBuilderImpl implements GetEntitiesContro
         );
         $this->skeletonModel->getEntitiesUseCaseRequestBuilderShortName = $getEntitiesUseCaseRequestBuilderFileObject->getShortName(
         );
+
+        return $this;
+    }
+
+    public function withRoute(string $route): GetEntitiesControllerSkeletonModelBuilder
+    {
+        $this->skeletonModel->route = $route;
 
         return $this;
     }

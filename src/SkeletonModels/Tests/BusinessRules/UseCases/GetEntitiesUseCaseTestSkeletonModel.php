@@ -40,6 +40,8 @@ abstract class GetEntitiesUseCaseTestSkeletonModel extends AbstractSkeletonModel
 
     public $templatePath = 'Tests/BusinessRules/UseCases/GetEntitiesUseCaseTest.php.twig';
 
+    public $paginationClassName;
+
     public $useCaseListItemResponseAssemblerMockClassName;
 
     public $useCaseListItemResponseAssemblerMockShortName;

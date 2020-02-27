@@ -11,11 +11,12 @@ use OC\ApiBundle\ParamConverter\CollectionInformation;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\FunctionalEntityViewModelListItem;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\FunctionalEntityViewModelListItemAssembler;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Requestors\Domain\SubDomain\GetFunctionalEntitiesRequestBuilder;
-use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityResponse;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\PaginatedUseCaseResponse;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\GetFunctionalEntities;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Routing\Annotation\Route;
 
 class GetFunctionalEntitiesController extends AbstractApiController
 {
@@ -38,10 +39,12 @@ class GetFunctionalEntitiesController extends AbstractApiController
     }
 
     /**
+     * @Route("/functional-entities", name="oc_api_sub_domain_functional_entity_get_all", methods={"GET"})
+     *
      * @Security("")
      * @ParamConverter("collectionInformation")
      */
-    public function getAction(CollectionInformation $collectionInformation, int $userId): JsonResponse
+    public function getAction(CollectionInformation $collectionInformation): JsonResponse
     {
         $functionalEntities = $this->getFunctionalEntities($collectionInformation);
         $vm = $this->buildViewModel($functionalEntities);
@@ -49,7 +52,7 @@ class GetFunctionalEntitiesController extends AbstractApiController
         return $this->createJsonResponse($vm);
     }
 
-    private function getFunctionalEntities(CollectionInformation $collectionInformation): FunctionalEntityResponse
+    private function getFunctionalEntities(CollectionInformation $collectionInformation): PaginatedUseCaseResponse
     {
         return $this->get(GetFunctionalEntities::class)->execute(
             $this->getFunctionalEntitiesRequestBuilder

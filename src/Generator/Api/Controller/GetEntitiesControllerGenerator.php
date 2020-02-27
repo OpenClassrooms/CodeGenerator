@@ -8,11 +8,11 @@ use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\Entities\Type\ControllerFileObjectType;
 use OpenClassrooms\CodeGenerator\Entities\Type\UseCaseFileObjectType;
 use OpenClassrooms\CodeGenerator\Entities\Type\UseCaseRequestFileObjectType;
-use OpenClassrooms\CodeGenerator\Entities\Type\UseCaseResponseFileObjectType;
 use OpenClassrooms\CodeGenerator\Entities\Type\ViewModelFileObjectType;
 use OpenClassrooms\CodeGenerator\Generator\AbstractGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Api\Controller\Request\GetEntitiesControllerGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
+use OpenClassrooms\CodeGenerator\Mediators\ClassType;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\GetEntitiesControllerSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\GetEntitiesControllerSkeletonModelBuilder;
 
@@ -23,7 +23,7 @@ class GetEntitiesControllerGenerator extends AbstractGenerator
     /**
      * @var GetEntitiesControllerSkeletonModelBuilder
      */
-    private $getEntitiesControllerSkeletonModelAssembler;
+    private $getEntitiesControllerSkeletonModelBuilder;
 
     /**
      * @param GetEntitiesControllerGeneratorRequest $generatorRequest
@@ -43,22 +43,22 @@ class GetEntitiesControllerGenerator extends AbstractGenerator
     {
         $this->initFileObjectParameter($entityClassName);
         $getEntitiesControllerFileObject = $this->createGetEntitiesControllerFileObject();
-        $entityUseCaseResponseFileObject = $this->createEntityUseCaseResponseFileObject();
         $entityViewModelListItemAssemblerFileObject = $this->createEntityViewModelListItemAssemblerFileObject();
         $entityViewModelListItemFileObject = $this->createEntityViewModelListItemFileObject();
         $getEntitiesUseCaseFileObject = $this->createGetEntitiesUseCaseFileObject();
         $getEntitiesUseCaseRequestBuilderFileObject = $this->createGetEntitiesUseCaseRequestBuilderFileObject();
+        $route = $this->createRoute();
 
         $getEntitiesControllerFileObject->setContent(
             $this->generateContent(
                 [
                     ControllerFileObjectType::API_CONTROLLER_GET_ENTITIES                              => $getEntitiesControllerFileObject,
-                    UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE                    => $entityUseCaseResponseFileObject,
                     ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_ASSEMBLER                        => $entityViewModelListItemAssemblerFileObject,
                     ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM                                  => $entityViewModelListItemFileObject,
                     UseCaseFileObjectType::BUSINESS_RULES_GET_ENTITIES_USE_CASE                        => $getEntitiesUseCaseFileObject,
                     UseCaseRequestFileObjectType::BUSINESS_RULES_GET_ENTITIES_USE_CASE_REQUEST_BUILDER => $getEntitiesUseCaseRequestBuilderFileObject,
-                ]
+                ],
+                $route
             )
         );
 
@@ -69,15 +69,6 @@ class GetEntitiesControllerGenerator extends AbstractGenerator
     {
         return $this->controllerFileObjectFactory->create(
             ControllerFileObjectType::API_CONTROLLER_GET_ENTITIES,
-            $this->domain,
-            $this->entity
-        );
-    }
-
-    private function createEntityUseCaseResponseFileObject(): FileObject
-    {
-        return $this->useCaseResponseFileObjectFactory->create(
-            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE,
             $this->domain,
             $this->entity
         );
@@ -119,12 +110,17 @@ class GetEntitiesControllerGenerator extends AbstractGenerator
         );
     }
 
+    private function createRoute(): string
+    {
+        return $this->routingFactoryService->create($this->domain, $this->entity, ClassType::GET_ALL);
+    }
+
     /**
      * @param FileObject[] $fileObjects
      */
-    private function generateContent(array $fileObjects): string
+    private function generateContent(array $fileObjects, string $route): string
     {
-        $skeletonModel = $this->createSkeletonModel($fileObjects);
+        $skeletonModel = $this->createSkeletonModel($fileObjects, $route);
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
     }
@@ -132,14 +128,11 @@ class GetEntitiesControllerGenerator extends AbstractGenerator
     /**
      * @param FileObject[] $fileObjects
      */
-    private function createSkeletonModel(array $fileObjects): GetEntitiesControllerSkeletonModel
+    private function createSkeletonModel(array $fileObjects, string $route): GetEntitiesControllerSkeletonModel
     {
-        return $this->getEntitiesControllerSkeletonModelAssembler
+        return $this->getEntitiesControllerSkeletonModelBuilder
             ->create()
             ->withGetEntitiesControllerFileObject($fileObjects[ControllerFileObjectType::API_CONTROLLER_GET_ENTITIES])
-            ->withEntityUseCaseResponseFileObject(
-                $fileObjects[UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE]
-            )
             ->withEntityViewModelListItemAssemblerFileObject(
                 $fileObjects[ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_ASSEMBLER]
             )
@@ -150,12 +143,13 @@ class GetEntitiesControllerGenerator extends AbstractGenerator
             ->withGetEntitiesUseCaseRequestBuilderFileObject(
                 $fileObjects[UseCaseRequestFileObjectType::BUSINESS_RULES_GET_ENTITIES_USE_CASE_REQUEST_BUILDER]
             )
+            ->withRoute($route)
             ->build();
     }
 
     public function setGetEntitiesControllerSkeletonModelBuilder(
         GetEntitiesControllerSkeletonModelBuilder $getEntitiesControllerSkeletonModelBuilder
     ): void {
-        $this->getEntitiesControllerSkeletonModelAssembler = $getEntitiesControllerSkeletonModelBuilder;
+        $this->getEntitiesControllerSkeletonModelBuilder = $getEntitiesControllerSkeletonModelBuilder;
     }
 }

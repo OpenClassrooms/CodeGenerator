@@ -15,5 +15,6 @@ class InMemoryEntityGatewaySkeletonModelAssemblerMock extends InMemoryEntityGate
     public function __construct()
     {
         $this->setEntityUtilClassName(FixturesConfig::ENTITY_UTIL);
+        $this->setPaginatedCollectionBuilderImplClassName(FixturesConfig::PAGINATED_COLLECTION_BUILDER_IMPL);
     }
 }

@@ -40,5 +40,7 @@ abstract class DeleteEntityUseCaseSkeletonModel extends AbstractSkeletonModel
 
     public $transactionClassName;
 
+    public $useCaseClassName;
+
     public $useCaseRequestClassName;
 }

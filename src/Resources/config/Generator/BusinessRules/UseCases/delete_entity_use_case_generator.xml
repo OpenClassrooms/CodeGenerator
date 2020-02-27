@@ -13,6 +13,9 @@
             <call method="setTransactionClassName">
                 <argument type="string">%transaction_classname%</argument>
             </call>
+            <call method="setUseCaseClassName">
+                <argument type="string">%use_case_classname%</argument>
+            </call>
             <call method="setUseCaseRequestClassName">
                 <argument type="string">%use_case_request_classname%</argument>
             </call>

@@ -7,18 +7,21 @@ namespace OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\Impl;
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\DeleteEntityControllerSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\DeleteEntityControllerSkeletonModelAssembler;
+use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCaseClassNameTrait;
 use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 use OpenClassrooms\CodeGenerator\Utility\NameUtility;
 
 class DeleteEntityControllerSkeletonModelAssemblerImpl implements DeleteEntityControllerSkeletonModelAssembler
 {
     use AbstractControllerClassNameTrait;
+    use UseCaseClassNameTrait;
 
     public function create(
         FileObject $deleteEntityControllerFileObject,
         FileObject $deleteEntityFileObject,
         FileObject $deleteEntityRequestBuilderFileObject,
-        FileObject $entityNotFoundExceptionFileObject
+        FileObject $entityNotFoundExceptionFileObject,
+        string $route
     ): DeleteEntityControllerSkeletonModel {
         $skeletonModel = new DeleteEntityControllerSkeletonModelImpl();
         $skeletonModel->className = $deleteEntityControllerFileObject->getClassName();
@@ -42,6 +45,7 @@ class DeleteEntityControllerSkeletonModelAssemblerImpl implements DeleteEntityCo
         $skeletonModel->withEntityIdMethod = NameUtility::createChainedEntityIdMethodName(
             $deleteEntityFileObject->getEntity()
         );
+        $skeletonModel->route = $route;
 
         return $skeletonModel;
     }

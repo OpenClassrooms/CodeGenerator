@@ -5,12 +5,15 @@ declare(strict_types=1);
 namespace OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\UseCases\Impl;
 
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
+use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Responders\UseCaseResponseClassNameTrait;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\UseCases\GetEntitiesUseCaseTestSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\UseCases\GetEntitiesUseCaseTestSkeletonModelBuilder;
 use OpenClassrooms\CodeGenerator\Utility\StringUtility;
 
 class GetEntitiesUseCaseTestSkeletonModelBuilderImpl implements GetEntitiesUseCaseTestSkeletonModelBuilder
 {
+    use UseCaseResponseClassNameTrait;
+
     /**
      * @var GetEntitiesUseCaseTestSkeletonModel
      */
@@ -18,6 +21,8 @@ class GetEntitiesUseCaseTestSkeletonModelBuilderImpl implements GetEntitiesUseCa
 
     public function build(): GetEntitiesUseCaseTestSkeletonModel
     {
+        $this->skeletonModel->paginationClassName = $this->pagination;
+
         return $this->skeletonModel;
     }
 

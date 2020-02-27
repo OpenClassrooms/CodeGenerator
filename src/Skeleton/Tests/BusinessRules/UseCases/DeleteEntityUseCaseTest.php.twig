@@ -45,9 +45,9 @@ final class {{ skeletonModel.shortName }} extends TestCase
 
     protected function setUp(): void
     {
-        ${{ skeletonModel.entityStubsArgument }} = [{{ skeletonModel.entityStubShortName }}::ID => new {{ skeletonModel.entityStubShortName }}()];
+        ${{ skeletonModel.entityStubArgument }} = [{{ skeletonModel.entityStubShortName }}::ID => new {{ skeletonModel.entityStubShortName }}()];
         $this->request = $this->buildRequest();
-        $this->useCase = new {{ skeletonModel.deleteEntityUseCaseShortName }}(new {{ skeletonModel.inMemoryEntityGatewayShortName }}(${{ skeletonModel.entityStubsArgument }}));
+        $this->useCase = new {{ skeletonModel.deleteEntityUseCaseShortName }}(new {{ skeletonModel.inMemoryEntityGatewayShortName }}(${{ skeletonModel.entityStubArgument }}));
     }
 
     private function buildRequest(): {{ skeletonModel.deleteEntityUseCaseRequestShortName }}

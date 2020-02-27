@@ -33,7 +33,7 @@ class UseCaseListItemResponseAssemblerGeneratorTest extends TestCase
     /**
      * @test
      */
-    public function generate_ReturnFileObject(): void
+    public function generateReturnFileObject(): void
     {
         $actualFileObject = $this->useCaseListItemResponseAssemblerGenerator->generate($this->request);
 

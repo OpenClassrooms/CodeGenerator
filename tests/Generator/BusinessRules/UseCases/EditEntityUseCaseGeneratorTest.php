@@ -36,7 +36,7 @@ class EditEntityUseCaseGeneratorTest extends TestCase
     /**
      * @test
      */
-    final public function generate_ReturnFileObject(): void
+    final public function generateReturnFileObject(): void
     {
         $actualFileObject = $this->editEntityUseCaseGenerator->generate($this->request);
 

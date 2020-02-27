@@ -12,6 +12,7 @@ interface DeleteEntityControllerSkeletonModelAssembler
         FileObject $deleteEntityControllerFileObject,
         FileObject $deleteEntityFileObject,
         FileObject $deleteEntityRequestBuilderFileObject,
-        FileObject $entityNotFoundExceptionFileObject
+        FileObject $entityNotFoundExceptionFileObject,
+        string $route
     ): DeleteEntityControllerSkeletonModel;
 }

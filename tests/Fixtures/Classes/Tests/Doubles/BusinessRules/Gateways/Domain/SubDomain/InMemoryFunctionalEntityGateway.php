@@ -10,6 +10,7 @@ use OpenClassrooms\CodeGenerator\Tests\EntityUtil;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Entities\Domain\SubDomain\FunctionalEntity;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gateways\Domain\SubDomain\Exceptions\FunctionalEntityNotFoundException;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gateways\Domain\SubDomain\FunctionalEntityGateway;
+use OpenClassrooms\UseCase\Application\Entity\PaginatedCollectionBuilderImpl;
 
 class InMemoryFunctionalEntityGateway implements FunctionalEntityGateway
 {
@@ -38,7 +39,12 @@ class InMemoryFunctionalEntityGateway implements FunctionalEntityGateway
      */
     public function findAll(array $filters = [], array $sorts = [], array $pagination = []): iterable
     {
-        return self::$functionalEntities;
+        $paginatedCollectionBuilder = new PaginatedCollectionBuilderImpl();
+
+        return $paginatedCollectionBuilder->create()
+            ->withItems(self::$functionalEntities)
+            ->withTotalItems(count(self::$functionalEntities))
+            ->build();
     }
 
     public function findById(int $functionalEntityId): FunctionalEntity

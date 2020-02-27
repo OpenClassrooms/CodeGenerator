@@ -11,6 +11,11 @@ use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Requestors
 
 class GetFunctionalEntitiesRequestBuilderImpl implements GetFunctionalEntitiesRequestBuilder
 {
+    public function build(): GetFunctionalEntitiesRequest
+    {
+        return $this->request;
+    }
+
     /**
      * @var GetFunctionalEntitiesRequestDTO
      */
@@ -55,10 +60,5 @@ class GetFunctionalEntitiesRequestBuilderImpl implements GetFunctionalEntitiesRe
         $this->request->sorts = $sort;
 
         return $this;
-    }
-
-    public function build(): GetFunctionalEntitiesRequest
-    {
-        return $this->request;
     }
 }

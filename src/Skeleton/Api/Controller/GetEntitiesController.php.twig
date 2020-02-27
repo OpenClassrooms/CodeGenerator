@@ -7,11 +7,12 @@ use {{ skeletonModel.collectionInformationClassName }};
 use {{ skeletonModel.entityViewModelListItemClassName }};
 use {{ skeletonModel.entityViewModelListItemAssemblerClassName }};
 use {{ skeletonModel.getEntitiesUseCaseRequestBuilderClassName }};
-use {{ skeletonModel.entityUseCaseResponseClassName }};
 use {{ skeletonModel.paginatedUseCaseResponseClassName }};
 use {{ skeletonModel.getEntitiesUseCaseClassName }};
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Routing\Annotation\Route;
 
 class {{ skeletonModel.shortName }} extends {{ skeletonModel.abstractControllerShortName }}
 {
@@ -34,10 +35,12 @@ class {{ skeletonModel.shortName }} extends {{ skeletonModel.abstractControllerS
     }
 
     /**
+     * @Route({{ skeletonModel.route }})
+     *
      * @Security("")
      * @ParamConverter("collectionInformation")
      */
-    public function getAction({{ skeletonModel.collectionInformationShortName }} $collectionInformation, int $userId): JsonResponse
+    public function getAction({{ skeletonModel.collectionInformationShortName }} $collectionInformation): JsonResponse
     {
         ${{ skeletonModel.entitiesArgument }} = $this->{{ skeletonModel.getEntitiesMethod }}($collectionInformation);
         $vm = $this->buildViewModel(${{ skeletonModel.entitiesArgument }});
@@ -45,7 +48,7 @@ class {{ skeletonModel.shortName }} extends {{ skeletonModel.abstractControllerS
         return $this->createJsonResponse($vm);
     }
 
-    private function {{ skeletonModel.getEntitiesMethod }}({{ skeletonModel.collectionInformationShortName }} $collectionInformation): {{ skeletonModel.entityUseCaseResponseShortName }}
+    private function {{ skeletonModel.getEntitiesMethod }}({{ skeletonModel.collectionInformationShortName }} $collectionInformation): {{ skeletonModel.paginatedUseCaseResponseShortName }}
     {
         return $this->get({{ skeletonModel.getEntitiesUseCaseShortName}}::class)->execute(
             $this->{{ skeletonModel.getEntitiesUseCaseRequestBuilderArgument }}

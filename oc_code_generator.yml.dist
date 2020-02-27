@@ -12,6 +12,7 @@ parameters:
     use_case_classname: 'OpenClassrooms\UseCase\BusinessRules\Requestors\UseCase'
     use_case_request_classname: 'OpenClassrooms\UseCase\BusinessRules\Requestors\UseCaseRequest'
 
+    paginated_collection_builder_impl: 'OpenClassrooms\UseCase\Application\Entity\PaginatedCollectionBuilderImpl'
     paginated_collection_classname: 'OC\BusinessRules\Entities\PaginatedCollection'
     paginated_use_case_response_classname: 'OC\BusinessRules\Responders\PaginatedUseCaseResponse'
     paginated_use_case_response_builder_classname: 'OC\BusinessRules\Responders\PaginatedUseCaseResponseBuilder'

@@ -31,7 +31,7 @@ class {{ skeletonModel.entity }}GeneratorTest extends TestCase
     /**
      * @test
      */
-    final public function generate_ReturnFileObject(): void
+    final public function generateReturnFileObject(): void
     {
         $actualFileObject = $this->{{ skeletonModel.argument }}Generator->generate($this->request);
 

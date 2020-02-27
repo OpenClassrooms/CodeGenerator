@@ -16,6 +16,7 @@ use OpenClassrooms\CodeGenerator\Entities\Type\ViewModelFileObjectType;
 use OpenClassrooms\CodeGenerator\Generator\AbstractGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Api\Controller\Request\PatchEntityControllerGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
+use OpenClassrooms\CodeGenerator\Mediators\ClassType;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\PatchEntityControllerSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\PatchEntityControllerSkeletonModelBuilder;
 use OpenClassrooms\CodeGenerator\Utility\ModelFieldUtility;
@@ -62,6 +63,7 @@ class PatchEntityControllerGenerator extends AbstractGenerator
         $patchEntityModelFileObject = $this->createPatchEntityModelFileObject();
         $patchEntityModelFileObject->setFields(ModelFieldUtility::generateModelFieldObjects($entityClassName));
         $entityFileObject = $this->createEntityFileObject();
+        $route = $this->createRoute();
 
         $patchEntityControllerFileObject->setContent(
             $this->generateContent(
@@ -76,7 +78,8 @@ class PatchEntityControllerGenerator extends AbstractGenerator
                     ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_ASSEMBLER                          => $entityViewModelDetailAssemblerFileObject,
                     ModelFileObjectType::API_MODEL_PATCH_ENTITY                                       => $patchEntityModelFileObject,
                     EntityFileObjectType::BUSINESS_RULES_ENTITY                                       => $entityFileObject,
-                ]
+                ],
+                $route
             )
         );
 
@@ -173,12 +176,17 @@ class PatchEntityControllerGenerator extends AbstractGenerator
         );
     }
 
+    private function createRoute(): string
+    {
+        return $this->routingFactoryService->create($this->domain, $this->entity, ClassType::PATCH);
+    }
+
     /**
      * @param FileObject[] $fileObjects
      */
-    private function generateContent(array $fileObjects): string
+    private function generateContent(array $fileObjects, string $route): string
     {
-        $skeletonModel = $this->createSkeletonModel($fileObjects);
+        $skeletonModel = $this->createSkeletonModel($fileObjects, $route);
 
         return $this->render($skeletonModel->getTemplatePath(), ['skeletonModel' => $skeletonModel]);
     }
@@ -186,7 +194,7 @@ class PatchEntityControllerGenerator extends AbstractGenerator
     /**
      * @param FileObject[] $fileObjects
      */
-    private function createSkeletonModel(array $fileObjects): PatchEntityControllerSkeletonModel
+    private function createSkeletonModel(array $fileObjects, string $route): PatchEntityControllerSkeletonModel
     {
         return $this->patchEntityControllerSkeletonModelBuilder
             ->create()
@@ -210,6 +218,7 @@ class PatchEntityControllerGenerator extends AbstractGenerator
             )
             ->withPatchEntityModelFileObject($fileObjects[ModelFileObjectType::API_MODEL_PATCH_ENTITY])
             ->withEntityFileObject($fileObjects[EntityFileObjectType::BUSINESS_RULES_ENTITY])
+            ->withRoute($route)
             ->build();
     }
 

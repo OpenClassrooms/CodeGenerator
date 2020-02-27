@@ -16,6 +16,7 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\UseCaseRequestFileObject
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\UseCaseResponseFileObjectFactoryMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\ViewModelFileObjectFactoryMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\RoutingServiceFactoryMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingServiceMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\SkeletonModels\Api\Controller\GetEntitiesControllerSkeletonModelBuilderMock;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Entities\Domain\SubDomain\FunctionalEntity;
@@ -38,7 +39,7 @@ class GetEntitiesControllerGeneratorTest extends TestCase
     /**
      * @test
      */
-    final public function generate_ReturnFileObject(): void
+    final public function generateReturnFileObject(): void
     {
         $actualFileObject = $this->getEntitiesControllerGenerator->generate($this->request);
 
@@ -66,6 +67,7 @@ class GetEntitiesControllerGeneratorTest extends TestCase
             new GetEntitiesControllerSkeletonModelBuilderMock()
         );
         $this->getEntitiesControllerGenerator->setTemplating(new TemplatingServiceMock());
+        $this->getEntitiesControllerGenerator->setRoutingFactoryService(new RoutingServiceFactoryMock());
         $this->getEntitiesControllerGenerator->setUseCaseFileObjectFactory(new UseCaseFileObjectFactoryMock());
         $this->getEntitiesControllerGenerator->setUseCaseRequestFileObjectFactory(
             new UseCaseRequestFileObjectFactoryMock()

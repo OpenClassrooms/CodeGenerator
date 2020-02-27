@@ -11,6 +11,7 @@ parameters:
     security_classname: 'OpenClassrooms\UseCase\Application\Annotations\Security'
     transaction_classname: 'OpenClassrooms\UseCase\Application\Annotations\Transaction'
 
+    paginated_collection_builder_impl: 'OpenClassrooms\UseCase\Application\Entity\PaginatedCollectionBuilderImpl'
     paginated_collection_classname: 'OpenClassrooms\UseCase\BusinessRules\Entities\PaginatedCollection'
     use_case_classname: 'OpenClassrooms\UseCase\BusinessRules\Requestors\UseCase'
     use_case_request_classname: 'OpenClassrooms\UseCase\BusinessRules\Requestors\UseCaseRequest'

@@ -33,7 +33,7 @@ class PatchEntityModelGeneratorTest extends TestCase
     /**
      * @test
      */
-    final public function generate_ReturnFileObject(): void
+    final public function generateReturnFileObject(): void
     {
         $actualFileObject = $this->patchEntityModelGenerator->generate($this->request);
 

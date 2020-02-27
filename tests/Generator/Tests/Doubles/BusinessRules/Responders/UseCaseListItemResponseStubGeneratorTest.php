@@ -11,6 +11,7 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\Responders\I
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\EntityFileObjectFactoryMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\FileObjectTestCase;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\BusinessRules\Responders\UseCaseListItemResponseStub\UseCaseListItemResponseStubFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\BusinessRules\Responders\UseCaseListItemResponseStub\UseCaseListItemResponseStubFileObjectStub2;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\UseCaseResponseFileObjectFactoryMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\ViewModelFileObjectFactoryMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
@@ -37,7 +38,7 @@ class UseCaseListItemResponseStubGeneratorTest extends TestCase
     /**
      * @test
      */
-    public function generate_ReturnFileObject(): void
+    public function generateFromSelectedFieldReturnFileObject(): void
     {
         $actualFileObject = $this->useCaseListItemResponseStubGenerator->generate($this->request);
 
@@ -46,6 +47,25 @@ class UseCaseListItemResponseStubGeneratorTest extends TestCase
             $actualFileObject->getPath()
         );
         $this->assertFileObject(new UseCaseListItemResponseStubFileObjectStub1(), $actualFileObject);
+    }
+
+    /**
+     * @test
+     */
+    public function generateWithEmptyFieldReturnFileObject(): void
+    {
+        $useCaseListItemResponseStubGeneratorRequestBuilder = new UseCaseListItemResponseStubGeneratorRequestBuilderImpl();
+        $request = $useCaseListItemResponseStubGeneratorRequestBuilder->create()
+            ->withClassName(FunctionalEntityResponse::class)
+            ->withFields([])
+            ->build();
+
+        $actualFileObject = $this->useCaseListItemResponseStubGenerator->generate($request);
+
+        $this->assertSame(
+            InMemoryFileObjectGateway::$fileObjects[$actualFileObject->getId()]->getPath(),
+            $actualFileObject->getPath()
+        );
     }
 
     protected function setUp(): void

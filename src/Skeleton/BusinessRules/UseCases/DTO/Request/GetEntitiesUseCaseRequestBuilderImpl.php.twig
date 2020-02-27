@@ -7,6 +7,11 @@ use {{ skeletonModel.getEntitiesUseCaseRequestBuilderClassName }};
 
 class {{ skeletonModel.shortName }} implements {{ skeletonModel.getEntitiesUseCaseRequestBuilderShortName }}
 {
+    public function build(): {{ skeletonModel.getEntitiesUseCaseRequestShortName }}
+    {
+        return $this->request;
+    }
+
     /**
      * @var {{ skeletonModel.getEntitiesUseCaseRequestDTOShortName }}
      */
@@ -51,10 +56,5 @@ class {{ skeletonModel.shortName }} implements {{ skeletonModel.getEntitiesUseCa
         $this->request->sorts = $sort;
 
         return $this;
-    }
-
-    public function build(): {{ skeletonModel.getEntitiesUseCaseRequestShortName }}
-    {
-        return $this->request;
     }
 }

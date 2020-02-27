@@ -52,6 +52,8 @@ abstract class PatchEntityControllerSkeletonModel extends AbstractSkeletonModel
 
     public $patchEntityModelShortName;
 
+    public $route;
+
     public $updateEntityMethod;
 
     public $withEntityIdMethod;

@@ -33,7 +33,7 @@ class GenericUseCaseGeneratorTest extends TestCase
     /**
      * @test
      */
-    public function generate_ReturnFileObject(): void
+    public function generateReturnFileObject(): void
     {
         $actualFileObject = $this->genericUseCaseGenerator->generate($this->request);
 

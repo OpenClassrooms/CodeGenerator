@@ -49,9 +49,9 @@ final class DeleteFunctionalEntityTest extends TestCase
 
     protected function setUp(): void
     {
-        $functionalEntityStubs = [FunctionalEntityStub1::ID => new FunctionalEntityStub1()];
+        $functionalEntityStub = [FunctionalEntityStub1::ID => new FunctionalEntityStub1()];
         $this->request = $this->buildRequest();
-        $this->useCase = new DeleteFunctionalEntity(new InMemoryFunctionalEntityGateway($functionalEntityStubs));
+        $this->useCase = new DeleteFunctionalEntity(new InMemoryFunctionalEntityGateway($functionalEntityStub));
     }
 
     private function buildRequest(): DeleteFunctionalEntityRequest

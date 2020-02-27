@@ -30,7 +30,7 @@ abstract class DeleteEntityUseCaseTestSkeletonModel extends AbstractSkeletonMode
 
     public $entityStubClassName;
 
-    public $entityStubsArgument;
+    public $entityStubArgument;
 
     public $entityStubShortName;
 

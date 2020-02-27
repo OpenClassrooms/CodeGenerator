@@ -33,7 +33,7 @@ class CreateEntityUseCaseRequestBuilderImplGeneratorTest extends TestCase
     /**
      * @test
      */
-    final public function generate_ReturnFileObject(): void
+    final public function generateReturnFileObject(): void
     {
         $actualFileObject = $this->createEntityUseCaseRequestBuilderImplGenerator->generate($this->request);
 

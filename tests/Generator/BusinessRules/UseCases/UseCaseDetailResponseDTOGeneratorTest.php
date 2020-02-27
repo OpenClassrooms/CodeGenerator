@@ -33,7 +33,7 @@ class UseCaseDetailResponseDTOGeneratorTest extends TestCase
     /**
      * @test
      */
-    public function generate_ReturnFileObject(): void
+    public function generateReturnFileObject(): void
     {
         $actualFileObject = $this->useCaseDetailResponseDTOGenerator->generate($this->request);
 

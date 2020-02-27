@@ -15,6 +15,7 @@ use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\D
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
 
 class PutFunctionalEntityController extends AbstractApiController
 {
@@ -29,6 +30,8 @@ class PutFunctionalEntityController extends AbstractApiController
     }
 
     /**
+     * @Route("/functional-entities/{functionalEntityId}", name="oc_api_sub_domain_functional_entity_put", methods={"PUT"}, requirements={"functionalEntityId"="^\d{1,9}$"})
+     *
      * @Security("")
      */
     public function putAction(int $functionalEntityId): JsonResponse

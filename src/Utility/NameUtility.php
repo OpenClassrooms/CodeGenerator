@@ -51,9 +51,9 @@ class NameUtility
         return 'create' . $shortClassName;
     }
 
-    public static function createEntityStubsName(string $shortClassName): string
+    public static function createEntityStubName(string $shortClassName): string
     {
-        return lcfirst($shortClassName) . 'Stubs';
+        return lcfirst($shortClassName) . 'Stub';
     }
 
     public static function createPatchEntityModelConstantName(\ReflectionProperty $field): string

@@ -2,6 +2,7 @@
 
 namespace {{ skeletonModel.namespace }};
 
+use {{ skeletonModel.paginationClassName }};
 use {{ skeletonModel.getEntitiesUseCaseRequestClassName }};
 use {{ skeletonModel.getEntitiesUseCaseRequestBuilderImplClassName }};
 use {{ skeletonModel.getEntitiesUseCaseRequestDTOClassName }};
@@ -84,7 +85,7 @@ class {{skeletonModel.shortName }} extends TestCase
         return $builder
             ->create()
             ->withFilters([])
-            ->withItemsPerPage()
+            ->withItemsPerPage(Pagination::ITEMS_PER_PAGE_DEFAULT)
             ->withPage()
             ->withSort([])
             ->build();

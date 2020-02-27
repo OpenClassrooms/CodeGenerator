@@ -33,7 +33,7 @@ class GetEntitiesUseCaseRequestDTOGeneratorTest extends TestCase
     /**
      * @test
      */
-    public function generate_ReturnFileObject(): void
+    public function generateReturnFileObject(): void
     {
         $actualFileObject = $this->getEntitiesUseCaseRequestDTOGenerator->generate($this->request);
 

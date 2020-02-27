@@ -18,10 +18,6 @@ abstract class GetEntitiesControllerSkeletonModel extends AbstractSkeletonModel
 
     public $entitiesArgument;
 
-    public $entityUseCaseResponseShortName;
-
-    public $entityUseCaseResponseClassName;
-
     public $entityViewModelListItemAssemblerArgument;
 
     public $entityViewModelListItemAssemblerClassName;
@@ -47,6 +43,8 @@ abstract class GetEntitiesControllerSkeletonModel extends AbstractSkeletonModel
     public $paginatedUseCaseResponseClassName;
 
     public $paginatedUseCaseResponseShortName;
+
+    public $route;
 
     public $templatePath = 'Api/Controller/GetEntitiesController.php.twig';
 }

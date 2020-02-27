@@ -36,7 +36,7 @@ class ViewModelListItemStubGeneratorTest extends TestCase
     /**
      * @test
      */
-    public function generate_ReturnFileObject(): void
+    public function generateReturnFileObject(): void
     {
         $actualFileObject = $this->viewModelStub1Generator->generate($this->request);
 

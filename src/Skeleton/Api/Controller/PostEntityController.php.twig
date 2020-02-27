@@ -14,6 +14,7 @@ use {{ skeletonModel.entityUseCaseDetailResponseClassName }};
 use {{ skeletonModel.createEntityUseCaseClassName }};
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Routing\Annotation\Route;
 
 class {{ skeletonModel.shortName }} extends {{ skeletonModel.abstractControllerShortName }}
 {
@@ -36,6 +37,8 @@ class {{ skeletonModel.shortName }} extends {{ skeletonModel.abstractControllerS
     }
 
     /**
+     * @Route({{ skeletonModel.route }})
+     *
      * @Security("")
      */
     public function postAction(): JsonResponse

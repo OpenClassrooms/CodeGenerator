@@ -33,7 +33,7 @@ class EntityUseCaseCommonRequestTraitGeneratorTest extends TestCase
     /**
      * @test
      */
-    final public function generate_ReturnFileObject(): void
+    final public function generateReturnFileObject(): void
     {
         $actualFileObject = $this->entityUseCaseCommonRequestGenerator->generate($this->request);
 

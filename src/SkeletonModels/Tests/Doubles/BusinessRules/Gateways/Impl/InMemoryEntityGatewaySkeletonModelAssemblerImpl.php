@@ -7,12 +7,21 @@ namespace OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\BusinessRule
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\BusinessRules\Gateways\InMemoryEntityGatewaySkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\BusinessRules\Gateways\InMemoryEntityGatewaySkeletonModelAssembler;
+use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 use OpenClassrooms\CodeGenerator\Utility\NameUtility;
 use OpenClassrooms\CodeGenerator\Utility\StringUtility;
 
 class InMemoryEntityGatewaySkeletonModelAssemblerImpl implements InMemoryEntityGatewaySkeletonModelAssembler
 {
+    /**
+     * @var string
+     */
     private $entityUtilClassName;
+
+    /**
+     * @var string
+     */
+    private $paginatedCollectionBuilderImplClassName;
 
     public function create(
         FileObject $entityFileObject,
@@ -33,13 +42,22 @@ class InMemoryEntityGatewaySkeletonModelAssemblerImpl implements InMemoryEntityG
         $skeletonModel->entityNotFoundExceptionClassName = $entityNotFoundExceptionFileObject->getClassName();
         $skeletonModel->entityNotFoundExceptionShortName = $entityNotFoundExceptionFileObject->getShortName();
         $skeletonModel->entityUtilClassName = $this->entityUtilClassName;
+        $skeletonModel->paginatedCollectionBuilderImplClassName = $this->paginatedCollectionBuilderImplClassName;
+        $skeletonModel->paginatedCollectionBuilderImplShortName = FileObjectUtility::getShortClassName(
+            $this->paginatedCollectionBuilderImplClassName
+        );
         $skeletonModel->pluralEntityShortName = lcfirst(StringUtility::pluralize($entityFileObject->getShortName()));
 
         return $skeletonModel;
     }
 
-    public function setEntityUtilClassName($entityUtilClassName): void
+    public function setEntityUtilClassName(string $entityUtilClassName): void
     {
         $this->entityUtilClassName = $entityUtilClassName;
+    }
+
+    public function setPaginatedCollectionBuilderImplClassName(string $paginatedCollectionBuilderImplClassName): void
+    {
+        $this->paginatedCollectionBuilderImplClassName = $paginatedCollectionBuilderImplClassName;
     }
 }
