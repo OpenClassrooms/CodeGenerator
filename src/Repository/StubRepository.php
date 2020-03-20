@@ -22,7 +22,7 @@ class StubRepository implements StubGateway
 
     public function insertAndIncrementSuffix(FileObject $fileObject)
     {
-        StubSuffixUtility::incrementSuffix($fileObject, self::$fileObjects);
+        StubSuffixUtility::incrementClassNameSuffix($fileObject, self::$fileObjects);
         self::$fileObjects[$fileObject->getId()] = $fileObject;
     }
 }
