@@ -121,7 +121,7 @@ abstract class AbstractGenerator implements Generator
 
     protected function insertFileObject(FileObject $fileObject): void
     {
-        $fileObject = StubSuffixUtility::incrementSuffix($fileObject, $this->fileObjectGateway->findAll());
+        $fileObject = StubSuffixUtility::incrementClassNameSuffix($fileObject, $this->fileObjectGateway->findAll());
 
         $this->fileObjectGateway->insert($fileObject);
     }

@@ -93,6 +93,7 @@ class FileObjectUtility
             'RequestDTO',
             'Request',
             'Stub1',
+            'Stub2',
             'TestCase',
             'Test',
             'ViewModel',

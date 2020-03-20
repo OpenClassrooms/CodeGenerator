@@ -15,9 +15,12 @@ class ConstUtility
     public static function generateConstsFromStubFileObject(FileObject $fileObject, string $type = null): array
     {
         $constObjects = [];
+        $stubIndex = StubSuffixUtility::getStubIndex($fileObject);
         foreach ($fileObject->getFields() as $field) {
             $constObject = new ConstObject($field->getName());
-            $constObject->setValue($fileObject->getEntity() . $type . 'Stub1::' . $constObject->getName());
+            $constObject->setValue(
+                $fileObject->getEntity() . $type . $stubIndex . '::' . $constObject->getName()
+            );
             $constObjects[] = $constObject;
         }
 

@@ -77,7 +77,7 @@ class EntityStubGenerator extends AbstractGenerator
             $this->baseNamespace
         );
 
-        $fileObject = StubSuffixUtility::incrementSuffix($fileObject, $this->fileObjectGateway->findAll());
+        $fileObject = StubSuffixUtility::incrementClassNameSuffix($fileObject, $this->fileObjectGateway->findAll());
 
         return $fileObject;
     }
