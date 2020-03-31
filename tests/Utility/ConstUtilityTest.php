@@ -16,7 +16,7 @@ class ConstUtilityTest extends TestCase
      */
     public function generateConstsFromStubFileObject_ReturnConstObjects(): void
     {
-        $stubReference = new FileObject(self::class);
+        $stubReference = new FileObject(self::class.'Stub1');
 
         $constsReference = [
             new FieldObject('field1'),

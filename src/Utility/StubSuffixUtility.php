@@ -8,18 +8,26 @@ use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 
 class StubSuffixUtility
 {
+    private const STUB_PATTERN = '/\d+$/';
+
     /**
      * @param FileObject[] $fileObjects
      */
-    public static function incrementSuffix(FileObject $fileObject, array $fileObjects): FileObject
+    public static function incrementClassNameSuffix(FileObject $fileObject, array $fileObjects): FileObject
     {
-        $pattern = '/\d+$/';
         $suffix = 1;
-        while (isset($fileObjects[$fileObject->getId()]) && preg_match($pattern, $fileObject->getId())) {
+        while (isset($fileObjects[$fileObject->getId()]) && preg_match(self::STUB_PATTERN, $fileObject->getId())) {
             $suffix++;
-            $fileObject->setClassName(preg_replace($pattern, $suffix, $fileObject->getId()));
+            $fileObject->setClassName(preg_replace(self::STUB_PATTERN, $suffix, $fileObject->getId()));
         }
 
         return $fileObject;
+    }
+
+    public static function getStubIndex(FileObject $fileObject): string
+    {
+        preg_match('/(?<stub>Stub(\d+))/', $fileObject->getShortName(), $matches);
+
+        return $matches['stub'];
     }
 }
