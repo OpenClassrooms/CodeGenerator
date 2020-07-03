@@ -28,7 +28,6 @@ jobs:
                   restore-keys: ${{ runner.os }}-composer-
             - name: Prepare
               run: |
-                  composer config github-oauth.github.com ${{ secrets.REPO_TOKEN }}
                   composer install --no-scripts --no-interaction
             - name: Run tests
               run: |
