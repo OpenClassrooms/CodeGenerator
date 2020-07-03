@@ -31,7 +31,7 @@ jobs:
                   composer install --no-scripts --no-interaction
             - name: Run tests
               run: |
-                  vendor/bin/phpunit --configuration phpunit.xml.dist --coverage-clover build/logs/clover.xml -d memory_limit=2G
+                  vendor/bin/phpunit --configuration phpunit.xml.dist -d memory_limit=2G
             - name: Clean
               run: |
                   bash <(curl -s https://codecov.io/bash)
