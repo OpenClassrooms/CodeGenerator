@@ -6,7 +6,7 @@ namespace OpenClassrooms\CodeGenerator\Commands;
 
 final class ConstructionPatternType
 {
-    const ASSEMBLER_PATTERN = 'assembler';
+    public const ASSEMBLER_PATTERN = 'assembler';
 
-    const BUILDER_PATTERN   = 'builder';
+    public const BUILDER_PATTERN   = 'builder';
 }

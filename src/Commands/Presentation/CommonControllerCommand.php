@@ -36,7 +36,7 @@ class CommonControllerCommand extends AbstractCommand
         $this->container->compile();
     }
 
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->setName(self::$defaultName)

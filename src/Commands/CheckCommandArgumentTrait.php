@@ -12,6 +12,9 @@ use Symfony\Component\Console\Question\Question;
 
 trait CheckCommandArgumentTrait
 {
+    /**
+     * @throws \ErrorException
+     */
     protected function checkConfiguration(array $codeGeneratorConfig): void
     {
         $emptyParameters = [];
@@ -24,7 +27,9 @@ trait CheckCommandArgumentTrait
             throw new \ErrorException(
                 'The parameter ' . array_shift($emptyParameters) . ' are empty in oc_code_generator.yml'
             );
-        } elseif (!empty($emptyParameters)) {
+        }
+
+        if (!empty($emptyParameters)) {
             throw new \ErrorException(
                 'The parameters ' . implode(', ', $emptyParameters) . ' are empty in oc_code_generator.yml'
             );
