@@ -1,5 +1,5 @@
 # CodeGenerator
-[![Build Status](https://travis-ci.org/OpenClassrooms/CodeGenerator.svg?branch=master)](https://travis-ci.org/OpenClassrooms/CodeGenerator)
+[![Build Status](https://github.com/OpenClassrooms/CodeGenerator/workflows/CodeGenerator/badge.svg)](https://github.com/OpenClassrooms/CodeGenerator/)
 [![SensioLabsInsight](https://insight.symfony.com/projects/e91d65d8-55e2-4b66-8649-1bfaf79b67d8/mini.svg)](https://insight.symfony.com/account/widget?project=e91d65d8-55e2-4b66-8649-1bfaf79b67d8)
 [![codecov](https://codecov.io/gh/OpenClassrooms/CodeGenerator/branch/master/graph/badge.svg)](https://codecov.io/gh/OpenClassrooms/CodeGenerator)
 
