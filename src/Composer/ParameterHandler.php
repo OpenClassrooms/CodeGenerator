@@ -9,18 +9,18 @@ use Incenteev\ParameterHandler\Processor;
 
 class ParameterHandler
 {
-    const CODE_GENERATOR             = 'openclassrooms/code-generator';
+    public const CODE_GENERATOR             = 'openclassrooms/code-generator';
 
-    const OC_CODE_GENERATOR_YML      = 'oc_code_generator.yml';
+    public const OC_CODE_GENERATOR_YML      = 'oc_code_generator.yml';
 
-    const OC_CODE_GENERATOR_YML_DIST = 'vendor/openclassrooms/code-generator/oc_code_generator.yml.dist';
+    public const OC_CODE_GENERATOR_YML_DIST = 'vendor/openclassrooms/code-generator/oc_code_generator.yml.dist';
 
     /**
      * @var Processor
      */
     protected static $processor;
 
-    public static function createGeneratorFileParameters(Event $event)
+    public static function createGeneratorFileParameters(Event $event): void
     {
         static::initProcessor($event);
         if (self::CODE_GENERATOR !== $event->getComposer()->getPackage()->getName()) {
@@ -28,7 +28,7 @@ class ParameterHandler
         }
     }
 
-    private static function initProcessor(Event $event)
+    private static function initProcessor(Event $event): void
     {
         static::$processor = static::$processor ?? new Processor($event->getIO());
     }

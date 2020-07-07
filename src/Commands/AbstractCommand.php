@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace OpenClassrooms\CodeGenerator\Commands;
 
+use OpenClassrooms\CodeGenerator\Commands\Exceptions\ConfigurationFileException;
 use OpenClassrooms\CodeGenerator\Mediators\Options;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Console\Command\Command;
@@ -17,22 +18,22 @@ class AbstractCommand extends Command
     use CheckCommandArgumentTrait;
     use CommandDisplayTrait;
 
-    const CONFIG_DIR            = __DIR__ . '/../Resources/config';
+    public const CONFIG_DIR            = __DIR__ . '/../Resources/config';
 
-    const CONFIG_FILE           = self::ROOT_DIR . 'oc_code_generator.yml';
+    public const CONFIG_FILE           = self::ROOT_DIR . 'oc_code_generator.yml';
 
-    const CONFIG_FILE_GENERATOR = self::ROOT_DIR_GENERATOR . 'oc_code_generator.yml';
+    public const CONFIG_FILE_GENERATOR = self::ROOT_DIR_GENERATOR . 'oc_code_generator.yml';
 
-    const ROOT_DIR              = __DIR__ . '/../../../../../';
+    public const ROOT_DIR              = __DIR__ . '/../../../../../';
 
-    const ROOT_DIR_GENERATOR    = __DIR__ . '/../../';
+    public const ROOT_DIR_GENERATOR    = __DIR__ . '/../../';
 
     /**
      * @var ContainerBuilder
      */
     protected $container;
 
-    protected function configureOptions()
+    protected function configureOptions(): void
     {
         $this->addOption(
             Options::NO_TEST,
@@ -54,21 +55,29 @@ class AbstractCommand extends Command
             );
     }
 
-    protected function loadConfigParameters()
+    /**
+     * @throws ConfigurationFileException
+     */
+    protected function loadConfigParameters(): void
     {
-        if (empty($config)) {
-            if (\is_file(static::CONFIG_FILE)) {
-                $this->loadConfigFile(static::ROOT_DIR, static::CONFIG_FILE);
-            } else {
-                $this->loadConfigFile(static::ROOT_DIR_GENERATOR, static::CONFIG_FILE_GENERATOR);
-            }
+        if (\is_file(static::CONFIG_FILE)) {
+            $this->loadConfigFile(static::ROOT_DIR, static::CONFIG_FILE);
+        } else {
+            $this->loadConfigFile(static::ROOT_DIR_GENERATOR, static::CONFIG_FILE_GENERATOR);
         }
     }
 
+    /**
+     * @throws ConfigurationFileException
+     */
     private function loadConfigFile(string $rootDir, string $configFile): void
     {
         $loader = new YamlFileLoader($this->container, new FileLocator($rootDir));
-        $loader->load($configFile);
+        try {
+            $loader->load($configFile);
+        } catch (\Exception $e) {
+            throw new ConfigurationFileException('Problem loading file: ' . $configFile . ' in ' . $rootDir);
+        }
     }
 
     protected function parseConfigFile(): array
@@ -76,7 +85,7 @@ class AbstractCommand extends Command
         return Yaml::parseFile($this->getConfigFile());
     }
 
-    private function getConfigFile()
+    private function getConfigFile(): string
     {
         if (\is_file(static::CONFIG_FILE)) {
             return static::CONFIG_FILE;

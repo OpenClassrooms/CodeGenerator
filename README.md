@@ -1,20 +1,20 @@
 # CodeGenerator
-[![Build Status](https://travis-ci.org/OpenClassrooms/CodeGenerator.svg?branch=master)](https://travis-ci.org/OpenClassrooms/CodeGenerator)
+[![Build Status](https://github.com/OpenClassrooms/CodeGenerator/workflows/CodeGenerator/badge.svg)](https://github.com/OpenClassrooms/CodeGenerator/)
 [![SensioLabsInsight](https://insight.symfony.com/projects/e91d65d8-55e2-4b66-8649-1bfaf79b67d8/mini.svg)](https://insight.symfony.com/account/widget?project=e91d65d8-55e2-4b66-8649-1bfaf79b67d8)
 [![codecov](https://codecov.io/gh/OpenClassrooms/CodeGenerator/branch/master/graph/badge.svg)](https://codecov.io/gh/OpenClassrooms/CodeGenerator)
 
 
-CodeGenerator is a library who generates classes in Clean Architecture context. 
+CodeGenerator is a library which generates classes in a Clean Architecture context. 
 
 From any use case response, developers have the possibility to generate: 
-- generic use case architecture
+- Generic use case architecture
 - Entity use case Get architecture
 - Entities use case Get architecture
 - Create Entity use case architecture
 - Delete Entity use case architecture
 - ViewModel architecture
 - Controller and models classes
-- Unit tests for each classed generated
+- Unit tests for each classes generated
 
 ## Installation
 The easiest way to install CodeGenerator is via [composer](http://getcomposer.org/).
@@ -32,43 +32,54 @@ or
     }
 }
 ```
-Add script in `composer.json` to create `oc_code_generator.yml` configuration used by the generator.
+Setup post-install and post-update hooks in your `composer.json`'s script section,
+for the `oc_code_generator.yml` configuration used by the generator to be generated.
+
 ```json
+{
   "scripts": {
     "post-install-cmd": [
-      "OpenClassrooms\\CodeGenerator\\Scripts\\ParameterHandler::createGeneratorFileParameters"
+      "OpenClassrooms\\CodeGenerator\\Composer\\ParameterHandler::createGeneratorFileParameters"
+
     ],
     "post-update-cmd": [
-      "OpenClassrooms\\CodeGenerator\\Scripts\\ParameterHandler::createGeneratorFileParameters"
+      "OpenClassrooms\\CodeGenerator\\Composer\\ParameterHandler::createGeneratorFileParameters"
     ]
-  },
+  }
+}
 ```
-The script create file `oc_code_generator.yml` at the root of the project. The script will ask you interactively for parameters which are missing in the parameters file, using the value of the dist file as default value.
-``` yaml
+The script creates a file named `oc_code_generator.yml` at the root of the project. The script will ask you interactively for parameters 
+which are missing in the parameters file, using the value of the dist file as default value, as follows:
+
+```yaml
 parameters:
     api_dir: 'ApiBundle\'
     app_dir: 'AppBundle\'
     base_namespace: 'OC\'
     stub_namespace: 'Doubles\OC\'
     tests_base_namespace: 'OC\'
-
+    
     entity_util_classname: 'OC\Util\EntityUtil'
-
+    
     security_classname: 'OpenClassrooms\UseCase\Application\Annotations\Security'
     transaction_classname: 'OpenClassrooms\UseCase\Application\Annotations\Transaction'
     use_case_classname: 'OpenClassrooms\UseCase\BusinessRules\Requestors\UseCase'
     use_case_request_classname: 'OpenClassrooms\UseCase\BusinessRules\Requestors\UseCaseRequest'
-
+    
+    paginated_collection_builder_impl: 'OpenClassrooms\UseCase\Application\Entity\PaginatedCollectionBuilderImpl'
     paginated_collection_classname: 'OC\BusinessRules\Entities\PaginatedCollection'
+    paginated_collection_factory: 'OC\AppBundle\Repository\PaginatedCollectionFactory'
     paginated_use_case_response_classname: 'OC\BusinessRules\Responders\PaginatedUseCaseResponse'
     paginated_use_case_response_builder_classname: 'OC\BusinessRules\Responders\PaginatedUseCaseResponseBuilder'
     use_case_response_classname: 'OC\BusinessRules\Responders\UseCaseResponse'
     pagination_classname: 'OC\BusinessRules\Gateways\Pagination'
-
+    
     abstract_controller : 'OC\ApiBundle\Framework\FrameworkBundle\Controller\AbstractApiController'
     collection_information : 'OC\ApiBundle\ParamConverter\CollectionInformation'
 
 ```
+
+You may need to tweak these values depending on the project you are using the code generator in.
 
 ## Usage
 ### Basic execution
@@ -112,22 +123,42 @@ To dump preview for view model classes:
 ``` 
 php bin/code-generator code-generator:view-models useCaseResponseClassName --dump
 ```
+
+### Using the code generator in PHPStorm
+
+You can set up External Tools entries in PHPStorm to be able to run some code generator command
+from your IDE by right-clicking on classes in the project tree (e.g. an entity class).
+
+For the generic use case generation, add an external tool entry like this:
+> Program: /usr/local/bin/php
+> Arguments: bin/code-generator code-generator:generic-use-case $Prompt$
+> Working Directory: $ProjectFileDir$
+
+For a get entity use case generation, add an external tool entry like this:
+> Program: /usr/local/bin/php
+> Arguments: bin/code-generator code-generator:get-entity-use-case $FilePath$ $Prompt$
+> Working Directory: $ProjectFileDir$
+
+Note that this will only work if the code generator is correctly 
+setup in your project's `composer.json`. You may need to tweak this for your local
+PHP binary path.
+
 ## How to create a new generator
 
 ### To know
-- A generated file is described by a skeleton, on the skeleton directory.
-- A generator grabs data and sends it to the skeleton (just like a web page)
-- A generator MUST generates only one file.
-- A mediator is responsible to call different generators.
+- A generated file is described by a skeleton, in the skeleton directory.
+- A generator grabs data and sends it to the skeleton (just like a web page).
+- A generator MUST generate only one file.
+- A mediator is responsible for calling different generators.
 - A mediator can call many other mediators.
-- The command MUST calls a mediator.
-- Each class MUST have an interface and his implementation.
+- The command MUST call a mediator.
+- Each class MUST have an interface and its implementation.
 - FileObject contains all needed class information to generate a file.
 - Factories are used to create FileObject from Domain and Entity name.
 - Entity name and Domain are getting from ClassNameUtility trait.
 - If you need another class information in your generator, use factories to create the needed FileObject.
-- Some utilities classes are used for generate stub, constant and others things.
-- In view model command, if the use-case response class name contains base namespace, the generator use it if needed
+- Some utility classes are used to generate stubs, constants and others things.
+- In view model command, if the use case response class name contains base namespace, the generator uses it when needed.
 
 ### Methodology
 
