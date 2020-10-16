@@ -6,6 +6,6 @@ declare(strict_types=1);
 
 namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain;
 
-abstract class FunctionalEntityViewModelListItem extends FunctionalEntityViewModel
+class FunctionalEntityViewModelListItem extends FunctionalEntityViewModel
 {
 }
