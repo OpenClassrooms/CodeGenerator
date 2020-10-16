@@ -4,12 +4,15 @@ namespace {{ skeletonModel.namespace }};
 
 use {{ skeletonModel.useCaseListItemResponseClassName }};
 
-interface {{ skeletonModel.shortName }}
+class {{ skeletonModel.shortName }}
 {
     /**
      * @param {{ skeletonModel.useCaseListItemResponseShortName }}[] ${{ skeletonModel.useCaseListItemResponseArgument}}
      *
      * @return {{ skeletonModel.viewModelListItemShortName }}[]
      */
-    public function createListItems(array ${{ skeletonModel.useCaseListItemResponseArgument}}): array;
+    public function createListItems(array ${{ skeletonModel.useCaseListItemResponseArgument}}): array
+    {
+
+    }
 }

@@ -8,12 +8,15 @@ namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Dom
 
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityListItemResponse;
 
-interface FunctionalEntityViewModelListItemAssembler
+class FunctionalEntityViewModelListItemAssembler
 {
     /**
      * @param FunctionalEntityListItemResponse[] $functionalEntities
      *
      * @return FunctionalEntityViewModelListItem[]
      */
-    public function createListItems(array $functionalEntities): array;
+    public function createListItems(array $functionalEntities): array
+    {
+
+    }
 }
