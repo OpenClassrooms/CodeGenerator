@@ -11,7 +11,7 @@ use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\Su
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\FunctionalEntityViewModelDetailAssembler;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityDetailResponse;
 
-class FunctionalEntityViewModelDetailAssemblerImpl implements FunctionalEntityViewModelDetailAssembler
+class FunctionalEntityViewModelDetailAssemblerImpl extends FunctionalEntityViewModelDetailAssembler
 {
     use FunctionalEntityViewModelAssemblerTrait;
 

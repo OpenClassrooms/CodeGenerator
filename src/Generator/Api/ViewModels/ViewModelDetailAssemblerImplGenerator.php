@@ -13,12 +13,9 @@ use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModels\ViewModelDetailAssemblerImplSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModels\ViewModelDetailAssemblerImplSkeletonModelBuilder;
 
-class ViewModelDetailAssemblerImplGenerator extends AbstractViewModelGenerator
+final class ViewModelDetailAssemblerImplGenerator extends AbstractViewModelGenerator
 {
-    /**
-     * @var ViewModelDetailAssemblerImplSkeletonModelBuilder
-     */
-    private $viewModelDetailAssemblerImplSkeletonModelBuilder;
+    private ViewModelDetailAssemblerImplSkeletonModelBuilder $viewModelDetailAssemblerImplSkeletonModelBuilder;
 
     /**
      * @param ViewModelDetailAssemblerImplGeneratorRequest $generatorRequest
@@ -166,8 +163,8 @@ class ViewModelDetailAssemblerImplGenerator extends AbstractViewModelGenerator
     }
 
     public function setViewModelDetailAssemblerImplSkeletonModelBuilder(
-        ViewModelDetailAssemblerImplSkeletonModelBuilder $viewModelDetailAssemblerImplSkeletonModelBuilder
+        ViewModelDetailAssemblerImplSkeletonModelBuilder $builder
     ): void {
-        $this->viewModelDetailAssemblerImplSkeletonModelBuilder = $viewModelDetailAssemblerImplSkeletonModelBuilder;
+        $this->viewModelDetailAssemblerImplSkeletonModelBuilder = $builder;
     }
 }

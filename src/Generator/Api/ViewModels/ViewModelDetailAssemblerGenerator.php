@@ -13,12 +13,9 @@ use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModels\ViewModelDetailAssemblerSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModels\ViewModelDetailAssemblerSkeletonModelAssembler;
 
-class ViewModelDetailAssemblerGenerator extends AbstractViewModelGenerator
+final class ViewModelDetailAssemblerGenerator extends AbstractViewModelGenerator
 {
-    /**
-     * @var ViewModelDetailAssemblerSkeletonModelAssembler
-     */
-    private $viewModelDetailAssemblerSkeletonModelAssembler;
+    private ViewModelDetailAssemblerSkeletonModelAssembler $viewModelDetailAssemblerSkeletonModelAssembler;
 
     /**
      * @param ViewModelDetailAssemblerGeneratorRequest $generatorRequest
@@ -37,9 +34,14 @@ class ViewModelDetailAssemblerGenerator extends AbstractViewModelGenerator
     public function buildViewModelDetailAssemblerFileObject(string $useCaseResponseClassName)
     {
         $this->initFileObjectParameter($useCaseResponseClassName);
+        $useCaseDetailResponseDTOFileObject = $this->createUseCaseDetailResponseDTOFileObject();
         $useCaseDetailResponseFileObject = $this->createUseCaseDetailResponseFileObject();
         $viewModelDetailFileObject = $this->createViewModelDetailFileObject();
         $viewModelDetailAssemblerFileObject = $this->createViewModelDetailAssemblerFileObject();
+
+        $viewModelDetailAssemblerFileObject->setFields(
+            $this->getPublicClassFields($useCaseDetailResponseDTOFileObject->getClassName())
+        );
 
         $viewModelDetailAssemblerFileObject->setContent(
             $this->generateContent(
@@ -50,6 +52,16 @@ class ViewModelDetailAssemblerGenerator extends AbstractViewModelGenerator
         );
 
         return $viewModelDetailAssemblerFileObject;
+    }
+
+    private function createUseCaseDetailResponseDTOFileObject(): FileObject
+    {
+        return $this->createUseCaseResponseFileObject(
+            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE_DTO,
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
+        );
     }
 
     private function createUseCaseDetailResponseFileObject(): FileObject
@@ -109,8 +121,8 @@ class ViewModelDetailAssemblerGenerator extends AbstractViewModelGenerator
     }
 
     public function setViewModelDetailAssemblerSkeletonModelAssembler(
-        ViewModelDetailAssemblerSkeletonModelAssembler $viewModelDetailAssemblerSkeletonModelAssembler
+        ViewModelDetailAssemblerSkeletonModelAssembler $assembler
     ): void {
-        $this->viewModelDetailAssemblerSkeletonModelAssembler = $viewModelDetailAssemblerSkeletonModelAssembler;
+        $this->viewModelDetailAssemblerSkeletonModelAssembler = $assembler;
     }
 }
