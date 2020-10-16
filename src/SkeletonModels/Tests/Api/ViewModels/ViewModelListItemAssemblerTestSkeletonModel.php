@@ -50,19 +50,4 @@ abstract class ViewModelListItemAssemblerTestSkeletonModel extends AbstractSkele
      * @var string
      */
     public $viewModelListItemStubShortName;
-
-    /**
-     * @var string
-     */
-    public $viewModelListItemTestCaseClassName;
-
-    /**
-     * @var string
-     */
-    public $viewModelListItemTestCaseMethod;
-
-    /**
-     * @var string
-     */
-    public $viewModelListItemTestCaseShortName;
 }

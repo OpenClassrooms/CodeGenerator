@@ -5,14 +5,11 @@ namespace {{ skeletonModel.namespace }};
 use OC\Assert;
 use {{ skeletonModel.viewModelDetailAssemblerClassName }};
 use {{ skeletonModel.viewModelDetailStubClassName }};
-use {{ skeletonModel.viewModelDetailTestCaseClassName }};
 use {{ skeletonModel.useCaseDetailResponseStubClassName }};
 use PHPUnit\Framework\TestCase;
 
 final class {{ skeletonModel.shortName }} extends TestCase
 {
-    use {{ skeletonModel.viewModelDetailTestCaseShortName }};
-
     private {{ skeletonModel.viewModelDetailAssemblerShortName }} $assembler;
 
     /** @test */

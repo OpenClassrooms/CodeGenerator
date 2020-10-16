@@ -37,7 +37,6 @@ class ViewModelListItemAssemblerImplTestGenerator extends AbstractViewModelGener
     {
         $this->initFileObjectParameter($useCaseResponseClassName);
 
-        $viewModelListItemTestCase = $this->createViewModelListItemTestCaseFileObject();
         $useCaseListItemResponseStub = $this->createUseCaseListItemResponseStubFileObject();
         $viewModelListItemStub = $this->createViewModelListItemStubFileObject();
         $viewModelListItemAssembler = $this->createViewModelListItemAssemblerFileObject();
@@ -46,7 +45,6 @@ class ViewModelListItemAssemblerImplTestGenerator extends AbstractViewModelGener
         $viewModelListItemAssemblerTest->setContent(
             $this->generateContent(
                 [
-                    ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_TEST_CASE                    => $viewModelListItemTestCase,
                     UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE_STUB => $useCaseListItemResponseStub,
                     ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_STUB                         => $viewModelListItemStub,
                     ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_ASSEMBLER                    => $viewModelListItemAssembler,
@@ -56,16 +54,6 @@ class ViewModelListItemAssemblerImplTestGenerator extends AbstractViewModelGener
         );
 
         return $viewModelListItemAssemblerTest;
-    }
-
-    private function createViewModelListItemTestCaseFileObject(): FileObject
-    {
-        return $this->createViewModelFileObject(
-            ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_TEST_CASE,
-            $this->domain,
-            $this->entity,
-            $this->baseNamespace
-        );
     }
 
     private function createUseCaseListItemResponseStubFileObject(): FileObject
@@ -124,7 +112,6 @@ class ViewModelListItemAssemblerImplTestGenerator extends AbstractViewModelGener
     private function createSkeletonModel(array $fileObjects): ViewModelListItemAssemblerTestSkeletonModel
     {
         return $this->viewModelTestSkeletonModelBuilder->create()
-            ->withViewModelListItemTestCase($fileObjects[ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_TEST_CASE])
             ->withUseCaseListItemResponseStub(
                 $fileObjects[UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE_STUB]
             )

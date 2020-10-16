@@ -35,7 +35,6 @@ final class ViewModelDetailAssemblerTestGenerator extends AbstractViewModelGener
     ): FileObject {
         $this->initFileObjectParameter($useCaseResponseClassName);
 
-        $viewModelDetailTestCase = $this->createViewModelDetailTestCaseFileObject();
         $useCaseDetailResponseStub = $this->createUseCaseDetailResponseStubFileObject();
         $viewModelDetailStub = $this->createViewModelDetailStubFileObject();
         $viewModelDetailAssembler = $this->createViewModelDetailAssemblerFileObject();
@@ -44,7 +43,6 @@ final class ViewModelDetailAssemblerTestGenerator extends AbstractViewModelGener
         $viewModelDetailAssemblerTest->setContent(
             $this->generateContent(
                 [
-                    ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_TEST_CASE                    => $viewModelDetailTestCase,
                     UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE_STUB => $useCaseDetailResponseStub,
                     ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_STUB                         => $viewModelDetailStub,
                     ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_ASSEMBLER                    => $viewModelDetailAssembler,
@@ -54,16 +52,6 @@ final class ViewModelDetailAssemblerTestGenerator extends AbstractViewModelGener
         );
 
         return $viewModelDetailAssemblerTest;
-    }
-
-    private function createViewModelDetailTestCaseFileObject(): FileObject
-    {
-        return $this->createViewModelFileObject(
-            ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_TEST_CASE,
-            $this->domain,
-            $this->entity,
-            $this->baseNamespace
-        );
     }
 
     private function createUseCaseDetailResponseStubFileObject(): FileObject
@@ -122,7 +110,6 @@ final class ViewModelDetailAssemblerTestGenerator extends AbstractViewModelGener
     private function createSkeletonModel(array $fileObjects): ViewModelDetailAssemblerTestSkeletonModel
     {
         return $this->viewModelTestSkeletonModelBuilder->create()
-            ->withViewModelDetailTestCase($fileObjects[ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_TEST_CASE])
             ->withUseCaseDetailResponseStub(
                 $fileObjects[UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE_STUB]
             )

@@ -9,18 +9,15 @@ namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Api\ViewMode
 use OC\Assert;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\FunctionalEntityViewModelListItemAssembler;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\Api\ViewModels\Domain\SubDomain\FunctionalEntityViewModelListItemStub1;
-use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\Api\ViewModels\Domain\SubDomain\FunctionalEntityViewModelListItemTestCase;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityListItemResponseStub1;
 use PHPUnit\Framework\TestCase;
 
 final class FunctionalEntityViewModelListItemAssemblerTest extends TestCase
 {
-    use FunctionalEntityViewModelListItemTestCase;
-
     private FunctionalEntityViewModelListItemAssembler $assembler;
 
     /** @test */
-    final public function onCreateShouldReturnViewModel(): void
+    public function onCreateShouldReturnViewModel(): void
     {
         $actual = $this->assembler->createListItems([new FunctionalEntityListItemResponseStub1()]);
         $expected = [new FunctionalEntityViewModelListItemStub1()];

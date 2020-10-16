@@ -107,27 +107,6 @@ class ViewModelFileObjectFactoryImplTest extends TestCase
                 $baseNamespace,
                 self::getFileObjectViewModelListItemStub(),
             ],
-            [
-                ViewModelFileObjectType::API_VIEW_MODEL_TEST_CASE,
-                $domain,
-                $entity,
-                $baseNamespace,
-                self::getFileObjectViewModelTestCase(),
-            ],
-            [
-                ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_TEST_CASE,
-                $domain,
-                $entity,
-                $baseNamespace,
-                self::getFileObjectViewModelListItemTestCase(),
-            ],
-            [
-                ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_TEST_CASE,
-                $domain,
-                $entity,
-                $baseNamespace,
-                self::getFileObjectViewModelDetailTestCase(),
-            ],
         ];
     }
 
@@ -205,30 +184,6 @@ class ViewModelFileObjectFactoryImplTest extends TestCase
         return new FileObject(
             FixturesConfig::STUB_NAMESPACE . FixturesConfig::API_DIR . 'ViewModels\Domain\SubDomain\\' . self::getEntityName(
             ) . 'ListItemStub1'
-        );
-    }
-
-    private static function getFileObjectViewModelTestCase(): FileObject
-    {
-        return new FileObject(
-            FixturesConfig::STUB_NAMESPACE . FixturesConfig::API_DIR . 'ViewModels\Domain\SubDomain\\' . self::getEntityName(
-            ) . 'TestCase'
-        );
-    }
-
-    private static function getFileObjectViewModelListItemTestCase(): FileObject
-    {
-        return new FileObject(
-            FixturesConfig::STUB_NAMESPACE . FixturesConfig::API_DIR . 'ViewModels\Domain\SubDomain\\' . self::getEntityName(
-            ) . 'ListItemTestCase'
-        );
-    }
-
-    private static function getFileObjectViewModelDetailTestCase(): FileObject
-    {
-        return new FileObject(
-            FixturesConfig::STUB_NAMESPACE . FixturesConfig::API_DIR . 'ViewModels\Domain\SubDomain\\' . self::getEntityName(
-            ) . 'DetailTestCase'
         );
     }
 

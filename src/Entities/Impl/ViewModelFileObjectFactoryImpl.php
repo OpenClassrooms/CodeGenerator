@@ -50,18 +50,6 @@ class ViewModelFileObjectFactoryImpl extends AbstractFileObjectFactory implement
                 return new FileObject(
                     $this->stubNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\' . $entity . 'ViewModelListItemStub1'
                 );
-            case ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_TEST_CASE:
-                return new FileObject(
-                    $this->stubNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\' . $entity . 'ViewModelListItemTestCase'
-                );
-            case ViewModelFileObjectType::API_VIEW_MODEL_TEST_CASE:
-                return new FileObject(
-                    $this->stubNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\' . $entity . 'ViewModelTestCase'
-                );
-            case ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_TEST_CASE:
-                return new FileObject(
-                    $this->stubNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\' . $entity . 'ViewModelDetailTestCase'
-                );
 
             default:
                 throw new \InvalidArgumentException($type);

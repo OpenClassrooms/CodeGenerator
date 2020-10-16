@@ -50,19 +50,4 @@ abstract class ViewModelDetailAssemblerTestSkeletonModel extends AbstractSkeleto
      * @var string
      */
     public $viewModelDetailStubShortName;
-
-    /**
-     * @var string
-     */
-    public $viewModelDetailTestCaseClassName;
-
-    /**
-     * @var string
-     */
-    public $viewModelDetailTestCaseMethod;
-
-    /**
-     * @var string
-     */
-    public $viewModelDetailTestCaseShortName;
 }

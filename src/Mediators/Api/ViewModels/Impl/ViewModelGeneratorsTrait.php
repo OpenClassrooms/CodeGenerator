@@ -99,12 +99,6 @@ trait ViewModelGeneratorsTrait
     /** @var ViewModelDetailStubGeneratorRequestBuilder */
     private $viewModelDetailStubGeneratorRequestBuilder;
 
-    /** @var ViewModelDetailTestCaseGenerator */
-    private $viewModelDetailTestCaseGenerator;
-
-    /** @var ViewModelDetailTestCaseGeneratorRequestBuilder */
-    private $viewModelDetailTestCaseGeneratorRequestBuilder;
-
     /** @var ViewModelGenerator */
     private $viewModelGenerator;
 
@@ -134,18 +128,6 @@ trait ViewModelGeneratorsTrait
 
     /** @var ViewModelListItemStubGeneratorRequestBuilder */
     private $viewModelListItemStubGeneratorRequestBuilder;
-
-    /** @var ViewModelListItemTestCaseGenerator */
-    private $viewModelListItemTestCaseGenerator;
-
-    /** @var ViewModelListItemTestCaseGeneratorRequestBuilder */
-    private $viewModelListItemTestCaseGeneratorRequestBuilder;
-
-    /** @var ViewModelTestCaseGenerator */
-    private $viewModelTestCaseGenerator;
-
-    /** @var ViewModelTestCaseGeneratorRequestBuilder */
-    private $viewModelTestCaseGeneratorRequestBuilder;
 
     public function setEntityImplGenerator($entityImplGenerator): void
     {
@@ -237,18 +219,6 @@ trait ViewModelGeneratorsTrait
         $this->viewModelDetailStubGeneratorRequestBuilder = $viewModelDetailStubGeneratorRequestBuilder;
     }
 
-    public function setViewModelDetailTestCaseGenerator(
-        Generator $viewModelDetailTestCaseGenerator
-    ): void {
-        $this->viewModelDetailTestCaseGenerator = $viewModelDetailTestCaseGenerator;
-    }
-
-    public function setViewModelDetailTestCaseGeneratorRequestBuilder(
-        ViewModelDetailTestCaseGeneratorRequestBuilder $viewModelDetailTestCaseGeneratorRequestBuilder
-    ): void {
-        $this->viewModelDetailTestCaseGeneratorRequestBuilder = $viewModelDetailTestCaseGeneratorRequestBuilder;
-    }
-
     public function setViewModelGenerator(Generator $viewModelGenerator): void
     {
         $this->viewModelGenerator = $viewModelGenerator;
@@ -310,23 +280,6 @@ trait ViewModelGeneratorsTrait
         Generator $viewModelListItemTestCaseGenerator
     ): void {
         $this->viewModelListItemTestCaseGenerator = $viewModelListItemTestCaseGenerator;
-    }
-
-    public function setViewModelListItemTestCaseGeneratorRequestBuilder(
-        ViewModelListItemTestCaseGeneratorRequestBuilder $viewModelListItemTestCaseGeneratorRequestBuilder
-    ): void {
-        $this->viewModelListItemTestCaseGeneratorRequestBuilder = $viewModelListItemTestCaseGeneratorRequestBuilder;
-    }
-
-    public function setViewModelTestCaseGenerator(Generator $viewModelTestCaseGenerator): void
-    {
-        $this->viewModelTestCaseGenerator = $viewModelTestCaseGenerator;
-    }
-
-    public function setViewModelTestCaseGeneratorRequestBuilder(
-        ViewModelTestCaseGeneratorRequestBuilder $viewModelTestCaseGeneratorRequestBuilder
-    ): void {
-        $this->viewModelTestCaseGeneratorRequestBuilder = $viewModelTestCaseGeneratorRequestBuilder;
     }
 
     protected function generateEntityImplGenerator(string $className): FileObject
@@ -402,13 +355,6 @@ trait ViewModelGeneratorsTrait
         );
     }
 
-    protected function generateViewModelDetailTestCaseGenerator(string $className): FileObject
-    {
-        return $this->viewModelDetailTestCaseGenerator->generate(
-            $this->viewModelDetailTestCaseGeneratorRequestBuilder->create()->withClassName($className)->build()
-        );
-    }
-
     protected function generateViewModelListItemGenerator(string $className): FileObject
     {
         return $this->viewModelListItemGenerator->generate(
@@ -437,20 +383,6 @@ trait ViewModelGeneratorsTrait
     {
         return $this->viewModelListItemStubGenerator->generate(
             $this->viewModelListItemStubGeneratorRequestBuilder->create()->withClassName($className)->build()
-        );
-    }
-
-    protected function generateViewModelListItemTestCaseGenerator(string $className): FileObject
-    {
-        return $this->viewModelListItemTestCaseGenerator->generate(
-            $this->viewModelListItemTestCaseGeneratorRequestBuilder->create()->withClassName($className)->build()
-        );
-    }
-
-    protected function generateViewModelTestCaseGenerator(string $className): FileObject
-    {
-        return $this->viewModelTestCaseGenerator->generate(
-            $this->viewModelTestCaseGeneratorRequestBuilder->create()->withClassName($className)->build()
         );
     }
 }

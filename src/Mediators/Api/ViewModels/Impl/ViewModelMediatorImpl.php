@@ -147,15 +147,12 @@ class ViewModelMediatorImpl implements ViewModelMediator
      */
     private function generateViewModelTests(string $className): array
     {
-        $fileObjects[] = $this->generateViewModelTestCaseGenerator($className);
         if ($this->isDetailResponseExist()) {
-            $fileObjects[] = $this->generateViewModelDetailTestCaseGenerator($className);
             $fileObjects[] = $this->generateViewModelDetailStubGenerator($className);
             $fileObjects[] = $this->generateViewModelDetailAssemblerTestGenerator($className);
         }
         if ($this->isListItemResponseExist()) {
             $fileObjects[] = $this->generateViewModelListItemStubGenerator($className);
-            $fileObjects[] = $this->generateViewModelListItemTestCaseGenerator($className);
             $fileObjects[] = $this->generateViewModelListItemAssemblerTestGenerator($className);
         }
 

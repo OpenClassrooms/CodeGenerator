@@ -9,14 +9,11 @@ namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Api\ViewMode
 use OC\Assert;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\FunctionalEntityViewModelDetailAssembler;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\Api\ViewModels\Domain\SubDomain\FunctionalEntityViewModelDetailStub1;
-use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\Api\ViewModels\Domain\SubDomain\FunctionalEntityViewModelDetailTestCase;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityDetailResponseStub1;
 use PHPUnit\Framework\TestCase;
 
 final class FunctionalEntityViewModelDetailAssemblerTest extends TestCase
 {
-    use FunctionalEntityViewModelDetailTestCase;
-
     private FunctionalEntityViewModelDetailAssembler $assembler;
 
     /** @test */

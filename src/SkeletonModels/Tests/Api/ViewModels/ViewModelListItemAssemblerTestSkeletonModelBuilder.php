@@ -27,8 +27,4 @@ interface ViewModelListItemAssemblerTestSkeletonModelBuilder
     public function withViewModelListItemStub(
         FileObject $viewModelListItemStub
     ): ViewModelListItemAssemblerTestSkeletonModelBuilder;
-
-    public function withViewModelListItemTestCase(
-        FileObject $viewModelListItemTestCase
-    ): ViewModelListItemAssemblerTestSkeletonModelBuilder;
 }

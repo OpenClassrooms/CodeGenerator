@@ -7,7 +7,6 @@ namespace OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Api\ViewModels\Impl;
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Api\ViewModels\ViewModelDetailAssemblerTestSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Api\ViewModels\ViewModelDetailAssemblerTestSkeletonModelBuilder;
-use OpenClassrooms\CodeGenerator\Utility\TestCaseUtility;
 
 final class ViewModelDetailAssemblerTestSkeletonModelBuilderImpl implements ViewModelDetailAssemblerTestSkeletonModelBuilder
 {
@@ -58,18 +57,6 @@ final class ViewModelDetailAssemblerTestSkeletonModelBuilderImpl implements View
     ): ViewModelDetailAssemblerTestSkeletonModelBuilderImpl {
         $this->skeletonModel->viewModelDetailStubShortName = $viewModelDetailStub->getShortName();
         $this->skeletonModel->viewModelDetailStubClassName = $viewModelDetailStub->getClassName();
-
-        return $this;
-    }
-
-    public function withViewModelDetailTestCase(
-        FileObject $viewModelDetailTestCase
-    ): ViewModelDetailAssemblerTestSkeletonModelBuilderImpl {
-        $this->skeletonModel->viewModelDetailTestCaseShortName = $viewModelDetailTestCase->getShortName();
-        $this->skeletonModel->viewModelDetailTestCaseClassName = $viewModelDetailTestCase->getClassName();
-        $this->skeletonModel->viewModelDetailTestCaseMethod = TestCaseUtility::buildTestCaseAssertMethodName(
-            $viewModelDetailTestCase->getShortName()
-        );
 
         return $this;
     }
