@@ -55,9 +55,6 @@
                 id="open_classrooms.code_generator.generator.api.view_models.dto.request.view_model_detail_assembler_generator_request_builder"
                 class="OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\DTO\Request\ViewModelDetailAssemblerGeneratorRequestBuilderImpl"/>
         <service
-                id="open_classrooms.code_generator.generator.api.view_models.dto.request.view_model_detail_assembler_impl_generator_request_builder"
-                class="OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\DTO\Request\ViewModelDetailAssemblerImplGeneratorRequestBuilderImpl"/>
-        <service
                 id="open_classrooms.code_generator.generator.api.view_models.dto.request.view_model_list_item_assembler_generator_request_builder"
                 class="OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\DTO\Request\ViewModelListItemAssemblerGeneratorRequestBuilderImpl"/>
         <service
@@ -80,10 +77,6 @@
             <call method="setViewModelDetailAssemblerGeneratorRequestBuilder">
                 <argument type="service"
                           id="open_classrooms.code_generator.generator.api.view_models.dto.request.view_model_detail_assembler_generator_request_builder"/>
-            </call>
-            <call method="setViewModelDetailAssemblerImplGeneratorRequestBuilder">
-                <argument type="service"
-                          id="open_classrooms.code_generator.generator.api.view_models.dto.request.view_model_detail_assembler_impl_generator_request_builder"/>
             </call>
             <call method="setViewModelListItemAssemblerGeneratorRequestBuilder">
                 <argument type="service"
@@ -224,10 +217,6 @@
             <call method="setViewModelDetailAssemblerGenerator">
                 <argument type="service"
                           id="open_classrooms.code_generator.generator.api.view_models.view_model_detail_assembler_generator"/>
-            </call>
-            <call method="setViewModelDetailAssemblerImplGenerator">
-                <argument type="service"
-                          id="open_classrooms.code_generator.generator.api.view_models.view_model_detail_assembler_impl_generator"/>
             </call>
             <call method="setViewModelListItemAssemblerGenerator">
                 <argument type="service"

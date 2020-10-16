@@ -89,7 +89,6 @@ class ViewModelMediatorImpl implements ViewModelMediator
             $fileObjects[] = $this->generateViewModelDetailGenerator($className);
             $fileObjects[] = $this->generateViewModelDetailImplGenerator($className);
             $fileObjects[] = $this->generateViewModelDetailAssemblerGenerator($className);
-            $fileObjects[] = $this->generateViewModelDetailAssemblerImplGenerator($className);
         }
         if ($this->isListItemResponseExist()) {
             $fileObjects[] = $this->generateViewModelListItemGenerator($className);

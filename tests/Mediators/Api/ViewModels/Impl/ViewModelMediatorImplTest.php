@@ -264,12 +264,6 @@ class ViewModelMediatorImplTest extends TestCase
         $this->mediator->setViewModelDetailAssemblerGenerator(
             new GeneratorMock(ViewModelDetailAssemblerGenerator::class, new  ViewModelDetailAssemblerFileObjectStub1())
         );
-        $this->mediator->setViewModelDetailAssemblerImplGenerator(
-            new GeneratorMock(
-                ViewModelDetailAssemblerImplGenerator::class,
-                new ViewModelDetailAssemblerImplFileObjectStub1()
-            )
-        );
         $this->mediator->setViewModelListItemAssemblerGenerator(
             new GeneratorMock(
                 ViewModelListItemAssemblerGenerator::class,
@@ -337,9 +331,6 @@ class ViewModelMediatorImplTest extends TestCase
         );
         $this->mediator->setViewModelDetailAssemblerGeneratorRequestBuilder(
             new ViewModelDetailAssemblerGeneratorRequestBuilderImpl()
-        );
-        $this->mediator->setViewModelDetailAssemblerImplGeneratorRequestBuilder(
-            new ViewModelDetailAssemblerImplGeneratorRequestBuilderImpl()
         );
         $this->mediator->setViewModelListItemAssemblerGeneratorRequestBuilder(
             new ViewModelListItemAssemblerGeneratorRequestBuilderImpl()

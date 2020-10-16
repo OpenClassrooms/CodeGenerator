@@ -87,12 +87,6 @@ trait ViewModelGeneratorsTrait
     /** @var ViewModelDetailAssemblerGeneratorRequestBuilder */
     private $viewModelDetailAssemblerGeneratorRequestBuilder;
 
-    /** @var ViewModelDetailAssemblerImplGenerator */
-    private $viewModelDetailAssemblerImplGenerator;
-
-    /** @var ViewModelDetailAssemblerImplGeneratorRequestBuilder */
-    private $viewModelDetailAssemblerImplGeneratorRequestBuilder;
-
     /** @var ViewModelDetailAssemblerImplTestGenerator */
     private $viewModelDetailAssemblerImplTestGenerator;
 
@@ -242,17 +236,6 @@ trait ViewModelGeneratorsTrait
         $viewModelDetailAssemblerGeneratorRequestBuilder
     ): void {
         $this->viewModelDetailAssemblerGeneratorRequestBuilder = $viewModelDetailAssemblerGeneratorRequestBuilder;
-    }
-
-    public function setViewModelDetailAssemblerImplGenerator($viewModelDetailAssemblerImplGenerator): void
-    {
-        $this->viewModelDetailAssemblerImplGenerator = $viewModelDetailAssemblerImplGenerator;
-    }
-
-    public function setViewModelDetailAssemblerImplGeneratorRequestBuilder(
-        $viewModelDetailAssemblerImplGeneratorRequestBuilder
-    ): void {
-        $this->viewModelDetailAssemblerImplGeneratorRequestBuilder = $viewModelDetailAssemblerImplGeneratorRequestBuilder;
     }
 
     public function setViewModelDetailAssemblerImplTestGenerator(
@@ -475,13 +458,6 @@ trait ViewModelGeneratorsTrait
     {
         return $this->viewModelDetailAssemblerGenerator->generate(
             $this->viewModelDetailAssemblerGeneratorRequestBuilder->create()->withClassName($className)->build()
-        );
-    }
-
-    protected function generateViewModelDetailAssemblerImplGenerator(string $className): FileObject
-    {
-        return $this->viewModelDetailAssemblerImplGenerator->generate(
-            $this->viewModelDetailAssemblerImplGeneratorRequestBuilder->create()->withClassName($className)->build()
         );
     }
 
