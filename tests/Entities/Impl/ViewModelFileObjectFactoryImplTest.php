@@ -56,7 +56,7 @@ class ViewModelFileObjectFactoryImplTest extends TestCase
                 $domain,
                 $entity,
                 $baseNamespace,
-                self::getFileObjectViewModelDetailAssemblerImplTest(),
+                self::getFileObjectViewModelDetailAssemblerTest(),
             ],
             [
                 ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_ASSEMBLER,
@@ -66,18 +66,11 @@ class ViewModelFileObjectFactoryImplTest extends TestCase
                 self::getFileObjectViewModelListItemAssembler(),
             ],
             [
-                ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_ASSEMBLER_IMPL,
+                ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_ASSEMBLER_TEST,
                 $domain,
                 $entity,
                 $baseNamespace,
-                self::getFileObjectViewModelListItemAssemblerImpl(),
-            ],
-            [
-                ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_ASSEMBLER_IMPL_TEST,
-                $domain,
-                $entity,
-                $baseNamespace,
-                self::getFileObjectViewModelListItemAssemblerImplTest(),
+                self::getFileObjectViewModelListItemAssemblerTest(),
             ],
             [
                 ViewModelFileObjectType::API_VIEW_MODEL,
@@ -179,7 +172,7 @@ class ViewModelFileObjectFactoryImplTest extends TestCase
         return TestClassUtil::getShortClassName(FunctionalEntityViewModel::class);
     }
 
-    private static function getFileObjectViewModelDetailAssemblerImplTest(): FileObject
+    private static function getFileObjectViewModelDetailAssemblerTest(): FileObject
     {
         return new FileObject(
             FixturesConfig::TEST_BASE_NAMESPACE . FixturesConfig::API_DIR . 'ViewModels\Domain\SubDomain\\' . self::getEntityName(
@@ -195,19 +188,11 @@ class ViewModelFileObjectFactoryImplTest extends TestCase
         );
     }
 
-    private static function getFileObjectViewModelListItemAssemblerImpl(): FileObject
+    private static function getFileObjectViewModelListItemAssemblerTest(): FileObject
     {
         return new FileObject(
-            FixturesConfig::BASE_NAMESPACE . FixturesConfig::API_DIR . 'ViewModels\Domain\SubDomain\Impl\\' . self::getEntityName(
-            ) . 'ListItemAssemblerImpl'
-        );
-    }
-
-    private static function getFileObjectViewModelListItemAssemblerImplTest(): FileObject
-    {
-        return new FileObject(
-            FixturesConfig::TEST_BASE_NAMESPACE . FixturesConfig::API_DIR . 'ViewModels\Domain\SubDomain\Impl\\' . self::getEntityName(
-            ) . 'ListItemAssemblerImplTest'
+            FixturesConfig::TEST_BASE_NAMESPACE . FixturesConfig::API_DIR . 'ViewModels\Domain\SubDomain\\' . self::getEntityName(
+            ) . 'ListItemAssemblerTest'
         );
     }
 

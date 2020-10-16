@@ -4,27 +4,21 @@
 
 declare(strict_types=1);
 
-namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Api\ViewModels\Domain\SubDomain\Impl;
+namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Api\ViewModels\Domain\SubDomain;
 
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\FunctionalEntityViewModelListItemAssembler;
-use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\Impl\FunctionalEntityViewModelListItemAssemblerImpl;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\Api\ViewModels\Domain\SubDomain\FunctionalEntityViewModelListItemStub1;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\Api\ViewModels\Domain\SubDomain\FunctionalEntityViewModelListItemTestCase;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityListItemResponseStub1;
 use PHPUnit\Framework\TestCase;
 
-class FunctionalEntityViewModelListItemAssemblerImplTest extends TestCase
+final class FunctionalEntityViewModelListItemAssemblerTest extends TestCase
 {
     use FunctionalEntityViewModelListItemTestCase;
 
-    /**
-     * @var FunctionalEntityViewModelListItemAssembler
-     */
-    private $assembler;
+    private FunctionalEntityViewModelListItemAssembler $assembler;
 
-    /**
-     * @test
-     */
+    /** @test */
     final public function onCreateShouldReturnViewModel(): void
     {
         $actual = $this->assembler->createListItems([new FunctionalEntityListItemResponseStub1()]);
@@ -34,6 +28,6 @@ class FunctionalEntityViewModelListItemAssemblerImplTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->assembler = new FunctionalEntityViewModelListItemAssemblerImpl();
+        $this->assembler = new FunctionalEntityViewModelListItemAssembler();
     }
 }

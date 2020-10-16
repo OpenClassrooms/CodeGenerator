@@ -65,8 +65,8 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\ViewModels\ViewModel
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\ViewModels\ViewModelListItemTestCase\ViewModelListItemTestCaseFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\ViewModels\ViewModelTestCase\ViewModelTestCaseFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\App\Entity\EntityImpl\EntityImplFileObjectStub1;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\Api\ViewModels\ViewModelDetailAssemblerImplTest\ViewModelDetailAssemblerTestFileObjectStub1;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\Api\ViewModels\ViewModelListItemAssemblerImplTest\ViewModelListItemAssemblerImplTestFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\Api\ViewModels\ViewModelDetailAssemblerTest\ViewModelDetailAssemblerTestFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\Api\ViewModels\ViewModelListItemAssemblerTest\ViewModelListItemAssemblerTestFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\BusinessRules\Entities\EntityStub\EntityStubFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\BusinessRules\Responders\UseCaseDetailResponseStub\UseCaseDetailResponseStubFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\BusinessRules\Responders\UseCaseListItemResponseStub\UseCaseListItemResponseStubFileObjectStub1;
@@ -242,7 +242,7 @@ class ViewModelMediatorImplTest extends TestCase
         $this->mediator->setViewModelListItemAssemblerImplTestGenerator(
             new GeneratorMock(
                 ViewModelListItemAssemblerImplTestGenerator::class,
-                new ViewModelListItemAssemblerImplTestFileObjectStub1()
+                new ViewModelListItemAssemblerTestFileObjectStub1()
             )
         );
         $this->mediator->setViewModelListItemGenerator(

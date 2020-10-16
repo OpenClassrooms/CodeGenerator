@@ -9,7 +9,7 @@ use OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\Request\ViewMode
 use OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\ViewModelDetailAssemblerTestGenerator;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Api\ViewModels\Impl\ViewModelDetailAssemblerTestSkeletonModelBuilderImpl;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\FileObjectTestCase;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\Api\ViewModels\ViewModelDetailAssemblerImplTest\ViewModelDetailAssemblerTestFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\Api\ViewModels\ViewModelDetailAssemblerTest\ViewModelDetailAssemblerTestFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\UseCaseResponseFileObjectFactoryMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\ViewModelFileObjectFactoryMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;

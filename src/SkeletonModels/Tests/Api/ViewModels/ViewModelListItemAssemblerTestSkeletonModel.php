@@ -7,9 +7,9 @@ namespace OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Api\ViewModels;
 use OpenClassrooms\CodeGenerator\Entities\Object\FieldObject;
 use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 
-abstract class ViewModelListItemAssemblerImplTestSkeletonModel extends AbstractSkeletonModel
+abstract class ViewModelListItemAssemblerTestSkeletonModel extends AbstractSkeletonModel
 {
-    public $templatePath = 'Tests/Api/ViewModels/Impl/ViewModelListItemAssemblerImplTest.php.twig';
+    public $templatePath = 'Tests/Api/ViewModels/ViewModelListItemAssemblerTest.php.twig';
 
     /**
      * @var string
@@ -25,16 +25,6 @@ abstract class ViewModelListItemAssemblerImplTestSkeletonModel extends AbstractS
      * @var string
      */
     public $viewModelListItemAssemblerClassName;
-
-    /**
-     * @var string
-     */
-    public $viewModelListItemAssemblerImplClassName;
-
-    /**
-     * @var string
-     */
-    public $viewModelListItemAssemblerImplShortName;
 
     /**
      * @var string

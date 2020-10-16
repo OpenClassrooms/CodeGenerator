@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\Api\ViewModels\ViewModelDetailAssemblerImplTest;
+namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\Api\ViewModels\ViewModelDetailAssemblerTest;
 
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 

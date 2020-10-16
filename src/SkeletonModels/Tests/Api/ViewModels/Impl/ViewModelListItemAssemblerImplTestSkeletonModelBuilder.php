@@ -5,32 +5,29 @@ declare(strict_types=1);
 namespace OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Api\ViewModels\Impl;
 
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
-use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Api\ViewModels\ViewModelListItemAssemblerImplTestSkeletonModel;
-use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Api\ViewModels\ViewModelListItemAssemblerImplTestSkeletonModelBuilder;
+use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Api\ViewModels\ViewModelListItemAssemblerTestSkeletonModel;
+use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Api\ViewModels\ViewModelListItemAssemblerTestSkeletonModelBuilder;
 use OpenClassrooms\CodeGenerator\Utility\TestCaseUtility;
 
-class ViewModelListItemAssemblerImplTestSkeletonModelBuilderImpl implements ViewModelListItemAssemblerImplTestSkeletonModelBuilder
+class ViewModelListItemAssemblerImplTestSkeletonModelBuilder implements ViewModelListItemAssemblerTestSkeletonModelBuilder
 {
-    /**
-     * @var ViewModelListItemAssemblerImplTestSkeletonModel
-     */
-    private $skeletonModel;
+    private ViewModelListItemAssemblerTestSkeletonModel $skeletonModel;
 
-    public function build(): ViewModelListItemAssemblerImplTestSkeletonModel
+    public function build(): ViewModelListItemAssemblerTestSkeletonModel
     {
         return $this->skeletonModel;
     }
 
-    public function create(): ViewModelListItemAssemblerImplTestSkeletonModelBuilder
+    public function create(): ViewModelListItemAssemblerTestSkeletonModelBuilder
     {
-        $this->skeletonModel = new ViewModelListItemAssemblerImplTestSkeletonModelImpl();
+        $this->skeletonModel = new ViewModelListItemAssemblerTestSkeletonModelImpl();
 
         return $this;
     }
 
     public function withUseCaseListItemResponseStub(
         FileObject $useCaseListItemResponseStub
-    ): ViewModelListItemAssemblerImplTestSkeletonModelBuilder {
+    ): ViewModelListItemAssemblerTestSkeletonModelBuilder {
         $this->skeletonModel->useCaseListItemResponseStubShortName = $useCaseListItemResponseStub->getShortName();
         $this->skeletonModel->useCaseListItemResponseStubClassName = $useCaseListItemResponseStub->getClassName();
 
@@ -39,25 +36,16 @@ class ViewModelListItemAssemblerImplTestSkeletonModelBuilderImpl implements View
 
     public function withViewModelListItemAssembler(
         FileObject $viewModelListItemAssembler
-    ): ViewModelListItemAssemblerImplTestSkeletonModelBuilder {
+    ): ViewModelListItemAssemblerTestSkeletonModelBuilder {
         $this->skeletonModel->viewModelListItemAssemblerShortName = $viewModelListItemAssembler->getShortName();
         $this->skeletonModel->viewModelListItemAssemblerClassName = $viewModelListItemAssembler->getClassName();
 
         return $this;
     }
 
-    public function withViewModelListItemAssemblerImpl(
-        FileObject $viewModelListItemAssemblerImpl
-    ): ViewModelListItemAssemblerImplTestSkeletonModelBuilder {
-        $this->skeletonModel->viewModelListItemAssemblerImplShortName = $viewModelListItemAssemblerImpl->getShortName();
-        $this->skeletonModel->viewModelListItemAssemblerImplClassName = $viewModelListItemAssemblerImpl->getClassName();
-
-        return $this;
-    }
-
-    public function withViewModelListItemAssemblerImplTest(
+    public function withViewModelListItemAssemblerTest(
         FileObject $viewModelListItemAssemblerImplTest
-    ): ViewModelListItemAssemblerImplTestSkeletonModelBuilder {
+    ): ViewModelListItemAssemblerTestSkeletonModelBuilder {
         $this->skeletonModel->className = $viewModelListItemAssemblerImplTest->getClassName();
         $this->skeletonModel->shortName = $viewModelListItemAssemblerImplTest->getShortName();
         $this->skeletonModel->namespace = $viewModelListItemAssemblerImplTest->getNamespace();
@@ -67,7 +55,7 @@ class ViewModelListItemAssemblerImplTestSkeletonModelBuilderImpl implements View
 
     public function withViewModelListItemStub(
         FileObject $viewModelListItemStub
-    ): ViewModelListItemAssemblerImplTestSkeletonModelBuilder {
+    ): ViewModelListItemAssemblerTestSkeletonModelBuilder {
         $this->skeletonModel->viewModelListItemStubShortName = $viewModelListItemStub->getShortName();
         $this->skeletonModel->viewModelListItemStubClassName = $viewModelListItemStub->getClassName();
 
@@ -76,7 +64,7 @@ class ViewModelListItemAssemblerImplTestSkeletonModelBuilderImpl implements View
 
     public function withViewModelListItemTestCase(
         FileObject $viewModelListItemTestCase
-    ): ViewModelListItemAssemblerImplTestSkeletonModelBuilder {
+    ): ViewModelListItemAssemblerTestSkeletonModelBuilder {
         $this->skeletonModel->viewModelListItemTestCaseShortName = $viewModelListItemTestCase->getShortName();
         $this->skeletonModel->viewModelListItemTestCaseClassName = $viewModelListItemTestCase->getClassName();
         $this->skeletonModel->viewModelListItemTestCaseMethod = TestCaseUtility::buildTestCaseAssertMethodName(
