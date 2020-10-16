@@ -87,12 +87,10 @@ class ViewModelMediatorImpl implements ViewModelMediator
         $fileObjects[] = $this->generateViewModel($className);
         if ($this->isDetailResponseExist()) {
             $fileObjects[] = $this->generateViewModelDetailGenerator($className);
-            $fileObjects[] = $this->generateViewModelDetailImplGenerator($className);
             $fileObjects[] = $this->generateViewModelDetailAssemblerGenerator($className);
         }
         if ($this->isListItemResponseExist()) {
             $fileObjects[] = $this->generateViewModelListItemGenerator($className);
-            $fileObjects[] = $this->generateViewModelListItemImplGenerator($className);
             $fileObjects[] = $this->generateViewModelListItemAssemblerGenerator($className);
         }
         $fileObjects[] = $this->generateViewModelAssemblerTraitGenerator($className);
@@ -154,12 +152,12 @@ class ViewModelMediatorImpl implements ViewModelMediator
         if ($this->isDetailResponseExist()) {
             $fileObjects[] = $this->generateViewModelDetailTestCaseGenerator($className);
             $fileObjects[] = $this->generateViewModelDetailStubGenerator($className);
-            $fileObjects[] = $this->generateViewModelDetailAssemblerImplTestGenerator($className);
+            $fileObjects[] = $this->generateViewModelDetailAssemblerTestGenerator($className);
         }
         if ($this->isListItemResponseExist()) {
             $fileObjects[] = $this->generateViewModelListItemStubGenerator($className);
             $fileObjects[] = $this->generateViewModelListItemTestCaseGenerator($className);
-            $fileObjects[] = $this->generateViewModelListItemAssemblerImplTestGenerator($className);
+            $fileObjects[] = $this->generateViewModelListItemAssemblerTestGenerator($className);
         }
 
         return $fileObjects;

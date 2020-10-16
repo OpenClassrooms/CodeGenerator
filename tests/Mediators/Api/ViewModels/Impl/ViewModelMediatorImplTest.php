@@ -54,13 +54,11 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\ViewModels\ViewModel
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\ViewModels\ViewModelDetail\ViewModelDetailFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\ViewModels\ViewModelDetailAssembler\ViewModelDetailAssemblerFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\ViewModels\ViewModelDetailAssemblerImpl\ViewModelDetailAssemblerImplFileObjectStub1;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\ViewModels\ViewModelDetailImpl\ViewModelDetailImplFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\ViewModels\ViewModelDetailStub\ViewModelDetailStubFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\ViewModels\ViewModelDetailTestCase\ViewModelDetailTestCaseFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\ViewModels\ViewModelListItem\ViewModelListItemFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\ViewModels\ViewModelListItemAssembler\ViewModelListItemAssemblerFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\ViewModels\ViewModelListItemAssemblerImpl\ViewModelListItemAssemblerImplFileObjectStub1;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\ViewModels\ViewModelListItemImpl\ViewModelListItemImplFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\ViewModels\ViewModelListItemStub\ViewModelListItemStubFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\ViewModels\ViewModelListItemTestCase\ViewModelListItemTestCaseFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\ViewModels\ViewModelTestCase\ViewModelTestCaseFileObjectStub1;
@@ -215,7 +213,7 @@ class ViewModelMediatorImplTest extends TestCase
                 new UseCaseListItemResponseStubFileObjectStub1()
             )
         );
-        $this->mediator->setViewModelDetailAssemblerImplTestGenerator(
+        $this->mediator->setViewModelDetailAssemblerTestGenerator(
             new GeneratorMock(
                 ViewModelDetailAssemblerTestGenerator::class,
                 new ViewModelDetailAssemblerTestFileObjectStub1()
@@ -223,9 +221,6 @@ class ViewModelMediatorImplTest extends TestCase
         );
         $this->mediator->setViewModelDetailGenerator(
             new GeneratorMock(ViewModelDetailGenerator::class, new ViewModelDetailFileObjectStub1())
-        );
-        $this->mediator->setViewModelDetailImplGenerator(
-            new GeneratorMock(ViewModelDetailImplGenerator::class, new ViewModelDetailImplFileObjectStub1())
         );
         $this->mediator->setViewModelDetailStubGenerator(
             new GeneratorMock(ViewModelDetailStubGenerator::class, new ViewModelDetailStubFileObjectStub1())
@@ -239,7 +234,7 @@ class ViewModelMediatorImplTest extends TestCase
         $this->mediator->setViewModelTestCaseGenerator(
             new GeneratorMock(ViewModelTestCaseGenerator::class, new ViewModelTestCaseFileObjectStub1())
         );
-        $this->mediator->setViewModelListItemAssemblerImplTestGenerator(
+        $this->mediator->setViewModelListItemAssemblerTestGenerator(
             new GeneratorMock(
                 ViewModelListItemAssemblerImplTestGenerator::class,
                 new ViewModelListItemAssemblerTestFileObjectStub1()
@@ -247,9 +242,6 @@ class ViewModelMediatorImplTest extends TestCase
         );
         $this->mediator->setViewModelListItemGenerator(
             new GeneratorMock(ViewModelListItemGenerator::class, new ViewModelListItemFileObjectStub1())
-        );
-        $this->mediator->setViewModelListItemImplGenerator(
-            new GeneratorMock(ViewModelListItemImplGenerator::class, new ViewModelListItemImplFileObjectStub1())
         );
         $this->mediator->setViewModelListItemStubGenerator(
             new GeneratorMock(ViewModelListItemStubGenerator::class, new ViewModelListItemStubFileObjectStub1())
@@ -287,13 +279,10 @@ class ViewModelMediatorImplTest extends TestCase
         $this->mediator->setUseCaseListItemResponseStubGeneratorRequestBuilder(
             new UseCaseListItemResponseStubGeneratorRequestBuilderImpl()
         );
-        $this->mediator->setViewModelDetailAssemblerImplTestGeneratorRequestBuilder(
+        $this->mediator->setViewModelDetailAssemblerTestGeneratorRequestBuilder(
             new ViewModelDetailAssemblerImplTestGeneratorRequestBuilderImpl()
         );
         $this->mediator->setViewModelDetailGeneratorRequestBuilder(new ViewModelDetailGeneratorRequestBuilderImpl());
-        $this->mediator->setViewModelDetailImplGeneratorRequestBuilder(
-            new ViewModelDetailImplGeneratorRequestBuilderImpl()
-        );
         $this->mediator->setViewModelDetailStubGeneratorRequestBuilder(
             new ViewModelDetailStubGeneratorRequestBuilderImpl()
         );
@@ -304,14 +293,11 @@ class ViewModelMediatorImplTest extends TestCase
         $this->mediator->setViewModelTestCaseGeneratorRequestBuilder(
             new ViewModelTestCaseGeneratorRequestBuilderImpl()
         );
-        $this->mediator->setViewModelListItemAssemblerImplTestGeneratorRequestBuilder(
+        $this->mediator->setViewModelListItemAssemblerTestGeneratorRequestBuilder(
             new ViewModelListItemAssemblerImplTestGeneratorRequestBuilderImpl()
         );
         $this->mediator->setViewModelListItemGeneratorRequestBuilder(
             new ViewModelListItemGeneratorRequestBuilderImpl()
-        );
-        $this->mediator->setViewModelListItemImplGeneratorRequestBuilder(
-            new ViewModelListItemImplGeneratorRequestBuilderImpl()
         );
         $this->mediator->setViewModelListItemStubGeneratorRequestBuilder(
             new ViewModelListItemStubGeneratorRequestBuilderImpl()

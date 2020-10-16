@@ -19,9 +19,6 @@
                 id="open_classrooms.code_generator.generator.api.view_models.dto.request.view_model_detail_generator_request_builder"
                 class="OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\DTO\Request\ViewModelDetailGeneratorRequestBuilderImpl"/>
         <service
-                id="open_classrooms.code_generator.generator.api.view_models.dto.request.view_model_detail_impl_generator_request_builder"
-                class="OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\DTO\Request\ViewModelDetailImplGeneratorRequestBuilderImpl"/>
-        <service
                 id="open_classrooms.code_generator.generator.tests.doubles.api.view_models.dto.request.view_model_detail_stub_generator_request_builder"
                 class="OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\DTO\Request\ViewModelDetailStubGeneratorRequestBuilderImpl"/>
         <service
@@ -39,9 +36,6 @@
         <service
                 id="open_classrooms.code_generator.generator.api.view_models.dto.request.view_model_list_item_generator_request_builder"
                 class="OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\DTO\Request\ViewModelListItemGeneratorRequestBuilderImpl"/>
-        <service
-                id="open_classrooms.code_generator.generator.api.view_models.dto.request.view_model_list_item_impl_generator_request_builder"
-                class="OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\DTO\Request\ViewModelListItemImplGeneratorRequestBuilderImpl"/>
         <service
                 id="open_classrooms.code_generator.generator.tests.doubles.api.view_models.dto.request.view_model_list_item_stub_generator_request_builder"
                 class="OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\DTO\Request\ViewModelListItemStubGeneratorRequestBuilderImpl"/>
@@ -95,17 +89,13 @@
                 <argument type="service"
                           id="open_classrooms.code_generator.generator.tests.business_rules.responders.dto.request.use_case_list_item_response_stub_generator_request_builder"/>
             </call>
-            <call method="setViewModelDetailAssemblerImplTestGeneratorRequestBuilder">
+            <call method="setViewModelDetailAssemblerTestGeneratorRequestBuilder">
                 <argument type="service"
                           id="open_classrooms.code_generator.generator.tests.api.view_models.dto.request.view_model_detail_assembler_impl_test_generator_request_builder"/>
             </call>
             <call method="setViewModelDetailGeneratorRequestBuilder">
                 <argument type="service"
                           id="open_classrooms.code_generator.generator.api.view_models.dto.request.view_model_detail_generator_request_builder"/>
-            </call>
-            <call method="setViewModelDetailImplGeneratorRequestBuilder">
-                <argument type="service"
-                          id="open_classrooms.code_generator.generator.api.view_models.dto.request.view_model_detail_impl_generator_request_builder"/>
             </call>
             <call method="setViewModelDetailStubGeneratorRequestBuilder">
                 <argument type="service"
@@ -123,17 +113,13 @@
                 <argument type="service"
                           id="open_classrooms.code_generator.generator.tests.doubles.api.view_models.dto.request.view_model_test_case_generator_request_builder"/>
             </call>
-            <call method="setViewModelListItemAssemblerImplTestGeneratorRequestBuilder">
+            <call method="setViewModelListItemAssemblerTestGeneratorRequestBuilder">
                 <argument type="service"
                           id="open_classrooms.code_generator.generator.tests.api.view_models.dto.request.view_model_list_item_assembler_impl_test_generator_request_builder"/>
             </call>
             <call method="setViewModelListItemGeneratorRequestBuilder">
                 <argument type="service"
                           id="open_classrooms.code_generator.generator.api.view_models.dto.request.view_model_list_item_generator_request_builder"/>
-            </call>
-            <call method="setViewModelListItemImplGeneratorRequestBuilder">
-                <argument type="service"
-                          id="open_classrooms.code_generator.generator.api.view_models.dto.request.view_model_list_item_impl_generator_request_builder"/>
             </call>
             <call method="setViewModelListItemStubGeneratorRequestBuilder">
                 <argument type="service"
@@ -155,17 +141,13 @@
                 <argument type="service"
                           id="open_classrooms.code_generator.generator.tests.business_rules.responders.use_case_list_item_response_stub_generator"/>
             </call>
-            <call method="setViewModelDetailAssemblerImplTestGenerator">
+            <call method="setViewModelDetailAssemblerTestGenerator">
                 <argument type="service"
                           id="open_classrooms.code_generator.generator.tests.api.view_models.view_model_detail_assembler_impl_test_generator"/>
             </call>
             <call method="setViewModelDetailGenerator">
                 <argument type="service"
                           id="open_classrooms.code_generator.generator.api.view_models.view_model_detail_generator"/>
-            </call>
-            <call method="setViewModelDetailImplGenerator">
-                <argument type="service"
-                          id="open_classrooms.code_generator.generator.api.view_models.view_model_detail_impl_generator"/>
             </call>
             <call method="setViewModelDetailStubGenerator">
                 <argument type="service"
@@ -183,17 +165,13 @@
                 <argument type="service"
                           id="open_classrooms.code_generator.generator.tests.doubles.api.view_models.view_model_test_case_generator"/>
             </call>
-            <call method="setViewModelListItemAssemblerImplTestGenerator">
+            <call method="setViewModelListItemAssemblerTestGenerator">
                 <argument type="service"
                           id="open_classrooms.code_generator.generator.tests.api.view_models.view_model_list_item_assembler_impl_test_generator"/>
             </call>
             <call method="setViewModelListItemGenerator">
                 <argument type="service"
                           id="open_classrooms.code_generator.generator.api.view_models.view_model_list_item_generator"/>
-            </call>
-            <call method="setViewModelListItemImplGenerator">
-                <argument type="service"
-                          id="open_classrooms.code_generator.generator.api.view_models.view_model_list_item_impl_generator"/>
             </call>
             <call method="setViewModelListItemStubGenerator">
                 <argument type="service"

@@ -122,20 +122,6 @@ class ViewModelFileObjectFactoryImplTest extends TestCase
                 self::getFileObjectViewModelListItemTestCase(),
             ],
             [
-                ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_IMPL,
-                $domain,
-                $entity,
-                $baseNamespace,
-                self::getFileObjectViewModelListItemImpl(),
-            ],
-            [
-                ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_IMPL,
-                $domain,
-                $entity,
-                $baseNamespace,
-                self::getFileObjectViewModelDetailImpl(),
-            ],
-            [
                 ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_TEST_CASE,
                 $domain,
                 $entity,
@@ -249,22 +235,6 @@ class ViewModelFileObjectFactoryImplTest extends TestCase
         return new FileObject(
             FixturesConfig::STUB_NAMESPACE . FixturesConfig::API_DIR . 'ViewModels\Domain\SubDomain\\' . self::getEntityName(
             ) . 'ListItemTestCase'
-        );
-    }
-
-    private static function getFileObjectViewModelListItemImpl(): FileObject
-    {
-        return new FileObject(
-            FixturesConfig::BASE_NAMESPACE . FixturesConfig::API_DIR . 'ViewModels\Domain\SubDomain\Impl\\' . self::getEntityName(
-            ) . 'ListItemImpl'
-        );
-    }
-
-    private static function getFileObjectViewModelDetailImpl(): FileObject
-    {
-        return new FileObject(
-            FixturesConfig::BASE_NAMESPACE . FixturesConfig::API_DIR . 'ViewModels\Domain\SubDomain\Impl\\' . self::getEntityName(
-            ) . 'DetailImpl'
         );
     }
 

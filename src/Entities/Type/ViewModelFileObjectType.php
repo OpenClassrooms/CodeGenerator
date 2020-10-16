@@ -16,8 +16,6 @@ final class ViewModelFileObjectType
 
     public const API_VIEW_MODEL_DETAIL_ASSEMBLER_TEST         = 'API_VIEW_MODEL_DETAIL_ASSEMBLER_TEST';
 
-    public const API_VIEW_MODEL_DETAIL_IMPL                   = 'API_VIEW_MODEL_DETAIL_IMPL';
-
     public const API_VIEW_MODEL_DETAIL_STUB                   = 'API_VIEW_MODEL_DETAIL_STUB';
 
     public const API_VIEW_MODEL_DETAIL_TEST_CASE              = 'API_VIEW_MODEL_DETAIL_TEST_CASE';
@@ -29,8 +27,6 @@ final class ViewModelFileObjectType
     public const API_VIEW_MODEL_LIST_ITEM_ASSEMBLER           = 'API_VIEW_MODEL_LIST_ITEM_ASSEMBLER';
 
     public const API_VIEW_MODEL_LIST_ITEM_ASSEMBLER_TEST = 'API_VIEW_MODEL_LIST_ITEM_ASSEMBLER_TEST';
-
-    public const API_VIEW_MODEL_LIST_ITEM_IMPL                = 'API_VIEW_MODEL_LIST_ITEM_IMPL';
 
     public const API_VIEW_MODEL_LIST_ITEM_STUB                = 'API_VIEW_MODEL_LIST_ITEM_STUB';
 

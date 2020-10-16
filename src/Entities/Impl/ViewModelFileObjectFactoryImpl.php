@@ -46,17 +46,9 @@ class ViewModelFileObjectFactoryImpl extends AbstractFileObjectFactory implement
                 return new FileObject(
                     $this->baseNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\' . $entity . 'ViewModelDetail'
                 );
-            case ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_IMPL:
-                return new FileObject(
-                    $this->baseNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\Impl\\' . $entity . 'ViewModelDetailImpl'
-                );
             case ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM:
                 return new FileObject(
                     $this->baseNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\' . $entity . 'ViewModelListItem'
-                );
-            case ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_IMPL:
-                return new FileObject(
-                    $this->baseNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\Impl\\' . $entity . 'ViewModelListItemImpl'
                 );
             case ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_STUB:
                 return new FileObject(
