@@ -14,7 +14,7 @@ class ViewModelListItemStubSkeletonModelAssemblerImpl implements ViewModelListIt
 
     public function create(
         FileObject $viewModelListItemStubFileObject,
-        FileObject $viewModelListItemImplFileObject,
+        FileObject $viewModelListItemFileObject,
         FileObject $useCaseListItemResponseStubFileObject
     ): ViewModelListItemStubSkeletonModel {
         $skeletonModel = new ViewModelListItemStubSkeletonModelImpl();
@@ -23,8 +23,8 @@ class ViewModelListItemStubSkeletonModelAssemblerImpl implements ViewModelListIt
         $skeletonModel->shortName = $viewModelListItemStubFileObject->getShortName();
         $skeletonModel->fields = $viewModelListItemStubFileObject->getFields();
         $skeletonModel->constants = $viewModelListItemStubFileObject->getConsts();
-        $skeletonModel->parentClassName = $viewModelListItemImplFileObject->getClassName();
-        $skeletonModel->parentShortName = $viewModelListItemImplFileObject->getShortName();
+        $skeletonModel->parentClassName = $viewModelListItemFileObject->getClassName();
+        $skeletonModel->parentShortName = $viewModelListItemFileObject->getShortName();
         $skeletonModel->useCaseListItemResponseStubClassName = $useCaseListItemResponseStubFileObject->getClassName();
         $skeletonModel->hasConstructor = $this->hasConstructor($viewModelListItemStubFileObject->getFields());
         $skeletonModel->dateTimeType = $this->getDateTimeType();

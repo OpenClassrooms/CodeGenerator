@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace OpenClassrooms\CodeGenerator\Tests\Generator\Tests\Doubles\Api\ViewModels;
 
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\DTO\Request\ViewModelListItemStubGeneratorRequestBuilderImpl;
-use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\Request\ViewModelListItemStubGeneratorRequestBuilder;
+use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\Request\ViewModelListItemStubGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\ViewModelListItemStubGenerator;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\Api\ViewModels\Impl\ViewModelListItemStubSkeletonModelAssemblerImpl;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\ViewModels\ViewModelListItemStub\ViewModelListItemStubFileObjectStub1;
@@ -19,23 +19,15 @@ use OpenClassrooms\CodeGenerator\Utility\Impl\StubUtilityContext;
 use OpenClassrooms\CodeGenerator\Utility\Impl\StubUtilityGetFixedValue;
 use PHPUnit\Framework\TestCase;
 
-class ViewModelListItemStubGeneratorTest extends TestCase
+final class ViewModelListItemStubGeneratorTest extends TestCase
 {
     use FileObjectTestCase;
 
-    /**
-     * @var ViewModelListItemStubGeneratorRequestBuilder
-     */
-    private $request;
+    private ViewModelListItemStubGeneratorRequest $request;
 
-    /**
-     * @var ViewModelListItemStubGenerator
-     */
-    private $viewModelStub1Generator;
+    private ViewModelListItemStubGenerator $viewModelStub1Generator;
 
-    /**
-     * @test
-     */
+    /** @test */
     public function generateReturnFileObject(): void
     {
         $actualFileObject = $this->viewModelStub1Generator->generate($this->request);
