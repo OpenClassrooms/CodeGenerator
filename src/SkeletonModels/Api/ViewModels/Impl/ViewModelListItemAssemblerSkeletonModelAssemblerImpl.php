@@ -12,6 +12,7 @@ use OpenClassrooms\CodeGenerator\Utility\StringUtility;
 class ViewModelListItemAssemblerSkeletonModelAssemblerImpl implements ViewModelListItemAssemblerSkeletonModelAssembler
 {
     public function create(
+        FileObject $useCaseResponseFileObject,
         FileObject $useCaseListItemResponseFileObject,
         FileObject $viewModelListItemFileObject,
         FileObject $viewModelListItemAssemblerFileObject
@@ -20,6 +21,9 @@ class ViewModelListItemAssemblerSkeletonModelAssemblerImpl implements ViewModelL
         $skeletonModel->className = $viewModelListItemAssemblerFileObject->getClassName();
         $skeletonModel->namespace = $viewModelListItemAssemblerFileObject->getNamespace();
         $skeletonModel->shortName = $viewModelListItemAssemblerFileObject->getShortName();
+        $skeletonModel->useCaseResponseClassName = $useCaseResponseFileObject->getClassName();
+        $skeletonModel->useCaseResponseShortName = $useCaseResponseFileObject->getShortName();
+        $skeletonModel->useCaseResponseArgument = lcfirst($useCaseResponseFileObject->getEntity());
         $skeletonModel->useCaseListItemResponseClassName = $useCaseListItemResponseFileObject->getClassName();
         $skeletonModel->useCaseListItemResponseShortName = $useCaseListItemResponseFileObject->getShortName();
         $skeletonModel->useCaseListItemResponseArgument = lcfirst(
