@@ -6,10 +6,7 @@ declare(strict_types=1);
 
 namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain;
 
-abstract class FunctionalEntityViewModelDetail extends FunctionalEntityViewModel
+class FunctionalEntityViewModelDetail extends FunctionalEntityViewModel
 {
-    /**
-     * @var \DateTimeInterface
-     */
-    public $field4;
+    public \DateTimeInterface $field4;
 }

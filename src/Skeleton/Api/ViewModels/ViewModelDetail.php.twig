@@ -2,11 +2,10 @@
 
 namespace {{ skeletonModel.namespace }};
 
-abstract class {{ skeletonModel.shortName }} extends {{ skeletonModel.ParentShortName }}
+class {{ skeletonModel.shortName }} extends {{ skeletonModel.ParentShortName }}
 {
 {% for field in skeletonModel.fields | sortNameByAlpha %}
-    {{ field.docComment }}
-    {{ field.scope }} ${{ field.name }};
+    {{ field.scope }} {{ field.type }} ${{ field.name }};
 {% if not loop.last %}
 
 {% endif %}
