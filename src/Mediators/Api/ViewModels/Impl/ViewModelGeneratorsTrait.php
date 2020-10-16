@@ -129,12 +129,6 @@ trait ViewModelGeneratorsTrait
     /** @var ViewModelListItemAssemblerGeneratorRequestBuilder */
     private $viewModelListItemAssemblerGeneratorRequestBuilder;
 
-    /** @var ViewModelListItemAssemblerImplGenerator */
-    private $viewModelListItemAssemblerImplGenerator;
-
-    /** @var ViewModelListItemAssemblerImplGeneratorRequestBuilder */
-    private $viewModelListItemAssemblerImplGeneratorRequestBuilder;
-
     /** @var ViewModelListItemAssemblerImplTestGenerator */
     private $viewModelListItemAssemblerImplTestGenerator;
 
@@ -317,17 +311,6 @@ trait ViewModelGeneratorsTrait
         $this->viewModelListItemAssemblerGeneratorRequestBuilder = $viewModelListItemAssemblerGeneratorRequestBuilder;
     }
 
-    public function setViewModelListItemAssemblerImplGenerator($viewModelListItemAssemblerImplGenerator): void
-    {
-        $this->viewModelListItemAssemblerImplGenerator = $viewModelListItemAssemblerImplGenerator;
-    }
-
-    public function setViewModelListItemAssemblerImplGeneratorRequestBuilder(
-        $viewModelListItemAssemblerImplGeneratorRequestBuilder
-    ): void {
-        $this->viewModelListItemAssemblerImplGeneratorRequestBuilder = $viewModelListItemAssemblerImplGeneratorRequestBuilder;
-    }
-
     public function setViewModelListItemAssemblerImplTestGenerator(
         Generator $viewModelListItemAssemblerImplTestGenerator
     ): void {
@@ -503,13 +486,6 @@ trait ViewModelGeneratorsTrait
     {
         return $this->viewModelListItemAssemblerGenerator->generate(
             $this->viewModelListItemAssemblerGeneratorRequestBuilder->create()->withClassName($className)->build()
-        );
-    }
-
-    protected function generateViewModelListItemAssemblerImplGenerator(string $className): FileObject
-    {
-        return $this->viewModelListItemAssemblerImplGenerator->generate(
-            $this->viewModelListItemAssemblerImplGeneratorRequestBuilder->create()->withClassName($className)->build()
         );
     }
 

@@ -15,7 +15,6 @@
         <import resource="Generator/Api/ViewModels/view_model_assembler_trait.xml"/>
         <import resource="Generator/Api/ViewModels/view_model_detail_assembler.xml"/>
         <import resource="Generator/Api/ViewModels/view_model_list_item_assembler.xml"/>
-        <import resource="Generator/Api/ViewModels/view_model_list_item_assembler_impl.xml"/>
         <import resource="Generator/App/Entity/entity_impl.xml"/>
         <import resource="Generator/Tests/Api/ViewModels/view_model_detail_assembler_impl_test.xml"/>
         <import resource="Generator/Tests/Api/ViewModels/view_model_list_item_assembler_impl_test.xml"/>
