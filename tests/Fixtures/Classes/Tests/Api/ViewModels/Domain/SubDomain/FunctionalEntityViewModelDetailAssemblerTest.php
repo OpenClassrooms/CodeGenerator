@@ -6,6 +6,7 @@ declare(strict_types=1);
 
 namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Api\ViewModels\Domain\SubDomain;
 
+use OC\Assert;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\FunctionalEntityViewModelDetailAssembler;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\Api\ViewModels\Domain\SubDomain\FunctionalEntityViewModelDetailStub1;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\Api\ViewModels\Domain\SubDomain\FunctionalEntityViewModelDetailTestCase;
@@ -23,7 +24,7 @@ final class FunctionalEntityViewModelDetailAssemblerTest extends TestCase
     {
         $actual = $this->assembler->create(new FunctionalEntityDetailResponseStub1());
         $expected = new FunctionalEntityViewModelDetailStub1();
-        $this->assertFunctionalEntityViewModelDetail($expected, $actual);
+        Assert::assertObjectsEqual($expected, $actual);
     }
 
     protected function setUp(): void

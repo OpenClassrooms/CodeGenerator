@@ -2,6 +2,7 @@
 
 namespace {{ skeletonModel.namespace }};
 
+use OC\Assert;
 use {{ skeletonModel.viewModelListItemAssemblerClassName }};
 use {{ skeletonModel.viewModelListItemStubClassName }};
 use {{ skeletonModel.viewModelListItemTestCaseClassName }};
@@ -19,7 +20,7 @@ final class {{ skeletonModel.shortName }} extends TestCase
     {
         $actual = $this->assembler->createListItems([new {{ skeletonModel.useCaseListItemResponseStubShortName }}()]);
         $expected = [new {{ skeletonModel.viewModelListItemStubShortName }}()];
-        $this->{{ skeletonModel.viewModelListItemTestCaseMethod }}($expected, $actual);
+        Assert::assertObjectsEqual($expected, $actual);
     }
 
     protected function setUp(): void

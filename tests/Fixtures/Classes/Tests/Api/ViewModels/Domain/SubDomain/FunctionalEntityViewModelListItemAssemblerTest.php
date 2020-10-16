@@ -6,6 +6,7 @@ declare(strict_types=1);
 
 namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Api\ViewModels\Domain\SubDomain;
 
+use OC\Assert;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\FunctionalEntityViewModelListItemAssembler;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\Api\ViewModels\Domain\SubDomain\FunctionalEntityViewModelListItemStub1;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\Api\ViewModels\Domain\SubDomain\FunctionalEntityViewModelListItemTestCase;
@@ -23,7 +24,7 @@ final class FunctionalEntityViewModelListItemAssemblerTest extends TestCase
     {
         $actual = $this->assembler->createListItems([new FunctionalEntityListItemResponseStub1()]);
         $expected = [new FunctionalEntityViewModelListItemStub1()];
-        $this->assertFunctionalEntityViewModelListItems($expected, $actual);
+        Assert::assertObjectsEqual($expected, $actual);
     }
 
     protected function setUp(): void
