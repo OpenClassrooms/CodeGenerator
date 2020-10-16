@@ -30,7 +30,7 @@ use OpenClassrooms\CodeGenerator\Generator\App\Entity\Request\EntityImplGenerato
 use OpenClassrooms\CodeGenerator\Generator\Generator;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\Request\ViewModelDetailAssemblerImplTestGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\Request\ViewModelListItemAssemblerImplTestGeneratorRequestBuilder;
-use OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\ViewModelDetailAssemblerImplTestGenerator;
+use OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\ViewModelDetailAssemblerTestGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\ViewModelListItemAssemblerImplTestGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Entities\EntityStubGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Entities\Request\EntityStubGeneratorRequestBuilder;
@@ -87,7 +87,7 @@ trait ViewModelGeneratorsTrait
     /** @var ViewModelDetailAssemblerGeneratorRequestBuilder */
     private $viewModelDetailAssemblerGeneratorRequestBuilder;
 
-    /** @var ViewModelDetailAssemblerImplTestGenerator */
+    /** @var ViewModelDetailAssemblerTestGenerator */
     private $viewModelDetailAssemblerImplTestGenerator;
 
     /** @var ViewModelDetailAssemblerImplTestGeneratorRequestBuilder */

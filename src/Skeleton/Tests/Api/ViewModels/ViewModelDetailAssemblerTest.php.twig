@@ -3,25 +3,19 @@
 namespace {{ skeletonModel.namespace }};
 
 use {{ skeletonModel.viewModelDetailAssemblerClassName }};
-use {{ skeletonModel.viewModelDetailAssemblerImplClassName }};
 use {{ skeletonModel.viewModelDetailStubClassName }};
 use {{ skeletonModel.viewModelDetailTestCaseClassName }};
 use {{ skeletonModel.useCaseDetailResponseStubClassName }};
 use PHPUnit\Framework\TestCase;
 
-class {{ skeletonModel.shortName }} extends TestCase
+final class {{ skeletonModel.shortName }} extends TestCase
 {
     use {{ skeletonModel.viewModelDetailTestCaseShortName }};
 
-    /**
-     * @var {{ skeletonModel.viewModelDetailAssemblerShortName }}
-     */
-    private $assembler;
+    private {{ skeletonModel.viewModelDetailAssemblerShortName }} $assembler;
 
-    /**
-     * @test
-     */
-    final public function onCreateShouldReturnViewModel(): void
+    /** @test */
+    public function onCreateShouldReturnViewModel(): void
     {
         $actual = $this->assembler->create(new {{ skeletonModel.useCaseDetailResponseStubShortName }}());
         $expected = new {{ skeletonModel.viewModelDetailStubShortName }}();
@@ -30,6 +24,6 @@ class {{ skeletonModel.shortName }} extends TestCase
 
     protected function setUp(): void
     {
-        $this->assembler = new {{ skeletonModel.viewModelDetailAssemblerImplShortName }}();
+        $this->assembler = new {{ skeletonModel.viewModelDetailAssemblerShortName }}();
     }
 }

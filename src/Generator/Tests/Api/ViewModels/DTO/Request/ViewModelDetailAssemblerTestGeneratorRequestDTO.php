@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\DTO\Request;
 
-use OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\Request\ViewModelDetailAssemblerImplTestGeneratorRequest;
+use OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\Request\ViewModelDetailAssemblerTestGeneratorRequest;
 
-class ViewModelDetailAssemblerImplTestGeneratorRequestDTO implements ViewModelDetailAssemblerImplTestGeneratorRequest
+class ViewModelDetailAssemblerTestGeneratorRequestDTO implements ViewModelDetailAssemblerTestGeneratorRequest
 {
     /**
      * @var string

@@ -52,14 +52,7 @@ class ViewModelFileObjectFactoryImplTest extends TestCase
                 self::getFileObjectViewModelDetailAssembler(),
             ],
             [
-                ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_ASSEMBLER_IMPL,
-                $domain,
-                $entity,
-                $baseNamespace,
-                self::getFileObjectViewModelDetailAssemblerImpl(),
-            ],
-            [
-                ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_ASSEMBLER_IMPL_TEST,
+                ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_ASSEMBLER_TEST,
                 $domain,
                 $entity,
                 $baseNamespace,
@@ -186,19 +179,11 @@ class ViewModelFileObjectFactoryImplTest extends TestCase
         return TestClassUtil::getShortClassName(FunctionalEntityViewModel::class);
     }
 
-    private static function getFileObjectViewModelDetailAssemblerImpl(): FileObject
-    {
-        return new FileObject(
-            FixturesConfig::BASE_NAMESPACE . FixturesConfig::API_DIR . 'ViewModels\Domain\SubDomain\Impl\\' . self::getEntityName(
-            ) . 'DetailAssemblerImpl'
-        );
-    }
-
     private static function getFileObjectViewModelDetailAssemblerImplTest(): FileObject
     {
         return new FileObject(
-            FixturesConfig::TEST_BASE_NAMESPACE . FixturesConfig::API_DIR . 'ViewModels\Domain\SubDomain\Impl\\' . self::getEntityName(
-            ) . 'DetailAssemblerImplTest'
+            FixturesConfig::TEST_BASE_NAMESPACE . FixturesConfig::API_DIR . 'ViewModels\Domain\SubDomain\\' . self::getEntityName(
+            ) . 'DetailAssemblerTest'
         );
     }
 

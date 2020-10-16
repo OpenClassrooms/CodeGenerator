@@ -9,69 +9,51 @@ use OpenClassrooms\CodeGenerator\Entities\Type\UseCaseResponseFileObjectType;
 use OpenClassrooms\CodeGenerator\Entities\Type\ViewModelFileObjectType;
 use OpenClassrooms\CodeGenerator\Generator\Api\AbstractViewModelGenerator;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
-use OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\Request\ViewModelDetailAssemblerImplTestGeneratorRequest;
-use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Api\ViewModels\ViewModelDetailAssemblerImplTestSkeletonModel;
-use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Api\ViewModels\ViewModelDetailAssemblerImplTestSkeletonModelBuilder;
+use OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\Request\ViewModelDetailAssemblerTestGeneratorRequest;
+use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Api\ViewModels\ViewModelDetailAssemblerTestSkeletonModel;
+use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Api\ViewModels\ViewModelDetailAssemblerTestSkeletonModelBuilder;
 
-class ViewModelDetailAssemblerImplTestGenerator extends AbstractViewModelGenerator
+final class ViewModelDetailAssemblerTestGenerator extends AbstractViewModelGenerator
 {
-    /**
-     * @var ViewModelDetailAssemblerImplTestSkeletonModelBuilder
-     */
-    private $viewModelTestSkeletonModelBuilder;
+    private ViewModelDetailAssemblerTestSkeletonModelBuilder $viewModelTestSkeletonModelBuilder;
 
     /**
-     * @param ViewModelDetailAssemblerImplTestGeneratorRequest $generatorRequest
+     * @param ViewModelDetailAssemblerTestGeneratorRequest $generatorRequest
      */
     public function generate(GeneratorRequest $generatorRequest): FileObject
     {
-        $viewModelDetailAssemblerImplTest = $this->buildViewModelDetailAssemblerImplTestFileObject(
+        $viewModelDetailAssemblerTest = $this->buildViewModelDetailAssemblerTestFileObject(
             $generatorRequest->getUseCaseResponseClassName()
         );
-        $this->insertFileObject($viewModelDetailAssemblerImplTest);
+        $this->insertFileObject($viewModelDetailAssemblerTest);
 
-        return $viewModelDetailAssemblerImplTest;
+        return $viewModelDetailAssemblerTest;
     }
 
-    private function buildViewModelDetailAssemblerImplTestFileObject(
+    private function buildViewModelDetailAssemblerTestFileObject(
         string $useCaseResponseClassName
     ): FileObject {
         $this->initFileObjectParameter($useCaseResponseClassName);
 
-        $viewModelDetailAssemblerImpl = $this->createViewModelDetailAssemblerImplFileObject();
         $viewModelDetailTestCase = $this->createViewModelDetailTestCaseFileObject();
         $useCaseDetailResponseStub = $this->createUseCaseDetailResponseStubFileObject();
         $viewModelDetailStub = $this->createViewModelDetailStubFileObject();
         $viewModelDetailAssembler = $this->createViewModelDetailAssemblerFileObject();
-        $viewModelDetailAssemblerImplTest = $this->createViewModelDetailAssemblerImplTestFileObjectFileObject();
+        $viewModelDetailAssemblerTest = $this->createViewModelDetailAssemblerTestFileObjectFileObject();
 
-        $viewModelDetailAssemblerImplTest->setContent(
+        $viewModelDetailAssemblerTest->setContent(
             $this->generateContent(
                 [
-                    ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_ASSEMBLER_IMPL               => $viewModelDetailAssemblerImpl,
                     ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_TEST_CASE                    => $viewModelDetailTestCase,
                     UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE_STUB => $useCaseDetailResponseStub,
                     ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_STUB                         => $viewModelDetailStub,
                     ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_ASSEMBLER                    => $viewModelDetailAssembler,
-                    ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_ASSEMBLER_IMPL_TEST          => $viewModelDetailAssemblerImplTest,
+                    ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_ASSEMBLER_TEST               => $viewModelDetailAssemblerTest,
                 ]
             )
         );
 
-        return $viewModelDetailAssemblerImplTest;
-    }
-
-    /**
-     * @param string $viewModelDetailAssemblerImplClassName
-     */
-    private function createViewModelDetailAssemblerImplFileObject(): FileObject
-    {
-        return $viewModelDetailAssemblerImpl = $this->createViewModelFileObject(
-            ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_ASSEMBLER_IMPL,
-            $this->domain,
-            $this->entity,
-            $this->baseNamespace
-        );
+        return $viewModelDetailAssemblerTest;
     }
 
     private function createViewModelDetailTestCaseFileObject(): FileObject
@@ -114,10 +96,10 @@ class ViewModelDetailAssemblerImplTestGenerator extends AbstractViewModelGenerat
         );
     }
 
-    private function createViewModelDetailAssemblerImplTestFileObjectFileObject(): FileObject
+    private function createViewModelDetailAssemblerTestFileObjectFileObject(): FileObject
     {
         return $this->createViewModelFileObject(
-            ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_ASSEMBLER_IMPL_TEST,
+            ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_ASSEMBLER_TEST,
             $this->domain,
             $this->entity,
             $this->baseNamespace
@@ -137,27 +119,24 @@ class ViewModelDetailAssemblerImplTestGenerator extends AbstractViewModelGenerat
     /**
      * @param FileObject[]
      */
-    private function createSkeletonModel(array $fileObjects): ViewModelDetailAssemblerImplTestSkeletonModel
+    private function createSkeletonModel(array $fileObjects): ViewModelDetailAssemblerTestSkeletonModel
     {
         return $this->viewModelTestSkeletonModelBuilder->create()
-            ->withViewModelDetailAssemblerImpl(
-                $fileObjects[ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_ASSEMBLER_IMPL]
-            )
             ->withViewModelDetailTestCase($fileObjects[ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_TEST_CASE])
             ->withUseCaseDetailResponseStub(
                 $fileObjects[UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE_STUB]
             )
             ->withViewModelDetailStub($fileObjects[ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_STUB])
             ->withViewModelDetailAssembler($fileObjects[ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_ASSEMBLER])
-            ->withViewModelDetailAssemblerImplTest(
-                $fileObjects[ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_ASSEMBLER_IMPL_TEST]
+            ->withViewModelDetailAssemblerTest(
+                $fileObjects[ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_ASSEMBLER_TEST]
             )
             ->build();
     }
 
-    public function setViewModelDetailAssemblerImplTestSkeletonModelBuilder(
-        ViewModelDetailAssemblerImplTestSkeletonModelBuilder $assembler
-    ) {
+    public function setViewModelDetailAssemblerTestSkeletonModelBuilder(
+        ViewModelDetailAssemblerTestSkeletonModelBuilder $assembler
+    ): void {
         $this->viewModelTestSkeletonModelBuilder = $assembler;
     }
 }
