@@ -6,7 +6,7 @@
 
         <service
                 id="open_classrooms.code_generator.skeleton_models.tests.api.view_models.view_model_list_item_assembler_impl_test_skeleton_model_builder"
-                class="ViewModelListItemAssemblerImplTestSkeletonModelBuilder">
+                class="OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Api\ViewModels\Impl\ViewModelListItemAssemblerImplTestSkeletonModelBuilder">
         </service>
 
         <service

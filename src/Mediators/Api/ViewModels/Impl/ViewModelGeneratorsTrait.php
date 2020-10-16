@@ -75,12 +75,6 @@ trait ViewModelGeneratorsTrait
     /** @var UseCaseListItemResponseStubGeneratorRequestBuilder */
     private $useCaseListItemResponseStubGeneratorRequestBuilder;
 
-    /** @var ViewModelAssemblerTraitGenerator */
-    private $viewModelAssemblerTraitGenerator;
-
-    /** @var ViewModelAssemblerTraitGeneratorRequestBuilder */
-    private $viewModelAssemblerTraitGeneratorRequestBuilder;
-
     /** @var ViewModelDetailAssemblerGenerator */
     private $viewModelDetailAssemblerGenerator;
 
@@ -196,17 +190,6 @@ trait ViewModelGeneratorsTrait
         UseCaseListItemResponseStubGeneratorRequestBuilder $useCaseListItemResponseStubGeneratorRequestBuilder
     ): void {
         $this->useCaseListItemResponseStubGeneratorRequestBuilder = $useCaseListItemResponseStubGeneratorRequestBuilder;
-    }
-
-    public function setViewModelAssemblerTraitGenerator($viewModelAssemblerTraitGenerator): void
-    {
-        $this->viewModelAssemblerTraitGenerator = $viewModelAssemblerTraitGenerator;
-    }
-
-    public function setViewModelAssemblerTraitGeneratorRequestBuilder(
-        $viewModelAssemblerTraitGeneratorRequestBuilder
-    ): void {
-        $this->viewModelAssemblerTraitGeneratorRequestBuilder = $viewModelAssemblerTraitGeneratorRequestBuilder;
     }
 
     public function setViewModelDetailAssemblerGenerator($viewModelDetailAssemblerGenerator): void
@@ -385,13 +368,6 @@ trait ViewModelGeneratorsTrait
     {
         return $this->viewModelGenerator->generate(
             $this->viewModelGeneratorRequestBuilder->create()->withClassName($className)->build()
-        );
-    }
-
-    protected function generateViewModelAssemblerTraitGenerator(string $className): FileObject
-    {
-        return $this->viewModelAssemblerTraitGenerator->generate(
-            $this->viewModelAssemblerTraitGeneratorRequestBuilder->create()->withClassName($className)->build()
         );
     }
 

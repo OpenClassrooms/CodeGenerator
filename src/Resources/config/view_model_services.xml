@@ -12,12 +12,11 @@
         <import resource="Generator/Api/ViewModels/view_model_detail.xml"/>
         <import resource="Generator/Api/ViewModels/view_model_list_item_impl.xml"/>
         <import resource="Generator/Api/ViewModels/view_model.xml"/>
-        <import resource="Generator/Api/ViewModels/view_model_assembler_trait.xml"/>
         <import resource="Generator/Api/ViewModels/view_model_detail_assembler.xml"/>
         <import resource="Generator/Api/ViewModels/view_model_list_item_assembler.xml"/>
         <import resource="Generator/App/Entity/entity_impl.xml"/>
         <import resource="Generator/Tests/Api/ViewModels/view_model_detail_assembler_test.xml"/>
-        <import resource="Generator/Tests/Api/ViewModels/view_model_list_item_assembler_impl_test.xml"/>
+        <import resource="Generator/Tests/Api/ViewModels/view_model_list_item_assembler_test.xml"/>
         <import resource="Generator/Tests/BusinessRules/Entities/entity_stub.xml"/>
         <import resource="Generator/Tests/BusinessRules/Responders/abstract_use_case_response_stub.xml"/>
         <import resource="Generator/Tests/BusinessRules/Responders/use_case_list_item_response_stub.xml"/>

@@ -61,10 +61,6 @@
                 <argument type="service"
                           id="open_classrooms.code_generator.file_objects.use_case_response_file_object_factory"/>
             </call>
-            <call method="setViewModelAssemblerTraitGeneratorRequestBuilder">
-                <argument type="service"
-                          id="open_classrooms.code_generator.generator.api.view_models.dto.request.view_model_assembler_trait_generator_request_builder"/>
-            </call>
             <call method="setViewModelDetailAssemblerGeneratorRequestBuilder">
                 <argument type="service"
                           id="open_classrooms.code_generator.generator.api.view_models.dto.request.view_model_detail_assembler_generator_request_builder"/>
@@ -180,10 +176,6 @@
             <call method="setViewModelListItemTestCaseGenerator">
                 <argument type="service"
                           id="open_classrooms.code_generator.generator.tests.doubles.api.view_models.view_model_list_item_test_case_generator"/>
-            </call>
-            <call method="setViewModelAssemblerTraitGenerator">
-                <argument type="service"
-                          id="open_classrooms.code_generator.generator.api.view_models.view_model_assembler_trait_generator"/>
             </call>
             <call method="setViewModelDetailAssemblerGenerator">
                 <argument type="service"

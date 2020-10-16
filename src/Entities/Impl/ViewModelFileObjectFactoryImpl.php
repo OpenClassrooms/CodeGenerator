@@ -14,10 +14,6 @@ class ViewModelFileObjectFactoryImpl extends AbstractFileObjectFactory implement
     public function create(string $type, string $domain, string $entity, string $baseNamespace = null): FileObject
     {
         switch ($type) {
-            case ViewModelFileObjectType::API_VIEW_MODEL_ASSEMBLER_TRAIT:
-                return new FileObject(
-                    $this->baseNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\' . $entity . 'ViewModelAssemblerTrait'
-                );
             case ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_ASSEMBLER:
                 return new FileObject(
                     $this->baseNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\' . $entity . 'ViewModelDetailAssembler'
@@ -37,10 +33,6 @@ class ViewModelFileObjectFactoryImpl extends AbstractFileObjectFactory implement
             case ViewModelFileObjectType::API_VIEW_MODEL:
                 return new FileObject(
                     $this->baseNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\' . $entity . 'ViewModel'
-                );
-            case ViewModelFileObjectType::API_VIEW_MODEL_IMPL:
-                return new FileObject(
-                    $this->baseNamespace . $this->apiDir . 'ViewModels\\' . $domain . '\\Impl\\' . $entity . 'ViewModelImpl'
                 );
             case ViewModelFileObjectType::API_VIEW_MODEL_DETAIL:
                 return new FileObject(
