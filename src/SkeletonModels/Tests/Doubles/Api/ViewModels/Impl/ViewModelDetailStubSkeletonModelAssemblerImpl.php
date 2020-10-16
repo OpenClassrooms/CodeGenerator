@@ -8,13 +8,13 @@ use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\Api\ViewModels\ViewModelDetailStubSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\Api\ViewModels\ViewModelDetailStubSkeletonModelAssembler;
 
-class ViewModelDetailStubSkeletonModelAssemblerImpl implements ViewModelDetailStubSkeletonModelAssembler
+final class ViewModelDetailStubSkeletonModelAssemblerImpl implements ViewModelDetailStubSkeletonModelAssembler
 {
     use StubSkeletonAssemblerTrait;
 
     public function create(
         FileObject $viewModelDetailStubFileObject,
-        FileObject $viewModelDetailImplFileObject,
+        FileObject $viewModelDetailFileObject,
         FileObject $useCaseDetailResponseStubFileObject
     ): ViewModelDetailStubSkeletonModel {
         $skeletonModel = new ViewModelDetailStubSkeletonModelImpl();
@@ -23,8 +23,8 @@ class ViewModelDetailStubSkeletonModelAssemblerImpl implements ViewModelDetailSt
         $skeletonModel->shortName = $viewModelDetailStubFileObject->getShortName();
         $skeletonModel->fields = $viewModelDetailStubFileObject->getFields();
         $skeletonModel->constants = $viewModelDetailStubFileObject->getConsts();
-        $skeletonModel->parentClassName = $viewModelDetailImplFileObject->getClassName();
-        $skeletonModel->parentShortName = $viewModelDetailImplFileObject->getShortName();
+        $skeletonModel->parentClassName = $viewModelDetailFileObject->getClassName();
+        $skeletonModel->parentShortName = $viewModelDetailFileObject->getShortName();
         $skeletonModel->useCaseDetailResponseStubClassName = $useCaseDetailResponseStubFileObject->getClassName();
         $skeletonModel->hasConstructor = $this->hasConstructor($viewModelDetailStubFileObject->getFields());
         $skeletonModel->dateTimeType = $this->getDateTimeType();

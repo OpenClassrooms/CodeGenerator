@@ -6,10 +6,10 @@ declare(strict_types=1);
 
 namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\Api\ViewModels\Domain\SubDomain;
 
-use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\Impl\FunctionalEntityViewModelDetailImpl;
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\FunctionalEntityViewModelDetail;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityDetailResponseStub1;
 
-class FunctionalEntityViewModelDetailStub1 extends FunctionalEntityViewModelDetailImpl
+final class FunctionalEntityViewModelDetailStub1 extends FunctionalEntityViewModelDetail
 {
     public const FIELD_1 = FunctionalEntityDetailResponseStub1::FIELD_1;
 
@@ -21,24 +21,12 @@ class FunctionalEntityViewModelDetailStub1 extends FunctionalEntityViewModelDeta
 
     public const ID = FunctionalEntityDetailResponseStub1::ID;
 
-    /**
-     * {@inheritdoc}
-     */
     public $field1 = self::FIELD_1;
 
-    /**
-     * {@inheritdoc}
-     */
     public $field2 = self::FIELD_2;
 
-    /**
-     * {@inheritdoc}
-     */
     public $field3 = self::FIELD_3;
 
-    /**
-     * {@inheritdoc}
-     */
     public $id = self::ID;
 
     public function __construct()

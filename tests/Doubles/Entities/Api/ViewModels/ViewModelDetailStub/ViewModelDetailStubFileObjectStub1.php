@@ -6,9 +6,9 @@ namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\ViewModels\Vie
 
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 
-class ViewModelDetailStubFileObjectStub1 extends FileObject
+final class ViewModelDetailStubFileObjectStub1 extends FileObject
 {
-    const CLASS_NAME = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\Api\ViewModels\Domain\SubDomain\FunctionalEntityViewModelDetailStub1';
+    private const CLASS_NAME = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\Api\ViewModels\Domain\SubDomain\FunctionalEntityViewModelDetailStub1';
 
     public function __construct()
     {

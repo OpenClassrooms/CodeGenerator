@@ -8,11 +8,11 @@ use OpenClassrooms\CodeGenerator\Entities\Object\ConstObject;
 use OpenClassrooms\CodeGenerator\Entities\Object\FieldObject;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\BusinessRules\Entities\EntityStub\EntityStubFieldObjectStub1;
 
-class ViewModelDetailStubFieldObjectStub1 extends FieldObject
+final class ViewModelDetailStubFieldObjectStub1 extends FieldObject
 {
-    const DOC_COMMENT = EntityStubFieldObjectStub1::DOC_COMMENT;
+    private const DOC_COMMENT = EntityStubFieldObjectStub1::DOC_COMMENT;
 
-    const NAME        = EntityStubFieldObjectStub1::NAME;
+    private const NAME        = EntityStubFieldObjectStub1::NAME;
 
     protected $docComment = self::DOC_COMMENT;
 

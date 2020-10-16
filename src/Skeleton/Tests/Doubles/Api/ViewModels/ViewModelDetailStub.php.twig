@@ -5,7 +5,7 @@ namespace {{ skeletonModel.namespace }};
 use {{ skeletonModel.parentClassName }};
 use {{ skeletonModel.useCaseDetailResponseStubClassName }};
 
-class {{ skeletonModel.shortName }} extends {{ skeletonModel.parentShortName }}
+final class {{ skeletonModel.shortName }} extends {{ skeletonModel.parentShortName }}
 {
 {% for constant in skeletonModel.constants | sortNameByAlpha %}
     public const {{ constant.name }} = {{ printValue(constant.value) }};
@@ -16,9 +16,6 @@ class {{ skeletonModel.shortName }} extends {{ skeletonModel.parentShortName }}
 
 {% for key, field in skeletonModel.fields %}
 {% if not field.isObject %}
-    /**
-     * {@inheritdoc}
-     */
     {{ field.scope }} ${{ field.name }} = self::{{ field.value.name }};
 {% endif %}
 {% if lineBreak(skeletonModel.fields, key) %}
