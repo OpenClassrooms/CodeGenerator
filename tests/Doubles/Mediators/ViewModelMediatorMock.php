@@ -20,9 +20,7 @@ class ViewModelMediatorMock extends ViewModelMediatorImpl
         self::$fileObjects = [
             new ViewModelFileObjectStub1(),
             new ViewModelDetailFileObjectStub1(),
-            new ViewModelDetailImplFileObjectStub1(),
             new ViewModelListItemFileObjectStub1(),
-            new ViewModelListItemImplFileObjectStub1(),
         ];
     }
 

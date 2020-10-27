@@ -10,13 +10,13 @@ use OpenClassrooms\CodeGenerator\Entities\Type\ViewModelFileObjectType;
 use OpenClassrooms\CodeGenerator\Generator\Api\AbstractViewModelGenerator;
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\Request\ViewModelListItemAssemblerImplTestGeneratorRequest;
-use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Api\ViewModels\ViewModelListItemAssemblerImplTestSkeletonModel;
-use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Api\ViewModels\ViewModelListItemAssemblerImplTestSkeletonModelBuilder;
+use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Api\ViewModels\ViewModelListItemAssemblerTestSkeletonModel;
+use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Api\ViewModels\ViewModelListItemAssemblerTestSkeletonModelBuilder;
 
 class ViewModelListItemAssemblerImplTestGenerator extends AbstractViewModelGenerator
 {
     /**
-     * @var ViewModelListItemAssemblerImplTestSkeletonModelBuilder
+     * @var ViewModelListItemAssemblerTestSkeletonModelBuilder
      */
     private $viewModelTestSkeletonModelBuilder;
 
@@ -37,52 +37,23 @@ class ViewModelListItemAssemblerImplTestGenerator extends AbstractViewModelGener
     {
         $this->initFileObjectParameter($useCaseResponseClassName);
 
-        $viewModelListItemAssemblerImpl = $this->createViewModelListItemAssemblerImplFileObject();
-        $viewModelListItemTestCase = $this->createViewModelListItemTestCaseFileObject();
         $useCaseListItemResponseStub = $this->createUseCaseListItemResponseStubFileObject();
         $viewModelListItemStub = $this->createViewModelListItemStubFileObject();
         $viewModelListItemAssembler = $this->createViewModelListItemAssemblerFileObject();
-        $viewModelListItemAssemblerImplTest = $this->createViewModelListItemAssemblerImplTestFileObject();
+        $viewModelListItemAssemblerTest = $this->createViewModelListItemAssemblerTestFileObject();
 
-        $viewModelListItemAssemblerImplTest->setContent(
+        $viewModelListItemAssemblerTest->setContent(
             $this->generateContent(
                 [
-                    ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_ASSEMBLER_IMPL               => $viewModelListItemAssemblerImpl,
-                    ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_TEST_CASE                    => $viewModelListItemTestCase,
                     UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE_STUB => $useCaseListItemResponseStub,
                     ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_STUB                         => $viewModelListItemStub,
                     ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_ASSEMBLER                    => $viewModelListItemAssembler,
-                    ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_ASSEMBLER_IMPL_TEST          => $viewModelListItemAssemblerImplTest,
+                    ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_ASSEMBLER_TEST               => $viewModelListItemAssemblerTest,
                 ]
             )
         );
 
-        return $viewModelListItemAssemblerImplTest;
-    }
-
-    /**
-     * @param string $viewModelListItemAssemblerImplClassName
-     *
-     * @return FileObject
-     */
-    private function createViewModelListItemAssemblerImplFileObject(): FileObject
-    {
-        return $this->createViewModelFileObject(
-            ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_ASSEMBLER_IMPL,
-            $this->domain,
-            $this->entity,
-            $this->baseNamespace
-        );
-    }
-
-    private function createViewModelListItemTestCaseFileObject(): FileObject
-    {
-        return $this->createViewModelFileObject(
-            ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_TEST_CASE,
-            $this->domain,
-            $this->entity,
-            $this->baseNamespace
-        );
+        return $viewModelListItemAssemblerTest;
     }
 
     private function createUseCaseListItemResponseStubFileObject(): FileObject
@@ -115,10 +86,10 @@ class ViewModelListItemAssemblerImplTestGenerator extends AbstractViewModelGener
         );
     }
 
-    private function createViewModelListItemAssemblerImplTestFileObject(): FileObject
+    private function createViewModelListItemAssemblerTestFileObject(): FileObject
     {
         return $this->createViewModelFileObject(
-            ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_ASSEMBLER_IMPL_TEST,
+            ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_ASSEMBLER_TEST,
             $this->domain,
             $this->entity,
             $this->baseNamespace
@@ -138,26 +109,22 @@ class ViewModelListItemAssemblerImplTestGenerator extends AbstractViewModelGener
     /**
      * @param FileObject[]
      */
-    private function createSkeletonModel(array $fileObjects): ViewModelListItemAssemblerImplTestSkeletonModel
+    private function createSkeletonModel(array $fileObjects): ViewModelListItemAssemblerTestSkeletonModel
     {
         return $this->viewModelTestSkeletonModelBuilder->create()
-            ->withViewModelListItemAssemblerImpl(
-                $fileObjects[ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_ASSEMBLER_IMPL]
-            )
-            ->withViewModelListItemTestCase($fileObjects[ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_TEST_CASE])
             ->withUseCaseListItemResponseStub(
                 $fileObjects[UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_LIST_ITEM_RESPONSE_STUB]
             )
             ->withViewModelListItemStub($fileObjects[ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_STUB])
             ->withViewModelListItemAssembler($fileObjects[ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_ASSEMBLER])
-            ->withViewModelListItemAssemblerImplTest(
-                $fileObjects[ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_ASSEMBLER_IMPL_TEST]
+            ->withViewModelListItemAssemblerTest(
+                $fileObjects[ViewModelFileObjectType::API_VIEW_MODEL_LIST_ITEM_ASSEMBLER_TEST]
             )
             ->build();
     }
 
     public function setViewModelListItemAssemblerImplTestSkeletonModelBuilder(
-        ViewModelListItemAssemblerImplTestSkeletonModelBuilder $assembler
+        ViewModelListItemAssemblerTestSkeletonModelBuilder $assembler
     ) {
         $this->viewModelTestSkeletonModelBuilder = $assembler;
     }

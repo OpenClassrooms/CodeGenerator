@@ -15,10 +15,7 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModels\ViewModelListItem
 
 class ViewModelListItemAssemblerGenerator extends AbstractViewModelGenerator
 {
-    /**
-     * @var ViewModelListItemAssemblerSkeletonModelAssembler
-     */
-    private $viewModelListItemAssemblerSkeletonModelAssembler;
+    private ViewModelListItemAssemblerSkeletonModelAssembler $viewModelListItemAssemblerSkeletonModelAssembler;
 
     /**
      * @param ViewModelListItemAssemblerGeneratorRequest $generatorRequest
@@ -37,12 +34,14 @@ class ViewModelListItemAssemblerGenerator extends AbstractViewModelGenerator
     public function buildViewModelListItemAssemblerFileObject(string $useCaseResponseClassName)
     {
         $this->initFileObjectParameter($useCaseResponseClassName);
+        $useCaseResponseFileObject = $this->createUseCaseResponseObject();
         $useCaseListItemResponseFileObject = $this->createUseCaseListItemResponseFileObject();
         $viewModelListItemFileObject = $this->createViewModelListItemFileObject();
         $viewModelListItemAssemblerFileObject = $this->createViewModelListItemAssemblerFileObject();
 
         $viewModelListItemAssemblerFileObject->setContent(
             $this->generateContent(
+                $useCaseResponseFileObject,
                 $useCaseListItemResponseFileObject,
                 $viewModelListItemFileObject,
                 $viewModelListItemAssemblerFileObject
@@ -50,6 +49,16 @@ class ViewModelListItemAssemblerGenerator extends AbstractViewModelGenerator
         );
 
         return $viewModelListItemAssemblerFileObject;
+    }
+
+    private function createUseCaseResponseObject(): FileObject
+    {
+        return $this->createUseCaseResponseFileObject(
+            UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_RESPONSE,
+            $this->domain,
+            $this->entity,
+            $this->baseNamespace
+        );
     }
 
     private function createUseCaseListItemResponseFileObject(): FileObject
@@ -83,11 +92,13 @@ class ViewModelListItemAssemblerGenerator extends AbstractViewModelGenerator
     }
 
     private function generateContent(
+        FileObject $useCaseResponseFileObject,
         FileObject $useCaseListItemResponseFileObject,
         FileObject $viewModelListItemFileObject,
         FileObject $viewModelListItemAssemblerFileObject
     ): string {
         $skeletonModel = $this->createSkeletonModel(
+            $useCaseResponseFileObject,
             $useCaseListItemResponseFileObject,
             $viewModelListItemFileObject,
             $viewModelListItemAssemblerFileObject
@@ -97,11 +108,13 @@ class ViewModelListItemAssemblerGenerator extends AbstractViewModelGenerator
     }
 
     private function createSkeletonModel(
+        FileObject $useCaseResponseFileObject,
         FileObject $useCaseListItemResponseFileObject,
         FileObject $viewModelListItemFileObject,
         FileObject $viewModelListItemAssemblerFileObject
     ): ViewModelListItemAssemblerSkeletonModel {
         return $this->viewModelListItemAssemblerSkeletonModelAssembler->create(
+            $useCaseResponseFileObject,
             $useCaseListItemResponseFileObject,
             $viewModelListItemFileObject,
             $viewModelListItemAssemblerFileObject

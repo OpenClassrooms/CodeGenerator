@@ -6,7 +6,7 @@ namespace OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\Request;
 
 interface ViewModelDetailAssemblerImplTestGeneratorRequestBuilder
 {
-    public function build(): ViewModelDetailAssemblerImplTestGeneratorRequest;
+    public function build(): ViewModelDetailAssemblerTestGeneratorRequest;
 
     public function create(): ViewModelDetailAssemblerImplTestGeneratorRequestBuilder;
 

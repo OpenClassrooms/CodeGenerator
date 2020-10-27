@@ -6,9 +6,16 @@ declare(strict_types=1);
 
 namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain;
 
+use OC\BusinessRules\Utils\DtoCommonFieldsHydrator;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityDetailResponse;
 
-interface FunctionalEntityViewModelDetailAssembler
+class FunctionalEntityViewModelDetailAssembler
 {
-    public function create(FunctionalEntityDetailResponse $functionalEntityDetailResponse): FunctionalEntityViewModelDetail;
+    public function create(FunctionalEntityDetailResponse $functionalEntityDetailResponse): FunctionalEntityViewModelDetail
+    {
+        $vm = new FunctionalEntityViewModelDetail();
+        DtoCommonFieldsHydrator::hydrate($vm, $functionalEntityDetailResponse);
+
+        return $vm;
+    }
 }

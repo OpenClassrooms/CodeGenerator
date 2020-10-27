@@ -2,9 +2,16 @@
 
 namespace {{ skeletonModel.namespace }};
 
+use OC\BusinessRules\Utils\DtoCommonFieldsHydrator;
 use {{ skeletonModel.useCaseDetailResponseClassName }};
 
-interface {{ skeletonModel.shortName }}
+class {{ skeletonModel.shortName }}
 {
-    public function create({{ skeletonModel.useCaseDetailResponseShortName }} ${{ skeletonModel.useCaseDetailResponseArgument}}): {{ skeletonModel.viewModelDetailShortName }};
+    public function create({{ skeletonModel.useCaseDetailResponseShortName }} ${{ skeletonModel.useCaseDetailResponseArgument}}): {{ skeletonModel.viewModelDetailShortName }}
+    {
+        $vm = new {{ skeletonModel.viewModelDetailShortName }}();
+        DtoCommonFieldsHydrator::hydrate($vm, ${{ skeletonModel.useCaseDetailResponseArgument}});
+
+        return $vm;
+    }
 }

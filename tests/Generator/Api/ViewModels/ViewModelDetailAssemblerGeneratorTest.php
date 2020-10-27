@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace OpenClassrooms\CodeGenerator\Tests\Generator\Api\ViewModels;
 
 use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\DTO\Request\ViewModelDetailAssemblerGeneratorRequestBuilderImpl;
-use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\Request\ViewModelDetailAssemblerGeneratorRequestBuilder;
+use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\Request\ViewModelDetailAssemblerGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\ViewModelDetailAssemblerGenerator;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModels\Impl\ViewModelDetailAssemblerSkeletonModelAssemblerImpl;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\ViewModels\ViewModelDetailAssembler\ViewModelDetailAssemblerFileObjectStub1;
@@ -17,19 +17,11 @@ class ViewModelDetailAssemblerGeneratorTest extends AbstractViewModelGeneratorTe
 {
     use FileObjectTestCase;
 
-    /**
-     * @var ViewModelDetailAssemblerGeneratorRequestBuilder
-     */
-    private $request;
+    private ViewModelDetailAssemblerGeneratorRequest $request;
 
-    /**
-     * @var ViewModelDetailAssemblerGenerator
-     */
-    private $viewModelDetailAssemblerGenerator;
+    private ViewModelDetailAssemblerGenerator $viewModelDetailAssemblerGenerator;
 
-    /**
-     * @test
-     */
+    /** @test */
     public function generateReturnFileObject(): void
     {
         $actualFileObject = $this->viewModelDetailAssemblerGenerator->generate($this->request);

@@ -10,7 +10,7 @@ interface ViewModelListItemStubSkeletonModelAssembler
 {
     public function create(
         FileObject $viewModelListItemStubFileObject,
-        FileObject $viewModelListItemImplFileObject,
+        FileObject $viewModelListItemFileObject,
         FileObject $useCaseListItemResponseStubFileObject
     ): ViewModelListItemStubSkeletonModel;
 }

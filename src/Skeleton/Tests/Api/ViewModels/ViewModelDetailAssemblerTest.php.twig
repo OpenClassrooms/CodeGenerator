@@ -1,0 +1,27 @@
+{% include "Header.php.twig" %}
+
+namespace {{ skeletonModel.namespace }};
+
+use OC\Assert;
+use {{ skeletonModel.viewModelDetailAssemblerClassName }};
+use {{ skeletonModel.viewModelDetailStubClassName }};
+use {{ skeletonModel.useCaseDetailResponseStubClassName }};
+use PHPUnit\Framework\TestCase;
+
+final class {{ skeletonModel.shortName }} extends TestCase
+{
+    private {{ skeletonModel.viewModelDetailAssemblerShortName }} $assembler;
+
+    /** @test */
+    public function onCreateShouldReturnViewModel(): void
+    {
+        $actual = $this->assembler->create(new {{ skeletonModel.useCaseDetailResponseStubShortName }}());
+        $expected = new {{ skeletonModel.viewModelDetailStubShortName }}();
+        Assert::assertObjectsEqual($expected, $actual);
+    }
+
+    protected function setUp(): void
+    {
+        $this->assembler = new {{ skeletonModel.viewModelDetailAssemblerShortName }}();
+    }
+}
