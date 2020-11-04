@@ -14,27 +14,16 @@ use PHPUnit\Framework\TestCase;
 
 class GenericUseCaseTest extends TestCase
 {
-    /**
-     * @var GenericUseCaseRequestDTO
-     */
-    private $request;
+    private GenericUseCaseRequestDTO $request;
 
-    /**
-     * @var GenericUseCase
-     */
-    private $useCase;
+    private GenericUseCase $useCase;
 
-    /**
-     * @test
-     */
+    /** @test */
     final public function genericUseCaseReturnResponse(): void
     {
         $this->fail("TODO: Implement this test");
     }
 
-    /**
-     * @inheritdoc
-     */
     protected function setUp(): void
     {
         $this->request = $this->buildRequest();

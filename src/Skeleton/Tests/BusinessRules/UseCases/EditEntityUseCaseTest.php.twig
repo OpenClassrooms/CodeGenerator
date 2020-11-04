@@ -21,15 +21,9 @@ final class {{ skeletonModel.shortName }} extends TestCase
 {
     use {{ skeletonModel.entityUseCaseDetailResponseTestCaseShortName }};
 
-    /**
-     * @var {{ skeletonModel.editEntityUseCaseRequestDTOShortName }}
-     */
-    private $request;
+    private {{ skeletonModel.editEntityUseCaseRequestDTOShortName }} $request;
 
-    /**
-     * @var {{ skeletonModel.editEntityUseCaseShortName }}
-     */
-    private $useCase;
+    private {{ skeletonModel.editEntityUseCaseShortName }} $useCase;
 
     /**
      * @test
@@ -42,9 +36,7 @@ final class {{ skeletonModel.shortName }} extends TestCase
         $this->useCase->execute($this->request);
     }
 
-    /**
-     * @test
-     */
+    /** @test */
     public function edit{{ skeletonModel.entityShortName }}(): void
     {
         $this->request->{{ skeletonModel.entityIdArgument }} = {{ skeletonModel.entityStubShortName }}::ID;

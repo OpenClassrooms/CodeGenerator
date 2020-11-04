@@ -17,15 +17,9 @@ class {{ skeletonModel.shortName }} extends TestCase
 {
     use {{ skeletonModel.useCaseDetailResponseTestCaseShortName }};
 
-    /**
-     * @var {{ skeletonModel.getEntityUseCaseRequestDTOShortName }}
-     */
-    private $request;
+    private {{ skeletonModel.getEntityUseCaseRequestDTOShortName }} $request;
 
-    /**
-     * @var {{ skeletonModel.getEntityUseCaseShortName }}
-     */
-    private $useCase;
+    private {{ skeletonModel.getEntityUseCaseShortName }} $useCase;
 
     /**
      * @test
@@ -38,9 +32,7 @@ class {{ skeletonModel.shortName }} extends TestCase
         $this->useCase->execute($this->request);
     }
 
-    /**
-     * @test
-     */
+    /** @test */
     final public function get{{ skeletonModel.entityShortName }}ShouldReturnResponse(): void
     {
         $response = $this->useCase->execute($this->request);

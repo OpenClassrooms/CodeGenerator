@@ -10,27 +10,16 @@ use PHPUnit\Framework\TestCase;
 
 class {{ skeletonModel.shortName }} extends TestCase
 {
-    /**
-     * @var {{ skeletonModel.genericUseCaseRequestDTOShortName }}
-     */
-    private $request;
+    private {{ skeletonModel.genericUseCaseRequestDTOShortName }} $request;
 
-    /**
-     * @var {{ skeletonModel.genericUseCaseShortName }}
-     */
-    private $useCase;
+    private {{ skeletonModel.genericUseCaseShortName }} $useCase;
 
-    /**
-     * @test
-     */
+    /** @test */
     final public function {{ skeletonModel.genericUseCaseTestMethod }}ReturnResponse(): void
     {
         $this->fail("TODO: Implement this test");
     }
 
-    /**
-     * @inheritdoc
-     */
     protected function setUp(): void
     {
         $this->request = $this->buildRequest();
