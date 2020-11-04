@@ -17,15 +17,9 @@ use OpenClassrooms\UseCase\BusinessRules\Requestors\UseCaseRequest;
 
 class GetFunctionalEntity implements UseCase
 {
-    /**
-     * @var FunctionalEntityGateway
-     */
-    private $functionalEntityGateway;
+    private FunctionalEntityGateway $functionalEntityGateway;
 
-    /**
-     * @var FunctionalEntityDetailResponseAssembler
-     */
-    private $responseAssembler;
+    private FunctionalEntityDetailResponseAssembler $responseAssembler;
 
     public function __construct(FunctionalEntityDetailResponseAssembler $assembler, FunctionalEntityGateway $functionalEntityGateway)
     {

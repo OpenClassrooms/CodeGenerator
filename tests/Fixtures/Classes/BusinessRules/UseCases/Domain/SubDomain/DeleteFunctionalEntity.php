@@ -16,10 +16,7 @@ use OpenClassrooms\UseCase\BusinessRules\Requestors\UseCaseRequest;
 
 class DeleteFunctionalEntity implements UseCase
 {
-    /**
-     * @var FunctionalEntityGateway
-     */
-    private $functionalEntityGateway;
+    private FunctionalEntityGateway $functionalEntityGateway;
 
     public function __construct(FunctionalEntityGateway $functionalEntityGateway)
     {
@@ -40,6 +37,9 @@ class DeleteFunctionalEntity implements UseCase
         $this->delete($functionalEntity);
     }
 
+    /**
+     * @throws \OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gateways\Domain\SubDomain\Exceptions\FunctionalEntityNotFoundException
+     */
     private function getFunctionalEntity(int $functionalEntityId): FunctionalEntity
     {
         return $this->functionalEntityGateway->findById($functionalEntityId);

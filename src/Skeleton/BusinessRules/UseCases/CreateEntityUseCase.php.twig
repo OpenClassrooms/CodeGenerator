@@ -17,20 +17,11 @@ class {{ skeletonModel.shortName }} implements UseCase
 {
     use {{ skeletonModel.entityCommonHydratorTraitShortName }};
 
-    /**
-     * @var {{ skeletonModel.entityFactoryShortName }}
-     */
-    private ${{ skeletonModel.entityFactoryArgument }};
+    private {{ skeletonModel.entityFactoryShortName }} ${{ skeletonModel.entityFactoryArgument }};
 
-    /**
-     * @var {{ skeletonModel.entityGatewayShortName }}
-     */
-    private ${{ skeletonModel.entityGatewayArgument }};
+    private {{ skeletonModel.entityGatewayShortName }} ${{ skeletonModel.entityGatewayArgument }};
 
-    /**
-     * @var {{ skeletonModel.entityUseCaseDetailResponseAssemblerShortName }}
-     */
-    private ${{ skeletonModel.entityUseCaseDetailResponseAssemblerArgument }};
+    private {{ skeletonModel.entityUseCaseDetailResponseAssemblerShortName }} ${{ skeletonModel.entityUseCaseDetailResponseAssemblerArgument }};
 
     public function __construct(
         {{ skeletonModel.entityUseCaseDetailResponseAssemblerShortName }} ${{ skeletonModel.entityUseCaseDetailResponseAssemblerArgument }},

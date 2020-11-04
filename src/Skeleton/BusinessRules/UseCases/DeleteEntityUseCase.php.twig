@@ -12,10 +12,7 @@ use {{ skeletonModel.useCaseRequestClassName }};
 
 class {{ skeletonModel.shortName }} implements UseCase
 {
-    /**
-     * @var {{ skeletonModel.entityGatewayShortName }}
-     */
-    private ${{ skeletonModel.entityGatewayArgument }};
+    private {{ skeletonModel.entityGatewayShortName }} ${{ skeletonModel.entityGatewayArgument }};
 
     public function __construct({{ skeletonModel.entityGatewayShortName }} ${{ skeletonModel.entityGatewayArgument }})
     {
@@ -36,6 +33,9 @@ class {{ skeletonModel.shortName }} implements UseCase
         $this->delete(${{ skeletonModel.entityArgument }});
     }
 
+    /**
+     * @throws \{{ skeletonModel.entityNotFoundExceptionClassName }}
+     */
     private function {{ skeletonModel.getEntityIdMethod }}(int ${{ skeletonModel.entityIdArgument }}): {{ skeletonModel.entityShortName }}
     {
         return $this->{{ skeletonModel.entityGatewayArgument }}->findById(${{ skeletonModel.entityIdArgument }});
