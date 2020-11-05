@@ -8,6 +8,10 @@ namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Requ
 
 use OpenClassrooms\UseCase\BusinessRules\Requestors\UseCaseRequest;
 
-interface GenericUseCaseRequest extends UseCaseRequest
+final class GenericUseCaseRequest implements UseCaseRequest
 {
+    public static function create(): self
+    {
+        return new self();
+    }
 }

@@ -7,34 +7,21 @@ declare(strict_types=1);
 namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\BusinessRules\UseCases\Domain\SubDomain;
 
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Requestors\Domain\SubDomain\GenericUseCaseRequest;
-use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\DTO\Request\GenericUseCaseRequestBuilderImpl;
-use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\DTO\Request\GenericUseCaseRequestDTO;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\GenericUseCase;
 use PHPUnit\Framework\TestCase;
 
-class GenericUseCaseTest extends TestCase
+final class GenericUseCaseTest extends TestCase
 {
-    /**
-     * @var GenericUseCaseRequestDTO
-     */
-    private $request;
+    private GenericUseCaseRequest $request;
 
-    /**
-     * @var GenericUseCase
-     */
-    private $useCase;
+    private GenericUseCase $useCase;
 
-    /**
-     * @test
-     */
-    final public function genericUseCaseReturnResponse(): void
+    /** @test */
+    public function genericUseCaseReturnResponse(): void
     {
         $this->fail("TODO: Implement this test");
     }
 
-    /**
-     * @inheritdoc
-     */
     protected function setUp(): void
     {
         $this->request = $this->buildRequest();
@@ -43,8 +30,6 @@ class GenericUseCaseTest extends TestCase
 
     private function buildRequest(): GenericUseCaseRequest
     {
-        return (new GenericUseCaseRequestBuilderImpl())
-            ->create()
-            ->build();
+        return GenericUseCaseRequest::create();
     }
 }

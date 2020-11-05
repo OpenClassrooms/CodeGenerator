@@ -10,15 +10,7 @@ abstract class GenericUseCaseTestSkeletonModel extends AbstractSkeletonModel
 {
     public $genericUseCaseClassName;
 
-    public $genericUseCaseRequestBuilderImplClassName;
-
-    public $genericUseCaseRequestBuilderImplShortName;
-
     public $genericUseCaseRequestClassName;
-
-    public $genericUseCaseRequestDTOClassName;
-
-    public $genericUseCaseRequestDTOShortName;
 
     public $genericUseCaseRequestShortName;
 
