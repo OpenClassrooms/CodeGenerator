@@ -71,7 +71,7 @@ class UseCaseRequestFileObjectFactoryImpl extends AbstractFileObjectFactory impl
                 );
             case UseCaseRequestFileObjectType::BUSINESS_RULES_USE_CASE_REQUEST:
                 return new FileObject(
-                    $this->baseNamespace . 'BusinessRules\Requestors\\' . $domain . '\\' . $entity . 'Request'
+                    $this->baseNamespace . 'BusinessRules\UseCases\\' . $domain . '\\Request\\' . $entity . 'Request'
                 );
             case UseCaseRequestFileObjectType::BUSINESS_RULES_GET_ENTITY_USE_CASE_REQUEST:
                 return new FileObject(
