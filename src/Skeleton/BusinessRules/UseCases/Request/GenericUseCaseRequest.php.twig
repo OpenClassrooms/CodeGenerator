@@ -1,0 +1,13 @@
+{% include "Header.php.twig" %}
+
+namespace {{ skeletonModel.namespace }};
+
+use {{ skeletonModel.useCaseRequestClassName }};
+
+final class {{ skeletonModel.shortName }} implements {{ skeletonModel.useCaseRequestShortName }}
+{
+    public static function create(): self
+    {
+        return new self();
+    }
+}

@@ -8,7 +8,7 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 
 abstract class GenericUseCaseRequestSkeletonModel extends AbstractSkeletonModel
 {
-    public $templatePath = 'BusinessRules/Requestors/GenericUseCaseRequest.php.twig';
+    public $templatePath = 'BusinessRules/UseCases/Request/GenericUseCaseRequest.php.twig';
 
     public $useCaseRequestClassName;
 

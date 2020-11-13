@@ -13,8 +13,6 @@ class GenericUseCaseTestSkeletonModelAssemblerImpl implements GenericUseCaseTest
     public function create(
         FileObject $genericUseCaseTestFileObject,
         FileObject $genericUseCaseRequestFileObject,
-        FileObject $genericUseCaseRequestDTOFileObject,
-        FileObject $genericUseCaseRequestBuilderImplFileObject,
         FileObject $genericUseCaseFileObject
     ): GenericUseCaseTestSkeletonModel {
         $skeletonModel = new GenericUseCaseTestSkeletonModelImpl();
@@ -22,12 +20,6 @@ class GenericUseCaseTestSkeletonModelAssemblerImpl implements GenericUseCaseTest
         $skeletonModel->shortName = $genericUseCaseTestFileObject->getShortName();
         $skeletonModel->genericUseCaseRequestClassName = $genericUseCaseRequestFileObject->getClassName();
         $skeletonModel->genericUseCaseRequestShortName = $genericUseCaseRequestFileObject->getShortName();
-        $skeletonModel->genericUseCaseRequestDTOClassName = $genericUseCaseRequestDTOFileObject->getClassName();
-        $skeletonModel->genericUseCaseRequestDTOShortName = $genericUseCaseRequestDTOFileObject->getShortName();
-        $skeletonModel->genericUseCaseRequestBuilderImplClassName = $genericUseCaseRequestBuilderImplFileObject->getClassName(
-        );
-        $skeletonModel->genericUseCaseRequestBuilderImplShortName = $genericUseCaseRequestBuilderImplFileObject->getShortName(
-        );
         $skeletonModel->genericUseCaseShortName = $genericUseCaseFileObject->getShortName();
         $skeletonModel->genericUseCaseTestMethod = lcfirst($genericUseCaseFileObject->getShortName());
         $skeletonModel->genericUseCaseClassName = $genericUseCaseFileObject->getClassName();
