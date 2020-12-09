@@ -13,15 +13,9 @@ use {{ skeletonModel.useCaseRequestClassName }};
 
 class {{ skeletonModel.shortName }} implements UseCase
 {
-    /**
-     * @var {{ skeletonModel.entityGatewayShortName }}
-     */
-    private ${{ skeletonModel.entityGatewayArgument }};
+    private {{ skeletonModel.entityGatewayShortName }} ${{ skeletonModel.entityGatewayArgument }};
 
-    /**
-     * @var {{ skeletonModel.entityUseCaseDetailResponseAssemblerShortName }}
-     */
-    private $responseAssembler;
+    private {{ skeletonModel.entityUseCaseDetailResponseAssemblerShortName }} $responseAssembler;
 
     public function __construct({{ skeletonModel.entityUseCaseDetailResponseAssemblerShortName }} $assembler, {{ skeletonModel.entityGatewayShortName }} ${{ skeletonModel.entityGatewayArgument }})
     {
