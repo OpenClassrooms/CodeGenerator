@@ -43,7 +43,6 @@ class GetEntityUseCaseTestGenerator extends AbstractUseCaseGenerator
         $entityNotFoundExceptionFileObject = $this->createEntityNotFoundExceptionFileObjectFileObject();
         $inMemoryEntityGatewayFileObject = $this->createInMemoryEntityUseCaseGatewayFileObject();
         $getEntityUseCaseFileObject = $this->createGetEntityUseCaseFileObject();
-        $getEntityUseCaseRequestBuilderImplFileObject = $this->createGetEntityUseCaseRequestBuilderImplFileObject();
         $getEntityUseCaseRequestDTOFileObject = $this->createGetEntityUseCaseRequestDTOFileObject();
         $getEntityUseCaseRequestFileObject = $this->createGetEntityUseCaseRequestFileObject();
         $getEntityUseCaseTestFileObject = $this->createGetEntityUseCaseTestFileObject();
@@ -58,7 +57,6 @@ class GetEntityUseCaseTestGenerator extends AbstractUseCaseGenerator
                     EntityFileObjectType::BUSINESS_RULES_ENTITY_NOT_FOUND_EXCEPTION                       => $entityNotFoundExceptionFileObject,
                     EntityFileObjectType::BUSINESS_RULES_ENTITY_IN_MEMORY_GATEWAY                         => $inMemoryEntityGatewayFileObject,
                     UseCaseFileObjectType::BUSINESS_RULES_GET_ENTITY_USE_CASE                             => $getEntityUseCaseFileObject,
-                    UseCaseRequestFileObjectType::BUSINESS_RULES_GET_ENTITY_USE_CASE_REQUEST_BUILDER_IMPL => $getEntityUseCaseRequestBuilderImplFileObject,
                     UseCaseRequestFileObjectType::BUSINESS_RULES_GET_ENTITY_USE_CASE_REQUEST_DTO          => $getEntityUseCaseRequestDTOFileObject,
                     UseCaseRequestFileObjectType::BUSINESS_RULES_GET_ENTITY_USE_CASE_REQUEST              => $getEntityUseCaseRequestFileObject,
                     UseCaseFileObjectType::BUSINESS_RULES_GET_ENTITY_USE_CASE_TEST                        => $getEntityUseCaseTestFileObject,
@@ -104,15 +102,6 @@ class GetEntityUseCaseTestGenerator extends AbstractUseCaseGenerator
     {
         return $this->useCaseFileObjectFactory->create(
             UseCaseFileObjectType::BUSINESS_RULES_GET_ENTITY_USE_CASE,
-            $this->domain,
-            $this->entity
-        );
-    }
-
-    private function createGetEntityUseCaseRequestBuilderImplFileObject(): FileObject
-    {
-        return $this->useCaseRequestFileObjectFactory->create(
-            UseCaseRequestFileObjectType::BUSINESS_RULES_GET_ENTITY_USE_CASE_REQUEST_BUILDER_IMPL,
             $this->domain,
             $this->entity
         );
@@ -199,9 +188,6 @@ class GetEntityUseCaseTestGenerator extends AbstractUseCaseGenerator
                 $fileObjects[EntityFileObjectType::BUSINESS_RULES_ENTITY_IN_MEMORY_GATEWAY]
             )
             ->withGetEntityUseCaseFileObject($fileObjects[UseCaseFileObjectType::BUSINESS_RULES_GET_ENTITY_USE_CASE])
-            ->withGetEntityUseCaseRequestBuilderImplFileObject(
-                $fileObjects[UseCaseRequestFileObjectType::BUSINESS_RULES_GET_ENTITY_USE_CASE_REQUEST_BUILDER_IMPL]
-            )
             ->withGetEntityUseCaseRequestDTOFileObject(
                 $fileObjects[UseCaseRequestFileObjectType::BUSINESS_RULES_GET_ENTITY_USE_CASE_REQUEST_DTO]
             )

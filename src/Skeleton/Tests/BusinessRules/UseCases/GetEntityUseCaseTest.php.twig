@@ -2,9 +2,8 @@
 
 namespace {{ skeletonModel.namespace }};
 
+use {{ skeletonModel.entityNotFoundExceptionClassName }};
 use {{ skeletonModel.getEntityUseCaseRequestClassName }};
-use {{ skeletonModel.getEntityUseCaseRequestBuilderImplClassName }};
-use {{ skeletonModel.getEntityUseCaseRequestDTOClassName }};
 use {{ skeletonModel.getEntityUseCaseClassName }};
 use {{ skeletonModel.entityStubClassName }};
 use {{ skeletonModel.inMemoryEntityGatewayClassName }};
@@ -13,27 +12,21 @@ use {{ skeletonModel.useCaseDetailResponseStubClassName }};
 use {{ skeletonModel.useCaseDetailResponseTestCaseClassName }};
 use PHPUnit\Framework\TestCase;
 
-class {{ skeletonModel.shortName }} extends TestCase
+final class {{ skeletonModel.shortName }} extends TestCase
 {
     use {{ skeletonModel.useCaseDetailResponseTestCaseShortName }};
 
-    /**
-     * @var {{ skeletonModel.getEntityUseCaseRequestDTOShortName }}
-     */
-    private $request;
+    private {{ skeletonModel.getEntityUseCaseRequestShortName }} $request;
 
-    /**
-     * @var {{ skeletonModel.getEntityUseCaseShortName }}
-     */
-    private $useCase;
+    private {{ skeletonModel.getEntityUseCaseShortName }} $useCase;
 
     /**
      * @test
-     *
-     * @expectedException \{{ skeletonModel.entityNotFoundExceptionFileObjectClassName }}
      */
-    final public function {{ skeletonModel.entityShortNameArgument }}NotFoundShouldThrowException(): void
+    public function {{ skeletonModel.entityShortNameArgument }}NotFoundShouldThrowException(): void
     {
+        $this->expectException({{ skeletonModel.entityNotFoundExceptionShortName }}::class);
+
         $this->request->id = -1;
         $this->useCase->execute($this->request);
     }
@@ -41,7 +34,7 @@ class {{ skeletonModel.shortName }} extends TestCase
     /**
      * @test
      */
-    final public function get{{ skeletonModel.entityShortName }}ShouldReturnResponse(): void
+    public function get{{ skeletonModel.entityShortName }}ShouldReturnResponse(): void
     {
         $response = $this->useCase->execute($this->request);
 
@@ -56,16 +49,6 @@ class {{ skeletonModel.shortName }} extends TestCase
             new {{ skeletonModel.useCaseDetailResponseAssemblerMockShortName }}(),
             new {{ skeletonModel.inMemoryEntityGatewayShortName }}([{{ skeletonModel.entityStubShortName }}::ID => new {{ skeletonModel.entityStubShortName }}()])
         );
-        $this->request = $this->buildRequest();
-    }
-
-    private function buildRequest(): {{ skeletonModel.getEntityUseCaseRequestShortName }}
-    {
-        $builder = new {{ skeletonModel.getEntityUseCaseRequestBuilderImplShortName }}();
-
-        return $builder
-            ->create()
-            ->with{{ skeletonModel.entityShortName }}Id({{ skeletonModel.entityStubShortName }}::ID)
-            ->build();
+        $this->request = {{ skeletonModel.getEntityUseCaseRequestShortName }}::create({{ skeletonModel.entityStubShortName }}::ID);
     }
 }

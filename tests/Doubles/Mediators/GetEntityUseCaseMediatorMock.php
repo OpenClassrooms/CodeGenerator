@@ -10,7 +10,6 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Requestors
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Responders\UseCaseDetailResponseAssemblerFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Responders\UseCaseDetailResponseFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\GetEntityUseCaseFileObjectStub1;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\GetEntityUseCaseRequestBuilderImplFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\GetEntityUseCaseRequestDTOFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\UseCaseDetailResponseAssemblerImplFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\UseCaseDetailResponseDTOFileObjectStub1;
@@ -32,7 +31,6 @@ class GetEntityUseCaseMediatorMock extends GetEntityUseCaseMediatorImpl
         self::$fileObjects = [
             new GetEntityUseCaseFileObjectStub1(),
             new GetEntityUseCaseRequestBuilderFileObjectStub1(),
-            new GetEntityUseCaseRequestBuilderImplFileObjectStub1(),
             new GetEntityUseCaseRequestDTOFileObjectStub1(),
             new GetEntityUseCaseRequestFileObjectStub1(),
             new GetEntityUseCaseTestFileObjectStub1(),
