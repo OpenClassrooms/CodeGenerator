@@ -13,9 +13,6 @@
                 id="open_classrooms.code_generator.generator.business_rules.requestors.dto.request.get_entity_use_case_request_builder_generator_request_builder"
                 class="OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\DTO\Request\GetEntityUseCaseRequestBuilderGeneratorRequestBuilderImpl"/>
         <service
-                id="open_classrooms.code_generator.generator.business_rules.use_cases.dto.request.get_entity_use_case_request_dto_generator_request_builder"
-                class="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\GetEntityUseCaseRequestDTOGeneratorRequestBuilderImpl"/>
-        <service
                 id="open_classrooms.code_generator.generator.business_rules.use_cases.dto.request.get_entity_use_case_generator_request_builder"
                 class="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\GetEntityUseCaseGeneratorRequestBuilderImpl"/>
         <service
@@ -52,14 +49,6 @@
             <call method="setGetEntityUseCaseRequestBuilderGeneratorRequestBuilder">
                 <argument type="service"
                           id="open_classrooms.code_generator.generator.business_rules.requestors.dto.request.get_entity_use_case_request_builder_generator_request_builder"/>
-            </call>
-            <call method="setGetEntityUseCaseRequestDTOGenerator">
-                <argument type="service"
-                          id="open_classrooms.code_generator.generator.business_rules.use_cases.get_entity_use_case_request_dto_generator"/>
-            </call>
-            <call method="setGetEntityUseCaseRequestDTOGeneratorRequestBuilder">
-                <argument type="service"
-                          id="open_classrooms.code_generator.generator.business_rules.use_cases.dto.request.get_entity_use_case_request_dto_generator_request_builder"/>
             </call>
             <call method="setGetEntityUseCaseGenerator">
                 <argument type="service"

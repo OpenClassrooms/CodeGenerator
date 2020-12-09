@@ -24,10 +24,6 @@ abstract class GetEntityUseCaseTestSkeletonModel extends AbstractSkeletonModel
 
     public $getEntityUseCaseRequestClassName;
 
-    public $getEntityUseCaseRequestDTOClassName;
-
-    public $getEntityUseCaseRequestDTOShortName;
-
     public $getEntityUseCaseRequestShortName;
 
     public $getEntityUseCaseShortName;

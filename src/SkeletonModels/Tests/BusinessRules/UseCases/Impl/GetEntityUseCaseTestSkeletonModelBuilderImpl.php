@@ -59,17 +59,6 @@ class GetEntityUseCaseTestSkeletonModelBuilderImpl implements GetEntityUseCaseTe
         return $this;
     }
 
-    public function withGetEntityUseCaseRequestDTOFileObject(
-        FileObject $getEntityUseCaseRequestDTOFileObject
-    ): GetEntityUseCaseTestSkeletonModelBuilder {
-        $this->skeletonModel->getEntityUseCaseRequestDTOClassName = $getEntityUseCaseRequestDTOFileObject->getClassName(
-        );
-        $this->skeletonModel->getEntityUseCaseRequestDTOShortName = $getEntityUseCaseRequestDTOFileObject->getShortName(
-        );
-
-        return $this;
-    }
-
     public function withGetEntityUseCaseRequestFileObject(
         FileObject $getEntityUseCaseRequestFileObject
     ): GetEntityUseCaseTestSkeletonModelBuilder {

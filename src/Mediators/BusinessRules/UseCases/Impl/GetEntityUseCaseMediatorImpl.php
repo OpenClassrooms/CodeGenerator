@@ -20,7 +20,6 @@ class GetEntityUseCaseMediatorImpl implements GetEntityUseCaseMediator
     {
         $fileObjects[] = $this->generateGetEntityUseCaseGenerator($className);
         $fileObjects[] = $this->generateGetEntityUseCaseRequestBuilderGenerator($className);
-        $fileObjects[] = $this->generateGetEntityUseCaseRequestDTOGenerator($className);
         $fileObjects[] = $this->generateGetEntityUseCaseRequestGenerator($className);
 
         return array_merge(

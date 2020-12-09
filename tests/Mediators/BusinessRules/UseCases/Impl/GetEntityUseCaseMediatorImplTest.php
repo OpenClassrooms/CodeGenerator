@@ -9,9 +9,7 @@ use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\DTO\Request\
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\GetEntityUseCaseRequestBuilderGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\GetEntityUseCaseRequestGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\GetEntityUseCaseGeneratorRequestBuilderImpl;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\GetEntityUseCaseRequestDTOGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\GetEntityUseCaseGenerator;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\GetEntityUseCaseRequestDTOGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\DTO\Request\GetEntityUseCaseTestGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\GetEntityUseCaseTestGenerator;
 use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\Impl\GetEntityUseCaseMediatorImpl;
@@ -19,7 +17,6 @@ use OpenClassrooms\CodeGenerator\Mediators\Options;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Requestors\GetEntityUseCaseRequestBuilderFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Requestors\GetEntityUseCaseRequestFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\GetEntityUseCaseFileObjectStub1;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\GetEntityUseCaseRequestDTOFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\BusinessRules\UseCases\GetEntityUseCaseTestFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Generator\GeneratorMock;
@@ -80,12 +77,6 @@ class GetEntityUseCaseMediatorImplTest extends TestCase
                 new GetEntityUseCaseRequestBuilderFileObjectStub1()
             )
         );
-        $this->mediator->setGetEntityUseCaseRequestDTOGenerator(
-            new GeneratorMock(
-                GetEntityUseCaseRequestDTOGenerator::class,
-                new GetEntityUseCaseRequestDTOFileObjectStub1()
-            )
-        );
     }
 
     private function mockRequestBuilder(): void
@@ -93,9 +84,6 @@ class GetEntityUseCaseMediatorImplTest extends TestCase
         $this->mediator->setGetEntityUseCaseGeneratorRequestBuilder(new GetEntityUseCaseGeneratorRequestBuilderImpl());
         $this->mediator->setGetEntityUseCaseTestGeneratorRequestBuilder(
             new GetEntityUseCaseTestGeneratorRequestBuilderImpl()
-        );
-        $this->mediator->setGetEntityUseCaseRequestDTOGeneratorRequestBuilder(
-            new GetEntityUseCaseRequestDTOGeneratorRequestBuilderImpl()
         );
         $this->mediator->setGetEntityUseCaseRequestGeneratorRequestBuilder(
             new GetEntityUseCaseRequestGeneratorRequestBuilderImpl()
