@@ -19,7 +19,6 @@ class GetEntityUseCaseMediatorImpl implements GetEntityUseCaseMediator
     protected function generateSources(string $className): array
     {
         $fileObjects[] = $this->generateGetEntityUseCaseGenerator($className);
-        $fileObjects[] = $this->generateGetEntityUseCaseRequestBuilderGenerator($className);
         $fileObjects[] = $this->generateGetEntityUseCaseRequestGenerator($className);
 
         return array_merge(

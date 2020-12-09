@@ -36,9 +36,5 @@ interface GetEntityControllerSkeletonModelBuilder
         FileObject $getEntityUseCaseFileObject
     ): GetEntityControllerSkeletonModelBuilder;
 
-    public function withCreateGetEntityUseCaseRequestBuilderFileObject(
-        FileObject $getEntityUseCaseRequestBuilderFileObject
-    ): GetEntityControllerSkeletonModelBuilder;
-
     public function withRouteAnnotation(string $routeAnnotation): GetEntityControllerSkeletonModelBuilder;
 }

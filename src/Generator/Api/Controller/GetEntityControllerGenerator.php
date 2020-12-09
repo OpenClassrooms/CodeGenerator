@@ -51,7 +51,6 @@ class GetEntityControllerGenerator extends AbstractGenerator
         $entityViewModelFileObject = $this->createEntityViewModelFileObject();
         $entityViewModelDetailAssemblerFileObject = $this->createEntityViewModelDetailAssemblerFileObject();
         $getEntityUseCaseFileObject = $this->createGetEntityUseCaseFileObject();
-        $getEntityUseCaseRequestBuilderFileObject = $this->createGetEntityUseCaseRequestBuilderFileObject();
         $routeAnnotation = $this->createRouteAnnotation();
 
         $getEntityControllerFileObject->setContent(
@@ -63,7 +62,6 @@ class GetEntityControllerGenerator extends AbstractGenerator
                     ViewModelFileObjectType::API_VIEW_MODEL                                          => $entityViewModelFileObject,
                     ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_ASSEMBLER                         => $entityViewModelDetailAssemblerFileObject,
                     UseCaseFileObjectType::BUSINESS_RULES_GET_ENTITY_USE_CASE                        => $getEntityUseCaseFileObject,
-                    UseCaseRequestFileObjectType::BUSINESS_RULES_GET_ENTITY_USE_CASE_REQUEST_BUILDER => $getEntityUseCaseRequestBuilderFileObject,
                 ],
                 $routeAnnotation
             )
@@ -126,15 +124,6 @@ class GetEntityControllerGenerator extends AbstractGenerator
         );
     }
 
-    public function createGetEntityUseCaseRequestBuilderFileObject(): FileObject
-    {
-        return $this->useCaseRequestFileObjectFactory->create(
-            UseCaseRequestFileObjectType::BUSINESS_RULES_GET_ENTITY_USE_CASE_REQUEST_BUILDER,
-            $this->domain,
-            $this->entity
-        );
-    }
-
     private function createRouteAnnotation(): string
     {
         return RoutingUtility::create($this->baseNamespace, $this->domain, $this->entity, ClassType::GET);
@@ -170,9 +159,6 @@ class GetEntityControllerGenerator extends AbstractGenerator
             )
             ->withCreateGetEntityUseCaseFileObject(
                 $fileObjects[UseCaseFileObjectType::BUSINESS_RULES_GET_ENTITY_USE_CASE]
-            )
-            ->withCreateGetEntityUseCaseRequestBuilderFileObject(
-                $fileObjects[UseCaseRequestFileObjectType::BUSINESS_RULES_GET_ENTITY_USE_CASE_REQUEST_BUILDER]
             )
             ->withRouteAnnotation($routeAnnotation)
             ->build();

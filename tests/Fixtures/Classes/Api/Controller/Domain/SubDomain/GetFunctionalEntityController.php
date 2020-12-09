@@ -25,14 +25,8 @@ class GetFunctionalEntityController extends AbstractApiController
      */
     private $functionalEntityViewModelDetailAssembler;
 
-    /**
-     * @var GetFunctionalEntityRequestBuilder
-     */
-    private $getFunctionalEntityRequestBuilder;
-
     public function __construct(
         FunctionalEntityViewModelDetailAssembler $assembler,
-        GetFunctionalEntityRequestBuilder $builder
     ) {
         $this->functionalEntityViewModelDetailAssembler = $assembler;
         $this->getFunctionalEntityRequestBuilder = $builder;

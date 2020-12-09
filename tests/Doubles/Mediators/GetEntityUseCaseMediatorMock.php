@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Mediators;
 
 use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\Impl\GetEntityUseCaseMediatorImpl;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Requestors\GetEntityUseCaseRequestBuilderFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Requestors\GetEntityUseCaseRequestFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Responders\UseCaseDetailResponseAssemblerFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Responders\UseCaseDetailResponseFileObjectStub1;
@@ -29,7 +28,6 @@ class GetEntityUseCaseMediatorMock extends GetEntityUseCaseMediatorImpl
     {
         self::$fileObjects = [
             new GetEntityUseCaseFileObjectStub1(),
-            new GetEntityUseCaseRequestBuilderFileObjectStub1(),
             new GetEntityUseCaseRequestFileObjectStub1(),
             new GetEntityUseCaseTestFileObjectStub1(),
             new InMemoryEntityGatewayFileObjectStub1(),

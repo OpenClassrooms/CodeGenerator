@@ -5,9 +5,7 @@ declare(strict_types=1);
 namespace OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\Impl;
 
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\GetEntityUseCaseRequestBuilderGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\GetEntityUseCaseRequestGenerator;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\Request\GetEntityUseCaseRequestBuilderGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\Request\GetEntityUseCaseRequestGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\GetEntityUseCaseGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\GetEntityUseCaseGeneratorRequestBuilder;
@@ -22,12 +20,6 @@ trait GetEntityUseCaseGeneratorsTrait
 
     /** @var GetEntityUseCaseGeneratorRequestBuilder */
     private $getEntityUseCaseGeneratorRequestBuilder;
-
-    /** @var GetEntityUseCaseRequestBuilderGenerator */
-    private $getEntityUseCaseRequestBuilderGenerator;
-
-    /** @var GetEntityUseCaseRequestBuilderGeneratorRequestBuilder */
-    private $getEntityUseCaseRequestBuilderGeneratorRequestBuilder;
 
     /** @var GetEntityUseCaseRequestGenerator */
     private $getEntityUseCaseRequestGenerator;
@@ -51,18 +43,6 @@ trait GetEntityUseCaseGeneratorsTrait
         GetEntityUseCaseGeneratorRequestBuilder $getEntityUseCaseGeneratorRequestBuilder
     ): void {
         $this->getEntityUseCaseGeneratorRequestBuilder = $getEntityUseCaseGeneratorRequestBuilder;
-    }
-
-    public function setGetEntityUseCaseRequestBuilderGenerator(
-        Generator $getEntityUseCaseRequestBuilderGenerator
-    ): void {
-        $this->getEntityUseCaseRequestBuilderGenerator = $getEntityUseCaseRequestBuilderGenerator;
-    }
-
-    public function setGetEntityUseCaseRequestBuilderGeneratorRequestBuilder(
-        GetEntityUseCaseRequestBuilderGeneratorRequestBuilder $getEntityUseCaseRequestBuilderGeneratorRequestBuilder
-    ): void {
-        $this->getEntityUseCaseRequestBuilderGeneratorRequestBuilder = $getEntityUseCaseRequestBuilderGeneratorRequestBuilder;
     }
 
     public function setGetEntityUseCaseRequestGenerator(
@@ -93,16 +73,6 @@ trait GetEntityUseCaseGeneratorsTrait
     {
         return $this->getEntityUseCaseGenerator->generate(
             $this->getEntityUseCaseGeneratorRequestBuilder
-                ->create()
-                ->withEntityClassName($className)
-                ->build()
-        );
-    }
-
-    protected function generateGetEntityUseCaseRequestBuilderGenerator(string $className): FileObject
-    {
-        return $this->getEntityUseCaseRequestBuilderGenerator->generate(
-            $this->getEntityUseCaseRequestBuilderGeneratorRequestBuilder
                 ->create()
                 ->withEntityClassName($className)
                 ->build()

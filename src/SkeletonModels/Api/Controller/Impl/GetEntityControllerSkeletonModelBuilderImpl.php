@@ -97,20 +97,6 @@ class GetEntityControllerSkeletonModelBuilderImpl implements GetEntityController
         return $this;
     }
 
-    public function withCreateGetEntityUseCaseRequestBuilderFileObject(
-        FileObject $getEntityUseCaseRequestBuilderFileObject
-    ): GetEntityControllerSkeletonModelBuilder {
-        $this->skeletonModel->getEntityUseCaseRequestBuilderArgument = lcfirst(
-            $getEntityUseCaseRequestBuilderFileObject->getShortName()
-        );
-        $this->skeletonModel->getEntityUseCaseRequestBuilderClassName = $getEntityUseCaseRequestBuilderFileObject->getClassName(
-        );
-        $this->skeletonModel->getEntityUseCaseRequestBuilderShortName = $getEntityUseCaseRequestBuilderFileObject->getShortName(
-        );
-
-        return $this;
-    }
-
     public function withRouteAnnotation(string $routeAnnotation): GetEntityControllerSkeletonModelBuilder
     {
         $this->skeletonModel->routeAnnotation = $routeAnnotation;
