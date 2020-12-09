@@ -32,6 +32,10 @@ interface GetEntityControllerSkeletonModelBuilder
         FileObject $entityViewModelDetailAssemblerFileObject
     ): GetEntityControllerSkeletonModelBuilder;
 
+    public function withCreateGetEntityUseCaseRequestFileObject(
+        FileObject $getEntityUseCaseRequestFileObject
+    ): GetEntityControllerSkeletonModelBuilder;
+
     public function withCreateGetEntityUseCaseFileObject(
         FileObject $getEntityUseCaseFileObject
     ): GetEntityControllerSkeletonModelBuilder;

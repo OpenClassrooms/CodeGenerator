@@ -88,6 +88,15 @@ class GetEntityControllerSkeletonModelBuilderImpl implements GetEntityController
         return $this;
     }
 
+    public function withCreateGetEntityUseCaseRequestFileObject(
+        FileObject $getEntityUseCaseRequestFileObject
+    ): GetEntityControllerSkeletonModelBuilder {
+        $this->skeletonModel->getEntityUseCaseRequestClassName = $getEntityUseCaseRequestFileObject->getClassName();
+        $this->skeletonModel->getEntityUseCaseRequestShortName = $getEntityUseCaseRequestFileObject->getShortName();
+
+        return $this;
+    }
+
     public function withCreateGetEntityUseCaseFileObject(
         FileObject $getEntityUseCaseFileObject
     ): GetEntityControllerSkeletonModelBuilder {
