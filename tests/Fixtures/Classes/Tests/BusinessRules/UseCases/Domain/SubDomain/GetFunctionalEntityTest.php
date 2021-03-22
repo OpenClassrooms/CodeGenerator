@@ -21,15 +21,9 @@ class GetFunctionalEntityTest extends TestCase
 {
     use FunctionalEntityDetailResponseTestCase;
 
-    /**
-     * @var GetFunctionalEntityRequestDTO
-     */
-    private $request;
+    private GetFunctionalEntityRequestDTO $request;
 
-    /**
-     * @var GetFunctionalEntity
-     */
-    private $useCase;
+    private GetFunctionalEntity $useCase;
 
     /**
      * @test
@@ -42,9 +36,7 @@ class GetFunctionalEntityTest extends TestCase
         $this->useCase->execute($this->request);
     }
 
-    /**
-     * @test
-     */
+    /** @test */
     final public function getFunctionalEntityShouldReturnResponse(): void
     {
         $response = $this->useCase->execute($this->request);

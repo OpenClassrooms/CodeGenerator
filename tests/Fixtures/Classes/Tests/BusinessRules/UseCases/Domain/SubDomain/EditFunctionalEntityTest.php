@@ -23,15 +23,9 @@ final class EditFunctionalEntityTest extends TestCase
 {
     use FunctionalEntityDetailResponseTestCase;
 
-    /**
-     * @var EditFunctionalEntityRequestDTO
-     */
-    private $request;
+    private EditFunctionalEntityRequestDTO $request;
 
-    /**
-     * @var EditFunctionalEntity
-     */
-    private $useCase;
+    private EditFunctionalEntity $useCase;
 
     /**
      * @test
@@ -44,9 +38,7 @@ final class EditFunctionalEntityTest extends TestCase
         $this->useCase->execute($this->request);
     }
 
-    /**
-     * @test
-     */
+    /** @test */
     public function editFunctionalEntity(): void
     {
         $this->request->functionalEntityId = FunctionalEntityStub1::ID;
