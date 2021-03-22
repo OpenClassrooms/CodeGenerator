@@ -24,19 +24,11 @@ class GetFunctionalEntitiesTest extends TestCase
 {
     use FunctionalEntityListItemResponseTestCase;
 
-    /**
-     * @var GetFunctionalEntitiesRequestDTO
-     */
-    private $request;
+    private GetFunctionalEntitiesRequestDTO $request;
 
-    /**
-     * @var GetFunctionalEntities
-     */
-    private $useCase;
+    private GetFunctionalEntities $useCase;
 
-    /**
-     * @test
-     */
+    /** @test */
     final public function withoutFunctionalEntitiesReturnEmpty(): void
     {
         InMemoryFunctionalEntityGateway::$functionalEntities = [];
@@ -45,9 +37,7 @@ class GetFunctionalEntitiesTest extends TestCase
         $this->assertEmpty($response->getItems());
     }
 
-    /**
-     * @test
-     */
+    /** @test */
     final public function getFunctionalEntitiesShouldReturnResponse(): void
     {
         InMemoryFunctionalEntityGateway::$functionalEntities = [

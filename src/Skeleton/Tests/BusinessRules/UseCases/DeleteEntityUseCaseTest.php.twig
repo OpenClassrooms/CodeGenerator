@@ -12,15 +12,9 @@ use PHPUnit\Framework\TestCase;
 
 final class {{ skeletonModel.shortName }} extends TestCase
 {
-    /**
-     * @var {{ skeletonModel.deleteEntityUseCaseRequestDTOShortName }}
-     */
-    private $request;
+    private {{ skeletonModel.deleteEntityUseCaseRequestDTOShortName }} $request;
 
-    /**
-     * @var {{ skeletonModel.deleteEntityUseCaseShortName }}
-     */
-    private $useCase;
+    private {{ skeletonModel.deleteEntityUseCaseShortName }} $useCase;
 
     /**
      * @test
@@ -32,9 +26,7 @@ final class {{ skeletonModel.shortName }} extends TestCase
         $this->useCase->execute($this->request);
     }
 
-    /**
-     * @test
-     */
+    /** @test */
     public function {{ skeletonModel.deleteEntityUseCaseMethod }}(): void
     {
         $this->assertNotEmpty({{ skeletonModel.inMemoryEntityGatewayShortName }}::${{ skeletonModel.entitiesArgument }});

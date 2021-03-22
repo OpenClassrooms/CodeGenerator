@@ -21,19 +21,11 @@ final class {{ skeletonModel.shortName }} extends TestCase
 {
     use {{ skeletonModel.entityUseCaseDetailResponseTestCaseShortName }};
 
-    /**
-     * @var {{ skeletonModel.createEntityUseCaseRequestDTOShortName }}
-     */
-    private $request;
+    private {{ skeletonModel.createEntityUseCaseRequestDTOShortName }} $request;
 
-    /**
-     * @var {{ skeletonModel.createEntityShortName }}
-     */
-    private $useCase;
+    private {{ skeletonModel.createEntityShortName }} $useCase;
 
-    /**
-     * @test
-     */
+    /** @test */
     public function create{{ skeletonModel.entityShortName }}ShouldReturnResponse(): void
     {
         {{ skeletonModel.inMemoryEntityGatewayShortName }}::$id = {{ skeletonModel.entityStubShortName }}::ID;

@@ -15,19 +15,10 @@ use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\Request\
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\UseCases\CreateEntityUseCaseTestSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\UseCases\CreateEntityUseCaseTestSkeletonModelBuilder;
 use OpenClassrooms\CodeGenerator\Utility\MethodUtility;
-use OpenClassrooms\CodeGenerator\Utility\MethodUtilityStrategy;
 
 class CreateEntityUseCaseTestGenerator extends AbstractUseCaseGenerator
 {
-    /**
-     * @var CreateEntityUseCaseTestSkeletonModelBuilder
-     */
-    private $createEntityTestSkeletonModelBuilder;
-
-    /**
-     * @var MethodUtilityStrategy
-     */
-    private $methodUtility;
+    private CreateEntityUseCaseTestSkeletonModelBuilder $createEntityTestSkeletonModelBuilder;
 
     /**
      * @param CreateEntityUseCaseTestGeneratorRequest $generatorRequest

@@ -22,19 +22,11 @@ class {{skeletonModel.shortName }} extends TestCase
 {
     use {{ skeletonModel.useCaseListItemResponseTestCaseShortName }};
 
-    /**
-     * @var {{skeletonModel.getEntitiesUseCaseRequestDTOShortName }}
-     */
-    private $request;
+    private {{skeletonModel.getEntitiesUseCaseRequestDTOShortName }} $request;
 
-    /**
-     * @var {{skeletonModel.getEntitiesUseCaseShortName }}
-     */
-    private $useCase;
+    private {{skeletonModel.getEntitiesUseCaseShortName }} $useCase;
 
-    /**
-     * @test
-     */
+    /** @test */
     final public function without{{ skeletonModel.entitiesShortName }}ReturnEmpty(): void
     {
         {{ skeletonModel.inMemoryEntityGatewayShortName }}::${{ skeletonModel.entitiesArgument }} = [];
@@ -43,9 +35,7 @@ class {{skeletonModel.shortName }} extends TestCase
         $this->assertEmpty($response->getItems());
     }
 
-    /**
-     * @test
-     */
+    /** @test */
     final public function get{{ skeletonModel.entitiesShortName }}ShouldReturnResponse(): void
     {
         {{ skeletonModel.inMemoryEntityGatewayShortName }}::${{ skeletonModel.entitiesArgument }} = [

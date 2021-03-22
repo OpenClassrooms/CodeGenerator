@@ -16,15 +16,9 @@ use PHPUnit\Framework\TestCase;
 
 final class DeleteFunctionalEntityTest extends TestCase
 {
-    /**
-     * @var DeleteFunctionalEntityRequestDTO
-     */
-    private $request;
+    private DeleteFunctionalEntityRequestDTO $request;
 
-    /**
-     * @var DeleteFunctionalEntity
-     */
-    private $useCase;
+    private DeleteFunctionalEntity $useCase;
 
     /**
      * @test
@@ -36,9 +30,7 @@ final class DeleteFunctionalEntityTest extends TestCase
         $this->useCase->execute($this->request);
     }
 
-    /**
-     * @test
-     */
+    /** @test */
     public function deleteFunctionalEntity(): void
     {
         $this->assertNotEmpty(InMemoryFunctionalEntityGateway::$functionalEntities);

@@ -35,9 +35,7 @@ final class GetFunctionalEntityTest extends TestCase
         $this->useCase->execute($this->request);
     }
 
-    /**
-     * @test
-     */
+    /** @test */
     public function getFunctionalEntityShouldReturnResponse(): void
     {
         $response = $this->useCase->execute($this->request);

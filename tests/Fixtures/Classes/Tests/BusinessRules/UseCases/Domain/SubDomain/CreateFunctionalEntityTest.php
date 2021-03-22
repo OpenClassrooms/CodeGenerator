@@ -23,19 +23,11 @@ final class CreateFunctionalEntityTest extends TestCase
 {
     use FunctionalEntityDetailResponseTestCase;
 
-    /**
-     * @var CreateFunctionalEntityRequestDTO
-     */
-    private $request;
+    private CreateFunctionalEntityRequestDTO $request;
 
-    /**
-     * @var CreateFunctionalEntity
-     */
-    private $useCase;
+    private CreateFunctionalEntity $useCase;
 
-    /**
-     * @test
-     */
+    /** @test */
     public function createFunctionalEntityShouldReturnResponse(): void
     {
         InMemoryFunctionalEntityGateway::$id = FunctionalEntityStub1::ID;
