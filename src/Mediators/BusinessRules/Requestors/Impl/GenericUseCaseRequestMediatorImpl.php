@@ -26,7 +26,6 @@ class GenericUseCaseRequestMediatorImpl implements GenericUseCaseRequestMediator
         $fileObjects = [];
         if (false !== $options[Options::NO_TEST] || !$options[Options::DUMP] && !$options[Options::NO_TEST]) {
             $fileObjects[] = $this->generateGenericUseCaseRequest($domain, $useCase);
-            $fileObjects[] = $this->generateGenericUseCaseRequestBuilder($domain, $useCase);
         }
         if (false === $options[Options::DUMP]) {
             $this->fileObjectGateway->flush();

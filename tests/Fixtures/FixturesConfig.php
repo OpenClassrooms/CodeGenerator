@@ -6,47 +6,52 @@ namespace OpenClassrooms\CodeGenerator\Tests\Fixtures;
 
 final class FixturesConfig
 {
-    const API_DIR                             = 'Api\\';
+    public const API_DIR                             = 'Api\\';
 
-    const APP_DIR                             = 'App\\';
+    public const APP_DIR                             = 'App\\';
 
-    const BASE_NAMESPACE                      = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\\';
+    public const BASE_NAMESPACE                      = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\\';
 
-    const BASE_NAMESPACE_SELF_GENERATOR       = 'OpenClassrooms\CodeGenerator\\';
+    public const BASE_NAMESPACE_SELF_GENERATOR       = 'OpenClassrooms\CodeGenerator\\';
 
-    const ENTITY_UTIL                         = 'OpenClassrooms\CodeGenerator\Tests\EntityUtil';
+    public const ENTITY_UTIL                         = 'OpenClassrooms\CodeGenerator\Tests\EntityUtil';
 
-    const PAGINATED_COLLECTION                = 'OpenClassrooms\UseCase\BusinessRules\Entities\PaginatedCollection';
+    public const PAGINATED_COLLECTION                = 'OpenClassrooms\UseCase\BusinessRules\Entities\PaginatedCollection';
 
-    const PAGINATED_USE_CASE_RESPONSE         = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\PaginatedUseCaseResponse';
+    public const PAGINATED_USE_CASE_RESPONSE         = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\PaginatedUseCaseResponse';
 
-    const PAGINATED_USE_CASE_RESPONSE_BUILDER = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\PaginatedUseCaseResponseBuilder';
+    public const PAGINATED_USE_CASE_RESPONSE_BUILDER = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\PaginatedUseCaseResponseBuilder';
 
-    const PAGINATED_COLLECTION_BUILDER_IMPL  = 'OpenClassrooms\UseCase\Application\Entity\PaginatedCollectionBuilderImpl';
+    public const PAGINATED_COLLECTION_BUILDER_IMPL  = 'OpenClassrooms\UseCase\Application\Entity\PaginatedCollectionBuilderImpl';
 
-    const PAGINATED_COLLECTION_FACTORY       = 'OC\AppBundle\Repository\PaginatedCollectionFactory';
+    public const PAGINATED_COLLECTION_FACTORY       = 'OC\AppBundle\Repository\PaginatedCollectionFactory';
 
-    const PAGINATION                         = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gateways\Pagination';
+    public const PAGINATION                         = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gateways\Pagination';
 
-    const STUB_NAMESPACE                     = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\\';
+    public const STUB_NAMESPACE                     = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\\';
 
-    const SECURITY                           = 'OpenClassrooms\UseCase\Application\Annotations\Security';
+    public const SECURITY                           = 'OpenClassrooms\UseCase\Application\Annotations\Security';
 
-    const STUB_NAMESPACE_SELF_GENERATOR      = 'OpenClassrooms\CodeGenerator\Tests\Doubles\\';
+    public const STUB_NAMESPACE_SELF_GENERATOR      = 'OpenClassrooms\CodeGenerator\Tests\Doubles\\';
 
-    const TEST_BASE_NAMESPACE                = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\\';
+    public const TEST_BASE_NAMESPACE                = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\\';
 
-    const TEST_BASE_NAMESPACE_SELF_GENERATOR = 'OpenClassrooms\CodeGenerator\Tests\\';
+    public const TEST_BASE_NAMESPACE_SELF_GENERATOR = 'OpenClassrooms\CodeGenerator\Tests\\';
 
-    const TRANSACTION                        = 'OpenClassrooms\UseCase\Application\Annotations\Transaction';
+    public const TRANSACTION                        = 'OpenClassrooms\UseCase\Application\Annotations\Transaction';
 
-    const USE_CASE                           = 'OpenClassrooms\UseCase\BusinessRules\Requestors\UseCase';
+    public const USE_CASE                           = 'OpenClassrooms\UseCase\BusinessRules\Requestors\UseCase';
 
-    const USE_CASE_REQUEST                   = 'OpenClassrooms\UseCase\BusinessRules\Requestors\UseCaseRequest';
+    public const USE_CASE_REQUEST                   = 'OpenClassrooms\UseCase\BusinessRules\Requestors\UseCaseRequest';
 
-    const USE_CASE_RESPONSE                  = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\UseCaseResponse';
+    public const USE_CASE_RESPONSE                  = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\UseCaseResponse';
 
-    const ABSTRACT_CONTROLLER                = 'OC\ApiBundle\Framework\FrameworkBundle\Controller\AbstractApiController';
+    public const ABSTRACT_CONTROLLER                = 'OC\ApiBundle\Framework\FrameworkBundle\Controller\AbstractApiController';
 
-    const COLLECTION_INFORMATION             = 'OC\ApiBundle\ParamConverter\CollectionInformation';
+    public const COLLECTION_INFORMATION             = 'OC\ApiBundle\ParamConverter\CollectionInformation';
+
+    /** @codeCoverageIgnore  */
+    private function __construct()
+    {
+    }
 }

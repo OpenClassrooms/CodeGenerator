@@ -49,8 +49,6 @@ class GenericUseCaseMediatorImpl implements GenericUseCaseMediator
     private function generateSources(string $domain, string $useCase): array
     {
         $fileObjects[] = $this->generateGenericUseCase($domain, $useCase);
-        $fileObjects[] = $this->generateGenericUseCaseRequestDTO($domain, $useCase);
-        $fileObjects[] = $this->generateGenericUseCaseRequestBuilderImpl($domain, $useCase);
 
         return $fileObjects;
     }

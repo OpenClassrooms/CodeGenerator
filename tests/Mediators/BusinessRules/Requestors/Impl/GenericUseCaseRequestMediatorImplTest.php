@@ -5,15 +5,12 @@ declare(strict_types=1);
 namespace OpenClassrooms\CodeGenerator\Tests\Mediators\BusinessRules\Requestors\Impl;
 
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\DTO\Request\GenericUseCaseRequestBuilderGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\DTO\Request\GenericUseCaseRequestGeneratorRequestBuilderImpl;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\GenericUseCaseRequestBuilderGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\GenericUseCaseRequestGenerator;
 use OpenClassrooms\CodeGenerator\Mediators\Args;
 use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\Requestors\GenericUseCaseRequestMediator;
 use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\Requestors\Impl\GenericUseCaseRequestMediatorImpl;
 use OpenClassrooms\CodeGenerator\Mediators\Options;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Requestors\GenericUseCaseRequestBuilderFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Requestors\GenericUseCaseRequestFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Generator\GeneratorMock;
@@ -106,15 +103,6 @@ class GenericUseCaseRequestMediatorImplTest extends TestCase
             Options::TESTS_ONLY => false,
         ];
 
-        $this->mediator->setGenericUseCaseRequestBuilderGenerator(
-            new GeneratorMock(
-                GenericUseCaseRequestBuilderGenerator::class,
-                new GenericUseCaseRequestBuilderFileObjectStub1()
-            )
-        );
-        $this->mediator->setGenericUseCaseRequestBuilderGeneratorRequestBuilder(
-            new GenericUseCaseRequestBuilderGeneratorRequestBuilderImpl()
-        );
         $this->mediator->setGenericUseCaseRequestGenerator(
             new GeneratorMock(GenericUseCaseRequestGenerator::class, new GenericUseCaseRequestFileObjectStub1())
         );

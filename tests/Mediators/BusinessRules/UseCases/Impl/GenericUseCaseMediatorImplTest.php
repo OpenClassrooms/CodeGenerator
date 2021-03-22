@@ -6,11 +6,7 @@ namespace OpenClassrooms\CodeGenerator\Tests\Mediators\BusinessRules\UseCases\Im
 
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\GenericUseCaseGeneratorRequestBuilderImpl;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\GenericUseCaseRequestBuilderImplGeneratorRequestBuilderImpl;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\GenericUseCaseRequestDTOGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\GenericUseCaseGenerator;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\GenericUseCaseRequestBuilderImplGenerator;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\GenericUseCaseRequestDTOGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\DTO\Request\GenericUseCaseTestGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\GenericUseCaseTestGenerator;
 use OpenClassrooms\CodeGenerator\Mediators\Args;
@@ -18,8 +14,6 @@ use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\GenericUseCase
 use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\Impl\GenericUseCaseMediatorImpl;
 use OpenClassrooms\CodeGenerator\Mediators\Options;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\GenericUseCaseFileObjectStub1;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\GenericUseCaseRequestBuilderImplFileObjectStub1;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\GenericUseCaseRequestDTOFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\BusinessRules\UseCases\GenericUseCaseTestFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileObjectGateway;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Generator\GeneratorMock;
@@ -138,21 +132,6 @@ class GenericUseCaseMediatorImplTest extends TestCase
         $this->mediator->setGenericUseCaseGeneratorRequestBuilder(
             new GenericUseCaseGeneratorRequestBuilderImpl()
         );
-        $this->mediator->setGenericUseCaseRequestBuilderImplGenerator(
-            new GeneratorMock(
-                GenericUseCaseRequestBuilderImplGenerator::class,
-                new GenericUseCaseRequestBuilderImplFileObjectStub1()
-            )
-        );
-        $this->mediator->setGenericUseCaseRequestBuilderImplGeneratorRequestBuilder(
-            new GenericUseCaseRequestBuilderImplGeneratorRequestBuilderImpl()
-        );
-        $this->mediator->setGenericUseCaseRequestDTOGenerator(
-            new GeneratorMock(
-                GenericUseCaseRequestDTOGenerator::class,
-                new GenericUseCaseRequestDTOFileObjectStub1()
-            )
-        );
         $this->mediator->setGenericUseCaseTestGenerator(
             new GeneratorMock(
                 GenericUseCaseTestGenerator::class,
@@ -161,9 +140,6 @@ class GenericUseCaseMediatorImplTest extends TestCase
         );
         $this->mediator->setGenericUseCaseTestGeneratorRequestBuilder(
             new GenericUseCaseTestGeneratorRequestBuilderImpl()
-        );
-        $this->mediator->setGenericUseCaseRequestDTOGeneratorRequestBuilder(
-            new GenericUseCaseRequestDTOGeneratorRequestBuilderImpl()
         );
     }
 }
