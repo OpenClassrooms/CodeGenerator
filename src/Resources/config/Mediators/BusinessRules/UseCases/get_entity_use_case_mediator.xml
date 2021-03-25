@@ -43,6 +43,10 @@
                 <argument type="service"
                           id="open_classrooms.code_generator.generator.business_rules.use_cases.dto.request.get_entity_use_case_generator_request_builder"/>
             </call>
+            <call method="setGetEntityUseCaseRequestGeneratorRequestBuilder">
+                <argument type="service"
+                          id="open_classrooms.code_generator.generator.business_rules.requestors.dto.request.get_entity_use_case_request_generator_request_builder"/>
+            </call>
             <call method="setGetEntityUseCaseTestGenerator">
                 <argument type="service"
                           id="open_classrooms.code_generator.generator.tests.business_rules.use_cases.get_entity_use_case_test_generator"/>
