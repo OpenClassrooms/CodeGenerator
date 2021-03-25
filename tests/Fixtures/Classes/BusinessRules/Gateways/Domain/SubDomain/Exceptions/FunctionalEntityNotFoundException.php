@@ -6,6 +6,6 @@ declare(strict_types=1);
 
 namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gateways\Domain\SubDomain\Exceptions;
 
-class FunctionalEntityNotFoundException extends \Exception
+final class FunctionalEntityNotFoundException extends \Exception
 {
 }
