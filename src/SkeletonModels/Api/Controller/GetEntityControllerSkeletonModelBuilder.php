@@ -32,12 +32,12 @@ interface GetEntityControllerSkeletonModelBuilder
         FileObject $entityViewModelDetailAssemblerFileObject
     ): GetEntityControllerSkeletonModelBuilder;
 
-    public function withCreateGetEntityUseCaseFileObject(
-        FileObject $getEntityUseCaseFileObject
+    public function withCreateGetEntityUseCaseRequestFileObject(
+        FileObject $getEntityUseCaseRequestFileObject
     ): GetEntityControllerSkeletonModelBuilder;
 
-    public function withCreateGetEntityUseCaseRequestBuilderFileObject(
-        FileObject $getEntityUseCaseRequestBuilderFileObject
+    public function withCreateGetEntityUseCaseFileObject(
+        FileObject $getEntityUseCaseFileObject
     ): GetEntityControllerSkeletonModelBuilder;
 
     public function withRouteAnnotation(string $routeAnnotation): GetEntityControllerSkeletonModelBuilder;

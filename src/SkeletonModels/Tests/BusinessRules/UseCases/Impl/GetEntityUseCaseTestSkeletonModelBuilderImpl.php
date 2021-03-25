@@ -33,9 +33,9 @@ class GetEntityUseCaseTestSkeletonModelBuilderImpl implements GetEntityUseCaseTe
     public function withEntityNotFoundExceptionFileObject(
         FileObject $entityNotFoundExceptionFileObject
     ): GetEntityUseCaseTestSkeletonModelBuilder {
-        $this->skeletonModel->entityNotFoundExceptionFileObjectClassName = $entityNotFoundExceptionFileObject->getClassName(
+        $this->skeletonModel->entityNotFoundExceptionClassName = $entityNotFoundExceptionFileObject->getClassName(
         );
-        $this->skeletonModel->entityNotFoundExceptionFileObjectShortName = $entityNotFoundExceptionFileObject->getShortName(
+        $this->skeletonModel->entityNotFoundExceptionShortName = $entityNotFoundExceptionFileObject->getShortName(
         );
 
         return $this;
@@ -55,28 +55,6 @@ class GetEntityUseCaseTestSkeletonModelBuilderImpl implements GetEntityUseCaseTe
     ): GetEntityUseCaseTestSkeletonModelBuilder {
         $this->skeletonModel->getEntityUseCaseClassName = $getEntityUseCaseFileObject->getClassName();
         $this->skeletonModel->getEntityUseCaseShortName = $getEntityUseCaseFileObject->getShortName();
-
-        return $this;
-    }
-
-    public function withGetEntityUseCaseRequestBuilderImplFileObject(
-        FileObject $getEntityUseCaseRequestBuilderImplFileObject
-    ): GetEntityUseCaseTestSkeletonModelBuilder {
-        $this->skeletonModel->getEntityUseCaseRequestBuilderImplClassName = $getEntityUseCaseRequestBuilderImplFileObject->getClassName(
-        );
-        $this->skeletonModel->getEntityUseCaseRequestBuilderImplShortName = $getEntityUseCaseRequestBuilderImplFileObject->getShortName(
-        );
-
-        return $this;
-    }
-
-    public function withGetEntityUseCaseRequestDTOFileObject(
-        FileObject $getEntityUseCaseRequestDTOFileObject
-    ): GetEntityUseCaseTestSkeletonModelBuilder {
-        $this->skeletonModel->getEntityUseCaseRequestDTOClassName = $getEntityUseCaseRequestDTOFileObject->getClassName(
-        );
-        $this->skeletonModel->getEntityUseCaseRequestDTOShortName = $getEntityUseCaseRequestDTOFileObject->getShortName(
-        );
 
         return $this;
     }

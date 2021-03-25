@@ -8,9 +8,9 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 
 abstract class GetEntityUseCaseTestSkeletonModel extends AbstractSkeletonModel
 {
-    public $entityNotFoundExceptionFileObjectClassName;
+    public $entityNotFoundExceptionClassName;
 
-    public $entityNotFoundExceptionFileObjectShortName;
+    public $entityNotFoundExceptionShortName;
 
     public $entityShortName;
 
@@ -22,15 +22,7 @@ abstract class GetEntityUseCaseTestSkeletonModel extends AbstractSkeletonModel
 
     public $getEntityUseCaseClassName;
 
-    public $getEntityUseCaseRequestBuilderImplClassName;
-
-    public $getEntityUseCaseRequestBuilderImplShortName;
-
     public $getEntityUseCaseRequestClassName;
-
-    public $getEntityUseCaseRequestDTOClassName;
-
-    public $getEntityUseCaseRequestDTOShortName;
 
     public $getEntityUseCaseRequestShortName;
 

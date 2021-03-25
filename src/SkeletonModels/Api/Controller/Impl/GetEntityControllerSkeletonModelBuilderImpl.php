@@ -88,25 +88,20 @@ class GetEntityControllerSkeletonModelBuilderImpl implements GetEntityController
         return $this;
     }
 
+    public function withCreateGetEntityUseCaseRequestFileObject(
+        FileObject $getEntityUseCaseRequestFileObject
+    ): GetEntityControllerSkeletonModelBuilder {
+        $this->skeletonModel->getEntityUseCaseRequestClassName = $getEntityUseCaseRequestFileObject->getClassName();
+        $this->skeletonModel->getEntityUseCaseRequestShortName = $getEntityUseCaseRequestFileObject->getShortName();
+
+        return $this;
+    }
+
     public function withCreateGetEntityUseCaseFileObject(
         FileObject $getEntityUseCaseFileObject
     ): GetEntityControllerSkeletonModelBuilder {
         $this->skeletonModel->getEntityUseCaseClassName = $getEntityUseCaseFileObject->getClassName();
         $this->skeletonModel->getEntityUseCaseShortName = $getEntityUseCaseFileObject->getShortName();
-
-        return $this;
-    }
-
-    public function withCreateGetEntityUseCaseRequestBuilderFileObject(
-        FileObject $getEntityUseCaseRequestBuilderFileObject
-    ): GetEntityControllerSkeletonModelBuilder {
-        $this->skeletonModel->getEntityUseCaseRequestBuilderArgument = lcfirst(
-            $getEntityUseCaseRequestBuilderFileObject->getShortName()
-        );
-        $this->skeletonModel->getEntityUseCaseRequestBuilderClassName = $getEntityUseCaseRequestBuilderFileObject->getClassName(
-        );
-        $this->skeletonModel->getEntityUseCaseRequestBuilderShortName = $getEntityUseCaseRequestBuilderFileObject->getShortName(
-        );
 
         return $this;
     }

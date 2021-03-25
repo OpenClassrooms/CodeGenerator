@@ -5,13 +5,10 @@ declare(strict_types=1);
 namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Mediators;
 
 use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\Impl\GetEntitiesUseCaseMediatorImpl;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Requestors\GetEntityUseCaseRequestBuilderFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Requestors\GetEntityUseCaseRequestFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Responders\UseCaseListItemResponseAssemblerFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Responders\UseCaseListItemResponseFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\GetEntitiesUseCaseFileObjectStub1;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\GetEntityUseCaseRequestBuilderImplFileObjectStub1;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\GetEntityUseCaseRequestDTOFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\UseCaseListItemResponseAssemblerImplFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\UseCaseListItemResponseDTOFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\UseCaseResponseAssemblerTraitFileObjectStub1;
@@ -35,9 +32,6 @@ class GetEntitiesUseCaseMediatorMock extends GetEntitiesUseCaseMediatorImpl
             new EntityStubFileObjectStub1(),
             new EntityStubFileObjectStub2(),
             new GetEntitiesUseCaseFileObjectStub1(),
-            new GetEntityUseCaseRequestBuilderFileObjectStub1(),
-            new GetEntityUseCaseRequestBuilderImplFileObjectStub1(),
-            new GetEntityUseCaseRequestDTOFileObjectStub1(),
             new GetEntityUseCaseRequestFileObjectStub1(),
             new UseCaseResponseCommonFieldTraitFileObjectStub1(),
             new UseCaseResponseAssemblerTraitFileObjectStub1(),

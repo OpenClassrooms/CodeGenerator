@@ -24,14 +24,6 @@ interface GetEntityUseCaseTestSkeletonModelBuilder
         FileObject $getEntityUseCaseFileObject
     ): GetEntityUseCaseTestSkeletonModelBuilder;
 
-    public function withGetEntityUseCaseRequestBuilderImplFileObject(
-        FileObject $getEntityUseCaseRequestBuilderImplFileObject
-    ): GetEntityUseCaseTestSkeletonModelBuilder;
-
-    public function withGetEntityUseCaseRequestDTOFileObject(
-        FileObject $getEntityUseCaseRequestDTOFileObject
-    ): GetEntityUseCaseTestSkeletonModelBuilder;
-
     public function withGetEntityUseCaseRequestFileObject(
         FileObject $getEntityUseCaseRequestFileObject
     ): GetEntityUseCaseTestSkeletonModelBuilder;
