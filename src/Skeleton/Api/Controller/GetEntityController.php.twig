@@ -22,7 +22,7 @@ class {{ skeletonModel.shortName }} extends {{ skeletonModel.abstractControllerS
     private ${{ skeletonModel.entityViewModelDetailAssemblerArgument }};
 
     public function __construct(
-        {{ skeletonModel.entityViewModelDetailAssemblerShortName }} $assembler,
+        {{ skeletonModel.entityViewModelDetailAssemblerShortName }} $assembler
     ) {
         $this->{{ skeletonModel.entityViewModelDetailAssemblerArgument }} = $assembler;
     }

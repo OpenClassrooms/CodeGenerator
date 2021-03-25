@@ -1,0 +1,25 @@
+{% include "Header.php.twig" %}
+
+namespace {{ skeletonModel.namespace }};
+
+use {{ skeletonModel.useCaseRequestClassName }};
+
+final class {{ skeletonModel.shortName }} implements {{ skeletonModel.useCaseRequestShortName }}
+{
+    public int $id;
+
+    public function __construct(int $id)
+    {
+        $this->id = $id;
+    }
+
+    public static function create(int $id): self
+    {
+        return new self($id);
+    }
+
+    public function get{{ skeletonModel.entityShortName }}Id(): int
+    {
+        return $this->id;
+    }
+}

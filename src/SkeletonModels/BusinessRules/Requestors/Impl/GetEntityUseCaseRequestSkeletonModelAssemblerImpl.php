@@ -8,6 +8,7 @@ use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Requestors\GetEntityUseCaseRequestSkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Requestors\GetEntityUseCaseRequestSkeletonModelAssembler;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCaseClassNameTrait;
+use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 
 class GetEntityUseCaseRequestSkeletonModelAssemblerImpl implements GetEntityUseCaseRequestSkeletonModelAssembler
 {
@@ -22,6 +23,7 @@ class GetEntityUseCaseRequestSkeletonModelAssemblerImpl implements GetEntityUseC
         $skeletonModel->shortName = $getEntityUseCaseRequestFileObject->getShortName();
         $skeletonModel->entityShortName = $entityFileObject->getShortName();
         $skeletonModel->useCaseRequestClassName = $this->useCaseRequestClassName;
+        $skeletonModel->useCaseRequestShortName = FileObjectUtility::getShortClassName($this->useCaseRequestClassName);
 
         return $skeletonModel;
     }

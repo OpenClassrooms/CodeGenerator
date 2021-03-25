@@ -10,7 +10,9 @@ abstract class GetEntityUseCaseRequestSkeletonModel extends AbstractSkeletonMode
 {
     public $entityShortName;
 
-    public $templatePath = 'BusinessRules/Requestors/GetEntityUseCaseRequest.php.twig';
+    public $templatePath = 'BusinessRules/UseCases/Request/GetEntityUseCaseRequest.php.twig';
 
     public $useCaseRequestClassName;
+
+    public $useCaseRequestShortName;
 }
