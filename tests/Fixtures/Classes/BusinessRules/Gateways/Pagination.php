@@ -6,21 +6,19 @@ namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gate
 
 final class Pagination
 {
-    const DEFAULT_PAGE_NUMBER = 1;
+    public const DEFAULT_PAGE_NUMBER = 1;
 
-    const ITEMS_PER_PAGE = 'items per page';
+    public const ITEMS_PER_PAGE = 'items per page';
 
-    const ITEMS_PER_PAGE_ADMIN = 20;
+    public const ITEMS_PER_PAGE_ADMIN = 20;
 
-    const ITEMS_PER_PAGE_ALL = 'items-per-page-all';
+    public const ITEMS_PER_PAGE_ALL = 'items-per-page-all';
 
-    const ITEMS_PER_PAGE_DEFAULT = 20;
+    public const ITEMS_PER_PAGE_DEFAULT = 20;
 
-    const PAGE = 'page';
+    public const PAGE = 'page';
 
-    /**
-     * @codeCoverageIgnore
-     */
+    /** @codeCoverageIgnore */
     private function __construct()
     {
     }
