@@ -19,8 +19,8 @@ class DeleteEntityUseCaseRequestDTOSkeletonModelAssemblerImpl implements DeleteE
         $skeletonModel->className = $deleteEntityUseCaseRequestDTOFileObject->getClassName();
         $skeletonModel->namespace = $deleteEntityUseCaseRequestDTOFileObject->getNamespace();
         $skeletonModel->shortName = $deleteEntityUseCaseRequestDTOFileObject->getShortName();
-        $skeletonModel->deletelEntityUseCaseRequestClassName = $deleteEntityUseCaseRequestFileObject->getClassName();
-        $skeletonModel->deletelEntityUseCaseRequestShortName = $deleteEntityUseCaseRequestFileObject->getShortName();
+        $skeletonModel->deleteEntityUseCaseRequestClassName = $deleteEntityUseCaseRequestFileObject->getClassName();
+        $skeletonModel->deleteEntityUseCaseRequestShortName = $deleteEntityUseCaseRequestFileObject->getShortName();
         $skeletonModel->entityIdArgument = NameUtility::createEntityIdName(
             $deleteEntityUseCaseRequestDTOFileObject->getEntity()
         );

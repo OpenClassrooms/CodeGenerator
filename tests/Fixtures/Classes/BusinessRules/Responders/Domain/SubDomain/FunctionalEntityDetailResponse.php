@@ -8,5 +8,5 @@ namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Resp
 
 interface FunctionalEntityDetailResponse extends FunctionalEntityResponse
 {
-    public function getField4(): ?\DateTimeInterface;
+    public function getField4(): \DateTimeInterface;
 }

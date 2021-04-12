@@ -7,64 +7,43 @@ namespace OpenClassrooms\CodeGenerator\Mediators\BusinessRules\Responses\Impl;
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Responders\Request\UseCaseDetailResponseAssemblerGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Responders\Request\UseCaseDetailResponseGeneratorRequestBuilder;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Responders\UseCaseDetailResponseAssemblerGenerator;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Responders\UseCaseDetailResponseGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\UseCaseDetailResponseAssemblerImplGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\UseCaseDetailResponseDTOGeneratorRequestBuilder;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\UseCaseDetailResponseAssemblerImplGenerator;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\UseCaseDetailResponseDTOGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Generator;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Responders\Request\UseCaseDetailResponseStubGeneratorRequestBuilder;
-use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Responders\UseCaseDetailResponseStubGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\BusinessRules\Responders\Request\UseCaseDetailResponseAssemblerMockGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\BusinessRules\Responders\Request\UseCaseDetailResponseTestCaseGeneratorRequestBuilder;
-use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\BusinessRules\Responders\UseCaseDetailResponseAssemblerMockGenerator;
-use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\BusinessRules\Responders\UseCaseDetailResponseTestCaseGenerator;
 use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\Responses\UseCaseDetailResponseMediator;
 
 class UseCaseDetailResponseMediatorImpl implements UseCaseDetailResponseMediator
 {
-    /** @var UseCaseDetailResponseAssemblerGenerator */
-    private $useCaseDetailResponseAssemblerGenerator;
+    private Generator $useCaseDetailResponseAssemblerGenerator;
 
-    /** @var UseCaseDetailResponseAssemblerGeneratorRequestBuilder */
-    private $useCaseDetailResponseAssemblerGeneratorRequestBuilder;
+    private UseCaseDetailResponseAssemblerGeneratorRequestBuilder $useCaseDetailResponseAssemblerGeneratorRequestBuilder;
 
-    /** @var UseCaseDetailResponseAssemblerImplGenerator */
-    private $useCaseDetailResponseAssemblerImplGenerator;
+    private Generator $useCaseDetailResponseAssemblerImplGenerator;
 
-    /** @var UseCaseDetailResponseAssemblerImplGeneratorRequestBuilder */
-    private $useCaseDetailResponseAssemblerImplGeneratorRequestBuilder;
+    private UseCaseDetailResponseAssemblerImplGeneratorRequestBuilder $useCaseDetailResponseAssemblerImplGeneratorRequestBuilder;
 
-    /** @var UseCaseDetailResponseAssemblerMockGenerator */
-    private $useCaseDetailResponseAssemblerMockGenerator;
+    private Generator $useCaseDetailResponseAssemblerMockGenerator;
 
-    /** @var UseCaseDetailResponseAssemblerMockGeneratorRequestBuilder */
-    private $useCaseDetailResponseAssemblerMockGeneratorRequestBuilder;
+    private UseCaseDetailResponseAssemblerMockGeneratorRequestBuilder $useCaseDetailResponseAssemblerMockGeneratorRequestBuilder;
 
-    /** @var UseCaseDetailResponseDTOGenerator */
-    private $useCaseDetailResponseDTOGenerator;
+    private Generator $useCaseDetailResponseDTOGenerator;
 
-    /** @var UseCaseDetailResponseDTOGeneratorRequestBuilder */
-    private $useCaseDetailResponseDTOGeneratorRequestBuilder;
+    private UseCaseDetailResponseDTOGeneratorRequestBuilder $useCaseDetailResponseDTOGeneratorRequestBuilder;
 
-    /** @var UseCaseDetailResponseGenerator */
-    private $useCaseDetailResponseGenerator;
+    private Generator $useCaseDetailResponseGenerator;
 
-    /** @var UseCaseDetailResponseGeneratorRequestBuilder */
-    private $useCaseDetailResponseGeneratorRequestBuilder;
+    private UseCaseDetailResponseGeneratorRequestBuilder $useCaseDetailResponseGeneratorRequestBuilder;
 
-    /** @var UseCaseDetailResponseStubGenerator */
-    private $useCaseDetailResponseStubGenerator;
+    private Generator $useCaseDetailResponseStubGenerator;
 
-    /** @var UseCaseDetailResponseStubGeneratorRequestBuilder */
-    private $useCaseDetailResponseStubGeneratorRequestBuilder;
+    private UseCaseDetailResponseStubGeneratorRequestBuilder $useCaseDetailResponseStubGeneratorRequestBuilder;
 
-    /** @var UseCaseDetailResponseTestCaseGenerator */
-    private $useCaseDetailResponseTestCaseGenerator;
+    private Generator $useCaseDetailResponseTestCaseGenerator;
 
-    /** @var UseCaseDetailResponseTestCaseGeneratorRequestBuilder */
-    private $useCaseDetailResponseTestCaseGeneratorRequestBuilder;
+    private UseCaseDetailResponseTestCaseGeneratorRequestBuilder $useCaseDetailResponseTestCaseGeneratorRequestBuilder;
 
     public function generateUseCaseDetailResponseAssemblerGenerator(string $className): FileObject
     {

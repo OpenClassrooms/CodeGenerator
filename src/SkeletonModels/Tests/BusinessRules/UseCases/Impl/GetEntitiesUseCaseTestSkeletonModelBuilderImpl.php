@@ -14,10 +14,7 @@ class GetEntitiesUseCaseTestSkeletonModelBuilderImpl implements GetEntitiesUseCa
 {
     use UseCaseResponseClassNameTrait;
 
-    /**
-     * @var GetEntitiesUseCaseTestSkeletonModel
-     */
-    private $skeletonModel;
+    private GetEntitiesUseCaseTestSkeletonModelImpl $skeletonModel;
 
     public function build(): GetEntitiesUseCaseTestSkeletonModel
     {

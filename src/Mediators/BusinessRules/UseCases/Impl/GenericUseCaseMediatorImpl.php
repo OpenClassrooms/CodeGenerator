@@ -14,10 +14,7 @@ class GenericUseCaseMediatorImpl implements GenericUseCaseMediator
 {
     use GenericUseCaseGeneratorsTrait;
 
-    /**
-     * @var FileObjectGateway
-     */
-    private $fileObjectGateway;
+    private FileObjectGateway $fileObjectGateway;
 
     /**
      * @return FileObject[]

@@ -8,10 +8,7 @@ use OpenClassrooms\CodeGenerator\Generator\Api\Models\Request\PutEntityModelGene
 
 class PutEntityModelGeneratorRequestDTO implements PutEntityModelGeneratorRequest
 {
-    /**
-     * @var string
-     */
-    public $entityClassName;
+    public string $entityClassName;
 
     public function getEntityClassName(): string
     {

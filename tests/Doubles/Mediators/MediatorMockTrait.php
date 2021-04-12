@@ -14,7 +14,7 @@ trait MediatorMockTrait
     public function alreadyExistFileObject(): array
     {
         return array_map(
-            function (FileObject $fileObject) {
+            static function (FileObject $fileObject) {
                 $otherFileObject = clone $fileObject;
                 $otherFileObject->setAlreadyExists(true);
 
@@ -30,7 +30,7 @@ trait MediatorMockTrait
     protected function writeFileObjects(): array
     {
         return array_map(
-            function (FileObject $fileObject) {
+            static function (FileObject $fileObject) {
                 $otherFileObject = clone $fileObject;
                 $otherFileObject->write();
 

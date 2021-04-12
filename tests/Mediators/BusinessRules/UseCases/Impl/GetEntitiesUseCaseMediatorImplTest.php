@@ -37,15 +37,9 @@ class GetEntitiesUseCaseMediatorImplTest extends TestCase
     use MediatorFileObjectTestCase;
     use CommonEntityUseCaseMediatorTestTrait;
 
-    /**
-     * @var GetEntitiesUseCaseMediatorImpl
-     */
-    private $mediator;
+    private GetEntitiesUseCaseMediatorImpl $mediator;
 
-    /**
-     * @var array
-     */
-    private $options;
+    private array $options;
 
     protected function setUp(): void
     {
@@ -84,7 +78,6 @@ class GetEntitiesUseCaseMediatorImplTest extends TestCase
             new GeneratorMock(
                 GetEntitiesUseCaseRequestBuilderImplGenerator::class,
                 new GetEntitiesUseCaseRequestBuilderImplFileObjectStub1()
-
             )
         );
         $this->mediator->setGetEntitiesUseCaseRequestDTOGenerator(

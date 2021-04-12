@@ -16,15 +16,9 @@ class FieldObjectUtilityTest extends TestCase
     public function fieldAccessorReturnNull(): void
     {
         $class = (new class() {
-            /**
-             * @var string
-             */
-            public $field1;
+            public string $field1;
 
-            /**
-             * @var string
-             */
-            public $field2;
+            public string $field2;
         });
 
         $fieldObjects = FieldObjectUtility::getPublicClassFields(get_class($class));

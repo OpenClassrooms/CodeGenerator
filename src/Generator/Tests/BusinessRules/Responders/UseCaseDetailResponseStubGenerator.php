@@ -19,10 +19,7 @@ class UseCaseDetailResponseStubGenerator extends AbstractUseCaseResponseStubGene
 {
     use StubFieldObjectTrait;
 
-    /**
-     * @var UseCaseDetailResponseStubSkeletonModelAssembler
-     */
-    private $useCaseDetailResponseStubSkeletonModelAssembler;
+    private UseCaseDetailResponseStubSkeletonModelAssembler $useCaseDetailResponseStubSkeletonModelAssembler;
 
     /**
      * @param UseCaseDetailResponseStubGeneratorRequest $generatorRequest

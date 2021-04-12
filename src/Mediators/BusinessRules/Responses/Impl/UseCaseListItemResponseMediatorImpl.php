@@ -7,64 +7,43 @@ namespace OpenClassrooms\CodeGenerator\Mediators\BusinessRules\Responses\Impl;
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Responders\Request\UseCaseListItemResponseAssemblerGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Responders\Request\UseCaseListItemResponseGeneratorRequestBuilder;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Responders\UseCaseListItemResponseAssemblerGenerator;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Responders\UseCaseListItemResponseGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\UseCaseListItemResponseAssemblerImplGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\UseCaseListItemResponseDTOGeneratorRequestBuilder;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\UseCaseListItemResponseAssemblerImplGenerator;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\UseCaseListItemResponseDTOGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Generator;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Responders\Request\UseCaseListItemResponseStubGeneratorRequestBuilder;
-use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Responders\UseCaseListItemResponseStubGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\BusinessRules\Responders\Request\UseCaseListItemResponseAssemblerMockGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\BusinessRules\Responders\Request\UseCaseListItemResponseTestCaseGeneratorRequestBuilder;
-use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\BusinessRules\Responders\UseCaseListItemResponseAssemblerMockGenerator;
-use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\BusinessRules\Responders\UseCaseListItemResponseTestCaseGenerator;
 use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\Responses\UseCaseListItemResponseMediator;
 
 class UseCaseListItemResponseMediatorImpl implements UseCaseListItemResponseMediator
 {
-    /** @var UseCaseListItemResponseAssemblerGenerator */
-    private $useCaseListItemResponseAssemblerGenerator;
+    private Generator $useCaseListItemResponseAssemblerGenerator;
 
-    /** @var UseCaseListItemResponseAssemblerGeneratorRequestBuilder */
-    private $useCaseListItemResponseAssemblerGeneratorRequestBuilder;
+    private UseCaseListItemResponseAssemblerGeneratorRequestBuilder $useCaseListItemResponseAssemblerGeneratorRequestBuilder;
 
-    /** @var UseCaseListItemResponseAssemblerImplGenerator */
-    private $useCaseListItemResponseAssemblerImplGenerator;
+    private Generator $useCaseListItemResponseAssemblerImplGenerator;
 
-    /** @var UseCaseListItemResponseAssemblerImplGeneratorRequestBuilder */
-    private $useCaseListItemResponseAssemblerImplGeneratorRequestBuilder;
+    private UseCaseListItemResponseAssemblerImplGeneratorRequestBuilder $useCaseListItemResponseAssemblerImplGeneratorRequestBuilder;
 
-    /** @var UseCaseListItemResponseAssemblerMockGenerator */
-    private $useCaseListItemResponseAssemblerMockGenerator;
+    private Generator $useCaseListItemResponseAssemblerMockGenerator;
 
-    /** @var UseCaseListItemResponseAssemblerMockGeneratorRequestBuilder */
-    private $useCaseListItemResponseAssemblerMockGeneratorRequestBuilder;
+    private UseCaseListItemResponseAssemblerMockGeneratorRequestBuilder $useCaseListItemResponseAssemblerMockGeneratorRequestBuilder;
 
-    /** @var UseCaseListItemResponseDTOGenerator */
-    private $useCaseListItemResponseDTOGenerator;
+    private Generator $useCaseListItemResponseDTOGenerator;
 
-    /** @var UseCaseListItemResponseDTOGeneratorRequestBuilder */
-    private $useCaseListItemResponseDTOGeneratorRequestBuilder;
+    private UseCaseListItemResponseDTOGeneratorRequestBuilder $useCaseListItemResponseDTOGeneratorRequestBuilder;
 
-    /** @var UseCaseListItemResponseGenerator */
-    private $useCaseListItemResponseGenerator;
+    private Generator $useCaseListItemResponseGenerator;
 
-    /** @var UseCaseListItemResponseGeneratorRequestBuilder */
-    private $useCaseListItemResponseGeneratorRequestBuilder;
+    private UseCaseListItemResponseGeneratorRequestBuilder $useCaseListItemResponseGeneratorRequestBuilder;
 
-    /** @var UseCaseListItemResponseStubGenerator */
-    private $useCaseListItemResponseStubGenerator;
+    private Generator $useCaseListItemResponseStubGenerator;
 
-    /** @var UseCaseListItemResponseStubGeneratorRequestBuilder */
-    private $useCaseListItemResponseStubGeneratorRequestBuilder;
+    private UseCaseListItemResponseStubGeneratorRequestBuilder $useCaseListItemResponseStubGeneratorRequestBuilder;
 
-    /** @var UseCaseListItemResponseTestCaseGenerator */
-    private $useCaseListItemResponseTestCaseGenerator;
+    private Generator $useCaseListItemResponseTestCaseGenerator;
 
-    /** @var UseCaseListItemResponseTestCaseGeneratorRequestBuilder */
-    private $useCaseListItemResponseTestCaseGeneratorRequestBuilder;
+    private UseCaseListItemResponseTestCaseGeneratorRequestBuilder $useCaseListItemResponseTestCaseGeneratorRequestBuilder;
 
     public function generateUseCaseListItemResponseAssemblerGenerator(string $className): FileObject
     {

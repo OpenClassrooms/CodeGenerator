@@ -9,45 +9,24 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 
 abstract class ViewModelDetailAssemblerTestSkeletonModel extends AbstractSkeletonModel
 {
-    public $templatePath = 'Tests/Api/ViewModels/ViewModelDetailAssemblerTest.php.twig';
+    public string $templatePath = 'Tests/Api/ViewModels/ViewModelDetailAssemblerTest.php.twig';
 
-    /**
-     * @var string
-     */
-    public $useCaseDetailResponseStubClassName;
+    public string $useCaseDetailResponseStubClassName;
 
-    /**
-     * @var string
-     */
-    public $useCaseDetailResponseStubShortName;
+    public string $useCaseDetailResponseStubShortName;
 
-    /**
-     * @var string
-     */
-    public $viewModelDetailAssemblerClassName;
+    public string $viewModelDetailAssemblerClassName;
 
-    /**
-     * @var string
-     */
-    public $viewModelDetailAssemblerTestNamespace;
+    public string $viewModelDetailAssemblerTestNamespace;
 
-    /**
-     * @var string
-     */
-    public $viewModelDetailAssemblerShortName;
+    public string $viewModelDetailAssemblerShortName;
 
     /**
      * @var FieldObject[]
      */
-    public $viewModelDetailFields;
+    public array $viewModelDetailFields;
 
-    /**
-     * @var string
-     */
-    public $viewModelDetailStubClassName;
+    public string $viewModelDetailStubClassName;
 
-    /**
-     * @var string
-     */
-    public $viewModelDetailStubShortName;
+    public string $viewModelDetailStubShortName;
 }

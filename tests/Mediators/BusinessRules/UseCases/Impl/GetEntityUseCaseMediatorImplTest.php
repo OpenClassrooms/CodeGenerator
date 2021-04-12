@@ -28,15 +28,9 @@ class GetEntityUseCaseMediatorImplTest extends TestCase
     use MediatorFileObjectTestCase;
     use CommonEntityUseCaseMediatorTestTrait;
 
-    /**
-     * @var GetEntityUseCaseMediatorImpl
-     */
-    private $mediator;
+    private GetEntityUseCaseMediatorImpl $mediator;
 
-    /**
-     * @var array
-     */
-    private $options;
+    private array $options;
 
     protected function setUp(): void
     {

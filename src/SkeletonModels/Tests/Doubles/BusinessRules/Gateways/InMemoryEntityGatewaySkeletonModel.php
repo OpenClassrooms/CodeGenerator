@@ -32,5 +32,5 @@ abstract class InMemoryEntityGatewaySkeletonModel extends AbstractSkeletonModel
 
     public $pluralEntityShortName;
 
-    public $templatePath = 'Tests/Doubles/BusinessRules/Gateways/InMemoryEntityGateway.php.twig';
+    public string $templatePath = 'Tests/Doubles/BusinessRules/Gateways/InMemoryEntityGateway.php.twig';
 }

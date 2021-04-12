@@ -10,10 +10,7 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\GenerateGenerator\CustomSkeleton
 
 class CustomSkeletonModelBuilderImpl implements CustomSkeletonModelBuilder
 {
-    /**
-     * @var CustomSkeletonModel
-     */
-    private $skeletonModel;
+    private CustomSkeletonModel $skeletonModel;
 
     public function create(): CustomSkeletonModelBuilder
     {

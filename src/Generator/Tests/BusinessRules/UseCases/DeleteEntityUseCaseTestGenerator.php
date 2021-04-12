@@ -16,10 +16,7 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\UseCases\Del
 
 class DeleteEntityUseCaseTestGenerator extends AbstractUseCaseGenerator
 {
-    /**
-     * @var DeleteEntityUseCaseTestSkeletonModelBuilder
-     */
-    private $deleteEntityUseCaseTestSkeletonModelBuilder;
+    private DeleteEntityUseCaseTestSkeletonModelBuilder $deleteEntityUseCaseTestSkeletonModelBuilder;
 
     /**
      * @param DeleteEntityUseCaseTestGeneratorRequest $generatorRequest

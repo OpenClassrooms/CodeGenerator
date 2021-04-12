@@ -8,7 +8,7 @@ use OpenClassrooms\CodeGenerator\Services\Impl\TemplatingServiceImpl;
 
 class TemplatingServiceMock extends TemplatingServiceImpl
 {
-    const SKELETON_DIR = '/../../../src/Skeleton';
+    public const SKELETON_DIR = '/../../../src/Skeleton';
 
     public function __construct()
     {

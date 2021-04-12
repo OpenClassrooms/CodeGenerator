@@ -8,10 +8,7 @@ use OpenClassrooms\CodeGenerator\Generator\Api\Controller\Request\PatchEntityCon
 
 class PatchEntityControllerGeneratorRequestDTO implements PatchEntityControllerGeneratorRequest
 {
-    /**
-     * @var string
-     */
-    public $entityClassName;
+    public string $entityClassName;
 
     public function getEntityClassName(): string
     {

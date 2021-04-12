@@ -6,7 +6,7 @@ namespace OpenClassrooms\CodeGenerator\Tests\Generator\Api\Models;
 
 use OpenClassrooms\CodeGenerator\Generator\Api\Models\DTO\Request\PutEntityModelGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\Api\Models\PutEntityModelGenerator;
-use OpenClassrooms\CodeGenerator\Generator\Api\Models\Request\PutEntityModelGeneratorRequestBuilder;
+use OpenClassrooms\CodeGenerator\Generator\Api\Models\Request\PutEntityModelGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\Models\Domain\SubDomain\PutEntityModelFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\FileObjectTestCase;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\ModelFileObjectFactoryMock;
@@ -20,15 +20,9 @@ class PutEntityModelGeneratorTest extends TestCase
 {
     use FileObjectTestCase;
 
-    /**
-     * @var PutEntityModelGenerator
-     */
-    private $putEntityModelGenerator;
+    private PutEntityModelGenerator $putEntityModelGenerator;
 
-    /**
-     * @var PutEntityModelGeneratorRequestBuilder
-     */
-    private $request;
+    private PutEntityModelGeneratorRequest $request;
 
     /**
      * @test

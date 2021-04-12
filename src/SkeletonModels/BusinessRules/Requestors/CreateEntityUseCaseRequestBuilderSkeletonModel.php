@@ -8,7 +8,7 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 
 abstract class CreateEntityUseCaseRequestBuilderSkeletonModel extends AbstractSkeletonModel
 {
-    public $templatePath = 'BusinessRules/Requestors/CreateEntityUseCaseRequestBuilder.php.twig';
+    public string $templatePath = 'BusinessRules/Requestors/CreateEntityUseCaseRequestBuilder.php.twig';
 
     public $useCaseRequestClassName;
 

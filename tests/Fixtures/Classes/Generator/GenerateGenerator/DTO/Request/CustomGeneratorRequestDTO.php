@@ -8,10 +8,7 @@ use OpenClassrooms\CodeGenerator\Generator\GenerateGenerator\Request\CustomGener
 
 class CustomGeneratorRequestDTO implements CustomGeneratorRequest
 {
-    /**
-     * @var string
-     */
-    public $entityClassName;
+    public string $entityClassName;
 
     public function getEntityClassName(): string
     {

@@ -8,10 +8,7 @@ use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Responders\Reques
 
 class UseCaseDetailResponseStubGeneratorRequestDTO implements UseCaseDetailResponseStubGeneratorRequest
 {
-    /**
-     * @var string
-     */
-    public $responseClassName;
+    public string $responseClassName;
 
     public function getClassName(): string
     {

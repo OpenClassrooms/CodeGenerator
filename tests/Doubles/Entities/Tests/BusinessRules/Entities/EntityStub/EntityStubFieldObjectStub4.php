@@ -9,23 +9,23 @@ use OpenClassrooms\CodeGenerator\Entities\Object\FieldObject;
 
 class EntityStubFieldObjectStub4 extends FieldObject
 {
-    const CONST       = 'FIELD_3';
+    private const CONST = 'FIELD_3';
 
-    const DOC_COMMENT = '/**
-     * @var bool
-     */';
+    public const DOC_COMMENT = null;
 
-    const NAME        = 'field3';
+    public const NAME = 'field3';
 
-    const VALUE       = true;
+    private const VALUE = true;
 
-    protected $docComment = self::DOC_COMMENT;
+    protected ?string $docComment = self::DOC_COMMENT;
 
-    protected $name = self::NAME;
+    protected string $name = self::NAME;
 
-    protected $scope = FieldObject::SCOPE_PROTECTED;
+    protected string $scope = FieldObject::SCOPE_PROTECTED;
 
     protected $value = self::VALUE;
+
+    protected ?string $type = 'bool';
 
     public function __construct()
     {

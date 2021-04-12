@@ -8,20 +8,11 @@ use OpenClassrooms\CodeGenerator\Generator\GenerateGenerator\Request\GenerateGen
 
 class GenerateGeneratorGeneratorRequestDTO implements GenerateGeneratorGeneratorRequest
 {
-    /**
-     * @var string
-     */
-    public $constructionPattern;
+    public string $constructionPattern;
 
-    /**
-     * @var string
-     */
-    public $domain;
+    public string $domain;
 
-    /**
-     * @var string
-     */
-    public $entity;
+    public string $entity;
 
     public function getConstructionPattern(): string
     {

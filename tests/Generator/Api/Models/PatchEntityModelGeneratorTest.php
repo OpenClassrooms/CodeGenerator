@@ -6,7 +6,7 @@ namespace OpenClassrooms\CodeGenerator\Tests\Generator\Api\Models;
 
 use OpenClassrooms\CodeGenerator\Generator\Api\Models\DTO\Request\PatchEntityModelGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\Api\Models\PatchEntityModelGenerator;
-use OpenClassrooms\CodeGenerator\Generator\Api\Models\Request\PatchEntityModelGeneratorRequestBuilder;
+use OpenClassrooms\CodeGenerator\Generator\Api\Models\Request\PatchEntityModelGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\Models\Domain\SubDomain\PatchEntityModelFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\FileObjectTestCase;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\ModelFileObjectFactoryMock;
@@ -20,15 +20,9 @@ class PatchEntityModelGeneratorTest extends TestCase
 {
     use FileObjectTestCase;
 
-    /**
-     * @var PatchEntityModelGenerator
-     */
-    private $patchEntityModelGenerator;
+    private PatchEntityModelGenerator $patchEntityModelGenerator;
 
-    /**
-     * @var PatchEntityModelGeneratorRequestBuilder
-     */
-    private $request;
+    private PatchEntityModelGeneratorRequest $request;
 
     /**
      * @test

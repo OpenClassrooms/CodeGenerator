@@ -23,15 +23,13 @@ class FunctionalEntityDetailResponseStub1 extends FunctionalEntityDetailResponse
 
     public const UPDATED_AT = FunctionalEntityStub1::UPDATED_AT;
 
-    public $field1 = self::FIELD_1;
+    public string $field1 = self::FIELD_1;
 
-    public $field2 = self::FIELD_2;
+    public array $field2 = self::FIELD_2;
 
-    public $field3 = self::FIELD_3;
+    public bool $field3 = self::FIELD_3;
 
-    public $field4 = self::FIELD_4;
-
-    public $id = self::ID;
+    public int $id = self::ID;
 
     public $updatedAt = self::UPDATED_AT;
 

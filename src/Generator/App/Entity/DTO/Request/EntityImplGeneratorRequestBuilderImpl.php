@@ -9,10 +9,7 @@ use OpenClassrooms\CodeGenerator\Generator\App\Entity\Request\EntityImplGenerato
 
 class EntityImplGeneratorRequestBuilderImpl implements EntityImplGeneratorRequestBuilder
 {
-    /**
-     * @var EntityImplGeneratorRequestDTO
-     */
-    private $request;
+    private EntityImplGeneratorRequestDTO $request;
 
     public function build(): EntityImplGeneratorRequest
     {

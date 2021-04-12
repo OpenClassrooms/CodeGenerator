@@ -5,50 +5,35 @@ declare(strict_types=1);
 namespace OpenClassrooms\CodeGenerator\Mediators\BusinessRules\Entities\Impl;
 
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
-use OpenClassrooms\CodeGenerator\Generator\App\Repository\EntityRepositoryGenerator;
 use OpenClassrooms\CodeGenerator\Generator\App\Repository\Request\EntityRepositoryGeneratorRequestBuilder;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Gateways\EntityGatewayGenerator;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Gateways\EntityNotFoundExceptionGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Gateways\Request\EntityGatewayGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Gateways\Request\EntityNotFoundExceptionGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Generator\Generator;
-use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Entities\EntityStubGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Entities\Request\EntityStubGeneratorRequestBuilder;
-use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\BusinessRules\Gateways\InMemoryEntityGatewayGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\BusinessRules\Gateways\Request\InMemoryEntityGatewayGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\Entities\EntitiesMediator;
 
 class EntitiesMediatorImpl implements EntitiesMediator
 {
-    /** @var EntityGatewayGenerator */
-    private $entityGatewayGenerator;
+    private Generator $entityGatewayGenerator;
 
-    /** @var EntityGatewayGeneratorRequestBuilder */
-    private $entityGatewayGeneratorRequestBuilder;
+    private EntityGatewayGeneratorRequestBuilder $entityGatewayGeneratorRequestBuilder;
 
-    /** @var EntityNotFoundExceptionGenerator */
-    private $entityNotFoundExceptionGenerator;
+    private Generator $entityNotFoundExceptionGenerator;
 
-    /** @var EntityNotFoundExceptionGeneratorRequestBuilder */
-    private $entityNotFoundExceptionGeneratorRequestBuilder;
+    private EntityNotFoundExceptionGeneratorRequestBuilder $entityNotFoundExceptionGeneratorRequestBuilder;
 
-    /** @var EntityRepositoryGenerator */
-    private $entityRepositoryGenerator;
+    private Generator $entityRepositoryGenerator;
 
-    /** @var EntityRepositoryGeneratorRequestBuilder */
-    private $entityRepositoryGeneratorRequestBuilder;
+    private EntityRepositoryGeneratorRequestBuilder $entityRepositoryGeneratorRequestBuilder;
 
-    /** @var EntityStubGenerator */
-    private $entityStubGenerator;
+    private Generator $entityStubGenerator;
 
-    /** @var EntityStubGeneratorRequestBuilder */
-    private $entityStubGeneratorRequestBuilder;
+    private EntityStubGeneratorRequestBuilder $entityStubGeneratorRequestBuilder;
 
-    /** @var InMemoryEntityGatewayGenerator */
-    private $inMemoryEntityGatewayGenerator;
+    private Generator $inMemoryEntityGatewayGenerator;
 
-    /** @var InMemoryEntityGatewayGeneratorRequestBuilder */
-    private $inMemoryEntityGatewayGeneratorRequestBuilder;
+    private InMemoryEntityGatewayGeneratorRequestBuilder $inMemoryEntityGatewayGeneratorRequestBuilder;
 
     public function generateEntityGatewayGenerator(string $className): FileObject
     {

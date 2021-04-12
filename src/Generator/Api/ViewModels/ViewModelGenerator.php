@@ -15,10 +15,7 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModels\ViewModelSkeleton
 
 class ViewModelGenerator extends AbstractViewModelGenerator
 {
-    /**
-     * @var ViewModelSkeletonModelAssembler
-     */
-    private $viewModelSkeletonModelAssembler;
+    private ViewModelSkeletonModelAssembler $viewModelSkeletonModelAssembler;
 
     /**
      * @param ViewModelGeneratorRequest $generatorRequest

@@ -15,10 +15,7 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\UseCases\Gen
 
 class GenericUseCaseTestGenerator extends AbstractUseCaseGenerator
 {
-    /**
-     * @var GenericUseCaseTestSkeletonModelAssembler
-     */
-    private $genericUseCaseTestSkeletonModelAssembler;
+    private GenericUseCaseTestSkeletonModelAssembler $genericUseCaseTestSkeletonModelAssembler;
 
     /**
      * @param GenericUseCaseTestGeneratorRequest $generatorRequest

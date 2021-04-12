@@ -14,10 +14,7 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\CreateReq
 
 class CreateRequestTraitGenerator extends AbstractUseCaseGenerator
 {
-    /**
-     * @var CreateRequestTraitSkeletonModelAssembler
-     */
-    private $createRequestTraitSkeletonModelAssembler;
+    private CreateRequestTraitSkeletonModelAssembler $createRequestTraitSkeletonModelAssembler;
 
     /**
      * @param CreateRequestTraitGeneratorRequest $generatorRequest

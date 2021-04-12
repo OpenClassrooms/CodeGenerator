@@ -9,10 +9,7 @@ use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\Create
 
 class CreateRequestTraitGeneratorRequestBuilderImpl implements CreateRequestTraitGeneratorRequestBuilder
 {
-    /**
-     * @var CreateRequestTraitGeneratorRequestDTO
-     */
-    private $request;
+    private CreateRequestTraitGeneratorRequestDTO $request;
 
     public function create(): CreateRequestTraitGeneratorRequestBuilder
     {

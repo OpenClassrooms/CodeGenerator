@@ -12,35 +12,17 @@ class UseCaseDetailResponseStubSkeletonModelImpl extends UseCaseDetailResponseSt
     /**
      * @var ConstObject[]
      */
-    public $constants;
+    public array $constants;
 
-    /**
-     * @var array
-     */
-    public $dateTimeType;
+    public array $dateTimeType;
 
-    /**
-     * @var string
-     */
-    public $entityStubClassName;
+    public string $entityStubClassName;
 
-    /**
-     * @var string
-     */
-    public $entityStubShortName;
+    public string $entityStubShortName;
 
-    /**
-     * @var string
-     */
-    public $hasConstructor = false;
+    public bool $hasConstructor = false;
 
-    /**
-     * @var string
-     */
-    public $parentClassName;
+    public string $parentClassName;
 
-    /**
-     * @var string
-     */
-    public $parentShortName;
+    public string $parentShortName;
 }

@@ -8,49 +8,49 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 
 abstract class CreateEntityUseCaseSkeletonModel extends AbstractSkeletonModel
 {
-    public $createEntityUseCaseRequestArgument;
+    public string $createEntityUseCaseRequestArgument;
 
-    public $createEntityUseCaseRequestClassName;
+    public string $createEntityUseCaseRequestClassName;
 
-    public $createEntityUseCaseRequestShortName;
+    public string $createEntityUseCaseRequestShortName;
 
-    public $entityArgument;
+    public string $entityArgument;
 
-    public $entityClassName;
+    public string $entityClassName;
 
-    public $entityCommonHydratorTraitShortName;
+    public string $entityCommonHydratorTraitShortName;
 
-    public $entityFactoryArgument;
+    public string $entityFactoryArgument;
 
-    public $entityFactoryClassName;
+    public string $entityFactoryClassName;
 
-    public $entityFactoryShortName;
+    public string $entityFactoryShortName;
 
-    public $entityGatewayArgument;
+    public string $entityGatewayArgument;
 
-    public $entityGatewayClassName;
+    public string $entityGatewayClassName;
 
-    public $entityGatewayShortName;
+    public string $entityGatewayShortName;
 
-    public $entityShortName;
+    public string $entityShortName;
 
-    public $entityUseCaseDetailResponseAssemblerArgument;
+    public string $entityUseCaseDetailResponseAssemblerArgument;
 
-    public $entityUseCaseDetailResponseAssemblerClassName;
+    public string $entityUseCaseDetailResponseAssemblerClassName;
 
-    public $entityUseCaseDetailResponseAssemblerShortName;
+    public string $entityUseCaseDetailResponseAssemblerShortName;
 
-    public $entityUseCaseDetailResponseClassName;
+    public string $entityUseCaseDetailResponseClassName;
 
-    public $entityUseCaseDetailResponseShortName;
+    public string $entityUseCaseDetailResponseShortName;
 
-    public $securityClassName;
+    public string $securityClassName;
 
-    public $templatePath = 'BusinessRules/UseCases/CreateEntityUseCase.php.twig';
+    public string $templatePath = 'BusinessRules/UseCases/CreateEntityUseCase.php.twig';
 
-    public $transactionClassName;
+    public string $transactionClassName;
 
-    public $useCaseClassName;
+    public string $useCaseClassName;
 
-    public $useCaseRequestClassName;
+    public string $useCaseRequestClassName;
 }

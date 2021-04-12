@@ -12,7 +12,7 @@ abstract class EditEntityUseCaseRequestBuilderSkeletonModel extends AbstractSkel
 
     public $entityIdMethodName;
 
-    public $templatePath = 'BusinessRules/Requestors/EditEntityUseCaseRequestBuilder.php.twig';
+    public string $templatePath = 'BusinessRules/Requestors/EditEntityUseCaseRequestBuilder.php.twig';
 
     public $useCaseRequestClassName;
 

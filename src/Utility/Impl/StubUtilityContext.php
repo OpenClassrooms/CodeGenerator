@@ -8,7 +8,7 @@ use OpenClassrooms\CodeGenerator\Utility\StubUtilityStrategy;
 
 final class StubUtilityContext implements StubUtilityStrategy
 {
-    private $strategy;
+    private StubUtilityStrategy $strategy;
 
     public function __construct(StubUtilityStrategy $strategy)
     {

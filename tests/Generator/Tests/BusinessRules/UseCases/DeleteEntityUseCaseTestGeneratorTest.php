@@ -6,7 +6,7 @@ namespace OpenClassrooms\CodeGenerator\Tests\Generator\Tests\BusinessRules\UseCa
 
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\DeleteEntityUseCaseTestGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\DTO\Request\DeleteEntityUseCaseTestGeneratorRequestBuilderImpl;
-use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\Request\DeleteEntityUseCaseTestGeneratorRequestBuilder;
+use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\Request\DeleteEntityUseCaseTestGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\EntityFileObjectFactoryMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\FileObjectTestCase;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\BusinessRules\UseCases\DeleteEntityUseCaseTestFileObjectStub1;
@@ -22,15 +22,9 @@ class DeleteEntityUseCaseTestGeneratorTest extends TestCase
 {
     use FileObjectTestCase;
 
-    /**
-     * @var DeleteEntityUseCaseTestGenerator
-     */
-    private $deleteEntityUseCaseTestGenerator;
+    private DeleteEntityUseCaseTestGenerator $deleteEntityUseCaseTestGenerator;
 
-    /**
-     * @var DeleteEntityUseCaseTestGeneratorRequestBuilder
-     */
-    private $request;
+    private DeleteEntityUseCaseTestGeneratorRequest $request;
 
     /**
      * @test

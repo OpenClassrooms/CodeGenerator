@@ -15,10 +15,7 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\UseCaseLi
 
 class UseCaseListItemResponseAssemblerImplGenerator extends AbstractUseCaseGenerator
 {
-    /**
-     * @var UseCaseListItemResponseAssemblerImplSkeletonModelAssembler
-     */
-    private $useCaseListItemResponseAssemblerImplSkeletonModelAssembler;
+    private UseCaseListItemResponseAssemblerImplSkeletonModelAssembler $useCaseListItemResponseAssemblerImplSkeletonModelAssembler;
 
     /**
      * @param UseCaseListItemResponseAssemblerImplGeneratorRequest $generatorRequest

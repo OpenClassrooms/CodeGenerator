@@ -28,8 +28,10 @@ class ModelFieldUtility
 
     private static function buildModelField(\ReflectionProperty $field): FieldObject
     {
-        $fieldObject = new FieldObject($field->getName());
-        $fieldObject->setDocComment(self::buildAssertDocComment($field->getDocComment()));
+        $fieldTypeName = $field->getType() ? $field->getType()->getName() : null;
+        $fieldObject = new FieldObject($field->getName(), $fieldTypeName);
+        $fieldType = $field->getDocComment() ?: $fieldTypeName;
+        $fieldObject->setDocComment(self::buildAssertDocComment($fieldType));
 
         return $fieldObject;
     }
@@ -39,22 +41,16 @@ class ModelFieldUtility
         switch (DocCommentUtility::getType($docComment)) {
             case 'int':
                 return "/**
-     * @var int
-     *
      * @Assert\NotBlank
      * @Assert\Type(\"integer\")
      */";
             case 'string':
                 return "/**
-     * @var string
-     *
      * @Assert\NotBlank
      * @Assert\Type(\"string\")
      */";
             case 'bool':
                 return "/**
-     * @var bool
-     *
      * @Assert\NotNull
      * @Assert\Type(\"bool\")
      */";
@@ -69,8 +65,6 @@ class ModelFieldUtility
                 ['\DateTime', '\DateTimeImmutable', '\DateTimeInterface']
             ):
                 return "/**
-     * @var \DateTimeInterface
-     *
      * @Assert\NotBlank
      * @Assert\DateTime(format=\"Y-m-d\TH:i:sO\")
      */";

@@ -75,7 +75,7 @@ class TemplatingServiceImplTest extends TestCase
 
     private function generateFieldObject(string $name, string $type): FieldObject
     {
-        $fieldObject = new FieldObject($name);
+        $fieldObject = new FieldObject($name, $type);
         $fieldObject->setDocComment(
             '/**
      * @var ' . $type . '

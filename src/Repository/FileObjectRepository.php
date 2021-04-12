@@ -13,12 +13,9 @@ class FileObjectRepository implements FileObjectGateway
     /**
      * @var FileObject[]
      */
-    private static $fileObjects = [];
+    private static array $fileObjects = [];
 
-    /**
-     * @var Filesystem
-     */
-    private $fileSystem;
+    private Filesystem $fileSystem;
 
     public function insert(FileObject $fileObject): void
     {

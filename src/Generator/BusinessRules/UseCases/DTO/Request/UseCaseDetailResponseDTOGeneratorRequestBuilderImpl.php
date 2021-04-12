@@ -9,10 +9,7 @@ use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\UseCas
 
 class UseCaseDetailResponseDTOGeneratorRequestBuilderImpl implements UseCaseDetailResponseDTOGeneratorRequestBuilder
 {
-    /**
-     * @var UseCaseDetailResponseDTOGeneratorRequestDTO
-     */
-    private $request;
+    private UseCaseDetailResponseDTOGeneratorRequestDTO $request;
 
     public function build(): UseCaseDetailResponseDTOGeneratorRequest
     {

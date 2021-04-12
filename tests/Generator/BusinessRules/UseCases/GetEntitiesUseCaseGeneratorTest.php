@@ -6,7 +6,7 @@ namespace OpenClassrooms\CodeGenerator\Tests\Generator\BusinessRules\UseCases;
 
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\GetEntitiesUseCaseGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\GetEntitiesUseCaseGenerator;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\GetEntitiesUseCaseGeneratorRequestBuilder;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\GetEntitiesUseCaseGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\GetEntitiesUseCaseFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\EntityFileObjectFactoryMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\FileObjectTestCase;
@@ -23,15 +23,9 @@ class GetEntitiesUseCaseGeneratorTest extends TestCase
 {
     use FileObjectTestCase;
 
-    /**
-     * @var GetEntitiesUseCaseGenerator
-     */
-    private $getEntitiesUseCaseGenerator;
+    private GetEntitiesUseCaseGenerator $getEntitiesUseCaseGenerator;
 
-    /**
-     * @var GetEntitiesUseCaseGeneratorRequestBuilder
-     */
-    private $request;
+    private GetEntitiesUseCaseGeneratorRequest $request;
 
     /**
      * @test

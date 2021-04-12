@@ -16,10 +16,7 @@ use OpenClassrooms\UseCase\BusinessRules\Requestors\UseCaseRequest;
 
 class DeleteFunctionalEntity implements UseCase
 {
-    /**
-     * @var FunctionalEntityGateway
-     */
-    private $functionalEntityGateway;
+    private FunctionalEntityGateway $functionalEntityGateway;
 
     public function __construct(FunctionalEntityGateway $functionalEntityGateway)
     {

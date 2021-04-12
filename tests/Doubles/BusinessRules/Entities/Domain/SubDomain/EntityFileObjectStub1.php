@@ -14,7 +14,7 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Entities\E
 
 class EntityFileObjectStub1 extends FileObject
 {
-    const CLASS_NAME = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Entities\Domain\SubDomain\FunctionalEntity';
+    public const CLASS_NAME = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Entities\Domain\SubDomain\FunctionalEntity';
 
     public function __construct()
     {

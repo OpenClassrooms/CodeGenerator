@@ -38,11 +38,11 @@ abstract class GetEntityUseCaseSkeletonModel extends AbstractSkeletonModel
 
     public $getEntityUseCaseRequestShortName;
 
-    public $shortName;
+    public string $shortName;
 
     public $securityClassName;
 
-    public $templatePath = 'BusinessRules/UseCases/GetEntityUseCase.php.twig';
+    public string $templatePath = 'BusinessRules/UseCases/GetEntityUseCase.php.twig';
 
     public $useCaseClassName;
 

@@ -13,15 +13,9 @@ use OpenClassrooms\CodeGenerator\Utility\StringUtility;
 
 class InMemoryEntityGatewaySkeletonModelAssemblerImpl implements InMemoryEntityGatewaySkeletonModelAssembler
 {
-    /**
-     * @var string
-     */
-    private $entityUtilClassName;
+    private string $entityUtilClassName;
 
-    /**
-     * @var string
-     */
-    private $paginatedCollectionBuilderImplClassName;
+    private string $paginatedCollectionBuilderImplClassName;
 
     public function create(
         FileObject $entityFileObject,

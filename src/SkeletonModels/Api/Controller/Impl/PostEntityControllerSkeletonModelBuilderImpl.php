@@ -16,10 +16,7 @@ class PostEntityControllerSkeletonModelBuilderImpl implements PostEntityControll
     use AbstractControllerClassNameTrait;
     use UseCarbonTrait;
 
-    /**
-     * @var PostEntityControllerSkeletonModel
-     */
-    private $skeletonModel;
+    private PostEntityControllerSkeletonModelImpl $skeletonModel;
 
     public function create(): PostEntityControllerSkeletonModelBuilder
     {

@@ -8,10 +8,7 @@ use {{ skeletonModel.baseNamespace }}Generator\{{ skeletonModel.domain }}\Reques
 
 class {{ skeletonModel.entity }}GeneratorRequestDTO implements {{ skeletonModel.entity }}GeneratorRequest
 {
-    /**
-     * @var string
-     */
-    public $entityClassName;
+    public string $entityClassName;
 
     public function getEntityClassName(): string
     {

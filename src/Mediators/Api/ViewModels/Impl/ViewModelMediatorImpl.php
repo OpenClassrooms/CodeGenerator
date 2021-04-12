@@ -17,30 +17,15 @@ class ViewModelMediatorImpl implements ViewModelMediator
 {
     use ViewModelGeneratorsTrait;
 
-    /**
-     * @var FileObjectGateway
-     */
-    private $fileObjectGateway;
+    private FileObjectGateway $fileObjectGateway;
 
-    /**
-     * @var UseCaseResponseFileObjectFactory
-     */
-    private $useCaseResponseFileObjectFactory;
+    private UseCaseResponseFileObjectFactory $useCaseResponseFileObjectFactory;
 
-    /**
-     * @var string
-     */
-    private $baseNamespace;
+    private string $baseNamespace;
 
-    /**
-     * @var string
-     */
-    private $domain;
+    private string $domain;
 
-    /**
-     * @var string
-     */
-    private $entity;
+    private string $entity;
 
     /**
      * @return FileObject[]

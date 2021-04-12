@@ -9,10 +9,7 @@ use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\Request\ViewModelListI
 
 class ViewModelListItemGeneratorRequestBuilderImpl implements ViewModelListItemGeneratorRequestBuilder
 {
-    /**
-     * @var ViewModelListItemGeneratorRequestDTO
-     */
-    private $request;
+    private ViewModelListItemGeneratorRequestDTO $request;
 
     public function build(): ViewModelListItemGeneratorRequest
     {

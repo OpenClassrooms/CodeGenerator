@@ -9,10 +9,7 @@ use OpenClassrooms\CodeGenerator\Generator\Api\Controller\Request\PostEntityCont
 
 class PostEntityControllerGeneratorRequestBuilderImpl implements PostEntityControllerGeneratorRequestBuilder
 {
-    /**
-     * @var PostEntityControllerGeneratorRequestDTO
-     */
-    private $request;
+    private PostEntityControllerGeneratorRequestDTO $request;
 
     public function create(): PostEntityControllerGeneratorRequestBuilder
     {

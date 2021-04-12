@@ -6,7 +6,7 @@ namespace OpenClassrooms\CodeGenerator\Tests\Generator\BusinessRules\UseCases;
 
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\EntityCommonHydratorTraitGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\EntityCommonHydratorTraitGenerator;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\EntityCommonHydratorTraitGeneratorRequestBuilder;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\EntityCommonHydratorTraitGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\EntityCommonHydratorTraitFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\EntityFileObjectFactoryMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\FileObjectTestCase;
@@ -22,15 +22,9 @@ class EntityCommonHydratorTraitGeneratorTest extends TestCase
 {
     use FileObjectTestCase;
 
-    /**
-     * @var EntityCommonHydratorTraitGenerator
-     */
-    private $entityCommonHydratorTraitGenerator;
+    private EntityCommonHydratorTraitGenerator $entityCommonHydratorTraitGenerator;
 
-    /**
-     * @var EntityCommonHydratorTraitGeneratorRequestBuilder
-     */
-    private $request;
+    private EntityCommonHydratorTraitGeneratorRequest $request;
 
     /**
      * @test

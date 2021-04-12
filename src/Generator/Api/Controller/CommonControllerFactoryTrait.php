@@ -13,35 +13,17 @@ use OpenClassrooms\CodeGenerator\Entities\ViewModelFileObjectFactory;
 
 trait CommonControllerFactoryTrait
 {
-    /**
-     * @var ControllerFileObjectFactory
-     */
-    private $controllerFileObjectFactory;
+    private ControllerFileObjectFactory $controllerFileObjectFactory;
 
-    /**
-     * @var EntityFileObjectFactory
-     */
-    private $entityFileObjectFactory;
+    private EntityFileObjectFactory $entityFileObjectFactory;
 
-    /**
-     * @var UseCaseFileObjectFactory
-     */
-    private $useCaseFileObjectFactory;
+    private UseCaseFileObjectFactory $useCaseFileObjectFactory;
 
-    /**
-     * @var UseCaseRequestFileObjectFactory
-     */
-    private $useCaseRequestFileObjectFactory;
+    private UseCaseRequestFileObjectFactory $useCaseRequestFileObjectFactory;
 
-    /**
-     * @var UseCaseResponseFileObjectFactory
-     */
-    private $useCaseResponseFileObjectFactory;
+    private UseCaseResponseFileObjectFactory $useCaseResponseFileObjectFactory;
 
-    /**
-     * @var ViewModelFileObjectFactory
-     */
-    private $viewModelFileObjectFactory;
+    private ViewModelFileObjectFactory $viewModelFileObjectFactory;
 
     public function setEntityFileObjectFactory(EntityFileObjectFactory $entityFileObjectFactory): void
     {

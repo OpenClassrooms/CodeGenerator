@@ -14,10 +14,7 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Gateways\EntityGat
 
 class EntityGatewayGenerator extends AbstractUseCaseGenerator
 {
-    /**
-     * @var EntityGatewaySkeletonModelAssembler
-     */
-    private $entityGatewaySkeletonModelAssembler;
+    private EntityGatewaySkeletonModelAssembler $entityGatewaySkeletonModelAssembler;
 
     /**
      * @param EntityGatewayGeneratorRequest $generatorRequest

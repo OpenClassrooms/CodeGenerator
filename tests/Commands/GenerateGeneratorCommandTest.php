@@ -19,9 +19,9 @@ class GenerateGeneratorCommandTest extends TestCase
 {
     use CommandTestCase;
 
-    const DOMAIN = 'GenerateGenerator';
+    public const DOMAIN = 'GenerateGenerator';
 
-    const ENTITY = 'Custom';
+    public const ENTITY = 'Custom';
 
     /**
      * @var GenericUseCaseCommand
@@ -86,7 +86,6 @@ class GenerateGeneratorCommandTest extends TestCase
         $this->selfGeneratorMediator = new GenerateGeneratorMediatorMock();
         $this->container = new ContainerMock(
             ['open_classrooms.code_generator.mediators.generate_generator.generate_generator_mediator' => $this->selfGeneratorMediator]
-
         );
         TestClassUtil::setProperty('container', $this->container, $this->command);
     }

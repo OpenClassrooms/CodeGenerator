@@ -12,27 +12,15 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileO
 
 class GeneratorMock extends AbstractGenerator
 {
-    /**
-     * @var FileObjectGateway
-     */
-    public $fileObjectGateway;
+    public FileObjectGateway $fileObjectGateway;
 
-    /**
-     * @var FileObject
-     */
-    public $fileObjectResponse;
+    public FileObject $fileObjectResponse;
 
-    /**
-     * @var string
-     */
-    public $generatorName;
+    public string $generatorName;
 
-    /**
-     * @var bool
-     */
-    public $hasBeenGenerated = false;
+    public bool $hasBeenGenerated = false;
 
-    public function __construct(string $generatorName, FileObject $fileObjectResponse = null)
+    public function __construct(string $generatorName, FileObject $fileObjectResponse)
     {
         $this->fileObjectResponse = $fileObjectResponse;
         $this->generatorName = $generatorName;

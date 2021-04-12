@@ -24,15 +24,9 @@ class UseCaseDetailResponseStubGeneratorTest extends TestCase
 {
     use FileObjectTestCase;
 
-    /**
-     * @var UseCaseDetailResponseStubGeneratorRequest
-     */
-    private $request;
+    private UseCaseDetailResponseStubGeneratorRequest $request;
 
-    /**
-     * @var UseCaseDetailResponseStubGenerator
-     */
-    private $useCaseDetailResponseStubGenerator;
+    private UseCaseDetailResponseStubGenerator $useCaseDetailResponseStubGenerator;
 
     /**
      * @test

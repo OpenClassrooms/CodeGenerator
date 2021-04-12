@@ -14,10 +14,7 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\BusinessRules\Resp
 
 class UseCaseListItemResponseAssemblerMockGenerator extends AbstractUseCaseGenerator
 {
-    /**
-     * @var UseCaseListItemResponseAssemblerMockSkeletonModelAssembler
-     */
-    private $useCaseListItemResponseAssemblerMockSkeletonModelAssembler;
+    private UseCaseListItemResponseAssemblerMockSkeletonModelAssembler $useCaseListItemResponseAssemblerMockSkeletonModelAssembler;
 
     /**
      * @param UseCaseListItemResponseAssemblerMockGeneratorRequest $generatorRequest

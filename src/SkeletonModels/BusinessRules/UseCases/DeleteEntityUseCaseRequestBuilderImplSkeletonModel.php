@@ -8,19 +8,19 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 
 abstract class DeleteEntityUseCaseRequestBuilderImplSkeletonModel extends AbstractSkeletonModel
 {
-    public $deleteEntityUseCaseRequestBuilderClassName;
+    public string $deleteEntityUseCaseRequestBuilderClassName;
 
-    public $deleteEntityUseCaseRequestBuilderShortName;
+    public string $deleteEntityUseCaseRequestBuilderShortName;
 
-    public $deleteEntityUseCaseRequestClassName;
+    public string $deleteEntityUseCaseRequestClassName;
 
-    public $deleteEntityUseCaseRequestDTOShortName;
+    public string $deleteEntityUseCaseRequestDTOShortName;
 
-    public $deleteEntityUseCaseRequestShortName;
+    public string $deleteEntityUseCaseRequestShortName;
 
-    public $entityIdArgument;
+    public string $entityIdArgument;
 
-    public $templatePath = 'BusinessRules/UseCases/DeleteEntityUseCaseRequestBuilderImpl.php.twig';
+    public string $templatePath = 'BusinessRules/UseCases/DeleteEntityUseCaseRequestBuilderImpl.php.twig';
 
-    public $withEntityIdMethod;
+    public string $withEntityIdMethod;
 }

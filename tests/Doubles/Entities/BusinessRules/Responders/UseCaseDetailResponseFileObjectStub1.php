@@ -9,7 +9,7 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Entities\E
 
 class UseCaseDetailResponseFileObjectStub1 extends FileObject
 {
-    const CLASS_NAME = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityDetailResponse';
+    public const CLASS_NAME = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityDetailResponse';
 
     public function __construct()
     {

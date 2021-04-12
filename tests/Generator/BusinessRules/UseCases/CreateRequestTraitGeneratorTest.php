@@ -6,7 +6,7 @@ namespace OpenClassrooms\CodeGenerator\Tests\Generator\BusinessRules\UseCases;
 
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\CreateRequestTraitGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\CreateRequestTraitGeneratorRequestBuilderImpl;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\CreateRequestTraitGeneratorRequestBuilder;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\CreateRequestTraitGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\CreateRequestTraitFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\FileObjectTestCase;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\UseCaseRequestFileObjectFactoryMock;
@@ -20,15 +20,9 @@ class CreateRequestTraitGeneratorTest extends TestCase
 {
     use FileObjectTestCase;
 
-    /**
-     * @var CreateRequestTraitGenerator
-     */
-    private $createRequestTraitGenerator;
+    private CreateRequestTraitGenerator $createRequestTraitGenerator;
 
-    /**
-     * @var CreateRequestTraitGeneratorRequestBuilder
-     */
-    private $request;
+    private CreateRequestTraitGeneratorRequest $request;
 
     /**
      * @test

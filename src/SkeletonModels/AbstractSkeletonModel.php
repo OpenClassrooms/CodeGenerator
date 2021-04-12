@@ -9,35 +9,23 @@ use OpenClassrooms\CodeGenerator\Entities\Object\MethodObject;
 
 abstract class AbstractSkeletonModel
 {
-    /**
-     * @var string
-     */
-    public $className;
+    public string $className;
 
     /**
      * @var FieldObject[]
      */
-    public $fields = [];
+    public array $fields = [];
 
     /**
      * @var MethodObject[]
      */
-    public $methods = [];
+    public array $methods = [];
 
-    /**
-     * @var string
-     */
-    public $namespace;
+    public string $namespace;
 
-    /**
-     * @var string
-     */
-    public $shortName;
+    public string $shortName;
 
-    /**
-     * @var string
-     */
-    public $templatePath;
+    public string $templatePath;
 
     public function getTemplatePath(): string
     {

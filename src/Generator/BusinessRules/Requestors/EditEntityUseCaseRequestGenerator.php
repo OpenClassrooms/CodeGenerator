@@ -17,10 +17,7 @@ class EditEntityUseCaseRequestGenerator extends AbstractUseCaseGenerator
 {
     use EditUseCaseRequestMethodTrait;
 
-    /**
-     * @var EditEntityUseCaseRequestSkeletonModelAssembler
-     */
-    private $editEntityUseCaseRequestSkeletonModelAssembler;
+    private EditEntityUseCaseRequestSkeletonModelAssembler $editEntityUseCaseRequestSkeletonModelAssembler;
 
     /**
      * @param EditEntityUseCaseRequestGeneratorRequest $generatorRequest

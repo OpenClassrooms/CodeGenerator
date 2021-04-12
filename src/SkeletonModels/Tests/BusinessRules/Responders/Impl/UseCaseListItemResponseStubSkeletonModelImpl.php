@@ -10,37 +10,19 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\Responders\U
 class UseCaseListItemResponseStubSkeletonModelImpl extends UseCaseListItemResponseStubSkeletonModel
 {
     /**
-     * @var ConstObject
+     * @var ConstObject[]
      */
-    public $constants;
+    public array $constants;
 
-    /**
-     * @var array
-     */
-    public $dateTimeType;
+    public array $dateTimeType;
 
-    /**
-     * @var string
-     */
-    public $entityStubClassName;
+    public string $entityStubClassName;
 
-    /**
-     * @var string
-     */
-    public $entityStubShortName;
+    public string $entityStubShortName;
 
-    /**
-     * @var string
-     */
-    public $hasConstructor = false;
+    public bool $hasConstructor = false;
 
-    /**
-     * @var string
-     */
-    public $useCaseListItemResponseDTOClassName;
+    public string $useCaseListItemResponseDTOClassName;
 
-    /**
-     * @var string
-     */
-    public $useCaseListItemResponseDTOShortName;
+    public string $useCaseListItemResponseDTOShortName;
 }

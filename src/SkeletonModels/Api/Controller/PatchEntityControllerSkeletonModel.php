@@ -8,55 +8,55 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 
 abstract class PatchEntityControllerSkeletonModel extends AbstractSkeletonModel
 {
-    public $abstractControllerClassName;
+    public string $abstractControllerClassName;
 
-    public $abstractControllerShortName;
+    public string $abstractControllerShortName;
 
-    public $editEntityUseCaseClassName;
+    public string $editEntityUseCaseClassName;
 
-    public $editEntityUseCaseRequestBuilderArgument;
+    public string $editEntityUseCaseRequestBuilderArgument;
 
-    public $editEntityUseCaseRequestBuilderClassName;
+    public string $editEntityUseCaseRequestBuilderClassName;
 
-    public $editEntityUseCaseRequestBuilderShortName;
+    public string $editEntityUseCaseRequestBuilderShortName;
 
-    public $editEntityUseCaseRequestClassName;
+    public string $editEntityUseCaseRequestClassName;
 
-    public $editEntityUseCaseRequestShortName;
+    public string $editEntityUseCaseRequestShortName;
 
-    public $editEntityUseCaseShortName;
+    public string $editEntityUseCaseShortName;
 
-    public $entityIdArgument;
+    public string $entityIdArgument;
 
-    public $entityNotFoundExceptionClassName;
+    public string $entityNotFoundExceptionClassName;
 
-    public $entityNotFoundExceptionShortName;
+    public string $entityNotFoundExceptionShortName;
 
-    public $entityUseCaseDetailResponseClassName;
+    public string $entityUseCaseDetailResponseClassName;
 
-    public $entityUseCaseDetailResponseShortName;
+    public string $entityUseCaseDetailResponseShortName;
 
-    public $entityViewModelDetailAssemblerArgument;
+    public string $entityViewModelDetailAssemblerArgument;
 
-    public $entityViewModelDetailAssemblerClassName;
+    public string $entityViewModelDetailAssemblerClassName;
 
-    public $entityViewModelDetailAssemblerShortName;
+    public string $entityViewModelDetailAssemblerShortName;
 
-    public $entityViewModelDetailClassName;
+    public string $entityViewModelDetailClassName;
 
-    public $entityViewModelDetailShortName;
+    public string $entityViewModelDetailShortName;
 
-    public $patchEntityModelClassName;
+    public string $patchEntityModelClassName;
 
-    public $patchEntityModelFields;
+    public array $patchEntityModelFields;
 
-    public $patchEntityModelShortName;
+    public string $patchEntityModelShortName;
 
-    public $routeAnnotation;
+    public string $routeAnnotation;
 
-    public $updateEntityMethod;
+    public string $updateEntityMethod;
 
-    public $withEntityIdMethod;
+    public string $withEntityIdMethod;
 
-    public $templatePath = 'Api/Controller/PatchEntityController.php.twig';
+    public string $templatePath = 'Api/Controller/PatchEntityController.php.twig';
 }

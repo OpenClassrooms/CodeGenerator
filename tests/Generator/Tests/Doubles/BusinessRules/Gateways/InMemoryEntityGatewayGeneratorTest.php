@@ -16,9 +16,6 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\SkeletonModels\Tests\Doubles\Busi
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Entities\Domain\SubDomain\FunctionalEntity;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author arnaud lefevre <arnaud.lefevre@openclassrooms.com>
- */
 class InMemoryEntityGatewayGeneratorTest extends TestCase
 {
     use FileObjectTestCase;

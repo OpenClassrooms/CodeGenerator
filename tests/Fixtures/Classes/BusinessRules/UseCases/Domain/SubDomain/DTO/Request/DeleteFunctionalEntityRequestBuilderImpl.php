@@ -11,10 +11,7 @@ use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Requestors
 
 class DeleteFunctionalEntityRequestBuilderImpl implements DeleteFunctionalEntityRequestBuilder
 {
-    /**
-     * @var int
-     */
-    private $functionalEntityId;
+    private int $functionalEntityId;
 
     public function build(): DeleteFunctionalEntityRequest
     {

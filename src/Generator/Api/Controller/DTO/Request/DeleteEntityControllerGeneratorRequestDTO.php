@@ -8,10 +8,7 @@ use OpenClassrooms\CodeGenerator\Generator\Api\Controller\Request\DeleteEntityCo
 
 class DeleteEntityControllerGeneratorRequestDTO implements DeleteEntityControllerGeneratorRequest
 {
-    /**
-     * @var string
-     */
-    public $entityClassName;
+    public string $entityClassName;
 
     public function getEntityClassName(): string
     {

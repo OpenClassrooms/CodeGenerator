@@ -9,10 +9,7 @@ use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Gateways\Request\Entity
 
 class EntityNotFoundExceptionGeneratorRequestBuilderImpl implements EntityNotFoundExceptionGeneratorRequestBuilder
 {
-    /**
-     * @var EntityNotFoundExceptionGeneratorRequestDTO
-     */
-    private $request;
+    private EntityNotFoundExceptionGeneratorRequestDTO $request;
 
     public function build(): EntityNotFoundExceptionGeneratorRequest
     {

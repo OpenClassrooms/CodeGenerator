@@ -24,7 +24,6 @@ trait EntityUseCaseCommonRequestGeneratorTrait
                 ->create()
                 ->withEntityClassName($className)
                 ->build()
-
         );
     }
 

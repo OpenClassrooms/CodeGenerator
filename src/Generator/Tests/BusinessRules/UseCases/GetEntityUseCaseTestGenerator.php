@@ -17,10 +17,7 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\UseCases\Get
 
 class GetEntityUseCaseTestGenerator extends AbstractUseCaseGenerator
 {
-    /**
-     * @var GetEntityUseCaseTestSkeletonModelBuilder
-     */
-    private $getEntityUseCaseTestSkeletonModelBuilder;
+    private GetEntityUseCaseTestSkeletonModelBuilder $getEntityUseCaseTestSkeletonModelBuilder;
 
     /**
      * @param GetEntityUseCaseTestGeneratorRequest $generatorRequest

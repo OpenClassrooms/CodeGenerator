@@ -8,10 +8,7 @@ use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\Delete
 
 class DeleteEntityUseCaseRequestBuilderImplGeneratorRequestDTO implements DeleteEntityUseCaseRequestBuilderImplGeneratorRequest
 {
-    /**
-     * @var string
-     */
-    public $entityClassName;
+    public string $entityClassName;
 
     public function getEntityClassName(): string
     {

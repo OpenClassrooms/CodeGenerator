@@ -23,10 +23,7 @@ class GetEntityControllerGenerator extends AbstractGenerator
 {
     use CommonControllerFactoryTrait;
 
-    /**
-     * @var GetEntityControllerSkeletonModelBuilder
-     */
-    private $getEntityControllerSkeletonModelBuilder;
+    private GetEntityControllerSkeletonModelBuilder $getEntityControllerSkeletonModelBuilder;
 
     /**
      * @param GetEntityControllerGeneratorRequest $generatorRequest
@@ -57,13 +54,13 @@ class GetEntityControllerGenerator extends AbstractGenerator
         $getEntityControllerFileObject->setContent(
             $this->generateContent(
                 [
-                    ControllerFileObjectType::API_CONTROLLER_GET_ENTITY => $getEntityControllerFileObject,
-                    EntityFileObjectType::BUSINESS_RULES_ENTITY_NOT_FOUND_EXCEPTION => $entityNotFoundExceptionFileObject,
-                    UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE => $entityUseCaseDetailResponseFileObject,
-                    ViewModelFileObjectType::API_VIEW_MODEL => $entityViewModelFileObject,
-                    ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_ASSEMBLER => $entityViewModelDetailAssemblerFileObject,
+                    ControllerFileObjectType::API_CONTROLLER_GET_ENTITY                      => $getEntityControllerFileObject,
+                    EntityFileObjectType::BUSINESS_RULES_ENTITY_NOT_FOUND_EXCEPTION          => $entityNotFoundExceptionFileObject,
+                    UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE   => $entityUseCaseDetailResponseFileObject,
+                    ViewModelFileObjectType::API_VIEW_MODEL                                  => $entityViewModelFileObject,
+                    ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_ASSEMBLER                 => $entityViewModelDetailAssemblerFileObject,
                     UseCaseRequestFileObjectType::BUSINESS_RULES_GET_ENTITY_USE_CASE_REQUEST => $getEntityUseCaseRequestFileObject,
-                    UseCaseFileObjectType::BUSINESS_RULES_GET_ENTITY_USE_CASE => $getEntityUseCaseFileObject,
+                    UseCaseFileObjectType::BUSINESS_RULES_GET_ENTITY_USE_CASE                => $getEntityUseCaseFileObject,
                 ],
                 $routeAnnotation
             )

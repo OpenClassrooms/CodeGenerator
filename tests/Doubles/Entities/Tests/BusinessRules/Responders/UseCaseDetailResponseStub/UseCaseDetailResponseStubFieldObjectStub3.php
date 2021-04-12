@@ -10,15 +10,17 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\BusinessRules\Enti
 
 class UseCaseDetailResponseStubFieldObjectStub3 extends FieldObject
 {
-    const DOC_COMMENT = EntityStubFieldObjectStub3::DOC_COMMENT;
+    public const DOC_COMMENT = EntityStubFieldObjectStub3::DOC_COMMENT;
 
-    const NAME        = EntityStubFieldObjectStub3::NAME;
+    public const NAME = EntityStubFieldObjectStub3::NAME;
 
-    protected $docComment = self::DOC_COMMENT;
+    protected ?string $docComment = self::DOC_COMMENT;
 
-    protected $name = self::NAME;
+    protected string $name = self::NAME;
 
-    protected $scope = FieldObject::SCOPE_PROTECTED;
+    protected string $scope = FieldObject::SCOPE_PROTECTED;
+
+    protected ?string $type = 'array';
 
     public function __construct()
     {

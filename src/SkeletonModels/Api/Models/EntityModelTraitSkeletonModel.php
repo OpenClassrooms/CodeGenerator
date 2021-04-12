@@ -8,5 +8,5 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 
 abstract class EntityModelTraitSkeletonModel extends AbstractSkeletonModel
 {
-    public $templatePath = 'Api/Models/EntityModelTrait.php.twig';
+    public string $templatePath = 'Api/Models/EntityModelTrait.php.twig';
 }

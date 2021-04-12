@@ -10,10 +10,7 @@ use PHPUnit\Framework\TestCase;
 
 class EntityFileObjectFactoryImplTest extends TestCase
 {
-    /**
-     * @var EntityFileObjectFactory
-     */
-    private $factory;
+    private EntityFileObjectFactory $factory;
 
     /**
      * @test

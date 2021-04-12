@@ -16,15 +16,9 @@ use OpenClassrooms\CodeGenerator\Utility\ModelFieldUtility;
 
 class EntityModelTraitGenerator extends AbstractGenerator
 {
-    /**
-     * @var ModelFileObjectFactory
-     */
-    private $modelFileObjectFactory;
+    private ModelFileObjectFactory $modelFileObjectFactory;
 
-    /**
-     * @var EntityModelTraitSkeletonModelAssembler
-     */
-    private $entityModelTraitSkeletonModelAssembler;
+    private EntityModelTraitSkeletonModelAssembler $entityModelTraitSkeletonModelAssembler;
 
     /**
      * @param EntityModelTraitGeneratorRequest $generatorRequest

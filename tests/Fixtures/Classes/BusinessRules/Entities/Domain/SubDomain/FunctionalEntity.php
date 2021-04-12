@@ -8,35 +8,20 @@ use Carbon\CarbonImmutable;
 
 abstract class FunctionalEntity
 {
-    /**
-     * @var string
-     */
-    protected $field1;
+    protected string $field1;
 
     /**
      * @var string[]
      */
-    protected $field2;
+    protected array $field2;
 
-    /**
-     * @var bool
-     */
-    protected $field3;
+    protected bool $field3;
 
-    /**
-     * @var \DateTimeInterface
-     */
-    protected $field4;
+    protected \DateTimeInterface $field4;
 
-    /**
-     * @var int
-     */
-    protected $id;
+    protected int $id;
 
-    /**
-     * @var \DateTimeInterface
-     */
-    protected $updatedAt;
+    protected \DateTimeInterface $updatedAt;
 
     public function getField1(): string
     {
@@ -51,7 +36,7 @@ abstract class FunctionalEntity
         return $this->field2;
     }
 
-    public function getField4(): ?\DateTimeInterface
+    public function getField4(): \DateTimeInterface
     {
         return $this->field4;
     }

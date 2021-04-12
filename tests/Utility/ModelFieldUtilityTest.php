@@ -39,8 +39,6 @@ final class ModelFieldUtilityTest extends TestCase
         return [
             [
                 '/**
-     * @var string
-     *
      * @Assert\NotBlank
      * @Assert\Type("string")
      */',
@@ -56,8 +54,6 @@ final class ModelFieldUtilityTest extends TestCase
             ],
             [
                 '/**
-     * @var bool
-     *
      * @Assert\NotNull
      * @Assert\Type("bool")
      */',
@@ -65,8 +61,6 @@ final class ModelFieldUtilityTest extends TestCase
             ],
             [
                 '/**
-     * @var \DateTimeInterface
-     *
      * @Assert\NotBlank
      * @Assert\DateTime(format="Y-m-d\TH:i:sO")
      */',
@@ -74,8 +68,6 @@ final class ModelFieldUtilityTest extends TestCase
             ],
             [
                 '/**
-     * @var int
-     *
      * @Assert\NotBlank
      * @Assert\Type("integer")
      */',
@@ -87,30 +79,18 @@ final class ModelFieldUtilityTest extends TestCase
 
 abstract class ModelFieldUtilityEntityFixture
 {
-    /**
-     * @var string
-     */
-    protected $field1;
+    protected string $field1;
 
     /**
      * @var string[]
      */
-    protected $field2;
+    protected array $field2;
 
-    /**
-     * @var bool
-     */
-    protected $field3;
+    protected bool $field3;
 
-    /**
-     * @var \DateTimeInterface
-     */
-    protected $field4;
+    protected \DateTimeInterface $field4;
 
-    /**
-     * @var int
-     */
-    protected $field5;
+    protected int $field5;
 }
 
 abstract class ModelFieldUtilityEntityFixtureWithBadDocComment

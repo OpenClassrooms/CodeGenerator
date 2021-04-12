@@ -18,25 +18,13 @@ class PatchFunctionalEntityModel
 
     protected const FIELD_4_API_FIELD_NAME = 'field4';
 
-    /**
-     * @var bool
-     */
-    public $field1Updated = false;
+    public bool $field1Updated = false;
 
-    /**
-     * @var bool
-     */
-    public $field2Updated = false;
+    public bool $field2Updated = false;
 
-    /**
-     * @var bool
-     */
-    public $field3Updated = false;
+    public bool $field3Updated = false;
 
-    /**
-     * @var bool
-     */
-    public $field4Updated = false;
+    public bool $field4Updated = false;
 
     protected function build(array $data)
     {

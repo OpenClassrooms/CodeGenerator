@@ -8,10 +8,7 @@ use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\Request\ViewModelDetai
 
 class ViewModelDetailGeneratorRequestDTO implements ViewModelDetailGeneratorRequest
 {
-    /**
-     * @var string
-     */
-    public $className;
+    public string $className;
 
     public function getUseCaseResponseClassName(): string
     {

@@ -10,5 +10,5 @@ abstract class EntityFactorySkeletonModel extends AbstractSkeletonModel
 {
     public $entityShortName;
 
-    public $templatePath = 'BusinessRules\Entities\EntityFactory.php.twig';
+    public string $templatePath = 'BusinessRules\Entities\EntityFactory.php.twig';
 }

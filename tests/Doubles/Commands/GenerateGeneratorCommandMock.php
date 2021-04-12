@@ -8,7 +8,7 @@ use OpenClassrooms\CodeGenerator\Commands\GenerateGenerator\GenerateGeneratorCom
 
 class GenerateGeneratorCommandMock extends GenerateGeneratorCommand
 {
-    const CONFIG_FILE_GENERATOR = self::ROOT_DIR_GENERATOR . 'oc_code_generator_test.yml';
+    public const CONFIG_FILE_GENERATOR = self::ROOT_DIR_GENERATOR . 'oc_code_generator_test.yml';
 
-    const ROOT_DIR_GENERATOR    = __DIR__ . '/../../';
+    public const ROOT_DIR_GENERATOR    = __DIR__ . '/../../';
 }

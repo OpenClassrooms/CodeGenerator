@@ -8,33 +8,33 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 
 abstract class EntityRepositorySkeletonModel extends AbstractSkeletonModel
 {
-    public $entityArgument;
+    public string $entityArgument;
 
-    public $entityClassName;
+    public string $entityClassName;
 
-    public $entityFirstLetter;
+    public string $entityFirstLetter;
 
-    public $entityGatewayClassName;
+    public string $entityGatewayClassName;
 
-    public $entityGatewayShortName;
+    public string $entityGatewayShortName;
 
-    public $entityIdArgument;
+    public string $entityIdArgument;
 
-    public $entityImplClassName;
+    public string $entityImplClassName;
 
-    public $entityImplShortName;
+    public string $entityImplShortName;
 
-    public $entityNotFoundExceptionClassName;
+    public string $entityNotFoundExceptionClassName;
 
-    public $entityNotFoundExceptionShortName;
+    public string $entityNotFoundExceptionShortName;
 
-    public $entityShortName;
+    public string $entityShortName;
 
-    public $paginatedCollectionFactoryArgument;
+    public string $paginatedCollectionFactoryArgument;
 
-    public $paginatedCollectionFactoryClassName;
+    public string $paginatedCollectionFactoryClassName;
 
-    public $paginatedCollectionFactoryShortName;
+    public string $paginatedCollectionFactoryShortName;
 
-    public $templatePath = 'App/Repository/EntityRepository.php.twig';
+    public string $templatePath = 'App/Repository/EntityRepository.php.twig';
 }

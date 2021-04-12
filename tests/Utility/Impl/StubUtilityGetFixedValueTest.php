@@ -13,10 +13,7 @@ use PHPUnit\Framework\TestCase;
 
 final class StubUtilityGetFixedValueTest extends TestCase
 {
-    /**
-     * @var StubUtilityStrategy
-     */
-    private $stubUtilityContext;
+    private StubUtilityStrategy $stubUtilityContext;
 
     /**
      * @test

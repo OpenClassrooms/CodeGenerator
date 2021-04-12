@@ -16,10 +16,7 @@ class EditEntityUseCaseTestSkeletonModelBuilderImpl implements EditEntityUseCase
 
     private $entityUtilClassName;
 
-    /**
-     * @var EditEntityUseCaseTestSkeletonModel
-     */
-    private $skeletonModel;
+    private EditEntityUseCaseTestSkeletonModelImpl $skeletonModel;
 
     public function build(): EditEntityUseCaseTestSkeletonModel
     {

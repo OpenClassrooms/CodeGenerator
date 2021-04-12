@@ -6,7 +6,7 @@ namespace OpenClassrooms\CodeGenerator\Tests\Generator\BusinessRules\Gateways;
 
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Gateways\DTO\Request\EntityGatewayGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Gateways\EntityGatewayGenerator;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Gateways\Request\EntityGatewayGeneratorRequestBuilder;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Gateways\Request\EntityGatewayGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Gateways\EntityGatewayFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\EntityFileObjectFactoryMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\FileObjectTestCase;
@@ -20,15 +20,9 @@ class EntityGatewayGeneratorTest extends TestCase
 {
     use FileObjectTestCase;
 
-    /**
-     * @var EntityGatewayGenerator
-     */
-    private $entityGatewayGenerator;
+    private EntityGatewayGenerator $entityGatewayGenerator;
 
-    /**
-     * @var EntityGatewayGeneratorRequestBuilder
-     */
-    private $request;
+    private EntityGatewayGeneratorRequest $request;
 
     /**
      * @test

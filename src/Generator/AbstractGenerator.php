@@ -7,7 +7,6 @@ namespace OpenClassrooms\CodeGenerator\Generator;
 use OpenClassrooms\CodeGenerator\Entities\Object\FieldObject;
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\Gateways\FileObject\FileObjectGateway;
-use OpenClassrooms\CodeGenerator\Services\Impl\TemplatingServiceImpl;
 use OpenClassrooms\CodeGenerator\Services\TemplatingService;
 use OpenClassrooms\CodeGenerator\Utility\FieldObjectUtility;
 use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
@@ -15,30 +14,15 @@ use OpenClassrooms\CodeGenerator\Utility\StubSuffixUtility;
 
 abstract class AbstractGenerator implements Generator
 {
-    /**
-     * @var string
-     */
-    protected $baseNamespace;
+    protected string $baseNamespace;
 
-    /**
-     * @var string
-     */
-    protected $domain;
+    protected string $domain;
 
-    /**
-     * @var string
-     */
-    protected $entity;
+    protected string $entity;
 
-    /**
-     * @var FileObjectGateway
-     */
-    protected $fileObjectGateway;
+    protected FileObjectGateway $fileObjectGateway;
 
-    /**
-     * @var TemplatingServiceImpl
-     */
-    private $templating;
+    private TemplatingService $templating;
 
     public function setFileObjectGateway(FileObjectGateway $fileObjectGateway)
     {

@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Entities;
 
-use OpenClassrooms\CodeGenerator\Entities\Impl\EntityFileObjectFactoryImpl;
 use OpenClassrooms\CodeGenerator\Entities\Impl\ModelFileObjectFactoryImpl;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\FixturesConfig;
 

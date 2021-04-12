@@ -16,10 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class DeleteFunctionalEntityController extends AbstractApiController
 {
-    /**
-     * @var DeleteFunctionalEntityRequestBuilder
-     */
-    private $deleteFunctionalEntityRequestBuilder;
+    private DeleteFunctionalEntityRequestBuilder $deleteFunctionalEntityRequestBuilder;
 
     public function __construct(DeleteFunctionalEntityRequestBuilder $builder)
     {

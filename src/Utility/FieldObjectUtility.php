@@ -37,12 +37,21 @@ class FieldObjectUtility
         return $fields;
     }
 
+    public static function fixObjectType(string $type): string
+    {
+        if (in_array($type, ['DateTime', 'DateTimeImmutable', 'DateTimeInterface'])) {
+            return '\\' . $type;
+        }
+
+        return $type;
+    }
+
     private static function buildUpdatedField(
         \ReflectionProperty $field,
         string $defaultValue,
         string $scope
     ): FieldObject {
-        $field = new FieldObject(NameUtility::createUpdatedName($field));
+        $field = new FieldObject(NameUtility::createUpdatedName($field), 'bool');
         $field->setDocComment(DocCommentUtility::setType('bool'));
         $field->setScope($scope);
         $field->setValue($defaultValue);
@@ -130,9 +139,10 @@ class FieldObjectUtility
 
     private static function buildField(\ReflectionProperty $field, string $scope): FieldObject
     {
-        $fieldObject = new FieldObject($field->getName());
+        $fieldType = $field->getType();
+        $fieldObject = new FieldObject($field->getName(), $fieldType ? $fieldType->getName() : null);
         $fieldObject->setAccessor(self::getFieldAccessor($field));
-        $fieldObject->setDocComment($field->getDocComment());
+        $fieldObject->setDocComment($field->getDocComment() ?: null);
         $fieldObject->setScope($scope);
 
         return $fieldObject;

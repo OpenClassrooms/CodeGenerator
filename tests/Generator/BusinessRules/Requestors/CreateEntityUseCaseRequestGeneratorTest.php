@@ -6,7 +6,7 @@ namespace OpenClassrooms\CodeGenerator\Tests\Generator\BusinessRules\Requestors;
 
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\CreateEntityUseCaseRequestGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\DTO\Request\CreateEntityUseCaseRequestGeneratorRequestBuilderImpl;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\Request\CreateEntityUseCaseRequestGeneratorRequestBuilder;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\Request\CreateEntityUseCaseRequestGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Requestors\CreateEntityUseCaseRequestFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\FileObjectTestCase;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\UseCaseRequestFileObjectFactoryMock;
@@ -14,23 +14,15 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileO
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Services\Templating\TemplatingServiceMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\SkeletonModels\BusinessRules\Requestors\CreateEntityUseCaseRequestSkeletonModelAssemblerMock;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Entities\Domain\SubDomain\FunctionalEntity;
-use OpenClassrooms\CodeGenerator\Utility\Impl\MethodUtilityContext;
-use OpenClassrooms\CodeGenerator\Utility\MethodUtilityGetAccessorsWithoutId;
 use PHPUnit\Framework\TestCase;
 
 class CreateEntityUseCaseRequestGeneratorTest extends TestCase
 {
     use FileObjectTestCase;
 
-    /**
-     * @var CreateEntityUseCaseRequestGenerator
-     */
-    private $createEntityUseCaseRequestGenerator;
+    private CreateEntityUseCaseRequestGenerator $createEntityUseCaseRequestGenerator;
 
-    /**
-     * @var CreateEntityUseCaseRequestGeneratorRequestBuilder
-     */
-    private $request;
+    private CreateEntityUseCaseRequestGeneratorRequest $request;
 
     /**
      * @test

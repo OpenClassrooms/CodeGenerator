@@ -15,15 +15,9 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\App\Repository\EntityRepositoryS
 
 class EntityRepositoryGenerator extends AbstractGenerator
 {
-    /**
-     * @var EntityFileObjectFactory
-     */
-    private $entityFileObjectFactory;
+    private EntityFileObjectFactory $entityFileObjectFactory;
 
-    /**
-     * @var EntityRepositorySkeletonModelAssembler
-     */
-    private $entityRepositorySkeletonModelAssembler;
+    private EntityRepositorySkeletonModelAssembler $entityRepositorySkeletonModelAssembler;
 
     /**
      * @param EntityRepositoryGeneratorRequest $generatorRequest

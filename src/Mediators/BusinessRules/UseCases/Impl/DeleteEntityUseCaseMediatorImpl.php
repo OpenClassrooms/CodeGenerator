@@ -14,10 +14,7 @@ class DeleteEntityUseCaseMediatorImpl implements DeleteEntityUseCaseMediator
 {
     use DeleteEntityUseCaseGeneratorsTrait;
 
-    /**
-     * @var FileObjectGateway
-     */
-    private $fileObjectGateway;
+    private FileObjectGateway $fileObjectGateway;
 
     public function mediate(array $args = [], array $options = []): array
     {

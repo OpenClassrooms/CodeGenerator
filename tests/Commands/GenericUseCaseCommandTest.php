@@ -19,9 +19,9 @@ class GenericUseCaseCommandTest extends TestCase
 {
     use CommandTestCase;
 
-    const DOMAIN           = 'Domain\SubDomain';
+    public const DOMAIN           = 'Domain\SubDomain';
 
-    const GENERIC_USE_CASE = 'GenericUseCase';
+    public const GENERIC_USE_CASE = 'GenericUseCase';
 
     /**
      * @var GenericUseCaseCommand
@@ -82,7 +82,6 @@ class GenericUseCaseCommandTest extends TestCase
         $this->useCaseMediator = new UseCaseMediatorMock();
         $this->container = new ContainerMock(
             ['open_classrooms.code_generator.mediators.business_rules.use_case_mediator' => $this->useCaseMediator]
-
         );
         TestClassUtil::setProperty('container', $this->container, $this->command);
     }

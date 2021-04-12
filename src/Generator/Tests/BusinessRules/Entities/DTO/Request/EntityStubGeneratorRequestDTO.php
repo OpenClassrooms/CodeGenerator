@@ -8,10 +8,7 @@ use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Entities\Request\
 
 class EntityStubGeneratorRequestDTO implements EntityStubGeneratorRequest
 {
-    /**
-     * @var string
-     */
-    public $className;
+    public string $className;
 
     public function getUseCaseResponseClassName(): string
     {

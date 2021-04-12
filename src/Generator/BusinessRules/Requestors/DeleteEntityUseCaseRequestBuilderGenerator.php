@@ -14,10 +14,7 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Requestors\DeleteE
 
 class DeleteEntityUseCaseRequestBuilderGenerator extends AbstractUseCaseGenerator
 {
-    /**
-     * @var DeleteEntityUseCaseRequestBuilderSkeletonModelAssembler
-     */
-    private $deleteEntityUseCaseRequestBuilderSkeletonModelAssembler;
+    private DeleteEntityUseCaseRequestBuilderSkeletonModelAssembler $deleteEntityUseCaseRequestBuilderSkeletonModelAssembler;
 
     /**
      * @param DeleteEntityUseCaseRequestBuilderGeneratorRequest $generatorRequest

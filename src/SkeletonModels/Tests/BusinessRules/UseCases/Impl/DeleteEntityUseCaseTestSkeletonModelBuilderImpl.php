@@ -12,10 +12,7 @@ use OpenClassrooms\CodeGenerator\Utility\StringUtility;
 
 class DeleteEntityUseCaseTestSkeletonModelBuilderImpl implements DeleteEntityUseCaseTestSkeletonModelBuilder
 {
-    /**
-     * @var DeleteEntityUseCaseTestSkeletonModel
-     */
-    private $skeletonModel;
+    private DeleteEntityUseCaseTestSkeletonModel $skeletonModel;
 
     public function create(): DeleteEntityUseCaseTestSkeletonModelBuilder
     {

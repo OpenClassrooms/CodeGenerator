@@ -9,10 +9,7 @@ use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\Request\
 
 class ViewModelListItemStubGeneratorRequestBuilderImpl implements ViewModelListItemStubGeneratorRequestBuilder
 {
-    /**
-     * @var ViewModelListItemStubGeneratorRequestDTO
-     */
-    private $request;
+    private ViewModelListItemStubGeneratorRequestDTO $request;
 
     public function build(): ViewModelListItemStubGeneratorRequest
     {

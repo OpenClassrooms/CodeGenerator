@@ -14,10 +14,7 @@ class PatchEntityControllerSkeletonModelBuilderImpl implements PatchEntityContro
 {
     use AbstractControllerClassNameTrait;
 
-    /**
-     * @var PatchEntityControllerSkeletonModel
-     */
-    private $skeletonModel;
+    private PatchEntityControllerSkeletonModelImpl $skeletonModel;
 
     public function create(): PatchEntityControllerSkeletonModelBuilder
     {

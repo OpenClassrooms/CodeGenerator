@@ -12,7 +12,7 @@ abstract class UseCaseDetailResponseAssemblerSkeletonModel extends AbstractSkele
 
     public $entityShortName;
 
-    public $templatePath = 'BusinessRules/Responders/UseCaseDetailResponseAssembler.php.twig';
+    public string $templatePath = 'BusinessRules/Responders/UseCaseDetailResponseAssembler.php.twig';
 
     public $useCaseDetailResponseShortName;
 }

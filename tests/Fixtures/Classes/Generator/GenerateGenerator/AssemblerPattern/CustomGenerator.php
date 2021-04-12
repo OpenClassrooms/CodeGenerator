@@ -13,10 +13,7 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\GenerateGenerator\CustomSkeleton
 
 class CustomGenerator extends AbstractGenerator
 {
-    /**
-     * @var CustomSkeletonModelAssembler
-     */
-    private $customSkeletonModelAssembler;
+    private CustomSkeletonModelAssembler $customSkeletonModelAssembler;
 
     /**
      * @param CustomGeneratorRequest $generatorRequest

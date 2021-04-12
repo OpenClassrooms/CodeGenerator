@@ -21,20 +21,11 @@ class CreateFunctionalEntity implements UseCase
 {
     use FunctionalEntityCommonHydratorTrait;
 
-    /**
-     * @var FunctionalEntityFactory
-     */
-    private $functionalEntityFactory;
+    private FunctionalEntityFactory $functionalEntityFactory;
 
-    /**
-     * @var FunctionalEntityGateway
-     */
-    private $functionalEntityGateway;
+    private FunctionalEntityGateway $functionalEntityGateway;
 
-    /**
-     * @var FunctionalEntityDetailResponseAssembler
-     */
-    private $functionalEntityDetailResponseAssembler;
+    private FunctionalEntityDetailResponseAssembler $functionalEntityDetailResponseAssembler;
 
     public function __construct(
         FunctionalEntityDetailResponseAssembler $functionalEntityDetailResponseAssembler,

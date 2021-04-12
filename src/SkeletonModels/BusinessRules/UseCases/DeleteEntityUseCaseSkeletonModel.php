@@ -36,7 +36,7 @@ abstract class DeleteEntityUseCaseSkeletonModel extends AbstractSkeletonModel
 
     public $securityClassName;
 
-    public $templatePath = 'BusinessRules/UseCases/DeleteEntityUseCase.php.twig';
+    public string $templatePath = 'BusinessRules/UseCases/DeleteEntityUseCase.php.twig';
 
     public $transactionClassName;
 

@@ -8,10 +8,7 @@ use OpenClassrooms\CodeGenerator\Generator\Api\Models\Request\EntityModelTraitGe
 
 class EntityModelTraitGeneratorRequestDTO implements EntityModelTraitGeneratorRequest
 {
-    /**
-     * @var string
-     */
-    public $entityClassName;
+    public string $entityClassName;
 
     public function getEntityClassName(): string
     {

@@ -9,10 +9,7 @@ use OpenClassrooms\CodeGenerator\Generator\Api\Models\Request\EntityModelTraitGe
 
 class EntityModelTraitGeneratorRequestBuilderImpl implements EntityModelTraitGeneratorRequestBuilder
 {
-    /**
-     * @var EntityModelTraitGeneratorRequestDTO
-     */
-    private $request;
+    private EntityModelTraitGeneratorRequestDTO $request;
 
     public function create(): EntityModelTraitGeneratorRequestBuilder
     {

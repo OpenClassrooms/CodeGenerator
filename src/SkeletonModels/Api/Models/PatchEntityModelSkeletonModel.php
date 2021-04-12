@@ -8,9 +8,9 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 
 abstract class PatchEntityModelSkeletonModel extends AbstractSkeletonModel
 {
-    public $constants;
+    public array $constants;
 
-    public $entityModelTraitShortName;
+    public string $entityModelTraitShortName;
 
-    public $templatePath = 'Api/Models/PatchEntityModel.php.twig';
+    public string $templatePath = 'Api/Models/PatchEntityModel.php.twig';
 }

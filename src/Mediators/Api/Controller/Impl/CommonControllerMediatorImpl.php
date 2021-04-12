@@ -15,14 +15,11 @@ use OpenClassrooms\CodeGenerator\Mediators\Options;
 
 class CommonControllerMediatorImpl implements CommonControllerMediator
 {
-    /** @var ModelMediator */
-    private $modelMediator;
+    private ModelMediator $modelMediator;
 
-    /** @var ControllerMediator */
-    private $controllerMediator;
+    private ControllerMediator $controllerMediator;
 
-    /** @var FileObjectGateway */
-    private $fileObjectGateway;
+    private FileObjectGateway $fileObjectGateway;
 
     /**
      * @return FileObject[]

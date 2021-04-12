@@ -10,10 +10,7 @@ use {{ skeletonModel.baseNamespace }}SkeletonModels\{{ skeletonModel.domain }}\{
 
 class {{ skeletonModel.entity }}SkeletonModelBuilderImpl implements {{ skeletonModel.entity }}SkeletonModelBuilder
 {
-    /**
-     * @var {{ skeletonModel.entity }}SkeletonModel
-     */
-    private $skeletonModel;
+    private {{ skeletonModel.entity }}SkeletonModel $skeletonModel;
 
     public function create(): {{ skeletonModel.entity }}SkeletonModelBuilder
     {

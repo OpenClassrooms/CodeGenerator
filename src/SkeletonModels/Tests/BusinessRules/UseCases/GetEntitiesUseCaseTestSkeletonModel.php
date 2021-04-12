@@ -14,9 +14,9 @@ abstract class GetEntitiesUseCaseTestSkeletonModel extends AbstractSkeletonModel
 
     public $entityGatewayShortName;
 
-    public $entityStubClassNames = [];
+    public array $entityStubClassNames = [];
 
-    public $entityStubShortNames = [];
+    public array $entityStubShortNames = [];
 
     public $getEntitiesUseCaseClassName;
 
@@ -38,7 +38,7 @@ abstract class GetEntitiesUseCaseTestSkeletonModel extends AbstractSkeletonModel
 
     public $inMemoryEntityGatewayShortName;
 
-    public $templatePath = 'Tests/BusinessRules/UseCases/GetEntitiesUseCaseTest.php.twig';
+    public string $templatePath = 'Tests/BusinessRules/UseCases/GetEntitiesUseCaseTest.php.twig';
 
     public $paginationClassName;
 
@@ -50,9 +50,9 @@ abstract class GetEntitiesUseCaseTestSkeletonModel extends AbstractSkeletonModel
 
     public $useCaseListItemResponsesShortName;
 
-    public $useCaseListItemResponseStubClassNames = [];
+    public array $useCaseListItemResponseStubClassNames = [];
 
-    public $useCaseListItemResponseStubShortNames = [];
+    public array $useCaseListItemResponseStubShortNames = [];
 
     public $useCaseListItemResponseTestCaseClassName;
 

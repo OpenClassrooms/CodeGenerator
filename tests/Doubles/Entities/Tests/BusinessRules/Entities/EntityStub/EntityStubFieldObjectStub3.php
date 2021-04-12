@@ -9,21 +9,23 @@ use OpenClassrooms\CodeGenerator\Entities\Object\FieldObject;
 
 class EntityStubFieldObjectStub3 extends FieldObject
 {
-    const CONST       = 'FIELD_2';
+    private const CONST = 'FIELD_2';
 
-    const DOC_COMMENT = '/**
+    public const DOC_COMMENT = '/**
      * @var string[]
      */';
 
-    const NAME        = 'field2';
+    public const NAME = 'field2';
 
-    const VALUE       = ['Functional Entity Stub 1 field 2 1', 'Functional Entity Stub 1 field 2 2'];
+    private const VALUE = ['Functional Entity Stub 1 field 2 1', 'Functional Entity Stub 1 field 2 2'];
 
-    protected $docComment = self::DOC_COMMENT;
+    protected ?string $docComment = self::DOC_COMMENT;
 
-    protected $name = self::NAME;
+    protected string $name = self::NAME;
 
-    protected $scope = FieldObject::SCOPE_PROTECTED;
+    protected string $scope = FieldObject::SCOPE_PROTECTED;
+
+    protected ?string $type = 'array';
 
     public function __construct()
     {

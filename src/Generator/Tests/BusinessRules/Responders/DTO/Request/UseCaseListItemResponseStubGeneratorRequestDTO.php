@@ -8,15 +8,9 @@ use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Responders\Reques
 
 class UseCaseListItemResponseStubGeneratorRequestDTO implements UseCaseListItemResponseStubGeneratorRequest
 {
-    /**
-     * @var string
-     */
-    public $className;
+    public string $className;
 
-    /**
-     * @var array
-     */
-    public $fields;
+    public array $fields;
 
     public function getClassName(): string
     {

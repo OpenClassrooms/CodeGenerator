@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace OpenClassrooms\CodeGenerator\Tests\Generator\BusinessRules\UseCases;
 
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\UseCaseListItemResponseAssemblerImplGeneratorRequestBuilderImpl;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\UseCaseListItemResponseAssemblerImplGeneratorRequestBuilder;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\UseCaseListItemResponseAssemblerImplGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\UseCaseListItemResponseAssemblerImplGenerator;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\UseCaseListItemResponseAssemblerImplFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\EntityFileObjectFactoryMock;
@@ -21,15 +21,9 @@ class UseCaseListItemResponseAssemblerImplGeneratorTest extends TestCase
 {
     use FileObjectTestCase;
 
-    /**
-     * @var UseCaseListItemResponseAssemblerImplGeneratorRequestBuilder
-     */
-    private $request;
+    private UseCaseListItemResponseAssemblerImplGeneratorRequest $request;
 
-    /**
-     * @var UseCaseListItemResponseAssemblerImplGenerator
-     */
-    private $useCaseListItemResponseAssemblerImplGenerator;
+    private UseCaseListItemResponseAssemblerImplGenerator $useCaseListItemResponseAssemblerImplGenerator;
 
     /**
      * @test

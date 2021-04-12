@@ -16,10 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class {{ skeletonModel.shortName }} extends {{ skeletonModel.abstractControllerShortName }}
 {
-    /**
-     * @var {{ skeletonModel.entityViewModelDetailAssemblerShortName }}
-     */
-    private ${{ skeletonModel.entityViewModelDetailAssemblerArgument }};
+    private {{ skeletonModel.entityViewModelDetailAssemblerShortName }} ${{ skeletonModel.entityViewModelDetailAssemblerArgument }};
 
     public function __construct(
         {{ skeletonModel.entityViewModelDetailAssemblerShortName }} $assembler

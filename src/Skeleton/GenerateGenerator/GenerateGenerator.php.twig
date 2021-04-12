@@ -13,10 +13,7 @@ use {{ skeletonModel.baseNamespace }}SkeletonModels\{{ skeletonModel.domain }}\{
 
 class {{ skeletonModel.entity }}Generator extends AbstractGenerator
 {
-    /**
-     * @var {{ skeletonModel.entity }}SkeletonModel{{ skeletonModel.constructionPattern }}
-     */
-    private ${{ skeletonModel.argument }}SkeletonModel{{ skeletonModel.constructionPattern }};
+    private {{ skeletonModel.entity }}SkeletonModel{{ skeletonModel.constructionPattern }} ${{ skeletonModel.argument }}SkeletonModel{{ skeletonModel.constructionPattern }};
 
     /**
      * @param {{ skeletonModel.entity }}GeneratorRequest $generatorRequest

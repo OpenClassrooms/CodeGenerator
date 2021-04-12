@@ -9,10 +9,7 @@ use OpenClassrooms\CodeGenerator\Generator\Api\Controller\Request\DeleteEntityCo
 
 class DeleteEntityControllerGeneratorRequestBuilderImpl implements DeleteEntityControllerGeneratorRequestBuilder
 {
-    /**
-     * @var DeleteEntityControllerGeneratorRequestDTO
-     */
-    private $request;
+    private DeleteEntityControllerGeneratorRequestDTO $request;
 
     public function create(): DeleteEntityControllerGeneratorRequestBuilder
     {

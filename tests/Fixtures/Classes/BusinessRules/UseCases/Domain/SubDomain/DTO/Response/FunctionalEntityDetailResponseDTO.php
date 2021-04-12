@@ -12,12 +12,9 @@ class FunctionalEntityDetailResponseDTO implements FunctionalEntityDetailRespons
 {
     use FunctionalEntityResponseCommonFieldTrait;
 
-    /**
-     * @var \DateTimeInterface
-     */
-    public $field4;
+    public \DateTimeInterface $field4;
 
-    public function getField4(): ?\DateTimeInterface
+    public function getField4(): \DateTimeInterface
     {
         return $this->field4;
     }

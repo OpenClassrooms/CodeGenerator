@@ -7,10 +7,7 @@ use {{ skeletonModel.editEntityUseCaseRequestBuilderClassName }};
 
 class {{ skeletonModel.shortName }} implements {{ skeletonModel.editEntityUseCaseRequestBuilderShortName }}
 {
-    /**
-     * @var {{ skeletonModel.editEntityUseCaseRequestDTOShortName }}
-     */
-    private $request;
+    private {{ skeletonModel.editEntityUseCaseRequestDTOShortName }} $request;
 
     public function build(): {{ skeletonModel.editEntityUseCaseRequestShortName }}
     {

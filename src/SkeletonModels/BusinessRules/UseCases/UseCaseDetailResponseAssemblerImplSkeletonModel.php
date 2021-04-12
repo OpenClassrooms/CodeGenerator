@@ -14,7 +14,7 @@ abstract class UseCaseDetailResponseAssemblerImplSkeletonModel extends AbstractS
 
     public $entityShortName;
 
-    public $templatePath = 'BusinessRules/UseCases/DTO/Response/UseCaseDetailResponseAssemblerImpl.php.twig';
+    public string $templatePath = 'BusinessRules/UseCases/DTO/Response/UseCaseDetailResponseAssemblerImpl.php.twig';
 
     public $useCaseDetailResponseAssemblerClassName;
 

@@ -16,10 +16,7 @@ use OpenClassrooms\CodeGenerator\Utility\MethodUtility;
 
 class EntityUseCaseCommonRequestTraitGenerator extends AbstractUseCaseGenerator
 {
-    /**
-     * @var EntityUseCaseCommonRequestTraitSkeletonModelAssembler
-     */
-    private $entityUseCaseCommonRequestSkeletonModelAssembler;
+    private EntityUseCaseCommonRequestTraitSkeletonModelAssembler $entityUseCaseCommonRequestSkeletonModelAssembler;
 
     /**
      * @param EntityUseCaseCommonRequestTraitGeneratorRequest $generatorRequest

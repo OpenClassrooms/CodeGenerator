@@ -32,7 +32,7 @@ abstract class GetEntityUseCaseTestSkeletonModel extends AbstractSkeletonModel
 
     public $inMemoryEntityGatewayShortName;
 
-    public $templatePath = 'Tests/BusinessRules/UseCases/GetEntityUseCaseTest.php.twig';
+    public string $templatePath = 'Tests/BusinessRules/UseCases/GetEntityUseCaseTest.php.twig';
 
     public $useCaseDetailResponseAssemblerMockClassName;
 

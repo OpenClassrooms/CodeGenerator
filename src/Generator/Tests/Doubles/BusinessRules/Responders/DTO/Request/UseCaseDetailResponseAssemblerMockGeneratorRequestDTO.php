@@ -8,10 +8,7 @@ use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\BusinessRules\Responder
 
 class UseCaseDetailResponseAssemblerMockGeneratorRequestDTO implements UseCaseDetailResponseAssemblerMockGeneratorRequest
 {
-    /**
-     * @var string
-     */
-    public $entity;
+    public string $entity;
 
     public function getEntityClassName(): string
     {
