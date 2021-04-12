@@ -13,10 +13,7 @@ class {{ skeletonModel.shortName }} implements {{ skeletonModel.useCaseListItemR
 {
     use {{ skeletonModel.useCaseResponseAssemblerTraitShortName }};
 
-    /**
-     * @var {{ skeletonModel.paginatedUseCaseResponseBuilderShortName }}
-     */
-    private $paginatedUseCaseResponseBuilder;
+    private {{ skeletonModel.paginatedUseCaseResponseBuilderShortName }} $paginatedUseCaseResponseBuilder;
 
     public function __construct({{ skeletonModel.paginatedUseCaseResponseBuilderShortName }} $builder)
     {

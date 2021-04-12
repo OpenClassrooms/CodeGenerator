@@ -8,40 +8,28 @@ use OpenClassrooms\CodeGenerator\Utility\FileObjectUtility;
 
 class FileObject
 {
-    /**
-     * @var bool
-     */
-    protected $alreadyExists = false;
+    protected bool $alreadyExists = false;
 
-    /**
-     * @var string
-     */
-    protected $className;
+    protected string $className;
 
     /**
      * @var ConstObject[]
      */
-    protected $consts = [];
+    protected array $consts = [];
 
-    /**
-     * @var string
-     */
-    protected $content;
+    protected string $content;
 
     /**
      * @var FieldObject[]
      */
-    protected $fields = [];
+    protected array $fields = [];
 
-    /**
-     * @var bool
-     */
-    protected $hasBeenWritten = false;
+    protected bool $hasBeenWritten = false;
 
     /**
      * @var MethodObject[]
      */
-    protected $methods = [];
+    protected array $methods = [];
 
     public function __construct(string $className)
     {

@@ -16,5 +16,5 @@ abstract class UseCaseListItemResponseAssemblerSkeletonModel extends AbstractSke
 
     public $paginatedUseCaseResponseShortName;
 
-    public $templatePath = 'BusinessRules/Responders/UseCaseListItemResponseAssembler.php.twig';
+    public string $templatePath = 'BusinessRules/Responders/UseCaseListItemResponseAssembler.php.twig';
 }

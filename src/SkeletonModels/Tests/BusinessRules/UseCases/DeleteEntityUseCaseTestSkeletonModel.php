@@ -46,5 +46,5 @@ abstract class DeleteEntityUseCaseTestSkeletonModel extends AbstractSkeletonMode
 
     public $entityIdArgument;
 
-    public $templatePath = 'Tests/BusinessRules/UseCases/DeleteEntityUseCaseTest.php.twig';
+    public string $templatePath = 'Tests/BusinessRules/UseCases/DeleteEntityUseCaseTest.php.twig';
 }

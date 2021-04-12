@@ -15,15 +15,9 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\App\Entity\EntityFactoryImplSkel
 
 class EntityFactoryImplGenerator extends AbstractGenerator
 {
-    /**
-     * @var EntityFactoryImplSkeletonModelAssembler
-     */
-    private $entityFactoryImplSkeletonModelAssembler;
+    private EntityFactoryImplSkeletonModelAssembler $entityFactoryImplSkeletonModelAssembler;
 
-    /**
-     * @var EntityFileObjectFactory
-     */
-    private $entityFileObjectFactory;
+    private EntityFileObjectFactory $entityFileObjectFactory;
 
     /**
      * @param EntityFactoryImplGeneratorRequest $generatorRequest

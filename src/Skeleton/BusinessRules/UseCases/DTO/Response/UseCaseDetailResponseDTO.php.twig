@@ -9,8 +9,7 @@ class {{ skeletonModel.shortName }} implements {{ skeletonModel.useCaseDetailRes
     use {{ skeletonModel.useCaseResponseCommonFieldTraitShortName }};
 
 {% for field in skeletonModel.fields | sortNameByAlpha %}
-    {{ field.docComment }}
-    public ${{ field.name }};
+    public {{ field.type }} ${{ field.name }};
 {% if not loop.last %}
 
 {% endif %}

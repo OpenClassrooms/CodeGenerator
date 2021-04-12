@@ -9,10 +9,7 @@ use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Gateways\Request\Entity
 
 class EntityGatewayGeneratorRequestBuilderImpl implements EntityGatewayGeneratorRequestBuilder
 {
-    /**
-     * @var EntityGatewayGeneratorRequestDTO
-     */
-    private $request;
+    private EntityGatewayGeneratorRequestDTO $request;
 
     public function build(): EntityGatewayGeneratorRequest
     {

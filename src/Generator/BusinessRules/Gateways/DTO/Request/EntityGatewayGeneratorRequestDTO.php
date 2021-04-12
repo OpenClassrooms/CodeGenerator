@@ -8,10 +8,7 @@ use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Gateways\Request\Entity
 
 class EntityGatewayGeneratorRequestDTO implements EntityGatewayGeneratorRequest
 {
-    /**
-     * @var string
-     */
-    public $entity;
+    public string $entity;
 
     public function getEntityClassName(): string
     {

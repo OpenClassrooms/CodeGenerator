@@ -8,19 +8,17 @@ use OpenClassrooms\CodeGenerator\Entities\Object\FieldObject;
 
 class EntityFieldObjectStub5 extends FieldObject
 {
-    const DOC_COMMENT = '/**
-     * @var \DateTimeInterface
-     */';
+    public const DOC_COMMENT = null;
 
-    const NAME        = 'field4';
+    public const NAME = 'field4';
 
-    const VALUE       = null;
+    protected ?string $docComment = self::DOC_COMMENT;
 
-    protected $docComment = self::DOC_COMMENT;
+    protected string $name = self::NAME;
 
-    protected $name = self::NAME;
+    protected string $scope = FieldObject::SCOPE_PROTECTED;
 
-    protected $scope = FieldObject::SCOPE_PROTECTED;
+    protected ?string $type = '\DateTimeInterface';
 
     public function __construct()
     {

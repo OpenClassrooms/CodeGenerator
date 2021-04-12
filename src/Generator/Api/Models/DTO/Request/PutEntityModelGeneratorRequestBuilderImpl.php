@@ -9,10 +9,7 @@ use OpenClassrooms\CodeGenerator\Generator\Api\Models\Request\PutEntityModelGene
 
 class PutEntityModelGeneratorRequestBuilderImpl implements PutEntityModelGeneratorRequestBuilder
 {
-    /**
-     * @var PutEntityModelGeneratorRequestDTO
-     */
-    private $request;
+    private PutEntityModelGeneratorRequestDTO $request;
 
     public function create(): PutEntityModelGeneratorRequestBuilder
     {

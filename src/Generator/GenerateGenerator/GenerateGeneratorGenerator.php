@@ -17,30 +17,15 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\GenerateGenerator\GenerateGenera
 
 class GenerateGeneratorGenerator
 {
-    /**
-     * @var GenerateGeneratorGeneratorSkeletonModelAssembler
-     */
-    private $assembler;
+    private GenerateGeneratorGeneratorSkeletonModelAssembler $assembler;
 
-    /**
-     * @var GenerateGeneratorFileObjectFactory
-     */
-    private $factory;
+    private GenerateGeneratorFileObjectFactory $factory;
 
-    /**
-     * @var FileObjectGateway
-     */
-    private $fileObjectGateway;
+    private FileObjectGateway $fileObjectGateway;
 
-    /**
-     * @var GenerateGeneratorGeneratorSkeletonModel
-     */
-    private $skeletonModel;
+    private GenerateGeneratorGeneratorSkeletonModel $skeletonModel;
 
-    /**
-     * @var TemplatingService
-     */
-    private $templating;
+    private TemplatingService $templating;
 
     /**
      * @param GenerateGeneratorGeneratorRequest $generatorRequest

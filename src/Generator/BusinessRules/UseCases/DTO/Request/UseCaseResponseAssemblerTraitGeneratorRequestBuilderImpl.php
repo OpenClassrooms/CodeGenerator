@@ -9,10 +9,7 @@ use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\UseCas
 
 class UseCaseResponseAssemblerTraitGeneratorRequestBuilderImpl implements UseCaseResponseAssemblerTraitGeneratorRequestBuilder
 {
-    /**
-     * @var UseCaseResponseAssemblerTraitGeneratorRequestDTO
-     */
-    private $request;
+    private UseCaseResponseAssemblerTraitGeneratorRequestDTO $request;
 
     public function build(): UseCaseResponseAssemblerTraitGeneratorRequest
     {

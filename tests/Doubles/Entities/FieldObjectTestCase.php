@@ -6,7 +6,7 @@ namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Entities;
 
 use OpenClassrooms\CodeGenerator\Entities\Object\ConstObject;
 use OpenClassrooms\CodeGenerator\Entities\Object\FieldObject;
-use PHPUnit\Framework\Assert as Assert;
+use PHPUnit\Framework\Assert;
 
 trait FieldObjectTestCase
 {

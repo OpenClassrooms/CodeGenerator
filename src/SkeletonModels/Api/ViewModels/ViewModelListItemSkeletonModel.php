@@ -10,5 +10,5 @@ abstract class ViewModelListItemSkeletonModel extends AbstractSkeletonModel
 {
     public $parentShortName;
 
-    public $templatePath = 'Api/ViewModels/ViewModelListItem.php.twig';
+    public string $templatePath = 'Api/ViewModels/ViewModelListItem.php.twig';
 }

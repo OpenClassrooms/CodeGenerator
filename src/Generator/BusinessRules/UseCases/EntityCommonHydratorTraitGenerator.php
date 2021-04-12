@@ -17,10 +17,7 @@ use OpenClassrooms\CodeGenerator\Utility\MethodUtility;
 
 class EntityCommonHydratorTraitGenerator extends AbstractUseCaseGenerator
 {
-    /**
-     * @var EntityCommonHydratorTraitSkeletonModelAssembler
-     */
-    private $entityCommonHydratorTraitSkeletonModelAssembler;
+    private EntityCommonHydratorTraitSkeletonModelAssembler $entityCommonHydratorTraitSkeletonModelAssembler;
 
     /**
      * @param EntityCommonHydratorTraitGeneratorRequest $generatorRequest

@@ -26,15 +26,9 @@ class PatchEntityControllerGenerator extends AbstractGenerator
 {
     use CommonControllerFactoryTrait;
 
-    /**
-     * @var PatchEntityControllerSkeletonModelBuilder
-     */
-    private $patchEntityControllerSkeletonModelBuilder;
+    private PatchEntityControllerSkeletonModelBuilder $patchEntityControllerSkeletonModelBuilder;
 
-    /**
-     * @var ModelFileObjectFactory
-     */
-    private $modelFileObjectFactory;
+    private ModelFileObjectFactory $modelFileObjectFactory;
 
     /**
      * @param PatchEntityControllerGeneratorRequest $generatorRequest

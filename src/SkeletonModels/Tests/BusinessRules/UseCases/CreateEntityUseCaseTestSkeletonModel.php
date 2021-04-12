@@ -54,7 +54,7 @@ abstract class CreateEntityUseCaseTestSkeletonModel extends AbstractSkeletonMode
 
     public $inMemoryEntityGatewayShortName;
 
-    public $templatePath = 'Tests/BusinessRules/UseCases/CreateEntityUseCaseTest.php.twig';
+    public string $templatePath = 'Tests/BusinessRules/UseCases/CreateEntityUseCaseTest.php.twig';
 
     public $useCarbon;
 }

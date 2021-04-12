@@ -7,14 +7,14 @@ use {{ skeletonModel.parentClassName }};
 class {{ skeletonModel.shortName }} extends {{ skeletonModel.parentShortName }}
 {
 {% for constant in skeletonModel.constants %}
-    const {{ constant.name }} = {{ printValue(constant.value) }};
+    public const {{ constant.name }} = {{ printValue(constant.value) }};
 {% if not loop.last %}
 
 {% endif %}
 {% endfor %}
 
 {% for field in skeletonModel.fields if field.type not in skeletonModel.dateTimeType %}
-    {{ field.scope }} ${{ field.name }} = self::{{ field.value.name }};
+    {{ field.scope }} {{ field.type }} ${{ field.name }} = self::{{ field.value.name }};
 
 {% endfor %}
 {% if skeletonModel.hasConstructor %}

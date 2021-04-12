@@ -16,10 +16,7 @@ class EditEntityUseCaseSkeletonModelBuilderImpl implements EditEntityUseCaseSkel
     use SecurityClassNameTrait;
     use UseCaseClassNameTrait;
 
-    /**
-     * @var EditEntityUseCaseSkeletonModel
-     */
-    private $skeletonModel;
+    private EditEntityUseCaseSkeletonModelImpl $skeletonModel;
 
     public function build(): EditEntityUseCaseSkeletonModel
     {

@@ -8,10 +8,7 @@ use OpenClassrooms\CodeGenerator\Generator\App\Entity\Request\EntityFactoryImplG
 
 class EntityFactoryImplGeneratorRequestDTO implements EntityFactoryImplGeneratorRequest
 {
-    /**
-     * @var string
-     */
-    public $entityClassName;
+    public string $entityClassName;
 
     public function getEntityClassName(): string
     {

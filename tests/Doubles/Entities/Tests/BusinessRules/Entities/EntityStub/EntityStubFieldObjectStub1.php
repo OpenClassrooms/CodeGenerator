@@ -9,21 +9,19 @@ use OpenClassrooms\CodeGenerator\Entities\Object\FieldObject;
 
 class EntityStubFieldObjectStub1 extends FieldObject
 {
-    const CONST       = 'ID';
+    private const CONST = 'ID';
 
-    const DOC_COMMENT = '/**
-     * @var int
-     */';
+    public const DOC_COMMENT = null;
 
-    const NAME        = 'id';
+    public const NAME = 'id';
 
-    const VALUE       = 1;
+    private const VALUE = 1;
 
-    protected $docComment = self::DOC_COMMENT;
+    protected ?string $docComment = self::DOC_COMMENT;
 
-    protected $name = self::NAME;
+    protected string $name = self::NAME;
 
-    protected $scope = FieldObject::SCOPE_PROTECTED;
+    protected string $scope = FieldObject::SCOPE_PROTECTED;
 
     public function __construct()
     {

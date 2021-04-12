@@ -5,52 +5,47 @@ declare(strict_types=1);
 namespace OpenClassrooms\CodeGenerator\Entities\Object;
 
 use OpenClassrooms\CodeGenerator\Utility\DocCommentUtility;
+use OpenClassrooms\CodeGenerator\Utility\FieldObjectUtility;
 use OpenClassrooms\CodeGenerator\Utility\StringUtility;
 
 class FieldObject
 {
-    const SCOPE_PRIVATE   = 'private';
+    public const SCOPE_PRIVATE = 'private';
 
-    const SCOPE_PROTECTED = 'protected';
+    public const SCOPE_PROTECTED = 'protected';
 
-    const SCOPE_PUBLIC    = 'public';
+    public const SCOPE_PUBLIC = 'public';
 
-    /**
-     * @var string
-     */
-    protected $accessor;
+    protected ?string $accessor = null;
 
-    /**
-     * @var string
-     */
-    protected $docComment;
+    protected ?string $docComment = null;
 
-    /**
-     * @var string
-     */
-    protected $name;
+    protected string $name;
 
-    /**
-     * @var string
-     */
-    protected $scope = FieldObject::SCOPE_PRIVATE;
+    protected string $scope = FieldObject::SCOPE_PRIVATE;
+
+    protected ?string $type = null;
 
     /**
      * @var mixed
      */
     protected $value;
 
-    public function __construct(string $name)
+    public function __construct(string $name, ?string $type = null)
     {
         $this->name = $name;
+
+        if ($type !== null) {
+            $this->type = FieldObjectUtility::fixObjectType($type);
+        }
     }
 
-    public function getAccessor()
+    public function getAccessor(): ?string
     {
         return $this->accessor;
     }
 
-    public function setAccessor(string $accessor = null)
+    public function setAccessor(?string $accessor)
     {
         $this->accessor = $accessor;
     }
@@ -88,9 +83,18 @@ class FieldObject
         return StringUtility::isObject($this->getType());
     }
 
-    public function getType(): string
+    public function getType(): ?string
     {
-        return DocCommentUtility::getType($this->getDocComment());
+        if ($this->type === null) {
+            $this->type = DocCommentUtility::getType($this->getDocComment()) ?? '';
+        }
+
+        return $this->type;
+    }
+
+    public function setType(?string $type): void
+    {
+        $this->type = $type;
     }
 
     public function getDocComment(): ?string
@@ -98,13 +102,13 @@ class FieldObject
         return $this->docComment;
     }
 
-    public function setDocComment(string $docComment)
+    public function setDocComment(?string $docComment)
     {
         $this->docComment = $docComment;
     }
 
     public function isDateType(): bool
     {
-        return (bool) preg_match('/Date/', $this->docComment);
+        return false !== strpos($this->getType(), 'Date');
     }
 }

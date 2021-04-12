@@ -9,10 +9,7 @@ use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Responders\Request\UseC
 
 class UseCaseListItemResponseGeneratorRequestBuilderImpl implements UseCaseListItemResponseGeneratorRequestBuilder
 {
-    /**
-     * @var UseCaseListItemResponseGeneratorRequestDTO
-     */
-    private $request;
+    private UseCaseListItemResponseGeneratorRequestDTO $request;
 
     public function build(): UseCaseListItemResponseGeneratorRequest
     {

@@ -2,14 +2,11 @@
 
 namespace {{ skeletonModel.namespace }};
 
-use {{ skeletonModel.deletelEntityUseCaseRequestClassName }};
+use {{ skeletonModel.deleteEntityUseCaseRequestClassName }};
 
-final class {{ skeletonModel.shortName }} implements {{ skeletonModel.deletelEntityUseCaseRequestShortName }}
+final class {{ skeletonModel.shortName }} implements {{ skeletonModel.deleteEntityUseCaseRequestShortName }}
 {
-    /**
-     * @var int
-     */
-    public ${{ skeletonModel.entityIdArgument }};
+    public int ${{ skeletonModel.entityIdArgument }};
 
     public function __construct(int $id)
     {

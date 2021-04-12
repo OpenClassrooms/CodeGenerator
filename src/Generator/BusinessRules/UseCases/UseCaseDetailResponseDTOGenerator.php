@@ -14,10 +14,7 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\UseCaseDe
 
 class UseCaseDetailResponseDTOGenerator extends AbstractUseCaseGenerator
 {
-    /**
-     * @var UseCaseDetailResponseDTOSkeletonModelAssembler
-     */
-    private $useCaseDetailResponseDTOSkeletonModelAssembler;
+    private UseCaseDetailResponseDTOSkeletonModelAssembler $useCaseDetailResponseDTOSkeletonModelAssembler;
 
     /**
      * @param UseCaseDetailResponseDTOGeneratorRequest $generatorRequest

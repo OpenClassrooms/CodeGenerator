@@ -12,10 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class {{ skeletonModel.shortName }} extends {{ skeletonModel.abstractControllerShortName }}
 {
-    /**
-     * @var {{ skeletonModel.deleteEntityRequestBuilderShortName }}
-     */
-    private ${{ skeletonModel.deleteEntityRequestBuilderArgument }};
+    private {{ skeletonModel.deleteEntityRequestBuilderShortName }} ${{ skeletonModel.deleteEntityRequestBuilderArgument }};
 
     public function __construct({{ skeletonModel.deleteEntityRequestBuilderShortName }} $builder)
     {

@@ -11,10 +11,7 @@ use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Requestors
 
 class CreateFunctionalEntityRequestBuilderImpl implements CreateFunctionalEntityRequestBuilder
 {
-    /**
-     * @var CreateFunctionalEntityRequestDTO
-     */
-    private $request;
+    private CreateFunctionalEntityRequestDTO $request;
 
     public function build(): CreateFunctionalEntityRequest
     {

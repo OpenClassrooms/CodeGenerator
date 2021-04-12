@@ -9,10 +9,7 @@ use {{ skeletonModel.baseNamespace }}Generator\{{ skeletonModel.domain }}\Reques
 
 class {{ skeletonModel.entity }}GeneratorRequestBuilderImpl implements {{ skeletonModel.entity }}GeneratorRequestBuilder
 {
-    /**
-     * @var {{ skeletonModel.entity }}GeneratorRequestDTO
-     */
-    private $request;
+    private {{ skeletonModel.entity }}GeneratorRequestDTO $request;
 
     public function create(): {{ skeletonModel.entity }}GeneratorRequestBuilder
     {

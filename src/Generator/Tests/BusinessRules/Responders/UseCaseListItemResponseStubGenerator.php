@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Responders;
 
-use OpenClassrooms\CodeGenerator\Entities\Object\ConstObject;
 use OpenClassrooms\CodeGenerator\Entities\Object\FieldObject;
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\Entities\Type\EntityFileObjectType;
@@ -22,10 +21,7 @@ class UseCaseListItemResponseStubGenerator extends AbstractUseCaseResponseStubGe
 {
     use StubFieldObjectTrait;
 
-    /**
-     * @var UseCaseListItemResponseStubSkeletonModelAssembler
-     */
-    private $useCaseListItemResponseStubSkeletonModelAssembler;
+    private UseCaseListItemResponseStubSkeletonModelAssembler $useCaseListItemResponseStubSkeletonModelAssembler;
 
     /**
      * @param UseCaseListItemResponseStubGeneratorRequest $generatorRequest
@@ -111,9 +107,7 @@ class UseCaseListItemResponseStubGenerator extends AbstractUseCaseResponseStubGe
             $this->baseNamespace
         );
 
-        $fileObject = StubSuffixUtility::incrementClassNameSuffix($fileObject, $this->fileObjectGateway->findAll());
-
-        return $fileObject;
+        return StubSuffixUtility::incrementClassNameSuffix($fileObject, $this->fileObjectGateway->findAll());
     }
 
     /**

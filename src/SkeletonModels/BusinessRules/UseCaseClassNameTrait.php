@@ -6,20 +6,11 @@ namespace OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules;
 
 trait UseCaseClassNameTrait
 {
-    /**
-     * @var string
-     */
-    protected $transactionClassName;
+    protected string $transactionClassName;
 
-    /**
-     * @var string
-     */
-    protected $useCaseClassName;
+    protected string $useCaseClassName;
 
-    /**
-     * @var string
-     */
-    protected $useCaseRequestClassName;
+    protected string $useCaseRequestClassName;
 
     public function setTransactionClassName(string $transactionClassName): void
     {

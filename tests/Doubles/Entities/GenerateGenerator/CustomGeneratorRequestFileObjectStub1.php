@@ -8,7 +8,7 @@ use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 
 class CustomGeneratorRequestFileObjectStub1 extends FileObject
 {
-    const CLASS_NAME = 'OpenClassrooms\CodeGenerator\Generator\GenerateGenerator\Request\CustomGeneratorRequest';
+    public const CLASS_NAME = 'OpenClassrooms\CodeGenerator\Generator\GenerateGenerator\Request\CustomGeneratorRequest';
 
     public function __construct()
     {

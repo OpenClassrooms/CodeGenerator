@@ -8,7 +8,7 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 
 abstract class ViewModelListItemAssemblerSkeletonModel extends AbstractSkeletonModel
 {
-    public $templatePath = 'Api/ViewModels/ViewModelListItemAssembler.php.twig';
+    public string $templatePath = 'Api/ViewModels/ViewModelListItemAssembler.php.twig';
 
     public $useCaseResponseClassName;
 

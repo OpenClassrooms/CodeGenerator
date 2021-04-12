@@ -10,10 +10,7 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\UseCases\Get
 
 class GetEntityUseCaseTestSkeletonModelBuilderImpl implements GetEntityUseCaseTestSkeletonModelBuilder
 {
-    /**
-     * @var GetEntityUseCaseTestSkeletonModel
-     */
-    private $skeletonModel;
+    private GetEntityUseCaseTestSkeletonModelImpl $skeletonModel;
 
     public function build(FileObject $fileObject): GetEntityUseCaseTestSkeletonModel
     {

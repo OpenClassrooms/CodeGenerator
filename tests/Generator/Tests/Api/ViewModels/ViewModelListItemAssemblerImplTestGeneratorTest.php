@@ -22,15 +22,9 @@ class ViewModelListItemAssemblerImplTestGeneratorTest extends TestCase
 {
     use FileObjectTestCase;
 
-    /**
-     * @var ViewModelListItemAssemblerImplTestGeneratorRequest
-     */
-    private $request;
+    private ViewModelListItemAssemblerImplTestGeneratorRequest $request;
 
-    /**
-     * @var ViewModelListItemAssemblerImplTestGenerator
-     */
-    private $viewModelListItemAssemblerImplTestGenerator;
+    private ViewModelListItemAssemblerImplTestGenerator $viewModelListItemAssemblerImplTestGenerator;
 
     /**
      * @test

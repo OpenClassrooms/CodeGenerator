@@ -15,15 +15,9 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\Api\Models\PostEntityModelSkelet
 
 class PostEntityModelGenerator extends AbstractGenerator
 {
-    /**
-     * @var ModelFileObjectFactory
-     */
-    private $modelFileObjectFactory;
+    private ModelFileObjectFactory $modelFileObjectFactory;
 
-    /**
-     * @var PostEntityModelSkeletonModelAssembler
-     */
-    private $postEntityModelSkeletonModelAssembler;
+    private PostEntityModelSkeletonModelAssembler $postEntityModelSkeletonModelAssembler;
 
     /**
      * @param PostEntityModelGeneratorRequest $generatorRequest

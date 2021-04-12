@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Entities;
 
 use OpenClassrooms\CodeGenerator\Entities\Object\MethodObject;
-use PHPUnit\Framework\Assert as Assert;
+use PHPUnit\Framework\Assert;
 
 trait MethodObjectTestCase
 {

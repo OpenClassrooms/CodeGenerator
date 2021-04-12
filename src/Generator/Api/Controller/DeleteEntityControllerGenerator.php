@@ -23,30 +23,15 @@ use OpenClassrooms\CodeGenerator\Utility\RoutingUtility;
 
 class DeleteEntityControllerGenerator extends AbstractGenerator
 {
-    /**
-     * @var DeleteEntityControllerSkeletonModelAssembler
-     */
-    private $deleteEntityControllerSkeletonModelAssembler;
+    private DeleteEntityControllerSkeletonModelAssembler $deleteEntityControllerSkeletonModelAssembler;
 
-    /**
-     * @var ControllerFileObjectFactory
-     */
-    private $controllerFileObjectFactory;
+    private ControllerFileObjectFactory $controllerFileObjectFactory;
 
-    /**
-     * @var EntityFileObjectFactory
-     */
-    private $entityFileObjectFactory;
+    private EntityFileObjectFactory $entityFileObjectFactory;
 
-    /**
-     * @var UseCaseFileObjectFactory
-     */
-    private $useCaseFileObjectFactory;
+    private UseCaseFileObjectFactory $useCaseFileObjectFactory;
 
-    /**
-     * @var UseCaseRequestFileObjectFactory
-     */
-    private $useCaseRequestFileObjectFactory;
+    private UseCaseRequestFileObjectFactory $useCaseRequestFileObjectFactory;
 
     /**
      * @param DeleteEntityControllerGeneratorRequest $generatorRequest

@@ -8,7 +8,7 @@ use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 
 class CustomTemplateFileObjectStub1 extends FileObject
 {
-    const CLASS_NAME = 'OpenClassrooms\CodeGenerator\Skeleton\GenerateGenerator\Custom.php.twig';
+    public const CLASS_NAME = 'OpenClassrooms\CodeGenerator\Skeleton\GenerateGenerator\Custom.php.twig';
 
     public function __construct()
     {

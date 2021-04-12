@@ -14,20 +14,11 @@ use OpenClassrooms\CodeGenerator\Mediators\Options;
 
 class GenerateGeneratorMediatorImpl implements GenerateGeneratorMediator
 {
-    /**
-     * @var FileObjectGateway
-     */
-    private $fileObjectGateway;
+    private FileObjectGateway $fileObjectGateway;
 
-    /**
-     * @var GenerateGeneratorGenerator
-     */
-    private $selfGeneratorGenerator;
+    private GenerateGeneratorGenerator $selfGeneratorGenerator;
 
-    /**
-     * @var GenerateGeneratorGeneratorRequestBuilder
-     */
-    private $selfGeneratorGeneratorRequestBuilder;
+    private GenerateGeneratorGeneratorRequestBuilder $selfGeneratorGeneratorRequestBuilder;
 
     public function mediate(array $args = [], array $options = []): array
     {

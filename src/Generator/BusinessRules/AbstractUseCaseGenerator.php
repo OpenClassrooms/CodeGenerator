@@ -14,25 +14,13 @@ use OpenClassrooms\CodeGenerator\Utility\MethodUtility;
 
 abstract class AbstractUseCaseGenerator extends AbstractGenerator
 {
-    /**
-     * @var EntityFileObjectFactory
-     */
-    protected $entityFileObjectFactory;
+    protected EntityFileObjectFactory $entityFileObjectFactory;
 
-    /**
-     * @var UseCaseFileObjectFactory
-     */
-    protected $useCaseFileObjectFactory;
+    protected UseCaseFileObjectFactory $useCaseFileObjectFactory;
 
-    /**
-     * @var UseCaseRequestFileObjectFactory
-     */
-    protected $useCaseRequestFileObjectFactory;
+    protected UseCaseRequestFileObjectFactory $useCaseRequestFileObjectFactory;
 
-    /**
-     * @var UseCaseResponseFileObjectFactory
-     */
-    protected $useCaseResponseFileObjectFactory;
+    protected UseCaseResponseFileObjectFactory $useCaseResponseFileObjectFactory;
 
     public function setEntityFileObjectFactory(EntityFileObjectFactory $entityFileObjectFactory): void
     {

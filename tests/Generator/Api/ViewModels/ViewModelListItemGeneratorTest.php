@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels;
 
 use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\DTO\Request\ViewModelListItemGeneratorRequestBuilderImpl;
-use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\Request\ViewModelGeneratorRequestBuilder;
+use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\Request\ViewModelListItemGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\Api\ViewModels\ViewModelListItemGenerator;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Api\ViewModels\Impl\ViewModelListItemSkeletonModelAssemblerImpl;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\ViewModels\ViewModelListItem\ViewModelListItemFileObjectStub1;
@@ -18,15 +18,9 @@ class ViewModelListItemGeneratorTest extends AbstractViewModelGeneratorTestCase
 {
     use FileObjectTestCase;
 
-    /**
-     * @var ViewModelGeneratorRequestBuilder
-     */
-    private $request;
+    private ViewModelListItemGeneratorRequest $request;
 
-    /**
-     * @var ViewModelListItemGenerator
-     */
-    private $viewModelListItemGenerator;
+    private ViewModelListItemGenerator $viewModelListItemGenerator;
 
     /**
      * @test

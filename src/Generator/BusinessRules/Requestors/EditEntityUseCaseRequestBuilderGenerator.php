@@ -15,10 +15,7 @@ use OpenClassrooms\CodeGenerator\Utility\MethodUtility;
 
 class EditEntityUseCaseRequestBuilderGenerator extends AbstractUseCaseGenerator
 {
-    /**
-     * @var EditEntityUseCaseRequestBuilderSkeletonModelAssembler
-     */
-    private $editEntityUseCaseRequestBuilderSkeletonModelAssembler;
+    private EditEntityUseCaseRequestBuilderSkeletonModelAssembler $editEntityUseCaseRequestBuilderSkeletonModelAssembler;
 
     /**
      * @param EditEntityUseCaseRequestBuilderGeneratorRequest $generatorRequest

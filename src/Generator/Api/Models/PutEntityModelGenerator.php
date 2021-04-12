@@ -16,15 +16,9 @@ use OpenClassrooms\CodeGenerator\Utility\ConstUtility;
 
 class PutEntityModelGenerator extends AbstractGenerator
 {
-    /**
-     * @var PutEntityModelSkeletonModelAssembler
-     */
-    private $putEntityModelSkeletonModelAssembler;
+    private PutEntityModelSkeletonModelAssembler $putEntityModelSkeletonModelAssembler;
 
-    /**
-     * @var ModelFileObjectFactory
-     */
-    private $modelFileObjectFactory;
+    private ModelFileObjectFactory $modelFileObjectFactory;
 
     /**
      * @param PutEntityModelGeneratorRequest $generatorRequest

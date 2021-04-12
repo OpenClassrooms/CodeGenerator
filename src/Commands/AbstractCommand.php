@@ -6,6 +6,7 @@ namespace OpenClassrooms\CodeGenerator\Commands;
 
 use OpenClassrooms\CodeGenerator\Commands\Exceptions\ConfigurationFileException;
 use OpenClassrooms\CodeGenerator\Mediators\Options;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Symfony\Component\DependencyInjection\ContainerMock;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputOption;
@@ -29,7 +30,7 @@ class AbstractCommand extends Command
     public const ROOT_DIR_GENERATOR    = __DIR__ . '/../../';
 
     /**
-     * @var ContainerBuilder
+     * @var ContainerBuilder|ContainerMock
      */
     protected $container;
 

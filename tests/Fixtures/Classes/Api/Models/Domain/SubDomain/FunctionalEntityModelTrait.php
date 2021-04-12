@@ -11,33 +11,27 @@ use Symfony\Component\Validator\Constraints as Assert;
 trait FunctionalEntityModelTrait
 {
     /**
-     * @var string
-     *
      * @Assert\NotBlank
      * @Assert\Type("string")
      */
-    public $field1;
+    public string $field1;
 
     /**
      * @var string[]
      *
      * @Assert\Type("array")
      */
-    public $field2;
+    public array $field2;
 
     /**
-     * @var bool
-     *
      * @Assert\NotNull
      * @Assert\Type("bool")
      */
-    public $field3;
+    public bool $field3;
 
     /**
-     * @var \DateTimeInterface
-     *
      * @Assert\NotBlank
      * @Assert\DateTime(format="Y-m-d\TH:i:sO")
      */
-    public $field4;
+    public \DateTimeInterface $field4;
 }

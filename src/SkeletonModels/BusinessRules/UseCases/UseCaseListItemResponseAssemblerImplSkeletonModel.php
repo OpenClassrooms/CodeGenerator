@@ -28,7 +28,7 @@ abstract class UseCaseListItemResponseAssemblerImplSkeletonModel extends Abstrac
 
     public $paginatedUseCaseResponseShortName;
 
-    public $templatePath = 'BusinessRules/UseCases/DTO/Response/UseCaseListItemResponseAssemblerImpl.php.twig';
+    public string $templatePath = 'BusinessRules/UseCases/DTO/Response/UseCaseListItemResponseAssemblerImpl.php.twig';
 
     public $useCaseListItemResponseAssemblerClassName;
 

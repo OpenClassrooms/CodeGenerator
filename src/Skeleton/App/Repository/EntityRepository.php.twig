@@ -13,10 +13,7 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
 
 class {{ skeletonModel.shortName }} extends ServiceEntityRepository implements {{ skeletonModel.entityGatewayShortName }}
 {
-    /**
-     * @var {{ skeletonModel.paginatedCollectionFactoryShortName }}
-     */
-    private ${{ skeletonModel.paginatedCollectionFactoryArgument }};
+    private {{ skeletonModel.paginatedCollectionFactoryShortName }} ${{ skeletonModel.paginatedCollectionFactoryArgument }};
 
     public function __construct(RegistryInterface $registry, {{ skeletonModel.paginatedCollectionFactoryShortName }} ${{ skeletonModel.paginatedCollectionFactoryArgument }})
     {

@@ -17,20 +17,11 @@ class GetEntitiesControllerSkeletonModelBuilderImpl implements GetEntitiesContro
     use AbstractControllerClassNameTrait;
     use UseCaseResponseClassNameTrait;
 
-    /**
-     * @var string
-     */
-    protected $collectionInformationClassName;
+    protected string $collectionInformationClassName;
 
-    /**
-     * @var GetEntitiesControllerSkeletonModel
-     */
-    private $skeletonModel;
+    private GetEntitiesControllerSkeletonModelImpl $skeletonModel;
 
-    /**
-     * @var string
-     */
-    private $entity;
+    private string $entity;
 
     public function create(): GetEntitiesControllerSkeletonModelBuilder
     {

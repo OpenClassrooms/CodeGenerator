@@ -5,11 +5,6 @@ declare(strict_types=1);
 namespace OpenClassrooms\CodeGenerator\Mediators\Api\Controller\Impl;
 
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
-use OpenClassrooms\CodeGenerator\Generator\Api\Controller\DeleteEntityControllerGenerator;
-use OpenClassrooms\CodeGenerator\Generator\Api\Controller\GetEntitiesControllerGenerator;
-use OpenClassrooms\CodeGenerator\Generator\Api\Controller\GetEntityControllerGenerator;
-use OpenClassrooms\CodeGenerator\Generator\Api\Controller\PatchEntityControllerGenerator;
-use OpenClassrooms\CodeGenerator\Generator\Api\Controller\PostEntityControllerGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Api\Controller\Request\DeleteEntityControllerGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Generator\Api\Controller\Request\GetEntitiesControllerGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Generator\Api\Controller\Request\GetEntityControllerGeneratorRequestBuilder;
@@ -20,35 +15,25 @@ use OpenClassrooms\CodeGenerator\Mediators\Api\Controller\ControllerMediator;
 
 class ControllerMediatorImpl implements ControllerMediator
 {
-    /** @var DeleteEntityControllerGenerator */
-    private $deleteEntityControllerGenerator;
+    private Generator $deleteEntityControllerGenerator;
 
-    /** @var DeleteEntityControllerGeneratorRequestBuilder */
-    private $deleteEntityControllerGeneratorRequestBuilder;
+    private DeleteEntityControllerGeneratorRequestBuilder $deleteEntityControllerGeneratorRequestBuilder;
 
-    /** @var GetEntitiesControllerGenerator */
-    private $getEntitiesControllerGenerator;
+    private Generator $getEntitiesControllerGenerator;
 
-    /** @var GetEntitiesControllerGeneratorRequestBuilder */
-    private $getEntitiesControllerGeneratorRequestBuilder;
+    private GetEntitiesControllerGeneratorRequestBuilder $getEntitiesControllerGeneratorRequestBuilder;
 
-    /** @var GetEntityControllerGenerator */
-    private $getEntityControllerGenerator;
+    private Generator $getEntityControllerGenerator;
 
-    /** @var GetEntityControllerGeneratorRequestBuilder */
-    private $getEntityControllerGeneratorRequestBuilder;
+    private GetEntityControllerGeneratorRequestBuilder $getEntityControllerGeneratorRequestBuilder;
 
-    /** @var PatchEntityControllerGenerator */
-    private $patchEntityControllerGenerator;
+    private Generator $patchEntityControllerGenerator;
 
-    /** @var PatchEntityControllerGeneratorRequestBuilder */
-    private $patchEntityControllerGeneratorRequestBuilder;
+    private PatchEntityControllerGeneratorRequestBuilder $patchEntityControllerGeneratorRequestBuilder;
 
-    /** @var PostEntityControllerGenerator */
-    private $postEntityControllerGenerator;
+    private Generator $postEntityControllerGenerator;
 
-    /** @var PostEntityControllerGeneratorRequestBuilder */
-    private $postEntityControllerGeneratorRequestBuilder;
+    private PostEntityControllerGeneratorRequestBuilder $postEntityControllerGeneratorRequestBuilder;
 
     public function generateDeleteEntityControllerGenerator(string $className): FileObject
     {

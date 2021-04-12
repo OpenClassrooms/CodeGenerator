@@ -8,5 +8,5 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 
 abstract class UseCaseResponseCommonFieldTraitSkeletonModel extends AbstractSkeletonModel
 {
-    public $templatePath = 'BusinessRules/UseCases/DTO/Response/UseCaseResponseCommonFieldTrait.php.twig';
+    public string $templatePath = 'BusinessRules/UseCases/DTO/Response/UseCaseResponseCommonFieldTrait.php.twig';
 }

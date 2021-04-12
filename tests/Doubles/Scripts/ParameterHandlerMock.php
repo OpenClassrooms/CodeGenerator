@@ -9,10 +9,10 @@ use Symfony\Component\Filesystem\Filesystem;
 
 class ParameterHandlerMock extends ParameterHandler
 {
-    const OC_CODE_GENERATOR_YML_DIST = 'oc_code_generator.yml.dist';
+    public const OC_CODE_GENERATOR_YML_DIST = 'oc_code_generator.yml.dist';
 
     /**
      * @var Filesystem
      */
-    public static $processor;
+    public static ?\Incenteev\ParameterHandler\Processor $processor;
 }

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace OpenClassrooms\CodeGenerator\Tests\Generator\BusinessRules\UseCases;
 
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\UseCaseResponseCommonFieldTraitGeneratorRequestBuilderImpl;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\UseCaseResponseCommonFieldTraitGeneratorRequestBuilder;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\UseCaseResponseCommonFieldTraitGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\UseCaseResponseCommonFieldTraitGenerator;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\BusinessRules\Entities\Domain\SubDomain\EntityFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\UseCaseResponseCommonFieldTraitFileObjectStub1;
@@ -22,15 +22,9 @@ class UseCaseResponseCommonFieldTraitGeneratorTest extends TestCase
 {
     use FileObjectTestCase;
 
-    /**
-     * @var UseCaseResponseCommonFieldTraitGeneratorRequestBuilder
-     */
-    private $request;
+    private UseCaseResponseCommonFieldTraitGeneratorRequest $request;
 
-    /**
-     * @var UseCaseResponseCommonFieldTraitGenerator
-     */
-    private $useCaseResponseCommonFieldTraitGenerator;
+    private UseCaseResponseCommonFieldTraitGenerator $useCaseResponseCommonFieldTraitGenerator;
 
     /**
      * @test

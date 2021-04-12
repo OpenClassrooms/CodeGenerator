@@ -8,43 +8,43 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 
 abstract class GetEntitiesControllerSkeletonModel extends AbstractSkeletonModel
 {
-    public $abstractControllerClassName;
+    public string $abstractControllerClassName;
 
-    public $abstractControllerShortName;
+    public string $abstractControllerShortName;
 
-    public $collectionInformationClassName;
+    public string $collectionInformationClassName;
 
-    public $collectionInformationShortName;
+    public string $collectionInformationShortName;
 
-    public $entitiesArgument;
+    public string $entitiesArgument;
 
-    public $entityViewModelListItemAssemblerArgument;
+    public string $entityViewModelListItemAssemblerArgument;
 
-    public $entityViewModelListItemAssemblerClassName;
+    public string $entityViewModelListItemAssemblerClassName;
 
-    public $entityViewModelListItemAssemblerShortName;
+    public string $entityViewModelListItemAssemblerShortName;
 
-    public $entityViewModelListItemClassName;
+    public string $entityViewModelListItemClassName;
 
-    public $entityViewModelListItemShortName;
+    public string $entityViewModelListItemShortName;
 
-    public $getEntitiesMethod;
+    public string $getEntitiesMethod;
 
-    public $getEntitiesUseCaseClassName;
+    public string $getEntitiesUseCaseClassName;
 
-    public $getEntitiesUseCaseRequestBuilderArgument;
+    public string $getEntitiesUseCaseRequestBuilderArgument;
 
-    public $getEntitiesUseCaseRequestBuilderClassName;
+    public string $getEntitiesUseCaseRequestBuilderClassName;
 
-    public $getEntitiesUseCaseRequestBuilderShortName;
+    public string $getEntitiesUseCaseRequestBuilderShortName;
 
-    public $getEntitiesUseCaseShortName;
+    public string $getEntitiesUseCaseShortName;
 
-    public $paginatedUseCaseResponseClassName;
+    public string $paginatedUseCaseResponseClassName;
 
-    public $paginatedUseCaseResponseShortName;
+    public string $paginatedUseCaseResponseShortName;
 
-    public $routeAnnotation;
+    public string $routeAnnotation;
 
-    public $templatePath = 'Api/Controller/GetEntitiesController.php.twig';
+    public string $templatePath = 'Api/Controller/GetEntitiesController.php.twig';
 }

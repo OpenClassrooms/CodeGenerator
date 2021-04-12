@@ -20,15 +20,9 @@ class DeleteEntityUseCaseCommandTest extends TestCase
 {
     use CommandTestCase;
 
-    /**
-     * @var DeleteEntityUseCaseCommand
-     */
-    protected $command;
+    protected DeleteEntityUseCaseCommand $command;
 
-    /**
-     * @var DeleteEntityUseCaseMediator
-     */
-    private $deleteEntityUseCaseMediator;
+    private DeleteEntityUseCaseMediator $deleteEntityUseCaseMediator;
 
     /**
      * @test
@@ -105,7 +99,6 @@ class DeleteEntityUseCaseCommandTest extends TestCase
         $this->deleteEntityUseCaseMediator = new DeleteEntityUseCaseMediatorMock();
         $this->container = new ContainerMock(
             [DeleteEntityUseCaseMediator::class => $this->deleteEntityUseCaseMediator]
-
         );
         TestClassUtil::setProperty('container', $this->container, $this->command);
     }

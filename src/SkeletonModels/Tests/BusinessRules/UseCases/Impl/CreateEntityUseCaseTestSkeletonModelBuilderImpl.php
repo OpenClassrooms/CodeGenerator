@@ -13,10 +13,7 @@ class CreateEntityUseCaseTestSkeletonModelBuilderImpl implements CreateEntityUse
 {
     use UseCarbonTrait;
 
-    /**
-     * @var CreateEntityUseCaseTestSkeletonModel
-     */
-    private $skeletonModel;
+    private CreateEntityUseCaseTestSkeletonModelImpl $skeletonModel;
 
     public function build(): CreateEntityUseCaseTestSkeletonModel
     {

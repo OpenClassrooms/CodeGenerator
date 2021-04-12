@@ -34,15 +34,9 @@ class DeleteEntityUseCaseMediatorImplTest extends TestCase
     use MediatorFileObjectTestCase;
     use CommonEntityUseCaseMediatorTestTrait;
 
-    /**
-     * @var DeleteEntityUseCaseMediatorImpl
-     */
-    private $mediator;
+    private DeleteEntityUseCaseMediatorImpl $mediator;
 
-    /**
-     * @var array
-     */
-    private $options;
+    private array $options;
 
     protected function setUp(): void
     {
@@ -84,7 +78,6 @@ class DeleteEntityUseCaseMediatorImplTest extends TestCase
             new GeneratorMock(
                 DeleteEntityUseCaseRequestBuilderImplGenerator::class,
                 new DeleteEntityUseCaseRequestBuilderImplFileObjectStub1()
-
             )
         );
         $this->mediator->setDeleteEntityUseCaseRequestDTOGenerator(

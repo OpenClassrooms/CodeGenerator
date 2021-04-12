@@ -20,15 +20,9 @@ class EditFunctionalEntity implements UseCase
 {
     use FunctionalEntityCommonHydratorTrait;
 
-    /**
-     * @var FunctionalEntityGateway
-     */
-    private $functionalEntityGateway;
+    private FunctionalEntityGateway $functionalEntityGateway;
 
-    /**
-     * @var FunctionalEntityDetailResponseAssembler
-     */
-    private $responseAssembler;
+    private FunctionalEntityDetailResponseAssembler $responseAssembler;
 
     public function __construct(
         FunctionalEntityGateway $functionalEntityGateway,

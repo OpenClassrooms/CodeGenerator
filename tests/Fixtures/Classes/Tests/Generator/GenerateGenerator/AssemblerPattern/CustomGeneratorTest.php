@@ -18,15 +18,9 @@ class CustomGeneratorTest extends TestCase
 {
     use FileObjectTestCase;
 
-    /**
-     * @var CustomGenerator
-     */
-    private $customGenerator;
+    private CustomGenerator $customGenerator;
 
-    /**
-     * @var CustomGeneratorRequestBuilder
-     */
-    private $request;
+    private CustomGeneratorRequestBuilder $request;
 
     /**
      * @test

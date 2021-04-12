@@ -7,9 +7,6 @@ namespace OpenClassrooms\CodeGenerator\Tests\Doubles\SkeletonModels\Tests\Double
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\BusinessRules\Gateways\Impl\InMemoryEntityGatewaySkeletonModelAssemblerImpl;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\FixturesConfig;
 
-/**
- * @author arnaud lefevre <arnaud.lefevre@openclassrooms.com>
- */
 class InMemoryEntityGatewaySkeletonModelAssemblerMock extends InMemoryEntityGatewaySkeletonModelAssemblerImpl
 {
     public function __construct()

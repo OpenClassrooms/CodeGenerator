@@ -8,10 +8,7 @@ use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\BusinessRules\Responder
 
 class UseCaseListItemResponseAssemblerMockGeneratorRequestDTO implements UseCaseListItemResponseAssemblerMockGeneratorRequest
 {
-    /**
-     * @var string
-     */
-    public $entityClassName;
+    public string $entityClassName;
 
     public function getEntityClassName(): string
     {

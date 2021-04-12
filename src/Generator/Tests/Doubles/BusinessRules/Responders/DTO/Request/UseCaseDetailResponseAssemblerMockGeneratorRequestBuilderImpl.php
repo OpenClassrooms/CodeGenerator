@@ -9,10 +9,7 @@ use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\BusinessRules\Responder
 
 class UseCaseDetailResponseAssemblerMockGeneratorRequestBuilderImpl implements UseCaseDetailResponseAssemblerMockGeneratorRequestBuilder
 {
-    /**
-     * @var UseCaseDetailResponseAssemblerMockGeneratorRequestDTO
-     */
-    private $request;
+    private UseCaseDetailResponseAssemblerMockGeneratorRequestDTO $request;
 
     public function build(): UseCaseDetailResponseAssemblerMockGeneratorRequest
     {

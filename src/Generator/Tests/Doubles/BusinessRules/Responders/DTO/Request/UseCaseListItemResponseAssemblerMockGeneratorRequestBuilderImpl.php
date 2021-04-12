@@ -9,10 +9,7 @@ use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\BusinessRules\Responder
 
 class UseCaseListItemResponseAssemblerMockGeneratorRequestBuilderImpl implements UseCaseListItemResponseAssemblerMockGeneratorRequestBuilder
 {
-    /**
-     * @var UseCaseListItemResponseAssemblerMockGeneratorRequestDTO
-     */
-    private $request;
+    private UseCaseListItemResponseAssemblerMockGeneratorRequestDTO $request;
 
     public function build(): UseCaseListItemResponseAssemblerMockGeneratorRequest
     {

@@ -14,10 +14,7 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\CreateEnt
 
 class CreateEntityUseCaseRequestDTOGenerator extends AbstractUseCaseGenerator
 {
-    /**
-     * @var CreateEntityUseCaseRequestDTOSkeletonModelAssembler
-     */
-    private $createEntityUseCaseRequestDTOSkeletonModelAssembler;
+    private CreateEntityUseCaseRequestDTOSkeletonModelAssembler $createEntityUseCaseRequestDTOSkeletonModelAssembler;
 
     /**
      * @param CreateEntityUseCaseRequestDTOGeneratorRequest $generatorRequest

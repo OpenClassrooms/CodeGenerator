@@ -8,5 +8,5 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 
 abstract class CustomSkeletonModel extends AbstractSkeletonModel
 {
-    public $templatePath = '';
+    public string $templatePath = '';
 }

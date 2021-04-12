@@ -9,25 +9,25 @@ use OpenClassrooms\CodeGenerator\Entities\Object\MethodObject;
 
 class EditEntityUseCaseRequestMethodObjectStub5 extends MethodObject
 {
-    const DOC_COMMENT = null;
+    public const DOC_COMMENT = null;
 
-    const NAME        = 'getFunctionalEntityId';
+    public const NAME = 'getFunctionalEntityId';
 
-    const NULLABLE    = false;
+    public const NULLABLE    = false;
 
-    const RETURN_TYPE = 'int';
+    public const RETURN_TYPE = 'int';
 
-    const VALUE       = null;
+    public const VALUE       = null;
 
-    protected $docComment = self::DOC_COMMENT;
+    protected ?string $docComment = self::DOC_COMMENT;
 
-    protected $name = self::NAME;
+    protected string $name = self::NAME;
 
-    protected $nullable = self::NULLABLE;
+    protected bool $nullable = self::NULLABLE;
 
-    protected $returnType = self::RETURN_TYPE;
+    protected string $returnType = self::RETURN_TYPE;
 
-    protected $scope = FieldObject::SCOPE_PROTECTED;
+    protected string $scope = FieldObject::SCOPE_PROTECTED;
 
     public function __construct()
     {

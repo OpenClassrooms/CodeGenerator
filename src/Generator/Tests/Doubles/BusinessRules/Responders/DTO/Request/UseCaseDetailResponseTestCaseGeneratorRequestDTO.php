@@ -8,15 +8,12 @@ use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\BusinessRules\Responder
 
 class UseCaseDetailResponseTestCaseGeneratorRequestDTO implements UseCaseDetailResponseTestCaseGeneratorRequest
 {
-    /**
-     * @var string
-     */
-    public $entity;
+    public string $entity;
 
     /**
      * @var string[]
      */
-    public $fields;
+    public array $fields;
 
     public function getEntityClassName(): string
     {

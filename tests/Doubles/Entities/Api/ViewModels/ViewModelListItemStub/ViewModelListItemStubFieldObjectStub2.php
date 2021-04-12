@@ -10,15 +10,15 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\BusinessRules\Enti
 
 class ViewModelListItemStubFieldObjectStub2 extends FieldObject
 {
-    const DOC_COMMENT = EntityStubFieldObjectStub2::DOC_COMMENT;
+    public const DOC_COMMENT = EntityStubFieldObjectStub2::DOC_COMMENT;
 
-    const NAME        = EntityStubFieldObjectStub2::NAME;
+    public const NAME = EntityStubFieldObjectStub2::NAME;
 
-    protected $docComment = self::DOC_COMMENT;
+    protected ?string $docComment = self::DOC_COMMENT;
 
-    protected $name = self::NAME;
+    protected string $name = self::NAME;
 
-    protected $scope = FieldObject::SCOPE_PUBLIC;
+    protected string $scope = FieldObject::SCOPE_PUBLIC;
 
     public function __construct()
     {

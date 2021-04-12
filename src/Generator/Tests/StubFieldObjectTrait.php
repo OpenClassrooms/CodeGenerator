@@ -8,10 +8,7 @@ use OpenClassrooms\CodeGenerator\Utility\StubUtilityStrategy;
 
 trait StubFieldObjectTrait
 {
-    /**
-     * @var StubUtilityStrategy
-     */
-    private $stubUtilityStrategy;
+    private StubUtilityStrategy $stubUtilityStrategy;
 
     public function setStubUtilityStrategy(StubUtilityStrategy $stubUtilityStrategy): void
     {

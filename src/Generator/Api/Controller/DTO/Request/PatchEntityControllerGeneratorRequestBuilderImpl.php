@@ -9,10 +9,7 @@ use OpenClassrooms\CodeGenerator\Generator\Api\Controller\Request\PatchEntityCon
 
 class PatchEntityControllerGeneratorRequestBuilderImpl implements PatchEntityControllerGeneratorRequestBuilder
 {
-    /**
-     * @var PatchEntityControllerGeneratorRequestDTO
-     */
-    private $request;
+    private PatchEntityControllerGeneratorRequestDTO $request;
 
     public function create(): PatchEntityControllerGeneratorRequestBuilder
     {

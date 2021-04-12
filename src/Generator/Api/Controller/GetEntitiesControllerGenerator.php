@@ -21,10 +21,7 @@ class GetEntitiesControllerGenerator extends AbstractGenerator
 {
     use CommonControllerFactoryTrait;
 
-    /**
-     * @var GetEntitiesControllerSkeletonModelBuilder
-     */
-    private $getEntitiesControllerSkeletonModelBuilder;
+    private GetEntitiesControllerSkeletonModelBuilder $getEntitiesControllerSkeletonModelBuilder;
 
     /**
      * @param GetEntitiesControllerGeneratorRequest $generatorRequest

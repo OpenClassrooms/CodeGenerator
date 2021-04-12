@@ -42,7 +42,7 @@ abstract class EditEntityUseCaseSkeletonModel extends AbstractSkeletonModel
 
     public $securityClassName;
 
-    public $templatePath = 'BusinessRules/UseCases/EditEntityUseCase.php.twig';
+    public string $templatePath = 'BusinessRules/UseCases/EditEntityUseCase.php.twig';
 
     public $transactionClassName;
 

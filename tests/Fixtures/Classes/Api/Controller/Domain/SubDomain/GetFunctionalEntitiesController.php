@@ -20,15 +20,9 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class GetFunctionalEntitiesController extends AbstractApiController
 {
-    /**
-     * @var FunctionalEntityViewModelListItemAssembler
-     */
-    private $functionalEntityViewModelListItemAssembler;
+    private FunctionalEntityViewModelListItemAssembler $functionalEntityViewModelListItemAssembler;
 
-    /**
-     * @var GetFunctionalEntitiesRequestBuilder
-     */
-    private $getFunctionalEntitiesRequestBuilder;
+    private GetFunctionalEntitiesRequestBuilder $getFunctionalEntitiesRequestBuilder;
 
     public function __construct(
         FunctionalEntityViewModelListItemAssembler $assembler,

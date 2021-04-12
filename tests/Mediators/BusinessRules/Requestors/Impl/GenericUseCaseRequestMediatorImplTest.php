@@ -21,19 +21,13 @@ class GenericUseCaseRequestMediatorImplTest extends TestCase
 {
     use MediatorFileObjectTestCase;
 
-    const DOMAIN           = 'Domain\SubDomain';
+    public const DOMAIN           = 'Domain\SubDomain';
 
-    const GENERIC_USE_CASE = 'GenericUseCase';
+    public const GENERIC_USE_CASE = 'GenericUseCase';
 
-    /**
-     * @var GenericUseCaseRequestMediator
-     */
-    private $mediator;
+    private GenericUseCaseRequestMediator $mediator;
 
-    /**
-     * @var array
-     */
-    private $options;
+    private array $options;
 
     /**
      * @test
@@ -68,7 +62,6 @@ class GenericUseCaseRequestMediatorImplTest extends TestCase
                 Args::USE_CASE => self::GENERIC_USE_CASE,
             ],
             $this->options
-
         );
 
         $this->assertFlushedFileObject($fileObjects);

@@ -14,15 +14,9 @@ class GetEntityControllerSkeletonModelBuilderImpl implements GetEntityController
 {
     use AbstractControllerClassNameTrait;
 
-    /**
-     * @var GetEntityControllerSkeletonModel
-     */
-    private $skeletonModel;
+    private GetEntityControllerSkeletonModelImpl $skeletonModel;
 
-    /**
-     * @var string
-     */
-    private $entity;
+    private string $entity;
 
     public function create(): GetEntityControllerSkeletonModelBuilder
     {

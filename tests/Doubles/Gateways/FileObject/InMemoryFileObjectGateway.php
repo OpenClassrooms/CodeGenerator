@@ -12,12 +12,12 @@ class InMemoryFileObjectGateway implements FileObjectGateway
     /**
      * @var FileObject[]
      */
-    public static $fileObjects = [];
+    public static array $fileObjects = [];
 
     /**
      * @var FileObject[]
      */
-    public static $flushedFileObjects = [];
+    public static array $flushedFileObjects = [];
 
     public function __construct()
     {

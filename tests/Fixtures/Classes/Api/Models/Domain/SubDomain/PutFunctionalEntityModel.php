@@ -20,9 +20,9 @@ class PutFunctionalEntityModel
 
     protected function build(array $data)
     {
-        $this->field1 = $data[self::FIELD_1_API_FIELD_NAME] ?? null;
-        $this->field2 = $data[self::FIELD_2_API_FIELD_NAME] ?? null;
-        $this->field3 = $data[self::FIELD_3_API_FIELD_NAME] ?? null;
-        $this->field4 = $data[self::FIELD_4_API_FIELD_NAME] ?? null;
+        $this->field1 = $data[self::FIELD_1_API_FIELD_NAME] ?? '';
+        $this->field2 = $data[self::FIELD_2_API_FIELD_NAME] ?? [];
+        $this->field3 = $data[self::FIELD_3_API_FIELD_NAME] ?? false;
+        $this->field4 = $data[self::FIELD_4_API_FIELD_NAME] ?? new \DateTimeImmutable();
     }
 }

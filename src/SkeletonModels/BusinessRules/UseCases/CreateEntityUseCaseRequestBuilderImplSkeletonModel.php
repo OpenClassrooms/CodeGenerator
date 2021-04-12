@@ -18,5 +18,5 @@ abstract class CreateEntityUseCaseRequestBuilderImplSkeletonModel extends Abstra
 
     public $createEntityUseCaseRequestShortName;
 
-    public $templatePath = 'BusinessRules/UseCases/DTO/Request/CreateEntityUseCaseRequestBuilderImpl.php.twig';
+    public string $templatePath = 'BusinessRules/UseCases/DTO/Request/CreateEntityUseCaseRequestBuilderImpl.php.twig';
 }

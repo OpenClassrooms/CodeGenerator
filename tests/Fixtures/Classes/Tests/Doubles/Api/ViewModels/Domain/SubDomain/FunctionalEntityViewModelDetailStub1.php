@@ -21,13 +21,13 @@ final class FunctionalEntityViewModelDetailStub1 extends FunctionalEntityViewMod
 
     public const ID = FunctionalEntityDetailResponseStub1::ID;
 
-    public $field1 = self::FIELD_1;
+    public string $field1 = self::FIELD_1;
 
-    public $field2 = self::FIELD_2;
+    public array $field2 = self::FIELD_2;
 
-    public $field3 = self::FIELD_3;
+    public bool $field3 = self::FIELD_3;
 
-    public $id = self::ID;
+    public int $id = self::ID;
 
     public function __construct()
     {

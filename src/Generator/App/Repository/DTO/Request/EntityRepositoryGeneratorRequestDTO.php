@@ -8,10 +8,7 @@ use OpenClassrooms\CodeGenerator\Generator\App\Repository\Request\EntityReposito
 
 class EntityRepositoryGeneratorRequestDTO implements EntityRepositoryGeneratorRequest
 {
-    /**
-     * @var string
-     */
-    public $entity;
+    public string $entity;
 
     public function getEntityClassName(): string
     {

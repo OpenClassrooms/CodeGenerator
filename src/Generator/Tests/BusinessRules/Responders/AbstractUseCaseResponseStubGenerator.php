@@ -11,20 +11,11 @@ use OpenClassrooms\CodeGenerator\Generator\AbstractGenerator;
 
 abstract class AbstractUseCaseResponseStubGenerator extends AbstractGenerator
 {
-    /**
-     * @var EntityFileObjectFactory
-     */
-    protected $entityFileObjectFactory;
+    protected EntityFileObjectFactory $entityFileObjectFactory;
 
-    /**
-     * @var UseCaseResponseFileObjectFactory
-     */
-    protected $useCaseResponseFileObjectFactory;
+    protected UseCaseResponseFileObjectFactory $useCaseResponseFileObjectFactory;
 
-    /**
-     * @var ViewModelFileObjectFactory
-     */
-    protected $viewModelFileObjectFactory;
+    protected ViewModelFileObjectFactory $viewModelFileObjectFactory;
 
     public function setEntityFileObjectFactory(EntityFileObjectFactory $entityFileObjectFactory): void
     {

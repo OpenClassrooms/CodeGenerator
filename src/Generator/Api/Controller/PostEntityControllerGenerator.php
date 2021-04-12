@@ -32,45 +32,21 @@ class PostEntityControllerGenerator extends AbstractGenerator
 {
     use CommonControllerFactoryTrait;
 
-    /**
-     * @var PostEntityControllerSkeletonModelBuilder
-     */
-    private $postEntityControllerSkeletonModelBuilder;
+    private PostEntityControllerSkeletonModelBuilder $postEntityControllerSkeletonModelBuilder;
 
-    /**
-     * @var ControllerFileObjectFactory
-     */
-    private $controllerFileObjectFactory;
+    private ControllerFileObjectFactory $controllerFileObjectFactory;
 
-    /**
-     * @var EntityFileObjectFactory
-     */
-    private $entityFileObjectFactory;
+    private EntityFileObjectFactory $entityFileObjectFactory;
 
-    /**
-     * @var ModelFileObjectFactory
-     */
-    private $modelFileObjectFactory;
+    private ModelFileObjectFactory $modelFileObjectFactory;
 
-    /**
-     * @var UseCaseFileObjectFactory
-     */
-    private $useCaseFileObjectFactory;
+    private UseCaseFileObjectFactory $useCaseFileObjectFactory;
 
-    /**
-     * @var UseCaseRequestFileObjectFactory
-     */
-    private $useCaseRequestFileObjectFactory;
+    private UseCaseRequestFileObjectFactory $useCaseRequestFileObjectFactory;
 
-    /**
-     * @var UseCaseResponseFileObjectFactory
-     */
-    private $useCaseResponseFileObjectFactory;
+    private UseCaseResponseFileObjectFactory $useCaseResponseFileObjectFactory;
 
-    /**
-     * @var ViewModelFileObjectFactory
-     */
-    private $viewModelFileObjectFactory;
+    private ViewModelFileObjectFactory $viewModelFileObjectFactory;
 
     /**
      * @param PostEntityControllerGeneratorRequest $generatorRequest

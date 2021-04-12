@@ -20,10 +20,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class GetFunctionalEntityController extends AbstractApiController
 {
-    /**
-     * @var FunctionalEntityViewModelDetailAssembler
-     */
-    private $functionalEntityViewModelDetailAssembler;
+    private FunctionalEntityViewModelDetailAssembler $functionalEntityViewModelDetailAssembler;
 
     public function __construct(
         FunctionalEntityViewModelDetailAssembler $assembler

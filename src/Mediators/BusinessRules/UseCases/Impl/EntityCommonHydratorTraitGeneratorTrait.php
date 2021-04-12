@@ -24,7 +24,6 @@ trait EntityCommonHydratorTraitGeneratorTrait
                 ->create()
                 ->withEntityClassName($className)
                 ->build()
-
         );
     }
 

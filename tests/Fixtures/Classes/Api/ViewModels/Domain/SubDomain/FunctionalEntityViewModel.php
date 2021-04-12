@@ -8,23 +8,14 @@ namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Dom
 
 abstract class FunctionalEntityViewModel
 {
-    /**
-     * @var string
-     */
-    public $field1;
+    public string $field1;
 
     /**
      * @var string[]
      */
-    public $field2;
+    public array $field2;
 
-    /**
-     * @var bool
-     */
-    public $field3;
+    public bool $field3;
 
-    /**
-     * @var int
-     */
-    public $id;
+    public int $id;
 }

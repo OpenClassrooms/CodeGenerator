@@ -11,15 +11,9 @@ use OpenClassrooms\CodeGenerator\Tests\Fixtures\FixturesConfig;
 
 class UseCaseResponseFileObjectFactoryMock extends UseCaseResponseFileObjectFactoryImpl
 {
-    /**
-     * @var bool
-     */
-    public $useCaseDetailResponseExist;
+    public bool $useCaseDetailResponseExist;
 
-    /**
-     * @var bool
-     */
-    public $useCaseListItemResponseExist;
+    public bool $useCaseListItemResponseExist;
 
     public function __construct(bool $useCaseDetailResponseExist = true, bool $useCaseListItemResponseExist = true)
     {

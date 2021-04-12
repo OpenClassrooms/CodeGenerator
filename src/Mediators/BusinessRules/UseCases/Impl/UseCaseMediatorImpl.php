@@ -10,15 +10,9 @@ use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\UseCaseMediato
 
 class UseCaseMediatorImpl implements UseCaseMediator
 {
-    /**
-     * @var GenericUseCaseMediator
-     */
-    private $genericUseCaseMediator;
+    private GenericUseCaseMediator $genericUseCaseMediator;
 
-    /**
-     * @var GenericUseCaseRequestMediator
-     */
-    private $genericUseCaseRequestMediator;
+    private GenericUseCaseRequestMediator $genericUseCaseRequestMediator;
 
     public function mediate(array $args = [], array $options = []): array
     {

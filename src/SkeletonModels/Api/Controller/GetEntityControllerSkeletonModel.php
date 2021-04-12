@@ -8,47 +8,47 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 
 abstract class GetEntityControllerSkeletonModel extends AbstractSkeletonModel
 {
-    public $abstractControllerClassName;
+    public string $abstractControllerClassName;
 
-    public $abstractControllerShortName;
+    public string $abstractControllerShortName;
 
-    public $entityArgument;
+    public string $entityArgument;
 
-    public $entityIdArgument;
+    public string $entityIdArgument;
 
-    public $entityNotFoundExceptionArgument;
+    public string $entityNotFoundExceptionArgument;
 
-    public $entityNotFoundExceptionClassName;
+    public string $entityNotFoundExceptionClassName;
 
-    public $entityNotFoundExceptionShortName;
+    public string $entityNotFoundExceptionShortName;
 
-    public $entityUseCaseDetailResponseClassName;
+    public string $entityUseCaseDetailResponseClassName;
 
-    public $entityUseCaseDetailResponseShortName;
+    public string $entityUseCaseDetailResponseShortName;
 
-    public $entityViewModelDetailAssemblerClassName;
+    public string $entityViewModelDetailAssemblerClassName;
 
-    public $entityViewModelClassName;
+    public string $entityViewModelClassName;
 
-    public $entityViewModelDetailAssemblerArgument;
+    public string $entityViewModelDetailAssemblerArgument;
 
-    public $entityViewModelDetailAssemblerShortName;
+    public string $entityViewModelDetailAssemblerShortName;
 
-    public $entityViewModelShortName;
+    public string $entityViewModelShortName;
 
-    public $getEntityMethod;
+    public string $getEntityMethod;
 
-    public $getEntityUseCaseRequestClassName;
+    public string $getEntityUseCaseRequestClassName;
 
-    public $getEntityUseCaseRequestShortName;
+    public string $getEntityUseCaseRequestShortName;
 
-    public $getEntityUseCaseClassName;
+    public string $getEntityUseCaseClassName;
 
-    public $getEntityUseCaseShortName;
+    public string $getEntityUseCaseShortName;
 
-    public $routeAnnotation;
+    public string $routeAnnotation;
 
-    public $withEntityIdMethod;
+    public string $withEntityIdMethod;
 
-    public $templatePath = 'Api/Controller/GetEntityController.php.twig';
+    public string $templatePath = 'Api/Controller/GetEntityController.php.twig';
 }

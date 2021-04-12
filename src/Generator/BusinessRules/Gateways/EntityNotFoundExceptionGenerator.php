@@ -14,10 +14,7 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Gateways\EntityNot
 
 class EntityNotFoundExceptionGenerator extends AbstractUseCaseGenerator
 {
-    /**
-     * @var EntityNotFoundExceptionSkeletonModelAssembler
-     */
-    private $entityNotFoundExceptionSkeletonModelAssembler;
+    private EntityNotFoundExceptionSkeletonModelAssembler $entityNotFoundExceptionSkeletonModelAssembler;
 
     /**
      * @param EntityNotFoundExceptionGeneratorRequest $generatorRequest

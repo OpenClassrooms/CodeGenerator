@@ -17,12 +17,9 @@ class InMemoryFunctionalEntityGateway implements FunctionalEntityGateway
     /**
      * @var FunctionalEntity[]
      */
-    public static $functionalEntities = [];
+    public static array $functionalEntities = [];
 
-    /**
-     * @var int
-     */
-    public static $id = 1;
+    public static int $id = 1;
 
     public function __construct(array $functionalEntities = [])
     {

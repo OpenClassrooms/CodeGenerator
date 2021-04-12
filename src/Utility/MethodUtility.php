@@ -58,7 +58,7 @@ class MethodUtility
     private static function buildWitherCalledMethod(\ReflectionProperty $field, string $className): MethodObject
     {
         $methodChained = new MethodObject(NameUtility::createMethodsChainedName($field));
-        $methodChained->setReturnType(DocCommentUtility::getReturnType($field->getDocComment()));
+        $methodChained->setReturnType(DocCommentUtility::getReturnType($field->getDocComment() ?: ''));
         $methodChained->addArgument(self::buildConstantArgument($className, $field));
 
         return $methodChained;
@@ -69,7 +69,8 @@ class MethodUtility
         return new FieldObject(
             FileObjectUtility::getShortClassName($className) . 'Stub1::' . StringUtility::convertToUpperSnakeCase(
                 $field->getName()
-            )
+            ),
+            $field->getType()->getName()
         );
     }
 
@@ -100,7 +101,7 @@ class MethodUtility
 
     private static function buildArgument(\ReflectionProperty $field): FieldObject
     {
-        $argument = new FieldObject($field->getName());
+        $argument = new FieldObject($field->getName(), $field->getType()->getName());
         if ($field->getDocComment()) {
             $argument->setDocComment($field->getDocComment());
         }
@@ -110,10 +111,10 @@ class MethodUtility
 
     public static function createAccessorNameFromMethod(string $method): ?string
     {
-        if ('get' === substr($method, 0, 3)) {
+        if (strpos($method, 'get') === 0) {
             return lcfirst(substr($method, 3));
         }
-        if ('is' === substr($method, 0, 2)) {
+        if (strpos($method, 'is') === 0) {
             return lcfirst(substr($method, 2));
         }
 
@@ -129,9 +130,7 @@ class MethodUtility
     {
         $methods = self::getAccessors($className);
 
-        $methods = self::removeNotSelectedFields($fields, $methods);
-
-        return $methods;
+        return self::removeNotSelectedFields($fields, $methods);
     }
 
     public static function getAccessors(string $className): array
@@ -140,7 +139,7 @@ class MethodUtility
         $methods = $rc->getMethods();
 
         $accessors = [];
-        foreach ($methods as $key => $method) {
+        foreach ($methods as $method) {
             if (self::isAccessor($method)) {
                 $accessors[] = self::buildAccessor($method);
             }
@@ -151,7 +150,7 @@ class MethodUtility
 
     private static function isAccessor(\ReflectionMethod $method): bool
     {
-        return ('get' === substr($method->getName(), 0, 3) || 'is' === substr($method->getName(), 0, 2));
+        return (strpos($method->getName(), 'get') === 0 || strpos($method->getName(), 'is') === 0);
     }
 
     private static function buildAccessor(\ReflectionMethod $method): MethodObject
@@ -170,7 +169,7 @@ class MethodUtility
     private static function buildAccessorFromReturnType(\ReflectionMethod $method): MethodObject
     {
         $accessor = new MethodObject($method->getName());
-        $accessor->setDocComment($method->getDocComment());
+        $accessor->setDocComment($method->getDocComment() ?: null);
         $accessor->setReturnType($method->getReturnType()->getName());
         $accessor->setNullable($method->getReturnType()->allowsNull());
 
@@ -180,7 +179,7 @@ class MethodUtility
     private static function buildAccessorFromDocType(\ReflectionMethod $method): MethodObject
     {
         $accessor = new MethodObject($method->getName());
-        $accessor->setDocComment($method->getDocComment());
+        $accessor->setDocComment($method->getDocComment() ?: null);
         $accessor->setReturnType(DocCommentUtility::getReturnType($method->getDocComment()));
         $accessor->setNullable(DocCommentUtility::allowsNull($method->getDocComment()));
 
@@ -196,6 +195,7 @@ class MethodUtility
     private static function removeNotSelectedFields(array $fields, array $methods): array
     {
         foreach ($methods as $key => $method) {
+            /** @var $method \ReflectionMethod */
             if (!in_array($method->getAccessorName(), $fields)) {
                 unset($methods[$key]);
             }

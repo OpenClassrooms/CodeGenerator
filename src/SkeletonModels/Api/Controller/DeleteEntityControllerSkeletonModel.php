@@ -8,31 +8,31 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 
 abstract class DeleteEntityControllerSkeletonModel extends AbstractSkeletonModel
 {
-    public $abstractControllerClassName;
+    public string $abstractControllerClassName;
 
-    public $abstractControllerShortName;
+    public string $abstractControllerShortName;
 
-    public $deleteEntityClassName;
+    public string $deleteEntityClassName;
 
-    public $deleteEntityShortName;
+    public string $deleteEntityShortName;
 
-    public $deleteEntityMethod;
+    public string $deleteEntityMethod;
 
-    public $deleteEntityRequestBuilderArgument;
+    public string $deleteEntityRequestBuilderArgument;
 
-    public $deleteEntityRequestBuilderClassName;
+    public string $deleteEntityRequestBuilderClassName;
 
-    public $deleteEntityRequestBuilderShortName;
+    public string $deleteEntityRequestBuilderShortName;
 
-    public $entityIdArgument;
+    public string $entityIdArgument;
 
-    public $entityNotFoundExceptionClassName;
+    public string $entityNotFoundExceptionClassName;
 
-    public $entityNotFoundExceptionShortName;
+    public string $entityNotFoundExceptionShortName;
 
-    public $routeAnnotation;
+    public string $routeAnnotation;
 
-    public $withEntityIdMethod;
+    public string $withEntityIdMethod;
 
-    public $templatePath = 'Api/Controller/DeleteEntityController.php.twig';
+    public string $templatePath = 'Api/Controller/DeleteEntityController.php.twig';
 }

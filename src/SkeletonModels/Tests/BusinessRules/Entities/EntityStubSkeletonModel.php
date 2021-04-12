@@ -12,27 +12,15 @@ abstract class EntityStubSkeletonModel extends AbstractSkeletonModel
     /**
      * @var ConstObject[]
      */
-    public $constants;
+    public array $constants;
 
-    /**
-     * @var array
-     */
-    public $dateTimeType;
+    public array $dateTimeType;
 
-    /**
-     * @var bool
-     */
-    public $hasConstructor;
+    public bool $hasConstructor;
 
-    /**
-     * @var string
-     */
-    public $parentClassName;
+    public string $parentClassName;
 
-    /**
-     * @var string
-     */
-    public $parentShortName;
+    public string $parentShortName;
 
-    public $templatePath = 'Tests/Doubles/BusinessRules/Entities/EntityStub.php.twig';
+    public string $templatePath = 'Tests/Doubles/BusinessRules/Entities/EntityStub.php.twig';
 }

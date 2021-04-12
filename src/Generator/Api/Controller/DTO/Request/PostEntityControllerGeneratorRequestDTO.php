@@ -8,10 +8,7 @@ use OpenClassrooms\CodeGenerator\Generator\Api\Controller\Request\PostEntityCont
 
 class PostEntityControllerGeneratorRequestDTO implements PostEntityControllerGeneratorRequest
 {
-    /**
-     * @var string
-     */
-    public $entityClassName;
+    public string $entityClassName;
 
     public function getEntityClassName(): string
     {

@@ -15,10 +15,7 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\GenericUs
 
 class GenericUseCaseGenerator extends AbstractUseCaseGenerator
 {
-    /**
-     * @var GenericUseCaseSkeletonModelAssembler
-     */
-    private $genericUseCaseSkeletonModelAssembler;
+    private GenericUseCaseSkeletonModelAssembler $genericUseCaseSkeletonModelAssembler;
 
     /**
      * @param GenericUseCaseGeneratorRequest $generatorRequest

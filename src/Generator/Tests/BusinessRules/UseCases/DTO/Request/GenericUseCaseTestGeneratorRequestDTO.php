@@ -8,15 +8,9 @@ use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\Request\
 
 class GenericUseCaseTestGeneratorRequestDTO implements GenericUseCaseTestGeneratorRequest
 {
-    /**
-     * @var string
-     */
-    public $domain;
+    public string $domain;
 
-    /**
-     * @var string
-     */
-    public $useCaseName;
+    public string $useCaseName;
 
     public function getDomain(): string
     {

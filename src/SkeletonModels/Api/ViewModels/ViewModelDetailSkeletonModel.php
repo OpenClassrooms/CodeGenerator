@@ -8,7 +8,7 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 
 abstract class ViewModelDetailSkeletonModel extends AbstractSkeletonModel
 {
-    public $templatePath = 'Api/ViewModels/ViewModelDetail.php.twig';
+    public string $templatePath = 'Api/ViewModels/ViewModelDetail.php.twig';
 
     public function getParentShortName(): string
     {

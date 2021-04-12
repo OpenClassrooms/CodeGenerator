@@ -10,19 +10,19 @@ use OpenClassrooms\CodeGenerator\Entities\Object\FieldObject;
 
 class EntityStubFieldObjectStub6 extends FieldObject
 {
-    const CONST       = 'UPDATED_AT';
+    private const CONST = 'UPDATED_AT';
 
-    const DOC_COMMENT = '/**
-     * @var \DateTimeInterface
-     */';
+    public const DOC_COMMENT = null;
 
-    const NAME        = 'updatedAt';
+    public const NAME = 'updatedAt';
 
-    protected $docComment = self::DOC_COMMENT;
+    protected ?string $docComment = self::DOC_COMMENT;
 
-    protected $name = self::NAME;
+    protected string $name = self::NAME;
 
-    protected $scope = FieldObject::SCOPE_PROTECTED;
+    protected string $scope = FieldObject::SCOPE_PROTECTED;
+
+    protected ?string $type = '\DateTimeInterface';
 
     public function __construct()
     {

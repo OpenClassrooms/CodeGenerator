@@ -9,27 +9,25 @@ use OpenClassrooms\CodeGenerator\Entities\Object\MethodObject;
 
 class EntityMethodObjectStub3 extends MethodObject
 {
-    const DOC_COMMENT = '/**
+    public const DOC_COMMENT = '/**
      * @return string[]
      */';
 
-    const NAME        = 'getField2';
+    public const NAME = 'getField2';
 
-    const NULLABLE    = false;
+    private const NULLABLE    = false;
 
-    const RETURN_TYPE = 'array';
+    private const RETURN_TYPE = 'array';
 
-    const VALUE       = null;
+    protected ?string $docComment = self::DOC_COMMENT;
 
-    protected $docComment = self::DOC_COMMENT;
+    protected string $name = self::NAME;
 
-    protected $name = self::NAME;
+    protected bool $nullable = self::NULLABLE;
 
-    protected $nullable = self::NULLABLE;
+    protected string $returnType = self::RETURN_TYPE;
 
-    protected $returnType = self::RETURN_TYPE;
-
-    protected $scope = FieldObject::SCOPE_PROTECTED;
+    protected string $scope = FieldObject::SCOPE_PROTECTED;
 
     public function __construct()
     {

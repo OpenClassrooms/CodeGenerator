@@ -6,10 +6,7 @@ namespace OpenClassrooms\CodeGenerator\SkeletonModels\Api\Controller\Impl;
 
 trait AbstractControllerClassNameTrait
 {
-    /**
-     * @var string
-     */
-    protected $abstractControllerClassName;
+    protected string $abstractControllerClassName;
 
     public function setAbstractControllerClassName(string $abstractControllerClassName): void
     {

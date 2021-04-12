@@ -8,10 +8,7 @@ use OpenClassrooms\CodeGenerator\Generator\App\Entity\Request\EntityImplGenerato
 
 class EntityImplGeneratorRequestDTO implements EntityImplGeneratorRequest
 {
-    /**
-     * @var string
-     */
-    public $className;
+    public string $className;
 
     public function getUseCaseResponseClassName(): string
     {

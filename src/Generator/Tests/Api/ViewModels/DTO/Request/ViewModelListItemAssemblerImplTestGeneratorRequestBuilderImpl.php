@@ -9,10 +9,7 @@ use OpenClassrooms\CodeGenerator\Generator\Tests\Api\ViewModels\Request\ViewMode
 
 class ViewModelListItemAssemblerImplTestGeneratorRequestBuilderImpl implements ViewModelListItemAssemblerImplTestGeneratorRequestBuilder
 {
-    /**
-     * @var ViewModelListItemAssemblerImplTestGeneratorRequestDTO
-     */
-    private $request;
+    private ViewModelListItemAssemblerImplTestGeneratorRequestDTO $request;
 
     public function build(): ViewModelListItemAssemblerImplTestGeneratorRequest
     {

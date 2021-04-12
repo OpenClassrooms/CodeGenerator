@@ -14,8 +14,8 @@ class {{ skeletonModel.shortName }} extends {{ skeletonModel.useCaseListItemResp
 {% endif %}
 {% endfor %}
 
-{% for  field in skeletonModel.fields %}
-    public ${{ field.name }} = self::{{ field.value.name }};
+{% for field in skeletonModel.fields %}
+    public {{ field.type }} ${{ field.name }} = self::{{ field.value.name }};
 {% if not loop.last%}
 
 {% endif %}

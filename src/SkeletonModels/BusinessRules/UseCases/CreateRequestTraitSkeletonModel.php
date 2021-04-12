@@ -8,5 +8,5 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 
 abstract class CreateRequestTraitSkeletonModel extends AbstractSkeletonModel
 {
-    public $templatePath = 'BusinessRules/UseCases/CreateRequestTrait.php.twig';
+    public string $templatePath = 'BusinessRules/UseCases/CreateRequestTrait.php.twig';
 }

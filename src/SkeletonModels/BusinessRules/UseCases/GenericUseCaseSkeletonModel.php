@@ -14,7 +14,7 @@ abstract class GenericUseCaseSkeletonModel extends AbstractSkeletonModel
 
     public $securityClassName;
 
-    public $templatePath = 'BusinessRules/UseCases/GenericUseCase.php.twig';
+    public string $templatePath = 'BusinessRules/UseCases/GenericUseCase.php.twig';
 
     public $useCaseClassName;
 
