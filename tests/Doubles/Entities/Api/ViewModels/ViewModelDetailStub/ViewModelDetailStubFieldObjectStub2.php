@@ -20,6 +20,8 @@ final class ViewModelDetailStubFieldObjectStub2 extends FieldObject
 
     protected string $scope = FieldObject::SCOPE_PUBLIC;
 
+    protected ?string $type = 'string';
+
     public function __construct()
     {
         parent::__construct($this->name);

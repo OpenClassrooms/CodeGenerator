@@ -11,7 +11,7 @@ class MethodObject
     /**
      * @var FieldObject[]
      */
-    protected array $arguments;
+    protected array $arguments = [];
 
     protected ?string $docComment = null;
 
@@ -19,7 +19,7 @@ class MethodObject
 
     protected bool $nullable;
 
-    protected string $returnType;
+    protected string $returnType = '';
 
     public function __construct(string $name)
     {

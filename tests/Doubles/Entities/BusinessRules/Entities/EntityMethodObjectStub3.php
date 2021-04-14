@@ -15,7 +15,7 @@ class EntityMethodObjectStub3 extends MethodObject
 
     public const NAME = 'getField2';
 
-    private const NULLABLE    = false;
+    private const NULLABLE = false;
 
     private const RETURN_TYPE = 'array';
 
@@ -26,8 +26,6 @@ class EntityMethodObjectStub3 extends MethodObject
     protected bool $nullable = self::NULLABLE;
 
     protected string $returnType = self::RETURN_TYPE;
-
-    protected string $scope = FieldObject::SCOPE_PROTECTED;
 
     public function __construct()
     {

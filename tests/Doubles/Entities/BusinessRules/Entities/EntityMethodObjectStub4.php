@@ -13,7 +13,7 @@ class EntityMethodObjectStub4 extends MethodObject
 
     public const NAME = 'isField3';
 
-    private const NULLABLE    = false;
+    private const NULLABLE = false;
 
     private const RETURN_TYPE = 'bool';
 
@@ -24,8 +24,6 @@ class EntityMethodObjectStub4 extends MethodObject
     protected bool $nullable = self::NULLABLE;
 
     protected string $returnType = self::RETURN_TYPE;
-
-    protected string $scope = FieldObject::SCOPE_PROTECTED;
 
     public function __construct()
     {

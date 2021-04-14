@@ -20,7 +20,7 @@ class UseCaseDetailResponseStubFieldObjectStub5 extends FieldObject
 
     protected string $scope = FieldObject::SCOPE_PROTECTED;
 
-    protected ?string $type = 'string';
+    protected ?string $type = '\DateTimeInterface';
 
     public function __construct()
     {

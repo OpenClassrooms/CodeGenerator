@@ -8,9 +8,7 @@ use OpenClassrooms\CodeGenerator\Entities\Object\FieldObject;
 
 class EntityFieldObjectStub6 extends FieldObject
 {
-    public const DOC_COMMENT = '/**
-     * @var \DateTimeInterface
-     */';
+    public const DOC_COMMENT = null;
 
     public const NAME = 'updatedAt';
 

@@ -132,7 +132,7 @@ class PostEntityControllerSkeletonModelBuilderImpl implements PostEntityControll
         $this->skeletonModel->abstractControllerShortName = FileObjectUtility::getShortClassName(
             $this->abstractControllerClassName
         );
-        $this->skeletonModel->useCarbon = $this->methodArgumentUseCarbon($this->skeletonModel->postEntityModelMethods);
+        $this->skeletonModel->useCarbon = $this->useCarbon($this->skeletonModel->postEntityModelMethods);
 
         return $this->skeletonModel;
     }

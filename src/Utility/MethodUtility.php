@@ -58,7 +58,6 @@ class MethodUtility
     private static function buildWitherCalledMethod(\ReflectionProperty $field, string $className): MethodObject
     {
         $methodChained = new MethodObject(NameUtility::createMethodsChainedName($field));
-        $methodChained->setReturnType(DocCommentUtility::getReturnType($field->getDocComment() ?: ''));
         $methodChained->addArgument(self::buildConstantArgument($className, $field));
 
         return $methodChained;

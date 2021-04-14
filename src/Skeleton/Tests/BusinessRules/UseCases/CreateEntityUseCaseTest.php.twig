@@ -52,7 +52,7 @@ final class {{ skeletonModel.shortName }} extends TestCase
         return $builder
             ->create()
 {% for method in skeletonModel.createEntityUseCaseRequestBuilderImplMethods | sortNameByAlpha %}
-{% if method.isDateType %}
+{% if method.arguments[0].isDateType %}
             ->{{ method.name }}(new Carbon({{ method.arguments[0].name }}))
 {% else %}
             ->{{ method.name }}({{ method.arguments[0].name }})

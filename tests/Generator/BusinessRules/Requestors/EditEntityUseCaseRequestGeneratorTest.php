@@ -31,14 +31,11 @@ final class EditEntityUseCaseRequestGeneratorTest extends TestCase
      */
     public function generateReturnFileObject(): void
     {
-        $fileObjs = InMemoryFileObjectGateway::$fileObjects;
-
         $actualFileObject = $this->editEntityUseCaseRequestGenerator->generate($this->request);
-
-        $fileObjs2 = InMemoryFileObjectGateway::$fileObjects;
+        $expectedFileObject = InMemoryFileObjectGateway::$fileObjects[$actualFileObject->getId()];
 
         $this->assertSame(
-            InMemoryFileObjectGateway::$fileObjects[$actualFileObject->getId()]->getPath(),
+            $expectedFileObject->getPath(),
             $actualFileObject->getPath()
         );
         $this->assertFileObject(new EditEntityUseCaseRequestFileObjectStub1(), $actualFileObject);
@@ -46,8 +43,6 @@ final class EditEntityUseCaseRequestGeneratorTest extends TestCase
 
     protected function setUp(): void
     {
-        $fileObjs = InMemoryFileObjectGateway::$fileObjects;
-
         $editEntityUseCaseRequestGeneratorRequestBuilderImpl = new EditEntityUseCaseRequestGeneratorRequestBuilderImpl(
         );
         $this->request = $editEntityUseCaseRequestGeneratorRequestBuilderImpl

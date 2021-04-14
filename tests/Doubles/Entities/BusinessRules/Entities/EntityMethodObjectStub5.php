@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Entities;
 
-use OpenClassrooms\CodeGenerator\Entities\Object\FieldObject;
 use OpenClassrooms\CodeGenerator\Entities\Object\MethodObject;
 
 class EntityMethodObjectStub5 extends MethodObject
@@ -13,7 +12,7 @@ class EntityMethodObjectStub5 extends MethodObject
 
     public const NAME = 'getField4';
 
-    private const NULLABLE    = true;
+    private const NULLABLE = false;
 
     private const RETURN_TYPE = 'DateTimeInterface';
 
@@ -24,8 +23,6 @@ class EntityMethodObjectStub5 extends MethodObject
     protected bool $nullable = self::NULLABLE;
 
     protected string $returnType = self::RETURN_TYPE;
-
-    protected string $scope = FieldObject::SCOPE_PROTECTED;
 
     public function __construct()
     {

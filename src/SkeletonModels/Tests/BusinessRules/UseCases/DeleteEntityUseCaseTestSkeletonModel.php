@@ -8,43 +8,43 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 
 abstract class DeleteEntityUseCaseTestSkeletonModel extends AbstractSkeletonModel
 {
-    public $deleteEntityUseCaseClassName;
+    public string $deleteEntityUseCaseClassName;
 
-    public $deleteEntityUseCaseMethod;
+    public string $deleteEntityUseCaseMethod;
 
-    public $deleteEntityUseCaseShortName;
+    public string $deleteEntityUseCaseShortName;
 
-    public $deleteEntityUseCaseRequestBuilderImplClassName;
+    public string $deleteEntityUseCaseRequestBuilderImplClassName;
 
-    public $deleteEntityUseCaseRequestBuilderImplShortName;
+    public string $deleteEntityUseCaseRequestBuilderImplShortName;
 
-    public $deleteEntityUseCaseRequestClassName;
+    public string $deleteEntityUseCaseRequestClassName;
 
-    public $deleteEntityUseCaseRequestShortName;
+    public string $deleteEntityUseCaseRequestShortName;
 
-    public $deleteEntityUseCaseRequestDTOClassName;
+    public string $deleteEntityUseCaseRequestDTOClassName;
 
-    public $deleteEntityUseCaseRequestDTOShortName;
+    public string $deleteEntityUseCaseRequestDTOShortName;
 
-    public $entityNotFoundExceptionClassName;
+    public string $entityNotFoundExceptionClassName;
 
-    public $entityStubClassName;
+    public string $entityStubClassName;
 
-    public $entityStubArgument;
+    public string $entityStubArgument;
 
-    public $entityStubShortName;
+    public string $entityStubShortName;
 
-    public $inMemoryEntityGatewayClassName;
+    public string $inMemoryEntityGatewayClassName;
 
-    public $inMemoryEntityGatewayShortName;
+    public string $inMemoryEntityGatewayShortName;
 
-    public $withEntityIdMethod;
+    public string $withEntityIdMethod;
 
-    public $entitiesArgument;
+    public string $entitiesArgument;
 
-    public $entityArgument;
+    public string $entityArgument;
 
-    public $entityIdArgument;
+    public string $entityIdArgument;
 
     public string $templatePath = 'Tests/BusinessRules/UseCases/DeleteEntityUseCaseTest.php.twig';
 }

@@ -33,9 +33,10 @@ class CreateEntityUseCaseTestGeneratorTest extends TestCase
     final public function generateReturnFileObject(): void
     {
         $actualFileObject = $this->createEntityTestGenerator->generate($this->request);
+        $expectedFileObject = InMemoryFileObjectGateway::$fileObjects[$actualFileObject->getId()];
 
         $this->assertSame(
-            InMemoryFileObjectGateway::$fileObjects[$actualFileObject->getId()]->getPath(),
+            $expectedFileObject->getPath(),
             $actualFileObject->getPath()
         );
         $this->assertFileObject(new CreateEntityUseCaseTestFileObjectStub1(), $actualFileObject);

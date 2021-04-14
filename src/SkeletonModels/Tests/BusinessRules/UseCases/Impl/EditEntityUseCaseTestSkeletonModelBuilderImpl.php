@@ -14,7 +14,7 @@ class EditEntityUseCaseTestSkeletonModelBuilderImpl implements EditEntityUseCase
 {
     use UseCarbonTrait;
 
-    private $entityUtilClassName;
+    private string $entityUtilClassName;
 
     private EditEntityUseCaseTestSkeletonModelImpl $skeletonModel;
 

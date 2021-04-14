@@ -8,53 +8,53 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 
 abstract class GetEntitiesUseCaseTestSkeletonModel extends AbstractSkeletonModel
 {
-    public $entitiesArgument;
+    public string $entitiesArgument;
 
-    public $entitiesShortName;
+    public string $entitiesShortName;
 
-    public $entityGatewayShortName;
+    public string $entityGatewayShortName;
 
     public array $entityStubClassNames = [];
 
     public array $entityStubShortNames = [];
 
-    public $getEntitiesUseCaseClassName;
+    public string $getEntitiesUseCaseClassName;
 
-    public $getEntitiesUseCaseRequestBuilderImplClassName;
+    public string $getEntitiesUseCaseRequestBuilderImplClassName;
 
-    public $getEntitiesUseCaseRequestBuilderImplShortName;
+    public string $getEntitiesUseCaseRequestBuilderImplShortName;
 
-    public $getEntitiesUseCaseRequestClassName;
+    public string $getEntitiesUseCaseRequestClassName;
 
-    public $getEntitiesUseCaseRequestDTOClassName;
+    public string $getEntitiesUseCaseRequestDTOClassName;
 
-    public $getEntitiesUseCaseRequestDTOShortName;
+    public string $getEntitiesUseCaseRequestDTOShortName;
 
-    public $getEntitiesUseCaseRequestShortName;
+    public string $getEntitiesUseCaseRequestShortName;
 
-    public $getEntitiesUseCaseShortName;
+    public string $getEntitiesUseCaseShortName;
 
-    public $inMemoryEntityGatewayClassName;
+    public string $inMemoryEntityGatewayClassName;
 
-    public $inMemoryEntityGatewayShortName;
+    public string $inMemoryEntityGatewayShortName;
 
     public string $templatePath = 'Tests/BusinessRules/UseCases/GetEntitiesUseCaseTest.php.twig';
 
-    public $paginationClassName;
+    public string $paginationClassName;
 
-    public $useCaseListItemResponseAssemblerMockClassName;
+    public string $useCaseListItemResponseAssemblerMockClassName;
 
-    public $useCaseListItemResponseAssemblerMockShortName;
+    public string $useCaseListItemResponseAssemblerMockShortName;
 
-    public $useCaseListItemResponseAssemblerShortName;
+    public string $useCaseListItemResponseAssemblerShortName;
 
-    public $useCaseListItemResponsesShortName;
+    public string $useCaseListItemResponsesShortName;
 
     public array $useCaseListItemResponseStubClassNames = [];
 
     public array $useCaseListItemResponseStubShortNames = [];
 
-    public $useCaseListItemResponseTestCaseClassName;
+    public string $useCaseListItemResponseTestCaseClassName;
 
-    public $useCaseListItemResponseTestCaseShortName;
+    public string $useCaseListItemResponseTestCaseShortName;
 }

@@ -8,53 +8,53 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 
 abstract class CreateEntityUseCaseTestSkeletonModel extends AbstractSkeletonModel
 {
-    public $createEntityClassName;
+    public string $createEntityClassName;
 
-    public $createEntityUseCaseRequestBuilderImplClassName;
+    public string $createEntityUseCaseRequestBuilderImplClassName;
 
-    public $createEntityUseCaseRequestBuilderImplMethods;
+    public array $createEntityUseCaseRequestBuilderImplMethods;
 
-    public $createEntityUseCaseRequestBuilderImplShortName;
+    public string $createEntityUseCaseRequestBuilderImplShortName;
 
-    public $createEntityUseCaseRequestClassName;
+    public string $createEntityUseCaseRequestClassName;
 
-    public $createEntityUseCaseRequestDTOClassName;
+    public string $createEntityUseCaseRequestDTOClassName;
 
-    public $createEntityUseCaseRequestDTOShortName;
+    public string $createEntityUseCaseRequestDTOShortName;
 
-    public $createEntityUseCaseRequestShortName;
+    public string $createEntityUseCaseRequestShortName;
 
-    public $createEntityShortName;
+    public string $createEntityShortName;
 
-    public $entityFactoryImplClassName;
+    public string $entityFactoryImplClassName;
 
-    public $entityFactoryImplShortName;
+    public string $entityFactoryImplShortName;
 
-    public $entityShortName;
+    public string $entityShortName;
 
-    public $entityStubClassName;
+    public string $entityStubClassName;
 
-    public $entityStubShortName;
+    public string $entityStubShortName;
 
-    public $entityUseCaseDetailResponseAssemblerMockClassName;
+    public string $entityUseCaseDetailResponseAssemblerMockClassName;
 
-    public $entityUseCaseDetailResponseAssemblerMockShortName;
+    public string $entityUseCaseDetailResponseAssemblerMockShortName;
 
-    public $entityUseCaseDetailResponseShortName;
+    public string $entityUseCaseDetailResponseShortName;
 
-    public $entityUseCaseDetailResponseStubClassName;
+    public string $entityUseCaseDetailResponseStubClassName;
 
-    public $entityUseCaseDetailResponseStubShortName;
+    public string $entityUseCaseDetailResponseStubShortName;
 
-    public $entityUseCaseDetailResponseTestCaseClassName;
+    public string $entityUseCaseDetailResponseTestCaseClassName;
 
-    public $entityUseCaseDetailResponseTestCaseShortName;
+    public string $entityUseCaseDetailResponseTestCaseShortName;
 
-    public $inMemoryEntityGatewayClassName;
+    public string $inMemoryEntityGatewayClassName;
 
-    public $inMemoryEntityGatewayShortName;
+    public string $inMemoryEntityGatewayShortName;
 
     public string $templatePath = 'Tests/BusinessRules/UseCases/CreateEntityUseCaseTest.php.twig';
 
-    public $useCarbon;
+    public bool $useCarbon;
 }
