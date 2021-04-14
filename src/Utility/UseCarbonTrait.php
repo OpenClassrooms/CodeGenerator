@@ -13,6 +13,10 @@ trait UseCarbonTrait
      */
     private function useCarbon(array $methods): bool
     {
+        if ($this->methodArgumentUseCarbon($methods)) {
+            return true;
+        }
+
         foreach ($methods as $method) {
             /** @var MethodObject $method */
             if ($method->isDateType()) {
@@ -30,6 +34,7 @@ trait UseCarbonTrait
     {
         foreach ($methods as $method) {
             foreach ($method->getArguments() as $argument) {
+                /** @var MethodObject $method */
                 if ($argument->isDateType()) {
                     return true;
                 }

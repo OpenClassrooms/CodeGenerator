@@ -23,6 +23,8 @@ class EntityStubFieldObjectStub1 extends FieldObject
 
     protected string $scope = FieldObject::SCOPE_PROTECTED;
 
+    protected ?string $type = 'int';
+
     public function __construct()
     {
         parent::__construct($this->name);

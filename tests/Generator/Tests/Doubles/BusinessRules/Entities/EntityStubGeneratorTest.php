@@ -32,9 +32,10 @@ class EntityStubGeneratorTest extends TestCase
     public function generateReturnFileObject(): void
     {
         $actualFileObject = $this->entityStubGenerator->generate($this->request);
+        $expectedFileObject = InMemoryFileObjectGateway::$fileObjects[$actualFileObject->getId()];
 
         $this->assertSame(
-            InMemoryFileObjectGateway::$fileObjects[$actualFileObject->getId()]->getPath(),
+            $expectedFileObject->getPath(),
             $actualFileObject->getPath()
         );
         $this->assertFileObject(new EntityStubFileObjectStub1(), $actualFileObject);

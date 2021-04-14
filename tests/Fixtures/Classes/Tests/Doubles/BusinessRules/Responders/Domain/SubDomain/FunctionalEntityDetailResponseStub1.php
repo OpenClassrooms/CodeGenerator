@@ -29,9 +29,11 @@ class FunctionalEntityDetailResponseStub1 extends FunctionalEntityDetailResponse
 
     public bool $field3 = self::FIELD_3;
 
+    public \DateTimeInterface $field4;
+
     public int $id = self::ID;
 
-    public $updatedAt = self::UPDATED_AT;
+    public \DateTimeInterface $updatedAt;
 
     public function __construct()
     {
