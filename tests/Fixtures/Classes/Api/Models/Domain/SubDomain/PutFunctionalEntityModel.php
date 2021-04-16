@@ -17,12 +17,4 @@ class PutFunctionalEntityModel
     protected const FIELD_3_API_FIELD_NAME = 'field3';
 
     protected const FIELD_4_API_FIELD_NAME = 'field4';
-
-    protected function build(array $data)
-    {
-        $this->field1 = $data[self::FIELD_1_API_FIELD_NAME] ?? '';
-        $this->field2 = $data[self::FIELD_2_API_FIELD_NAME] ?? [];
-        $this->field3 = $data[self::FIELD_3_API_FIELD_NAME] ?? false;
-        $this->field4 = $data[self::FIELD_4_API_FIELD_NAME] ?? new \DateTimeImmutable();
-    }
 }
