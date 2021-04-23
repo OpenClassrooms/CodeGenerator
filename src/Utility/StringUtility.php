@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace OpenClassrooms\CodeGenerator\Utility;
 
-use Doctrine\Common\Inflector\Inflector;
+use Symfony\Component\String\Inflector\EnglishInflector;
 
 class StringUtility
 {
@@ -35,6 +35,8 @@ class StringUtility
 
     public static function pluralize(string $string): string
     {
-        return Inflector::pluralize($string);
+        $pluralize = (new EnglishInflector())->pluralize($string);
+
+        return reset($pluralize);
     }
 }
