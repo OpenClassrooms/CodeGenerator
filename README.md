@@ -100,15 +100,15 @@ php bin/code-generator code-generator:generic-use-case Domain\\SubDomain UseCase
 To generate entity CRUD use case architecture: 
 ``` 
 Create: 
-php bin/code-generator code-generator:create-entity-use-case EntityClassName
+php bin/code-generator code-generator:create-entity-use-case "Fully\\Qualified\\Entity\\Class\\Name"
 Delete: 
-php bin/code-generator code-generator:delete-entity-use-case EntityClassName
+php bin/code-generator code-generator:delete-entity-use-case "Fully\\Qualified\\Entity\\Class\\Name"
 Edit:
-php bin/code-generator code-generator:edit-entity-use-case EntityClassName
+php bin/code-generator code-generator:edit-entity-use-case "Fully\\Qualified\\Entity\\Class\\Name"
 Get all:
-php bin/code-generator code-generator:get-entities-use-case EntityClassName
+php bin/code-generator code-generator:get-entities-use-case "Fully\\Qualified\\Entity\\Class\\Name"
 Get:
-php bin/code-generator code-generator:get-entity-use-case EntityClassName
+php bin/code-generator code-generator:get-entity-use-case "Fully\\Qualified\\Entity\\Class\\Name"
 ```  
 ### Extensions
 To generate without tests:
