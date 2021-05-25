@@ -26,9 +26,9 @@ final class {{ skeletonModel.shortName }} extends {{ skeletonModel.parentShortNa
 
     public function __construct()
     {
-{% for field in skeletonModel.fields if field.type in skeletonModel.dateTimeType  %}
+{% for field in skeletonModel.fields %}{% if field.type in skeletonModel.dateTimeType %}
         $this->{{ field.name }} = new \DateTimeImmutable(self::{{ field.value.name }});
-{% endfor %}
+{% endif %}{% endfor %}
     }
 {% endif %}
 }
