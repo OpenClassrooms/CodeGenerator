@@ -50,7 +50,7 @@ class PatchFunctionalEntityController extends AbstractApiController
 
             return $this->createUpdatedResponse($this->buildViewModel($response));
         } catch (FunctionalEntityNotFoundException $e) {
-            $this->throwNotFoundException();
+            throw $this->createNotFoundException();
         }
     }
 

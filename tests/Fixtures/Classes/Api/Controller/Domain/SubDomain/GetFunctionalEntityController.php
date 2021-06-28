@@ -42,7 +42,7 @@ class GetFunctionalEntityController extends AbstractApiController
 
             return $this->createJsonResponse($vm);
         } catch (FunctionalEntityNotFoundException $e) {
-            $this->throwNotFoundException();
+            throw $this->createNotFoundException();
         }
     }
 

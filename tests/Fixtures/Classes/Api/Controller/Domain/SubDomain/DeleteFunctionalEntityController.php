@@ -35,7 +35,7 @@ class DeleteFunctionalEntityController extends AbstractApiController
 
             return $this->createDeletedResponse();
         } catch (FunctionalEntityNotFoundException $exception) {
-            $this->throwNotFoundException();
+            throw $this->createNotFoundException();
         }
     }
 

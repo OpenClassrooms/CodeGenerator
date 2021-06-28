@@ -39,7 +39,7 @@ class PutFunctionalEntityController extends AbstractApiController
 
             return $this->createUpdatedResponse();
         } catch (FunctionalEntityNotFoundException $e) {
-            $this->throwNotFoundException();
+            throw $this->createNotFoundException();
         }
     }
 

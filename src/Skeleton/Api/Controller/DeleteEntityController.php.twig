@@ -31,7 +31,7 @@ class {{ skeletonModel.shortName }} extends {{ skeletonModel.abstractControllerS
 
             return $this->createDeletedResponse();
         } catch ({{ skeletonModel.entityNotFoundExceptionShortName}} $exception) {
-            $this->throwNotFoundException();
+            throw $this->createNotFoundException();
         }
     }
 
