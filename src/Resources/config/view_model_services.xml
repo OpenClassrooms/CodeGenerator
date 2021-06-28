@@ -6,11 +6,9 @@
         <import resource="FileObject/abstract_file_object_factory.xml"/>
         <import resource="FileObject/factories.xml"/>
         <import resource="Generator/abstract_generator.xml"/>
-        <import resource="Generator/Api/ViewModels/view_model_detail_impl.xml"/>
         <import resource="Generator/Api/ViewModels/abstract_view_model.xml"/>
         <import resource="Generator/Api/ViewModels/view_model_list_item.xml"/>
         <import resource="Generator/Api/ViewModels/view_model_detail.xml"/>
-        <import resource="Generator/Api/ViewModels/view_model_list_item_impl.xml"/>
         <import resource="Generator/Api/ViewModels/view_model.xml"/>
         <import resource="Generator/Api/ViewModels/view_model_detail_assembler.xml"/>
         <import resource="Generator/Api/ViewModels/view_model_list_item_assembler.xml"/>
@@ -22,10 +20,7 @@
         <import resource="Generator/Tests/BusinessRules/Responders/use_case_list_item_response_stub.xml"/>
         <import resource="Generator/Tests/BusinessRules/Responders/use_case_detail_response_stub.xml"/>
         <import resource="Generator/Tests/Doubles/Api/ViewModels/view_model_detail_stub.xml"/>
-        <import resource="Generator/Tests/Doubles/Api/ViewModels/view_model_detail_test_case.xml"/>
-        <import resource="Generator/Tests/Doubles/Api/ViewModels/view_model_list_item_test_case.xml"/>
         <import resource="Generator/Tests/Doubles/Api/ViewModels/view_model_list_item_stub.xml"/>
-        <import resource="Generator/Tests/Doubles/Api/ViewModels/view_model_test_case.xml"/>
         <import resource="Mediators/Api/ViewModels/view_model_mediator.xml"/>
         <import resource="Services/templating_service.xml"/>
     </imports>
