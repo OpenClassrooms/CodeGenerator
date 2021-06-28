@@ -100,7 +100,7 @@ php bin/code-generator code-generator:generic-use-case Domain\\SubDomain UseCase
 ```
 To generate an entity CRUD use case architecture: 
 ```shell
-# Create
+# Create:
 php bin/code-generator code-generator:create-entity-use-case EntityClassName
 # Delete: 
 php bin/code-generator code-generator:delete-entity-use-case EntityClassName

@@ -6,7 +6,7 @@ namespace OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules;
 
 trait SecurityClassNameTrait
 {
-    protected string $securityClassName;
+    protected string $securityClassName = '';
 
     public function setSecurityClassName(string $securityClassName): void
     {
