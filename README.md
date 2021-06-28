@@ -14,7 +14,7 @@ From any use case response, developers have the possibility to generate:
 - Delete Entity use case architecture
 - ViewModel architecture
 - Controller and models classes
-- Unit tests for each classes generated
+- Unit tests for each class generated
 
 ## Installation
 The easiest way to install CodeGenerator is via [composer](http://getcomposer.org/).
@@ -33,7 +33,8 @@ or
 }
 ```
 Setup post-install and post-update hooks in your `composer.json`'s script section,
-for the `oc_code_generator.yml` configuration used by the generator to be generated.
+for the `oc_code_generator.yml` default configuration to be generated.
+This file is mandatory for the code generator to work.
 
 ```json
 {
@@ -48,8 +49,8 @@ for the `oc_code_generator.yml` configuration used by the generator to be genera
   }
 }
 ```
-The script creates a file named `oc_code_generator.yml` at the root of the project. The script will ask you interactively for parameters 
-which are missing in the parameters file, using the value of the dist file as default value, as follows:
+The script creates a file named `oc_code_generator.yml` at the root of the project, and will ask you interactively for parameters 
+which are missing in the parameters file, using the values of the dist file as default values, as follows:
 
 ```yaml
 parameters:
@@ -83,33 +84,34 @@ You may need to tweak these values depending on the project you are using the co
 
 ## Usage
 ### Basic execution
-To list all possibilities: 
+To list all commands: 
 ``` 
 php bin/code-generator
 ```
-To generate view model architecture: 
+To generate a view model architecture: 
 ``` 
 php bin/code-generator code-generator:view-models useCaseResponseClassName
 ```
-To generate generic use case architecture: 
+To generate a generic use case architecture: 
 ``` 
 php bin/code-generator code-generator:generic-use-case
 or  
 php bin/code-generator code-generator:generic-use-case Domain\\SubDomain UseCaseName
 ```
-To generate entity CRUD use case architecture: 
-``` 
-Create: 
+To generate an entity CRUD use case architecture: 
+```shell
+# Create
 php bin/code-generator code-generator:create-entity-use-case EntityClassName
-Delete: 
+# Delete: 
 php bin/code-generator code-generator:delete-entity-use-case EntityClassName
-Edit:
+# Edit:
 php bin/code-generator code-generator:edit-entity-use-case EntityClassName
-Get all:
+# Get all:
 php bin/code-generator code-generator:get-entities-use-case EntityClassName
-Get:
+# Get:
 php bin/code-generator code-generator:get-entity-use-case EntityClassName
 ```  
+
 ### Extensions
 To generate without tests:
 ```
@@ -127,7 +129,7 @@ php bin/code-generator code-generator:view-models useCaseResponseClassName --dum
 ### Using the code generator in PHPStorm
 
 You can set up External Tools entries in PHPStorm to be able to run some code generator command
-from your IDE by right-clicking on classes in the project tree (e.g. an entity class).
+from your IDE by right-clicking on classes in the project tree (e.g., an entity class).
 
 For the generic use case generation, add an external tool entry like this:
 > Program: /usr/local/bin/php
@@ -162,14 +164,14 @@ PHP binary path.
 
 ### Methodology
 
-#### 1) Write the file template you want to generate 
-First, you have to create twig template the expected files after generation.
+#### 1) Write the file templates you want to generate 
+First, you have to create twig templates for the expected files after generation.
 #### 2) Create generator RequestDTO and generator RequestBuilder
 Create class with the entity name suffixed by `RequestBuilder` , this is used as parameter in generator main method. 
 #### 3) Start Generator Implementation
-The main goal of the generator class is to generate the expected FileObject, but to succeed, it necessary to build other FileObject from factories and use available Utilities. 
+The main goal of the generator class is to generate the expected FileObject, but to succeed, it is necessary to build other FileObject from factories and use available Utilities. 
 #### 4) Create GeneratorTest
-Create class with the entity name suffixed by `GeneratorTest` and the related stub class (entity name suffixed by `FileObjectStub1`). The stub MUST contains expected values to compare with the actual object.
+Create class with the entity name suffixed by `GeneratorTest` and the related stub class (entity name suffixed by `FileObjectStub1`). The stub MUST contain expected values to compare with the actual object.
 #### 5) Create skeletonModel and SkeletonModelAssembler
 Create two classes both prefixed by the entity name:
 - Firstly, an abstract class `SkeletonModel`,
@@ -179,7 +181,7 @@ Both are used to create the object which will be used in the template.
 The command uses a mediator pattern to generate classes by functional group. 
 Add the new generator in the concerned group and update the mediator config.
 #### 7) Create config files and update services.xml
-Create a new `.xml` file for the generator and add it in `src/Ressources/config/service.xml`.
+Create a new `.xml` file for the generator and add it in `src/Resources/config/service.xml`.
 #### 8) Create the command if it does not exist
 Create your command in `src/Commands` and call mediator `mediate` function in the `execute` method. 
 
