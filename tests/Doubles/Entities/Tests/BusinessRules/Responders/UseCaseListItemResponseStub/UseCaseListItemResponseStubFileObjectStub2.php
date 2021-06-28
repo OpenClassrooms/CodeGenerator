@@ -8,7 +8,7 @@ use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 
 class UseCaseListItemResponseStubFileObjectStub2 extends FileObject
 {
-    const CLASS_NAME = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityListItemResponseStub2';
+    public const CLASS_NAME = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityListItemResponseStub2';
 
     public function __construct()
     {

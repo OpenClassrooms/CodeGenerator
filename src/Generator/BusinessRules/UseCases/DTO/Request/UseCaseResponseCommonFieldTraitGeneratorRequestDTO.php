@@ -8,15 +8,12 @@ use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\UseCas
 
 class UseCaseResponseCommonFieldTraitGeneratorRequestDTO implements UseCaseResponseCommonFieldTraitGeneratorRequest
 {
-    /**
-     * @var string
-     */
-    public $entity;
+    public string $entity;
 
     /**
      * @return string[]
      */
-    public $fields;
+    public array $fields;
 
     public function getEntityClassName(): string
     {

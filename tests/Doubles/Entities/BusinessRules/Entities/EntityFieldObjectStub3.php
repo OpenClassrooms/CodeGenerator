@@ -8,19 +8,19 @@ use OpenClassrooms\CodeGenerator\Entities\Object\FieldObject;
 
 class EntityFieldObjectStub3 extends FieldObject
 {
-    const DOC_COMMENT = '/**
+    public const DOC_COMMENT = '/**
      * @var string[]
      */';
 
-    const NAME        = 'field2';
+    public const NAME = 'field2';
 
-    const VALUE       = null;
+    protected ?string $docComment = self::DOC_COMMENT;
 
-    protected $docComment = self::DOC_COMMENT;
+    protected string $name = self::NAME;
 
-    protected $name = self::NAME;
+    protected string $scope = FieldObject::SCOPE_PROTECTED;
 
-    protected $scope = FieldObject::SCOPE_PROTECTED;
+    protected ?string $type = 'array';
 
     public function __construct()
     {

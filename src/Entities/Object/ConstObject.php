@@ -8,13 +8,10 @@ use OpenClassrooms\CodeGenerator\Utility\StringUtility;
 
 class ConstObject
 {
-    /**
-     * @var string
-     */
-    private $name;
+    private string $name;
 
     /**
-     * @var string
+     * @var mixed
      */
     private $value;
 

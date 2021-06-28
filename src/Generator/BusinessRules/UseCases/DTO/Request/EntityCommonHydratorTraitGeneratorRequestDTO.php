@@ -8,10 +8,7 @@ use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\Entity
 
 class EntityCommonHydratorTraitGeneratorRequestDTO implements EntityCommonHydratorTraitGeneratorRequest
 {
-    /**
-     * @var string
-     */
-    public $entityClassName;
+    public string $entityClassName;
 
     public function getEntityClassName(): string
     {

@@ -23,15 +23,9 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class PatchFunctionalEntityController extends AbstractApiController
 {
-    /**
-     * @var EditFunctionalEntityRequestBuilder
-     */
-    private $editFunctionalEntityRequestBuilder;
+    private EditFunctionalEntityRequestBuilder $editFunctionalEntityRequestBuilder;
 
-    /**
-     * @var FunctionalEntityViewModelDetailAssembler
-     */
-    private $functionalEntityViewModelDetailAssembler;
+    private FunctionalEntityViewModelDetailAssembler $functionalEntityViewModelDetailAssembler;
 
     public function __construct(
         EditFunctionalEntityRequestBuilder $builder,

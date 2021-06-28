@@ -19,10 +19,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class PutFunctionalEntityController extends AbstractApiController
 {
-    /**
-     * @var EditFunctionalEntityRequestBuilder
-     */
-    private $editFunctionalEntityRequestBuilder;
+    private EditFunctionalEntityRequestBuilder $editFunctionalEntityRequestBuilder;
 
     public function __construct(EditFunctionalEntityRequestBuilder $builder)
     {

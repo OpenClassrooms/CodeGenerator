@@ -8,7 +8,7 @@ use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 
 class EditEntityUseCaseFileObjectStub1 extends FileObject
 {
-    const CLASS_NAME = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\EditFunctionalEntity';
+    public const CLASS_NAME = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\EditFunctionalEntity';
 
     public function __construct()
     {

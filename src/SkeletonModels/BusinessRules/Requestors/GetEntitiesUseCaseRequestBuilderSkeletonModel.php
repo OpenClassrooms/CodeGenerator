@@ -10,7 +10,7 @@ abstract class GetEntitiesUseCaseRequestBuilderSkeletonModel extends AbstractSke
 {
     public $getEntityUseCaseRequestShortName;
 
-    public $templatePath = 'BusinessRules/Requestors/GetEntitiesUseCaseRequestBuilder.php.twig';
+    public string $templatePath = 'BusinessRules/Requestors/GetEntitiesUseCaseRequestBuilder.php.twig';
 
     public $useCaseRequestClassName;
 

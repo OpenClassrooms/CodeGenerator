@@ -14,7 +14,7 @@ interface EditFunctionalEntityRequest extends UseCaseRequest
 
     public function getField2(): array;
 
-    public function getField4(): ?\DateTimeInterface;
+    public function getField4(): \DateTimeInterface;
 
     public function getFunctionalEntityId(): int;
 

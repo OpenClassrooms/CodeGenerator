@@ -8,10 +8,7 @@ use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Responders\Request\UseC
 
 class UseCaseDetailResponseAssemblerGeneratorRequestDTO implements UseCaseDetailResponseAssemblerGeneratorRequest
 {
-    /**
-     * @var string
-     */
-    public $entity;
+    public string $entity;
 
     public function getEntityClassName(): string
     {

@@ -8,7 +8,7 @@ use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 
 class PatchEntityModelFileObjectStub1 extends FileObject
 {
-    const CLASS_NAME = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\Models\Domain\SubDomain\PatchFunctionalEntityModel';
+    public const CLASS_NAME = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\Models\Domain\SubDomain\PatchFunctionalEntityModel';
 
     public function __construct()
     {

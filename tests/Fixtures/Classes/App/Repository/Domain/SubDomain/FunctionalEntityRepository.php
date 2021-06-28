@@ -17,10 +17,7 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
 
 class FunctionalEntityRepository extends ServiceEntityRepository implements FunctionalEntityGateway
 {
-    /**
-     * @var PaginatedCollectionFactory
-     */
-    private $paginatedCollectionFactory;
+    private PaginatedCollectionFactory $paginatedCollectionFactory;
 
     public function __construct(RegistryInterface $registry, PaginatedCollectionFactory $paginatedCollectionFactory)
     {

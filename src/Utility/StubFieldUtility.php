@@ -28,6 +28,7 @@ class StubFieldUtility
         $stubFieldObject = new FieldObject($fieldObject->getName());
         $stubFieldObject->setDocComment($fieldObject->getDocComment());
         $stubFieldObject->setScope($fieldObject->getScope());
+        $stubFieldObject->setType($fieldObject->getType());
 
         return $stubFieldObject;
     }

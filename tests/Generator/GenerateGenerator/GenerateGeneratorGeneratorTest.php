@@ -8,7 +8,7 @@ use OpenClassrooms\CodeGenerator\Commands\ConstructionPatternType;
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\Generator\GenerateGenerator\DTO\Request\GenerateGeneratorGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\GenerateGenerator\GenerateGeneratorGenerator;
-use OpenClassrooms\CodeGenerator\Generator\GenerateGenerator\Request\GenerateGeneratorGeneratorRequestBuilder;
+use OpenClassrooms\CodeGenerator\Generator\GenerateGenerator\Request\GenerateGeneratorGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\FileObjectTestCase;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\GenerateGenerator\GenerateGeneratorFileObjectsStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\GenerateGenerator\GenerateGeneratorFileObjectsStub2;
@@ -22,15 +22,9 @@ class GenerateGeneratorGeneratorTest extends TestCase
 {
     use FileObjectTestCase;
 
-    /**
-     * @var GenerateGeneratorGeneratorRequestBuilder
-     */
-    private $request;
+    private GenerateGeneratorGeneratorRequest $request;
 
-    /**
-     * @var GenerateGeneratorGenerator
-     */
-    private $selfGeneratorGenerator;
+    private GenerateGeneratorGenerator $selfGeneratorGenerator;
 
     /**
      * @test
@@ -67,7 +61,7 @@ class GenerateGeneratorGeneratorTest extends TestCase
             }
         }
 
-        return null;
+        return [];
     }
 
     /**

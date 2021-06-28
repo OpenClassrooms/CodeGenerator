@@ -12,10 +12,7 @@ use OpenClassrooms\CodeGenerator\Utility\NameUtility;
 
 class EntityRepositorySkeletonModelAssemblerImpl implements EntityRepositorySkeletonModelAssembler
 {
-    /**
-     * @var string
-     */
-    private $paginatedCollectionFactoryClassName;
+    private string $paginatedCollectionFactoryClassName;
 
     public function create(
         FileObject $entityFileObject,

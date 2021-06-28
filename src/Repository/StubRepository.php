@@ -13,7 +13,7 @@ class StubRepository implements StubGateway
     /**
      * @var FileObject[]
      */
-    private static $fileObjects = [];
+    private static array $fileObjects = [];
 
     public function clear()
     {

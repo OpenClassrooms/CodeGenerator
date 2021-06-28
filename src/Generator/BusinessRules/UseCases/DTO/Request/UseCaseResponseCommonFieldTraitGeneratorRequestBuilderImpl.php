@@ -9,10 +9,7 @@ use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\UseCas
 
 class UseCaseResponseCommonFieldTraitGeneratorRequestBuilderImpl implements UseCaseResponseCommonFieldTraitGeneratorRequestBuilder
 {
-    /**
-     * @var UseCaseResponseCommonFieldTraitGeneratorRequestDTO
-     */
-    private $request;
+    private UseCaseResponseCommonFieldTraitGeneratorRequestDTO $request;
 
     public function build(): UseCaseResponseCommonFieldTraitGeneratorRequest
     {

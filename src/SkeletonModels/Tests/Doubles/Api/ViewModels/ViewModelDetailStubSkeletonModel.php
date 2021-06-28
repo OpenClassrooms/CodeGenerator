@@ -12,32 +12,17 @@ abstract class ViewModelDetailStubSkeletonModel extends AbstractSkeletonModel
     /**
      * @var ConstObject[]
      */
-    public $constants;
+    public array $constants;
 
-    /**
-     * @var array
-     */
-    public $dateTimeType;
+    public array $dateTimeType;
 
-    /**
-     * @var string
-     */
-    public $hasConstructor = false;
+    public bool $hasConstructor = false;
 
-    /**
-     * @var string
-     */
-    public $parentClassName;
+    public string $parentClassName;
 
-    /**
-     * @var string
-     */
-    public $parentShortName;
+    public string $parentShortName;
 
-    public $templatePath = 'Tests/Doubles/Api/ViewModels/ViewModelDetailStub.php.twig';
+    public string $templatePath = 'Tests/Doubles/Api/ViewModels/ViewModelDetailStub.php.twig';
 
-    /**
-     * @var string
-     */
-    public $useCaseDetailResponseStubClassName;
+    public string $useCaseDetailResponseStubClassName;
 }

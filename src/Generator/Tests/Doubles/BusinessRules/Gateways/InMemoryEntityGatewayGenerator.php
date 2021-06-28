@@ -13,20 +13,11 @@ use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\BusinessRules\Gateways\
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\BusinessRules\Gateways\InMemoryEntityGatewaySkeletonModel;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Doubles\BusinessRules\Gateways\InMemoryEntityGatewaySkeletonModelAssembler;
 
-/**
- * @author arnaud lefevre <arnaud.lefevre@openclassrooms.com>
- */
 class InMemoryEntityGatewayGenerator extends AbstractGenerator
 {
-    /**
-     * @var EntityFileObjectFactory
-     */
-    private $entityFileObjectFactory;
+    private EntityFileObjectFactory $entityFileObjectFactory;
 
-    /**
-     * @var InMemoryEntityGatewaySkeletonModelAssembler
-     */
-    private $inMemoryEntityGatewaySkeletonModelAssembler;
+    private InMemoryEntityGatewaySkeletonModelAssembler $inMemoryEntityGatewaySkeletonModelAssembler;
 
     /**
      * @param InMemoryEntityGatewayGeneratorRequest $generatorRequest

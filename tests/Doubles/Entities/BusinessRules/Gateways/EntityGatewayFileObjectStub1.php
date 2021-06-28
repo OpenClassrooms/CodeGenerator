@@ -8,7 +8,7 @@ use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 
 class EntityGatewayFileObjectStub1 extends FileObject
 {
-    const CLASS_NAME = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gateways\Domain\SubDomain\FunctionalEntityGateway';
+    public const CLASS_NAME = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gateways\Domain\SubDomain\FunctionalEntityGateway';
 
     public function __construct()
     {

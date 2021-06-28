@@ -17,15 +17,9 @@ use OpenClassrooms\CodeGenerator\Utility\FieldObjectUtility;
 
 class PatchEntityModelGenerator extends AbstractGenerator
 {
-    /**
-     * @var ModelFileObjectFactory
-     */
-    private $modelFileObjectFactory;
+    private ModelFileObjectFactory $modelFileObjectFactory;
 
-    /**
-     * @var PatchEntityModelSkeletonModelAssembler
-     */
-    private $patchEntityModelSkeletonModelAssembler;
+    private PatchEntityModelSkeletonModelAssembler $patchEntityModelSkeletonModelAssembler;
 
     /**
      * @param PatchEntityModelGeneratorRequest $generatorRequest

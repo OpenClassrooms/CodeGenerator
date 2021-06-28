@@ -6,7 +6,7 @@ namespace OpenClassrooms\CodeGenerator\Tests\Generator\BusinessRules\Requestors;
 
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\DTO\Request\EditEntityUseCaseRequestGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\EditEntityUseCaseRequestGenerator;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\Request\EditEntityUseCaseRequestGeneratorRequestBuilder;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\Request\EditEntityUseCaseRequestGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Requestors\EditEntityUseCaseRequestFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\FileObjectTestCase;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\UseCaseRequestFileObjectFactoryMock;
@@ -18,29 +18,24 @@ use OpenClassrooms\CodeGenerator\Utility\Impl\MethodUtilityContext;
 use OpenClassrooms\CodeGenerator\Utility\MethodUtilityGetAccessorsWithoutId;
 use PHPUnit\Framework\TestCase;
 
-class EditEntityUseCaseRequestGeneratorTest extends TestCase
+final class EditEntityUseCaseRequestGeneratorTest extends TestCase
 {
     use FileObjectTestCase;
 
-    /**
-     * @var EditEntityUseCaseRequestGenerator
-     */
-    private $editEntityUseCaseRequestGenerator;
+    private EditEntityUseCaseRequestGenerator $editEntityUseCaseRequestGenerator;
 
-    /**
-     * @var EditEntityUseCaseRequestGeneratorRequestBuilder
-     */
-    private $request;
+    private EditEntityUseCaseRequestGeneratorRequest $request;
 
     /**
      * @test
      */
-    final public function generateReturnFileObject(): void
+    public function generateReturnFileObject(): void
     {
         $actualFileObject = $this->editEntityUseCaseRequestGenerator->generate($this->request);
+        $expectedFileObject = InMemoryFileObjectGateway::$fileObjects[$actualFileObject->getId()];
 
         $this->assertSame(
-            InMemoryFileObjectGateway::$fileObjects[$actualFileObject->getId()]->getPath(),
+            $expectedFileObject->getPath(),
             $actualFileObject->getPath()
         );
         $this->assertFileObject(new EditEntityUseCaseRequestFileObjectStub1(), $actualFileObject);

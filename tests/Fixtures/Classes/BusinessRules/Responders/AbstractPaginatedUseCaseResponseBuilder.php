@@ -6,10 +6,7 @@ namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Resp
 
 abstract class AbstractPaginatedUseCaseResponseBuilder implements PaginatedUseCaseResponseBuilder
 {
-    /**
-     * @var AbstractPaginatedUseCaseResponse
-     */
-    protected $paginatedUseCaseResponse;
+    protected AbstractPaginatedUseCaseResponse $paginatedUseCaseResponse;
 
     /**
      * {@inheritdoc}

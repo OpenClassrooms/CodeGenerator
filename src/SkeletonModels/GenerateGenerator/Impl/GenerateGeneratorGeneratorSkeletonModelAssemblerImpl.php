@@ -9,10 +9,7 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\GenerateGenerator\GenerateGenera
 
 class GenerateGeneratorGeneratorSkeletonModelAssemblerImpl implements GenerateGeneratorGeneratorSkeletonModelAssembler
 {
-    /**
-     * @var string
-     */
-    protected $baseNamespace;
+    protected string $baseNamespace;
 
     public function create(
         string $domain,

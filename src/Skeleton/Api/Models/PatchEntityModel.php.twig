@@ -14,8 +14,7 @@ class {{ skeletonModel.shortName }}
 {% endfor %}
 
 {% for fieldUpdated in skeletonModel.fields| sortNameByAlpha %}
-    {{ fieldUpdated.docComment }}
-    public ${{ fieldUpdated.name }} = {{ fieldUpdated.value }};
+    public bool ${{ fieldUpdated.name }} = {{ fieldUpdated.value }};
 {% if not loop.last %}
 
 {% endif %}

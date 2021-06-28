@@ -8,49 +8,49 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 
 abstract class PostEntityControllerSkeletonModel extends AbstractSkeletonModel
 {
-    public $abstractControllerClassName;
+    public string $abstractControllerClassName;
 
-    public $abstractControllerShortName;
+    public string $abstractControllerShortName;
 
-    public $createEntityMethod;
+    public string $createEntityMethod;
 
-    public $createEntityUseCaseShortName;
+    public string $createEntityUseCaseShortName;
 
-    public $createEntityUseCaseClassName;
+    public string $createEntityUseCaseClassName;
 
-    public $createEntityUseCaseRequestBuilderArgument;
+    public string $createEntityUseCaseRequestBuilderArgument;
 
-    public $createEntityUseCaseRequestBuilderClassName;
+    public string $createEntityUseCaseRequestBuilderClassName;
 
-    public $createEntityUseCaseRequestBuilderShortName;
+    public string $createEntityUseCaseRequestBuilderShortName;
 
-    public $entityIdArgument;
+    public string $entityIdArgument;
 
-    public $entityUseCaseDetailResponseClassName;
+    public string $entityUseCaseDetailResponseClassName;
 
-    public $entityUseCaseDetailResponseShortName;
+    public string $entityUseCaseDetailResponseShortName;
 
-    public $entityViewModelDetailAssemblerArgument;
+    public string $entityViewModelDetailAssemblerArgument;
 
-    public $entityViewModelDetailAssemblerClassName;
+    public string $entityViewModelDetailAssemblerClassName;
 
-    public $entityViewModelDetailAssemblerShortName;
+    public string $entityViewModelDetailAssemblerShortName;
 
-    public $entityViewModelDetailClassName;
+    public string $entityViewModelDetailClassName;
 
-    public $entityViewModelDetailShortName;
+    public string $entityViewModelDetailShortName;
 
-    public $postEntityModelMethods;
+    public array $postEntityModelMethods;
 
-    public $postEntityModelClassName;
+    public string $postEntityModelClassName;
 
-    public $postEntityModelShortName;
+    public string $postEntityModelShortName;
 
-    public $routeAnnotation;
+    public string $routeAnnotation;
 
-    public $routeName;
+    public string $routeName;
 
-    public $useCarbon;
+    public bool $useCarbon;
 
-    public $templatePath = 'Api/Controller/PostEntityController.php.twig';
+    public string $templatePath = 'Api/Controller/PostEntityController.php.twig';
 }

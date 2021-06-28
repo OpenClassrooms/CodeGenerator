@@ -10,27 +10,25 @@ use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\App\Entity\Domain\SubDom
 
 class FunctionalEntityStub2 extends FunctionalEntityImpl
 {
-    const FIELD_1 = 'Functional Entity Stub 2 field 1';
+    public const FIELD_1 = 'Functional Entity Stub 2 field 1';
 
-    const FIELD_2 = ['Functional Entity Stub 2 field 2 1', 'Functional Entity Stub 2 field 2 2'];
+    public const FIELD_2 = ['Functional Entity Stub 2 field 2 1', 'Functional Entity Stub 2 field 2 2'];
 
-    const FIELD_3 = true;
+    public const FIELD_3 = true;
 
-    const FIELD_4 = '2018-01-01';
+    public const FIELD_4 = '2018-01-01';
 
-    const ID = 2;
+    public const ID = 2;
 
-    const UPDATED_AT = '2018-01-01';
+    public const UPDATED_AT = '2018-01-01';
 
-    protected $field1 = self::FIELD_1;
+    protected string $field1 = self::FIELD_1;
 
-    protected $field2 = self::FIELD_2;
+    protected array $field2 = self::FIELD_2;
 
-    protected $field3 = self::FIELD_3;
+    protected bool $field3 = self::FIELD_3;
 
-    protected $id = self::ID;
-
-    protected $updatedAt = self::UPDATED_AT;
+    protected int $id = self::ID;
 
     public function __construct()
     {

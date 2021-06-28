@@ -22,15 +22,9 @@ class CommonControllerCommandTest extends TestCase
 {
     use CommandTestCase;
 
-    /**
-     * @var CommonControllerCommand
-     */
-    protected $command;
+    protected CommonControllerCommand $command;
 
-    /**
-     * @var CommonControllerMediator
-     */
-    private $commonControllerMediator;
+    private CommonControllerMediator $commonControllerMediator;
 
     /**
      * @test
@@ -133,7 +127,6 @@ class CommonControllerCommandTest extends TestCase
         $this->commonControllerMediator = new CommonControllerMediatorMock();
         $this->container = new ContainerMock(
             [CommonControllerMediator::class => $this->commonControllerMediator]
-
         );
         TestClassUtil::setProperty('container', $this->container, $this->command);
     }

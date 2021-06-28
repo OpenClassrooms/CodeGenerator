@@ -8,10 +8,7 @@ use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Gateways\Request\Entity
 
 class EntityNotFoundExceptionGeneratorRequestDTO implements EntityNotFoundExceptionGeneratorRequest
 {
-    /**
-     * @var string
-     */
-    public $entity;
+    public string $entity;
 
     public function getEnity(): string
     {

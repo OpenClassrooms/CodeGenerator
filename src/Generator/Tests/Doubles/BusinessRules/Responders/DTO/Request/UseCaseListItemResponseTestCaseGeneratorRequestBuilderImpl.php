@@ -9,10 +9,7 @@ use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\BusinessRules\Responder
 
 class UseCaseListItemResponseTestCaseGeneratorRequestBuilderImpl implements UseCaseListItemResponseTestCaseGeneratorRequestBuilder
 {
-    /**
-     * @var UseCaseListItemResponseTestCaseGeneratorRequestDTO
-     */
-    private $request;
+    private UseCaseListItemResponseTestCaseGeneratorRequestDTO $request;
 
     public function build(): UseCaseListItemResponseTestCaseGeneratorRequest
     {

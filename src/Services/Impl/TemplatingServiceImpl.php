@@ -15,10 +15,7 @@ use Twig\TwigFunction;
 
 class TemplatingServiceImpl extends Environment implements TemplatingService
 {
-    /**
-     * @var string
-     */
-    protected $skeletonDir;
+    protected string $skeletonDir;
 
     public function __construct(string $skeletonDir)
     {
@@ -61,9 +58,7 @@ class TemplatingServiceImpl extends Environment implements TemplatingService
 
     private function getSortFieldNameClosure()
     {
-        return function (MethodObject $a, MethodObject $b) {
-            return strcmp($a->getAccessorName(), $b->getAccessorName());
-        };
+        return static fn (MethodObject $a, MethodObject $b) => strcmp($a->getAccessorName(), $b->getAccessorName());
     }
 
     private function getSortNameByAlphaFilter()
@@ -85,19 +80,13 @@ class TemplatingServiceImpl extends Environment implements TemplatingService
     private function getSortNameClosure(array $arrayFields)
     {
         if (array_shift($arrayFields) instanceof FieldObject) {
-            return function (FieldObject $a, FieldObject $b) {
-                return strcmp($a->getName(), $b->getName());
-            };
+            return static fn (FieldObject $a, FieldObject $b) => strcmp($a->getName(), $b->getName());
         }
         if (array_shift($arrayFields) instanceof ConstObject) {
-            return function (ConstObject $a, ConstObject $b) {
-                return strcmp($a->getName(), $b->getName());
-            };
+            return static fn (ConstObject $a, ConstObject $b) => strcmp($a->getName(), $b->getName());
         }
 
-        return function (MethodObject $a, MethodObject $b) {
-            return strcmp($a->getName(), $b->getName());
-        };
+        return static fn (MethodObject $a, MethodObject $b) => strcmp($a->getName(), $b->getName());
     }
 
     private function getSortIdFirstFilter()
@@ -123,9 +112,7 @@ class TemplatingServiceImpl extends Environment implements TemplatingService
     {
         return new TwigFilter(
             'ucFirst',
-            function ($value) {
-                return ucfirst($value);
-            }
+            fn ($value) => ucfirst($value)
         );
     }
 

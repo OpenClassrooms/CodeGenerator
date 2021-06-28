@@ -8,10 +8,7 @@ use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\Responses\UseCaseDetail
 
 trait UseCaseDetailResponseMediatorTrait
 {
-    /**
-     * @var UseCaseDetailResponseMediator
-     */
-    private $useCaseDetailResponseMediator;
+    private UseCaseDetailResponseMediator $useCaseDetailResponseMediator;
 
     public function setUseCaseDetailResponseMediator(UseCaseDetailResponseMediator $useCaseDetailResponseMediator): void
     {

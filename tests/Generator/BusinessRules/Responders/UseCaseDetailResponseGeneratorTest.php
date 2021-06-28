@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace OpenClassrooms\CodeGenerator\Tests\Generator\BusinessRules\Responders;
 
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Responders\DTO\Request\UseCaseDetailResponseGeneratorRequestBuilderImpl;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Responders\Request\UseCaseDetailResponseGeneratorRequestBuilder;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Responders\Request\UseCaseDetailResponseGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Responders\UseCaseDetailResponseGenerator;
 use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Responders\Impl\UseCaseDetailResponseSkeletonModelAssemblerImpl;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Responders\UseCaseDetailResponseFileObjectStub1;
@@ -21,15 +21,9 @@ class UseCaseDetailResponseGeneratorTest extends TestCase
 {
     use FileObjectTestCase;
 
-    /**
-     * @var UseCaseDetailResponseGeneratorRequestBuilder
-     */
-    private $request;
+    private UseCaseDetailResponseGeneratorRequest $request;
 
-    /**
-     * @var UseCaseDetailResponseGenerator
-     */
-    private $useCaseDetailResponseGenerator;
+    private UseCaseDetailResponseGenerator $useCaseDetailResponseGenerator;
 
     /**
      * @test

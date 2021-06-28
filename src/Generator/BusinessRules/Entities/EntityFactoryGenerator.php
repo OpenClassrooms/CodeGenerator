@@ -15,15 +15,9 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Entities\EntityFac
 
 class EntityFactoryGenerator extends AbstractGenerator
 {
-    /**
-     * @var EntityFactorySkeletonModelAssembler
-     */
-    private $entityFactorySkeletonModelAssembler;
+    private EntityFactorySkeletonModelAssembler $entityFactorySkeletonModelAssembler;
 
-    /**
-     * @var EntityFileObjectFactory
-     */
-    private $entityFileObjectFactory;
+    private EntityFileObjectFactory $entityFileObjectFactory;
 
     /**
      * @param EntityFactoryGeneratorRequest $generatorRequest

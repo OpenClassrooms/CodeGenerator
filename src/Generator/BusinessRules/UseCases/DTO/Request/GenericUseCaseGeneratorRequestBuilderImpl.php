@@ -9,10 +9,7 @@ use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\Generi
 
 class GenericUseCaseGeneratorRequestBuilderImpl implements GenericUseCaseGeneratorRequestBuilder
 {
-    /**
-     * @var GenericUseCaseGeneratorRequestDTO
-     */
-    private $request;
+    private GenericUseCaseGeneratorRequestDTO $request;
 
     public function build(): GenericUseCaseGeneratorRequest
     {

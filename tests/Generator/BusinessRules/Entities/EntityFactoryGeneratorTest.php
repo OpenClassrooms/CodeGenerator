@@ -6,7 +6,7 @@ namespace OpenClassrooms\CodeGenerator\Tests\Generator\BusinessRules\Entities;
 
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Entities\DTO\Request\EntityFactoryGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Entities\EntityFactoryGenerator;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Entities\Request\EntityFactoryGeneratorRequestBuilder;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Entities\Request\EntityFactoryGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Entities\EntityFactoryFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\EntityFileObjectFactoryMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\FileObjectTestCase;
@@ -20,15 +20,9 @@ class EntityFactoryGeneratorTest extends TestCase
 {
     use FileObjectTestCase;
 
-    /**
-     * @var EntityFactoryGenerator
-     */
-    private $entityFactoryGenerator;
+    private EntityFactoryGenerator $entityFactoryGenerator;
 
-    /**
-     * @var EntityFactoryGeneratorRequestBuilder
-     */
-    private $request;
+    private EntityFactoryGeneratorRequest $request;
 
     /**
      * @test

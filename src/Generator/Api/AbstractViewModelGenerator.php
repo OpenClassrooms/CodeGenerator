@@ -11,15 +11,9 @@ use OpenClassrooms\CodeGenerator\Generator\AbstractGenerator;
 
 abstract class AbstractViewModelGenerator extends AbstractGenerator
 {
-    /**
-     * @var UseCaseResponseFileObjectFactory
-     */
-    private $useCaseResponseFileObjectFactory;
+    private UseCaseResponseFileObjectFactory $useCaseResponseFileObjectFactory;
 
-    /**
-     * @var ViewModelFileObjectFactory
-     */
-    private $viewModelFileObjectFactory;
+    private ViewModelFileObjectFactory $viewModelFileObjectFactory;
 
     public function setUseCaseResponseFileObjectFactory(
         UseCaseResponseFileObjectFactory $useCaseResponseFileObjectFactory

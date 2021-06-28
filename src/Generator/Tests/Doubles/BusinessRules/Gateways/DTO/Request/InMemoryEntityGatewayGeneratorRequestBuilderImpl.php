@@ -7,15 +7,9 @@ namespace OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\BusinessRules\Gat
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\BusinessRules\Gateways\Request\InMemoryEntityGatewayGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\BusinessRules\Gateways\Request\InMemoryEntityGatewayGeneratorRequestBuilder;
 
-/**
- * @author arnaud lefevre <arnaud.lefevre@openclassrooms.com>
- */
 class InMemoryEntityGatewayGeneratorRequestBuilderImpl implements InMemoryEntityGatewayGeneratorRequestBuilder
 {
-    /**
-     * @var InMemoryEntityGatewayGeneratorRequestDTO
-     */
-    private $request;
+    private InMemoryEntityGatewayGeneratorRequestDTO $request;
 
     public function build(): InMemoryEntityGatewayGeneratorRequest
     {

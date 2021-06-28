@@ -10,10 +10,7 @@ use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Requestors
 
 final class DeleteFunctionalEntityRequestDTO implements DeleteFunctionalEntityRequest
 {
-    /**
-     * @var int
-     */
-    public $functionalEntityId;
+    public int $functionalEntityId;
 
     public function __construct(int $id)
     {

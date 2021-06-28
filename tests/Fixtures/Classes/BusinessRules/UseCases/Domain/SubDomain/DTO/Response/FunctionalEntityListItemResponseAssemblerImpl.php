@@ -17,10 +17,7 @@ class FunctionalEntityListItemResponseAssemblerImpl implements FunctionalEntityL
 {
     use FunctionalEntityResponseAssemblerTrait;
 
-    /**
-     * @var PaginatedUseCaseResponseBuilder
-     */
-    private $paginatedUseCaseResponseBuilder;
+    private PaginatedUseCaseResponseBuilder $paginatedUseCaseResponseBuilder;
 
     public function __construct(PaginatedUseCaseResponseBuilder $builder)
     {

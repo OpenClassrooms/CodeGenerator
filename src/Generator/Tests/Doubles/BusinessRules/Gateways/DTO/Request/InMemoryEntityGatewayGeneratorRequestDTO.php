@@ -6,15 +6,9 @@ namespace OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\BusinessRules\Gat
 
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\BusinessRules\Gateways\Request\InMemoryEntityGatewayGeneratorRequest;
 
-/**
- * @author arnaud lefevre <arnaud.lefevre@openclassrooms.com>
- */
 class InMemoryEntityGatewayGeneratorRequestDTO implements InMemoryEntityGatewayGeneratorRequest
 {
-    /**
-     * @var string
-     */
-    public $entityClassName;
+    public string $entityClassName;
 
     public function getEntityClassName(): string
     {

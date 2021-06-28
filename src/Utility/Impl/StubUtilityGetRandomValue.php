@@ -38,7 +38,7 @@ final class StubUtilityGetRandomValue implements StubUtilityStrategy
             case StringUtility::isObject($type):
                 return self::QUOTE . StringUtility::convertToSpacedString(
                     $entityName . ' ' . $fieldName
-                    ) . 'object' . self::QUOTE;
+                ) . 'object' . self::QUOTE;
             default:
                 throw new \InvalidArgumentException($type);
         }

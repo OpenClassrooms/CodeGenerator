@@ -13,20 +13,11 @@ use OpenClassrooms\CodeGenerator\Mediators\Options;
 
 trait CommonEntityUseCaseMediatorsTrait
 {
-    /**
-     * @var EntitiesMediator
-     */
-    private $entitiesMediator;
+    private EntitiesMediator $entitiesMediator;
 
-    /**
-     * @var FileObjectGateway
-     */
-    private $fileObjectGateway;
+    private FileObjectGateway $fileObjectGateway;
 
-    /**
-     * @var UseCaseResponseCommonMediator
-     */
-    private $useCaseResponseCommonMediator;
+    private UseCaseResponseCommonMediator $useCaseResponseCommonMediator;
 
     public function mediate(array $args = [], array $options = []): array
     {

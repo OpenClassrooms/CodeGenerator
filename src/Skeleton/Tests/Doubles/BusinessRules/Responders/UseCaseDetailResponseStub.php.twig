@@ -14,8 +14,12 @@ class {{ skeletonModel.shortName }} extends {{ skeletonModel.parentShortName }}
 {% endif %}
 {% endfor %}
 
-{% for  field in skeletonModel.fields | sortNameByAlpha %}
-    public ${{ field.name }} = self::{{ field.value.name }};
+{% for field in skeletonModel.fields | sortNameByAlpha %}
+{% if field.type in skeletonModel.dateTimeType %}
+    public {{ field.type }} ${{ field.name }};
+{% else %}
+    public {{ field.type }} ${{ field.name }} = self::{{ field.value.name }};
+{% endif %}
 {% if not loop.last%}
 
 {% endif %}
@@ -24,7 +28,7 @@ class {{ skeletonModel.shortName }} extends {{ skeletonModel.parentShortName }}
 
     public function __construct()
     {
-{% for field in skeletonModel.fields if field.type in skeletonModel.dateTimeType  %}
+{% for field in skeletonModel.fields if field.type in skeletonModel.dateTimeType %}
         $this->{{ field.name }} = new \DateTimeImmutable(self::{{ field.value.name }});
 {% endfor %}
     }

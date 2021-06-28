@@ -9,10 +9,7 @@ use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Entities\Request\
 
 class EntityStubGeneratorRequestBuilderImpl implements EntityStubGeneratorRequestBuilder
 {
-    /**
-     * @var EntityStubGeneratorRequestDTO
-     */
-    private $request;
+    private EntityStubGeneratorRequestDTO $request;
 
     public function build(): EntityStubGeneratorRequest
     {

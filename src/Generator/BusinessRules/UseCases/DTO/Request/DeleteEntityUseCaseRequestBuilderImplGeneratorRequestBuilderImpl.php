@@ -9,10 +9,7 @@ use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\Delete
 
 class DeleteEntityUseCaseRequestBuilderImplGeneratorRequestBuilderImpl implements DeleteEntityUseCaseRequestBuilderImplGeneratorRequestBuilder
 {
-    /**
-     * @var DeleteEntityUseCaseRequestBuilderImplGeneratorRequestDTO
-     */
-    private $request;
+    private DeleteEntityUseCaseRequestBuilderImplGeneratorRequestDTO $request;
 
     public function build(): DeleteEntityUseCaseRequestBuilderImplGeneratorRequest
     {

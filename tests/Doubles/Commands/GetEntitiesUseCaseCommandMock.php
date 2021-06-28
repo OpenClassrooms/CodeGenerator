@@ -8,7 +8,7 @@ use OpenClassrooms\CodeGenerator\Commands\UseCases\GetEntitiesUseCaseCommand;
 
 class GetEntitiesUseCaseCommandMock extends GetEntitiesUseCaseCommand
 {
-    const CONFIG_FILE = self::ROOT_DIR . 'oc_code_generator_test.yml.dist';
+    public const CONFIG_FILE = self::ROOT_DIR . 'oc_code_generator_test.yml.dist';
 
-    const ROOT_DIR    = __DIR__ . '/../../';
+    public const ROOT_DIR    = __DIR__ . '/../../';
 }

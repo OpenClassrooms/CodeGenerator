@@ -13,10 +13,7 @@ class GetEntitiesUseCaseMediatorImpl implements GetEntitiesUseCaseMediator
     use CommonEntityUseCaseMediatorsTrait;
     use GetEntitiesUseCaseGeneratorsTrait;
 
-    /**
-     * @var UseCaseListItemResponseMediator
-     */
-    private $useCaseListItemResponseMediator;
+    private UseCaseListItemResponseMediator $useCaseListItemResponseMediator;
 
     public function setUseCaseListItemResponseMediator(
         UseCaseListItemResponseMediator $useCaseListItemResponseMediator

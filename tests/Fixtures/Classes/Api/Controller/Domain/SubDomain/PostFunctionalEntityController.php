@@ -20,15 +20,9 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class PostFunctionalEntityController extends AbstractApiController
 {
-    /**
-     * @var CreateFunctionalEntityRequestBuilder
-     */
-    private $createFunctionalEntityRequestBuilder;
+    private CreateFunctionalEntityRequestBuilder $createFunctionalEntityRequestBuilder;
 
-    /**
-     * @var FunctionalEntityViewModelDetailAssembler
-     */
-    private $functionalEntityViewModelDetailAssembler;
+    private FunctionalEntityViewModelDetailAssembler $functionalEntityViewModelDetailAssembler;
 
     public function __construct(
         FunctionalEntityViewModelDetailAssembler $assembler,

@@ -9,10 +9,7 @@ use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\Create
 
 class CreateEntityUseCaseRequestDTOGeneratorRequestBuilderImpl implements CreateEntityUseCaseRequestDTOGeneratorRequestBuilder
 {
-    /**
-     * @var CreateEntityUseCaseRequestDTOGeneratorRequestDTO
-     */
-    private $request;
+    private CreateEntityUseCaseRequestDTOGeneratorRequestDTO $request;
 
     public function create(): CreateEntityUseCaseRequestDTOGeneratorRequestBuilder
     {

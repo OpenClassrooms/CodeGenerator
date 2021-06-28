@@ -6,41 +6,29 @@ namespace OpenClassrooms\CodeGenerator\Mediators\BusinessRules\Responses\Impl;
 
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Responders\Request\UseCaseResponseGeneratorRequestBuilder;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Responders\UseCaseResponseGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\UseCaseResponseAssemblerTraitGeneratorRequestBuilder;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\UseCaseResponseCommonFieldTraitGeneratorRequestBuilder;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\UseCaseResponseAssemblerTraitGenerator;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\UseCaseResponseCommonFieldTraitGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Generator;
 use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\BusinessRules\Responders\Request\UseCaseResponseTestCaseGeneratorRequestBuilder;
-use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\BusinessRules\Responders\UseCaseResponseTestCaseGenerator;
 use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\Responses\UseCaseResponseCommonMediator;
 
 class UseCaseResponseCommonMediatorImpl implements UseCaseResponseCommonMediator
 {
-    /** @var UseCaseResponseAssemblerTraitGenerator */
-    private $useCaseResponseAssemblerTraitGenerator;
+    private Generator $useCaseResponseAssemblerTraitGenerator;
 
-    /** @var UseCaseResponseAssemblerTraitGeneratorRequestBuilder */
-    private $useCaseResponseAssemblerTraitGeneratorRequestBuilder;
+    private UseCaseResponseAssemblerTraitGeneratorRequestBuilder $useCaseResponseAssemblerTraitGeneratorRequestBuilder;
 
-    /** @var UseCaseResponseCommonFieldTraitGenerator */
-    private $useCaseResponseCommonFieldTraitGenerator;
+    private Generator $useCaseResponseCommonFieldTraitGenerator;
 
-    /** @var UseCaseResponseCommonFieldTraitGeneratorRequestBuilder */
-    private $useCaseResponseCommonFieldTraitGeneratorRequestBuilder;
+    private UseCaseResponseCommonFieldTraitGeneratorRequestBuilder $useCaseResponseCommonFieldTraitGeneratorRequestBuilder;
 
-    /** @var UseCaseResponseGenerator */
-    private $useCaseResponseGenerator;
+    private Generator $useCaseResponseGenerator;
 
-    /** @var UseCaseResponseGeneratorRequestBuilder */
-    private $useCaseResponseGeneratorRequestBuilder;
+    private UseCaseResponseGeneratorRequestBuilder $useCaseResponseGeneratorRequestBuilder;
 
-    /** @var UseCaseResponseTestCaseGenerator */
-    private $useCaseResponseTestCaseGenerator;
+    private Generator $useCaseResponseTestCaseGenerator;
 
-    /** @var UseCaseResponseTestCaseGeneratorRequestBuilder */
-    private $useCaseResponseTestCaseGeneratorRequestBuilder;
+    private UseCaseResponseTestCaseGeneratorRequestBuilder $useCaseResponseTestCaseGeneratorRequestBuilder;
 
     public function generateUseCaseResponseAssemblerTraitGenerator(string $className): FileObject
     {

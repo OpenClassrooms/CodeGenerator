@@ -10,7 +10,7 @@ abstract class DeleteEntityUseCaseRequestBuilderSkeletonModel extends AbstractSk
 {
     public $deleteEntityUseCaseRequestShortName;
 
-    public $templatePath = 'BusinessRules/Requestors/DeleteEntityUseCaseRequestBuilder.php.twig';
+    public string $templatePath = 'BusinessRules/Requestors/DeleteEntityUseCaseRequestBuilder.php.twig';
 
     public $useCaseRequestClassName;
 

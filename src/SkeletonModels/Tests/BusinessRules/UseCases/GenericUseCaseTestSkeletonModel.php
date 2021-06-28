@@ -8,15 +8,15 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 
 abstract class GenericUseCaseTestSkeletonModel extends AbstractSkeletonModel
 {
-    public $genericUseCaseClassName;
+    public string $genericUseCaseClassName;
 
-    public $genericUseCaseRequestClassName;
+    public string $genericUseCaseRequestClassName;
 
-    public $genericUseCaseRequestShortName;
+    public string $genericUseCaseRequestShortName;
 
-    public $genericUseCaseShortName;
+    public string $genericUseCaseShortName;
 
-    public $genericUseCaseTestMethod;
+    public string $genericUseCaseTestMethod;
 
-    public $templatePath = 'Tests/BusinessRules/UseCases/GenericUseCaseTest.php.twig';
+    public string $templatePath = 'Tests/BusinessRules/UseCases/GenericUseCaseTest.php.twig';
 }

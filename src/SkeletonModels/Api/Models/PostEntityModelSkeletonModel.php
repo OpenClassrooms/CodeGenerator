@@ -10,5 +10,5 @@ abstract class PostEntityModelSkeletonModel extends AbstractSkeletonModel
 {
     public $entityModelTraitShortName;
 
-    public $templatePath = 'Api/Models/PostEntityModel.php.twig';
+    public string $templatePath = 'Api/Models/PostEntityModel.php.twig';
 }

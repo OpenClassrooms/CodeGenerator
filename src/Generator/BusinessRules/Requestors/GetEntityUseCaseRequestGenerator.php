@@ -15,10 +15,7 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Requestors\GetEnti
 
 class GetEntityUseCaseRequestGenerator extends AbstractUseCaseGenerator
 {
-    /**
-     * @var GetEntityUseCaseRequestSkeletonModelAssembler
-     */
-    private $getEntityUseCaseRequestSkeletonModelAssembler;
+    private GetEntityUseCaseRequestSkeletonModelAssembler $getEntityUseCaseRequestSkeletonModelAssembler;
 
     /**
      * @param GetEntityUseCaseRequestGeneratorRequest $generatorRequest

@@ -4,30 +4,25 @@ declare(strict_types=1);
 
 namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Entities;
 
-use OpenClassrooms\CodeGenerator\Entities\Object\FieldObject;
 use OpenClassrooms\CodeGenerator\Entities\Object\MethodObject;
 
 class EntityMethodObjectStub5 extends MethodObject
 {
-    const DOC_COMMENT = null;
+    public const DOC_COMMENT = null;
 
-    const NAME        = 'getField4';
+    public const NAME = 'getField4';
 
-    const NULLABLE    = true;
+    private const NULLABLE = false;
 
-    const RETURN_TYPE = 'DateTimeInterface';
+    private const RETURN_TYPE = 'DateTimeInterface';
 
-    const VALUE       = null;
+    protected ?string $docComment = self::DOC_COMMENT;
 
-    protected $docComment = self::DOC_COMMENT;
+    protected string $name = self::NAME;
 
-    protected $name = self::NAME;
+    protected bool $nullable = self::NULLABLE;
 
-    protected $nullable = self::NULLABLE;
-
-    protected $returnType = self::RETURN_TYPE;
-
-    protected $scope = FieldObject::SCOPE_PROTECTED;
+    protected string $returnType = self::RETURN_TYPE;
 
     public function __construct()
     {

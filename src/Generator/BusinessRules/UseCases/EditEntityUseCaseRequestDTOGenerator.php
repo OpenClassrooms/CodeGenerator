@@ -17,10 +17,7 @@ class EditEntityUseCaseRequestDTOGenerator extends AbstractUseCaseGenerator
     use EditUseCaseRequestFieldTrait;
     use EditUseCaseRequestMethodTrait;
 
-    /**
-     * @var EditEntityUseCaseRequestDTOSkeletonModelAssembler
-     */
-    private $editEntityUseCaseRequestDTOSkeletonModelAssembler;
+    private EditEntityUseCaseRequestDTOSkeletonModelAssembler $editEntityUseCaseRequestDTOSkeletonModelAssembler;
 
     /**
      * @param EditEntityUseCaseRequestDTOGeneratorRequest $generatorRequest

@@ -6,25 +6,13 @@ namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Resp
 
 abstract class AbstractPaginatedUseCaseResponse implements PaginatedUseCaseResponse
 {
-    /**
-     * @var array
-     */
-    protected $items = [];
+    protected array $items = [];
 
-    /**
-     * @var integer
-     */
-    protected $itemsPerPage;
+    protected int $itemsPerPage;
 
-    /**
-     * @var integer
-     */
-    protected $page = 1;
+    protected int $page = 1;
 
-    /**
-     * @var integer
-     */
-    protected $totalItems;
+    protected int $totalItems;
 
     /**
      * @inheritDoc

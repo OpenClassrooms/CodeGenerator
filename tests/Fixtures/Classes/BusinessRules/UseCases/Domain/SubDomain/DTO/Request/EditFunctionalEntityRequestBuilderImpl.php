@@ -11,10 +11,7 @@ use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Requestors
 
 class EditFunctionalEntityRequestBuilderImpl implements EditFunctionalEntityRequestBuilder
 {
-    /**
-     * @var EditFunctionalEntityRequestDTO
-     */
-    private $request;
+    private EditFunctionalEntityRequestDTO $request;
 
     public function build(): EditFunctionalEntityRequest
     {

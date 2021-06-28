@@ -17,10 +17,7 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\CreateEnt
 
 class CreateEntityUseCaseGenerator extends AbstractUseCaseGenerator
 {
-    /**
-     * @var CreateEntityUseCaseSkeletonModelBuilder
-     */
-    private $createEntitySkeletonModelBuilder;
+    private CreateEntityUseCaseSkeletonModelBuilder $createEntitySkeletonModelBuilder;
 
     /**
      * @param CreateEntityUseCaseGeneratorRequest $generatorRequest

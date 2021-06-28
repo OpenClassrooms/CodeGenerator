@@ -20,15 +20,9 @@ class CreateEntityUseCaseCommandTest extends TestCase
 {
     use CommandTestCase;
 
-    /**
-     * @var CreateEntityUseCaseCommand
-     */
-    protected $command;
+    protected CreateEntityUseCaseCommand $command;
 
-    /**
-     * @var CreateEntityUseCaseMediator
-     */
-    private $createEntityUseCaseMediatorMock;
+    private CreateEntityUseCaseMediator $createEntityUseCaseMediatorMock;
 
     /**
      * @test
@@ -105,7 +99,6 @@ class CreateEntityUseCaseCommandTest extends TestCase
         $this->createEntityUseCaseMediatorMock = new CreateEntityUseCaseMediatorMock();
         $this->container = new ContainerMock(
             [CreateEntityUseCaseMediator::class => $this->createEntityUseCaseMediatorMock]
-
         );
         TestClassUtil::setProperty('container', $this->container, $this->command);
     }

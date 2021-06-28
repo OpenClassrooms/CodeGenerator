@@ -9,10 +9,7 @@ use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\GetEnt
 
 class GetEntitiesUseCaseGeneratorRequestBuilderImpl implements GetEntitiesUseCaseGeneratorRequestBuilder
 {
-    /**
-     * @var GetEntitiesUseCaseGeneratorRequestDTO
-     */
-    private $request;
+    private GetEntitiesUseCaseGeneratorRequestDTO $request;
 
     public function build(): GetEntitiesUseCaseGeneratorRequest
     {

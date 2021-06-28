@@ -13,12 +13,9 @@ class {{ skeletonModel.shortName }} implements {{ skeletonModel.entityGatewaySho
     /**
      * @var {{ skeletonModel.entityShortName }}[]
      */
-    public static ${{ skeletonModel.pluralEntityShortName }} = [];
+    public static array ${{ skeletonModel.pluralEntityShortName }} = [];
 
-    /**
-     * @var int
-     */
-    public static $id = 1;
+    public static int $id = 1;
 
     public function __construct(array ${{ skeletonModel.pluralEntityShortName }} = [])
     {

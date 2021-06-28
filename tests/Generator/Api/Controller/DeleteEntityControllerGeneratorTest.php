@@ -6,7 +6,7 @@ namespace OpenClassrooms\CodeGenerator\Tests\Generator\Api\Controller;
 
 use OpenClassrooms\CodeGenerator\Generator\Api\Controller\DeleteEntityControllerGenerator;
 use OpenClassrooms\CodeGenerator\Generator\Api\Controller\DTO\Request\DeleteEntityControllerGeneratorRequestBuilderImpl;
-use OpenClassrooms\CodeGenerator\Generator\Api\Controller\Request\DeleteEntityControllerGeneratorRequestBuilder;
+use OpenClassrooms\CodeGenerator\Generator\Api\Controller\DTO\Request\DeleteEntityControllerGeneratorRequestDTO;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\Controller\Domain\SubDomain\DeleteEntityControllerFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\ControllerFileObjectFactoryMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\EntityFileObjectFactoryMock;
@@ -23,15 +23,9 @@ class DeleteEntityControllerGeneratorTest extends TestCase
 {
     use FileObjectTestCase;
 
-    /**
-     * @var DeleteEntityControllerGenerator
-     */
-    private $deleteEntityControllerGenerator;
+    private DeleteEntityControllerGenerator $deleteEntityControllerGenerator;
 
-    /**
-     * @var DeleteEntityControllerGeneratorRequestBuilder
-     */
-    private $request;
+    private DeleteEntityControllerGeneratorRequestDTO $request;
 
     /**
      * @test

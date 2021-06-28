@@ -13,10 +13,7 @@ class GenericUseCaseRequestMediatorImpl implements GenericUseCaseRequestMediator
 {
     use GenericUseCaseRequestGeneratorsTrait;
 
-    /**
-     * @var FileObjectGateway
-     */
-    private $fileObjectGateway;
+    private FileObjectGateway $fileObjectGateway;
 
     public function mediate(array $args = [], array $options = []): array
     {

@@ -21,15 +21,9 @@ class EntityStubGenerator extends AbstractGenerator
 {
     use StubFieldObjectTrait;
 
-    /**
-     * @var EntityFileObjectFactory
-     */
-    private $entityFileObjectFactory;
+    private EntityFileObjectFactory $entityFileObjectFactory;
 
-    /**
-     * @var EntityStubSkeletonModelAssembler
-     */
-    private $entityStubSkeletonModelAssembler;
+    private EntityStubSkeletonModelAssembler $entityStubSkeletonModelAssembler;
 
     /**
      * @param EntityStubGeneratorRequest $generatorRequest
@@ -77,9 +71,7 @@ class EntityStubGenerator extends AbstractGenerator
             $this->baseNamespace
         );
 
-        $fileObject = StubSuffixUtility::incrementClassNameSuffix($fileObject, $this->fileObjectGateway->findAll());
-
-        return $fileObject;
+        return StubSuffixUtility::incrementClassNameSuffix($fileObject, $this->fileObjectGateway->findAll());
     }
 
     private function createEntityImplFileObject(): FileObject

@@ -6,30 +6,15 @@ namespace OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\Responders;
 
 trait UseCaseResponseClassNameTrait
 {
-    /**
-     * @var string
-     */
-    public $paginatedCollection;
+    public string $paginatedCollection;
 
-    /**
-     * @var string
-     */
-    public $paginatedUseCaseResponse;
+    public string $paginatedUseCaseResponse;
 
-    /**
-     * @var string
-     */
-    public $paginatedUseCaseResponseBuilder;
+    public string $paginatedUseCaseResponseBuilder;
 
-    /**
-     * @var string
-     */
-    public $pagination;
+    public string $pagination;
 
-    /**
-     * @var string
-     */
-    public $useCaseResponse;
+    public string $useCaseResponse;
 
     public function setPaginatedCollection(string $paginatedCollection): void
     {

@@ -9,10 +9,7 @@ use OpenClassrooms\CodeGenerator\Generator\GenerateGenerator\Request\CustomGener
 
 class CustomGeneratorRequestBuilderImpl implements CustomGeneratorRequestBuilder
 {
-    /**
-     * @var CustomGeneratorRequestDTO
-     */
-    private $request;
+    private CustomGeneratorRequestDTO $request;
 
     public function create(): CustomGeneratorRequestBuilder
     {

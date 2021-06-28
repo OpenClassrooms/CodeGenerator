@@ -8,5 +8,5 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 
 abstract class ViewModelSkeletonModel extends AbstractSkeletonModel
 {
-    public $templatePath = 'Api/ViewModels/ViewModel.php.twig';
+    public string $templatePath = 'Api/ViewModels/ViewModel.php.twig';
 }

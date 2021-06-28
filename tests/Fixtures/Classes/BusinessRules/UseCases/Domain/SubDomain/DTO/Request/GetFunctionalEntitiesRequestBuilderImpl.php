@@ -11,15 +11,12 @@ use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Requestors
 
 class GetFunctionalEntitiesRequestBuilderImpl implements GetFunctionalEntitiesRequestBuilder
 {
+    private GetFunctionalEntitiesRequestDTO $request;
+
     public function build(): GetFunctionalEntitiesRequest
     {
         return $this->request;
     }
-
-    /**
-     * @var GetFunctionalEntitiesRequestDTO
-     */
-    private $request;
 
     public function create(): GetFunctionalEntitiesRequestBuilder
     {

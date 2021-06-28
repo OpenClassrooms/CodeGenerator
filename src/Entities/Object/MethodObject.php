@@ -11,27 +11,15 @@ class MethodObject
     /**
      * @var FieldObject[]
      */
-    protected $arguments;
+    protected array $arguments = [];
 
-    /**
-     * @var string
-     */
-    protected $docComment;
+    protected ?string $docComment = null;
 
-    /**
-     * @var string
-     */
-    protected $name;
+    protected string $name = '';
 
-    /**
-     * @var bool
-     */
-    protected $nullable;
+    protected bool $nullable;
 
-    /**
-     * @var string
-     */
-    protected $returnType;
+    protected string $returnType = '';
 
     public function __construct(string $name)
     {
@@ -51,18 +39,12 @@ class MethodObject
         return $this->arguments;
     }
 
-    /**
-     * @return string|bool
-     */
-    public function getDocComment()
+    public function getDocComment(): ?string
     {
         return $this->docComment;
     }
 
-    /**
-     * @param string|bool
-     */
-    public function setDocComment($docComment): void
+    public function setDocComment(?string $docComment): void
     {
         $this->docComment = $docComment;
     }
@@ -89,7 +71,7 @@ class MethodObject
 
     public function isDateType(): bool
     {
-        return (bool) preg_match('/Date/', $this->returnType);
+        return false !== strpos($this->returnType, 'Date');
     }
 
     public function isNullable(): bool

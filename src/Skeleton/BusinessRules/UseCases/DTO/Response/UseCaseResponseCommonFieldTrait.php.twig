@@ -5,8 +5,10 @@ namespace {{ skeletonModel.namespace }};
 trait {{ skeletonModel.shortName }}
 {
 {% for field in skeletonModel.fields | sortNameByAlpha %}
+{% if field.docComment %}
     {{ field.docComment }}
-    public ${{ field.name }};
+{% endif %}
+    public {{ field.type }} ${{ field.name }};
 
 {% endfor %}
 {% for method in skeletonModel.methods | sortNameByAlpha %}

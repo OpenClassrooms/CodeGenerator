@@ -6,30 +6,15 @@ namespace OpenClassrooms\CodeGenerator\Entities;
 
 abstract class AbstractFileObjectFactory
 {
-    /**
-     * @var string
-     */
-    protected $apiDir;
+    protected string $apiDir;
 
-    /**
-     * @var string
-     */
-    protected $appDir;
+    protected string $appDir;
 
-    /**
-     * @var string
-     */
-    protected $baseNamespace;
+    protected string $baseNamespace;
 
-    /**
-     * @var string
-     */
-    protected $stubNamespace;
+    protected string $stubNamespace;
 
-    /**
-     * @var string
-     */
-    protected $testsBaseNamespace;
+    protected string $testsBaseNamespace;
 
     public function setBaseNamespace(string $baseNamespace)
     {

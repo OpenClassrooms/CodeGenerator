@@ -15,10 +15,7 @@ class CreateEntityUseCaseSkeletonModelBuilderImpl implements CreateEntityUseCase
     use SecurityClassNameTrait;
     use UseCaseClassNameTrait;
 
-    /**
-     * @var CreateEntityUseCaseSkeletonModel
-     */
-    private $skeletonModel;
+    private CreateEntityUseCaseSkeletonModelImpl $skeletonModel;
 
     public function build(): CreateEntityUseCaseSkeletonModel
     {

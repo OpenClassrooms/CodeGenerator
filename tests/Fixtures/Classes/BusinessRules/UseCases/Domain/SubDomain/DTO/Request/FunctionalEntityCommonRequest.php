@@ -8,25 +8,16 @@ namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseC
 
 trait FunctionalEntityCommonRequest
 {
-    /**
-     * @var string
-     */
-    public $field1;
+    public string $field1;
 
     /**
      * @var string[]
      */
-    public $field2;
+    public array $field2;
 
-    /**
-     * @var bool
-     */
-    public $field3;
+    public bool $field3;
 
-    /**
-     * @var \DateTimeInterface
-     */
-    public $field4;
+    public \DateTimeInterface $field4;
 
     public function getField1(): string
     {
@@ -41,7 +32,7 @@ trait FunctionalEntityCommonRequest
         return $this->field2;
     }
 
-    public function getField4(): ?\DateTimeInterface
+    public function getField4(): \DateTimeInterface
     {
         return $this->field4;
     }

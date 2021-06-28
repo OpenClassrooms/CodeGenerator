@@ -12,11 +12,4 @@ class {{ skeletonModel.shortName }}
 
 {% endif %}
 {% endfor %}
-
-    protected function build(array $data)
-    {
-{% for constant in skeletonModel.constants | sortNameByAlpha %}
-        $this->{{ constant.value }} = $data[self::{{ constant.name }}] ?? null;
-{% endfor %}
-    }
 }

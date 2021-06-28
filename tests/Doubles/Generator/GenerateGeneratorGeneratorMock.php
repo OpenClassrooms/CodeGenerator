@@ -12,25 +12,19 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Gateways\FileObject\InMemoryFileO
 
 class GenerateGeneratorGeneratorMock extends GenerateGeneratorGenerator
 {
-    /**
-     * @var FileObjectGateway
-     */
-    public $fileObjectGateway;
+    public FileObjectGateway $fileObjectGateway;
 
     /**
-     * @var FileObject
+     * @var FileObject[]
      */
-    public $fileObjectResponses;
+    public array $fileObjectResponses;
 
-    /**
-     * @var bool
-     */
-    public $hasBeenGenerated = false;
+    public bool $hasBeenGenerated = false;
 
     /**
      * @param FileObject[]
      */
-    public function __construct(array $fileObjectResponses = null)
+    public function __construct(array $fileObjectResponses)
     {
         $this->fileObjectResponses = $fileObjectResponses;
         $this->hasBeenGenerated = false;

@@ -20,5 +20,5 @@ abstract class EntityCommonHydratorTraitSkeletonModel extends AbstractSkeletonMo
 
     public $editEntityUseCaseRequestMethods;
 
-    public $templatePath = 'BusinessRules/UseCases/EntityCommonHydratorTrait.php.twig';
+    public string $templatePath = 'BusinessRules/UseCases/EntityCommonHydratorTrait.php.twig';
 }

@@ -48,7 +48,8 @@
   "require-dev": {
     "friendsofphp/php-cs-fixer": "2.*",
     "phpunit/phpcov": "~5.0",
-    "phpunit/phpunit": "~7.5"
+    "phpunit/phpunit": "~7.5",
+    "rector/rector-prefixed": "^0.10.3"
   },
   "scripts": {
     "post-install-cmd": [

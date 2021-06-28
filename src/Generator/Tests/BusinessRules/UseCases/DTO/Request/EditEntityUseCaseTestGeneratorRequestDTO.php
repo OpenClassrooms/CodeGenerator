@@ -8,10 +8,7 @@ use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\Request\
 
 class EditEntityUseCaseTestGeneratorRequestDTO implements EditEntityUseCaseTestGeneratorRequest
 {
-    /**
-     * @var string
-     */
-    public $entityClassName;
+    public string $entityClassName;
 
     public function getEntityClassName(): string
     {

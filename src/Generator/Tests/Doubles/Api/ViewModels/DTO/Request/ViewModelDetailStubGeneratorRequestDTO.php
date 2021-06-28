@@ -8,10 +8,7 @@ use OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\Api\ViewModels\Request\
 
 class ViewModelDetailStubGeneratorRequestDTO implements ViewModelDetailStubGeneratorRequest
 {
-    /**
-     * @var string
-     */
-    public $className;
+    public string $className;
 
     public function getUseCaseResponseClassName(): string
     {

@@ -14,22 +14,16 @@ final class GetFunctionalEntitiesRequestDTO implements GetFunctionalEntitiesRequ
     /**
      * @var string[]
      */
-    public $filters = [];
+    public array $filters = [];
 
-    /**
-     * @var int
-     */
-    public $itemsPerPage;
+    public int $itemsPerPage;
 
-    /**
-     * @var int
-     */
-    public $page = Pagination::DEFAULT_PAGE_NUMBER;
+    public int $page = Pagination::DEFAULT_PAGE_NUMBER;
 
     /**
      * @var string[]
      */
-    public $sorts = [];
+    public array $sorts = [];
 
     /**
      * {@inheritdoc}

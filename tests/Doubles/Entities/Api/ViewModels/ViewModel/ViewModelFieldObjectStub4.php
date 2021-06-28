@@ -8,17 +8,17 @@ use OpenClassrooms\CodeGenerator\Entities\Object\FieldObject;
 
 class ViewModelFieldObjectStub4 extends FieldObject
 {
-    const DOC_COMMENT = '/**
-     * @var bool
-     */';
+    public const DOC_COMMENT = null;
 
-    const NAME        = 'field3';
+    public const NAME = 'field3';
 
-    protected $docComment = self::DOC_COMMENT;
+    protected ?string $docComment = self::DOC_COMMENT;
 
-    protected $name = self::NAME;
+    protected string $name = self::NAME;
 
-    protected $scope = FieldObject::SCOPE_PUBLIC;
+    protected string $scope = FieldObject::SCOPE_PUBLIC;
+
+    protected ?string $type = 'bool';
 
     public function __construct()
     {

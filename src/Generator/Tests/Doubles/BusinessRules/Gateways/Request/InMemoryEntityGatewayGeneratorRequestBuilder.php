@@ -6,9 +6,6 @@ namespace OpenClassrooms\CodeGenerator\Generator\Tests\Doubles\BusinessRules\Gat
 
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 
-/**
- * @author arnaud lefevre <arnaud.lefevre@openclassrooms.com>
- */
 interface InMemoryEntityGatewayGeneratorRequestBuilder extends GeneratorRequest
 {
     public function build(): InMemoryEntityGatewayGeneratorRequest;

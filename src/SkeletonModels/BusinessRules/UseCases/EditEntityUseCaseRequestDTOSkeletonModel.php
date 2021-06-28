@@ -8,11 +8,11 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 
 abstract class EditEntityUseCaseRequestDTOSkeletonModel extends AbstractSkeletonModel
 {
-    public $editEntityUseCaseRequestClassName;
+    public string $editEntityUseCaseRequestClassName;
 
-    public $editEntityUseCaseRequestShortName;
+    public string $editEntityUseCaseRequestShortName;
 
-    public $entityUseCaseCommonRequestTraitShortName;
+    public string $entityUseCaseCommonRequestTraitShortName;
 
-    public $templatePath = 'BusinessRules/UseCases/DTO/Request/EditEntityUseCaseRequestDTO.php.twig';
+    public string $templatePath = 'BusinessRules/UseCases/DTO/Request/EditEntityUseCaseRequestDTO.php.twig';
 }

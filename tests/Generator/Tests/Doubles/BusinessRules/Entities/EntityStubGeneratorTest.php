@@ -6,7 +6,7 @@ namespace OpenClassrooms\CodeGenerator\Tests\Generator\Tests\Doubles\BusinessRul
 
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Entities\DTO\Request\EntityStubGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Entities\EntityStubGenerator;
-use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Entities\Request\EntityStubGeneratorRequestBuilder;
+use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Entities\Request\EntityStubGeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\Entities\Impl\EntityStubSkeletonModelAssemblerImpl;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\EntityFileObjectFactoryMock;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\FileObjectTestCase;
@@ -22,15 +22,9 @@ class EntityStubGeneratorTest extends TestCase
 {
     use FileObjectTestCase;
 
-    /**
-     * @var EntityStubGenerator
-     */
-    private $entityStubGenerator;
+    private EntityStubGenerator $entityStubGenerator;
 
-    /**
-     * @var EntityStubGeneratorRequestBuilder
-     */
-    private $request;
+    private EntityStubGeneratorRequest $request;
 
     /**
      * @test
@@ -38,9 +32,10 @@ class EntityStubGeneratorTest extends TestCase
     public function generateReturnFileObject(): void
     {
         $actualFileObject = $this->entityStubGenerator->generate($this->request);
+        $expectedFileObject = InMemoryFileObjectGateway::$fileObjects[$actualFileObject->getId()];
 
         $this->assertSame(
-            InMemoryFileObjectGateway::$fileObjects[$actualFileObject->getId()]->getPath(),
+            $expectedFileObject->getPath(),
             $actualFileObject->getPath()
         );
         $this->assertFileObject(new EntityStubFileObjectStub1(), $actualFileObject);

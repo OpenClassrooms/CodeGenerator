@@ -12,7 +12,7 @@ use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Entities\E
 
 class EditEntityUseCaseRequestFileObjectStub1 extends FileObject
 {
-    const CLASS_NAME = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Requestors\Domain\SubDomain\EditFunctionalEntityRequest';
+    public const CLASS_NAME = 'OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Requestors\Domain\SubDomain\EditFunctionalEntityRequest';
 
     public function __construct()
     {

@@ -16,10 +16,7 @@ use OpenClassrooms\CodeGenerator\Utility\FieldUtility;
 
 class UseCaseResponseAssemblerTraitGenerator extends AbstractUseCaseGenerator
 {
-    /**
-     * @var UseCaseResponseAssemblerTraitSkeletonModelAssembler
-     */
-    private $useCaseResponseAssemblerTraitSkeletonModelAssembler;
+    private UseCaseResponseAssemblerTraitSkeletonModelAssembler $useCaseResponseAssemblerTraitSkeletonModelAssembler;
 
     /**
      * @param UseCaseResponseAssemblerTraitGeneratorRequest $generatorRequest

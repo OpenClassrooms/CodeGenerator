@@ -9,10 +9,7 @@ use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\Request\
 
 class DeleteEntityUseCaseTestGeneratorRequestBuilderImpl implements DeleteEntityUseCaseTestGeneratorRequestBuilder
 {
-    /**
-     * @var DeleteEntityUseCaseTestGeneratorRequestDTO
-     */
-    private $request;
+    private DeleteEntityUseCaseTestGeneratorRequestDTO $request;
 
     public function create(): DeleteEntityUseCaseTestGeneratorRequestBuilder
     {

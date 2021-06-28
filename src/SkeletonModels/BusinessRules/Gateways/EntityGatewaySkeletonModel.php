@@ -24,5 +24,5 @@ abstract class EntityGatewaySkeletonModel extends AbstractSkeletonModel
 
     public $paginatedCollectionShortName;
 
-    public $templatePath = 'BusinessRules\Gateways\EntityGateway.php.twig';
+    public string $templatePath = 'BusinessRules\Gateways\EntityGateway.php.twig';
 }

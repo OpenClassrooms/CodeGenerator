@@ -15,10 +15,7 @@ class ParameterHandler
 
     public const OC_CODE_GENERATOR_YML_DIST = 'vendor/openclassrooms/code-generator/oc_code_generator.yml.dist';
 
-    /**
-     * @var Processor
-     */
-    protected static $processor;
+    protected static ?Processor $processor;
 
     public static function createGeneratorFileParameters(Event $event): void
     {
@@ -30,7 +27,7 @@ class ParameterHandler
 
     private static function initProcessor(Event $event): void
     {
-        static::$processor = static::$processor ?? new Processor($event->getIO());
+        static::$processor ??= new Processor($event->getIO());
     }
 
     private static function buildParameters(): void

@@ -7,10 +7,7 @@ use {{ skeletonModel.deleteEntityUseCaseRequestBuilderClassName }};
 
 class {{ skeletonModel.shortName }} implements {{ skeletonModel.deleteEntityUseCaseRequestBuilderShortName }}
 {
-    /**
-     * @var int
-     */
-    private ${{ skeletonModel.entityIdArgument }};
+    private int ${{ skeletonModel.entityIdArgument }};
 
     public function build(): {{ skeletonModel.deleteEntityUseCaseRequestShortName }}
     {

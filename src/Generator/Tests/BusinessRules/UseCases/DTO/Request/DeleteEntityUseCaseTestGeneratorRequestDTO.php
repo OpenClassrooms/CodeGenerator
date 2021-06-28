@@ -8,10 +8,7 @@ use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\Request\
 
 class DeleteEntityUseCaseTestGeneratorRequestDTO implements DeleteEntityUseCaseTestGeneratorRequest
 {
-    /**
-     * @var string
-     */
-    public $entityClassName;
+    public string $entityClassName;
 
     public function getEntityClassName(): string
     {

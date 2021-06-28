@@ -9,10 +9,7 @@ use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\Responders\Reques
 
 class UseCaseDetailResponseStubGeneratorRequestBuilderImpl implements UseCaseDetailResponseStubGeneratorRequestBuilder
 {
-    /**
-     * @var UseCaseDetailResponseStubGeneratorRequestDTO
-     */
-    private $request;
+    private UseCaseDetailResponseStubGeneratorRequestDTO $request;
 
     public function build(): UseCaseDetailResponseStubGeneratorRequest
     {

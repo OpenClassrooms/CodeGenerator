@@ -18,15 +18,9 @@ class {{ skeletonModel.entity }}GeneratorTest extends TestCase
 {
     use FileObjectTestCase;
 
-    /**
-     * @var {{ skeletonModel.entity }}Generator
-     */
-    private ${{ skeletonModel.argument }}Generator;
+    private {{ skeletonModel.entity }}Generator ${{ skeletonModel.argument }}Generator;
 
-    /**
-     * @var {{ skeletonModel.entity }}GeneratorRequestBuilder
-     */
-    private $request;
+    private {{ skeletonModel.entity }}GeneratorRequestBuilder $request;
 
     /**
      * @test

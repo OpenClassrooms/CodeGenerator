@@ -15,10 +15,7 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\Api\ViewModels\ViewModelLi
 
 class ViewModelListItemAssemblerImplTestGenerator extends AbstractViewModelGenerator
 {
-    /**
-     * @var ViewModelListItemAssemblerTestSkeletonModelBuilder
-     */
-    private $viewModelTestSkeletonModelBuilder;
+    private ViewModelListItemAssemblerTestSkeletonModelBuilder $viewModelTestSkeletonModelBuilder;
 
     /**
      * @param ViewModelListItemAssemblerImplTestGeneratorRequest $generatorRequest

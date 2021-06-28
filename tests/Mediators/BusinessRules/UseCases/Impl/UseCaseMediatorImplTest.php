@@ -14,10 +14,7 @@ use PHPUnit\Framework\TestCase;
 
 class UseCaseMediatorImplTest extends TestCase
 {
-    /**
-     * @var UseCaseMediator
-     */
-    private $useCaseMediator;
+    private UseCaseMediator $useCaseMediator;
 
     /**
      * @test

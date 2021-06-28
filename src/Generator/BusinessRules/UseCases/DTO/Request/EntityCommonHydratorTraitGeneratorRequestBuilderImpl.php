@@ -9,10 +9,7 @@ use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\Entity
 
 class EntityCommonHydratorTraitGeneratorRequestBuilderImpl implements EntityCommonHydratorTraitGeneratorRequestBuilder
 {
-    /**
-     * @var EntityCommonHydratorTraitGeneratorRequestDTO
-     */
-    private $request;
+    private EntityCommonHydratorTraitGeneratorRequestDTO $request;
 
     public function create(): EntityCommonHydratorTraitGeneratorRequestBuilder
     {

@@ -24,15 +24,9 @@ class UseCaseDetailResponseStubGeneratorTest extends TestCase
 {
     use FileObjectTestCase;
 
-    /**
-     * @var UseCaseDetailResponseStubGeneratorRequest
-     */
-    private $request;
+    private UseCaseDetailResponseStubGeneratorRequest $request;
 
-    /**
-     * @var UseCaseDetailResponseStubGenerator
-     */
-    private $useCaseDetailResponseStubGenerator;
+    private UseCaseDetailResponseStubGenerator $useCaseDetailResponseStubGenerator;
 
     /**
      * @test
@@ -40,9 +34,10 @@ class UseCaseDetailResponseStubGeneratorTest extends TestCase
     public function generateReturnFileObject(): void
     {
         $actualFileObject = $this->useCaseDetailResponseStubGenerator->generate($this->request);
+        $expectedFileObject = InMemoryFileObjectGateway::$fileObjects[$actualFileObject->getId()];
 
         $this->assertSame(
-            InMemoryFileObjectGateway::$fileObjects[$actualFileObject->getId()]->getPath(),
+            $expectedFileObject->getPath(),
             $actualFileObject->getPath()
         );
         $this->assertFileObject(new UseCaseDetailResponseStubFileObjectStub1(), $actualFileObject);

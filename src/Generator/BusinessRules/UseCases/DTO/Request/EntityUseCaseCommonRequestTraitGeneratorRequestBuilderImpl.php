@@ -9,10 +9,7 @@ use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\Entity
 
 class EntityUseCaseCommonRequestTraitGeneratorRequestBuilderImpl implements EntityUseCaseCommonRequestTraitGeneratorRequestBuilder
 {
-    /**
-     * @var EntityUseCaseCommonRequestTraitGeneratorRequestDTO
-     */
-    private $request;
+    private EntityUseCaseCommonRequestTraitGeneratorRequestDTO $request;
 
     public function build(): EntityUseCaseCommonRequestTraitGeneratorRequest
     {

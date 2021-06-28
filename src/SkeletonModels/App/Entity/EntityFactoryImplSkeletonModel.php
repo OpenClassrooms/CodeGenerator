@@ -18,5 +18,5 @@ abstract class EntityFactoryImplSkeletonModel extends AbstractSkeletonModel
 
     public $entityShortName;
 
-    public $templatePath = 'App\Entity\EntityFactoryImpl.php.twig';
+    public string $templatePath = 'App\Entity\EntityFactoryImpl.php.twig';
 }

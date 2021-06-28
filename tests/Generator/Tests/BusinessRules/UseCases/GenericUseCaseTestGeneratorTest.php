@@ -6,7 +6,7 @@ namespace OpenClassrooms\CodeGenerator\Tests\Generator\Tests\BusinessRules\UseCa
 
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\DTO\Request\GenericUseCaseTestGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\GenericUseCaseTestGenerator;
-use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\Request\GenericUseCaseTestGeneratorRequestBuilder;
+use OpenClassrooms\CodeGenerator\Generator\Tests\BusinessRules\UseCases\Request\GenericUseCaseTestGeneratorRequest;
 use OpenClassrooms\CodeGenerator\SkeletonModels\Tests\BusinessRules\UseCases\Impl\GenericUseCaseTestSkeletonModelAssemblerImpl;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\FileObjectTestCase;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Tests\BusinessRules\UseCases\GenericUseCaseTestFileObjectStub1;
@@ -20,15 +20,9 @@ class GenericUseCaseTestGeneratorTest extends TestCase
 {
     use FileObjectTestCase;
 
-    /**
-     * @var GenericUseCaseTestGenerator
-     */
-    private $genericUseCaseTestGenerator;
+    private GenericUseCaseTestGenerator $genericUseCaseTestGenerator;
 
-    /**
-     * @var GenericUseCaseTestGeneratorRequestBuilder
-     */
-    private $request;
+    private GenericUseCaseTestGeneratorRequest $request;
 
     /**
      * @test

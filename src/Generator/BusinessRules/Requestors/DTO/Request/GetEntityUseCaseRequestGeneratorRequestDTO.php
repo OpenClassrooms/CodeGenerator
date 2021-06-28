@@ -8,10 +8,7 @@ use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\Request\GetE
 
 class GetEntityUseCaseRequestGeneratorRequestDTO implements GetEntityUseCaseRequestGeneratorRequest
 {
-    /**
-     * @var string
-     */
-    public $entity;
+    public string $entity;
 
     public function getEntityClassName(): string
     {

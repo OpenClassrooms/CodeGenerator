@@ -8,41 +8,41 @@ use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 
 abstract class GetEntityUseCaseTestSkeletonModel extends AbstractSkeletonModel
 {
-    public $entityNotFoundExceptionClassName;
+    public string $entityNotFoundExceptionClassName;
 
-    public $entityNotFoundExceptionShortName;
+    public string $entityNotFoundExceptionShortName;
 
-    public $entityShortName;
+    public string $entityShortName;
 
-    public $entityShortNameArgument;
+    public string $entityShortNameArgument;
 
-    public $entityStubClassName;
+    public string $entityStubClassName;
 
-    public $entityStubShortName;
+    public string $entityStubShortName;
 
-    public $getEntityUseCaseClassName;
+    public string $getEntityUseCaseClassName;
 
-    public $getEntityUseCaseRequestClassName;
+    public string $getEntityUseCaseRequestClassName;
 
-    public $getEntityUseCaseRequestShortName;
+    public string $getEntityUseCaseRequestShortName;
 
-    public $getEntityUseCaseShortName;
+    public string $getEntityUseCaseShortName;
 
-    public $inMemoryEntityGatewayClassName;
+    public string $inMemoryEntityGatewayClassName;
 
-    public $inMemoryEntityGatewayShortName;
+    public string $inMemoryEntityGatewayShortName;
 
-    public $templatePath = 'Tests/BusinessRules/UseCases/GetEntityUseCaseTest.php.twig';
+    public string $templatePath = 'Tests/BusinessRules/UseCases/GetEntityUseCaseTest.php.twig';
 
-    public $useCaseDetailResponseAssemblerMockClassName;
+    public string $useCaseDetailResponseAssemblerMockClassName;
 
-    public $useCaseDetailResponseAssemblerMockShortName;
+    public string $useCaseDetailResponseAssemblerMockShortName;
 
-    public $useCaseDetailResponseStubClassName;
+    public string $useCaseDetailResponseStubClassName;
 
-    public $useCaseDetailResponseStubShortName;
+    public string $useCaseDetailResponseStubShortName;
 
-    public $useCaseDetailResponseTestCaseClassName;
+    public string $useCaseDetailResponseTestCaseClassName;
 
-    public $useCaseDetailResponseTestCaseShortName;
+    public string $useCaseDetailResponseTestCaseShortName;
 }

@@ -6,13 +6,13 @@ namespace OpenClassrooms\CodeGenerator\Mediators;
 
 final class Args
 {
-    const CLASS_NAME = 'class-name';
+    public const CLASS_NAME = 'class-name';
 
-    const TYPE       = 'type';
+    public const TYPE       = 'type';
 
-    const DOMAIN     = 'domain';
+    public const DOMAIN     = 'domain';
 
-    const ENTITY     = 'entity';
+    public const ENTITY     = 'entity';
 
-    const USE_CASE   = 'use-case';
+    public const USE_CASE   = 'use-case';
 }

@@ -10,22 +10,16 @@ final class {{ skeletonModel.shortName }} implements {{ skeletonModel.getEntitie
     /**
      * @var string[]
      */
-    public $filters = [];
+    public array $filters = [];
 
-    /**
-     * @var int
-     */
-    public $itemsPerPage;
+    public int $itemsPerPage;
 
-    /**
-     * @var int
-     */
-    public $page = {{ skeletonModel.paginationShortName }}::DEFAULT_PAGE_NUMBER;
+    public int $page = {{ skeletonModel.paginationShortName }}::DEFAULT_PAGE_NUMBER;
 
     /**
      * @var string[]
      */
-    public $sorts = [];
+    public array $sorts = [];
 
     /**
      * {@inheritdoc}

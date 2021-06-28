@@ -6,7 +6,7 @@ namespace OpenClassrooms\CodeGenerator\Tests\Generator\Api\Models;
 
 use OpenClassrooms\CodeGenerator\Generator\Api\Models\DTO\Request\EntityModelTraitGeneratorRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Generator\Api\Models\EntityModelTraitGenerator;
-use OpenClassrooms\CodeGenerator\Generator\Api\Models\Request\EntityModelTraitGeneratorRequestBuilder;
+use OpenClassrooms\CodeGenerator\Generator\Api\Models\Request\EntityModelTraitGeneratorRequest;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\Api\Models\Domain\SubDomain\EntityModelTraitFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\FileObjectTestCase;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\ModelFileObjectFactoryMock;
@@ -20,15 +20,9 @@ class EntityModelTraitGeneratorTest extends TestCase
 {
     use FileObjectTestCase;
 
-    /**
-     * @var EntityModelTraitGenerator
-     */
-    private $entityModelTraitGenerator;
+    private EntityModelTraitGenerator $entityModelTraitGenerator;
 
-    /**
-     * @var EntityModelTraitGeneratorRequestBuilder
-     */
-    private $request;
+    private EntityModelTraitGeneratorRequest $request;
 
     /**
      * @test

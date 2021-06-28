@@ -48,7 +48,7 @@ class FieldUtilityTest extends TestCase
 
     private function buildStubFieldObject(string $name, string $type): FieldObject
     {
-        $stubFieldObject = new FieldObject($name);
+        $stubFieldObject = new FieldObject($name, $type);
         $stubFieldObject->setDocComment(
             '/**
      * @var ' . $type . '
@@ -85,8 +85,8 @@ class FieldUtilityTest extends TestCase
     {
         return array_filter(
             $exceptedFields,
-            function ($method) {
-                if ('set' !== substr($method->getName(), 0, 3)) {
+            static function ($method) {
+                if (strpos($method->getName(), 'set') !== 0) {
                     return $method;
                 }
 
