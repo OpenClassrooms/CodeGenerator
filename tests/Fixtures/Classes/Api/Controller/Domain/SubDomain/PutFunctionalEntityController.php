@@ -31,7 +31,7 @@ class PutFunctionalEntityController extends AbstractApiController
      *
      * @Security("")
      */
-    public function putAction(int $functionalEntityId): JsonResponse
+    public function __invoke(int $functionalEntityId): JsonResponse
     {
         try {
             $model = $this->buildModel($this->getRequest());

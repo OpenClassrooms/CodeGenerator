@@ -35,7 +35,7 @@ class {{ skeletonModel.shortName }} extends {{ skeletonModel.abstractControllerS
      *
      * @Security("")
      */
-    public function postAction(): JsonResponse
+    public function __invoke(): JsonResponse
     {
         /** @var {{ skeletonModel.postEntityModelShortName }} $model */
         $model = $this->getModelFromRequest({{ skeletonModel.postEntityModelShortName }}::class);

@@ -34,7 +34,7 @@ class {{ skeletonModel.shortName }} extends {{ skeletonModel.abstractControllerS
      * @Security("")
      * @ParamConverter("collectionInformation")
      */
-    public function getAction({{ skeletonModel.collectionInformationShortName }} $collectionInformation): JsonResponse
+    public function __invoke({{ skeletonModel.collectionInformationShortName }} $collectionInformation): JsonResponse
     {
         ${{ skeletonModel.entitiesArgument }} = $this->{{ skeletonModel.getEntitiesMethod }}($collectionInformation);
         $vm = $this->buildViewModel(${{ skeletonModel.entitiesArgument }});

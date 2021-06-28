@@ -41,7 +41,7 @@ class PatchFunctionalEntityController extends AbstractApiController
      * @Security("")
      * @throws NotFoundHttpException
      */
-    public function patchAction(Request $request, int $functionalEntityId): JsonResponse
+    public function __invoke(Request $request, int $functionalEntityId): JsonResponse
     {
         try {
             /** @var PatchFunctionalEntityModel $model */

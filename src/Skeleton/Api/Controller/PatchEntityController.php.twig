@@ -37,7 +37,7 @@ class {{ skeletonModel.shortName }} extends {{ skeletonModel.abstractControllerS
      * @Security("")
      * @throws NotFoundHttpException
      */
-    public function patchAction(Request $request, int ${{ skeletonModel.entityIdArgument }}): JsonResponse
+    public function __invoke(Request $request, int ${{ skeletonModel.entityIdArgument }}): JsonResponse
     {
         try {
             /** @var {{ skeletonModel.patchEntityModelShortName }} $model */

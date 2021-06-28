@@ -30,7 +30,7 @@ class {{ skeletonModel.shortName }} extends {{ skeletonModel.abstractControllerS
      * @Security("")
      * @throws NotFoundHttpException
      */
-    public function getAction(int ${{ skeletonModel.entityIdArgument }}): JsonResponse
+    public function __invoke(int ${{ skeletonModel.entityIdArgument }}): JsonResponse
     {
         try {
             ${{ skeletonModel.entityArgument }} = $this->{{ skeletonModel.getEntityMethod }}(${{ skeletonModel.entityIdArgument }});
