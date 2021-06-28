@@ -31,7 +31,7 @@ class PutFunctionalEntityController extends AbstractApiController
      *
      * @Security("")
      */
-    public function putAction(int $functionalEntityId): JsonResponse
+    public function __invoke(int $functionalEntityId): JsonResponse
     {
         try {
             $model = $this->buildModel($this->getRequest());
@@ -39,7 +39,7 @@ class PutFunctionalEntityController extends AbstractApiController
 
             return $this->createUpdatedResponse();
         } catch (FunctionalEntityNotFoundException $e) {
-            $this->throwNotFoundException();
+            throw $this->createNotFoundException();
         }
     }
 

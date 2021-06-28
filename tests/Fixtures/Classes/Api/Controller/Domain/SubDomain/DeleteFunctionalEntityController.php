@@ -28,14 +28,14 @@ class DeleteFunctionalEntityController extends AbstractApiController
      *
      * @Security("")
      */
-    public function deleteAction(int $functionalEntityId): JsonResponse
+    public function __invoke(int $functionalEntityId): JsonResponse
     {
         try {
             $this->deleteFunctionalEntity($functionalEntityId);
 
             return $this->createDeletedResponse();
         } catch (FunctionalEntityNotFoundException $exception) {
-            $this->throwNotFoundException();
+            throw $this->createNotFoundException();
         }
     }
 

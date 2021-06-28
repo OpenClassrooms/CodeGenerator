@@ -24,14 +24,14 @@ class {{ skeletonModel.shortName }} extends {{ skeletonModel.abstractControllerS
      *
      * @Security("")
      */
-    public function deleteAction(int ${{ skeletonModel.entityIdArgument }}): JsonResponse
+    public function __invoke(int ${{ skeletonModel.entityIdArgument }}): JsonResponse
     {
         try {
             $this->{{ skeletonModel.deleteEntityMethod }}(${{ skeletonModel.entityIdArgument }});
 
             return $this->createDeletedResponse();
         } catch ({{ skeletonModel.entityNotFoundExceptionShortName}} $exception) {
-            $this->throwNotFoundException();
+            throw $this->createNotFoundException();
         }
     }
 

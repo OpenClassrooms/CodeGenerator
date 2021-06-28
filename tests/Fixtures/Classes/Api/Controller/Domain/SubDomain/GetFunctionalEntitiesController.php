@@ -38,7 +38,7 @@ class GetFunctionalEntitiesController extends AbstractApiController
      * @Security("")
      * @ParamConverter("collectionInformation")
      */
-    public function getAction(CollectionInformation $collectionInformation): JsonResponse
+    public function __invoke(CollectionInformation $collectionInformation): JsonResponse
     {
         $functionalEntities = $this->getFunctionalEntities($collectionInformation);
         $vm = $this->buildViewModel($functionalEntities);

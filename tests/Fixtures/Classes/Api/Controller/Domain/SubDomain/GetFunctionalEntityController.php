@@ -34,15 +34,15 @@ class GetFunctionalEntityController extends AbstractApiController
      * @Security("")
      * @throws NotFoundHttpException
      */
-    public function getAction(int $functionalEntity): JsonResponse
+    public function __invoke(int $functionalEntityId): JsonResponse
     {
         try {
-            $functionalEntity = $this->getFunctionalEntity($functionalEntity);
+            $functionalEntity = $this->getFunctionalEntity($functionalEntityId);
             $vm = $this->buildViewModel($functionalEntity);
 
             return $this->createJsonResponse($vm);
         } catch (FunctionalEntityNotFoundException $e) {
-            $this->throwNotFoundException();
+            throw $this->createNotFoundException();
         }
     }
 

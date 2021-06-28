@@ -30,15 +30,15 @@ class {{ skeletonModel.shortName }} extends {{ skeletonModel.abstractControllerS
      * @Security("")
      * @throws NotFoundHttpException
      */
-    public function getAction(int ${{ skeletonModel.entityArgument }}): JsonResponse
+    public function __invoke(int ${{ skeletonModel.entityIdArgument }}): JsonResponse
     {
         try {
-            ${{ skeletonModel.entityArgument }} = $this->{{ skeletonModel.getEntityMethod }}(${{ skeletonModel.entityArgument }});
+            ${{ skeletonModel.entityArgument }} = $this->{{ skeletonModel.getEntityMethod }}(${{ skeletonModel.entityIdArgument }});
             $vm = $this->buildViewModel(${{ skeletonModel.entityArgument }});
 
             return $this->createJsonResponse($vm);
         } catch ({{ skeletonModel.entityNotFoundExceptionShortName }} $e) {
-            $this->throwNotFoundException();
+            throw $this->createNotFoundException();
         }
     }
 

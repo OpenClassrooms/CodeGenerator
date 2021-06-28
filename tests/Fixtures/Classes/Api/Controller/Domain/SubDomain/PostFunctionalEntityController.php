@@ -37,7 +37,7 @@ class PostFunctionalEntityController extends AbstractApiController
      *
      * @Security("")
      */
-    public function postAction(): JsonResponse
+    public function __invoke(): JsonResponse
     {
         /** @var PostFunctionalEntityModel $model */
         $model = $this->getModelFromRequest(PostFunctionalEntityModel::class);
