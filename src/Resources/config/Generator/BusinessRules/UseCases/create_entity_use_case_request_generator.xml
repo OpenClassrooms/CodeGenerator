@@ -4,10 +4,13 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
         <service
-                id="OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\Impl\CreateEntityUseCaseRequestSkeletonModelAssemblerImpl"
+                id="OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\CreateEntityUseCaseRequestSkeletonModelAssembler"
+                class="OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\Impl\CreateEntityUseCaseRequestSkeletonModelAssemblerImpl"
                 public="false">
+            <call method="setUseCaseRequestClassName">
+                <argument type="string">%use_case_request_classname%</argument>
+            </call>
         </service>
-
         <service
                 id="OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\CreateEntityUseCaseRequestGenerator"
                 parent="open_classrooms.code_generator.generator.business_rules.abstract_use_case_generator">
@@ -15,10 +18,6 @@
                 <argument type="service"
                           id="OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\CreateEntityUseCaseRequestSkeletonModelAssembler"/>
             </call>
-        </service>
-        <service
-                id="OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\CreateEntityUseCaseRequestSkeletonModelAssembler"
-                alias="OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases\Impl\CreateEntityUseCaseRequestSkeletonModelAssemblerImpl">
         </service>
     </services>
 </container>
