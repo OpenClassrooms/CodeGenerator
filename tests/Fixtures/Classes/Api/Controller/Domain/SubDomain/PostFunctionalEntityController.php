@@ -11,25 +11,27 @@ use OC\ApiBundle\Framework\FrameworkBundle\Controller\AbstractApiController;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\Models\Domain\SubDomain\PostFunctionalEntityModel;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\FunctionalEntityViewModelDetail;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Api\ViewModels\Domain\SubDomain\FunctionalEntityViewModelDetailAssembler;
-use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Requestors\Domain\SubDomain\CreateFunctionalEntityRequestBuilder;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityDetailResponse;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\CreateFunctionalEntity;
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\Request\CreateFunctionalEntityRequest;
+use OpenClassrooms\UseCase\BusinessRules\Requestors\UseCase;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
 class PostFunctionalEntityController extends AbstractApiController
 {
-    private CreateFunctionalEntityRequestBuilder $createFunctionalEntityRequestBuilder;
-
     private FunctionalEntityViewModelDetailAssembler $functionalEntityViewModelDetailAssembler;
+
+    /** @var UseCase|CreateFunctionalEntity */
+    private UseCase $createFunctionalEntity;
 
     public function __construct(
         FunctionalEntityViewModelDetailAssembler $assembler,
-        CreateFunctionalEntityRequestBuilder $builder
+        UseCase $createFunctionalEntity
     ) {
         $this->functionalEntityViewModelDetailAssembler = $assembler;
-        $this->createFunctionalEntityRequestBuilder = $builder;
+        $this->createFunctionalEntity = $createFunctionalEntity;
     }
 
     /**
@@ -48,14 +50,12 @@ class PostFunctionalEntityController extends AbstractApiController
 
     private function createFunctionalEntity(PostFunctionalEntityModel $model): FunctionalEntityDetailResponse
     {
-        return $this->get(CreateFunctionalEntity::class)->execute(
-            $this->createFunctionalEntityRequestBuilder
-                ->create()
+        return $this->createFunctionalEntity->execute(
+            CreateFunctionalEntityRequest::create()
                 ->withField1($model->field1)
                 ->withField2($model->field2)
                 ->withField3($model->field3)
                 ->withField4(new CarbonImmutable($model->field4))
-                ->build()
         );
     }
 

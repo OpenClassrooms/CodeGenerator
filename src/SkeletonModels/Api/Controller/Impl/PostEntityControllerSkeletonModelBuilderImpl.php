@@ -38,22 +38,19 @@ class PostEntityControllerSkeletonModelBuilderImpl implements PostEntityControll
     public function withCreateEntityUseCaseFileObject(
         FileObject $createEntityUseCaseFileObject
     ): PostEntityControllerSkeletonModelBuilder {
+        $this->skeletonModel->createEntityUseCaseArgument = lcfirst($createEntityUseCaseFileObject->getShortName());
         $this->skeletonModel->createEntityUseCaseShortName = $createEntityUseCaseFileObject->getShortName();
         $this->skeletonModel->createEntityUseCaseClassName = $createEntityUseCaseFileObject->getClassName();
 
         return $this;
     }
 
-    public function withCreateEntityUseCaseRequestBuilderFileObject(
-        FileObject $createEntityUseCaseRequestBuilderFileObject
+    public function withCreateEntityUseCaseRequestFileObject(
+        FileObject $createEntityUseCaseRequestFileObject
     ): PostEntityControllerSkeletonModelBuilder {
-        $this->skeletonModel->createEntityUseCaseRequestBuilderArgument = lcfirst(
-            $createEntityUseCaseRequestBuilderFileObject->getShortName()
-        );
-        $this->skeletonModel->createEntityUseCaseRequestBuilderClassName = $createEntityUseCaseRequestBuilderFileObject->getClassName(
-        );
-        $this->skeletonModel->createEntityUseCaseRequestBuilderShortName = $createEntityUseCaseRequestBuilderFileObject->getShortName(
-        );
+        $this->skeletonModel->createEntityUseCaseRequestArgument = lcfirst($createEntityUseCaseRequestFileObject->getShortName());
+        $this->skeletonModel->createEntityUseCaseRequestShortName = $createEntityUseCaseRequestFileObject->getShortName();
+        $this->skeletonModel->createEntityUseCaseRequestClassName = $createEntityUseCaseRequestFileObject->getClassName();
 
         return $this;
     }

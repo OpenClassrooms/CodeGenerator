@@ -18,6 +18,8 @@ class FieldObject
 
     protected ?string $accessor = null;
 
+    protected ?string $accessorDocComment = null;
+
     protected ?string $docComment = null;
 
     protected string $name;
@@ -48,6 +50,16 @@ class FieldObject
     public function setAccessor(?string $accessor)
     {
         $this->accessor = $accessor;
+    }
+
+    public function getAccessorDocComment(): ?string
+    {
+        return $this->accessorDocComment;
+    }
+
+    public function setAccessorDocComment(?string $accessorDocComment)
+    {
+        $this->accessorDocComment = $accessorDocComment;
     }
 
     public function getName(): string

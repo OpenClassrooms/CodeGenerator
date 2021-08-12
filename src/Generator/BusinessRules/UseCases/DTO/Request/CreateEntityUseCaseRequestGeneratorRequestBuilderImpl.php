@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\DTO\Request;
+namespace OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request;
 
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\Request\CreateEntityUseCaseRequestGeneratorRequest;
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\Request\CreateEntityUseCaseRequestGeneratorRequestBuilder;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\CreateEntityUseCaseRequestGeneratorRequest;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\CreateEntityUseCaseRequestGeneratorRequestBuilder;
 
 class CreateEntityUseCaseRequestGeneratorRequestBuilderImpl implements CreateEntityUseCaseRequestGeneratorRequestBuilder
 {

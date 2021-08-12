@@ -142,6 +142,7 @@ class FieldObjectUtility
         $fieldType = $field->getType();
         $fieldObject = new FieldObject($field->getName(), $fieldType ? $fieldType->getName() : null);
         $fieldObject->setAccessor(self::getFieldAccessor($field));
+        $fieldObject->setAccessorDocComment(self::getAccessorDocComment($field));
         $fieldObject->setDocComment($field->getDocComment() ?: null);
         $fieldObject->setScope($scope);
 
@@ -198,5 +199,13 @@ class FieldObjectUtility
         }
 
         return $traitFields;
+    }
+
+    /**
+     * @return array|string|string[]|null
+     */
+    private static function getAccessorDocComment(\ReflectionProperty $field)
+    {
+        return $field->getDocComment() ? str_replace('var', 'return', $field->getDocComment()) : null;
     }
 }

@@ -8,10 +8,8 @@ namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\BusinessRule
 
 use Carbon\Carbon;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\App\Entity\Domain\SubDomain\FunctionalEntityFactoryImpl;
-use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Requestors\Domain\SubDomain\CreateFunctionalEntityRequest;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\CreateFunctionalEntity;
-use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\DTO\Request\CreateFunctionalEntityRequestBuilderImpl;
-use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\DTO\Request\CreateFunctionalEntityRequestDTO;
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\Request\CreateFunctionalEntityRequest;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\BusinessRules\Entities\Domain\SubDomain\FunctionalEntityStub1;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\BusinessRules\Gateways\Domain\SubDomain\InMemoryFunctionalEntityGateway;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\Doubles\BusinessRules\Responders\Domain\SubDomain\FunctionalEntityDetailResponseAssemblerMock;
@@ -23,7 +21,7 @@ final class CreateFunctionalEntityTest extends TestCase
 {
     use FunctionalEntityDetailResponseTestCase;
 
-    private CreateFunctionalEntityRequestDTO $request;
+    private CreateFunctionalEntityRequest $request;
 
     private CreateFunctionalEntity $useCase;
 
@@ -49,14 +47,11 @@ final class CreateFunctionalEntityTest extends TestCase
 
     private function buildRequest(): CreateFunctionalEntityRequest
     {
-        $builder = new CreateFunctionalEntityRequestBuilderImpl();
-
-        return $builder
-            ->create()
+        return CreateFunctionalEntityRequest::create()
             ->withField1(FunctionalEntityStub1::FIELD_1)
             ->withField2(FunctionalEntityStub1::FIELD_2)
             ->withField3(FunctionalEntityStub1::FIELD_3)
             ->withField4(new Carbon(FunctionalEntityStub1::FIELD_4))
-            ->build();
+        ;
     }
 }

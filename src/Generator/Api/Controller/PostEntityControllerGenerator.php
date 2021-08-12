@@ -67,7 +67,7 @@ class PostEntityControllerGenerator extends AbstractGenerator
         $this->initFileObjectParameter($entityClassName);
         $postEntityControllerFileObject = $this->createPostEntityControllerFileObject();
         $createEntityUseCaseFileObject = $this->createCreateEntityUseCaseFileObject();
-        $createEntityUseCaseRequestBuilderFileObject = $this->createCreateEntityUseCaseRequestBuilderFileObject();
+        $createEntityUseCaseRequestFileObject = $this->createCreateEntityUseCaseRequestFileObject();
         $entityUseCaseDetailResponseFileObject = $this->createEntityUseCaseDetailResponseFileObject();
         $entityViewModelDetailAssemblerFileObject = $this->createEntityViewModelDetailAssemblerFileObject();
         $entityViewModelDetailFileObject = $this->createEntityViewModelDetailFileObject();
@@ -81,14 +81,14 @@ class PostEntityControllerGenerator extends AbstractGenerator
         $postEntityControllerFileObject->setContent(
             $this->generateContent(
                 [
-                    ControllerFileObjectType::API_CONTROLLER_POST_ENTITY                                => $postEntityControllerFileObject,
-                    UseCaseFileObjectType::BUSINESS_RULES_CREATE_ENTITY_USE_CASE                        => $createEntityUseCaseFileObject,
-                    UseCaseRequestFileObjectType::BUSINESS_RULES_CREATE_ENTITY_USE_CASE_REQUEST_BUILDER => $createEntityUseCaseRequestBuilderFileObject,
-                    UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE              => $entityUseCaseDetailResponseFileObject,
-                    ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_ASSEMBLER                            => $entityViewModelDetailAssemblerFileObject,
-                    ViewModelFileObjectType::API_VIEW_MODEL_DETAIL                                      => $entityViewModelDetailFileObject,
-                    ModelFileObjectType::API_MODEL_POST_ENTITY                                          => $postEntityModelFileObject,
-                    EntityFileObjectType::BUSINESS_RULES_ENTITY                                         => $entityFileObject,
+                    ControllerFileObjectType::API_CONTROLLER_POST_ENTITY                        => $postEntityControllerFileObject,
+                    UseCaseFileObjectType::BUSINESS_RULES_CREATE_ENTITY_USE_CASE                => $createEntityUseCaseFileObject,
+                    UseCaseRequestFileObjectType::BUSINESS_RULES_CREATE_ENTITY_USE_CASE_REQUEST => $createEntityUseCaseRequestFileObject,
+                    UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE      => $entityUseCaseDetailResponseFileObject,
+                    ViewModelFileObjectType::API_VIEW_MODEL_DETAIL_ASSEMBLER                    => $entityViewModelDetailAssemblerFileObject,
+                    ViewModelFileObjectType::API_VIEW_MODEL_DETAIL                              => $entityViewModelDetailFileObject,
+                    ModelFileObjectType::API_MODEL_POST_ENTITY                                  => $postEntityModelFileObject,
+                    EntityFileObjectType::BUSINESS_RULES_ENTITY                                 => $entityFileObject,
                 ],
                 $routeAnnotation,
                 $routeName
@@ -116,10 +116,10 @@ class PostEntityControllerGenerator extends AbstractGenerator
         );
     }
 
-    private function createCreateEntityUseCaseRequestBuilderFileObject(): FileObject
+    private function createCreateEntityUseCaseRequestFileObject(): FileObject
     {
         return $this->useCaseRequestFileObjectFactory->create(
-            UseCaseRequestFileObjectType::BUSINESS_RULES_CREATE_ENTITY_USE_CASE_REQUEST_BUILDER,
+            UseCaseRequestFileObjectType::BUSINESS_RULES_CREATE_ENTITY_USE_CASE_REQUEST,
             $this->domain,
             $this->entity
         );
@@ -206,8 +206,8 @@ class PostEntityControllerGenerator extends AbstractGenerator
             ->withCreateEntityUseCaseFileObject(
                 $fileObjects[UseCaseFileObjectType::BUSINESS_RULES_CREATE_ENTITY_USE_CASE]
             )
-            ->withCreateEntityUseCaseRequestBuilderFileObject(
-                $fileObjects[UseCaseRequestFileObjectType::BUSINESS_RULES_CREATE_ENTITY_USE_CASE_REQUEST_BUILDER]
+            ->withCreateEntityUseCaseRequestFileObject(
+                $fileObjects[UseCaseRequestFileObjectType::BUSINESS_RULES_CREATE_ENTITY_USE_CASE_REQUEST]
             )
             ->withEntityUseCaseDetailResponseFileObject(
                 $fileObjects[UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE]

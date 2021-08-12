@@ -14,15 +14,17 @@ abstract class PostEntityControllerSkeletonModel extends AbstractSkeletonModel
 
     public string $createEntityMethod;
 
+    public string $createEntityUseCaseArgument;
+
     public string $createEntityUseCaseShortName;
 
     public string $createEntityUseCaseClassName;
 
-    public string $createEntityUseCaseRequestBuilderArgument;
+    public string $createEntityUseCaseRequestArgument;
 
-    public string $createEntityUseCaseRequestBuilderClassName;
+    public string $createEntityUseCaseRequestClassName;
 
-    public string $createEntityUseCaseRequestBuilderShortName;
+    public string $createEntityUseCaseRequestShortName;
 
     public string $entityIdArgument;
 

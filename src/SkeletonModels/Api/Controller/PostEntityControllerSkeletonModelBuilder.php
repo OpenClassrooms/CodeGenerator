@@ -18,8 +18,8 @@ interface PostEntityControllerSkeletonModelBuilder
         FileObject $createEntityUseCaseFileObject
     ): PostEntityControllerSkeletonModelBuilder;
 
-    public function withCreateEntityUseCaseRequestBuilderFileObject(
-        FileObject $createEntityUseCaseRequestBuilderFileObject
+    public function withCreateEntityUseCaseRequestFileObject(
+        FileObject $createEntityUseCaseRequestFileObject
     ): PostEntityControllerSkeletonModelBuilder;
 
     public function withEntityUseCaseDetailResponseFileObject(

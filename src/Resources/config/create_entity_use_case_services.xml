@@ -8,10 +8,8 @@
         <import resource="Generator/App/Entity/entity_factory_impl_generator.xml"/>
         <import resource="Generator/BusinessRules/abstract_use_case_generator.xml"/>
         <import resource="Generator/BusinessRules/Entities/entity_factory_generator.xml"/>
-        <import resource="Generator/BusinessRules/Requestors/create_entity_use_case_request_builder_generator.xml"/>
         <import resource="Generator/BusinessRules/Requestors/create_entity_use_case_request_generator.xml"/>
-        <import resource="Generator/BusinessRules/UseCases/create_entity_use_case_request_builder_impl_generator.xml"/>
-        <import resource="Generator/BusinessRules/UseCases/create_entity_use_case_request_dto_generator.xml"/>
+        <import resource="Generator/BusinessRules/UseCases/create_entity_use_case_request_generator.xml"/>
         <import resource="Generator/BusinessRules/UseCases/create_entity_use_case_generator.xml"/>
         <import resource="Generator/BusinessRules/UseCases/create_request_trait_generator.xml"/>
         <import resource="Generator/BusinessRules/UseCases/entity_common_hydrator_trait_generator.xml"/>

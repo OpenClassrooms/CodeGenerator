@@ -5,13 +5,10 @@ declare(strict_types=1);
 namespace OpenClassrooms\CodeGenerator\Tests\Doubles\Mediators;
 
 use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\Impl\CreateEntityUseCaseMediatorImpl;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Requestors\CreateEntityUseCaseRequestBuilderFileObjectStub1;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Requestors\CreateEntityUseCaseRequestFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Responders\UseCaseDetailResponseAssemblerFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\Responders\UseCaseDetailResponseFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\CreateEntityUseCaseFileObjectStub1;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\CreateEntityUseCaseRequestBuilderImplFileObjectStub1;
-use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\CreateEntityUseCaseRequestDTOFileObjectStub1;
+use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\CreateEntityUseCaseRequestFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\UseCaseDetailResponseAssemblerImplFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\UseCaseDetailResponseDTOFileObjectStub1;
 use OpenClassrooms\CodeGenerator\Tests\Doubles\Entities\BusinessRules\UseCases\UseCaseResponseAssemblerTraitFileObjectStub1;
@@ -31,9 +28,7 @@ class CreateEntityUseCaseMediatorMock extends CreateEntityUseCaseMediatorImpl
     {
         self::$fileObjects = [
             new CreateEntityUseCaseFileObjectStub1(),
-            new CreateEntityUseCaseRequestBuilderFileObjectStub1(),
-            new CreateEntityUseCaseRequestBuilderImplFileObjectStub1(),
-            new CreateEntityUseCaseRequestDTOFileObjectStub1(),
+            new CreateEntityUseCaseRequestFileObjectStub1(),
             new CreateEntityUseCaseRequestFileObjectStub1(),
             new CreateEntityUseCaseTestFileObjectStub1(),
             new InMemoryEntityGatewayFileObjectStub1(),

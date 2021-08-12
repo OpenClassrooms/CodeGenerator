@@ -9,25 +9,27 @@ use {{ skeletonModel.abstractControllerClassName }};
 use {{ skeletonModel.postEntityModelClassName }};
 use {{ skeletonModel.entityViewModelDetailClassName }};
 use {{ skeletonModel.entityViewModelDetailAssemblerClassName }};
-use {{ skeletonModel.createEntityUseCaseRequestBuilderClassName }};
 use {{ skeletonModel.entityUseCaseDetailResponseClassName }};
 use {{ skeletonModel.createEntityUseCaseClassName }};
+use {{ skeletonModel.createEntityUseCaseRequestClassName }};
+use OpenClassrooms\UseCase\BusinessRules\Requestors\UseCase;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
 class {{ skeletonModel.shortName }} extends {{ skeletonModel.abstractControllerShortName }}
 {
-    private {{ skeletonModel.createEntityUseCaseRequestBuilderShortName }} ${{ skeletonModel.createEntityUseCaseRequestBuilderArgument }};
-
     private {{ skeletonModel.entityViewModelDetailAssemblerShortName}} ${{ skeletonModel.entityViewModelDetailAssemblerArgument }};
+
+    /** @var UseCase|{{ skeletonModel.createEntityUseCaseShortName }} */
+    private UseCase ${{ skeletonModel.createEntityUseCaseArgument }};
 
     public function __construct(
         {{ skeletonModel.entityViewModelDetailAssemblerShortName }} $assembler,
-        {{ skeletonModel.createEntityUseCaseRequestBuilderShortName }} $builder
+        UseCase ${{ skeletonModel.createEntityUseCaseArgument }}
     ) {
         $this->{{ skeletonModel.entityViewModelDetailAssemblerArgument }} = $assembler;
-        $this->{{ skeletonModel.createEntityUseCaseRequestBuilderArgument }} = $builder;
+        $this->{{ skeletonModel.createEntityUseCaseArgument }} = ${{ skeletonModel.createEntityUseCaseArgument }};
     }
 
     /**
@@ -46,9 +48,8 @@ class {{ skeletonModel.shortName }} extends {{ skeletonModel.abstractControllerS
 
     private function {{ skeletonModel.createEntityMethod }}({{ skeletonModel.postEntityModelShortName }} $model): {{ skeletonModel.entityUseCaseDetailResponseShortName }}
     {
-        return $this->get({{ skeletonModel.createEntityUseCaseShortName }}::class)->execute(
-            $this->{{ skeletonModel.createEntityUseCaseRequestBuilderArgument}}
-                ->create()
+        return $this->{{ skeletonModel.createEntityUseCaseArgument }}->execute(
+            {{ skeletonModel.createEntityUseCaseRequestShortName}}::create()
 {% for method in skeletonModel.postEntityModelMethods %}
 {% if method.arguments[0].isDateType %}
                 ->{{ method.name }}(new CarbonImmutable($model->{{ method.arguments[0].name }}))
@@ -56,7 +57,6 @@ class {{ skeletonModel.shortName }} extends {{ skeletonModel.abstractControllerS
                 ->{{ method.name }}($model->{{ method.arguments[0].name }})
 {% endif %}
 {% endfor %}
-                ->build()
         );
     }
 
