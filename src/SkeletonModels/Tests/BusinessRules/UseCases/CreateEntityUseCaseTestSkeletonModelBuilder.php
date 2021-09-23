@@ -20,14 +20,6 @@ interface CreateEntityUseCaseTestSkeletonModelBuilder
         FileObject $createEntityFileObject
     ): CreateEntityUseCaseTestSkeletonModelBuilder;
 
-    public function withCreateEntityUseCaseRequestBuilderImplFileObject(
-        FileObject $createEntityUseCaseRequestBuilderImplFileObject
-    ): CreateEntityUseCaseTestSkeletonModelBuilder;
-
-    public function withCreateEntityUseCaseRequestDTOFileObject(
-        FileObject $createEntityUseCaseRequestDTOFileObject
-    ): CreateEntityUseCaseTestSkeletonModelBuilder;
-
     public function withCreateEntityUseCaseRequestFileObject(
         FileObject $createEntityUseCaseRequestFileObject
     ): CreateEntityUseCaseTestSkeletonModelBuilder;

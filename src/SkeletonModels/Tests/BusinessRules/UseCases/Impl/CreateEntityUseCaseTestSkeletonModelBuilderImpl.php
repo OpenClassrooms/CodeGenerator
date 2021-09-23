@@ -18,7 +18,7 @@ class CreateEntityUseCaseTestSkeletonModelBuilderImpl implements CreateEntityUse
     public function build(): CreateEntityUseCaseTestSkeletonModel
     {
         $this->skeletonModel->useCarbon = $this->useCarbon(
-            $this->skeletonModel->createEntityUseCaseRequestBuilderImplMethods
+            $this->skeletonModel->createEntityUseCaseRequestMethods
         );
 
         return $this->skeletonModel;
@@ -50,37 +50,13 @@ class CreateEntityUseCaseTestSkeletonModelBuilderImpl implements CreateEntityUse
         return $this;
     }
 
-    public function withCreateEntityUseCaseRequestBuilderImplFileObject(
-        FileObject $createEntityUseCaseRequestBuilderImplFileObject
-    ): CreateEntityUseCaseTestSkeletonModelBuilder {
-        $this->skeletonModel->createEntityUseCaseRequestBuilderImplClassName = $createEntityUseCaseRequestBuilderImplFileObject->getClassName(
-        );
-        $this->skeletonModel->createEntityUseCaseRequestBuilderImplMethods = $createEntityUseCaseRequestBuilderImplFileObject->getMethods(
-        );
-        $this->skeletonModel->createEntityUseCaseRequestBuilderImplShortName = $createEntityUseCaseRequestBuilderImplFileObject->getShortName(
-        );
-
-        return $this;
-    }
-
-    public function withCreateEntityUseCaseRequestDTOFileObject(
-        FileObject $createEntityUseCaseRequestDTOFileObject
-    ): CreateEntityUseCaseTestSkeletonModelBuilder {
-
-        $this->skeletonModel->createEntityUseCaseRequestDTOClassName = $createEntityUseCaseRequestDTOFileObject->getClassName(
-        );
-        $this->skeletonModel->createEntityUseCaseRequestDTOShortName = $createEntityUseCaseRequestDTOFileObject->getShortName(
-        );
-
-        return $this;
-    }
-
     public function withCreateEntityUseCaseRequestFileObject(
         FileObject $createEntityUseCaseRequestFileObject
     ): CreateEntityUseCaseTestSkeletonModelBuilder {
+
         $this->skeletonModel->createEntityUseCaseRequestClassName = $createEntityUseCaseRequestFileObject->getClassName(
         );
-
+        $this->skeletonModel->createEntityUseCaseRequestMethods = $createEntityUseCaseRequestFileObject->getMethods();
         $this->skeletonModel->createEntityUseCaseRequestShortName = $createEntityUseCaseRequestFileObject->getShortName(
         );
 

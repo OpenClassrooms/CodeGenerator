@@ -10,19 +10,11 @@ abstract class CreateEntityUseCaseTestSkeletonModel extends AbstractSkeletonMode
 {
     public string $createEntityClassName;
 
-    public string $createEntityUseCaseRequestBuilderImplClassName;
-
-    public array $createEntityUseCaseRequestBuilderImplMethods;
-
-    public string $createEntityUseCaseRequestBuilderImplShortName;
-
     public string $createEntityUseCaseRequestClassName;
 
-    public string $createEntityUseCaseRequestDTOClassName;
-
-    public string $createEntityUseCaseRequestDTOShortName;
-
     public string $createEntityUseCaseRequestShortName;
+
+    public array $createEntityUseCaseRequestMethods;
 
     public string $createEntityShortName;
 
@@ -56,5 +48,5 @@ abstract class CreateEntityUseCaseTestSkeletonModel extends AbstractSkeletonMode
 
     public string $templatePath = 'Tests/BusinessRules/UseCases/CreateEntityUseCaseTest.php.twig';
 
-    public bool $useCarbon;
+    public bool $useCarbon = false;
 }

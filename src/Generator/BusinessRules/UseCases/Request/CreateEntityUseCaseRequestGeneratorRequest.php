@@ -6,7 +6,7 @@ namespace OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request;
 
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 
-interface CreateEntityUseCaseRequestBuilderImplGeneratorRequest extends GeneratorRequest
+interface CreateEntityUseCaseRequestGeneratorRequest extends GeneratorRequest
 {
     public function getEntityClassName(): string;
 }

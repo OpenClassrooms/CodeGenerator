@@ -37,7 +37,7 @@ class CreateEntityUseCaseGenerator extends AbstractUseCaseGenerator
     {
         $this->initFileObjectParameter($entityClassName);
         $createEntityFileObject = $this->createCreateEntityUseCaseFileObject();
-        $createEntityUseCaseRequestFileObject = $this->createCreateEntityUseCaseRequestFileObject();
+        $createEntityRequestFileObject = $this->createCreateEntityRequestFileObject();
         $entityCommonHydratorTraitFileObject = $this->createEntityCommonHydratorTraitFileObject();
         $entityFileObject = $this->createEntityFileObject();
         $entityUseCaseDetailResponseFileObject = $this->createEntityDetailResponseFileObject();
@@ -49,7 +49,7 @@ class CreateEntityUseCaseGenerator extends AbstractUseCaseGenerator
             $this->generateContent(
                 [
                     UseCaseFileObjectType::BUSINESS_RULES_CREATE_ENTITY_USE_CASE                     => $createEntityFileObject,
-                    UseCaseRequestFileObjectType::BUSINESS_RULES_CREATE_ENTITY_USE_CASE_REQUEST      => $createEntityUseCaseRequestFileObject,
+                    UseCaseRequestFileObjectType::BUSINESS_RULES_CREATE_ENTITY_USE_CASE_REQUEST      => $createEntityRequestFileObject,
                     UseCaseFileObjectType::BUSINESS_RULES_ENTITY_COMMON_HYDRATOR_TRAIT               => $entityCommonHydratorTraitFileObject,
                     EntityFileObjectType::BUSINESS_RULES_ENTITY                                      => $entityFileObject,
                     UseCaseResponseFileObjectType::BUSINESS_RULES_USE_CASE_DETAIL_RESPONSE           => $entityUseCaseDetailResponseFileObject,
@@ -72,7 +72,7 @@ class CreateEntityUseCaseGenerator extends AbstractUseCaseGenerator
         );
     }
 
-    private function createCreateEntityUseCaseRequestFileObject()
+    private function createCreateEntityRequestFileObject(): FileObject
     {
         return $this->useCaseRequestFileObjectFactory->create(
             UseCaseRequestFileObjectType::BUSINESS_RULES_CREATE_ENTITY_USE_CASE_REQUEST,

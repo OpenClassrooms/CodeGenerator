@@ -6,11 +6,11 @@ namespace OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases;
 
 use OpenClassrooms\CodeGenerator\SkeletonModels\AbstractSkeletonModel;
 
-abstract class CreateEntityUseCaseRequestDTOSkeletonModel extends AbstractSkeletonModel
+abstract class CreateEntityUseCaseRequestSkeletonModel extends AbstractSkeletonModel
 {
-    public string $createEntityUseCaseRequestClassName;
+    public $useCaseRequestClassName;
 
-    public string $createEntityUseCaseRequestShortName;
+    public $useCaseRequestShortName;
 
     public string $createRequestTraitClassName;
 
@@ -18,5 +18,5 @@ abstract class CreateEntityUseCaseRequestDTOSkeletonModel extends AbstractSkelet
 
     public string $entityUseCaseCommonRequestTraitShortName;
 
-    public string $templatePath = 'BusinessRules/UseCases/DTO/Request/CreateEntityUseCaseRequestDTO.php.twig';
+    public string $templatePath = 'BusinessRules/UseCases/Request/CreateEntityUseCaseRequest.php.twig';
 }

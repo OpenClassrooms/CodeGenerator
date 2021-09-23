@@ -69,7 +69,7 @@ class MethodUtility
             FileObjectUtility::getShortClassName($className) . 'Stub1::' . StringUtility::convertToUpperSnakeCase(
                 $field->getName()
             ),
-            $field->getType()->getName()
+            $field->hasType() ? $field->getType()->getName() : null
         );
     }
 
@@ -100,7 +100,7 @@ class MethodUtility
 
     private static function buildArgument(\ReflectionProperty $field): FieldObject
     {
-        $argument = new FieldObject($field->getName(), $field->getType()->getName());
+        $argument = new FieldObject($field->getName(), $field->hasType() ? $field->getType()->getName() : null);
         if ($field->getDocComment()) {
             $argument->setDocComment($field->getDocComment());
         }

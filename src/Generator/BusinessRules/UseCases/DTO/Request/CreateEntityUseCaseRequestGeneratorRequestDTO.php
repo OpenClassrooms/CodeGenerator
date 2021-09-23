@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request;
 
-use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\CreateEntityUseCaseRequestBuilderImplGeneratorRequest;
+use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request\CreateEntityUseCaseRequestGeneratorRequest;
 
-class CreateEntityUseCaseRequestBuilderImplGeneratorRequestDTO implements CreateEntityUseCaseRequestBuilderImplGeneratorRequest
+class CreateEntityUseCaseRequestGeneratorRequestDTO implements CreateEntityUseCaseRequestGeneratorRequest
 {
     public string $entityClassName;
 

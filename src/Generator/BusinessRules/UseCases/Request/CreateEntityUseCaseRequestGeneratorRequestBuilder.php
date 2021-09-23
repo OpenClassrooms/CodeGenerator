@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OpenClassrooms\CodeGenerator\Generator\BusinessRules\Requestors\Request;
+namespace OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\Request;
 
 use OpenClassrooms\CodeGenerator\Generator\GeneratorRequest;
 
@@ -12,5 +12,7 @@ interface CreateEntityUseCaseRequestGeneratorRequestBuilder extends GeneratorReq
 
     public function create(): CreateEntityUseCaseRequestGeneratorRequestBuilder;
 
-    public function withEntityClassName(string $entityClassName): CreateEntityUseCaseRequestGeneratorRequestBuilder;
+    public function withEntityClassName(
+        string $entityClassName
+    ): CreateEntityUseCaseRequestGeneratorRequestBuilder;
 }

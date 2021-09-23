@@ -6,12 +6,11 @@ namespace OpenClassrooms\CodeGenerator\SkeletonModels\BusinessRules\UseCases;
 
 use OpenClassrooms\CodeGenerator\Entities\Object\FileObject;
 
-interface CreateEntityUseCaseRequestDTOSkeletonModelAssembler
+interface CreateEntityUseCaseRequestSkeletonModelAssembler
 {
     public function create(
         FileObject $createEntityUseCaseRequestFileObject,
-        FileObject $createEntityUseCaseRequestDTOFileObject,
         FileObject $createRequestTraitFileObject,
         FileObject $entityUseCaseCommonRequestFileObject
-    ): CreateEntityUseCaseRequestDTOSkeletonModel;
+    ): CreateEntityUseCaseRequestSkeletonModel;
 }

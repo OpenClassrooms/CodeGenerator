@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OpenClassrooms\CodeGenerator\Tests\Generator\BusinessRules\Requestors;
+namespace OpenClassrooms\CodeGenerator\Tests\Generator\BusinessRules\UseCases;
 
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\CreateEntityUseCaseRequestGenerator;
 use OpenClassrooms\CodeGenerator\Generator\BusinessRules\UseCases\DTO\Request\CreateEntityUseCaseRequestGeneratorRequestBuilderImpl;
@@ -40,7 +40,9 @@ class CreateEntityUseCaseRequestGeneratorTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->request = (new CreateEntityUseCaseRequestGeneratorRequestBuilderImpl())
+        $createEntityUseCaseRequestGeneratorRequestBuilderImpl = new CreateEntityUseCaseRequestGeneratorRequestBuilderImpl(
+        );
+        $this->request = $createEntityUseCaseRequestGeneratorRequestBuilderImpl
             ->create()
             ->withEntityClassName(FunctionalEntity::class)
             ->build();

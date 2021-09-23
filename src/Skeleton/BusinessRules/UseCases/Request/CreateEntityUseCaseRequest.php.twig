@@ -1,0 +1,45 @@
+{% include "Header.php.twig" %}
+
+namespace {{ skeletonModel.namespace }};
+
+use {{ skeletonModel.useCaseRequestClassName }};
+
+final class {{ skeletonModel.shortName }} implements {{ skeletonModel.useCaseRequestShortName }}
+{
+{% for field in skeletonModel.fields | sortNameByAlpha %}
+{% if field.docComment %}
+    {{ field.docComment }}
+{% endif %}
+    public {{ field.type }} ${{ field.name }}{% if field.value is not null %} = {{ printValue(field.value) }}{% endif %};
+
+{% endfor %}
+{% for field in skeletonModel.fields | sortAccessorByAlpha %}
+{% if field.accessorDocComment %}
+    {{ field.accessorDocComment }}
+{% endif %}
+    public function {{ field.accessor }}(): {{ field.type }}
+    {
+        return $this->{{ field.name }};
+    }
+{% if not loop.last %}
+
+{% endif %}
+{% endfor %}
+
+    public static function create(): self
+    {
+        return new self();
+    }
+
+{% for method in skeletonModel.methods | sortNameByAlpha %}
+    public function {{ method.name }}({{ method.arguments[0].type }} ${{ method.arguments[0].name }}): self
+    {
+        $this->{{ method.arguments[0].name }} = ${{ method.arguments[0].name }};
+
+        return $this;
+    }
+{% if not loop.last %}
+
+{% endif %}
+{% endfor %}
+}

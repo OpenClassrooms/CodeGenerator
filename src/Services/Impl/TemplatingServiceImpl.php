@@ -32,6 +32,7 @@ class TemplatingServiceImpl extends Environment implements TemplatingService
         );
         $this->addFilter($this->getSortAccessorsFieldNameByAlphaFilter());
         $this->addFilter($this->getSortNameByAlphaFilter());
+        $this->addFilter($this->getSortAccessorByAlphaFilter());
         $this->addFilter($this->getSortIdFirstFilter());
         $this->addFilter($this->ucFirst());
 
@@ -77,12 +78,40 @@ class TemplatingServiceImpl extends Environment implements TemplatingService
         );
     }
 
+    private function getSortAccessorByAlphaFilter()
+    {
+        return new TwigFilter(
+            'sortAccessorByAlpha',
+            function (array $classFields) {
+                $arrayFields = $classFields;
+                usort(
+                    $arrayFields,
+                    $this->getSortAccessorClosure($arrayFields)
+                );
+
+                return $arrayFields;
+            }
+        );
+    }
+
     private function getSortNameClosure(array $arrayFields)
     {
-        if (array_shift($arrayFields) instanceof FieldObject) {
+        if (reset($arrayFields) instanceof FieldObject) {
             return static fn (FieldObject $a, FieldObject $b) => strcmp($a->getName(), $b->getName());
         }
-        if (array_shift($arrayFields) instanceof ConstObject) {
+        if (reset($arrayFields) instanceof ConstObject) {
+            return static fn (ConstObject $a, ConstObject $b) => strcmp($a->getName(), $b->getName());
+        }
+
+        return static fn (MethodObject $a, MethodObject $b) => strcmp($a->getName(), $b->getName());
+    }
+
+    private function getSortAccessorClosure(array $arrayFields)
+    {
+        if (reset($arrayFields) instanceof FieldObject) {
+            return static fn (FieldObject $a, FieldObject $b) => strcmp($a->getAccessor(), $b->getAccessor());
+        }
+        if (reset($arrayFields) instanceof ConstObject) {
             return static fn (ConstObject $a, ConstObject $b) => strcmp($a->getName(), $b->getName());
         }
 
