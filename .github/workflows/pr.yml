@@ -1,12 +1,8 @@
-on:
-    push:
-        branches:
-            - master
-    workflow_dispatch:
+on: [pull_request]
 name: CodeGenerator
 jobs:
     symfony:
-        name: PHP - Tests & Coverage update
+        name: PHP - Tests & Coverage degradation check
         runs-on: ubuntu-latest
         strategy:
             fail-fast: false
@@ -37,4 +33,5 @@ jobs:
             - name: Update base coverage
               uses: OpenClassrooms/coverage-checker@v1.6.0
               with:
+                  action: check
                   token: ${{ secrets.GITHUB_TOKEN }}
