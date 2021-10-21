@@ -8,6 +8,7 @@ namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\BusinessRule
 
 use Carbon\Carbon;
 use OpenClassrooms\CodeGenerator\Tests\EntityUtil;
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gateways\Domain\SubDomain\Exceptions\FunctionalEntityNotFoundException;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Requestors\Domain\SubDomain\EditFunctionalEntityRequest;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\DTO\Request\EditFunctionalEntityRequestBuilderImpl;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\DTO\Request\EditFunctionalEntityRequestDTO;
@@ -29,11 +30,11 @@ final class EditFunctionalEntityTest extends TestCase
 
     /**
      * @test
-     *
-     * @expectedException \OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gateways\Domain\SubDomain\Exceptions\FunctionalEntityNotFoundException
      */
     public function functionalEntityNotFoundShouldThrowException(): void
     {
+        $this->expectException(FunctionalEntityNotFoundException::class);
+
         $this->request->functionalEntityId = -1;
         $this->useCase->execute($this->request);
     }

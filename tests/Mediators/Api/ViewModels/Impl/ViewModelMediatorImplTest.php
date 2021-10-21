@@ -134,7 +134,7 @@ class ViewModelMediatorImplTest extends TestCase
         );
 
         foreach ($fileObjects as $fileObject) {
-            $this->assertNotContains('Detail', $fileObject->getClassName());
+            $this->assertStringNotContainsString('Detail', $fileObject->getClassName());
         }
         $this->assertFlushedFileObject($fileObjects);
     }
@@ -151,7 +151,7 @@ class ViewModelMediatorImplTest extends TestCase
         );
 
         foreach ($fileObjects as $fileObject) {
-            $this->assertNotContains('ListItem', $fileObject->getClassName());
+            $this->assertStringNotContainsString('ListItem', $fileObject->getClassName());
         }
         $this->assertFlushedFileObject($fileObjects);
     }

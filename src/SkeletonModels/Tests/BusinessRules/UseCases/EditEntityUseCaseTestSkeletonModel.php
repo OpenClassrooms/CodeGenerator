@@ -32,6 +32,8 @@ abstract class EditEntityUseCaseTestSkeletonModel extends AbstractSkeletonModel
 
     public string $entityNotFoundExceptionClassName;
 
+    public string $entityNotFoundExceptionShortName;
+
     public string $entityShortName;
 
     public string $entityStubClassName;

@@ -105,6 +105,7 @@ class EditEntityUseCaseTestSkeletonModelBuilderImpl implements EditEntityUseCase
         FileObject $entityNotFoundExceptionFileObject
     ): EditEntityUseCaseTestSkeletonModelBuilder {
         $this->skeletonModel->entityNotFoundExceptionClassName = $entityNotFoundExceptionFileObject->getClassName();
+        $this->skeletonModel->entityNotFoundExceptionShortName = $entityNotFoundExceptionFileObject->getShortName();
 
         return $this;
     }

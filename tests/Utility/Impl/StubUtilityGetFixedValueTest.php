@@ -74,20 +74,22 @@ final class StubUtilityGetFixedValueTest extends TestCase
 
     /**
      * @test
-     * @expectedException  \InvalidArgumentException
      */
     public function createFixedFakeValueThrowInvalidArgumentException(): void
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         $this->stubUtilityContext = new StubUtilityContext(new StubUtilityGetFixedValue());
         $this->stubUtilityContext->createFakeValue('not exist', '', '');
     }
 
     /**
      * @test
-     * @expectedException  \InvalidArgumentException
      */
     public function createRandomFakeValueThrowInvalidArgumentException(): void
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         $this->stubUtilityContext = new StubUtilityContext(new StubUtilityGetRandomValue());
         $this->stubUtilityContext->createFakeValue('not exist', '', '');
     }

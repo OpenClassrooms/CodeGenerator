@@ -6,6 +6,7 @@ declare(strict_types=1);
 
 namespace OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\Tests\BusinessRules\UseCases\Domain\SubDomain;
 
+use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gateways\Domain\SubDomain\Exceptions\FunctionalEntityNotFoundException;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Requestors\Domain\SubDomain\DeleteFunctionalEntityRequest;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\DeleteFunctionalEntity;
 use OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\UseCases\Domain\SubDomain\DTO\Request\DeleteFunctionalEntityRequestBuilderImpl;
@@ -22,10 +23,11 @@ final class DeleteFunctionalEntityTest extends TestCase
 
     /**
      * @test
-     * @expectedException \OpenClassrooms\CodeGenerator\Tests\Fixtures\Classes\BusinessRules\Gateways\Domain\SubDomain\Exceptions\FunctionalEntityNotFoundException
      */
     public function functionalEntityNotFoundThrowException(): void
     {
+        $this->expectException(FunctionalEntityNotFoundException::class);
+
         $this->request->functionalEntityId = -1;
         $this->useCase->execute($this->request);
     }

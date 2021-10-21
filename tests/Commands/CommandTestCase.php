@@ -46,9 +46,9 @@ trait CommandTestCase
         $output = $this->commandTester->getDisplay();
 
         foreach ($writtenFileObjects as $fileObject) {
-            $this->assertContains(CommandLabelType::GENERATED_OUTPUT, $output);
-            $this->assertContains($fileObject->getPath(), $output);
-            $this->assertNotContains($fileObject->getContent(), $output);
+            $this->assertStringContainsString(CommandLabelType::GENERATED_OUTPUT, $output);
+            $this->assertStringContainsString($fileObject->getPath(), $output);
+            $this->assertStringNotContainsString($fileObject->getContent(), $output);
         }
     }
 

@@ -88,6 +88,7 @@ class DeleteEntityUseCaseTestSkeletonModelBuilderImpl implements DeleteEntityUse
         FileObject $entityNotFoundExceptionFileObject
     ): DeleteEntityUseCaseTestSkeletonModelBuilder {
         $this->skeletonModel->entityNotFoundExceptionClassName = $entityNotFoundExceptionFileObject->getClassName();
+        $this->skeletonModel->entityNotFoundExceptionShortName = $entityNotFoundExceptionFileObject->getShortName();
 
         return $this;
     }

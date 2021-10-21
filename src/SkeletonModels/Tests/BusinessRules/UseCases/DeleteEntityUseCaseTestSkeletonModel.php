@@ -28,6 +28,8 @@ abstract class DeleteEntityUseCaseTestSkeletonModel extends AbstractSkeletonMode
 
     public string $entityNotFoundExceptionClassName;
 
+    public string $entityNotFoundExceptionShortName;
+
     public string $entityStubClassName;
 
     public string $entityStubArgument;

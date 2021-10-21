@@ -6,6 +6,7 @@ namespace {{ skeletonModel.namespace }};
 use Carbon\Carbon;
 {% endif %}
 use {{ skeletonModel.entityUtilClassName }};
+use {{ skeletonModel.entityNotFoundExceptionClassName }};
 use {{ skeletonModel.editEntityUseCaseRequestClassName }};
 use {{ skeletonModel.editEntityUseCaseRequestBuilderImplClassName }};
 use {{ skeletonModel.editEntityUseCaseRequestDTOClassName }};
@@ -27,11 +28,11 @@ final class {{ skeletonModel.shortName }} extends TestCase
 
     /**
      * @test
-     *
-     * @expectedException \{{ skeletonModel.entityNotFoundExceptionClassName }}
      */
     public function {{ skeletonModel.entityArgument }}NotFoundShouldThrowException(): void
     {
+        $this->expectException({{ skeletonModel.entityNotFoundExceptionShortName }}::class);
+
         $this->request->{{ skeletonModel.entityIdArgument }} = -1;
         $this->useCase->execute($this->request);
     }

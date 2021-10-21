@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace OpenClassrooms\CodeGenerator\Tests\Commands;
 
+use OpenClassrooms\CodeGenerator\Commands\Exceptions\ClassNameNotExistException;
 use OpenClassrooms\CodeGenerator\Commands\UseCases\EditEntityUseCaseCommand;
 use OpenClassrooms\CodeGenerator\Mediators\Args;
 use OpenClassrooms\CodeGenerator\Mediators\BusinessRules\UseCases\EditEntityUseCaseMediator;
@@ -74,10 +75,11 @@ class EditEntityUseCaseCommandTest extends TestCase
 
     /**
      * @test
-     * @expectedException \OpenClassrooms\CodeGenerator\Commands\Exceptions\ClassNameNotExistException
      */
     public function executeCommandWithBadClassNameArgument(): void
     {
+        $this->expectException(ClassNameNotExistException::class);
+
         EditEntityUseCaseMediatorMock::$fileObjects = $this->writeFileObjects(
             EditEntityUseCaseMediatorMock::$fileObjects
         );
