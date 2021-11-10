@@ -1,8 +1,0 @@
-composer.lock
-build/
-vendor/
-.php_cs.cache
-.php_cs.php
-phpunit.xml
-/oc_code_generator.yml
-/bin/CodeGenerator.php
