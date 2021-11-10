@@ -37,7 +37,7 @@ class UseCarbonTraitTest extends TestCase
         $this->assertFalse($actual);
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->class = (new class() {
             /**

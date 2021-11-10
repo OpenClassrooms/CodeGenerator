@@ -17,10 +17,11 @@ class UseCaseFileObjectFactoryImplTest extends TestCase
 
     /**
      * @test
-     * @expectedException \InvalidArgumentException
      */
     public function InvalidType_Create_ThrowException(): void
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         $this->factory->create('INVALID_TYPE', self::class, '');
     }
 

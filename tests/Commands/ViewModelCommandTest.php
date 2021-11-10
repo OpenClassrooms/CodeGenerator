@@ -32,10 +32,11 @@ class ViewModelCommandTest extends TestCase
 
     /**
      * @test
-     * @expectedException \ErrorException
      */
     public function checkConfigurationManyParametersEmpty(): void
     {
+        $this->expectException(\ErrorException::class);
+
         $codeGeneratorConfig = [
             'parameters' => [
                 'author'      => null,
@@ -48,10 +49,11 @@ class ViewModelCommandTest extends TestCase
 
     /**
      * @test
-     * @expectedException \ErrorException
      */
     public function checkConfigurationOneParameterEmpty(): void
     {
+        $this->expectException(\ErrorException::class);
+
         $codeGeneratorConfig = [
             'parameters' => [
                 'author' => null,
@@ -78,9 +80,9 @@ class ViewModelCommandTest extends TestCase
         $output = $this->commandTester->getDisplay();
 
         foreach (ViewModelMediatorMock::$fileObjects as $fileObject) {
-            $this->assertContains(CommandLabelType::ALREADY_EXIST_OUTPUT, $output);
-            $this->assertContains($fileObject->getPath(), $output);
-            $this->assertContains($fileObject->getContent(), $output);
+            $this->assertStringContainsString(CommandLabelType::ALREADY_EXIST_OUTPUT, $output);
+            $this->assertStringContainsString($fileObject->getPath(), $output);
+            $this->assertStringContainsString($fileObject->getContent(), $output);
         }
     }
 
@@ -100,9 +102,9 @@ class ViewModelCommandTest extends TestCase
         $output = $this->commandTester->getDisplay();
 
         foreach (ViewModelMediatorMock::$fileObjects as $fileObject) {
-            $this->assertContains(CommandLabelType::DUMP_OUTPUT, $output);
-            $this->assertContains($fileObject->getPath(), $output);
-            $this->assertContains($fileObject->getContent(), $output);
+            $this->assertStringContainsString(CommandLabelType::DUMP_OUTPUT, $output);
+            $this->assertStringContainsString($fileObject->getPath(), $output);
+            $this->assertStringContainsString($fileObject->getContent(), $output);
         }
     }
 
@@ -161,10 +163,11 @@ class ViewModelCommandTest extends TestCase
 
     /**
      * @test
-     * @expectedException \Exception
      */
     public function fileConfigNotExistThrowException(): void
     {
+        $this->expectException(\Exception::class);
+
         TestClassUtil::invokeMethod('loadConfigParameters', new ViewModelsCommand());
     }
 

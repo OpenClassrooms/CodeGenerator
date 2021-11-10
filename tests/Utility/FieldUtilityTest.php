@@ -61,10 +61,11 @@ class FieldUtilityTest extends TestCase
 
     /**
      * @test
-     * @expectedException \Exception
      */
     public function getFieldsThrowException(): void
     {
+        $this->expectException(\Exception::class);
+
         $fields = ['notExistField'];
         FieldUtility::getFields(FunctionalEntity::class, $fields);
     }

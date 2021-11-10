@@ -64,10 +64,11 @@ final class CommonControllerMediatorImplTest extends TestCase
 
     /**
      * @test
-     * @expectedException  \ErrorException
      */
     public function generateCommonControllerThrowException(): void
     {
+        $this->expectException(\ErrorException::class);
+
         $this->commonControllerMediator->mediate(
             [Args::CLASS_NAME => FunctionalEntity::class, Args::TYPE => -1],
             [Options::DUMP => null]

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace OpenClassrooms\CodeGenerator\Tests\Commands;
 
+use OpenClassrooms\CodeGenerator\Commands\Exceptions\BadCommandArgumentException;
+use OpenClassrooms\CodeGenerator\Commands\Exceptions\ClassNameNotExistException;
 use OpenClassrooms\CodeGenerator\Commands\Presentation\CommonControllerCommand;
 use OpenClassrooms\CodeGenerator\Mediators\Api\Controller\CommonControllerMediator;
 use OpenClassrooms\CodeGenerator\Mediators\Args;
@@ -28,10 +30,11 @@ class CommonControllerCommandTest extends TestCase
 
     /**
      * @test
-     * @expectedException \OpenClassrooms\CodeGenerator\Commands\Exceptions\BadCommandArgumentException
      */
     public function executeCommandWithBadArgumentType(): void
     {
+        $this->expectException(BadCommandArgumentException::class);
+
         CommonControllerMediatorMock::$fileObjects = $this->writeFileObjects(
             CommonControllerMediatorMock::$fileObjects
         );
@@ -95,10 +98,11 @@ class CommonControllerCommandTest extends TestCase
 
     /**
      * @test
-     * @expectedException \OpenClassrooms\CodeGenerator\Commands\Exceptions\ClassNameNotExistException
      */
     public function executeCommandWithBadClassNameArgument(): void
     {
+        $this->expectException(ClassNameNotExistException::class);
+
         CommonControllerMediatorMock::$fileObjects = $this->writeFileObjects(
             CommonControllerMediatorMock::$fileObjects
         );

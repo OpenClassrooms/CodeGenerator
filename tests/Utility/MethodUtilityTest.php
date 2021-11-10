@@ -47,10 +47,11 @@ class MethodUtilityTest extends TestCase
 
     /**
      * @test
-     * @expectedException \Exception
      */
     public function getAccessorsThrowException(): void
     {
+        $this->expectException(\Exception::class);
+
         $class = (new class() {
             public function getMethod(string $argument)
             {
